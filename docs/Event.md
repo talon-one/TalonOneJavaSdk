@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **sessionId** | **String** | The ID of the session that this event occurred in. | 
 **type** | **String** | A string representing the event. Must not be a reserved event name. | 
 **attributes** | **Object** | Arbitrary additional JSON data associated with the event. | 
-**effects** | [**List&lt;null&gt;**](List.md) | An array of \&quot;effects\&quot; that must be applied in response to this event. Example effects include &#x60;addItemToCart&#x60; or &#x60;setDiscount&#x60;.  | 
+**effects** | [**List&lt;List&lt;Object&gt;&gt;**](List.md) | An array of \&quot;effects\&quot; that must be applied in response to this event. Example effects include &#x60;addItemToCart&#x60; or &#x60;setDiscount&#x60;.  | 
 **ledgerEntries** | [**List&lt;LedgerEntry&gt;**](LedgerEntry.md) | Ledger entries for the event. | 
 
 
