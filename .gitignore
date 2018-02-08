@@ -1,4 +1,4 @@
 .idea/
 .out/
 .bin/
-.target/
+target/
