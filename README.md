@@ -1,56 +1,4 @@
-# swagger-java-client
-
-## Requirements
-
-Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
-
-## Installation
-
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn install
-```
-
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn deploy
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-<dependency>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
-    <version>1.0.0</version>
-    <scope>compile</scope>
-</dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "io.swagger:swagger-java-client:1.0.0"
-```
-
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-* target/swagger-java-client-1.0.0.jar
-* target/lib/*.jar
+# Talon.One Integration API JAVA SDK
 
 ## Getting Started
 
@@ -58,28 +6,52 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
+import one.talon.api.ApiClient;
+import one.talon.api.ApiException;
+import one.talon.api.DefaultApi;
+import one.talon.api.model.IntegrationState;
+import one.talon.api.model.NewCustomerProfile;
+import one.talon.api.model.NewCustomerSession;
 
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-        NewCustomerProfile body = new NewCustomerProfile(); // NewCustomerProfile | 
+public class TalonApiTest {
+    private static void updateCustomer(DefaultApi api, NewCustomerProfile profile) {
         try {
-            IntegrationState result = apiInstance.updateCustomerProfile(integrationId, body);
-            System.out.println(result);
+            IntegrationState response = api.updateCustomerProfile("John Mcaffee", profile);
+            System.out.println(response.toString());
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#updateCustomerProfile");
+            System.out.println(e.getResponseBody());
             e.printStackTrace();
         }
+    }
+
+    private static void updateSession(DefaultApi api, NewCustomerSession session, final String sessionName) {
+        try {
+            IntegrationState response = api.updateCustomerSession(sessionName, session);
+            System.out.println(response.toString());
+        } catch (ApiException e) {
+            System.out.println(e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+
+    private static void closeSession(DefaultApi api, NewCustomerSession session, final String sessionName) {
+        session.setState(NewCustomerSession.StateEnum.CLOSED);
+        updateSession(api, session, sessionName);
+    }
+
+    public static void main(String[] args) {
+        DefaultApi api = new DefaultApi();
+        ApiClient client = api.getApiClient();
+        client.setApplicationId("1");
+        client.setApplicationKey("3ea66176ec001969");
+        client.setBasePath("http://localhost:9000");
+
+        NewCustomerProfile profile = new NewCustomerProfile();
+        NewCustomerSession session = new NewCustomerSession();
+
+        updateCustomer(api, profile);
+        session.setCoupon("roman");
+        updateSession(api, session, "asdagesgs");
     }
 }
 
@@ -108,17 +80,10 @@ Class | Method | HTTP request | Description
  - [NewCustomerProfile](docs/NewCustomerProfile.md)
  - [NewCustomerSession](docs/NewCustomerSession.md)
 
-
-## Documentation for Authorization
-
-All endpoints do not require authorization.
-Authentication schemes defined for the API:
-
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
 
-
-
+Talon.One
