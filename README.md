@@ -46,9 +46,10 @@ public class TalonApiTest {
         NewCustomerSession session = new NewCustomerSession();
 
         updateCustomer(api, profile);
-        session.setCoupon("roman");
-        updateSession(api, session, "asdagesgs");
+        session.setCoupon("btcusd");
+        updateSession(api, session, "someSessionIdentifier");
     }
+}
 }
 
 ```
