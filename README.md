@@ -1,9 +1,5 @@
 # Talon.One Integration API JAVA SDK
 
-## Getting Started
-
-Please follow the [installation](#installation) instruction and execute the following Java code:
-
 ```java
 
 import one.talon.api.ApiClient;
