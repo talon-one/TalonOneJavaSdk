@@ -14,7 +14,7 @@
 package one.talon.api.api;
 
 import one.talon.api.ApiException;
-import one.talon.api.DefaultApi;
+import one.talon.api.IntegrationApi;
 import one.talon.api.model.IntegrationState;
 import one.talon.api.model.NewCustomerProfile;
 import one.talon.api.model.NewCustomerSession;
@@ -22,12 +22,12 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 /**
- * API tests for DefaultApi
+ * API tests for IntegrationApi
  */
 @Ignore
 public class DefaultApiTest {
 
-    private final DefaultApi api = new DefaultApi();
+    private final IntegrationApi api = new IntegrationApi();
 
     
     /**

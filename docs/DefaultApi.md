@@ -20,7 +20,7 @@ Update (or create) a [Customer Profile][]. This profile information can then be 
 ```java
 // Import classes:
 //import io.swagger.client.ApiException;
-//import io.swagger.client.api.DefaultApi;
+IntegrationApi
 
 
 DefaultApi apiInstance = new DefaultApi();

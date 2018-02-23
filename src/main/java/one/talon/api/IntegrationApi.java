@@ -13,15 +13,6 @@
 
 package one.talon.api;
 
-import one.talon.api.ApiCallback;
-import one.talon.api.ApiClient;
-import one.talon.api.ApiException;
-import one.talon.api.ApiResponse;
-import one.talon.api.Configuration;
-import one.talon.api.Pair;
-import one.talon.api.ProgressRequestBody;
-import one.talon.api.ProgressResponseBody;
-
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -37,22 +28,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultApi {
-    private ApiClient apiClient;
+public class IntegrationApi {
+    private IntegrationApiClient apiClient;
 
-    public DefaultApi() {
-        this(Configuration.getDefaultApiClient());
+    public IntegrationApi() {
+        this(Configuration.getIntegrationApiClient());
     }
 
-    public DefaultApi(ApiClient apiClient) {
+    public IntegrationApi(IntegrationApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
-    public ApiClient getApiClient() {
+    public IntegrationApiClient getApiClient() {
         return apiClient;
     }
 
-    public void setApiClient(ApiClient apiClient) {
+    public void setApiClient(IntegrationApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

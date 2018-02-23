@@ -2,7 +2,7 @@
 
 ```java
 
-import one.talon.api.ApiClient;
+import one.talon.api.IntegrationApiClient;
 import one.talon.api.ApiException;
 import one.talon.api.DefaultApi;
 import one.talon.api.model.IntegrationState;

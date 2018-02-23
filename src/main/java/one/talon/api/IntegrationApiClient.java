@@ -52,7 +52,7 @@ import one.talon.api.auth.HttpBasicAuth;
 import one.talon.api.auth.ApiKeyAuth;
 import one.talon.api.auth.OAuth;
 
-public class ApiClient {
+public class IntegrationApiClient {
 
     private String basePath = "https://localhost";
     private boolean debugging = false;
@@ -78,9 +78,9 @@ public class ApiClient {
     private String applicationId;
 
     /*
-     * Constructor for ApiClient
+     * Constructor for IntegrationApiClient
      */
-    public ApiClient() {
+    public IntegrationApiClient() {
         httpClient = new OkHttpClient();
 
 
@@ -112,16 +112,16 @@ public class ApiClient {
      * @param basePath Base path of the URL (e.g https://localhost
      * @return An instance of OkHttpClient
      */
-    public ApiClient setBasePath(String basePath) {
+    public IntegrationApiClient setBasePath(String basePath) {
         this.basePath = basePath;
         return this;
     }
 
-    public ApiClient setApplicationKey(String key) {
+    public IntegrationApiClient setApplicationKey(String key) {
         this.applicationKey = key;
         return this;
     }
-    public ApiClient setApplicationId(String id) {
+    public IntegrationApiClient setApplicationId(String id) {
         this.applicationId = id;
         return this;
     }
@@ -141,7 +141,7 @@ public class ApiClient {
      * @param httpClient An instance of OkHttpClient
      * @return Api Client
      */
-    public ApiClient setHttpClient(OkHttpClient httpClient) {
+    public IntegrationApiClient setHttpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         return this;
     }
@@ -161,7 +161,7 @@ public class ApiClient {
      * @param json JSON object
      * @return Api api
      */
-    public ApiClient setJSON(JSON json) {
+    public IntegrationApiClient setJSON(JSON json) {
         this.json = json;
         return this;
     }
@@ -181,9 +181,9 @@ public class ApiClient {
      * NOTE: Do NOT set to false in production code, otherwise you would face multiple types of cryptographic attacks.
      *
      * @param verifyingSsl True to verify TLS/SSL connection
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setVerifyingSsl(boolean verifyingSsl) {
+    public IntegrationApiClient setVerifyingSsl(boolean verifyingSsl) {
         this.verifyingSsl = verifyingSsl;
         applySslSettings();
         return this;
@@ -203,9 +203,9 @@ public class ApiClient {
      * Use null to reset to default.
      *
      * @param sslCaCert input stream for SSL CA cert
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setSslCaCert(InputStream sslCaCert) {
+    public IntegrationApiClient setSslCaCert(InputStream sslCaCert) {
         this.sslCaCert = sslCaCert;
         applySslSettings();
         return this;
@@ -220,9 +220,9 @@ public class ApiClient {
      * Use null to reset to default.
      *
      * @param managers The KeyManagers to use
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setKeyManagers(KeyManager[] managers) {
+    public IntegrationApiClient setKeyManagers(KeyManager[] managers) {
         this.keyManagers = managers;
         applySslSettings();
         return this;
@@ -232,27 +232,27 @@ public class ApiClient {
         return dateFormat;
     }
 
-    public ApiClient setDateFormat(DateFormat dateFormat) {
+    public IntegrationApiClient setDateFormat(DateFormat dateFormat) {
         this.json.setDateFormat(dateFormat);
         return this;
     }
 
-    public ApiClient setSqlDateFormat(DateFormat dateFormat) {
+    public IntegrationApiClient setSqlDateFormat(DateFormat dateFormat) {
         this.json.setSqlDateFormat(dateFormat);
         return this;
     }
 
-    public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public IntegrationApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         this.json.setOffsetDateTimeFormat(dateFormat);
         return this;
     }
 
-    public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public IntegrationApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
         this.json.setLocalDateFormat(dateFormat);
         return this;
     }
 
-    public ApiClient setLenientOnJson(boolean lenientOnJson) {
+    public IntegrationApiClient setLenientOnJson(boolean lenientOnJson) {
         this.json.setLenientOnJson(lenientOnJson);
         return this;
     }
@@ -355,9 +355,9 @@ public class ApiClient {
      * Set the User-Agent header's value (by adding to the default header map).
      *
      * @param userAgent HTTP request's user agent
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setUserAgent(String userAgent) {
+    public IntegrationApiClient setUserAgent(String userAgent) {
         addDefaultHeader("User-Agent", userAgent);
         return this;
     }
@@ -367,9 +367,9 @@ public class ApiClient {
      *
      * @param key The header's key
      * @param value The header's value
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient addDefaultHeader(String key, String value) {
+    public IntegrationApiClient addDefaultHeader(String key, String value) {
         defaultHeaderMap.put(key, value);
         return this;
     }
@@ -387,9 +387,9 @@ public class ApiClient {
      * Enable/disable debugging for this API api.
      *
      * @param debugging To enable (true) or disable (false) debugging
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setDebugging(boolean debugging) {
+    public IntegrationApiClient setDebugging(boolean debugging) {
         if (debugging != this.debugging) {
             if (debugging) {
                 loggingInterceptor = new HttpLoggingInterceptor();
@@ -420,9 +420,9 @@ public class ApiClient {
      * Set the temporary folder path (for downloading files)
      *
      * @param tempFolderPath Temporary folder path
-     * @return ApiClient
+     * @return IntegrationApiClient
      */
-    public ApiClient setTempFolderPath(String tempFolderPath) {
+    public IntegrationApiClient setTempFolderPath(String tempFolderPath) {
         this.tempFolderPath = tempFolderPath;
         return this;
     }
@@ -444,7 +444,7 @@ public class ApiClient {
      * @param connectionTimeout connection timeout in milliseconds
      * @return Api api
      */
-    public ApiClient setConnectTimeout(int connectionTimeout) {
+    public IntegrationApiClient setConnectTimeout(int connectionTimeout) {
         httpClient.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
@@ -466,7 +466,7 @@ public class ApiClient {
      * @param readTimeout read timeout in milliseconds
      * @return Api api
      */
-    public ApiClient setReadTimeout(int readTimeout) {
+    public IntegrationApiClient setReadTimeout(int readTimeout) {
         httpClient.setReadTimeout(readTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
@@ -488,7 +488,7 @@ public class ApiClient {
      * @param writeTimeout connection timeout in milliseconds
      * @return Api api
      */
-    public ApiClient setWriteTimeout(int writeTimeout) {
+    public IntegrationApiClient setWriteTimeout(int writeTimeout) {
         httpClient.setWriteTimeout(writeTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
