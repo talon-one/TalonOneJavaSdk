@@ -38,15 +38,13 @@ public class TalonApiTest {
         integrationClient.setApplicationKey("ff164d01c11d9571");
         integrationClient.setBasePath("http://localhost:9000");
 
-        ManagementApi managementApi = new ManagementApi(new ManagementApiClient());
-        ManagementApiClient client = managementApi.getApiClient();
-        client.setApplicationId("1");
-        client.setApplicationKey("ff164d01c11d9571");
-        client.setBasePath("http://localhost:9000");
+        ManagementApi managementApi = new ManagementApi();
+        ManagementApiClient managementClient = managementApi.getApiClient();
+        managementClient.setApplicationId("1");
+        managementClient.setApplicationKey("ff164d01c11d9571");
+        managementClient.setBasePath("http://localhost:9000");
 
-        String response = managementApi.createManagementSession(client, "demo@talon.one", "demo1234");
-        System.out.println(client.getBearerToken());
-
+        managementApi.createManagementSession(managementClient, "demo@talon.one", "demo1234");
 
         try {
             Application app = managementApi.getApplication(1);

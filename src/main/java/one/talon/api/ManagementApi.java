@@ -30,6 +30,8 @@ import java.util.Map;
 public class ManagementApi {
     private ManagementApiClient apiClient;
 
+    public ManagementApi(){ this(Configuration.getManagementApiClient()); }
+
     public ManagementApi(ManagementApiClient apiClient) {
         this.apiClient = apiClient;
     }

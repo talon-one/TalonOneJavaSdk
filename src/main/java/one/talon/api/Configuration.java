@@ -15,25 +15,13 @@ package one.talon.api;
 
 @javax.annotation.Generated(value = "io.talon.codegen.languages.JavaClientCodegen", date = "2018-02-07T17:30:19.650+01:00")
 public class Configuration {
-    private static IntegrationApiClient defaultApiClient = new IntegrationApiClient();
+    private static IntegrationApiClient integrationApiClient = new IntegrationApiClient();
+    private static ManagementApiClient managementApiClient = new ManagementApiClient();
 
-    /**
-     * Get the default API api, which would be used when creating API
-     * instances without providing an API api.
-     *
-     * @return Default API api
-     */
     public static IntegrationApiClient getIntegrationApiClient() {
-        return defaultApiClient;
+        return integrationApiClient;
     }
-
-    /**
-     * Set the default API api, which would be used when creating API
-     * instances without providing an API api.
-     *
-     * @param apiClient API api
-     */
-    public static void setDefaultApiClient(IntegrationApiClient apiClient) {
-        defaultApiClient = apiClient;
+    public static ManagementApiClient getManagementApiClient() {
+        return managementApiClient;
     }
 }
