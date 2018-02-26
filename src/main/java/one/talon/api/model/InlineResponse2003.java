@@ -13,12 +13,18 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import one.talon.api.model.Ruleset;
 
 /**
  * InlineResponse2003
@@ -29,7 +35,7 @@ public class InlineResponse2003 {
   private Integer totalResultSize = null;
 
   @SerializedName("data")
-  private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
+  private List<Ruleset> data = new ArrayList<Ruleset>();
 
   public InlineResponse2003 totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
@@ -49,12 +55,12 @@ public class InlineResponse2003 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2003 data(List<CampaignAnalytics> data) {
+  public InlineResponse2003 data(List<Ruleset> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(CampaignAnalytics dataItem) {
+  public InlineResponse2003 addDataItem(Ruleset dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -64,17 +70,17 @@ public class InlineResponse2003 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CampaignAnalytics> getData() {
+  public List<Ruleset> getData() {
     return data;
   }
 
-  public void setData(List<CampaignAnalytics> data) {
+  public void setData(List<Ruleset> data) {
     this.data = data;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -96,7 +102,7 @@ public class InlineResponse2003 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2003 {\n");
-
+    
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
@@ -107,7 +113,7 @@ public class InlineResponse2003 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -24,20 +24,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.CustomerProfile;
+import one.talon.api.model.User;
 
 /**
- * InlineResponse200
+ * InlineResponse20013
  */
 
-public class InlineResponse200 {
+public class InlineResponse20013 {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
-  private List<CustomerProfile> data = new ArrayList<CustomerProfile>();
+  private List<User> data = new ArrayList<User>();
 
-  public InlineResponse200 totalResultSize(Integer totalResultSize) {
+  public InlineResponse20013 totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +55,12 @@ public class InlineResponse200 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse200 data(List<CustomerProfile> data) {
+  public InlineResponse20013 data(List<User> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse200 addDataItem(CustomerProfile dataItem) {
+  public InlineResponse20013 addDataItem(User dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -70,11 +70,11 @@ public class InlineResponse200 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CustomerProfile> getData() {
+  public List<User> getData() {
     return data;
   }
 
-  public void setData(List<CustomerProfile> data) {
+  public void setData(List<User> data) {
     this.data = data;
   }
 
@@ -87,9 +87,9 @@ public class InlineResponse200 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
-    return Objects.equals(this.totalResultSize, inlineResponse200.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse200.data);
+    InlineResponse20013 inlineResponse20013 = (InlineResponse20013) o;
+    return Objects.equals(this.totalResultSize, inlineResponse20013.totalResultSize) &&
+        Objects.equals(this.data, inlineResponse20013.data);
   }
 
   @Override
@@ -101,7 +101,7 @@ public class InlineResponse200 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse200 {\n");
+    sb.append("class InlineResponse20013 {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

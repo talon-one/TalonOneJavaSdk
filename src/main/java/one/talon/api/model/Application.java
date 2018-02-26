@@ -13,12 +13,16 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
-
-import java.util.Objects;
 
 /**
  * 
@@ -217,7 +221,7 @@ public class Application {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -246,7 +250,7 @@ public class Application {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Application {\n");
-
+    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
@@ -264,7 +268,7 @@ public class Application {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

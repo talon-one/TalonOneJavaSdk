@@ -13,6 +13,7 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,10 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
 import java.io.IOException;
-import java.util.Objects;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Report of health of the API connection of an application
@@ -128,7 +127,7 @@ public class ApplicationApiHealth {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -150,7 +149,7 @@ public class ApplicationApiHealth {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationApiHealth {\n");
-
+    
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    lastUsed: ").append(toIndentedString(lastUsed)).append("\n");
     sb.append("}");
@@ -161,7 +160,7 @@ public class ApplicationApiHealth {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -23,63 +23,20 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.api.model.CampaignSetBranchNode;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * 
  */
 @ApiModel(description = "")
 
-public class CampaignSet {
-  @SerializedName("id")
-  private Integer id = null;
-
-  @SerializedName("created")
-  private OffsetDateTime created = null;
-
+public class NewCampaignSet {
   @SerializedName("applicationId")
   private Integer applicationId = null;
 
   @SerializedName("set")
   private CampaignSetBranchNode set = null;
 
-  public CampaignSet id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Unique ID for this entity.
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public CampaignSet created(OffsetDateTime created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * The exact moment this entity was created.
-   * @return created
-  **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
-  public OffsetDateTime getCreated() {
-    return created;
-  }
-
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
-  }
-
-  public CampaignSet applicationId(Integer applicationId) {
+  public NewCampaignSet applicationId(Integer applicationId) {
     this.applicationId = applicationId;
     return this;
   }
@@ -97,7 +54,7 @@ public class CampaignSet {
     this.applicationId = applicationId;
   }
 
-  public CampaignSet set(CampaignSetBranchNode set) {
+  public NewCampaignSet set(CampaignSetBranchNode set) {
     this.set = set;
     return this;
   }
@@ -124,26 +81,22 @@ public class CampaignSet {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CampaignSet campaignSet = (CampaignSet) o;
-    return Objects.equals(this.id, campaignSet.id) &&
-        Objects.equals(this.created, campaignSet.created) &&
-        Objects.equals(this.applicationId, campaignSet.applicationId) &&
-        Objects.equals(this.set, campaignSet.set);
+    NewCampaignSet newCampaignSet = (NewCampaignSet) o;
+    return Objects.equals(this.applicationId, newCampaignSet.applicationId) &&
+        Objects.equals(this.set, newCampaignSet.set);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, set);
+    return Objects.hash(applicationId, set);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CampaignSet {\n");
+    sb.append("class NewCampaignSet {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    set: ").append(toIndentedString(set)).append("\n");
     sb.append("}");

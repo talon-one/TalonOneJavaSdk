@@ -25,17 +25,10 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * NewReferral
  */
-@ApiModel(description = "")
 
-public class Referral {
-  @SerializedName("id")
-  private Integer id = null;
-
-  @SerializedName("created")
-  private OffsetDateTime created = null;
-
+public class NewReferral {
   @SerializedName("campaignId")
   private Integer campaignId = null;
 
@@ -51,52 +44,7 @@ public class Referral {
   @SerializedName("expiryDate")
   private OffsetDateTime expiryDate = null;
 
-  @SerializedName("code")
-  private String code = null;
-
-  @SerializedName("usageCounter")
-  private Integer usageCounter = null;
-
-  @SerializedName("usageLimit")
-  private Integer usageLimit = null;
-
-  public Referral id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Unique ID for this entity.
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public Referral created(OffsetDateTime created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * The exact moment this entity was created.
-   * @return created
-  **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
-  public OffsetDateTime getCreated() {
-    return created;
-  }
-
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
-  }
-
-  public Referral campaignId(Integer campaignId) {
+  public NewReferral campaignId(Integer campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -114,7 +62,7 @@ public class Referral {
     this.campaignId = campaignId;
   }
 
-  public Referral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
+  public NewReferral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
     return this;
   }
@@ -132,7 +80,7 @@ public class Referral {
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
   }
 
-  public Referral friendProfileIntegrationId(String friendProfileIntegrationId) {
+  public NewReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
     this.friendProfileIntegrationId = friendProfileIntegrationId;
     return this;
   }
@@ -150,7 +98,7 @@ public class Referral {
     this.friendProfileIntegrationId = friendProfileIntegrationId;
   }
 
-  public Referral startDate(OffsetDateTime startDate) {
+  public NewReferral startDate(OffsetDateTime startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -168,7 +116,7 @@ public class Referral {
     this.startDate = startDate;
   }
 
-  public Referral expiryDate(OffsetDateTime expiryDate) {
+  public NewReferral expiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
     return this;
   }
@@ -186,61 +134,6 @@ public class Referral {
     this.expiryDate = expiryDate;
   }
 
-  public Referral code(String code) {
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * The actual referral code.
-   * @return code
-  **/
-  @ApiModelProperty(required = true, value = "The actual referral code.")
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public Referral usageCounter(Integer usageCounter) {
-    this.usageCounter = usageCounter;
-    return this;
-  }
-
-   /**
-   * The number of times this referral code has been successfully used.
-   * @return usageCounter
-  **/
-  @ApiModelProperty(required = true, value = "The number of times this referral code has been successfully used.")
-  public Integer getUsageCounter() {
-    return usageCounter;
-  }
-
-  public void setUsageCounter(Integer usageCounter) {
-    this.usageCounter = usageCounter;
-  }
-
-  public Referral usageLimit(Integer usageLimit) {
-    this.usageLimit = usageLimit;
-    return this;
-  }
-
-   /**
-   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
-   * minimum: 0
-   * @return usageLimit
-  **/
-  @ApiModelProperty(required = true, value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
-  public Integer getUsageLimit() {
-    return usageLimit;
-  }
-
-  public void setUsageLimit(Integer usageLimit) {
-    this.usageLimit = usageLimit;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -250,40 +143,30 @@ public class Referral {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Referral referral = (Referral) o;
-    return Objects.equals(this.id, referral.id) &&
-        Objects.equals(this.created, referral.created) &&
-        Objects.equals(this.campaignId, referral.campaignId) &&
-        Objects.equals(this.advocateProfileIntegrationId, referral.advocateProfileIntegrationId) &&
-        Objects.equals(this.friendProfileIntegrationId, referral.friendProfileIntegrationId) &&
-        Objects.equals(this.startDate, referral.startDate) &&
-        Objects.equals(this.expiryDate, referral.expiryDate) &&
-        Objects.equals(this.code, referral.code) &&
-        Objects.equals(this.usageCounter, referral.usageCounter) &&
-        Objects.equals(this.usageLimit, referral.usageLimit);
+    NewReferral newReferral = (NewReferral) o;
+    return Objects.equals(this.campaignId, newReferral.campaignId) &&
+        Objects.equals(this.advocateProfileIntegrationId, newReferral.advocateProfileIntegrationId) &&
+        Objects.equals(this.friendProfileIntegrationId, newReferral.friendProfileIntegrationId) &&
+        Objects.equals(this.startDate, newReferral.startDate) &&
+        Objects.equals(this.expiryDate, newReferral.expiryDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, startDate, expiryDate, code, usageCounter, usageLimit);
+    return Objects.hash(campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, startDate, expiryDate);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Referral {\n");
+    sb.append("class NewReferral {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    advocateProfileIntegrationId: ").append(toIndentedString(advocateProfileIntegrationId)).append("\n");
     sb.append("    friendProfileIntegrationId: ").append(toIndentedString(friendProfileIntegrationId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    usageCounter: ").append(toIndentedString(usageCounter)).append("\n");
-    sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
     sb.append("}");
     return sb.toString();
   }

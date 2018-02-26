@@ -13,11 +13,16 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Objects;
+import java.io.IOException;
+import one.talon.api.model.AccessControlList;
 
 /**
  * Parameters for inviting a new user
@@ -90,7 +95,7 @@ public class NewInvitation {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -113,7 +118,7 @@ public class NewInvitation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewInvitation {\n");
-
+    
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    acl: ").append(toIndentedString(acl)).append("\n");
@@ -125,7 +130,7 @@ public class NewInvitation {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

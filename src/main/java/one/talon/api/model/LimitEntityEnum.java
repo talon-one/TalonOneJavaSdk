@@ -13,12 +13,14 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
-import java.io.IOException;
 
 /**
  * Gets or Sets LimitEntityEnum

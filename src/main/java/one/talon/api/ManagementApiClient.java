@@ -1020,7 +1020,10 @@ public class ManagementApiClient {
             request = reqBuilder.method(method, reqBody).build();
         }
 
-        request = request.newBuilder().addHeader("Authorization", "Bearer " + this.getBearerToken().replace("\"", "")).build();
+        if (this.getBearerToken() != null) {
+            request = request.newBuilder().addHeader("Authorization", "Bearer " + this.getBearerToken().replace("\"", "")).build();
+        }
+
         return request;
     }
 

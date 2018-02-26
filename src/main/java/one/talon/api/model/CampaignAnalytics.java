@@ -13,13 +13,17 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Objects;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * 
@@ -302,7 +306,7 @@ public class CampaignAnalytics {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -335,7 +339,7 @@ public class CampaignAnalytics {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignAnalytics {\n");
-
+    
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
@@ -357,7 +361,7 @@ public class CampaignAnalytics {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

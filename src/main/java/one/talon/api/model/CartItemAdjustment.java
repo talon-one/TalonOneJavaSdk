@@ -13,11 +13,16 @@
 
 package one.talon.api.model;
 
-import com.google.gson.annotations.SerializedName;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.math.BigDecimal;
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * CartItemAdjustment
@@ -91,7 +96,7 @@ public class CartItemAdjustment {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -114,7 +119,7 @@ public class CartItemAdjustment {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CartItemAdjustment {\n");
-
+    
     sb.append("    payFromLoyaltyProgram: ").append(toIndentedString(payFromLoyaltyProgram)).append("\n");
     sb.append("    pointPayment: ").append(toIndentedString(pointPayment)).append("\n");
     sb.append("    remainingPrice: ").append(toIndentedString(remainingPrice)).append("\n");
@@ -126,7 +131,7 @@ public class CartItemAdjustment {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

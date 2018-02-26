@@ -22,39 +22,53 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.api.model.Rule;
 
 /**
- * NewRuleset
+ * 
  */
+@ApiModel(description = "")
 
-public class NewRuleset {
-  @SerializedName("rules")
-  private List<Rule> rules = new ArrayList<Rule>();
+public class LoginParams {
+  @SerializedName("email")
+  private String email = null;
 
-  public NewRuleset rules(List<Rule> rules) {
-    this.rules = rules;
-    return this;
-  }
+  @SerializedName("password")
+  private String password = null;
 
-  public NewRuleset addRulesItem(Rule rulesItem) {
-    this.rules.add(rulesItem);
+  public LoginParams email(String email) {
+    this.email = email;
     return this;
   }
 
    /**
-   * Set of rules to apply.
-   * @return rules
+   * The email address associated with your account.
+   * @return email
   **/
-  @ApiModelProperty(required = true, value = "Set of rules to apply.")
-  public List<Rule> getRules() {
-    return rules;
+  @ApiModelProperty(required = true, value = "The email address associated with your account.")
+  public String getEmail() {
+    return email;
   }
 
-  public void setRules(List<Rule> rules) {
-    this.rules = rules;
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public LoginParams password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * The password for your account.
+   * @return password
+  **/
+  @ApiModelProperty(required = true, value = "The password for your account.")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 
 
@@ -66,22 +80,24 @@ public class NewRuleset {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewRuleset newRuleset = (NewRuleset) o;
-    return Objects.equals(this.rules, newRuleset.rules);
+    LoginParams loginParams = (LoginParams) o;
+    return Objects.equals(this.email, loginParams.email) &&
+        Objects.equals(this.password, loginParams.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rules);
+    return Objects.hash(email, password);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewRuleset {\n");
+    sb.append("class LoginParams {\n");
     
-    sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

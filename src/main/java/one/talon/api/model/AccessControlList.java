@@ -13,10 +13,11 @@
 
 package one.talon.api.model;
 
-import io.swagger.annotations.ApiModel;
-
-import java.util.HashMap;
 import java.util.Objects;
+import io.swagger.annotations.ApiModel;
+import java.util.HashMap;
+import java.util.Map;
+import one.talon.api.model.Policy;
 
 /**
  * A map of access privileges.
@@ -26,7 +27,7 @@ import java.util.Objects;
 public class AccessControlList extends HashMap<String, Policy> {
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -55,7 +56,7 @@ public class AccessControlList extends HashMap<String, Policy> {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

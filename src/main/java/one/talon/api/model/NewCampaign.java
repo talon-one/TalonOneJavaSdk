@@ -13,18 +13,20 @@
 
 package one.talon.api.model;
 
+import java.util.Objects;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import one.talon.api.model.CodeGeneratorSettings;
+import one.talon.api.model.LimitConfig;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * NewCampaign
@@ -398,7 +400,7 @@ public class NewCampaign {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -430,7 +432,7 @@ public class NewCampaign {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewCampaign {\n");
-
+    
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
@@ -451,7 +453,7 @@ public class NewCampaign {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -24,29 +24,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ManagerConfig
+ * CustomerProfileSearch
  */
 
-public class ManagerConfig {
-  @SerializedName("schemaVersion")
-  private Integer schemaVersion = null;
+public class CustomerProfileSearch {
+  @SerializedName("attributes")
+  private Object attributes = null;
 
-  public ManagerConfig schemaVersion(Integer schemaVersion) {
-    this.schemaVersion = schemaVersion;
+  public CustomerProfileSearch attributes(Object attributes) {
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * Get schemaVersion
-   * @return schemaVersion
+   * Properties to match against a customer profile. All provided attributes will be exactly matched against profile attributes
+   * @return attributes
   **/
-  @ApiModelProperty(required = true, value = "")
-  public Integer getSchemaVersion() {
-    return schemaVersion;
+  @ApiModelProperty(required = true, value = "Properties to match against a customer profile. All provided attributes will be exactly matched against profile attributes")
+  public Object getAttributes() {
+    return attributes;
   }
 
-  public void setSchemaVersion(Integer schemaVersion) {
-    this.schemaVersion = schemaVersion;
+  public void setAttributes(Object attributes) {
+    this.attributes = attributes;
   }
 
 
@@ -58,22 +58,22 @@ public class ManagerConfig {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ManagerConfig managerConfig = (ManagerConfig) o;
-    return Objects.equals(this.schemaVersion, managerConfig.schemaVersion);
+    CustomerProfileSearch customerProfileSearch = (CustomerProfileSearch) o;
+    return Objects.equals(this.attributes, customerProfileSearch.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(schemaVersion);
+    return Objects.hash(attributes);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ManagerConfig {\n");
+    sb.append("class CustomerProfileSearch {\n");
     
-    sb.append("    schemaVersion: ").append(toIndentedString(schemaVersion)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

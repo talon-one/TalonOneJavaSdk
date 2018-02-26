@@ -22,52 +22,74 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
- * NewInviteEmail
+ * Session
  */
 
-public class NewInviteEmail {
-  @SerializedName("email")
-  private String email = null;
+public class Session {
+  @SerializedName("userId")
+  private Integer userId = null;
 
   @SerializedName("token")
   private String token = null;
 
-  public NewInviteEmail email(String email) {
-    this.email = email;
+  @SerializedName("created")
+  private OffsetDateTime created = null;
+
+  public Session userId(Integer userId) {
+    this.userId = userId;
     return this;
   }
 
    /**
-   * Get email
-   * @return email
+   * The ID of the user of this session
+   * @return userId
   **/
-  @ApiModelProperty(required = true, value = "")
-  public String getEmail() {
-    return email;
+  @ApiModelProperty(required = true, value = "The ID of the user of this session")
+  public Integer getUserId() {
+    return userId;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
-  public NewInviteEmail token(String token) {
+  public Session token(String token) {
     this.token = token;
     return this;
   }
 
    /**
-   * Get token
+   * An opaque session identifier
    * @return token
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "An opaque session identifier")
   public String getToken() {
     return token;
   }
 
   public void setToken(String token) {
     this.token = token;
+  }
+
+  public Session created(OffsetDateTime created) {
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * Unix timestamp indicating when the session was first created.
+   * @return created
+  **/
+  @ApiModelProperty(required = true, value = "Unix timestamp indicating when the session was first created.")
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
   }
 
 
@@ -79,24 +101,26 @@ public class NewInviteEmail {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewInviteEmail newInviteEmail = (NewInviteEmail) o;
-    return Objects.equals(this.email, newInviteEmail.email) &&
-        Objects.equals(this.token, newInviteEmail.token);
+    Session session = (Session) o;
+    return Objects.equals(this.userId, session.userId) &&
+        Objects.equals(this.token, session.token) &&
+        Objects.equals(this.created, session.created);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, token);
+    return Objects.hash(userId, token, created);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewInviteEmail {\n");
+    sb.append("class Session {\n");
     
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,9 +1,6 @@
 import one.talon.api.*;
 import one.talon.api.ManagementApiClient;
-import one.talon.api.model.IntegrationState;
-import one.talon.api.model.NewCustomerProfile;
-import one.talon.api.model.NewCustomerSession;
-import one.talon.api.model.Application;
+import one.talon.api.model.*;
 
 public class TalonApiTest {
     private static void updateCustomer(IntegrationApi api, NewCustomerProfile profile) {
@@ -44,11 +41,11 @@ public class TalonApiTest {
         managementClient.setApplicationKey("ff164d01c11d9571");
         managementClient.setBasePath("http://localhost:9000");
 
-        managementApi.createManagementSession(managementClient, "demo@talon.one", "demo1234");
-
         try {
+            managementApi.createManagementSession(managementClient, "company@domain.tld", "P4$$W0RD");
             Application app = managementApi.getApplication(1);
-            System.out.println(app.getCurrency());
+            InlineResponse2001 applications = managementApi.getApplications(10, 0, "");
+            System.out.println(applications.toString());
         } catch (ApiException ex) {
             System.out.print(ex);
         }

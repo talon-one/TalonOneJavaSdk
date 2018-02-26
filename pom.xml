@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
+    <groupId>one.talon</groupId>
+    <artifactId>talon-one-client</artifactId>
     <packaging>jar</packaging>
-    <name>swagger-java-client</name>
-    <version>1.0.0</version>
+    <name>talon-one-client</name>
+    <version>1.1.0</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
-    <description>Swagger Java</description>
+    <description>Talon.one Java API client</description>
     <scm>
         <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
         <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
