@@ -1,6 +1,12 @@
 # Java SDK Change log
 
-Latest version: 1.1.0
+Latest version: 1.1.1
+
+Version 1.1.1
+
+Fix effects response from the integration API. Parse CampaignID, RulesetId and RulesetIndex as Integers.
+
+Version 1.1.0
 
 1. Split api client
     - IntegrationApiClient
