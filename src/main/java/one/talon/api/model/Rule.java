@@ -179,6 +179,15 @@ public class Rule {
 
   @Override
   public String toString() {
+    for (int i = 0; i < effects.size(); i++) {
+      Double campaignid = Double.parseDouble(effects.get(i).get(0).toString());
+      Double rulesetid = Double.parseDouble(effects.get(i).get(1).toString());
+      Double ruleindex = Double.parseDouble(effects.get(i).get(2).toString());
+
+      effects.get(i).set(0, campaignid.intValue());
+      effects.get(i).set(1, rulesetid.intValue());
+      effects.get(i).set(2, ruleindex.intValue());
+    }
     StringBuilder sb = new StringBuilder();
     sb.append("class Rule {\n");
     
