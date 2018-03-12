@@ -202,6 +202,15 @@ public class Event {
   **/
   @ApiModelProperty(required = true, value = "An array of \"effects\" that must be applied in response to this event. Example effects include `addItemToCart` or `setDiscount`. ")
   public List<List<Object>> getEffects() {
+    for (int i = 0; i < effects.size(); i++) {
+      Double campaignid = Double.parseDouble(effects.get(i).get(0).toString());
+      Double rulesetid = Double.parseDouble(effects.get(i).get(1).toString());
+      Double ruleindex = Double.parseDouble(effects.get(i).get(2).toString());
+
+      effects.get(i).set(0, campaignid.intValue());
+      effects.get(i).set(1, rulesetid.intValue());
+      effects.get(i).set(2, ruleindex.intValue());
+    }
     return effects;
   }
   public void setEffects(List<List<Object>> effects) {

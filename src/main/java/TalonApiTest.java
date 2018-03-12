@@ -2,11 +2,13 @@ import one.talon.api.*;
 import one.talon.api.ManagementApiClient;
 import one.talon.api.model.*;
 
+import java.util.List;
+
 public class TalonApiTest {
     private static void updateCustomer(IntegrationApi api, NewCustomerProfile profile) {
         try {
             IntegrationState response = api.updateCustomerProfile("John Mcaffee", profile);
-            System.out.println(response.toString());
+            System.out.println(response.getEvent().getEffects());
         } catch (ApiException e) {
             System.out.println(e.getResponseBody());
             e.printStackTrace();
@@ -53,7 +55,7 @@ public class TalonApiTest {
         NewCustomerProfile profile = new NewCustomerProfile();
         NewCustomerSession session = new NewCustomerSession();
 
-        updateCustomer(integrationApi, profile);
+//        updateCustomer(integrationApi, profile);
         session.setCoupon("btcusd");
         updateSession(integrationApi, session, "someSessionIdentifier");
     }
