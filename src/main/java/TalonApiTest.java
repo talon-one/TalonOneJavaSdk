@@ -1,6 +1,7 @@
 import one.talon.api.*;
 import one.talon.api.ManagementApiClient;
 import one.talon.api.model.*;
+import org.threeten.bp.OffsetDateTime;
 
 import java.util.List;
 
@@ -55,8 +56,26 @@ public class TalonApiTest {
         NewCustomerProfile profile = new NewCustomerProfile();
         NewCustomerSession session = new NewCustomerSession();
 
-//        updateCustomer(integrationApi, profile);
         session.setCoupon("btcusd");
         updateSession(integrationApi, session, "someSessionIdentifier");
+
+        OffsetDateTime now = OffsetDateTime.now();
+        OffsetDateTime then = OffsetDateTime.now();
+
+        // Example referral
+        ReferralBody referralBody = new ReferralBody();
+        // campaign MUST be a referral campaign
+        referralBody.setCampaignId(1258);
+        // advocateprofile and friendprofile MUST belong to your account
+        referralBody.setAdvocateProfileIntegrationId("John Mcaffee");
+        referralBody.setFriendProfileIntegrationId("Sigmund Freud");
+        referralBody.setStartDate(now);
+        referralBody.setExpiryDate(then);
+
+        try {
+            integrationApi.createReferral(referralBody);
+        } catch (ApiException ex) {
+            System.out.print(ex);
+        }
     }
 }
