@@ -14,21 +14,16 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * Body4
+ * ReferralBody
  */
 
-public class Body4 {
+public class ReferralBody {
     @SerializedName("campaignId")
     private Integer campaignId = null;
 
@@ -44,7 +39,7 @@ public class Body4 {
     @SerializedName("expiryDate")
     private OffsetDateTime expiryDate = null;
 
-    public Body4 campaignId(Integer campaignId) {
+    public ReferralBody campaignId(Integer campaignId) {
         this.campaignId = campaignId;
         return this;
     }
@@ -62,7 +57,7 @@ public class Body4 {
         this.campaignId = campaignId;
     }
 
-    public Body4 advocateProfileIntegrationId(String advocateProfileIntegrationId) {
+    public ReferralBody advocateProfileIntegrationId(String advocateProfileIntegrationId) {
         this.advocateProfileIntegrationId = advocateProfileIntegrationId;
         return this;
     }
@@ -80,7 +75,7 @@ public class Body4 {
         this.advocateProfileIntegrationId = advocateProfileIntegrationId;
     }
 
-    public Body4 friendProfileIntegrationId(String friendProfileIntegrationId) {
+    public ReferralBody friendProfileIntegrationId(String friendProfileIntegrationId) {
         this.friendProfileIntegrationId = friendProfileIntegrationId;
         return this;
     }
@@ -98,7 +93,7 @@ public class Body4 {
         this.friendProfileIntegrationId = friendProfileIntegrationId;
     }
 
-    public Body4 startDate(OffsetDateTime startDate) {
+    public ReferralBody startDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -116,7 +111,7 @@ public class Body4 {
         this.startDate = startDate;
     }
 
-    public Body4 expiryDate(OffsetDateTime expiryDate) {
+    public ReferralBody expiryDate(OffsetDateTime expiryDate) {
         this.expiryDate = expiryDate;
         return this;
     }
@@ -143,12 +138,12 @@ public class Body4 {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Body4 body4 = (Body4) o;
-        return Objects.equals(this.campaignId, body4.campaignId) &&
-                Objects.equals(this.advocateProfileIntegrationId, body4.advocateProfileIntegrationId) &&
-                Objects.equals(this.friendProfileIntegrationId, body4.friendProfileIntegrationId) &&
-                Objects.equals(this.startDate, body4.startDate) &&
-                Objects.equals(this.expiryDate, body4.expiryDate);
+        ReferralBody referralBody = (ReferralBody) o;
+        return Objects.equals(this.campaignId, referralBody.campaignId) &&
+                Objects.equals(this.advocateProfileIntegrationId, referralBody.advocateProfileIntegrationId) &&
+                Objects.equals(this.friendProfileIntegrationId, referralBody.friendProfileIntegrationId) &&
+                Objects.equals(this.startDate, referralBody.startDate) &&
+                Objects.equals(this.expiryDate, referralBody.expiryDate);
     }
 
     @Override
@@ -160,7 +155,7 @@ public class Body4 {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Body4 {\n");
+        sb.append("class ReferralBody {\n");
 
         sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
         sb.append("    advocateProfileIntegrationId: ").append(toIndentedString(advocateProfileIntegrationId)).append("\n");

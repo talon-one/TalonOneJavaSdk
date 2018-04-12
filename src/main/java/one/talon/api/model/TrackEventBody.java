@@ -14,21 +14,17 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 
 /**
  *
  */
 @ApiModel(description = "")
 
-public class Body3 {
+public class TrackEventBody {
     @SerializedName("profileId")
     private String profileId = null;
 
@@ -41,7 +37,7 @@ public class Body3 {
     @SerializedName("attributes")
     private Object attributes = null;
 
-    public Body3 profileId(String profileId) {
+    public TrackEventBody profileId(String profileId) {
         this.profileId = profileId;
         return this;
     }
@@ -59,7 +55,7 @@ public class Body3 {
         this.profileId = profileId;
     }
 
-    public Body3 sessionId(String sessionId) {
+    public TrackEventBody sessionId(String sessionId) {
         this.sessionId = sessionId;
         return this;
     }
@@ -77,7 +73,7 @@ public class Body3 {
         this.sessionId = sessionId;
     }
 
-    public Body3 type(String type) {
+    public TrackEventBody type(String type) {
         this.type = type;
         return this;
     }
@@ -95,7 +91,7 @@ public class Body3 {
         this.type = type;
     }
 
-    public Body3 attributes(Object attributes) {
+    public TrackEventBody attributes(Object attributes) {
         this.attributes = attributes;
         return this;
     }
@@ -122,11 +118,11 @@ public class Body3 {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Body3 body3 = (Body3) o;
-        return Objects.equals(this.profileId, body3.profileId) &&
-                Objects.equals(this.sessionId, body3.sessionId) &&
-                Objects.equals(this.type, body3.type) &&
-                Objects.equals(this.attributes, body3.attributes);
+        TrackEventBody trackEventBody = (TrackEventBody) o;
+        return Objects.equals(this.profileId, trackEventBody.profileId) &&
+                Objects.equals(this.sessionId, trackEventBody.sessionId) &&
+                Objects.equals(this.type, trackEventBody.type) &&
+                Objects.equals(this.attributes, trackEventBody.attributes);
     }
 
     @Override
@@ -138,7 +134,7 @@ public class Body3 {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Body3 {\n");
+        sb.append("class TrackEventBody {\n");
 
         sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
         sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");

@@ -52,7 +52,7 @@ public class IntegrationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createReferralCall(Body4 body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createReferralCall(ReferralBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -94,7 +94,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createReferralValidateBeforeCall(Body4 body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createReferralValidateBeforeCall(ReferralBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 
         com.squareup.okhttp.Call call = createReferralCall(body, progressListener, progressRequestListener);
@@ -109,7 +109,7 @@ public class IntegrationApi {
      * @return InlineResponse201
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse201 createReferral(Body4 body) throws ApiException {
+    public InlineResponse201 createReferral(ReferralBody body) throws ApiException {
         ApiResponse<InlineResponse201> resp = createReferralWithHttpInfo(body);
         return resp.getData();
     }
@@ -121,7 +121,7 @@ public class IntegrationApi {
      * @return ApiResponse&lt;InlineResponse201&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse201> createReferralWithHttpInfo(Body4 body) throws ApiException {
+    public ApiResponse<InlineResponse201> createReferralWithHttpInfo(ReferralBody body) throws ApiException {
         com.squareup.okhttp.Call call = createReferralValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -135,7 +135,7 @@ public class IntegrationApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createReferralAsync(Body4 body, final ApiCallback<InlineResponse201> callback) throws ApiException {
+    public com.squareup.okhttp.Call createReferralAsync(ReferralBody body, final ApiCallback<InlineResponse201> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -425,7 +425,7 @@ public class IntegrationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call trackEventCall(Body3 body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call trackEventCall(TrackEventBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -467,7 +467,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call trackEventValidateBeforeCall(Body3 body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call trackEventValidateBeforeCall(TrackEventBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
 
         com.squareup.okhttp.Call call = trackEventCall(body, progressListener, progressRequestListener);
@@ -482,7 +482,7 @@ public class IntegrationApi {
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 trackEvent(Body3 body) throws ApiException {
+    public InlineResponse200 trackEvent(TrackEventBody body) throws ApiException {
         ApiResponse<InlineResponse200> resp = trackEventWithHttpInfo(body);
         return resp.getData();
     }
@@ -494,7 +494,7 @@ public class IntegrationApi {
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> trackEventWithHttpInfo(Body3 body) throws ApiException {
+    public ApiResponse<InlineResponse200> trackEventWithHttpInfo(TrackEventBody body) throws ApiException {
         com.squareup.okhttp.Call call = trackEventValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
