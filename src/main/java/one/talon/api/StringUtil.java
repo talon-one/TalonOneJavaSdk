@@ -13,7 +13,6 @@
 
 package one.talon.api;
 
-@javax.annotation.Generated(value = "io.talon.codegen.languages.JavaClientCodegen", date = "2018-02-07T17:30:19.650+01:00")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

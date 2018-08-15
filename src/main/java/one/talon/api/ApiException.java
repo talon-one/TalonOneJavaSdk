@@ -16,7 +16,6 @@ package one.talon.api;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.talon.codegen.languages.JavaClientCodegen", date = "2018-02-07T17:30:19.650+01:00")
 public class ApiException extends Exception {
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
