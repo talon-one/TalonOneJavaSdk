@@ -482,8 +482,8 @@ public class IntegrationApi {
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 trackEvent(TrackEventBody body) throws ApiException {
-        ApiResponse<InlineResponse200> resp = trackEventWithHttpInfo(body);
+    public IntegrationState trackEvent(TrackEventBody body) throws ApiException {
+        ApiResponse<IntegrationState> resp = trackEventWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -494,9 +494,9 @@ public class IntegrationApi {
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> trackEventWithHttpInfo(TrackEventBody body) throws ApiException {
+    public ApiResponse<IntegrationState> trackEventWithHttpInfo(TrackEventBody body) throws ApiException {
         com.squareup.okhttp.Call call = trackEventValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationState>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 }
