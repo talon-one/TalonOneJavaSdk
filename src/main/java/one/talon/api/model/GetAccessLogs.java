@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.AccessLogEntry;
 
 /**
- * InlineResponse2006
+ * GetAccessLogs
  */
 
-public class InlineResponse2006 {
+public class GetAccessLogs {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<AccessLogEntry> data = new ArrayList<AccessLogEntry>();
 
-  public InlineResponse2006 totalResultSize(Integer totalResultSize) {
+  public GetAccessLogs totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2006 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2006 data(List<AccessLogEntry> data) {
+  public GetAccessLogs data(List<AccessLogEntry> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2006 addDataItem(AccessLogEntry dataItem) {
+  public GetAccessLogs addDataItem(AccessLogEntry dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2006 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2006 inlineResponse2006 = (InlineResponse2006) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2006.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2006.data);
+    GetAccessLogs getAccessLogs = (GetAccessLogs) o;
+    return Objects.equals(this.totalResultSize, getAccessLogs.totalResultSize) &&
+        Objects.equals(this.data, getAccessLogs.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2006 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2006 {\n");
+    sb.append("class GetAccessLogs {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

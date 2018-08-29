@@ -2081,11 +2081,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2006
+     * @return GetAccessLogs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2006 getAccessLogs(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2006> resp = getAccessLogsWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, pageSize, skip, sort);
+    public GetAccessLogs getAccessLogs(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<GetAccessLogs> resp = getAccessLogsWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -2100,12 +2100,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
+     * @return ApiResponse&lt;GetAccessLogs&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2006> getAccessLogsWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<GetAccessLogs> getAccessLogsWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getAccessLogsValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAccessLogs>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2124,7 +2124,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccessLogsAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2006> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccessLogsAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort, final ApiCallback<GetAccessLogs> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2146,7 +2146,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAccessLogsValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAccessLogs>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2371,11 +2371,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2006
+     * @return GetAccessLogs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2006 getAllAccessLogs(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2006> resp = getAllAccessLogsWithHttpInfo(rangeStart, rangeEnd, path, method, pageSize, skip, sort);
+    public GetAccessLogs getAllAccessLogs(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<GetAccessLogs> resp = getAllAccessLogsWithHttpInfo(rangeStart, rangeEnd, path, method, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -2389,12 +2389,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
+     * @return ApiResponse&lt;GetAccessLogs&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2006> getAllAccessLogsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<GetAccessLogs> getAllAccessLogsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getAllAccessLogsValidateBeforeCall(rangeStart, rangeEnd, path, method, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAccessLogs>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2412,7 +2412,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllAccessLogsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2006> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllAccessLogsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, Integer pageSize, Integer skip, String sort, final ApiCallback<GetAccessLogs> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2434,7 +2434,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAllAccessLogsValidateBeforeCall(rangeStart, rangeEnd, path, method, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<GetAccessLogs>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
