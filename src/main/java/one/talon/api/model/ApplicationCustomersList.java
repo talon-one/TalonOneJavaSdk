@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.ApplicationProfile;
 
 /**
- * InlineResponse2008
+ * ApplicationCustomersList
  */
 
-public class InlineResponse2008 {
+public class ApplicationCustomersList {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<ApplicationProfile> data = new ArrayList<ApplicationProfile>();
 
-  public InlineResponse2008 totalResultSize(Integer totalResultSize) {
+  public ApplicationCustomersList totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2008 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2008 data(List<ApplicationProfile> data) {
+  public ApplicationCustomersList data(List<ApplicationProfile> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2008 addDataItem(ApplicationProfile dataItem) {
+  public ApplicationCustomersList addDataItem(ApplicationProfile dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2008 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2008 inlineResponse2008 = (InlineResponse2008) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2008.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2008.data);
+    ApplicationCustomersList applicationCustomersList = (ApplicationCustomersList) o;
+    return Objects.equals(this.totalResultSize, applicationCustomersList.totalResultSize) &&
+        Objects.equals(this.data, applicationCustomersList.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2008 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2008 {\n");
+    sb.append("class ApplicationCustomersList {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

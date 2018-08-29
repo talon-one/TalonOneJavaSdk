@@ -2885,11 +2885,11 @@ public class ManagementApi {
      * List Application Customers
      *
      * @param applicationId  (required)
-     * @return InlineResponse2008
+     * @return ApplicationCustomersList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2008 getApplicationCustomers(Integer applicationId) throws ApiException {
-        ApiResponse<InlineResponse2008> resp = getApplicationCustomersWithHttpInfo(applicationId);
+    public ApplicationCustomersList getApplicationCustomers(Integer applicationId) throws ApiException {
+        ApiResponse<ApplicationCustomersList> resp = getApplicationCustomersWithHttpInfo(applicationId);
         return resp.getData();
     }
 
@@ -2897,12 +2897,12 @@ public class ManagementApi {
      * List Application Customers
      *
      * @param applicationId  (required)
-     * @return ApiResponse&lt;InlineResponse2008&gt;
+     * @return ApiResponse&lt;ApplicationCustomersList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2008> getApplicationCustomersWithHttpInfo(Integer applicationId) throws ApiException {
+    public ApiResponse<ApplicationCustomersList> getApplicationCustomersWithHttpInfo(Integer applicationId) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationCustomersValidateBeforeCall(applicationId, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationCustomersList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2914,7 +2914,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationCustomersAsync(Integer applicationId, final ApiCallback<InlineResponse2008> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationCustomersAsync(Integer applicationId, final ApiCallback<ApplicationCustomersList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2936,7 +2936,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationCustomersValidateBeforeCall(applicationId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationCustomersList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
