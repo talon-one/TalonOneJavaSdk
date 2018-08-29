@@ -406,11 +406,11 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated. (optional)
      * @param body  (optional)
-     * @return InlineResponse2004
+     * @return ListCoupons
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 createCoupons(Integer applicationId, Integer campaignId, String silent, NewCoupons body) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = createCouponsWithHttpInfo(applicationId, campaignId, silent, body);
+    public ListCoupons createCoupons(Integer applicationId, Integer campaignId, String silent, NewCoupons body) throws ApiException {
+        ApiResponse<ListCoupons> resp = createCouponsWithHttpInfo(applicationId, campaignId, silent, body);
         return resp.getData();
     }
 
@@ -421,12 +421,12 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated. (optional)
      * @param body  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;ListCoupons&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, String silent, NewCoupons body) throws ApiException {
+    public ApiResponse<ListCoupons> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, String silent, NewCoupons body) throws ApiException {
         com.squareup.okhttp.Call call = createCouponsValidateBeforeCall(applicationId, campaignId, silent, body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -441,7 +441,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createCouponsAsync(Integer applicationId, Integer campaignId, String silent, NewCoupons body, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call createCouponsAsync(Integer applicationId, Integer campaignId, String silent, NewCoupons body, final ApiCallback<ListCoupons> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -463,7 +463,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = createCouponsValidateBeforeCall(applicationId, campaignId, silent, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4520,11 +4520,11 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return InlineResponse2004
+     * @return ListCoupons
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 getCoupons(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = getCouponsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch);
+    public ListCoupons getCoupons(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
+        ApiResponse<ListCoupons> resp = getCouponsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch);
         return resp.getData();
     }
 
@@ -4544,12 +4544,12 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;ListCoupons&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> getCouponsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
+    public ApiResponse<ListCoupons> getCouponsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4573,7 +4573,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, final ApiCallback<ListCoupons> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4595,7 +4595,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4717,11 +4717,11 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param body  (optional)
-     * @return InlineResponse2004
+     * @return ListCoupons
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 getCouponsByAttributes(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body);
+    public ListCoupons getCouponsByAttributes(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
+        ApiResponse<ListCoupons> resp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body);
         return resp.getData();
     }
 
@@ -4741,12 +4741,12 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param body  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;ListCoupons&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
+    public ApiResponse<ListCoupons> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4770,7 +4770,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body, final ApiCallback<ListCoupons> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4792,7 +4792,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4906,11 +4906,11 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param body  (optional)
-     * @return InlineResponse2004
+     * @return ListCoupons
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 getCouponsByAttributesApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body);
+    public ListCoupons getCouponsByAttributesApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
+        ApiResponse<ListCoupons> resp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body);
         return resp.getData();
     }
 
@@ -4929,12 +4929,12 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param body  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;ListCoupons&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
+    public ApiResponse<ListCoupons> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4957,7 +4957,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, Boolean exactMatch, CouponSearch body, final ApiCallback<ListCoupons> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4979,7 +4979,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, exactMatch, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCoupons>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

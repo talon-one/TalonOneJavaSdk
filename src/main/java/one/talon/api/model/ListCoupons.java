@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Coupon;
 
 /**
- * InlineResponse2004
+ * ListCoupons
  */
 
-public class InlineResponse2004 {
+public class ListCoupons {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Coupon> data = new ArrayList<Coupon>();
 
-  public InlineResponse2004 totalResultSize(Integer totalResultSize) {
+  public ListCoupons totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2004 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2004 data(List<Coupon> data) {
+  public ListCoupons data(List<Coupon> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2004 addDataItem(Coupon dataItem) {
+  public ListCoupons addDataItem(Coupon dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2004 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2004 inlineResponse2004 = (InlineResponse2004) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2004.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2004.data);
+    ListCoupons listCoupons = (ListCoupons) o;
+    return Objects.equals(this.totalResultSize, listCoupons.totalResultSize) &&
+        Objects.equals(this.data, listCoupons.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2004 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2004 {\n");
+    sb.append("class ListCoupons {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
