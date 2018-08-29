@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Change;
 
 /**
- * InlineResponse20014
+ * AccountAuditLog
  */
 
-public class InlineResponse20014 {
+public class AccountAuditLog {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Change> data = new ArrayList<Change>();
 
-  public InlineResponse20014 totalResultSize(Integer totalResultSize) {
+  public AccountAuditLog totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse20014 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse20014 data(List<Change> data) {
+  public AccountAuditLog data(List<Change> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20014 addDataItem(Change dataItem) {
+  public AccountAuditLog addDataItem(Change dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse20014 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20014 inlineResponse20014 = (InlineResponse20014) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20014.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20014.data);
+    AccountAuditLog accountAuditLog = (AccountAuditLog) o;
+    return Objects.equals(this.totalResultSize, accountAuditLog.totalResultSize) &&
+        Objects.equals(this.data, accountAuditLog.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse20014 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20014 {\n");
+    sb.append("class AccountAuditLog {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

@@ -4341,11 +4341,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20014
+     * @return AccountAuditLog
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20014 getChanges(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20014> resp = getChangesWithHttpInfo(pageSize, skip, sort);
+    public AccountAuditLog getChanges(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<AccountAuditLog> resp = getChangesWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -4355,12 +4355,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20014&gt;
+     * @return ApiResponse&lt;AccountAuditLog&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20014> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<AccountAuditLog> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountAuditLog>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4374,7 +4374,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20014> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<AccountAuditLog> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4396,7 +4396,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountAuditLog>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
