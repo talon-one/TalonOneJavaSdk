@@ -3505,11 +3505,11 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
-     * @return InlineResponse20010
+     * @return ApplicationSessionsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20010 getApplicationSessions(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
-        ApiResponse<InlineResponse20010> resp = getApplicationSessionsWithHttpInfo(applicationId, pageSize, skip, sort, profile);
+    public ApplicationSessionsList getApplicationSessions(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
+        ApiResponse<ApplicationSessionsList> resp = getApplicationSessionsWithHttpInfo(applicationId, pageSize, skip, sort, profile);
         return resp.getData();
     }
 
@@ -3521,12 +3521,12 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
-     * @return ApiResponse&lt;InlineResponse20010&gt;
+     * @return ApiResponse&lt;ApplicationSessionsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20010> getApplicationSessionsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
+    public ApiResponse<ApplicationSessionsList> getApplicationSessionsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationSessionsValidateBeforeCall(applicationId, pageSize, skip, sort, profile, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationSessionsList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3542,7 +3542,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationSessionsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile, final ApiCallback<InlineResponse20010> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationSessionsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile, final ApiCallback<ApplicationSessionsList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3564,7 +3564,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationSessionsValidateBeforeCall(applicationId, pageSize, skip, sort, profile, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationSessionsList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

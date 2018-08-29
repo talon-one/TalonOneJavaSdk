@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.ApplicationSession;
 
 /**
- * InlineResponse20010
+ * ApplicationSessionsList
  */
 
-public class InlineResponse20010 {
+public class ApplicationSessionsList {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<ApplicationSession> data = new ArrayList<ApplicationSession>();
 
-  public InlineResponse20010 totalResultSize(Integer totalResultSize) {
+  public ApplicationSessionsList totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse20010 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse20010 data(List<ApplicationSession> data) {
+  public ApplicationSessionsList data(List<ApplicationSession> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20010 addDataItem(ApplicationSession dataItem) {
+  public ApplicationSessionsList addDataItem(ApplicationSession dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse20010 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20010 inlineResponse20010 = (InlineResponse20010) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20010.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20010.data);
+    ApplicationSessionsList applicationSessionsList = (ApplicationSessionsList) o;
+    return Objects.equals(this.totalResultSize, applicationSessionsList.totalResultSize) &&
+        Objects.equals(this.data, applicationSessionsList.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse20010 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20010 {\n");
+    sb.append("class ApplicationSessionsList {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
