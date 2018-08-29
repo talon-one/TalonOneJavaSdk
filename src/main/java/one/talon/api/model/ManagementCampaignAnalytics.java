@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.CampaignAnalytics;
 
 /**
- * InlineResponse2007
+ * ManagementCampaignAnalytics
  */
 
-public class InlineResponse2007 {
+public class ManagementCampaignAnalytics {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
 
-  public InlineResponse2007 totalResultSize(Integer totalResultSize) {
+  public ManagementCampaignAnalytics totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2007 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2007 data(List<CampaignAnalytics> data) {
+  public ManagementCampaignAnalytics data(List<CampaignAnalytics> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2007 addDataItem(CampaignAnalytics dataItem) {
+  public ManagementCampaignAnalytics addDataItem(CampaignAnalytics dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2007 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2007 inlineResponse2007 = (InlineResponse2007) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2007.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2007.data);
+    ManagementCampaignAnalytics managementCampaignAnalytics = (ManagementCampaignAnalytics) o;
+    return Objects.equals(this.totalResultSize, managementCampaignAnalytics.totalResultSize) &&
+        Objects.equals(this.data, managementCampaignAnalytics.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2007 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2007 {\n");
+    sb.append("class ManagementCampaignAnalytics {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

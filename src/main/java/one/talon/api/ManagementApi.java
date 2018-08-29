@@ -3938,11 +3938,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2007
+     * @return ManagementCampaignAnalytics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2007 getCampaignAnalytics(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2007> resp = getCampaignAnalyticsWithHttpInfo(rangeStart, rangeEnd, applicationId, campaignId, pageSize, skip, sort);
+    public ManagementCampaignAnalytics getCampaignAnalytics(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<ManagementCampaignAnalytics> resp = getCampaignAnalyticsWithHttpInfo(rangeStart, rangeEnd, applicationId, campaignId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -3956,12 +3956,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2007&gt;
+     * @return ApiResponse&lt;ManagementCampaignAnalytics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2007> getCampaignAnalyticsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<ManagementCampaignAnalytics> getCampaignAnalyticsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getCampaignAnalyticsValidateBeforeCall(rangeStart, rangeEnd, applicationId, campaignId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<ManagementCampaignAnalytics>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3979,7 +3979,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCampaignAnalyticsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2007> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCampaignAnalyticsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<ManagementCampaignAnalytics> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4001,7 +4001,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCampaignAnalyticsValidateBeforeCall(rangeStart, rangeEnd, applicationId, campaignId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<ManagementCampaignAnalytics>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
