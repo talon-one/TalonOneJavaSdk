@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Referral;
 
 /**
- * InlineResponse2005
+ * ListReferrals
  */
 
-public class InlineResponse2005 {
+public class ListReferrals {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Referral> data = new ArrayList<Referral>();
 
-  public InlineResponse2005 totalResultSize(Integer totalResultSize) {
+  public ListReferrals totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2005 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2005 data(List<Referral> data) {
+  public ListReferrals data(List<Referral> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2005 addDataItem(Referral dataItem) {
+  public ListReferrals addDataItem(Referral dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2005 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2005 inlineResponse2005 = (InlineResponse2005) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2005.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2005.data);
+    ListReferrals listReferrals = (ListReferrals) o;
+    return Objects.equals(this.totalResultSize, listReferrals.totalResultSize) &&
+        Objects.equals(this.data, listReferrals.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2005 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2005 {\n");
+    sb.append("class ListReferrals {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
