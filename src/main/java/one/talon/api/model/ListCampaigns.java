@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Campaign;
 
 /**
- * InlineResponse2002
+ * ListCampaigns
  */
 
-public class InlineResponse2002 {
+public class ListCampaigns {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Campaign> data = new ArrayList<Campaign>();
 
-  public InlineResponse2002 totalResultSize(Integer totalResultSize) {
+  public ListCampaigns totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2002 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2002 data(List<Campaign> data) {
+  public ListCampaigns data(List<Campaign> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2002 addDataItem(Campaign dataItem) {
+  public ListCampaigns addDataItem(Campaign dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2002 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2002 inlineResponse2002 = (InlineResponse2002) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2002.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2002.data);
+    ListCampaigns listCampaigns = (ListCampaigns) o;
+    return Objects.equals(this.totalResultSize, listCampaigns.totalResultSize) &&
+        Objects.equals(this.data, listCampaigns.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2002 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2002 {\n");
+    sb.append("class ListCampaigns {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

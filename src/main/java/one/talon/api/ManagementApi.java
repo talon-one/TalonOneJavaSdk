@@ -20,50 +20,10 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import one.talon.api.model.*;
 import org.threeten.bp.OffsetDateTime;
 
-import one.talon.api.model.Account;
-import one.talon.api.model.Application;
-import one.talon.api.model.ApplicationApiHealth;
-import one.talon.api.model.ApplicationProfile;
-import one.talon.api.model.ApplicationSession;
-import one.talon.api.model.Campaign;
-import one.talon.api.model.CampaignSet;
-import one.talon.api.model.Coupon;
-import one.talon.api.model.CouponSearch;
-import one.talon.api.model.CustomerActivityReport;
-import one.talon.api.model.Export;
-import one.talon.api.model.ListApplications;
-import one.talon.api.model.InlineResponse20010;
-import one.talon.api.model.InlineResponse20011;
-import one.talon.api.model.InlineResponse20012;
-import one.talon.api.model.InlineResponse20013;
-import one.talon.api.model.InlineResponse20014;
-import one.talon.api.model.InlineResponse20015;
-import one.talon.api.model.InlineResponse2002;
-import one.talon.api.model.InlineResponse2003;
-import one.talon.api.model.InlineResponse2004;
-import one.talon.api.model.InlineResponse2005;
-import one.talon.api.model.InlineResponse2006;
-import one.talon.api.model.InlineResponse2007;
-import one.talon.api.model.InlineResponse2008;
-import one.talon.api.model.InlineResponse2009;
-import one.talon.api.model.LoginParams;
-import one.talon.api.model.ManagerConfig;
-import one.talon.api.model.NewApplication;
-import one.talon.api.model.NewCampaign;
-import one.talon.api.model.NewCampaignSet;
-import one.talon.api.model.NewCoupons;
-import one.talon.api.model.NewExport;
-import one.talon.api.model.NewInvitation;
-import one.talon.api.model.NewInviteEmail;
-import one.talon.api.model.NewRuleset;
-import one.talon.api.model.Ruleset;
-import one.talon.api.model.Session;
-import one.talon.api.model.UpdateAccount;
-import one.talon.api.model.UpdateCoupon;
-import one.talon.api.model.UpdateUser;
-import one.talon.api.model.User;
+import one.talon.api.model.ListCampaigns;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -4248,11 +4208,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2002
+     * @return ListCampaigns
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2002 getCampaigns(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2002> resp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort);
+    public ListCampaigns getCampaigns(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<ListCampaigns> resp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -4263,12 +4223,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2002&gt;
+     * @return ApiResponse&lt;ListCampaigns&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2002> getCampaignsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<ListCampaigns> getCampaignsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCampaigns>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4283,7 +4243,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCampaignsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2002> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCampaignsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<ListCampaigns> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4305,7 +4265,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCampaigns>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
