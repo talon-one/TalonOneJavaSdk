@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Ruleset;
 
 /**
- * InlineResponse2003
+ * ListCampaignRulesets
  */
 
-public class InlineResponse2003 {
+public class ListCampaignRulesets {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Ruleset> data = new ArrayList<Ruleset>();
 
-  public InlineResponse2003 totalResultSize(Integer totalResultSize) {
+  public ListCampaignRulesets totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2003 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2003 data(List<Ruleset> data) {
+  public ListCampaignRulesets data(List<Ruleset> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(Ruleset dataItem) {
+  public ListCampaignRulesets addDataItem(Ruleset dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2003 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2003 inlineResponse2003 = (InlineResponse2003) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2003.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2003.data);
+    ListCampaignRulesets listCampaignRulesets = (ListCampaignRulesets) o;
+    return Objects.equals(this.totalResultSize, listCampaignRulesets.totalResultSize) &&
+        Objects.equals(this.data, listCampaignRulesets.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2003 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2003 {\n");
+    sb.append("class ListCampaignRulesets {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

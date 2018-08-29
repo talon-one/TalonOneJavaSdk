@@ -5975,11 +5975,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2003
+     * @return ListCampaignRulesets
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 getRulesets(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = getRulesetsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort);
+    public ListCampaignRulesets getRulesets(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<ListCampaignRulesets> resp = getRulesetsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -5991,12 +5991,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;ListCampaignRulesets&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> getRulesetsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<ListCampaignRulesets> getRulesetsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getRulesetsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCampaignRulesets>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6012,7 +6012,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getRulesetsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call getRulesetsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<ListCampaignRulesets> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6034,7 +6034,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getRulesetsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListCampaignRulesets>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
