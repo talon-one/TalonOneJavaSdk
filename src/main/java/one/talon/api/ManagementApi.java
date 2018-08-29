@@ -5264,11 +5264,11 @@ public class ManagementApi {
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return InlineResponse2009
+     * @return CustomersActivityReports
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2009 getCustomerActivityReports(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
-        ApiResponse<InlineResponse2009> resp = getCustomerActivityReportsWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+    public CustomersActivityReports getCustomerActivityReports(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+        ApiResponse<CustomersActivityReports> resp = getCustomerActivityReportsWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
         return resp.getData();
     }
 
@@ -5285,12 +5285,12 @@ public class ManagementApi {
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return ApiResponse&lt;InlineResponse2009&gt;
+     * @return ApiResponse&lt;CustomersActivityReports&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2009> getCustomerActivityReportsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+    public ApiResponse<CustomersActivityReports> getCustomerActivityReportsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
         com.squareup.okhttp.Call call = getCustomerActivityReportsValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        Type localVarReturnType = new TypeToken<CustomersActivityReports>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5311,7 +5311,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCustomerActivityReportsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<InlineResponse2009> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCustomerActivityReportsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<CustomersActivityReports> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5333,7 +5333,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCustomerActivityReportsValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        Type localVarReturnType = new TypeToken<CustomersActivityReports>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
