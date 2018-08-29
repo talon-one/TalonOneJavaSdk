@@ -6233,11 +6233,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20013
+     * @return AccountUsersList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20013 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20013> resp = getUsersWithHttpInfo(pageSize, skip, sort);
+    public AccountUsersList getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<AccountUsersList> resp = getUsersWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -6247,12 +6247,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20013&gt;
+     * @return ApiResponse&lt;AccountUsersList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20013> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<AccountUsersList> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountUsersList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6266,7 +6266,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20013> callback) throws ApiException {
+    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<AccountUsersList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6288,7 +6288,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountUsersList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

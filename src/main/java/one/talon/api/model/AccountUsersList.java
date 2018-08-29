@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.User;
 
 /**
- * InlineResponse20013
+ * AccountUsersList
  */
 
-public class InlineResponse20013 {
+public class AccountUsersList {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<User> data = new ArrayList<User>();
 
-  public InlineResponse20013 totalResultSize(Integer totalResultSize) {
+  public AccountUsersList totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse20013 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse20013 data(List<User> data) {
+  public AccountUsersList data(List<User> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20013 addDataItem(User dataItem) {
+  public AccountUsersList addDataItem(User dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse20013 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20013 inlineResponse20013 = (InlineResponse20013) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20013.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20013.data);
+    AccountUsersList accountUsersList = (AccountUsersList) o;
+    return Objects.equals(this.totalResultSize, accountUsersList.totalResultSize) &&
+        Objects.equals(this.data, accountUsersList.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse20013 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20013 {\n");
+    sb.append("class AccountUsersList {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
