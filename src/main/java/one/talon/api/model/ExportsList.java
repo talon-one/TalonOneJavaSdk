@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Export;
 
 /**
- * InlineResponse20015
+ * ExportsList
  */
 
-public class InlineResponse20015 {
+public class ExportsList {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Export> data = new ArrayList<Export>();
 
-  public InlineResponse20015 totalResultSize(Integer totalResultSize) {
+  public ExportsList totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse20015 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse20015 data(List<Export> data) {
+  public ExportsList data(List<Export> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20015 addDataItem(Export dataItem) {
+  public ExportsList addDataItem(Export dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse20015 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20015 inlineResponse20015 = (InlineResponse20015) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20015.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20015.data);
+    ExportsList exportsList = (ExportsList) o;
+    return Objects.equals(this.totalResultSize, exportsList.totalResultSize) &&
+        Objects.equals(this.data, exportsList.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse20015 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20015 {\n");
+    sb.append("class ExportsList {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");

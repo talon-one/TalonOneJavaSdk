@@ -5397,23 +5397,23 @@ public class ManagementApi {
     /**
      * Get Exports
      * Get a list of all past exports
-     * @return InlineResponse20015
+     * @return ExportsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20015 getExports() throws ApiException {
-        ApiResponse<InlineResponse20015> resp = getExportsWithHttpInfo();
+    public ExportsList getExports() throws ApiException {
+        ApiResponse<ExportsList> resp = getExportsWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get Exports
      * Get a list of all past exports
-     * @return ApiResponse&lt;InlineResponse20015&gt;
+     * @return ApiResponse&lt;ExportsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20015> getExportsWithHttpInfo() throws ApiException {
+    public ApiResponse<ExportsList> getExportsWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExportsList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5424,7 +5424,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getExportsAsync(final ApiCallback<InlineResponse20015> callback) throws ApiException {
+    public com.squareup.okhttp.Call getExportsAsync(final ApiCallback<ExportsList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5446,7 +5446,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExportsList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
