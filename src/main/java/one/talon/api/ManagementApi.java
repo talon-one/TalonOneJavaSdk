@@ -3205,11 +3205,11 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return InlineResponse20011
+     * @return ApplicationEventsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20011 getApplicationEvents(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
-        ApiResponse<InlineResponse20011> resp = getApplicationEventsWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+    public ApplicationEventsList getApplicationEvents(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+        ApiResponse<ApplicationEventsList> resp = getApplicationEventsWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
         return resp.getData();
     }
 
@@ -3231,12 +3231,12 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return ApiResponse&lt;InlineResponse20011&gt;
+     * @return ApiResponse&lt;ApplicationEventsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20011> getApplicationEventsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+    public ApiResponse<ApplicationEventsList> getApplicationEventsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationEventsValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationEventsList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3262,7 +3262,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationEventsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<InlineResponse20011> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationEventsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<ApplicationEventsList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3284,7 +3284,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationEventsValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationEventsList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
