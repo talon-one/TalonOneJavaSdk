@@ -3,8 +3,6 @@ import one.talon.api.ManagementApiClient;
 import one.talon.api.model.*;
 import org.threeten.bp.OffsetDateTime;
 
-import java.util.List;
-
 public class TalonApiTest {
     private static void updateCustomer(IntegrationApi api, NewCustomerProfile profile) {
         try {
@@ -47,7 +45,7 @@ public class TalonApiTest {
         try {
             managementApi.createManagementSession(managementClient, "company@domain.tld", "P4$$W0RD");
             Application app = managementApi.getApplication(1);
-            InlineResponse2001 applications = managementApi.getApplications(10, 0, "");
+            ListApplications applications = managementApi.getApplications(10, 0, "");
             System.out.println(applications.toString());
         } catch (ApiException ex) {
             System.out.print(ex);

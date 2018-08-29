@@ -20,8 +20,6 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import one.talon.api.model.*;
 import org.threeten.bp.OffsetDateTime;
 
 import one.talon.api.model.Account;
@@ -35,7 +33,7 @@ import one.talon.api.model.Coupon;
 import one.talon.api.model.CouponSearch;
 import one.talon.api.model.CustomerActivityReport;
 import one.talon.api.model.Export;
-import one.talon.api.model.InlineResponse2001;
+import one.talon.api.model.ListApplications;
 import one.talon.api.model.InlineResponse20010;
 import one.talon.api.model.InlineResponse20011;
 import one.talon.api.model.InlineResponse20012;
@@ -60,7 +58,6 @@ import one.talon.api.model.NewExport;
 import one.talon.api.model.NewInvitation;
 import one.talon.api.model.NewInviteEmail;
 import one.talon.api.model.NewRuleset;
-import org.threeten.bp.OffsetDateTime;
 import one.talon.api.model.Ruleset;
 import one.talon.api.model.Session;
 import one.talon.api.model.UpdateAccount;
@@ -3683,11 +3680,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2001
+     * @return ListApplications
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2001 getApplications(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = getApplicationsWithHttpInfo(pageSize, skip, sort);
+    public ListApplications getApplications(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<ListApplications> resp = getApplicationsWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -3697,12 +3694,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;ListApplications&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2001> getApplicationsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<ListApplications> getApplicationsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationsValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListApplications>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3716,7 +3713,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<ListApplications> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3738,7 +3735,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationsValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<ListApplications>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

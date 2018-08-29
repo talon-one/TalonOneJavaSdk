@@ -14,30 +14,25 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.api.model.Application;
 
 /**
- * InlineResponse2001
+ * ListApplications
  */
 
-public class InlineResponse2001 {
+public class ListApplications {
   @SerializedName("totalResultSize")
   private Integer totalResultSize = null;
 
   @SerializedName("data")
   private List<Application> data = new ArrayList<Application>();
 
-  public InlineResponse2001 totalResultSize(Integer totalResultSize) {
+  public ListApplications totalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
     return this;
   }
@@ -55,12 +50,12 @@ public class InlineResponse2001 {
     this.totalResultSize = totalResultSize;
   }
 
-  public InlineResponse2001 data(List<Application> data) {
+  public ListApplications data(List<Application> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2001 addDataItem(Application dataItem) {
+  public ListApplications addDataItem(Application dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -87,9 +82,9 @@ public class InlineResponse2001 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2001 inlineResponse2001 = (InlineResponse2001) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2001.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2001.data);
+    ListApplications listApplications = (ListApplications) o;
+    return Objects.equals(this.totalResultSize, listApplications.totalResultSize) &&
+        Objects.equals(this.data, listApplications.data);
   }
 
   @Override
@@ -101,7 +96,7 @@ public class InlineResponse2001 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2001 {\n");
+    sb.append("class ListApplications {\n");
     
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
