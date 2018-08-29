@@ -14,14 +14,10 @@
 package one.talon.api.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -29,7 +25,7 @@ import org.threeten.bp.OffsetDateTime;
  */
 @ApiModel(description = "")
 
-public class InlineResponse201 {
+public class CreateReferral {
     @SerializedName("id")
     private Integer id = null;
 
@@ -60,7 +56,7 @@ public class InlineResponse201 {
     @SerializedName("usageLimit")
     private Integer usageLimit = null;
 
-    public InlineResponse201 id(Integer id) {
+    public CreateReferral id(Integer id) {
         this.id = id;
         return this;
     }
@@ -78,7 +74,7 @@ public class InlineResponse201 {
         this.id = id;
     }
 
-    public InlineResponse201 created(OffsetDateTime created) {
+    public CreateReferral created(OffsetDateTime created) {
         this.created = created;
         return this;
     }
@@ -96,7 +92,7 @@ public class InlineResponse201 {
         this.created = created;
     }
 
-    public InlineResponse201 campaignId(Integer campaignId) {
+    public CreateReferral campaignId(Integer campaignId) {
         this.campaignId = campaignId;
         return this;
     }
@@ -114,7 +110,7 @@ public class InlineResponse201 {
         this.campaignId = campaignId;
     }
 
-    public InlineResponse201 advocateProfileIntegrationId(String advocateProfileIntegrationId) {
+    public CreateReferral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
         this.advocateProfileIntegrationId = advocateProfileIntegrationId;
         return this;
     }
@@ -132,7 +128,7 @@ public class InlineResponse201 {
         this.advocateProfileIntegrationId = advocateProfileIntegrationId;
     }
 
-    public InlineResponse201 friendProfileIntegrationId(String friendProfileIntegrationId) {
+    public CreateReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
         this.friendProfileIntegrationId = friendProfileIntegrationId;
         return this;
     }
@@ -150,7 +146,7 @@ public class InlineResponse201 {
         this.friendProfileIntegrationId = friendProfileIntegrationId;
     }
 
-    public InlineResponse201 startDate(OffsetDateTime startDate) {
+    public CreateReferral startDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -168,7 +164,7 @@ public class InlineResponse201 {
         this.startDate = startDate;
     }
 
-    public InlineResponse201 expiryDate(OffsetDateTime expiryDate) {
+    public CreateReferral expiryDate(OffsetDateTime expiryDate) {
         this.expiryDate = expiryDate;
         return this;
     }
@@ -186,7 +182,7 @@ public class InlineResponse201 {
         this.expiryDate = expiryDate;
     }
 
-    public InlineResponse201 code(String code) {
+    public CreateReferral code(String code) {
         this.code = code;
         return this;
     }
@@ -204,7 +200,7 @@ public class InlineResponse201 {
         this.code = code;
     }
 
-    public InlineResponse201 usageCounter(Integer usageCounter) {
+    public CreateReferral usageCounter(Integer usageCounter) {
         this.usageCounter = usageCounter;
         return this;
     }
@@ -222,7 +218,7 @@ public class InlineResponse201 {
         this.usageCounter = usageCounter;
     }
 
-    public InlineResponse201 usageLimit(Integer usageLimit) {
+    public CreateReferral usageLimit(Integer usageLimit) {
         this.usageLimit = usageLimit;
         return this;
     }
@@ -250,17 +246,17 @@ public class InlineResponse201 {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        InlineResponse201 inlineResponse201 = (InlineResponse201) o;
-        return Objects.equals(this.id, inlineResponse201.id) &&
-                Objects.equals(this.created, inlineResponse201.created) &&
-                Objects.equals(this.campaignId, inlineResponse201.campaignId) &&
-                Objects.equals(this.advocateProfileIntegrationId, inlineResponse201.advocateProfileIntegrationId) &&
-                Objects.equals(this.friendProfileIntegrationId, inlineResponse201.friendProfileIntegrationId) &&
-                Objects.equals(this.startDate, inlineResponse201.startDate) &&
-                Objects.equals(this.expiryDate, inlineResponse201.expiryDate) &&
-                Objects.equals(this.code, inlineResponse201.code) &&
-                Objects.equals(this.usageCounter, inlineResponse201.usageCounter) &&
-                Objects.equals(this.usageLimit, inlineResponse201.usageLimit);
+        CreateReferral createReferral = (CreateReferral) o;
+        return Objects.equals(this.id, createReferral.id) &&
+                Objects.equals(this.created, createReferral.created) &&
+                Objects.equals(this.campaignId, createReferral.campaignId) &&
+                Objects.equals(this.advocateProfileIntegrationId, createReferral.advocateProfileIntegrationId) &&
+                Objects.equals(this.friendProfileIntegrationId, createReferral.friendProfileIntegrationId) &&
+                Objects.equals(this.startDate, createReferral.startDate) &&
+                Objects.equals(this.expiryDate, createReferral.expiryDate) &&
+                Objects.equals(this.code, createReferral.code) &&
+                Objects.equals(this.usageCounter, createReferral.usageCounter) &&
+                Objects.equals(this.usageLimit, createReferral.usageLimit);
     }
 
     @Override
@@ -272,7 +268,7 @@ public class InlineResponse201 {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class InlineResponse201 {\n");
+        sb.append("class CreateReferral {\n");
 
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    created: ").append(toIndentedString(created)).append("\n");

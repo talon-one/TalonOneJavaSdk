@@ -106,11 +106,11 @@ public class IntegrationApi {
      * Create a referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.
      * @param body  (optional)
-     * @return InlineResponse201
+     * @return CreateReferral
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse201 createReferral(ReferralBody body) throws ApiException {
-        ApiResponse<InlineResponse201> resp = createReferralWithHttpInfo(body);
+    public CreateReferral createReferral(ReferralBody body) throws ApiException {
+        ApiResponse<CreateReferral> resp = createReferralWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -118,12 +118,12 @@ public class IntegrationApi {
      * Create a referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.
      * @param body  (optional)
-     * @return ApiResponse&lt;InlineResponse201&gt;
+     * @return ApiResponse&lt;CreateReferral&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse201> createReferralWithHttpInfo(ReferralBody body) throws ApiException {
+    public ApiResponse<CreateReferral> createReferralWithHttpInfo(ReferralBody body) throws ApiException {
         com.squareup.okhttp.Call call = createReferralValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateReferral>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -135,7 +135,7 @@ public class IntegrationApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createReferralAsync(ReferralBody body, final ApiCallback<InlineResponse201> callback) throws ApiException {
+    public com.squareup.okhttp.Call createReferralAsync(ReferralBody body, final ApiCallback<CreateReferral> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -157,7 +157,7 @@ public class IntegrationApi {
         }
 
         com.squareup.okhttp.Call call = createReferralValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateReferral>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
