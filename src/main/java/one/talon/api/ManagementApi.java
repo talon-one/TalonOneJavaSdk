@@ -38,7 +38,7 @@ import one.talon.api.model.Export;
 import one.talon.api.model.InlineResponse2001;
 import one.talon.api.model.InlineResponse20010;
 import one.talon.api.model.InlineResponse20011;
-import one.talon.api.model.InlineResponse20012;
+import one.talon.api.model.ApplicationCustomersByAttributesResponse;
 import one.talon.api.model.InlineResponse20013;
 import one.talon.api.model.InlineResponse20014;
 import one.talon.api.model.InlineResponse20015;
@@ -2861,6 +2861,124 @@ public class ManagementApi {
         return call;
     }
     /**
+     * Build call for getApplicationCustomersByAttributes
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getApplicationCustomersByAttributesCall(CustomerByAttributes body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/application_customer_search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+                "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+                "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
+                }
+            });
+        }
+
+//        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getApplicationCustomersByAttributesValidateBeforeCall(CustomerByAttributes body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
+
+        com.squareup.okhttp.Call call = getApplicationCustomersByAttributesCall(body, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get a list of the customer profiles that match the given attributes
+     * Gets a list of all the cusomer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile
+     * @param body  (optional)
+     * @return ApplicationCustomersByAttributesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApplicationCustomersByAttributesResponse getApplicationCustomersByAttributes(CustomerByAttributes body) throws ApiException {
+        ApiResponse<ApplicationCustomersByAttributesResponse> resp = getApplicationCustomersByAttributesWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * Get a list of the customer profiles that match the given attributes
+     * Gets a list of all the cusomer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile
+     * @param body  (optional)
+     * @return ApiResponse&lt;ApplicationCustomersByAttributesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApplicationCustomersByAttributesResponse> getApplicationCustomersByAttributesWithHttpInfo(CustomerByAttributes body) throws ApiException {
+        com.squareup.okhttp.Call call = getApplicationCustomersByAttributesValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<ApplicationCustomersByAttributesResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get a list of the customer profiles that match the given attributes (asynchronously)
+     * Gets a list of all the cusomer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile
+     * @param body  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getApplicationCustomersByAttributesAsync(CustomerByAttributes body, final ApiCallback<ApplicationCustomersByAttributesResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getApplicationCustomersByAttributesValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApplicationCustomersByAttributesResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getApplicationCustomers
      * @param applicationId  (required)
      * @param progressListener Progress listener
@@ -3063,11 +3181,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20012
+     * @return ApplicationCustomersByAttributesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20012 getApplicationEventTypes(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20012> resp = getApplicationEventTypesWithHttpInfo(applicationId, pageSize, skip, sort);
+    public ApplicationCustomersByAttributesResponse getApplicationEventTypes(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<ApplicationCustomersByAttributesResponse> resp = getApplicationEventTypesWithHttpInfo(applicationId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -3078,12 +3196,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20012&gt;
+     * @return ApiResponse&lt;ApplicationCustomersByAttributesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20012> getApplicationEventTypesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<ApplicationCustomersByAttributesResponse> getApplicationEventTypesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationEventTypesValidateBeforeCall(applicationId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationCustomersByAttributesResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3098,7 +3216,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationEventTypesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20012> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationEventTypesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<ApplicationCustomersByAttributesResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3120,7 +3238,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationEventTypesValidateBeforeCall(applicationId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApplicationCustomersByAttributesResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
