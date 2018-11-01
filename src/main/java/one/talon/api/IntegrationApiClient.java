@@ -998,7 +998,7 @@ public class IntegrationApiClient {
         } else if (body == null) {
             if ("DELETE".equals(method)) {
                 // allow calling DELETE without sending a request body
-                reqBody = null;
+                reqBody = RequestBody.create(MediaType.parse(contentType), "");
             } else {
                 // use an empty request body (for POST, PUT and PATCH)
                 reqBody = RequestBody.create(MediaType.parse(contentType), "");
