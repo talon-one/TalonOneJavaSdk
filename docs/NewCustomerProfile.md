@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **Object** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 
 
 

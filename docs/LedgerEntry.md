@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **accountId** | **Integer** | The ID of the Talon.One account that owns this profile. | 
 **loyaltyProgramId** | **Integer** | ID of the ledger | 
 **eventId** | **Integer** | ID of the related event | 
-**amount** | **Integer** | Amount of points | 
+**amount** | **Integer** | Amount of loyalty points | 
 **reason** | **String** | reason for awarding/deducting points | 
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Expiry date of the points | 
 **referenceId** | **Integer** | The ID of the balancing ledgerEntry |  [optional]

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **state** | [**StateEnum**](#StateEnum) | Indicates the current state of the session. All sessions must start in the \&quot;open\&quot; state, after which valid transitions are...  1. open -&gt; closed 2. open -&gt; cancelled 3. closed -&gt; cancelled  | 
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | Serialized JSON representation. | 
 **total** | [**BigDecimal**](BigDecimal.md) | The total sum of the cart in one session. | 
-**attributes** | **Object** | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. To learn more about how attributes work, please see [Attributes](#blah).  | 
+**attributes** | [**Object**](.md) | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  | 
 **firstSession** | **Boolean** | Indicates whether this is the first session for the customer&#39;s profile. Will always be true for anonymous sessions. | 
 **discounts** | [**Map&lt;String, BigDecimal&gt;**](BigDecimal.md) | A map of labelled discount values, values will be in the same currency as the application associated with the session. | 
 

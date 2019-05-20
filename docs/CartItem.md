@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **width** | [**BigDecimal**](BigDecimal.md) | Width of item in mm |  [optional]
 **length** | [**BigDecimal**](BigDecimal.md) | Length of item in mm |  [optional]
 **position** | [**BigDecimal**](BigDecimal.md) | Position of the Cart Item in the Cart (calculated internally) |  [optional]
-**attributes** | **Object** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 **adjustment** | [**CartItemAdjustment**](CartItemAdjustment.md) |  |  [optional]
 
 
