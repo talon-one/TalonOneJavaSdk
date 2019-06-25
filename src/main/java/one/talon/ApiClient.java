@@ -108,7 +108,8 @@ public class ApiClient {
         }
 
         if (authenticationStrategy == "integration_auth") {
-            authentications.put("integration_auth", new ApiKeyAuth("header", "Content-Signature"));
+            authentications.put("integration_auth", new ApiKeyAuth("header", "Authorization"));
+            authentications.put("api_key_v1", new ApiKeyAuth("header", "Authorization"));
         }
     }
 
@@ -120,6 +121,7 @@ public class ApiClient {
         init();
 
         // Setup authentications (key: authentication name, value: authentication).
+        authentications.put("api_key_v1", new ApiKeyAuth("header", "Authorization"));
         authentications.put("integration_auth", new ApiKeyAuth("header", "Content-Signature"));
         authentications.put("manager_auth", new ApiKeyAuth("header", "Authorization"));
         // Prevent the authentications from being modified.
@@ -135,7 +137,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/3.0.0/java");
+        setUserAgent("OpenAPI-Generator/123.0.0/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -1084,28 +1086,6 @@ public class ApiClient {
             request = reqBuilder.method(method, progressRequestBody).build();
         } else {
             request = reqBuilder.method(method, reqBody).build();
-        }
-
-        if (authentications.containsKey("integration_auth")) {
-            try {
-                final Buffer buffer = new Buffer();
-                request.newBuilder().build().body().writeTo(buffer);
-                SecretKeySpec keySpec = new SecretKeySpec(
-                        decodeHexString(this.applicationKey.toLowerCase()),
-                        "HmacMD5");
-                Mac mac = Mac.getInstance("HmacMD5");
-                mac.init(keySpec);
-                byte[] result = mac.doFinal(buffer.readByteArray());
-                String signature = encodeHexString(result);
-                String signatureHeader = "signer="+this.applicationId+"; signature="+signature;
-                request = request.newBuilder().addHeader("Content-Signature", signatureHeader).build();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (InvalidKeyException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         return request;

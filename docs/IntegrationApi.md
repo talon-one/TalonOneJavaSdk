@@ -30,6 +30,12 @@ Creates a referral code for an advocate. The code will be valid for the referral
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
 // Configure API key authorization: integration_auth
 ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
 integration_auth.setApiKey("YOUR API KEY");
@@ -59,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
 
 ### HTTP request headers
 
@@ -84,6 +90,12 @@ Delete all attributes on the customer profile and on entities that reference tha
 //import one.talon.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
 
 // Configure API key authorization: integration_auth
 ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
@@ -113,7 +125,7 @@ null (empty response body)
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
 
 ### HTTP request headers
 
@@ -138,6 +150,12 @@ Records an arbitrary event in a customer session. For example, an integration mi
 //import one.talon.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
 
 // Configure API key authorization: integration_auth
 ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
@@ -168,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
 
 ### HTTP request headers
 
@@ -193,6 +211,12 @@ Update (or create) a [Customer Profile][]. This profile information can then be 
 //import one.talon.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
 
 // Configure API key authorization: integration_auth
 ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
@@ -225,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
 
 ### HTTP request headers
 
@@ -250,6 +274,12 @@ Update (or create) a [Customer Session][]. For example, the items in a customers
 //import one.talon.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
 
 // Configure API key authorization: integration_auth
 ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
@@ -282,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
 
 ### HTTP request headers
 

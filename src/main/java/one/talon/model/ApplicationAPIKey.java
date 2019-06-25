@@ -30,42 +30,86 @@ import org.threeten.bp.OffsetDateTime;
  */
 
 public class ApplicationAPIKey {
-  public static final String SERIALIZED_NAME_I_D = "ID";
-  @SerializedName(SERIALIZED_NAME_I_D)
-  private Integer ID;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_I_D = "AccountID";
+  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  private Integer createdBy;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
   private Integer accountID;
 
-  public static final String SERIALIZED_NAME_APPLICATION_I_D = "ApplicationID";
+  public static final String SERIALIZED_NAME_APPLICATION_I_D = "applicationID";
   @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
   private Integer applicationID;
 
-  public static final String SERIALIZED_NAME_CREATED = "Created";
+  public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
-  public static final String SERIALIZED_NAME_EXPIRES = "Expires";
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
   private OffsetDateTime expires;
 
-  public ApplicationAPIKey ID(Integer ID) {
-    this.ID = ID;
+  public ApplicationAPIKey id(Integer id) {
+    this.id = id;
     return this;
   }
 
    /**
    * ID of the API Key
-   * @return ID
+   * @return id
   **/
   @ApiModelProperty(required = true, value = "ID of the API Key")
-  public Integer getID() {
-    return ID;
+  public Integer getId() {
+    return id;
   }
 
-  public void setID(Integer ID) {
-    this.ID = ID;
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public ApplicationAPIKey createdBy(Integer createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * ID of user who created
+   * @return createdBy
+  **/
+  @ApiModelProperty(required = true, value = "ID of user who created")
+  public Integer getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(Integer createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public ApplicationAPIKey title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Title for API Key
+   * @return title
+  **/
+  @ApiModelProperty(required = true, value = "Title for API Key")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public ApplicationAPIKey accountID(Integer accountID) {
@@ -150,7 +194,9 @@ public class ApplicationAPIKey {
       return false;
     }
     ApplicationAPIKey applicationAPIKey = (ApplicationAPIKey) o;
-    return Objects.equals(this.ID, applicationAPIKey.ID) &&
+    return Objects.equals(this.id, applicationAPIKey.id) &&
+        Objects.equals(this.createdBy, applicationAPIKey.createdBy) &&
+        Objects.equals(this.title, applicationAPIKey.title) &&
         Objects.equals(this.accountID, applicationAPIKey.accountID) &&
         Objects.equals(this.applicationID, applicationAPIKey.applicationID) &&
         Objects.equals(this.created, applicationAPIKey.created) &&
@@ -159,7 +205,7 @@ public class ApplicationAPIKey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ID, accountID, applicationID, created, expires);
+    return Objects.hash(id, createdBy, title, accountID, applicationID, created, expires);
   }
 
 
@@ -168,7 +214,9 @@ public class ApplicationAPIKey {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationAPIKey {\n");
     
-    sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");

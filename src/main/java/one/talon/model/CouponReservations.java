@@ -23,55 +23,39 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * CreateApplicationAPIKey
+ * CouponReservations
  */
 
-public class CreateApplicationAPIKey {
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
+public class CouponReservations {
+  public static final String SERIALIZED_NAME_INTEGRATION_I_DS = "integrationIDs";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_I_DS)
+  private List<String> integrationIDs = new ArrayList<String>();
 
-  public static final String SERIALIZED_NAME_EXPIRES = "expires";
-  @SerializedName(SERIALIZED_NAME_EXPIRES)
-  private OffsetDateTime expires;
+  public CouponReservations integrationIDs(List<String> integrationIDs) {
+    this.integrationIDs = integrationIDs;
+    return this;
+  }
 
-  public CreateApplicationAPIKey title(String title) {
-    this.title = title;
+  public CouponReservations addIntegrationIDsItem(String integrationIDsItem) {
+    this.integrationIDs.add(integrationIDsItem);
     return this;
   }
 
    /**
-   * Title for API Key
-   * @return title
+   * List of Integration IDs
+   * @return integrationIDs
   **/
-  @ApiModelProperty(required = true, value = "Title for API Key")
-  public String getTitle() {
-    return title;
+  @ApiModelProperty(required = true, value = "List of Integration IDs")
+  public List<String> getIntegrationIDs() {
+    return integrationIDs;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public CreateApplicationAPIKey expires(OffsetDateTime expires) {
-    this.expires = expires;
-    return this;
-  }
-
-   /**
-   * The date the API key expired
-   * @return expires
-  **/
-  @ApiModelProperty(required = true, value = "The date the API key expired")
-  public OffsetDateTime getExpires() {
-    return expires;
-  }
-
-  public void setExpires(OffsetDateTime expires) {
-    this.expires = expires;
+  public void setIntegrationIDs(List<String> integrationIDs) {
+    this.integrationIDs = integrationIDs;
   }
 
 
@@ -83,24 +67,22 @@ public class CreateApplicationAPIKey {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateApplicationAPIKey createApplicationAPIKey = (CreateApplicationAPIKey) o;
-    return Objects.equals(this.title, createApplicationAPIKey.title) &&
-        Objects.equals(this.expires, createApplicationAPIKey.expires);
+    CouponReservations couponReservations = (CouponReservations) o;
+    return Objects.equals(this.integrationIDs, couponReservations.integrationIDs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, expires);
+    return Objects.hash(integrationIDs);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateApplicationAPIKey {\n");
+    sb.append("class CouponReservations {\n");
     
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
+    sb.append("    integrationIDs: ").append(toIndentedString(integrationIDs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

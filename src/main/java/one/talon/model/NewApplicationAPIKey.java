@@ -26,13 +26,22 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * NewApplicationAPIKey
+ * 
  */
+@ApiModel(description = "")
 
 public class NewApplicationAPIKey {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
+
+  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  private Integer createdBy;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
@@ -70,6 +79,42 @@ public class NewApplicationAPIKey {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public NewApplicationAPIKey createdBy(Integer createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * ID of user who created
+   * @return createdBy
+  **/
+  @ApiModelProperty(required = true, value = "ID of user who created")
+  public Integer getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(Integer createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public NewApplicationAPIKey title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Title for API Key
+   * @return title
+  **/
+  @ApiModelProperty(required = true, value = "Title for API Key")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public NewApplicationAPIKey accountID(Integer accountID) {
@@ -173,6 +218,8 @@ public class NewApplicationAPIKey {
     }
     NewApplicationAPIKey newApplicationAPIKey = (NewApplicationAPIKey) o;
     return Objects.equals(this.id, newApplicationAPIKey.id) &&
+        Objects.equals(this.createdBy, newApplicationAPIKey.createdBy) &&
+        Objects.equals(this.title, newApplicationAPIKey.title) &&
         Objects.equals(this.accountID, newApplicationAPIKey.accountID) &&
         Objects.equals(this.applicationID, newApplicationAPIKey.applicationID) &&
         Objects.equals(this.created, newApplicationAPIKey.created) &&
@@ -182,7 +229,7 @@ public class NewApplicationAPIKey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountID, applicationID, created, expires, key);
+    return Objects.hash(id, createdBy, title, accountID, applicationID, created, expires, key);
   }
 
 
@@ -192,6 +239,8 @@ public class NewApplicationAPIKey {
     sb.append("class NewApplicationAPIKey {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");

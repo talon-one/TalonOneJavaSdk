@@ -79,6 +79,10 @@ public class Coupon {
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
   private Integer importId;
 
+  public static final String SERIALIZED_NAME_RESERVATION = "reservation";
+  @SerializedName(SERIALIZED_NAME_RESERVATION)
+  private Boolean reservation;
+
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private String batchId;
@@ -301,6 +305,24 @@ public class Coupon {
     this.importId = importId;
   }
 
+  public Coupon reservation(Boolean reservation) {
+    this.reservation = reservation;
+    return this;
+  }
+
+   /**
+   * This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favourite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.
+   * @return reservation
+  **/
+  @ApiModelProperty(value = "This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favourite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.")
+  public Boolean getReservation() {
+    return reservation;
+  }
+
+  public void setReservation(Boolean reservation) {
+    this.reservation = reservation;
+  }
+
   public Coupon batchId(String batchId) {
     this.batchId = batchId;
     return this;
@@ -341,12 +363,13 @@ public class Coupon {
         Objects.equals(this.referralId, coupon.referralId) &&
         Objects.equals(this.recipientIntegrationId, coupon.recipientIntegrationId) &&
         Objects.equals(this.importId, coupon.importId) &&
+        Objects.equals(this.reservation, coupon.reservation) &&
         Objects.equals(this.batchId, coupon.batchId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, startDate, expiryDate, usageCounter, attributes, referralId, recipientIntegrationId, importId, batchId);
+    return Objects.hash(id, created, campaignId, value, usageLimit, startDate, expiryDate, usageCounter, attributes, referralId, recipientIntegrationId, importId, reservation, batchId);
   }
 
 
@@ -367,6 +390,7 @@ public class Coupon {
     sb.append("    referralId: ").append(toIndentedString(referralId)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    importId: ").append(toIndentedString(importId)).append("\n");
+    sb.append("    reservation: ").append(toIndentedString(reservation)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("}");
     return sb.toString();

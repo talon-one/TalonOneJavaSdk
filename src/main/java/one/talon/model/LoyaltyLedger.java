@@ -42,6 +42,10 @@ public class LoyaltyLedger {
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<LoyaltyLedgerEntry> transactions = new ArrayList<LoyaltyLedgerEntry>();
 
+  public static final String SERIALIZED_NAME_EXPIRING_POINTS = "expiringPoints";
+  @SerializedName(SERIALIZED_NAME_EXPIRING_POINTS)
+  private List<LoyaltyLedgerEntry> expiringPoints = null;
+
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
   private Integer loyaltyProgramId;
@@ -79,16 +83,42 @@ public class LoyaltyLedger {
   }
 
    /**
-   * Get transactions
+   * Transactions contains a list of all events that have happened such as additions, subtractions and expiries
    * @return transactions
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Transactions contains a list of all events that have happened such as additions, subtractions and expiries")
   public List<LoyaltyLedgerEntry> getTransactions() {
     return transactions;
   }
 
   public void setTransactions(List<LoyaltyLedgerEntry> transactions) {
     this.transactions = transactions;
+  }
+
+  public LoyaltyLedger expiringPoints(List<LoyaltyLedgerEntry> expiringPoints) {
+    this.expiringPoints = expiringPoints;
+    return this;
+  }
+
+  public LoyaltyLedger addExpiringPointsItem(LoyaltyLedgerEntry expiringPointsItem) {
+    if (this.expiringPoints == null) {
+      this.expiringPoints = new ArrayList<LoyaltyLedgerEntry>();
+    }
+    this.expiringPoints.add(expiringPointsItem);
+    return this;
+  }
+
+   /**
+   * ExpiringPoints contains a list of all points that will expiry and when
+   * @return expiringPoints
+  **/
+  @ApiModelProperty(value = "ExpiringPoints contains a list of all points that will expiry and when")
+  public List<LoyaltyLedgerEntry> getExpiringPoints() {
+    return expiringPoints;
+  }
+
+  public void setExpiringPoints(List<LoyaltyLedgerEntry> expiringPoints) {
+    this.expiringPoints = expiringPoints;
   }
 
   public LoyaltyLedger loyaltyProgramId(Integer loyaltyProgramId) {
@@ -139,13 +169,14 @@ public class LoyaltyLedger {
     LoyaltyLedger loyaltyLedger = (LoyaltyLedger) o;
     return Objects.equals(this.total, loyaltyLedger.total) &&
         Objects.equals(this.transactions, loyaltyLedger.transactions) &&
+        Objects.equals(this.expiringPoints, loyaltyLedger.expiringPoints) &&
         Objects.equals(this.loyaltyProgramId, loyaltyLedger.loyaltyProgramId) &&
         Objects.equals(this.loyaltyProgramName, loyaltyLedger.loyaltyProgramName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, transactions, loyaltyProgramId, loyaltyProgramName);
+    return Objects.hash(total, transactions, expiringPoints, loyaltyProgramId, loyaltyProgramName);
   }
 
 
@@ -156,6 +187,7 @@ public class LoyaltyLedger {
     
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
+    sb.append("    expiringPoints: ").append(toIndentedString(expiringPoints)).append("\n");
     sb.append("    loyaltyProgramId: ").append(toIndentedString(loyaltyProgramId)).append("\n");
     sb.append("    loyaltyProgramName: ").append(toIndentedString(loyaltyProgramName)).append("\n");
     sb.append("}");

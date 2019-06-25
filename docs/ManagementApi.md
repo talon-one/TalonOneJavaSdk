@@ -812,7 +812,7 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -834,7 +834,7 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -881,7 +881,7 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -1116,7 +1116,7 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -1137,7 +1137,7 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -1501,7 +1501,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -1518,7 +1518,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -1562,7 +1562,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
@@ -1590,7 +1590,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
@@ -1645,7 +1645,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
@@ -1673,7 +1673,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
@@ -1781,7 +1781,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
@@ -1799,7 +1799,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
@@ -1843,7 +1843,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -1859,7 +1859,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -2074,7 +2074,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
@@ -2093,7 +2093,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
@@ -2190,7 +2190,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
@@ -2208,7 +2208,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
@@ -2252,7 +2252,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -2268,7 +2268,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -2311,7 +2311,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2342,7 +2342,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2400,7 +2400,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2428,7 +2428,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2482,7 +2482,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2510,7 +2510,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2564,7 +2564,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2591,7 +2591,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2647,7 +2647,7 @@ OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only retur
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
 Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
     CustomerActivityReport result = apiInstance.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
@@ -2666,7 +2666,7 @@ Name | Type | Description  | Notes
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
  **customerId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
@@ -2711,7 +2711,7 @@ ManagementApi apiInstance = new ManagementApi();
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String name = "name_example"; // String | Only return reports matching the customer name
@@ -2734,7 +2734,7 @@ Name | Type | Description  | Notes
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
@@ -2784,7 +2784,7 @@ ManagementApi apiInstance = new ManagementApi();
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String name = "name_example"; // String | Only return reports matching the customer name
@@ -2807,7 +2807,7 @@ Name | Type | Description  | Notes
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
@@ -2856,7 +2856,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -2874,7 +2874,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **customerId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -2970,7 +2970,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
     InlineResponse20012 result = apiInstance.getCustomerProfiles(pageSize, skip);
@@ -2985,7 +2985,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
@@ -3027,7 +3027,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
 try {
@@ -3043,7 +3043,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  | [optional]
 
@@ -3089,7 +3089,7 @@ ManagementApi apiInstance = new ManagementApi();
 String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
 String name = "name_example"; // String | Filter results to event types with the given name. This parameter implies `includeOldVersions`.
 Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -3108,7 +3108,7 @@ Name | Type | Description  | Notes
  **applicationIds** | **String**| Filter by one or more application ids separated by comma | [optional]
  **name** | **String**| Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. | [optional]
  **includeOldVersions** | **Boolean**| Include all versions of every event type. | [optional] [default to false]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -3151,7 +3151,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
@@ -3169,7 +3169,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **applicationId** | **Integer**|  | [optional]
  **campaignId** | **Integer**|  | [optional]
@@ -3214,7 +3214,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
     InlineResponse20026 result = apiInstance.getImports(pageSize, skip);
@@ -3229,7 +3229,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
@@ -3430,7 +3430,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -3454,7 +3454,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -3503,7 +3503,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -3527,7 +3527,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -3686,7 +3686,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -3704,7 +3704,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -3802,7 +3802,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -3818,7 +3818,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -3916,7 +3916,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
@@ -3938,7 +3938,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
@@ -3985,7 +3985,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String status = "status_example"; // String | Filter results by HTTP status codes.
@@ -4008,7 +4008,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
@@ -4058,7 +4058,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
     InlineResponse20019 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
@@ -4075,7 +4075,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIds** | **String**| Filter by one or more application ids separated by comma | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
@@ -4280,7 +4280,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4308,7 +4308,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4362,7 +4362,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4390,7 +4390,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4445,7 +4445,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4473,7 +4473,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4529,7 +4529,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4557,7 +4557,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]

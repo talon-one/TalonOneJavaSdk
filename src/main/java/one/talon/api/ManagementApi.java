@@ -1807,7 +1807,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -1921,7 +1921,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse2008
@@ -1941,7 +1941,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse2008&gt;
@@ -1962,7 +1962,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2003,7 +2003,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -2117,7 +2117,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse2009
@@ -2137,7 +2137,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse2009&gt;
@@ -2158,7 +2158,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2564,7 +2564,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -2671,7 +2671,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse2008
@@ -2690,7 +2690,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse2008&gt;
@@ -2710,7 +2710,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -3481,7 +3481,7 @@ public class ManagementApi {
     /**
      * Build call for getApplicationEventTypes
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -3560,7 +3560,7 @@ public class ManagementApi {
      * List Applications Event Types
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse20018
@@ -3575,7 +3575,7 @@ public class ManagementApi {
      * List Applications Event Types
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse20018&gt;
@@ -3591,7 +3591,7 @@ public class ManagementApi {
      * List Applications Event Types (asynchronously)
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -3627,7 +3627,7 @@ public class ManagementApi {
     /**
      * Build call for getApplicationEvents
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3761,7 +3761,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3787,7 +3787,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3814,7 +3814,7 @@ public class ManagementApi {
      * List Applications Events (asynchronously)
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3861,7 +3861,7 @@ public class ManagementApi {
     /**
      * Build call for getApplicationEventsWithoutTotalCount
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3995,7 +3995,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4021,7 +4021,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4048,7 +4048,7 @@ public class ManagementApi {
      * List Applications Events (asynchronously)
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4227,7 +4227,7 @@ public class ManagementApi {
     /**
      * Build call for getApplicationSessions
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4311,7 +4311,7 @@ public class ManagementApi {
      * List Application Sessions
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4327,7 +4327,7 @@ public class ManagementApi {
      * List Application Sessions
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4344,7 +4344,7 @@ public class ManagementApi {
      * List Application Sessions (asynchronously)
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4380,7 +4380,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getApplications
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -4452,7 +4452,7 @@ public class ManagementApi {
     /**
      * List Applications
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse200
@@ -4466,7 +4466,7 @@ public class ManagementApi {
     /**
      * List Applications
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse200&gt;
@@ -4481,7 +4481,7 @@ public class ManagementApi {
     /**
      * List Applications (asynchronously)
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -4937,7 +4937,7 @@ public class ManagementApi {
     /**
      * Build call for getCampaignByAttributes
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5022,7 +5022,7 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5039,7 +5039,7 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5057,7 +5057,7 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes (asynchronously)
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5217,7 +5217,7 @@ public class ManagementApi {
     /**
      * Build call for getCampaigns
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5301,7 +5301,7 @@ public class ManagementApi {
      * List your Campaigns
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5317,7 +5317,7 @@ public class ManagementApi {
      * List your Campaigns
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5334,7 +5334,7 @@ public class ManagementApi {
      * List your Campaigns (asynchronously)
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5370,7 +5370,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getChanges
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -5442,7 +5442,7 @@ public class ManagementApi {
     /**
      * Get audit log for an account
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse20024
@@ -5456,7 +5456,7 @@ public class ManagementApi {
     /**
      * Get audit log for an account
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse20024&gt;
@@ -5471,7 +5471,7 @@ public class ManagementApi {
     /**
      * Get audit log for an account (asynchronously)
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -5508,7 +5508,7 @@ public class ManagementApi {
      * Build call for getCoupons
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5659,7 +5659,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5688,7 +5688,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5718,7 +5718,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5768,7 +5768,7 @@ public class ManagementApi {
      * Build call for getCouponsByAttributes
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5900,7 +5900,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5926,7 +5926,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5953,7 +5953,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5999,7 +5999,7 @@ public class ManagementApi {
     /**
      * Build call for getCouponsByAttributesApplicationWide
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6129,7 +6129,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6155,7 +6155,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6182,7 +6182,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6230,7 +6230,7 @@ public class ManagementApi {
      * Build call for getCouponsWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6361,7 +6361,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6386,7 +6386,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6412,7 +6412,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6460,7 +6460,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -6561,7 +6561,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return CustomerActivityReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6578,7 +6578,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;CustomerActivityReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6596,7 +6596,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6633,7 +6633,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6752,7 +6752,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6773,7 +6773,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6795,7 +6795,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6837,7 +6837,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6956,7 +6956,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6977,7 +6977,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6999,7 +6999,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -7040,7 +7040,7 @@ public class ManagementApi {
      * Build call for getCustomerAnalytics
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -7126,7 +7126,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return CustomerAnalytics
@@ -7142,7 +7142,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;CustomerAnalytics&gt;
@@ -7159,7 +7159,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -7326,7 +7326,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getCustomerProfiles
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -7393,7 +7393,7 @@ public class ManagementApi {
     /**
      * List Customer Profiles
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return InlineResponse20012
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7406,7 +7406,7 @@ public class ManagementApi {
     /**
      * List Customer Profiles
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse20012&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7420,7 +7420,7 @@ public class ManagementApi {
     /**
      * List Customer Profiles (asynchronously)
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7454,7 +7454,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getCustomersByAttributes
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @param progressListener Progress listener
@@ -7522,7 +7522,7 @@ public class ManagementApi {
     /**
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @return InlineResponse20012
@@ -7536,7 +7536,7 @@ public class ManagementApi {
     /**
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @return ApiResponse&lt;InlineResponse20012&gt;
@@ -7551,7 +7551,7 @@ public class ManagementApi {
     /**
      * Get a list of the customer profiles that match the given attributes (asynchronously)
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -7589,7 +7589,7 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -7676,7 +7676,7 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse20022
@@ -7693,7 +7693,7 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse20022&gt;
@@ -7711,7 +7711,7 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -7746,7 +7746,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getExports
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7828,7 +7828,7 @@ public class ManagementApi {
     /**
      * Get Exports
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7844,7 +7844,7 @@ public class ManagementApi {
     /**
      * Get Exports
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7861,7 +7861,7 @@ public class ManagementApi {
     /**
      * Get Exports (asynchronously)
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7898,7 +7898,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getImports
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -7965,7 +7965,7 @@ public class ManagementApi {
     /**
      * Get Imports
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7978,7 +7978,7 @@ public class ManagementApi {
     /**
      * Get Imports
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7992,7 +7992,7 @@ public class ManagementApi {
     /**
      * Get Imports (asynchronously)
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -8394,7 +8394,7 @@ public class ManagementApi {
      * Build call for getReferrals
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8510,7 +8510,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8532,7 +8532,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8555,7 +8555,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8598,7 +8598,7 @@ public class ManagementApi {
      * Build call for getReferralsWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8714,7 +8714,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8736,7 +8736,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8759,7 +8759,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -9066,7 +9066,7 @@ public class ManagementApi {
      * Build call for getRulesets
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -9152,7 +9152,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse2002
@@ -9168,7 +9168,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
@@ -9185,7 +9185,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -9342,7 +9342,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getUsers
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -9414,7 +9414,7 @@ public class ManagementApi {
     /**
      * List Users in your account
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return InlineResponse20023
@@ -9428,7 +9428,7 @@ public class ManagementApi {
     /**
      * List Users in your account
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;InlineResponse20023&gt;
@@ -9443,7 +9443,7 @@ public class ManagementApi {
     /**
      * List Users in your account (asynchronously)
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -9600,7 +9600,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getWebhookActivationLogs
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9702,7 +9702,7 @@ public class ManagementApi {
     /**
      * List Webhook activation Log Entries
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9722,7 +9722,7 @@ public class ManagementApi {
     /**
      * List Webhook activation Log Entries
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9743,7 +9743,7 @@ public class ManagementApi {
     /**
      * List Webhook activation Log Entries (asynchronously)
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9784,7 +9784,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getWebhookLogs
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9891,7 +9891,7 @@ public class ManagementApi {
     /**
      * List Webhook Log Entries
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9912,7 +9912,7 @@ public class ManagementApi {
     /**
      * List Webhook Log Entries
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9934,7 +9934,7 @@ public class ManagementApi {
     /**
      * List Webhook Log Entries (asynchronously)
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9978,7 +9978,7 @@ public class ManagementApi {
      * Build call for getWebhooks
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -10055,7 +10055,7 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return InlineResponse20019
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -10070,7 +10070,7 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse20019&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -10086,7 +10086,7 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -10478,7 +10478,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvanced
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10610,7 +10610,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10636,7 +10636,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10663,7 +10663,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10709,7 +10709,7 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWide
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10839,7 +10839,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10865,7 +10865,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10892,7 +10892,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10939,7 +10939,7 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWideWithoutTotalCount
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11069,7 +11069,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11095,7 +11095,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11122,7 +11122,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11170,7 +11170,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvancedWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11302,7 +11302,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11328,7 +11328,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11355,7 +11355,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)

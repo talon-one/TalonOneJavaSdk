@@ -103,7 +103,7 @@ public class IntegrationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -220,7 +220,7 @@ public class IntegrationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -337,7 +337,7 @@ public class IntegrationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -455,7 +455,7 @@ public class IntegrationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -581,7 +581,7 @@ public class IntegrationApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
