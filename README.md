@@ -71,36 +71,58 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```java
 
-import one.talon.*;
-import one.talon.auth.*;
-import one.talon.model.*;
+package com.example.consumer;
+
+import one.talon.ApiClient;
 import one.talon.api.IntegrationApi;
+import one.talon.api.ManagementApi;
+import one.talon.model.*;
 
-import java.io.File;
-import java.util.*;
-
-public class IntegrationApiExample {
-
+public class TalonApiTest {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
-        // Configure API key authorization: integration_auth
-        ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-        integration_auth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //integration_auth.setApiKeyPrefix("Token");
 
-        IntegrationApi apiInstance = new IntegrationApi();
-        NewReferral newReferral = new NewReferral(); // NewReferral | 
+        // Management API
+        ApiClient mApiClient = new ApiClient("manager_auth");
+        ManagementApi mApi = new ManagementApi(mApiClient);
+        mApi.getApiClient().setBasePath("http://localhost");
+        mApi.getApiClient().setApiKeyPrefix("Bearer");
+        LoginParams lp = new LoginParams();
+        lp.setEmail("demo@talon.one");
+        lp.setPassword("yourpassword");
+
         try {
-            Referral result = apiInstance.createReferral(newReferral);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling IntegrationApi#createReferral");
-            e.printStackTrace();
+            Session s = mApi.createSession(lp);
+            mApi.getApiClient().setApiKey(s.getToken());
+            Account acc = mApi.getAccount(1);
+            System.out.println(acc.toString());
+
+            System.out.println(mApi.getRuleset(1, 1, 1));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        // Integration API
+        ApiClient iApiClient = new ApiClient("integration_auth");
+        IntegrationApi iApi = new IntegrationApi(iApiClient );
+        // setup: applicationId, applicationKey, basePath, apiKeyPrefix and apiKey
+        iApi.getApiClient().setApplicationId("1");
+        iApi.getApiClient().setApplicationKey("6e17358a222eae88");
+        iApi.getApiClient().setBasePath("http://localhost:8080");
+        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
+        iApi.getApiClient().setApiKey("38c6e3405e4c4e37da32c99fd6bdd8d71bbd1afd769bdeba6f0a8e0fb8e06ddb");
+        // regarding 'Content-Signature' signing the request body is in process of deprecation
+        // therefore enforced to do in the client side
+
+        try {
+            NewCustomerProfile body = new NewCustomerProfile();
+            IntegrationState ie = iApi.updateCustomerProfile("testCustomerProfile", body);
+            System.out.println(ie.toString());
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }
+
 
 ```
 
