@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Change&gt;**](Change.md) |  | 
+**data** | [**List&lt;User&gt;**](User.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

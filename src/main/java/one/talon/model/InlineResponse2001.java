@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Campaign;
+import one.talon.model.Coupon;
 
 /**
  * InlineResponse2001
@@ -34,18 +34,18 @@ import one.talon.model.Campaign;
 public class InlineResponse2001 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Campaign> data = new ArrayList<Campaign>();
+  private List<Coupon> data = new ArrayList<Coupon>();
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
-  public InlineResponse2001 data(List<Campaign> data) {
+  public InlineResponse2001 data(List<Coupon> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2001 addDataItem(Campaign dataItem) {
+  public InlineResponse2001 addDataItem(Coupon dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,11 +55,11 @@ public class InlineResponse2001 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<Campaign> getData() {
+  public List<Coupon> getData() {
     return data;
   }
 
-  public void setData(List<Campaign> data) {
+  public void setData(List<Coupon> data) {
     this.data = data;
   }
 

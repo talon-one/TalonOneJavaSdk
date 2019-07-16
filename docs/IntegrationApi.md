@@ -4,12 +4,78 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createCouponReservation**](IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponID} | Create a new coupon reservation
 [**createReferral**](IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
+[**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponID} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
+[**getReservedCoupons**](IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationID} | Get all valid reserved coupons
+[**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponID} | Gets the users that have this coupon reserved
 [**trackEvent**](IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 [**updateCustomerProfile**](IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
 [**updateCustomerSession**](IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
 
+
+<a name="createCouponReservation"></a>
+# **createCouponReservation**
+> createCouponReservation(couponID, couponReservations)
+
+Create a new coupon reservation
+
+Create a coupon reservation for all passed customers on this couponID 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
+// Configure API key authorization: integration_auth
+ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+integration_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//integration_auth.setApiKeyPrefix("Token");
+
+IntegrationApi apiInstance = new IntegrationApi();
+Integer couponID = 56; // Integer | The ID of a coupon
+CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
+try {
+    apiInstance.createCouponReservation(couponID, couponReservations);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#createCouponReservation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **couponID** | **Integer**| The ID of a coupon |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 <a name="createReferral"></a>
 # **createReferral**
@@ -72,6 +138,68 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="deleteCouponReservation"></a>
+# **deleteCouponReservation**
+> deleteCouponReservation(couponID, couponReservations)
+
+Delete coupon reservations
+
+Remove reservation for all passed customers on this couponID 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
+// Configure API key authorization: integration_auth
+ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+integration_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//integration_auth.setApiKeyPrefix("Token");
+
+IntegrationApi apiInstance = new IntegrationApi();
+Integer couponID = 56; // Integer | The ID of a coupon
+CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
+try {
+    apiInstance.deleteCouponReservation(couponID, couponReservations);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#deleteCouponReservation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **couponID** | **Integer**| The ID of a coupon |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
 <a name="deleteCustomerData"></a>
 # **deleteCustomerData**
 > deleteCustomerData(integrationId)
@@ -131,6 +259,128 @@ null (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+<a name="getReservedCoupons"></a>
+# **getReservedCoupons**
+> InlineResponse2001 getReservedCoupons(integrationId)
+
+Get all valid reserved coupons
+
+Returns all coupons this user is subscribed to that are valid and usable 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
+// Configure API key authorization: integration_auth
+ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+integration_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//integration_auth.setApiKeyPrefix("Token");
+
+IntegrationApi apiInstance = new IntegrationApi();
+String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+try {
+    InlineResponse2001 result = apiInstance.getReservedCoupons(integrationId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#getReservedCoupons");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
+
+### Return type
+
+[**InlineResponse2001**](InlineResponse2001.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getReservedCustomers"></a>
+# **getReservedCustomers**
+> InlineResponse200 getReservedCustomers(couponID)
+
+Gets the users that have this coupon reserved
+
+Returns all users that have this coupon marked as reserved 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
+// Configure API key authorization: integration_auth
+ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+integration_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//integration_auth.setApiKeyPrefix("Token");
+
+IntegrationApi apiInstance = new IntegrationApi();
+Integer couponID = 56; // Integer | The ID of a coupon
+try {
+    InlineResponse200 result = apiInstance.getReservedCustomers(couponID);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#getReservedCustomers");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **couponID** | **Integer**| The ID of a coupon |
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="trackEvent"></a>
 # **trackEvent**

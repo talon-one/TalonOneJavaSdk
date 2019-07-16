@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.LimitConfig;
 import one.talon.model.LoyaltyProgram;
 import org.threeten.bp.OffsetDateTime;
 
@@ -126,6 +127,10 @@ public class Application {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes = null;
+
+  public static final String SERIALIZED_NAME_LIMITS = "limits";
+  @SerializedName(SERIALIZED_NAME_LIMITS)
+  private List<LimitConfig> limits = null;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
@@ -329,6 +334,32 @@ public class Application {
     this.attributes = attributes;
   }
 
+  public Application limits(List<LimitConfig> limits) {
+    this.limits = limits;
+    return this;
+  }
+
+  public Application addLimitsItem(LimitConfig limitsItem) {
+    if (this.limits == null) {
+      this.limits = new ArrayList<LimitConfig>();
+    }
+    this.limits.add(limitsItem);
+    return this;
+  }
+
+   /**
+   * Default limits for campaigns created in this application
+   * @return limits
+  **/
+  @ApiModelProperty(value = "Default limits for campaigns created in this application")
+  public List<LimitConfig> getLimits() {
+    return limits;
+  }
+
+  public void setLimits(List<LimitConfig> limits) {
+    this.limits = limits;
+  }
+
   public Application loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
     this.loyaltyPrograms = loyaltyPrograms;
     return this;
@@ -373,12 +404,13 @@ public class Application {
         Objects.equals(this.currency, application.currency) &&
         Objects.equals(this.caseSensitivity, application.caseSensitivity) &&
         Objects.equals(this.attributes, application.attributes) &&
+        Objects.equals(this.limits, application.limits) &&
         Objects.equals(this.loyaltyPrograms, application.loyaltyPrograms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, key, timezone, currency, caseSensitivity, attributes, loyaltyPrograms);
+    return Objects.hash(id, created, modified, accountId, name, description, key, timezone, currency, caseSensitivity, attributes, limits, loyaltyPrograms);
   }
 
 
@@ -398,6 +430,7 @@ public class Application {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("}");
     return sb.toString();

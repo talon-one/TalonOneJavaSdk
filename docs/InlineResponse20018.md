@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **List&lt;String&gt;** |  | 
-**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
+**hasMore** | **Boolean** |  | 
 
 
 

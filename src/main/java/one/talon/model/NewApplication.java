@@ -23,6 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.LimitConfig;
 
 /**
  * NewApplication
@@ -105,6 +108,10 @@ public class NewApplication {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes = null;
+
+  public static final String SERIALIZED_NAME_LIMITS = "limits";
+  @SerializedName(SERIALIZED_NAME_LIMITS)
+  private List<LimitConfig> limits = null;
 
   public NewApplication name(String name) {
     this.name = name;
@@ -232,6 +239,32 @@ public class NewApplication {
     this.attributes = attributes;
   }
 
+  public NewApplication limits(List<LimitConfig> limits) {
+    this.limits = limits;
+    return this;
+  }
+
+  public NewApplication addLimitsItem(LimitConfig limitsItem) {
+    if (this.limits == null) {
+      this.limits = new ArrayList<LimitConfig>();
+    }
+    this.limits.add(limitsItem);
+    return this;
+  }
+
+   /**
+   * Default limits for campaigns created in this application
+   * @return limits
+  **/
+  @ApiModelProperty(value = "Default limits for campaigns created in this application")
+  public List<LimitConfig> getLimits() {
+    return limits;
+  }
+
+  public void setLimits(List<LimitConfig> limits) {
+    this.limits = limits;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -248,12 +281,13 @@ public class NewApplication {
         Objects.equals(this.timezone, newApplication.timezone) &&
         Objects.equals(this.currency, newApplication.currency) &&
         Objects.equals(this.caseSensitivity, newApplication.caseSensitivity) &&
-        Objects.equals(this.attributes, newApplication.attributes);
+        Objects.equals(this.attributes, newApplication.attributes) &&
+        Objects.equals(this.limits, newApplication.limits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, key, timezone, currency, caseSensitivity, attributes);
+    return Objects.hash(name, description, key, timezone, currency, caseSensitivity, attributes, limits);
   }
 
 
@@ -269,6 +303,7 @@ public class NewApplication {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("}");
     return sb.toString();
   }

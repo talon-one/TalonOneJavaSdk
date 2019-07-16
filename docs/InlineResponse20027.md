@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Role&gt;**](Role.md) |  | 
+**data** | [**List&lt;ModelImport&gt;**](ModelImport.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

@@ -46,7 +46,6 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
-import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -67,6 +66,7 @@ import one.talon.model.InlineResponse20024;
 import one.talon.model.InlineResponse20025;
 import one.talon.model.InlineResponse20026;
 import one.talon.model.InlineResponse20027;
+import one.talon.model.InlineResponse20028;
 import one.talon.model.InlineResponse2003;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
@@ -328,11 +328,11 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param campaignCopy  (optional)
-     * @return InlineResponse2001
+     * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2001 copyCampaignToApplications(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = copyCampaignToApplicationsWithHttpInfo(applicationId, campaignId, campaignCopy);
+    public InlineResponse2003 copyCampaignToApplications(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
+        ApiResponse<InlineResponse2003> resp = copyCampaignToApplicationsWithHttpInfo(applicationId, campaignId, campaignCopy);
         return resp.getData();
     }
 
@@ -342,12 +342,12 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param campaignCopy  (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2001> copyCampaignToApplicationsWithHttpInfo(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
+    public ApiResponse<InlineResponse2003> copyCampaignToApplicationsWithHttpInfo(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
         com.squareup.okhttp.Call call = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, campaignCopy, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -361,7 +361,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call copyCampaignToApplicationsAsync(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+    public com.squareup.okhttp.Call copyCampaignToApplicationsAsync(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy, final ApiCallback<InlineResponse2003> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -383,7 +383,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, campaignCopy, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -596,11 +596,11 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
      * @param newCoupons  (optional)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 createCoupons(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = createCouponsWithHttpInfo(applicationId, campaignId, silent, newCoupons);
+    public InlineResponse2001 createCoupons(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = createCouponsWithHttpInfo(applicationId, campaignId, silent, newCoupons);
         return resp.getData();
     }
 
@@ -611,12 +611,12 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
      * @param newCoupons  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons) throws ApiException {
+    public ApiResponse<InlineResponse2001> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons) throws ApiException {
         com.squareup.okhttp.Call call = createCouponsValidateBeforeCall(applicationId, campaignId, silent, newCoupons, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -631,7 +631,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createCouponsAsync(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call createCouponsAsync(Integer applicationId, Integer campaignId, String silent, NewCoupons newCoupons, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -653,7 +653,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = createCouponsValidateBeforeCall(applicationId, campaignId, silent, newCoupons, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1807,7 +1807,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -1921,14 +1921,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2008
+     * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2008 getAccessLogs(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2008> resp = getAccessLogsWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    public InlineResponse2009 getAccessLogs(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse2009> resp = getAccessLogsWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -1941,15 +1941,15 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2008&gt;
+     * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2008> getAccessLogsWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse2009> getAccessLogsWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getAccessLogsValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1962,14 +1962,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccessLogsAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2008> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccessLogsAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2009> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1991,7 +1991,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAccessLogsValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2003,7 +2003,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -2117,14 +2117,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2009
+     * @return InlineResponse20010
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2009 getAccessLogsWithoutTotalCount(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2009> resp = getAccessLogsWithoutTotalCountWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    public InlineResponse20010 getAccessLogsWithoutTotalCount(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20010> resp = getAccessLogsWithoutTotalCountWithHttpInfo(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -2137,15 +2137,15 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2009&gt;
+     * @return ApiResponse&lt;InlineResponse20010&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2009> getAccessLogsWithoutTotalCountWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20010> getAccessLogsWithoutTotalCountWithHttpInfo(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getAccessLogsWithoutTotalCountValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2158,14 +2158,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccessLogsWithoutTotalCountAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2009> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccessLogsWithoutTotalCountAsync(Integer applicationId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20010> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2187,7 +2187,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAccessLogsWithoutTotalCountValidateBeforeCall(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2564,7 +2564,7 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -2671,14 +2671,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2008
+     * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2008 getAllAccessLogs(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2008> resp = getAllAccessLogsWithHttpInfo(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    public InlineResponse2009 getAllAccessLogs(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse2009> resp = getAllAccessLogsWithHttpInfo(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -2690,15 +2690,15 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2008&gt;
+     * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2008> getAllAccessLogsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse2009> getAllAccessLogsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getAllAccessLogsValidateBeforeCall(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2710,14 +2710,14 @@ public class ManagementApi {
      * @param path Only return results where the request path matches the given regular expresssion. (optional)
      * @param method Only return results where the request method matches the given regular expresssion. (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllAccessLogsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2008> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllAccessLogsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String path, String method, String status, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2009> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2739,7 +2739,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAllAccessLogsValidateBeforeCall(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2802,23 +2802,23 @@ public class ManagementApi {
     /**
      * Get all roles.
      * 
-     * @return InlineResponse20027
+     * @return InlineResponse20028
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20027 getAllRoles() throws ApiException {
-        ApiResponse<InlineResponse20027> resp = getAllRolesWithHttpInfo();
+    public InlineResponse20028 getAllRoles() throws ApiException {
+        ApiResponse<InlineResponse20028> resp = getAllRolesWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get all roles.
      * 
-     * @return ApiResponse&lt;InlineResponse20027&gt;
+     * @return ApiResponse&lt;InlineResponse20028&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20027> getAllRolesWithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse20028> getAllRolesWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getAllRolesValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2829,7 +2829,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllRolesAsync(final ApiCallback<InlineResponse20027> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllRolesAsync(final ApiCallback<InlineResponse20028> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2851,7 +2851,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAllRolesValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -3298,11 +3298,11 @@ public class ManagementApi {
      * List Application Customers
      * 
      * @param applicationId  (required)
-     * @return InlineResponse20011
+     * @return InlineResponse20012
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20011 getApplicationCustomers(Integer applicationId) throws ApiException {
-        ApiResponse<InlineResponse20011> resp = getApplicationCustomersWithHttpInfo(applicationId);
+    public InlineResponse20012 getApplicationCustomers(Integer applicationId) throws ApiException {
+        ApiResponse<InlineResponse20012> resp = getApplicationCustomersWithHttpInfo(applicationId);
         return resp.getData();
     }
 
@@ -3310,12 +3310,12 @@ public class ManagementApi {
      * List Application Customers
      * 
      * @param applicationId  (required)
-     * @return ApiResponse&lt;InlineResponse20011&gt;
+     * @return ApiResponse&lt;InlineResponse20012&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20011> getApplicationCustomersWithHttpInfo(Integer applicationId) throws ApiException {
+    public ApiResponse<InlineResponse20012> getApplicationCustomersWithHttpInfo(Integer applicationId) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationCustomersValidateBeforeCall(applicationId, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3327,7 +3327,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationCustomersAsync(Integer applicationId, final ApiCallback<InlineResponse20011> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationCustomersAsync(Integer applicationId, final ApiCallback<InlineResponse20012> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3349,7 +3349,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationCustomersValidateBeforeCall(applicationId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -3417,13 +3417,13 @@ public class ManagementApi {
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
      * @param applicationCustomerSearch  (optional)
-     * @return InlineResponse20012
+     * @return InlineResponse20013
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @deprecated
      */
     @Deprecated
-    public InlineResponse20012 getApplicationCustomersByAttributes(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
-        ApiResponse<InlineResponse20012> resp = getApplicationCustomersByAttributesWithHttpInfo(applicationCustomerSearch);
+    public InlineResponse20013 getApplicationCustomersByAttributes(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+        ApiResponse<InlineResponse20013> resp = getApplicationCustomersByAttributesWithHttpInfo(applicationCustomerSearch);
         return resp.getData();
     }
 
@@ -3431,14 +3431,14 @@ public class ManagementApi {
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
      * @param applicationCustomerSearch  (optional)
-     * @return ApiResponse&lt;InlineResponse20012&gt;
+     * @return ApiResponse&lt;InlineResponse20013&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<InlineResponse20012> getApplicationCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+    public ApiResponse<InlineResponse20013> getApplicationCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3452,7 +3452,7 @@ public class ManagementApi {
      * @deprecated
      */
     @Deprecated
-    public com.squareup.okhttp.Call getApplicationCustomersByAttributesAsync(ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback<InlineResponse20012> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationCustomersByAttributesAsync(ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback<InlineResponse20013> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3474,14 +3474,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getApplicationEventTypes
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -3560,14 +3560,14 @@ public class ManagementApi {
      * List Applications Event Types
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20018
+     * @return InlineResponse20019
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20018 getApplicationEventTypes(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20018> resp = getApplicationEventTypesWithHttpInfo(applicationId, pageSize, skip, sort);
+    public InlineResponse20019 getApplicationEventTypes(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20019> resp = getApplicationEventTypesWithHttpInfo(applicationId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -3575,15 +3575,15 @@ public class ManagementApi {
      * List Applications Event Types
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20018&gt;
+     * @return ApiResponse&lt;InlineResponse20019&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20018> getApplicationEventTypesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20019> getApplicationEventTypesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationEventTypesValidateBeforeCall(applicationId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3591,14 +3591,14 @@ public class ManagementApi {
      * List Applications Event Types (asynchronously)
      * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationEventTypesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20018> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationEventTypesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20019> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3620,14 +3620,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationEventTypesValidateBeforeCall(applicationId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getApplicationEvents
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3761,7 +3761,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3775,11 +3775,11 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return InlineResponse20016
+     * @return InlineResponse20017
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20016 getApplicationEvents(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
-        ApiResponse<InlineResponse20016> resp = getApplicationEventsWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+    public InlineResponse20017 getApplicationEvents(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+        ApiResponse<InlineResponse20017> resp = getApplicationEventsWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
         return resp.getData();
     }
 
@@ -3787,7 +3787,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3801,12 +3801,12 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return ApiResponse&lt;InlineResponse20016&gt;
+     * @return ApiResponse&lt;InlineResponse20017&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20016> getApplicationEventsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+    public ApiResponse<InlineResponse20017> getApplicationEventsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationEventsValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -3814,7 +3814,7 @@ public class ManagementApi {
      * List Applications Events (asynchronously)
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3832,7 +3832,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationEventsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<InlineResponse20016> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationEventsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<InlineResponse20017> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3854,14 +3854,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationEventsValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getApplicationEventsWithoutTotalCount
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -3995,7 +3995,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4009,11 +4009,11 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return InlineResponse20017
+     * @return InlineResponse20018
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20017 getApplicationEventsWithoutTotalCount(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
-        ApiResponse<InlineResponse20017> resp = getApplicationEventsWithoutTotalCountWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+    public InlineResponse20018 getApplicationEventsWithoutTotalCount(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+        ApiResponse<InlineResponse20018> resp = getApplicationEventsWithoutTotalCountWithHttpInfo(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
         return resp.getData();
     }
 
@@ -4021,7 +4021,7 @@ public class ManagementApi {
      * List Applications Events
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4035,12 +4035,12 @@ public class ManagementApi {
      * @param attributesQuery Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. (optional)
      * @param ruleQuery Rule name filter for events (optional)
      * @param campaignQuery Campaign name filter for events (optional)
-     * @return ApiResponse&lt;InlineResponse20017&gt;
+     * @return ApiResponse&lt;InlineResponse20018&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20017> getApplicationEventsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
+    public ApiResponse<InlineResponse20018> getApplicationEventsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationEventsWithoutTotalCountValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4048,7 +4048,7 @@ public class ManagementApi {
      * List Applications Events (asynchronously)
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
@@ -4066,7 +4066,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationEventsWithoutTotalCountAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<InlineResponse20017> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationEventsWithoutTotalCountAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String type, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String session, String profile, String customerName, String customerEmail, String effectsQuery, String attributesQuery, String ruleQuery, String campaignQuery, final ApiCallback<InlineResponse20018> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4088,7 +4088,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationEventsWithoutTotalCountValidateBeforeCall(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4227,7 +4227,7 @@ public class ManagementApi {
     /**
      * Build call for getApplicationSessions
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4311,15 +4311,15 @@ public class ManagementApi {
      * List Application Sessions
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
-     * @return InlineResponse20015
+     * @return InlineResponse20016
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20015 getApplicationSessions(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
-        ApiResponse<InlineResponse20015> resp = getApplicationSessionsWithHttpInfo(applicationId, pageSize, skip, sort, profile);
+    public InlineResponse20016 getApplicationSessions(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
+        ApiResponse<InlineResponse20016> resp = getApplicationSessionsWithHttpInfo(applicationId, pageSize, skip, sort, profile);
         return resp.getData();
     }
 
@@ -4327,16 +4327,16 @@ public class ManagementApi {
      * List Application Sessions
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
-     * @return ApiResponse&lt;InlineResponse20015&gt;
+     * @return ApiResponse&lt;InlineResponse20016&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20015> getApplicationSessionsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
+    public ApiResponse<InlineResponse20016> getApplicationSessionsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationSessionsValidateBeforeCall(applicationId, pageSize, skip, sort, profile, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4344,7 +4344,7 @@ public class ManagementApi {
      * List Application Sessions (asynchronously)
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
@@ -4352,7 +4352,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationSessionsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile, final ApiCallback<InlineResponse20015> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationSessionsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String profile, final ApiCallback<InlineResponse20016> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4374,13 +4374,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationSessionsValidateBeforeCall(applicationId, pageSize, skip, sort, profile, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getApplications
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -4452,43 +4452,43 @@ public class ManagementApi {
     /**
      * List Applications
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse200
+     * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 getApplications(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse200> resp = getApplicationsWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse2002 getApplications(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse2002> resp = getApplicationsWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
     /**
      * List Applications
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse200&gt;
+     * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> getApplicationsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse2002> getApplicationsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getApplicationsValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Applications (asynchronously)
      * List all application in the current account.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getApplicationsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse200> callback) throws ApiException {
+    public com.squareup.okhttp.Call getApplicationsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2002> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4510,7 +4510,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getApplicationsValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -4871,11 +4871,11 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param granularity The time interval between the results in the returned time-series. (optional)
-     * @return InlineResponse20010
+     * @return InlineResponse20011
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20010 getCampaignAnalytics(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity) throws ApiException {
-        ApiResponse<InlineResponse20010> resp = getCampaignAnalyticsWithHttpInfo(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+    public InlineResponse20011 getCampaignAnalytics(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity) throws ApiException {
+        ApiResponse<InlineResponse20011> resp = getCampaignAnalyticsWithHttpInfo(applicationId, campaignId, rangeStart, rangeEnd, granularity);
         return resp.getData();
     }
 
@@ -4887,12 +4887,12 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param granularity The time interval between the results in the returned time-series. (optional)
-     * @return ApiResponse&lt;InlineResponse20010&gt;
+     * @return ApiResponse&lt;InlineResponse20011&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20010> getCampaignAnalyticsWithHttpInfo(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity) throws ApiException {
+    public ApiResponse<InlineResponse20011> getCampaignAnalyticsWithHttpInfo(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity) throws ApiException {
         com.squareup.okhttp.Call call = getCampaignAnalyticsValidateBeforeCall(applicationId, campaignId, rangeStart, rangeEnd, granularity, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -4908,7 +4908,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCampaignAnalyticsAsync(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity, final ApiCallback<InlineResponse20010> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCampaignAnalyticsAsync(Integer applicationId, Integer campaignId, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String granularity, final ApiCallback<InlineResponse20011> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4930,14 +4930,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCampaignAnalyticsValidateBeforeCall(applicationId, campaignId, rangeStart, rangeEnd, granularity, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getCampaignByAttributes
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5022,16 +5022,16 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param campaignSearch  (optional)
-     * @return InlineResponse2001
+     * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2001 getCampaignByAttributes(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = getCampaignByAttributesWithHttpInfo(applicationId, pageSize, skip, sort, campaignState, campaignSearch);
+    public InlineResponse2003 getCampaignByAttributes(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch) throws ApiException {
+        ApiResponse<InlineResponse2003> resp = getCampaignByAttributesWithHttpInfo(applicationId, pageSize, skip, sort, campaignState, campaignSearch);
         return resp.getData();
     }
 
@@ -5039,17 +5039,17 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param campaignSearch  (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2001> getCampaignByAttributesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch) throws ApiException {
+    public ApiResponse<InlineResponse2003> getCampaignByAttributesWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch) throws ApiException {
         com.squareup.okhttp.Call call = getCampaignByAttributesValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, campaignSearch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5057,7 +5057,7 @@ public class ManagementApi {
      * Get a list of all campaigns that match the given attributes (asynchronously)
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5066,7 +5066,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCampaignByAttributesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCampaignByAttributesAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, CampaignSearch campaignSearch, final ApiCallback<InlineResponse2003> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5088,7 +5088,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCampaignByAttributesValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, campaignSearch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -5217,7 +5217,7 @@ public class ManagementApi {
     /**
      * Build call for getCampaigns
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5301,15 +5301,15 @@ public class ManagementApi {
      * List your Campaigns
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
-     * @return InlineResponse2001
+     * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2001 getCampaigns(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort, campaignState);
+    public InlineResponse2003 getCampaigns(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2003> resp = getCampaignsWithHttpInfo(applicationId, pageSize, skip, sort, campaignState);
         return resp.getData();
     }
 
@@ -5317,16 +5317,16 @@ public class ManagementApi {
      * List your Campaigns
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2001> getCampaignsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
+    public ApiResponse<InlineResponse2003> getCampaignsWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
         com.squareup.okhttp.Call call = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5334,7 +5334,7 @@ public class ManagementApi {
      * List your Campaigns (asynchronously)
      * 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
@@ -5342,7 +5342,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCampaignsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCampaignsAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback<InlineResponse2003> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5364,13 +5364,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCampaignsValidateBeforeCall(applicationId, pageSize, skip, sort, campaignState, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getChanges
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -5442,43 +5442,43 @@ public class ManagementApi {
     /**
      * Get audit log for an account
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20024 getChanges(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20024> resp = getChangesWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20025 getChanges(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20025> resp = getChangesWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
     /**
      * Get audit log for an account
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20024&gt;
+     * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20024> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20025> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get audit log for an account (asynchronously)
      * Get list of changes caused by API calls for an account. Only accessible for admins.
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20024> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20025> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5500,7 +5500,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -5508,7 +5508,7 @@ public class ManagementApi {
      * Build call for getCoupons
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5659,7 +5659,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5675,11 +5675,11 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 getCoupons(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = getCouponsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+    public InlineResponse2001 getCoupons(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = getCouponsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
         return resp.getData();
     }
 
@@ -5688,7 +5688,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5704,12 +5704,12 @@ public class ManagementApi {
      * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> getCouponsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
+    public ApiResponse<InlineResponse2001> getCouponsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5718,7 +5718,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5738,7 +5738,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, OffsetDateTime startsAfter, OffsetDateTime startsBefore, OffsetDateTime expiresAfter, OffsetDateTime expiresBefore, String valid, String batchId, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5760,7 +5760,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -5768,7 +5768,7 @@ public class ManagementApi {
      * Build call for getCouponsByAttributes
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5900,7 +5900,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5913,11 +5913,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param couponSearch  (optional)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 getCouponsByAttributes(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch);
+    public InlineResponse2001 getCouponsByAttributes(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch);
         return resp.getData();
     }
 
@@ -5926,7 +5926,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5939,12 +5939,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param couponSearch  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch) throws ApiException {
+    public ApiResponse<InlineResponse2001> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5953,7 +5953,7 @@ public class ManagementApi {
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -5970,7 +5970,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, CouponSearch couponSearch, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5992,14 +5992,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getCouponsByAttributesApplicationWide
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6129,7 +6129,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6143,11 +6143,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param couponSearch  (optional)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 getCouponsByAttributesApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch);
+    public InlineResponse2001 getCouponsByAttributesApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch);
         return resp.getData();
     }
 
@@ -6155,7 +6155,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6169,12 +6169,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param couponSearch  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch) throws ApiException {
+    public ApiResponse<InlineResponse2001> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6182,7 +6182,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6200,7 +6200,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, CouponSearch couponSearch, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6222,7 +6222,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -6230,7 +6230,7 @@ public class ManagementApi {
      * Build call for getCouponsWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6361,7 +6361,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6373,11 +6373,11 @@ public class ManagementApi {
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param batchId Filter results by batches of coupons (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return InlineResponse2004
+     * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 getCouponsWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = getCouponsWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+    public InlineResponse2005 getCouponsWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch) throws ApiException {
+        ApiResponse<InlineResponse2005> resp = getCouponsWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
         return resp.getData();
     }
 
@@ -6386,7 +6386,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6398,12 +6398,12 @@ public class ManagementApi {
      * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
      * @param batchId Filter results by batches of coupons (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> getCouponsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch) throws ApiException {
+    public ApiResponse<InlineResponse2005> getCouponsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch) throws ApiException {
         com.squareup.okhttp.Call call = getCouponsWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6412,7 +6412,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -6428,7 +6428,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCouponsWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCouponsWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, final ApiCallback<InlineResponse2005> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6450,7 +6450,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCouponsWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -6460,7 +6460,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -6561,7 +6561,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return CustomerActivityReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6578,7 +6578,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;CustomerActivityReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6596,7 +6596,7 @@ public class ManagementApi {
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6633,7 +6633,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6752,18 +6752,18 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return InlineResponse20013
+     * @return InlineResponse20014
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20013 getCustomerActivityReports(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
-        ApiResponse<InlineResponse20013> resp = getCustomerActivityReportsWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+    public InlineResponse20014 getCustomerActivityReports(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+        ApiResponse<InlineResponse20014> resp = getCustomerActivityReportsWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
         return resp.getData();
     }
 
@@ -6773,19 +6773,19 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return ApiResponse&lt;InlineResponse20013&gt;
+     * @return ApiResponse&lt;InlineResponse20014&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20013> getCustomerActivityReportsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+    public ApiResponse<InlineResponse20014> getCustomerActivityReportsWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
         com.squareup.okhttp.Call call = getCustomerActivityReportsValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6795,7 +6795,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6806,7 +6806,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCustomerActivityReportsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<InlineResponse20013> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCustomerActivityReportsAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<InlineResponse20014> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6828,7 +6828,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCustomerActivityReportsValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -6837,7 +6837,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -6956,18 +6956,18 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return InlineResponse20014
+     * @return InlineResponse20015
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20014 getCustomerActivityReportsWithoutTotalCount(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
-        ApiResponse<InlineResponse20014> resp = getCustomerActivityReportsWithoutTotalCountWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+    public InlineResponse20015 getCustomerActivityReportsWithoutTotalCount(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+        ApiResponse<InlineResponse20015> resp = getCustomerActivityReportsWithoutTotalCountWithHttpInfo(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
         return resp.getData();
     }
 
@@ -6977,19 +6977,19 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
      * @param advocateName Only return reports matching the current customer referrer name (optional)
-     * @return ApiResponse&lt;InlineResponse20014&gt;
+     * @return ApiResponse&lt;InlineResponse20015&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20014> getCustomerActivityReportsWithoutTotalCountWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
+    public ApiResponse<InlineResponse20015> getCustomerActivityReportsWithoutTotalCountWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName) throws ApiException {
         com.squareup.okhttp.Call call = getCustomerActivityReportsWithoutTotalCountValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6999,7 +6999,7 @@ public class ManagementApi {
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param name Only return reports matching the customer name (optional)
@@ -7010,7 +7010,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCustomerActivityReportsWithoutTotalCountAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<InlineResponse20014> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCustomerActivityReportsWithoutTotalCountAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, Integer applicationId, Integer pageSize, Integer skip, String sort, String name, String integrationId, String campaignName, String advocateName, final ApiCallback<InlineResponse20015> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7032,7 +7032,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCustomerActivityReportsWithoutTotalCountValidateBeforeCall(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7040,7 +7040,7 @@ public class ManagementApi {
      * Build call for getCustomerAnalytics
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -7126,7 +7126,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return CustomerAnalytics
@@ -7142,7 +7142,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @return ApiResponse&lt;CustomerAnalytics&gt;
@@ -7159,7 +7159,7 @@ public class ManagementApi {
      * Fetch analytics for single application customer
      * @param applicationId  (required)
      * @param customerId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -7326,7 +7326,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getCustomerProfiles
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -7393,40 +7393,40 @@ public class ManagementApi {
     /**
      * List Customer Profiles
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20012
+     * @return InlineResponse20013
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20012 getCustomerProfiles(Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20012> resp = getCustomerProfilesWithHttpInfo(pageSize, skip);
+    public InlineResponse20013 getCustomerProfiles(Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20013> resp = getCustomerProfilesWithHttpInfo(pageSize, skip);
         return resp.getData();
     }
 
     /**
      * List Customer Profiles
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20012&gt;
+     * @return ApiResponse&lt;InlineResponse20013&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20012> getCustomerProfilesWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20013> getCustomerProfilesWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
         com.squareup.okhttp.Call call = getCustomerProfilesValidateBeforeCall(pageSize, skip, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Customer Profiles (asynchronously)
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCustomerProfilesAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20012> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCustomerProfilesAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20013> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7448,13 +7448,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCustomerProfilesValidateBeforeCall(pageSize, skip, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getCustomersByAttributes
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @param progressListener Progress listener
@@ -7522,43 +7522,43 @@ public class ManagementApi {
     /**
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
-     * @return InlineResponse20012
+     * @return InlineResponse20013
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20012 getCustomersByAttributes(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
-        ApiResponse<InlineResponse20012> resp = getCustomersByAttributesWithHttpInfo(pageSize, skip, applicationCustomerSearch);
+    public InlineResponse20013 getCustomersByAttributes(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+        ApiResponse<InlineResponse20013> resp = getCustomersByAttributesWithHttpInfo(pageSize, skip, applicationCustomerSearch);
         return resp.getData();
     }
 
     /**
      * Get a list of the customer profiles that match the given attributes
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
-     * @return ApiResponse&lt;InlineResponse20012&gt;
+     * @return ApiResponse&lt;InlineResponse20013&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20012> getCustomersByAttributesWithHttpInfo(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+    public ApiResponse<InlineResponse20013> getCustomersByAttributesWithHttpInfo(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
         com.squareup.okhttp.Call call = getCustomersByAttributesValidateBeforeCall(pageSize, skip, applicationCustomerSearch, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get a list of the customer profiles that match the given attributes (asynchronously)
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationCustomerSearch  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCustomersByAttributesAsync(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback<InlineResponse20012> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCustomersByAttributesAsync(Integer pageSize, Integer skip, ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback<InlineResponse20013> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7580,7 +7580,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getCustomersByAttributesValidateBeforeCall(pageSize, skip, applicationCustomerSearch, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7589,7 +7589,7 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -7676,14 +7676,14 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20022
+     * @return InlineResponse20023
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20022 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20022> resp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+    public InlineResponse20023 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20023> resp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -7693,15 +7693,15 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20022&gt;
+     * @return ApiResponse&lt;InlineResponse20023&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20022> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20023> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -7711,14 +7711,14 @@ public class ManagementApi {
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20022> callback) throws ApiException {
+    public com.squareup.okhttp.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20023> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7740,13 +7740,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getExports
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7828,40 +7828,40 @@ public class ManagementApi {
     /**
      * Get Exports
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20025 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
-        ApiResponse<InlineResponse20025> resp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
+    public InlineResponse20026 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+        ApiResponse<InlineResponse20026> resp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
         return resp.getData();
     }
 
     /**
      * Get Exports
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return ApiResponse&lt;InlineResponse20025&gt;
+     * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20025> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+    public ApiResponse<InlineResponse20026> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Exports (asynchronously)
      * Get a list of all past exports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param applicationId  (optional)
      * @param campaignId  (optional)
@@ -7870,7 +7870,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20025> callback) throws ApiException {
+    public com.squareup.okhttp.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20026> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7892,13 +7892,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getImports
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -7965,40 +7965,40 @@ public class ManagementApi {
     /**
      * Get Imports
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20026
+     * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20026 getImports(Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20026> resp = getImportsWithHttpInfo(pageSize, skip);
+    public InlineResponse20027 getImports(Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20027> resp = getImportsWithHttpInfo(pageSize, skip);
         return resp.getData();
     }
 
     /**
      * Get Imports
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20026&gt;
+     * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20026> getImportsWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20027> getImportsWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
         com.squareup.okhttp.Call call = getImportsValidateBeforeCall(pageSize, skip, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Imports (asynchronously)
      * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getImportsAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20026> callback) throws ApiException {
+    public com.squareup.okhttp.Call getImportsAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20027> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8020,7 +8020,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getImportsValidateBeforeCall(pageSize, skip, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -8337,23 +8337,23 @@ public class ManagementApi {
     /**
      * List all loyalty Programs
      * 
-     * @return InlineResponse2007
+     * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2007 getLoyaltyPrograms() throws ApiException {
-        ApiResponse<InlineResponse2007> resp = getLoyaltyProgramsWithHttpInfo();
+    public InlineResponse2008 getLoyaltyPrograms() throws ApiException {
+        ApiResponse<InlineResponse2008> resp = getLoyaltyProgramsWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * List all loyalty Programs
      * 
-     * @return ApiResponse&lt;InlineResponse2007&gt;
+     * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2007> getLoyaltyProgramsWithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse2008> getLoyaltyProgramsWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getLoyaltyProgramsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -8364,7 +8364,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getLoyaltyProgramsAsync(final ApiCallback<InlineResponse2007> callback) throws ApiException {
+    public com.squareup.okhttp.Call getLoyaltyProgramsAsync(final ApiCallback<InlineResponse2008> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8386,7 +8386,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getLoyaltyProgramsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2008>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -8394,7 +8394,7 @@ public class ManagementApi {
      * Build call for getReferrals
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8510,7 +8510,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8519,11 +8519,11 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
-     * @return InlineResponse2005
+     * @return InlineResponse2006
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2005 getReferrals(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
-        ApiResponse<InlineResponse2005> resp = getReferralsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+    public InlineResponse2006 getReferrals(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
+        ApiResponse<InlineResponse2006> resp = getReferralsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
         return resp.getData();
     }
 
@@ -8532,7 +8532,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8541,12 +8541,12 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
-     * @return ApiResponse&lt;InlineResponse2005&gt;
+     * @return ApiResponse&lt;InlineResponse2006&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2005> getReferralsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
+    public ApiResponse<InlineResponse2006> getReferralsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
         com.squareup.okhttp.Call call = getReferralsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -8555,7 +8555,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8568,7 +8568,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getReferralsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate, final ApiCallback<InlineResponse2005> callback) throws ApiException {
+    public com.squareup.okhttp.Call getReferralsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate, final ApiCallback<InlineResponse2006> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8590,7 +8590,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getReferralsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -8598,7 +8598,7 @@ public class ManagementApi {
      * Build call for getReferralsWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8714,7 +8714,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8723,11 +8723,11 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
-     * @return InlineResponse2006
+     * @return InlineResponse2007
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2006 getReferralsWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
-        ApiResponse<InlineResponse2006> resp = getReferralsWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+    public InlineResponse2007 getReferralsWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
+        ApiResponse<InlineResponse2007> resp = getReferralsWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
         return resp.getData();
     }
 
@@ -8736,7 +8736,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8745,12 +8745,12 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
+     * @return ApiResponse&lt;InlineResponse2007&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2006> getReferralsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
+    public ApiResponse<InlineResponse2007> getReferralsWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate) throws ApiException {
         com.squareup.okhttp.Call call = getReferralsWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -8759,7 +8759,7 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -8772,7 +8772,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getReferralsWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate, final ApiCallback<InlineResponse2006> callback) throws ApiException {
+    public com.squareup.okhttp.Call getReferralsWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String code, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, String advocate, final ApiCallback<InlineResponse2007> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8794,7 +8794,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getReferralsWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9066,7 +9066,7 @@ public class ManagementApi {
      * Build call for getRulesets
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -9152,14 +9152,14 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse2002
+     * @return InlineResponse2004
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2002 getRulesets(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse2002> resp = getRulesetsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort);
+    public InlineResponse2004 getRulesets(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse2004> resp = getRulesetsWithHttpInfo(applicationId, campaignId, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -9168,15 +9168,15 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse2002&gt;
+     * @return ApiResponse&lt;InlineResponse2004&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2002> getRulesetsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse2004> getRulesetsWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getRulesetsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -9185,14 +9185,14 @@ public class ManagementApi {
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getRulesetsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2002> callback) throws ApiException {
+    public com.squareup.okhttp.Call getRulesetsAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse2004> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9214,7 +9214,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getRulesetsValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9342,7 +9342,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getUsers
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param progressListener Progress listener
@@ -9414,43 +9414,43 @@ public class ManagementApi {
     /**
      * List Users in your account
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20023
+     * @return InlineResponse20024
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20023 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20023> resp = getUsersWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20024 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20024> resp = getUsersWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
     /**
      * List Users in your account
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20023&gt;
+     * @return ApiResponse&lt;InlineResponse20024&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20023> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20024> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Users in your account (asynchronously)
      * Retrieve all users in your account. 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20023> callback) throws ApiException {
+    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20024> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9472,7 +9472,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9600,7 +9600,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getWebhookActivationLogs
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9702,7 +9702,7 @@ public class ManagementApi {
     /**
      * List Webhook activation Log Entries
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9711,18 +9711,18 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20020
+     * @return InlineResponse20021
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20020 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20020> resp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+    public InlineResponse20021 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20021> resp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
         return resp.getData();
     }
 
     /**
      * List Webhook activation Log Entries
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9731,19 +9731,19 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @return ApiResponse&lt;InlineResponse20021&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20020> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20021> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         com.squareup.okhttp.Call call = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Webhook activation Log Entries (asynchronously)
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
@@ -9756,7 +9756,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20020> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20021> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9778,13 +9778,13 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getWebhookLogs
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9891,7 +9891,7 @@ public class ManagementApi {
     /**
      * List Webhook Log Entries
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9901,18 +9901,18 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20021
+     * @return InlineResponse20022
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20021 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20021> resp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+    public InlineResponse20022 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20022> resp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
         return resp.getData();
     }
 
     /**
      * List Webhook Log Entries
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9922,19 +9922,19 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20021&gt;
+     * @return ApiResponse&lt;InlineResponse20022&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20021> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20022> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         com.squareup.okhttp.Call call = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Webhook Log Entries (asynchronously)
      * 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param status Filter results by HTTP status codes. (optional)
@@ -9948,7 +9948,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20021> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20022> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9970,7 +9970,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9978,7 +9978,7 @@ public class ManagementApi {
      * Build call for getWebhooks
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -10055,13 +10055,13 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20019
+     * @return InlineResponse20020
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20019 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20019> resp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
+    public InlineResponse20020 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20020> resp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
         return resp.getData();
     }
 
@@ -10070,14 +10070,14 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20019&gt;
+     * @return ApiResponse&lt;InlineResponse20020&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20019> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20020> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
         com.squareup.okhttp.Call call = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -10086,13 +10086,13 @@ public class ManagementApi {
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20019> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20020> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10114,7 +10114,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -10478,7 +10478,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvanced
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10610,7 +10610,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10623,11 +10623,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param attributeQuery  (optional)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+    public InlineResponse2001 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
         return resp.getData();
     }
 
@@ -10636,7 +10636,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10649,12 +10649,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param attributeQuery  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
+    public ApiResponse<InlineResponse2001> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
         com.squareup.okhttp.Call call = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -10663,7 +10663,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10680,7 +10680,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10702,14 +10702,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for searchCouponsAdvancedApplicationWide
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10839,7 +10839,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10853,11 +10853,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param attributeQuery  (optional)
-     * @return InlineResponse2003
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 searchCouponsAdvancedApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+    public InlineResponse2001 searchCouponsAdvancedApplicationWide(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
         return resp.getData();
     }
 
@@ -10865,7 +10865,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10879,12 +10879,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param attributeQuery  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
+    public ApiResponse<InlineResponse2001> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
         com.squareup.okhttp.Call call = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -10892,7 +10892,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -10910,7 +10910,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2001> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10932,14 +10932,14 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for searchCouponsAdvancedApplicationWideWithoutTotalCount
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11069,7 +11069,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11083,11 +11083,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param attributeQuery  (optional)
-     * @return InlineResponse2004
+     * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+    public InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
+        ApiResponse<InlineResponse2005> resp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
         return resp.getData();
     }
 
@@ -11095,7 +11095,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11109,12 +11109,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param attributeQuery  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery) throws ApiException {
         com.squareup.okhttp.Call call = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -11122,7 +11122,7 @@ public class ManagementApi {
      * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11140,7 +11140,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2005> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11162,7 +11162,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -11170,7 +11170,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvancedWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11302,7 +11302,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11315,11 +11315,11 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param attributeQuery  (optional)
-     * @return InlineResponse2004
+     * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+    public InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
+        ApiResponse<InlineResponse2005> resp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
         return resp.getData();
     }
 
@@ -11328,7 +11328,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11341,12 +11341,12 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param attributeQuery  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery) throws ApiException {
         com.squareup.okhttp.Call call = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -11355,7 +11355,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1500 will be used. (optional)
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 2500 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
@@ -11372,7 +11372,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, AttributeQuery attributeQuery, final ApiCallback<InlineResponse2005> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11394,7 +11394,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

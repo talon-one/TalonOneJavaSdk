@@ -142,7 +142,7 @@ null (empty response body)
 
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2001 copyCampaignToApplications(applicationId, campaignId, campaignCopy)
+> InlineResponse2003 copyCampaignToApplications(applicationId, campaignId, campaignCopy)
 
 Copy the campaign into every specified application
 
@@ -170,7 +170,7 @@ Integer applicationId = 56; // Integer |
 Integer campaignId = 56; // Integer | 
 CampaignCopy campaignCopy = new CampaignCopy(); // CampaignCopy | 
 try {
-    InlineResponse2001 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
+    InlineResponse2003 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2003 createCoupons(applicationId, campaignId, silent, newCoupons)
+> InlineResponse2001 createCoupons(applicationId, campaignId, silent, newCoupons)
 
 Create Coupons
 
@@ -285,7 +285,7 @@ Integer campaignId = 56; // Integer |
 String silent = "silent_example"; // String | If set to 'yes', response will be an empty 204, otherwise a list of the coupons generated (to to 1000).
 NewCoupons newCoupons = new NewCoupons(); // NewCoupons | 
 try {
-    InlineResponse2003 result = apiInstance.createCoupons(applicationId, campaignId, silent, newCoupons);
+    InlineResponse2001 result = apiInstance.createCoupons(applicationId, campaignId, silent, newCoupons);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -784,7 +784,7 @@ null (empty response body)
 
 <a name="getAccessLogs"></a>
 # **getAccessLogs**
-> InlineResponse2008 getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse2009 getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get access logs for application
 
@@ -812,11 +812,11 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse2008 result = apiInstance.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    InlineResponse2009 result = apiInstance.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getAccessLogs");
@@ -834,13 +834,13 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -853,7 +853,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccessLogsWithoutTotalCount"></a>
 # **getAccessLogsWithoutTotalCount**
-> InlineResponse2009 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20010 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get access logs for application
 
@@ -881,11 +881,11 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse2009 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    InlineResponse20010 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
@@ -903,13 +903,13 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1087,7 +1087,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllAccessLogs"></a>
 # **getAllAccessLogs**
-> InlineResponse2008 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse2009 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get all access logs
 
@@ -1116,11 +1116,11 @@ OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return 
 String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
 String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
 String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse2008 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+    InlineResponse2009 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getAllAccessLogs");
@@ -1137,13 +1137,13 @@ Name | Type | Description  | Notes
  **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -1156,7 +1156,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllRoles"></a>
 # **getAllRoles**
-> InlineResponse20027 getAllRoles()
+> InlineResponse20028 getAllRoles()
 
 Get all roles.
 
@@ -1179,7 +1179,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 try {
-    InlineResponse20027 result = apiInstance.getAllRoles();
+    InlineResponse20028 result = apiInstance.getAllRoles();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getAllRoles");
@@ -1192,7 +1192,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -1368,7 +1368,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomers"></a>
 # **getApplicationCustomers**
-> InlineResponse20011 getApplicationCustomers(applicationId)
+> InlineResponse20012 getApplicationCustomers(applicationId)
 
 List Application Customers
 
@@ -1392,7 +1392,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 try {
-    InlineResponse20011 result = apiInstance.getApplicationCustomers(applicationId);
+    InlineResponse20012 result = apiInstance.getApplicationCustomers(applicationId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
@@ -1408,7 +1408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20011**](InlineResponse20011.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -1421,7 +1421,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomersByAttributes"></a>
 # **getApplicationCustomersByAttributes**
-> InlineResponse20012 getApplicationCustomersByAttributes(applicationCustomerSearch)
+> InlineResponse20013 getApplicationCustomersByAttributes(applicationCustomerSearch)
 
 Get a list of the customer profiles that match the given attributes
 
@@ -1447,7 +1447,7 @@ integration_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
 try {
-    InlineResponse20012 result = apiInstance.getApplicationCustomersByAttributes(applicationCustomerSearch);
+    InlineResponse20013 result = apiInstance.getApplicationCustomersByAttributes(applicationCustomerSearch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
@@ -1463,7 +1463,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -1476,7 +1476,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventTypes"></a>
 # **getApplicationEventTypes**
-> InlineResponse20018 getApplicationEventTypes(applicationId, pageSize, skip, sort)
+> InlineResponse20019 getApplicationEventTypes(applicationId, pageSize, skip, sort)
 
 List Applications Event Types
 
@@ -1501,11 +1501,11 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20018 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+    InlineResponse20019 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
@@ -1518,13 +1518,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse20018**](InlineResponse20018.md)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -1537,7 +1537,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEvents"></a>
 # **getApplicationEvents**
-> InlineResponse20016 getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
+> InlineResponse20017 getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
 
 List Applications Events
 
@@ -1562,7 +1562,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
@@ -1577,7 +1577,7 @@ String attributesQuery = "attributesQuery_example"; // String | Attributes filte
 String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
 String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
 try {
-    InlineResponse20016 result = apiInstance.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+    InlineResponse20017 result = apiInstance.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationEvents");
@@ -1590,7 +1590,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
@@ -1607,7 +1607,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -1620,7 +1620,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventsWithoutTotalCount"></a>
 # **getApplicationEventsWithoutTotalCount**
-> InlineResponse20017 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
+> InlineResponse20018 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
 
 List Applications Events
 
@@ -1645,7 +1645,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
@@ -1660,7 +1660,7 @@ String attributesQuery = "attributesQuery_example"; // String | Attributes filte
 String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
 String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
 try {
-    InlineResponse20017 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+    InlineResponse20018 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
@@ -1673,7 +1673,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
@@ -1690,7 +1690,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20018**](InlineResponse20018.md)
 
 ### Authorization
 
@@ -1758,7 +1758,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationSessions"></a>
 # **getApplicationSessions**
-> InlineResponse20015 getApplicationSessions(applicationId, pageSize, skip, sort, profile)
+> InlineResponse20016 getApplicationSessions(applicationId, pageSize, skip, sort, profile)
 
 List Application Sessions
 
@@ -1781,12 +1781,12 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
 try {
-    InlineResponse20015 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile);
+    InlineResponse20016 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplicationSessions");
@@ -1799,14 +1799,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+[**InlineResponse20016**](InlineResponse20016.md)
 
 ### Authorization
 
@@ -1819,7 +1819,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplications"></a>
 # **getApplications**
-> InlineResponse200 getApplications(pageSize, skip, sort)
+> InlineResponse2002 getApplications(pageSize, skip, sort)
 
 List Applications
 
@@ -1843,11 +1843,11 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse200 result = apiInstance.getApplications(pageSize, skip, sort);
+    InlineResponse2002 result = apiInstance.getApplications(pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getApplications");
@@ -1859,13 +1859,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -1988,7 +1988,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignAnalytics"></a>
 # **getCampaignAnalytics**
-> InlineResponse20010 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
+> InlineResponse20011 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
 
 Get analytics of campaigns
 
@@ -2016,7 +2016,7 @@ OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only retur
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
 try {
-    InlineResponse20010 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+    InlineResponse20011 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
@@ -2036,7 +2036,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -2049,7 +2049,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2001 getCampaignByAttributes(applicationId, pageSize, skip, sort, campaignState, campaignSearch)
+> InlineResponse2003 getCampaignByAttributes(applicationId, pageSize, skip, sort, campaignState, campaignSearch)
 
 Get a list of all campaigns that match the given attributes
 
@@ -2074,13 +2074,13 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
 CampaignSearch campaignSearch = new CampaignSearch(); // CampaignSearch | 
 try {
-    InlineResponse2001 result = apiInstance.getCampaignByAttributes(applicationId, pageSize, skip, sort, campaignState, campaignSearch);
+    InlineResponse2003 result = apiInstance.getCampaignByAttributes(applicationId, pageSize, skip, sort, campaignState, campaignSearch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -2093,7 +2093,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
@@ -2101,7 +2101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -2167,7 +2167,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaigns"></a>
 # **getCampaigns**
-> InlineResponse2001 getCampaigns(applicationId, pageSize, skip, sort, campaignState)
+> InlineResponse2003 getCampaigns(applicationId, pageSize, skip, sort, campaignState)
 
 List your Campaigns
 
@@ -2190,12 +2190,12 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
 try {
-    InlineResponse2001 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState);
+    InlineResponse2003 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -2208,14 +2208,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -2228,7 +2228,7 @@ Name | Type | Description  | Notes
 
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20024 getChanges(pageSize, skip, sort)
+> InlineResponse20025 getChanges(pageSize, skip, sort)
 
 Get audit log for an account
 
@@ -2252,11 +2252,11 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20024 result = apiInstance.getChanges(pageSize, skip, sort);
+    InlineResponse20025 result = apiInstance.getChanges(pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getChanges");
@@ -2268,13 +2268,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -2287,7 +2287,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoupons"></a>
 # **getCoupons**
-> InlineResponse2003 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
+> InlineResponse2001 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
 
 List Coupons
 
@@ -2311,7 +2311,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2328,7 +2328,7 @@ Integer referralId = 56; // Integer | Filter the results by matching them with t
 String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
 Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
 try {
-    InlineResponse2003 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+    InlineResponse2001 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCoupons");
@@ -2342,7 +2342,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2361,7 +2361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -2374,7 +2374,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributes"></a>
 # **getCouponsByAttributes**
-> InlineResponse2003 getCouponsByAttributes(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch)
+> InlineResponse2001 getCouponsByAttributes(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch)
 
 Get a list of the coupons that match the given attributes
 
@@ -2400,7 +2400,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2414,7 +2414,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String batchId = "batchId_example"; // String | Filter results by batches of coupons
 CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
 try {
-    InlineResponse2003 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch);
+    InlineResponse2001 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCouponsByAttributes");
@@ -2428,7 +2428,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2444,7 +2444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -2457,7 +2457,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributesApplicationWide"></a>
 # **getCouponsByAttributesApplicationWide**
-> InlineResponse2003 getCouponsByAttributesApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch)
+> InlineResponse2001 getCouponsByAttributesApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -2482,7 +2482,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2497,7 +2497,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
 CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
 try {
-    InlineResponse2003 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch);
+    InlineResponse2001 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCouponsByAttributesApplicationWide");
@@ -2510,7 +2510,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2527,7 +2527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -2540,7 +2540,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsWithoutTotalCount"></a>
 # **getCouponsWithoutTotalCount**
-> InlineResponse2004 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
+> InlineResponse2005 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
 
 List Coupons
 
@@ -2564,7 +2564,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -2577,7 +2577,7 @@ String recipientIntegrationId = "recipientIntegrationId_example"; // String | Fi
 String batchId = "batchId_example"; // String | Filter results by batches of coupons
 Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
 try {
-    InlineResponse2004 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+    InlineResponse2005 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
@@ -2591,7 +2591,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -2606,7 +2606,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -2647,7 +2647,7 @@ OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only retur
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
 Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
     CustomerActivityReport result = apiInstance.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
@@ -2666,7 +2666,7 @@ Name | Type | Description  | Notes
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
  **customerId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
@@ -2684,7 +2684,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerActivityReports"></a>
 # **getCustomerActivityReports**
-> InlineResponse20013 getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
+> InlineResponse20014 getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
 
 Get Activity Reports for Application Customers
 
@@ -2711,7 +2711,7 @@ ManagementApi apiInstance = new ManagementApi();
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String name = "name_example"; // String | Only return reports matching the customer name
@@ -2719,7 +2719,7 @@ String integrationId = "integrationId_example"; // String | Only return reports 
 String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
 String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
 try {
-    InlineResponse20013 result = apiInstance.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+    InlineResponse20014 result = apiInstance.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCustomerActivityReports");
@@ -2734,7 +2734,7 @@ Name | Type | Description  | Notes
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
@@ -2744,7 +2744,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20013**](InlineResponse20013.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -2757,7 +2757,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerActivityReportsWithoutTotalCount"></a>
 # **getCustomerActivityReportsWithoutTotalCount**
-> InlineResponse20014 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
+> InlineResponse20015 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
 
 Get Activity Reports for Application Customers
 
@@ -2784,7 +2784,7 @@ ManagementApi apiInstance = new ManagementApi();
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String name = "name_example"; // String | Only return reports matching the customer name
@@ -2792,7 +2792,7 @@ String integrationId = "integrationId_example"; // String | Only return reports 
 String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
 String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
 try {
-    InlineResponse20014 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+    InlineResponse20015 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
@@ -2807,7 +2807,7 @@ Name | Type | Description  | Notes
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
@@ -2817,7 +2817,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20015**](InlineResponse20015.md)
 
 ### Authorization
 
@@ -2856,7 +2856,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
@@ -2874,7 +2874,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **customerId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
@@ -2948,7 +2948,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerProfiles"></a>
 # **getCustomerProfiles**
-> InlineResponse20012 getCustomerProfiles(pageSize, skip)
+> InlineResponse20013 getCustomerProfiles(pageSize, skip)
 
 List Customer Profiles
 
@@ -2970,10 +2970,10 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
-    InlineResponse20012 result = apiInstance.getCustomerProfiles(pageSize, skip);
+    InlineResponse20013 result = apiInstance.getCustomerProfiles(pageSize, skip);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
@@ -2985,12 +2985,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -3003,7 +3003,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomersByAttributes"></a>
 # **getCustomersByAttributes**
-> InlineResponse20012 getCustomersByAttributes(pageSize, skip, applicationCustomerSearch)
+> InlineResponse20013 getCustomersByAttributes(pageSize, skip, applicationCustomerSearch)
 
 Get a list of the customer profiles that match the given attributes
 
@@ -3027,11 +3027,11 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
 try {
-    InlineResponse20012 result = apiInstance.getCustomersByAttributes(pageSize, skip, applicationCustomerSearch);
+    InlineResponse20013 result = apiInstance.getCustomersByAttributes(pageSize, skip, applicationCustomerSearch);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
@@ -3043,13 +3043,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  | [optional]
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -3062,7 +3062,7 @@ Name | Type | Description  | Notes
 
 <a name="getEventTypes"></a>
 # **getEventTypes**
-> InlineResponse20022 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20023 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
 
 List Event Types
 
@@ -3089,11 +3089,11 @@ ManagementApi apiInstance = new ManagementApi();
 String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
 String name = "name_example"; // String | Filter results to event types with the given name. This parameter implies `includeOldVersions`.
 Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20022 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+    InlineResponse20023 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getEventTypes");
@@ -3108,13 +3108,13 @@ Name | Type | Description  | Notes
  **applicationIds** | **String**| Filter by one or more application ids separated by comma | [optional]
  **name** | **String**| Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. | [optional]
  **includeOldVersions** | **Boolean**| Include all versions of every event type. | [optional] [default to false]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -3127,7 +3127,7 @@ Name | Type | Description  | Notes
 
 <a name="getExports"></a>
 # **getExports**
-> InlineResponse20025 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20026 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get Exports
 
@@ -3151,13 +3151,13 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
 String entity = "entity_example"; // String | The name of the entity type that was exported.
 try {
-    InlineResponse20025 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+    InlineResponse20026 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getExports");
@@ -3169,7 +3169,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **applicationId** | **Integer**|  | [optional]
  **campaignId** | **Integer**|  | [optional]
@@ -3177,7 +3177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -3190,7 +3190,7 @@ Name | Type | Description  | Notes
 
 <a name="getImports"></a>
 # **getImports**
-> InlineResponse20026 getImports(pageSize, skip)
+> InlineResponse20027 getImports(pageSize, skip)
 
 Get Imports
 
@@ -3214,10 +3214,10 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
-    InlineResponse20026 result = apiInstance.getImports(pageSize, skip);
+    InlineResponse20027 result = apiInstance.getImports(pageSize, skip);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getImports");
@@ -3229,12 +3229,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -3357,7 +3357,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyPrograms"></a>
 # **getLoyaltyPrograms**
-> InlineResponse2007 getLoyaltyPrograms()
+> InlineResponse2008 getLoyaltyPrograms()
 
 List all loyalty Programs
 
@@ -3380,7 +3380,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 try {
-    InlineResponse2007 result = apiInstance.getLoyaltyPrograms();
+    InlineResponse2008 result = apiInstance.getLoyaltyPrograms();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
@@ -3393,7 +3393,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -3406,7 +3406,7 @@ This endpoint does not need any parameter.
 
 <a name="getReferrals"></a>
 # **getReferrals**
-> InlineResponse2005 getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
+> InlineResponse2006 getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
 List Referrals
 
@@ -3430,7 +3430,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -3440,7 +3440,7 @@ String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or
 String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
 String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
 try {
-    InlineResponse2005 result = apiInstance.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+    InlineResponse2006 result = apiInstance.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getReferrals");
@@ -3454,7 +3454,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -3466,7 +3466,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -3479,7 +3479,7 @@ Name | Type | Description  | Notes
 
 <a name="getReferralsWithoutTotalCount"></a>
 # **getReferralsWithoutTotalCount**
-> InlineResponse2006 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
+> InlineResponse2007 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
 List Referrals
 
@@ -3503,7 +3503,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -3513,7 +3513,7 @@ String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or
 String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
 String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
 try {
-    InlineResponse2006 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+    InlineResponse2007 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
@@ -3527,7 +3527,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -3539,7 +3539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -3662,7 +3662,7 @@ Name | Type | Description  | Notes
 
 <a name="getRulesets"></a>
 # **getRulesets**
-> InlineResponse2002 getRulesets(applicationId, campaignId, pageSize, skip, sort)
+> InlineResponse2004 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
 List Campaign Rulesets
 
@@ -3686,11 +3686,11 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse2002 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+    InlineResponse2004 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getRulesets");
@@ -3704,13 +3704,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -3778,7 +3778,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> InlineResponse20023 getUsers(pageSize, skip, sort)
+> InlineResponse20024 getUsers(pageSize, skip, sort)
 
 List Users in your account
 
@@ -3802,11 +3802,11 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20023 result = apiInstance.getUsers(pageSize, skip, sort);
+    InlineResponse20024 result = apiInstance.getUsers(pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getUsers");
@@ -3818,13 +3818,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -3892,7 +3892,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookActivationLogs"></a>
 # **getWebhookActivationLogs**
-> InlineResponse20020 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20021 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List Webhook activation Log Entries
 
@@ -3916,7 +3916,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
@@ -3926,7 +3926,7 @@ BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by camp
 OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date.
 OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
 try {
-    InlineResponse20020 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+    InlineResponse20021 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
@@ -3938,7 +3938,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
@@ -3950,7 +3950,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -3963,7 +3963,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookLogs"></a>
 # **getWebhookLogs**
-> InlineResponse20021 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20022 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List Webhook Log Entries
 
@@ -3985,7 +3985,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String status = "status_example"; // String | Filter results by HTTP status codes.
@@ -3996,7 +3996,7 @@ String requestUuid = "requestUuid_example"; // String | Filter results by reques
 OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string.
 OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
 try {
-    InlineResponse20021 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+    InlineResponse20022 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhookLogs");
@@ -4008,7 +4008,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
@@ -4021,7 +4021,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -4034,7 +4034,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhooks"></a>
 # **getWebhooks**
-> InlineResponse20019 getWebhooks(applicationIds, sort, pageSize, skip)
+> InlineResponse20020 getWebhooks(applicationIds, sort, pageSize, skip)
 
 List Webhooks
 
@@ -4058,10 +4058,10 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
-    InlineResponse20019 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
+    InlineResponse20020 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhooks");
@@ -4075,12 +4075,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIds** | **String**| Filter by one or more application ids separated by comma | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -4254,7 +4254,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvanced"></a>
 # **searchCouponsAdvanced**
-> InlineResponse2003 searchCouponsAdvanced(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery)
+> InlineResponse2001 searchCouponsAdvanced(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery)
 
 Get a list of the coupons that match the given attributes
 
@@ -4280,7 +4280,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4294,7 +4294,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String batchId = "batchId_example"; // String | Filter results by batches of coupons
 AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
 try {
-    InlineResponse2003 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+    InlineResponse2001 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
@@ -4308,7 +4308,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4324,7 +4324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -4337,7 +4337,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWide"></a>
 # **searchCouponsAdvancedApplicationWide**
-> InlineResponse2003 searchCouponsAdvancedApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery)
+> InlineResponse2001 searchCouponsAdvancedApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -4362,7 +4362,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4377,7 +4377,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
 AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
 try {
-    InlineResponse2003 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+    InlineResponse2001 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
@@ -4390,7 +4390,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4407,7 +4407,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -4420,7 +4420,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2004 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery)
+> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -4445,7 +4445,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4460,7 +4460,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
 AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
 try {
-    InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+    InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -4473,7 +4473,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4490,7 +4490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -4503,7 +4503,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2004 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery)
+> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery)
 
 Get a list of the coupons that match the given attributes
 
@@ -4529,7 +4529,7 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1500 will be used.
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 2500 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -4543,7 +4543,7 @@ Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensi
 String batchId = "batchId_example"; // String | Filter results by batches of coupons
 AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
 try {
-    InlineResponse2004 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+    InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -4557,7 +4557,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1500 will be used. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 2500 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -4573,7 +4573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 

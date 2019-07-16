@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
-**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
+**hasMore** | **Boolean** |  | 
 
 
 

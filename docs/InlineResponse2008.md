@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
+**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;ApplicationSession&gt;**](ApplicationSession.md) |  | 
-**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
+**hasMore** | **Boolean** |  | 
 
 
 

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Ruleset&gt;**](Ruleset.md) |  | 
+**data** | [**List&lt;Application&gt;**](Application.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

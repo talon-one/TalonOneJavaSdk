@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
-**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Ruleset&gt;**](Ruleset.md) |  | 
+**totalResultSize** | **Integer** |  | 
 
 
 

@@ -49,6 +49,10 @@ public class CouponRejectionReason {
     
     COUPONLIMITREACHED("CouponLimitReached"),
     
+    CAMPAIGNLIMITREACHED("CampaignLimitReached"),
+    
+    PROFILELIMITREACHED("ProfileLimitReached"),
+    
     COUPONRECIPIENTDOESNOTMATCH("CouponRecipientDoesNotMatch"),
     
     COUPONEXPIRED("CouponExpired"),

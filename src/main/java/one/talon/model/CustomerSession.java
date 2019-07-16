@@ -118,6 +118,10 @@ public class CustomerSession {
   @SerializedName(SERIALIZED_NAME_CART_ITEMS)
   private List<CartItem> cartItems = new ArrayList<CartItem>();
 
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private List<String> identifiers = null;
+
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private BigDecimal total;
@@ -283,6 +287,32 @@ public class CustomerSession {
     this.cartItems = cartItems;
   }
 
+  public CustomerSession identifiers(List<String> identifiers) {
+    this.identifiers = identifiers;
+    return this;
+  }
+
+  public CustomerSession addIdentifiersItem(String identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new ArrayList<String>();
+    }
+    this.identifiers.add(identifiersItem);
+    return this;
+  }
+
+   /**
+   * Identifiers for the customer, this can be used for limits on values such as device ID.
+   * @return identifiers
+  **/
+  @ApiModelProperty(value = "Identifiers for the customer, this can be used for limits on values such as device ID.")
+  public List<String> getIdentifiers() {
+    return identifiers;
+  }
+
+  public void setIdentifiers(List<String> identifiers) {
+    this.identifiers = identifiers;
+  }
+
   public CustomerSession total(BigDecimal total) {
     this.total = total;
     return this;
@@ -378,6 +408,7 @@ public class CustomerSession {
         Objects.equals(this.referral, customerSession.referral) &&
         Objects.equals(this.state, customerSession.state) &&
         Objects.equals(this.cartItems, customerSession.cartItems) &&
+        Objects.equals(this.identifiers, customerSession.identifiers) &&
         Objects.equals(this.total, customerSession.total) &&
         Objects.equals(this.attributes, customerSession.attributes) &&
         Objects.equals(this.firstSession, customerSession.firstSession) &&
@@ -386,7 +417,7 @@ public class CustomerSession {
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, created, applicationId, profileId, coupon, referral, state, cartItems, total, attributes, firstSession, discounts);
+    return Objects.hash(integrationId, created, applicationId, profileId, coupon, referral, state, cartItems, identifiers, total, attributes, firstSession, discounts);
   }
 
 
@@ -403,6 +434,7 @@ public class CustomerSession {
     sb.append("    referral: ").append(toIndentedString(referral)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    firstSession: ").append(toIndentedString(firstSession)).append("\n");

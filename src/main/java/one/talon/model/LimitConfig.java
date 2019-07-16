@@ -100,7 +100,9 @@ public class LimitConfig {
     
     REFERRAL("Referral"),
     
-    PROFILE("Profile");
+    PROFILE("Profile"),
+    
+    IDENTIFIER("Identifier");
 
     private String value;
 

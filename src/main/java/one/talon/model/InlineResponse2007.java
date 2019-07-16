@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LoyaltyProgram;
+import one.talon.model.Referral;
 
 /**
  * InlineResponse2007
@@ -34,18 +34,18 @@ import one.talon.model.LoyaltyProgram;
 public class InlineResponse2007 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LoyaltyProgram> data = new ArrayList<LoyaltyProgram>();
+  private List<Referral> data = new ArrayList<Referral>();
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
 
-  public InlineResponse2007 data(List<LoyaltyProgram> data) {
+  public InlineResponse2007 data(List<Referral> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse2007 addDataItem(LoyaltyProgram dataItem) {
+  public InlineResponse2007 addDataItem(Referral dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,30 +55,30 @@ public class InlineResponse2007 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<LoyaltyProgram> getData() {
+  public List<Referral> getData() {
     return data;
   }
 
-  public void setData(List<LoyaltyProgram> data) {
+  public void setData(List<Referral> data) {
     this.data = data;
   }
 
-  public InlineResponse2007 totalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public InlineResponse2007 hasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * Get hasMore
+   * @return hasMore
   **/
   @ApiModelProperty(required = true, value = "")
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  public Boolean getHasMore() {
+    return hasMore;
   }
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
   }
 
 
@@ -92,12 +92,12 @@ public class InlineResponse2007 {
     }
     InlineResponse2007 inlineResponse2007 = (InlineResponse2007) o;
     return Objects.equals(this.data, inlineResponse2007.data) &&
-        Objects.equals(this.totalResultSize, inlineResponse2007.totalResultSize);
+        Objects.equals(this.hasMore, inlineResponse2007.hasMore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(data, hasMore);
   }
 
 
@@ -107,7 +107,7 @@ public class InlineResponse2007 {
     sb.append("class InlineResponse2007 {\n");
     
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("}");
     return sb.toString();
   }

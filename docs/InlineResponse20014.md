@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
-**hasMore** | **Boolean** |  | 
+**totalResultSize** | **Integer** |  | 
 
 
 

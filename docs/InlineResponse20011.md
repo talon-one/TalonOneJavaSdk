@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
+**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

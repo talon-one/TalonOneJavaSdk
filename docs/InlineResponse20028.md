@@ -1,10 +1,10 @@
 
-# InlineResponse20025
+# InlineResponse20028
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Change&gt;**](Change.md) |  | 
+**data** | [**List&lt;Role&gt;**](Role.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

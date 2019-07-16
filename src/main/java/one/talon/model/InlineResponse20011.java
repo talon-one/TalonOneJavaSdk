@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationCustomer;
+import one.talon.model.CampaignAnalytics;
 
 /**
  * InlineResponse20011
@@ -34,18 +34,18 @@ import one.talon.model.ApplicationCustomer;
 public class InlineResponse20011 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationCustomer> data = new ArrayList<ApplicationCustomer>();
+  private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
-  public InlineResponse20011 data(List<ApplicationCustomer> data) {
+  public InlineResponse20011 data(List<CampaignAnalytics> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20011 addDataItem(ApplicationCustomer dataItem) {
+  public InlineResponse20011 addDataItem(CampaignAnalytics dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,11 +55,11 @@ public class InlineResponse20011 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<ApplicationCustomer> getData() {
+  public List<CampaignAnalytics> getData() {
     return data;
   }
 
-  public void setData(List<ApplicationCustomer> data) {
+  public void setData(List<CampaignAnalytics> data) {
     this.data = data;
   }
 

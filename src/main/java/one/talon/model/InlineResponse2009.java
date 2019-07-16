@@ -36,9 +36,9 @@ public class InlineResponse2009 {
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<AccessLogEntry> data = new ArrayList<AccessLogEntry>();
 
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Integer totalResultSize;
 
   public InlineResponse2009 data(List<AccessLogEntry> data) {
     this.data = data;
@@ -63,22 +63,22 @@ public class InlineResponse2009 {
     this.data = data;
   }
 
-  public InlineResponse2009 hasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public InlineResponse2009 totalResultSize(Integer totalResultSize) {
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
   @ApiModelProperty(required = true, value = "")
-  public Boolean getHasMore() {
-    return hasMore;
+  public Integer getTotalResultSize() {
+    return totalResultSize;
   }
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Integer totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
@@ -92,12 +92,12 @@ public class InlineResponse2009 {
     }
     InlineResponse2009 inlineResponse2009 = (InlineResponse2009) o;
     return Objects.equals(this.data, inlineResponse2009.data) &&
-        Objects.equals(this.hasMore, inlineResponse2009.hasMore);
+        Objects.equals(this.totalResultSize, inlineResponse2009.totalResultSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, hasMore);
+    return Objects.hash(data, totalResultSize);
   }
 
 
@@ -107,7 +107,7 @@ public class InlineResponse2009 {
     sb.append("class InlineResponse2009 {\n");
     
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }

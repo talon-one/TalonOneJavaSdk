@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;User&gt;**](User.md) |  | 
+**data** | [**List&lt;EventType&gt;**](EventType.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

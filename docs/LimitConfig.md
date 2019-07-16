@@ -26,6 +26,7 @@ Name | Value
 COUPON | &quot;Coupon&quot;
 REFERRAL | &quot;Referral&quot;
 PROFILE | &quot;Profile&quot;
+IDENTIFIER | &quot;Identifier&quot;
 
 
 

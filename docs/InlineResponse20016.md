@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
+**data** | [**List&lt;ApplicationSession&gt;**](ApplicationSession.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

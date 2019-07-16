@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
-**hasMore** | **Boolean** |  | 
+**totalResultSize** | **Integer** |  | 
 
 
 

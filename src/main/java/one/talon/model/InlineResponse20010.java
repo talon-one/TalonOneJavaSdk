@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignAnalytics;
+import one.talon.model.AccessLogEntry;
 
 /**
  * InlineResponse20010
@@ -34,18 +34,18 @@ import one.talon.model.CampaignAnalytics;
 public class InlineResponse20010 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
+  private List<AccessLogEntry> data = new ArrayList<AccessLogEntry>();
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
 
-  public InlineResponse20010 data(List<CampaignAnalytics> data) {
+  public InlineResponse20010 data(List<AccessLogEntry> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20010 addDataItem(CampaignAnalytics dataItem) {
+  public InlineResponse20010 addDataItem(AccessLogEntry dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,30 +55,30 @@ public class InlineResponse20010 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CampaignAnalytics> getData() {
+  public List<AccessLogEntry> getData() {
     return data;
   }
 
-  public void setData(List<CampaignAnalytics> data) {
+  public void setData(List<AccessLogEntry> data) {
     this.data = data;
   }
 
-  public InlineResponse20010 totalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public InlineResponse20010 hasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * Get hasMore
+   * @return hasMore
   **/
   @ApiModelProperty(required = true, value = "")
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  public Boolean getHasMore() {
+    return hasMore;
   }
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
   }
 
 
@@ -92,12 +92,12 @@ public class InlineResponse20010 {
     }
     InlineResponse20010 inlineResponse20010 = (InlineResponse20010) o;
     return Objects.equals(this.data, inlineResponse20010.data) &&
-        Objects.equals(this.totalResultSize, inlineResponse20010.totalResultSize);
+        Objects.equals(this.hasMore, inlineResponse20010.hasMore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(data, hasMore);
   }
 
 
@@ -107,7 +107,7 @@ public class InlineResponse20010 {
     sb.append("class InlineResponse20010 {\n");
     
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("}");
     return sb.toString();
   }

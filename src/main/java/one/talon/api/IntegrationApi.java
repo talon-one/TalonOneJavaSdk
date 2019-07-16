@@ -27,6 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import one.talon.model.CouponReservations;
+import one.talon.model.InlineResponse200;
+import one.talon.model.InlineResponse2001;
 import one.talon.model.IntegrationState;
 import one.talon.model.NewCustomerProfile;
 import one.talon.model.NewCustomerSession;
@@ -59,6 +62,128 @@ public class IntegrationApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for createCouponReservation
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createCouponReservationCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = couponReservations;
+
+        // create path and map variables
+        String localVarPath = "/v1/coupon_reservations/{couponID}"
+            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createCouponReservationValidateBeforeCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'couponID' is set
+        if (couponID == null) {
+            throw new ApiException("Missing the required parameter 'couponID' when calling createCouponReservation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = createCouponReservationCall(couponID, couponReservations, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Create a new coupon reservation
+     * Create a coupon reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void createCouponReservation(Integer couponID, CouponReservations couponReservations) throws ApiException {
+        createCouponReservationWithHttpInfo(couponID, couponReservations);
+    }
+
+    /**
+     * Create a new coupon reservation
+     * Create a coupon reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> createCouponReservationWithHttpInfo(Integer couponID, CouponReservations couponReservations) throws ApiException {
+        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponID, couponReservations, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Create a new coupon reservation (asynchronously)
+     * Create a coupon reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createCouponReservationAsync(Integer couponID, CouponReservations couponReservations, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponID, couponReservations, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
     /**
      * Build call for createReferral
      * @param newReferral  (optional)
@@ -173,6 +298,128 @@ public class IntegrationApi {
         com.squareup.okhttp.Call call = createReferralValidateBeforeCall(newReferral, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Referral>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for deleteCouponReservation
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call deleteCouponReservationCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = couponReservations;
+
+        // create path and map variables
+        String localVarPath = "/v1/coupon_reservations/{couponID}"
+            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call deleteCouponReservationValidateBeforeCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'couponID' is set
+        if (couponID == null) {
+            throw new ApiException("Missing the required parameter 'couponID' when calling deleteCouponReservation(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = deleteCouponReservationCall(couponID, couponReservations, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Delete coupon reservations
+     * Remove reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteCouponReservation(Integer couponID, CouponReservations couponReservations) throws ApiException {
+        deleteCouponReservationWithHttpInfo(couponID, couponReservations);
+    }
+
+    /**
+     * Delete coupon reservations
+     * Remove reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteCouponReservationWithHttpInfo(Integer couponID, CouponReservations couponReservations) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponID, couponReservations, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Delete coupon reservations (asynchronously)
+     * Remove reservation for all passed customers on this couponID 
+     * @param couponID The ID of a coupon (required)
+     * @param couponReservations  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call deleteCouponReservationAsync(Integer couponID, CouponReservations couponReservations, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponID, couponReservations, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
         return call;
     }
     /**
@@ -291,6 +538,250 @@ public class IntegrationApi {
 
         com.squareup.okhttp.Call call = deleteCustomerDataValidateBeforeCall(integrationId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for getReservedCoupons
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getReservedCouponsCall(String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/v1/coupon_reservations/coupons/{integrationID}"
+            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getReservedCouponsValidateBeforeCall(String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'integrationId' is set
+        if (integrationId == null) {
+            throw new ApiException("Missing the required parameter 'integrationId' when calling getReservedCoupons(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getReservedCouponsCall(integrationId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get all valid reserved coupons
+     * Returns all coupons this user is subscribed to that are valid and usable 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @return InlineResponse2001
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse2001 getReservedCoupons(String integrationId) throws ApiException {
+        ApiResponse<InlineResponse2001> resp = getReservedCouponsWithHttpInfo(integrationId);
+        return resp.getData();
+    }
+
+    /**
+     * Get all valid reserved coupons
+     * Returns all coupons this user is subscribed to that are valid and usable 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse2001> getReservedCouponsWithHttpInfo(String integrationId) throws ApiException {
+        com.squareup.okhttp.Call call = getReservedCouponsValidateBeforeCall(integrationId, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get all valid reserved coupons (asynchronously)
+     * Returns all coupons this user is subscribed to that are valid and usable 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getReservedCouponsAsync(String integrationId, final ApiCallback<InlineResponse2001> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getReservedCouponsValidateBeforeCall(integrationId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getReservedCustomers
+     * @param couponID The ID of a coupon (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getReservedCustomersCall(Integer couponID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/v1/coupon_reservations/customerprofiles/{couponID}"
+            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getReservedCustomersValidateBeforeCall(Integer couponID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'couponID' is set
+        if (couponID == null) {
+            throw new ApiException("Missing the required parameter 'couponID' when calling getReservedCustomers(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getReservedCustomersCall(couponID, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Gets the users that have this coupon reserved
+     * Returns all users that have this coupon marked as reserved 
+     * @param couponID The ID of a coupon (required)
+     * @return InlineResponse200
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse200 getReservedCustomers(Integer couponID) throws ApiException {
+        ApiResponse<InlineResponse200> resp = getReservedCustomersWithHttpInfo(couponID);
+        return resp.getData();
+    }
+
+    /**
+     * Gets the users that have this coupon reserved
+     * Returns all users that have this coupon marked as reserved 
+     * @param couponID The ID of a coupon (required)
+     * @return ApiResponse&lt;InlineResponse200&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse200> getReservedCustomersWithHttpInfo(Integer couponID) throws ApiException {
+        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponID, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Gets the users that have this coupon reserved (asynchronously)
+     * Returns all users that have this coupon marked as reserved 
+     * @param couponID The ID of a coupon (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getReservedCustomersAsync(Integer couponID, final ApiCallback<InlineResponse200> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponID, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
