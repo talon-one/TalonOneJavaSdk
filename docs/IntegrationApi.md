@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCouponReservation**](IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponID} | Create a new coupon reservation
+[**createCouponReservation**](IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create a new coupon reservation
 [**createReferral**](IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
-[**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponID} | Delete coupon reservations
+[**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
-[**getReservedCoupons**](IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationID} | Get all valid reserved coupons
-[**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponID} | Gets the users that have this coupon reserved
+[**getReservedCoupons**](IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationId} | Get all valid reserved coupons
+[**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 [**trackEvent**](IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 [**updateCustomerProfile**](IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
 [**updateCustomerSession**](IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
@@ -17,11 +17,11 @@ Method | HTTP request | Description
 
 <a name="createCouponReservation"></a>
 # **createCouponReservation**
-> createCouponReservation(couponID, couponReservations)
+> Coupon createCouponReservation(couponValue, couponReservations)
 
 Create a new coupon reservation
 
-Create a coupon reservation for all passed customers on this couponID 
+Creates a coupon reservation for all passed customer profiles on this couponID 
 
 ### Example
 ```java
@@ -47,10 +47,11 @@ integration_auth.setApiKey("YOUR API KEY");
 //integration_auth.setApiKeyPrefix("Token");
 
 IntegrationApi apiInstance = new IntegrationApi();
-Integer couponID = 56; // Integer | The ID of a coupon
+String couponValue = "couponValue_example"; // String | The value of a coupon
 CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
 try {
-    apiInstance.createCouponReservation(couponID, couponReservations);
+    Coupon result = apiInstance.createCouponReservation(couponValue, couponReservations);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IntegrationApi#createCouponReservation");
     e.printStackTrace();
@@ -61,12 +62,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponID** | **Integer**| The ID of a coupon |
- **couponReservations** | [**CouponReservations**](CouponReservations.md)|  | [optional]
+ **couponValue** | **String**| The value of a coupon |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
-null (empty response body)
+[**Coupon**](Coupon.md)
 
 ### Authorization
 
@@ -75,7 +76,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="createReferral"></a>
 # **createReferral**
@@ -123,7 +124,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newReferral** | [**NewReferral**](NewReferral.md)|  | [optional]
+ **newReferral** | [**NewReferral**](NewReferral.md)|  |
 
 ### Return type
 
@@ -140,11 +141,11 @@ Name | Type | Description  | Notes
 
 <a name="deleteCouponReservation"></a>
 # **deleteCouponReservation**
-> deleteCouponReservation(couponID, couponReservations)
+> deleteCouponReservation(couponValue, couponReservations)
 
 Delete coupon reservations
 
-Remove reservation for all passed customers on this couponID 
+Removes all passed customer profiles reservation from this coupon 
 
 ### Example
 ```java
@@ -170,10 +171,10 @@ integration_auth.setApiKey("YOUR API KEY");
 //integration_auth.setApiKeyPrefix("Token");
 
 IntegrationApi apiInstance = new IntegrationApi();
-Integer couponID = 56; // Integer | The ID of a coupon
+String couponValue = "couponValue_example"; // String | The value of a coupon
 CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
 try {
-    apiInstance.deleteCouponReservation(couponID, couponReservations);
+    apiInstance.deleteCouponReservation(couponValue, couponReservations);
 } catch (ApiException e) {
     System.err.println("Exception when calling IntegrationApi#deleteCouponReservation");
     e.printStackTrace();
@@ -184,8 +185,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponID** | **Integer**| The ID of a coupon |
- **couponReservations** | [**CouponReservations**](CouponReservations.md)|  | [optional]
+ **couponValue** | **String**| The value of a coupon |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
@@ -323,9 +324,9 @@ Name | Type | Description  | Notes
 
 <a name="getReservedCustomers"></a>
 # **getReservedCustomers**
-> InlineResponse200 getReservedCustomers(couponID)
+> InlineResponse200 getReservedCustomers(couponValue)
 
-Gets the users that have this coupon reserved
+Get the users that have this coupon reserved
 
 Returns all users that have this coupon marked as reserved 
 
@@ -353,9 +354,9 @@ integration_auth.setApiKey("YOUR API KEY");
 //integration_auth.setApiKeyPrefix("Token");
 
 IntegrationApi apiInstance = new IntegrationApi();
-Integer couponID = 56; // Integer | The ID of a coupon
+String couponValue = "couponValue_example"; // String | The value of a coupon
 try {
-    InlineResponse200 result = apiInstance.getReservedCustomers(couponID);
+    InlineResponse200 result = apiInstance.getReservedCustomers(couponValue);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IntegrationApi#getReservedCustomers");
@@ -367,7 +368,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **couponID** | **Integer**| The ID of a coupon |
+ **couponValue** | **String**| The value of a coupon |
 
 ### Return type
 
@@ -428,7 +429,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newEvent** | [**NewEvent**](NewEvent.md)|  | [optional]
+ **newEvent** | [**NewEvent**](NewEvent.md)|  |
 
 ### Return type
 
@@ -491,7 +492,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
- **newCustomerProfile** | [**NewCustomerProfile**](NewCustomerProfile.md)|  | [optional]
+ **newCustomerProfile** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
 
 ### Return type
 
@@ -554,7 +555,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
- **newCustomerSession** | [**NewCustomerSession**](NewCustomerSession.md)|  | [optional]
+ **newCustomerSession** | [**NewCustomerSession**](NewCustomerSession.md)|  |
 
 ### Return type
 

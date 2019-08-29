@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>3.1.0</version>
+  <version>3.2.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:3.0.0"
+compile "one.talon:talon-one-client:3.2.1"
 ```
 
 ### Others
@@ -62,12 +62,14 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-3.0.0.jar`
+* `target/talon-one-client-3.2.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
+
+### Integration API
 
 ```java
 package com.example.consumer;
@@ -79,49 +81,68 @@ import one.talon.model.*;
 
 public class TalonApiTest {
     public static void main(String[] args) {
-
-        // Management API
-        ApiClient mApiClient = new ApiClient("manager_auth");
-        ManagementApi mApi = new ManagementApi(mApiClient);
-        mApi.getApiClient().setBasePath("http://localhost");
-        mApi.getApiClient().setApiKeyPrefix("Bearer");
-        LoginParams lp = new LoginParams();
-        lp.setEmail("demo@talon.one");
-        lp.setPassword("yourpassword");
-
-        try {
-            Session s = mApi.createSession(lp);
-            mApi.getApiClient().setApiKey(s.getToken());
-            Account acc = mApi.getAccount(1);
-            System.out.println(acc.toString());
-
-            System.out.println(mApi.getRuleset(1, 1, 1));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        // Integration API
-        ApiClient iApiClient = new ApiClient("integration_auth");
+        ApiClient iApiClient = new ApiClient("api_key_v1");
         IntegrationApi iApi = new IntegrationApi(iApiClient );
-        // setup: applicationId, applicationKey, basePath, apiKeyPrefix and apiKey
-        iApi.getApiClient().setApplicationId("1");
-        iApi.getApiClient().setApplicationKey("2f276f93baf3d415");
-        iApi.getApiClient().setBasePath("http://localhost");
+        
+        // Setup: basePath, apiKeyPrefix and apiKey
+        iApi.getApiClient().setBasePath("https://mycompany.talon.one");
         iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
         iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
-        // regarding 'Content-Signature' signing the request body is in process of deprecation
-        // therefore enforced to do in the client side
 
         try {
-            NewCustomerProfile body = new NewCustomerProfile();
-            IntegrationState ie = iApi.updateCustomerProfile("testCustomerProfile", body);
+            // Integration API example to send a session update
+            NewCustomerSession customerSession = new NewCustomerSession();
+            customerSession.setProfileId("Cool_Dude");
+            customerSession.setState("open");
+            customerSession.setTotal(42.0);
+
+            // Create/update a customer session using `updateCustomerSession` function
+            IntegrationState ie = iApi.updateCustomerSession("deetdoot", customerSession);
             System.out.println(ie.toString());
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 }
+```
 
+### Management API
+
+```java
+package com.example.consumer;
+
+import one.talon.ApiClient;
+import one.talon.api.IntegrationApi;
+import one.talon.api.ManagementApi;
+import one.talon.model.*;
+
+public class TalonApiTest {
+    public static void main(String[] args) {
+        // Management API example to load application with id 7
+        ApiClient mApiClient = new ApiClient("manager_auth");
+        ManagementApi mApi = new ManagementApi(mApiClient);
+
+        // Setup: basePath and bearer prefix
+        mApi.getApiClient().setBasePath("https://mycompany.talon.one");
+        mApi.getApiClient().setApiKeyPrefix("Bearer");
+        
+        LoginParams lp = new LoginParams();
+        lp.setEmail("admin@talon.one");
+        lp.setPassword("yourpassword");
+
+        try {
+            // Acquire session token
+            Session s = mApi.createSession(lp);
+            mApi.getApiClient().setApiKey(s.getToken());
+
+            // Calling `getApplication` function with the desired id (7)
+            Application application = mApi.getApplication(7);
+            System.out.println(application.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
 ```
 
 ## Documentation for API Endpoints
@@ -130,8 +151,12 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IntegrationApi* | [**createCouponReservation**](docs/IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create a new coupon reservation
 *IntegrationApi* | [**createReferral**](docs/IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
+*IntegrationApi* | [**deleteCouponReservation**](docs/IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 *IntegrationApi* | [**deleteCustomerData**](docs/IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
+*IntegrationApi* | [**getReservedCoupons**](docs/IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationId} | Get all valid reserved coupons
+*IntegrationApi* | [**getReservedCustomers**](docs/IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 *IntegrationApi* | [**trackEvent**](docs/IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 *IntegrationApi* | [**updateCustomerProfile**](docs/IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
 *IntegrationApi* | [**updateCustomerSession**](docs/IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
@@ -254,6 +279,7 @@ Class | Method | HTTP request | Description
  - [Coupon](docs/Coupon.md)
  - [CouponConstraints](docs/CouponConstraints.md)
  - [CouponRejectionReason](docs/CouponRejectionReason.md)
+ - [CouponReservations](docs/CouponReservations.md)
  - [CouponSearch](docs/CouponSearch.md)
  - [CouponValue](docs/CouponValue.md)
  - [CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
@@ -297,6 +323,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse20025](docs/InlineResponse20025.md)
  - [InlineResponse20026](docs/InlineResponse20026.md)
  - [InlineResponse20027](docs/InlineResponse20027.md)
+ - [InlineResponse20028](docs/InlineResponse20028.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
@@ -318,6 +345,8 @@ Class | Method | HTTP request | Description
  - [LoyaltyPoints](docs/LoyaltyPoints.md)
  - [LoyaltyProgram](docs/LoyaltyProgram.md)
  - [LoyaltyProgramBalance](docs/LoyaltyProgramBalance.md)
+ - [LoyaltyProgramLedgers](docs/LoyaltyProgramLedgers.md)
+ - [LoyaltySubLedger](docs/LoyaltySubLedger.md)
  - [ManagerConfig](docs/ManagerConfig.md)
  - [Meta](docs/Meta.md)
  - [MiscUpdateUserLatestFeature](docs/MiscUpdateUserLatestFeature.md)
@@ -378,6 +407,12 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
+### api_key_v1
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 ### integration_auth
 
 - **Type**: API key

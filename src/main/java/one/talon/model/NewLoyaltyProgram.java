@@ -52,6 +52,10 @@ public class NewLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALIDITY)
   private String defaultValidity;
 
+  public static final String SERIALIZED_NAME_ALLOW_SUBLEDGER = "allowSubledger";
+  @SerializedName(SERIALIZED_NAME_ALLOW_SUBLEDGER)
+  private Boolean allowSubledger;
+
   public NewLoyaltyProgram name(String name) {
     this.name = name;
     return this;
@@ -150,6 +154,24 @@ public class NewLoyaltyProgram {
     this.defaultValidity = defaultValidity;
   }
 
+  public NewLoyaltyProgram allowSubledger(Boolean allowSubledger) {
+    this.allowSubledger = allowSubledger;
+    return this;
+  }
+
+   /**
+   * Indicates if this program supports subledgers inside the program
+   * @return allowSubledger
+  **/
+  @ApiModelProperty(required = true, value = "Indicates if this program supports subledgers inside the program")
+  public Boolean getAllowSubledger() {
+    return allowSubledger;
+  }
+
+  public void setAllowSubledger(Boolean allowSubledger) {
+    this.allowSubledger = allowSubledger;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -164,12 +186,13 @@ public class NewLoyaltyProgram {
         Objects.equals(this.title, newLoyaltyProgram.title) &&
         Objects.equals(this.description, newLoyaltyProgram.description) &&
         Objects.equals(this.subscribedApplications, newLoyaltyProgram.subscribedApplications) &&
-        Objects.equals(this.defaultValidity, newLoyaltyProgram.defaultValidity);
+        Objects.equals(this.defaultValidity, newLoyaltyProgram.defaultValidity) &&
+        Objects.equals(this.allowSubledger, newLoyaltyProgram.allowSubledger);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, subscribedApplications, defaultValidity);
+    return Objects.hash(name, title, description, subscribedApplications, defaultValidity, allowSubledger);
   }
 
 
@@ -183,6 +206,7 @@ public class NewLoyaltyProgram {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
     sb.append("    defaultValidity: ").append(toIndentedString(defaultValidity)).append("\n");
+    sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
     sb.append("}");
     return sb.toString();
   }

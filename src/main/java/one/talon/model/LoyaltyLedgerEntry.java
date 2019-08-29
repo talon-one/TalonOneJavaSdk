@@ -115,6 +115,10 @@ public class LoyaltyLedgerEntry {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_SUB_LEDGER_I_D = "subLedgerID";
+  @SerializedName(SERIALIZED_NAME_SUB_LEDGER_I_D)
+  private String subLedgerID;
+
   public LoyaltyLedgerEntry created(OffsetDateTime created) {
     this.created = created;
     return this;
@@ -277,6 +281,24 @@ public class LoyaltyLedgerEntry {
     this.name = name;
   }
 
+  public LoyaltyLedgerEntry subLedgerID(String subLedgerID) {
+    this.subLedgerID = subLedgerID;
+    return this;
+  }
+
+   /**
+   * This specifies if we are adding loyalty points to the main ledger or a subledger
+   * @return subLedgerID
+  **/
+  @ApiModelProperty(required = true, value = "This specifies if we are adding loyalty points to the main ledger or a subledger")
+  public String getSubLedgerID() {
+    return subLedgerID;
+  }
+
+  public void setSubLedgerID(String subLedgerID) {
+    this.subLedgerID = subLedgerID;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -295,12 +317,13 @@ public class LoyaltyLedgerEntry {
         Objects.equals(this.type, loyaltyLedgerEntry.type) &&
         Objects.equals(this.amount, loyaltyLedgerEntry.amount) &&
         Objects.equals(this.expiryDate, loyaltyLedgerEntry.expiryDate) &&
-        Objects.equals(this.name, loyaltyLedgerEntry.name);
+        Objects.equals(this.name, loyaltyLedgerEntry.name) &&
+        Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, expiryDate, name);
+    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, expiryDate, name, subLedgerID);
   }
 
 
@@ -318,6 +341,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

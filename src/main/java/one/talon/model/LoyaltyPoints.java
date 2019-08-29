@@ -43,6 +43,10 @@ public class LoyaltyPoints {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DURATION)
   private String expiryDuration;
 
+  public static final String SERIALIZED_NAME_SUB_LEDGER_I_D = "subLedgerID";
+  @SerializedName(SERIALIZED_NAME_SUB_LEDGER_I_D)
+  private String subLedgerID;
+
   public LoyaltyPoints points(BigDecimal points) {
     this.points = points;
     return this;
@@ -97,6 +101,24 @@ public class LoyaltyPoints {
     this.expiryDuration = expiryDuration;
   }
 
+  public LoyaltyPoints subLedgerID(String subLedgerID) {
+    this.subLedgerID = subLedgerID;
+    return this;
+  }
+
+   /**
+   * This specifies if we are adding loyalty points to the main ledger or a subledger
+   * @return subLedgerID
+  **/
+  @ApiModelProperty(value = "This specifies if we are adding loyalty points to the main ledger or a subledger")
+  public String getSubLedgerID() {
+    return subLedgerID;
+  }
+
+  public void setSubLedgerID(String subLedgerID) {
+    this.subLedgerID = subLedgerID;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -109,12 +131,13 @@ public class LoyaltyPoints {
     LoyaltyPoints loyaltyPoints = (LoyaltyPoints) o;
     return Objects.equals(this.points, loyaltyPoints.points) &&
         Objects.equals(this.name, loyaltyPoints.name) &&
-        Objects.equals(this.expiryDuration, loyaltyPoints.expiryDuration);
+        Objects.equals(this.expiryDuration, loyaltyPoints.expiryDuration) &&
+        Objects.equals(this.subLedgerID, loyaltyPoints.subLedgerID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, name, expiryDuration);
+    return Objects.hash(points, name, expiryDuration, subLedgerID);
   }
 
 
@@ -126,6 +149,7 @@ public class LoyaltyPoints {
     sb.append("    points: ").append(toIndentedString(points)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    expiryDuration: ").append(toIndentedString(expiryDuration)).append("\n");
+    sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
