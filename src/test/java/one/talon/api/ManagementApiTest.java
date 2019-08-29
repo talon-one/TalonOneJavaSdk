@@ -33,7 +33,6 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
-import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -54,6 +53,7 @@ import one.talon.model.InlineResponse20024;
 import one.talon.model.InlineResponse20025;
 import one.talon.model.InlineResponse20026;
 import one.talon.model.InlineResponse20027;
+import one.talon.model.InlineResponse20028;
 import one.talon.model.InlineResponse2003;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
@@ -128,7 +128,7 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         CampaignCopy campaignCopy = null;
-        InlineResponse2001 response = api.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
+        InlineResponse2003 response = api.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
 
         // TODO: test validations
     }
@@ -162,9 +162,9 @@ public class ManagementApiTest {
     public void createCouponsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        String silent = null;
         NewCoupons newCoupons = null;
-        InlineResponse2003 response = api.createCoupons(applicationId, campaignId, silent, newCoupons);
+        String silent = null;
+        InlineResponse2001 response = api.createCoupons(applicationId, campaignId, newCoupons, silent);
 
         // TODO: test validations
     }
@@ -339,7 +339,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2008 response = api.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse2009 response = api.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -363,7 +363,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2009 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse20010 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -434,7 +434,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2008 response = api.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse2009 response = api.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -449,7 +449,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAllRolesTest() throws ApiException {
-        InlineResponse20027 response = api.getAllRoles();
+        InlineResponse20028 response = api.getAllRoles();
 
         // TODO: test validations
     }
@@ -514,7 +514,7 @@ public class ManagementApiTest {
     @Test
     public void getApplicationCustomersTest() throws ApiException {
         Integer applicationId = null;
-        InlineResponse20011 response = api.getApplicationCustomers(applicationId);
+        InlineResponse20012 response = api.getApplicationCustomers(applicationId);
 
         // TODO: test validations
     }
@@ -530,7 +530,7 @@ public class ManagementApiTest {
     @Test
     public void getApplicationCustomersByAttributesTest() throws ApiException {
         ApplicationCustomerSearch applicationCustomerSearch = null;
-        InlineResponse20012 response = api.getApplicationCustomersByAttributes(applicationCustomerSearch);
+        InlineResponse20013 response = api.getApplicationCustomersByAttributes(applicationCustomerSearch);
 
         // TODO: test validations
     }
@@ -549,7 +549,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20018 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+        InlineResponse20019 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -579,7 +579,7 @@ public class ManagementApiTest {
         String attributesQuery = null;
         String ruleQuery = null;
         String campaignQuery = null;
-        InlineResponse20016 response = api.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+        InlineResponse20017 response = api.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
 
         // TODO: test validations
     }
@@ -609,7 +609,7 @@ public class ManagementApiTest {
         String attributesQuery = null;
         String ruleQuery = null;
         String campaignQuery = null;
-        InlineResponse20017 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
+        InlineResponse20018 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
 
         // TODO: test validations
     }
@@ -646,7 +646,9 @@ public class ManagementApiTest {
         Integer skip = null;
         String sort = null;
         String profile = null;
-        InlineResponse20015 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile);
+        String state = null;
+        String coupon = null;
+        InlineResponse20016 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon);
 
         // TODO: test validations
     }
@@ -664,7 +666,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse200 response = api.getApplications(pageSize, skip, sort);
+        InlineResponse2002 response = api.getApplications(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -717,7 +719,7 @@ public class ManagementApiTest {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String granularity = null;
-        InlineResponse20010 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+        InlineResponse20011 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
 
         // TODO: test validations
     }
@@ -733,12 +735,12 @@ public class ManagementApiTest {
     @Test
     public void getCampaignByAttributesTest() throws ApiException {
         Integer applicationId = null;
+        CampaignSearch campaignSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
         String campaignState = null;
-        CampaignSearch campaignSearch = null;
-        InlineResponse2001 response = api.getCampaignByAttributes(applicationId, pageSize, skip, sort, campaignState, campaignSearch);
+        InlineResponse2003 response = api.getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState);
 
         // TODO: test validations
     }
@@ -774,7 +776,11 @@ public class ManagementApiTest {
         Integer skip = null;
         String sort = null;
         String campaignState = null;
-        InlineResponse2001 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState);
+        String name = null;
+        String tags = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
+        InlineResponse2003 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -792,7 +798,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20024 response = api.getChanges(pageSize, skip, sort);
+        InlineResponse20025 response = api.getChanges(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -825,7 +831,7 @@ public class ManagementApiTest {
         Integer referralId = null;
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
-        InlineResponse2003 response = api.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+        InlineResponse2001 response = api.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
 
         // TODO: test validations
     }
@@ -842,6 +848,7 @@ public class ManagementApiTest {
     public void getCouponsByAttributesTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
+        CouponSearch couponSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -854,8 +861,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        CouponSearch couponSearch = null;
-        InlineResponse2003 response = api.getCouponsByAttributes(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, couponSearch);
+        InlineResponse2001 response = api.getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -871,6 +877,7 @@ public class ManagementApiTest {
     @Test
     public void getCouponsByAttributesApplicationWideTest() throws ApiException {
         Integer applicationId = null;
+        CouponSearch couponSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -884,8 +891,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        CouponSearch couponSearch = null;
-        InlineResponse2003 response = api.getCouponsByAttributesApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, couponSearch);
+        InlineResponse2001 response = api.getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -914,7 +920,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         String batchId = null;
         Boolean exactMatch = null;
-        InlineResponse2004 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+        InlineResponse2005 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
 
         // TODO: test validations
     }
@@ -960,7 +966,7 @@ public class ManagementApiTest {
         String integrationId = null;
         String campaignName = null;
         String advocateName = null;
-        InlineResponse20013 response = api.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+        InlineResponse20014 response = api.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
 
         // TODO: test validations
     }
@@ -985,7 +991,7 @@ public class ManagementApiTest {
         String integrationId = null;
         String campaignName = null;
         String advocateName = null;
-        InlineResponse20014 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+        InlineResponse20015 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
 
         // TODO: test validations
     }
@@ -1039,7 +1045,7 @@ public class ManagementApiTest {
     public void getCustomerProfilesTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20012 response = api.getCustomerProfiles(pageSize, skip);
+        InlineResponse20013 response = api.getCustomerProfiles(pageSize, skip);
 
         // TODO: test validations
     }
@@ -1054,10 +1060,10 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomersByAttributesTest() throws ApiException {
+        ApplicationCustomerSearch applicationCustomerSearch = null;
         Integer pageSize = null;
         Integer skip = null;
-        ApplicationCustomerSearch applicationCustomerSearch = null;
-        InlineResponse20012 response = api.getCustomersByAttributes(pageSize, skip, applicationCustomerSearch);
+        InlineResponse20013 response = api.getCustomersByAttributes(applicationCustomerSearch, pageSize, skip);
 
         // TODO: test validations
     }
@@ -1078,7 +1084,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20022 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20023 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1098,7 +1104,7 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         String entity = null;
-        InlineResponse20025 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20026 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
@@ -1115,7 +1121,7 @@ public class ManagementApiTest {
     public void getImportsTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20026 response = api.getImports(pageSize, skip);
+        InlineResponse20027 response = api.getImports(pageSize, skip);
 
         // TODO: test validations
     }
@@ -1163,7 +1169,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getLoyaltyProgramsTest() throws ApiException {
-        InlineResponse2007 response = api.getLoyaltyPrograms();
+        InlineResponse2008 response = api.getLoyaltyPrograms();
 
         // TODO: test validations
     }
@@ -1189,7 +1195,7 @@ public class ManagementApiTest {
         String valid = null;
         String usable = null;
         String advocate = null;
-        InlineResponse2005 response = api.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+        InlineResponse2006 response = api.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
 
         // TODO: test validations
     }
@@ -1215,7 +1221,7 @@ public class ManagementApiTest {
         String valid = null;
         String usable = null;
         String advocate = null;
-        InlineResponse2006 response = api.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+        InlineResponse2007 response = api.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
 
         // TODO: test validations
     }
@@ -1269,7 +1275,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2002 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+        InlineResponse2004 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1303,7 +1309,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20023 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20024 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1343,7 +1349,7 @@ public class ManagementApiTest {
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20020 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+        InlineResponse20021 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1368,7 +1374,7 @@ public class ManagementApiTest {
         String requestUuid = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20021 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+        InlineResponse20022 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1387,7 +1393,7 @@ public class ManagementApiTest {
         String sort = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20019 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+        InlineResponse20020 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
 
         // TODO: test validations
     }
@@ -1453,6 +1459,7 @@ public class ManagementApiTest {
     public void searchCouponsAdvancedTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
+        AttributeQuery attributeQuery = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1465,8 +1472,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        AttributeQuery attributeQuery = null;
-        InlineResponse2003 response = api.searchCouponsAdvanced(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+        InlineResponse2001 response = api.searchCouponsAdvanced(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -1482,6 +1488,7 @@ public class ManagementApiTest {
     @Test
     public void searchCouponsAdvancedApplicationWideTest() throws ApiException {
         Integer applicationId = null;
+        AttributeQuery attributeQuery = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1495,8 +1502,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        AttributeQuery attributeQuery = null;
-        InlineResponse2003 response = api.searchCouponsAdvancedApplicationWide(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+        InlineResponse2001 response = api.searchCouponsAdvancedApplicationWide(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -1512,6 +1518,7 @@ public class ManagementApiTest {
     @Test
     public void searchCouponsAdvancedApplicationWideWithoutTotalCountTest() throws ApiException {
         Integer applicationId = null;
+        AttributeQuery attributeQuery = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1525,8 +1532,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        AttributeQuery attributeQuery = null;
-        InlineResponse2004 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, attributeQuery);
+        InlineResponse2005 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -1543,6 +1549,7 @@ public class ManagementApiTest {
     public void searchCouponsAdvancedWithoutTotalCountTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
+        AttributeQuery attributeQuery = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1555,8 +1562,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        AttributeQuery attributeQuery = null;
-        InlineResponse2004 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, attributeQuery);
+        InlineResponse2005 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }

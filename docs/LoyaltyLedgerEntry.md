@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **amount** | [**BigDecimal**](BigDecimal.md) |  | 
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **name** | **String** | A name referencing the condition or effect that added this entry, or the specific name provided in an API call. | 
+**subLedgerID** | **String** | This specifies if we are adding loyalty points to the main ledger or a subledger | 
 
 
 <a name="TypeEnum"></a>

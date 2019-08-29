@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
@@ -64,26 +65,26 @@ public class IntegrationApi {
 
     /**
      * Build call for createCouponReservation
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createCouponReservationCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createCouponReservationCall(String couponValue, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = couponReservations;
 
         // create path and map variables
-        String localVarPath = "/v1/coupon_reservations/{couponID}"
-            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+        String localVarPath = "/v1/coupon_reservations/{couponValue}"
+            .replaceAll("\\{" + "couponValue" + "\\}", apiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -113,53 +114,61 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createCouponReservationValidateBeforeCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createCouponReservationValidateBeforeCall(String couponValue, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'couponID' is set
-        if (couponID == null) {
-            throw new ApiException("Missing the required parameter 'couponID' when calling createCouponReservation(Async)");
+        // verify the required parameter 'couponValue' is set
+        if (couponValue == null) {
+            throw new ApiException("Missing the required parameter 'couponValue' when calling createCouponReservation(Async)");
+        }
+        
+        // verify the required parameter 'couponReservations' is set
+        if (couponReservations == null) {
+            throw new ApiException("Missing the required parameter 'couponReservations' when calling createCouponReservation(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = createCouponReservationCall(couponID, couponReservations, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createCouponReservationCall(couponValue, couponReservations, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Create a new coupon reservation
-     * Create a coupon reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
+     * @return Coupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void createCouponReservation(Integer couponID, CouponReservations couponReservations) throws ApiException {
-        createCouponReservationWithHttpInfo(couponID, couponReservations);
+    public Coupon createCouponReservation(String couponValue, CouponReservations couponReservations) throws ApiException {
+        ApiResponse<Coupon> resp = createCouponReservationWithHttpInfo(couponValue, couponReservations);
+        return resp.getData();
     }
 
     /**
      * Create a new coupon reservation
-     * Create a coupon reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
+     * @return ApiResponse&lt;Coupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> createCouponReservationWithHttpInfo(Integer couponID, CouponReservations couponReservations) throws ApiException {
-        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponID, couponReservations, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<Coupon> createCouponReservationWithHttpInfo(String couponValue, CouponReservations couponReservations) throws ApiException {
+        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponValue, couponReservations, null, null);
+        Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Create a new coupon reservation (asynchronously)
-     * Create a coupon reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createCouponReservationAsync(Integer couponID, CouponReservations couponReservations, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call createCouponReservationAsync(String couponValue, CouponReservations couponReservations, final ApiCallback<Coupon> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -180,13 +189,14 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponID, couponReservations, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = createCouponReservationValidateBeforeCall(couponValue, couponReservations, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for createReferral
-     * @param newReferral  (optional)
+     * @param newReferral  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -235,6 +245,11 @@ public class IntegrationApi {
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call createReferralValidateBeforeCall(NewReferral newReferral, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
+        // verify the required parameter 'newReferral' is set
+        if (newReferral == null) {
+            throw new ApiException("Missing the required parameter 'newReferral' when calling createReferral(Async)");
+        }
+        
 
         com.squareup.okhttp.Call call = createReferralCall(newReferral, progressListener, progressRequestListener);
         return call;
@@ -244,7 +259,7 @@ public class IntegrationApi {
     /**
      * Create a referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
-     * @param newReferral  (optional)
+     * @param newReferral  (required)
      * @return Referral
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -256,7 +271,7 @@ public class IntegrationApi {
     /**
      * Create a referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
-     * @param newReferral  (optional)
+     * @param newReferral  (required)
      * @return ApiResponse&lt;Referral&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -269,7 +284,7 @@ public class IntegrationApi {
     /**
      * Create a referral code for an advocate (asynchronously)
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
-     * @param newReferral  (optional)
+     * @param newReferral  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -302,19 +317,19 @@ public class IntegrationApi {
     }
     /**
      * Build call for deleteCouponReservation
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteCouponReservationCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteCouponReservationCall(String couponValue, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = couponReservations;
 
         // create path and map variables
-        String localVarPath = "/v1/coupon_reservations/{couponID}"
-            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+        String localVarPath = "/v1/coupon_reservations/{couponValue}"
+            .replaceAll("\\{" + "couponValue" + "\\}", apiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -351,53 +366,58 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteCouponReservationValidateBeforeCall(Integer couponID, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteCouponReservationValidateBeforeCall(String couponValue, CouponReservations couponReservations, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'couponID' is set
-        if (couponID == null) {
-            throw new ApiException("Missing the required parameter 'couponID' when calling deleteCouponReservation(Async)");
+        // verify the required parameter 'couponValue' is set
+        if (couponValue == null) {
+            throw new ApiException("Missing the required parameter 'couponValue' when calling deleteCouponReservation(Async)");
+        }
+        
+        // verify the required parameter 'couponReservations' is set
+        if (couponReservations == null) {
+            throw new ApiException("Missing the required parameter 'couponReservations' when calling deleteCouponReservation(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = deleteCouponReservationCall(couponID, couponReservations, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteCouponReservationCall(couponValue, couponReservations, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Delete coupon reservations
-     * Remove reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * Removes all passed customer profiles reservation from this coupon 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteCouponReservation(Integer couponID, CouponReservations couponReservations) throws ApiException {
-        deleteCouponReservationWithHttpInfo(couponID, couponReservations);
+    public void deleteCouponReservation(String couponValue, CouponReservations couponReservations) throws ApiException {
+        deleteCouponReservationWithHttpInfo(couponValue, couponReservations);
     }
 
     /**
      * Delete coupon reservations
-     * Remove reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * Removes all passed customer profiles reservation from this coupon 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteCouponReservationWithHttpInfo(Integer couponID, CouponReservations couponReservations) throws ApiException {
-        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponID, couponReservations, null, null);
+    public ApiResponse<Void> deleteCouponReservationWithHttpInfo(String couponValue, CouponReservations couponReservations) throws ApiException {
+        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponValue, couponReservations, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Delete coupon reservations (asynchronously)
-     * Remove reservation for all passed customers on this couponID 
-     * @param couponID The ID of a coupon (required)
-     * @param couponReservations  (optional)
+     * Removes all passed customer profiles reservation from this coupon 
+     * @param couponValue The value of a coupon (required)
+     * @param couponReservations  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteCouponReservationAsync(Integer couponID, CouponReservations couponReservations, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteCouponReservationAsync(String couponValue, CouponReservations couponReservations, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -418,7 +438,7 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponID, couponReservations, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteCouponReservationValidateBeforeCall(couponValue, couponReservations, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -552,7 +572,7 @@ public class IntegrationApi {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v1/coupon_reservations/coupons/{integrationID}"
+        String localVarPath = "/v1/coupon_reservations/coupons/{integrationId}"
             .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -664,18 +684,18 @@ public class IntegrationApi {
     }
     /**
      * Build call for getReservedCustomers
-     * @param couponID The ID of a coupon (required)
+     * @param couponValue The value of a coupon (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getReservedCustomersCall(Integer couponID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getReservedCustomersCall(String couponValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v1/coupon_reservations/customerprofiles/{couponID}"
-            .replaceAll("\\{" + "couponID" + "\\}", apiClient.escapeString(couponID.toString()));
+        String localVarPath = "/v1/coupon_reservations/customerprofiles/{couponValue}"
+            .replaceAll("\\{" + "couponValue" + "\\}", apiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -712,53 +732,53 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getReservedCustomersValidateBeforeCall(Integer couponID, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getReservedCustomersValidateBeforeCall(String couponValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'couponID' is set
-        if (couponID == null) {
-            throw new ApiException("Missing the required parameter 'couponID' when calling getReservedCustomers(Async)");
+        // verify the required parameter 'couponValue' is set
+        if (couponValue == null) {
+            throw new ApiException("Missing the required parameter 'couponValue' when calling getReservedCustomers(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = getReservedCustomersCall(couponID, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReservedCustomersCall(couponValue, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Gets the users that have this coupon reserved
+     * Get the users that have this coupon reserved
      * Returns all users that have this coupon marked as reserved 
-     * @param couponID The ID of a coupon (required)
+     * @param couponValue The value of a coupon (required)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse200 getReservedCustomers(Integer couponID) throws ApiException {
-        ApiResponse<InlineResponse200> resp = getReservedCustomersWithHttpInfo(couponID);
+    public InlineResponse200 getReservedCustomers(String couponValue) throws ApiException {
+        ApiResponse<InlineResponse200> resp = getReservedCustomersWithHttpInfo(couponValue);
         return resp.getData();
     }
 
     /**
-     * Gets the users that have this coupon reserved
+     * Get the users that have this coupon reserved
      * Returns all users that have this coupon marked as reserved 
-     * @param couponID The ID of a coupon (required)
+     * @param couponValue The value of a coupon (required)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse200> getReservedCustomersWithHttpInfo(Integer couponID) throws ApiException {
-        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponID, null, null);
+    public ApiResponse<InlineResponse200> getReservedCustomersWithHttpInfo(String couponValue) throws ApiException {
+        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponValue, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Gets the users that have this coupon reserved (asynchronously)
+     * Get the users that have this coupon reserved (asynchronously)
      * Returns all users that have this coupon marked as reserved 
-     * @param couponID The ID of a coupon (required)
+     * @param couponValue The value of a coupon (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getReservedCustomersAsync(Integer couponID, final ApiCallback<InlineResponse200> callback) throws ApiException {
+    public com.squareup.okhttp.Call getReservedCustomersAsync(String couponValue, final ApiCallback<InlineResponse200> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -779,14 +799,14 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponID, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReservedCustomersValidateBeforeCall(couponValue, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for trackEvent
-     * @param newEvent  (optional)
+     * @param newEvent  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -835,6 +855,11 @@ public class IntegrationApi {
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call trackEventValidateBeforeCall(NewEvent newEvent, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
+        // verify the required parameter 'newEvent' is set
+        if (newEvent == null) {
+            throw new ApiException("Missing the required parameter 'newEvent' when calling trackEvent(Async)");
+        }
+        
 
         com.squareup.okhttp.Call call = trackEventCall(newEvent, progressListener, progressRequestListener);
         return call;
@@ -844,7 +869,7 @@ public class IntegrationApi {
     /**
      * Track an Event
      * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
-     * @param newEvent  (optional)
+     * @param newEvent  (required)
      * @return IntegrationState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -856,7 +881,7 @@ public class IntegrationApi {
     /**
      * Track an Event
      * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
-     * @param newEvent  (optional)
+     * @param newEvent  (required)
      * @return ApiResponse&lt;IntegrationState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -869,7 +894,7 @@ public class IntegrationApi {
     /**
      * Track an Event (asynchronously)
      * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
-     * @param newEvent  (optional)
+     * @param newEvent  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -903,7 +928,7 @@ public class IntegrationApi {
     /**
      * Build call for updateCustomerProfile
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param newCustomerProfile  (optional)
+     * @param newCustomerProfile  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -958,6 +983,11 @@ public class IntegrationApi {
             throw new ApiException("Missing the required parameter 'integrationId' when calling updateCustomerProfile(Async)");
         }
         
+        // verify the required parameter 'newCustomerProfile' is set
+        if (newCustomerProfile == null) {
+            throw new ApiException("Missing the required parameter 'newCustomerProfile' when calling updateCustomerProfile(Async)");
+        }
+        
 
         com.squareup.okhttp.Call call = updateCustomerProfileCall(integrationId, newCustomerProfile, progressListener, progressRequestListener);
         return call;
@@ -968,7 +998,7 @@ public class IntegrationApi {
      * Update a Customer Profile
      * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param newCustomerProfile  (optional)
+     * @param newCustomerProfile  (required)
      * @return IntegrationState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -981,7 +1011,7 @@ public class IntegrationApi {
      * Update a Customer Profile
      * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param newCustomerProfile  (optional)
+     * @param newCustomerProfile  (required)
      * @return ApiResponse&lt;IntegrationState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -995,7 +1025,7 @@ public class IntegrationApi {
      * Update a Customer Profile (asynchronously)
      * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param newCustomerProfile  (optional)
+     * @param newCustomerProfile  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1029,7 +1059,7 @@ public class IntegrationApi {
     /**
      * Build call for updateCustomerSession
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param newCustomerSession  (optional)
+     * @param newCustomerSession  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1084,6 +1114,11 @@ public class IntegrationApi {
             throw new ApiException("Missing the required parameter 'customerSessionId' when calling updateCustomerSession(Async)");
         }
         
+        // verify the required parameter 'newCustomerSession' is set
+        if (newCustomerSession == null) {
+            throw new ApiException("Missing the required parameter 'newCustomerSession' when calling updateCustomerSession(Async)");
+        }
+        
 
         com.squareup.okhttp.Call call = updateCustomerSessionCall(customerSessionId, newCustomerSession, progressListener, progressRequestListener);
         return call;
@@ -1094,7 +1129,7 @@ public class IntegrationApi {
      * Update a Customer Session
      * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param newCustomerSession  (optional)
+     * @param newCustomerSession  (required)
      * @return IntegrationState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1107,7 +1142,7 @@ public class IntegrationApi {
      * Update a Customer Session
      * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param newCustomerSession  (optional)
+     * @param newCustomerSession  (required)
      * @return ApiResponse&lt;IntegrationState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1121,7 +1156,7 @@ public class IntegrationApi {
      * Update a Customer Session (asynchronously)
      * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param newCustomerSession  (optional)
+     * @param newCustomerSession  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

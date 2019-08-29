@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import one.talon.model.LoyaltyProgramBalance;
+import one.talon.model.LoyaltyProgramLedgers;
 
 /**
  * Customer specific information about loyalty points.
@@ -36,14 +36,14 @@ import one.talon.model.LoyaltyProgramBalance;
 public class Loyalty {
   public static final String SERIALIZED_NAME_PROGRAMS = "programs";
   @SerializedName(SERIALIZED_NAME_PROGRAMS)
-  private Map<String, LoyaltyProgramBalance> programs = new HashMap<String, LoyaltyProgramBalance>();
+  private Map<String, LoyaltyProgramLedgers> programs = new HashMap<String, LoyaltyProgramLedgers>();
 
-  public Loyalty programs(Map<String, LoyaltyProgramBalance> programs) {
+  public Loyalty programs(Map<String, LoyaltyProgramLedgers> programs) {
     this.programs = programs;
     return this;
   }
 
-  public Loyalty putProgramsItem(String key, LoyaltyProgramBalance programsItem) {
+  public Loyalty putProgramsItem(String key, LoyaltyProgramLedgers programsItem) {
     this.programs.put(key, programsItem);
     return this;
   }
@@ -53,11 +53,11 @@ public class Loyalty {
    * @return programs
   **/
   @ApiModelProperty(required = true, value = "A map holding information about the loyalty programs balance")
-  public Map<String, LoyaltyProgramBalance> getPrograms() {
+  public Map<String, LoyaltyProgramLedgers> getPrograms() {
     return programs;
   }
 
-  public void setPrograms(Map<String, LoyaltyProgramBalance> programs) {
+  public void setPrograms(Map<String, LoyaltyProgramLedgers> programs) {
     this.programs = programs;
   }
 

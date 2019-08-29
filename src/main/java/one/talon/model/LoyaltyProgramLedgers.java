@@ -26,23 +26,67 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import one.talon.model.LoyaltySubLedger;
+import one.talon.model.LoyaltyProgramBalance;
 
 /**
- * Ledger of Balance in Loyalty Program for a Customer
+ * Customer specific information about loyalty points.
  */
-@ApiModel(description = "Ledger of Balance in Loyalty Program for a Customer")
+@ApiModel(description = "Customer specific information about loyalty points.")
 
-public class LoyaltyLedger {
+public class LoyaltyProgramLedgers {
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_LEDGER = "ledger";
   @SerializedName(SERIALIZED_NAME_LEDGER)
-  private LoyaltySubLedger ledger = null;
+  private LoyaltyProgramBalance ledger = null;
 
   public static final String SERIALIZED_NAME_SUB_LEDGERS = "subLedgers";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGERS)
-  private Map<String, LoyaltySubLedger> subLedgers = null;
+  private Map<String, LoyaltyProgramBalance> subLedgers = null;
 
-  public LoyaltyLedger ledger(LoyaltySubLedger ledger) {
+  public LoyaltyProgramLedgers title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Visable name of loyalty program
+   * @return title
+  **/
+  @ApiModelProperty(required = true, value = "Visable name of loyalty program")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public LoyaltyProgramLedgers name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Internal name of loyalty program
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "Internal name of loyalty program")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public LoyaltyProgramLedgers ledger(LoyaltyProgramBalance ledger) {
     this.ledger = ledger;
     return this;
   }
@@ -52,22 +96,22 @@ public class LoyaltyLedger {
    * @return ledger
   **/
   @ApiModelProperty(required = true, value = "")
-  public LoyaltySubLedger getLedger() {
+  public LoyaltyProgramBalance getLedger() {
     return ledger;
   }
 
-  public void setLedger(LoyaltySubLedger ledger) {
+  public void setLedger(LoyaltyProgramBalance ledger) {
     this.ledger = ledger;
   }
 
-  public LoyaltyLedger subLedgers(Map<String, LoyaltySubLedger> subLedgers) {
+  public LoyaltyProgramLedgers subLedgers(Map<String, LoyaltyProgramBalance> subLedgers) {
     this.subLedgers = subLedgers;
     return this;
   }
 
-  public LoyaltyLedger putSubLedgersItem(String key, LoyaltySubLedger subLedgersItem) {
+  public LoyaltyProgramLedgers putSubLedgersItem(String key, LoyaltyProgramBalance subLedgersItem) {
     if (this.subLedgers == null) {
-      this.subLedgers = new HashMap<String, LoyaltySubLedger>();
+      this.subLedgers = new HashMap<String, LoyaltyProgramBalance>();
     }
     this.subLedgers.put(key, subLedgersItem);
     return this;
@@ -78,11 +122,11 @@ public class LoyaltyLedger {
    * @return subLedgers
   **/
   @ApiModelProperty(value = "A map containing a list of all loyalty subledger balances")
-  public Map<String, LoyaltySubLedger> getSubLedgers() {
+  public Map<String, LoyaltyProgramBalance> getSubLedgers() {
     return subLedgers;
   }
 
-  public void setSubLedgers(Map<String, LoyaltySubLedger> subLedgers) {
+  public void setSubLedgers(Map<String, LoyaltyProgramBalance> subLedgers) {
     this.subLedgers = subLedgers;
   }
 
@@ -95,22 +139,26 @@ public class LoyaltyLedger {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoyaltyLedger loyaltyLedger = (LoyaltyLedger) o;
-    return Objects.equals(this.ledger, loyaltyLedger.ledger) &&
-        Objects.equals(this.subLedgers, loyaltyLedger.subLedgers);
+    LoyaltyProgramLedgers loyaltyProgramLedgers = (LoyaltyProgramLedgers) o;
+    return Objects.equals(this.title, loyaltyProgramLedgers.title) &&
+        Objects.equals(this.name, loyaltyProgramLedgers.name) &&
+        Objects.equals(this.ledger, loyaltyProgramLedgers.ledger) &&
+        Objects.equals(this.subLedgers, loyaltyProgramLedgers.subLedgers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ledger, subLedgers);
+    return Objects.hash(title, name, ledger, subLedgers);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoyaltyLedger {\n");
+    sb.append("class LoyaltyProgramLedgers {\n");
     
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ledger: ").append(toIndentedString(ledger)).append("\n");
     sb.append("    subLedgers: ").append(toIndentedString(subLedgers)).append("\n");
     sb.append("}");

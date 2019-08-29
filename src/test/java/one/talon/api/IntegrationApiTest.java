@@ -14,6 +14,10 @@
 package one.talon.api;
 
 import one.talon.ApiException;
+import one.talon.model.Coupon;
+import one.talon.model.CouponReservations;
+import one.talon.model.InlineResponse200;
+import one.talon.model.InlineResponse2001;
 import one.talon.model.IntegrationState;
 import one.talon.model.NewCustomerProfile;
 import one.talon.model.NewCustomerSession;
@@ -38,6 +42,23 @@ public class IntegrationApiTest {
 
     
     /**
+     * Create a new coupon reservation
+     *
+     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCouponReservationTest() throws ApiException {
+        String couponValue = null;
+        CouponReservations couponReservations = null;
+        Coupon response = api.createCouponReservation(couponValue, couponReservations);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create a referral code for an advocate
      *
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
@@ -54,6 +75,23 @@ public class IntegrationApiTest {
     }
     
     /**
+     * Delete coupon reservations
+     *
+     * Removes all passed customer profiles reservation from this coupon 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCouponReservationTest() throws ApiException {
+        String couponValue = null;
+        CouponReservations couponReservations = null;
+        api.deleteCouponReservation(couponValue, couponReservations);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete the personal data of a customer.
      *
      * Delete all attributes on the customer profile and on entities that reference that customer profile. 
@@ -65,6 +103,38 @@ public class IntegrationApiTest {
     public void deleteCustomerDataTest() throws ApiException {
         String integrationId = null;
         api.deleteCustomerData(integrationId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get all valid reserved coupons
+     *
+     * Returns all coupons this user is subscribed to that are valid and usable 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getReservedCouponsTest() throws ApiException {
+        String integrationId = null;
+        InlineResponse2001 response = api.getReservedCoupons(integrationId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get the users that have this coupon reserved
+     *
+     * Returns all users that have this coupon marked as reserved 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getReservedCustomersTest() throws ApiException {
+        String couponValue = null;
+        InlineResponse200 response = api.getReservedCustomers(couponValue);
 
         // TODO: test validations
     }
