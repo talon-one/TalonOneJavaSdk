@@ -2014,7 +2014,7 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | The identifier for the application
+Integer applicationId = 56; // Integer | 
 Integer campaignId = 56; // Integer | 
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
@@ -2032,7 +2032,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The identifier for the application |
+ **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
@@ -4602,7 +4602,7 @@ Name | Type | Description  | Notes
 
 Set account limits
 
-sets account limits  
+sets account limits 
 
 ### Example
 ```java

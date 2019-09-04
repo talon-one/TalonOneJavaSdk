@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>3.2.1</version>
+  <version>3.2.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:3.2.1"
+compile "one.talon:talon-one-client:3.2.2"
 ```
 
 ### Others
@@ -62,12 +62,13 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-3.2.1.jar`
+* `target/talon-one-client-3.2.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
+
 
 ### Integration API
 
@@ -258,8 +259,6 @@ Class | Method | HTTP request | Description
  - [ApplicationEvent](docs/ApplicationEvent.md)
  - [ApplicationSession](docs/ApplicationSession.md)
  - [ApplicationSessionEntity](docs/ApplicationSessionEntity.md)
- - [ApplicationStorage](docs/ApplicationStorage.md)
- - [ApplicationStorageTuple](docs/ApplicationStorageTuple.md)
  - [Attribute](docs/Attribute.md)
  - [AttributeQuery](docs/AttributeQuery.md)
  - [Binding](docs/Binding.md)
@@ -357,8 +356,6 @@ Class | Method | HTTP request | Description
  - [NewAccountSignUp](docs/NewAccountSignUp.md)
  - [NewApplication](docs/NewApplication.md)
  - [NewApplicationAPIKey](docs/NewApplicationAPIKey.md)
- - [NewApplicationStorage](docs/NewApplicationStorage.md)
- - [NewApplicationStorageTuple](docs/NewApplicationStorageTuple.md)
  - [NewAttribute](docs/NewAttribute.md)
  - [NewCampaign](docs/NewCampaign.md)
  - [NewCampaignSet](docs/NewCampaignSet.md)

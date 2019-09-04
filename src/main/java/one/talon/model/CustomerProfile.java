@@ -61,7 +61,7 @@ public class CustomerProfile {
 
   public static final String SERIALIZED_NAME_LOYALTY_MEMBERSHIPS = "loyaltyMemberships";
   @SerializedName(SERIALIZED_NAME_LOYALTY_MEMBERSHIPS)
-  private List<LoyaltyMembership> loyaltyMemberships = new ArrayList<LoyaltyMembership>();
+  private List<LoyaltyMembership> loyaltyMemberships = null;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -181,6 +181,9 @@ public class CustomerProfile {
   }
 
   public CustomerProfile addLoyaltyMembershipsItem(LoyaltyMembership loyaltyMembershipsItem) {
+    if (this.loyaltyMemberships == null) {
+      this.loyaltyMemberships = new ArrayList<LoyaltyMembership>();
+    }
     this.loyaltyMemberships.add(loyaltyMembershipsItem);
     return this;
   }
@@ -189,7 +192,7 @@ public class CustomerProfile {
    * A list of loyalty programs joined by the customer
    * @return loyaltyMemberships
   **/
-  @ApiModelProperty(required = true, value = "A list of loyalty programs joined by the customer")
+  @ApiModelProperty(value = "A list of loyalty programs joined by the customer")
   public List<LoyaltyMembership> getLoyaltyMemberships() {
     return loyaltyMemberships;
   }

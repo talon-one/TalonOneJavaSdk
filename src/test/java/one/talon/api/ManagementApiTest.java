@@ -1570,7 +1570,7 @@ public class ManagementApiTest {
     /**
      * Set account limits
      *
-     * sets account limits  
+     * sets account limits 
      *
      * @throws ApiException
      *          if the Api call fails
