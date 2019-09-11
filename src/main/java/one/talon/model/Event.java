@@ -51,10 +51,6 @@ public class Event {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
 
-  public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
-  @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private String sessionId;
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -62,6 +58,10 @@ public class Event {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes = null;
+
+  public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
+  @SerializedName(SERIALIZED_NAME_SESSION_ID)
+  private String sessionId;
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
@@ -147,24 +147,6 @@ public class Event {
     this.profileId = profileId;
   }
 
-  public Event sessionId(String sessionId) {
-    this.sessionId = sessionId;
-    return this;
-  }
-
-   /**
-   * The ID of the session that this event occurred in.
-   * @return sessionId
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the session that this event occurred in.")
-  public String getSessionId() {
-    return sessionId;
-  }
-
-  public void setSessionId(String sessionId) {
-    this.sessionId = sessionId;
-  }
-
   public Event type(String type) {
     this.type = type;
     return this;
@@ -199,6 +181,24 @@ public class Event {
 
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
+  }
+
+  public Event sessionId(String sessionId) {
+    this.sessionId = sessionId;
+    return this;
+  }
+
+   /**
+   * The ID of the session that this event occurred in.
+   * @return sessionId
+  **/
+  @ApiModelProperty(value = "The ID of the session that this event occurred in.")
+  public String getSessionId() {
+    return sessionId;
+  }
+
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
   }
 
   public Event effects(List<Object> effects) {
@@ -279,9 +279,9 @@ public class Event {
         Objects.equals(this.created, event.created) &&
         Objects.equals(this.applicationId, event.applicationId) &&
         Objects.equals(this.profileId, event.profileId) &&
-        Objects.equals(this.sessionId, event.sessionId) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.attributes, event.attributes) &&
+        Objects.equals(this.sessionId, event.sessionId) &&
         Objects.equals(this.effects, event.effects) &&
         Objects.equals(this.ledgerEntries, event.ledgerEntries) &&
         Objects.equals(this.meta, event.meta);
@@ -289,7 +289,7 @@ public class Event {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, sessionId, type, attributes, effects, ledgerEntries, meta);
+    return Objects.hash(id, created, applicationId, profileId, type, attributes, sessionId, effects, ledgerEntries, meta);
   }
 
 
@@ -302,9 +302,9 @@ public class Event {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
     sb.append("    ledgerEntries: ").append(toIndentedString(ledgerEntries)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");

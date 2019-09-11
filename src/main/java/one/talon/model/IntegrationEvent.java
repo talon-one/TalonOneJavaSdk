@@ -29,7 +29,7 @@ import java.io.IOException;
  */
 @ApiModel(description = "")
 
-public class NewEvent {
+public class IntegrationEvent {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
@@ -42,11 +42,7 @@ public class NewEvent {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes = null;
 
-  public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
-  @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private String sessionId;
-
-  public NewEvent profileId(String profileId) {
+  public IntegrationEvent profileId(String profileId) {
     this.profileId = profileId;
     return this;
   }
@@ -64,7 +60,7 @@ public class NewEvent {
     this.profileId = profileId;
   }
 
-  public NewEvent type(String type) {
+  public IntegrationEvent type(String type) {
     this.type = type;
     return this;
   }
@@ -82,7 +78,7 @@ public class NewEvent {
     this.type = type;
   }
 
-  public NewEvent attributes(Object attributes) {
+  public IntegrationEvent attributes(Object attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -100,24 +96,6 @@ public class NewEvent {
     this.attributes = attributes;
   }
 
-  public NewEvent sessionId(String sessionId) {
-    this.sessionId = sessionId;
-    return this;
-  }
-
-   /**
-   * The ID of the session that this event occurred in.
-   * @return sessionId
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the session that this event occurred in.")
-  public String getSessionId() {
-    return sessionId;
-  }
-
-  public void setSessionId(String sessionId) {
-    this.sessionId = sessionId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,28 +105,26 @@ public class NewEvent {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewEvent newEvent = (NewEvent) o;
-    return Objects.equals(this.profileId, newEvent.profileId) &&
-        Objects.equals(this.type, newEvent.type) &&
-        Objects.equals(this.attributes, newEvent.attributes) &&
-        Objects.equals(this.sessionId, newEvent.sessionId);
+    IntegrationEvent integrationEvent = (IntegrationEvent) o;
+    return Objects.equals(this.profileId, integrationEvent.profileId) &&
+        Objects.equals(this.type, integrationEvent.type) &&
+        Objects.equals(this.attributes, integrationEvent.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, type, attributes, sessionId);
+    return Objects.hash(profileId, type, attributes);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewEvent {\n");
+    sb.append("class IntegrationEvent {\n");
     
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
