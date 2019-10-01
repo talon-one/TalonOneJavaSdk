@@ -131,10 +131,6 @@ public class Webhook {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
-  public static final String SERIALIZED_NAME_USED_AT = "usedAt";
-  @SerializedName(SERIALIZED_NAME_USED_AT)
-  private List<String> usedAt = new ArrayList<String>();
-
   public Webhook id(Integer id) {
     this.id = id;
     return this;
@@ -348,29 +344,6 @@ public class Webhook {
     this.enabled = enabled;
   }
 
-  public Webhook usedAt(List<String> usedAt) {
-    this.usedAt = usedAt;
-    return this;
-  }
-
-  public Webhook addUsedAtItem(String usedAtItem) {
-    this.usedAt.add(usedAtItem);
-    return this;
-  }
-
-   /**
-   * array of rulesets where webhook is used
-   * @return usedAt
-  **/
-  @ApiModelProperty(required = true, value = "array of rulesets where webhook is used")
-  public List<String> getUsedAt() {
-    return usedAt;
-  }
-
-  public void setUsedAt(List<String> usedAt) {
-    this.usedAt = usedAt;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -391,13 +364,12 @@ public class Webhook {
         Objects.equals(this.headers, webhook.headers) &&
         Objects.equals(this.payload, webhook.payload) &&
         Objects.equals(this.params, webhook.params) &&
-        Objects.equals(this.enabled, webhook.enabled) &&
-        Objects.equals(this.usedAt, webhook.usedAt);
+        Objects.equals(this.enabled, webhook.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, verb, url, headers, payload, params, enabled, usedAt);
+    return Objects.hash(id, created, modified, applicationIds, title, verb, url, headers, payload, params, enabled);
   }
 
 
@@ -417,7 +389,6 @@ public class Webhook {
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    usedAt: ").append(toIndentedString(usedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -42,6 +42,10 @@ public class ErrorSource {
   @SerializedName(SERIALIZED_NAME_LINE)
   private String line;
 
+  public static final String SERIALIZED_NAME_RESOURCE = "resource";
+  @SerializedName(SERIALIZED_NAME_RESOURCE)
+  private String resource;
+
   public ErrorSource pointer(String pointer) {
     this.pointer = pointer;
     return this;
@@ -96,6 +100,24 @@ public class ErrorSource {
     this.line = line;
   }
 
+  public ErrorSource resource(String resource) {
+    this.resource = resource;
+    return this;
+  }
+
+   /**
+   * Pointer to the resource that caused this error
+   * @return resource
+  **/
+  @ApiModelProperty(value = "Pointer to the resource that caused this error")
+  public String getResource() {
+    return resource;
+  }
+
+  public void setResource(String resource) {
+    this.resource = resource;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -108,12 +130,13 @@ public class ErrorSource {
     ErrorSource errorSource = (ErrorSource) o;
     return Objects.equals(this.pointer, errorSource.pointer) &&
         Objects.equals(this.parameter, errorSource.parameter) &&
-        Objects.equals(this.line, errorSource.line);
+        Objects.equals(this.line, errorSource.line) &&
+        Objects.equals(this.resource, errorSource.resource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pointer, parameter, line);
+    return Objects.hash(pointer, parameter, line, resource);
   }
 
 
@@ -125,6 +148,7 @@ public class ErrorSource {
     sb.append("    pointer: ").append(toIndentedString(pointer)).append("\n");
     sb.append("    parameter: ").append(toIndentedString(parameter)).append("\n");
     sb.append("    line: ").append(toIndentedString(line)).append("\n");
+    sb.append("    resource: ").append(toIndentedString(resource)).append("\n");
     sb.append("}");
     return sb.toString();
   }

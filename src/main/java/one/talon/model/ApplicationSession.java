@@ -126,6 +126,10 @@ public class ApplicationSession {
   @SerializedName(SERIALIZED_NAME_DISCOUNTS)
   private Map<String, BigDecimal> discounts = new HashMap<String, BigDecimal>();
 
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
+  private BigDecimal total;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes = null;
@@ -244,10 +248,10 @@ public class ApplicationSession {
   }
 
    /**
-   * Any referal code entered.
+   * Any referral code entered.
    * @return referral
   **/
-  @ApiModelProperty(required = true, value = "Any referal code entered.")
+  @ApiModelProperty(required = true, value = "Any referral code entered.")
   public String getReferral() {
     return referral;
   }
@@ -320,6 +324,24 @@ public class ApplicationSession {
     this.discounts = discounts;
   }
 
+  public ApplicationSession total(BigDecimal total) {
+    this.total = total;
+    return this;
+  }
+
+   /**
+   * The total sum of the session before any discounts applied.
+   * @return total
+  **/
+  @ApiModelProperty(value = "The total sum of the session before any discounts applied.")
+  public BigDecimal getTotal() {
+    return total;
+  }
+
+  public void setTotal(BigDecimal total) {
+    this.total = total;
+  }
+
   public ApplicationSession attributes(Object attributes) {
     this.attributes = attributes;
     return this;
@@ -358,12 +380,13 @@ public class ApplicationSession {
         Objects.equals(this.state, applicationSession.state) &&
         Objects.equals(this.cartItems, applicationSession.cartItems) &&
         Objects.equals(this.discounts, applicationSession.discounts) &&
+        Objects.equals(this.total, applicationSession.total) &&
         Objects.equals(this.attributes, applicationSession.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, integrationId, coupon, referral, state, cartItems, discounts, attributes);
+    return Objects.hash(id, created, applicationId, profileId, integrationId, coupon, referral, state, cartItems, discounts, total, attributes);
   }
 
 
@@ -382,6 +405,7 @@ public class ApplicationSession {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();

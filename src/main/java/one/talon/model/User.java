@@ -130,6 +130,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_ROLES)
   private List<Integer> roles = null;
 
+  public static final String SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS = "applicationNotificationSubscriptions";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
+  private Object applicationNotificationSubscriptions = null;
+
   public User id(Integer id) {
     this.id = id;
     return this;
@@ -354,6 +358,24 @@ public class User {
     this.roles = roles;
   }
 
+  public User applicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
+    this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
+    return this;
+  }
+
+   /**
+   * Get applicationNotificationSubscriptions
+   * @return applicationNotificationSubscriptions
+  **/
+  @ApiModelProperty(value = "")
+  public Object getApplicationNotificationSubscriptions() {
+    return applicationNotificationSubscriptions;
+  }
+
+  public void setApplicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
+    this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -375,12 +397,13 @@ public class User {
         Objects.equals(this.policy, user.policy) &&
         Objects.equals(this.releaseUpdate, user.releaseUpdate) &&
         Objects.equals(this.latestFeature, user.latestFeature) &&
-        Objects.equals(this.roles, user.roles);
+        Objects.equals(this.roles, user.roles) &&
+        Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, releaseUpdate, latestFeature, roles);
+    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, releaseUpdate, latestFeature, roles, applicationNotificationSubscriptions);
   }
 
 
@@ -401,6 +424,7 @@ public class User {
     sb.append("    releaseUpdate: ").append(toIndentedString(releaseUpdate)).append("\n");
     sb.append("    latestFeature: ").append(toIndentedString(latestFeature)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

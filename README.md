@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>3.2.3</version>
+  <version>3.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:3.2.3"
+compile "one.talon:talon-one-client:3.3.0"
 ```
 
 ### Others
@@ -62,7 +62,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-3.2.3.jar`
+* `target/talon-one-client-3.3.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -378,7 +378,9 @@ Class | Method | HTTP request | Description
  - [NewTemplateDef](docs/NewTemplateDef.md)
  - [NewUser](docs/NewUser.md)
  - [NewWebhook](docs/NewWebhook.md)
+ - [Notification](docs/Notification.md)
  - [Referral](docs/Referral.md)
+ - [ReferralRejectionReason](docs/ReferralRejectionReason.md)
  - [Role](docs/Role.md)
  - [RoleAssign](docs/RoleAssign.md)
  - [RoleMembership](docs/RoleMembership.md)

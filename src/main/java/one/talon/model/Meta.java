@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.CouponRejectionReason;
+import one.talon.model.ReferralRejectionReason;
 
 /**
  * Meta
@@ -41,6 +42,10 @@ public class Meta {
   public static final String SERIALIZED_NAME_COUPON_REJECTION_REASON = "couponRejectionReason";
   @SerializedName(SERIALIZED_NAME_COUPON_REJECTION_REASON)
   private CouponRejectionReason couponRejectionReason = null;
+
+  public static final String SERIALIZED_NAME_REFERRAL_REJECTION_REASON = "referralRejectionReason";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_REJECTION_REASON)
+  private ReferralRejectionReason referralRejectionReason = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -100,6 +105,24 @@ public class Meta {
     this.couponRejectionReason = couponRejectionReason;
   }
 
+  public Meta referralRejectionReason(ReferralRejectionReason referralRejectionReason) {
+    this.referralRejectionReason = referralRejectionReason;
+    return this;
+  }
+
+   /**
+   * Get referralRejectionReason
+   * @return referralRejectionReason
+  **/
+  @ApiModelProperty(value = "")
+  public ReferralRejectionReason getReferralRejectionReason() {
+    return referralRejectionReason;
+  }
+
+  public void setReferralRejectionReason(ReferralRejectionReason referralRejectionReason) {
+    this.referralRejectionReason = referralRejectionReason;
+  }
+
   public Meta warnings(Object warnings) {
     this.warnings = warnings;
     return this;
@@ -131,12 +154,13 @@ public class Meta {
     return Objects.equals(this.campaigns, meta.campaigns) &&
         Objects.equals(this.coupons, meta.coupons) &&
         Objects.equals(this.couponRejectionReason, meta.couponRejectionReason) &&
+        Objects.equals(this.referralRejectionReason, meta.referralRejectionReason) &&
         Objects.equals(this.warnings, meta.warnings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns, coupons, couponRejectionReason, warnings);
+    return Objects.hash(campaigns, coupons, couponRejectionReason, referralRejectionReason, warnings);
   }
 
 
@@ -148,6 +172,7 @@ public class Meta {
     sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    couponRejectionReason: ").append(toIndentedString(couponRejectionReason)).append("\n");
+    sb.append("    referralRejectionReason: ").append(toIndentedString(referralRejectionReason)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
