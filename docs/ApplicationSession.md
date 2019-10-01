@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **profileId** | **Integer** | The globally unique Talon.One ID of the customer that created this entity. |  [optional]
 **integrationId** | **String** | The ID used for this entity in the application system. | 
 **coupon** | **String** | Any coupon code entered. | 
-**referral** | **String** | Any referal code entered. | 
+**referral** | **String** | Any referral code entered. | 
 **state** | [**StateEnum**](#StateEnum) | Indicating if the customer session is in progress (\&quot;open\&quot;), \&quot;closed\&quot;, or \&quot;cancelled\&quot;. | 
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | Serialized JSON representation. | 
 **discounts** | [**Map&lt;String, BigDecimal&gt;**](BigDecimal.md) | A map of labelled discount values, in the same currency as the session. | 
+**total** | [**BigDecimal**](BigDecimal.md) | The total sum of the session before any discounts applied. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 
 

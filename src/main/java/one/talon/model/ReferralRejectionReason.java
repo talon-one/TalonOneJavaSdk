@@ -25,43 +25,45 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Holds a reference to the campaign, the coupon and the reason for which that coupon was rejected. Should only be present when there is a &#39;rejectCoupon&#39; effect.
+ * Holds a reference to the campaign, the referral and the reason for which that referral was rejected. Should only be present when there is a &#39;rejectReferral&#39; effect.
  */
-@ApiModel(description = "Holds a reference to the campaign, the coupon and the reason for which that coupon was rejected. Should only be present when there is a 'rejectCoupon' effect.")
+@ApiModel(description = "Holds a reference to the campaign, the referral and the reason for which that referral was rejected. Should only be present when there is a 'rejectReferral' effect.")
 
-public class CouponRejectionReason {
+public class ReferralRejectionReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Integer campaignId;
 
-  public static final String SERIALIZED_NAME_COUPON_ID = "couponId";
-  @SerializedName(SERIALIZED_NAME_COUPON_ID)
-  private Integer couponId;
+  public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
+  private Integer referralId;
 
   /**
    * Gets or Sets reason
    */
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
-    COUPONNOTFOUND("CouponNotFound"),
+    REFERRALNOTFOUND("ReferralNotFound"),
     
-    COUPONPARTOFNOTRUNNINGCAMPAIGN("CouponPartOfNotRunningCampaign"),
+    REFERRALRECIPIENTIDSAMEASADVOCATE("ReferralRecipientIdSameAsAdvocate"),
     
-    COUPONVALIDCONDITIONMISSING("CouponValidConditionMissing"),
+    REFERRALPARTOFNOTRUNNINGCAMPAIGN("ReferralPartOfNotRunningCampaign"),
     
-    COUPONLIMITREACHED("CouponLimitReached"),
+    REFERRALVALIDCONDITIONMISSING("ReferralValidConditionMissing"),
+    
+    REFERRALLIMITREACHED("ReferralLimitReached"),
     
     CAMPAIGNLIMITREACHED("CampaignLimitReached"),
     
     PROFILELIMITREACHED("ProfileLimitReached"),
     
-    COUPONRECIPIENTDOESNOTMATCH("CouponRecipientDoesNotMatch"),
+    REFERRALRECIPIENTDOESNOTMATCH("ReferralRecipientDoesNotMatch"),
     
-    COUPONEXPIRED("CouponExpired"),
+    REFERRALEXPIRED("ReferralExpired"),
     
-    COUPONSTARTDATEINFUTURE("CouponStartDateInFuture"),
+    REFERRALSTARTDATEINFUTURE("ReferralStartDateInFuture"),
     
-    COUPONREJECTEDBYCONDITION("CouponRejectedByCondition"),
+    REFERRALREJECTEDBYCONDITION("ReferralRejectedByCondition"),
     
     EFFECTCOULDNOTBEAPPLIED("EffectCouldNotBeApplied");
 
@@ -107,7 +109,7 @@ public class CouponRejectionReason {
   @SerializedName(SERIALIZED_NAME_REASON)
   private ReasonEnum reason;
 
-  public CouponRejectionReason campaignId(Integer campaignId) {
+  public ReferralRejectionReason campaignId(Integer campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -125,25 +127,25 @@ public class CouponRejectionReason {
     this.campaignId = campaignId;
   }
 
-  public CouponRejectionReason couponId(Integer couponId) {
-    this.couponId = couponId;
+  public ReferralRejectionReason referralId(Integer referralId) {
+    this.referralId = referralId;
     return this;
   }
 
    /**
-   * Get couponId
-   * @return couponId
+   * Get referralId
+   * @return referralId
   **/
   @ApiModelProperty(required = true, value = "")
-  public Integer getCouponId() {
-    return couponId;
+  public Integer getReferralId() {
+    return referralId;
   }
 
-  public void setCouponId(Integer couponId) {
-    this.couponId = couponId;
+  public void setReferralId(Integer referralId) {
+    this.referralId = referralId;
   }
 
-  public CouponRejectionReason reason(ReasonEnum reason) {
+  public ReferralRejectionReason reason(ReasonEnum reason) {
     this.reason = reason;
     return this;
   }
@@ -170,25 +172,25 @@ public class CouponRejectionReason {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CouponRejectionReason couponRejectionReason = (CouponRejectionReason) o;
-    return Objects.equals(this.campaignId, couponRejectionReason.campaignId) &&
-        Objects.equals(this.couponId, couponRejectionReason.couponId) &&
-        Objects.equals(this.reason, couponRejectionReason.reason);
+    ReferralRejectionReason referralRejectionReason = (ReferralRejectionReason) o;
+    return Objects.equals(this.campaignId, referralRejectionReason.campaignId) &&
+        Objects.equals(this.referralId, referralRejectionReason.referralId) &&
+        Objects.equals(this.reason, referralRejectionReason.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, couponId, reason);
+    return Objects.hash(campaignId, referralId, reason);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CouponRejectionReason {\n");
+    sb.append("class ReferralRejectionReason {\n");
     
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    couponId: ").append(toIndentedString(couponId)).append("\n");
+    sb.append("    referralId: ").append(toIndentedString(referralId)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();

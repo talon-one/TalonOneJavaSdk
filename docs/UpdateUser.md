@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **releaseUpdate** | **Boolean** | Update the user via email |  [optional]
 **latestFeature** | **String** | The latest feature you&#39;ve been notified. |  [optional]
 **roles** | **List&lt;Integer&gt;** | Update |  [optional]
+**applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 
 
 <a name="StateEnum"></a>

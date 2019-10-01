@@ -197,14 +197,6 @@ public class Attribute {
   @SerializedName(SERIALIZED_NAME_EDITABLE)
   private Boolean editable;
 
-  public static final String SERIALIZED_NAME_LOCKED = "locked";
-  @SerializedName(SERIALIZED_NAME_LOCKED)
-  private Boolean locked = false;
-
-  public static final String SERIALIZED_NAME_USED_AT = "usedAt";
-  @SerializedName(SERIALIZED_NAME_USED_AT)
-  private List<String> usedAt = new ArrayList<String>();
-
   public Attribute id(Integer id) {
     this.id = id;
     return this;
@@ -408,47 +400,6 @@ public class Attribute {
     this.editable = editable;
   }
 
-  public Attribute locked(Boolean locked) {
-    this.locked = locked;
-    return this;
-  }
-
-   /**
-   * Indicates whether this attribute is in use. If in use only title can be changed and other operations are prohibited.
-   * @return locked
-  **/
-  @ApiModelProperty(required = true, value = "Indicates whether this attribute is in use. If in use only title can be changed and other operations are prohibited.")
-  public Boolean getLocked() {
-    return locked;
-  }
-
-  public void setLocked(Boolean locked) {
-    this.locked = locked;
-  }
-
-  public Attribute usedAt(List<String> usedAt) {
-    this.usedAt = usedAt;
-    return this;
-  }
-
-  public Attribute addUsedAtItem(String usedAtItem) {
-    this.usedAt.add(usedAtItem);
-    return this;
-  }
-
-   /**
-   * array of rulesets where the attribute is used
-   * @return usedAt
-  **/
-  @ApiModelProperty(required = true, value = "array of rulesets where the attribute is used")
-  public List<String> getUsedAt() {
-    return usedAt;
-  }
-
-  public void setUsedAt(List<String> usedAt) {
-    this.usedAt = usedAt;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -469,14 +420,12 @@ public class Attribute {
         Objects.equals(this.type, attribute.type) &&
         Objects.equals(this.description, attribute.description) &&
         Objects.equals(this.suggestions, attribute.suggestions) &&
-        Objects.equals(this.editable, attribute.editable) &&
-        Objects.equals(this.locked, attribute.locked) &&
-        Objects.equals(this.usedAt, attribute.usedAt);
+        Objects.equals(this.editable, attribute.editable);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions, editable, locked, usedAt);
+    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions, editable);
   }
 
 
@@ -496,8 +445,6 @@ public class Attribute {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    suggestions: ").append(toIndentedString(suggestions)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
-    sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
-    sb.append("    usedAt: ").append(toIndentedString(usedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
