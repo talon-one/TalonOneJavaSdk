@@ -1,5 +1,5 @@
 
-# NewApplication
+# UpdateApplication
 
 ## Properties
 Name | Type | Description | Notes
@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **caseSensitivity** | [**CaseSensitivityEnum**](#CaseSensitivityEnum) | A string indicating how should campaigns in this application deal with case sensitivity on coupon codes. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | Default limits for campaigns created in this application |  [optional]
-**key** | **String** | Hex key for HMAC-signing API calls as coming from this application (16 hex digits) |  [optional]
 
 
 <a name="CaseSensitivityEnum"></a>

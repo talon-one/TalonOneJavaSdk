@@ -2240,7 +2240,7 @@ Name | Type | Description  | Notes
 
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20025 getChanges(pageSize, skip, sort)
+> InlineResponse20025 getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld)
 
 Get audit log for an account
 
@@ -2267,8 +2267,13 @@ ManagementApi apiInstance = new ManagementApi();
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+Integer applicationId = 56; // Integer | 
+OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
+OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
+Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
+Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
 try {
-    InlineResponse20025 result = apiInstance.getChanges(pageSize, skip, sort);
+    InlineResponse20025 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getChanges");
@@ -2283,6 +2288,11 @@ Name | Type | Description  | Notes
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **applicationId** | **Integer**|  | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  | [optional]
+ **includeOld** | **Boolean**| When this flag is set to false, the state without the change will not be returned. The default value is true. | [optional]
 
 ### Return type
 

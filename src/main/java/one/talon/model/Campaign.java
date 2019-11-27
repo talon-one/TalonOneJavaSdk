@@ -209,6 +209,14 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNT)
   private Integer discountCount;
 
+  public static final String SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT = "discountEffectCount";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT)
+  private Integer discountEffectCount;
+
+  public static final String SERIALIZED_NAME_COUPON_CREATION_COUNT = "couponCreationCount";
+  @SerializedName(SERIALIZED_NAME_COUPON_CREATION_COUNT)
+  private Integer couponCreationCount;
+
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
   private OffsetDateTime lastActivity;
@@ -582,6 +590,42 @@ public class Campaign {
     this.discountCount = discountCount;
   }
 
+  public Campaign discountEffectCount(Integer discountEffectCount) {
+    this.discountEffectCount = discountEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of times discounts were redeemed in this campaign.
+   * @return discountEffectCount
+  **/
+  @ApiModelProperty(value = "Total number of times discounts were redeemed in this campaign.")
+  public Integer getDiscountEffectCount() {
+    return discountEffectCount;
+  }
+
+  public void setDiscountEffectCount(Integer discountEffectCount) {
+    this.discountEffectCount = discountEffectCount;
+  }
+
+  public Campaign couponCreationCount(Integer couponCreationCount) {
+    this.couponCreationCount = couponCreationCount;
+    return this;
+  }
+
+   /**
+   * Total number of coupons created by rules in this campaign.
+   * @return couponCreationCount
+  **/
+  @ApiModelProperty(value = "Total number of coupons created by rules in this campaign.")
+  public Integer getCouponCreationCount() {
+    return couponCreationCount;
+  }
+
+  public void setCouponCreationCount(Integer couponCreationCount) {
+    this.couponCreationCount = couponCreationCount;
+  }
+
   public Campaign lastActivity(OffsetDateTime lastActivity) {
     this.lastActivity = lastActivity;
     return this;
@@ -683,6 +727,8 @@ public class Campaign {
         Objects.equals(this.couponRedemptionCount, campaign.couponRedemptionCount) &&
         Objects.equals(this.referralRedemptionCount, campaign.referralRedemptionCount) &&
         Objects.equals(this.discountCount, campaign.discountCount) &&
+        Objects.equals(this.discountEffectCount, campaign.discountEffectCount) &&
+        Objects.equals(this.couponCreationCount, campaign.couponCreationCount) &&
         Objects.equals(this.lastActivity, campaign.lastActivity) &&
         Objects.equals(this.updated, campaign.updated) &&
         Objects.equals(this.createdBy, campaign.createdBy) &&
@@ -691,7 +737,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, couponRedemptionCount, referralRedemptionCount, discountCount, lastActivity, updated, createdBy, updatedBy);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, lastActivity, updated, createdBy, updatedBy);
   }
 
 
@@ -719,6 +765,8 @@ public class Campaign {
     sb.append("    couponRedemptionCount: ").append(toIndentedString(couponRedemptionCount)).append("\n");
     sb.append("    referralRedemptionCount: ").append(toIndentedString(referralRedemptionCount)).append("\n");
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");
+    sb.append("    discountEffectCount: ").append(toIndentedString(discountEffectCount)).append("\n");
+    sb.append("    couponCreationCount: ").append(toIndentedString(couponCreationCount)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");

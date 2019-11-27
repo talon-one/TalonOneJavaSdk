@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerSession;
 import one.talon.model.Event;
@@ -49,6 +50,10 @@ public class IntegrationState {
   public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
   @SerializedName(SERIALIZED_NAME_LOYALTY)
   private Loyalty loyalty = null;
+
+  public static final String SERIALIZED_NAME_COUPON = "coupon";
+  @SerializedName(SERIALIZED_NAME_COUPON)
+  private Coupon coupon = null;
 
   public IntegrationState session(CustomerSession session) {
     this.session = session;
@@ -122,6 +127,24 @@ public class IntegrationState {
     this.loyalty = loyalty;
   }
 
+  public IntegrationState coupon(Coupon coupon) {
+    this.coupon = coupon;
+    return this;
+  }
+
+   /**
+   * Get coupon
+   * @return coupon
+  **/
+  @ApiModelProperty(value = "")
+  public Coupon getCoupon() {
+    return coupon;
+  }
+
+  public void setCoupon(Coupon coupon) {
+    this.coupon = coupon;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -135,12 +158,13 @@ public class IntegrationState {
     return Objects.equals(this.session, integrationState.session) &&
         Objects.equals(this.profile, integrationState.profile) &&
         Objects.equals(this.event, integrationState.event) &&
-        Objects.equals(this.loyalty, integrationState.loyalty);
+        Objects.equals(this.loyalty, integrationState.loyalty) &&
+        Objects.equals(this.coupon, integrationState.coupon);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(session, profile, event, loyalty);
+    return Objects.hash(session, profile, event, loyalty, coupon);
   }
 
 
@@ -153,6 +177,7 @@ public class IntegrationState {
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("    event: ").append(toIndentedString(event)).append("\n");
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
+    sb.append("    coupon: ").append(toIndentedString(coupon)).append("\n");
     sb.append("}");
     return sb.toString();
   }

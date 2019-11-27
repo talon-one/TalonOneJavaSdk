@@ -43,7 +43,9 @@ public class LimitConfig {
     
     SETDISCOUNT("setDiscount"),
     
-    CREATECOUPON("createCoupon");
+    CREATECOUPON("createCoupon"),
+    
+    SETDISCOUNTEFFECT("setDiscountEffect");
 
     private String value;
 

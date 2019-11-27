@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>3.3.0</version>
+  <version>3.4.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:3.3.0"
+compile "one.talon:talon-one-client:3.4.0"
 ```
 
 ### Others
@@ -62,7 +62,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-3.3.0.jar`
+* `target/talon-one-client-3.4.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -375,6 +375,7 @@ Class | Method | HTTP request | Description
  - [NewReferral](docs/NewReferral.md)
  - [NewRole](docs/NewRole.md)
  - [NewRuleset](docs/NewRuleset.md)
+ - [NewSamlConnection](docs/NewSamlConnection.md)
  - [NewTemplateDef](docs/NewTemplateDef.md)
  - [NewUser](docs/NewUser.md)
  - [NewWebhook](docs/NewWebhook.md)
@@ -386,11 +387,13 @@ Class | Method | HTTP request | Description
  - [RoleMembership](docs/RoleMembership.md)
  - [Rule](docs/Rule.md)
  - [Ruleset](docs/Ruleset.md)
+ - [SamlConnection](docs/SamlConnection.md)
  - [Session](docs/Session.md)
  - [SlotDef](docs/SlotDef.md)
  - [TemplateArgDef](docs/TemplateArgDef.md)
  - [TemplateDef](docs/TemplateDef.md)
  - [UpdateAccount](docs/UpdateAccount.md)
+ - [UpdateApplication](docs/UpdateApplication.md)
  - [UpdateCampaign](docs/UpdateCampaign.md)
  - [UpdateCoupon](docs/UpdateCoupon.md)
  - [UpdateCouponBatch](docs/UpdateCouponBatch.md)

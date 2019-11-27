@@ -5466,12 +5466,17 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param applicationId  (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getChangesCall(Integer pageSize, Integer skip, String sort, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getChangesCall(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -5489,6 +5494,26 @@ public class ManagementApi {
 
         if (sort != null) {
             localVarQueryParams.addAll(apiClient.parameterToPair("sort", sort));
+        }
+
+        if (applicationId != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("applicationId", applicationId));
+        }
+
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("createdAfter", createdAfter));
+        }
+
+        if (withTotalResultSize != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("withTotalResultSize", withTotalResultSize));
+        }
+
+        if (includeOld != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("includeOld", includeOld));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -5524,10 +5549,10 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getChangesValidateBeforeCall(Integer pageSize, Integer skip, String sort, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getChangesValidateBeforeCall(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getChangesCall(pageSize, skip, sort, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChangesCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, progressListener, progressRequestListener);
         return call;
 
     }
@@ -5538,11 +5563,16 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param applicationId  (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20025 getChanges(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20025> resp = getChangesWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20025 getChanges(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+        ApiResponse<InlineResponse20025> resp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
         return resp.getData();
     }
 
@@ -5552,11 +5582,16 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param applicationId  (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20025> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
-        com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, null, null);
+    public ApiResponse<InlineResponse20025> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+        com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -5567,11 +5602,16 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param applicationId  (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20025> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback<InlineResponse20025> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5592,7 +5632,7 @@ public class ManagementApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

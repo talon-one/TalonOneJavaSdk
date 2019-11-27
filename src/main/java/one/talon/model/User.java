@@ -134,6 +134,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
   private Object applicationNotificationSubscriptions = null;
 
+  public static final String SERIALIZED_NAME_AUTH_METHOD = "authMethod";
+  @SerializedName(SERIALIZED_NAME_AUTH_METHOD)
+  private String authMethod;
+
   public User id(Integer id) {
     this.id = id;
     return this;
@@ -376,6 +380,24 @@ public class User {
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
   }
 
+  public User authMethod(String authMethod) {
+    this.authMethod = authMethod;
+    return this;
+  }
+
+   /**
+   * The Authentication method for this user
+   * @return authMethod
+  **/
+  @ApiModelProperty(value = "The Authentication method for this user")
+  public String getAuthMethod() {
+    return authMethod;
+  }
+
+  public void setAuthMethod(String authMethod) {
+    this.authMethod = authMethod;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -398,12 +420,13 @@ public class User {
         Objects.equals(this.releaseUpdate, user.releaseUpdate) &&
         Objects.equals(this.latestFeature, user.latestFeature) &&
         Objects.equals(this.roles, user.roles) &&
-        Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions);
+        Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions) &&
+        Objects.equals(this.authMethod, user.authMethod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, releaseUpdate, latestFeature, roles, applicationNotificationSubscriptions);
+    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, releaseUpdate, latestFeature, roles, applicationNotificationSubscriptions, authMethod);
   }
 
 
@@ -425,6 +448,7 @@ public class User {
     sb.append("    latestFeature: ").append(toIndentedString(latestFeature)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
+    sb.append("    authMethod: ").append(toIndentedString(authMethod)).append("\n");
     sb.append("}");
     return sb.toString();
   }

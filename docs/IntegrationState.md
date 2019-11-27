@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **profile** | [**CustomerProfile**](CustomerProfile.md) |  | 
 **event** | [**Event**](Event.md) |  | 
 **loyalty** | [**Loyalty**](Loyalty.md) |  |  [optional]
+**coupon** | [**Coupon**](Coupon.md) |  |  [optional]
 
 
 
