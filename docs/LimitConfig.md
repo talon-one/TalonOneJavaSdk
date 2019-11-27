@@ -17,6 +17,7 @@ REDEEMCOUPON | &quot;redeemCoupon&quot;
 REDEEMREFERRAL | &quot;redeemReferral&quot;
 SETDISCOUNT | &quot;setDiscount&quot;
 CREATECOUPON | &quot;createCoupon&quot;
+SETDISCOUNTEFFECT | &quot;setDiscountEffect&quot;
 
 
 <a name="List<EntitiesEnum>"></a>

@@ -798,7 +798,12 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20025 response = api.getChanges(pageSize, skip, sort);
+        Integer applicationId = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
+        Boolean withTotalResultSize = null;
+        Boolean includeOld = null;
+        InlineResponse20025 response = api.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
 
         // TODO: test validations
     }

@@ -28,11 +28,10 @@ import java.util.List;
 import one.talon.model.LimitConfig;
 
 /**
- * 
+ * UpdateApplication
  */
-@ApiModel(description = "")
 
-public class NewApplication {
+public class UpdateApplication {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -110,11 +109,7 @@ public class NewApplication {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
 
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
-
-  public NewApplication name(String name) {
+  public UpdateApplication name(String name) {
     this.name = name;
     return this;
   }
@@ -132,7 +127,7 @@ public class NewApplication {
     this.name = name;
   }
 
-  public NewApplication description(String description) {
+  public UpdateApplication description(String description) {
     this.description = description;
     return this;
   }
@@ -150,7 +145,7 @@ public class NewApplication {
     this.description = description;
   }
 
-  public NewApplication timezone(String timezone) {
+  public UpdateApplication timezone(String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -168,7 +163,7 @@ public class NewApplication {
     this.timezone = timezone;
   }
 
-  public NewApplication currency(String currency) {
+  public UpdateApplication currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -186,7 +181,7 @@ public class NewApplication {
     this.currency = currency;
   }
 
-  public NewApplication caseSensitivity(CaseSensitivityEnum caseSensitivity) {
+  public UpdateApplication caseSensitivity(CaseSensitivityEnum caseSensitivity) {
     this.caseSensitivity = caseSensitivity;
     return this;
   }
@@ -204,7 +199,7 @@ public class NewApplication {
     this.caseSensitivity = caseSensitivity;
   }
 
-  public NewApplication attributes(Object attributes) {
+  public UpdateApplication attributes(Object attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -222,12 +217,12 @@ public class NewApplication {
     this.attributes = attributes;
   }
 
-  public NewApplication limits(List<LimitConfig> limits) {
+  public UpdateApplication limits(List<LimitConfig> limits) {
     this.limits = limits;
     return this;
   }
 
-  public NewApplication addLimitsItem(LimitConfig limitsItem) {
+  public UpdateApplication addLimitsItem(LimitConfig limitsItem) {
     if (this.limits == null) {
       this.limits = new ArrayList<LimitConfig>();
     }
@@ -248,24 +243,6 @@ public class NewApplication {
     this.limits = limits;
   }
 
-  public NewApplication key(String key) {
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * Hex key for HMAC-signing API calls as coming from this application (16 hex digits)
-   * @return key
-  **/
-  @ApiModelProperty(value = "Hex key for HMAC-signing API calls as coming from this application (16 hex digits)")
-  public String getKey() {
-    return key;
-  }
-
-  public void setKey(String key) {
-    this.key = key;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -275,27 +252,26 @@ public class NewApplication {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewApplication newApplication = (NewApplication) o;
-    return Objects.equals(this.name, newApplication.name) &&
-        Objects.equals(this.description, newApplication.description) &&
-        Objects.equals(this.timezone, newApplication.timezone) &&
-        Objects.equals(this.currency, newApplication.currency) &&
-        Objects.equals(this.caseSensitivity, newApplication.caseSensitivity) &&
-        Objects.equals(this.attributes, newApplication.attributes) &&
-        Objects.equals(this.limits, newApplication.limits) &&
-        Objects.equals(this.key, newApplication.key);
+    UpdateApplication updateApplication = (UpdateApplication) o;
+    return Objects.equals(this.name, updateApplication.name) &&
+        Objects.equals(this.description, updateApplication.description) &&
+        Objects.equals(this.timezone, updateApplication.timezone) &&
+        Objects.equals(this.currency, updateApplication.currency) &&
+        Objects.equals(this.caseSensitivity, updateApplication.caseSensitivity) &&
+        Objects.equals(this.attributes, updateApplication.attributes) &&
+        Objects.equals(this.limits, updateApplication.limits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewApplication {\n");
+    sb.append("class UpdateApplication {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -304,7 +280,6 @@ public class NewApplication {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();
   }

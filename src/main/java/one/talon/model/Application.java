@@ -59,10 +59,6 @@ public class Application {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_KEY = "key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
-
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone;
@@ -131,6 +127,10 @@ public class Application {
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
+
+  public static final String SERIALIZED_NAME_KEY = "key";
+  @SerializedName(SERIALIZED_NAME_KEY)
+  private String key;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
@@ -244,24 +244,6 @@ public class Application {
     this.description = description;
   }
 
-  public Application key(String key) {
-    this.key = key;
-    return this;
-  }
-
-   /**
-   * Hex key for HMAC-signing API calls as coming from this application (16 hex digits)
-   * @return key
-  **/
-  @ApiModelProperty(required = true, value = "Hex key for HMAC-signing API calls as coming from this application (16 hex digits)")
-  public String getKey() {
-    return key;
-  }
-
-  public void setKey(String key) {
-    this.key = key;
-  }
-
   public Application timezone(String timezone) {
     this.timezone = timezone;
     return this;
@@ -360,6 +342,24 @@ public class Application {
     this.limits = limits;
   }
 
+  public Application key(String key) {
+    this.key = key;
+    return this;
+  }
+
+   /**
+   * Hex key for HMAC-signing API calls as coming from this application (16 hex digits)
+   * @return key
+  **/
+  @ApiModelProperty(required = true, value = "Hex key for HMAC-signing API calls as coming from this application (16 hex digits)")
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
+  }
+
   public Application loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
     this.loyaltyPrograms = loyaltyPrograms;
     return this;
@@ -399,18 +399,18 @@ public class Application {
         Objects.equals(this.accountId, application.accountId) &&
         Objects.equals(this.name, application.name) &&
         Objects.equals(this.description, application.description) &&
-        Objects.equals(this.key, application.key) &&
         Objects.equals(this.timezone, application.timezone) &&
         Objects.equals(this.currency, application.currency) &&
         Objects.equals(this.caseSensitivity, application.caseSensitivity) &&
         Objects.equals(this.attributes, application.attributes) &&
         Objects.equals(this.limits, application.limits) &&
+        Objects.equals(this.key, application.key) &&
         Objects.equals(this.loyaltyPrograms, application.loyaltyPrograms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, key, timezone, currency, caseSensitivity, attributes, limits, loyaltyPrograms);
+    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, key, loyaltyPrograms);
   }
 
 
@@ -425,12 +425,12 @@ public class Application {
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("}");
     return sb.toString();

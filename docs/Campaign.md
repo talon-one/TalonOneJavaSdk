@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **couponRedemptionCount** | **Integer** | Number of coupons redeemed in the campaign. |  [optional]
 **referralRedemptionCount** | **Integer** | Number of referral codes redeemed in the campaign. |  [optional]
 **discountCount** | **Integer** | Total amount of discounts redeemed in the campaign. |  [optional]
+**discountEffectCount** | **Integer** | Total number of times discounts were redeemed in this campaign. |  [optional]
+**couponCreationCount** | **Integer** | Total number of coupons created by rules in this campaign. |  [optional]
 **lastActivity** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the most recent event received by this campaign. |  [optional]
 **updated** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the most recent update to the campaign or any of its elements. |  [optional]
 **createdBy** | **String** | Name of the user who created this campaign if available. |  [optional]
