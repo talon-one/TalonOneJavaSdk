@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AttributesSettings;
 import one.talon.model.LimitConfig;
 import one.talon.model.LoyaltyProgram;
 import org.threeten.bp.OffsetDateTime;
@@ -127,6 +128,10 @@ public class Application {
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTES_SETTINGS = "attributesSettings";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES_SETTINGS)
+  private AttributesSettings attributesSettings = null;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -342,6 +347,24 @@ public class Application {
     this.limits = limits;
   }
 
+  public Application attributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+    return this;
+  }
+
+   /**
+   * Get attributesSettings
+   * @return attributesSettings
+  **/
+  @ApiModelProperty(value = "")
+  public AttributesSettings getAttributesSettings() {
+    return attributesSettings;
+  }
+
+  public void setAttributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+  }
+
   public Application key(String key) {
     this.key = key;
     return this;
@@ -404,13 +427,14 @@ public class Application {
         Objects.equals(this.caseSensitivity, application.caseSensitivity) &&
         Objects.equals(this.attributes, application.attributes) &&
         Objects.equals(this.limits, application.limits) &&
+        Objects.equals(this.attributesSettings, application.attributesSettings) &&
         Objects.equals(this.key, application.key) &&
         Objects.equals(this.loyaltyPrograms, application.loyaltyPrograms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, key, loyaltyPrograms);
+    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, attributesSettings, key, loyaltyPrograms);
   }
 
 
@@ -430,6 +454,7 @@ public class Application {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("}");

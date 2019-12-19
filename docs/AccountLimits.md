@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **webhooks** | **Integer** | Total Number of allowed webhooks in the account | 
 **users** | **Integer** | Total Number of allowed users in the account | 
 **apiVolume** | **Integer** | Total allowed api volume | 
+**activeRules** | **Integer** | Total allowed active rulesets |  [optional]
 **promotionTypes** | **List&lt;String&gt;** | array of rulesets where webhook is used | 
 
 

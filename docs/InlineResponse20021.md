@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;WebhookActivationLogEntry&gt;**](WebhookActivationLogEntry.md) |  | 
+**data** | [**List&lt;Webhook&gt;**](Webhook.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

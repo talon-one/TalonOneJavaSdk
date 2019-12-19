@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.WebhookActivationLogEntry;
+import one.talon.model.Webhook;
 
 /**
  * InlineResponse20021
@@ -34,18 +34,18 @@ import one.talon.model.WebhookActivationLogEntry;
 public class InlineResponse20021 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<WebhookActivationLogEntry> data = new ArrayList<WebhookActivationLogEntry>();
+  private List<Webhook> data = new ArrayList<Webhook>();
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
-  public InlineResponse20021 data(List<WebhookActivationLogEntry> data) {
+  public InlineResponse20021 data(List<Webhook> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20021 addDataItem(WebhookActivationLogEntry dataItem) {
+  public InlineResponse20021 addDataItem(Webhook dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,11 +55,11 @@ public class InlineResponse20021 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<WebhookActivationLogEntry> getData() {
+  public List<Webhook> getData() {
     return data;
   }
 
-  public void setData(List<WebhookActivationLogEntry> data) {
+  public void setData(List<Webhook> data) {
     this.data = data;
   }
 

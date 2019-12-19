@@ -16,6 +16,7 @@ package one.talon.api;
 import one.talon.ApiException;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
+import one.talon.model.CustomerInventory;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.IntegrationState;
@@ -103,6 +104,24 @@ public class IntegrationApiTest {
     public void deleteCustomerDataTest() throws ApiException {
         String integrationId = null;
         api.deleteCustomerData(integrationId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get an inventory of all data associated with a specific customer profile.
+     *
+     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCustomerInventoryTest() throws ApiException {
+        String integrationId = null;
+        Object profile = null;
+        Object referrals = null;
+        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals);
 
         // TODO: test validations
     }

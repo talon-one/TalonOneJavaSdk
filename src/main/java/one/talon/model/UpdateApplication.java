@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AttributesSettings;
 import one.talon.model.LimitConfig;
 
 /**
@@ -108,6 +109,10 @@ public class UpdateApplication {
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTES_SETTINGS = "attributesSettings";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES_SETTINGS)
+  private AttributesSettings attributesSettings = null;
 
   public UpdateApplication name(String name) {
     this.name = name;
@@ -243,6 +248,24 @@ public class UpdateApplication {
     this.limits = limits;
   }
 
+  public UpdateApplication attributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+    return this;
+  }
+
+   /**
+   * Get attributesSettings
+   * @return attributesSettings
+  **/
+  @ApiModelProperty(value = "")
+  public AttributesSettings getAttributesSettings() {
+    return attributesSettings;
+  }
+
+  public void setAttributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -259,12 +282,13 @@ public class UpdateApplication {
         Objects.equals(this.currency, updateApplication.currency) &&
         Objects.equals(this.caseSensitivity, updateApplication.caseSensitivity) &&
         Objects.equals(this.attributes, updateApplication.attributes) &&
-        Objects.equals(this.limits, updateApplication.limits);
+        Objects.equals(this.limits, updateApplication.limits) &&
+        Objects.equals(this.attributesSettings, updateApplication.attributesSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, attributesSettings);
   }
 
 
@@ -280,6 +304,7 @@ public class UpdateApplication {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

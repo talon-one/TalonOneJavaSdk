@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createReferral**](IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
 [**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
+[**getCustomerInventory**](IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile.
 [**getReservedCoupons**](IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationId} | Get all valid reserved coupons
 [**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 [**trackEvent**](IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
@@ -260,6 +261,71 @@ null (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+<a name="getCustomerInventory"></a>
+# **getCustomerInventory**
+> CustomerInventory getCustomerInventory(integrationId, profile, referrals)
+
+Get an inventory of all data associated with a specific customer profile.
+
+Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key_v1
+ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+api_key_v1.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key_v1.setApiKeyPrefix("Token");
+
+// Configure API key authorization: integration_auth
+ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+integration_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//integration_auth.setApiKeyPrefix("Token");
+
+IntegrationApi apiInstance = new IntegrationApi();
+String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+Object profile = null; // Object | optional flag to decide if you would like customer profile information in the response
+Object referrals = null; // Object | optional flag to decide if you would like referral information in the response
+try {
+    CustomerInventory result = apiInstance.getCustomerInventory(integrationId, profile, referrals);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#getCustomerInventory");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
+ **profile** | [**Object**](.md)| optional flag to decide if you would like customer profile information in the response | [optional] [default to null]
+ **referrals** | [**Object**](.md)| optional flag to decide if you would like referral information in the response | [optional] [default to null]
+
+### Return type
+
+[**CustomerInventory**](CustomerInventory.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="getReservedCoupons"></a>
 # **getReservedCoupons**

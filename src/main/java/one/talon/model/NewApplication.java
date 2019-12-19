@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AttributesSettings;
 import one.talon.model.LimitConfig;
 
 /**
@@ -109,6 +110,10 @@ public class NewApplication {
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTES_SETTINGS = "attributesSettings";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES_SETTINGS)
+  private AttributesSettings attributesSettings = null;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -248,6 +253,24 @@ public class NewApplication {
     this.limits = limits;
   }
 
+  public NewApplication attributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+    return this;
+  }
+
+   /**
+   * Get attributesSettings
+   * @return attributesSettings
+  **/
+  @ApiModelProperty(value = "")
+  public AttributesSettings getAttributesSettings() {
+    return attributesSettings;
+  }
+
+  public void setAttributesSettings(AttributesSettings attributesSettings) {
+    this.attributesSettings = attributesSettings;
+  }
+
   public NewApplication key(String key) {
     this.key = key;
     return this;
@@ -283,12 +306,13 @@ public class NewApplication {
         Objects.equals(this.caseSensitivity, newApplication.caseSensitivity) &&
         Objects.equals(this.attributes, newApplication.attributes) &&
         Objects.equals(this.limits, newApplication.limits) &&
+        Objects.equals(this.attributesSettings, newApplication.attributesSettings) &&
         Objects.equals(this.key, newApplication.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, attributesSettings, key);
   }
 
 
@@ -304,6 +328,7 @@ public class NewApplication {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();

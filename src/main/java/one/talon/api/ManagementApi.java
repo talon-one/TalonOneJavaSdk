@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import one.talon.model.Account;
 import one.talon.model.AccountAnalytics;
-import one.talon.model.AccountLimits;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
 import one.talon.model.ApplicationCustomer;
@@ -67,6 +66,7 @@ import one.talon.model.InlineResponse20025;
 import one.talon.model.InlineResponse20026;
 import one.talon.model.InlineResponse20027;
 import one.talon.model.InlineResponse20028;
+import one.talon.model.InlineResponse20029;
 import one.talon.model.InlineResponse2003;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
@@ -78,6 +78,7 @@ import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyPoints;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
 import one.talon.model.NewCampaignSet;
 import one.talon.model.NewCoupons;
@@ -398,6 +399,127 @@ public class ManagementApi {
         return call;
     }
     /**
+     * Build call for createAttribute
+     * @param newAttribute  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call createAttributeCall(NewAttribute newAttribute, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = newAttribute;
+
+        // create path and map variables
+        String localVarPath = "/v1/attributes";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call createAttributeValidateBeforeCall(NewAttribute newAttribute, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'newAttribute' is set
+        if (newAttribute == null) {
+            throw new ApiException("Missing the required parameter 'newAttribute' when calling createAttribute(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = createAttributeCall(newAttribute, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Define a new custom attribute
+     * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+     * @param newAttribute  (required)
+     * @return Attribute
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public Attribute createAttribute(NewAttribute newAttribute) throws ApiException {
+        ApiResponse<Attribute> resp = createAttributeWithHttpInfo(newAttribute);
+        return resp.getData();
+    }
+
+    /**
+     * Define a new custom attribute
+     * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+     * @param newAttribute  (required)
+     * @return ApiResponse&lt;Attribute&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Attribute> createAttributeWithHttpInfo(NewAttribute newAttribute) throws ApiException {
+        com.squareup.okhttp.Call call = createAttributeValidateBeforeCall(newAttribute, null, null);
+        Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Define a new custom attribute (asynchronously)
+     * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+     * @param newAttribute  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call createAttributeAsync(NewAttribute newAttribute, final ApiCallback<Attribute> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = createAttributeValidateBeforeCall(newAttribute, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for createCampaign
      * @param applicationId  (required)
      * @param newCampaign  (required)
@@ -611,7 +733,7 @@ public class ManagementApi {
 
     /**
      * Create Coupons
-     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupns can be created.
+     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param newCoupons  (required)
@@ -626,7 +748,7 @@ public class ManagementApi {
 
     /**
      * Create Coupons
-     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupns can be created.
+     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param newCoupons  (required)
@@ -642,7 +764,7 @@ public class ManagementApi {
 
     /**
      * Create Coupons (asynchronously)
-     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupns can be created.
+     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param newCoupons  (required)
@@ -1839,8 +1961,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -1953,8 +2075,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -1973,8 +2095,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -1994,8 +2116,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2035,8 +2157,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2149,8 +2271,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2169,8 +2291,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2190,8 +2312,8 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2471,133 +2593,11 @@ public class ManagementApi {
         return call;
     }
     /**
-     * Build call for getAccountLimits
-     * @param accountId  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getAccountLimitsCall(Integer accountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = new Object();
-
-        // create path and map variables
-        String localVarPath = "/v1/accounts/{accountId}/limits"
-            .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "manager_auth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAccountLimitsValidateBeforeCall(Integer accountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getAccountLimits(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getAccountLimitsCall(accountId, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Get Account Limits
-     * Returns a list of all account limits set 
-     * @param accountId  (required)
-     * @return AccountLimits
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public AccountLimits getAccountLimits(Integer accountId) throws ApiException {
-        ApiResponse<AccountLimits> resp = getAccountLimitsWithHttpInfo(accountId);
-        return resp.getData();
-    }
-
-    /**
-     * Get Account Limits
-     * Returns a list of all account limits set 
-     * @param accountId  (required)
-     * @return ApiResponse&lt;AccountLimits&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<AccountLimits> getAccountLimitsWithHttpInfo(Integer accountId) throws ApiException {
-        com.squareup.okhttp.Call call = getAccountLimitsValidateBeforeCall(accountId, null, null);
-        Type localVarReturnType = new TypeToken<AccountLimits>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Get Account Limits (asynchronously)
-     * Returns a list of all account limits set 
-     * @param accountId  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getAccountLimitsAsync(Integer accountId, final ApiCallback<AccountLimits> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getAccountLimitsValidateBeforeCall(accountId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AccountLimits>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getAllAccessLogs
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2703,8 +2703,8 @@ public class ManagementApi {
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2722,8 +2722,8 @@ public class ManagementApi {
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2742,8 +2742,8 @@ public class ManagementApi {
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param path Only return results where the request path matches the given regular expresssion. (optional)
-     * @param method Only return results where the request method matches the given regular expresssion. (optional)
+     * @param path Only return results where the request path matches the given regular expression. (optional)
+     * @param method Only return results where the request method matches the given regular expression. (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -2837,23 +2837,23 @@ public class ManagementApi {
     /**
      * Get all roles.
      * 
-     * @return InlineResponse20028
+     * @return InlineResponse20029
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20028 getAllRoles() throws ApiException {
-        ApiResponse<InlineResponse20028> resp = getAllRolesWithHttpInfo();
+    public InlineResponse20029 getAllRoles() throws ApiException {
+        ApiResponse<InlineResponse20029> resp = getAllRolesWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get all roles.
      * 
-     * @return ApiResponse&lt;InlineResponse20028&gt;
+     * @return ApiResponse&lt;InlineResponse20029&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20028> getAllRolesWithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse20029> getAllRolesWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getAllRolesValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20029>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2864,7 +2864,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllRolesAsync(final ApiCallback<InlineResponse20028> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllRolesAsync(final ApiCallback<InlineResponse20029> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2886,7 +2886,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getAllRolesValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20029>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -3455,7 +3455,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @return InlineResponse20013
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3469,7 +3469,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @return ApiResponse&lt;InlineResponse20013&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3484,7 +3484,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes (asynchronously)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4693,6 +4693,142 @@ public class ManagementApi {
         return call;
     }
     /**
+     * Build call for getAttributes
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAttributesCall(Integer pageSize, Integer skip, String sort, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/v1/attributes";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (skip != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("skip", skip));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("sort", sort));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAttributesValidateBeforeCall(Integer pageSize, Integer skip, String sort, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAttributesCall(pageSize, skip, sort, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * List custom attributes
+     * Returns all the defined custom attributes for the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @return InlineResponse20020
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20020 getAttributes(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20020> resp = getAttributesWithHttpInfo(pageSize, skip, sort);
+        return resp.getData();
+    }
+
+    /**
+     * List custom attributes
+     * Returns all the defined custom attributes for the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20020> getAttributesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+        com.squareup.okhttp.Call call = getAttributesValidateBeforeCall(pageSize, skip, sort, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * List custom attributes (asynchronously)
+     * Returns all the defined custom attributes for the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAttributesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20020> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAttributesValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getCampaign
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -5568,11 +5704,11 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20025 getChanges(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
-        ApiResponse<InlineResponse20025> resp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+    public InlineResponse20026 getChanges(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+        ApiResponse<InlineResponse20026> resp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
         return resp.getData();
     }
 
@@ -5587,12 +5723,12 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return ApiResponse&lt;InlineResponse20025&gt;
+     * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20025> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+    public ApiResponse<InlineResponse20026> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -5611,7 +5747,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback<InlineResponse20025> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChangesAsync(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback<InlineResponse20026> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -5633,7 +5769,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7669,7 +7805,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -7683,7 +7819,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -7698,7 +7834,7 @@ public class ManagementApi {
 
     /**
      * Get a list of the customer profiles that match the given attributes (asynchronously)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -7827,11 +7963,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20023
+     * @return InlineResponse20024
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20023 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20023> resp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+    public InlineResponse20024 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20024> resp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -7844,12 +7980,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20023&gt;
+     * @return ApiResponse&lt;InlineResponse20024&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20023> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20024> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -7866,7 +8002,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20023> callback) throws ApiException {
+    public com.squareup.okhttp.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20024> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7888,7 +8024,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7981,11 +8117,11 @@ public class ManagementApi {
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return InlineResponse20026
+     * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20026 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
-        ApiResponse<InlineResponse20026> resp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
+    public InlineResponse20027 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+        ApiResponse<InlineResponse20027> resp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
         return resp.getData();
     }
 
@@ -7997,12 +8133,12 @@ public class ManagementApi {
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return ApiResponse&lt;InlineResponse20026&gt;
+     * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20026> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+    public ApiResponse<InlineResponse20027> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -8018,7 +8154,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20026> callback) throws ApiException {
+    public com.squareup.okhttp.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20027> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8040,7 +8176,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -8115,11 +8251,11 @@ public class ManagementApi {
      * Get a list of all past imports 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20027
+     * @return InlineResponse20028
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20027 getImports(Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20027> resp = getImportsWithHttpInfo(pageSize, skip);
+    public InlineResponse20028 getImports(Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20028> resp = getImportsWithHttpInfo(pageSize, skip);
         return resp.getData();
     }
 
@@ -8128,12 +8264,12 @@ public class ManagementApi {
      * Get a list of all past imports 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20027&gt;
+     * @return ApiResponse&lt;InlineResponse20028&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20027> getImportsWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20028> getImportsWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
         com.squareup.okhttp.Call call = getImportsValidateBeforeCall(pageSize, skip, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -8146,7 +8282,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getImportsAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20027> callback) throws ApiException {
+    public com.squareup.okhttp.Call getImportsAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20028> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8168,7 +8304,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getImportsValidateBeforeCall(pageSize, skip, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9565,11 +9701,11 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20024 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20024> resp = getUsersWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20025 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20025> resp = getUsersWithHttpInfo(pageSize, skip, sort);
         return resp.getData();
     }
 
@@ -9579,12 +9715,12 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20024&gt;
+     * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20024> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20025> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -9598,7 +9734,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20024> callback) throws ApiException {
+    public com.squareup.okhttp.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20025> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9620,7 +9756,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getUsersValidateBeforeCall(pageSize, skip, sort, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -9859,11 +9995,11 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20021
+     * @return InlineResponse20022
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20021 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20021> resp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+    public InlineResponse20022 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20022> resp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
         return resp.getData();
     }
 
@@ -9879,12 +10015,12 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20021&gt;
+     * @return ApiResponse&lt;InlineResponse20022&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20021> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20022> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         com.squareup.okhttp.Call call = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -9904,7 +10040,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20021> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20022> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -9926,7 +10062,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -10049,11 +10185,11 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20022
+     * @return InlineResponse20023
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20022 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20022> resp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+    public InlineResponse20023 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20023> resp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
         return resp.getData();
     }
 
@@ -10070,12 +10206,12 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20022&gt;
+     * @return ApiResponse&lt;InlineResponse20023&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20022> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20023> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         com.squareup.okhttp.Call call = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -10096,7 +10232,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20022> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20023> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10118,7 +10254,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -10205,11 +10341,11 @@ public class ManagementApi {
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20020
+     * @return InlineResponse20021
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20020 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20020> resp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
+    public InlineResponse20021 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20021> resp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
         return resp.getData();
     }
 
@@ -10220,12 +10356,12 @@ public class ManagementApi {
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @return ApiResponse&lt;InlineResponse20021&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20020> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20021> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
         com.squareup.okhttp.Call call = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -10240,7 +10376,7 @@ public class ManagementApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20020> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20021> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -10262,7 +10398,7 @@ public class ManagementApi {
         }
 
         com.squareup.okhttp.Call call = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -11577,27 +11713,27 @@ public class ManagementApi {
         return call;
     }
     /**
-     * Build call for setAccountLimits
-     * @param accountId  (required)
-     * @param accountLimits  (required)
+     * Build call for updateAttribute
+     * @param attributeId  (required)
+     * @param newAttribute  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call setAccountLimitsCall(Integer accountId, AccountLimits accountLimits, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = accountLimits;
+    public com.squareup.okhttp.Call updateAttributeCall(Integer attributeId, NewAttribute newAttribute, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = newAttribute;
 
         // create path and map variables
-        String localVarPath = "/v1/accounts/{accountId}/limits"
-            .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+        String localVarPath = "/v1/attributes/{attributeId}"
+            .replaceAll("\\{" + "attributeId" + "\\}", apiClient.escapeString(attributeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -11627,58 +11763,61 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call setAccountLimitsValidateBeforeCall(Integer accountId, AccountLimits accountLimits, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateAttributeValidateBeforeCall(Integer attributeId, NewAttribute newAttribute, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling setAccountLimits(Async)");
+        // verify the required parameter 'attributeId' is set
+        if (attributeId == null) {
+            throw new ApiException("Missing the required parameter 'attributeId' when calling updateAttribute(Async)");
         }
         
-        // verify the required parameter 'accountLimits' is set
-        if (accountLimits == null) {
-            throw new ApiException("Missing the required parameter 'accountLimits' when calling setAccountLimits(Async)");
+        // verify the required parameter 'newAttribute' is set
+        if (newAttribute == null) {
+            throw new ApiException("Missing the required parameter 'newAttribute' when calling updateAttribute(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = setAccountLimitsCall(accountId, accountLimits, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateAttributeCall(attributeId, newAttribute, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Set account limits
-     * sets account limits 
-     * @param accountId  (required)
-     * @param accountLimits  (required)
+     * Update a custom attribute
+     * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
+     * @param attributeId  (required)
+     * @param newAttribute  (required)
+     * @return Attribute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void setAccountLimits(Integer accountId, AccountLimits accountLimits) throws ApiException {
-        setAccountLimitsWithHttpInfo(accountId, accountLimits);
+    public Attribute updateAttribute(Integer attributeId, NewAttribute newAttribute) throws ApiException {
+        ApiResponse<Attribute> resp = updateAttributeWithHttpInfo(attributeId, newAttribute);
+        return resp.getData();
     }
 
     /**
-     * Set account limits
-     * sets account limits 
-     * @param accountId  (required)
-     * @param accountLimits  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Update a custom attribute
+     * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
+     * @param attributeId  (required)
+     * @param newAttribute  (required)
+     * @return ApiResponse&lt;Attribute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> setAccountLimitsWithHttpInfo(Integer accountId, AccountLimits accountLimits) throws ApiException {
-        com.squareup.okhttp.Call call = setAccountLimitsValidateBeforeCall(accountId, accountLimits, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<Attribute> updateAttributeWithHttpInfo(Integer attributeId, NewAttribute newAttribute) throws ApiException {
+        com.squareup.okhttp.Call call = updateAttributeValidateBeforeCall(attributeId, newAttribute, null, null);
+        Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Set account limits (asynchronously)
-     * sets account limits 
-     * @param accountId  (required)
-     * @param accountLimits  (required)
+     * Update a custom attribute (asynchronously)
+     * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
+     * @param attributeId  (required)
+     * @param newAttribute  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call setAccountLimitsAsync(Integer accountId, AccountLimits accountLimits, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAttributeAsync(Integer attributeId, NewAttribute newAttribute, final ApiCallback<Attribute> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -11699,8 +11838,9 @@ public class ManagementApi {
             };
         }
 
-        com.squareup.okhttp.Call call = setAccountLimitsValidateBeforeCall(accountId, accountLimits, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = updateAttributeValidateBeforeCall(attributeId, newAttribute, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

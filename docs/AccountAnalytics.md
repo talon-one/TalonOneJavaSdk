@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **roles** | **Integer** | Total Number of roles inside the account | 
 **webhooks** | **Integer** | Total Number of webhooks inside the account | 
 **loyaltyPrograms** | **Integer** | Total Number of loyalty programs inside the account | 
+**activeRules** | **Integer** | Total Number of active rules in the account | 
 
 
 

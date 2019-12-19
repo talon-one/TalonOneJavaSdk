@@ -44,6 +44,14 @@ public class CampaignAnalytics {
   @SerializedName(SERIALIZED_NAME_TOTAL_CAMPAIGN_REVENUE)
   private BigDecimal totalCampaignRevenue;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_REFUND = "campaignRefund";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_REFUND)
+  private BigDecimal campaignRefund;
+
+  public static final String SERIALIZED_NAME_TOTAL_CAMPAIGN_REFUND = "totalCampaignRefund";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CAMPAIGN_REFUND)
+  private BigDecimal totalCampaignRefund;
+
   public static final String SERIALIZED_NAME_CAMPAIGN_DISCOUNT_COSTS = "campaignDiscountCosts";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_DISCOUNT_COSTS)
   private BigDecimal campaignDiscountCosts;
@@ -51,6 +59,14 @@ public class CampaignAnalytics {
   public static final String SERIALIZED_NAME_TOTAL_CAMPAIGN_DISCOUNT_COSTS = "totalCampaignDiscountCosts";
   @SerializedName(SERIALIZED_NAME_TOTAL_CAMPAIGN_DISCOUNT_COSTS)
   private BigDecimal totalCampaignDiscountCosts;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_REFUNDED_DISCOUNTS = "campaignRefundedDiscounts";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_REFUNDED_DISCOUNTS)
+  private BigDecimal campaignRefundedDiscounts;
+
+  public static final String SERIALIZED_NAME_TOTAL_CAMPAIGN_REFUNDED_DISCOUNTS = "totalCampaignRefundedDiscounts";
+  @SerializedName(SERIALIZED_NAME_TOTAL_CAMPAIGN_REFUNDED_DISCOUNTS)
+  private BigDecimal totalCampaignRefundedDiscounts;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_FREE_ITEMS = "campaignFreeItems";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_FREE_ITEMS)
@@ -67,6 +83,14 @@ public class CampaignAnalytics {
   public static final String SERIALIZED_NAME_TOTAL_COUPON_REDEMPTIONS = "totalCouponRedemptions";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUPON_REDEMPTIONS)
   private Integer totalCouponRedemptions;
+
+  public static final String SERIALIZED_NAME_COUPON_ROLLEDBACK_REDEMPTIONS = "couponRolledbackRedemptions";
+  @SerializedName(SERIALIZED_NAME_COUPON_ROLLEDBACK_REDEMPTIONS)
+  private Integer couponRolledbackRedemptions;
+
+  public static final String SERIALIZED_NAME_TOTAL_COUPON_ROLLEDBACK_REDEMPTIONS = "totalCouponRolledbackRedemptions";
+  @SerializedName(SERIALIZED_NAME_TOTAL_COUPON_ROLLEDBACK_REDEMPTIONS)
+  private Integer totalCouponRolledbackRedemptions;
 
   public static final String SERIALIZED_NAME_REFERRAL_REDEMPTIONS = "referralRedemptions";
   @SerializedName(SERIALIZED_NAME_REFERRAL_REDEMPTIONS)
@@ -116,10 +140,10 @@ public class CampaignAnalytics {
   }
 
    /**
-   * Amount of revenue in this campaign.
+   * Amount of revenue in this campaign (for coupon or discount sessions).
    * @return campaignRevenue
   **/
-  @ApiModelProperty(required = true, value = "Amount of revenue in this campaign.")
+  @ApiModelProperty(required = true, value = "Amount of revenue in this campaign (for coupon or discount sessions).")
   public BigDecimal getCampaignRevenue() {
     return campaignRevenue;
   }
@@ -134,16 +158,52 @@ public class CampaignAnalytics {
   }
 
    /**
-   * Amount of revenue in this campaign since it began.
+   * Amount of revenue in this campaign since it began (for coupon or discount sessions).
    * @return totalCampaignRevenue
   **/
-  @ApiModelProperty(required = true, value = "Amount of revenue in this campaign since it began.")
+  @ApiModelProperty(required = true, value = "Amount of revenue in this campaign since it began (for coupon or discount sessions).")
   public BigDecimal getTotalCampaignRevenue() {
     return totalCampaignRevenue;
   }
 
   public void setTotalCampaignRevenue(BigDecimal totalCampaignRevenue) {
     this.totalCampaignRevenue = totalCampaignRevenue;
+  }
+
+  public CampaignAnalytics campaignRefund(BigDecimal campaignRefund) {
+    this.campaignRefund = campaignRefund;
+    return this;
+  }
+
+   /**
+   * Amount of refunds in this campaign (for coupon or discount sessions).
+   * @return campaignRefund
+  **/
+  @ApiModelProperty(required = true, value = "Amount of refunds in this campaign (for coupon or discount sessions).")
+  public BigDecimal getCampaignRefund() {
+    return campaignRefund;
+  }
+
+  public void setCampaignRefund(BigDecimal campaignRefund) {
+    this.campaignRefund = campaignRefund;
+  }
+
+  public CampaignAnalytics totalCampaignRefund(BigDecimal totalCampaignRefund) {
+    this.totalCampaignRefund = totalCampaignRefund;
+    return this;
+  }
+
+   /**
+   * Amount of refunds in this campaign since it began (for coupon or discount sessions).
+   * @return totalCampaignRefund
+  **/
+  @ApiModelProperty(required = true, value = "Amount of refunds in this campaign since it began (for coupon or discount sessions).")
+  public BigDecimal getTotalCampaignRefund() {
+    return totalCampaignRefund;
+  }
+
+  public void setTotalCampaignRefund(BigDecimal totalCampaignRefund) {
+    this.totalCampaignRefund = totalCampaignRefund;
   }
 
   public CampaignAnalytics campaignDiscountCosts(BigDecimal campaignDiscountCosts) {
@@ -180,6 +240,42 @@ public class CampaignAnalytics {
 
   public void setTotalCampaignDiscountCosts(BigDecimal totalCampaignDiscountCosts) {
     this.totalCampaignDiscountCosts = totalCampaignDiscountCosts;
+  }
+
+  public CampaignAnalytics campaignRefundedDiscounts(BigDecimal campaignRefundedDiscounts) {
+    this.campaignRefundedDiscounts = campaignRefundedDiscounts;
+    return this;
+  }
+
+   /**
+   * Amount of discounts rolledback due to refund in the campaign.
+   * @return campaignRefundedDiscounts
+  **/
+  @ApiModelProperty(required = true, value = "Amount of discounts rolledback due to refund in the campaign.")
+  public BigDecimal getCampaignRefundedDiscounts() {
+    return campaignRefundedDiscounts;
+  }
+
+  public void setCampaignRefundedDiscounts(BigDecimal campaignRefundedDiscounts) {
+    this.campaignRefundedDiscounts = campaignRefundedDiscounts;
+  }
+
+  public CampaignAnalytics totalCampaignRefundedDiscounts(BigDecimal totalCampaignRefundedDiscounts) {
+    this.totalCampaignRefundedDiscounts = totalCampaignRefundedDiscounts;
+    return this;
+  }
+
+   /**
+   * Amount of discounts rolledback due to refund in the campaign since it began.
+   * @return totalCampaignRefundedDiscounts
+  **/
+  @ApiModelProperty(required = true, value = "Amount of discounts rolledback due to refund in the campaign since it began.")
+  public BigDecimal getTotalCampaignRefundedDiscounts() {
+    return totalCampaignRefundedDiscounts;
+  }
+
+  public void setTotalCampaignRefundedDiscounts(BigDecimal totalCampaignRefundedDiscounts) {
+    this.totalCampaignRefundedDiscounts = totalCampaignRefundedDiscounts;
   }
 
   public CampaignAnalytics campaignFreeItems(Integer campaignFreeItems) {
@@ -224,10 +320,10 @@ public class CampaignAnalytics {
   }
 
    /**
-   * Number of coupon redemptions in the campaign (only accepted referrals on sessions that were closed are considered).
+   * Number of coupon redemptions in the campaign.
    * @return couponRedemptions
   **/
-  @ApiModelProperty(required = true, value = "Number of coupon redemptions in the campaign (only accepted referrals on sessions that were closed are considered).")
+  @ApiModelProperty(required = true, value = "Number of coupon redemptions in the campaign.")
   public Integer getCouponRedemptions() {
     return couponRedemptions;
   }
@@ -252,6 +348,42 @@ public class CampaignAnalytics {
 
   public void setTotalCouponRedemptions(Integer totalCouponRedemptions) {
     this.totalCouponRedemptions = totalCouponRedemptions;
+  }
+
+  public CampaignAnalytics couponRolledbackRedemptions(Integer couponRolledbackRedemptions) {
+    this.couponRolledbackRedemptions = couponRolledbackRedemptions;
+    return this;
+  }
+
+   /**
+   * Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign.
+   * @return couponRolledbackRedemptions
+  **/
+  @ApiModelProperty(required = true, value = "Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign.")
+  public Integer getCouponRolledbackRedemptions() {
+    return couponRolledbackRedemptions;
+  }
+
+  public void setCouponRolledbackRedemptions(Integer couponRolledbackRedemptions) {
+    this.couponRolledbackRedemptions = couponRolledbackRedemptions;
+  }
+
+  public CampaignAnalytics totalCouponRolledbackRedemptions(Integer totalCouponRolledbackRedemptions) {
+    this.totalCouponRolledbackRedemptions = totalCouponRolledbackRedemptions;
+    return this;
+  }
+
+   /**
+   * Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign since it began.
+   * @return totalCouponRolledbackRedemptions
+  **/
+  @ApiModelProperty(required = true, value = "Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign since it began.")
+  public Integer getTotalCouponRolledbackRedemptions() {
+    return totalCouponRolledbackRedemptions;
+  }
+
+  public void setTotalCouponRolledbackRedemptions(Integer totalCouponRolledbackRedemptions) {
+    this.totalCouponRolledbackRedemptions = totalCouponRolledbackRedemptions;
   }
 
   public CampaignAnalytics referralRedemptions(Integer referralRedemptions) {
@@ -375,12 +507,18 @@ public class CampaignAnalytics {
     return Objects.equals(this.date, campaignAnalytics.date) &&
         Objects.equals(this.campaignRevenue, campaignAnalytics.campaignRevenue) &&
         Objects.equals(this.totalCampaignRevenue, campaignAnalytics.totalCampaignRevenue) &&
+        Objects.equals(this.campaignRefund, campaignAnalytics.campaignRefund) &&
+        Objects.equals(this.totalCampaignRefund, campaignAnalytics.totalCampaignRefund) &&
         Objects.equals(this.campaignDiscountCosts, campaignAnalytics.campaignDiscountCosts) &&
         Objects.equals(this.totalCampaignDiscountCosts, campaignAnalytics.totalCampaignDiscountCosts) &&
+        Objects.equals(this.campaignRefundedDiscounts, campaignAnalytics.campaignRefundedDiscounts) &&
+        Objects.equals(this.totalCampaignRefundedDiscounts, campaignAnalytics.totalCampaignRefundedDiscounts) &&
         Objects.equals(this.campaignFreeItems, campaignAnalytics.campaignFreeItems) &&
         Objects.equals(this.totalCampaignFreeItems, campaignAnalytics.totalCampaignFreeItems) &&
         Objects.equals(this.couponRedemptions, campaignAnalytics.couponRedemptions) &&
         Objects.equals(this.totalCouponRedemptions, campaignAnalytics.totalCouponRedemptions) &&
+        Objects.equals(this.couponRolledbackRedemptions, campaignAnalytics.couponRolledbackRedemptions) &&
+        Objects.equals(this.totalCouponRolledbackRedemptions, campaignAnalytics.totalCouponRolledbackRedemptions) &&
         Objects.equals(this.referralRedemptions, campaignAnalytics.referralRedemptions) &&
         Objects.equals(this.totalReferralRedemptions, campaignAnalytics.totalReferralRedemptions) &&
         Objects.equals(this.couponsCreated, campaignAnalytics.couponsCreated) &&
@@ -391,7 +529,7 @@ public class CampaignAnalytics {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, campaignRevenue, totalCampaignRevenue, campaignDiscountCosts, totalCampaignDiscountCosts, campaignFreeItems, totalCampaignFreeItems, couponRedemptions, totalCouponRedemptions, referralRedemptions, totalReferralRedemptions, couponsCreated, totalCouponsCreated, referralsCreated, totalReferralsCreated);
+    return Objects.hash(date, campaignRevenue, totalCampaignRevenue, campaignRefund, totalCampaignRefund, campaignDiscountCosts, totalCampaignDiscountCosts, campaignRefundedDiscounts, totalCampaignRefundedDiscounts, campaignFreeItems, totalCampaignFreeItems, couponRedemptions, totalCouponRedemptions, couponRolledbackRedemptions, totalCouponRolledbackRedemptions, referralRedemptions, totalReferralRedemptions, couponsCreated, totalCouponsCreated, referralsCreated, totalReferralsCreated);
   }
 
 
@@ -403,12 +541,18 @@ public class CampaignAnalytics {
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    campaignRevenue: ").append(toIndentedString(campaignRevenue)).append("\n");
     sb.append("    totalCampaignRevenue: ").append(toIndentedString(totalCampaignRevenue)).append("\n");
+    sb.append("    campaignRefund: ").append(toIndentedString(campaignRefund)).append("\n");
+    sb.append("    totalCampaignRefund: ").append(toIndentedString(totalCampaignRefund)).append("\n");
     sb.append("    campaignDiscountCosts: ").append(toIndentedString(campaignDiscountCosts)).append("\n");
     sb.append("    totalCampaignDiscountCosts: ").append(toIndentedString(totalCampaignDiscountCosts)).append("\n");
+    sb.append("    campaignRefundedDiscounts: ").append(toIndentedString(campaignRefundedDiscounts)).append("\n");
+    sb.append("    totalCampaignRefundedDiscounts: ").append(toIndentedString(totalCampaignRefundedDiscounts)).append("\n");
     sb.append("    campaignFreeItems: ").append(toIndentedString(campaignFreeItems)).append("\n");
     sb.append("    totalCampaignFreeItems: ").append(toIndentedString(totalCampaignFreeItems)).append("\n");
     sb.append("    couponRedemptions: ").append(toIndentedString(couponRedemptions)).append("\n");
     sb.append("    totalCouponRedemptions: ").append(toIndentedString(totalCouponRedemptions)).append("\n");
+    sb.append("    couponRolledbackRedemptions: ").append(toIndentedString(couponRolledbackRedemptions)).append("\n");
+    sb.append("    totalCouponRolledbackRedemptions: ").append(toIndentedString(totalCouponRolledbackRedemptions)).append("\n");
     sb.append("    referralRedemptions: ").append(toIndentedString(referralRedemptions)).append("\n");
     sb.append("    totalReferralRedemptions: ").append(toIndentedString(totalReferralRedemptions)).append("\n");
     sb.append("    couponsCreated: ").append(toIndentedString(couponsCreated)).append("\n");

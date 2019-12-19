@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
+import one.talon.model.CustomerInventory;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.IntegrationState;
@@ -558,6 +559,144 @@ public class IntegrationApi {
 
         com.squareup.okhttp.Call call = deleteCustomerDataValidateBeforeCall(integrationId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
+        return call;
+    }
+    /**
+     * Build call for getCustomerInventory
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param profile optional flag to decide if you would like customer profile information in the response (optional, default to null)
+     * @param referrals optional flag to decide if you would like referral information in the response (optional, default to null)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCustomerInventoryCall(String integrationId, Object profile, Object referrals, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/v1/customer_profiles/{integrationId}/inventory"
+            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (profile != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("profile", profile));
+        }
+
+        if (referrals != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("referrals", referrals));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getCustomerInventoryValidateBeforeCall(String integrationId, Object profile, Object referrals, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'integrationId' is set
+        if (integrationId == null) {
+            throw new ApiException("Missing the required parameter 'integrationId' when calling getCustomerInventory(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getCustomerInventoryCall(integrationId, profile, referrals, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get an inventory of all data associated with a specific customer profile.
+     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param profile optional flag to decide if you would like customer profile information in the response (optional, default to null)
+     * @param referrals optional flag to decide if you would like referral information in the response (optional, default to null)
+     * @return CustomerInventory
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public CustomerInventory getCustomerInventory(String integrationId, Object profile, Object referrals) throws ApiException {
+        ApiResponse<CustomerInventory> resp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals);
+        return resp.getData();
+    }
+
+    /**
+     * Get an inventory of all data associated with a specific customer profile.
+     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param profile optional flag to decide if you would like customer profile information in the response (optional, default to null)
+     * @param referrals optional flag to decide if you would like referral information in the response (optional, default to null)
+     * @return ApiResponse&lt;CustomerInventory&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Object profile, Object referrals) throws ApiException {
+        com.squareup.okhttp.Call call = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, null, null);
+        Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get an inventory of all data associated with a specific customer profile. (asynchronously)
+     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param profile optional flag to decide if you would like customer profile information in the response (optional, default to null)
+     * @param referrals optional flag to decide if you would like referral information in the response (optional, default to null)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getCustomerInventoryAsync(String integrationId, Object profile, Object referrals, final ApiCallback<CustomerInventory> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

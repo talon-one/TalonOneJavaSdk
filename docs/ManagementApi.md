@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addLoyaltyPoints**](ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
 [**copyCampaignToApplications**](ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
+[**createAttribute**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Define a new custom attribute
 [**createCampaign**](ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create a Campaign
 [**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create Coupons
 [**createPasswordRecoveryEmail**](ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
@@ -20,7 +21,6 @@ Method | HTTP request | Description
 [**getAccessLogsWithoutTotalCount**](ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for application
 [**getAccount**](ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get Account Details
 [**getAccountAnalytics**](ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get Account Analytics
-[**getAccountLimits**](ManagementApi.md#getAccountLimits) | **GET** /v1/accounts/{accountId}/limits | Get Account Limits
 [**getAllAccessLogs**](ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | Get all access logs
 [**getAllRoles**](ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles.
 [**getApplication**](ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
@@ -35,6 +35,7 @@ Method | HTTP request | Description
 [**getApplicationSessions**](ManagementApi.md#getApplicationSessions) | **GET** /v1/applications/{applicationId}/sessions | List Application Sessions
 [**getApplications**](ManagementApi.md#getApplications) | **GET** /v1/applications | List Applications
 [**getAttribute**](ManagementApi.md#getAttribute) | **GET** /v1/attributes/{attributeId} | Get a custom attribute
+[**getAttributes**](ManagementApi.md#getAttributes) | **GET** /v1/attributes | List custom attributes
 [**getCampaign**](ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get a Campaign
 [**getCampaignAnalytics**](ManagementApi.md#getCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/analytics | Get analytics of campaigns
 [**getCampaignByAttributes**](ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | Get a list of all campaigns that match the given attributes
@@ -76,7 +77,7 @@ Method | HTTP request | Description
 [**searchCouponsAdvancedApplicationWide**](ManagementApi.md#searchCouponsAdvancedApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search_advanced | Get a list of the coupons that match the given attributes in all active campaigns of an application
 [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes in all active campaigns of an application
 [**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes
-[**setAccountLimits**](ManagementApi.md#setAccountLimits) | **PUT** /v1/accounts/{accountId}/limits | Set account limits
+[**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update a custom attribute
 [**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
 [**updateCampaignSet**](ManagementApi.md#updateCampaignSet) | **PUT** /v1/applications/{applicationId}/campaign_set | Update a Campaign Set
 [**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update a Coupon
@@ -199,6 +200,61 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="createAttribute"></a>
+# **createAttribute**
+> Attribute createAttribute(newAttribute)
+
+Define a new custom attribute
+
+Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.ManagementApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: manager_auth
+ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+manager_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//manager_auth.setApiKeyPrefix("Token");
+
+ManagementApi apiInstance = new ManagementApi();
+NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
+try {
+    Attribute result = apiInstance.createAttribute(newAttribute);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ManagementApi#createAttribute");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
+
+### Return type
+
+[**Attribute**](Attribute.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="createCampaign"></a>
 # **createCampaign**
 > Campaign createCampaign(applicationId, newCampaign)
@@ -260,7 +316,7 @@ Name | Type | Description  | Notes
 
 Create Coupons
 
-Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupns can be created.
+Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
 
 ### Example
 ```java
@@ -809,8 +865,8 @@ ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
+String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
 String status = "status_example"; // String | Filter results by HTTP status codes.
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
@@ -831,8 +887,8 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
- **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
- **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
+ **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
+ **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
@@ -878,8 +934,8 @@ ManagementApi apiInstance = new ManagementApi();
 Integer applicationId = 56; // Integer | 
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
+String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
 String status = "status_example"; // String | Filter results by HTTP status codes.
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
@@ -900,8 +956,8 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
- **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
- **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
+ **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
+ **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
@@ -1030,61 +1086,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getAccountLimits"></a>
-# **getAccountLimits**
-> AccountLimits getAccountLimits(accountId)
-
-Get Account Limits
-
-Returns a list of all account limits set 
-
-### Example
-```java
-// Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer accountId = 56; // Integer | 
-try {
-    AccountLimits result = apiInstance.getAccountLimits(accountId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAccountLimits");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accountId** | **Integer**|  |
-
-### Return type
-
-[**AccountLimits**](AccountLimits.md)
-
-### Authorization
-
-[manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 <a name="getAllAccessLogs"></a>
 # **getAllAccessLogs**
 > InlineResponse2009 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
@@ -1113,8 +1114,8 @@ manager_auth.setApiKey("YOUR API KEY");
 ManagementApi apiInstance = new ManagementApi();
 OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
 OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expresssion.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expresssion.
+String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
 String status = "status_example"; // String | Filter results by HTTP status codes.
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
@@ -1134,8 +1135,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
- **path** | **String**| Only return results where the request path matches the given regular expresssion. | [optional]
- **method** | **String**| Only return results where the request method matches the given regular expresssion. | [optional] [enum: get, put, post, delete, patch]
+ **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
+ **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
@@ -1156,7 +1157,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllRoles"></a>
 # **getAllRoles**
-> InlineResponse20028 getAllRoles()
+> InlineResponse20029 getAllRoles()
 
 Get all roles.
 
@@ -1179,7 +1180,7 @@ manager_auth.setApiKey("YOUR API KEY");
 
 ManagementApi apiInstance = new ManagementApi();
 try {
-    InlineResponse20028 result = apiInstance.getAllRoles();
+    InlineResponse20029 result = apiInstance.getAllRoles();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getAllRoles");
@@ -1192,7 +1193,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20028**](InlineResponse20028.md)
+[**InlineResponse20029**](InlineResponse20029.md)
 
 ### Authorization
 
@@ -1425,7 +1426,7 @@ Name | Type | Description  | Notes
 
 Get a list of the customer profiles that match the given attributes
 
-Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
 
 ### Example
 ```java
@@ -1935,6 +1936,65 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getAttributes"></a>
+# **getAttributes**
+> InlineResponse20020 getAttributes(pageSize, skip, sort)
+
+List custom attributes
+
+Returns all the defined custom attributes for the account. 
+
+### Example
+```java
+// Import classes:
+//import one.talon.ApiClient;
+//import one.talon.ApiException;
+//import one.talon.Configuration;
+//import one.talon.auth.*;
+//import one.talon.api.ManagementApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: manager_auth
+ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+manager_auth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//manager_auth.setApiKeyPrefix("Token");
+
+ManagementApi apiInstance = new ManagementApi();
+Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+try {
+    InlineResponse20020 result = apiInstance.getAttributes(pageSize, skip, sort);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ManagementApi#getAttributes");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
+ **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+
+### Return type
+
+[**InlineResponse20020**](InlineResponse20020.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getCampaign"></a>
 # **getCampaign**
 > Campaign getCampaign(applicationId, campaignId)
@@ -2240,7 +2300,7 @@ Name | Type | Description  | Notes
 
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20025 getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld)
+> InlineResponse20026 getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld)
 
 Get audit log for an account
 
@@ -2273,7 +2333,7 @@ OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter r
 Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
 Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
 try {
-    InlineResponse20025 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+    InlineResponse20026 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getChanges");
@@ -2296,7 +2356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -3029,7 +3089,7 @@ Name | Type | Description  | Notes
 
 Get a list of the customer profiles that match the given attributes
 
-Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
 
 ### Example
 ```java
@@ -3084,7 +3144,7 @@ Name | Type | Description  | Notes
 
 <a name="getEventTypes"></a>
 # **getEventTypes**
-> InlineResponse20023 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20024 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
 
 List Event Types
 
@@ -3115,7 +3175,7 @@ Integer pageSize = 56; // Integer | The number of items to include in this respo
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20023 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+    InlineResponse20024 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getEventTypes");
@@ -3136,7 +3196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -3149,7 +3209,7 @@ Name | Type | Description  | Notes
 
 <a name="getExports"></a>
 # **getExports**
-> InlineResponse20026 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20027 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get Exports
 
@@ -3179,7 +3239,7 @@ Integer applicationId = 56; // Integer |
 Integer campaignId = 56; // Integer | 
 String entity = "entity_example"; // String | The name of the entity type that was exported.
 try {
-    InlineResponse20026 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+    InlineResponse20027 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getExports");
@@ -3199,7 +3259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -3212,7 +3272,7 @@ Name | Type | Description  | Notes
 
 <a name="getImports"></a>
 # **getImports**
-> InlineResponse20027 getImports(pageSize, skip)
+> InlineResponse20028 getImports(pageSize, skip)
 
 Get Imports
 
@@ -3239,7 +3299,7 @@ ManagementApi apiInstance = new ManagementApi();
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
-    InlineResponse20027 result = apiInstance.getImports(pageSize, skip);
+    InlineResponse20028 result = apiInstance.getImports(pageSize, skip);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getImports");
@@ -3256,7 +3316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -3800,7 +3860,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> InlineResponse20024 getUsers(pageSize, skip, sort)
+> InlineResponse20025 getUsers(pageSize, skip, sort)
 
 List Users in your account
 
@@ -3828,7 +3888,7 @@ Integer pageSize = 56; // Integer | The number of items to include in this respo
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
 try {
-    InlineResponse20024 result = apiInstance.getUsers(pageSize, skip, sort);
+    InlineResponse20025 result = apiInstance.getUsers(pageSize, skip, sort);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getUsers");
@@ -3846,7 +3906,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -3914,7 +3974,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookActivationLogs"></a>
 # **getWebhookActivationLogs**
-> InlineResponse20021 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20022 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List Webhook activation Log Entries
 
@@ -3948,7 +4008,7 @@ BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by camp
 OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date.
 OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
 try {
-    InlineResponse20021 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+    InlineResponse20022 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
@@ -3972,7 +4032,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -3985,7 +4045,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookLogs"></a>
 # **getWebhookLogs**
-> InlineResponse20022 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20023 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List Webhook Log Entries
 
@@ -4018,7 +4078,7 @@ String requestUuid = "requestUuid_example"; // String | Filter results by reques
 OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string.
 OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
 try {
-    InlineResponse20022 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+    InlineResponse20023 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhookLogs");
@@ -4043,7 +4103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -4056,7 +4116,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhooks"></a>
 # **getWebhooks**
-> InlineResponse20020 getWebhooks(applicationIds, sort, pageSize, skip)
+> InlineResponse20021 getWebhooks(applicationIds, sort, pageSize, skip)
 
 List Webhooks
 
@@ -4083,7 +4143,7 @@ String sort = "sort_example"; // String | The field by which results should be s
 Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
 Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
 try {
-    InlineResponse20020 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
+    InlineResponse20021 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ManagementApi#getWebhooks");
@@ -4102,7 +4162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -4606,13 +4666,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="setAccountLimits"></a>
-# **setAccountLimits**
-> setAccountLimits(accountId, accountLimits)
+<a name="updateAttribute"></a>
+# **updateAttribute**
+> Attribute updateAttribute(attributeId, newAttribute)
 
-Set account limits
+Update a custom attribute
 
-sets account limits 
+Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
 
 ### Example
 ```java
@@ -4632,12 +4692,13 @@ manager_auth.setApiKey("YOUR API KEY");
 //manager_auth.setApiKeyPrefix("Token");
 
 ManagementApi apiInstance = new ManagementApi();
-Integer accountId = 56; // Integer | 
-AccountLimits accountLimits = new AccountLimits(); // AccountLimits | 
+Integer attributeId = 56; // Integer | 
+NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
 try {
-    apiInstance.setAccountLimits(accountId, accountLimits);
+    Attribute result = apiInstance.updateAttribute(attributeId, newAttribute);
+    System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#setAccountLimits");
+    System.err.println("Exception when calling ManagementApi#updateAttribute");
     e.printStackTrace();
 }
 ```
@@ -4646,12 +4707,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **Integer**|  |
- **accountLimits** | [**AccountLimits**](AccountLimits.md)|  |
+ **attributeId** | **Integer**|  |
+ **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
 
 ### Return type
 
-null (empty response body)
+[**Attribute**](Attribute.md)
 
 ### Authorization
 
@@ -4660,7 +4721,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="updateCampaign"></a>
 # **updateCampaign**
