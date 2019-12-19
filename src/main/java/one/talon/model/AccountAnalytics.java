@@ -85,6 +85,10 @@ public class AccountAnalytics {
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
   private Integer loyaltyPrograms;
 
+  public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
+  private Integer activeRules;
+
   public AccountAnalytics applications(Integer applications) {
     this.applications = applications;
     return this;
@@ -337,6 +341,24 @@ public class AccountAnalytics {
     this.loyaltyPrograms = loyaltyPrograms;
   }
 
+  public AccountAnalytics activeRules(Integer activeRules) {
+    this.activeRules = activeRules;
+    return this;
+  }
+
+   /**
+   * Total Number of active rules in the account
+   * @return activeRules
+  **/
+  @ApiModelProperty(required = true, value = "Total Number of active rules in the account")
+  public Integer getActiveRules() {
+    return activeRules;
+  }
+
+  public void setActiveRules(Integer activeRules) {
+    this.activeRules = activeRules;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -360,12 +382,13 @@ public class AccountAnalytics {
         Objects.equals(this.users, accountAnalytics.users) &&
         Objects.equals(this.roles, accountAnalytics.roles) &&
         Objects.equals(this.webhooks, accountAnalytics.webhooks) &&
-        Objects.equals(this.loyaltyPrograms, accountAnalytics.loyaltyPrograms);
+        Objects.equals(this.loyaltyPrograms, accountAnalytics.loyaltyPrograms) &&
+        Objects.equals(this.activeRules, accountAnalytics.activeRules);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applications, activeCampaigns, campaigns, coupons, activeCoupons, expiredCoupons, customAttributes, referralCodes, activeReferralCodes, expiredReferralCodes, users, roles, webhooks, loyaltyPrograms);
+    return Objects.hash(applications, activeCampaigns, campaigns, coupons, activeCoupons, expiredCoupons, customAttributes, referralCodes, activeReferralCodes, expiredReferralCodes, users, roles, webhooks, loyaltyPrograms, activeRules);
   }
 
 
@@ -388,6 +411,7 @@ public class AccountAnalytics {
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
+    sb.append("    activeRules: ").append(toIndentedString(activeRules)).append("\n");
     sb.append("}");
     return sb.toString();
   }

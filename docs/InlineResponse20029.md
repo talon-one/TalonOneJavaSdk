@@ -1,10 +1,10 @@
 
-# InlineResponse20023
+# InlineResponse20029
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;WebhookLogEntry&gt;**](WebhookLogEntry.md) |  | 
+**data** | [**List&lt;Role&gt;**](Role.md) |  | 
 **totalResultSize** | **Integer** |  | 
 
 

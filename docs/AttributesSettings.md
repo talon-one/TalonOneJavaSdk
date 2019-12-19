@@ -1,11 +1,10 @@
 
-# InlineResponse20025
+# AttributesSettings
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;User&gt;**](User.md) |  | 
-**totalResultSize** | **Integer** |  | 
+**mandatory** | [**AttributesMandatory**](AttributesMandatory.md) |  |  [optional]
 
 
 

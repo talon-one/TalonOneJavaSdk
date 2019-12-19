@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.User;
+import one.talon.model.EventType;
 
 /**
  * InlineResponse20024
@@ -34,18 +34,18 @@ import one.talon.model.User;
 public class InlineResponse20024 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<User> data = new ArrayList<User>();
+  private List<EventType> data = new ArrayList<EventType>();
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
-  public InlineResponse20024 data(List<User> data) {
+  public InlineResponse20024 data(List<EventType> data) {
     this.data = data;
     return this;
   }
 
-  public InlineResponse20024 addDataItem(User dataItem) {
+  public InlineResponse20024 addDataItem(EventType dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -55,11 +55,11 @@ public class InlineResponse20024 {
    * @return data
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<User> getData() {
+  public List<EventType> getData() {
     return data;
   }
 
-  public void setData(List<User> data) {
+  public void setData(List<EventType> data) {
     this.data = data;
   }
 

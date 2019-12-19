@@ -23,18 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * BaseSamlConnection
  */
-@ApiModel(description = "")
 
-public class SamlConnection {
-  public static final String SERIALIZED_NAME_ASSERTION_CONSUMER_SERVICE_U_R_L = "assertionConsumerServiceURL";
-  @SerializedName(SERIALIZED_NAME_ASSERTION_CONSUMER_SERVICE_U_R_L)
-  private String assertionConsumerServiceURL;
-
+public class BaseSamlConnection {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private Integer accountId;
@@ -67,33 +61,7 @@ public class SamlConnection {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_U_R_I)
   private String audienceURI;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
-
-  public static final String SERIALIZED_NAME_CREATED = "created";
-  @SerializedName(SERIALIZED_NAME_CREATED)
-  private OffsetDateTime created;
-
-  public SamlConnection assertionConsumerServiceURL(String assertionConsumerServiceURL) {
-    this.assertionConsumerServiceURL = assertionConsumerServiceURL;
-    return this;
-  }
-
-   /**
-   * The location where the SAML assertion is sent with a HTTP POST.
-   * @return assertionConsumerServiceURL
-  **/
-  @ApiModelProperty(required = true, value = "The location where the SAML assertion is sent with a HTTP POST.")
-  public String getAssertionConsumerServiceURL() {
-    return assertionConsumerServiceURL;
-  }
-
-  public void setAssertionConsumerServiceURL(String assertionConsumerServiceURL) {
-    this.assertionConsumerServiceURL = assertionConsumerServiceURL;
-  }
-
-  public SamlConnection accountId(Integer accountId) {
+  public BaseSamlConnection accountId(Integer accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -111,7 +79,7 @@ public class SamlConnection {
     this.accountId = accountId;
   }
 
-  public SamlConnection name(String name) {
+  public BaseSamlConnection name(String name) {
     this.name = name;
     return this;
   }
@@ -129,7 +97,7 @@ public class SamlConnection {
     this.name = name;
   }
 
-  public SamlConnection enabled(Boolean enabled) {
+  public BaseSamlConnection enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -147,7 +115,7 @@ public class SamlConnection {
     this.enabled = enabled;
   }
 
-  public SamlConnection issuer(String issuer) {
+  public BaseSamlConnection issuer(String issuer) {
     this.issuer = issuer;
     return this;
   }
@@ -165,7 +133,7 @@ public class SamlConnection {
     this.issuer = issuer;
   }
 
-  public SamlConnection signOnURL(String signOnURL) {
+  public BaseSamlConnection signOnURL(String signOnURL) {
     this.signOnURL = signOnURL;
     return this;
   }
@@ -183,7 +151,7 @@ public class SamlConnection {
     this.signOnURL = signOnURL;
   }
 
-  public SamlConnection signOutURL(String signOutURL) {
+  public BaseSamlConnection signOutURL(String signOutURL) {
     this.signOutURL = signOutURL;
     return this;
   }
@@ -201,7 +169,7 @@ public class SamlConnection {
     this.signOutURL = signOutURL;
   }
 
-  public SamlConnection metadataURL(String metadataURL) {
+  public BaseSamlConnection metadataURL(String metadataURL) {
     this.metadataURL = metadataURL;
     return this;
   }
@@ -219,7 +187,7 @@ public class SamlConnection {
     this.metadataURL = metadataURL;
   }
 
-  public SamlConnection audienceURI(String audienceURI) {
+  public BaseSamlConnection audienceURI(String audienceURI) {
     this.audienceURI = audienceURI;
     return this;
   }
@@ -228,49 +196,13 @@ public class SamlConnection {
    * The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
    * @return audienceURI
   **/
-  @ApiModelProperty(required = true, value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
+  @ApiModelProperty(value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
   public String getAudienceURI() {
     return audienceURI;
   }
 
   public void setAudienceURI(String audienceURI) {
     this.audienceURI = audienceURI;
-  }
-
-  public SamlConnection id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Unique ID for this entity.
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public SamlConnection created(OffsetDateTime created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * The exact moment this entity was created.
-   * @return created
-  **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
-  public OffsetDateTime getCreated() {
-    return created;
-  }
-
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
   }
 
 
@@ -282,32 +214,28 @@ public class SamlConnection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SamlConnection samlConnection = (SamlConnection) o;
-    return Objects.equals(this.assertionConsumerServiceURL, samlConnection.assertionConsumerServiceURL) &&
-        Objects.equals(this.accountId, samlConnection.accountId) &&
-        Objects.equals(this.name, samlConnection.name) &&
-        Objects.equals(this.enabled, samlConnection.enabled) &&
-        Objects.equals(this.issuer, samlConnection.issuer) &&
-        Objects.equals(this.signOnURL, samlConnection.signOnURL) &&
-        Objects.equals(this.signOutURL, samlConnection.signOutURL) &&
-        Objects.equals(this.metadataURL, samlConnection.metadataURL) &&
-        Objects.equals(this.audienceURI, samlConnection.audienceURI) &&
-        Objects.equals(this.id, samlConnection.id) &&
-        Objects.equals(this.created, samlConnection.created);
+    BaseSamlConnection baseSamlConnection = (BaseSamlConnection) o;
+    return Objects.equals(this.accountId, baseSamlConnection.accountId) &&
+        Objects.equals(this.name, baseSamlConnection.name) &&
+        Objects.equals(this.enabled, baseSamlConnection.enabled) &&
+        Objects.equals(this.issuer, baseSamlConnection.issuer) &&
+        Objects.equals(this.signOnURL, baseSamlConnection.signOnURL) &&
+        Objects.equals(this.signOutURL, baseSamlConnection.signOutURL) &&
+        Objects.equals(this.metadataURL, baseSamlConnection.metadataURL) &&
+        Objects.equals(this.audienceURI, baseSamlConnection.audienceURI);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionConsumerServiceURL, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI, id, created);
+    return Objects.hash(accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SamlConnection {\n");
+    sb.append("class BaseSamlConnection {\n");
     
-    sb.append("    assertionConsumerServiceURL: ").append(toIndentedString(assertionConsumerServiceURL)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
@@ -316,8 +244,6 @@ public class SamlConnection {
     sb.append("    signOutURL: ").append(toIndentedString(signOutURL)).append("\n");
     sb.append("    metadataURL: ").append(toIndentedString(metadataURL)).append("\n");
     sb.append("    audienceURI: ").append(toIndentedString(audienceURI)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("}");
     return sb.toString();
   }

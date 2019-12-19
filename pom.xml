@@ -5,7 +5,7 @@
     <artifactId>talon-one-client</artifactId>
     <packaging>jar</packaging>
     <name>talon-one-client</name>
-    <version>3.4.0</version>
+    <version>3.5.0</version>
     <url>https://github.com/talon-one/maven-artefacts</url>
     <description>Talon.One unified JAVA SDK. It allows for programatic access to the integration and management API with their respective authentication strategies</description>
     <scm>

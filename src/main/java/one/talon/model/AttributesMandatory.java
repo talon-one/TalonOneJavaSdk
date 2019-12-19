@@ -25,60 +25,71 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Export;
 
 /**
- * InlineResponse20027
+ * Arbitrary settings associated with attributes.
  */
+@ApiModel(description = "Arbitrary settings associated with attributes.")
 
-public class InlineResponse20027 {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Export> data = new ArrayList<Export>();
+public class AttributesMandatory {
+  public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
+  private List<String> campaigns = null;
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  public static final String SERIALIZED_NAME_COUPONS = "coupons";
+  @SerializedName(SERIALIZED_NAME_COUPONS)
+  private List<String> coupons = null;
 
-  public InlineResponse20027 data(List<Export> data) {
-    this.data = data;
+  public AttributesMandatory campaigns(List<String> campaigns) {
+    this.campaigns = campaigns;
     return this;
   }
 
-  public InlineResponse20027 addDataItem(Export dataItem) {
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public List<Export> getData() {
-    return data;
-  }
-
-  public void setData(List<Export> data) {
-    this.data = data;
-  }
-
-  public InlineResponse20027 totalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public AttributesMandatory addCampaignsItem(String campaignsItem) {
+    if (this.campaigns == null) {
+      this.campaigns = new ArrayList<String>();
+    }
+    this.campaigns.add(campaignsItem);
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * List of mandatory attributes for campaigns.
+   * @return campaigns
   **/
-  @ApiModelProperty(required = true, value = "")
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  @ApiModelProperty(value = "List of mandatory attributes for campaigns.")
+  public List<String> getCampaigns() {
+    return campaigns;
   }
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public void setCampaigns(List<String> campaigns) {
+    this.campaigns = campaigns;
+  }
+
+  public AttributesMandatory coupons(List<String> coupons) {
+    this.coupons = coupons;
+    return this;
+  }
+
+  public AttributesMandatory addCouponsItem(String couponsItem) {
+    if (this.coupons == null) {
+      this.coupons = new ArrayList<String>();
+    }
+    this.coupons.add(couponsItem);
+    return this;
+  }
+
+   /**
+   * List of mandatory attributes for campaigns.
+   * @return coupons
+  **/
+  @ApiModelProperty(value = "List of mandatory attributes for campaigns.")
+  public List<String> getCoupons() {
+    return coupons;
+  }
+
+  public void setCoupons(List<String> coupons) {
+    this.coupons = coupons;
   }
 
 
@@ -90,24 +101,24 @@ public class InlineResponse20027 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20027 inlineResponse20027 = (InlineResponse20027) o;
-    return Objects.equals(this.data, inlineResponse20027.data) &&
-        Objects.equals(this.totalResultSize, inlineResponse20027.totalResultSize);
+    AttributesMandatory attributesMandatory = (AttributesMandatory) o;
+    return Objects.equals(this.campaigns, attributesMandatory.campaigns) &&
+        Objects.equals(this.coupons, attributesMandatory.coupons);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(campaigns, coupons);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20027 {\n");
+    sb.append("class AttributesMandatory {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("}");
     return sb.toString();
   }

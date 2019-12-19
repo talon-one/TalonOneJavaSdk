@@ -133,10 +133,10 @@ public class Change {
   }
 
    /**
-   * Resource before the change occured.
+   * Resource before the change occurred.
    * @return old
   **/
-  @ApiModelProperty(value = "Resource before the change occured.")
+  @ApiModelProperty(value = "Resource before the change occurred.")
   public Object getOld() {
     return old;
   }
@@ -151,10 +151,10 @@ public class Change {
   }
 
    /**
-   * Resource after the change occured.
+   * Resource after the change occurred.
    * @return _new
   **/
-  @ApiModelProperty(value = "Resource after the change occured.")
+  @ApiModelProperty(value = "Resource after the change occurred.")
   public Object getNew() {
     return _new;
   }

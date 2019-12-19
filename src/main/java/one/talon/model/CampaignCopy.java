@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * CampaignCopy
@@ -38,6 +39,22 @@ public class CampaignCopy {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
   private List<String> applicationIds = new ArrayList<String>();
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_START_TIME = "startTime";
+  @SerializedName(SERIALIZED_NAME_START_TIME)
+  private OffsetDateTime startTime;
+
+  public static final String SERIALIZED_NAME_END_TIME = "endTime";
+  @SerializedName(SERIALIZED_NAME_END_TIME)
+  private OffsetDateTime endTime;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  private List<String> tags = null;
 
   public CampaignCopy name(String name) {
     this.name = name;
@@ -80,6 +97,86 @@ public class CampaignCopy {
     this.applicationIds = applicationIds;
   }
 
+  public CampaignCopy description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A detailed description of the campaign.
+   * @return description
+  **/
+  @ApiModelProperty(value = "A detailed description of the campaign.")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public CampaignCopy startTime(OffsetDateTime startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * Datetime when the campaign will become active.
+   * @return startTime
+  **/
+  @ApiModelProperty(value = "Datetime when the campaign will become active.")
+  public OffsetDateTime getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(OffsetDateTime startTime) {
+    this.startTime = startTime;
+  }
+
+  public CampaignCopy endTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
+    return this;
+  }
+
+   /**
+   * Datetime when the campaign will become in-active.
+   * @return endTime
+  **/
+  @ApiModelProperty(value = "Datetime when the campaign will become in-active.")
+  public OffsetDateTime getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
+  }
+
+  public CampaignCopy tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public CampaignCopy addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<String>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * A list of tags for the campaign.
+   * @return tags
+  **/
+  @ApiModelProperty(value = "A list of tags for the campaign.")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -91,12 +188,16 @@ public class CampaignCopy {
     }
     CampaignCopy campaignCopy = (CampaignCopy) o;
     return Objects.equals(this.name, campaignCopy.name) &&
-        Objects.equals(this.applicationIds, campaignCopy.applicationIds);
+        Objects.equals(this.applicationIds, campaignCopy.applicationIds) &&
+        Objects.equals(this.description, campaignCopy.description) &&
+        Objects.equals(this.startTime, campaignCopy.startTime) &&
+        Objects.equals(this.endTime, campaignCopy.endTime) &&
+        Objects.equals(this.tags, campaignCopy.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, applicationIds);
+    return Objects.hash(name, applicationIds, description, startTime, endTime, tags);
   }
 
 
@@ -107,6 +208,10 @@ public class CampaignCopy {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

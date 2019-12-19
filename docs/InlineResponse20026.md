@@ -4,8 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Export&gt;**](Export.md) |  | 
-**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;Change&gt;**](Change.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
 
 
 

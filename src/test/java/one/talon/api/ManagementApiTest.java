@@ -16,7 +16,6 @@ package one.talon.api;
 import one.talon.ApiException;
 import one.talon.model.Account;
 import one.talon.model.AccountAnalytics;
-import one.talon.model.AccountLimits;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
 import one.talon.model.ApplicationCustomer;
@@ -54,6 +53,7 @@ import one.talon.model.InlineResponse20025;
 import one.talon.model.InlineResponse20026;
 import one.talon.model.InlineResponse20027;
 import one.talon.model.InlineResponse20028;
+import one.talon.model.InlineResponse20029;
 import one.talon.model.InlineResponse2003;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
@@ -65,6 +65,7 @@ import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyPoints;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
 import one.talon.model.NewCampaignSet;
 import one.talon.model.NewCoupons;
@@ -134,6 +135,22 @@ public class ManagementApiTest {
     }
     
     /**
+     * Define a new custom attribute
+     *
+     * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAttributeTest() throws ApiException {
+        NewAttribute newAttribute = null;
+        Attribute response = api.createAttribute(newAttribute);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create a Campaign
      *
      * 
@@ -153,7 +170,7 @@ public class ManagementApiTest {
     /**
      * Create Coupons
      *
-     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupns can be created.
+     * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -401,22 +418,6 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Account Limits
-     *
-     * Returns a list of all account limits set 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getAccountLimitsTest() throws ApiException {
-        Integer accountId = null;
-        AccountLimits response = api.getAccountLimits(accountId);
-
-        // TODO: test validations
-    }
-    
-    /**
      * Get all access logs
      *
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
@@ -449,7 +450,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAllRolesTest() throws ApiException {
-        InlineResponse20028 response = api.getAllRoles();
+        InlineResponse20029 response = api.getAllRoles();
 
         // TODO: test validations
     }
@@ -522,7 +523,7 @@ public class ManagementApiTest {
     /**
      * Get a list of the customer profiles that match the given attributes
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -688,6 +689,24 @@ public class ManagementApiTest {
     }
     
     /**
+     * List custom attributes
+     *
+     * Returns all the defined custom attributes for the account. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAttributesTest() throws ApiException {
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        InlineResponse20020 response = api.getAttributes(pageSize, skip, sort);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get a Campaign
      *
      * 
@@ -803,7 +822,7 @@ public class ManagementApiTest {
         OffsetDateTime createdAfter = null;
         Boolean withTotalResultSize = null;
         Boolean includeOld = null;
-        InlineResponse20025 response = api.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+        InlineResponse20026 response = api.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
 
         // TODO: test validations
     }
@@ -1058,7 +1077,7 @@ public class ManagementApiTest {
     /**
      * Get a list of the customer profiles that match the given attributes
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: http://help.talon.one/customer/en/portal/articles/2525263-data-model?b_id&#x3D;14115#customer-profile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1089,7 +1108,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20023 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20024 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1109,7 +1128,7 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         String entity = null;
-        InlineResponse20026 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20027 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
@@ -1126,7 +1145,7 @@ public class ManagementApiTest {
     public void getImportsTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20027 response = api.getImports(pageSize, skip);
+        InlineResponse20028 response = api.getImports(pageSize, skip);
 
         // TODO: test validations
     }
@@ -1314,7 +1333,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20024 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20025 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1354,7 +1373,7 @@ public class ManagementApiTest {
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20021 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+        InlineResponse20022 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1379,7 +1398,7 @@ public class ManagementApiTest {
         String requestUuid = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20022 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+        InlineResponse20023 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1398,7 +1417,7 @@ public class ManagementApiTest {
         String sort = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20020 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+        InlineResponse20021 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
 
         // TODO: test validations
     }
@@ -1573,18 +1592,18 @@ public class ManagementApiTest {
     }
     
     /**
-     * Set account limits
+     * Update a custom attribute
      *
-     * sets account limits 
+     * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void setAccountLimitsTest() throws ApiException {
-        Integer accountId = null;
-        AccountLimits accountLimits = null;
-        api.setAccountLimits(accountId, accountLimits);
+    public void updateAttributeTest() throws ApiException {
+        Integer attributeId = null;
+        NewAttribute newAttribute = null;
+        Attribute response = api.updateAttribute(attributeId, newAttribute);
 
         // TODO: test validations
     }

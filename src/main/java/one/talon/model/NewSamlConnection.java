@@ -25,11 +25,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A new SAML 2.0 connection.
+ * 
  */
-@ApiModel(description = "A new SAML 2.0 connection.")
+@ApiModel(description = "")
 
 public class NewSamlConnection {
+  public static final String SERIALIZED_NAME_X509CERTIFICATE = "x509certificate";
+  @SerializedName(SERIALIZED_NAME_X509CERTIFICATE)
+  private String x509certificate;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  private Integer accountId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -54,13 +62,45 @@ public class NewSamlConnection {
   @SerializedName(SERIALIZED_NAME_METADATA_U_R_L)
   private String metadataURL;
 
-  public static final String SERIALIZED_NAME_X509CERTIFICATE = "x509certificate";
-  @SerializedName(SERIALIZED_NAME_X509CERTIFICATE)
-  private String x509certificate;
+  public static final String SERIALIZED_NAME_AUDIENCE_U_R_I = "audienceURI";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_U_R_I)
+  private String audienceURI;
 
-  public static final String SERIALIZED_NAME_AUDIENCE = "audience";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE)
-  private String audience;
+  public NewSamlConnection x509certificate(String x509certificate) {
+    this.x509certificate = x509certificate;
+    return this;
+  }
+
+   /**
+   * X.509 Certificate.
+   * @return x509certificate
+  **/
+  @ApiModelProperty(required = true, value = "X.509 Certificate.")
+  public String getX509certificate() {
+    return x509certificate;
+  }
+
+  public void setX509certificate(String x509certificate) {
+    this.x509certificate = x509certificate;
+  }
+
+  public NewSamlConnection accountId(Integer accountId) {
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * The ID of the account that owns this entity.
+   * @return accountId
+  **/
+  @ApiModelProperty(required = true, value = "The ID of the account that owns this entity.")
+  public Integer getAccountId() {
+    return accountId;
+  }
+
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
+  }
 
   public NewSamlConnection name(String name) {
     this.name = name;
@@ -170,40 +210,22 @@ public class NewSamlConnection {
     this.metadataURL = metadataURL;
   }
 
-  public NewSamlConnection x509certificate(String x509certificate) {
-    this.x509certificate = x509certificate;
+  public NewSamlConnection audienceURI(String audienceURI) {
+    this.audienceURI = audienceURI;
     return this;
   }
 
    /**
-   * X.509 Certificate.
-   * @return x509certificate
+   * The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
+   * @return audienceURI
   **/
-  @ApiModelProperty(required = true, value = "X.509 Certificate.")
-  public String getX509certificate() {
-    return x509certificate;
+  @ApiModelProperty(value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
+  public String getAudienceURI() {
+    return audienceURI;
   }
 
-  public void setX509certificate(String x509certificate) {
-    this.x509certificate = x509certificate;
-  }
-
-  public NewSamlConnection audience(String audience) {
-    this.audience = audience;
-    return this;
-  }
-
-   /**
-   * The application-defined unique identifier that is the intended audience of the SAML assertion.  This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
-   * @return audience
-  **/
-  @ApiModelProperty(value = "The application-defined unique identifier that is the intended audience of the SAML assertion.  This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
-  public String getAudience() {
-    return audience;
-  }
-
-  public void setAudience(String audience) {
-    this.audience = audience;
+  public void setAudienceURI(String audienceURI) {
+    this.audienceURI = audienceURI;
   }
 
 
@@ -216,19 +238,20 @@ public class NewSamlConnection {
       return false;
     }
     NewSamlConnection newSamlConnection = (NewSamlConnection) o;
-    return Objects.equals(this.name, newSamlConnection.name) &&
+    return Objects.equals(this.x509certificate, newSamlConnection.x509certificate) &&
+        Objects.equals(this.accountId, newSamlConnection.accountId) &&
+        Objects.equals(this.name, newSamlConnection.name) &&
         Objects.equals(this.enabled, newSamlConnection.enabled) &&
         Objects.equals(this.issuer, newSamlConnection.issuer) &&
         Objects.equals(this.signOnURL, newSamlConnection.signOnURL) &&
         Objects.equals(this.signOutURL, newSamlConnection.signOutURL) &&
         Objects.equals(this.metadataURL, newSamlConnection.metadataURL) &&
-        Objects.equals(this.x509certificate, newSamlConnection.x509certificate) &&
-        Objects.equals(this.audience, newSamlConnection.audience);
+        Objects.equals(this.audienceURI, newSamlConnection.audienceURI);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, enabled, issuer, signOnURL, signOutURL, metadataURL, x509certificate, audience);
+    return Objects.hash(x509certificate, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI);
   }
 
 
@@ -237,14 +260,15 @@ public class NewSamlConnection {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewSamlConnection {\n");
     
+    sb.append("    x509certificate: ").append(toIndentedString(x509certificate)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
     sb.append("    signOnURL: ").append(toIndentedString(signOnURL)).append("\n");
     sb.append("    signOutURL: ").append(toIndentedString(signOutURL)).append("\n");
     sb.append("    metadataURL: ").append(toIndentedString(metadataURL)).append("\n");
-    sb.append("    x509certificate: ").append(toIndentedString(x509certificate)).append("\n");
-    sb.append("    audience: ").append(toIndentedString(audience)).append("\n");
+    sb.append("    audienceURI: ").append(toIndentedString(audienceURI)).append("\n");
     sb.append("}");
     return sb.toString();
   }

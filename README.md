@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>3.4.0</version>
+  <version>3.5.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:3.4.0"
+compile "one.talon:talon-one-client:3.5.0"
 ```
 
 ### Others
@@ -62,7 +62,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-3.4.0.jar`
+* `target/talon-one-client-3.5.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -146,6 +146,7 @@ public class TalonApiTest {
 }
 ```
 
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *http://localhost*
@@ -156,6 +157,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**createReferral**](docs/IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
 *IntegrationApi* | [**deleteCouponReservation**](docs/IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 *IntegrationApi* | [**deleteCustomerData**](docs/IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
+*IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile.
 *IntegrationApi* | [**getReservedCoupons**](docs/IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationId} | Get all valid reserved coupons
 *IntegrationApi* | [**getReservedCustomers**](docs/IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 *IntegrationApi* | [**trackEvent**](docs/IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
@@ -163,6 +165,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**updateCustomerSession**](docs/IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
 *ManagementApi* | [**addLoyaltyPoints**](docs/ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
 *ManagementApi* | [**copyCampaignToApplications**](docs/ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
+*ManagementApi* | [**createAttribute**](docs/ManagementApi.md#createAttribute) | **POST** /v1/attributes | Define a new custom attribute
 *ManagementApi* | [**createCampaign**](docs/ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create a Campaign
 *ManagementApi* | [**createCoupons**](docs/ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create Coupons
 *ManagementApi* | [**createPasswordRecoveryEmail**](docs/ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
@@ -177,7 +180,6 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getAccessLogsWithoutTotalCount**](docs/ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for application
 *ManagementApi* | [**getAccount**](docs/ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get Account Details
 *ManagementApi* | [**getAccountAnalytics**](docs/ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get Account Analytics
-*ManagementApi* | [**getAccountLimits**](docs/ManagementApi.md#getAccountLimits) | **GET** /v1/accounts/{accountId}/limits | Get Account Limits
 *ManagementApi* | [**getAllAccessLogs**](docs/ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | Get all access logs
 *ManagementApi* | [**getAllRoles**](docs/ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles.
 *ManagementApi* | [**getApplication**](docs/ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
@@ -192,6 +194,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getApplicationSessions**](docs/ManagementApi.md#getApplicationSessions) | **GET** /v1/applications/{applicationId}/sessions | List Application Sessions
 *ManagementApi* | [**getApplications**](docs/ManagementApi.md#getApplications) | **GET** /v1/applications | List Applications
 *ManagementApi* | [**getAttribute**](docs/ManagementApi.md#getAttribute) | **GET** /v1/attributes/{attributeId} | Get a custom attribute
+*ManagementApi* | [**getAttributes**](docs/ManagementApi.md#getAttributes) | **GET** /v1/attributes | List custom attributes
 *ManagementApi* | [**getCampaign**](docs/ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get a Campaign
 *ManagementApi* | [**getCampaignAnalytics**](docs/ManagementApi.md#getCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/analytics | Get analytics of campaigns
 *ManagementApi* | [**getCampaignByAttributes**](docs/ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | Get a list of all campaigns that match the given attributes
@@ -233,7 +236,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**searchCouponsAdvancedApplicationWide**](docs/ManagementApi.md#searchCouponsAdvancedApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search_advanced | Get a list of the coupons that match the given attributes in all active campaigns of an application
 *ManagementApi* | [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](docs/ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes in all active campaigns of an application
 *ManagementApi* | [**searchCouponsAdvancedWithoutTotalCount**](docs/ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes
-*ManagementApi* | [**setAccountLimits**](docs/ManagementApi.md#setAccountLimits) | **PUT** /v1/accounts/{accountId}/limits | Set account limits
+*ManagementApi* | [**updateAttribute**](docs/ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update a custom attribute
 *ManagementApi* | [**updateCampaign**](docs/ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
 *ManagementApi* | [**updateCampaignSet**](docs/ManagementApi.md#updateCampaignSet) | **PUT** /v1/applications/{applicationId}/campaign_set | Update a Campaign Set
 *ManagementApi* | [**updateCoupon**](docs/ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update a Coupon
@@ -261,6 +264,9 @@ Class | Method | HTTP request | Description
  - [ApplicationSessionEntity](docs/ApplicationSessionEntity.md)
  - [Attribute](docs/Attribute.md)
  - [AttributeQuery](docs/AttributeQuery.md)
+ - [AttributesMandatory](docs/AttributesMandatory.md)
+ - [AttributesSettings](docs/AttributesSettings.md)
+ - [BaseSamlConnection](docs/BaseSamlConnection.md)
  - [Binding](docs/Binding.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignAnalytics](docs/CampaignAnalytics.md)
@@ -284,6 +290,7 @@ Class | Method | HTTP request | Description
  - [CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
  - [CustomerActivityReport](docs/CustomerActivityReport.md)
  - [CustomerAnalytics](docs/CustomerAnalytics.md)
+ - [CustomerInventory](docs/CustomerInventory.md)
  - [CustomerProfile](docs/CustomerProfile.md)
  - [CustomerProfileSearchQuery](docs/CustomerProfileSearchQuery.md)
  - [CustomerSession](docs/CustomerSession.md)
@@ -323,6 +330,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse20026](docs/InlineResponse20026.md)
  - [InlineResponse20027](docs/InlineResponse20027.md)
  - [InlineResponse20028](docs/InlineResponse20028.md)
+ - [InlineResponse20029](docs/InlineResponse20029.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
@@ -388,6 +396,7 @@ Class | Method | HTTP request | Description
  - [Rule](docs/Rule.md)
  - [Ruleset](docs/Ruleset.md)
  - [SamlConnection](docs/SamlConnection.md)
+ - [SamlConnectionMetadata](docs/SamlConnectionMetadata.md)
  - [Session](docs/Session.md)
  - [SlotDef](docs/SlotDef.md)
  - [TemplateArgDef](docs/TemplateArgDef.md)

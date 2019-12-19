@@ -71,6 +71,10 @@ public class AccountLimits {
   @SerializedName(SERIALIZED_NAME_API_VOLUME)
   private Integer apiVolume;
 
+  public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
+  private Integer activeRules;
+
   public static final String SERIALIZED_NAME_PROMOTION_TYPES = "promotionTypes";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TYPES)
   private List<String> promotionTypes = new ArrayList<String>();
@@ -255,6 +259,24 @@ public class AccountLimits {
     this.apiVolume = apiVolume;
   }
 
+  public AccountLimits activeRules(Integer activeRules) {
+    this.activeRules = activeRules;
+    return this;
+  }
+
+   /**
+   * Total allowed active rulesets
+   * @return activeRules
+  **/
+  @ApiModelProperty(value = "Total allowed active rulesets")
+  public Integer getActiveRules() {
+    return activeRules;
+  }
+
+  public void setActiveRules(Integer activeRules) {
+    this.activeRules = activeRules;
+  }
+
   public AccountLimits promotionTypes(List<String> promotionTypes) {
     this.promotionTypes = promotionTypes;
     return this;
@@ -298,12 +320,13 @@ public class AccountLimits {
         Objects.equals(this.webhooks, accountLimits.webhooks) &&
         Objects.equals(this.users, accountLimits.users) &&
         Objects.equals(this.apiVolume, accountLimits.apiVolume) &&
+        Objects.equals(this.activeRules, accountLimits.activeRules) &&
         Objects.equals(this.promotionTypes, accountLimits.promotionTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, promotionTypes);
+    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, activeRules, promotionTypes);
   }
 
 
@@ -322,6 +345,7 @@ public class AccountLimits {
     sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    apiVolume: ").append(toIndentedString(apiVolume)).append("\n");
+    sb.append("    activeRules: ").append(toIndentedString(activeRules)).append("\n");
     sb.append("    promotionTypes: ").append(toIndentedString(promotionTypes)).append("\n");
     sb.append("}");
     return sb.toString();

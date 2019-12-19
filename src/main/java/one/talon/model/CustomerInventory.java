@@ -25,60 +25,64 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Export;
+import one.talon.model.CustomerProfile;
+import one.talon.model.Referral;
 
 /**
- * InlineResponse20027
+ * CustomerInventory
  */
 
-public class InlineResponse20027 {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Export> data = new ArrayList<Export>();
+public class CustomerInventory {
+  public static final String SERIALIZED_NAME_PROFILE = "profile";
+  @SerializedName(SERIALIZED_NAME_PROFILE)
+  private CustomerProfile profile = null;
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  public static final String SERIALIZED_NAME_REFERRALS = "referrals";
+  @SerializedName(SERIALIZED_NAME_REFERRALS)
+  private List<Referral> referrals = null;
 
-  public InlineResponse20027 data(List<Export> data) {
-    this.data = data;
-    return this;
-  }
-
-  public InlineResponse20027 addDataItem(Export dataItem) {
-    this.data.add(dataItem);
+  public CustomerInventory profile(CustomerProfile profile) {
+    this.profile = profile;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get profile
+   * @return profile
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<Export> getData() {
-    return data;
+  @ApiModelProperty(value = "")
+  public CustomerProfile getProfile() {
+    return profile;
   }
 
-  public void setData(List<Export> data) {
-    this.data = data;
+  public void setProfile(CustomerProfile profile) {
+    this.profile = profile;
   }
 
-  public InlineResponse20027 totalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public CustomerInventory referrals(List<Referral> referrals) {
+    this.referrals = referrals;
+    return this;
+  }
+
+  public CustomerInventory addReferralsItem(Referral referralsItem) {
+    if (this.referrals == null) {
+      this.referrals = new ArrayList<Referral>();
+    }
+    this.referrals.add(referralsItem);
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * Get referrals
+   * @return referrals
   **/
-  @ApiModelProperty(required = true, value = "")
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  @ApiModelProperty(value = "")
+  public List<Referral> getReferrals() {
+    return referrals;
   }
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public void setReferrals(List<Referral> referrals) {
+    this.referrals = referrals;
   }
 
 
@@ -90,24 +94,24 @@ public class InlineResponse20027 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20027 inlineResponse20027 = (InlineResponse20027) o;
-    return Objects.equals(this.data, inlineResponse20027.data) &&
-        Objects.equals(this.totalResultSize, inlineResponse20027.totalResultSize);
+    CustomerInventory customerInventory = (CustomerInventory) o;
+    return Objects.equals(this.profile, customerInventory.profile) &&
+        Objects.equals(this.referrals, customerInventory.referrals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(profile, referrals);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20027 {\n");
+    sb.append("class CustomerInventory {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
+    sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
     sb.append("}");
     return sb.toString();
   }

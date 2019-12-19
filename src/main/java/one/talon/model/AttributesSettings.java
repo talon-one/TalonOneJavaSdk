@@ -23,62 +23,34 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.Export;
+import one.talon.model.AttributesMandatory;
 
 /**
- * InlineResponse20027
+ * Arbitrary settings associated with attributes.
  */
+@ApiModel(description = "Arbitrary settings associated with attributes.")
 
-public class InlineResponse20027 {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Export> data = new ArrayList<Export>();
+public class AttributesSettings {
+  public static final String SERIALIZED_NAME_MANDATORY = "mandatory";
+  @SerializedName(SERIALIZED_NAME_MANDATORY)
+  private AttributesMandatory mandatory = null;
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
-  public InlineResponse20027 data(List<Export> data) {
-    this.data = data;
-    return this;
-  }
-
-  public InlineResponse20027 addDataItem(Export dataItem) {
-    this.data.add(dataItem);
+  public AttributesSettings mandatory(AttributesMandatory mandatory) {
+    this.mandatory = mandatory;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get mandatory
+   * @return mandatory
   **/
-  @ApiModelProperty(required = true, value = "")
-  public List<Export> getData() {
-    return data;
+  @ApiModelProperty(value = "")
+  public AttributesMandatory getMandatory() {
+    return mandatory;
   }
 
-  public void setData(List<Export> data) {
-    this.data = data;
-  }
-
-  public InlineResponse20027 totalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public Integer getTotalResultSize() {
-    return totalResultSize;
-  }
-
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
+  public void setMandatory(AttributesMandatory mandatory) {
+    this.mandatory = mandatory;
   }
 
 
@@ -90,24 +62,22 @@ public class InlineResponse20027 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20027 inlineResponse20027 = (InlineResponse20027) o;
-    return Objects.equals(this.data, inlineResponse20027.data) &&
-        Objects.equals(this.totalResultSize, inlineResponse20027.totalResultSize);
+    AttributesSettings attributesSettings = (AttributesSettings) o;
+    return Objects.equals(this.mandatory, attributesSettings.mandatory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalResultSize);
+    return Objects.hash(mandatory);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20027 {\n");
+    sb.append("class AttributesSettings {\n");
     
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    mandatory: ").append(toIndentedString(mandatory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
