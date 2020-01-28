@@ -82,7 +82,7 @@ import one.talon.model.*;
 
 public class TalonApiTest {
     public static void main(String[] args) {
-        ApiClient iApiClient = new ApiClient("api_key_v1");
+        ApiClient iApiClient = new ApiClient("integration_auth");
         IntegrationApi iApi = new IntegrationApi(iApiClient );
         
         // Setup: basePath, apiKeyPrefix and apiKey
@@ -94,8 +94,8 @@ public class TalonApiTest {
             // Integration API example to send a session update
             NewCustomerSession customerSession = new NewCustomerSession();
             customerSession.setProfileId("Cool_Dude");
-            customerSession.setState("open");
-            customerSession.setTotal(42.0);
+            customerSession.setState(NewCustomerSession.StateEnum.OPEN);
+            customerSession.setTotal(new java.math.BigDecimal("42.0"));
 
             // Create/update a customer session using `updateCustomerSession` function
             IntegrationState ie = iApi.updateCustomerSession("deetdoot", customerSession);
