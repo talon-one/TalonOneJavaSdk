@@ -23,40 +23,80 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.EventType;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20025
+ * Model tests for AccountAdditionalCost
  */
-public class InlineResponse20025Test {
-    private final InlineResponse20025 model = new InlineResponse20025();
+public class AccountAdditionalCostTest {
+    private final AccountAdditionalCost model = new AccountAdditionalCost();
 
     /**
-     * Model tests for InlineResponse20025
+     * Model tests for AccountAdditionalCost
      */
     @Test
-    public void testInlineResponse20025() {
-        // TODO: test InlineResponse20025
+    public void testAccountAdditionalCost() {
+        // TODO: test AccountAdditionalCost
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'id'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'created'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void createdTest() {
+        // TODO: test created
+    }
+
+    /**
+     * Test the property 'accountId'
+     */
+    @Test
+    public void accountIdTest() {
+        // TODO: test accountId
+    }
+
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'subscribedApplicationsIds'
+     */
+    @Test
+    public void subscribedApplicationsIdsTest() {
+        // TODO: test subscribedApplicationsIds
     }
 
 }

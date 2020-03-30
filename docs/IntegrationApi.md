@@ -806,12 +806,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
     IntegrationRequest body = new IntegrationRequest(); // IntegrationRequest | 
@@ -842,7 +836,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 

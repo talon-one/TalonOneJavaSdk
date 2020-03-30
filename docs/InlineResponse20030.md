@@ -1,13 +1,13 @@
 
 
-# InlineResponse20026
+# InlineResponse20030
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;User&gt;**](User.md) |  | 
+**data** | [**List&lt;Role&gt;**](Role.md) |  | 
 
 
 

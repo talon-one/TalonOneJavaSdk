@@ -15,6 +15,7 @@ package one.talon.api;
 
 import one.talon.ApiException;
 import one.talon.model.Account;
+import one.talon.model.AccountAdditionalCost;
 import one.talon.model.AccountAnalytics;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
@@ -54,6 +55,7 @@ import one.talon.model.InlineResponse20027;
 import one.talon.model.InlineResponse20028;
 import one.talon.model.InlineResponse20029;
 import one.talon.model.InlineResponse2003;
+import one.talon.model.InlineResponse20030;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
 import one.talon.model.InlineResponse2006;
@@ -64,6 +66,7 @@ import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyPoints;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
 import one.talon.model.NewCampaignSet;
@@ -129,6 +132,22 @@ public class ManagementApiTest {
         Integer campaignId = null;
         CampaignCopy body = null;
         InlineResponse2003 response = api.copyCampaignToApplications(applicationId, campaignId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Define a new additional cost
+     *
+     * Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAdditionalCostTest() throws ApiException {
+        NewAdditionalCost body = null;
+        AccountAdditionalCost response = api.createAdditionalCost(body);
 
         // TODO: test validations
     }
@@ -417,6 +436,40 @@ public class ManagementApiTest {
     }
     
     /**
+     * Get an additional cost
+     *
+     * Returns additional cost for the account by its id. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAdditionalCostTest() throws ApiException {
+        Integer additionalCostId = null;
+        AccountAdditionalCost response = api.getAdditionalCost(additionalCostId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List additional costs
+     *
+     * Returns all the defined additional costs for the account. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAdditionalCostsTest() throws ApiException {
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        InlineResponse20021 response = api.getAdditionalCosts(pageSize, skip, sort);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get all access logs
      *
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
@@ -449,7 +502,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAllRolesTest() throws ApiException {
-        InlineResponse20029 response = api.getAllRoles();
+        InlineResponse20030 response = api.getAllRoles();
 
         // TODO: test validations
     }
@@ -824,7 +877,7 @@ public class ManagementApiTest {
         OffsetDateTime createdAfter = null;
         Boolean withTotalResultSize = null;
         Boolean includeOld = null;
-        InlineResponse20026 response = api.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+        InlineResponse20027 response = api.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
 
         // TODO: test validations
     }
@@ -1110,7 +1163,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20024 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20025 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1130,7 +1183,7 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         String entity = null;
-        InlineResponse20027 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20028 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
@@ -1147,7 +1200,7 @@ public class ManagementApiTest {
     public void getImportsTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20028 response = api.getImports(pageSize, skip);
+        InlineResponse20029 response = api.getImports(pageSize, skip);
 
         // TODO: test validations
     }
@@ -1335,7 +1388,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20025 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20026 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1375,7 +1428,7 @@ public class ManagementApiTest {
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20022 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+        InlineResponse20023 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1400,7 +1453,7 @@ public class ManagementApiTest {
         String requestUuid = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20023 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+        InlineResponse20024 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1419,7 +1472,7 @@ public class ManagementApiTest {
         String sort = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20021 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+        InlineResponse20022 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
 
         // TODO: test validations
     }
@@ -1574,6 +1627,23 @@ public class ManagementApiTest {
         Boolean exactMatch = null;
         String batchId = null;
         InlineResponse2005 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update an additional cost
+     *
+     * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAdditionalCostTest() throws ApiException {
+        Integer additionalCostId = null;
+        NewAdditionalCost body = null;
+        AccountAdditionalCost response = api.updateAdditionalCost(additionalCostId, body);
 
         // TODO: test validations
     }

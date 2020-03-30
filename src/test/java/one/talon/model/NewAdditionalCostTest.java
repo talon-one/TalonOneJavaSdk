@@ -23,40 +23,55 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.EventType;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20025
+ * Model tests for NewAdditionalCost
  */
-public class InlineResponse20025Test {
-    private final InlineResponse20025 model = new InlineResponse20025();
+public class NewAdditionalCostTest {
+    private final NewAdditionalCost model = new NewAdditionalCost();
 
     /**
-     * Model tests for InlineResponse20025
+     * Model tests for NewAdditionalCost
      */
     @Test
-    public void testInlineResponse20025() {
-        // TODO: test InlineResponse20025
+    public void testNewAdditionalCost() {
+        // TODO: test NewAdditionalCost
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'name'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'title'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void titleTest() {
+        // TODO: test title
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'subscribedApplicationsIds'
+     */
+    @Test
+    public void subscribedApplicationsIdsTest() {
+        // TODO: test subscribedApplicationsIds
     }
 
 }
