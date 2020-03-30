@@ -1,7 +1,10 @@
 
+
 # LoyaltyLedger
 
+Ledger of Balance in Loyalty Program for a Customer
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ledger** | [**LoyaltySubLedger**](LoyaltySubLedger.md) |  | 

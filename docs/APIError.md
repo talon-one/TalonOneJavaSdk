@@ -1,7 +1,9 @@
 
+
 # APIError
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | Short description of the problem. | 

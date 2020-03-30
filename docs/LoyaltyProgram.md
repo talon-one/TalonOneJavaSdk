@@ -1,7 +1,10 @@
 
+
 # LoyaltyProgram
 
+A Loyalty Program
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | The ID of loyalty program. | 

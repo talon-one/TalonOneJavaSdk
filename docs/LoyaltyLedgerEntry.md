@@ -1,7 +1,10 @@
 
+
 # LoyaltyLedgerEntry
 
+A single row of the ledger, describing one addition or deduction.
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
@@ -16,8 +19,9 @@ Name | Type | Description | Notes
 **subLedgerID** | **String** | This specifies if we are adding loyalty points to the main ledger or a subledger | 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 ADDITION | &quot;addition&quot;

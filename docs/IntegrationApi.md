@@ -14,11 +14,12 @@ Method | HTTP request | Description
 [**trackEvent**](IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 [**updateCustomerProfile**](IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
 [**updateCustomerSession**](IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
+[**updateCustomerSessionV2**](IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update a Customer Session
 
 
 <a name="createCouponReservation"></a>
 # **createCouponReservation**
-> Coupon createCouponReservation(couponValue, couponReservations)
+> Coupon createCouponReservation(couponValue, body)
 
 Create a new coupon reservation
 
@@ -27,35 +28,44 @@ Creates a coupon reservation for all passed customer profiles on this couponID
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String couponValue = "couponValue_example"; // String | The value of a coupon
-CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
-try {
-    Coupon result = apiInstance.createCouponReservation(couponValue, couponReservations);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#createCouponReservation");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String couponValue = "couponValue_example"; // String | The value of a coupon
+    CouponReservations body = new CouponReservations(); // CouponReservations | 
+    try {
+      Coupon result = apiInstance.createCouponReservation(couponValue, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#createCouponReservation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -64,7 +74,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **couponValue** | **String**| The value of a coupon |
- **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
+ **body** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
@@ -79,9 +89,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="createReferral"></a>
 # **createReferral**
-> Referral createReferral(newReferral)
+> Referral createReferral(body)
 
 Create a referral code for an advocate
 
@@ -90,34 +105,43 @@ Creates a referral code for an advocate. The code will be valid for the referral
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-NewReferral newReferral = new NewReferral(); // NewReferral | 
-try {
-    Referral result = apiInstance.createReferral(newReferral);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#createReferral");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    NewReferral body = new NewReferral(); // NewReferral | 
+    try {
+      Referral result = apiInstance.createReferral(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#createReferral");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -125,7 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newReferral** | [**NewReferral**](NewReferral.md)|  |
+ **body** | [**NewReferral**](NewReferral.md)|  |
 
 ### Return type
 
@@ -140,9 +164,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="deleteCouponReservation"></a>
 # **deleteCouponReservation**
-> deleteCouponReservation(couponValue, couponReservations)
+> deleteCouponReservation(couponValue, body)
 
 Delete coupon reservations
 
@@ -151,34 +180,43 @@ Removes all passed customer profiles reservation from this coupon
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String couponValue = "couponValue_example"; // String | The value of a coupon
-CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
-try {
-    apiInstance.deleteCouponReservation(couponValue, couponReservations);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#deleteCouponReservation");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String couponValue = "couponValue_example"; // String | The value of a coupon
+    CouponReservations body = new CouponReservations(); // CouponReservations | 
+    try {
+      apiInstance.deleteCouponReservation(couponValue, body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#deleteCouponReservation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -187,7 +225,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **couponValue** | **String**| The value of a coupon |
- **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
+ **body** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
@@ -202,6 +240,11 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="deleteCustomerData"></a>
 # **deleteCustomerData**
 > deleteCustomerData(integrationId)
@@ -213,33 +256,42 @@ Delete all attributes on the customer profile and on entities that reference tha
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-try {
-    apiInstance.deleteCustomerData(integrationId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#deleteCustomerData");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+    try {
+      apiInstance.deleteCustomerData(integrationId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#deleteCustomerData");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -262,6 +314,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="getCustomerInventory"></a>
 # **getCustomerInventory**
 > CustomerInventory getCustomerInventory(integrationId, profile, referrals)
@@ -273,36 +330,45 @@ Get information regarding entities referencing this customer profile&#39;s integ
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-Object profile = null; // Object | optional flag to decide if you would like customer profile information in the response
-Object referrals = null; // Object | optional flag to decide if you would like referral information in the response
-try {
-    CustomerInventory result = apiInstance.getCustomerInventory(integrationId, profile, referrals);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#getCustomerInventory");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+    Object profile = null; // Object | optional flag to decide if you would like customer profile information in the response
+    Object referrals = null; // Object | optional flag to decide if you would like referral information in the response
+    try {
+      CustomerInventory result = apiInstance.getCustomerInventory(integrationId, profile, referrals);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#getCustomerInventory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -327,6 +393,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getReservedCoupons"></a>
 # **getReservedCoupons**
 > InlineResponse2001 getReservedCoupons(integrationId)
@@ -338,34 +409,43 @@ Returns all coupons this user is subscribed to that are valid and usable
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-try {
-    InlineResponse2001 result = apiInstance.getReservedCoupons(integrationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#getReservedCoupons");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+    try {
+      InlineResponse2001 result = apiInstance.getReservedCoupons(integrationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#getReservedCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -388,6 +468,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getReservedCustomers"></a>
 # **getReservedCustomers**
 > InlineResponse200 getReservedCustomers(couponValue)
@@ -399,34 +484,43 @@ Returns all users that have this coupon marked as reserved
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String couponValue = "couponValue_example"; // String | The value of a coupon
-try {
-    InlineResponse200 result = apiInstance.getReservedCustomers(couponValue);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#getReservedCustomers");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String couponValue = "couponValue_example"; // String | The value of a coupon
+    try {
+      InlineResponse200 result = apiInstance.getReservedCustomers(couponValue);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#getReservedCustomers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -449,9 +543,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="trackEvent"></a>
 # **trackEvent**
-> IntegrationState trackEvent(newEvent)
+> IntegrationState trackEvent(body)
 
 Track an Event
 
@@ -460,34 +559,43 @@ Records an arbitrary event in a customer session. For example, an integration mi
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-NewEvent newEvent = new NewEvent(); // NewEvent | 
-try {
-    IntegrationState result = apiInstance.trackEvent(newEvent);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#trackEvent");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    NewEvent body = new NewEvent(); // NewEvent | 
+    try {
+      IntegrationState result = apiInstance.trackEvent(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#trackEvent");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -495,7 +603,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newEvent** | [**NewEvent**](NewEvent.md)|  |
+ **body** | [**NewEvent**](NewEvent.md)|  |
 
 ### Return type
 
@@ -510,9 +618,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="updateCustomerProfile"></a>
 # **updateCustomerProfile**
-> IntegrationState updateCustomerProfile(integrationId, newCustomerProfile)
+> IntegrationState updateCustomerProfile(integrationId, body)
 
 Update a Customer Profile
 
@@ -521,35 +634,44 @@ Update (or create) a [Customer Profile][]. This profile information can then be 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-NewCustomerProfile newCustomerProfile = new NewCustomerProfile(); // NewCustomerProfile | 
-try {
-    IntegrationState result = apiInstance.updateCustomerProfile(integrationId, newCustomerProfile);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#updateCustomerProfile");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
+    NewCustomerProfile body = new NewCustomerProfile(); // NewCustomerProfile | 
+    try {
+      IntegrationState result = apiInstance.updateCustomerProfile(integrationId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#updateCustomerProfile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -558,7 +680,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
- **newCustomerProfile** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
+ **body** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
 
 ### Return type
 
@@ -573,9 +695,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCustomerSession"></a>
 # **updateCustomerSession**
-> IntegrationState updateCustomerSession(customerSessionId, newCustomerSession)
+> IntegrationState updateCustomerSession(customerSessionId, body)
 
 Update a Customer Session
 
@@ -584,35 +711,44 @@ Update (or create) a [Customer Session][]. For example, the items in a customers
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.IntegrationApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key_v1
-ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-api_key_v1.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key_v1.setApiKeyPrefix("Token");
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-IntegrationApi apiInstance = new IntegrationApi();
-String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
-NewCustomerSession newCustomerSession = new NewCustomerSession(); // NewCustomerSession | 
-try {
-    IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, newCustomerSession);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IntegrationApi#updateCustomerSession");
-    e.printStackTrace();
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
+    NewCustomerSession body = new NewCustomerSession(); // NewCustomerSession | 
+    try {
+      IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#updateCustomerSession");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -621,7 +757,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
- **newCustomerSession** | [**NewCustomerSession**](NewCustomerSession.md)|  |
+ **body** | [**NewCustomerSession**](NewCustomerSession.md)|  |
 
 ### Return type
 
@@ -635,4 +771,86 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateCustomerSessionV2"></a>
+# **updateCustomerSessionV2**
+> IntegrationStateV2 updateCustomerSessionV2(customerSessionId, body)
+
+Update a Customer Session
+
+Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the requested integration state. This includes the effects that were generated due to triggered campaigns, the created coupons and referral objects, as well as any entity that was requested in the request parameter \&quot;responseContent\&quot;.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
+
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
+    IntegrationRequest body = new IntegrationRequest(); // IntegrationRequest | 
+    try {
+      IntegrationStateV2 result = apiInstance.updateCustomerSessionV2(customerSessionId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#updateCustomerSessionV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
+ **body** | [**IntegrationRequest**](IntegrationRequest.md)|  |
+
+### Return type
+
+[**IntegrationStateV2**](IntegrationStateV2.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 

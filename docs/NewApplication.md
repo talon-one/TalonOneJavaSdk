@@ -1,7 +1,10 @@
 
+
 # NewApplication
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name of this application. | 
@@ -15,8 +18,9 @@ Name | Type | Description | Notes
 **key** | **String** | Hex key for HMAC-signing API calls as coming from this application (16 hex digits) |  [optional]
 
 
-<a name="CaseSensitivityEnum"></a>
+
 ## Enum: CaseSensitivityEnum
+
 Name | Value
 ---- | -----
 SENSITIVE | &quot;sensitive&quot;

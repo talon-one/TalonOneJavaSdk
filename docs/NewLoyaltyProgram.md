@@ -1,7 +1,10 @@
 
+
 # NewLoyaltyProgram
 
+A new loyalty program
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The internal name for the Loyalty Program. This is an immutable value. | 

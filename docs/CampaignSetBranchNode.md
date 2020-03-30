@@ -1,7 +1,9 @@
 
+
 # CampaignSetBranchNode
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**TypeEnum**](#TypeEnum) | Indicates the node type | 
@@ -10,15 +12,17 @@ Name | Type | Description | Notes
 **elements** | [**List&lt;CampaignSetNode&gt;**](CampaignSetNode.md) | Child elements of this set | 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 SET | &quot;SET&quot;
 
 
-<a name="OperatorEnum"></a>
+
 ## Enum: OperatorEnum
+
 Name | Value
 ---- | -----
 ALL | &quot;ALL&quot;

@@ -1,7 +1,9 @@
 
+
 # Notification
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | id of the notification | 

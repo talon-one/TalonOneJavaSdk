@@ -1,7 +1,10 @@
 
+
 # Campaign
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -31,8 +34,9 @@ Name | Type | Description | Notes
 **updatedBy** | **String** | Name of the user who last updated this campaign if available. |  [optional]
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 ENABLED | &quot;enabled&quot;
@@ -40,8 +44,9 @@ DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
 
 
-<a name="List<FeaturesEnum>"></a>
+
 ## Enum: List&lt;FeaturesEnum&gt;
+
 Name | Value
 ---- | -----
 COUPONS | &quot;coupons&quot;

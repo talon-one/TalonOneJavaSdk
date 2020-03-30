@@ -1,7 +1,10 @@
 
+
 # TemplateArgDef
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**TypeEnum**](#TypeEnum) | The type of value this argument expects. | 
@@ -10,8 +13,9 @@ Name | Type | Description | Notes
 **ui** | [**Object**](.md) | Arbitrary metadata that may be used to render an input for this argument. | 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 STRING | &quot;string&quot;

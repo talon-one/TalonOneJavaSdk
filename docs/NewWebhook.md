@@ -1,7 +1,10 @@
 
+
 # NewWebhook
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **applicationIds** | **List&lt;Integer&gt;** | The IDs of the applications that are related to this entity. | 
@@ -14,8 +17,9 @@ Name | Type | Description | Notes
 **enabled** | **Boolean** | Enables or disables webhook from showing in rule builder | 
 
 
-<a name="VerbEnum"></a>
+
 ## Enum: VerbEnum
+
 Name | Value
 ---- | -----
 POST | &quot;POST&quot;

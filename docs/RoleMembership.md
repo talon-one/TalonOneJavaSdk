@@ -1,7 +1,9 @@
 
+
 # RoleMembership
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **roleID** | **Integer** | ID of role | 

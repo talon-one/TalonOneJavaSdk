@@ -1,7 +1,10 @@
 
+
 # AccessLogEntry
 
+Log of application accesses
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **String** | UUID reference of request | 

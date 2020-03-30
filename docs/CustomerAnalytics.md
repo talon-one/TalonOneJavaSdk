@@ -1,7 +1,10 @@
 
+
 # CustomerAnalytics
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **acceptedCoupons** | **Integer** | Total accepted coupons for this customer | 

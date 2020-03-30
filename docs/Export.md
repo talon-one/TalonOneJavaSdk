@@ -1,7 +1,10 @@
 
+
 # Export
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -12,8 +15,9 @@ Name | Type | Description | Notes
 **filter** | [**Object**](.md) | Map of keys and values that were used to filter the exported rows | 
 
 
-<a name="EntityEnum"></a>
+
 ## Enum: EntityEnum
+
 Name | Value
 ---- | -----
 COUPON | &quot;Coupon&quot;

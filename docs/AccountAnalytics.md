@@ -1,7 +1,9 @@
 
+
 # AccountAnalytics
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **applications** | **Integer** | Total Number of Applications inside the account | 

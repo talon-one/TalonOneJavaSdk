@@ -1,7 +1,10 @@
 
+
 # SamlConnection
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assertionConsumerServiceURL** | **String** | The location where the SAML assertion is sent with a HTTP POST. | 

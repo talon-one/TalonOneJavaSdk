@@ -1,7 +1,10 @@
 
+
 # NewEventType
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **applicationIds** | **List&lt;Integer&gt;** | The IDs of the applications that are related to this entity. | 
@@ -16,8 +19,9 @@ Name | Type | Description | Notes
 **version** | **Integer** | The version of this event type. When updating an existing event type this must be **exactly** &#x60;currentVersion + 1&#x60;.  | 
 
 
-<a name="MimeTypeEnum"></a>
+
 ## Enum: MimeTypeEnum
+
 Name | Value
 ---- | -----
 APPLICATION_JSON | &quot;application/json&quot;
@@ -25,8 +29,9 @@ APPLICATION_X_WWW_FORM_URLENCODED | &quot;application/x-www-form-urlencoded&quot
 NONE | &quot;none&quot;
 
 
-<a name="HandlerLanguageEnum"></a>
+
 ## Enum: HandlerLanguageEnum
+
 Name | Value
 ---- | -----
 TALANG | &quot;talang&quot;

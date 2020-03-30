@@ -1,7 +1,10 @@
 
+
 # LoyaltyPoints
 
+Points to add or deduct
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **points** | [**BigDecimal**](BigDecimal.md) | Amount of loyalty points | 

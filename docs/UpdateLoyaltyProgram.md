@@ -1,7 +1,10 @@
 
+
 # UpdateLoyaltyProgram
 
+Update Loyalty Program
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | The display title for the Loyalty Program. |  [optional]

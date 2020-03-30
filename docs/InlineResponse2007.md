@@ -1,11 +1,13 @@
 
+
 # InlineResponse2007
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 **hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 
 
 

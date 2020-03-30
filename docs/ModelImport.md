@@ -1,7 +1,10 @@
 
+
 # ModelImport
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -12,8 +15,9 @@ Name | Type | Description | Notes
 **amount** | **Integer** | The number of members that imported. | 
 
 
-<a name="EntityEnum"></a>
+
 ## Enum: EntityEnum
+
 Name | Value
 ---- | -----
 COUPON | &quot;Coupon&quot;

@@ -1,7 +1,9 @@
 
+
 # NewReferral
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaignId** | **Integer** | ID of the campaign from which the referral received the referral code. | 

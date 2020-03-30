@@ -1,7 +1,10 @@
 
+
 # CustomerSession
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **integrationId** | **String** | The ID used for this entity in the application system. | 
@@ -19,8 +22,9 @@ Name | Type | Description | Notes
 **discounts** | [**Map&lt;String, BigDecimal&gt;**](BigDecimal.md) | A map of labelled discount values, values will be in the same currency as the application associated with the session. | 
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 OPEN | &quot;open&quot;

@@ -1,7 +1,10 @@
 
+
 # ApplicationSession
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -9,6 +12,7 @@ Name | Type | Description | Notes
 **applicationId** | **Integer** | The ID of the application that owns this entity. | 
 **profileId** | **Integer** | The globally unique Talon.One ID of the customer that created this entity. |  [optional]
 **integrationId** | **String** | The ID used for this entity in the application system. | 
+**profileintegrationid** | **String** | Integration ID of the customer for the session. |  [optional]
 **coupon** | **String** | Any coupon code entered. | 
 **referral** | **String** | Any referral code entered. | 
 **state** | [**StateEnum**](#StateEnum) | Indicating if the customer session is in progress (\&quot;open\&quot;), \&quot;closed\&quot;, or \&quot;cancelled\&quot;. | 
@@ -18,8 +22,9 @@ Name | Type | Description | Notes
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 OPEN | &quot;open&quot;

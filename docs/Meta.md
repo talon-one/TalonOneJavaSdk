@@ -1,7 +1,9 @@
 
+
 # Meta
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaigns** | [**Object**](.md) | Maps each evaluated campaign ID to a key-value list of that campaigns attributes. Campaigns without attributes will be omitted. |  [optional]
