@@ -1,7 +1,9 @@
 
+
 # SamlConnectionMetadata
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | ID of the SAML service. | 

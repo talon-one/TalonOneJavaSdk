@@ -1,7 +1,10 @@
 
+
 # WebhookActivationLogEntry
 
+Log of activated webhooks
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **integrationRequestUuid** | **String** | UUID reference of the integration request that triggered the effect with the webhook | 

@@ -1,7 +1,10 @@
 
+
 # AttributesMandatory
 
+Arbitrary settings associated with attributes.
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaigns** | **List&lt;String&gt;** | List of mandatory attributes for campaigns. |  [optional]

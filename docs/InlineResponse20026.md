@@ -1,12 +1,13 @@
 
+
 # InlineResponse20026
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Change&gt;**](Change.md) |  | 
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;User&gt;**](User.md) |  | 
 
 
 

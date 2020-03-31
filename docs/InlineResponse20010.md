@@ -1,11 +1,13 @@
 
+
 # InlineResponse20010
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
 **hasMore** | **Boolean** |  | 
+**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
 
 
 

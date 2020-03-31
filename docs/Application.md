@@ -1,7 +1,10 @@
 
+
 # Application
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -16,12 +19,12 @@ Name | Type | Description | Notes
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | Default limits for campaigns created in this application |  [optional]
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
-**key** | **String** | Hex key for HMAC-signing API calls as coming from this application (16 hex digits) | 
 **loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed | 
 
 
-<a name="CaseSensitivityEnum"></a>
+
 ## Enum: CaseSensitivityEnum
+
 Name | Value
 ---- | -----
 SENSITIVE | &quot;sensitive&quot;

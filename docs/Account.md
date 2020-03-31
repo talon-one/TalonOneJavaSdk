@@ -1,7 +1,10 @@
 
+
 # Account
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -9,7 +12,7 @@ Name | Type | Description | Notes
 **modified** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was last modified. | 
 **companyName** | **String** |  | 
 **domainName** | **String** | Subdomain Name for yourcompany.talon.one | 
-**state** | [**StateEnum**](#StateEnum) | State of the account (trial, active, trial_expired) | 
+**state** | [**StateEnum**](#StateEnum) | State of the account (active, deactivated) | 
 **billingEmail** | **String** | The billing email address associated with your company account. | 
 **planName** | **String** | The name of your booked plan. |  [optional]
 **planExpires** | [**OffsetDateTime**](OffsetDateTime.md) | The point in time at which your current plan expires. |  [optional]
@@ -24,13 +27,13 @@ Name | Type | Description | Notes
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
-TRIAL | &quot;trial&quot;
 ACTIVE | &quot;active&quot;
-TRIAL_EXPIRED | &quot;trial_expired&quot;
+DEACTIVATED | &quot;deactivated&quot;
 
 
 

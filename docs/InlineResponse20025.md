@@ -1,11 +1,13 @@
 
+
 # InlineResponse20025
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;User&gt;**](User.md) |  | 
 **totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;EventType&gt;**](EventType.md) |  | 
 
 
 

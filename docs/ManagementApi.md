@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addLoyaltyPoints**](ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
 [**copyCampaignToApplications**](ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
+[**createAdditionalCost**](ManagementApi.md#createAdditionalCost) | **POST** /v1/additional_costs | Define a new additional cost
 [**createAttribute**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Define a new custom attribute
 [**createCampaign**](ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create a Campaign
 [**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create Coupons
@@ -21,6 +22,8 @@ Method | HTTP request | Description
 [**getAccessLogsWithoutTotalCount**](ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for application
 [**getAccount**](ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get Account Details
 [**getAccountAnalytics**](ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get Account Analytics
+[**getAdditionalCost**](ManagementApi.md#getAdditionalCost) | **GET** /v1/additional_costs/{additionalCostId} | Get an additional cost
+[**getAdditionalCosts**](ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs
 [**getAllAccessLogs**](ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | Get all access logs
 [**getAllRoles**](ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles.
 [**getApplication**](ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
@@ -70,13 +73,13 @@ Method | HTTP request | Description
 [**getWebhookActivationLogs**](ManagementApi.md#getWebhookActivationLogs) | **GET** /v1/webhook_activation_logs | List Webhook activation Log Entries
 [**getWebhookLogs**](ManagementApi.md#getWebhookLogs) | **GET** /v1/webhook_logs | List Webhook Log Entries
 [**getWebhooks**](ManagementApi.md#getWebhooks) | **GET** /v1/webhooks | List Webhooks
-[**refreshAnalytics**](ManagementApi.md#refreshAnalytics) | **POST** /v1/refresh_analytics | Trigger refresh on stale analytics.
 [**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/deduct_points | Deduct points in a certain loyalty program for the specified customer
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
 [**searchCouponsAdvanced**](ManagementApi.md#searchCouponsAdvanced) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced | Get a list of the coupons that match the given attributes
 [**searchCouponsAdvancedApplicationWide**](ManagementApi.md#searchCouponsAdvancedApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search_advanced | Get a list of the coupons that match the given attributes in all active campaigns of an application
 [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes in all active campaigns of an application
 [**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes
+[**updateAdditionalCost**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update an additional cost
 [**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update a custom attribute
 [**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
 [**updateCampaignSet**](ManagementApi.md#updateCampaignSet) | **PUT** /v1/applications/{applicationId}/campaign_set | Update a Campaign Set
@@ -87,36 +90,45 @@ Method | HTTP request | Description
 
 <a name="addLoyaltyPoints"></a>
 # **addLoyaltyPoints**
-> addLoyaltyPoints(programID, integrationID, loyaltyPoints)
+> addLoyaltyPoints(programID, integrationID, body)
 
 Add points in a certain loyalty program for the specified customer
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String programID = "programID_example"; // String | 
-String integrationID = "integrationID_example"; // String | 
-LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
-try {
-    apiInstance.addLoyaltyPoints(programID, integrationID, loyaltyPoints);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#addLoyaltyPoints");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String programID = "programID_example"; // String | 
+    String integrationID = "integrationID_example"; // String | 
+    LoyaltyPoints body = new LoyaltyPoints(); // LoyaltyPoints | 
+    try {
+      apiInstance.addLoyaltyPoints(programID, integrationID, body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#addLoyaltyPoints");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -126,7 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **programID** | **String**|  |
  **integrationID** | **String**|  |
- **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
+ **body** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
 ### Return type
 
@@ -141,9 +153,14 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2003 copyCampaignToApplications(applicationId, campaignId, campaignCopy)
+> InlineResponse2003 copyCampaignToApplications(applicationId, campaignId, body)
 
 Copy the campaign into every specified application
 
@@ -152,30 +169,39 @@ Copy the campaign into every specified application.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-CampaignCopy campaignCopy = new CampaignCopy(); // CampaignCopy | 
-try {
-    InlineResponse2003 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    CampaignCopy body = new CampaignCopy(); // CampaignCopy | 
+    try {
+      InlineResponse2003 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -185,7 +211,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **campaignCopy** | [**CampaignCopy**](CampaignCopy.md)|  |
+ **body** | [**CampaignCopy**](CampaignCopy.md)|  |
 
 ### Return type
 
@@ -200,9 +226,83 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="createAdditionalCost"></a>
+# **createAdditionalCost**
+> AccountAdditionalCost createAdditionalCost(body)
+
+Define a new additional cost
+
+Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    NewAdditionalCost body = new NewAdditionalCost(); // NewAdditionalCost | 
+    try {
+      AccountAdditionalCost result = apiInstance.createAdditionalCost(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createAdditionalCost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
+
+### Return type
+
+[**AccountAdditionalCost**](AccountAdditionalCost.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="createAttribute"></a>
 # **createAttribute**
-> Attribute createAttribute(newAttribute)
+> Attribute createAttribute(body)
 
 Define a new custom attribute
 
@@ -211,28 +311,37 @@ Defines a new _custom attribute_ in this account. Custom attributes allow you to
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
-try {
-    Attribute result = apiInstance.createAttribute(newAttribute);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createAttribute");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    NewAttribute body = new NewAttribute(); // NewAttribute | 
+    try {
+      Attribute result = apiInstance.createAttribute(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createAttribute");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -240,7 +349,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
+ **body** | [**NewAttribute**](NewAttribute.md)|  |
 
 ### Return type
 
@@ -255,38 +364,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="createCampaign"></a>
 # **createCampaign**
-> Campaign createCampaign(applicationId, newCampaign)
+> Campaign createCampaign(applicationId, body)
 
 Create a Campaign
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-NewCampaign newCampaign = new NewCampaign(); // NewCampaign | 
-try {
-    Campaign result = apiInstance.createCampaign(applicationId, newCampaign);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createCampaign");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    NewCampaign body = new NewCampaign(); // NewCampaign | 
+    try {
+      Campaign result = apiInstance.createCampaign(applicationId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -295,7 +418,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **newCampaign** | [**NewCampaign**](NewCampaign.md)|  |
+ **body** | [**NewCampaign**](NewCampaign.md)|  |
 
 ### Return type
 
@@ -310,9 +433,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2001 createCoupons(applicationId, campaignId, newCoupons, silent)
+> InlineResponse2001 createCoupons(applicationId, campaignId, body, silent)
 
 Create Coupons
 
@@ -321,31 +449,40 @@ Create coupons according to some pattern. Up to 20.000 coupons can be created wi
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-NewCoupons newCoupons = new NewCoupons(); // NewCoupons | 
-String silent = "silent_example"; // String | If set to 'yes', response will be an empty 204, otherwise a list of the coupons generated (to to 1000).
-try {
-    InlineResponse2001 result = apiInstance.createCoupons(applicationId, campaignId, newCoupons, silent);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createCoupons");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    NewCoupons body = new NewCoupons(); // NewCoupons | 
+    String silent = "silent_example"; // String | If set to 'yes', response will be an empty 204, otherwise a list of the coupons generated (to to 1000).
+    try {
+      InlineResponse2001 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -355,7 +492,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **newCoupons** | [**NewCoupons**](NewCoupons.md)|  |
+ **body** | [**NewCoupons**](NewCoupons.md)|  |
  **silent** | **String**| If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). | [optional]
 
 ### Return type
@@ -371,9 +508,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**204** | No Content |  -  |
+
 <a name="createPasswordRecoveryEmail"></a>
 # **createPasswordRecoveryEmail**
-> NewPasswordEmail createPasswordRecoveryEmail(newPasswordEmail)
+> NewPasswordEmail createPasswordRecoveryEmail(body)
 
 Request a password reset
 
@@ -382,28 +525,37 @@ Sends an email with a password recovery link to the email of an existing account
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-NewPasswordEmail newPasswordEmail = new NewPasswordEmail(); // NewPasswordEmail | 
-try {
-    NewPasswordEmail result = apiInstance.createPasswordRecoveryEmail(newPasswordEmail);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createPasswordRecoveryEmail");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    NewPasswordEmail body = new NewPasswordEmail(); // NewPasswordEmail | 
+    try {
+      NewPasswordEmail result = apiInstance.createPasswordRecoveryEmail(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createPasswordRecoveryEmail");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -411,7 +563,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newPasswordEmail** | [**NewPasswordEmail**](NewPasswordEmail.md)|  |
+ **body** | [**NewPasswordEmail**](NewPasswordEmail.md)|  |
 
 ### Return type
 
@@ -426,39 +578,53 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Created |  -  |
+
 <a name="createRuleset"></a>
 # **createRuleset**
-> Ruleset createRuleset(applicationId, campaignId, newRuleset)
+> Ruleset createRuleset(applicationId, campaignId, body)
 
 Create a Ruleset
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-NewRuleset newRuleset = new NewRuleset(); // NewRuleset | 
-try {
-    Ruleset result = apiInstance.createRuleset(applicationId, campaignId, newRuleset);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createRuleset");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    NewRuleset body = new NewRuleset(); // NewRuleset | 
+    try {
+      Ruleset result = apiInstance.createRuleset(applicationId, campaignId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -468,7 +634,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **newRuleset** | [**NewRuleset**](NewRuleset.md)|  |
+ **body** | [**NewRuleset**](NewRuleset.md)|  |
 
 ### Return type
 
@@ -483,37 +649,51 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="createSession"></a>
 # **createSession**
-> Session createSession(loginParams)
+> Session createSession(body)
 
 Create a Session
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-LoginParams loginParams = new LoginParams(); // LoginParams | 
-try {
-    Session result = apiInstance.createSession(loginParams);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#createSession");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    LoginParams body = new LoginParams(); // LoginParams | 
+    try {
+      Session result = apiInstance.createSession(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createSession");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -521,7 +701,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loginParams** | [**LoginParams**](LoginParams.md)|  |
+ **body** | [**LoginParams**](LoginParams.md)|  |
 
 ### Return type
 
@@ -536,6 +716,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+
 <a name="deleteCampaign"></a>
 # **deleteCampaign**
 > deleteCampaign(applicationId, campaignId)
@@ -545,28 +730,37 @@ Delete a Campaign
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-try {
-    apiInstance.deleteCampaign(applicationId, campaignId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#deleteCampaign");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    try {
+      apiInstance.deleteCampaign(applicationId, campaignId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -590,6 +784,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="deleteCoupon"></a>
 # **deleteCoupon**
 > deleteCoupon(applicationId, campaignId, couponId)
@@ -599,29 +798,38 @@ Delete one Coupon
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-String couponId = "couponId_example"; // String | The ID of the coupon code to delete
-try {
-    apiInstance.deleteCoupon(applicationId, campaignId, couponId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#deleteCoupon");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    String couponId = "couponId_example"; // String | The ID of the coupon code to delete
+    try {
+      apiInstance.deleteCoupon(applicationId, campaignId, couponId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteCoupon");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -646,6 +854,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="deleteCoupons"></a>
 # **deleteCoupons**
 > deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
@@ -655,41 +868,50 @@ Delete Coupons
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-try {
-    apiInstance.deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#deleteCoupons");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    try {
+      apiInstance.deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -726,6 +948,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="deleteReferral"></a>
 # **deleteReferral**
 > deleteReferral(applicationId, campaignId, referralId)
@@ -735,29 +962,38 @@ Delete one Referral
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-String referralId = "referralId_example"; // String | The ID of the referral code to delete
-try {
-    apiInstance.deleteReferral(applicationId, campaignId, referralId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#deleteReferral");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    String referralId = "referralId_example"; // String | The ID of the referral code to delete
+    try {
+      apiInstance.deleteReferral(applicationId, campaignId, referralId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteReferral");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -782,6 +1018,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="deleteRuleset"></a>
 # **deleteRuleset**
 > deleteRuleset(applicationId, campaignId, rulesetId)
@@ -791,29 +1032,38 @@ Delete a Ruleset
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer rulesetId = 56; // Integer | 
-try {
-    apiInstance.deleteRuleset(applicationId, campaignId, rulesetId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#deleteRuleset");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer rulesetId = 56; // Integer | 
+    try {
+      apiInstance.deleteRuleset(applicationId, campaignId, rulesetId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -838,6 +1088,11 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="getAccessLogs"></a>
 # **getAccessLogs**
 > InlineResponse2009 getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
@@ -847,36 +1102,45 @@ Get access logs for application
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
-String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse2009 result = apiInstance.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAccessLogs");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+    String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
+    String status = "status_example"; // String | Filter results by HTTP status codes.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse2009 result = apiInstance.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAccessLogs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -907,6 +1171,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAccessLogsWithoutTotalCount"></a>
 # **getAccessLogsWithoutTotalCount**
 > InlineResponse20010 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
@@ -916,36 +1185,45 @@ Get access logs for application
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
-String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse20010 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+    String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
+    String status = "status_example"; // String | Filter results by HTTP status codes.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20010 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -976,6 +1254,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAccount"></a>
 # **getAccount**
 > Account getAccount(accountId)
@@ -987,28 +1270,37 @@ Return the details of your companies Talon.One account.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer accountId = 56; // Integer | 
-try {
-    Account result = apiInstance.getAccount(accountId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAccount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer accountId = 56; // Integer | 
+    try {
+      Account result = apiInstance.getAccount(accountId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAccount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1031,6 +1323,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAccountAnalytics"></a>
 # **getAccountAnalytics**
 > AccountAnalytics getAccountAnalytics(accountId)
@@ -1042,28 +1339,37 @@ Return the analytics of your companies Talon.One account.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer accountId = 56; // Integer | 
-try {
-    AccountAnalytics result = apiInstance.getAccountAnalytics(accountId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAccountAnalytics");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer accountId = 56; // Integer | 
+    try {
+      AccountAnalytics result = apiInstance.getAccountAnalytics(accountId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAccountAnalytics");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1086,6 +1392,153 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="getAdditionalCost"></a>
+# **getAdditionalCost**
+> AccountAdditionalCost getAdditionalCost(additionalCostId)
+
+Get an additional cost
+
+Returns additional cost for the account by its id. 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer additionalCostId = 56; // Integer | 
+    try {
+      AccountAdditionalCost result = apiInstance.getAdditionalCost(additionalCostId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAdditionalCost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **additionalCostId** | **Integer**|  |
+
+### Return type
+
+[**AccountAdditionalCost**](AccountAdditionalCost.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="getAdditionalCosts"></a>
+# **getAdditionalCosts**
+> InlineResponse20021 getAdditionalCosts(pageSize, skip, sort)
+
+List additional costs
+
+Returns all the defined additional costs for the account. 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20021 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAdditionalCosts");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
+ **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+
+### Return type
+
+[**InlineResponse20021**](InlineResponse20021.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAllAccessLogs"></a>
 # **getAllAccessLogs**
 > InlineResponse2009 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
@@ -1097,35 +1550,44 @@ Fetches the access logs for the entire account. Sensitive requests (logins) are 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
-String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
-String status = "status_example"; // String | Filter results by HTTP status codes.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse2009 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAllAccessLogs");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
+    String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
+    String status = "status_example"; // String | Filter results by HTTP status codes.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse2009 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAllAccessLogs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1155,36 +1617,50 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAllRoles"></a>
 # **getAllRoles**
-> InlineResponse20029 getAllRoles()
+> InlineResponse20030 getAllRoles()
 
 Get all roles.
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-try {
-    InlineResponse20029 result = apiInstance.getAllRoles();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAllRoles");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    try {
+      InlineResponse20030 result = apiInstance.getAllRoles();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAllRoles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1193,7 +1669,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20029**](InlineResponse20029.md)
+[**InlineResponse20030**](InlineResponse20030.md)
 
 ### Authorization
 
@@ -1203,6 +1679,11 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="getApplication"></a>
 # **getApplication**
@@ -1215,28 +1696,37 @@ Get the application specified by the ID.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-try {
-    Application result = apiInstance.getApplication(applicationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplication");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    try {
+      Application result = apiInstance.getApplication(applicationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplication");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1259,6 +1749,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationApiHealth"></a>
 # **getApplicationApiHealth**
 > ApplicationApiHealth getApplicationApiHealth(applicationId)
@@ -1268,28 +1763,37 @@ Get report of health of application API
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-try {
-    ApplicationApiHealth result = apiInstance.getApplicationApiHealth(applicationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationApiHealth");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    try {
+      ApplicationApiHealth result = apiInstance.getApplicationApiHealth(applicationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationApiHealth");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1312,6 +1816,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationCustomer"></a>
 # **getApplicationCustomer**
 > ApplicationCustomer getApplicationCustomer(applicationId, customerId)
@@ -1321,29 +1830,38 @@ Get Application Customer
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer customerId = 56; // Integer | 
-try {
-    ApplicationCustomer result = apiInstance.getApplicationCustomer(applicationId, customerId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationCustomer");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer customerId = 56; // Integer | 
+    try {
+      ApplicationCustomer result = apiInstance.getApplicationCustomer(applicationId, customerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationCustomer");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1367,6 +1885,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationCustomers"></a>
 # **getApplicationCustomers**
 > InlineResponse20012 getApplicationCustomers(applicationId)
@@ -1376,28 +1899,37 @@ List Application Customers
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-try {
-    InlineResponse20012 result = apiInstance.getApplicationCustomers(applicationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    try {
+      InlineResponse20012 result = apiInstance.getApplicationCustomers(applicationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1420,9 +1952,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationCustomersByAttributes"></a>
 # **getApplicationCustomersByAttributes**
-> InlineResponse20013 getApplicationCustomersByAttributes(applicationCustomerSearch)
+> InlineResponse20013 getApplicationCustomersByAttributes(body)
 
 Get a list of the customer profiles that match the given attributes
 
@@ -1431,28 +1968,37 @@ Gets a list of all the customer profiles for the account that exactly match a se
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: integration_auth
+    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
+    integration_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //integration_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: integration_auth
-ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-integration_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//integration_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
-try {
-    InlineResponse20013 result = apiInstance.getApplicationCustomersByAttributes(applicationCustomerSearch);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    ApplicationCustomerSearch body = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
+    try {
+      InlineResponse20013 result = apiInstance.getApplicationCustomersByAttributes(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1460,7 +2006,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
+ **body** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
 
 ### Return type
 
@@ -1475,6 +2021,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationEventTypes"></a>
 # **getApplicationEventTypes**
 > InlineResponse20019 getApplicationEventTypes(applicationId, pageSize, skip, sort)
@@ -1486,31 +2037,40 @@ Get all of the distinct values of the Event &#x60;type&#x60; property for events
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse20019 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20019 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1536,9 +2096,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationEvents"></a>
 # **getApplicationEvents**
-> InlineResponse20017 getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
+> InlineResponse20017 getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
 
 List Applications Events
 
@@ -1547,42 +2112,51 @@ Lists all events recorded for an application.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date
-String session = "session_example"; // String | Session integration ID filter for events. Must be exact match.
-String profile = "profile_example"; // String | Profile integration ID filter for events. Must be exact match.
-String customerName = "customerName_example"; // String | Customer name filter for events. Will match substrings case-insensitively.
-String customerEmail = "customerEmail_example"; // String | Customer e-mail address filter for events. Will match substrings case-insensitively.
-String effectsQuery = "effectsQuery_example"; // String | Effects filter for events. Will perform a full-text search on the text content of the events effects, if any.
-String attributesQuery = "attributesQuery_example"; // String | Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values.
-String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
-String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
-try {
-    InlineResponse20017 result = apiInstance.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationEvents");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date
+    String session = "session_example"; // String | Session integration ID filter for events. Must be exact match.
+    String profile = "profile_example"; // String | Profile integration ID filter for events. Must be exact match.
+    String customerName = "customerName_example"; // String | Customer name filter for events. Will match substrings case-insensitively.
+    String customerEmail = "customerEmail_example"; // String | Customer e-mail address filter for events. Will match substrings case-insensitively.
+    String couponCode = "couponCode_example"; // String | Coupon code
+    String referralCode = "referralCode_example"; // String | Referral code
+    String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
+    String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
+    try {
+      InlineResponse20017 result = apiInstance.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationEvents");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1601,8 +2175,8 @@ Name | Type | Description  | Notes
  **profile** | **String**| Profile integration ID filter for events. Must be exact match. | [optional]
  **customerName** | **String**| Customer name filter for events. Will match substrings case-insensitively. | [optional]
  **customerEmail** | **String**| Customer e-mail address filter for events. Will match substrings case-insensitively. | [optional]
- **effectsQuery** | **String**| Effects filter for events. Will perform a full-text search on the text content of the events effects, if any. | [optional]
- **attributesQuery** | **String**| Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. | [optional]
+ **couponCode** | **String**| Coupon code | [optional]
+ **referralCode** | **String**| Referral code | [optional]
  **ruleQuery** | **String**| Rule name filter for events | [optional]
  **campaignQuery** | **String**| Campaign name filter for events | [optional]
 
@@ -1619,9 +2193,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationEventsWithoutTotalCount"></a>
 # **getApplicationEventsWithoutTotalCount**
-> InlineResponse20018 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery)
+> InlineResponse20018 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
 
 List Applications Events
 
@@ -1630,42 +2209,51 @@ Lists all events recorded for an application. Instead of having the total number
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date
-String session = "session_example"; // String | Session integration ID filter for events. Must be exact match.
-String profile = "profile_example"; // String | Profile integration ID filter for events. Must be exact match.
-String customerName = "customerName_example"; // String | Customer name filter for events. Will match substrings case-insensitively.
-String customerEmail = "customerEmail_example"; // String | Customer e-mail address filter for events. Will match substrings case-insensitively.
-String effectsQuery = "effectsQuery_example"; // String | Effects filter for events. Will perform a full-text search on the text content of the events effects, if any.
-String attributesQuery = "attributesQuery_example"; // String | Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values.
-String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
-String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
-try {
-    InlineResponse20018 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, effectsQuery, attributesQuery, ruleQuery, campaignQuery);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date
+    String session = "session_example"; // String | Session integration ID filter for events. Must be exact match.
+    String profile = "profile_example"; // String | Profile integration ID filter for events. Must be exact match.
+    String customerName = "customerName_example"; // String | Customer name filter for events. Will match substrings case-insensitively.
+    String customerEmail = "customerEmail_example"; // String | Customer e-mail address filter for events. Will match substrings case-insensitively.
+    String couponCode = "couponCode_example"; // String | Coupon code
+    String referralCode = "referralCode_example"; // String | Referral code
+    String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
+    String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
+    try {
+      InlineResponse20018 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1684,8 +2272,8 @@ Name | Type | Description  | Notes
  **profile** | **String**| Profile integration ID filter for events. Must be exact match. | [optional]
  **customerName** | **String**| Customer name filter for events. Will match substrings case-insensitively. | [optional]
  **customerEmail** | **String**| Customer e-mail address filter for events. Will match substrings case-insensitively. | [optional]
- **effectsQuery** | **String**| Effects filter for events. Will perform a full-text search on the text content of the events effects, if any. | [optional]
- **attributesQuery** | **String**| Attributes filter for events. Will perform a full-text search on the text content of the events attributes, both keys and values. | [optional]
+ **couponCode** | **String**| Coupon code | [optional]
+ **referralCode** | **String**| Referral code | [optional]
  **ruleQuery** | **String**| Rule name filter for events | [optional]
  **campaignQuery** | **String**| Campaign name filter for events | [optional]
 
@@ -1702,6 +2290,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationSession"></a>
 # **getApplicationSession**
 > ApplicationSession getApplicationSession(applicationId, sessionId)
@@ -1711,29 +2304,38 @@ Get Application Session
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer sessionId = 56; // Integer | 
-try {
-    ApplicationSession result = apiInstance.getApplicationSession(applicationId, sessionId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationSession");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer sessionId = 56; // Integer | 
+    try {
+      ApplicationSession result = apiInstance.getApplicationSession(applicationId, sessionId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationSession");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1757,43 +2359,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplicationSessions"></a>
 # **getApplicationSessions**
-> InlineResponse20016 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon)
+> InlineResponse20016 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon, referral, integrationId, customerId)
 
 List Application Sessions
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
-String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
-String coupon = "coupon_example"; // String | Filter by sessions with this coupon. Must be exact match.
-try {
-    InlineResponse20016 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplicationSessions");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
+    String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
+    String coupon = "coupon_example"; // String | Filter by sessions with this coupon. Must be exact match.
+    String referral = "referral_example"; // String | Filter by sessions with this referral. Must be exact match.
+    String integrationId = "integrationId_example"; // String | Filter by sessions with this integrationId. Must be exact match.
+    String customerId = "customerId_example"; // String | Filter by integration ID of the customer for the session
+    try {
+      InlineResponse20016 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon, referral, integrationId, customerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplicationSessions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1808,6 +2427,9 @@ Name | Type | Description  | Notes
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, cancelled]
  **coupon** | **String**| Filter by sessions with this coupon. Must be exact match. | [optional]
+ **referral** | **String**| Filter by sessions with this referral. Must be exact match. | [optional]
+ **integrationId** | **String**| Filter by sessions with this integrationId. Must be exact match. | [optional]
+ **customerId** | **String**| Filter by integration ID of the customer for the session | [optional]
 
 ### Return type
 
@@ -1822,6 +2444,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getApplications"></a>
 # **getApplications**
 > InlineResponse2002 getApplications(pageSize, skip, sort)
@@ -1833,30 +2460,39 @@ List all application in the current account.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse2002 result = apiInstance.getApplications(pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getApplications");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse2002 result = apiInstance.getApplications(pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getApplications");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1881,6 +2517,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAttribute"></a>
 # **getAttribute**
 > Attribute getAttribute(attributeId)
@@ -1892,28 +2533,37 @@ Returns custom attribute for the account by its id.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer attributeId = 56; // Integer | 
-try {
-    Attribute result = apiInstance.getAttribute(attributeId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAttribute");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer attributeId = 56; // Integer | 
+    try {
+      Attribute result = apiInstance.getAttribute(attributeId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAttribute");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1936,6 +2586,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getAttributes"></a>
 # **getAttributes**
 > InlineResponse20020 getAttributes(pageSize, skip, sort)
@@ -1947,30 +2602,39 @@ Returns all the defined custom attributes for the account.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse20020 result = apiInstance.getAttributes(pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getAttributes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20020 result = apiInstance.getAttributes(pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1995,6 +2659,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCampaign"></a>
 # **getCampaign**
 > Campaign getCampaign(applicationId, campaignId)
@@ -2004,29 +2673,38 @@ Get a Campaign
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-try {
-    Campaign result = apiInstance.getCampaign(applicationId, campaignId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCampaign");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    try {
+      Campaign result = apiInstance.getCampaign(applicationId, campaignId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2050,6 +2728,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCampaignAnalytics"></a>
 # **getCampaignAnalytics**
 > InlineResponse20011 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
@@ -2059,32 +2742,41 @@ Get analytics of campaigns
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
-try {
-    InlineResponse20011 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
+    try {
+      InlineResponse20011 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2111,9 +2803,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2003 getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState)
+> InlineResponse2003 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
 
 Get a list of all campaigns that match the given attributes
 
@@ -2122,33 +2819,42 @@ Gets a list of all the campaigns that exactly match a set of attributes.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-CampaignSearch campaignSearch = new CampaignSearch(); // CampaignSearch | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
-try {
-    InlineResponse2003 result = apiInstance.getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    CampaignSearch body = new CampaignSearch(); // CampaignSearch | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
+    try {
+      InlineResponse2003 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2157,7 +2863,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **campaignSearch** | [**CampaignSearch**](CampaignSearch.md)|  |
+ **body** | [**CampaignSearch**](CampaignSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -2176,6 +2882,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCampaignSet"></a>
 # **getCampaignSet**
 > CampaignSet getCampaignSet(applicationId)
@@ -2185,28 +2896,37 @@ List CampaignSet
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-try {
-    CampaignSet result = apiInstance.getCampaignSet(applicationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCampaignSet");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    try {
+      CampaignSet result = apiInstance.getCampaignSet(applicationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCampaignSet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2229,6 +2949,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCampaigns"></a>
 # **getCampaigns**
 > InlineResponse2003 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter)
@@ -2238,36 +2963,45 @@ List your Campaigns
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
-String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
-String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
-try {
-    InlineResponse2003 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCampaigns");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
+    String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
+    String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
+    try {
+      InlineResponse2003 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2298,9 +3032,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20026 getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld)
+> InlineResponse20027 getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld)
 
 Get audit log for an account
 
@@ -2309,35 +3048,44 @@ Get list of changes caused by API calls for an account. Only accessible for admi
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-Integer applicationId = 56; // Integer | 
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
-Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
-Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
-try {
-    InlineResponse20026 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getChanges");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    Integer applicationId = 56; // Integer | 
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp.
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
+    Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
+    try {
+      InlineResponse20027 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getChanges");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2356,7 +3104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -2367,6 +3115,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCoupons"></a>
 # **getCoupons**
 > InlineResponse2001 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
@@ -2376,45 +3129,54 @@ List Coupons
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-try {
-    InlineResponse2001 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCoupons");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    try {
+      InlineResponse2001 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCoupons");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2454,9 +3216,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCouponsByAttributes"></a>
 # **getCouponsByAttributes**
-> InlineResponse2001 getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2001 getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 Get a list of the coupons that match the given attributes
 
@@ -2465,42 +3232,51 @@ Gets a list of all the coupons that exactly match a set of attributes.  The matc
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-try {
-    InlineResponse2001 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCouponsByAttributes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    CouponSearch body = new CouponSearch(); // CouponSearch | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    try {
+      InlineResponse2001 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCouponsByAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2510,7 +3286,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **couponSearch** | [**CouponSearch**](CouponSearch.md)|  |
+ **body** | [**CouponSearch**](CouponSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -2537,9 +3313,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCouponsByAttributesApplicationWide"></a>
 # **getCouponsByAttributesApplicationWide**
-> InlineResponse2001 getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2001 getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -2548,42 +3329,51 @@ Gets a list of all the coupons with attributes matching the query criteria Appli
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
-try {
-    InlineResponse2001 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCouponsByAttributesApplicationWide");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    CouponSearch body = new CouponSearch(); // CouponSearch | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
+    try {
+      InlineResponse2001 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCouponsByAttributesApplicationWide");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2592,7 +3382,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **couponSearch** | [**CouponSearch**](CouponSearch.md)|  |
+ **body** | [**CouponSearch**](CouponSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -2620,6 +3410,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCouponsWithoutTotalCount"></a>
 # **getCouponsWithoutTotalCount**
 > InlineResponse2005 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
@@ -2629,41 +3424,50 @@ List Coupons
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-try {
-    InlineResponse2005 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    try {
+      InlineResponse2005 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2699,6 +3503,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerActivityReport"></a>
 # **getCustomerActivityReport**
 > CustomerActivityReport getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip)
@@ -2710,33 +3519,42 @@ Fetch summary report for single application customer based on a time range
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-Integer applicationId = 56; // Integer | 
-Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-try {
-    CustomerActivityReport result = apiInstance.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerActivityReport");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    Integer applicationId = 56; // Integer | 
+    Integer customerId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    try {
+      CustomerActivityReport result = apiInstance.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerActivityReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2764,6 +3582,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerActivityReports"></a>
 # **getCustomerActivityReports**
 > InlineResponse20014 getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
@@ -2775,37 +3598,46 @@ Fetch summary reports for all application customers based on a time range
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String name = "name_example"; // String | Only return reports matching the customer name
-String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
-String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
-String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
-try {
-    InlineResponse20014 result = apiInstance.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerActivityReports");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String name = "name_example"; // String | Only return reports matching the customer name
+    String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
+    String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
+    String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
+    try {
+      InlineResponse20014 result = apiInstance.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerActivityReports");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2837,6 +3669,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerActivityReportsWithoutTotalCount"></a>
 # **getCustomerActivityReportsWithoutTotalCount**
 > InlineResponse20015 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
@@ -2848,37 +3685,46 @@ Fetch summary reports for all application customers based on a time range. Inste
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
-OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-Integer applicationId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String name = "name_example"; // String | Only return reports matching the customer name
-String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
-String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
-String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
-try {
-    InlineResponse20015 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
+    Integer applicationId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String name = "name_example"; // String | Only return reports matching the customer name
+    String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
+    String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
+    String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
+    try {
+      InlineResponse20015 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2910,6 +3756,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerAnalytics"></a>
 # **getCustomerAnalytics**
 > CustomerAnalytics getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort)
@@ -2921,32 +3772,41 @@ Fetch analytics for single application customer
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer customerId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    CustomerAnalytics result = apiInstance.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerAnalytics");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer customerId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      CustomerAnalytics result = apiInstance.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerAnalytics");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2973,6 +3833,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerProfile"></a>
 # **getCustomerProfile**
 > ApplicationCustomer getCustomerProfile(applicationId, customerId)
@@ -2982,29 +3847,38 @@ Get Customer Profile
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer customerId = 56; // Integer | 
-try {
-    ApplicationCustomer result = apiInstance.getCustomerProfile(applicationId, customerId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerProfile");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer customerId = 56; // Integer | 
+    try {
+      ApplicationCustomer result = apiInstance.getCustomerProfile(applicationId, customerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerProfile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3028,6 +3902,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomerProfiles"></a>
 # **getCustomerProfiles**
 > InlineResponse20013 getCustomerProfiles(pageSize, skip)
@@ -3037,29 +3916,38 @@ List Customer Profiles
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-try {
-    InlineResponse20013 result = apiInstance.getCustomerProfiles(pageSize, skip);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    try {
+      InlineResponse20013 result = apiInstance.getCustomerProfiles(pageSize, skip);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3083,9 +3971,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getCustomersByAttributes"></a>
 # **getCustomersByAttributes**
-> InlineResponse20013 getCustomersByAttributes(applicationCustomerSearch, pageSize, skip)
+> InlineResponse20013 getCustomersByAttributes(body, pageSize, skip)
 
 Get a list of the customer profiles that match the given attributes
 
@@ -3094,30 +3987,39 @@ Gets a list of all the customer profiles for the account that exactly match a se
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-try {
-    InlineResponse20013 result = apiInstance.getCustomersByAttributes(applicationCustomerSearch, pageSize, skip);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    ApplicationCustomerSearch body = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    try {
+      InlineResponse20013 result = apiInstance.getCustomersByAttributes(body, pageSize, skip);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3125,7 +4027,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
+ **body** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
@@ -3142,9 +4044,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getEventTypes"></a>
 # **getEventTypes**
-> InlineResponse20024 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20025 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
 
 List Event Types
 
@@ -3153,33 +4060,42 @@ Fetch all event type definitions for your account. Each event type can be
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
-String name = "name_example"; // String | Filter results to event types with the given name. This parameter implies `includeOldVersions`.
-Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse20024 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getEventTypes");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
+    String name = "name_example"; // String | Filter results to event types with the given name. This parameter implies `includeOldVersions`.
+    Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20025 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getEventTypes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3196,7 +4112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -3207,9 +4123,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getExports"></a>
 # **getExports**
-> InlineResponse20027 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20028 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get Exports
 
@@ -3218,32 +4139,41 @@ Get a list of all past exports
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-String entity = "entity_example"; // String | The name of the entity type that was exported.
-try {
-    InlineResponse20027 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getExports");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    String entity = "entity_example"; // String | The name of the entity type that was exported.
+    try {
+      InlineResponse20028 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getExports");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3259,7 +4189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -3270,9 +4200,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getImports"></a>
 # **getImports**
-> InlineResponse20028 getImports(pageSize, skip)
+> InlineResponse20029 getImports(pageSize, skip)
 
 Get Imports
 
@@ -3281,29 +4216,38 @@ Get a list of all past imports
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-try {
-    InlineResponse20028 result = apiInstance.getImports(pageSize, skip);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getImports");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    try {
+      InlineResponse20029 result = apiInstance.getImports(pageSize, skip);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getImports");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3316,7 +4260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20028**](InlineResponse20028.md)
+[**InlineResponse20029**](InlineResponse20029.md)
 
 ### Authorization
 
@@ -3326,6 +4270,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="getLoyaltyPoints"></a>
 # **getLoyaltyPoints**
@@ -3338,29 +4287,38 @@ Get the Loyalty Ledger for this profile integration ID.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String programID = "programID_example"; // String | The identifier for the application, must be unique within the account.
-String integrationID = "integrationID_example"; // String | The identifier for the application, must be unique within the account.
-try {
-    LoyaltyLedger result = apiInstance.getLoyaltyPoints(programID, integrationID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getLoyaltyPoints");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String programID = "programID_example"; // String | The identifier for the application, must be unique within the account.
+    String integrationID = "integrationID_example"; // String | The identifier for the application, must be unique within the account.
+    try {
+      LoyaltyLedger result = apiInstance.getLoyaltyPoints(programID, integrationID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getLoyaltyPoints");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3384,6 +4342,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getLoyaltyProgram"></a>
 # **getLoyaltyProgram**
 > LoyaltyProgram getLoyaltyProgram(programID)
@@ -3393,28 +4356,37 @@ Get a loyalty program
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String programID = "programID_example"; // String | 
-try {
-    LoyaltyProgram result = apiInstance.getLoyaltyProgram(programID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getLoyaltyProgram");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String programID = "programID_example"; // String | 
+    try {
+      LoyaltyProgram result = apiInstance.getLoyaltyProgram(programID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getLoyaltyProgram");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3437,6 +4409,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getLoyaltyPrograms"></a>
 # **getLoyaltyPrograms**
 > InlineResponse2008 getLoyaltyPrograms()
@@ -3446,27 +4423,36 @@ List all loyalty Programs
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-try {
-    InlineResponse2008 result = apiInstance.getLoyaltyPrograms();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    try {
+      InlineResponse2008 result = apiInstance.getLoyaltyPrograms();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3486,6 +4472,11 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getReferrals"></a>
 # **getReferrals**
 > InlineResponse2006 getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
@@ -3495,38 +4486,47 @@ List Referrals
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
-String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
-try {
-    InlineResponse2006 result = apiInstance.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getReferrals");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
+    String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
+    try {
+      InlineResponse2006 result = apiInstance.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getReferrals");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3559,6 +4559,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getReferralsWithoutTotalCount"></a>
 # **getReferralsWithoutTotalCount**
 > InlineResponse2007 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
@@ -3568,38 +4573,47 @@ List Referrals
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
-String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
-try {
-    InlineResponse2007 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiry date is set and in the past. The second matches referrals in which start date is null or in the past and expiry date is null or in the future, the third matches referrals in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
+    String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
+    try {
+      InlineResponse2007 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3632,6 +4646,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getRole"></a>
 # **getRole**
 > Role getRole(roleId)
@@ -3641,28 +4660,37 @@ Get information for the specified role.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer roleId = 56; // Integer | 
-try {
-    Role result = apiInstance.getRole(roleId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getRole");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer roleId = 56; // Integer | 
+    try {
+      Role result = apiInstance.getRole(roleId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getRole");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3685,6 +4713,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getRuleset"></a>
 # **getRuleset**
 > Ruleset getRuleset(applicationId, campaignId, rulesetId)
@@ -3694,30 +4727,39 @@ Get a Ruleset
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer rulesetId = 56; // Integer | 
-try {
-    Ruleset result = apiInstance.getRuleset(applicationId, campaignId, rulesetId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getRuleset");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer rulesetId = 56; // Integer | 
+    try {
+      Ruleset result = apiInstance.getRuleset(applicationId, campaignId, rulesetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3742,6 +4784,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getRulesets"></a>
 # **getRulesets**
 > InlineResponse2004 getRulesets(applicationId, campaignId, pageSize, skip, sort)
@@ -3751,32 +4798,41 @@ List Campaign Rulesets
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse2004 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getRulesets");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse2004 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getRulesets");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3803,6 +4859,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getUser"></a>
 # **getUser**
 > User getUser(userId)
@@ -3814,28 +4875,37 @@ Retrieves the data (including an invitation code) for a user. Non-admin users ca
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer userId = 56; // Integer | 
-try {
-    User result = apiInstance.getUser(userId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getUser");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer userId = 56; // Integer | 
+    try {
+      User result = apiInstance.getUser(userId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3858,9 +4928,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getUsers"></a>
 # **getUsers**
-> InlineResponse20025 getUsers(pageSize, skip, sort)
+> InlineResponse20026 getUsers(pageSize, skip, sort)
 
 List Users in your account
 
@@ -3869,30 +4944,39 @@ Retrieve all users in your account.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-try {
-    InlineResponse20025 result = apiInstance.getUsers(pageSize, skip, sort);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getUsers");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    try {
+      InlineResponse20026 result = apiInstance.getUsers(pageSize, skip, sort);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getUsers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3906,7 +4990,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -3916,6 +5000,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="getWebhook"></a>
 # **getWebhook**
@@ -3928,28 +5017,37 @@ Returns an webhook by its id.
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer webhookId = 56; // Integer | 
-try {
-    Webhook result = apiInstance.getWebhook(webhookId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getWebhook");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer webhookId = 56; // Integer | 
+    try {
+      Webhook result = apiInstance.getWebhook(webhookId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getWebhook");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3972,9 +5070,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getWebhookActivationLogs"></a>
 # **getWebhookActivationLogs**
-> InlineResponse20022 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20023 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List Webhook activation Log Entries
 
@@ -3983,36 +5086,45 @@ Webhook activation log entries would be created as soon as an integration reques
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
-BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
-BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
-BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
-try {
-    InlineResponse20022 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
+    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
+    BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
+    try {
+      InlineResponse20023 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4032,7 +5144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -4043,46 +5155,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getWebhookLogs"></a>
 # **getWebhookLogs**
-> InlineResponse20023 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20024 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List Webhook Log Entries
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String status = "status_example"; // String | Filter results by HTTP status codes.
-BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
-BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
-BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-String requestUuid = "requestUuid_example"; // String | Filter results by request UUID.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
-try {
-    InlineResponse20023 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getWebhookLogs");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String status = "status_example"; // String | Filter results by HTTP status codes.
+    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
+    BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    String requestUuid = "requestUuid_example"; // String | Filter results by request UUID.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string.
+    try {
+      InlineResponse20024 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getWebhookLogs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4103,7 +5229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -4114,40 +5240,54 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="getWebhooks"></a>
 # **getWebhooks**
-> InlineResponse20021 getWebhooks(applicationIds, sort, pageSize, skip)
+> InlineResponse20022 getWebhooks(applicationIds, sort, pageSize, skip)
 
 List Webhooks
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-try {
-    InlineResponse20021 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#getWebhooks");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    try {
+      InlineResponse20022 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getWebhooks");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4162,7 +5302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -4173,88 +5313,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="refreshAnalytics"></a>
-# **refreshAnalytics**
-> refreshAnalytics()
-
-Trigger refresh on stale analytics.
-
-Should be used to trigger a manual refresh of analytics.
-
-### Example
-```java
-// Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-try {
-    apiInstance.refreshAnalytics();
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#refreshAnalytics");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="removeLoyaltyPoints"></a>
 # **removeLoyaltyPoints**
-> removeLoyaltyPoints(programID, integrationID, loyaltyPoints)
+> removeLoyaltyPoints(programID, integrationID, body)
 
 Deduct points in a certain loyalty program for the specified customer
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-String programID = "programID_example"; // String | 
-String integrationID = "integrationID_example"; // String | 
-LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
-try {
-    apiInstance.removeLoyaltyPoints(programID, integrationID, loyaltyPoints);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#removeLoyaltyPoints");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String programID = "programID_example"; // String | 
+    String integrationID = "integrationID_example"; // String | 
+    LoyaltyPoints body = new LoyaltyPoints(); // LoyaltyPoints | 
+    try {
+      apiInstance.removeLoyaltyPoints(programID, integrationID, body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#removeLoyaltyPoints");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4264,7 +5368,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **programID** | **String**|  |
  **integrationID** | **String**|  |
- **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
+ **body** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
 ### Return type
 
@@ -4279,9 +5383,14 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="resetPassword"></a>
 # **resetPassword**
-> NewPassword resetPassword(newPassword)
+> NewPassword resetPassword(body)
 
 Reset password
 
@@ -4290,28 +5399,37 @@ Consumes the supplied password reset token and updates the password for the asso
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-NewPassword newPassword = new NewPassword(); // NewPassword | 
-try {
-    NewPassword result = apiInstance.resetPassword(newPassword);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#resetPassword");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    NewPassword body = new NewPassword(); // NewPassword | 
+    try {
+      NewPassword result = apiInstance.resetPassword(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#resetPassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4319,7 +5437,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newPassword** | [**NewPassword**](NewPassword.md)|  |
+ **body** | [**NewPassword**](NewPassword.md)|  |
 
 ### Return type
 
@@ -4334,9 +5452,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Created |  -  |
+
 <a name="searchCouponsAdvanced"></a>
 # **searchCouponsAdvanced**
-> InlineResponse2001 searchCouponsAdvanced(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2001 searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 Get a list of the coupons that match the given attributes
 
@@ -4345,42 +5468,51 @@ Gets a list of all the coupons with attributes matching the query criteria
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-try {
-    InlineResponse2001 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Object body = null; // Object | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    try {
+      InlineResponse2001 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4390,7 +5522,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **attributeQuery** | [**AttributeQuery**](AttributeQuery.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -4416,10 +5548,15 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="searchCouponsAdvancedApplicationWide"></a>
 # **searchCouponsAdvancedApplicationWide**
-> InlineResponse2001 searchCouponsAdvancedApplicationWide(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2001 searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -4428,42 +5565,51 @@ Gets a list of all the coupons with attributes matching the query criteria in al
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
-try {
-    InlineResponse2001 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Object body = null; // Object | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
+    try {
+      InlineResponse2001 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4472,7 +5618,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **attributeQuery** | [**AttributeQuery**](AttributeQuery.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -4500,9 +5646,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -4511,42 +5662,51 @@ Gets a list of all the coupons with attributes matching the query criteria in al
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
-try {
-    InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Object body = null; // Object | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
+    try {
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4555,7 +5715,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **attributeQuery** | [**AttributeQuery**](AttributeQuery.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -4583,9 +5743,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 Get a list of the coupons that match the given attributes
 
@@ -4594,42 +5759,51 @@ Gets a list of all the coupons with attributes matching the query criteria
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-AttributeQuery attributeQuery = new AttributeQuery(); // AttributeQuery | 
-Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
-Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
-String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
-String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
-String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
-String batchId = "batchId_example"; // String | Filter results by batches of coupons
-try {
-    InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, attributeQuery, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Object body = null; // Object | 
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
+    String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future. 
+    String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
+    Integer referralId = 56; // Integer | Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code.
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String batchId = "batchId_example"; // String | Filter results by batches of coupons
+    try {
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4639,7 +5813,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **attributeQuery** | [**AttributeQuery**](AttributeQuery.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
@@ -4666,9 +5840,85 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="updateAdditionalCost"></a>
+# **updateAdditionalCost**
+> AccountAdditionalCost updateAdditionalCost(additionalCostId, body)
+
+Update an additional cost
+
+Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer additionalCostId = 56; // Integer | 
+    NewAdditionalCost body = new NewAdditionalCost(); // NewAdditionalCost | 
+    try {
+      AccountAdditionalCost result = apiInstance.updateAdditionalCost(additionalCostId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateAdditionalCost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **additionalCostId** | **Integer**|  |
+ **body** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
+
+### Return type
+
+[**AccountAdditionalCost**](AccountAdditionalCost.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateAttribute"></a>
 # **updateAttribute**
-> Attribute updateAttribute(attributeId, newAttribute)
+> Attribute updateAttribute(attributeId, body)
 
 Update a custom attribute
 
@@ -4677,29 +5927,38 @@ Updates an existing custom attribute. Once created, the only property of a custo
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer attributeId = 56; // Integer | 
-NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
-try {
-    Attribute result = apiInstance.updateAttribute(attributeId, newAttribute);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateAttribute");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer attributeId = 56; // Integer | 
+    NewAttribute body = new NewAttribute(); // NewAttribute | 
+    try {
+      Attribute result = apiInstance.updateAttribute(attributeId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateAttribute");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4708,7 +5967,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributeId** | **Integer**|  |
- **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
+ **body** | [**NewAttribute**](NewAttribute.md)|  |
 
 ### Return type
 
@@ -4723,39 +5982,53 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCampaign"></a>
 # **updateCampaign**
-> Campaign updateCampaign(applicationId, campaignId, updateCampaign)
+> Campaign updateCampaign(applicationId, campaignId, body)
 
 Update a Campaign
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-UpdateCampaign updateCampaign = new UpdateCampaign(); // UpdateCampaign | 
-try {
-    Campaign result = apiInstance.updateCampaign(applicationId, campaignId, updateCampaign);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateCampaign");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    UpdateCampaign body = new UpdateCampaign(); // UpdateCampaign | 
+    try {
+      Campaign result = apiInstance.updateCampaign(applicationId, campaignId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4765,7 +6038,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **updateCampaign** | [**UpdateCampaign**](UpdateCampaign.md)|  |
+ **body** | [**UpdateCampaign**](UpdateCampaign.md)|  |
 
 ### Return type
 
@@ -4780,38 +6053,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCampaignSet"></a>
 # **updateCampaignSet**
-> CampaignSet updateCampaignSet(applicationId, newCampaignSet)
+> CampaignSet updateCampaignSet(applicationId, body)
 
 Update a Campaign Set
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-NewCampaignSet newCampaignSet = new NewCampaignSet(); // NewCampaignSet | 
-try {
-    CampaignSet result = apiInstance.updateCampaignSet(applicationId, newCampaignSet);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateCampaignSet");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    NewCampaignSet body = new NewCampaignSet(); // NewCampaignSet | 
+    try {
+      CampaignSet result = apiInstance.updateCampaignSet(applicationId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateCampaignSet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4820,7 +6107,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **newCampaignSet** | [**NewCampaignSet**](NewCampaignSet.md)|  |
+ **body** | [**NewCampaignSet**](NewCampaignSet.md)|  |
 
 ### Return type
 
@@ -4835,40 +6122,54 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCoupon"></a>
 # **updateCoupon**
-> Coupon updateCoupon(applicationId, campaignId, couponId, updateCoupon)
+> Coupon updateCoupon(applicationId, campaignId, couponId, body)
 
 Update a Coupon
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-String couponId = "couponId_example"; // String | The ID of the coupon code to update
-UpdateCoupon updateCoupon = new UpdateCoupon(); // UpdateCoupon | 
-try {
-    Coupon result = apiInstance.updateCoupon(applicationId, campaignId, couponId, updateCoupon);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateCoupon");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    String couponId = "couponId_example"; // String | The ID of the coupon code to update
+    UpdateCoupon body = new UpdateCoupon(); // UpdateCoupon | 
+    try {
+      Coupon result = apiInstance.updateCoupon(applicationId, campaignId, couponId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateCoupon");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4879,7 +6180,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **couponId** | **String**| The ID of the coupon code to update |
- **updateCoupon** | [**UpdateCoupon**](UpdateCoupon.md)|  |
+ **body** | [**UpdateCoupon**](UpdateCoupon.md)|  |
 
 ### Return type
 
@@ -4894,38 +6195,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCouponBatch"></a>
 # **updateCouponBatch**
-> updateCouponBatch(applicationId, campaignId, updateCouponBatch)
+> updateCouponBatch(applicationId, campaignId, body)
 
 Update a Batch of Coupons
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-UpdateCouponBatch updateCouponBatch = new UpdateCouponBatch(); // UpdateCouponBatch | 
-try {
-    apiInstance.updateCouponBatch(applicationId, campaignId, updateCouponBatch);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateCouponBatch");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    UpdateCouponBatch body = new UpdateCouponBatch(); // UpdateCouponBatch | 
+    try {
+      apiInstance.updateCouponBatch(applicationId, campaignId, body);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateCouponBatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4935,7 +6250,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **updateCouponBatch** | [**UpdateCouponBatch**](UpdateCouponBatch.md)|  |
+ **body** | [**UpdateCouponBatch**](UpdateCouponBatch.md)|  |
 
 ### Return type
 
@@ -4950,40 +6265,54 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
 <a name="updateRuleset"></a>
 # **updateRuleset**
-> Ruleset updateRuleset(applicationId, campaignId, rulesetId, newRuleset)
+> Ruleset updateRuleset(applicationId, campaignId, rulesetId, body)
 
 Update a Ruleset
 
 ### Example
 ```java
 // Import classes:
-//import one.talon.ApiClient;
-//import one.talon.ApiException;
-//import one.talon.Configuration;
-//import one.talon.auth.*;
-//import one.talon.api.ManagementApi;
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
 
-// Configure API key authorization: manager_auth
-ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-manager_auth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//manager_auth.setApiKeyPrefix("Token");
-
-ManagementApi apiInstance = new ManagementApi();
-Integer applicationId = 56; // Integer | 
-Integer campaignId = 56; // Integer | 
-Integer rulesetId = 56; // Integer | 
-NewRuleset newRuleset = new NewRuleset(); // NewRuleset | 
-try {
-    Ruleset result = apiInstance.updateRuleset(applicationId, campaignId, rulesetId, newRuleset);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ManagementApi#updateRuleset");
-    e.printStackTrace();
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | 
+    Integer campaignId = 56; // Integer | 
+    Integer rulesetId = 56; // Integer | 
+    NewRuleset body = new NewRuleset(); // NewRuleset | 
+    try {
+      Ruleset result = apiInstance.updateRuleset(applicationId, campaignId, rulesetId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateRuleset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4994,7 +6323,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **rulesetId** | **Integer**|  |
- **newRuleset** | [**NewRuleset**](NewRuleset.md)|  |
+ **body** | [**NewRuleset**](NewRuleset.md)|  |
 
 ### Return type
 
@@ -5008,4 +6337,9 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 

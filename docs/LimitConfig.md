@@ -1,7 +1,9 @@
 
+
 # LimitConfig
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | [**ActionEnum**](#ActionEnum) | The limitable action to which this limit will be applied | 
@@ -9,8 +11,9 @@ Name | Type | Description | Notes
 **entities** | [**List&lt;EntitiesEnum&gt;**](#List&lt;EntitiesEnum&gt;) | The entities that make the address of this limit | 
 
 
-<a name="ActionEnum"></a>
+
 ## Enum: ActionEnum
+
 Name | Value
 ---- | -----
 REDEEMCOUPON | &quot;redeemCoupon&quot;
@@ -20,8 +23,9 @@ CREATECOUPON | &quot;createCoupon&quot;
 SETDISCOUNTEFFECT | &quot;setDiscountEffect&quot;
 
 
-<a name="List<EntitiesEnum>"></a>
+
 ## Enum: List&lt;EntitiesEnum&gt;
+
 Name | Value
 ---- | -----
 COUPON | &quot;Coupon&quot;

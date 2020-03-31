@@ -1,7 +1,9 @@
 
+
 # NewFeatureFlags
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **loyalty** | **Boolean** | Whether the account has access to the loyalty features or not |  [optional]

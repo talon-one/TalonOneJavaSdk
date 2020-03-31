@@ -1,7 +1,10 @@
 
+
 # User
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Unique ID for this entity. | 
@@ -15,13 +18,14 @@ Name | Type | Description | Notes
 **policy** | **String** | A blob of ACL JSON | 
 **releaseUpdate** | **Boolean** | Update the user via email | 
 **latestFeature** | **String** | Latest feature the user has been notified. |  [optional]
-**roles** | **List&lt;Integer&gt;** | Contains a list of all roles a user is a memeber of |  [optional]
+**roles** | **List&lt;Integer&gt;** | Contains a list of all roles the user is a member of |  [optional]
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 **authMethod** | **String** | The Authentication method for this user |  [optional]
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 INVITED | &quot;invited&quot;

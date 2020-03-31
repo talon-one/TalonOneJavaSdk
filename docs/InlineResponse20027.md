@@ -1,11 +1,14 @@
 
+
 # InlineResponse20027
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Export&gt;**](Export.md) |  | 
-**totalResultSize** | **Integer** |  | 
+**totalResultSize** | **Integer** |  |  [optional]
+**hasMore** | **Boolean** |  |  [optional]
+**data** | [**List&lt;Change&gt;**](Change.md) |  | 
 
 
 

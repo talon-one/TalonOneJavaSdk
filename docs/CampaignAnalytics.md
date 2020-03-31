@@ -1,7 +1,10 @@
 
+
 # CampaignAnalytics
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | [**OffsetDateTime**](OffsetDateTime.md) |  | 

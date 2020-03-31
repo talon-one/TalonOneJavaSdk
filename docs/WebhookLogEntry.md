@@ -1,7 +1,10 @@
 
+
 # WebhookLogEntry
 
+Log of webhook api calls
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | UUID reference of the webhook request | 

@@ -1,7 +1,9 @@
 
+
 # UpdateCampaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | A friendly name for this campaign. | 
@@ -18,8 +20,9 @@ Name | Type | Description | Notes
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | The set of limits that will operate for this campaign | 
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 ENABLED | &quot;enabled&quot;
@@ -27,8 +30,9 @@ DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
 
 
-<a name="List<FeaturesEnum>"></a>
+
 ## Enum: List&lt;FeaturesEnum&gt;
+
 Name | Value
 ---- | -----
 COUPONS | &quot;coupons&quot;

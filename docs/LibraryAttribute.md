@@ -1,7 +1,10 @@
 
+
 # LibraryAttribute
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entity** | [**EntityEnum**](#EntityEnum) | The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60; of the custom attributes for that type. | 
@@ -13,8 +16,9 @@ Name | Type | Description | Notes
 **suggestions** | **List&lt;String&gt;** | Short suggestions that are used to group attributes. | 
 
 
-<a name="EntityEnum"></a>
+
 ## Enum: EntityEnum
+
 Name | Value
 ---- | -----
 APPLICATION | &quot;Application&quot;
@@ -26,8 +30,9 @@ COUPON | &quot;Coupon&quot;
 EVENT | &quot;Event&quot;
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 STRING | &quot;string&quot;

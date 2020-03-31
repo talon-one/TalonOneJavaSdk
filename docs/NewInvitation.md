@@ -1,7 +1,10 @@
 
+
 # NewInvitation
 
+Parameters for inviting a new user
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Name of the user being invited. |  [optional]

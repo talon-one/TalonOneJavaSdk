@@ -1,7 +1,9 @@
 
+
 # UpdateApplication
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name of this application. | 
@@ -14,8 +16,9 @@ Name | Type | Description | Notes
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
 
 
-<a name="CaseSensitivityEnum"></a>
+
 ## Enum: CaseSensitivityEnum
+
 Name | Value
 ---- | -----
 SENSITIVE | &quot;sensitive&quot;

@@ -1,7 +1,9 @@
 
+
 # CartItemAdjustment
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payFromLoyaltyProgram** | **Integer** | Loyalty Program to be used for payment | 
