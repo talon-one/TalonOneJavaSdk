@@ -81,6 +81,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ### Integration API
 
+#### V2
+
 ```java
 package com.example.consumer;
 
@@ -91,13 +93,66 @@ import one.talon.model.*;
 
 public class TalonApiTest {
     public static void main(String[] args) {
-        ApiClient iApiClient = new ApiClient("integration_auth");
-        IntegrationApi iApi = new IntegrationApi(iApiClient );
+        IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
         
-        // Setup: basePath, apiKeyPrefix and apiKey
+        // Setup: basePath
         iApi.getApiClient().setBasePath("https://mycompany.talon.one");
+        // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
         iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
         iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
+
+        try {
+          // Creating a cart item object
+            CartItem cartItem = new CartItem();
+            cartItem.setName("Hawaiian Pizza");
+            cartItem.setSku("pizza-x");
+            cartItem.setQuantity(1);
+            cartItem.setPrice(new java.math.BigDecimal("5.5"));
+
+            // Creating a customer session of V2
+            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
+            customerSession.setProfileId("Cool_Dude");
+            customerSession.addCouponCodesItem("Cool-Summer!");
+            customerSession.addCartItemsItem(cartItem);
+
+            // Initiating integration request wrapping the customer session update
+            IntegrationRequest request = new IntegrationRequest()
+                .customerSession(customerSession)
+                // Optional parameter of requested information to be present on the response related to the customer session update
+                .responseContent(Arrays.asList(
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
+                ));
+
+            // Create/update a customer session using `updateCustomerSessionV2` function
+            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request);
+            System.out.println(is.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+
+#### V1
+
+```java
+package com.example.consumer;
+
+import one.talon.ApiClient;
+import one.talon.api.IntegrationApi;
+import one.talon.api.ManagementApi;
+import one.talon.model.*;
+
+public class TalonApiTest {
+    public static void main(String[] args) {
+        IntegrationApi iApi = new IntegrationApi(new ApiClient("integration_auth"));
+        
+        // Setup: basePath
+        iApi.getApiClient().setBasePath("https://mycompany.talon.one");
+        // Setup: When using 'integration_auth', applicationId & applicationKey must be provided
+        iApi.getApiClient().setApplicationId("1");
+        iApi.getApiClient().setApplicationKey("fee29ed73f67db39");
 
         try {
             // Integration API example to send a session update
@@ -129,8 +184,7 @@ import one.talon.model.*;
 public class TalonApiTest {
     public static void main(String[] args) {
         // Management API example to load application with id 7
-        ApiClient mApiClient = new ApiClient("manager_auth");
-        ManagementApi mApi = new ManagementApi(mApiClient);
+        ManagementApi mApi = new ManagementApi(new ApiClient("manager_auth"));
 
         // Setup: basePath and bearer prefix
         mApi.getApiClient().setBasePath("https://mycompany.talon.one");
