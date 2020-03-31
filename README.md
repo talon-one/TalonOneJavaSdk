@@ -127,6 +127,24 @@ public class TalonApiTest {
             // Create/update a customer session using `updateCustomerSessionV2` function
             IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request);
             System.out.println(is.toString());
+
+            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
+            for (Effect eff : is.getEffects()) {
+                if (eff.getEffectType() == "addLoyaltyPoints") {
+                    // Typecasting according to the effect type
+                    AddLoyaltyPointsEffectProps props = (AddLoyaltyPointsEffectProps) eff.getProps();
+                    // Access the specific effect's properties
+                    System.out.println(props.getName());
+                    System.out.println(props.getProgramId());
+                    System.out.println(props.getValue());
+                }
+                if (eff.getEffectType() == "acceptCoupon") {
+                  // Typecasting according to the effect type
+                  AcceptCouponEffectProps props = (AcceptCouponEffectProps) eff.getProps();
+                  // work with AcceptCouponEffectProps' properties
+                  // ...
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
