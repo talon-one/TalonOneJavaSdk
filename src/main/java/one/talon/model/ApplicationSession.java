@@ -403,8 +403,7 @@ public class ApplicationSession {
    * The total sum of the session before any discounts applied.
    * @return total
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The total sum of the session before any discounts applied.")
+  @ApiModelProperty(required = true, value = "The total sum of the session before any discounts applied.")
 
   public BigDecimal getTotal() {
     return total;

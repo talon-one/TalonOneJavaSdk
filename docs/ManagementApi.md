@@ -42,7 +42,6 @@ Method | HTTP request | Description
 [**getCampaign**](ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get a Campaign
 [**getCampaignAnalytics**](ManagementApi.md#getCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/analytics | Get analytics of campaigns
 [**getCampaignByAttributes**](ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | Get a list of all campaigns that match the given attributes
-[**getCampaignSet**](ManagementApi.md#getCampaignSet) | **GET** /v1/applications/{applicationId}/campaign_set | List CampaignSet
 [**getCampaigns**](ManagementApi.md#getCampaigns) | **GET** /v1/applications/{applicationId}/campaigns | List your Campaigns
 [**getChanges**](ManagementApi.md#getChanges) | **GET** /v1/changes | Get audit log for an account
 [**getCoupons**](ManagementApi.md#getCoupons) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | List Coupons
@@ -82,7 +81,6 @@ Method | HTTP request | Description
 [**updateAdditionalCost**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update an additional cost
 [**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update a custom attribute
 [**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
-[**updateCampaignSet**](ManagementApi.md#updateCampaignSet) | **PUT** /v1/applications/{applicationId}/campaign_set | Update a Campaign Set
 [**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update a Coupon
 [**updateCouponBatch**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update a Batch of Coupons
 [**updateRuleset**](ManagementApi.md#updateRuleset) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Update a Ruleset
@@ -160,7 +158,7 @@ null (empty response body)
 
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2003 copyCampaignToApplications(applicationId, campaignId, body)
+> InlineResponse2002 copyCampaignToApplications(applicationId, campaignId, body)
 
 Copy the campaign into every specified application
 
@@ -192,7 +190,7 @@ public class Example {
     Integer campaignId = 56; // Integer | 
     CampaignCopy body = new CampaignCopy(); // CampaignCopy | 
     try {
-      InlineResponse2003 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+      InlineResponse2002 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -215,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -440,7 +438,7 @@ Name | Type | Description  | Notes
 
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2001 createCoupons(applicationId, campaignId, body, silent)
+> InlineResponse2004 createCoupons(applicationId, campaignId, body, silent)
 
 Create Coupons
 
@@ -473,7 +471,7 @@ public class Example {
     NewCoupons body = new NewCoupons(); // NewCoupons | 
     String silent = "silent_example"; // String | If set to 'yes', response will be an empty 204, otherwise a list of the coupons generated (to to 1000).
     try {
-      InlineResponse2001 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+      InlineResponse2004 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -497,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -2451,7 +2449,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplications"></a>
 # **getApplications**
-> InlineResponse2002 getApplications(pageSize, skip, sort)
+> InlineResponse2001 getApplications(pageSize, skip, sort)
 
 List Applications
 
@@ -2483,7 +2481,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
     try {
-      InlineResponse2002 result = apiInstance.getApplications(pageSize, skip, sort);
+      InlineResponse2001 result = apiInstance.getApplications(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplications");
@@ -2506,7 +2504,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -2810,7 +2808,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2003 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
+> InlineResponse2002 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
 
 Get a list of all campaigns that match the given attributes
 
@@ -2845,7 +2843,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2003 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+      InlineResponse2002 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -2871,7 +2869,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -2887,76 +2885,9 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
-<a name="getCampaignSet"></a>
-# **getCampaignSet**
-> CampaignSet getCampaignSet(applicationId)
-
-List CampaignSet
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | 
-    try {
-      CampaignSet result = apiInstance.getCampaignSet(applicationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#getCampaignSet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**|  |
-
-### Return type
-
-[**CampaignSet**](CampaignSet.md)
-
-### Authorization
-
-[manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
 <a name="getCampaigns"></a>
 # **getCampaigns**
-> InlineResponse2003 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter)
+> InlineResponse2002 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter)
 
 List your Campaigns
 
@@ -2992,7 +2923,7 @@ public class Example {
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
     try {
-      InlineResponse2003 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
+      InlineResponse2002 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -3021,7 +2952,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -3122,7 +3053,7 @@ Name | Type | Description  | Notes
 
 <a name="getCoupons"></a>
 # **getCoupons**
-> InlineResponse2001 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
+> InlineResponse2004 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
 
 List Coupons
 
@@ -3167,7 +3098,7 @@ public class Example {
     String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     try {
-      InlineResponse2001 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+      InlineResponse2004 result = apiInstance.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCoupons");
@@ -3205,7 +3136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -3223,7 +3154,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributes"></a>
 # **getCouponsByAttributes**
-> InlineResponse2001 getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2004 getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 Get a list of the coupons that match the given attributes
 
@@ -3267,7 +3198,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2001 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2004 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsByAttributes");
@@ -3302,7 +3233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -3320,7 +3251,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributesApplicationWide"></a>
 # **getCouponsByAttributesApplicationWide**
-> InlineResponse2001 getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2004 getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -3364,7 +3295,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2001 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2004 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsByAttributesApplicationWide");
@@ -3399,7 +3330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -4791,7 +4722,7 @@ Name | Type | Description  | Notes
 
 <a name="getRulesets"></a>
 # **getRulesets**
-> InlineResponse2004 getRulesets(applicationId, campaignId, pageSize, skip, sort)
+> InlineResponse2003 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
 List Campaign Rulesets
 
@@ -4823,7 +4754,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
     try {
-      InlineResponse2004 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+      InlineResponse2003 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getRulesets");
@@ -4848,7 +4779,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -5459,7 +5390,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvanced"></a>
 # **searchCouponsAdvanced**
-> InlineResponse2001 searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2004 searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 Get a list of the coupons that match the given attributes
 
@@ -5503,7 +5434,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2001 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
@@ -5538,7 +5469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -5556,7 +5487,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWide"></a>
 # **searchCouponsAdvancedApplicationWide**
-> InlineResponse2001 searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2004 searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 Get a list of the coupons that match the given attributes in all active campaigns of an application
 
@@ -5600,7 +5531,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2001 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
@@ -5635,7 +5566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -6043,75 +5974,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Campaign**](Campaign.md)
-
-### Authorization
-
-[manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-<a name="updateCampaignSet"></a>
-# **updateCampaignSet**
-> CampaignSet updateCampaignSet(applicationId, body)
-
-Update a Campaign Set
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | 
-    NewCampaignSet body = new NewCampaignSet(); // NewCampaignSet | 
-    try {
-      CampaignSet result = apiInstance.updateCampaignSet(applicationId, body);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#updateCampaignSet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**|  |
- **body** | [**NewCampaignSet**](NewCampaignSet.md)|  |
-
-### Return type
-
-[**CampaignSet**](CampaignSet.md)
 
 ### Authorization
 

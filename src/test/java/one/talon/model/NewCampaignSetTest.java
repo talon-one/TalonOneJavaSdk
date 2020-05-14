@@ -50,6 +50,14 @@ public class NewCampaignSetTest {
     }
 
     /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
+    }
+
+    /**
      * Test the property 'set'
      */
     @Test

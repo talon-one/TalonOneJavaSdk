@@ -9,10 +9,10 @@ Method | HTTP request | Description
 [**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
 [**getCustomerInventory**](IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile.
-[**getReservedCoupons**](IntegrationApi.md#getReservedCoupons) | **GET** /v1/coupon_reservations/coupons/{integrationId} | Get all valid reserved coupons
 [**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 [**trackEvent**](IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 [**updateCustomerProfile**](IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
+[**updateCustomerProfileV2**](IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{customerProfileId} | Update a Customer Profile
 [**updateCustomerSession**](IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
 [**updateCustomerSessionV2**](IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update a Customer Session
 
@@ -321,11 +321,11 @@ null (empty response body)
 
 <a name="getCustomerInventory"></a>
 # **getCustomerInventory**
-> CustomerInventory getCustomerInventory(integrationId, profile, referrals)
+> CustomerInventory getCustomerInventory(integrationId, profile, referrals, coupons)
 
 Get an inventory of all data associated with a specific customer profile.
 
-Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
 
 ### Example
 ```java
@@ -356,10 +356,11 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-    Object profile = null; // Object | optional flag to decide if you would like customer profile information in the response
-    Object referrals = null; // Object | optional flag to decide if you would like referral information in the response
+    Boolean profile = true; // Boolean | optional flag to decide if you would like customer profile information in the response
+    Boolean referrals = true; // Boolean | optional flag to decide if you would like referral information in the response
+    Boolean coupons = true; // Boolean | optional flag to decide if you would like coupon information in the response
     try {
-      CustomerInventory result = apiInstance.getCustomerInventory(integrationId, profile, referrals);
+      CustomerInventory result = apiInstance.getCustomerInventory(integrationId, profile, referrals, coupons);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#getCustomerInventory");
@@ -377,87 +378,13 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
- **profile** | [**Object**](.md)| optional flag to decide if you would like customer profile information in the response | [optional] [default to null]
- **referrals** | [**Object**](.md)| optional flag to decide if you would like referral information in the response | [optional] [default to null]
+ **profile** | **Boolean**| optional flag to decide if you would like customer profile information in the response | [optional]
+ **referrals** | **Boolean**| optional flag to decide if you would like referral information in the response | [optional]
+ **coupons** | **Boolean**| optional flag to decide if you would like coupon information in the response | [optional]
 
 ### Return type
 
 [**CustomerInventory**](CustomerInventory.md)
-
-### Authorization
-
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-<a name="getReservedCoupons"></a>
-# **getReservedCoupons**
-> InlineResponse2001 getReservedCoupons(integrationId)
-
-Get all valid reserved coupons
-
-Returns all coupons this user is subscribed to that are valid and usable 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.IntegrationApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: api_key_v1
-    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-    api_key_v1.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //api_key_v1.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
-    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-    try {
-      InlineResponse2001 result = apiInstance.getReservedCoupons(integrationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IntegrationApi#getReservedCoupons");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
-
-### Return type
-
-[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -550,7 +477,7 @@ Name | Type | Description  | Notes
 
 <a name="trackEvent"></a>
 # **trackEvent**
-> IntegrationState trackEvent(body)
+> IntegrationState trackEvent(body, dry)
 
 Track an Event
 
@@ -585,8 +512,9 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     NewEvent body = new NewEvent(); // NewEvent | 
+    Boolean dry = true; // Boolean | Flag to indicate whether to skip persisting the changes or not (Will not persist if set to 'true').
     try {
-      IntegrationState result = apiInstance.trackEvent(body);
+      IntegrationState result = apiInstance.trackEvent(body, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#trackEvent");
@@ -604,6 +532,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**NewEvent**](NewEvent.md)|  |
+ **dry** | **Boolean**| Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). | [optional]
 
 ### Return type
 
@@ -625,7 +554,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerProfile"></a>
 # **updateCustomerProfile**
-> IntegrationState updateCustomerProfile(integrationId, body)
+> IntegrationState updateCustomerProfile(integrationId, body, dry)
 
 Update a Customer Profile
 
@@ -661,8 +590,9 @@ public class Example {
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
     NewCustomerProfile body = new NewCustomerProfile(); // NewCustomerProfile | 
+    Boolean dry = true; // Boolean | Flag to indicate whether to skip persisting the changes or not (Will not persist if set to 'true').
     try {
-      IntegrationState result = apiInstance.updateCustomerProfile(integrationId, body);
+      IntegrationState result = apiInstance.updateCustomerProfile(integrationId, body, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerProfile");
@@ -681,6 +611,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
  **body** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
+ **dry** | **Boolean**| Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). | [optional]
 
 ### Return type
 
@@ -700,9 +631,80 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
+<a name="updateCustomerProfileV2"></a>
+# **updateCustomerProfileV2**
+> CustomerProfileUpdate updateCustomerProfileV2(customerProfileId, body)
+
+Update a Customer Profile
+
+Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
+
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    String customerProfileId = "customerProfileId_example"; // String | The custom identifier for this profile, must be unique within the account.
+    NewCustomerProfile body = new NewCustomerProfile(); // NewCustomerProfile | 
+    try {
+      CustomerProfileUpdate result = apiInstance.updateCustomerProfileV2(customerProfileId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#updateCustomerProfileV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customerProfileId** | **String**| The custom identifier for this profile, must be unique within the account. |
+ **body** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
+
+### Return type
+
+[**CustomerProfileUpdate**](CustomerProfileUpdate.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="updateCustomerSession"></a>
 # **updateCustomerSession**
-> IntegrationState updateCustomerSession(customerSessionId, body)
+> IntegrationState updateCustomerSession(customerSessionId, body, dry)
 
 Update a Customer Session
 
@@ -738,8 +740,9 @@ public class Example {
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
     NewCustomerSession body = new NewCustomerSession(); // NewCustomerSession | 
+    Boolean dry = true; // Boolean | Flag to indicate whether to skip persisting the changes or not (Will not persist if set to 'true').
     try {
-      IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, body);
+      IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, body, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerSession");
@@ -758,6 +761,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
  **body** | [**NewCustomerSession**](NewCustomerSession.md)|  |
+ **dry** | **Boolean**| Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). | [optional]
 
 ### Return type
 
@@ -779,7 +783,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerSessionV2"></a>
 # **updateCustomerSessionV2**
-> IntegrationStateV2 updateCustomerSessionV2(customerSessionId, body)
+> IntegrationStateV2 updateCustomerSessionV2(customerSessionId, body, dry)
 
 Update a Customer Session
 
@@ -809,8 +813,9 @@ public class Example {
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
     IntegrationRequest body = new IntegrationRequest(); // IntegrationRequest | 
+    Boolean dry = true; // Boolean | Flag to indicate whether to skip persisting the changes or not (Will not persist if set to 'true').
     try {
-      IntegrationStateV2 result = apiInstance.updateCustomerSessionV2(customerSessionId, body);
+      IntegrationStateV2 result = apiInstance.updateCustomerSessionV2(customerSessionId, body, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerSessionV2");
@@ -829,6 +834,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
  **body** | [**IntegrationRequest**](IntegrationRequest.md)|  |
+ **dry** | **Boolean**| Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). | [optional]
 
 ### Return type
 

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **name** | **String** | A name referencing the condition or effect that added this entry, or the specific name provided in an API call. | 
 **subLedgerID** | **String** | This specifies if we are adding loyalty points to the main ledger or a subledger | 
+**userID** | **Integer** | This is the ID of the user who created this entry, if the addition or subtraction was done manually. |  [optional]
 
 
 

@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Referral;
 import org.junit.Assert;
@@ -58,6 +59,14 @@ public class CustomerInventoryTest {
     @Test
     public void referralsTest() {
         // TODO: test referrals
+    }
+
+    /**
+     * Test the property 'coupons'
+     */
+    @Test
+    public void couponsTest() {
+        // TODO: test coupons
     }
 
 }

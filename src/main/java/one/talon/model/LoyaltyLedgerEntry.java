@@ -119,6 +119,10 @@ public class LoyaltyLedgerEntry {
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_I_D)
   private String subLedgerID;
 
+  public static final String SERIALIZED_NAME_USER_I_D = "userID";
+  @SerializedName(SERIALIZED_NAME_USER_I_D)
+  private Integer userID;
+
 
   public LoyaltyLedgerEntry created(OffsetDateTime created) {
     
@@ -343,6 +347,29 @@ public class LoyaltyLedgerEntry {
   }
 
 
+  public LoyaltyLedgerEntry userID(Integer userID) {
+    
+    this.userID = userID;
+    return this;
+  }
+
+   /**
+   * This is the ID of the user who created this entry, if the addition or subtraction was done manually.
+   * @return userID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "This is the ID of the user who created this entry, if the addition or subtraction was done manually.")
+
+  public Integer getUserID() {
+    return userID;
+  }
+
+
+  public void setUserID(Integer userID) {
+    this.userID = userID;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -361,12 +388,13 @@ public class LoyaltyLedgerEntry {
         Objects.equals(this.amount, loyaltyLedgerEntry.amount) &&
         Objects.equals(this.expiryDate, loyaltyLedgerEntry.expiryDate) &&
         Objects.equals(this.name, loyaltyLedgerEntry.name) &&
-        Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID);
+        Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID) &&
+        Objects.equals(this.userID, loyaltyLedgerEntry.userID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, expiryDate, name, subLedgerID);
+    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, expiryDate, name, subLedgerID, userID);
   }
 
 
@@ -384,6 +412,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");
+    sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

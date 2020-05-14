@@ -122,4 +122,12 @@ public class LoyaltyLedgerEntryTest {
         // TODO: test subLedgerID
     }
 
+    /**
+     * Test the property 'userID'
+     */
+    @Test
+    public void userIDTest() {
+        // TODO: test userID
+    }
+
 }

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **caseSensitivity** | [**CaseSensitivityEnum**](#CaseSensitivityEnum) | A string indicating how should campaigns in this application deal with case sensitivity on coupon codes. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | Default limits for campaigns created in this application |  [optional]
+**campaignPriority** | [**CampaignPriorityEnum**](#CampaignPriorityEnum) | Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive) |  [optional]
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
 **loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed | 
 
@@ -30,6 +31,16 @@ Name | Value
 SENSITIVE | &quot;sensitive&quot;
 INSENSITIVE_UPPERCASE | &quot;insensitive-uppercase&quot;
 INSENSITIVE_LOWERCASE | &quot;insensitive-lowercase&quot;
+
+
+
+## Enum: CampaignPriorityEnum
+
+Name | Value
+---- | -----
+UNIVERSAL | &quot;universal&quot;
+STACKABLE | &quot;stackable&quot;
+EXCLUSIVE | &quot;exclusive&quot;
 
 
 

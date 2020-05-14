@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Campaign;
+import one.talon.model.Ruleset;
 
 /**
  * InlineResponse2003
@@ -38,7 +38,7 @@ public class InlineResponse2003 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Campaign> data = new ArrayList<Campaign>();
+  private List<Ruleset> data = new ArrayList<Ruleset>();
 
 
   public InlineResponse2003 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse2003 {
   }
 
 
-  public InlineResponse2003 data(List<Campaign> data) {
+  public InlineResponse2003 data(List<Ruleset> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(Campaign dataItem) {
+  public InlineResponse2003 addDataItem(Ruleset dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2003 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Campaign> getData() {
+  public List<Ruleset> getData() {
     return data;
   }
 
 
-  public void setData(List<Campaign> data) {
+  public void setData(List<Ruleset> data) {
     this.data = data;
   }
 

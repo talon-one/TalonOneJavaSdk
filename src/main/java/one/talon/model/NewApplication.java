@@ -111,6 +111,59 @@ public class NewApplication {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = null;
 
+  /**
+   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)
+   */
+  @JsonAdapter(CampaignPriorityEnum.Adapter.class)
+  public enum CampaignPriorityEnum {
+    UNIVERSAL("universal"),
+    
+    STACKABLE("stackable"),
+    
+    EXCLUSIVE("exclusive");
+
+    private String value;
+
+    CampaignPriorityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CampaignPriorityEnum fromValue(String value) {
+      for (CampaignPriorityEnum b : CampaignPriorityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CampaignPriorityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignPriorityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignPriorityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignPriorityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_PRIORITY = "campaignPriority";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_PRIORITY)
+  private CampaignPriorityEnum campaignPriority;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES_SETTINGS = "attributesSettings";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_SETTINGS)
   private AttributesSettings attributesSettings;
@@ -286,6 +339,29 @@ public class NewApplication {
   }
 
 
+  public NewApplication campaignPriority(CampaignPriorityEnum campaignPriority) {
+    
+    this.campaignPriority = campaignPriority;
+    return this;
+  }
+
+   /**
+   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)
+   * @return campaignPriority
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)")
+
+  public CampaignPriorityEnum getCampaignPriority() {
+    return campaignPriority;
+  }
+
+
+  public void setCampaignPriority(CampaignPriorityEnum campaignPriority) {
+    this.campaignPriority = campaignPriority;
+  }
+
+
   public NewApplication attributesSettings(AttributesSettings attributesSettings) {
     
     this.attributesSettings = attributesSettings;
@@ -348,13 +424,14 @@ public class NewApplication {
         Objects.equals(this.caseSensitivity, newApplication.caseSensitivity) &&
         Objects.equals(this.attributes, newApplication.attributes) &&
         Objects.equals(this.limits, newApplication.limits) &&
+        Objects.equals(this.campaignPriority, newApplication.campaignPriority) &&
         Objects.equals(this.attributesSettings, newApplication.attributesSettings) &&
         Objects.equals(this.key, newApplication.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, attributesSettings, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, attributesSettings, key);
   }
 
 
@@ -369,6 +446,7 @@ public class NewApplication {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    campaignPriority: ").append(toIndentedString(campaignPriority)).append("\n");
     sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");

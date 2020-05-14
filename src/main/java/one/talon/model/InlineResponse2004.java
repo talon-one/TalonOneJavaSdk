@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Ruleset;
+import one.talon.model.Coupon;
 
 /**
  * InlineResponse2004
@@ -38,7 +38,7 @@ public class InlineResponse2004 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Ruleset> data = new ArrayList<Ruleset>();
+  private List<Coupon> data = new ArrayList<Coupon>();
 
 
   public InlineResponse2004 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse2004 {
   }
 
 
-  public InlineResponse2004 data(List<Ruleset> data) {
+  public InlineResponse2004 data(List<Coupon> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2004 addDataItem(Ruleset dataItem) {
+  public InlineResponse2004 addDataItem(Coupon dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2004 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Ruleset> getData() {
+  public List<Coupon> getData() {
     return data;
   }
 
 
-  public void setData(List<Ruleset> data) {
+  public void setData(List<Coupon> data) {
     this.data = data;
   }
 

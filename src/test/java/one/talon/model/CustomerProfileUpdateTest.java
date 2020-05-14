@@ -21,65 +21,32 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.CampaignSetBranchNode;
-import org.threeten.bp.OffsetDateTime;
+import one.talon.model.CustomerProfile;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CampaignSet
+ * Model tests for CustomerProfileUpdate
  */
-public class CampaignSetTest {
-    private final CampaignSet model = new CampaignSet();
+public class CustomerProfileUpdateTest {
+    private final CustomerProfileUpdate model = new CustomerProfileUpdate();
 
     /**
-     * Model tests for CampaignSet
+     * Model tests for CustomerProfileUpdate
      */
     @Test
-    public void testCampaignSet() {
-        // TODO: test CampaignSet
+    public void testCustomerProfileUpdate() {
+        // TODO: test CustomerProfileUpdate
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'customerProfile'
      */
     @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'created'
-     */
-    @Test
-    public void createdTest() {
-        // TODO: test created
-    }
-
-    /**
-     * Test the property 'applicationId'
-     */
-    @Test
-    public void applicationIdTest() {
-        // TODO: test applicationId
-    }
-
-    /**
-     * Test the property 'version'
-     */
-    @Test
-    public void versionTest() {
-        // TODO: test version
-    }
-
-    /**
-     * Test the property 'set'
-     */
-    @Test
-    public void setTest() {
-        // TODO: test set
+    public void customerProfileTest() {
+        // TODO: test customerProfile
     }
 
 }
