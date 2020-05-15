@@ -124,8 +124,11 @@ public class TalonApiTest {
                     IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
                 ));
 
+            // Flag to communicate whether the request is a "dry run"
+            Boolean dryRun = false;
+
             // Create/update a customer session using `updateCustomerSessionV2` function
-            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request);
+            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun);
             System.out.println(is.toString());
 
             // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
@@ -179,8 +182,11 @@ public class TalonApiTest {
             customerSession.setState(NewCustomerSession.StateEnum.OPEN);
             customerSession.setTotal(new java.math.BigDecimal("42.0"));
 
+            // Flag to communicate whether the request is a "dry run"
+            Boolean dryRun = false;
+
             // Create/update a customer session using `updateCustomerSession` function
-            IntegrationState ie = iApi.updateCustomerSession("deetdoot", customerSession);
+            IntegrationState ie = iApi.updateCustomerSession("deetdoot", customerSession, dryRun);
             System.out.println(ie.toString());
         } catch (Exception e) {
             System.out.println(e);
