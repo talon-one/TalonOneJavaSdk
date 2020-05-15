@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Referral;
 
@@ -40,6 +41,10 @@ public class CustomerInventory {
   public static final String SERIALIZED_NAME_REFERRALS = "referrals";
   @SerializedName(SERIALIZED_NAME_REFERRALS)
   private List<Referral> referrals = null;
+
+  public static final String SERIALIZED_NAME_COUPONS = "coupons";
+  @SerializedName(SERIALIZED_NAME_COUPONS)
+  private List<Coupon> coupons = null;
 
 
   public CustomerInventory profile(CustomerProfile profile) {
@@ -96,6 +101,37 @@ public class CustomerInventory {
   }
 
 
+  public CustomerInventory coupons(List<Coupon> coupons) {
+    
+    this.coupons = coupons;
+    return this;
+  }
+
+  public CustomerInventory addCouponsItem(Coupon couponsItem) {
+    if (this.coupons == null) {
+      this.coupons = new ArrayList<Coupon>();
+    }
+    this.coupons.add(couponsItem);
+    return this;
+  }
+
+   /**
+   * Get coupons
+   * @return coupons
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<Coupon> getCoupons() {
+    return coupons;
+  }
+
+
+  public void setCoupons(List<Coupon> coupons) {
+    this.coupons = coupons;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -106,12 +142,13 @@ public class CustomerInventory {
     }
     CustomerInventory customerInventory = (CustomerInventory) o;
     return Objects.equals(this.profile, customerInventory.profile) &&
-        Objects.equals(this.referrals, customerInventory.referrals);
+        Objects.equals(this.referrals, customerInventory.referrals) &&
+        Objects.equals(this.coupons, customerInventory.coupons);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, referrals);
+    return Objects.hash(profile, referrals, coupons);
   }
 
 
@@ -121,6 +158,7 @@ public class CustomerInventory {
     sb.append("class CustomerInventory {\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
+    sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("}");
     return sb.toString();
   }

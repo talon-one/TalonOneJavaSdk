@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
+**data** | [**List&lt;Application&gt;**](Application.md) |  | 
 
 
 

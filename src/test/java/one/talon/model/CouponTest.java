@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -82,6 +83,14 @@ public class CouponTest {
     }
 
     /**
+     * Test the property 'discountLimit'
+     */
+    @Test
+    public void discountLimitTest() {
+        // TODO: test discountLimit
+    }
+
+    /**
      * Test the property 'startDate'
      */
     @Test
@@ -103,6 +112,22 @@ public class CouponTest {
     @Test
     public void usageCounterTest() {
         // TODO: test usageCounter
+    }
+
+    /**
+     * Test the property 'discountCounter'
+     */
+    @Test
+    public void discountCounterTest() {
+        // TODO: test discountCounter
+    }
+
+    /**
+     * Test the property 'discountRemainder'
+     */
+    @Test
+    public void discountRemainderTest() {
+        // TODO: test discountRemainder
     }
 
     /**

@@ -35,6 +35,10 @@ public class NewCampaignSet {
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
 
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Integer version;
+
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
   private CampaignSetBranchNode set;
@@ -59,6 +63,29 @@ public class NewCampaignSet {
 
   public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
+  }
+
+
+  public NewCampaignSet version(Integer version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Version of the campaign set
+   * minimum: 1
+   * @return version
+  **/
+  @ApiModelProperty(required = true, value = "Version of the campaign set")
+
+  public Integer getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Integer version) {
+    this.version = version;
   }
 
 
@@ -94,12 +121,13 @@ public class NewCampaignSet {
     }
     NewCampaignSet newCampaignSet = (NewCampaignSet) o;
     return Objects.equals(this.applicationId, newCampaignSet.applicationId) &&
+        Objects.equals(this.version, newCampaignSet.version) &&
         Objects.equals(this.set, newCampaignSet.set);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, set);
+    return Objects.hash(applicationId, version, set);
   }
 
 
@@ -108,6 +136,7 @@ public class NewCampaignSet {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewCampaignSet {\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    set: ").append(toIndentedString(set)).append("\n");
     sb.append("}");
     return sb.toString();

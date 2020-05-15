@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -33,6 +34,10 @@ public class CouponConstraints {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
   private Integer usageLimit;
+
+  public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
+  private BigDecimal discountLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -65,6 +70,31 @@ public class CouponConstraints {
 
   public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
+  }
+
+
+  public CouponConstraints discountLimit(BigDecimal discountLimit) {
+    
+    this.discountLimit = discountLimit;
+    return this;
+  }
+
+   /**
+   * The amount of discounts that can be given with this coupon code. 
+   * minimum: 0
+   * maximum: 999999
+   * @return discountLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+
+  public BigDecimal getDiscountLimit() {
+    return discountLimit;
+  }
+
+
+  public void setDiscountLimit(BigDecimal discountLimit) {
+    this.discountLimit = discountLimit;
   }
 
 
@@ -124,13 +154,14 @@ public class CouponConstraints {
     }
     CouponConstraints couponConstraints = (CouponConstraints) o;
     return Objects.equals(this.usageLimit, couponConstraints.usageLimit) &&
+        Objects.equals(this.discountLimit, couponConstraints.discountLimit) &&
         Objects.equals(this.startDate, couponConstraints.startDate) &&
         Objects.equals(this.expiryDate, couponConstraints.expiryDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, startDate, expiryDate);
+    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate);
   }
 
 
@@ -139,6 +170,7 @@ public class CouponConstraints {
     StringBuilder sb = new StringBuilder();
     sb.append("class CouponConstraints {\n");
     sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
+    sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("}");

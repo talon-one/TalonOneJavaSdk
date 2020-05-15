@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -51,6 +52,10 @@ public class Coupon {
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
   private Integer usageLimit;
 
+  public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
+  private BigDecimal discountLimit;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
@@ -62,6 +67,14 @@ public class Coupon {
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
   private Integer usageCounter;
+
+  public static final String SERIALIZED_NAME_DISCOUNT_COUNTER = "discountCounter";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNTER)
+  private BigDecimal discountCounter;
+
+  public static final String SERIALIZED_NAME_DISCOUNT_REMAINDER = "discountRemainder";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_REMAINDER)
+  private BigDecimal discountRemainder;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -200,6 +213,31 @@ public class Coupon {
   }
 
 
+  public Coupon discountLimit(BigDecimal discountLimit) {
+    
+    this.discountLimit = discountLimit;
+    return this;
+  }
+
+   /**
+   * The amount of discounts that can be given with this coupon code. 
+   * minimum: 0
+   * maximum: 999999
+   * @return discountLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+
+  public BigDecimal getDiscountLimit() {
+    return discountLimit;
+  }
+
+
+  public void setDiscountLimit(BigDecimal discountLimit) {
+    this.discountLimit = discountLimit;
+  }
+
+
   public Coupon startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -268,6 +306,52 @@ public class Coupon {
   }
 
 
+  public Coupon discountCounter(BigDecimal discountCounter) {
+    
+    this.discountCounter = discountCounter;
+    return this;
+  }
+
+   /**
+   * The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon.
+   * @return discountCounter
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon.")
+
+  public BigDecimal getDiscountCounter() {
+    return discountCounter;
+  }
+
+
+  public void setDiscountCounter(BigDecimal discountCounter) {
+    this.discountCounter = discountCounter;
+  }
+
+
+  public Coupon discountRemainder(BigDecimal discountRemainder) {
+    
+    this.discountRemainder = discountRemainder;
+    return this;
+  }
+
+   /**
+   * The remaining discount this coupon can give.
+   * @return discountRemainder
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The remaining discount this coupon can give.")
+
+  public BigDecimal getDiscountRemainder() {
+    return discountRemainder;
+  }
+
+
+  public void setDiscountRemainder(BigDecimal discountRemainder) {
+    this.discountRemainder = discountRemainder;
+  }
+
+
   public Coupon attributes(Object attributes) {
     
     this.attributes = attributes;
@@ -321,11 +405,11 @@ public class Coupon {
   }
 
    /**
-   * The integration ID of a referred customer profile.
+   * The Integration ID of the customer that is allowed to redeem this coupon.
    * @return recipientIntegrationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The integration ID of a referred customer profile.")
+  @ApiModelProperty(value = "The Integration ID of the customer that is allowed to redeem this coupon.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
@@ -420,9 +504,12 @@ public class Coupon {
         Objects.equals(this.campaignId, coupon.campaignId) &&
         Objects.equals(this.value, coupon.value) &&
         Objects.equals(this.usageLimit, coupon.usageLimit) &&
+        Objects.equals(this.discountLimit, coupon.discountLimit) &&
         Objects.equals(this.startDate, coupon.startDate) &&
         Objects.equals(this.expiryDate, coupon.expiryDate) &&
         Objects.equals(this.usageCounter, coupon.usageCounter) &&
+        Objects.equals(this.discountCounter, coupon.discountCounter) &&
+        Objects.equals(this.discountRemainder, coupon.discountRemainder) &&
         Objects.equals(this.attributes, coupon.attributes) &&
         Objects.equals(this.referralId, coupon.referralId) &&
         Objects.equals(this.recipientIntegrationId, coupon.recipientIntegrationId) &&
@@ -433,7 +520,7 @@ public class Coupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, startDate, expiryDate, usageCounter, attributes, referralId, recipientIntegrationId, importId, reservation, batchId);
+    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, attributes, referralId, recipientIntegrationId, importId, reservation, batchId);
   }
 
 
@@ -446,9 +533,12 @@ public class Coupon {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
+    sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    usageCounter: ").append(toIndentedString(usageCounter)).append("\n");
+    sb.append("    discountCounter: ").append(toIndentedString(discountCounter)).append("\n");
+    sb.append("    discountRemainder: ").append(toIndentedString(discountRemainder)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    referralId: ").append(toIndentedString(referralId)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");

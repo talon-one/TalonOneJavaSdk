@@ -17,8 +17,8 @@ import one.talon.ApiException;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.CustomerInventory;
+import one.talon.model.CustomerProfileUpdate;
 import one.talon.model.InlineResponse200;
-import one.talon.model.InlineResponse2001;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationState;
 import one.talon.model.IntegrationStateV2;
@@ -113,7 +113,7 @@ public class IntegrationApiTest {
     /**
      * Get an inventory of all data associated with a specific customer profile.
      *
-     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information and referral codes. In the future, this will be expanded with coupon codes and loyalty points.
+     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -121,25 +121,10 @@ public class IntegrationApiTest {
     @Test
     public void getCustomerInventoryTest() throws ApiException {
         String integrationId = null;
-        Object profile = null;
-        Object referrals = null;
-        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get all valid reserved coupons
-     *
-     * Returns all coupons this user is subscribed to that are valid and usable 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getReservedCouponsTest() throws ApiException {
-        String integrationId = null;
-        InlineResponse2001 response = api.getReservedCoupons(integrationId);
+        Boolean profile = null;
+        Boolean referrals = null;
+        Boolean coupons = null;
+        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons);
 
         // TODO: test validations
     }
@@ -171,7 +156,8 @@ public class IntegrationApiTest {
     @Test
     public void trackEventTest() throws ApiException {
         NewEvent body = null;
-        IntegrationState response = api.trackEvent(body);
+        Boolean dry = null;
+        IntegrationState response = api.trackEvent(body, dry);
 
         // TODO: test validations
     }
@@ -188,7 +174,25 @@ public class IntegrationApiTest {
     public void updateCustomerProfileTest() throws ApiException {
         String integrationId = null;
         NewCustomerProfile body = null;
-        IntegrationState response = api.updateCustomerProfile(integrationId, body);
+        Boolean dry = null;
+        IntegrationState response = api.updateCustomerProfile(integrationId, body, dry);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update a Customer Profile
+     *
+     * Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateCustomerProfileV2Test() throws ApiException {
+        String customerProfileId = null;
+        NewCustomerProfile body = null;
+        CustomerProfileUpdate response = api.updateCustomerProfileV2(customerProfileId, body);
 
         // TODO: test validations
     }
@@ -205,7 +209,8 @@ public class IntegrationApiTest {
     public void updateCustomerSessionTest() throws ApiException {
         String customerSessionId = null;
         NewCustomerSession body = null;
-        IntegrationState response = api.updateCustomerSession(customerSessionId, body);
+        Boolean dry = null;
+        IntegrationState response = api.updateCustomerSession(customerSessionId, body, dry);
 
         // TODO: test validations
     }
@@ -222,7 +227,8 @@ public class IntegrationApiTest {
     public void updateCustomerSessionV2Test() throws ApiException {
         String customerSessionId = null;
         IntegrationRequest body = null;
-        IntegrationStateV2 response = api.updateCustomerSessionV2(customerSessionId, body);
+        Boolean dry = null;
+        IntegrationStateV2 response = api.updateCustomerSessionV2(customerSessionId, body, dry);
 
         // TODO: test validations
     }

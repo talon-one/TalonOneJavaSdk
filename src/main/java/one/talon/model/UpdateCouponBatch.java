@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -34,6 +35,10 @@ public class UpdateCouponBatch {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
   private Integer usageLimit;
+
+  public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
+  @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
+  private BigDecimal discountLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -74,6 +79,31 @@ public class UpdateCouponBatch {
 
   public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
+  }
+
+
+  public UpdateCouponBatch discountLimit(BigDecimal discountLimit) {
+    
+    this.discountLimit = discountLimit;
+    return this;
+  }
+
+   /**
+   * The amount of discounts that can be given with this coupon code. 
+   * minimum: 0
+   * maximum: 999999
+   * @return discountLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+
+  public BigDecimal getDiscountLimit() {
+    return discountLimit;
+  }
+
+
+  public void setDiscountLimit(BigDecimal discountLimit) {
+    this.discountLimit = discountLimit;
   }
 
 
@@ -178,6 +208,7 @@ public class UpdateCouponBatch {
     }
     UpdateCouponBatch updateCouponBatch = (UpdateCouponBatch) o;
     return Objects.equals(this.usageLimit, updateCouponBatch.usageLimit) &&
+        Objects.equals(this.discountLimit, updateCouponBatch.discountLimit) &&
         Objects.equals(this.startDate, updateCouponBatch.startDate) &&
         Objects.equals(this.expiryDate, updateCouponBatch.expiryDate) &&
         Objects.equals(this.attributes, updateCouponBatch.attributes) &&
@@ -186,7 +217,7 @@ public class UpdateCouponBatch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, startDate, expiryDate, attributes, batchID);
+    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, attributes, batchID);
   }
 
 
@@ -195,6 +226,7 @@ public class UpdateCouponBatch {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateCouponBatch {\n");
     sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
+    sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

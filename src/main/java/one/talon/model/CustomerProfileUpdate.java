@@ -23,70 +23,37 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.Campaign;
+import one.talon.model.CustomerProfile;
 
 /**
- * InlineResponse2002
+ * CustomerProfileUpdate
  */
 
-public class InlineResponse2002 {
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Campaign> data = new ArrayList<Campaign>();
+public class CustomerProfileUpdate {
+  public static final String SERIALIZED_NAME_CUSTOMER_PROFILE = "customerProfile";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE)
+  private CustomerProfile customerProfile;
 
 
-  public InlineResponse2002 totalResultSize(Integer totalResultSize) {
+  public CustomerProfileUpdate customerProfile(CustomerProfile customerProfile) {
     
-    this.totalResultSize = totalResultSize;
+    this.customerProfile = customerProfile;
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * Get customerProfile
+   * @return customerProfile
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  public CustomerProfile getCustomerProfile() {
+    return customerProfile;
   }
 
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
-  public InlineResponse2002 data(List<Campaign> data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  public InlineResponse2002 addDataItem(Campaign dataItem) {
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public List<Campaign> getData() {
-    return data;
-  }
-
-
-  public void setData(List<Campaign> data) {
-    this.data = data;
+  public void setCustomerProfile(CustomerProfile customerProfile) {
+    this.customerProfile = customerProfile;
   }
 
 
@@ -98,23 +65,21 @@ public class InlineResponse2002 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2002 inlineResponse2002 = (InlineResponse2002) o;
-    return Objects.equals(this.totalResultSize, inlineResponse2002.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse2002.data);
+    CustomerProfileUpdate customerProfileUpdate = (CustomerProfileUpdate) o;
+    return Objects.equals(this.customerProfile, customerProfileUpdate.customerProfile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(customerProfile);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2002 {\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class CustomerProfileUpdate {\n");
+    sb.append("    customerProfile: ").append(toIndentedString(customerProfile)).append("\n");
     sb.append("}");
     return sb.toString();
   }

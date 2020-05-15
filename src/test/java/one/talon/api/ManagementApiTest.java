@@ -27,7 +27,6 @@ import java.math.BigDecimal;
 import one.talon.model.Campaign;
 import one.talon.model.CampaignCopy;
 import one.talon.model.CampaignSearch;
-import one.talon.model.CampaignSet;
 import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
@@ -69,7 +68,6 @@ import one.talon.model.LoyaltyProgram;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
-import one.talon.model.NewCampaignSet;
 import one.talon.model.NewCoupons;
 import one.talon.model.NewPassword;
 import one.talon.model.NewPasswordEmail;
@@ -131,7 +129,7 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         CampaignCopy body = null;
-        InlineResponse2003 response = api.copyCampaignToApplications(applicationId, campaignId, body);
+        InlineResponse2002 response = api.copyCampaignToApplications(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -199,7 +197,7 @@ public class ManagementApiTest {
         Integer campaignId = null;
         NewCoupons body = null;
         String silent = null;
-        InlineResponse2001 response = api.createCoupons(applicationId, campaignId, body, silent);
+        InlineResponse2004 response = api.createCoupons(applicationId, campaignId, body, silent);
 
         // TODO: test validations
     }
@@ -722,7 +720,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2002 response = api.getApplications(pageSize, skip, sort);
+        InlineResponse2001 response = api.getApplications(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -814,23 +812,7 @@ public class ManagementApiTest {
         Integer skip = null;
         String sort = null;
         String campaignState = null;
-        InlineResponse2003 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List CampaignSet
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCampaignSetTest() throws ApiException {
-        Integer applicationId = null;
-        CampaignSet response = api.getCampaignSet(applicationId);
+        InlineResponse2002 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
 
         // TODO: test validations
     }
@@ -854,7 +836,7 @@ public class ManagementApiTest {
         String tags = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse2003 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
+        InlineResponse2002 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -910,7 +892,7 @@ public class ManagementApiTest {
         Integer referralId = null;
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
-        InlineResponse2001 response = api.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+        InlineResponse2004 response = api.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
 
         // TODO: test validations
     }
@@ -940,7 +922,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse2001 response = api.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse2004 response = api.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -970,7 +952,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse2001 response = api.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse2004 response = api.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -1354,7 +1336,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2004 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+        InlineResponse2003 response = api.getRulesets(applicationId, campaignId, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1536,7 +1518,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse2001 response = api.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse2004 response = api.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -1566,7 +1548,7 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse2001 response = api.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse2004 response = api.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
@@ -1679,23 +1661,6 @@ public class ManagementApiTest {
         Integer campaignId = null;
         UpdateCampaign body = null;
         Campaign response = api.updateCampaign(applicationId, campaignId, body);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Update a Campaign Set
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void updateCampaignSetTest() throws ApiException {
-        Integer applicationId = null;
-        NewCampaignSet body = null;
-        CampaignSet response = api.updateCampaignSet(applicationId, body);
 
         // TODO: test validations
     }

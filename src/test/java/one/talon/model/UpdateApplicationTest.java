@@ -101,6 +101,14 @@ public class UpdateApplicationTest {
     }
 
     /**
+     * Test the property 'campaignPriority'
+     */
+    @Test
+    public void campaignPriorityTest() {
+        // TODO: test campaignPriority
+    }
+
+    /**
      * Test the property 'attributesSettings'
      */
     @Test
