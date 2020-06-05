@@ -2034,7 +2034,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get access logs for application
+     * Get access logs for application (with total count)
      * 
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
@@ -2059,7 +2059,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get access logs for application
+     * Get access logs for application (with total count)
      * 
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
@@ -2085,7 +2085,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get access logs for application (asynchronously)
+     * Get access logs for application (with total count) (asynchronously)
      * 
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
@@ -3544,7 +3544,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes
+     * Get a list of the customer profiles that match the given attributes (with total count)
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param body  (required)
      * @return InlineResponse20013
@@ -3563,7 +3563,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes
+     * Get a list of the customer profiles that match the given attributes (with total count)
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param body  (required)
      * @return ApiResponse&lt;InlineResponse20013&gt;
@@ -3583,7 +3583,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes (asynchronously)
+     * Get a list of the customer profiles that match the given attributes (with total count) (asynchronously)
      * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3866,7 +3866,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Applications Events
+     * List Applications Events (with total count)
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
@@ -3897,7 +3897,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Applications Events
+     * List Applications Events (with total count)
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
@@ -3929,7 +3929,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Applications Events (asynchronously)
+     * List Applications Events (with total count) (asynchronously)
      * Lists all events recorded for an application. 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
@@ -5762,7 +5762,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons
+     * List Coupons (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -5796,7 +5796,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons
+     * List Coupons (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -5831,7 +5831,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons (asynchronously)
+     * List Coupons (with total count) (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -6221,7 +6221,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
      * @param body  (required)
@@ -6252,7 +6252,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
      * @param body  (required)
@@ -6284,7 +6284,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
      * @param body  (required)
@@ -6809,7 +6809,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Activity Reports for Application Customers
+     * Get Activity Reports for Application Customers (with total count)
      * Fetch summary reports for all application customers based on a time range
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -6835,7 +6835,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Activity Reports for Application Customers
+     * Get Activity Reports for Application Customers (with total count)
      * Fetch summary reports for all application customers based on a time range
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -6862,7 +6862,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Activity Reports for Application Customers (asynchronously)
+     * Get Activity Reports for Application Customers (with total count) (asynchronously)
      * Fetch summary reports for all application customers based on a time range
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -8441,7 +8441,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals
+     * List Referrals (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -8468,7 +8468,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals
+     * List Referrals (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -8496,7 +8496,7 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals (asynchronously)
+     * List Referrals (with total count) (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -10305,7 +10305,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
+     * Get a list of the coupons that match the given attributes (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -10336,7 +10336,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
+     * Get a list of the coupons that match the given attributes (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -10368,7 +10368,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (asynchronously)
+     * Get a list of the coupons that match the given attributes (with total count) (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -10529,7 +10529,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
      * @param body  (required)
@@ -10560,7 +10560,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
      * @param body  (required)
@@ -10592,7 +10592,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
+     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
      * @param body  (required)
