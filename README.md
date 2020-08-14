@@ -86,6 +86,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 package com.example.consumer;
 
+import com.google.gson.Gson;
+
 import one.talon.ApiClient;
 import one.talon.api.IntegrationApi;
 import one.talon.api.ManagementApi;
@@ -93,6 +95,7 @@ import one.talon.model.*;
 
 public class TalonApiTest {
     public static void main(String[] args) {
+        Gson gson = new Gson();
         IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
         
         // Setup: basePath
@@ -133,19 +136,25 @@ public class TalonApiTest {
 
             // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
             for (Effect eff : is.getEffects()) {
-                if (eff.getEffectType() == "addLoyaltyPoints") {
-                    // Typecasting according to the effect type
-                    AddLoyaltyPointsEffectProps props = (AddLoyaltyPointsEffectProps) eff.getProps();
+                if (eff.getEffectType().equals("addLoyaltyPoints")) {
+                    // Typecasting according to the specific effect type
+                    AddLoyaltyPointsEffectProps props = gson.fromJson(
+                        gson.toJson(eff.getProps()),
+                        AddLoyaltyPointsEffectProps.class
+                    );
                     // Access the specific effect's properties
                     System.out.println(props.getName());
                     System.out.println(props.getProgramId());
                     System.out.println(props.getValue());
                 }
-                if (eff.getEffectType() == "acceptCoupon") {
-                  // Typecasting according to the effect type
-                  AcceptCouponEffectProps props = (AcceptCouponEffectProps) eff.getProps();
-                  // work with AcceptCouponEffectProps' properties
-                  // ...
+                if (eff.getEffectType().equals("acceptCoupon")) {
+                    // Typecasting according to the specific effect type
+                    AcceptCouponEffectProps props = gson.fromJson(
+                      gson.toJson(eff.getProps()),
+                      AcceptCouponEffectProps.class
+                    );
+                    // work with AcceptCouponEffectProps' properties
+                    // ...
                 }
             }
         } catch (Exception e) {
