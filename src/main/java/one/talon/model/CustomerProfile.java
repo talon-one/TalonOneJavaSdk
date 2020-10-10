@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AudienceMembership;
 import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 
@@ -63,6 +64,10 @@ public class CustomerProfile {
   @SerializedName(SERIALIZED_NAME_LOYALTY_MEMBERSHIPS)
   private List<LoyaltyMembership> loyaltyMemberships = null;
 
+  public static final String SERIALIZED_NAME_AUDIENCE_MEMBERSHIPS = "audienceMemberships";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_MEMBERSHIPS)
+  private List<AudienceMembership> audienceMemberships = null;
+
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
   private OffsetDateTime lastActivity;
@@ -75,10 +80,10 @@ public class CustomerProfile {
   }
 
    /**
-   * The ID used for this entity in the application system.
+   * The integration ID for this entity sent to and used in the Talon.One system.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The ID used for this entity in the application system.")
+  @ApiModelProperty(required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
 
   public String getIntegrationId() {
     return integrationId;
@@ -231,6 +236,37 @@ public class CustomerProfile {
   }
 
 
+  public CustomerProfile audienceMemberships(List<AudienceMembership> audienceMemberships) {
+    
+    this.audienceMemberships = audienceMemberships;
+    return this;
+  }
+
+  public CustomerProfile addAudienceMembershipsItem(AudienceMembership audienceMembershipsItem) {
+    if (this.audienceMemberships == null) {
+      this.audienceMemberships = new ArrayList<AudienceMembership>();
+    }
+    this.audienceMemberships.add(audienceMembershipsItem);
+    return this;
+  }
+
+   /**
+   * A list of audiences the customer belongs to
+   * @return audienceMemberships
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of audiences the customer belongs to")
+
+  public List<AudienceMembership> getAudienceMemberships() {
+    return audienceMemberships;
+  }
+
+
+  public void setAudienceMemberships(List<AudienceMembership> audienceMemberships) {
+    this.audienceMemberships = audienceMemberships;
+  }
+
+
   public CustomerProfile lastActivity(OffsetDateTime lastActivity) {
     
     this.lastActivity = lastActivity;
@@ -269,12 +305,13 @@ public class CustomerProfile {
         Objects.equals(this.closedSessions, customerProfile.closedSessions) &&
         Objects.equals(this.totalSales, customerProfile.totalSales) &&
         Objects.equals(this.loyaltyMemberships, customerProfile.loyaltyMemberships) &&
+        Objects.equals(this.audienceMemberships, customerProfile.audienceMemberships) &&
         Objects.equals(this.lastActivity, customerProfile.lastActivity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, created, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, lastActivity);
+    return Objects.hash(integrationId, created, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity);
   }
 
 
@@ -289,6 +326,7 @@ public class CustomerProfile {
     sb.append("    closedSessions: ").append(toIndentedString(closedSessions)).append("\n");
     sb.append("    totalSales: ").append(toIndentedString(totalSales)).append("\n");
     sb.append("    loyaltyMemberships: ").append(toIndentedString(loyaltyMemberships)).append("\n");
+    sb.append("    audienceMemberships: ").append(toIndentedString(audienceMemberships)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("}");
     return sb.toString();

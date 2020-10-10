@@ -38,6 +38,22 @@ public class LoyaltySubLedger {
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private BigDecimal total;
 
+  public static final String SERIALIZED_NAME_TOTAL_ACTIVE_POINTS = "totalActivePoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ACTIVE_POINTS)
+  private BigDecimal totalActivePoints;
+
+  public static final String SERIALIZED_NAME_TOTAL_PENDING_POINTS = "totalPendingPoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PENDING_POINTS)
+  private BigDecimal totalPendingPoints;
+
+  public static final String SERIALIZED_NAME_TOTAL_SPENT_POINTS = "totalSpentPoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_SPENT_POINTS)
+  private BigDecimal totalSpentPoints;
+
+  public static final String SERIALIZED_NAME_TOTAL_EXPIRED_POINTS = "totalExpiredPoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_EXPIRED_POINTS)
+  private BigDecimal totalExpiredPoints;
+
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<LoyaltyLedgerEntry> transactions = null;
@@ -45,6 +61,18 @@ public class LoyaltySubLedger {
   public static final String SERIALIZED_NAME_EXPIRING_POINTS = "expiringPoints";
   @SerializedName(SERIALIZED_NAME_EXPIRING_POINTS)
   private List<LoyaltyLedgerEntry> expiringPoints = null;
+
+  public static final String SERIALIZED_NAME_ACTIVE_POINTS = "activePoints";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_POINTS)
+  private List<LoyaltyLedgerEntry> activePoints = null;
+
+  public static final String SERIALIZED_NAME_PENDING_POINTS = "pendingPoints";
+  @SerializedName(SERIALIZED_NAME_PENDING_POINTS)
+  private List<LoyaltyLedgerEntry> pendingPoints = null;
+
+  public static final String SERIALIZED_NAME_EXPIRED_POINTS = "expiredPoints";
+  @SerializedName(SERIALIZED_NAME_EXPIRED_POINTS)
+  private List<LoyaltyLedgerEntry> expiredPoints = null;
 
 
   public LoyaltySubLedger total(BigDecimal total) {
@@ -54,10 +82,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Get total
+   * ⚠️ Deprecated: Please use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance 
    * @return total
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "⚠️ Deprecated: Please use 'totalActivePoints' property instead. Total amount of currently active and available points in the customer's balance ")
 
   public BigDecimal getTotal() {
     return total;
@@ -66,6 +94,94 @@ public class LoyaltySubLedger {
 
   public void setTotal(BigDecimal total) {
     this.total = total;
+  }
+
+
+  public LoyaltySubLedger totalActivePoints(BigDecimal totalActivePoints) {
+    
+    this.totalActivePoints = totalActivePoints;
+    return this;
+  }
+
+   /**
+   * Total amount of currently active and available points in the customer&#39;s balance
+   * @return totalActivePoints
+  **/
+  @ApiModelProperty(required = true, value = "Total amount of currently active and available points in the customer's balance")
+
+  public BigDecimal getTotalActivePoints() {
+    return totalActivePoints;
+  }
+
+
+  public void setTotalActivePoints(BigDecimal totalActivePoints) {
+    this.totalActivePoints = totalActivePoints;
+  }
+
+
+  public LoyaltySubLedger totalPendingPoints(BigDecimal totalPendingPoints) {
+    
+    this.totalPendingPoints = totalPendingPoints;
+    return this;
+  }
+
+   /**
+   * Total amount of pending points, which are not active yet but will become active in the future
+   * @return totalPendingPoints
+  **/
+  @ApiModelProperty(required = true, value = "Total amount of pending points, which are not active yet but will become active in the future")
+
+  public BigDecimal getTotalPendingPoints() {
+    return totalPendingPoints;
+  }
+
+
+  public void setTotalPendingPoints(BigDecimal totalPendingPoints) {
+    this.totalPendingPoints = totalPendingPoints;
+  }
+
+
+  public LoyaltySubLedger totalSpentPoints(BigDecimal totalSpentPoints) {
+    
+    this.totalSpentPoints = totalSpentPoints;
+    return this;
+  }
+
+   /**
+   * Total amount of points already spent by this customer
+   * @return totalSpentPoints
+  **/
+  @ApiModelProperty(required = true, value = "Total amount of points already spent by this customer")
+
+  public BigDecimal getTotalSpentPoints() {
+    return totalSpentPoints;
+  }
+
+
+  public void setTotalSpentPoints(BigDecimal totalSpentPoints) {
+    this.totalSpentPoints = totalSpentPoints;
+  }
+
+
+  public LoyaltySubLedger totalExpiredPoints(BigDecimal totalExpiredPoints) {
+    
+    this.totalExpiredPoints = totalExpiredPoints;
+    return this;
+  }
+
+   /**
+   * Total amount of points, that expired without ever being spent
+   * @return totalExpiredPoints
+  **/
+  @ApiModelProperty(required = true, value = "Total amount of points, that expired without ever being spent")
+
+  public BigDecimal getTotalExpiredPoints() {
+    return totalExpiredPoints;
+  }
+
+
+  public void setTotalExpiredPoints(BigDecimal totalExpiredPoints) {
+    this.totalExpiredPoints = totalExpiredPoints;
   }
 
 
@@ -84,11 +200,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Transactions contains a list of all events that have happened such as additions, subtractions and expiries
+   * List of all events that have happened such as additions, subtractions and expiries
    * @return transactions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transactions contains a list of all events that have happened such as additions, subtractions and expiries")
+  @ApiModelProperty(value = "List of all events that have happened such as additions, subtractions and expiries")
 
   public List<LoyaltyLedgerEntry> getTransactions() {
     return transactions;
@@ -115,11 +231,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * ExpiringPoints contains a list of all points that will expiry and when
+   * List of all points that will expire
    * @return expiringPoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ExpiringPoints contains a list of all points that will expiry and when")
+  @ApiModelProperty(value = "List of all points that will expire")
 
   public List<LoyaltyLedgerEntry> getExpiringPoints() {
     return expiringPoints;
@@ -128,6 +244,99 @@ public class LoyaltySubLedger {
 
   public void setExpiringPoints(List<LoyaltyLedgerEntry> expiringPoints) {
     this.expiringPoints = expiringPoints;
+  }
+
+
+  public LoyaltySubLedger activePoints(List<LoyaltyLedgerEntry> activePoints) {
+    
+    this.activePoints = activePoints;
+    return this;
+  }
+
+  public LoyaltySubLedger addActivePointsItem(LoyaltyLedgerEntry activePointsItem) {
+    if (this.activePoints == null) {
+      this.activePoints = new ArrayList<LoyaltyLedgerEntry>();
+    }
+    this.activePoints.add(activePointsItem);
+    return this;
+  }
+
+   /**
+   * List of all currently active points
+   * @return activePoints
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of all currently active points")
+
+  public List<LoyaltyLedgerEntry> getActivePoints() {
+    return activePoints;
+  }
+
+
+  public void setActivePoints(List<LoyaltyLedgerEntry> activePoints) {
+    this.activePoints = activePoints;
+  }
+
+
+  public LoyaltySubLedger pendingPoints(List<LoyaltyLedgerEntry> pendingPoints) {
+    
+    this.pendingPoints = pendingPoints;
+    return this;
+  }
+
+  public LoyaltySubLedger addPendingPointsItem(LoyaltyLedgerEntry pendingPointsItem) {
+    if (this.pendingPoints == null) {
+      this.pendingPoints = new ArrayList<LoyaltyLedgerEntry>();
+    }
+    this.pendingPoints.add(pendingPointsItem);
+    return this;
+  }
+
+   /**
+   * List of all points pending activation
+   * @return pendingPoints
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of all points pending activation")
+
+  public List<LoyaltyLedgerEntry> getPendingPoints() {
+    return pendingPoints;
+  }
+
+
+  public void setPendingPoints(List<LoyaltyLedgerEntry> pendingPoints) {
+    this.pendingPoints = pendingPoints;
+  }
+
+
+  public LoyaltySubLedger expiredPoints(List<LoyaltyLedgerEntry> expiredPoints) {
+    
+    this.expiredPoints = expiredPoints;
+    return this;
+  }
+
+  public LoyaltySubLedger addExpiredPointsItem(LoyaltyLedgerEntry expiredPointsItem) {
+    if (this.expiredPoints == null) {
+      this.expiredPoints = new ArrayList<LoyaltyLedgerEntry>();
+    }
+    this.expiredPoints.add(expiredPointsItem);
+    return this;
+  }
+
+   /**
+   * List of expired points
+   * @return expiredPoints
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "List of expired points")
+
+  public List<LoyaltyLedgerEntry> getExpiredPoints() {
+    return expiredPoints;
+  }
+
+
+  public void setExpiredPoints(List<LoyaltyLedgerEntry> expiredPoints) {
+    this.expiredPoints = expiredPoints;
   }
 
 
@@ -141,13 +350,20 @@ public class LoyaltySubLedger {
     }
     LoyaltySubLedger loyaltySubLedger = (LoyaltySubLedger) o;
     return Objects.equals(this.total, loyaltySubLedger.total) &&
+        Objects.equals(this.totalActivePoints, loyaltySubLedger.totalActivePoints) &&
+        Objects.equals(this.totalPendingPoints, loyaltySubLedger.totalPendingPoints) &&
+        Objects.equals(this.totalSpentPoints, loyaltySubLedger.totalSpentPoints) &&
+        Objects.equals(this.totalExpiredPoints, loyaltySubLedger.totalExpiredPoints) &&
         Objects.equals(this.transactions, loyaltySubLedger.transactions) &&
-        Objects.equals(this.expiringPoints, loyaltySubLedger.expiringPoints);
+        Objects.equals(this.expiringPoints, loyaltySubLedger.expiringPoints) &&
+        Objects.equals(this.activePoints, loyaltySubLedger.activePoints) &&
+        Objects.equals(this.pendingPoints, loyaltySubLedger.pendingPoints) &&
+        Objects.equals(this.expiredPoints, loyaltySubLedger.expiredPoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, transactions, expiringPoints);
+    return Objects.hash(total, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, transactions, expiringPoints, activePoints, pendingPoints, expiredPoints);
   }
 
 
@@ -156,8 +372,15 @@ public class LoyaltySubLedger {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoyaltySubLedger {\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    totalActivePoints: ").append(toIndentedString(totalActivePoints)).append("\n");
+    sb.append("    totalPendingPoints: ").append(toIndentedString(totalPendingPoints)).append("\n");
+    sb.append("    totalSpentPoints: ").append(toIndentedString(totalSpentPoints)).append("\n");
+    sb.append("    totalExpiredPoints: ").append(toIndentedString(totalExpiredPoints)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    expiringPoints: ").append(toIndentedString(expiringPoints)).append("\n");
+    sb.append("    activePoints: ").append(toIndentedString(activePoints)).append("\n");
+    sb.append("    pendingPoints: ").append(toIndentedString(pendingPoints)).append("\n");
+    sb.append("    expiredPoints: ").append(toIndentedString(expiredPoints)).append("\n");
     sb.append("}");
     return sb.toString();
   }

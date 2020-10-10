@@ -99,6 +99,14 @@ public class LoyaltyLedgerEntryTest {
     }
 
     /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
      * Test the property 'expiryDate'
      */
     @Test

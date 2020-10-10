@@ -53,6 +53,38 @@ public class LoyaltySubLedgerTest {
     }
 
     /**
+     * Test the property 'totalActivePoints'
+     */
+    @Test
+    public void totalActivePointsTest() {
+        // TODO: test totalActivePoints
+    }
+
+    /**
+     * Test the property 'totalPendingPoints'
+     */
+    @Test
+    public void totalPendingPointsTest() {
+        // TODO: test totalPendingPoints
+    }
+
+    /**
+     * Test the property 'totalSpentPoints'
+     */
+    @Test
+    public void totalSpentPointsTest() {
+        // TODO: test totalSpentPoints
+    }
+
+    /**
+     * Test the property 'totalExpiredPoints'
+     */
+    @Test
+    public void totalExpiredPointsTest() {
+        // TODO: test totalExpiredPoints
+    }
+
+    /**
      * Test the property 'transactions'
      */
     @Test
@@ -66,6 +98,30 @@ public class LoyaltySubLedgerTest {
     @Test
     public void expiringPointsTest() {
         // TODO: test expiringPoints
+    }
+
+    /**
+     * Test the property 'activePoints'
+     */
+    @Test
+    public void activePointsTest() {
+        // TODO: test activePoints
+    }
+
+    /**
+     * Test the property 'pendingPoints'
+     */
+    @Test
+    public void pendingPointsTest() {
+        // TODO: test pendingPoints
+    }
+
+    /**
+     * Test the property 'expiredPoints'
+     */
+    @Test
+    public void expiredPointsTest() {
+        // TODO: test expiredPoints
     }
 
 }

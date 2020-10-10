@@ -21,31 +21,34 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.MultipleCustomerProfileIntegrationRequestItem;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for MiscUpdateUserLatestFeature
+ * Model tests for MultipleCustomerProfileIntegrationRequest
  */
-public class MiscUpdateUserLatestFeatureTest {
-    private final MiscUpdateUserLatestFeature model = new MiscUpdateUserLatestFeature();
+public class MultipleCustomerProfileIntegrationRequestTest {
+    private final MultipleCustomerProfileIntegrationRequest model = new MultipleCustomerProfileIntegrationRequest();
 
     /**
-     * Model tests for MiscUpdateUserLatestFeature
+     * Model tests for MultipleCustomerProfileIntegrationRequest
      */
     @Test
-    public void testMiscUpdateUserLatestFeature() {
-        // TODO: test MiscUpdateUserLatestFeature
+    public void testMultipleCustomerProfileIntegrationRequest() {
+        // TODO: test MultipleCustomerProfileIntegrationRequest
     }
 
     /**
-     * Test the property 'latestFeature'
+     * Test the property 'customerProfiles'
      */
     @Test
-    public void latestFeatureTest() {
-        // TODO: test latestFeature
+    public void customerProfilesTest() {
+        // TODO: test customerProfiles
     }
 
 }

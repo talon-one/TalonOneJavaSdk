@@ -67,22 +67,6 @@ public class UpdateUserTest {
     }
 
     /**
-     * Test the property 'releaseUpdate'
-     */
-    @Test
-    public void releaseUpdateTest() {
-        // TODO: test releaseUpdate
-    }
-
-    /**
-     * Test the property 'latestFeature'
-     */
-    @Test
-    public void latestFeatureTest() {
-        // TODO: test latestFeature
-    }
-
-    /**
      * Test the property 'roles'
      */
     @Test

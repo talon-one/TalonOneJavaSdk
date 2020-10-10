@@ -39,9 +39,13 @@ public class LoyaltyPoints {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_EXPIRY_DURATION = "expiryDuration";
-  @SerializedName(SERIALIZED_NAME_EXPIRY_DURATION)
-  private String expiryDuration;
+  public static final String SERIALIZED_NAME_VALIDITY_DURATION = "validityDuration";
+  @SerializedName(SERIALIZED_NAME_VALIDITY_DURATION)
+  private String validityDuration;
+
+  public static final String SERIALIZED_NAME_PENDING_DURATION = "pendingDuration";
+  @SerializedName(SERIALIZED_NAME_PENDING_DURATION)
+  private String pendingDuration;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_I_D = "subLedgerID";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_I_D)
@@ -93,26 +97,49 @@ public class LoyaltyPoints {
   }
 
 
-  public LoyaltyPoints expiryDuration(String expiryDuration) {
+  public LoyaltyPoints validityDuration(String validityDuration) {
     
-    this.expiryDuration = expiryDuration;
+    this.validityDuration = validityDuration;
     return this;
   }
 
    /**
-   * Indicates the duration after which the added loyalty points should expire. The format is a number followed by one letter indicating the unit, like &#39;1h&#39; or &#39;40m&#39; or &#39;30d&#39;.
-   * @return expiryDuration
+   * Indicates the duration after which the added loyalty points should expire. The format is a number followed by one letter indicating the time unit, like &#39;1h&#39; or &#39;40m&#39; (defined by Go time package).
+   * @return validityDuration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the duration after which the added loyalty points should expire. The format is a number followed by one letter indicating the unit, like '1h' or '40m' or '30d'.")
+  @ApiModelProperty(value = "Indicates the duration after which the added loyalty points should expire. The format is a number followed by one letter indicating the time unit, like '1h' or '40m' (defined by Go time package).")
 
-  public String getExpiryDuration() {
-    return expiryDuration;
+  public String getValidityDuration() {
+    return validityDuration;
   }
 
 
-  public void setExpiryDuration(String expiryDuration) {
-    this.expiryDuration = expiryDuration;
+  public void setValidityDuration(String validityDuration) {
+    this.validityDuration = validityDuration;
+  }
+
+
+  public LoyaltyPoints pendingDuration(String pendingDuration) {
+    
+    this.pendingDuration = pendingDuration;
+    return this;
+  }
+
+   /**
+   * Indicates the amount of time before the points are considered valid. The format is a number followed by one letter indicating the time unit, like &#39;1h&#39; or &#39;40m&#39; (defined by Go time package).
+   * @return pendingDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates the amount of time before the points are considered valid. The format is a number followed by one letter indicating the time unit, like '1h' or '40m' (defined by Go time package).")
+
+  public String getPendingDuration() {
+    return pendingDuration;
+  }
+
+
+  public void setPendingDuration(String pendingDuration) {
+    this.pendingDuration = pendingDuration;
   }
 
 
@@ -150,13 +177,14 @@ public class LoyaltyPoints {
     LoyaltyPoints loyaltyPoints = (LoyaltyPoints) o;
     return Objects.equals(this.points, loyaltyPoints.points) &&
         Objects.equals(this.name, loyaltyPoints.name) &&
-        Objects.equals(this.expiryDuration, loyaltyPoints.expiryDuration) &&
+        Objects.equals(this.validityDuration, loyaltyPoints.validityDuration) &&
+        Objects.equals(this.pendingDuration, loyaltyPoints.pendingDuration) &&
         Objects.equals(this.subLedgerID, loyaltyPoints.subLedgerID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, name, expiryDuration, subLedgerID);
+    return Objects.hash(points, name, validityDuration, pendingDuration, subLedgerID);
   }
 
 
@@ -166,7 +194,8 @@ public class LoyaltyPoints {
     sb.append("class LoyaltyPoints {\n");
     sb.append("    points: ").append(toIndentedString(points)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    expiryDuration: ").append(toIndentedString(expiryDuration)).append("\n");
+    sb.append("    validityDuration: ").append(toIndentedString(validityDuration)).append("\n");
+    sb.append("    pendingDuration: ").append(toIndentedString(pendingDuration)).append("\n");
     sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -49,8 +49,6 @@ public class ReferralRejectionReason {
     
     REFERRALPARTOFNOTRUNNINGCAMPAIGN("ReferralPartOfNotRunningCampaign"),
     
-    REFERRALVALIDCONDITIONMISSING("ReferralValidConditionMissing"),
-    
     REFERRALLIMITREACHED("ReferralLimitReached"),
     
     CAMPAIGNLIMITREACHED("CampaignLimitReached"),

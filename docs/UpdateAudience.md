@@ -1,12 +1,12 @@
 
 
-# CustomerProfileUpdate
+# UpdateAudience
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**customerProfile** | [**CustomerProfile**](CustomerProfile.md) |  | 
+**name** | **String** | The human-friendly display name for this Audience. | 
 
 
 

@@ -112,7 +112,7 @@ public class NewApplication {
   private List<LimitConfig> limits = null;
 
   /**
-   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)
+   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \&quot;universal\&quot;
    */
   @JsonAdapter(CampaignPriorityEnum.Adapter.class)
   public enum CampaignPriorityEnum {
@@ -164,9 +164,74 @@ public class NewApplication {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_PRIORITY)
   private CampaignPriorityEnum campaignPriority;
 
+  /**
+   * The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \&quot;listOrder\&quot;
+   */
+  @JsonAdapter(ExclusiveCampaignsStrategyEnum.Adapter.class)
+  public enum ExclusiveCampaignsStrategyEnum {
+    LISTORDER("listOrder"),
+    
+    LOWESTDISCOUNT("lowestDiscount"),
+    
+    HIGHESTDISCOUNT("highestDiscount");
+
+    private String value;
+
+    ExclusiveCampaignsStrategyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ExclusiveCampaignsStrategyEnum fromValue(String value) {
+      for (ExclusiveCampaignsStrategyEnum b : ExclusiveCampaignsStrategyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ExclusiveCampaignsStrategyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ExclusiveCampaignsStrategyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ExclusiveCampaignsStrategyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ExclusiveCampaignsStrategyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY = "exclusiveCampaignsStrategy";
+  @SerializedName(SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY)
+  private ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy;
+
+  public static final String SERIALIZED_NAME_ENABLE_CASCADING_DISCOUNTS = "enableCascadingDiscounts";
+  @SerializedName(SERIALIZED_NAME_ENABLE_CASCADING_DISCOUNTS)
+  private Boolean enableCascadingDiscounts;
+
+  public static final String SERIALIZED_NAME_ENABLE_FLATTENED_CART_ITEMS = "enableFlattenedCartItems";
+  @SerializedName(SERIALIZED_NAME_ENABLE_FLATTENED_CART_ITEMS)
+  private Boolean enableFlattenedCartItems;
+
   public static final String SERIALIZED_NAME_ATTRIBUTES_SETTINGS = "attributesSettings";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_SETTINGS)
   private AttributesSettings attributesSettings;
+
+  public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
+  @SerializedName(SERIALIZED_NAME_SANDBOX)
+  private Boolean sandbox;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -346,11 +411,11 @@ public class NewApplication {
   }
 
    /**
-   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)
+   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \&quot;universal\&quot;
    * @return campaignPriority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive)")
+  @ApiModelProperty(value = "Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \"universal\"")
 
   public CampaignPriorityEnum getCampaignPriority() {
     return campaignPriority;
@@ -359,6 +424,75 @@ public class NewApplication {
 
   public void setCampaignPriority(CampaignPriorityEnum campaignPriority) {
     this.campaignPriority = campaignPriority;
+  }
+
+
+  public NewApplication exclusiveCampaignsStrategy(ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy) {
+    
+    this.exclusiveCampaignsStrategy = exclusiveCampaignsStrategy;
+    return this;
+  }
+
+   /**
+   * The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \&quot;listOrder\&quot;
+   * @return exclusiveCampaignsStrategy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \"listOrder\"")
+
+  public ExclusiveCampaignsStrategyEnum getExclusiveCampaignsStrategy() {
+    return exclusiveCampaignsStrategy;
+  }
+
+
+  public void setExclusiveCampaignsStrategy(ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy) {
+    this.exclusiveCampaignsStrategy = exclusiveCampaignsStrategy;
+  }
+
+
+  public NewApplication enableCascadingDiscounts(Boolean enableCascadingDiscounts) {
+    
+    this.enableCascadingDiscounts = enableCascadingDiscounts;
+    return this;
+  }
+
+   /**
+   * Flag indicating if discounts should cascade for this application
+   * @return enableCascadingDiscounts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Flag indicating if discounts should cascade for this application")
+
+  public Boolean getEnableCascadingDiscounts() {
+    return enableCascadingDiscounts;
+  }
+
+
+  public void setEnableCascadingDiscounts(Boolean enableCascadingDiscounts) {
+    this.enableCascadingDiscounts = enableCascadingDiscounts;
+  }
+
+
+  public NewApplication enableFlattenedCartItems(Boolean enableFlattenedCartItems) {
+    
+    this.enableFlattenedCartItems = enableFlattenedCartItems;
+    return this;
+  }
+
+   /**
+   * Flag indicating if cart items of quantity larger than one should be separated into different items of quantity one
+   * @return enableFlattenedCartItems
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Flag indicating if cart items of quantity larger than one should be separated into different items of quantity one")
+
+  public Boolean getEnableFlattenedCartItems() {
+    return enableFlattenedCartItems;
+  }
+
+
+  public void setEnableFlattenedCartItems(Boolean enableFlattenedCartItems) {
+    this.enableFlattenedCartItems = enableFlattenedCartItems;
   }
 
 
@@ -382,6 +516,29 @@ public class NewApplication {
 
   public void setAttributesSettings(AttributesSettings attributesSettings) {
     this.attributesSettings = attributesSettings;
+  }
+
+
+  public NewApplication sandbox(Boolean sandbox) {
+    
+    this.sandbox = sandbox;
+    return this;
+  }
+
+   /**
+   * Flag indicating if this is a live or sandbox application
+   * @return sandbox
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Flag indicating if this is a live or sandbox application")
+
+  public Boolean getSandbox() {
+    return sandbox;
+  }
+
+
+  public void setSandbox(Boolean sandbox) {
+    this.sandbox = sandbox;
   }
 
 
@@ -425,13 +582,17 @@ public class NewApplication {
         Objects.equals(this.attributes, newApplication.attributes) &&
         Objects.equals(this.limits, newApplication.limits) &&
         Objects.equals(this.campaignPriority, newApplication.campaignPriority) &&
+        Objects.equals(this.exclusiveCampaignsStrategy, newApplication.exclusiveCampaignsStrategy) &&
+        Objects.equals(this.enableCascadingDiscounts, newApplication.enableCascadingDiscounts) &&
+        Objects.equals(this.enableFlattenedCartItems, newApplication.enableFlattenedCartItems) &&
         Objects.equals(this.attributesSettings, newApplication.attributesSettings) &&
+        Objects.equals(this.sandbox, newApplication.sandbox) &&
         Objects.equals(this.key, newApplication.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, attributesSettings, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, key);
   }
 
 
@@ -447,7 +608,11 @@ public class NewApplication {
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignPriority: ").append(toIndentedString(campaignPriority)).append("\n");
+    sb.append("    exclusiveCampaignsStrategy: ").append(toIndentedString(exclusiveCampaignsStrategy)).append("\n");
+    sb.append("    enableCascadingDiscounts: ").append(toIndentedString(enableCascadingDiscounts)).append("\n");
+    sb.append("    enableFlattenedCartItems: ").append(toIndentedString(enableFlattenedCartItems)).append("\n");
     sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
+    sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();

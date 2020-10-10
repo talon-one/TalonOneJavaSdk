@@ -65,4 +65,12 @@ public class SetDiscountPerItemEffectPropsTest {
         // TODO: test position
     }
 
+    /**
+     * Test the property 'subPosition'
+     */
+    @Test
+    public void subPositionTest() {
+        // TODO: test subPosition
+    }
+
 }

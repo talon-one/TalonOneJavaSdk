@@ -40,6 +40,10 @@ public class Role {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
   private Integer accountID;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_GROUP_I_D = "campaignGroupID";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUP_I_D)
+  private Integer campaignGroupID;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -54,7 +58,7 @@ public class Role {
 
   public static final String SERIALIZED_NAME_ACL = "acl";
   @SerializedName(SERIALIZED_NAME_ACL)
-  private String acl;
+  private Object acl;
 
 
   public Role id(Integer id) {
@@ -98,6 +102,29 @@ public class Role {
 
   public void setAccountID(Integer accountID) {
     this.accountID = accountID;
+  }
+
+
+  public Role campaignGroupID(Integer campaignGroupID) {
+    
+    this.campaignGroupID = campaignGroupID;
+    return this;
+  }
+
+   /**
+   * The ID of the Campaign Group this role was created for.
+   * @return campaignGroupID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the Campaign Group this role was created for.")
+
+  public Integer getCampaignGroupID() {
+    return campaignGroupID;
+  }
+
+
+  public void setCampaignGroupID(Integer campaignGroupID) {
+    this.campaignGroupID = campaignGroupID;
   }
 
 
@@ -178,25 +205,25 @@ public class Role {
   }
 
 
-  public Role acl(String acl) {
+  public Role acl(Object acl) {
     
     this.acl = acl;
     return this;
   }
 
    /**
-   * Role Policy this should be a stringified blob of json
+   * Role ACL Policy
    * @return acl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Role Policy this should be a stringified blob of json")
+  @ApiModelProperty(value = "Role ACL Policy")
 
-  public String getAcl() {
+  public Object getAcl() {
     return acl;
   }
 
 
-  public void setAcl(String acl) {
+  public void setAcl(Object acl) {
     this.acl = acl;
   }
 
@@ -212,6 +239,7 @@ public class Role {
     Role role = (Role) o;
     return Objects.equals(this.id, role.id) &&
         Objects.equals(this.accountID, role.accountID) &&
+        Objects.equals(this.campaignGroupID, role.campaignGroupID) &&
         Objects.equals(this.name, role.name) &&
         Objects.equals(this.description, role.description) &&
         Objects.equals(this.members, role.members) &&
@@ -220,7 +248,7 @@ public class Role {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountID, name, description, members, acl);
+    return Objects.hash(id, accountID, campaignGroupID, name, description, members, acl);
   }
 
 
@@ -230,6 +258,7 @@ public class Role {
     sb.append("class Role {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
+    sb.append("    campaignGroupID: ").append(toIndentedString(campaignGroupID)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    members: ").append(toIndentedString(members)).append("\n");

@@ -65,6 +65,7 @@ import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyPoints;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.LoyaltyStatistics;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
@@ -565,7 +566,11 @@ public class ManagementApiTest {
     @Test
     public void getApplicationCustomersTest() throws ApiException {
         Integer applicationId = null;
-        InlineResponse20012 response = api.getApplicationCustomers(applicationId);
+        String integrationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        Boolean withTotalResultSize = null;
+        InlineResponse20012 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
 
         // TODO: test validations
     }
@@ -698,11 +703,12 @@ public class ManagementApiTest {
         String sort = null;
         String profile = null;
         String state = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
         String coupon = null;
         String referral = null;
         String integrationId = null;
-        String customerId = null;
-        InlineResponse20016 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon, referral, integrationId, customerId);
+        InlineResponse20016 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
 
         // TODO: test validations
     }
@@ -836,7 +842,8 @@ public class ManagementApiTest {
         String tags = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse2002 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
+        Integer campaignGroupId = null;
+        InlineResponse2002 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId);
 
         // TODO: test validations
     }
@@ -1087,9 +1094,8 @@ public class ManagementApiTest {
      */
     @Test
     public void getCustomerProfileTest() throws ApiException {
-        Integer applicationId = null;
         Integer customerId = null;
-        ApplicationCustomer response = api.getCustomerProfile(applicationId, customerId);
+        ApplicationCustomer response = api.getCustomerProfile(customerId);
 
         // TODO: test validations
     }
@@ -1231,6 +1237,22 @@ public class ManagementApiTest {
     @Test
     public void getLoyaltyProgramsTest() throws ApiException {
         InlineResponse2008 response = api.getLoyaltyPrograms();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get loyalty program statistics by loyalty program ID
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getLoyaltyStatisticsTest() throws ApiException {
+        String programID = null;
+        LoyaltyStatistics response = api.getLoyaltyStatistics(programID);
 
         // TODO: test validations
     }

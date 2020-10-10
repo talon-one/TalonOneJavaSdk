@@ -20,7 +20,6 @@ Name | Value
 REFERRALNOTFOUND | &quot;ReferralNotFound&quot;
 REFERRALRECIPIENTIDSAMEASADVOCATE | &quot;ReferralRecipientIdSameAsAdvocate&quot;
 REFERRALPARTOFNOTRUNNINGCAMPAIGN | &quot;ReferralPartOfNotRunningCampaign&quot;
-REFERRALVALIDCONDITIONMISSING | &quot;ReferralValidConditionMissing&quot;
 REFERRALLIMITREACHED | &quot;ReferralLimitReached&quot;
 CAMPAIGNLIMITREACHED | &quot;CampaignLimitReached&quot;
 PROFILELIMITREACHED | &quot;ProfileLimitReached&quot;

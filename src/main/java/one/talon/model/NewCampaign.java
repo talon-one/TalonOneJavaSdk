@@ -180,6 +180,10 @@ public class NewCampaign {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = new ArrayList<LimitConfig>();
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
+  private List<Integer> campaignGroups = null;
+
 
   public NewCampaign name(String name) {
     
@@ -467,6 +471,37 @@ public class NewCampaign {
   }
 
 
+  public NewCampaign campaignGroups(List<Integer> campaignGroups) {
+    
+    this.campaignGroups = campaignGroups;
+    return this;
+  }
+
+  public NewCampaign addCampaignGroupsItem(Integer campaignGroupsItem) {
+    if (this.campaignGroups == null) {
+      this.campaignGroups = new ArrayList<Integer>();
+    }
+    this.campaignGroups.add(campaignGroupsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the campaign groups that own this entity.
+   * @return campaignGroups
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The IDs of the campaign groups that own this entity.")
+
+  public List<Integer> getCampaignGroups() {
+    return campaignGroups;
+  }
+
+
+  public void setCampaignGroups(List<Integer> campaignGroups) {
+    this.campaignGroups = campaignGroups;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -487,12 +522,13 @@ public class NewCampaign {
         Objects.equals(this.features, newCampaign.features) &&
         Objects.equals(this.couponSettings, newCampaign.couponSettings) &&
         Objects.equals(this.referralSettings, newCampaign.referralSettings) &&
-        Objects.equals(this.limits, newCampaign.limits);
+        Objects.equals(this.limits, newCampaign.limits) &&
+        Objects.equals(this.campaignGroups, newCampaign.campaignGroups);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups);
   }
 
 
@@ -512,6 +548,7 @@ public class NewCampaign {
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }

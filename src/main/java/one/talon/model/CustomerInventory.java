@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
+import one.talon.model.Loyalty;
 import one.talon.model.Referral;
 
 /**
@@ -37,6 +38,10 @@ public class CustomerInventory {
   public static final String SERIALIZED_NAME_PROFILE = "profile";
   @SerializedName(SERIALIZED_NAME_PROFILE)
   private CustomerProfile profile;
+
+  public static final String SERIALIZED_NAME_LOYALTY = "loyalty";
+  @SerializedName(SERIALIZED_NAME_LOYALTY)
+  private Loyalty loyalty;
 
   public static final String SERIALIZED_NAME_REFERRALS = "referrals";
   @SerializedName(SERIALIZED_NAME_REFERRALS)
@@ -67,6 +72,29 @@ public class CustomerInventory {
 
   public void setProfile(CustomerProfile profile) {
     this.profile = profile;
+  }
+
+
+  public CustomerInventory loyalty(Loyalty loyalty) {
+    
+    this.loyalty = loyalty;
+    return this;
+  }
+
+   /**
+   * Get loyalty
+   * @return loyalty
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Loyalty getLoyalty() {
+    return loyalty;
+  }
+
+
+  public void setLoyalty(Loyalty loyalty) {
+    this.loyalty = loyalty;
   }
 
 
@@ -142,13 +170,14 @@ public class CustomerInventory {
     }
     CustomerInventory customerInventory = (CustomerInventory) o;
     return Objects.equals(this.profile, customerInventory.profile) &&
+        Objects.equals(this.loyalty, customerInventory.loyalty) &&
         Objects.equals(this.referrals, customerInventory.referrals) &&
         Objects.equals(this.coupons, customerInventory.coupons);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, referrals, coupons);
+    return Objects.hash(profile, loyalty, referrals, coupons);
   }
 
 
@@ -157,6 +186,7 @@ public class CustomerInventory {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerInventory {\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
+    sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("}");

@@ -17,11 +17,14 @@ import one.talon.ApiException;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.CustomerInventory;
-import one.talon.model.CustomerProfileUpdate;
+import one.talon.model.CustomerProfileAudienceRequest;
+import one.talon.model.CustomerProfileIntegrationRequestV2;
 import one.talon.model.InlineResponse200;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationState;
 import one.talon.model.IntegrationStateV2;
+import one.talon.model.MultipleCustomerProfileIntegrationRequest;
+import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
 import one.talon.model.NewCustomerProfile;
 import one.talon.model.NewCustomerSession;
 import one.talon.model.NewEvent;
@@ -124,7 +127,8 @@ public class IntegrationApiTest {
         Boolean profile = null;
         Boolean referrals = null;
         Boolean coupons = null;
-        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons);
+        Boolean loyalty = null;
+        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons, loyalty);
 
         // TODO: test validations
     }
@@ -163,9 +167,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Update a Customer Profile
+     * Update a Customer Profile V1
      *
-     * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -181,26 +185,61 @@ public class IntegrationApiTest {
     }
     
     /**
+     * Update a Customer Profile Audiences
+     *
+     * Update one ore multiple Customer Profiles with the specified Audiences 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateCustomerProfileAudiencesTest() throws ApiException {
+        CustomerProfileAudienceRequest body = null;
+        api.updateCustomerProfileAudiences(body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Update a Customer Profile
      *
-     * Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+     * Update (or create) a [Customer Profile][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void updateCustomerProfileV2Test() throws ApiException {
-        String customerProfileId = null;
-        NewCustomerProfile body = null;
-        CustomerProfileUpdate response = api.updateCustomerProfileV2(customerProfileId, body);
+        String integrationId = null;
+        CustomerProfileIntegrationRequestV2 body = null;
+        Boolean runRuleEngine = null;
+        Boolean dry = null;
+        IntegrationStateV2 response = api.updateCustomerProfileV2(integrationId, body, runRuleEngine, dry);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Customer Session
+     * Update multiple Customer Profiles
      *
-     * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
+     * Update (or create) up to 1000 [Customer Profiles][] in 1 request.  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profiles]: /Getting-Started/entities#customer-profile 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateCustomerProfilesV2Test() throws ApiException {
+        MultipleCustomerProfileIntegrationRequest body = null;
+        String silent = null;
+        MultipleCustomerProfileIntegrationResponseV2 response = api.updateCustomerProfilesV2(body, silent);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update a Customer Session V1
+     *
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      *
      * @throws ApiException
      *          if the Api call fails

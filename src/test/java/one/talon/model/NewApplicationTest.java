@@ -109,11 +109,43 @@ public class NewApplicationTest {
     }
 
     /**
+     * Test the property 'exclusiveCampaignsStrategy'
+     */
+    @Test
+    public void exclusiveCampaignsStrategyTest() {
+        // TODO: test exclusiveCampaignsStrategy
+    }
+
+    /**
+     * Test the property 'enableCascadingDiscounts'
+     */
+    @Test
+    public void enableCascadingDiscountsTest() {
+        // TODO: test enableCascadingDiscounts
+    }
+
+    /**
+     * Test the property 'enableFlattenedCartItems'
+     */
+    @Test
+    public void enableFlattenedCartItemsTest() {
+        // TODO: test enableFlattenedCartItems
+    }
+
+    /**
      * Test the property 'attributesSettings'
      */
     @Test
     public void attributesSettingsTest() {
         // TODO: test attributesSettings
+    }
+
+    /**
+     * Test the property 'sandbox'
+     */
+    @Test
+    public void sandboxTest() {
+        // TODO: test sandbox
     }
 
     /**

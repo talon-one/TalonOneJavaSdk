@@ -31,6 +31,69 @@ import org.threeten.bp.OffsetDateTime;
 @ApiModel(description = "")
 
 public class NewApplicationAPIKey {
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  private OffsetDateTime expires;
+
+  /**
+   * Platform the API key is valid for.
+   */
+  @JsonAdapter(PlatformEnum.Adapter.class)
+  public enum PlatformEnum {
+    NONE("none"),
+    
+    SEGMENT("segment"),
+    
+    BRAZE("braze"),
+    
+    MPARTICLE("mparticle");
+
+    private String value;
+
+    PlatformEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PlatformEnum fromValue(String value) {
+      for (PlatformEnum b : PlatformEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PlatformEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PlatformEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PlatformEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PlatformEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private PlatformEnum platform;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
@@ -38,10 +101,6 @@ public class NewApplicationAPIKey {
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private Integer createdBy;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
@@ -55,13 +114,76 @@ public class NewApplicationAPIKey {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
-  public static final String SERIALIZED_NAME_EXPIRES = "expires";
-  @SerializedName(SERIALIZED_NAME_EXPIRES)
-  private OffsetDateTime expires;
-
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
+
+
+  public NewApplicationAPIKey title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Title for API Key
+   * @return title
+  **/
+  @ApiModelProperty(required = true, value = "Title for API Key")
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public NewApplicationAPIKey expires(OffsetDateTime expires) {
+    
+    this.expires = expires;
+    return this;
+  }
+
+   /**
+   * The date the API key expired
+   * @return expires
+  **/
+  @ApiModelProperty(required = true, value = "The date the API key expired")
+
+  public OffsetDateTime getExpires() {
+    return expires;
+  }
+
+
+  public void setExpires(OffsetDateTime expires) {
+    this.expires = expires;
+  }
+
+
+  public NewApplicationAPIKey platform(PlatformEnum platform) {
+    
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Platform the API key is valid for.
+   * @return platform
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Platform the API key is valid for.")
+
+  public PlatformEnum getPlatform() {
+    return platform;
+  }
+
+
+  public void setPlatform(PlatformEnum platform) {
+    this.platform = platform;
+  }
 
 
   public NewApplicationAPIKey id(Integer id) {
@@ -105,28 +227,6 @@ public class NewApplicationAPIKey {
 
   public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
-  }
-
-
-  public NewApplicationAPIKey title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Title for API Key
-   * @return title
-  **/
-  @ApiModelProperty(required = true, value = "Title for API Key")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
   }
 
 
@@ -196,28 +296,6 @@ public class NewApplicationAPIKey {
   }
 
 
-  public NewApplicationAPIKey expires(OffsetDateTime expires) {
-    
-    this.expires = expires;
-    return this;
-  }
-
-   /**
-   * The date the API key expired
-   * @return expires
-  **/
-  @ApiModelProperty(required = true, value = "The date the API key expired")
-
-  public OffsetDateTime getExpires() {
-    return expires;
-  }
-
-
-  public void setExpires(OffsetDateTime expires) {
-    this.expires = expires;
-  }
-
-
   public NewApplicationAPIKey key(String key) {
     
     this.key = key;
@@ -249,19 +327,20 @@ public class NewApplicationAPIKey {
       return false;
     }
     NewApplicationAPIKey newApplicationAPIKey = (NewApplicationAPIKey) o;
-    return Objects.equals(this.id, newApplicationAPIKey.id) &&
+    return Objects.equals(this.title, newApplicationAPIKey.title) &&
+        Objects.equals(this.expires, newApplicationAPIKey.expires) &&
+        Objects.equals(this.platform, newApplicationAPIKey.platform) &&
+        Objects.equals(this.id, newApplicationAPIKey.id) &&
         Objects.equals(this.createdBy, newApplicationAPIKey.createdBy) &&
-        Objects.equals(this.title, newApplicationAPIKey.title) &&
         Objects.equals(this.accountID, newApplicationAPIKey.accountID) &&
         Objects.equals(this.applicationID, newApplicationAPIKey.applicationID) &&
         Objects.equals(this.created, newApplicationAPIKey.created) &&
-        Objects.equals(this.expires, newApplicationAPIKey.expires) &&
         Objects.equals(this.key, newApplicationAPIKey.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdBy, title, accountID, applicationID, created, expires, key);
+    return Objects.hash(title, expires, platform, id, createdBy, accountID, applicationID, created, key);
   }
 
 
@@ -269,13 +348,14 @@ public class NewApplicationAPIKey {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewApplicationAPIKey {\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    applicationID: ").append(toIndentedString(applicationID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();

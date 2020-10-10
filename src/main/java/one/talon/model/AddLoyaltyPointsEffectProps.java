@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The properties specific to the \&quot;addLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add loyalty\&quot; effect. These points are automatically stored and managed inside Talon.One.
@@ -51,9 +52,13 @@ public class AddLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
   private String recipientIntegrationId;
 
-  public static final String SERIALIZED_NAME_EXPIRY_CONDITION = "expiryCondition";
-  @SerializedName(SERIALIZED_NAME_EXPIRY_CONDITION)
-  private String expiryCondition;
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
+  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+  private OffsetDateTime expiryDate;
 
 
   public AddLoyaltyPointsEffectProps name(String name) {
@@ -166,25 +171,49 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 
-  public AddLoyaltyPointsEffectProps expiryCondition(String expiryCondition) {
+  public AddLoyaltyPointsEffectProps startDate(OffsetDateTime startDate) {
     
-    this.expiryCondition = expiryCondition;
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * The amount of time (in days) these points are valid
-   * @return expiryCondition
+   * Date after which points will be valid
+   * @return startDate
   **/
-  @ApiModelProperty(required = true, value = "The amount of time (in days) these points are valid")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Date after which points will be valid")
 
-  public String getExpiryCondition() {
-    return expiryCondition;
+  public OffsetDateTime getStartDate() {
+    return startDate;
   }
 
 
-  public void setExpiryCondition(String expiryCondition) {
-    this.expiryCondition = expiryCondition;
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public AddLoyaltyPointsEffectProps expiryDate(OffsetDateTime expiryDate) {
+    
+    this.expiryDate = expiryDate;
+    return this;
+  }
+
+   /**
+   * Date after which points will expire
+   * @return expiryDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Date after which points will expire")
+
+  public OffsetDateTime getExpiryDate() {
+    return expiryDate;
+  }
+
+
+  public void setExpiryDate(OffsetDateTime expiryDate) {
+    this.expiryDate = expiryDate;
   }
 
 
@@ -202,12 +231,13 @@ public class AddLoyaltyPointsEffectProps {
         Objects.equals(this.subLedgerId, addLoyaltyPointsEffectProps.subLedgerId) &&
         Objects.equals(this.value, addLoyaltyPointsEffectProps.value) &&
         Objects.equals(this.recipientIntegrationId, addLoyaltyPointsEffectProps.recipientIntegrationId) &&
-        Objects.equals(this.expiryCondition, addLoyaltyPointsEffectProps.expiryCondition);
+        Objects.equals(this.startDate, addLoyaltyPointsEffectProps.startDate) &&
+        Objects.equals(this.expiryDate, addLoyaltyPointsEffectProps.expiryDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, programId, subLedgerId, value, recipientIntegrationId, expiryCondition);
+    return Objects.hash(name, programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate);
   }
 
 
@@ -220,7 +250,8 @@ public class AddLoyaltyPointsEffectProps {
     sb.append("    subLedgerId: ").append(toIndentedString(subLedgerId)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
-    sb.append("    expiryCondition: ").append(toIndentedString(expiryCondition)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -38,7 +38,7 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<String> applicationIds = new ArrayList<String>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -80,13 +80,13 @@ public class CampaignCopy {
   }
 
 
-  public CampaignCopy applicationIds(List<String> applicationIds) {
+  public CampaignCopy applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public CampaignCopy addApplicationIdsItem(String applicationIdsItem) {
+  public CampaignCopy addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -97,12 +97,12 @@ public class CampaignCopy {
   **/
   @ApiModelProperty(required = true, value = "Application IDs of the applications to which a campaign should be copied to")
 
-  public List<String> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<String> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 

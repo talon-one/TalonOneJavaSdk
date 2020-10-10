@@ -174,6 +174,14 @@ public class CampaignTest {
     }
 
     /**
+     * Test the property 'campaignGroups'
+     */
+    @Test
+    public void campaignGroupsTest() {
+        // TODO: test campaignGroups
+    }
+
+    /**
      * Test the property 'couponRedemptionCount'
      */
     @Test

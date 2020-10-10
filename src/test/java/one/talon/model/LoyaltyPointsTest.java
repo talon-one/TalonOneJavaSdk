@@ -58,11 +58,19 @@ public class LoyaltyPointsTest {
     }
 
     /**
-     * Test the property 'expiryDuration'
+     * Test the property 'validityDuration'
      */
     @Test
-    public void expiryDurationTest() {
-        // TODO: test expiryDuration
+    public void validityDurationTest() {
+        // TODO: test validityDuration
+    }
+
+    /**
+     * Test the property 'pendingDuration'
+     */
+    @Test
+    public void pendingDurationTest() {
+        // TODO: test pendingDuration
     }
 
     /**

@@ -116,6 +116,22 @@ public class CampaignAnalytics {
   @SerializedName(SERIALIZED_NAME_TOTAL_REFERRALS_CREATED)
   private Integer totalReferralsCreated;
 
+  public static final String SERIALIZED_NAME_ADDED_LOYALTY_POINTS = "addedLoyaltyPoints";
+  @SerializedName(SERIALIZED_NAME_ADDED_LOYALTY_POINTS)
+  private BigDecimal addedLoyaltyPoints;
+
+  public static final String SERIALIZED_NAME_TOTAL_ADDED_LOYALTY_POINTS = "totalAddedLoyaltyPoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ADDED_LOYALTY_POINTS)
+  private BigDecimal totalAddedLoyaltyPoints;
+
+  public static final String SERIALIZED_NAME_DEDUCTED_LOYALTY_POINTS = "deductedLoyaltyPoints";
+  @SerializedName(SERIALIZED_NAME_DEDUCTED_LOYALTY_POINTS)
+  private BigDecimal deductedLoyaltyPoints;
+
+  public static final String SERIALIZED_NAME_TOTAL_DEDUCTED_LOYALTY_POINTS = "totalDeductedLoyaltyPoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DEDUCTED_LOYALTY_POINTS)
+  private BigDecimal totalDeductedLoyaltyPoints;
+
 
   public CampaignAnalytics date(OffsetDateTime date) {
     
@@ -579,6 +595,94 @@ public class CampaignAnalytics {
   }
 
 
+  public CampaignAnalytics addedLoyaltyPoints(BigDecimal addedLoyaltyPoints) {
+    
+    this.addedLoyaltyPoints = addedLoyaltyPoints;
+    return this;
+  }
+
+   /**
+   * Number of added loyalty points in the campaign in a specific interval.
+   * @return addedLoyaltyPoints
+  **/
+  @ApiModelProperty(required = true, value = "Number of added loyalty points in the campaign in a specific interval.")
+
+  public BigDecimal getAddedLoyaltyPoints() {
+    return addedLoyaltyPoints;
+  }
+
+
+  public void setAddedLoyaltyPoints(BigDecimal addedLoyaltyPoints) {
+    this.addedLoyaltyPoints = addedLoyaltyPoints;
+  }
+
+
+  public CampaignAnalytics totalAddedLoyaltyPoints(BigDecimal totalAddedLoyaltyPoints) {
+    
+    this.totalAddedLoyaltyPoints = totalAddedLoyaltyPoints;
+    return this;
+  }
+
+   /**
+   * Number of added loyalty points in the campaign since it began.
+   * @return totalAddedLoyaltyPoints
+  **/
+  @ApiModelProperty(required = true, value = "Number of added loyalty points in the campaign since it began.")
+
+  public BigDecimal getTotalAddedLoyaltyPoints() {
+    return totalAddedLoyaltyPoints;
+  }
+
+
+  public void setTotalAddedLoyaltyPoints(BigDecimal totalAddedLoyaltyPoints) {
+    this.totalAddedLoyaltyPoints = totalAddedLoyaltyPoints;
+  }
+
+
+  public CampaignAnalytics deductedLoyaltyPoints(BigDecimal deductedLoyaltyPoints) {
+    
+    this.deductedLoyaltyPoints = deductedLoyaltyPoints;
+    return this;
+  }
+
+   /**
+   * Number of deducted loyalty points in the campaign in a specific interval.
+   * @return deductedLoyaltyPoints
+  **/
+  @ApiModelProperty(required = true, value = "Number of deducted loyalty points in the campaign in a specific interval.")
+
+  public BigDecimal getDeductedLoyaltyPoints() {
+    return deductedLoyaltyPoints;
+  }
+
+
+  public void setDeductedLoyaltyPoints(BigDecimal deductedLoyaltyPoints) {
+    this.deductedLoyaltyPoints = deductedLoyaltyPoints;
+  }
+
+
+  public CampaignAnalytics totalDeductedLoyaltyPoints(BigDecimal totalDeductedLoyaltyPoints) {
+    
+    this.totalDeductedLoyaltyPoints = totalDeductedLoyaltyPoints;
+    return this;
+  }
+
+   /**
+   * Number of deducted loyalty points in the campaign since it began.
+   * @return totalDeductedLoyaltyPoints
+  **/
+  @ApiModelProperty(required = true, value = "Number of deducted loyalty points in the campaign since it began.")
+
+  public BigDecimal getTotalDeductedLoyaltyPoints() {
+    return totalDeductedLoyaltyPoints;
+  }
+
+
+  public void setTotalDeductedLoyaltyPoints(BigDecimal totalDeductedLoyaltyPoints) {
+    this.totalDeductedLoyaltyPoints = totalDeductedLoyaltyPoints;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -608,12 +712,16 @@ public class CampaignAnalytics {
         Objects.equals(this.couponsCreated, campaignAnalytics.couponsCreated) &&
         Objects.equals(this.totalCouponsCreated, campaignAnalytics.totalCouponsCreated) &&
         Objects.equals(this.referralsCreated, campaignAnalytics.referralsCreated) &&
-        Objects.equals(this.totalReferralsCreated, campaignAnalytics.totalReferralsCreated);
+        Objects.equals(this.totalReferralsCreated, campaignAnalytics.totalReferralsCreated) &&
+        Objects.equals(this.addedLoyaltyPoints, campaignAnalytics.addedLoyaltyPoints) &&
+        Objects.equals(this.totalAddedLoyaltyPoints, campaignAnalytics.totalAddedLoyaltyPoints) &&
+        Objects.equals(this.deductedLoyaltyPoints, campaignAnalytics.deductedLoyaltyPoints) &&
+        Objects.equals(this.totalDeductedLoyaltyPoints, campaignAnalytics.totalDeductedLoyaltyPoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, campaignRevenue, totalCampaignRevenue, campaignRefund, totalCampaignRefund, campaignDiscountCosts, totalCampaignDiscountCosts, campaignRefundedDiscounts, totalCampaignRefundedDiscounts, campaignFreeItems, totalCampaignFreeItems, couponRedemptions, totalCouponRedemptions, couponRolledbackRedemptions, totalCouponRolledbackRedemptions, referralRedemptions, totalReferralRedemptions, couponsCreated, totalCouponsCreated, referralsCreated, totalReferralsCreated);
+    return Objects.hash(date, campaignRevenue, totalCampaignRevenue, campaignRefund, totalCampaignRefund, campaignDiscountCosts, totalCampaignDiscountCosts, campaignRefundedDiscounts, totalCampaignRefundedDiscounts, campaignFreeItems, totalCampaignFreeItems, couponRedemptions, totalCouponRedemptions, couponRolledbackRedemptions, totalCouponRolledbackRedemptions, referralRedemptions, totalReferralRedemptions, couponsCreated, totalCouponsCreated, referralsCreated, totalReferralsCreated, addedLoyaltyPoints, totalAddedLoyaltyPoints, deductedLoyaltyPoints, totalDeductedLoyaltyPoints);
   }
 
 
@@ -642,6 +750,10 @@ public class CampaignAnalytics {
     sb.append("    totalCouponsCreated: ").append(toIndentedString(totalCouponsCreated)).append("\n");
     sb.append("    referralsCreated: ").append(toIndentedString(referralsCreated)).append("\n");
     sb.append("    totalReferralsCreated: ").append(toIndentedString(totalReferralsCreated)).append("\n");
+    sb.append("    addedLoyaltyPoints: ").append(toIndentedString(addedLoyaltyPoints)).append("\n");
+    sb.append("    totalAddedLoyaltyPoints: ").append(toIndentedString(totalAddedLoyaltyPoints)).append("\n");
+    sb.append("    deductedLoyaltyPoints: ").append(toIndentedString(deductedLoyaltyPoints)).append("\n");
+    sb.append("    totalDeductedLoyaltyPoints: ").append(toIndentedString(totalDeductedLoyaltyPoints)).append("\n");
     sb.append("}");
     return sb.toString();
   }

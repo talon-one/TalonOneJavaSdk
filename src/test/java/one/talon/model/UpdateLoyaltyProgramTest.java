@@ -75,6 +75,14 @@ public class UpdateLoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'defaultPending'
+     */
+    @Test
+    public void defaultPendingTest() {
+        // TODO: test defaultPending
+    }
+
+    /**
      * Test the property 'allowSubledger'
      */
     @Test

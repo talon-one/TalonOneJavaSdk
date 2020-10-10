@@ -51,6 +51,10 @@ public class AccountLimits {
   @SerializedName(SERIALIZED_NAME_REFERRAL_CODES)
   private Integer referralCodes;
 
+  public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
+  private Integer activeRules;
+
   public static final String SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS = "liveLoyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS)
   private Integer liveLoyaltyPrograms;
@@ -71,10 +75,6 @@ public class AccountLimits {
   @SerializedName(SERIALIZED_NAME_API_VOLUME)
   private Integer apiVolume;
 
-  public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
-  private Integer activeRules;
-
   public static final String SERIALIZED_NAME_PROMOTION_TYPES = "promotionTypes";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TYPES)
   private List<String> promotionTypes = new ArrayList<String>();
@@ -87,10 +87,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed live applications in the account
+   * Total number of allowed live applications in the account
    * @return liveApplications
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed live applications in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed live applications in the account")
 
   public Integer getLiveApplications() {
     return liveApplications;
@@ -109,10 +109,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed sandbox applications in the account
+   * Total number of allowed sandbox applications in the account
    * @return sandboxApplications
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed sandbox applications in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed sandbox applications in the account")
 
   public Integer getSandboxApplications() {
     return sandboxApplications;
@@ -131,10 +131,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed active campaigns in the account
+   * Total number of allowed active campaigns in live applications in the account
    * @return activeCampaigns
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed active campaigns in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed active campaigns in live applications in the account")
 
   public Integer getActiveCampaigns() {
     return activeCampaigns;
@@ -153,10 +153,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed coupons in the account
+   * Total number of allowed coupons in the account
    * @return coupons
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed coupons in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed coupons in the account")
 
   public Integer getCoupons() {
     return coupons;
@@ -175,10 +175,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed referral codes in the account
+   * Total number of allowed referral codes in the account
    * @return referralCodes
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed referral codes in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed referral codes in the account")
 
   public Integer getReferralCodes() {
     return referralCodes;
@@ -190,6 +190,28 @@ public class AccountLimits {
   }
 
 
+  public AccountLimits activeRules(Integer activeRules) {
+    
+    this.activeRules = activeRules;
+    return this;
+  }
+
+   /**
+   * Total number of allowed active rulesets in the account
+   * @return activeRules
+  **/
+  @ApiModelProperty(required = true, value = "Total number of allowed active rulesets in the account")
+
+  public Integer getActiveRules() {
+    return activeRules;
+  }
+
+
+  public void setActiveRules(Integer activeRules) {
+    this.activeRules = activeRules;
+  }
+
+
   public AccountLimits liveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
     
     this.liveLoyaltyPrograms = liveLoyaltyPrograms;
@@ -197,10 +219,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed live loyalty programs in the account
+   * Total number of allowed live loyalty programs in the account
    * @return liveLoyaltyPrograms
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed live loyalty programs in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed live loyalty programs in the account")
 
   public Integer getLiveLoyaltyPrograms() {
     return liveLoyaltyPrograms;
@@ -219,10 +241,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed sandbox loyalty programs in the account
+   * Total number of allowed sandbox loyalty programs in the account
    * @return sandboxLoyaltyPrograms
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed sandbox loyalty programs in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed sandbox loyalty programs in the account")
 
   public Integer getSandboxLoyaltyPrograms() {
     return sandboxLoyaltyPrograms;
@@ -241,10 +263,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed webhooks in the account
+   * Total number of allowed webhooks in the account
    * @return webhooks
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed webhooks in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed webhooks in the account")
 
   public Integer getWebhooks() {
     return webhooks;
@@ -263,10 +285,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total Number of allowed users in the account
+   * Total number of allowed users in the account
    * @return users
   **/
-  @ApiModelProperty(required = true, value = "Total Number of allowed users in the account")
+  @ApiModelProperty(required = true, value = "Total number of allowed users in the account")
 
   public Integer getUsers() {
     return users;
@@ -285,10 +307,10 @@ public class AccountLimits {
   }
 
    /**
-   * Total allowed api volume
+   * Allowed volume of API requests to the account
    * @return apiVolume
   **/
-  @ApiModelProperty(required = true, value = "Total allowed api volume")
+  @ApiModelProperty(required = true, value = "Allowed volume of API requests to the account")
 
   public Integer getApiVolume() {
     return apiVolume;
@@ -297,29 +319,6 @@ public class AccountLimits {
 
   public void setApiVolume(Integer apiVolume) {
     this.apiVolume = apiVolume;
-  }
-
-
-  public AccountLimits activeRules(Integer activeRules) {
-    
-    this.activeRules = activeRules;
-    return this;
-  }
-
-   /**
-   * Total allowed active rulesets
-   * @return activeRules
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Total allowed active rulesets")
-
-  public Integer getActiveRules() {
-    return activeRules;
-  }
-
-
-  public void setActiveRules(Integer activeRules) {
-    this.activeRules = activeRules;
   }
 
 
@@ -335,10 +334,10 @@ public class AccountLimits {
   }
 
    /**
-   * array of rulesets where webhook is used
+   * Array of promotion types that are employed in the account
    * @return promotionTypes
   **/
-  @ApiModelProperty(required = true, value = "array of rulesets where webhook is used")
+  @ApiModelProperty(required = true, value = "Array of promotion types that are employed in the account")
 
   public List<String> getPromotionTypes() {
     return promotionTypes;
@@ -364,18 +363,18 @@ public class AccountLimits {
         Objects.equals(this.activeCampaigns, accountLimits.activeCampaigns) &&
         Objects.equals(this.coupons, accountLimits.coupons) &&
         Objects.equals(this.referralCodes, accountLimits.referralCodes) &&
+        Objects.equals(this.activeRules, accountLimits.activeRules) &&
         Objects.equals(this.liveLoyaltyPrograms, accountLimits.liveLoyaltyPrograms) &&
         Objects.equals(this.sandboxLoyaltyPrograms, accountLimits.sandboxLoyaltyPrograms) &&
         Objects.equals(this.webhooks, accountLimits.webhooks) &&
         Objects.equals(this.users, accountLimits.users) &&
         Objects.equals(this.apiVolume, accountLimits.apiVolume) &&
-        Objects.equals(this.activeRules, accountLimits.activeRules) &&
         Objects.equals(this.promotionTypes, accountLimits.promotionTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, activeRules, promotionTypes);
+    return Objects.hash(liveApplications, sandboxApplications, activeCampaigns, coupons, referralCodes, activeRules, liveLoyaltyPrograms, sandboxLoyaltyPrograms, webhooks, users, apiVolume, promotionTypes);
   }
 
 
@@ -388,12 +387,12 @@ public class AccountLimits {
     sb.append("    activeCampaigns: ").append(toIndentedString(activeCampaigns)).append("\n");
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    referralCodes: ").append(toIndentedString(referralCodes)).append("\n");
+    sb.append("    activeRules: ").append(toIndentedString(activeRules)).append("\n");
     sb.append("    liveLoyaltyPrograms: ").append(toIndentedString(liveLoyaltyPrograms)).append("\n");
     sb.append("    sandboxLoyaltyPrograms: ").append(toIndentedString(sandboxLoyaltyPrograms)).append("\n");
     sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    apiVolume: ").append(toIndentedString(apiVolume)).append("\n");
-    sb.append("    activeRules: ").append(toIndentedString(activeRules)).append("\n");
     sb.append("    promotionTypes: ").append(toIndentedString(promotionTypes)).append("\n");
     sb.append("}");
     return sb.toString();

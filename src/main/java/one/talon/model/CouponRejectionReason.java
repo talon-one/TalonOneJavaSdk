@@ -47,8 +47,6 @@ public class CouponRejectionReason {
     
     COUPONPARTOFNOTRUNNINGCAMPAIGN("CouponPartOfNotRunningCampaign"),
     
-    COUPONVALIDCONDITIONMISSING("CouponValidConditionMissing"),
-    
     COUPONLIMITREACHED("CouponLimitReached"),
     
     CAMPAIGNLIMITREACHED("CampaignLimitReached"),

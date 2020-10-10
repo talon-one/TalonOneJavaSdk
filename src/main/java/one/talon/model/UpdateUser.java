@@ -90,14 +90,6 @@ public class UpdateUser {
   @SerializedName(SERIALIZED_NAME_STATE)
   private StateEnum state;
 
-  public static final String SERIALIZED_NAME_RELEASE_UPDATE = "releaseUpdate";
-  @SerializedName(SERIALIZED_NAME_RELEASE_UPDATE)
-  private Boolean releaseUpdate;
-
-  public static final String SERIALIZED_NAME_LATEST_FEATURE = "latestFeature";
-  @SerializedName(SERIALIZED_NAME_LATEST_FEATURE)
-  private String latestFeature;
-
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   private List<Integer> roles = null;
@@ -176,52 +168,6 @@ public class UpdateUser {
   }
 
 
-  public UpdateUser releaseUpdate(Boolean releaseUpdate) {
-    
-    this.releaseUpdate = releaseUpdate;
-    return this;
-  }
-
-   /**
-   * Update the user via email
-   * @return releaseUpdate
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Update the user via email")
-
-  public Boolean getReleaseUpdate() {
-    return releaseUpdate;
-  }
-
-
-  public void setReleaseUpdate(Boolean releaseUpdate) {
-    this.releaseUpdate = releaseUpdate;
-  }
-
-
-  public UpdateUser latestFeature(String latestFeature) {
-    
-    this.latestFeature = latestFeature;
-    return this;
-  }
-
-   /**
-   * The latest feature you&#39;ve been notified.
-   * @return latestFeature
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The latest feature you've been notified.")
-
-  public String getLatestFeature() {
-    return latestFeature;
-  }
-
-
-  public void setLatestFeature(String latestFeature) {
-    this.latestFeature = latestFeature;
-  }
-
-
   public UpdateUser roles(List<Integer> roles) {
     
     this.roles = roles;
@@ -288,15 +234,13 @@ public class UpdateUser {
     return Objects.equals(this.name, updateUser.name) &&
         Objects.equals(this.policy, updateUser.policy) &&
         Objects.equals(this.state, updateUser.state) &&
-        Objects.equals(this.releaseUpdate, updateUser.releaseUpdate) &&
-        Objects.equals(this.latestFeature, updateUser.latestFeature) &&
         Objects.equals(this.roles, updateUser.roles) &&
         Objects.equals(this.applicationNotificationSubscriptions, updateUser.applicationNotificationSubscriptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, policy, state, releaseUpdate, latestFeature, roles, applicationNotificationSubscriptions);
+    return Objects.hash(name, policy, state, roles, applicationNotificationSubscriptions);
   }
 
 
@@ -307,8 +251,6 @@ public class UpdateUser {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    releaseUpdate: ").append(toIndentedString(releaseUpdate)).append("\n");
-    sb.append("    latestFeature: ").append(toIndentedString(latestFeature)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("}");

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AudienceMembership;
 import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
@@ -99,6 +100,14 @@ public class CustomerProfileTest {
     @Test
     public void loyaltyMembershipsTest() {
         // TODO: test loyaltyMemberships
+    }
+
+    /**
+     * Test the property 'audienceMemberships'
+     */
+    @Test
+    public void audienceMembershipsTest() {
+        // TODO: test audienceMemberships
     }
 
     /**
