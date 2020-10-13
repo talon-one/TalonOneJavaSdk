@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **referralSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | The set of limits that will operate for this campaign | 
+**campaignGroups** | **List&lt;Integer&gt;** | The IDs of the campaign groups that own this entity. |  [optional]
 
 
 

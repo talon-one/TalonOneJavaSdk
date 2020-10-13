@@ -210,4 +210,36 @@ public class CampaignAnalyticsTest {
         // TODO: test totalReferralsCreated
     }
 
+    /**
+     * Test the property 'addedLoyaltyPoints'
+     */
+    @Test
+    public void addedLoyaltyPointsTest() {
+        // TODO: test addedLoyaltyPoints
+    }
+
+    /**
+     * Test the property 'totalAddedLoyaltyPoints'
+     */
+    @Test
+    public void totalAddedLoyaltyPointsTest() {
+        // TODO: test totalAddedLoyaltyPoints
+    }
+
+    /**
+     * Test the property 'deductedLoyaltyPoints'
+     */
+    @Test
+    public void deductedLoyaltyPointsTest() {
+        // TODO: test deductedLoyaltyPoints
+    }
+
+    /**
+     * Test the property 'totalDeductedLoyaltyPoints'
+     */
+    @Test
+    public void totalDeductedLoyaltyPointsTest() {
+        // TODO: test totalDeductedLoyaltyPoints
+    }
+
 }

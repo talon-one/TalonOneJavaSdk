@@ -28,6 +28,10 @@ Name | Type | Description | Notes
 **totalCouponsCreated** | **Integer** | Number of coupons created in the campaign by the rule engine since it began. | 
 **referralsCreated** | **Integer** | Number of referrals created in the campaign by the rule engine. | 
 **totalReferralsCreated** | **Integer** | Number of referrals created in the campaign by the rule engine since it began. | 
+**addedLoyaltyPoints** | [**BigDecimal**](BigDecimal.md) | Number of added loyalty points in the campaign in a specific interval. | 
+**totalAddedLoyaltyPoints** | [**BigDecimal**](BigDecimal.md) | Number of added loyalty points in the campaign since it began. | 
+**deductedLoyaltyPoints** | [**BigDecimal**](BigDecimal.md) | Number of deducted loyalty points in the campaign in a specific interval. | 
+**totalDeductedLoyaltyPoints** | [**BigDecimal**](BigDecimal.md) | Number of deducted loyalty points in the campaign since it began. | 
 
 
 

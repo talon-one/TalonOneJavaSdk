@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscount\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set discount\&quot; effect. This is a discount that should be applied globally on the session total.
+ * The properties specific to the \&quot;setDiscount\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set discount\&quot; effect. This is a discount that should be applied on the scope of defined with it.
  */
-@ApiModel(description = "The properties specific to the \"setDiscount\" effect. This gets triggered whenever a validated rule contained a \"set discount\" effect. This is a discount that should be applied globally on the session total.")
+@ApiModel(description = "The properties specific to the \"setDiscount\" effect. This gets triggered whenever a validated rule contained a \"set discount\" effect. This is a discount that should be applied on the scope of defined with it.")
 
 public class SetDiscountEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -38,6 +38,10 @@ public class SetDiscountEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
 
 
   public SetDiscountEffectProps name(String name) {
@@ -84,6 +88,29 @@ public class SetDiscountEffectProps {
   }
 
 
+  public SetDiscountEffectProps scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope which the discount was applied on, can be one of (cartItems,additionalCosts,sessionTotal)
+   * @return scope
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The scope which the discount was applied on, can be one of (cartItems,additionalCosts,sessionTotal)")
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -94,12 +121,13 @@ public class SetDiscountEffectProps {
     }
     SetDiscountEffectProps setDiscountEffectProps = (SetDiscountEffectProps) o;
     return Objects.equals(this.name, setDiscountEffectProps.name) &&
-        Objects.equals(this.value, setDiscountEffectProps.value);
+        Objects.equals(this.value, setDiscountEffectProps.value) &&
+        Objects.equals(this.scope, setDiscountEffectProps.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value);
+    return Objects.hash(name, value, scope);
   }
 
 
@@ -109,6 +137,7 @@ public class SetDiscountEffectProps {
     sb.append("class SetDiscountEffectProps {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("}");
     return sb.toString();
   }

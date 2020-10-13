@@ -61,6 +61,7 @@ Method | HTTP request | Description
 [**getLoyaltyPoints**](ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID} | get the Loyalty Ledger for this integrationID
 [**getLoyaltyProgram**](ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{programID} | Get a loyalty program
 [**getLoyaltyPrograms**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List all loyalty Programs
+[**getLoyaltyStatistics**](ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{programID}/statistics | Get loyalty program statistics by loyalty program ID
 [**getReferrals**](ManagementApi.md#getReferrals) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals | List Referrals (with total count)
 [**getReferralsWithoutTotalCount**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List Referrals
 [**getRole**](ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get information for the specified role.
@@ -1890,7 +1891,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomers"></a>
 # **getApplicationCustomers**
-> InlineResponse20012 getApplicationCustomers(applicationId)
+> InlineResponse20012 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
 
 List Application Customers
 
@@ -1917,8 +1918,12 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
+    String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
+    Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
+    Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
     try {
-      InlineResponse20012 result = apiInstance.getApplicationCustomers(applicationId);
+      InlineResponse20012 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
@@ -1936,6 +1941,10 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
+ **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
+ **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
+ **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  | [optional]
 
 ### Return type
 
@@ -2364,7 +2373,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationSessions"></a>
 # **getApplicationSessions**
-> InlineResponse20016 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon, referral, integrationId, customerId)
+> InlineResponse20016 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId)
 
 List Application Sessions
 
@@ -2396,12 +2405,13 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
     String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
     String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date
     String coupon = "coupon_example"; // String | Filter by sessions with this coupon. Must be exact match.
     String referral = "referral_example"; // String | Filter by sessions with this referral. Must be exact match.
     String integrationId = "integrationId_example"; // String | Filter by sessions with this integrationId. Must be exact match.
-    String customerId = "customerId_example"; // String | Filter by integration ID of the customer for the session
     try {
-      InlineResponse20016 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, coupon, referral, integrationId, customerId);
+      InlineResponse20016 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationSessions");
@@ -2424,10 +2434,11 @@ Name | Type | Description  | Notes
  **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, cancelled]
+ **createdBefore** | **OffsetDateTime**| Only return events created before this date | [optional]
+ **createdAfter** | **OffsetDateTime**| Only return events created after this date | [optional]
  **coupon** | **String**| Filter by sessions with this coupon. Must be exact match. | [optional]
  **referral** | **String**| Filter by sessions with this referral. Must be exact match. | [optional]
  **integrationId** | **String**| Filter by sessions with this integrationId. Must be exact match. | [optional]
- **customerId** | **String**| Filter by integration ID of the customer for the session | [optional]
 
 ### Return type
 
@@ -2887,7 +2898,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaigns"></a>
 # **getCampaigns**
-> InlineResponse2002 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter)
+> InlineResponse2002 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId)
 
 List your Campaigns
 
@@ -2922,8 +2933,9 @@ public class Example {
     String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp.
+    Integer campaignGroupId = 56; // Integer | Filter results to campaigns owned by the specified campaign group ID.
     try {
-      InlineResponse2002 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter);
+      InlineResponse2002 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -2949,6 +2961,7 @@ Name | Type | Description  | Notes
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. | [optional]
+ **campaignGroupId** | **Integer**| Filter results to campaigns owned by the specified campaign group ID. | [optional]
 
 ### Return type
 
@@ -3771,7 +3784,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerProfile"></a>
 # **getCustomerProfile**
-> ApplicationCustomer getCustomerProfile(applicationId, customerId)
+> ApplicationCustomer getCustomerProfile(customerId)
 
 Get Customer Profile
 
@@ -3797,10 +3810,9 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | 
     Integer customerId = 56; // Integer | 
     try {
-      ApplicationCustomer result = apiInstance.getCustomerProfile(applicationId, customerId);
+      ApplicationCustomer result = apiInstance.getCustomerProfile(customerId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomerProfile");
@@ -3817,7 +3829,6 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**|  |
  **customerId** | **Integer**|  |
 
 ### Return type
@@ -4393,6 +4404,73 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**InlineResponse2008**](InlineResponse2008.md)
+
+### Authorization
+
+[manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+<a name="getLoyaltyStatistics"></a>
+# **getLoyaltyStatistics**
+> LoyaltyStatistics getLoyaltyStatistics(programID)
+
+Get loyalty program statistics by loyalty program ID
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String programID = "programID_example"; // String | 
+    try {
+      LoyaltyStatistics result = apiInstance.getLoyaltyStatistics(programID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getLoyaltyStatistics");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **programID** | **String**|  |
+
+### Return type
+
+[**LoyaltyStatistics**](LoyaltyStatistics.md)
 
 ### Authorization
 

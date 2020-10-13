@@ -15,9 +15,8 @@ Name | Type | Description | Notes
 **inviteToken** | **String** | Invite token, empty if the user as already accepted their invite. | 
 **state** | [**StateEnum**](#StateEnum) | Current user state. | 
 **name** | **String** | Full name | 
-**policy** | **String** | A blob of ACL JSON | 
-**releaseUpdate** | **Boolean** | Update the user via email | 
-**latestFeature** | **String** | Latest feature the user has been notified. |  [optional]
+**policy** | [**Object**](.md) | User ACL Policy | 
+**latestFeedTimestamp** | [**OffsetDateTime**](OffsetDateTime.md) | Latest timestamp the user has been notified for feed. |  [optional]
 **roles** | **List&lt;Integer&gt;** | Contains a list of all roles the user is a member of |  [optional]
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 **authMethod** | **String** | The Authentication method for this user |  [optional]

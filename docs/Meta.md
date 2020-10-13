@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **coupons** | [**Object**](.md) | Maps the coupon value to a key-value list of that coupons attributes. |  [optional]
 **couponRejectionReason** | [**CouponRejectionReason**](CouponRejectionReason.md) |  |  [optional]
 **referralRejectionReason** | [**ReferralRejectionReason**](ReferralRejectionReason.md) |  |  [optional]
-**warnings** | [**Object**](.md) |  |  [optional]
+**warnings** | [**Object**](.md) | Contains warnings about possible misuse. |  [optional]
 
 
 

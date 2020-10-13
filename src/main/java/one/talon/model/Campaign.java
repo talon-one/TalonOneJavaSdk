@@ -197,6 +197,10 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<LimitConfig> limits = new ArrayList<LimitConfig>();
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
+  private List<Integer> campaignGroups = null;
+
   public static final String SERIALIZED_NAME_COUPON_REDEMPTION_COUNT = "couponRedemptionCount";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTION_COUNT)
   private Integer couponRedemptionCount;
@@ -607,6 +611,37 @@ public class Campaign {
   }
 
 
+  public Campaign campaignGroups(List<Integer> campaignGroups) {
+    
+    this.campaignGroups = campaignGroups;
+    return this;
+  }
+
+  public Campaign addCampaignGroupsItem(Integer campaignGroupsItem) {
+    if (this.campaignGroups == null) {
+      this.campaignGroups = new ArrayList<Integer>();
+    }
+    this.campaignGroups.add(campaignGroupsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the campaign groups that own this entity.
+   * @return campaignGroups
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The IDs of the campaign groups that own this entity.")
+
+  public List<Integer> getCampaignGroups() {
+    return campaignGroups;
+  }
+
+
+  public void setCampaignGroups(List<Integer> campaignGroups) {
+    this.campaignGroups = campaignGroups;
+  }
+
+
   public Campaign couponRedemptionCount(Integer couponRedemptionCount) {
     
     this.couponRedemptionCount = couponRedemptionCount;
@@ -839,6 +874,7 @@ public class Campaign {
         Objects.equals(this.couponSettings, campaign.couponSettings) &&
         Objects.equals(this.referralSettings, campaign.referralSettings) &&
         Objects.equals(this.limits, campaign.limits) &&
+        Objects.equals(this.campaignGroups, campaign.campaignGroups) &&
         Objects.equals(this.couponRedemptionCount, campaign.couponRedemptionCount) &&
         Objects.equals(this.referralRedemptionCount, campaign.referralRedemptionCount) &&
         Objects.equals(this.discountCount, campaign.discountCount) &&
@@ -852,7 +888,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, lastActivity, updated, createdBy, updatedBy);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, lastActivity, updated, createdBy, updatedBy);
   }
 
 
@@ -876,6 +912,7 @@ public class Campaign {
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
+    sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
     sb.append("    couponRedemptionCount: ").append(toIndentedString(couponRedemptionCount)).append("\n");
     sb.append("    referralRedemptionCount: ").append(toIndentedString(referralRedemptionCount)).append("\n");
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");

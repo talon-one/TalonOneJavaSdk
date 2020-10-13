@@ -83,6 +83,14 @@ public class AccountLimitsTest {
     }
 
     /**
+     * Test the property 'activeRules'
+     */
+    @Test
+    public void activeRulesTest() {
+        // TODO: test activeRules
+    }
+
+    /**
      * Test the property 'liveLoyaltyPrograms'
      */
     @Test
@@ -120,14 +128,6 @@ public class AccountLimitsTest {
     @Test
     public void apiVolumeTest() {
         // TODO: test apiVolume
-    }
-
-    /**
-     * Test the property 'activeRules'
-     */
-    @Test
-    public void activeRulesTest() {
-        // TODO: test activeRules
     }
 
     /**

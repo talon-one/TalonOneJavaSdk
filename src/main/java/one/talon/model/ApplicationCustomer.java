@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AudienceMembership;
 import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 
@@ -66,6 +67,10 @@ public class ApplicationCustomer {
   public static final String SERIALIZED_NAME_LOYALTY_MEMBERSHIPS = "loyaltyMemberships";
   @SerializedName(SERIALIZED_NAME_LOYALTY_MEMBERSHIPS)
   private List<LoyaltyMembership> loyaltyMemberships = null;
+
+  public static final String SERIALIZED_NAME_AUDIENCE_MEMBERSHIPS = "audienceMemberships";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_MEMBERSHIPS)
+  private List<AudienceMembership> audienceMemberships = null;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -123,10 +128,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * The ID used for this entity in the application system. The ID used for this entity in the application system.
+   * The integration ID for this entity sent to and used in the Talon.One system. The integration ID for this entity sent to and used in the Talon.One system.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The ID used for this entity in the application system. The ID used for this entity in the application system.")
+  @ApiModelProperty(required = true, value = "The integration ID for this entity sent to and used in the Talon.One system. The integration ID for this entity sent to and used in the Talon.One system.")
 
   public String getIntegrationId() {
     return integrationId;
@@ -257,6 +262,37 @@ public class ApplicationCustomer {
   }
 
 
+  public ApplicationCustomer audienceMemberships(List<AudienceMembership> audienceMemberships) {
+    
+    this.audienceMemberships = audienceMemberships;
+    return this;
+  }
+
+  public ApplicationCustomer addAudienceMembershipsItem(AudienceMembership audienceMembershipsItem) {
+    if (this.audienceMemberships == null) {
+      this.audienceMemberships = new ArrayList<AudienceMembership>();
+    }
+    this.audienceMemberships.add(audienceMembershipsItem);
+    return this;
+  }
+
+   /**
+   * A list of audiences the customer belongs to
+   * @return audienceMemberships
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of audiences the customer belongs to")
+
+  public List<AudienceMembership> getAudienceMemberships() {
+    return audienceMemberships;
+  }
+
+
+  public void setAudienceMemberships(List<AudienceMembership> audienceMemberships) {
+    this.audienceMemberships = audienceMemberships;
+  }
+
+
   public ApplicationCustomer lastActivity(OffsetDateTime lastActivity) {
     
     this.lastActivity = lastActivity;
@@ -296,12 +332,13 @@ public class ApplicationCustomer {
         Objects.equals(this.closedSessions, applicationCustomer.closedSessions) &&
         Objects.equals(this.totalSales, applicationCustomer.totalSales) &&
         Objects.equals(this.loyaltyMemberships, applicationCustomer.loyaltyMemberships) &&
+        Objects.equals(this.audienceMemberships, applicationCustomer.audienceMemberships) &&
         Objects.equals(this.lastActivity, applicationCustomer.lastActivity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, lastActivity);
+    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity);
   }
 
 
@@ -317,6 +354,7 @@ public class ApplicationCustomer {
     sb.append("    closedSessions: ").append(toIndentedString(closedSessions)).append("\n");
     sb.append("    totalSales: ").append(toIndentedString(totalSales)).append("\n");
     sb.append("    loyaltyMemberships: ").append(toIndentedString(loyaltyMemberships)).append("\n");
+    sb.append("    audienceMemberships: ").append(toIndentedString(audienceMemberships)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -38,6 +38,61 @@ public class CreateApplicationAPIKey {
   @SerializedName(SERIALIZED_NAME_EXPIRES)
   private OffsetDateTime expires;
 
+  /**
+   * Platform the API key is valid for.
+   */
+  @JsonAdapter(PlatformEnum.Adapter.class)
+  public enum PlatformEnum {
+    NONE("none"),
+    
+    SEGMENT("segment"),
+    
+    BRAZE("braze"),
+    
+    MPARTICLE("mparticle");
+
+    private String value;
+
+    PlatformEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PlatformEnum fromValue(String value) {
+      for (PlatformEnum b : PlatformEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PlatformEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PlatformEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PlatformEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PlatformEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  private PlatformEnum platform;
+
 
   public CreateApplicationAPIKey title(String title) {
     
@@ -83,6 +138,29 @@ public class CreateApplicationAPIKey {
   }
 
 
+  public CreateApplicationAPIKey platform(PlatformEnum platform) {
+    
+    this.platform = platform;
+    return this;
+  }
+
+   /**
+   * Platform the API key is valid for.
+   * @return platform
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Platform the API key is valid for.")
+
+  public PlatformEnum getPlatform() {
+    return platform;
+  }
+
+
+  public void setPlatform(PlatformEnum platform) {
+    this.platform = platform;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +171,13 @@ public class CreateApplicationAPIKey {
     }
     CreateApplicationAPIKey createApplicationAPIKey = (CreateApplicationAPIKey) o;
     return Objects.equals(this.title, createApplicationAPIKey.title) &&
-        Objects.equals(this.expires, createApplicationAPIKey.expires);
+        Objects.equals(this.expires, createApplicationAPIKey.expires) &&
+        Objects.equals(this.platform, createApplicationAPIKey.platform);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, expires);
+    return Objects.hash(title, expires, platform);
   }
 
 
@@ -108,6 +187,7 @@ public class CreateApplicationAPIKey {
     sb.append("class CreateApplicationAPIKey {\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("}");
     return sb.toString();
   }

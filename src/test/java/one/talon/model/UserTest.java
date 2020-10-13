@@ -116,19 +116,11 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'releaseUpdate'
+     * Test the property 'latestFeedTimestamp'
      */
     @Test
-    public void releaseUpdateTest() {
-        // TODO: test releaseUpdate
-    }
-
-    /**
-     * Test the property 'latestFeature'
-     */
-    @Test
-    public void latestFeatureTest() {
-        // TODO: test latestFeature
+    public void latestFeedTimestampTest() {
+        // TODO: test latestFeedTimestamp
     }
 
     /**

@@ -49,11 +49,19 @@ public class AccountAnalyticsTest {
     }
 
     /**
-     * Test the property 'activeCampaigns'
+     * Test the property 'liveApplications'
      */
     @Test
-    public void activeCampaignsTest() {
-        // TODO: test activeCampaigns
+    public void liveApplicationsTest() {
+        // TODO: test liveApplications
+    }
+
+    /**
+     * Test the property 'sandboxApplications'
+     */
+    @Test
+    public void sandboxApplicationsTest() {
+        // TODO: test sandboxApplications
     }
 
     /**
@@ -62,6 +70,22 @@ public class AccountAnalyticsTest {
     @Test
     public void campaignsTest() {
         // TODO: test campaigns
+    }
+
+    /**
+     * Test the property 'activeCampaigns'
+     */
+    @Test
+    public void activeCampaignsTest() {
+        // TODO: test activeCampaigns
+    }
+
+    /**
+     * Test the property 'liveActiveCampaigns'
+     */
+    @Test
+    public void liveActiveCampaignsTest() {
+        // TODO: test liveActiveCampaigns
     }
 
     /**
@@ -89,14 +113,6 @@ public class AccountAnalyticsTest {
     }
 
     /**
-     * Test the property 'customAttributes'
-     */
-    @Test
-    public void customAttributesTest() {
-        // TODO: test customAttributes
-    }
-
-    /**
      * Test the property 'referralCodes'
      */
     @Test
@@ -121,6 +137,14 @@ public class AccountAnalyticsTest {
     }
 
     /**
+     * Test the property 'activeRules'
+     */
+    @Test
+    public void activeRulesTest() {
+        // TODO: test activeRules
+    }
+
+    /**
      * Test the property 'users'
      */
     @Test
@@ -137,6 +161,14 @@ public class AccountAnalyticsTest {
     }
 
     /**
+     * Test the property 'customAttributes'
+     */
+    @Test
+    public void customAttributesTest() {
+        // TODO: test customAttributes
+    }
+
+    /**
      * Test the property 'webhooks'
      */
     @Test
@@ -150,14 +182,6 @@ public class AccountAnalyticsTest {
     @Test
     public void loyaltyProgramsTest() {
         // TODO: test loyaltyPrograms
-    }
-
-    /**
-     * Test the property 'activeRules'
-     */
-    @Test
-    public void activeRulesTest() {
-        // TODO: test activeRules
     }
 
 }

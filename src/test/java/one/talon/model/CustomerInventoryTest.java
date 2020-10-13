@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
+import one.talon.model.Loyalty;
 import one.talon.model.Referral;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -51,6 +52,14 @@ public class CustomerInventoryTest {
     @Test
     public void profileTest() {
         // TODO: test profile
+    }
+
+    /**
+     * Test the property 'loyalty'
+     */
+    @Test
+    public void loyaltyTest() {
+        // TODO: test loyalty
     }
 
     /**

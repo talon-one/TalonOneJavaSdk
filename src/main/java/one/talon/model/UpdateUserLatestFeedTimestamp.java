@@ -23,37 +23,38 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
- * MiscUpdateUserLatestFeature
+ * Updates current user&#39;s latest seen notifications timestamp
  */
+@ApiModel(description = "Updates current user's latest seen notifications timestamp")
 
-public class MiscUpdateUserLatestFeature {
-  public static final String SERIALIZED_NAME_LATEST_FEATURE = "latestFeature";
-  @SerializedName(SERIALIZED_NAME_LATEST_FEATURE)
-  private String latestFeature;
+public class UpdateUserLatestFeedTimestamp {
+  public static final String SERIALIZED_NAME_NEW_LATEST_FEED_TIMESTAMP = "newLatestFeedTimestamp";
+  @SerializedName(SERIALIZED_NAME_NEW_LATEST_FEED_TIMESTAMP)
+  private OffsetDateTime newLatestFeedTimestamp;
 
 
-  public MiscUpdateUserLatestFeature latestFeature(String latestFeature) {
+  public UpdateUserLatestFeedTimestamp newLatestFeedTimestamp(OffsetDateTime newLatestFeedTimestamp) {
     
-    this.latestFeature = latestFeature;
+    this.newLatestFeedTimestamp = newLatestFeedTimestamp;
     return this;
   }
 
    /**
-   * Get latestFeature
-   * @return latestFeature
+   * New timestamp to update for the current user
+   * @return newLatestFeedTimestamp
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "New timestamp to update for the current user")
 
-  public String getLatestFeature() {
-    return latestFeature;
+  public OffsetDateTime getNewLatestFeedTimestamp() {
+    return newLatestFeedTimestamp;
   }
 
 
-  public void setLatestFeature(String latestFeature) {
-    this.latestFeature = latestFeature;
+  public void setNewLatestFeedTimestamp(OffsetDateTime newLatestFeedTimestamp) {
+    this.newLatestFeedTimestamp = newLatestFeedTimestamp;
   }
 
 
@@ -65,21 +66,21 @@ public class MiscUpdateUserLatestFeature {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MiscUpdateUserLatestFeature miscUpdateUserLatestFeature = (MiscUpdateUserLatestFeature) o;
-    return Objects.equals(this.latestFeature, miscUpdateUserLatestFeature.latestFeature);
+    UpdateUserLatestFeedTimestamp updateUserLatestFeedTimestamp = (UpdateUserLatestFeedTimestamp) o;
+    return Objects.equals(this.newLatestFeedTimestamp, updateUserLatestFeedTimestamp.newLatestFeedTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(latestFeature);
+    return Objects.hash(newLatestFeedTimestamp);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MiscUpdateUserLatestFeature {\n");
-    sb.append("    latestFeature: ").append(toIndentedString(latestFeature)).append("\n");
+    sb.append("class UpdateUserLatestFeedTimestamp {\n");
+    sb.append("    newLatestFeedTimestamp: ").append(toIndentedString(newLatestFeedTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **referralSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | The set of limits that will operate for this campaign | 
+**campaignGroups** | **List&lt;Integer&gt;** | The IDs of the campaign groups that own this entity. |  [optional]
 **couponRedemptionCount** | **Integer** | Number of coupons redeemed in the campaign. |  [optional]
 **referralRedemptionCount** | **Integer** | Number of referral codes redeemed in the campaign. |  [optional]
 **discountCount** | **Integer** | Total amount of discounts redeemed in the campaign. |  [optional]

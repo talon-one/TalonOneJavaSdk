@@ -59,6 +59,14 @@ public class RoleTest {
     }
 
     /**
+     * Test the property 'campaignGroupID'
+     */
+    @Test
+    public void campaignGroupIDTest() {
+        // TODO: test campaignGroupID
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test

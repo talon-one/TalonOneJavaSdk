@@ -57,4 +57,12 @@ public class SetDiscountEffectPropsTest {
         // TODO: test value
     }
 
+    /**
+     * Test the property 'scope'
+     */
+    @Test
+    public void scopeTest() {
+        // TODO: test scope
+    }
+
 }

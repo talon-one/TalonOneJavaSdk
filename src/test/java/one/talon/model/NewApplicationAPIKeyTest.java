@@ -42,6 +42,30 @@ public class NewApplicationAPIKeyTest {
     }
 
     /**
+     * Test the property 'title'
+     */
+    @Test
+    public void titleTest() {
+        // TODO: test title
+    }
+
+    /**
+     * Test the property 'expires'
+     */
+    @Test
+    public void expiresTest() {
+        // TODO: test expires
+    }
+
+    /**
+     * Test the property 'platform'
+     */
+    @Test
+    public void platformTest() {
+        // TODO: test platform
+    }
+
+    /**
      * Test the property 'id'
      */
     @Test
@@ -55,14 +79,6 @@ public class NewApplicationAPIKeyTest {
     @Test
     public void createdByTest() {
         // TODO: test createdBy
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
     }
 
     /**
@@ -87,14 +103,6 @@ public class NewApplicationAPIKeyTest {
     @Test
     public void createdTest() {
         // TODO: test created
-    }
-
-    /**
-     * Test the property 'expires'
-     */
-    @Test
-    public void expiresTest() {
-        // TODO: test expires
     }
 
     /**

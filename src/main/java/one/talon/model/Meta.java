@@ -151,11 +151,11 @@ public class Meta {
   }
 
    /**
-   * Get warnings
+   * Contains warnings about possible misuse.
    * @return warnings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Contains warnings about possible misuse.")
 
   public Object getWarnings() {
     return warnings;

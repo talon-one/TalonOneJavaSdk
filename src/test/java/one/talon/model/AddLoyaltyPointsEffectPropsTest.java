@@ -22,6 +22,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -82,11 +83,19 @@ public class AddLoyaltyPointsEffectPropsTest {
     }
 
     /**
-     * Test the property 'expiryCondition'
+     * Test the property 'startDate'
      */
     @Test
-    public void expiryConditionTest() {
-        // TODO: test expiryCondition
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
     }
 
 }

@@ -23,37 +23,48 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.CustomerProfile;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.MultipleCustomerProfileIntegrationRequestItem;
 
 /**
- * CustomerProfileUpdate
+ * MultipleCustomerProfileIntegrationRequest
  */
 
-public class CustomerProfileUpdate {
-  public static final String SERIALIZED_NAME_CUSTOMER_PROFILE = "customerProfile";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE)
-  private CustomerProfile customerProfile;
+public class MultipleCustomerProfileIntegrationRequest {
+  public static final String SERIALIZED_NAME_CUSTOMER_PROFILES = "customerProfiles";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILES)
+  private List<MultipleCustomerProfileIntegrationRequestItem> customerProfiles = null;
 
 
-  public CustomerProfileUpdate customerProfile(CustomerProfile customerProfile) {
+  public MultipleCustomerProfileIntegrationRequest customerProfiles(List<MultipleCustomerProfileIntegrationRequestItem> customerProfiles) {
     
-    this.customerProfile = customerProfile;
+    this.customerProfiles = customerProfiles;
+    return this;
+  }
+
+  public MultipleCustomerProfileIntegrationRequest addCustomerProfilesItem(MultipleCustomerProfileIntegrationRequestItem customerProfilesItem) {
+    if (this.customerProfiles == null) {
+      this.customerProfiles = new ArrayList<MultipleCustomerProfileIntegrationRequestItem>();
+    }
+    this.customerProfiles.add(customerProfilesItem);
     return this;
   }
 
    /**
-   * Get customerProfile
-   * @return customerProfile
+   * Get customerProfiles
+   * @return customerProfiles
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public CustomerProfile getCustomerProfile() {
-    return customerProfile;
+  public List<MultipleCustomerProfileIntegrationRequestItem> getCustomerProfiles() {
+    return customerProfiles;
   }
 
 
-  public void setCustomerProfile(CustomerProfile customerProfile) {
-    this.customerProfile = customerProfile;
+  public void setCustomerProfiles(List<MultipleCustomerProfileIntegrationRequestItem> customerProfiles) {
+    this.customerProfiles = customerProfiles;
   }
 
 
@@ -65,21 +76,21 @@ public class CustomerProfileUpdate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerProfileUpdate customerProfileUpdate = (CustomerProfileUpdate) o;
-    return Objects.equals(this.customerProfile, customerProfileUpdate.customerProfile);
+    MultipleCustomerProfileIntegrationRequest multipleCustomerProfileIntegrationRequest = (MultipleCustomerProfileIntegrationRequest) o;
+    return Objects.equals(this.customerProfiles, multipleCustomerProfileIntegrationRequest.customerProfiles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerProfile);
+    return Objects.hash(customerProfiles);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerProfileUpdate {\n");
-    sb.append("    customerProfile: ").append(toIndentedString(customerProfile)).append("\n");
+    sb.append("class MultipleCustomerProfileIntegrationRequest {\n");
+    sb.append("    customerProfiles: ").append(toIndentedString(customerProfiles)).append("\n");
     sb.append("}");
     return sb.toString();
   }

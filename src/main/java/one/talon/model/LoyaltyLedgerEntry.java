@@ -60,6 +60,10 @@ public class LoyaltyLedgerEntry {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private BigDecimal amount;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
   public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
@@ -233,6 +237,29 @@ public class LoyaltyLedgerEntry {
   }
 
 
+  public LoyaltyLedgerEntry startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
   public LoyaltyLedgerEntry expiryDate(OffsetDateTime expiryDate) {
     
     this.expiryDate = expiryDate;
@@ -339,6 +366,7 @@ public class LoyaltyLedgerEntry {
         Objects.equals(this.eventID, loyaltyLedgerEntry.eventID) &&
         Objects.equals(this.type, loyaltyLedgerEntry.type) &&
         Objects.equals(this.amount, loyaltyLedgerEntry.amount) &&
+        Objects.equals(this.startDate, loyaltyLedgerEntry.startDate) &&
         Objects.equals(this.expiryDate, loyaltyLedgerEntry.expiryDate) &&
         Objects.equals(this.name, loyaltyLedgerEntry.name) &&
         Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID) &&
@@ -347,7 +375,7 @@ public class LoyaltyLedgerEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, expiryDate, name, subLedgerID, userID);
+    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID);
   }
 
 
@@ -362,6 +390,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    eventID: ").append(toIndentedString(eventID)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");

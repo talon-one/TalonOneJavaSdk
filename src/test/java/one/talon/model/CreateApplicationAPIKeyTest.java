@@ -57,4 +57,12 @@ public class CreateApplicationAPIKeyTest {
         // TODO: test expires
     }
 
+    /**
+     * Test the property 'platform'
+     */
+    @Test
+    public void platformTest() {
+        // TODO: test platform
+    }
+
 }

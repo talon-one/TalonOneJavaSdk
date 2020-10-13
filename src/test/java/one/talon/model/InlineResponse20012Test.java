@@ -52,6 +52,14 @@ public class InlineResponse20012Test {
     }
 
     /**
+     * Test the property 'hasMore'
+     */
+    @Test
+    public void hasMoreTest() {
+        // TODO: test hasMore
+    }
+
+    /**
      * Test the property 'data'
      */
     @Test

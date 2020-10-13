@@ -52,6 +52,10 @@ public class NewLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALIDITY)
   private String defaultValidity;
 
+  public static final String SERIALIZED_NAME_DEFAULT_PENDING = "defaultPending";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_PENDING)
+  private String defaultPending;
+
   public static final String SERIALIZED_NAME_ALLOW_SUBLEDGER = "allowSubledger";
   @SerializedName(SERIALIZED_NAME_ALLOW_SUBLEDGER)
   private Boolean allowSubledger;
@@ -162,10 +166,10 @@ public class NewLoyaltyProgram {
   }
 
    /**
-   * Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like &#39;1h&#39; or &#39;40m&#39; or &#39;30d&#39;.
+   * Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like &#39;1h&#39; or &#39;40m&#39;.
    * @return defaultValidity
   **/
-  @ApiModelProperty(required = true, value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m' or '30d'.")
+  @ApiModelProperty(required = true, value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m'.")
 
   public String getDefaultValidity() {
     return defaultValidity;
@@ -174,6 +178,28 @@ public class NewLoyaltyProgram {
 
   public void setDefaultValidity(String defaultValidity) {
     this.defaultValidity = defaultValidity;
+  }
+
+
+  public NewLoyaltyProgram defaultPending(String defaultPending) {
+    
+    this.defaultPending = defaultPending;
+    return this;
+  }
+
+   /**
+   * Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like &#39;1h&#39; or &#39;40m&#39;.
+   * @return defaultPending
+  **/
+  @ApiModelProperty(required = true, value = "Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like '1h' or '40m'.")
+
+  public String getDefaultPending() {
+    return defaultPending;
+  }
+
+
+  public void setDefaultPending(String defaultPending) {
+    this.defaultPending = defaultPending;
   }
 
 
@@ -213,12 +239,13 @@ public class NewLoyaltyProgram {
         Objects.equals(this.description, newLoyaltyProgram.description) &&
         Objects.equals(this.subscribedApplications, newLoyaltyProgram.subscribedApplications) &&
         Objects.equals(this.defaultValidity, newLoyaltyProgram.defaultValidity) &&
+        Objects.equals(this.defaultPending, newLoyaltyProgram.defaultPending) &&
         Objects.equals(this.allowSubledger, newLoyaltyProgram.allowSubledger);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, subscribedApplications, defaultValidity, allowSubledger);
+    return Objects.hash(name, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger);
   }
 
 
@@ -231,6 +258,7 @@ public class NewLoyaltyProgram {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
     sb.append("    defaultValidity: ").append(toIndentedString(defaultValidity)).append("\n");
+    sb.append("    defaultPending: ").append(toIndentedString(defaultPending)).append("\n");
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
     sb.append("}");
     return sb.toString();

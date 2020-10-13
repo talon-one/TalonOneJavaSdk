@@ -92,10 +92,10 @@ public class CustomerActivityReport {
   }
 
    /**
-   * The ID used for this entity in the application system.
+   * The integration ID for this entity sent to and used in the Talon.One system.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The ID used for this entity in the application system.")
+  @ApiModelProperty(required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
 
   public String getIntegrationId() {
     return integrationId;

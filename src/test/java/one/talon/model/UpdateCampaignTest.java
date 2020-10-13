@@ -141,4 +141,12 @@ public class UpdateCampaignTest {
         // TODO: test limits
     }
 
+    /**
+     * Test the property 'campaignGroups'
+     */
+    @Test
+    public void campaignGroupsTest() {
+        // TODO: test campaignGroups
+    }
+
 }

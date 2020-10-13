@@ -116,15 +116,11 @@ public class User {
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
-  private String policy;
+  private Object policy;
 
-  public static final String SERIALIZED_NAME_RELEASE_UPDATE = "releaseUpdate";
-  @SerializedName(SERIALIZED_NAME_RELEASE_UPDATE)
-  private Boolean releaseUpdate;
-
-  public static final String SERIALIZED_NAME_LATEST_FEATURE = "latestFeature";
-  @SerializedName(SERIALIZED_NAME_LATEST_FEATURE)
-  private String latestFeature;
+  public static final String SERIALIZED_NAME_LATEST_FEED_TIMESTAMP = "latestFeedTimestamp";
+  @SerializedName(SERIALIZED_NAME_LATEST_FEED_TIMESTAMP)
+  private OffsetDateTime latestFeedTimestamp;
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
@@ -315,70 +311,48 @@ public class User {
   }
 
 
-  public User policy(String policy) {
+  public User policy(Object policy) {
     
     this.policy = policy;
     return this;
   }
 
    /**
-   * A blob of ACL JSON
+   * User ACL Policy
    * @return policy
   **/
-  @ApiModelProperty(required = true, value = "A blob of ACL JSON")
+  @ApiModelProperty(required = true, value = "User ACL Policy")
 
-  public String getPolicy() {
+  public Object getPolicy() {
     return policy;
   }
 
 
-  public void setPolicy(String policy) {
+  public void setPolicy(Object policy) {
     this.policy = policy;
   }
 
 
-  public User releaseUpdate(Boolean releaseUpdate) {
+  public User latestFeedTimestamp(OffsetDateTime latestFeedTimestamp) {
     
-    this.releaseUpdate = releaseUpdate;
+    this.latestFeedTimestamp = latestFeedTimestamp;
     return this;
   }
 
    /**
-   * Update the user via email
-   * @return releaseUpdate
-  **/
-  @ApiModelProperty(required = true, value = "Update the user via email")
-
-  public Boolean getReleaseUpdate() {
-    return releaseUpdate;
-  }
-
-
-  public void setReleaseUpdate(Boolean releaseUpdate) {
-    this.releaseUpdate = releaseUpdate;
-  }
-
-
-  public User latestFeature(String latestFeature) {
-    
-    this.latestFeature = latestFeature;
-    return this;
-  }
-
-   /**
-   * Latest feature the user has been notified.
-   * @return latestFeature
+   * Latest timestamp the user has been notified for feed.
+   * @return latestFeedTimestamp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Latest feature the user has been notified.")
+  @ApiModelProperty(value = "Latest timestamp the user has been notified for feed.")
 
-  public String getLatestFeature() {
-    return latestFeature;
+  public OffsetDateTime getLatestFeedTimestamp() {
+    return latestFeedTimestamp;
   }
 
 
-  public void setLatestFeature(String latestFeature) {
-    this.latestFeature = latestFeature;
+  public void setLatestFeedTimestamp(OffsetDateTime latestFeedTimestamp) {
+    this.latestFeedTimestamp = latestFeedTimestamp;
   }
 
 
@@ -477,8 +451,7 @@ public class User {
         Objects.equals(this.state, user.state) &&
         Objects.equals(this.name, user.name) &&
         Objects.equals(this.policy, user.policy) &&
-        Objects.equals(this.releaseUpdate, user.releaseUpdate) &&
-        Objects.equals(this.latestFeature, user.latestFeature) &&
+        Objects.equals(this.latestFeedTimestamp, user.latestFeedTimestamp) &&
         Objects.equals(this.roles, user.roles) &&
         Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions) &&
         Objects.equals(this.authMethod, user.authMethod);
@@ -486,7 +459,7 @@ public class User {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, releaseUpdate, latestFeature, roles, applicationNotificationSubscriptions, authMethod);
+    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, latestFeedTimestamp, roles, applicationNotificationSubscriptions, authMethod);
   }
 
 
@@ -503,8 +476,7 @@ public class User {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
-    sb.append("    releaseUpdate: ").append(toIndentedString(releaseUpdate)).append("\n");
-    sb.append("    latestFeature: ").append(toIndentedString(latestFeature)).append("\n");
+    sb.append("    latestFeedTimestamp: ").append(toIndentedString(latestFeedTimestamp)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("    authMethod: ").append(toIndentedString(authMethod)).append("\n");

@@ -21,32 +21,43 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.CustomerProfile;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.FeedNotification;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CustomerProfileUpdate
+ * Model tests for UserFeedNotifications
  */
-public class CustomerProfileUpdateTest {
-    private final CustomerProfileUpdate model = new CustomerProfileUpdate();
+public class UserFeedNotificationsTest {
+    private final UserFeedNotifications model = new UserFeedNotifications();
 
     /**
-     * Model tests for CustomerProfileUpdate
+     * Model tests for UserFeedNotifications
      */
     @Test
-    public void testCustomerProfileUpdate() {
-        // TODO: test CustomerProfileUpdate
+    public void testUserFeedNotifications() {
+        // TODO: test UserFeedNotifications
     }
 
     /**
-     * Test the property 'customerProfile'
+     * Test the property 'lastUpdate'
      */
     @Test
-    public void customerProfileTest() {
-        // TODO: test customerProfile
+    public void lastUpdateTest() {
+        // TODO: test lastUpdate
+    }
+
+    /**
+     * Test the property 'notifications'
+     */
+    @Test
+    public void notificationsTest() {
+        // TODO: test notifications
     }
 
 }

@@ -30,11 +30,14 @@ import java.io.IOException;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.CustomerInventory;
-import one.talon.model.CustomerProfileUpdate;
+import one.talon.model.CustomerProfileAudienceRequest;
+import one.talon.model.CustomerProfileIntegrationRequestV2;
 import one.talon.model.InlineResponse200;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationState;
 import one.talon.model.IntegrationStateV2;
+import one.talon.model.MultipleCustomerProfileIntegrationRequest;
+import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
 import one.talon.model.NewCustomerProfile;
 import one.talon.model.NewCustomerSession;
 import one.talon.model.NewEvent;
@@ -525,6 +528,7 @@ public class IntegrationApi {
      * @param profile optional flag to decide if you would like customer profile information in the response (optional)
      * @param referrals optional flag to decide if you would like referral information in the response (optional)
      * @param coupons optional flag to decide if you would like coupon information in the response (optional)
+     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -534,7 +538,7 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -553,6 +557,10 @@ public class IntegrationApi {
 
         if (coupons != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("coupons", coupons));
+        }
+
+        if (loyalty != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("loyalty", loyalty));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -577,7 +585,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
@@ -585,7 +593,7 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, _callback);
+        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, loyalty, _callback);
         return localVarCall;
 
     }
@@ -597,6 +605,7 @@ public class IntegrationApi {
      * @param profile optional flag to decide if you would like customer profile information in the response (optional)
      * @param referrals optional flag to decide if you would like referral information in the response (optional)
      * @param coupons optional flag to decide if you would like coupon information in the response (optional)
+     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
      * @return CustomerInventory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -605,8 +614,8 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals, Boolean coupons) throws ApiException {
-        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals, coupons);
+    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty) throws ApiException {
+        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals, coupons, loyalty);
         return localVarResp.getData();
     }
 
@@ -617,6 +626,7 @@ public class IntegrationApi {
      * @param profile optional flag to decide if you would like customer profile information in the response (optional)
      * @param referrals optional flag to decide if you would like referral information in the response (optional)
      * @param coupons optional flag to decide if you would like coupon information in the response (optional)
+     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
      * @return ApiResponse&lt;CustomerInventory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -625,8 +635,8 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile, Boolean referrals, Boolean coupons) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, null);
+    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, null);
         Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -638,6 +648,7 @@ public class IntegrationApi {
      * @param profile optional flag to decide if you would like customer profile information in the response (optional)
      * @param referrals optional flag to decide if you would like referral information in the response (optional)
      * @param coupons optional flag to decide if you would like coupon information in the response (optional)
+     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -647,9 +658,9 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, final ApiCallback<CustomerInventory> _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, final ApiCallback<CustomerInventory> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, _callback);
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, _callback);
         Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -951,8 +962,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile
-     * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+     * Update a Customer Profile V1
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)
@@ -970,8 +981,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile
-     * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+     * Update a Customer Profile V1
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)
@@ -990,8 +1001,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile (asynchronously)
-     * Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+     * Update a Customer Profile V1 (asynchronously)
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile][]. This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
      * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)
@@ -1012,9 +1023,117 @@ public class IntegrationApi {
         return localVarCall;
     }
     /**
-     * Build call for updateCustomerProfileV2
-     * @param customerProfileId The custom identifier for this profile, must be unique within the account. (required)
+     * Build call for updateCustomerProfileAudiences
      * @param body  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCustomerProfileAudiencesCall(CustomerProfileAudienceRequest body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/customer_audiences";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateCustomerProfileAudiencesValidateBeforeCall(CustomerProfileAudienceRequest body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfileAudiences(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateCustomerProfileAudiencesCall(body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update a Customer Profile Audiences
+     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * @param body  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateCustomerProfileAudiences(CustomerProfileAudienceRequest body) throws ApiException {
+        updateCustomerProfileAudiencesWithHttpInfo(body);
+    }
+
+    /**
+     * Update a Customer Profile Audiences
+     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * @param body  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateCustomerProfileAudiencesWithHttpInfo(CustomerProfileAudienceRequest body) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomerProfileAudiencesValidateBeforeCall(body, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Update a Customer Profile Audiences (asynchronously)
+     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * @param body  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCustomerProfileAudiencesAsync(CustomerProfileAudienceRequest body, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCustomerProfileAudiencesValidateBeforeCall(body, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateCustomerProfileV2
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param body  (required)
+     * @param runRuleEngine Flag to indicate whether to run the rule engine (Defaults to false). (optional)
+     * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;. Only used when &#39;runRuleEngine&#39; is set to &#39;true&#39;). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1024,15 +1143,23 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCustomerProfileV2Call(String customerProfileId, NewCustomerProfile body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileV2Call(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/v2/customer_profiles/{customerProfileId}"
-            .replaceAll("\\{" + "customerProfileId" + "\\}", localVarApiClient.escapeString(customerProfileId.toString()));
+        String localVarPath = "/v2/customer_profiles/{integrationId}"
+            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (runRuleEngine != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("runRuleEngine", runRuleEngine));
+        }
+
+        if (dry != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dry", dry));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -1055,11 +1182,11 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerProfileV2ValidateBeforeCall(String customerProfileId, NewCustomerProfile body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCustomerProfileV2ValidateBeforeCall(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'customerProfileId' is set
-        if (customerProfileId == null) {
-            throw new ApiException("Missing the required parameter 'customerProfileId' when calling updateCustomerProfileV2(Async)");
+        // verify the required parameter 'integrationId' is set
+        if (integrationId == null) {
+            throw new ApiException("Missing the required parameter 'integrationId' when calling updateCustomerProfileV2(Async)");
         }
         
         // verify the required parameter 'body' is set
@@ -1068,17 +1195,19 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = updateCustomerProfileV2Call(customerProfileId, body, _callback);
+        okhttp3.Call localVarCall = updateCustomerProfileV2Call(integrationId, body, runRuleEngine, dry, _callback);
         return localVarCall;
 
     }
 
     /**
      * Update a Customer Profile
-     * Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
-     * @param customerProfileId The custom identifier for this profile, must be unique within the account. (required)
+     * Update (or create) a [Customer Profile][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
-     * @return CustomerProfileUpdate
+     * @param runRuleEngine Flag to indicate whether to run the rule engine (Defaults to false). (optional)
+     * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;. Only used when &#39;runRuleEngine&#39; is set to &#39;true&#39;). (optional)
+     * @return IntegrationStateV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1086,17 +1215,19 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public CustomerProfileUpdate updateCustomerProfileV2(String customerProfileId, NewCustomerProfile body) throws ApiException {
-        ApiResponse<CustomerProfileUpdate> localVarResp = updateCustomerProfileV2WithHttpInfo(customerProfileId, body);
+    public IntegrationStateV2 updateCustomerProfileV2(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
+        ApiResponse<IntegrationStateV2> localVarResp = updateCustomerProfileV2WithHttpInfo(integrationId, body, runRuleEngine, dry);
         return localVarResp.getData();
     }
 
     /**
      * Update a Customer Profile
-     * Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
-     * @param customerProfileId The custom identifier for this profile, must be unique within the account. (required)
+     * Update (or create) a [Customer Profile][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
-     * @return ApiResponse&lt;CustomerProfileUpdate&gt;
+     * @param runRuleEngine Flag to indicate whether to run the rule engine (Defaults to false). (optional)
+     * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;. Only used when &#39;runRuleEngine&#39; is set to &#39;true&#39;). (optional)
+     * @return ApiResponse&lt;IntegrationStateV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1104,17 +1235,19 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CustomerProfileUpdate> updateCustomerProfileV2WithHttpInfo(String customerProfileId, NewCustomerProfile body) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(customerProfileId, body, null);
-        Type localVarReturnType = new TypeToken<CustomerProfileUpdate>(){}.getType();
+    public ApiResponse<IntegrationStateV2> updateCustomerProfileV2WithHttpInfo(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry, null);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update a Customer Profile (asynchronously)
-     * Update (or create) a [Customer Profile][].   The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
-     * @param customerProfileId The custom identifier for this profile, must be unique within the account. (required)
+     * Update (or create) a [Customer Profile][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profile]: /Getting-Started/entities#customer-profile 
+     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
      * @param body  (required)
+     * @param runRuleEngine Flag to indicate whether to run the rule engine (Defaults to false). (optional)
+     * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;. Only used when &#39;runRuleEngine&#39; is set to &#39;true&#39;). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1124,10 +1257,128 @@ public class IntegrationApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCustomerProfileV2Async(String customerProfileId, NewCustomerProfile body, final ApiCallback<CustomerProfileUpdate> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileV2Async(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(customerProfileId, body, _callback);
-        Type localVarReturnType = new TypeToken<CustomerProfileUpdate>(){}.getType();
+        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry, _callback);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateCustomerProfilesV2
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the IntegrationStateV2  generated. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCustomerProfilesV2Call(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/customer_profiles";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (silent != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("silent", silent));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateCustomerProfilesV2ValidateBeforeCall(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfilesV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateCustomerProfilesV2Call(body, silent, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update multiple Customer Profiles
+     * Update (or create) up to 1000 [Customer Profiles][] in 1 request.  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profiles]: /Getting-Started/entities#customer-profile 
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the IntegrationStateV2  generated. (optional)
+     * @return MultipleCustomerProfileIntegrationResponseV2
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
+        ApiResponse<MultipleCustomerProfileIntegrationResponseV2> localVarResp = updateCustomerProfilesV2WithHttpInfo(body, silent);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update multiple Customer Profiles
+     * Update (or create) up to 1000 [Customer Profiles][] in 1 request.  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profiles]: /Getting-Started/entities#customer-profile 
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the IntegrationStateV2  generated. (optional)
+     * @return ApiResponse&lt;MultipleCustomerProfileIntegrationResponseV2&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MultipleCustomerProfileIntegrationResponseV2> updateCustomerProfilesV2WithHttpInfo(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomerProfilesV2ValidateBeforeCall(body, silent, null);
+        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update multiple Customer Profiles (asynchronously)
+     * Update (or create) up to 1000 [Customer Profiles][] in 1 request.  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  [Customer Profiles]: /Getting-Started/entities#customer-profile 
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the IntegrationStateV2  generated. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateCustomerProfilesV2Async(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback<MultipleCustomerProfileIntegrationResponseV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCustomerProfilesV2ValidateBeforeCall(body, silent, _callback);
+        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1199,8 +1450,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session
-     * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
+     * Update a Customer Session V1
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)
@@ -1218,8 +1469,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session
-     * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
+     * Update a Customer Session V1
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)
@@ -1238,8 +1489,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session (asynchronously)
-     * Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
+     * Update a Customer Session V1 (asynchronously)
+     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, please migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Session][]. For example, the items in a customers cart are part of a session.  The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  The &#x60;profileId&#x60; parameter in the request body should correspond to an &#x60;integrationId&#x60; for a customer profile, to track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.  [Customer Session]: /Getting-Started/entities#customer-session 
      * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
      * @param body  (required)
      * @param dry Flag to indicate whether to skip persisting the changes or not (Will not persist if set to &#39;true&#39;). (optional)

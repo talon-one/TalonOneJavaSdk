@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>4.1.1</version>
+  <version>4.2.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:4.1.1"
+compile "one.talon:talon-one-client:4.2.0"
 ```
 
 ### Others
@@ -72,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-4.1.1.jar`
+* `target/talon-one-client-4.2.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -255,9 +255,11 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile.
 *IntegrationApi* | [**getReservedCustomers**](docs/IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 *IntegrationApi* | [**trackEvent**](docs/IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
-*IntegrationApi* | [**updateCustomerProfile**](docs/IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile
-*IntegrationApi* | [**updateCustomerProfileV2**](docs/IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{customerProfileId} | Update a Customer Profile
-*IntegrationApi* | [**updateCustomerSession**](docs/IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session
+*IntegrationApi* | [**updateCustomerProfile**](docs/IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile V1
+*IntegrationApi* | [**updateCustomerProfileAudiences**](docs/IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update a Customer Profile Audiences
+*IntegrationApi* | [**updateCustomerProfileV2**](docs/IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{integrationId} | Update a Customer Profile
+*IntegrationApi* | [**updateCustomerProfilesV2**](docs/IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple Customer Profiles
+*IntegrationApi* | [**updateCustomerSession**](docs/IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session V1
 *IntegrationApi* | [**updateCustomerSessionV2**](docs/IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update a Customer Session
 *ManagementApi* | [**addLoyaltyPoints**](docs/ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
 *ManagementApi* | [**copyCampaignToApplications**](docs/ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
@@ -316,6 +318,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getLoyaltyPoints**](docs/ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID} | get the Loyalty Ledger for this integrationID
 *ManagementApi* | [**getLoyaltyProgram**](docs/ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{programID} | Get a loyalty program
 *ManagementApi* | [**getLoyaltyPrograms**](docs/ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List all loyalty Programs
+*ManagementApi* | [**getLoyaltyStatistics**](docs/ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{programID}/statistics | Get loyalty program statistics by loyalty program ID
 *ManagementApi* | [**getReferrals**](docs/ManagementApi.md#getReferrals) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals | List Referrals (with total count)
 *ManagementApi* | [**getReferralsWithoutTotalCount**](docs/ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List Referrals
 *ManagementApi* | [**getRole**](docs/ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get information for the specified role.
@@ -368,12 +371,16 @@ Class | Method | HTTP request | Description
  - [Attribute](docs/Attribute.md)
  - [AttributesMandatory](docs/AttributesMandatory.md)
  - [AttributesSettings](docs/AttributesSettings.md)
+ - [Audience](docs/Audience.md)
+ - [AudienceMembership](docs/AudienceMembership.md)
  - [BaseSamlConnection](docs/BaseSamlConnection.md)
  - [Binding](docs/Binding.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignAnalytics](docs/CampaignAnalytics.md)
  - [CampaignCopy](docs/CampaignCopy.md)
  - [CampaignEntity](docs/CampaignEntity.md)
+ - [CampaignGroup](docs/CampaignGroup.md)
+ - [CampaignGroupEntity](docs/CampaignGroupEntity.md)
  - [CampaignSearch](docs/CampaignSearch.md)
  - [CampaignSet](docs/CampaignSet.md)
  - [CampaignSetBranchNode](docs/CampaignSetBranchNode.md)
@@ -396,8 +403,10 @@ Class | Method | HTTP request | Description
  - [CustomerAnalytics](docs/CustomerAnalytics.md)
  - [CustomerInventory](docs/CustomerInventory.md)
  - [CustomerProfile](docs/CustomerProfile.md)
+ - [CustomerProfileAudienceRequest](docs/CustomerProfileAudienceRequest.md)
+ - [CustomerProfileAudienceRequestItem](docs/CustomerProfileAudienceRequestItem.md)
+ - [CustomerProfileIntegrationRequestV2](docs/CustomerProfileIntegrationRequestV2.md)
  - [CustomerProfileSearchQuery](docs/CustomerProfileSearchQuery.md)
- - [CustomerProfileUpdate](docs/CustomerProfileUpdate.md)
  - [CustomerSession](docs/CustomerSession.md)
  - [CustomerSessionV2](docs/CustomerSessionV2.md)
  - [DeductLoyaltyPointsEffectProps](docs/DeductLoyaltyPointsEffectProps.md)
@@ -405,6 +414,7 @@ Class | Method | HTTP request | Description
  - [EffectEntity](docs/EffectEntity.md)
  - [EmailEntity](docs/EmailEntity.md)
  - [Entity](docs/Entity.md)
+ - [EntityWithTalangVisibleID](docs/EntityWithTalangVisibleID.md)
  - [Environment](docs/Environment.md)
  - [ErrorEffectProps](docs/ErrorEffectProps.md)
  - [ErrorResponse](docs/ErrorResponse.md)
@@ -415,6 +425,7 @@ Class | Method | HTTP request | Description
  - [FeatureFlag](docs/FeatureFlag.md)
  - [FeatureFlags](docs/FeatureFlags.md)
  - [FeaturesFeed](docs/FeaturesFeed.md)
+ - [FeedNotification](docs/FeedNotification.md)
  - [FuncArgDef](docs/FuncArgDef.md)
  - [FunctionDef](docs/FunctionDef.md)
  - [ImportCoupons](docs/ImportCoupons.md)
@@ -467,12 +478,15 @@ Class | Method | HTTP request | Description
  - [LoyaltyProgram](docs/LoyaltyProgram.md)
  - [LoyaltyProgramBalance](docs/LoyaltyProgramBalance.md)
  - [LoyaltyProgramLedgers](docs/LoyaltyProgramLedgers.md)
+ - [LoyaltyStatistics](docs/LoyaltyStatistics.md)
  - [LoyaltySubLedger](docs/LoyaltySubLedger.md)
  - [ManagerConfig](docs/ManagerConfig.md)
  - [Meta](docs/Meta.md)
- - [MiscUpdateUserLatestFeature](docs/MiscUpdateUserLatestFeature.md)
  - [ModelImport](docs/ModelImport.md)
  - [MultiApplicationEntity](docs/MultiApplicationEntity.md)
+ - [MultipleCustomerProfileIntegrationRequest](docs/MultipleCustomerProfileIntegrationRequest.md)
+ - [MultipleCustomerProfileIntegrationRequestItem](docs/MultipleCustomerProfileIntegrationRequestItem.md)
+ - [MultipleCustomerProfileIntegrationResponseV2](docs/MultipleCustomerProfileIntegrationResponseV2.md)
  - [MutableEntity](docs/MutableEntity.md)
  - [NewAccount](docs/NewAccount.md)
  - [NewAccountSignUp](docs/NewAccountSignUp.md)
@@ -480,7 +494,9 @@ Class | Method | HTTP request | Description
  - [NewApplication](docs/NewApplication.md)
  - [NewApplicationAPIKey](docs/NewApplicationAPIKey.md)
  - [NewAttribute](docs/NewAttribute.md)
+ - [NewAudience](docs/NewAudience.md)
  - [NewCampaign](docs/NewCampaign.md)
+ - [NewCampaignGroup](docs/NewCampaignGroup.md)
  - [NewCampaignSet](docs/NewCampaignSet.md)
  - [NewCoupons](docs/NewCoupons.md)
  - [NewCustomerProfile](docs/NewCustomerProfile.md)
@@ -531,14 +547,18 @@ Class | Method | HTTP request | Description
  - [UpdateAccount](docs/UpdateAccount.md)
  - [UpdateApplication](docs/UpdateApplication.md)
  - [UpdateAttributeEffectProps](docs/UpdateAttributeEffectProps.md)
+ - [UpdateAudience](docs/UpdateAudience.md)
  - [UpdateCampaign](docs/UpdateCampaign.md)
+ - [UpdateCampaignGroup](docs/UpdateCampaignGroup.md)
  - [UpdateCoupon](docs/UpdateCoupon.md)
  - [UpdateCouponBatch](docs/UpdateCouponBatch.md)
  - [UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
  - [UpdateRole](docs/UpdateRole.md)
  - [UpdateUser](docs/UpdateUser.md)
+ - [UpdateUserLatestFeedTimestamp](docs/UpdateUserLatestFeedTimestamp.md)
  - [User](docs/User.md)
  - [UserEntity](docs/UserEntity.md)
+ - [UserFeedNotifications](docs/UserFeedNotifications.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookActivationLogEntry](docs/WebhookActivationLogEntry.md)
  - [WebhookLogEntry](docs/WebhookLogEntry.md)

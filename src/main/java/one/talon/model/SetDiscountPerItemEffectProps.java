@@ -43,6 +43,10 @@ public class SetDiscountPerItemEffectProps {
   @SerializedName(SERIALIZED_NAME_POSITION)
   private BigDecimal position;
 
+  public static final String SERIALIZED_NAME_SUB_POSITION = "subPosition";
+  @SerializedName(SERIALIZED_NAME_SUB_POSITION)
+  private BigDecimal subPosition;
+
 
   public SetDiscountPerItemEffectProps name(String name) {
     
@@ -110,6 +114,29 @@ public class SetDiscountPerItemEffectProps {
   }
 
 
+  public SetDiscountPerItemEffectProps subPosition(BigDecimal subPosition) {
+    
+    this.subPosition = subPosition;
+    return this;
+  }
+
+   /**
+   * The sub-index of the item in an item stack on which this discount should be applied
+   * @return subPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The sub-index of the item in an item stack on which this discount should be applied")
+
+  public BigDecimal getSubPosition() {
+    return subPosition;
+  }
+
+
+  public void setSubPosition(BigDecimal subPosition) {
+    this.subPosition = subPosition;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -121,12 +148,13 @@ public class SetDiscountPerItemEffectProps {
     SetDiscountPerItemEffectProps setDiscountPerItemEffectProps = (SetDiscountPerItemEffectProps) o;
     return Objects.equals(this.name, setDiscountPerItemEffectProps.name) &&
         Objects.equals(this.value, setDiscountPerItemEffectProps.value) &&
-        Objects.equals(this.position, setDiscountPerItemEffectProps.position);
+        Objects.equals(this.position, setDiscountPerItemEffectProps.position) &&
+        Objects.equals(this.subPosition, setDiscountPerItemEffectProps.subPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, position);
+    return Objects.hash(name, value, position, subPosition);
   }
 
 
@@ -137,6 +165,7 @@ public class SetDiscountPerItemEffectProps {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
+    sb.append("    subPosition: ").append(toIndentedString(subPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
