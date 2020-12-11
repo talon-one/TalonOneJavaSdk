@@ -117,6 +117,14 @@ public class UpdateApplicationTest {
     }
 
     /**
+     * Test the property 'defaultDiscountScope'
+     */
+    @Test
+    public void defaultDiscountScopeTest() {
+        // TODO: test defaultDiscountScope
+    }
+
+    /**
      * Test the property 'enableCascadingDiscounts'
      */
     @Test

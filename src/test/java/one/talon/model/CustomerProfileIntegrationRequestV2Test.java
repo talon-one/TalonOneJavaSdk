@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.ProfileAudiencesChanges;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,6 +49,14 @@ public class CustomerProfileIntegrationRequestV2Test {
     @Test
     public void attributesTest() {
         // TODO: test attributes
+    }
+
+    /**
+     * Test the property 'audiencesChanges'
+     */
+    @Test
+    public void audiencesChangesTest() {
+        // TODO: test audiencesChanges
     }
 
     /**

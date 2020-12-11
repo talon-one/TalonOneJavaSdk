@@ -66,6 +66,14 @@ public class ChangeTest {
     }
 
     /**
+     * Test the property 'applicationId'
+     */
+    @Test
+    public void applicationIdTest() {
+        // TODO: test applicationId
+    }
+
+    /**
      * Test the property 'entity'
      */
     @Test

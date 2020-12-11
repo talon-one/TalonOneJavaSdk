@@ -60,9 +60,9 @@ paths:
 
         The Talon.One platform supports multiple simultaneous sessions for the same profile, so if you have multiple ways of accessing the same application you have the option of either tracking multiple independent sessions or using the same session across all of them. You should share sessions when application access points share other state, such as the users cart. If two points of access to the application have independent state (e.g. a user can have different items in their cart across the two) they should use independent customer session ID's.
 
-        The `profileId` parameter in the request body should correspond to an `integrationId` for a customer profile, to track an anonymous session use the empty string (`""`) as the `profileId`. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.
+        The `customerProfileId` parameter in the request body should correspond to an `integrationId` for a customer profile, to track an anonymous session you can simply omit the `customerProfileId` property from the request. Note that you do **not** need to create a customer profile first: if the specified profile does not yet exist, an empty profile will be created automatically.
 
-        Updating a customer profile will return a response with the requested integration state. This includes the effects that were generated due to triggered campaigns, the created coupons and referral objects, as well as any entity that was requested in the request parameter "responseContent".
+        Updating a customer session will return a response with the requested integration state. If `runRuleEngine` is set to `true`, this includes the effects that were generated due to triggered campaigns, the created coupons and referral objects, as well as any entity that was requested in the request parameter "responseContent".
 
         The currency for the session and the cart items in the session is the same as that of the application with which the session is associated.
 
@@ -114,7 +114,7 @@ paths:
       operationId: updateCustomerProfilesV2
       parameters:
       - description: If set to 'yes', response will be an empty 204, otherwise a list
-          of the IntegrationStateV2  generated.
+          of integration states will be generated (up to 1000).
         in: query
         name: silent
         schema:
@@ -146,6 +146,8 @@ paths:
         Update (or create) a [Customer Profile][].
 
         The `integrationId` may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the `integrationId`. It is vital that this ID **not** change over time, so **don't** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.
+
+        Updating a customer profile will return a response with the requested integration state. If `runRuleEngine` is set to `true`, this includes the effects that were generated due to triggered campaigns, the created coupons and referral objects, as well as any entity that was requested in the request parameter "responseContent".
 
         [Customer Profile]: /Getting-Started/entities#customer-profile
       operationId: updateCustomerProfileV2
@@ -1056,6 +1058,49 @@ paths:
                 $ref: '#/components/schemas/Ruleset'
           description: OK
       summary: Update a Ruleset
+      tags:
+      - management
+      x-codegen-request-body-name: body
+      x-contentType: application/json
+      x-accepts: application/json
+  /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients:
+    post:
+      description: Create coupons according to some pattern for up to 1000 recipients.
+      operationId: createCouponsForMultipleRecipients
+      parameters:
+      - description: If set to 'yes', response will be an empty 204, otherwise a list
+          of the coupons generated (to to 1000).
+        in: query
+        name: silent
+        schema:
+          type: string
+      - in: path
+        name: applicationId
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: campaignId
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCouponsForMultipleRecipients'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+          description: OK
+        "204":
+          content: {}
+          description: No Content
+      summary: Create Coupons for Multiple Recipients
       tags:
       - management
       x-codegen-request-body-name: body
@@ -2656,6 +2701,25 @@ paths:
       tags:
       - management
       x-accepts: application/json
+  /v1/loyalty_programs/{programID}/export_customer_balance:
+    get:
+      description: Download a file with the balance of each customer in the loyalty
+        program
+      operationId: exportLoyaltyBalance
+      parameters:
+      - in: path
+        name: programID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Export customer loyalty balance to a CSV file
+      tags:
+      - management
+      x-accepts: application/json
   /v1/applications/{applicationId}/health_report:
     get:
       operationId: getApplicationApiHealth
@@ -3766,6 +3830,50 @@ paths:
       tags:
       - management
       x-accepts: application/json
+  /v1/audiences:
+    get:
+      description: |
+        Get All audiences created in the account.
+      operationId: getAudiences
+      parameters:
+      - description: The number of items to include in this response. When omitted,
+          the maximum value of 1000 will be used.
+        in: query
+        name: pageSize
+        schema:
+          type: integer
+      - description: Skips the given number of items when paging through large result
+          sets.
+        in: query
+        name: skip
+        schema:
+          type: integer
+      - description: The field by which results should be sorted. Sorting defaults
+          to ascending order, prefix the field name with `-` to sort in descending
+          order.
+        in: query
+        name: sort
+        schema:
+          type: string
+      - description: |
+          When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets.
+          With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero.
+          With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.
+        in: query
+        name: withTotalResultSize
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_20'
+          description: OK
+      summary: Get all audiences
+      tags:
+      - management
+      x-accepts: application/json
   /v1/attributes:
     get:
       description: |
@@ -3796,7 +3904,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_20'
+                $ref: '#/components/schemas/inline_response_200_21'
           description: OK
       summary: List custom attributes
       tags:
@@ -3910,7 +4018,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_21'
+                $ref: '#/components/schemas/inline_response_200_22'
           description: OK
       summary: List additional costs
       tags:
@@ -4025,7 +4133,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_22'
+                $ref: '#/components/schemas/inline_response_200_23'
           description: OK
       summary: List Webhooks
       tags:
@@ -4114,7 +4222,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_23'
+                $ref: '#/components/schemas/inline_response_200_24'
           description: OK
       summary: List Webhook activation Log Entries
       tags:
@@ -4189,7 +4297,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_24'
+                $ref: '#/components/schemas/inline_response_200_25'
           description: OK
       summary: List Webhook Log Entries
       tags:
@@ -4242,9 +4350,226 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_25'
+                $ref: '#/components/schemas/inline_response_200_26'
           description: OK
       summary: List Event Types
+      tags:
+      - management
+      x-accepts: application/json
+  /v1/applications/{applicationId}/export_coupons:
+    get:
+      description: Download a file with the coupons that match the given attributes.
+      operationId: exportCoupons
+      parameters:
+      - in: path
+        name: applicationId
+        required: true
+        schema:
+          type: integer
+      - description: Filter results by campaign.
+        in: query
+        name: campaignId
+        schema:
+          type: number
+      - description: The field by which results should be sorted. Sorting defaults
+          to ascending order, prefix the field name with `-` to sort in descending
+          order.
+        in: query
+        name: sort
+        schema:
+          type: string
+      - description: Filter results performing case-insensitive matching against the
+          coupon code. Both the code and the query are folded to remove all non-alpha-numeric
+          characters.
+        in: query
+        name: value
+        schema:
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the coupon creation timestamp.
+        in: query
+        name: createdBefore
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the coupon creation timestamp.
+        in: query
+        name: createdAfter
+        schema:
+          format: date-time
+          type: string
+      - description: |
+          Either "expired", "validNow", or "validFuture". The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future.
+        in: query
+        name: valid
+        schema:
+          enum:
+          - expired
+          - validNow
+          - validFuture
+          type: string
+      - description: |
+          Either "true" or "false". If "true", only coupons where `usageCounter < usageLimit` will be returned, "false" will return only coupons where `usageCounter >= usageLimit`.
+        in: query
+        name: usable
+        schema:
+          enum:
+          - "true"
+          - "false"
+          type: string
+      - description: Filter the results by matching them with the Id of a referral,
+          that meaning the coupons that had been created as an effect of the usage
+          of a referral code.
+        in: query
+        name: referralId
+        schema:
+          type: integer
+      - description: Filter results by match with a profile id specified in the coupon's
+          RecipientIntegrationId field
+        in: query
+        name: recipientIntegrationId
+        schema:
+          type: string
+      - description: Filter results by batches of coupons
+        in: query
+        name: batchId
+        schema:
+          type: string
+      - description: Filter results to an exact case-insensitive matching against
+          the coupon code
+        in: query
+        name: exactMatch
+        schema:
+          default: false
+          type: boolean
+      - description: Determines the format of dates in the export document.
+        in: query
+        name: dateFormat
+        schema:
+          enum:
+          - excel
+          - ISO8601
+          type: string
+      - description: Filter results by the state of the campaign.
+        in: query
+        name: campaignState
+        schema:
+          enum:
+          - enabled
+          - disabled
+          - archived
+          - draft
+          - scheduled
+          - running
+          - expired
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Export Coupons to a CSV file.
+      tags:
+      - management
+      x-accepts: application/json
+  /v1/applications/{applicationId}/export_effects:
+    get:
+      description: Download a file with the triggered effects that match the given
+        attributes.
+      operationId: exportEffects
+      parameters:
+      - in: path
+        name: applicationId
+        required: true
+        schema:
+          type: integer
+      - description: Filter results by campaign.
+        in: query
+        name: campaignId
+        schema:
+          type: number
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the coupon creation timestamp.
+        in: query
+        name: createdBefore
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string, to the coupon creation timestamp.
+        in: query
+        name: createdAfter
+        schema:
+          format: date-time
+          type: string
+      - description: Determines the format of dates in the export document.
+        in: query
+        name: dateFormat
+        schema:
+          enum:
+          - excel
+          - ISO8601
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Export triggered Effects to a CSV file.
+      tags:
+      - management
+      x-accepts: application/json
+  /v1/applications/{applicationId}/export_customer_sessions:
+    get:
+      description: Download a file with the customer sessions that match the request.
+      operationId: exportCustomerSessions
+      parameters:
+      - in: path
+        name: applicationId
+        required: true
+        schema:
+          type: integer
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string.
+        in: query
+        name: createdBefore
+        schema:
+          format: date-time
+          type: string
+      - description: Filter results comparing the parameter value, expected to be
+          an RFC3339 timestamp string.
+        in: query
+        name: createdAfter
+        schema:
+          format: date-time
+          type: string
+      - description: Only return sessions for the customer that matches this customer
+          integration ID.
+        in: query
+        name: profileIntegrationId
+        schema:
+          type: string
+      - description: Determines the format of dates in the export document.
+        in: query
+        name: dateFormat
+        schema:
+          enum:
+          - excel
+          - ISO8601
+          type: string
+      - description: Filter results by state.
+        in: query
+        name: customerSessionState
+        schema:
+          enum:
+          - open
+          - closed
+          - cancelled
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: Export Customer Sessions to a CSV file.
       tags:
       - management
       x-accepts: application/json
@@ -4278,7 +4603,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_26'
+                $ref: '#/components/schemas/inline_response_200_27'
           description: OK
       summary: List Users in your account
       tags:
@@ -4335,6 +4660,16 @@ paths:
         name: applicationId
         schema:
           type: integer
+      - description: Filter results on a case insensitive matching of the url path
+          of the entity
+        in: query
+        name: entityPath
+        schema:
+          type: string
+      - in: query
+        name: userId
+        schema:
+          type: integer
       - description: Filter results comparing the parameter value, expected to be
           an RFC3339 timestamp string, to the change creation timestamp.
         in: query
@@ -4368,7 +4703,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_27'
+                $ref: '#/components/schemas/inline_response_200_28'
           description: OK
       summary: Get audit log for an account
       tags:
@@ -4468,6 +4803,16 @@ paths:
       - management
       x-accepts: application/json
   /v1/sessions:
+    delete:
+      operationId: destroySession
+      responses:
+        "204":
+          content: {}
+          description: No Content
+      summary: Destroy a Session
+      tags:
+      - management
+      x-accepts: application/json
     post:
       operationId: createSession
       requestBody:
@@ -4529,38 +4874,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_28'
-          description: OK
-      summary: Get Exports
-      tags:
-      - management
-      x-accepts: application/json
-  /v1/imports:
-    get:
-      description: |
-        Get a list of all past imports
-      operationId: getImports
-      parameters:
-      - description: The number of items to include in this response. When omitted,
-          the maximum value of 1000 will be used.
-        in: query
-        name: pageSize
-        schema:
-          type: integer
-      - description: Skips the given number of items when paging through large result
-          sets.
-        in: query
-        name: skip
-        schema:
-          type: integer
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
                 $ref: '#/components/schemas/inline_response_200_29'
           description: OK
-      summary: Get Imports
+      summary: Get Exports
       tags:
       - management
       x-accepts: application/json
@@ -4779,6 +5095,7 @@ components:
           description: The IDs of the applications that are related to this entity.
           items:
             type: integer
+          minItems: 1
           type: array
       required:
       - applicationIds
@@ -5010,6 +5327,14 @@ components:
           - lowestDiscount
           - highestDiscount
           type: string
+        defaultDiscountScope:
+          description: The default scope to apply "setDiscount" effects on if no scope
+            was provided with the effect.
+          enum:
+          - sessionTotal
+          - cartItems
+          - additionalCosts
+          type: string
         enableCascadingDiscounts:
           description: Flag indicating if discounts should cascade for this application
           type: boolean
@@ -5080,6 +5405,14 @@ components:
           - lowestDiscount
           - highestDiscount
           type: string
+        defaultDiscountScope:
+          description: The default scope to apply "setDiscount" effects on if no scope
+            was provided with the effect.
+          enum:
+          - sessionTotal
+          - cartItems
+          - additionalCosts
+          type: string
         enableCascadingDiscounts:
           description: Flag indicating if discounts should cascade for this application
           type: boolean
@@ -5148,6 +5481,7 @@ components:
         name: name
         exclusiveCampaignsStrategy: listOrder
         modified: 2000-01-23T04:56:07.000+00:00
+        defaultDiscountScope: sessionTotal
         currency: currency
         attributes: '{}'
         id: 6
@@ -5155,13 +5489,13 @@ components:
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
       properties:
         id:
           description: Unique ID for this entity.
@@ -5226,6 +5560,14 @@ components:
           - listOrder
           - lowestDiscount
           - highestDiscount
+          type: string
+        defaultDiscountScope:
+          description: The default scope to apply "setDiscount" effects on if no scope
+            was provided with the effect.
+          enum:
+          - sessionTotal
+          - cartItems
+          - additionalCosts
           type: string
         enableCascadingDiscounts:
           description: Flag indicating if discounts should cascade for this application
@@ -5383,13 +5725,13 @@ components:
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
       properties:
         name:
           description: A friendly name for this campaign.
@@ -5500,13 +5842,13 @@ components:
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
       properties:
         name:
           description: A friendly name for this campaign.
@@ -5583,48 +5925,52 @@ components:
     Campaign:
       description: ""
       example:
-        discountCount: 4
+        createdLoyaltyPointsEffectCount: 0
+        discountCount: 7.260521264802104
         description: description
         features:
         - coupons
         - coupons
         - coupons
+        createdLoyaltyPointsCount: 9.702963800023566
         couponSettings:
           couponPattern: couponPattern
           validCharacters:
           - validCharacters
           - validCharacters
         startTime: 2000-01-23T04:56:07.000+00:00
-        id: 7
+        id: 5
         state: enabled
         limits:
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
+          limit: 0.6628464275087742
+          action: action
         - entities:
           - Coupon
           - Coupon
-          limit: 0.02025324113236393
-          action: redeemCoupon
-        activeRulesetId: 4
+          limit: 0.6628464275087742
+          action: action
+        activeRulesetId: 0
         updatedBy: updatedBy
         created: 2000-01-23T04:56:07.000+00:00
-        couponRedemptionCount: 4
-        userId: 3
-        couponCreationCount: 9
+        couponRedemptionCount: 1
+        userId: 4
+        couponCreationCount: 0
         campaignGroups:
-        - 6
-        - 6
+        - 4
+        - 4
         tags:
         - tags
         - tags
         - tags
         - tags
         - tags
-        discountEffectCount: 7
+        redeemedLoyaltyPointsEffectCount: 5
+        discountEffectCount: 9
         createdBy: createdBy
+        redeemedLoyaltyPointsCount: 7.933506881737151
         name: name
         referralSettings:
           couponPattern: couponPattern
@@ -5634,8 +5980,8 @@ components:
         attributes: '{}'
         lastActivity: 2000-01-23T04:56:07.000+00:00
         endTime: 2000-01-23T04:56:07.000+00:00
-        applicationId: 5
-        referralRedemptionCount: 1
+        applicationId: 3
+        referralRedemptionCount: 4
         updated: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
@@ -5725,12 +6071,26 @@ components:
           type: integer
         discountCount:
           description: Total amount of discounts redeemed in the campaign.
-          type: integer
+          type: number
         discountEffectCount:
           description: Total number of times discounts were redeemed in this campaign.
           type: integer
         couponCreationCount:
           description: Total number of coupons created by rules in this campaign.
+          type: integer
+        createdLoyaltyPointsCount:
+          description: Total number of loyalty points created by rules in this campaign.
+          type: number
+        createdLoyaltyPointsEffectCount:
+          description: Total number of loyalty point creation effects triggered by
+            rules in this campaign.
+          type: integer
+        redeemedLoyaltyPointsCount:
+          description: Total number of loyalty points redeemed by rules in this campaign.
+          type: number
+        redeemedLoyaltyPointsEffectCount:
+          description: Total number of loyalty point redemption effects triggered
+            by rules in this campaign.
           type: integer
         lastActivity:
           description: Timestamp of the most recent event received by this campaign.
@@ -6015,17 +6375,11 @@ components:
         entities:
         - Coupon
         - Coupon
-        limit: 0.02025324113236393
-        action: redeemCoupon
+        limit: 0.6628464275087742
+        action: action
       properties:
         action:
           description: The limitable action to which this limit will be applied
-          enum:
-          - redeemCoupon
-          - redeemReferral
-          - setDiscount
-          - createCoupon
-          - setDiscountEffect
           type: string
         limit:
           description: The value to set for the limit
@@ -6182,8 +6536,8 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         campaignId: 3
         usageLimit: 0
-        id: 6
-        usageCounter: 3
+        id: 3
+        usageCounter: 7
         advocateProfileIntegrationId: advocateProfileIntegrationId
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -6355,17 +6709,6 @@ components:
             omitted, zero, or negative.
           format: date-time
           type: string
-        validCharacters:
-          description: Set of characters to be used when generating random part of
-            code. Defaults to [A-Z, 0-9] (in terms of RegExp).
-          items:
-            type: string
-          type: array
-        couponPattern:
-          description: |
-            The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
-          minLength: 3
-          type: string
         numberOfCoupons:
           description: The number of new coupon codes to generate for the campaign.
             Must be at least 1.
@@ -6382,11 +6725,87 @@ components:
           description: The integration ID for this coupon's beneficiary's profile
           title: Receiving customer profile integration ID
           type: string
+        validCharacters:
+          description: Set of characters to be used when generating random part of
+            code. Defaults to [A-Z, 0-9] (in terms of RegExp).
+          items:
+            type: string
+          type: array
+        couponPattern:
+          description: |
+            The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
+          minLength: 3
+          type: string
       required:
-      - couponPattern
       - numberOfCoupons
       - usageLimit
-      - validCharacters
+      type: object
+    NewCouponsForMultipleRecipients:
+      description: ""
+      example:
+        expiryDate: 2000-01-23T04:56:07.000+00:00
+        couponPattern: couponPattern
+        validCharacters:
+        - validCharacters
+        - validCharacters
+        usageLimit: 80082
+        recipientsIntegrationIds:
+        - recipientsIntegrationIds
+        - recipientsIntegrationIds
+        - recipientsIntegrationIds
+        - recipientsIntegrationIds
+        - recipientsIntegrationIds
+        attributes: '{}'
+        discountLimit: 602745.015561422
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        usageLimit:
+          description: |
+            The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply.
+          maximum: 999999
+          minimum: 0
+          type: integer
+        discountLimit:
+          description: |
+            The amount of discounts that can be given with this coupon code.
+          maximum: 999999
+          minimum: 0
+          type: number
+        startDate:
+          description: Timestamp at which point the coupon becomes valid.
+          format: date-time
+          type: string
+        expiryDate:
+          description: Expiry date of the coupon. Coupon never expires if this is
+            omitted, zero, or negative.
+          format: date-time
+          type: string
+        attributes:
+          description: Arbitrary properties associated with this item
+          properties: {}
+          type: object
+        recipientsIntegrationIds:
+          description: The integration IDs for recipients
+          items:
+            type: string
+          maxItems: 1000
+          minItems: 1
+          title: Receiving customer profiles integration IDs
+          type: array
+        validCharacters:
+          description: Set of characters to be used when generating random part of
+            code. Defaults to [A-Z, 0-9] (in terms of RegExp).
+          items:
+            type: string
+          type: array
+        couponPattern:
+          description: |
+            The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
+          minLength: 3
+          type: string
+      required:
+      - recipientsIntegrationIds
+      - usageLimit
       type: object
     UpdateCoupon:
       description: ""
@@ -6475,21 +6894,21 @@ components:
       example:
         recipientIntegrationId: recipientIntegrationId
         created: 2000-01-23T04:56:07.000+00:00
-        campaignId: 7
-        usageLimit: 651917
+        campaignId: 6
+        usageLimit: 10263
         referralId: 3
-        usageCounter: 4
+        usageCounter: 8
         batchId: batchId
-        discountCounter: 8.969578798196912
+        discountCounter: 7.740351818741173
         expiryDate: 2000-01-23T04:56:07.000+00:00
-        importId: 3
+        importId: 7
         reservation: true
         attributes: '{}'
-        id: 0
+        id: 7
         value: value
-        discountLimit: 10263.643742455395
+        discountLimit: 465239.1780536813
         startDate: 2000-01-23T04:56:07.000+00:00
-        discountRemainder: 7.740351818741173
+        discountRemainder: 3.0205796992916243
       properties:
         id:
           description: Unique ID for this entity.
@@ -7011,6 +7430,7 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         old: '{}'
         id: 6
+        applicationId: 5
         userId: 1
         entity: entity
       properties:
@@ -7023,6 +7443,9 @@ components:
           type: string
         userId:
           description: The ID of the account that owns this entity.
+          type: integer
+        applicationId:
+          description: ID of application associated with change
           type: integer
         entity:
           description: API endpoint on which the change was initiated.
@@ -7048,10 +7471,14 @@ components:
         validityDuration: validityDuration
         pendingDuration: pendingDuration
         subLedgerID: subLedgerID
-        points: 0.8008281904610115
+        points: 8008281.904610115
       properties:
         points:
           description: Amount of loyalty points
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          maximum: 1E+8
+          minimum: 0
           type: number
         name:
           description: Allows to specify a name for the addition or deduction
@@ -7734,10 +8161,18 @@ components:
         programs:
           key:
             ledger:
-              currentBalance: 5.944895607614016
+              pendingBalance: 6.778324963048013
+              currentBalance: 2.8841621266687802
+              spentBalance: 5.944895607614016
+              tentativeCurrentBalance: 6.704019297950036
+              expiredBalance: 6.878052220127876
             subLedgers:
               key:
-                currentBalance: 5.944895607614016
+                pendingBalance: 6.778324963048013
+                currentBalance: 2.8841621266687802
+                spentBalance: 5.944895607614016
+                tentativeCurrentBalance: 6.704019297950036
+                expiredBalance: 6.878052220127876
             name: name
             title: title
       properties:
@@ -7754,10 +8189,18 @@ components:
       description: Customer specific information about loyalty points.
       example:
         ledger:
-          currentBalance: 5.944895607614016
+          pendingBalance: 6.778324963048013
+          currentBalance: 2.8841621266687802
+          spentBalance: 5.944895607614016
+          tentativeCurrentBalance: 6.704019297950036
+          expiredBalance: 6.878052220127876
         subLedgers:
           key:
-            currentBalance: 5.944895607614016
+            pendingBalance: 6.778324963048013
+            currentBalance: 2.8841621266687802
+            spentBalance: 5.944895607614016
+            tentativeCurrentBalance: 6.704019297950036
+            expiredBalance: 6.878052220127876
         name: name
         title: title
       properties:
@@ -7782,13 +8225,39 @@ components:
     LoyaltyProgramBalance:
       description: The balance in a Loyalty Program for some Customer.
       example:
-        currentBalance: 5.944895607614016
+        pendingBalance: 6.778324963048013
+        currentBalance: 2.8841621266687802
+        spentBalance: 5.944895607614016
+        tentativeCurrentBalance: 6.704019297950036
+        expiredBalance: 6.878052220127876
       properties:
         currentBalance:
-          title: Current Balance
+          description: Sum of current active points amounts
+          title: Current balance
+          type: number
+        pendingBalance:
+          description: Sum of pending points amounts
+          title: Pending balance
+          type: number
+        expiredBalance:
+          description: Sum of expired points amounts
+          title: Expired balance
+          type: number
+        spentBalance:
+          description: Sum of spent points amounts
+          title: Spent balance
+          type: number
+        tentativeCurrentBalance:
+          description: Sum of current active points amounts, including additions and
+            deductions on open sessions
+          title: Tentative current balance
           type: number
       required:
       - currentBalance
+      - expiredBalance
+      - pendingBalance
+      - spentBalance
+      - tentativeCurrentBalance
       type: object
     CustomerProfileSearchQuery:
       properties:
@@ -7842,23 +8311,23 @@ components:
     CustomerProfile:
       description: ""
       example:
-        accountId: 6
-        closedSessions: 7
+        accountId: 1
+        closedSessions: 1
         created: 2000-01-23T04:56:07.000+00:00
         integrationId: integrationId
         attributes: '{}'
-        totalSales: 1.1730742509559433
+        totalSales: 1.4894159098541704
         lastActivity: 2000-01-23T04:56:07.000+00:00
         loyaltyMemberships:
         - joined: 2000-01-23T04:56:07.000+00:00
-          loyaltyProgramId: 4
+          loyaltyProgramId: 6
         - joined: 2000-01-23T04:56:07.000+00:00
-          loyaltyProgramId: 4
+          loyaltyProgramId: 6
         audienceMemberships:
         - name: name
-          id: 5
+          id: 7
         - name: name
-          id: 5
+          id: 7
       properties:
         integrationId:
           description: The integration ID for this entity sent to and used in the
@@ -7917,38 +8386,38 @@ components:
         coupons:
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         referrals:
         - expiryDate: 2000-01-23T04:56:07.000+00:00
           code: code
@@ -7956,8 +8425,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -7966,36 +8435,44 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         profile:
-          accountId: 6
-          closedSessions: 7
+          accountId: 1
+          closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
           attributes: '{}'
-          totalSales: 1.1730742509559433
+          totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         loyalty:
           programs:
             key:
               ledger:
-                currentBalance: 5.944895607614016
+                pendingBalance: 6.778324963048013
+                currentBalance: 2.8841621266687802
+                spentBalance: 5.944895607614016
+                tentativeCurrentBalance: 6.704019297950036
+                expiredBalance: 6.878052220127876
               subLedgers:
                 key:
-                  currentBalance: 5.944895607614016
+                  pendingBalance: 6.778324963048013
+                  currentBalance: 2.8841621266687802
+                  spentBalance: 5.944895607614016
+                  tentativeCurrentBalance: 6.704019297950036
+                  expiredBalance: 6.878052220127876
               name: name
               title: title
       properties:
@@ -8035,10 +8512,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8050,10 +8523,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8118,7 +8587,7 @@ components:
         - couponCodes
         additionalCosts:
           key:
-            price: 7.386281948385884
+            price: 3.616076749251911
         profileId: profileId
         identifiers:
         - identifiers
@@ -8137,10 +8606,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8152,10 +8617,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8360,10 +8821,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8375,10 +8832,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8487,11 +8940,11 @@ components:
         - identifiers
         - identifiers
         integrationId: integrationId
-        total: 1.2315135367772556
+        total: 2.027123023002322
         additionalCosts:
           key:
-            price: 7.386281948385884
-        additionalCostTotal: 1.4894159098541704
+            price: 3.616076749251911
+        additionalCostTotal: 7.386281948385884
         profileId: profileId
         referralCode: referralCode
         attributes: '{}'
@@ -8505,10 +8958,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -8520,16 +8969,12 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
           height: 5.637376656633329
         firstSession: true
-        cartItemTotal: 1.0246457001441578
+        cartItemTotal: 4.145608029883936
       properties:
         integrationId:
           description: The integration ID for this entity sent to and used in the
@@ -8638,10 +9083,6 @@ components:
         length: 7.061401241503109
         weight: 5.962133916683182
         attributes: '{}'
-        adjustment:
-          pointPayment: 1
-          remainingPrice: 0.4145608029883936
-          payFromLoyaltyProgram: 3
         position: 9.301444243932576
         sku: sku
         category: category
@@ -8690,8 +9131,6 @@ components:
           properties: {}
           title: Item attributes
           type: object
-        adjustment:
-          $ref: '#/components/schemas/CartItemAdjustment'
       required:
       - name
       - price
@@ -8701,7 +9140,7 @@ components:
       x-attributable: true
     AdditionalCost:
       example:
-        price: 7.386281948385884
+        price: 3.616076749251911
       properties:
         price:
           title: Price of additional cost
@@ -8778,37 +9217,37 @@ components:
           referralRejectionReason:
             reason: ReferralNotFound
             campaignId: 6
-            referralId: 6
+            referralId: 1
           warnings: '{}'
           couponRejectionReason:
             reason: CouponNotFound
-            campaignId: 1
-            couponId: 2
+            campaignId: 6
+            couponId: 3
         ledgerEntries:
         - expiryDate: 2000-01-23T04:56:07.000+00:00
-          accountId: 8
+          accountId: 9
           eventId: 6
           reason: reason
-          amount: 3
+          amount: 8
           created: 2000-01-23T04:56:07.000+00:00
           profileId: profileId
           loyaltyProgramId: 9
-          id: 6
-          referenceId: 6
+          id: 5
+          referenceId: 9
         - expiryDate: 2000-01-23T04:56:07.000+00:00
-          accountId: 8
+          accountId: 9
           eventId: 6
           reason: reason
-          amount: 3
+          amount: 8
           created: 2000-01-23T04:56:07.000+00:00
           profileId: profileId
           loyaltyProgramId: 9
-          id: 6
-          referenceId: 6
+          id: 5
+          referenceId: 9
         attributes: '{}'
-        id: 9
+        id: 1
         sessionId: sessionId
-        applicationId: 9
+        applicationId: 4
         type: type
       properties:
         id:
@@ -8870,21 +9309,21 @@ components:
         coupon:
           recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         session:
           coupon: coupon
           created: 2000-01-23T04:56:07.000+00:00
@@ -8911,10 +9350,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -8926,41 +9361,45 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
             height: 5.637376656633329
           firstSession: true
         profile:
-          accountId: 6
-          closedSessions: 7
+          accountId: 1
+          closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
           attributes: '{}'
-          totalSales: 1.1730742509559433
+          totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         loyalty:
           programs:
             key:
               ledger:
-                currentBalance: 5.944895607614016
+                pendingBalance: 6.778324963048013
+                currentBalance: 2.8841621266687802
+                spentBalance: 5.944895607614016
+                tentativeCurrentBalance: 6.704019297950036
+                expiredBalance: 6.878052220127876
               subLedgers:
                 key:
-                  currentBalance: 5.944895607614016
+                  pendingBalance: 6.778324963048013
+                  currentBalance: 2.8841621266687802
+                  spentBalance: 5.944895607614016
+                  tentativeCurrentBalance: 6.704019297950036
+                  expiredBalance: 6.878052220127876
               name: name
               title: title
         event:
@@ -8975,37 +9414,37 @@ components:
             referralRejectionReason:
               reason: ReferralNotFound
               campaignId: 6
-              referralId: 6
+              referralId: 1
             warnings: '{}'
             couponRejectionReason:
               reason: CouponNotFound
-              campaignId: 1
-              couponId: 2
+              campaignId: 6
+              couponId: 3
           ledgerEntries:
           - expiryDate: 2000-01-23T04:56:07.000+00:00
-            accountId: 8
+            accountId: 9
             eventId: 6
             reason: reason
-            amount: 3
+            amount: 8
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             loyaltyProgramId: 9
-            id: 6
-            referenceId: 6
+            id: 5
+            referenceId: 9
           - expiryDate: 2000-01-23T04:56:07.000+00:00
-            accountId: 8
+            accountId: 9
             eventId: 6
             reason: reason
-            amount: 3
+            amount: 8
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             loyaltyProgramId: 9
-            id: 6
-            referenceId: 6
+            id: 5
+            referenceId: 9
           attributes: '{}'
-          id: 9
+          id: 1
           sessionId: sessionId
-          applicationId: 9
+          applicationId: 4
           type: type
       properties:
         session:
@@ -9028,15 +9467,15 @@ components:
         Contains all entities that might interest Talon.One integrations. This is the response type returned by the V2 PUT customer_session endpoint
       example:
         effects:
-        - rulesetId: 9
-          ruleIndex: 0
-          campaignId: 0
+        - rulesetId: 6
+          ruleIndex: 8
+          campaignId: 4
           ruleName: ruleName
           effectType: effectType
           props: '{}'
-        - rulesetId: 9
-          ruleIndex: 0
-          campaignId: 0
+        - rulesetId: 6
+          ruleIndex: 8
+          campaignId: 4
           ruleName: ruleName
           effectType: effectType
           props: '{}'
@@ -9047,53 +9486,57 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         triggeredCampaigns:
-        - discountCount: 4
+        - createdLoyaltyPointsEffectCount: 0
+          discountCount: 7.260521264802104
           description: description
           features:
           - coupons
           - coupons
           - coupons
+          createdLoyaltyPointsCount: 9.702963800023566
           couponSettings:
             couponPattern: couponPattern
             validCharacters:
             - validCharacters
             - validCharacters
           startTime: 2000-01-23T04:56:07.000+00:00
-          id: 7
+          id: 5
           state: enabled
           limits:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
-          activeRulesetId: 4
+            limit: 0.6628464275087742
+            action: action
+          activeRulesetId: 0
           updatedBy: updatedBy
           created: 2000-01-23T04:56:07.000+00:00
-          couponRedemptionCount: 4
-          userId: 3
-          couponCreationCount: 9
+          couponRedemptionCount: 1
+          userId: 4
+          couponCreationCount: 0
           campaignGroups:
-          - 6
-          - 6
+          - 4
+          - 4
           tags:
           - tags
           - tags
           - tags
           - tags
           - tags
-          discountEffectCount: 7
+          redeemedLoyaltyPointsEffectCount: 5
+          discountEffectCount: 9
           createdBy: createdBy
+          redeemedLoyaltyPointsCount: 7.933506881737151
           name: name
           referralSettings:
             couponPattern: couponPattern
@@ -9103,51 +9546,55 @@ components:
           attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
-          applicationId: 5
-          referralRedemptionCount: 1
+          applicationId: 3
+          referralRedemptionCount: 4
           updated: 2000-01-23T04:56:07.000+00:00
-        - discountCount: 4
+        - createdLoyaltyPointsEffectCount: 0
+          discountCount: 7.260521264802104
           description: description
           features:
           - coupons
           - coupons
           - coupons
+          createdLoyaltyPointsCount: 9.702963800023566
           couponSettings:
             couponPattern: couponPattern
             validCharacters:
             - validCharacters
             - validCharacters
           startTime: 2000-01-23T04:56:07.000+00:00
-          id: 7
+          id: 5
           state: enabled
           limits:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
-          activeRulesetId: 4
+            limit: 0.6628464275087742
+            action: action
+          activeRulesetId: 0
           updatedBy: updatedBy
           created: 2000-01-23T04:56:07.000+00:00
-          couponRedemptionCount: 4
-          userId: 3
-          couponCreationCount: 9
+          couponRedemptionCount: 1
+          userId: 4
+          couponCreationCount: 0
           campaignGroups:
-          - 6
-          - 6
+          - 4
+          - 4
           tags:
           - tags
           - tags
           - tags
           - tags
           - tags
-          discountEffectCount: 7
+          redeemedLoyaltyPointsEffectCount: 5
+          discountEffectCount: 9
           createdBy: createdBy
+          redeemedLoyaltyPointsCount: 7.933506881737151
           name: name
           referralSettings:
             couponPattern: couponPattern
@@ -9157,62 +9604,62 @@ components:
           attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
-          applicationId: 5
-          referralRedemptionCount: 1
+          applicationId: 3
+          referralRedemptionCount: 4
           updated: 2000-01-23T04:56:07.000+00:00
         coupons:
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         customerProfile:
-          accountId: 6
-          closedSessions: 7
+          accountId: 1
+          closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
           attributes: '{}'
-          totalSales: 1.1730742509559433
+          totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         customerSession:
           couponCodes:
           - couponCodes
@@ -9225,11 +9672,11 @@ components:
           - identifiers
           - identifiers
           integrationId: integrationId
-          total: 1.2315135367772556
+          total: 2.027123023002322
           additionalCosts:
             key:
-              price: 7.386281948385884
-          additionalCostTotal: 1.4894159098541704
+              price: 3.616076749251911
+          additionalCostTotal: 7.386281948385884
           profileId: profileId
           referralCode: referralCode
           attributes: '{}'
@@ -9243,10 +9690,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -9258,24 +9701,28 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
             height: 5.637376656633329
           firstSession: true
-          cartItemTotal: 1.0246457001441578
+          cartItemTotal: 4.145608029883936
         loyalty:
           programs:
             key:
               ledger:
-                currentBalance: 5.944895607614016
+                pendingBalance: 6.778324963048013
+                currentBalance: 2.8841621266687802
+                spentBalance: 5.944895607614016
+                tentativeCurrentBalance: 6.704019297950036
+                expiredBalance: 6.878052220127876
               subLedgers:
                 key:
-                  currentBalance: 5.944895607614016
+                  pendingBalance: 6.778324963048013
+                  currentBalance: 2.8841621266687802
+                  spentBalance: 5.944895607614016
+                  tentativeCurrentBalance: 6.704019297950036
+                  expiredBalance: 6.878052220127876
               name: name
               title: title
         event:
@@ -9290,73 +9737,73 @@ components:
             referralRejectionReason:
               reason: ReferralNotFound
               campaignId: 6
-              referralId: 6
+              referralId: 1
             warnings: '{}'
             couponRejectionReason:
               reason: CouponNotFound
-              campaignId: 1
-              couponId: 2
+              campaignId: 6
+              couponId: 3
           ledgerEntries:
           - expiryDate: 2000-01-23T04:56:07.000+00:00
-            accountId: 8
+            accountId: 9
             eventId: 6
             reason: reason
-            amount: 3
+            amount: 8
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             loyaltyProgramId: 9
-            id: 6
-            referenceId: 6
+            id: 5
+            referenceId: 9
           - expiryDate: 2000-01-23T04:56:07.000+00:00
-            accountId: 8
+            accountId: 9
             eventId: 6
             reason: reason
-            amount: 3
+            amount: 8
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             loyaltyProgramId: 9
-            id: 6
-            referenceId: 6
+            id: 5
+            referenceId: 9
           attributes: '{}'
-          id: 9
+          id: 1
           sessionId: sessionId
-          applicationId: 9
+          applicationId: 4
           type: type
         createdCoupons:
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         createdReferrals:
         - expiryDate: 2000-01-23T04:56:07.000+00:00
           code: code
@@ -9364,8 +9811,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -9374,8 +9821,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9427,14 +9874,14 @@ components:
         id: 6
         loyaltyMemberships:
         - joined: 2000-01-23T04:56:07.000+00:00
-          loyaltyProgramId: 4
+          loyaltyProgramId: 6
         - joined: 2000-01-23T04:56:07.000+00:00
-          loyaltyProgramId: 4
+          loyaltyProgramId: 6
         audienceMemberships:
         - name: name
-          id: 5
+          id: 7
         - name: name
-          id: 5
+          id: 7
       properties:
         id:
           description: Unique ID for this entity.
@@ -9518,10 +9965,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -9533,10 +9976,6 @@ components:
           length: 7.061401241503109
           weight: 5.962133916683182
           attributes: '{}'
-          adjustment:
-            pointPayment: 1
-            remainingPrice: 0.4145608029883936
-            payFromLoyaltyProgram: 3
           position: 9.301444243932576
           sku: sku
           category: category
@@ -10600,6 +11039,7 @@ components:
           description: The IDs of the applications that are related to this entity.
           items:
             type: integer
+          minItems: 1
           type: array
         title:
           description: The human-friendly display name for this event type. Use a
@@ -10688,6 +11128,7 @@ components:
           description: The IDs of the applications that are related to this entity.
           items:
             type: integer
+          minItems: 1
           type: array
         title:
           description: The human-friendly display name for this event type. Use a
@@ -10749,13 +11190,6 @@ components:
       - title
       - version
       type: object
-    ImportCoupons:
-      properties:
-        coupons:
-          type: string
-      required:
-      - coupons
-      type: object
     NewWebhook:
       description: ""
       properties:
@@ -10763,6 +11197,7 @@ components:
           description: The IDs of the applications that are related to this entity.
           items:
             type: integer
+          minItems: 1
           type: array
         title:
           description: Friendly title for this webhook
@@ -10850,6 +11285,7 @@ components:
           items:
             description: ""
             type: integer
+          minItems: 1
           type: array
         title:
           description: Friendly title for this webhook
@@ -10927,6 +11363,13 @@ components:
       type: object
     Audience:
       description: ""
+      example:
+        accountId: 6
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        integration: mparticle
+        integrationId: integrationId
+        id: 1
       properties:
         accountId:
           description: The ID of the account that owns this entity.
@@ -11009,26 +11452,8 @@ components:
       - id
       - userId
       type: object
-    NewImport:
-      description: ""
-      properties:
-        entity:
-          description: The name of the entity that was imported.
-          enum:
-          - Coupon
-          type: string
-      required:
-      - entity
-      type: object
     Import:
       description: ""
-      example:
-        accountId: 1
-        amount: 0
-        created: 2000-01-23T04:56:07.000+00:00
-        id: 6
-        userId: 5
-        entity: Coupon
       properties:
         id:
           description: Unique ID for this entity.
@@ -11044,9 +11469,8 @@ components:
           description: The ID of the account that owns this entity.
           type: integer
         entity:
-          description: The name of the entity that was imported.
-          enum:
-          - Coupon
+          description: The name of the entity that was imported. Possible values are
+            Coupons and LoyaltyPoints.
           type: string
         amount:
           description: The number of members that imported.
@@ -11254,15 +11678,15 @@ components:
       description: ""
       example:
         expiryDate: 2000-01-23T04:56:07.000+00:00
-        accountId: 8
+        accountId: 9
         eventId: 6
         reason: reason
-        amount: 3
+        amount: 8
         created: 2000-01-23T04:56:07.000+00:00
         profileId: profileId
         loyaltyProgramId: 9
-        id: 6
-        referenceId: 6
+        id: 5
+        referenceId: 9
       properties:
         id:
           description: Unique ID for this entity.
@@ -11312,7 +11736,7 @@ components:
     LoyaltyMembership:
       example:
         joined: 2000-01-23T04:56:07.000+00:00
-        loyaltyProgramId: 4
+        loyaltyProgramId: 6
       properties:
         joined:
           description: The moment in which the loyalty program was joined.
@@ -11326,31 +11750,6 @@ components:
       required:
       - loyaltyProgramId
       type: object
-    CartItemAdjustment:
-      example:
-        pointPayment: 1
-        remainingPrice: 0.4145608029883936
-        payFromLoyaltyProgram: 3
-      properties:
-        payFromLoyaltyProgram:
-          description: Loyalty Program to be used for payment
-          title: Payment from this Loyalty Program
-          type: integer
-        pointPayment:
-          description: Amount of points to be spend
-          minimum: 1
-          title: Points to be spend
-          type: integer
-        remainingPrice:
-          description: Remaining price in currency after payment in points has been
-            made
-          minimum: 0
-          title: Remaining Price
-          type: number
-      required:
-      - payFromLoyaltyProgram
-      - pointPayment
-      type: object
     Meta:
       example:
         campaigns: '{}'
@@ -11358,12 +11757,12 @@ components:
         referralRejectionReason:
           reason: ReferralNotFound
           campaignId: 6
-          referralId: 6
+          referralId: 1
         warnings: '{}'
         couponRejectionReason:
           reason: CouponNotFound
-          campaignId: 1
-          couponId: 2
+          campaignId: 6
+          couponId: 3
       properties:
         campaigns:
           description: Maps each evaluated campaign ID to a key-value list of that
@@ -11389,8 +11788,8 @@ components:
         effect.
       example:
         reason: CouponNotFound
-        campaignId: 1
-        couponId: 2
+        campaignId: 6
+        couponId: 3
       properties:
         campaignId:
           type: integer
@@ -11421,7 +11820,7 @@ components:
       example:
         reason: ReferralNotFound
         campaignId: 6
-        referralId: 6
+        referralId: 1
       properties:
         campaignId:
           type: integer
@@ -11463,6 +11862,7 @@ components:
           - segment
           - braze
           - mparticle
+          - selligent
           type: string
         id:
           description: ID of the API Key
@@ -11506,6 +11906,7 @@ components:
           - segment
           - braze
           - mparticle
+          - selligent
           type: string
         id:
           description: ID of the API Key
@@ -11552,6 +11953,7 @@ components:
           - segment
           - braze
           - mparticle
+          - selligent
           type: string
       required:
       - expires
@@ -11750,9 +12152,9 @@ components:
     Effect:
       description: ""
       example:
-        rulesetId: 9
-        ruleIndex: 0
-        campaignId: 0
+        rulesetId: 6
+        ruleIndex: 8
+        campaignId: 4
         ruleName: ruleName
         effectType: effectType
         props: '{}'
@@ -11998,11 +12400,15 @@ components:
           description: Date after which points will expire
           format: date-time
           type: string
+        transactionUUID:
+          description: The identifier of this addition in the loyalty ledger
+          type: string
       required:
       - name
       - programId
       - recipientIntegrationId
       - subLedgerId
+      - transactionUUID
       - value
       type: object
     DeductLoyaltyPointsEffectProps:
@@ -12025,10 +12431,14 @@ components:
         value:
           description: The amount of points that were deducted
           type: number
+        transactionUUID:
+          description: The identifier of this deduction in the loyalty ledger
+          type: string
       required:
       - programId
       - ruleTitle
       - subLedgerId
+      - transactionUUID
       - value
       type: object
     AddFreeItemEffectProps:
@@ -12105,6 +12515,63 @@ components:
       - name
       - value
       type: object
+    RollbackAddedLoyaltyPointsEffectProps:
+      description: The properties specific to the "rollbackAddedLoyaltyPoints" effect.
+        This gets triggered whenever previously a closed session with an addLoyaltyPoints
+        effect is cancelled.
+      properties:
+        programId:
+          description: The ID of the loyalty program where the points were originally
+            added
+          type: integer
+        subLedgerId:
+          description: The ID of the subledger within the loyalty program where these
+            points were originally added
+          type: string
+        value:
+          description: The amount of points that were rolled back
+          type: number
+        recipientIntegrationId:
+          description: The user for whom these points were originally added
+          type: string
+      required:
+      - programId
+      - recipientIntegrationId
+      - subLedgerId
+      - value
+      type: object
+    RollbackDeductedLoyaltyPointsEffectProps:
+      description: The properties specific to the "rollbackDeductedLoyaltyPoints"
+        effect. This effect is triggered whenever a previously closed session is cancelled
+        and a deductLoyaltyPoints effect was revoked.
+      properties:
+        programId:
+          description: The ID of the loyalty program where these points were reimbursed
+          type: integer
+        subLedgerId:
+          description: The ID of the subledger within the loyalty program where these
+            points were reimbursed
+          type: string
+        value:
+          description: The amount of reimbursed points that were added
+          type: number
+        recipientIntegrationId:
+          description: The user for whom these points were reimbursed
+          type: string
+        startDate:
+          description: Date after which the reimbursed points will be valid
+          format: date-time
+          type: string
+        expiryDate:
+          description: Date after which the reimbursed points will expire
+          format: date-time
+          type: string
+      required:
+      - programId
+      - recipientIntegrationId
+      - subLedgerId
+      - value
+      type: object
     ShowBundleMetadataEffectProps:
       description: The properties specific to the "ShowBundleMetadata" effect. This
         effect contains information that allows you to associate the discounts from
@@ -12151,7 +12618,7 @@ components:
           - couponCodes
           additionalCosts:
             key:
-              price: 7.386281948385884
+              price: 3.616076749251911
           profileId: profileId
           identifiers:
           - identifiers
@@ -12170,10 +12637,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -12185,10 +12648,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -12220,6 +12679,13 @@ components:
       description: ""
       example:
         attributes: '{}'
+        audiencesChanges:
+          deletes:
+          - 6
+          - 6
+          adds:
+          - 0
+          - 0
         responseContent:
         - customerProfile
         - customerProfile
@@ -12228,6 +12694,8 @@ components:
           description: Arbitrary properties associated with this item
           properties: {}
           type: object
+        audiencesChanges:
+          $ref: '#/components/schemas/ProfileAudiencesChanges'
         responseContent:
           description: |
             Optional list of requested information to be present on the response related to the customer profile update. Currently supported: "customerProfile", "triggeredCampaigns", "loyalty" and "event".
@@ -12240,10 +12708,35 @@ components:
             type: string
           type: array
       type: object
+    ProfileAudiencesChanges:
+      example:
+        deletes:
+        - 6
+        - 6
+        adds:
+        - 0
+        - 0
+      properties:
+        adds:
+          description: The IDs of the audiences for the customer to join.
+          items:
+            type: integer
+          title: Audiences to join
+          type: array
+        deletes:
+          description: The IDs of the audiences for the customer to leave.
+          items:
+            type: integer
+          title: Audiences to leave
+          type: array
+      required:
+      - adds
+      - deletes
+      type: object
     AudienceMembership:
       example:
         name: name
-        id: 5
+        id: 7
       properties:
         id:
           description: The ID of the audience belonging to this entity.
@@ -12291,15 +12784,15 @@ components:
       example:
         integrationStates:
         - effects:
-          - rulesetId: 9
-            ruleIndex: 0
-            campaignId: 0
+          - rulesetId: 6
+            ruleIndex: 8
+            campaignId: 4
             ruleName: ruleName
             effectType: effectType
             props: '{}'
-          - rulesetId: 9
-            ruleIndex: 0
-            campaignId: 0
+          - rulesetId: 6
+            ruleIndex: 8
+            campaignId: 4
             ruleName: ruleName
             effectType: effectType
             props: '{}'
@@ -12310,53 +12803,57 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
           triggeredCampaigns:
-          - discountCount: 4
+          - createdLoyaltyPointsEffectCount: 0
+            discountCount: 7.260521264802104
             description: description
             features:
             - coupons
             - coupons
             - coupons
+            createdLoyaltyPointsCount: 9.702963800023566
             couponSettings:
               couponPattern: couponPattern
               validCharacters:
               - validCharacters
               - validCharacters
             startTime: 2000-01-23T04:56:07.000+00:00
-            id: 7
+            id: 5
             state: enabled
             limits:
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
+              limit: 0.6628464275087742
+              action: action
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
-            activeRulesetId: 4
+              limit: 0.6628464275087742
+              action: action
+            activeRulesetId: 0
             updatedBy: updatedBy
             created: 2000-01-23T04:56:07.000+00:00
-            couponRedemptionCount: 4
-            userId: 3
-            couponCreationCount: 9
+            couponRedemptionCount: 1
+            userId: 4
+            couponCreationCount: 0
             campaignGroups:
-            - 6
-            - 6
+            - 4
+            - 4
             tags:
             - tags
             - tags
             - tags
             - tags
             - tags
-            discountEffectCount: 7
+            redeemedLoyaltyPointsEffectCount: 5
+            discountEffectCount: 9
             createdBy: createdBy
+            redeemedLoyaltyPointsCount: 7.933506881737151
             name: name
             referralSettings:
               couponPattern: couponPattern
@@ -12366,51 +12863,55 @@ components:
             attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
-            applicationId: 5
-            referralRedemptionCount: 1
+            applicationId: 3
+            referralRedemptionCount: 4
             updated: 2000-01-23T04:56:07.000+00:00
-          - discountCount: 4
+          - createdLoyaltyPointsEffectCount: 0
+            discountCount: 7.260521264802104
             description: description
             features:
             - coupons
             - coupons
             - coupons
+            createdLoyaltyPointsCount: 9.702963800023566
             couponSettings:
               couponPattern: couponPattern
               validCharacters:
               - validCharacters
               - validCharacters
             startTime: 2000-01-23T04:56:07.000+00:00
-            id: 7
+            id: 5
             state: enabled
             limits:
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
+              limit: 0.6628464275087742
+              action: action
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
-            activeRulesetId: 4
+              limit: 0.6628464275087742
+              action: action
+            activeRulesetId: 0
             updatedBy: updatedBy
             created: 2000-01-23T04:56:07.000+00:00
-            couponRedemptionCount: 4
-            userId: 3
-            couponCreationCount: 9
+            couponRedemptionCount: 1
+            userId: 4
+            couponCreationCount: 0
             campaignGroups:
-            - 6
-            - 6
+            - 4
+            - 4
             tags:
             - tags
             - tags
             - tags
             - tags
             - tags
-            discountEffectCount: 7
+            redeemedLoyaltyPointsEffectCount: 5
+            discountEffectCount: 9
             createdBy: createdBy
+            redeemedLoyaltyPointsCount: 7.933506881737151
             name: name
             referralSettings:
               couponPattern: couponPattern
@@ -12420,62 +12921,62 @@ components:
             attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
-            applicationId: 5
-            referralRedemptionCount: 1
+            applicationId: 3
+            referralRedemptionCount: 4
             updated: 2000-01-23T04:56:07.000+00:00
           coupons:
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           customerProfile:
-            accountId: 6
-            closedSessions: 7
+            accountId: 1
+            closedSessions: 1
             created: 2000-01-23T04:56:07.000+00:00
             integrationId: integrationId
             attributes: '{}'
-            totalSales: 1.1730742509559433
+            totalSales: 1.4894159098541704
             lastActivity: 2000-01-23T04:56:07.000+00:00
             loyaltyMemberships:
             - joined: 2000-01-23T04:56:07.000+00:00
-              loyaltyProgramId: 4
+              loyaltyProgramId: 6
             - joined: 2000-01-23T04:56:07.000+00:00
-              loyaltyProgramId: 4
+              loyaltyProgramId: 6
             audienceMemberships:
             - name: name
-              id: 5
+              id: 7
             - name: name
-              id: 5
+              id: 7
           customerSession:
             couponCodes:
             - couponCodes
@@ -12488,11 +12989,11 @@ components:
             - identifiers
             - identifiers
             integrationId: integrationId
-            total: 1.2315135367772556
+            total: 2.027123023002322
             additionalCosts:
               key:
-                price: 7.386281948385884
-            additionalCostTotal: 1.4894159098541704
+                price: 3.616076749251911
+            additionalCostTotal: 7.386281948385884
             profileId: profileId
             referralCode: referralCode
             attributes: '{}'
@@ -12506,10 +13007,6 @@ components:
               length: 7.061401241503109
               weight: 5.962133916683182
               attributes: '{}'
-              adjustment:
-                pointPayment: 1
-                remainingPrice: 0.4145608029883936
-                payFromLoyaltyProgram: 3
               position: 9.301444243932576
               sku: sku
               category: category
@@ -12521,24 +13018,28 @@ components:
               length: 7.061401241503109
               weight: 5.962133916683182
               attributes: '{}'
-              adjustment:
-                pointPayment: 1
-                remainingPrice: 0.4145608029883936
-                payFromLoyaltyProgram: 3
               position: 9.301444243932576
               sku: sku
               category: category
               height: 5.637376656633329
             firstSession: true
-            cartItemTotal: 1.0246457001441578
+            cartItemTotal: 4.145608029883936
           loyalty:
             programs:
               key:
                 ledger:
-                  currentBalance: 5.944895607614016
+                  pendingBalance: 6.778324963048013
+                  currentBalance: 2.8841621266687802
+                  spentBalance: 5.944895607614016
+                  tentativeCurrentBalance: 6.704019297950036
+                  expiredBalance: 6.878052220127876
                 subLedgers:
                   key:
-                    currentBalance: 5.944895607614016
+                    pendingBalance: 6.778324963048013
+                    currentBalance: 2.8841621266687802
+                    spentBalance: 5.944895607614016
+                    tentativeCurrentBalance: 6.704019297950036
+                    expiredBalance: 6.878052220127876
                 name: name
                 title: title
           event:
@@ -12553,73 +13054,73 @@ components:
               referralRejectionReason:
                 reason: ReferralNotFound
                 campaignId: 6
-                referralId: 6
+                referralId: 1
               warnings: '{}'
               couponRejectionReason:
                 reason: CouponNotFound
-                campaignId: 1
-                couponId: 2
+                campaignId: 6
+                couponId: 3
             ledgerEntries:
             - expiryDate: 2000-01-23T04:56:07.000+00:00
-              accountId: 8
+              accountId: 9
               eventId: 6
               reason: reason
-              amount: 3
+              amount: 8
               created: 2000-01-23T04:56:07.000+00:00
               profileId: profileId
               loyaltyProgramId: 9
-              id: 6
-              referenceId: 6
+              id: 5
+              referenceId: 9
             - expiryDate: 2000-01-23T04:56:07.000+00:00
-              accountId: 8
+              accountId: 9
               eventId: 6
               reason: reason
-              amount: 3
+              amount: 8
               created: 2000-01-23T04:56:07.000+00:00
               profileId: profileId
               loyaltyProgramId: 9
-              id: 6
-              referenceId: 6
+              id: 5
+              referenceId: 9
             attributes: '{}'
-            id: 9
+            id: 1
             sessionId: sessionId
-            applicationId: 9
+            applicationId: 4
             type: type
           createdCoupons:
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           createdReferrals:
           - expiryDate: 2000-01-23T04:56:07.000+00:00
             code: code
@@ -12627,8 +13128,8 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
           - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -12637,20 +13138,20 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
         - effects:
-          - rulesetId: 9
-            ruleIndex: 0
-            campaignId: 0
+          - rulesetId: 6
+            ruleIndex: 8
+            campaignId: 4
             ruleName: ruleName
             effectType: effectType
             props: '{}'
-          - rulesetId: 9
-            ruleIndex: 0
-            campaignId: 0
+          - rulesetId: 6
+            ruleIndex: 8
+            campaignId: 4
             ruleName: ruleName
             effectType: effectType
             props: '{}'
@@ -12661,53 +13162,57 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
           triggeredCampaigns:
-          - discountCount: 4
+          - createdLoyaltyPointsEffectCount: 0
+            discountCount: 7.260521264802104
             description: description
             features:
             - coupons
             - coupons
             - coupons
+            createdLoyaltyPointsCount: 9.702963800023566
             couponSettings:
               couponPattern: couponPattern
               validCharacters:
               - validCharacters
               - validCharacters
             startTime: 2000-01-23T04:56:07.000+00:00
-            id: 7
+            id: 5
             state: enabled
             limits:
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
+              limit: 0.6628464275087742
+              action: action
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
-            activeRulesetId: 4
+              limit: 0.6628464275087742
+              action: action
+            activeRulesetId: 0
             updatedBy: updatedBy
             created: 2000-01-23T04:56:07.000+00:00
-            couponRedemptionCount: 4
-            userId: 3
-            couponCreationCount: 9
+            couponRedemptionCount: 1
+            userId: 4
+            couponCreationCount: 0
             campaignGroups:
-            - 6
-            - 6
+            - 4
+            - 4
             tags:
             - tags
             - tags
             - tags
             - tags
             - tags
-            discountEffectCount: 7
+            redeemedLoyaltyPointsEffectCount: 5
+            discountEffectCount: 9
             createdBy: createdBy
+            redeemedLoyaltyPointsCount: 7.933506881737151
             name: name
             referralSettings:
               couponPattern: couponPattern
@@ -12717,51 +13222,55 @@ components:
             attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
-            applicationId: 5
-            referralRedemptionCount: 1
+            applicationId: 3
+            referralRedemptionCount: 4
             updated: 2000-01-23T04:56:07.000+00:00
-          - discountCount: 4
+          - createdLoyaltyPointsEffectCount: 0
+            discountCount: 7.260521264802104
             description: description
             features:
             - coupons
             - coupons
             - coupons
+            createdLoyaltyPointsCount: 9.702963800023566
             couponSettings:
               couponPattern: couponPattern
               validCharacters:
               - validCharacters
               - validCharacters
             startTime: 2000-01-23T04:56:07.000+00:00
-            id: 7
+            id: 5
             state: enabled
             limits:
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
+              limit: 0.6628464275087742
+              action: action
             - entities:
               - Coupon
               - Coupon
-              limit: 0.02025324113236393
-              action: redeemCoupon
-            activeRulesetId: 4
+              limit: 0.6628464275087742
+              action: action
+            activeRulesetId: 0
             updatedBy: updatedBy
             created: 2000-01-23T04:56:07.000+00:00
-            couponRedemptionCount: 4
-            userId: 3
-            couponCreationCount: 9
+            couponRedemptionCount: 1
+            userId: 4
+            couponCreationCount: 0
             campaignGroups:
-            - 6
-            - 6
+            - 4
+            - 4
             tags:
             - tags
             - tags
             - tags
             - tags
             - tags
-            discountEffectCount: 7
+            redeemedLoyaltyPointsEffectCount: 5
+            discountEffectCount: 9
             createdBy: createdBy
+            redeemedLoyaltyPointsCount: 7.933506881737151
             name: name
             referralSettings:
               couponPattern: couponPattern
@@ -12771,62 +13280,62 @@ components:
             attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
-            applicationId: 5
-            referralRedemptionCount: 1
+            applicationId: 3
+            referralRedemptionCount: 4
             updated: 2000-01-23T04:56:07.000+00:00
           coupons:
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           customerProfile:
-            accountId: 6
-            closedSessions: 7
+            accountId: 1
+            closedSessions: 1
             created: 2000-01-23T04:56:07.000+00:00
             integrationId: integrationId
             attributes: '{}'
-            totalSales: 1.1730742509559433
+            totalSales: 1.4894159098541704
             lastActivity: 2000-01-23T04:56:07.000+00:00
             loyaltyMemberships:
             - joined: 2000-01-23T04:56:07.000+00:00
-              loyaltyProgramId: 4
+              loyaltyProgramId: 6
             - joined: 2000-01-23T04:56:07.000+00:00
-              loyaltyProgramId: 4
+              loyaltyProgramId: 6
             audienceMemberships:
             - name: name
-              id: 5
+              id: 7
             - name: name
-              id: 5
+              id: 7
           customerSession:
             couponCodes:
             - couponCodes
@@ -12839,11 +13348,11 @@ components:
             - identifiers
             - identifiers
             integrationId: integrationId
-            total: 1.2315135367772556
+            total: 2.027123023002322
             additionalCosts:
               key:
-                price: 7.386281948385884
-            additionalCostTotal: 1.4894159098541704
+                price: 3.616076749251911
+            additionalCostTotal: 7.386281948385884
             profileId: profileId
             referralCode: referralCode
             attributes: '{}'
@@ -12857,10 +13366,6 @@ components:
               length: 7.061401241503109
               weight: 5.962133916683182
               attributes: '{}'
-              adjustment:
-                pointPayment: 1
-                remainingPrice: 0.4145608029883936
-                payFromLoyaltyProgram: 3
               position: 9.301444243932576
               sku: sku
               category: category
@@ -12872,24 +13377,28 @@ components:
               length: 7.061401241503109
               weight: 5.962133916683182
               attributes: '{}'
-              adjustment:
-                pointPayment: 1
-                remainingPrice: 0.4145608029883936
-                payFromLoyaltyProgram: 3
               position: 9.301444243932576
               sku: sku
               category: category
               height: 5.637376656633329
             firstSession: true
-            cartItemTotal: 1.0246457001441578
+            cartItemTotal: 4.145608029883936
           loyalty:
             programs:
               key:
                 ledger:
-                  currentBalance: 5.944895607614016
+                  pendingBalance: 6.778324963048013
+                  currentBalance: 2.8841621266687802
+                  spentBalance: 5.944895607614016
+                  tentativeCurrentBalance: 6.704019297950036
+                  expiredBalance: 6.878052220127876
                 subLedgers:
                   key:
-                    currentBalance: 5.944895607614016
+                    pendingBalance: 6.778324963048013
+                    currentBalance: 2.8841621266687802
+                    spentBalance: 5.944895607614016
+                    tentativeCurrentBalance: 6.704019297950036
+                    expiredBalance: 6.878052220127876
                 name: name
                 title: title
           event:
@@ -12904,73 +13413,73 @@ components:
               referralRejectionReason:
                 reason: ReferralNotFound
                 campaignId: 6
-                referralId: 6
+                referralId: 1
               warnings: '{}'
               couponRejectionReason:
                 reason: CouponNotFound
-                campaignId: 1
-                couponId: 2
+                campaignId: 6
+                couponId: 3
             ledgerEntries:
             - expiryDate: 2000-01-23T04:56:07.000+00:00
-              accountId: 8
+              accountId: 9
               eventId: 6
               reason: reason
-              amount: 3
+              amount: 8
               created: 2000-01-23T04:56:07.000+00:00
               profileId: profileId
               loyaltyProgramId: 9
-              id: 6
-              referenceId: 6
+              id: 5
+              referenceId: 9
             - expiryDate: 2000-01-23T04:56:07.000+00:00
-              accountId: 8
+              accountId: 9
               eventId: 6
               reason: reason
-              amount: 3
+              amount: 8
               created: 2000-01-23T04:56:07.000+00:00
               profileId: profileId
               loyaltyProgramId: 9
-              id: 6
-              referenceId: 6
+              id: 5
+              referenceId: 9
             attributes: '{}'
-            id: 9
+            id: 1
             sessionId: sessionId
-            applicationId: 9
+            applicationId: 4
             type: type
           createdCoupons:
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           - recipientIntegrationId: recipientIntegrationId
             created: 2000-01-23T04:56:07.000+00:00
-            campaignId: 7
-            usageLimit: 651917
+            campaignId: 6
+            usageLimit: 10263
             referralId: 3
-            usageCounter: 4
+            usageCounter: 8
             batchId: batchId
-            discountCounter: 8.969578798196912
+            discountCounter: 7.740351818741173
             expiryDate: 2000-01-23T04:56:07.000+00:00
-            importId: 3
+            importId: 7
             reservation: true
             attributes: '{}'
-            id: 0
+            id: 7
             value: value
-            discountLimit: 10263.643742455395
+            discountLimit: 465239.1780536813
             startDate: 2000-01-23T04:56:07.000+00:00
-            discountRemainder: 7.740351818741173
+            discountRemainder: 3.0205796992916243
           createdReferrals:
           - expiryDate: 2000-01-23T04:56:07.000+00:00
             code: code
@@ -12978,8 +13487,8 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
           - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -12988,8 +13497,8 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             campaignId: 3
             usageLimit: 0
-            id: 6
-            usageCounter: 3
+            id: 3
+            usageCounter: 7
             advocateProfileIntegrationId: advocateProfileIntegrationId
             startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -13099,40 +13608,40 @@ components:
     inline_response_200:
       example:
         data:
-        - accountId: 6
-          closedSessions: 7
+        - accountId: 1
+          closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
           attributes: '{}'
-          totalSales: 1.1730742509559433
+          totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
-        - accountId: 6
-          closedSessions: 7
+            id: 7
+        - accountId: 1
+          closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
           attributes: '{}'
-          totalSales: 1.1730742509559433
+          totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         totalResultSize: 0
       properties:
         totalResultSize:
@@ -13190,6 +13699,7 @@ components:
           name: name
           exclusiveCampaignsStrategy: listOrder
           modified: 2000-01-23T04:56:07.000+00:00
+          defaultDiscountScope: sessionTotal
           currency: currency
           attributes: '{}'
           id: 6
@@ -13197,13 +13707,13 @@ components:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
         - enableFlattenedCartItems: true
           created: 2000-01-23T04:56:07.000+00:00
           timezone: timezone
@@ -13247,6 +13757,7 @@ components:
           name: name
           exclusiveCampaignsStrategy: listOrder
           modified: 2000-01-23T04:56:07.000+00:00
+          defaultDiscountScope: sessionTotal
           currency: currency
           attributes: '{}'
           id: 6
@@ -13254,13 +13765,13 @@ components:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
         totalResultSize: 0
       properties:
         totalResultSize:
@@ -13275,48 +13786,52 @@ components:
     inline_response_200_2:
       example:
         data:
-        - discountCount: 4
+        - createdLoyaltyPointsEffectCount: 0
+          discountCount: 7.260521264802104
           description: description
           features:
           - coupons
           - coupons
           - coupons
+          createdLoyaltyPointsCount: 9.702963800023566
           couponSettings:
             couponPattern: couponPattern
             validCharacters:
             - validCharacters
             - validCharacters
           startTime: 2000-01-23T04:56:07.000+00:00
-          id: 7
+          id: 5
           state: enabled
           limits:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
-          activeRulesetId: 4
+            limit: 0.6628464275087742
+            action: action
+          activeRulesetId: 0
           updatedBy: updatedBy
           created: 2000-01-23T04:56:07.000+00:00
-          couponRedemptionCount: 4
-          userId: 3
-          couponCreationCount: 9
+          couponRedemptionCount: 1
+          userId: 4
+          couponCreationCount: 0
           campaignGroups:
-          - 6
-          - 6
+          - 4
+          - 4
           tags:
           - tags
           - tags
           - tags
           - tags
           - tags
-          discountEffectCount: 7
+          redeemedLoyaltyPointsEffectCount: 5
+          discountEffectCount: 9
           createdBy: createdBy
+          redeemedLoyaltyPointsCount: 7.933506881737151
           name: name
           referralSettings:
             couponPattern: couponPattern
@@ -13326,51 +13841,55 @@ components:
           attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
-          applicationId: 5
-          referralRedemptionCount: 1
+          applicationId: 3
+          referralRedemptionCount: 4
           updated: 2000-01-23T04:56:07.000+00:00
-        - discountCount: 4
+        - createdLoyaltyPointsEffectCount: 0
+          discountCount: 7.260521264802104
           description: description
           features:
           - coupons
           - coupons
           - coupons
+          createdLoyaltyPointsCount: 9.702963800023566
           couponSettings:
             couponPattern: couponPattern
             validCharacters:
             - validCharacters
             - validCharacters
           startTime: 2000-01-23T04:56:07.000+00:00
-          id: 7
+          id: 5
           state: enabled
           limits:
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
+            limit: 0.6628464275087742
+            action: action
           - entities:
             - Coupon
             - Coupon
-            limit: 0.02025324113236393
-            action: redeemCoupon
-          activeRulesetId: 4
+            limit: 0.6628464275087742
+            action: action
+          activeRulesetId: 0
           updatedBy: updatedBy
           created: 2000-01-23T04:56:07.000+00:00
-          couponRedemptionCount: 4
-          userId: 3
-          couponCreationCount: 9
+          couponRedemptionCount: 1
+          userId: 4
+          couponCreationCount: 0
           campaignGroups:
-          - 6
-          - 6
+          - 4
+          - 4
           tags:
           - tags
           - tags
           - tags
           - tags
           - tags
-          discountEffectCount: 7
+          redeemedLoyaltyPointsEffectCount: 5
+          discountEffectCount: 9
           createdBy: createdBy
+          redeemedLoyaltyPointsCount: 7.933506881737151
           name: name
           referralSettings:
             couponPattern: couponPattern
@@ -13380,8 +13899,8 @@ components:
           attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
-          applicationId: 5
-          referralRedemptionCount: 1
+          applicationId: 3
+          referralRedemptionCount: 4
           updated: 2000-01-23T04:56:07.000+00:00
         totalResultSize: 0
       properties:
@@ -13515,38 +14034,38 @@ components:
         data:
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         totalResultSize: 0
       properties:
         totalResultSize:
@@ -13563,38 +14082,38 @@ components:
         data:
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         - recipientIntegrationId: recipientIntegrationId
           created: 2000-01-23T04:56:07.000+00:00
-          campaignId: 7
-          usageLimit: 651917
+          campaignId: 6
+          usageLimit: 10263
           referralId: 3
-          usageCounter: 4
+          usageCounter: 8
           batchId: batchId
-          discountCounter: 8.969578798196912
+          discountCounter: 7.740351818741173
           expiryDate: 2000-01-23T04:56:07.000+00:00
-          importId: 3
+          importId: 7
           reservation: true
           attributes: '{}'
-          id: 0
+          id: 7
           value: value
-          discountLimit: 10263.643742455395
+          discountLimit: 465239.1780536813
           startDate: 2000-01-23T04:56:07.000+00:00
-          discountRemainder: 7.740351818741173
+          discountRemainder: 3.0205796992916243
         hasMore: true
       properties:
         hasMore:
@@ -13615,8 +14134,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -13625,8 +14144,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         totalResultSize: 0
@@ -13649,8 +14168,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         - expiryDate: 2000-01-23T04:56:07.000+00:00
@@ -13659,8 +14178,8 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           campaignId: 3
           usageLimit: 0
-          id: 6
-          usageCounter: 3
+          id: 3
+          usageCounter: 7
           advocateProfileIntegrationId: advocateProfileIntegrationId
           startDate: 2000-01-23T04:56:07.000+00:00
         hasMore: true
@@ -13843,14 +14362,14 @@ components:
           id: 6
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         - accountId: 1
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
@@ -13861,14 +14380,14 @@ components:
           id: 6
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         hasMore: true
         totalResultSize: 0
       properties:
@@ -13895,14 +14414,14 @@ components:
           id: 6
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         - accountId: 1
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
@@ -13913,14 +14432,14 @@ components:
           id: 6
           loyaltyMemberships:
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           - joined: 2000-01-23T04:56:07.000+00:00
-            loyaltyProgramId: 4
+            loyaltyProgramId: 6
           audienceMemberships:
           - name: name
-            id: 5
+            id: 7
           - name: name
-            id: 5
+            id: 7
         hasMore: true
       properties:
         hasMore:
@@ -14036,10 +14555,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -14051,10 +14566,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -14080,10 +14591,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -14095,10 +14602,6 @@ components:
             length: 7.061401241503109
             weight: 5.962133916683182
             attributes: '{}'
-            adjustment:
-              pointPayment: 1
-              remainingPrice: 0.4145608029883936
-              payFromLoyaltyProgram: 3
             position: 9.301444243932576
             sku: sku
             category: category
@@ -14200,6 +14703,31 @@ components:
     inline_response_200_20:
       example:
         data:
+        - accountId: 6
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          integration: mparticle
+          integrationId: integrationId
+          id: 1
+        - accountId: 6
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          integration: mparticle
+          integrationId: integrationId
+          id: 1
+        totalResultSize: 0
+      properties:
+        totalResultSize:
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/Audience'
+          type: array
+      required:
+      - data
+    inline_response_200_21:
+      example:
+        data:
         - accountId: 1
           created: 2000-01-23T04:56:07.000+00:00
           editable: true
@@ -14249,7 +14777,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_21:
+    inline_response_200_22:
       example:
         data:
         - accountId: 1
@@ -14281,7 +14809,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_22:
+    inline_response_200_23:
       example:
         data:
         - headers:
@@ -14341,7 +14869,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_23:
+    inline_response_200_24:
       example:
         data:
         - webhookId: 6
@@ -14365,7 +14893,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_24:
+    inline_response_200_25:
       example:
         data:
         - requestTime: 2000-01-23T04:56:07.000+00:00
@@ -14399,7 +14927,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_25:
+    inline_response_200_26:
       example:
         data:
         - schema: '{}'
@@ -14441,7 +14969,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_26:
+    inline_response_200_27:
       example:
         data:
         - created: 2000-01-23T04:56:07.000+00:00
@@ -14485,19 +15013,21 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_27:
+    inline_response_200_28:
       example:
         data:
         - new: '{}'
           created: 2000-01-23T04:56:07.000+00:00
           old: '{}'
           id: 6
+          applicationId: 5
           userId: 1
           entity: entity
         - new: '{}'
           created: 2000-01-23T04:56:07.000+00:00
           old: '{}'
           id: 6
+          applicationId: 5
           userId: 1
           entity: entity
         hasMore: true
@@ -14513,7 +15043,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_28:
+    inline_response_200_29:
       example:
         data:
         - filter: '{}'
@@ -14535,32 +15065,6 @@ components:
         data:
           items:
             $ref: '#/components/schemas/Export'
-          type: array
-      required:
-      - data
-      - totalResultSize
-    inline_response_200_29:
-      example:
-        data:
-        - accountId: 1
-          amount: 0
-          created: 2000-01-23T04:56:07.000+00:00
-          id: 6
-          userId: 5
-          entity: Coupon
-        - accountId: 1
-          amount: 0
-          created: 2000-01-23T04:56:07.000+00:00
-          id: 6
-          userId: 5
-          entity: Coupon
-        totalResultSize: 0
-      properties:
-        totalResultSize:
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/Import'
           type: array
       required:
       - data

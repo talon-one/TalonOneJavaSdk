@@ -32,62 +32,9 @@ import java.util.List;
  */
 
 public class LimitConfig {
-  /**
-   * The limitable action to which this limit will be applied
-   */
-  @JsonAdapter(ActionEnum.Adapter.class)
-  public enum ActionEnum {
-    REDEEMCOUPON("redeemCoupon"),
-    
-    REDEEMREFERRAL("redeemReferral"),
-    
-    SETDISCOUNT("setDiscount"),
-    
-    CREATECOUPON("createCoupon"),
-    
-    SETDISCOUNTEFFECT("setDiscountEffect");
-
-    private String value;
-
-    ActionEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ActionEnum fromValue(String value) {
-      for (ActionEnum b : ActionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ActionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ActionEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
-  private ActionEnum action;
+  private String action;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
@@ -149,7 +96,7 @@ public class LimitConfig {
   private List<EntitiesEnum> entities = new ArrayList<EntitiesEnum>();
 
 
-  public LimitConfig action(ActionEnum action) {
+  public LimitConfig action(String action) {
     
     this.action = action;
     return this;
@@ -161,12 +108,12 @@ public class LimitConfig {
   **/
   @ApiModelProperty(required = true, value = "The limitable action to which this limit will be applied")
 
-  public ActionEnum getAction() {
+  public String getAction() {
     return action;
   }
 
 
-  public void setAction(ActionEnum action) {
+  public void setAction(String action) {
     this.action = action;
   }
 

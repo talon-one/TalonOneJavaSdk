@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;User&gt;**](User.md) |  | 
+**data** | [**List&lt;EventType&gt;**](EventType.md) |  | 
 
 
 

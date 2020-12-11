@@ -83,6 +83,7 @@ import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
 import one.talon.model.NewCampaign;
 import one.talon.model.NewCoupons;
+import one.talon.model.NewCouponsForMultipleRecipients;
 import one.talon.model.NewPassword;
 import one.talon.model.NewPasswordEmail;
 import one.talon.model.NewRuleset;
@@ -855,6 +856,148 @@ public class ManagementApi {
     public okhttp3.Call createCouponsAsync(Integer applicationId, Integer campaignId, NewCoupons body, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCouponsValidateBeforeCall(applicationId, campaignId, body, silent, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createCouponsForMultipleRecipients
+     * @param applicationId  (required)
+     * @param campaignId  (required)
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCouponsForMultipleRecipientsCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (silent != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("silent", silent));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCouponsForMultipleRecipientsValidateBeforeCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling createCouponsForMultipleRecipients(Async)");
+        }
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling createCouponsForMultipleRecipients(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createCouponsForMultipleRecipients(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsCall(applicationId, campaignId, body, silent, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create Coupons for Multiple Recipients
+     * Create coupons according to some pattern for up to 1000 recipients.
+     * @param applicationId  (required)
+     * @param campaignId  (required)
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
+     * @return InlineResponse2004
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public InlineResponse2004 createCouponsForMultipleRecipients(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = createCouponsForMultipleRecipientsWithHttpInfo(applicationId, campaignId, body, silent);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Coupons for Multiple Recipients
+     * Create coupons according to some pattern for up to 1000 recipients.
+     * @param applicationId  (required)
+     * @param campaignId  (required)
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
+     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InlineResponse2004> createCouponsForMultipleRecipientsWithHttpInfo(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent) throws ApiException {
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, body, silent, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create Coupons for Multiple Recipients (asynchronously)
+     * Create coupons according to some pattern for up to 1000 recipients.
+     * @param applicationId  (required)
+     * @param campaignId  (required)
+     * @param body  (required)
+     * @param silent If set to &#39;yes&#39;, response will be an empty 204, otherwise a list of the coupons generated (to to 1000). (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCouponsForMultipleRecipientsAsync(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, body, silent, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1929,6 +2072,707 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
+     * Build call for destroySession
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroySessionCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sessions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call destroySessionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = destroySessionCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Destroy a Session
+     * 
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void destroySession() throws ApiException {
+        destroySessionWithHttpInfo();
+    }
+
+    /**
+     * Destroy a Session
+     * 
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> destroySessionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = destroySessionValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Destroy a Session (asynchronously)
+     * 
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call destroySessionAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = destroySessionValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for exportCoupons
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
+     * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
+     * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
+     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param batchId Filter results by batches of coupons (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param campaignState Filter results by the state of the campaign. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCouponsCall(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/export_coupons"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (value != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("value", value));
+        }
+
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
+        }
+
+        if (valid != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("valid", valid));
+        }
+
+        if (usable != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("usable", usable));
+        }
+
+        if (referralId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("referralId", referralId));
+        }
+
+        if (recipientIntegrationId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipientIntegrationId", recipientIntegrationId));
+        }
+
+        if (batchId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("batchId", batchId));
+        }
+
+        if (exactMatch != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("exactMatch", exactMatch));
+        }
+
+        if (dateFormat != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dateFormat", dateFormat));
+        }
+
+        if (campaignState != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignState", campaignState));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call exportCouponsValidateBeforeCall(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling exportCoupons(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = exportCouponsCall(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export Coupons to a CSV file.
+     * Download a file with the coupons that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
+     * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
+     * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
+     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param batchId Filter results by batches of coupons (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param campaignState Filter results by the state of the campaign. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void exportCoupons(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
+        exportCouponsWithHttpInfo(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+    }
+
+    /**
+     * Export Coupons to a CSV file.
+     * Download a file with the coupons that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
+     * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
+     * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
+     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param batchId Filter results by batches of coupons (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param campaignState Filter results by the state of the campaign. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> exportCouponsWithHttpInfo(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = exportCouponsValidateBeforeCall(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Export Coupons to a CSV file. (asynchronously)
+     * Download a file with the coupons that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiry date is set and in the past. The second matches coupons in which start date is null or in the past and expiry date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
+     * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
+     * @param referralId Filter the results by matching them with the Id of a referral, that meaning the coupons that had been created as an effect of the usage of a referral code. (optional)
+     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param batchId Filter results by batches of coupons (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param campaignState Filter results by the state of the campaign. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCouponsAsync(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = exportCouponsValidateBeforeCall(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for exportCustomerSessions
+     * @param applicationId  (required)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param customerSessionState Filter results by state. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCustomerSessionsCall(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/export_customer_sessions"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
+        }
+
+        if (profileIntegrationId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("profileIntegrationId", profileIntegrationId));
+        }
+
+        if (dateFormat != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dateFormat", dateFormat));
+        }
+
+        if (customerSessionState != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("customerSessionState", customerSessionState));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call exportCustomerSessionsValidateBeforeCall(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling exportCustomerSessions(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = exportCustomerSessionsCall(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export Customer Sessions to a CSV file.
+     * Download a file with the customer sessions that match the request.
+     * @param applicationId  (required)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param customerSessionState Filter results by state. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void exportCustomerSessions(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
+        exportCustomerSessionsWithHttpInfo(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+    }
+
+    /**
+     * Export Customer Sessions to a CSV file.
+     * Download a file with the customer sessions that match the request.
+     * @param applicationId  (required)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param customerSessionState Filter results by state. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> exportCustomerSessionsWithHttpInfo(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
+        okhttp3.Call localVarCall = exportCustomerSessionsValidateBeforeCall(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Export Customer Sessions to a CSV file. (asynchronously)
+     * Download a file with the customer sessions that match the request.
+     * @param applicationId  (required)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. (optional)
+     * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param customerSessionState Filter results by state. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportCustomerSessionsAsync(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = exportCustomerSessionsValidateBeforeCall(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for exportEffects
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportEffectsCall(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/applications/{applicationId}/export_effects"
+            .replaceAll("\\{" + "applicationId" + "\\}", localVarApiClient.escapeString(applicationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (campaignId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignId", campaignId));
+        }
+
+        if (createdBefore != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdBefore", createdBefore));
+        }
+
+        if (createdAfter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("createdAfter", createdAfter));
+        }
+
+        if (dateFormat != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dateFormat", dateFormat));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call exportEffectsValidateBeforeCall(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'applicationId' is set
+        if (applicationId == null) {
+            throw new ApiException("Missing the required parameter 'applicationId' when calling exportEffects(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = exportEffectsCall(applicationId, campaignId, createdBefore, createdAfter, dateFormat, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export triggered Effects to a CSV file.
+     * Download a file with the triggered effects that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void exportEffects(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+        exportEffectsWithHttpInfo(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+    }
+
+    /**
+     * Export triggered Effects to a CSV file.
+     * Download a file with the triggered effects that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> exportEffectsWithHttpInfo(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+        okhttp3.Call localVarCall = exportEffectsValidateBeforeCall(applicationId, campaignId, createdBefore, createdAfter, dateFormat, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Export triggered Effects to a CSV file. (asynchronously)
+     * Download a file with the triggered effects that match the given attributes.
+     * @param applicationId  (required)
+     * @param campaignId Filter results by campaign. (optional)
+     * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportEffectsAsync(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = exportEffectsValidateBeforeCall(applicationId, campaignId, createdBefore, createdAfter, dateFormat, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for exportLoyaltyBalance
+     * @param programID  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportLoyaltyBalanceCall(String programID, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/loyalty_programs/{programID}/export_customer_balance"
+            .replaceAll("\\{" + "programID" + "\\}", localVarApiClient.escapeString(programID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call exportLoyaltyBalanceValidateBeforeCall(String programID, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'programID' is set
+        if (programID == null) {
+            throw new ApiException("Missing the required parameter 'programID' when calling exportLoyaltyBalance(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = exportLoyaltyBalanceCall(programID, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Export customer loyalty balance to a CSV file
+     * Download a file with the balance of each customer in the loyalty program
+     * @param programID  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public void exportLoyaltyBalance(String programID) throws ApiException {
+        exportLoyaltyBalanceWithHttpInfo(programID);
+    }
+
+    /**
+     * Export customer loyalty balance to a CSV file
+     * Download a file with the balance of each customer in the loyalty program
+     * @param programID  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> exportLoyaltyBalanceWithHttpInfo(String programID) throws ApiException {
+        okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Export customer loyalty balance to a CSV file (asynchronously)
+     * Download a file with the balance of each customer in the loyalty program
+     * @param programID  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call exportLoyaltyBalanceAsync(String programID, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAccessLogs
      * @param applicationId  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
@@ -2701,7 +3545,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20021
+     * @return InlineResponse20022
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2709,8 +3553,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20021 getAdditionalCosts(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20021> localVarResp = getAdditionalCostsWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20022 getAdditionalCosts(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20022> localVarResp = getAdditionalCostsWithHttpInfo(pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -2720,7 +3564,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20021&gt;
+     * @return ApiResponse&lt;InlineResponse20022&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2728,9 +3572,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20021> getAdditionalCostsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20022> getAdditionalCostsWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getAdditionalCostsValidateBeforeCall(pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2749,10 +3593,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdditionalCostsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20021> _callback) throws ApiException {
+    public okhttp3.Call getAdditionalCostsAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20022> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdditionalCostsValidateBeforeCall(pageSize, skip, sort, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4836,7 +5680,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20020
+     * @return InlineResponse20021
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4844,8 +5688,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20020 getAttributes(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20020> localVarResp = getAttributesWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20021 getAttributes(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20021> localVarResp = getAttributesWithHttpInfo(pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -4855,7 +5699,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @return ApiResponse&lt;InlineResponse20021&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4863,9 +5707,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20020> getAttributesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20021> getAttributesWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -4884,9 +5728,142 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAttributesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20020> _callback) throws ApiException {
+    public okhttp3.Call getAttributesAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20021> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAttributesValidateBeforeCall(pageSize, skip, sort, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAudiences
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAudiencesCall(Integer pageSize, Integer skip, String sort, Boolean withTotalResultSize, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/audiences";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (skip != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (withTotalResultSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("withTotalResultSize", withTotalResultSize));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAudiencesValidateBeforeCall(Integer pageSize, Integer skip, String sort, Boolean withTotalResultSize, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getAudiencesCall(pageSize, skip, sort, withTotalResultSize, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get all audiences
+     * Get All audiences created in the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @return InlineResponse20020
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public InlineResponse20020 getAudiences(Integer pageSize, Integer skip, String sort, Boolean withTotalResultSize) throws ApiException {
+        ApiResponse<InlineResponse20020> localVarResp = getAudiencesWithHttpInfo(pageSize, skip, sort, withTotalResultSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get all audiences
+     * Get All audiences created in the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InlineResponse20020> getAudiencesWithHttpInfo(Integer pageSize, Integer skip, String sort, Boolean withTotalResultSize) throws ApiException {
+        okhttp3.Call localVarCall = getAudiencesValidateBeforeCall(pageSize, skip, sort, withTotalResultSize, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get all audiences (asynchronously)
+     * Get All audiences created in the account. 
+     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
+     * @param skip Skips the given number of items when paging through large result sets. (optional)
+     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAudiencesAsync(Integer pageSize, Integer skip, String sort, Boolean withTotalResultSize, final ApiCallback<InlineResponse20020> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAudiencesValidateBeforeCall(pageSize, skip, sort, withTotalResultSize, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5508,6 +6485,8 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param applicationId  (optional)
+     * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
+     * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
@@ -5521,7 +6500,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChangesCall(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChangesCall(Integer pageSize, Integer skip, String sort, Integer applicationId, String entityPath, Integer userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -5543,6 +6522,14 @@ public class ManagementApi {
 
         if (applicationId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("applicationId", applicationId));
+        }
+
+        if (entityPath != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("entityPath", entityPath));
+        }
+
+        if (userId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("userId", userId));
         }
 
         if (createdBefore != null) {
@@ -5583,10 +6570,10 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChangesValidateBeforeCall(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getChangesValidateBeforeCall(Integer pageSize, Integer skip, String sort, Integer applicationId, String entityPath, Integer userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getChangesCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, _callback);
+        okhttp3.Call localVarCall = getChangesCall(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld, _callback);
         return localVarCall;
 
     }
@@ -5598,11 +6585,13 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param applicationId  (optional)
+     * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
+     * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return InlineResponse20027
+     * @return InlineResponse20028
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5610,8 +6599,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20027 getChanges(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
-        ApiResponse<InlineResponse20027> localVarResp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+    public InlineResponse20028 getChanges(Integer pageSize, Integer skip, String sort, Integer applicationId, String entityPath, Integer userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+        ApiResponse<InlineResponse20028> localVarResp = getChangesWithHttpInfo(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld);
         return localVarResp.getData();
     }
 
@@ -5622,11 +6611,13 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param applicationId  (optional)
+     * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
+     * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
-     * @return ApiResponse&lt;InlineResponse20027&gt;
+     * @return ApiResponse&lt;InlineResponse20028&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5634,9 +6625,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20027> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
-        okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+    public ApiResponse<InlineResponse20028> getChangesWithHttpInfo(Integer pageSize, Integer skip, String sort, Integer applicationId, String entityPath, Integer userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld) throws ApiException {
+        okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -5647,6 +6638,8 @@ public class ManagementApi {
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param applicationId  (optional)
+     * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
+     * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. (optional)
      * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
@@ -5660,10 +6653,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChangesAsync(Integer pageSize, Integer skip, String sort, Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback<InlineResponse20027> _callback) throws ApiException {
+    public okhttp3.Call getChangesAsync(Integer pageSize, Integer skip, String sort, Integer applicationId, String entityPath, Integer userId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, Boolean withTotalResultSize, Boolean includeOld, final ApiCallback<InlineResponse20028> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, createdBefore, createdAfter, withTotalResultSize, includeOld, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
+        okhttp3.Call localVarCall = getChangesValidateBeforeCall(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7719,7 +8712,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7727,8 +8720,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20025 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20025> localVarResp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+    public InlineResponse20026 getEventTypes(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20026> localVarResp = getEventTypesWithHttpInfo(applicationIds, name, includeOldVersions, pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -7741,7 +8734,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20025&gt;
+     * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7749,9 +8742,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20025> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20026> getEventTypesWithHttpInfo(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -7773,10 +8766,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20025> _callback) throws ApiException {
+    public okhttp3.Call getEventTypesAsync(String applicationIds, String name, Boolean includeOldVersions, Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20026> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventTypesValidateBeforeCall(applicationIds, name, includeOldVersions, pageSize, skip, sort, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7862,7 +8855,7 @@ public class ManagementApi {
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return InlineResponse20028
+     * @return InlineResponse20029
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7870,8 +8863,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20028 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
-        ApiResponse<InlineResponse20028> localVarResp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
+    public InlineResponse20029 getExports(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+        ApiResponse<InlineResponse20029> localVarResp = getExportsWithHttpInfo(pageSize, skip, applicationId, campaignId, entity);
         return localVarResp.getData();
     }
 
@@ -7883,7 +8876,7 @@ public class ManagementApi {
      * @param applicationId  (optional)
      * @param campaignId  (optional)
      * @param entity The name of the entity type that was exported. (optional)
-     * @return ApiResponse&lt;InlineResponse20028&gt;
+     * @return ApiResponse&lt;InlineResponse20029&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7891,9 +8884,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20028> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
+    public ApiResponse<InlineResponse20029> getExportsWithHttpInfo(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity) throws ApiException {
         okhttp3.Call localVarCall = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20029>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -7914,126 +8907,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20028> _callback) throws ApiException {
+    public okhttp3.Call getExportsAsync(Integer pageSize, Integer skip, Integer applicationId, Integer campaignId, String entity, final ApiCallback<InlineResponse20029> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExportsValidateBeforeCall(pageSize, skip, applicationId, campaignId, entity, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20028>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getImports
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
-     * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getImportsCall(Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/imports";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        if (skip != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("skip", skip));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "manager_auth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getImportsValidateBeforeCall(Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getImportsCall(pageSize, skip, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Get Imports
-     * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
-     * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20029
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public InlineResponse20029 getImports(Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20029> localVarResp = getImportsWithHttpInfo(pageSize, skip);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Get Imports
-     * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
-     * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20029&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InlineResponse20029> getImportsWithHttpInfo(Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getImportsValidateBeforeCall(pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20029>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Get Imports (asynchronously)
-     * Get a list of all past imports 
-     * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
-     * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getImportsAsync(Integer pageSize, Integer skip, final ApiCallback<InlineResponse20029> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getImportsValidateBeforeCall(pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20029>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9436,7 +10312,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return InlineResponse20026
+     * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9444,8 +10320,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20026 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
-        ApiResponse<InlineResponse20026> localVarResp = getUsersWithHttpInfo(pageSize, skip, sort);
+    public InlineResponse20027 getUsers(Integer pageSize, Integer skip, String sort) throws ApiException {
+        ApiResponse<InlineResponse20027> localVarResp = getUsersWithHttpInfo(pageSize, skip, sort);
         return localVarResp.getData();
     }
 
@@ -9455,7 +10331,7 @@ public class ManagementApi {
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @return ApiResponse&lt;InlineResponse20026&gt;
+     * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9463,9 +10339,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20026> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
+    public ApiResponse<InlineResponse20027> getUsersWithHttpInfo(Integer pageSize, Integer skip, String sort) throws ApiException {
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageSize, skip, sort, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -9484,10 +10360,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20026> _callback) throws ApiException {
+    public okhttp3.Call getUsersAsync(Integer pageSize, Integer skip, String sort, final ApiCallback<InlineResponse20027> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsersValidateBeforeCall(pageSize, skip, sort, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -9708,7 +10584,7 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20023
+     * @return InlineResponse20024
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9716,8 +10592,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20023 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20023> localVarResp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+    public InlineResponse20024 getWebhookActivationLogs(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20024> localVarResp = getWebhookActivationLogsWithHttpInfo(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
         return localVarResp.getData();
     }
 
@@ -9733,7 +10609,7 @@ public class ManagementApi {
      * @param campaignId Filter results by campaign. (optional)
      * @param createdBefore Only return events created before this date. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20023&gt;
+     * @return ApiResponse&lt;InlineResponse20024&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9741,9 +10617,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20023> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20024> getWebhookActivationLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         okhttp3.Call localVarCall = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -9768,10 +10644,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20023> _callback) throws ApiException {
+    public okhttp3.Call getWebhookActivationLogsAsync(Integer pageSize, Integer skip, String sort, String integrationRequestUuid, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20024> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookActivationLogsValidateBeforeCall(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -9887,7 +10763,7 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9895,8 +10771,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20024 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
-        ApiResponse<InlineResponse20024> localVarResp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+    public InlineResponse20025 getWebhookLogs(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+        ApiResponse<InlineResponse20025> localVarResp = getWebhookLogsWithHttpInfo(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
         return localVarResp.getData();
     }
 
@@ -9913,7 +10789,7 @@ public class ManagementApi {
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. (optional)
-     * @return ApiResponse&lt;InlineResponse20024&gt;
+     * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9921,9 +10797,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20024> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
+    public ApiResponse<InlineResponse20025> getWebhookLogsWithHttpInfo(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter) throws ApiException {
         okhttp3.Call localVarCall = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -9949,10 +10825,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20024> _callback) throws ApiException {
+    public okhttp3.Call getWebhookLogsAsync(Integer pageSize, Integer skip, String sort, String status, BigDecimal webhookId, BigDecimal applicationId, BigDecimal campaignId, String requestUuid, OffsetDateTime createdBefore, OffsetDateTime createdAfter, final ApiCallback<InlineResponse20025> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookLogsValidateBeforeCall(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -10032,7 +10908,7 @@ public class ManagementApi {
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse20022
+     * @return InlineResponse20023
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -10040,8 +10916,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20022 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20022> localVarResp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
+    public InlineResponse20023 getWebhooks(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20023> localVarResp = getWebhooksWithHttpInfo(applicationIds, sort, pageSize, skip);
         return localVarResp.getData();
     }
 
@@ -10052,7 +10928,7 @@ public class ManagementApi {
      * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse20022&gt;
+     * @return ApiResponse&lt;InlineResponse20023&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -10060,9 +10936,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20022> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse20023> getWebhooksWithHttpInfo(String applicationIds, String sort, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -10082,10 +10958,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20022> _callback) throws ApiException {
+    public okhttp3.Call getWebhooksAsync(String applicationIds, String sort, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20023> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhooksValidateBeforeCall(applicationIds, sort, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

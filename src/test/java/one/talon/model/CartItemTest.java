@@ -22,7 +22,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import one.talon.model.CartItemAdjustment;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -128,14 +127,6 @@ public class CartItemTest {
     @Test
     public void attributesTest() {
         // TODO: test attributes
-    }
-
-    /**
-     * Test the property 'adjustment'
-     */
-    @Test
-    public void adjustmentTest() {
-        // TODO: test adjustment
     }
 
 }

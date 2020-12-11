@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **recipientIntegrationId** | **String** | The user for whom these points were added | 
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date after which points will be valid |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date after which points will expire |  [optional]
+**transactionUUID** | **String** | The identifier of this addition in the loyalty ledger | 
 
 
 

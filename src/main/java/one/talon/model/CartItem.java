@@ -24,7 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import one.talon.model.CartItemAdjustment;
 
 /**
  * CartItem
@@ -74,10 +73,6 @@ public class CartItem {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
-
-  public static final String SERIALIZED_NAME_ADJUSTMENT = "adjustment";
-  @SerializedName(SERIALIZED_NAME_ADJUSTMENT)
-  private CartItemAdjustment adjustment;
 
 
   public CartItem name(String name) {
@@ -330,29 +325,6 @@ public class CartItem {
   }
 
 
-  public CartItem adjustment(CartItemAdjustment adjustment) {
-    
-    this.adjustment = adjustment;
-    return this;
-  }
-
-   /**
-   * Get adjustment
-   * @return adjustment
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CartItemAdjustment getAdjustment() {
-    return adjustment;
-  }
-
-
-  public void setAdjustment(CartItemAdjustment adjustment) {
-    this.adjustment = adjustment;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -372,13 +344,12 @@ public class CartItem {
         Objects.equals(this.width, cartItem.width) &&
         Objects.equals(this.length, cartItem.length) &&
         Objects.equals(this.position, cartItem.position) &&
-        Objects.equals(this.attributes, cartItem.attributes) &&
-        Objects.equals(this.adjustment, cartItem.adjustment);
+        Objects.equals(this.attributes, cartItem.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, quantity, price, category, weight, height, width, length, position, attributes, adjustment);
+    return Objects.hash(name, sku, quantity, price, category, weight, height, width, length, position, attributes);
   }
 
 
@@ -397,7 +368,6 @@ public class CartItem {
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    adjustment: ").append(toIndentedString(adjustment)).append("\n");
     sb.append("}");
     return sb.toString();
   }

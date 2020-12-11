@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>4.2.0</version>
+  <version>4.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:4.2.0"
+compile "one.talon:talon-one-client:4.3.0"
 ```
 
 ### Others
@@ -72,13 +72,12 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-4.2.0.jar`
+* `target/talon-one-client-4.3.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
-
 ### Integration API
 
 #### V2
@@ -267,6 +266,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**createAttribute**](docs/ManagementApi.md#createAttribute) | **POST** /v1/attributes | Define a new custom attribute
 *ManagementApi* | [**createCampaign**](docs/ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create a Campaign
 *ManagementApi* | [**createCoupons**](docs/ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create Coupons
+*ManagementApi* | [**createCouponsForMultipleRecipients**](docs/ManagementApi.md#createCouponsForMultipleRecipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create Coupons for Multiple Recipients
 *ManagementApi* | [**createPasswordRecoveryEmail**](docs/ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
 *ManagementApi* | [**createRuleset**](docs/ManagementApi.md#createRuleset) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create a Ruleset
 *ManagementApi* | [**createSession**](docs/ManagementApi.md#createSession) | **POST** /v1/sessions | Create a Session
@@ -275,6 +275,11 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**deleteCoupons**](docs/ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete Coupons
 *ManagementApi* | [**deleteReferral**](docs/ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete one Referral
 *ManagementApi* | [**deleteRuleset**](docs/ManagementApi.md#deleteRuleset) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Delete a Ruleset
+*ManagementApi* | [**destroySession**](docs/ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy a Session
+*ManagementApi* | [**exportCoupons**](docs/ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export Coupons to a CSV file.
+*ManagementApi* | [**exportCustomerSessions**](docs/ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export Customer Sessions to a CSV file.
+*ManagementApi* | [**exportEffects**](docs/ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered Effects to a CSV file.
+*ManagementApi* | [**exportLoyaltyBalance**](docs/ManagementApi.md#exportLoyaltyBalance) | **GET** /v1/loyalty_programs/{programID}/export_customer_balance | Export customer loyalty balance to a CSV file
 *ManagementApi* | [**getAccessLogs**](docs/ManagementApi.md#getAccessLogs) | **GET** /v1/applications/{applicationId}/access_logs | Get access logs for application (with total count)
 *ManagementApi* | [**getAccessLogsWithoutTotalCount**](docs/ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for application
 *ManagementApi* | [**getAccount**](docs/ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get Account Details
@@ -296,6 +301,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getApplications**](docs/ManagementApi.md#getApplications) | **GET** /v1/applications | List Applications
 *ManagementApi* | [**getAttribute**](docs/ManagementApi.md#getAttribute) | **GET** /v1/attributes/{attributeId} | Get a custom attribute
 *ManagementApi* | [**getAttributes**](docs/ManagementApi.md#getAttributes) | **GET** /v1/attributes | List custom attributes
+*ManagementApi* | [**getAudiences**](docs/ManagementApi.md#getAudiences) | **GET** /v1/audiences | Get all audiences
 *ManagementApi* | [**getCampaign**](docs/ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get a Campaign
 *ManagementApi* | [**getCampaignAnalytics**](docs/ManagementApi.md#getCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/analytics | Get analytics of campaigns
 *ManagementApi* | [**getCampaignByAttributes**](docs/ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | Get a list of all campaigns that match the given attributes
@@ -314,7 +320,6 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getCustomersByAttributes**](docs/ManagementApi.md#getCustomersByAttributes) | **POST** /v1/customer_search/no_total | Get a list of the customer profiles that match the given attributes
 *ManagementApi* | [**getEventTypes**](docs/ManagementApi.md#getEventTypes) | **GET** /v1/event_types | List Event Types
 *ManagementApi* | [**getExports**](docs/ManagementApi.md#getExports) | **GET** /v1/exports | Get Exports
-*ManagementApi* | [**getImports**](docs/ManagementApi.md#getImports) | **GET** /v1/imports | Get Imports
 *ManagementApi* | [**getLoyaltyPoints**](docs/ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID} | get the Loyalty Ledger for this integrationID
 *ManagementApi* | [**getLoyaltyProgram**](docs/ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{programID} | Get a loyalty program
 *ManagementApi* | [**getLoyaltyPrograms**](docs/ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List all loyalty Programs
@@ -387,7 +392,6 @@ Class | Method | HTTP request | Description
  - [CampaignSetLeafNode](docs/CampaignSetLeafNode.md)
  - [CampaignSetNode](docs/CampaignSetNode.md)
  - [CartItem](docs/CartItem.md)
- - [CartItemAdjustment](docs/CartItemAdjustment.md)
  - [Change](docs/Change.md)
  - [ChangeProfilePassword](docs/ChangeProfilePassword.md)
  - [CodeGeneratorSettings](docs/CodeGeneratorSettings.md)
@@ -428,7 +432,6 @@ Class | Method | HTTP request | Description
  - [FeedNotification](docs/FeedNotification.md)
  - [FuncArgDef](docs/FuncArgDef.md)
  - [FunctionDef](docs/FunctionDef.md)
- - [ImportCoupons](docs/ImportCoupons.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse20010](docs/InlineResponse20010.md)
@@ -499,13 +502,13 @@ Class | Method | HTTP request | Description
  - [NewCampaignGroup](docs/NewCampaignGroup.md)
  - [NewCampaignSet](docs/NewCampaignSet.md)
  - [NewCoupons](docs/NewCoupons.md)
+ - [NewCouponsForMultipleRecipients](docs/NewCouponsForMultipleRecipients.md)
  - [NewCustomerProfile](docs/NewCustomerProfile.md)
  - [NewCustomerSession](docs/NewCustomerSession.md)
  - [NewCustomerSessionV2](docs/NewCustomerSessionV2.md)
  - [NewEvent](docs/NewEvent.md)
  - [NewEventType](docs/NewEventType.md)
  - [NewFeatureFlags](docs/NewFeatureFlags.md)
- - [NewImport](docs/NewImport.md)
  - [NewInvitation](docs/NewInvitation.md)
  - [NewInviteEmail](docs/NewInviteEmail.md)
  - [NewLoyaltyProgram](docs/NewLoyaltyProgram.md)
@@ -519,6 +522,7 @@ Class | Method | HTTP request | Description
  - [NewUser](docs/NewUser.md)
  - [NewWebhook](docs/NewWebhook.md)
  - [Notification](docs/Notification.md)
+ - [ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
  - [RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
  - [Referral](docs/Referral.md)
  - [ReferralCreatedEffectProps](docs/ReferralCreatedEffectProps.md)
@@ -528,7 +532,9 @@ Class | Method | HTTP request | Description
  - [Role](docs/Role.md)
  - [RoleAssign](docs/RoleAssign.md)
  - [RoleMembership](docs/RoleMembership.md)
+ - [RollbackAddedLoyaltyPointsEffectProps](docs/RollbackAddedLoyaltyPointsEffectProps.md)
  - [RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
+ - [RollbackDeductedLoyaltyPointsEffectProps](docs/RollbackDeductedLoyaltyPointsEffectProps.md)
  - [RollbackDiscountEffectProps](docs/RollbackDiscountEffectProps.md)
  - [Rule](docs/Rule.md)
  - [Ruleset](docs/Ruleset.md)

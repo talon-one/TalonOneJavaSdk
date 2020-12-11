@@ -50,7 +50,9 @@ public class NewApplicationAPIKey {
     
     BRAZE("braze"),
     
-    MPARTICLE("mparticle");
+    MPARTICLE("mparticle"),
+    
+    SELLIGENT("selligent");
 
     private String value;
 

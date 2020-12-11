@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Attribute;
+import one.talon.model.Audience;
 
 /**
  * InlineResponse20020
@@ -38,7 +38,7 @@ public class InlineResponse20020 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Attribute> data = new ArrayList<Attribute>();
+  private List<Audience> data = new ArrayList<Audience>();
 
 
   public InlineResponse20020 totalResultSize(Integer totalResultSize) {
@@ -51,7 +51,8 @@ public class InlineResponse20020 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Integer getTotalResultSize() {
     return totalResultSize;
@@ -63,13 +64,13 @@ public class InlineResponse20020 {
   }
 
 
-  public InlineResponse20020 data(List<Attribute> data) {
+  public InlineResponse20020 data(List<Audience> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20020 addDataItem(Attribute dataItem) {
+  public InlineResponse20020 addDataItem(Audience dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +81,12 @@ public class InlineResponse20020 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Attribute> getData() {
+  public List<Audience> getData() {
     return data;
   }
 
 
-  public void setData(List<Attribute> data) {
+  public void setData(List<Audience> data) {
     this.data = data;
   }
 

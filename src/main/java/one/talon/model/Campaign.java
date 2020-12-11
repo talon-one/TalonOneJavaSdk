@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CodeGeneratorSettings;
@@ -211,7 +212,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_DISCOUNT_COUNT = "discountCount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNT)
-  private Integer discountCount;
+  private BigDecimal discountCount;
 
   public static final String SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT = "discountEffectCount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT)
@@ -220,6 +221,22 @@ public class Campaign {
   public static final String SERIALIZED_NAME_COUPON_CREATION_COUNT = "couponCreationCount";
   @SerializedName(SERIALIZED_NAME_COUPON_CREATION_COUNT)
   private Integer couponCreationCount;
+
+  public static final String SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT = "createdLoyaltyPointsCount";
+  @SerializedName(SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT)
+  private BigDecimal createdLoyaltyPointsCount;
+
+  public static final String SERIALIZED_NAME_CREATED_LOYALTY_POINTS_EFFECT_COUNT = "createdLoyaltyPointsEffectCount";
+  @SerializedName(SERIALIZED_NAME_CREATED_LOYALTY_POINTS_EFFECT_COUNT)
+  private Integer createdLoyaltyPointsEffectCount;
+
+  public static final String SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_COUNT = "redeemedLoyaltyPointsCount";
+  @SerializedName(SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_COUNT)
+  private BigDecimal redeemedLoyaltyPointsCount;
+
+  public static final String SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_EFFECT_COUNT = "redeemedLoyaltyPointsEffectCount";
+  @SerializedName(SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_EFFECT_COUNT)
+  private Integer redeemedLoyaltyPointsEffectCount;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -688,7 +705,7 @@ public class Campaign {
   }
 
 
-  public Campaign discountCount(Integer discountCount) {
+  public Campaign discountCount(BigDecimal discountCount) {
     
     this.discountCount = discountCount;
     return this;
@@ -701,12 +718,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total amount of discounts redeemed in the campaign.")
 
-  public Integer getDiscountCount() {
+  public BigDecimal getDiscountCount() {
     return discountCount;
   }
 
 
-  public void setDiscountCount(Integer discountCount) {
+  public void setDiscountCount(BigDecimal discountCount) {
     this.discountCount = discountCount;
   }
 
@@ -754,6 +771,98 @@ public class Campaign {
 
   public void setCouponCreationCount(Integer couponCreationCount) {
     this.couponCreationCount = couponCreationCount;
+  }
+
+
+  public Campaign createdLoyaltyPointsCount(BigDecimal createdLoyaltyPointsCount) {
+    
+    this.createdLoyaltyPointsCount = createdLoyaltyPointsCount;
+    return this;
+  }
+
+   /**
+   * Total number of loyalty points created by rules in this campaign.
+   * @return createdLoyaltyPointsCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of loyalty points created by rules in this campaign.")
+
+  public BigDecimal getCreatedLoyaltyPointsCount() {
+    return createdLoyaltyPointsCount;
+  }
+
+
+  public void setCreatedLoyaltyPointsCount(BigDecimal createdLoyaltyPointsCount) {
+    this.createdLoyaltyPointsCount = createdLoyaltyPointsCount;
+  }
+
+
+  public Campaign createdLoyaltyPointsEffectCount(Integer createdLoyaltyPointsEffectCount) {
+    
+    this.createdLoyaltyPointsEffectCount = createdLoyaltyPointsEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of loyalty point creation effects triggered by rules in this campaign.
+   * @return createdLoyaltyPointsEffectCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of loyalty point creation effects triggered by rules in this campaign.")
+
+  public Integer getCreatedLoyaltyPointsEffectCount() {
+    return createdLoyaltyPointsEffectCount;
+  }
+
+
+  public void setCreatedLoyaltyPointsEffectCount(Integer createdLoyaltyPointsEffectCount) {
+    this.createdLoyaltyPointsEffectCount = createdLoyaltyPointsEffectCount;
+  }
+
+
+  public Campaign redeemedLoyaltyPointsCount(BigDecimal redeemedLoyaltyPointsCount) {
+    
+    this.redeemedLoyaltyPointsCount = redeemedLoyaltyPointsCount;
+    return this;
+  }
+
+   /**
+   * Total number of loyalty points redeemed by rules in this campaign.
+   * @return redeemedLoyaltyPointsCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of loyalty points redeemed by rules in this campaign.")
+
+  public BigDecimal getRedeemedLoyaltyPointsCount() {
+    return redeemedLoyaltyPointsCount;
+  }
+
+
+  public void setRedeemedLoyaltyPointsCount(BigDecimal redeemedLoyaltyPointsCount) {
+    this.redeemedLoyaltyPointsCount = redeemedLoyaltyPointsCount;
+  }
+
+
+  public Campaign redeemedLoyaltyPointsEffectCount(Integer redeemedLoyaltyPointsEffectCount) {
+    
+    this.redeemedLoyaltyPointsEffectCount = redeemedLoyaltyPointsEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of loyalty point redemption effects triggered by rules in this campaign.
+   * @return redeemedLoyaltyPointsEffectCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of loyalty point redemption effects triggered by rules in this campaign.")
+
+  public Integer getRedeemedLoyaltyPointsEffectCount() {
+    return redeemedLoyaltyPointsEffectCount;
+  }
+
+
+  public void setRedeemedLoyaltyPointsEffectCount(Integer redeemedLoyaltyPointsEffectCount) {
+    this.redeemedLoyaltyPointsEffectCount = redeemedLoyaltyPointsEffectCount;
   }
 
 
@@ -880,6 +989,10 @@ public class Campaign {
         Objects.equals(this.discountCount, campaign.discountCount) &&
         Objects.equals(this.discountEffectCount, campaign.discountEffectCount) &&
         Objects.equals(this.couponCreationCount, campaign.couponCreationCount) &&
+        Objects.equals(this.createdLoyaltyPointsCount, campaign.createdLoyaltyPointsCount) &&
+        Objects.equals(this.createdLoyaltyPointsEffectCount, campaign.createdLoyaltyPointsEffectCount) &&
+        Objects.equals(this.redeemedLoyaltyPointsCount, campaign.redeemedLoyaltyPointsCount) &&
+        Objects.equals(this.redeemedLoyaltyPointsEffectCount, campaign.redeemedLoyaltyPointsEffectCount) &&
         Objects.equals(this.lastActivity, campaign.lastActivity) &&
         Objects.equals(this.updated, campaign.updated) &&
         Objects.equals(this.createdBy, campaign.createdBy) &&
@@ -888,7 +1001,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, lastActivity, updated, createdBy, updatedBy);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, lastActivity, updated, createdBy, updatedBy);
   }
 
 
@@ -918,6 +1031,10 @@ public class Campaign {
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");
     sb.append("    discountEffectCount: ").append(toIndentedString(discountEffectCount)).append("\n");
     sb.append("    couponCreationCount: ").append(toIndentedString(couponCreationCount)).append("\n");
+    sb.append("    createdLoyaltyPointsCount: ").append(toIndentedString(createdLoyaltyPointsCount)).append("\n");
+    sb.append("    createdLoyaltyPointsEffectCount: ").append(toIndentedString(createdLoyaltyPointsEffectCount)).append("\n");
+    sb.append("    redeemedLoyaltyPointsCount: ").append(toIndentedString(redeemedLoyaltyPointsCount)).append("\n");
+    sb.append("    redeemedLoyaltyPointsEffectCount: ").append(toIndentedString(redeemedLoyaltyPointsEffectCount)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | Default limits for campaigns created in this application |  [optional]
 **campaignPriority** | [**CampaignPriorityEnum**](#CampaignPriorityEnum) | Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \&quot;universal\&quot; |  [optional]
 **exclusiveCampaignsStrategy** | [**ExclusiveCampaignsStrategyEnum**](#ExclusiveCampaignsStrategyEnum) | The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \&quot;listOrder\&quot; |  [optional]
+**defaultDiscountScope** | [**DefaultDiscountScopeEnum**](#DefaultDiscountScopeEnum) | The default scope to apply \&quot;setDiscount\&quot; effects on if no scope was provided with the effect. |  [optional]
 **enableCascadingDiscounts** | **Boolean** | Flag indicating if discounts should cascade for this application |  [optional]
 **enableFlattenedCartItems** | **Boolean** | Flag indicating if cart items of quantity larger than one should be separated into different items of quantity one |  [optional]
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
@@ -55,6 +56,16 @@ Name | Value
 LISTORDER | &quot;listOrder&quot;
 LOWESTDISCOUNT | &quot;lowestDiscount&quot;
 HIGHESTDISCOUNT | &quot;highestDiscount&quot;
+
+
+
+## Enum: DefaultDiscountScopeEnum
+
+Name | Value
+---- | -----
+SESSIONTOTAL | &quot;sessionTotal&quot;
+CARTITEMS | &quot;cartItems&quot;
+ADDITIONALCOSTS | &quot;additionalCosts&quot;
 
 
 
