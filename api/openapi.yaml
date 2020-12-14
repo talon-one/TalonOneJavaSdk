@@ -2714,12 +2714,16 @@ paths:
           type: string
       responses:
         "200":
-          content: {}
+          content:
+            application/csv:
+              schema:
+                format: binary
+                type: string
           description: OK
       summary: Export customer loyalty balance to a CSV file
       tags:
       - management
-      x-accepts: application/json
+      x-accepts: application/csv
   /v1/applications/{applicationId}/health_report:
     get:
       operationId: getApplicationApiHealth
@@ -4466,12 +4470,16 @@ paths:
           type: string
       responses:
         "200":
-          content: {}
+          content:
+            application/csv:
+              schema:
+                format: binary
+                type: string
           description: OK
       summary: Export Coupons to a CSV file.
       tags:
       - management
-      x-accepts: application/json
+      x-accepts: application/csv
   /v1/applications/{applicationId}/export_effects:
     get:
       description: Download a file with the triggered effects that match the given
@@ -4512,12 +4520,16 @@ paths:
           type: string
       responses:
         "200":
-          content: {}
+          content:
+            application/csv:
+              schema:
+                format: binary
+                type: string
           description: OK
       summary: Export triggered Effects to a CSV file.
       tags:
       - management
-      x-accepts: application/json
+      x-accepts: application/csv
   /v1/applications/{applicationId}/export_customer_sessions:
     get:
       description: Download a file with the customer sessions that match the request.
@@ -4567,12 +4579,16 @@ paths:
           type: string
       responses:
         "200":
-          content: {}
+          content:
+            application/csv:
+              schema:
+                format: binary
+                type: string
           description: OK
       summary: Export Customer Sessions to a CSV file.
       tags:
       - management
-      x-accepts: application/json
+      x-accepts: application/csv
   /v1/users:
     get:
       description: |

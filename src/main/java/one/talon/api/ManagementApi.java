@@ -44,6 +44,7 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
+import java.io.File;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -2258,7 +2259,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2306,6 +2307,7 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2313,8 +2315,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public void exportCoupons(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
-        exportCouponsWithHttpInfo(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+    public File exportCoupons(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
+        ApiResponse<File> localVarResp = exportCouponsWithHttpInfo(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+        return localVarResp.getData();
     }
 
     /**
@@ -2334,7 +2337,7 @@ public class ManagementApi {
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2342,9 +2345,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> exportCouponsWithHttpInfo(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
+    public ApiResponse<File> exportCouponsWithHttpInfo(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState) throws ApiException {
         okhttp3.Call localVarCall = exportCouponsValidateBeforeCall(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2373,10 +2377,11 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportCouponsAsync(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call exportCouponsAsync(Integer applicationId, BigDecimal campaignId, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String dateFormat, String campaignState, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = exportCouponsValidateBeforeCall(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2429,7 +2434,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2469,6 +2474,7 @@ public class ManagementApi {
      * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param customerSessionState Filter results by state. (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2476,8 +2482,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public void exportCustomerSessions(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
-        exportCustomerSessionsWithHttpInfo(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+    public File exportCustomerSessions(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
+        ApiResponse<File> localVarResp = exportCustomerSessionsWithHttpInfo(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+        return localVarResp.getData();
     }
 
     /**
@@ -2489,7 +2496,7 @@ public class ManagementApi {
      * @param profileIntegrationId Only return sessions for the customer that matches this customer integration ID. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param customerSessionState Filter results by state. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2497,9 +2504,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> exportCustomerSessionsWithHttpInfo(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
+    public ApiResponse<File> exportCustomerSessionsWithHttpInfo(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState) throws ApiException {
         okhttp3.Call localVarCall = exportCustomerSessionsValidateBeforeCall(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2520,10 +2528,11 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportCustomerSessionsAsync(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call exportCustomerSessionsAsync(Integer applicationId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String profileIntegrationId, String dateFormat, String customerSessionState, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = exportCustomerSessionsValidateBeforeCall(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2571,7 +2580,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2610,6 +2619,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2617,8 +2627,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public void exportEffects(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
-        exportEffectsWithHttpInfo(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+    public File exportEffects(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+        ApiResponse<File> localVarResp = exportEffectsWithHttpInfo(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+        return localVarResp.getData();
     }
 
     /**
@@ -2629,7 +2640,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2637,9 +2648,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> exportEffectsWithHttpInfo(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
+    public ApiResponse<File> exportEffectsWithHttpInfo(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat) throws ApiException {
         okhttp3.Call localVarCall = exportEffectsValidateBeforeCall(applicationId, campaignId, createdBefore, createdAfter, dateFormat, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2659,10 +2671,11 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportEffectsAsync(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call exportEffectsAsync(Integer applicationId, BigDecimal campaignId, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String dateFormat, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = exportEffectsValidateBeforeCall(applicationId, campaignId, createdBefore, createdAfter, dateFormat, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2690,7 +2703,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2725,6 +2738,7 @@ public class ManagementApi {
      * Export customer loyalty balance to a CSV file
      * Download a file with the balance of each customer in the loyalty program
      * @param programID  (required)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2732,15 +2746,16 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public void exportLoyaltyBalance(String programID) throws ApiException {
-        exportLoyaltyBalanceWithHttpInfo(programID);
+    public File exportLoyaltyBalance(String programID) throws ApiException {
+        ApiResponse<File> localVarResp = exportLoyaltyBalanceWithHttpInfo(programID);
+        return localVarResp.getData();
     }
 
     /**
      * Export customer loyalty balance to a CSV file
      * Download a file with the balance of each customer in the loyalty program
      * @param programID  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2748,9 +2763,10 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> exportLoyaltyBalanceWithHttpInfo(String programID) throws ApiException {
+    public ApiResponse<File> exportLoyaltyBalanceWithHttpInfo(String programID) throws ApiException {
         okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2766,10 +2782,11 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyBalanceAsync(String programID, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyBalanceAsync(String programID, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

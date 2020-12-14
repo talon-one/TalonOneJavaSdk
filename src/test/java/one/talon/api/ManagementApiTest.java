@@ -31,6 +31,7 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
+import java.io.File;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -413,7 +414,7 @@ public class ManagementApiTest {
         Boolean exactMatch = null;
         String dateFormat = null;
         String campaignState = null;
-        api.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+        File response = api.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
 
         // TODO: test validations
     }
@@ -434,7 +435,7 @@ public class ManagementApiTest {
         String profileIntegrationId = null;
         String dateFormat = null;
         String customerSessionState = null;
-        api.exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+        File response = api.exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
 
         // TODO: test validations
     }
@@ -454,7 +455,7 @@ public class ManagementApiTest {
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         String dateFormat = null;
-        api.exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+        File response = api.exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
 
         // TODO: test validations
     }
@@ -470,7 +471,7 @@ public class ManagementApiTest {
     @Test
     public void exportLoyaltyBalanceTest() throws ApiException {
         String programID = null;
-        api.exportLoyaltyBalance(programID);
+        File response = api.exportLoyaltyBalance(programID);
 
         // TODO: test validations
     }

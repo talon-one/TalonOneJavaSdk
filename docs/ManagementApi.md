@@ -1238,7 +1238,7 @@ null (empty response body)
 
 <a name="exportCoupons"></a>
 # **exportCoupons**
-> exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState)
+> File exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState)
 
 Export Coupons to a CSV file.
 
@@ -1281,7 +1281,8 @@ public class Example {
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      apiInstance.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+      File result = apiInstance.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportCoupons");
       System.err.println("Status code: " + e.getCode());
@@ -1314,7 +1315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -1323,7 +1324,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1332,7 +1333,7 @@ null (empty response body)
 
 <a name="exportCustomerSessions"></a>
 # **exportCustomerSessions**
-> exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState)
+> File exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState)
 
 Export Customer Sessions to a CSV file.
 
@@ -1367,7 +1368,8 @@ public class Example {
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     String customerSessionState = "customerSessionState_example"; // String | Filter results by state.
     try {
-      apiInstance.exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+      File result = apiInstance.exportCustomerSessions(applicationId, createdBefore, createdAfter, profileIntegrationId, dateFormat, customerSessionState);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportCustomerSessions");
       System.err.println("Status code: " + e.getCode());
@@ -1392,7 +1394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -1401,7 +1403,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1410,7 +1412,7 @@ null (empty response body)
 
 <a name="exportEffects"></a>
 # **exportEffects**
-> exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat)
+> File exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat)
 
 Export triggered Effects to a CSV file.
 
@@ -1444,7 +1446,8 @@ public class Example {
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
-      apiInstance.exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+      File result = apiInstance.exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportEffects");
       System.err.println("Status code: " + e.getCode());
@@ -1468,7 +1471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -1477,7 +1480,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1486,7 +1489,7 @@ null (empty response body)
 
 <a name="exportLoyaltyBalance"></a>
 # **exportLoyaltyBalance**
-> exportLoyaltyBalance(programID)
+> File exportLoyaltyBalance(programID)
 
 Export customer loyalty balance to a CSV file
 
@@ -1516,7 +1519,8 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String programID = "programID_example"; // String | 
     try {
-      apiInstance.exportLoyaltyBalance(programID);
+      File result = apiInstance.exportLoyaltyBalance(programID);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportLoyaltyBalance");
       System.err.println("Status code: " + e.getCode());
@@ -1536,7 +1540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -1545,7 +1549,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
