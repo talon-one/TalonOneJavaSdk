@@ -77,22 +77,6 @@ public class NewCouponsTest {
     }
 
     /**
-     * Test the property 'validCharacters'
-     */
-    @Test
-    public void validCharactersTest() {
-        // TODO: test validCharacters
-    }
-
-    /**
-     * Test the property 'couponPattern'
-     */
-    @Test
-    public void couponPatternTest() {
-        // TODO: test couponPattern
-    }
-
-    /**
      * Test the property 'numberOfCoupons'
      */
     @Test
@@ -122,6 +106,22 @@ public class NewCouponsTest {
     @Test
     public void recipientIntegrationIdTest() {
         // TODO: test recipientIntegrationId
+    }
+
+    /**
+     * Test the property 'validCharacters'
+     */
+    @Test
+    public void validCharactersTest() {
+        // TODO: test validCharacters
+    }
+
+    /**
+     * Test the property 'couponPattern'
+     */
+    @Test
+    public void couponPatternTest() {
+        // TODO: test couponPattern
     }
 
 }

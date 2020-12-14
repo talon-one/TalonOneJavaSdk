@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CodeGeneratorSettings;
@@ -219,6 +220,38 @@ public class CampaignTest {
     @Test
     public void couponCreationCountTest() {
         // TODO: test couponCreationCount
+    }
+
+    /**
+     * Test the property 'createdLoyaltyPointsCount'
+     */
+    @Test
+    public void createdLoyaltyPointsCountTest() {
+        // TODO: test createdLoyaltyPointsCount
+    }
+
+    /**
+     * Test the property 'createdLoyaltyPointsEffectCount'
+     */
+    @Test
+    public void createdLoyaltyPointsEffectCountTest() {
+        // TODO: test createdLoyaltyPointsEffectCount
+    }
+
+    /**
+     * Test the property 'redeemedLoyaltyPointsCount'
+     */
+    @Test
+    public void redeemedLoyaltyPointsCountTest() {
+        // TODO: test redeemedLoyaltyPointsCount
+    }
+
+    /**
+     * Test the property 'redeemedLoyaltyPointsEffectCount'
+     */
+    @Test
+    public void redeemedLoyaltyPointsEffectCountTest() {
+        // TODO: test redeemedLoyaltyPointsEffectCount
     }
 
     /**

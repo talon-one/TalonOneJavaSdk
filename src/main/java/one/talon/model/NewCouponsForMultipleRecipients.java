@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
  */
 @ApiModel(description = "")
 
-public class NewCoupons {
+public class NewCouponsForMultipleRecipients {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
   private Integer usageLimit;
@@ -50,21 +50,13 @@ public class NewCoupons {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
-  public static final String SERIALIZED_NAME_NUMBER_OF_COUPONS = "numberOfCoupons";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
-  private Integer numberOfCoupons;
-
-  public static final String SERIALIZED_NAME_UNIQUE_PREFIX = "uniquePrefix";
-  @SerializedName(SERIALIZED_NAME_UNIQUE_PREFIX)
-  private String uniquePrefix;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-  public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
-  @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
-  private String recipientIntegrationId;
+  public static final String SERIALIZED_NAME_RECIPIENTS_INTEGRATION_IDS = "recipientsIntegrationIds";
+  @SerializedName(SERIALIZED_NAME_RECIPIENTS_INTEGRATION_IDS)
+  private List<String> recipientsIntegrationIds = new ArrayList<String>();
 
   public static final String SERIALIZED_NAME_VALID_CHARACTERS = "validCharacters";
   @SerializedName(SERIALIZED_NAME_VALID_CHARACTERS)
@@ -75,7 +67,7 @@ public class NewCoupons {
   private String couponPattern;
 
 
-  public NewCoupons usageLimit(Integer usageLimit) {
+  public NewCouponsForMultipleRecipients usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -99,7 +91,7 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons discountLimit(BigDecimal discountLimit) {
+  public NewCouponsForMultipleRecipients discountLimit(BigDecimal discountLimit) {
     
     this.discountLimit = discountLimit;
     return this;
@@ -124,7 +116,7 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons startDate(OffsetDateTime startDate) {
+  public NewCouponsForMultipleRecipients startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
     return this;
@@ -147,7 +139,7 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons expiryDate(OffsetDateTime expiryDate) {
+  public NewCouponsForMultipleRecipients expiryDate(OffsetDateTime expiryDate) {
     
     this.expiryDate = expiryDate;
     return this;
@@ -170,52 +162,7 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons numberOfCoupons(Integer numberOfCoupons) {
-    
-    this.numberOfCoupons = numberOfCoupons;
-    return this;
-  }
-
-   /**
-   * The number of new coupon codes to generate for the campaign. Must be at least 1.
-   * @return numberOfCoupons
-  **/
-  @ApiModelProperty(required = true, value = "The number of new coupon codes to generate for the campaign. Must be at least 1.")
-
-  public Integer getNumberOfCoupons() {
-    return numberOfCoupons;
-  }
-
-
-  public void setNumberOfCoupons(Integer numberOfCoupons) {
-    this.numberOfCoupons = numberOfCoupons;
-  }
-
-
-  public NewCoupons uniquePrefix(String uniquePrefix) {
-    
-    this.uniquePrefix = uniquePrefix;
-    return this;
-  }
-
-   /**
-   * A unique prefix to prepend to all generated coupons.
-   * @return uniquePrefix
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A unique prefix to prepend to all generated coupons.")
-
-  public String getUniquePrefix() {
-    return uniquePrefix;
-  }
-
-
-  public void setUniquePrefix(String uniquePrefix) {
-    this.uniquePrefix = uniquePrefix;
-  }
-
-
-  public NewCoupons attributes(Object attributes) {
+  public NewCouponsForMultipleRecipients attributes(Object attributes) {
     
     this.attributes = attributes;
     return this;
@@ -238,36 +185,40 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons recipientIntegrationId(String recipientIntegrationId) {
+  public NewCouponsForMultipleRecipients recipientsIntegrationIds(List<String> recipientsIntegrationIds) {
     
-    this.recipientIntegrationId = recipientIntegrationId;
+    this.recipientsIntegrationIds = recipientsIntegrationIds;
+    return this;
+  }
+
+  public NewCouponsForMultipleRecipients addRecipientsIntegrationIdsItem(String recipientsIntegrationIdsItem) {
+    this.recipientsIntegrationIds.add(recipientsIntegrationIdsItem);
     return this;
   }
 
    /**
-   * The integration ID for this coupon&#39;s beneficiary&#39;s profile
-   * @return recipientIntegrationId
+   * The integration IDs for recipients
+   * @return recipientsIntegrationIds
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The integration ID for this coupon's beneficiary's profile")
+  @ApiModelProperty(required = true, value = "The integration IDs for recipients")
 
-  public String getRecipientIntegrationId() {
-    return recipientIntegrationId;
+  public List<String> getRecipientsIntegrationIds() {
+    return recipientsIntegrationIds;
   }
 
 
-  public void setRecipientIntegrationId(String recipientIntegrationId) {
-    this.recipientIntegrationId = recipientIntegrationId;
+  public void setRecipientsIntegrationIds(List<String> recipientsIntegrationIds) {
+    this.recipientsIntegrationIds = recipientsIntegrationIds;
   }
 
 
-  public NewCoupons validCharacters(List<String> validCharacters) {
+  public NewCouponsForMultipleRecipients validCharacters(List<String> validCharacters) {
     
     this.validCharacters = validCharacters;
     return this;
   }
 
-  public NewCoupons addValidCharactersItem(String validCharactersItem) {
+  public NewCouponsForMultipleRecipients addValidCharactersItem(String validCharactersItem) {
     if (this.validCharacters == null) {
       this.validCharacters = new ArrayList<String>();
     }
@@ -292,7 +243,7 @@ public class NewCoupons {
   }
 
 
-  public NewCoupons couponPattern(String couponPattern) {
+  public NewCouponsForMultipleRecipients couponPattern(String couponPattern) {
     
     this.couponPattern = couponPattern;
     return this;
@@ -323,37 +274,33 @@ public class NewCoupons {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewCoupons newCoupons = (NewCoupons) o;
-    return Objects.equals(this.usageLimit, newCoupons.usageLimit) &&
-        Objects.equals(this.discountLimit, newCoupons.discountLimit) &&
-        Objects.equals(this.startDate, newCoupons.startDate) &&
-        Objects.equals(this.expiryDate, newCoupons.expiryDate) &&
-        Objects.equals(this.numberOfCoupons, newCoupons.numberOfCoupons) &&
-        Objects.equals(this.uniquePrefix, newCoupons.uniquePrefix) &&
-        Objects.equals(this.attributes, newCoupons.attributes) &&
-        Objects.equals(this.recipientIntegrationId, newCoupons.recipientIntegrationId) &&
-        Objects.equals(this.validCharacters, newCoupons.validCharacters) &&
-        Objects.equals(this.couponPattern, newCoupons.couponPattern);
+    NewCouponsForMultipleRecipients newCouponsForMultipleRecipients = (NewCouponsForMultipleRecipients) o;
+    return Objects.equals(this.usageLimit, newCouponsForMultipleRecipients.usageLimit) &&
+        Objects.equals(this.discountLimit, newCouponsForMultipleRecipients.discountLimit) &&
+        Objects.equals(this.startDate, newCouponsForMultipleRecipients.startDate) &&
+        Objects.equals(this.expiryDate, newCouponsForMultipleRecipients.expiryDate) &&
+        Objects.equals(this.attributes, newCouponsForMultipleRecipients.attributes) &&
+        Objects.equals(this.recipientsIntegrationIds, newCouponsForMultipleRecipients.recipientsIntegrationIds) &&
+        Objects.equals(this.validCharacters, newCouponsForMultipleRecipients.validCharacters) &&
+        Objects.equals(this.couponPattern, newCouponsForMultipleRecipients.couponPattern);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern);
+    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, attributes, recipientsIntegrationIds, validCharacters, couponPattern);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewCoupons {\n");
+    sb.append("class NewCouponsForMultipleRecipients {\n");
     sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
     sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
-    sb.append("    numberOfCoupons: ").append(toIndentedString(numberOfCoupons)).append("\n");
-    sb.append("    uniquePrefix: ").append(toIndentedString(uniquePrefix)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
+    sb.append("    recipientsIntegrationIds: ").append(toIndentedString(recipientsIntegrationIds)).append("\n");
     sb.append("    validCharacters: ").append(toIndentedString(validCharacters)).append("\n");
     sb.append("    couponPattern: ").append(toIndentedString(couponPattern)).append("\n");
     sb.append("}");

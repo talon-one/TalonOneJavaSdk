@@ -6,21 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | [**ActionEnum**](#ActionEnum) | The limitable action to which this limit will be applied | 
+**action** | **String** | The limitable action to which this limit will be applied | 
 **limit** | [**BigDecimal**](BigDecimal.md) | The value to set for the limit | 
 **entities** | [**List&lt;EntitiesEnum&gt;**](#List&lt;EntitiesEnum&gt;) | The entities that make the address of this limit | 
-
-
-
-## Enum: ActionEnum
-
-Name | Value
----- | -----
-REDEEMCOUPON | &quot;redeemCoupon&quot;
-REDEEMREFERRAL | &quot;redeemReferral&quot;
-SETDISCOUNT | &quot;setDiscount&quot;
-CREATECOUPON | &quot;createCoupon&quot;
-SETDISCOUNTEFFECT | &quot;setDiscountEffect&quot;
 
 
 

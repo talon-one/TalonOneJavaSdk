@@ -47,6 +47,10 @@ public class DeductLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
 
   public DeductLoyaltyPointsEffectProps ruleTitle(String ruleTitle) {
     
@@ -136,6 +140,28 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
 
+  public DeductLoyaltyPointsEffectProps transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * The identifier of this deduction in the loyalty ledger
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(required = true, value = "The identifier of this deduction in the loyalty ledger")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -148,12 +174,13 @@ public class DeductLoyaltyPointsEffectProps {
     return Objects.equals(this.ruleTitle, deductLoyaltyPointsEffectProps.ruleTitle) &&
         Objects.equals(this.programId, deductLoyaltyPointsEffectProps.programId) &&
         Objects.equals(this.subLedgerId, deductLoyaltyPointsEffectProps.subLedgerId) &&
-        Objects.equals(this.value, deductLoyaltyPointsEffectProps.value);
+        Objects.equals(this.value, deductLoyaltyPointsEffectProps.value) &&
+        Objects.equals(this.transactionUUID, deductLoyaltyPointsEffectProps.transactionUUID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleTitle, programId, subLedgerId, value);
+    return Objects.hash(ruleTitle, programId, subLedgerId, value, transactionUUID);
   }
 
 
@@ -165,6 +192,7 @@ public class DeductLoyaltyPointsEffectProps {
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    subLedgerId: ").append(toIndentedString(subLedgerId)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

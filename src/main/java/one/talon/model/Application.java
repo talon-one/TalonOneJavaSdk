@@ -235,6 +235,59 @@ public class Application {
   @SerializedName(SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY)
   private ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy;
 
+  /**
+   * The default scope to apply \&quot;setDiscount\&quot; effects on if no scope was provided with the effect.
+   */
+  @JsonAdapter(DefaultDiscountScopeEnum.Adapter.class)
+  public enum DefaultDiscountScopeEnum {
+    SESSIONTOTAL("sessionTotal"),
+    
+    CARTITEMS("cartItems"),
+    
+    ADDITIONALCOSTS("additionalCosts");
+
+    private String value;
+
+    DefaultDiscountScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DefaultDiscountScopeEnum fromValue(String value) {
+      for (DefaultDiscountScopeEnum b : DefaultDiscountScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DefaultDiscountScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DefaultDiscountScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DefaultDiscountScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DefaultDiscountScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DEFAULT_DISCOUNT_SCOPE = "defaultDiscountScope";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_DISCOUNT_SCOPE)
+  private DefaultDiscountScopeEnum defaultDiscountScope;
+
   public static final String SERIALIZED_NAME_ENABLE_CASCADING_DISCOUNTS = "enableCascadingDiscounts";
   @SerializedName(SERIALIZED_NAME_ENABLE_CASCADING_DISCOUNTS)
   private Boolean enableCascadingDiscounts;
@@ -556,6 +609,29 @@ public class Application {
   }
 
 
+  public Application defaultDiscountScope(DefaultDiscountScopeEnum defaultDiscountScope) {
+    
+    this.defaultDiscountScope = defaultDiscountScope;
+    return this;
+  }
+
+   /**
+   * The default scope to apply \&quot;setDiscount\&quot; effects on if no scope was provided with the effect.
+   * @return defaultDiscountScope
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The default scope to apply \"setDiscount\" effects on if no scope was provided with the effect.")
+
+  public DefaultDiscountScopeEnum getDefaultDiscountScope() {
+    return defaultDiscountScope;
+  }
+
+
+  public void setDefaultDiscountScope(DefaultDiscountScopeEnum defaultDiscountScope) {
+    this.defaultDiscountScope = defaultDiscountScope;
+  }
+
+
   public Application enableCascadingDiscounts(Boolean enableCascadingDiscounts) {
     
     this.enableCascadingDiscounts = enableCascadingDiscounts;
@@ -697,6 +773,7 @@ public class Application {
         Objects.equals(this.limits, application.limits) &&
         Objects.equals(this.campaignPriority, application.campaignPriority) &&
         Objects.equals(this.exclusiveCampaignsStrategy, application.exclusiveCampaignsStrategy) &&
+        Objects.equals(this.defaultDiscountScope, application.defaultDiscountScope) &&
         Objects.equals(this.enableCascadingDiscounts, application.enableCascadingDiscounts) &&
         Objects.equals(this.enableFlattenedCartItems, application.enableFlattenedCartItems) &&
         Objects.equals(this.attributesSettings, application.attributesSettings) &&
@@ -706,7 +783,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, loyaltyPrograms);
+    return Objects.hash(id, created, modified, accountId, name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, loyaltyPrograms);
   }
 
 
@@ -727,6 +804,7 @@ public class Application {
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignPriority: ").append(toIndentedString(campaignPriority)).append("\n");
     sb.append("    exclusiveCampaignsStrategy: ").append(toIndentedString(exclusiveCampaignsStrategy)).append("\n");
+    sb.append("    defaultDiscountScope: ").append(toIndentedString(defaultDiscountScope)).append("\n");
     sb.append("    enableCascadingDiscounts: ").append(toIndentedString(enableCascadingDiscounts)).append("\n");
     sb.append("    enableFlattenedCartItems: ").append(toIndentedString(enableFlattenedCartItems)).append("\n");
     sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");

@@ -22,63 +22,90 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for LoyaltyProgramBalance
+ * Model tests for NewCouponsForMultipleRecipients
  */
-public class LoyaltyProgramBalanceTest {
-    private final LoyaltyProgramBalance model = new LoyaltyProgramBalance();
+public class NewCouponsForMultipleRecipientsTest {
+    private final NewCouponsForMultipleRecipients model = new NewCouponsForMultipleRecipients();
 
     /**
-     * Model tests for LoyaltyProgramBalance
+     * Model tests for NewCouponsForMultipleRecipients
      */
     @Test
-    public void testLoyaltyProgramBalance() {
-        // TODO: test LoyaltyProgramBalance
+    public void testNewCouponsForMultipleRecipients() {
+        // TODO: test NewCouponsForMultipleRecipients
     }
 
     /**
-     * Test the property 'currentBalance'
+     * Test the property 'usageLimit'
      */
     @Test
-    public void currentBalanceTest() {
-        // TODO: test currentBalance
+    public void usageLimitTest() {
+        // TODO: test usageLimit
     }
 
     /**
-     * Test the property 'pendingBalance'
+     * Test the property 'discountLimit'
      */
     @Test
-    public void pendingBalanceTest() {
-        // TODO: test pendingBalance
+    public void discountLimitTest() {
+        // TODO: test discountLimit
     }
 
     /**
-     * Test the property 'expiredBalance'
+     * Test the property 'startDate'
      */
     @Test
-    public void expiredBalanceTest() {
-        // TODO: test expiredBalance
+    public void startDateTest() {
+        // TODO: test startDate
     }
 
     /**
-     * Test the property 'spentBalance'
+     * Test the property 'expiryDate'
      */
     @Test
-    public void spentBalanceTest() {
-        // TODO: test spentBalance
+    public void expiryDateTest() {
+        // TODO: test expiryDate
     }
 
     /**
-     * Test the property 'tentativeCurrentBalance'
+     * Test the property 'attributes'
      */
     @Test
-    public void tentativeCurrentBalanceTest() {
-        // TODO: test tentativeCurrentBalance
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
+     * Test the property 'recipientsIntegrationIds'
+     */
+    @Test
+    public void recipientsIntegrationIdsTest() {
+        // TODO: test recipientsIntegrationIds
+    }
+
+    /**
+     * Test the property 'validCharacters'
+     */
+    @Test
+    public void validCharactersTest() {
+        // TODO: test validCharacters
+    }
+
+    /**
+     * Test the property 'couponPattern'
+     */
+    @Test
+    public void couponPatternTest() {
+        // TODO: test couponPattern
     }
 
 }

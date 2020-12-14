@@ -43,6 +43,10 @@ public class Change {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private Integer userId;
 
+  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  private Integer applicationId;
+
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
   private String entity;
@@ -119,6 +123,29 @@ public class Change {
 
   public void setUserId(Integer userId) {
     this.userId = userId;
+  }
+
+
+  public Change applicationId(Integer applicationId) {
+    
+    this.applicationId = applicationId;
+    return this;
+  }
+
+   /**
+   * ID of application associated with change
+   * @return applicationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "ID of application associated with change")
+
+  public Integer getApplicationId() {
+    return applicationId;
+  }
+
+
+  public void setApplicationId(Integer applicationId) {
+    this.applicationId = applicationId;
   }
 
 
@@ -202,6 +229,7 @@ public class Change {
     return Objects.equals(this.id, change.id) &&
         Objects.equals(this.created, change.created) &&
         Objects.equals(this.userId, change.userId) &&
+        Objects.equals(this.applicationId, change.applicationId) &&
         Objects.equals(this.entity, change.entity) &&
         Objects.equals(this.old, change.old) &&
         Objects.equals(this._new, change._new);
@@ -209,7 +237,7 @@ public class Change {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, userId, entity, old, _new);
+    return Objects.hash(id, created, userId, applicationId, entity, old, _new);
   }
 
 
@@ -220,6 +248,7 @@ public class Change {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("    old: ").append(toIndentedString(old)).append("\n");
     sb.append("    _new: ").append(toIndentedString(_new)).append("\n");

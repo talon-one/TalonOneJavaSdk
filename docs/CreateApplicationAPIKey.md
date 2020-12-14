@@ -20,6 +20,7 @@ NONE | &quot;none&quot;
 SEGMENT | &quot;segment&quot;
 BRAZE | &quot;braze&quot;
 MPARTICLE | &quot;mparticle&quot;
+SELLIGENT | &quot;selligent&quot;
 
 
 

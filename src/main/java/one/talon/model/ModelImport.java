@@ -47,54 +47,9 @@ public class ModelImport {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private Integer userId;
 
-  /**
-   * The name of the entity that was imported.
-   */
-  @JsonAdapter(EntityEnum.Adapter.class)
-  public enum EntityEnum {
-    COUPON("Coupon");
-
-    private String value;
-
-    EntityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EntityEnum fromValue(String value) {
-      for (EntityEnum b : EntityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EntityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EntityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EntityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EntityEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
-  private EntityEnum entity;
+  private String entity;
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -189,24 +144,24 @@ public class ModelImport {
   }
 
 
-  public ModelImport entity(EntityEnum entity) {
+  public ModelImport entity(String entity) {
     
     this.entity = entity;
     return this;
   }
 
    /**
-   * The name of the entity that was imported.
+   * The name of the entity that was imported. Possible values are Coupons and LoyaltyPoints.
    * @return entity
   **/
-  @ApiModelProperty(required = true, value = "The name of the entity that was imported.")
+  @ApiModelProperty(required = true, value = "The name of the entity that was imported. Possible values are Coupons and LoyaltyPoints.")
 
-  public EntityEnum getEntity() {
+  public String getEntity() {
     return entity;
   }
 
 
-  public void setEntity(EntityEnum entity) {
+  public void setEntity(String entity) {
     this.entity = entity;
   }
 

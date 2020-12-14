@@ -21,48 +21,41 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for CartItemAdjustment
+ * Model tests for ProfileAudiencesChanges
  */
-public class CartItemAdjustmentTest {
-    private final CartItemAdjustment model = new CartItemAdjustment();
+public class ProfileAudiencesChangesTest {
+    private final ProfileAudiencesChanges model = new ProfileAudiencesChanges();
 
     /**
-     * Model tests for CartItemAdjustment
+     * Model tests for ProfileAudiencesChanges
      */
     @Test
-    public void testCartItemAdjustment() {
-        // TODO: test CartItemAdjustment
+    public void testProfileAudiencesChanges() {
+        // TODO: test ProfileAudiencesChanges
     }
 
     /**
-     * Test the property 'payFromLoyaltyProgram'
+     * Test the property 'adds'
      */
     @Test
-    public void payFromLoyaltyProgramTest() {
-        // TODO: test payFromLoyaltyProgram
+    public void addsTest() {
+        // TODO: test adds
     }
 
     /**
-     * Test the property 'pointPayment'
+     * Test the property 'deletes'
      */
     @Test
-    public void pointPaymentTest() {
-        // TODO: test pointPayment
-    }
-
-    /**
-     * Test the property 'remainingPrice'
-     */
-    @Test
-    public void remainingPriceTest() {
-        // TODO: test remainingPrice
+    public void deletesTest() {
+        // TODO: test deletes
     }
 
 }

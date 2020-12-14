@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.ProfileAudiencesChanges;
 
 /**
  * 
@@ -35,6 +36,10 @@ public class CustomerProfileIntegrationRequestV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
+
+  public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
+  @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
+  private ProfileAudiencesChanges audiencesChanges;
 
   /**
    * Gets or Sets responseContent
@@ -115,6 +120,29 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
 
+  public CustomerProfileIntegrationRequestV2 audiencesChanges(ProfileAudiencesChanges audiencesChanges) {
+    
+    this.audiencesChanges = audiencesChanges;
+    return this;
+  }
+
+   /**
+   * Get audiencesChanges
+   * @return audiencesChanges
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ProfileAudiencesChanges getAudiencesChanges() {
+    return audiencesChanges;
+  }
+
+
+  public void setAudiencesChanges(ProfileAudiencesChanges audiencesChanges) {
+    this.audiencesChanges = audiencesChanges;
+  }
+
+
   public CustomerProfileIntegrationRequestV2 responseContent(List<ResponseContentEnum> responseContent) {
     
     this.responseContent = responseContent;
@@ -156,12 +184,13 @@ public class CustomerProfileIntegrationRequestV2 {
     }
     CustomerProfileIntegrationRequestV2 customerProfileIntegrationRequestV2 = (CustomerProfileIntegrationRequestV2) o;
     return Objects.equals(this.attributes, customerProfileIntegrationRequestV2.attributes) &&
+        Objects.equals(this.audiencesChanges, customerProfileIntegrationRequestV2.audiencesChanges) &&
         Objects.equals(this.responseContent, customerProfileIntegrationRequestV2.responseContent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, responseContent);
+    return Objects.hash(attributes, audiencesChanges, responseContent);
   }
 
 
@@ -170,6 +199,7 @@ public class CustomerProfileIntegrationRequestV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerProfileIntegrationRequestV2 {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    audiencesChanges: ").append(toIndentedString(audiencesChanges)).append("\n");
     sb.append("    responseContent: ").append(toIndentedString(responseContent)).append("\n");
     sb.append("}");
     return sb.toString();

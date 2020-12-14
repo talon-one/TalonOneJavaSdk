@@ -21,31 +21,56 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for NewImport
+ * Model tests for RollbackAddedLoyaltyPointsEffectProps
  */
-public class NewImportTest {
-    private final NewImport model = new NewImport();
+public class RollbackAddedLoyaltyPointsEffectPropsTest {
+    private final RollbackAddedLoyaltyPointsEffectProps model = new RollbackAddedLoyaltyPointsEffectProps();
 
     /**
-     * Model tests for NewImport
+     * Model tests for RollbackAddedLoyaltyPointsEffectProps
      */
     @Test
-    public void testNewImport() {
-        // TODO: test NewImport
+    public void testRollbackAddedLoyaltyPointsEffectProps() {
+        // TODO: test RollbackAddedLoyaltyPointsEffectProps
     }
 
     /**
-     * Test the property 'entity'
+     * Test the property 'programId'
      */
     @Test
-    public void entityTest() {
-        // TODO: test entity
+    public void programIdTest() {
+        // TODO: test programId
+    }
+
+    /**
+     * Test the property 'subLedgerId'
+     */
+    @Test
+    public void subLedgerIdTest() {
+        // TODO: test subLedgerId
+    }
+
+    /**
+     * Test the property 'value'
+     */
+    @Test
+    public void valueTest() {
+        // TODO: test value
+    }
+
+    /**
+     * Test the property 'recipientIntegrationId'
+     */
+    @Test
+    public void recipientIntegrationIdTest() {
+        // TODO: test recipientIntegrationId
     }
 
 }

@@ -49,7 +49,9 @@ public class CreateApplicationAPIKey {
     
     BRAZE("braze"),
     
-    MPARTICLE("mparticle");
+    MPARTICLE("mparticle"),
+    
+    SELLIGENT("selligent");
 
     private String value;
 

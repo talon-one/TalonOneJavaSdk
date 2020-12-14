@@ -11,16 +11,8 @@ Name | Type | Description | Notes
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
 **accountId** | **Integer** | The ID of the account that owns this entity. | 
 **userId** | **Integer** | The ID of the account that owns this entity. | 
-**entity** | [**EntityEnum**](#EntityEnum) | The name of the entity that was imported. | 
+**entity** | **String** | The name of the entity that was imported. Possible values are Coupons and LoyaltyPoints. | 
 **amount** | **Integer** | The number of members that imported. | 
-
-
-
-## Enum: EntityEnum
-
-Name | Value
----- | -----
-COUPON | &quot;Coupon&quot;
 
 
 

@@ -23,82 +23,74 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 
+ * ProfileAudiencesChanges
  */
-@ApiModel(description = "")
 
-public class NewImport {
-  /**
-   * The name of the entity that was imported.
-   */
-  @JsonAdapter(EntityEnum.Adapter.class)
-  public enum EntityEnum {
-    COUPON("Coupon");
+public class ProfileAudiencesChanges {
+  public static final String SERIALIZED_NAME_ADDS = "adds";
+  @SerializedName(SERIALIZED_NAME_ADDS)
+  private List<Integer> adds = new ArrayList<Integer>();
 
-    private String value;
+  public static final String SERIALIZED_NAME_DELETES = "deletes";
+  @SerializedName(SERIALIZED_NAME_DELETES)
+  private List<Integer> deletes = new ArrayList<Integer>();
 
-    EntityEnum(String value) {
-      this.value = value;
-    }
 
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EntityEnum fromValue(String value) {
-      for (EntityEnum b : EntityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EntityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EntityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EntityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EntityEnum.fromValue(value);
-      }
-    }
+  public ProfileAudiencesChanges adds(List<Integer> adds) {
+    
+    this.adds = adds;
+    return this;
   }
 
-  public static final String SERIALIZED_NAME_ENTITY = "entity";
-  @SerializedName(SERIALIZED_NAME_ENTITY)
-  private EntityEnum entity;
-
-
-  public NewImport entity(EntityEnum entity) {
-    
-    this.entity = entity;
+  public ProfileAudiencesChanges addAddsItem(Integer addsItem) {
+    this.adds.add(addsItem);
     return this;
   }
 
    /**
-   * The name of the entity that was imported.
-   * @return entity
+   * The IDs of the audiences for the customer to join.
+   * @return adds
   **/
-  @ApiModelProperty(required = true, value = "The name of the entity that was imported.")
+  @ApiModelProperty(required = true, value = "The IDs of the audiences for the customer to join.")
 
-  public EntityEnum getEntity() {
-    return entity;
+  public List<Integer> getAdds() {
+    return adds;
   }
 
 
-  public void setEntity(EntityEnum entity) {
-    this.entity = entity;
+  public void setAdds(List<Integer> adds) {
+    this.adds = adds;
+  }
+
+
+  public ProfileAudiencesChanges deletes(List<Integer> deletes) {
+    
+    this.deletes = deletes;
+    return this;
+  }
+
+  public ProfileAudiencesChanges addDeletesItem(Integer deletesItem) {
+    this.deletes.add(deletesItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the audiences for the customer to leave.
+   * @return deletes
+  **/
+  @ApiModelProperty(required = true, value = "The IDs of the audiences for the customer to leave.")
+
+  public List<Integer> getDeletes() {
+    return deletes;
+  }
+
+
+  public void setDeletes(List<Integer> deletes) {
+    this.deletes = deletes;
   }
 
 
@@ -110,21 +102,23 @@ public class NewImport {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NewImport newImport = (NewImport) o;
-    return Objects.equals(this.entity, newImport.entity);
+    ProfileAudiencesChanges profileAudiencesChanges = (ProfileAudiencesChanges) o;
+    return Objects.equals(this.adds, profileAudiencesChanges.adds) &&
+        Objects.equals(this.deletes, profileAudiencesChanges.deletes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entity);
+    return Objects.hash(adds, deletes);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NewImport {\n");
-    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
+    sb.append("class ProfileAudiencesChanges {\n");
+    sb.append("    adds: ").append(toIndentedString(adds)).append("\n");
+    sb.append("    deletes: ").append(toIndentedString(deletes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

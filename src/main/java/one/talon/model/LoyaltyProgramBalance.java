@@ -35,6 +35,22 @@ public class LoyaltyProgramBalance {
   @SerializedName(SERIALIZED_NAME_CURRENT_BALANCE)
   private BigDecimal currentBalance;
 
+  public static final String SERIALIZED_NAME_PENDING_BALANCE = "pendingBalance";
+  @SerializedName(SERIALIZED_NAME_PENDING_BALANCE)
+  private BigDecimal pendingBalance;
+
+  public static final String SERIALIZED_NAME_EXPIRED_BALANCE = "expiredBalance";
+  @SerializedName(SERIALIZED_NAME_EXPIRED_BALANCE)
+  private BigDecimal expiredBalance;
+
+  public static final String SERIALIZED_NAME_SPENT_BALANCE = "spentBalance";
+  @SerializedName(SERIALIZED_NAME_SPENT_BALANCE)
+  private BigDecimal spentBalance;
+
+  public static final String SERIALIZED_NAME_TENTATIVE_CURRENT_BALANCE = "tentativeCurrentBalance";
+  @SerializedName(SERIALIZED_NAME_TENTATIVE_CURRENT_BALANCE)
+  private BigDecimal tentativeCurrentBalance;
+
 
   public LoyaltyProgramBalance currentBalance(BigDecimal currentBalance) {
     
@@ -43,10 +59,10 @@ public class LoyaltyProgramBalance {
   }
 
    /**
-   * Get currentBalance
+   * Sum of current active points amounts
    * @return currentBalance
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Sum of current active points amounts")
 
   public BigDecimal getCurrentBalance() {
     return currentBalance;
@@ -55,6 +71,94 @@ public class LoyaltyProgramBalance {
 
   public void setCurrentBalance(BigDecimal currentBalance) {
     this.currentBalance = currentBalance;
+  }
+
+
+  public LoyaltyProgramBalance pendingBalance(BigDecimal pendingBalance) {
+    
+    this.pendingBalance = pendingBalance;
+    return this;
+  }
+
+   /**
+   * Sum of pending points amounts
+   * @return pendingBalance
+  **/
+  @ApiModelProperty(required = true, value = "Sum of pending points amounts")
+
+  public BigDecimal getPendingBalance() {
+    return pendingBalance;
+  }
+
+
+  public void setPendingBalance(BigDecimal pendingBalance) {
+    this.pendingBalance = pendingBalance;
+  }
+
+
+  public LoyaltyProgramBalance expiredBalance(BigDecimal expiredBalance) {
+    
+    this.expiredBalance = expiredBalance;
+    return this;
+  }
+
+   /**
+   * Sum of expired points amounts
+   * @return expiredBalance
+  **/
+  @ApiModelProperty(required = true, value = "Sum of expired points amounts")
+
+  public BigDecimal getExpiredBalance() {
+    return expiredBalance;
+  }
+
+
+  public void setExpiredBalance(BigDecimal expiredBalance) {
+    this.expiredBalance = expiredBalance;
+  }
+
+
+  public LoyaltyProgramBalance spentBalance(BigDecimal spentBalance) {
+    
+    this.spentBalance = spentBalance;
+    return this;
+  }
+
+   /**
+   * Sum of spent points amounts
+   * @return spentBalance
+  **/
+  @ApiModelProperty(required = true, value = "Sum of spent points amounts")
+
+  public BigDecimal getSpentBalance() {
+    return spentBalance;
+  }
+
+
+  public void setSpentBalance(BigDecimal spentBalance) {
+    this.spentBalance = spentBalance;
+  }
+
+
+  public LoyaltyProgramBalance tentativeCurrentBalance(BigDecimal tentativeCurrentBalance) {
+    
+    this.tentativeCurrentBalance = tentativeCurrentBalance;
+    return this;
+  }
+
+   /**
+   * Sum of current active points amounts, including additions and deductions on open sessions
+   * @return tentativeCurrentBalance
+  **/
+  @ApiModelProperty(required = true, value = "Sum of current active points amounts, including additions and deductions on open sessions")
+
+  public BigDecimal getTentativeCurrentBalance() {
+    return tentativeCurrentBalance;
+  }
+
+
+  public void setTentativeCurrentBalance(BigDecimal tentativeCurrentBalance) {
+    this.tentativeCurrentBalance = tentativeCurrentBalance;
   }
 
 
@@ -67,12 +171,16 @@ public class LoyaltyProgramBalance {
       return false;
     }
     LoyaltyProgramBalance loyaltyProgramBalance = (LoyaltyProgramBalance) o;
-    return Objects.equals(this.currentBalance, loyaltyProgramBalance.currentBalance);
+    return Objects.equals(this.currentBalance, loyaltyProgramBalance.currentBalance) &&
+        Objects.equals(this.pendingBalance, loyaltyProgramBalance.pendingBalance) &&
+        Objects.equals(this.expiredBalance, loyaltyProgramBalance.expiredBalance) &&
+        Objects.equals(this.spentBalance, loyaltyProgramBalance.spentBalance) &&
+        Objects.equals(this.tentativeCurrentBalance, loyaltyProgramBalance.tentativeCurrentBalance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentBalance);
+    return Objects.hash(currentBalance, pendingBalance, expiredBalance, spentBalance, tentativeCurrentBalance);
   }
 
 
@@ -81,6 +189,10 @@ public class LoyaltyProgramBalance {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoyaltyProgramBalance {\n");
     sb.append("    currentBalance: ").append(toIndentedString(currentBalance)).append("\n");
+    sb.append("    pendingBalance: ").append(toIndentedString(pendingBalance)).append("\n");
+    sb.append("    expiredBalance: ").append(toIndentedString(expiredBalance)).append("\n");
+    sb.append("    spentBalance: ").append(toIndentedString(spentBalance)).append("\n");
+    sb.append("    tentativeCurrentBalance: ").append(toIndentedString(tentativeCurrentBalance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

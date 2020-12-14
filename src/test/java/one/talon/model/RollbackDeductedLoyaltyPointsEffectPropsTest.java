@@ -21,31 +21,73 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for ImportCoupons
+ * Model tests for RollbackDeductedLoyaltyPointsEffectProps
  */
-public class ImportCouponsTest {
-    private final ImportCoupons model = new ImportCoupons();
+public class RollbackDeductedLoyaltyPointsEffectPropsTest {
+    private final RollbackDeductedLoyaltyPointsEffectProps model = new RollbackDeductedLoyaltyPointsEffectProps();
 
     /**
-     * Model tests for ImportCoupons
+     * Model tests for RollbackDeductedLoyaltyPointsEffectProps
      */
     @Test
-    public void testImportCoupons() {
-        // TODO: test ImportCoupons
+    public void testRollbackDeductedLoyaltyPointsEffectProps() {
+        // TODO: test RollbackDeductedLoyaltyPointsEffectProps
     }
 
     /**
-     * Test the property 'coupons'
+     * Test the property 'programId'
      */
     @Test
-    public void couponsTest() {
-        // TODO: test coupons
+    public void programIdTest() {
+        // TODO: test programId
+    }
+
+    /**
+     * Test the property 'subLedgerId'
+     */
+    @Test
+    public void subLedgerIdTest() {
+        // TODO: test subLedgerId
+    }
+
+    /**
+     * Test the property 'value'
+     */
+    @Test
+    public void valueTest() {
+        // TODO: test value
+    }
+
+    /**
+     * Test the property 'recipientIntegrationId'
+     */
+    @Test
+    public void recipientIntegrationIdTest() {
+        // TODO: test recipientIntegrationId
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
     }
 
 }
