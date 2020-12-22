@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ruleIndex** | **Integer** | The position of the rule that triggered this effect within the ruleset | 
 **ruleName** | **String** | The name of the rule that triggered this effect | 
 **effectType** | **String** | The type of effect that was triggered | 
+**triggeredByCoupon** | **Integer** | The ID of the coupon that was being evaluated when this effect was triggered |  [optional]
 
 
 
