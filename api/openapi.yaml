@@ -5212,6 +5212,7 @@ components:
         couponPattern:
           description: |
             The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
+          maxLength: 100
           minLength: 3
           type: string
       required:
@@ -6750,6 +6751,7 @@ components:
         couponPattern:
           description: |
             The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
+          maxLength: 100
           minLength: 3
           type: string
       required:
@@ -6817,6 +6819,7 @@ components:
         couponPattern:
           description: |
             The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set.
+          maxLength: 100
           minLength: 3
           type: string
       required:
@@ -8551,10 +8554,12 @@ components:
           type: string
         coupon:
           description: Any coupon code entered.
+          maxLength: 100
           title: Coupon entered in session
           type: string
         referral:
           description: Any referral code entered.
+          maxLength: 100
           title: Referral code entered in session
           type: string
         state:
@@ -8646,11 +8651,13 @@ components:
         couponCodes:
           description: Any coupon codes entered.
           items:
+            maxLength: 100
             type: string
           title: Coupons entered in session
           type: array
         referralCode:
           description: Any referral code entered.
+          maxLength: 100
           title: Referral code entered in session
           type: string
         state:
@@ -8873,10 +8880,12 @@ components:
           type: string
         coupon:
           description: Any coupon code entered.
+          maxLength: 100
           title: Coupon entered in session
           type: string
         referral:
           description: Any referral code entered.
+          maxLength: 100
           title: Referral code entered in session
           type: string
         state:
@@ -9012,11 +9021,13 @@ components:
         couponCodes:
           description: Any coupon codes entered.
           items:
+            maxLength: 100
             type: string
           title: Coupons entered in session
           type: array
         referralCode:
           description: Any referral code entered.
+          maxLength: 100
           title: Referral code entered in session
           type: string
         state:
@@ -9487,12 +9498,14 @@ components:
           ruleIndex: 8
           campaignId: 4
           ruleName: ruleName
+          triggeredByCoupon: 4
           effectType: effectType
           props: '{}'
         - rulesetId: 6
           ruleIndex: 8
           campaignId: 4
           ruleName: ruleName
+          triggeredByCoupon: 4
           effectType: effectType
           props: '{}'
         referral:
@@ -12172,6 +12185,7 @@ components:
         ruleIndex: 8
         campaignId: 4
         ruleName: ruleName
+        triggeredByCoupon: 4
         effectType: effectType
         props: '{}'
       properties:
@@ -12192,6 +12206,10 @@ components:
         effectType:
           description: The type of effect that was triggered
           type: string
+        triggeredByCoupon:
+          description: The ID of the coupon that was being evaluated when this effect
+            was triggered
+          type: integer
         props:
           type: object
       required:
@@ -12223,6 +12241,10 @@ components:
         effectType:
           description: The type of effect that was triggered
           type: string
+        triggeredByCoupon:
+          description: The ID of the coupon that was being evaluated when this effect
+            was triggered
+          type: integer
       required:
       - campaignId
       - effectType
@@ -12804,12 +12826,14 @@ components:
             ruleIndex: 8
             campaignId: 4
             ruleName: ruleName
+            triggeredByCoupon: 4
             effectType: effectType
             props: '{}'
           - rulesetId: 6
             ruleIndex: 8
             campaignId: 4
             ruleName: ruleName
+            triggeredByCoupon: 4
             effectType: effectType
             props: '{}'
           referral:
@@ -13163,12 +13187,14 @@ components:
             ruleIndex: 8
             campaignId: 4
             ruleName: ruleName
+            triggeredByCoupon: 4
             effectType: effectType
             props: '{}'
           - rulesetId: 6
             ruleIndex: 8
             campaignId: 4
             ruleName: ruleName
+            triggeredByCoupon: 4
             effectType: effectType
             props: '{}'
           referral:

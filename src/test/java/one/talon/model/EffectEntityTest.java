@@ -80,4 +80,12 @@ public class EffectEntityTest {
         // TODO: test effectType
     }
 
+    /**
+     * Test the property 'triggeredByCoupon'
+     */
+    @Test
+    public void triggeredByCouponTest() {
+        // TODO: test triggeredByCoupon
+    }
+
 }

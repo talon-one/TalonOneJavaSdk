@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>4.3.0</version>
+  <version>4.3.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:4.3.0"
+compile "one.talon:talon-one-client:4.3.1"
 ```
 
 ### Others
@@ -72,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-4.3.0.jar`
+* `target/talon-one-client-4.3.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

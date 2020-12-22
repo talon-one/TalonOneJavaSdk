@@ -81,6 +81,14 @@ public class EffectTest {
     }
 
     /**
+     * Test the property 'triggeredByCoupon'
+     */
+    @Test
+    public void triggeredByCouponTest() {
+        // TODO: test triggeredByCoupon
+    }
+
+    /**
      * Test the property 'props'
      */
     @Test

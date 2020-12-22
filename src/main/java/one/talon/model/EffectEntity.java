@@ -50,6 +50,10 @@ public class EffectEntity {
   @SerializedName(SERIALIZED_NAME_EFFECT_TYPE)
   private String effectType;
 
+  public static final String SERIALIZED_NAME_TRIGGERED_BY_COUPON = "triggeredByCoupon";
+  @SerializedName(SERIALIZED_NAME_TRIGGERED_BY_COUPON)
+  private Integer triggeredByCoupon;
+
 
   public EffectEntity campaignId(Integer campaignId) {
     
@@ -161,6 +165,29 @@ public class EffectEntity {
   }
 
 
+  public EffectEntity triggeredByCoupon(Integer triggeredByCoupon) {
+    
+    this.triggeredByCoupon = triggeredByCoupon;
+    return this;
+  }
+
+   /**
+   * The ID of the coupon that was being evaluated when this effect was triggered
+   * @return triggeredByCoupon
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the coupon that was being evaluated when this effect was triggered")
+
+  public Integer getTriggeredByCoupon() {
+    return triggeredByCoupon;
+  }
+
+
+  public void setTriggeredByCoupon(Integer triggeredByCoupon) {
+    this.triggeredByCoupon = triggeredByCoupon;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -174,12 +201,13 @@ public class EffectEntity {
         Objects.equals(this.rulesetId, effectEntity.rulesetId) &&
         Objects.equals(this.ruleIndex, effectEntity.ruleIndex) &&
         Objects.equals(this.ruleName, effectEntity.ruleName) &&
-        Objects.equals(this.effectType, effectEntity.effectType);
+        Objects.equals(this.effectType, effectEntity.effectType) &&
+        Objects.equals(this.triggeredByCoupon, effectEntity.triggeredByCoupon);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon);
   }
 
 
@@ -192,6 +220,7 @@ public class EffectEntity {
     sb.append("    ruleIndex: ").append(toIndentedString(ruleIndex)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    effectType: ").append(toIndentedString(effectType)).append("\n");
+    sb.append("    triggeredByCoupon: ").append(toIndentedString(triggeredByCoupon)).append("\n");
     sb.append("}");
     return sb.toString();
   }
