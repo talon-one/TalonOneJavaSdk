@@ -22,3 +22,11 @@ bundle:
 	cp target/talon-one-client-$(VERSION).jar $(DIST)
 
 prepare: build bundle
+
+testenv:
+	docker run \
+		--rm -it \
+		-v $(PWD):/tmp/talon-client \
+		-w "/tmp/talon-client" \
+		maven:3.5.2-jdk-9-slim \
+		/bin/bash
