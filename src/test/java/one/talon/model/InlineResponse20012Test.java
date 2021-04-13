@@ -44,14 +44,6 @@ public class InlineResponse20012Test {
     }
 
     /**
-     * Test the property 'totalResultSize'
-     */
-    @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
-    }
-
-    /**
      * Test the property 'hasMore'
      */
     @Test

@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Export;
+import one.talon.model.Role;
 
 /**
  * InlineResponse20029
@@ -38,7 +38,7 @@ public class InlineResponse20029 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Export> data = new ArrayList<Export>();
+  private List<Role> data = new ArrayList<Role>();
 
 
   public InlineResponse20029 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20029 {
   }
 
 
-  public InlineResponse20029 data(List<Export> data) {
+  public InlineResponse20029 data(List<Role> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20029 addDataItem(Export dataItem) {
+  public InlineResponse20029 addDataItem(Role dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20029 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Export> getData() {
+  public List<Role> getData() {
     return data;
   }
 
 
-  public void setData(List<Export> data) {
+  public void setData(List<Role> data) {
     this.data = data;
   }
 

@@ -7,7 +7,7 @@ Ledger of Balance in Loyalty Program for a Customer
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | [**BigDecimal**](BigDecimal.md) | ⚠️ Deprecated: Please use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance  | 
+**total** | [**BigDecimal**](BigDecimal.md) | ⚠️ Deprecated: Use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance  | 
 **totalActivePoints** | [**BigDecimal**](BigDecimal.md) | Total amount of currently active and available points in the customer&#39;s balance | 
 **totalPendingPoints** | [**BigDecimal**](BigDecimal.md) | Total amount of pending points, which are not active yet but will become active in the future | 
 **totalSpentPoints** | [**BigDecimal**](BigDecimal.md) | Total amount of points already spent by this customer | 

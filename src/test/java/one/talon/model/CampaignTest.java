@@ -223,6 +223,22 @@ public class CampaignTest {
     }
 
     /**
+     * Test the property 'referralCreationCount'
+     */
+    @Test
+    public void referralCreationCountTest() {
+        // TODO: test referralCreationCount
+    }
+
+    /**
+     * Test the property 'awardedGiveawaysCount'
+     */
+    @Test
+    public void awardedGiveawaysCountTest() {
+        // TODO: test awardedGiveawaysCount
+    }
+
+    /**
      * Test the property 'createdLoyaltyPointsCount'
      */
     @Test

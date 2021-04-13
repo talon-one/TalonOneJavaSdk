@@ -15,8 +15,10 @@ Name | Type | Description | Notes
 **coupons** | [**List&lt;Coupon&gt;**](Coupon.md) |  |  [optional]
 **triggeredCampaigns** | [**List&lt;Campaign&gt;**](Campaign.md) |  |  [optional]
 **effects** | [**List&lt;Effect&gt;**](Effect.md) |  | 
+**ruleFailureReasons** | [**List&lt;RuleFailureReason&gt;**](RuleFailureReason.md) |  |  [optional]
 **createdCoupons** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
 **createdReferrals** | [**List&lt;Referral&gt;**](Referral.md) |  | 
+**awardedGiveaways** | [**List&lt;Giveaway&gt;**](Giveaway.md) |  |  [optional]
 
 
 

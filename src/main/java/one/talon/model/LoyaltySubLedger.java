@@ -82,10 +82,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * ⚠️ Deprecated: Please use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance 
+   * ⚠️ Deprecated: Use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance 
    * @return total
   **/
-  @ApiModelProperty(required = true, value = "⚠️ Deprecated: Please use 'totalActivePoints' property instead. Total amount of currently active and available points in the customer's balance ")
+  @ApiModelProperty(required = true, value = "⚠️ Deprecated: Use 'totalActivePoints' property instead. Total amount of currently active and available points in the customer's balance ")
 
   public BigDecimal getTotal() {
     return total;

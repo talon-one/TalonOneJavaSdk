@@ -124,7 +124,9 @@ public class UpdateCampaign {
     
     REFERRALS("referrals"),
     
-    LOYALTY("loyalty");
+    LOYALTY("loyalty"),
+    
+    GIVEAWAYS("giveaways");
 
     private String value;
 

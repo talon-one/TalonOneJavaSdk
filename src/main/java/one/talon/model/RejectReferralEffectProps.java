@@ -38,6 +38,18 @@ public class RejectReferralEffectProps {
   @SerializedName(SERIALIZED_NAME_REJECTION_REASON)
   private String rejectionReason;
 
+  public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
+  @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
+  private Integer conditionIndex;
+
+  public static final String SERIALIZED_NAME_EFFECT_INDEX = "effectIndex";
+  @SerializedName(SERIALIZED_NAME_EFFECT_INDEX)
+  private Integer effectIndex;
+
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private String details;
+
 
   public RejectReferralEffectProps value(String value) {
     
@@ -83,6 +95,75 @@ public class RejectReferralEffectProps {
   }
 
 
+  public RejectReferralEffectProps conditionIndex(Integer conditionIndex) {
+    
+    this.conditionIndex = conditionIndex;
+    return this;
+  }
+
+   /**
+   * The index of the condition that caused the rejection of the referral
+   * @return conditionIndex
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the condition that caused the rejection of the referral")
+
+  public Integer getConditionIndex() {
+    return conditionIndex;
+  }
+
+
+  public void setConditionIndex(Integer conditionIndex) {
+    this.conditionIndex = conditionIndex;
+  }
+
+
+  public RejectReferralEffectProps effectIndex(Integer effectIndex) {
+    
+    this.effectIndex = effectIndex;
+    return this;
+  }
+
+   /**
+   * The index of the effect that caused the rejection of the referral
+   * @return effectIndex
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the effect that caused the rejection of the referral")
+
+  public Integer getEffectIndex() {
+    return effectIndex;
+  }
+
+
+  public void setEffectIndex(Integer effectIndex) {
+    this.effectIndex = effectIndex;
+  }
+
+
+  public RejectReferralEffectProps details(String details) {
+    
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * More details about the failure
+   * @return details
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "More details about the failure")
+
+  public String getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(String details) {
+    this.details = details;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +174,15 @@ public class RejectReferralEffectProps {
     }
     RejectReferralEffectProps rejectReferralEffectProps = (RejectReferralEffectProps) o;
     return Objects.equals(this.value, rejectReferralEffectProps.value) &&
-        Objects.equals(this.rejectionReason, rejectReferralEffectProps.rejectionReason);
+        Objects.equals(this.rejectionReason, rejectReferralEffectProps.rejectionReason) &&
+        Objects.equals(this.conditionIndex, rejectReferralEffectProps.conditionIndex) &&
+        Objects.equals(this.effectIndex, rejectReferralEffectProps.effectIndex) &&
+        Objects.equals(this.details, rejectReferralEffectProps.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, rejectionReason);
+    return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details);
   }
 
 
@@ -108,6 +192,9 @@ public class RejectReferralEffectProps {
     sb.append("class RejectReferralEffectProps {\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    rejectionReason: ").append(toIndentedString(rejectionReason)).append("\n");
+    sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
+    sb.append("    effectIndex: ").append(toIndentedString(effectIndex)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

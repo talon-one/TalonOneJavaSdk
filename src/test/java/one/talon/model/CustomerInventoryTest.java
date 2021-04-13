@@ -23,8 +23,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
+import one.talon.model.Giveaway;
+import one.talon.model.InventoryCoupon;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
 import org.junit.Assert;
@@ -76,6 +77,14 @@ public class CustomerInventoryTest {
     @Test
     public void couponsTest() {
         // TODO: test coupons
+    }
+
+    /**
+     * Test the property 'giveaways'
+     */
+    @Test
+    public void giveawaysTest() {
+        // TODO: test giveaways
     }
 
 }

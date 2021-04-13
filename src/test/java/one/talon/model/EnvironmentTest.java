@@ -23,7 +23,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AccountAdditionalCost;
+import one.talon.model.Attribute;
+import one.talon.model.Audience;
 import one.talon.model.FunctionDef;
+import one.talon.model.GiveawaysPool;
+import one.talon.model.LoyaltyProgram;
 import one.talon.model.SlotDef;
 import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
@@ -92,6 +97,46 @@ public class EnvironmentTest {
     @Test
     public void templatesTest() {
         // TODO: test templates
+    }
+
+    /**
+     * Test the property 'giveawaysPools'
+     */
+    @Test
+    public void giveawaysPoolsTest() {
+        // TODO: test giveawaysPools
+    }
+
+    /**
+     * Test the property 'loyaltyPrograms'
+     */
+    @Test
+    public void loyaltyProgramsTest() {
+        // TODO: test loyaltyPrograms
+    }
+
+    /**
+     * Test the property 'attributes'
+     */
+    @Test
+    public void attributesTest() {
+        // TODO: test attributes
+    }
+
+    /**
+     * Test the property 'additionalCosts'
+     */
+    @Test
+    public void additionalCostsTest() {
+        // TODO: test additionalCosts
+    }
+
+    /**
+     * Test the property 'audiences'
+     */
+    @Test
+    public void audiencesTest() {
+        // TODO: test audiences
     }
 
     /**

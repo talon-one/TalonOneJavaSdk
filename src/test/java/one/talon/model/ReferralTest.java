@@ -58,6 +58,30 @@ public class ReferralTest {
     }
 
     /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
+    }
+
+    /**
+     * Test the property 'usageLimit'
+     */
+    @Test
+    public void usageLimitTest() {
+        // TODO: test usageLimit
+    }
+
+    /**
      * Test the property 'campaignId'
      */
     @Test
@@ -82,19 +106,19 @@ public class ReferralTest {
     }
 
     /**
-     * Test the property 'startDate'
+     * Test the property 'attributes'
      */
     @Test
-    public void startDateTest() {
-        // TODO: test startDate
+    public void attributesTest() {
+        // TODO: test attributes
     }
 
     /**
-     * Test the property 'expiryDate'
+     * Test the property 'importId'
      */
     @Test
-    public void expiryDateTest() {
-        // TODO: test expiryDate
+    public void importIdTest() {
+        // TODO: test importId
     }
 
     /**
@@ -114,11 +138,11 @@ public class ReferralTest {
     }
 
     /**
-     * Test the property 'usageLimit'
+     * Test the property 'batchId'
      */
     @Test
-    public void usageLimitTest() {
-        // TODO: test usageLimit
+    public void batchIdTest() {
+        // TODO: test batchId
     }
 
 }

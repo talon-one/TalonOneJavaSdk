@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -51,11 +52,27 @@ public class RoleTest {
     }
 
     /**
-     * Test the property 'accountID'
+     * Test the property 'created'
      */
     @Test
-    public void accountIDTest() {
-        // TODO: test accountID
+    public void createdTest() {
+        // TODO: test created
+    }
+
+    /**
+     * Test the property 'modified'
+     */
+    @Test
+    public void modifiedTest() {
+        // TODO: test modified
+    }
+
+    /**
+     * Test the property 'accountId'
+     */
+    @Test
+    public void accountIdTest() {
+        // TODO: test accountId
     }
 
     /**

@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Attribute&gt;**](Attribute.md) |  | 
+**data** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) |  | 
 
 
 

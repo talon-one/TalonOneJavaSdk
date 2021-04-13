@@ -34,6 +34,10 @@ import one.talon.model.LoyaltyProgramBalance;
 @ApiModel(description = "Customer specific information about loyalty points.")
 
 public class LoyaltyProgramLedgers {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
+
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -49,6 +53,28 @@ public class LoyaltyProgramLedgers {
   public static final String SERIALIZED_NAME_SUB_LEDGERS = "subLedgers";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGERS)
   private Map<String, LoyaltyProgramBalance> subLedgers = null;
+
+
+  public LoyaltyProgramLedgers id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The internal ID of loyalty program
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "The internal ID of loyalty program")
+
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
 
   public LoyaltyProgramLedgers title(String title) {
@@ -157,7 +183,8 @@ public class LoyaltyProgramLedgers {
       return false;
     }
     LoyaltyProgramLedgers loyaltyProgramLedgers = (LoyaltyProgramLedgers) o;
-    return Objects.equals(this.title, loyaltyProgramLedgers.title) &&
+    return Objects.equals(this.id, loyaltyProgramLedgers.id) &&
+        Objects.equals(this.title, loyaltyProgramLedgers.title) &&
         Objects.equals(this.name, loyaltyProgramLedgers.name) &&
         Objects.equals(this.ledger, loyaltyProgramLedgers.ledger) &&
         Objects.equals(this.subLedgers, loyaltyProgramLedgers.subLedgers);
@@ -165,7 +192,7 @@ public class LoyaltyProgramLedgers {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, name, ledger, subLedgers);
+    return Objects.hash(id, title, name, ledger, subLedgers);
   }
 
 
@@ -173,6 +200,7 @@ public class LoyaltyProgramLedgers {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoyaltyProgramLedgers {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ledger: ").append(toIndentedString(ledger)).append("\n");

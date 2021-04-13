@@ -132,11 +132,11 @@ public class UpdateRole {
   }
 
    /**
-   * an array of user identifiers
+   * An array of user identifiers
    * @return users
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "an array of user identifiers")
+  @ApiModelProperty(value = "An array of user identifiers")
 
   public List<Integer> getUsers() {
     return users;

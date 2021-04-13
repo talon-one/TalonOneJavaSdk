@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **recipientIntegrationId** | **String** | The user for whom these points were reimbursed | 
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date after which the reimbursed points will be valid |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date after which the reimbursed points will expire |  [optional]
+**transactionUUID** | **String** | The identifier of &#39;addition&#39; entries added to the ledger as the &#x60;deductLoyaltyPoints&#x60; effect is rolled back | 
 
 
 

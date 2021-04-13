@@ -90,4 +90,12 @@ public class RollbackDeductedLoyaltyPointsEffectPropsTest {
         // TODO: test expiryDate
     }
 
+    /**
+     * Test the property 'transactionUUID'
+     */
+    @Test
+    public void transactionUUIDTest() {
+        // TODO: test transactionUUID
+    }
+
 }

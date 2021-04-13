@@ -25,8 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Coupon;
 import one.talon.model.CustomerProfile;
+import one.talon.model.Giveaway;
+import one.talon.model.InventoryCoupon;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
 
@@ -49,7 +50,11 @@ public class CustomerInventory {
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
-  private List<Coupon> coupons = null;
+  private List<InventoryCoupon> coupons = null;
+
+  public static final String SERIALIZED_NAME_GIVEAWAYS = "giveaways";
+  @SerializedName(SERIALIZED_NAME_GIVEAWAYS)
+  private List<Giveaway> giveaways = null;
 
 
   public CustomerInventory profile(CustomerProfile profile) {
@@ -129,15 +134,15 @@ public class CustomerInventory {
   }
 
 
-  public CustomerInventory coupons(List<Coupon> coupons) {
+  public CustomerInventory coupons(List<InventoryCoupon> coupons) {
     
     this.coupons = coupons;
     return this;
   }
 
-  public CustomerInventory addCouponsItem(Coupon couponsItem) {
+  public CustomerInventory addCouponsItem(InventoryCoupon couponsItem) {
     if (this.coupons == null) {
-      this.coupons = new ArrayList<Coupon>();
+      this.coupons = new ArrayList<InventoryCoupon>();
     }
     this.coupons.add(couponsItem);
     return this;
@@ -150,13 +155,44 @@ public class CustomerInventory {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Coupon> getCoupons() {
+  public List<InventoryCoupon> getCoupons() {
     return coupons;
   }
 
 
-  public void setCoupons(List<Coupon> coupons) {
+  public void setCoupons(List<InventoryCoupon> coupons) {
     this.coupons = coupons;
+  }
+
+
+  public CustomerInventory giveaways(List<Giveaway> giveaways) {
+    
+    this.giveaways = giveaways;
+    return this;
+  }
+
+  public CustomerInventory addGiveawaysItem(Giveaway giveawaysItem) {
+    if (this.giveaways == null) {
+      this.giveaways = new ArrayList<Giveaway>();
+    }
+    this.giveaways.add(giveawaysItem);
+    return this;
+  }
+
+   /**
+   * Get giveaways
+   * @return giveaways
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<Giveaway> getGiveaways() {
+    return giveaways;
+  }
+
+
+  public void setGiveaways(List<Giveaway> giveaways) {
+    this.giveaways = giveaways;
   }
 
 
@@ -172,12 +208,13 @@ public class CustomerInventory {
     return Objects.equals(this.profile, customerInventory.profile) &&
         Objects.equals(this.loyalty, customerInventory.loyalty) &&
         Objects.equals(this.referrals, customerInventory.referrals) &&
-        Objects.equals(this.coupons, customerInventory.coupons);
+        Objects.equals(this.coupons, customerInventory.coupons) &&
+        Objects.equals(this.giveaways, customerInventory.giveaways);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, loyalty, referrals, coupons);
+    return Objects.hash(profile, loyalty, referrals, coupons, giveaways);
   }
 
 
@@ -189,6 +226,7 @@ public class CustomerInventory {
     sb.append("    loyalty: ").append(toIndentedString(loyalty)).append("\n");
     sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
+    sb.append("    giveaways: ").append(toIndentedString(giveaways)).append("\n");
     sb.append("}");
     return sb.toString();
   }

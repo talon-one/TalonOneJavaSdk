@@ -1,13 +1,12 @@
 
 
-# InlineResponse20030
+# ImportEntity
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Role&gt;**](Role.md) |  | 
+**importId** | **Integer** | The ID of the Import which created this referral. |  [optional]
 
 
 

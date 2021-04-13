@@ -142,7 +142,9 @@ public class Campaign {
     
     REFERRALS("referrals"),
     
-    LOYALTY("loyalty");
+    LOYALTY("loyalty"),
+    
+    GIVEAWAYS("giveaways");
 
     private String value;
 
@@ -221,6 +223,14 @@ public class Campaign {
   public static final String SERIALIZED_NAME_COUPON_CREATION_COUNT = "couponCreationCount";
   @SerializedName(SERIALIZED_NAME_COUPON_CREATION_COUNT)
   private Integer couponCreationCount;
+
+  public static final String SERIALIZED_NAME_REFERRAL_CREATION_COUNT = "referralCreationCount";
+  @SerializedName(SERIALIZED_NAME_REFERRAL_CREATION_COUNT)
+  private Integer referralCreationCount;
+
+  public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT = "awardedGiveawaysCount";
+  @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT)
+  private Integer awardedGiveawaysCount;
 
   public static final String SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT = "createdLoyaltyPointsCount";
   @SerializedName(SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT)
@@ -774,6 +784,52 @@ public class Campaign {
   }
 
 
+  public Campaign referralCreationCount(Integer referralCreationCount) {
+    
+    this.referralCreationCount = referralCreationCount;
+    return this;
+  }
+
+   /**
+   * Total number of referrals created by rules in this campaign.
+   * @return referralCreationCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of referrals created by rules in this campaign.")
+
+  public Integer getReferralCreationCount() {
+    return referralCreationCount;
+  }
+
+
+  public void setReferralCreationCount(Integer referralCreationCount) {
+    this.referralCreationCount = referralCreationCount;
+  }
+
+
+  public Campaign awardedGiveawaysCount(Integer awardedGiveawaysCount) {
+    
+    this.awardedGiveawaysCount = awardedGiveawaysCount;
+    return this;
+  }
+
+   /**
+   * Total number of giveaways awarded by rules in this campaign.
+   * @return awardedGiveawaysCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of giveaways awarded by rules in this campaign.")
+
+  public Integer getAwardedGiveawaysCount() {
+    return awardedGiveawaysCount;
+  }
+
+
+  public void setAwardedGiveawaysCount(Integer awardedGiveawaysCount) {
+    this.awardedGiveawaysCount = awardedGiveawaysCount;
+  }
+
+
   public Campaign createdLoyaltyPointsCount(BigDecimal createdLoyaltyPointsCount) {
     
     this.createdLoyaltyPointsCount = createdLoyaltyPointsCount;
@@ -989,6 +1045,8 @@ public class Campaign {
         Objects.equals(this.discountCount, campaign.discountCount) &&
         Objects.equals(this.discountEffectCount, campaign.discountEffectCount) &&
         Objects.equals(this.couponCreationCount, campaign.couponCreationCount) &&
+        Objects.equals(this.referralCreationCount, campaign.referralCreationCount) &&
+        Objects.equals(this.awardedGiveawaysCount, campaign.awardedGiveawaysCount) &&
         Objects.equals(this.createdLoyaltyPointsCount, campaign.createdLoyaltyPointsCount) &&
         Objects.equals(this.createdLoyaltyPointsEffectCount, campaign.createdLoyaltyPointsEffectCount) &&
         Objects.equals(this.redeemedLoyaltyPointsCount, campaign.redeemedLoyaltyPointsCount) &&
@@ -1001,7 +1059,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, lastActivity, updated, createdBy, updatedBy);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, referralCreationCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, lastActivity, updated, createdBy, updatedBy);
   }
 
 
@@ -1031,6 +1089,8 @@ public class Campaign {
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");
     sb.append("    discountEffectCount: ").append(toIndentedString(discountEffectCount)).append("\n");
     sb.append("    couponCreationCount: ").append(toIndentedString(couponCreationCount)).append("\n");
+    sb.append("    referralCreationCount: ").append(toIndentedString(referralCreationCount)).append("\n");
+    sb.append("    awardedGiveawaysCount: ").append(toIndentedString(awardedGiveawaysCount)).append("\n");
     sb.append("    createdLoyaltyPointsCount: ").append(toIndentedString(createdLoyaltyPointsCount)).append("\n");
     sb.append("    createdLoyaltyPointsEffectCount: ").append(toIndentedString(createdLoyaltyPointsEffectCount)).append("\n");
     sb.append("    redeemedLoyaltyPointsCount: ").append(toIndentedString(redeemedLoyaltyPointsCount)).append("\n");

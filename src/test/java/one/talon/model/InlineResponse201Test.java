@@ -23,24 +23,24 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Role;
+import one.talon.model.Referral;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20030
+ * Model tests for InlineResponse201
  */
-public class InlineResponse20030Test {
-    private final InlineResponse20030 model = new InlineResponse20030();
+public class InlineResponse201Test {
+    private final InlineResponse201 model = new InlineResponse201();
 
     /**
-     * Model tests for InlineResponse20030
+     * Model tests for InlineResponse201
      */
     @Test
-    public void testInlineResponse20030() {
-        // TODO: test InlineResponse20030
+    public void testInlineResponse201() {
+        // TODO: test InlineResponse201
     }
 
     /**

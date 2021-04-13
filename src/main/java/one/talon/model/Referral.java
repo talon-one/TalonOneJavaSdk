@@ -39,6 +39,18 @@ public class Referral {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
+  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+  private OffsetDateTime expiryDate;
+
+  public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
+  @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
+  private Integer usageLimit;
+
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Integer campaignId;
@@ -51,13 +63,13 @@ public class Referral {
   @SerializedName(SERIALIZED_NAME_FRIEND_PROFILE_INTEGRATION_ID)
   private String friendProfileIntegrationId;
 
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private Object attributes;
 
-  public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
-  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
-  private OffsetDateTime expiryDate;
+  public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
+  @SerializedName(SERIALIZED_NAME_IMPORT_ID)
+  private Integer importId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -67,9 +79,9 @@ public class Referral {
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
   private Integer usageCounter;
 
-  public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
-  @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private String batchId;
 
 
   public Referral id(Integer id) {
@@ -113,73 +125,6 @@ public class Referral {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
-  }
-
-
-  public Referral campaignId(Integer campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * ID of the campaign from which the referral received the referral code.
-   * @return campaignId
-  **/
-  @ApiModelProperty(required = true, value = "ID of the campaign from which the referral received the referral code.")
-
-  public Integer getCampaignId() {
-    return campaignId;
-  }
-
-
-  public void setCampaignId(Integer campaignId) {
-    this.campaignId = campaignId;
-  }
-
-
-  public Referral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
-    
-    this.advocateProfileIntegrationId = advocateProfileIntegrationId;
-    return this;
-  }
-
-   /**
-   * The Integration Id of the Advocate&#39;s Profile
-   * @return advocateProfileIntegrationId
-  **/
-  @ApiModelProperty(required = true, value = "The Integration Id of the Advocate's Profile")
-
-  public String getAdvocateProfileIntegrationId() {
-    return advocateProfileIntegrationId;
-  }
-
-
-  public void setAdvocateProfileIntegrationId(String advocateProfileIntegrationId) {
-    this.advocateProfileIntegrationId = advocateProfileIntegrationId;
-  }
-
-
-  public Referral friendProfileIntegrationId(String friendProfileIntegrationId) {
-    
-    this.friendProfileIntegrationId = friendProfileIntegrationId;
-    return this;
-  }
-
-   /**
-   * An optional Integration ID of the Friend&#39;s Profile
-   * @return friendProfileIntegrationId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "An optional Integration ID of the Friend's Profile")
-
-  public String getFriendProfileIntegrationId() {
-    return friendProfileIntegrationId;
-  }
-
-
-  public void setFriendProfileIntegrationId(String friendProfileIntegrationId) {
-    this.friendProfileIntegrationId = friendProfileIntegrationId;
   }
 
 
@@ -229,6 +174,143 @@ public class Referral {
   }
 
 
+  public Referral usageLimit(Integer usageLimit) {
+    
+    this.usageLimit = usageLimit;
+    return this;
+  }
+
+   /**
+   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+   * minimum: 0
+   * maximum: 999999
+   * @return usageLimit
+  **/
+  @ApiModelProperty(required = true, value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+
+  public Integer getUsageLimit() {
+    return usageLimit;
+  }
+
+
+  public void setUsageLimit(Integer usageLimit) {
+    this.usageLimit = usageLimit;
+  }
+
+
+  public Referral campaignId(Integer campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * ID of the campaign from which the referral received the referral code.
+   * @return campaignId
+  **/
+  @ApiModelProperty(required = true, value = "ID of the campaign from which the referral received the referral code.")
+
+  public Integer getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Integer campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public Referral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
+    
+    this.advocateProfileIntegrationId = advocateProfileIntegrationId;
+    return this;
+  }
+
+   /**
+   * The Integration ID of the Advocate&#39;s Profile.
+   * @return advocateProfileIntegrationId
+  **/
+  @ApiModelProperty(required = true, value = "The Integration ID of the Advocate's Profile.")
+
+  public String getAdvocateProfileIntegrationId() {
+    return advocateProfileIntegrationId;
+  }
+
+
+  public void setAdvocateProfileIntegrationId(String advocateProfileIntegrationId) {
+    this.advocateProfileIntegrationId = advocateProfileIntegrationId;
+  }
+
+
+  public Referral friendProfileIntegrationId(String friendProfileIntegrationId) {
+    
+    this.friendProfileIntegrationId = friendProfileIntegrationId;
+    return this;
+  }
+
+   /**
+   * An optional Integration ID of the Friend&#39;s Profile
+   * @return friendProfileIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An optional Integration ID of the Friend's Profile")
+
+  public String getFriendProfileIntegrationId() {
+    return friendProfileIntegrationId;
+  }
+
+
+  public void setFriendProfileIntegrationId(String friendProfileIntegrationId) {
+    this.friendProfileIntegrationId = friendProfileIntegrationId;
+  }
+
+
+  public Referral attributes(Object attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Arbitrary properties associated with this item.
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Arbitrary properties associated with this item.")
+
+  public Object getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(Object attributes) {
+    this.attributes = attributes;
+  }
+
+
+  public Referral importId(Integer importId) {
+    
+    this.importId = importId;
+    return this;
+  }
+
+   /**
+   * The ID of the Import which created this referral.
+   * @return importId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the Import which created this referral.")
+
+  public Integer getImportId() {
+    return importId;
+  }
+
+
+  public void setImportId(Integer importId) {
+    this.importId = importId;
+  }
+
+
   public Referral code(String code) {
     
     this.code = code;
@@ -273,26 +355,26 @@ public class Referral {
   }
 
 
-  public Referral usageLimit(Integer usageLimit) {
+  public Referral batchId(String batchId) {
     
-    this.usageLimit = usageLimit;
+    this.batchId = batchId;
     return this;
   }
 
    /**
-   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
-   * minimum: 0
-   * @return usageLimit
+   * The ID of the batch the referrals belong to.
+   * @return batchId
   **/
-  @ApiModelProperty(required = true, value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the batch the referrals belong to.")
 
-  public Integer getUsageLimit() {
-    return usageLimit;
+  public String getBatchId() {
+    return batchId;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
-    this.usageLimit = usageLimit;
+  public void setBatchId(String batchId) {
+    this.batchId = batchId;
   }
 
 
@@ -307,19 +389,22 @@ public class Referral {
     Referral referral = (Referral) o;
     return Objects.equals(this.id, referral.id) &&
         Objects.equals(this.created, referral.created) &&
+        Objects.equals(this.startDate, referral.startDate) &&
+        Objects.equals(this.expiryDate, referral.expiryDate) &&
+        Objects.equals(this.usageLimit, referral.usageLimit) &&
         Objects.equals(this.campaignId, referral.campaignId) &&
         Objects.equals(this.advocateProfileIntegrationId, referral.advocateProfileIntegrationId) &&
         Objects.equals(this.friendProfileIntegrationId, referral.friendProfileIntegrationId) &&
-        Objects.equals(this.startDate, referral.startDate) &&
-        Objects.equals(this.expiryDate, referral.expiryDate) &&
+        Objects.equals(this.attributes, referral.attributes) &&
+        Objects.equals(this.importId, referral.importId) &&
         Objects.equals(this.code, referral.code) &&
         Objects.equals(this.usageCounter, referral.usageCounter) &&
-        Objects.equals(this.usageLimit, referral.usageLimit);
+        Objects.equals(this.batchId, referral.batchId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, startDate, expiryDate, code, usageCounter, usageLimit);
+    return Objects.hash(id, created, startDate, expiryDate, usageLimit, campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, attributes, importId, code, usageCounter, batchId);
   }
 
 
@@ -329,14 +414,17 @@ public class Referral {
     sb.append("class Referral {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    advocateProfileIntegrationId: ").append(toIndentedString(advocateProfileIntegrationId)).append("\n");
     sb.append("    friendProfileIntegrationId: ").append(toIndentedString(friendProfileIntegrationId)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    importId: ").append(toIndentedString(importId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    usageCounter: ").append(toIndentedString(usageCounter)).append("\n");
-    sb.append("    usageLimit: ").append(toIndentedString(usageLimit)).append("\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

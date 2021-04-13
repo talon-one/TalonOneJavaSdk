@@ -32,10 +32,6 @@ import one.talon.model.ApplicationCustomer;
  */
 
 public class InlineResponse20012 {
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
   public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
   private Boolean hasMore;
@@ -43,29 +39,6 @@ public class InlineResponse20012 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ApplicationCustomer> data = new ArrayList<ApplicationCustomer>();
-
-
-  public InlineResponse20012 totalResultSize(Integer totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Integer getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
 
 
   public InlineResponse20012 hasMore(Boolean hasMore) {
@@ -78,8 +51,7 @@ public class InlineResponse20012 {
    * Get hasMore
    * @return hasMore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -127,14 +99,13 @@ public class InlineResponse20012 {
       return false;
     }
     InlineResponse20012 inlineResponse20012 = (InlineResponse20012) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20012.totalResultSize) &&
-        Objects.equals(this.hasMore, inlineResponse20012.hasMore) &&
+    return Objects.equals(this.hasMore, inlineResponse20012.hasMore) &&
         Objects.equals(this.data, inlineResponse20012.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, hasMore, data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -142,7 +113,6 @@ public class InlineResponse20012 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20012 {\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

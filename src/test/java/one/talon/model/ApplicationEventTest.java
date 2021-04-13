@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.RuleFailureReason;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -105,6 +106,14 @@ public class ApplicationEventTest {
     @Test
     public void effectsTest() {
         // TODO: test effects
+    }
+
+    /**
+     * Test the property 'ruleFailureReasons'
+     */
+    @Test
+    public void ruleFailureReasonsTest() {
+        // TODO: test ruleFailureReasons
     }
 
 }

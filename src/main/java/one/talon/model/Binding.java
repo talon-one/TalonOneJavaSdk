@@ -35,6 +35,10 @@ public class Binding {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public static final String SERIALIZED_NAME_EXPRESSION = "expression";
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
   private List<Object> expression = new ArrayList<Object>();
@@ -59,6 +63,29 @@ public class Binding {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public Binding type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The kind of binding. Possible values are cartItemFilter, subledgerBalance.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The kind of binding. Possible values are cartItemFilter, subledgerBalance.")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -99,12 +126,13 @@ public class Binding {
     }
     Binding binding = (Binding) o;
     return Objects.equals(this.name, binding.name) &&
+        Objects.equals(this.type, binding.type) &&
         Objects.equals(this.expression, binding.expression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, expression);
+    return Objects.hash(name, type, expression);
   }
 
 
@@ -113,6 +141,7 @@ public class Binding {
     StringBuilder sb = new StringBuilder();
     sb.append("class Binding {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
     sb.append("}");
     return sb.toString();

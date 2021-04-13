@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Export&gt;**](Export.md) |  | 
+**data** | [**List&lt;Role&gt;**](Role.md) |  | 
 
 
 

@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.LoyaltyTier;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -112,6 +113,14 @@ public class LoyaltyProgramTest {
     @Test
     public void allowSubledgerTest() {
         // TODO: test allowSubledger
+    }
+
+    /**
+     * Test the property 'tiers'
+     */
+    @Test
+    public void tiersTest() {
+        // TODO: test tiers
     }
 
 }

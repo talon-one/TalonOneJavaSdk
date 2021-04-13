@@ -45,6 +45,14 @@ public class LoyaltyProgramLedgersTest {
     }
 
     /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
      * Test the property 'title'
      */
     @Test

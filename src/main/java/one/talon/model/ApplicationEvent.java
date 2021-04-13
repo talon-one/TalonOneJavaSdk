@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.RuleFailureReason;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -64,6 +65,10 @@ public class ApplicationEvent {
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<Object> effects = new ArrayList<Object>();
+
+  public static final String SERIALIZED_NAME_RULE_FAILURE_REASONS = "ruleFailureReasons";
+  @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
+  private List<RuleFailureReason> ruleFailureReasons = null;
 
 
   public ApplicationEvent id(Integer id) {
@@ -249,6 +254,37 @@ public class ApplicationEvent {
   }
 
 
+  public ApplicationEvent ruleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    
+    this.ruleFailureReasons = ruleFailureReasons;
+    return this;
+  }
+
+  public ApplicationEvent addRuleFailureReasonsItem(RuleFailureReason ruleFailureReasonsItem) {
+    if (this.ruleFailureReasons == null) {
+      this.ruleFailureReasons = new ArrayList<RuleFailureReason>();
+    }
+    this.ruleFailureReasons.add(ruleFailureReasonsItem);
+    return this;
+  }
+
+   /**
+   * An array containing the rule failure reasons which happened during this event.
+   * @return ruleFailureReasons
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "An array containing the rule failure reasons which happened during this event.")
+
+  public List<RuleFailureReason> getRuleFailureReasons() {
+    return ruleFailureReasons;
+  }
+
+
+  public void setRuleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    this.ruleFailureReasons = ruleFailureReasons;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -265,12 +301,13 @@ public class ApplicationEvent {
         Objects.equals(this.sessionId, applicationEvent.sessionId) &&
         Objects.equals(this.type, applicationEvent.type) &&
         Objects.equals(this.attributes, applicationEvent.attributes) &&
-        Objects.equals(this.effects, applicationEvent.effects);
+        Objects.equals(this.effects, applicationEvent.effects) &&
+        Objects.equals(this.ruleFailureReasons, applicationEvent.ruleFailureReasons);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, sessionId, type, attributes, effects);
+    return Objects.hash(id, created, applicationId, profileId, sessionId, type, attributes, effects, ruleFailureReasons);
   }
 
 
@@ -286,6 +323,7 @@ public class ApplicationEvent {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
+    sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "one.talon",
     name := "talon-one-client",
-    version := "4.3.1",
+    version := "4.4.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),

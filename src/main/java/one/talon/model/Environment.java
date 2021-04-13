@@ -25,7 +25,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AccountAdditionalCost;
+import one.talon.model.Attribute;
+import one.talon.model.Audience;
 import one.talon.model.FunctionDef;
+import one.talon.model.GiveawaysPool;
+import one.talon.model.LoyaltyProgram;
 import one.talon.model.SlotDef;
 import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
@@ -59,6 +64,26 @@ public class Environment {
   public static final String SERIALIZED_NAME_TEMPLATES = "templates";
   @SerializedName(SERIALIZED_NAME_TEMPLATES)
   private List<TemplateDef> templates = new ArrayList<TemplateDef>();
+
+  public static final String SERIALIZED_NAME_GIVEAWAYS_POOLS = "giveawaysPools";
+  @SerializedName(SERIALIZED_NAME_GIVEAWAYS_POOLS)
+  private List<GiveawaysPool> giveawaysPools = null;
+
+  public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
+  private List<LoyaltyProgram> loyaltyPrograms = null;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private List<Attribute> attributes = null;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_COSTS)
+  private List<AccountAdditionalCost> additionalCosts = null;
+
+  public static final String SERIALIZED_NAME_AUDIENCES = "audiences";
+  @SerializedName(SERIALIZED_NAME_AUDIENCES)
+  private List<Audience> audiences = null;
 
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
@@ -212,6 +237,161 @@ public class Environment {
   }
 
 
+  public Environment giveawaysPools(List<GiveawaysPool> giveawaysPools) {
+    
+    this.giveawaysPools = giveawaysPools;
+    return this;
+  }
+
+  public Environment addGiveawaysPoolsItem(GiveawaysPool giveawaysPoolsItem) {
+    if (this.giveawaysPools == null) {
+      this.giveawaysPools = new ArrayList<GiveawaysPool>();
+    }
+    this.giveawaysPools.add(giveawaysPoolsItem);
+    return this;
+  }
+
+   /**
+   * The giveaways pools that the application is subscribed to.
+   * @return giveawaysPools
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The giveaways pools that the application is subscribed to.")
+
+  public List<GiveawaysPool> getGiveawaysPools() {
+    return giveawaysPools;
+  }
+
+
+  public void setGiveawaysPools(List<GiveawaysPool> giveawaysPools) {
+    this.giveawaysPools = giveawaysPools;
+  }
+
+
+  public Environment loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
+    
+    this.loyaltyPrograms = loyaltyPrograms;
+    return this;
+  }
+
+  public Environment addLoyaltyProgramsItem(LoyaltyProgram loyaltyProgramsItem) {
+    if (this.loyaltyPrograms == null) {
+      this.loyaltyPrograms = new ArrayList<LoyaltyProgram>();
+    }
+    this.loyaltyPrograms.add(loyaltyProgramsItem);
+    return this;
+  }
+
+   /**
+   * The loyalty programs that the application is subscribed to.
+   * @return loyaltyPrograms
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The loyalty programs that the application is subscribed to.")
+
+  public List<LoyaltyProgram> getLoyaltyPrograms() {
+    return loyaltyPrograms;
+  }
+
+
+  public void setLoyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
+    this.loyaltyPrograms = loyaltyPrograms;
+  }
+
+
+  public Environment attributes(List<Attribute> attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+  public Environment addAttributesItem(Attribute attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new ArrayList<Attribute>();
+    }
+    this.attributes.add(attributesItem);
+    return this;
+  }
+
+   /**
+   * The attributes that the application is subscribed to.
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The attributes that the application is subscribed to.")
+
+  public List<Attribute> getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(List<Attribute> attributes) {
+    this.attributes = attributes;
+  }
+
+
+  public Environment additionalCosts(List<AccountAdditionalCost> additionalCosts) {
+    
+    this.additionalCosts = additionalCosts;
+    return this;
+  }
+
+  public Environment addAdditionalCostsItem(AccountAdditionalCost additionalCostsItem) {
+    if (this.additionalCosts == null) {
+      this.additionalCosts = new ArrayList<AccountAdditionalCost>();
+    }
+    this.additionalCosts.add(additionalCostsItem);
+    return this;
+  }
+
+   /**
+   * The additional costs that the application is subscribed to.
+   * @return additionalCosts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The additional costs that the application is subscribed to.")
+
+  public List<AccountAdditionalCost> getAdditionalCosts() {
+    return additionalCosts;
+  }
+
+
+  public void setAdditionalCosts(List<AccountAdditionalCost> additionalCosts) {
+    this.additionalCosts = additionalCosts;
+  }
+
+
+  public Environment audiences(List<Audience> audiences) {
+    
+    this.audiences = audiences;
+    return this;
+  }
+
+  public Environment addAudiencesItem(Audience audiencesItem) {
+    if (this.audiences == null) {
+      this.audiences = new ArrayList<Audience>();
+    }
+    this.audiences.add(audiencesItem);
+    return this;
+  }
+
+   /**
+   * The audiences contained in the account which the application belongs to.
+   * @return audiences
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The audiences contained in the account which the application belongs to.")
+
+  public List<Audience> getAudiences() {
+    return audiences;
+  }
+
+
+  public void setAudiences(List<Audience> audiences) {
+    this.audiences = audiences;
+  }
+
+
   public Environment variables(String variables) {
     
     this.variables = variables;
@@ -249,12 +429,17 @@ public class Environment {
         Objects.equals(this.slots, environment.slots) &&
         Objects.equals(this.functions, environment.functions) &&
         Objects.equals(this.templates, environment.templates) &&
+        Objects.equals(this.giveawaysPools, environment.giveawaysPools) &&
+        Objects.equals(this.loyaltyPrograms, environment.loyaltyPrograms) &&
+        Objects.equals(this.attributes, environment.attributes) &&
+        Objects.equals(this.additionalCosts, environment.additionalCosts) &&
+        Objects.equals(this.audiences, environment.audiences) &&
         Objects.equals(this.variables, environment.variables);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, giveawaysPools, loyaltyPrograms, attributes, additionalCosts, audiences, variables);
   }
 
 
@@ -268,6 +453,11 @@ public class Environment {
     sb.append("    slots: ").append(toIndentedString(slots)).append("\n");
     sb.append("    functions: ").append(toIndentedString(functions)).append("\n");
     sb.append("    templates: ").append(toIndentedString(templates)).append("\n");
+    sb.append("    giveawaysPools: ").append(toIndentedString(giveawaysPools)).append("\n");
+    sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
+    sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");
     sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
     sb.append("}");
     return sb.toString();
