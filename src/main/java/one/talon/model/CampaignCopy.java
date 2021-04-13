@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -39,7 +38,7 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private Map<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -81,7 +80,7 @@ public class CampaignCopy {
   }
 
 
-  public CampaignCopy applicationIds(Map<Integer> applicationIds) {
+  public CampaignCopy applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
@@ -98,12 +97,12 @@ public class CampaignCopy {
   **/
   @ApiModelProperty(required = true, value = "Application IDs of the applications to which a campaign should be copied to")
 
-  public Map<Integer> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(Map<Integer> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 

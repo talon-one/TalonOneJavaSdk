@@ -8898,7 +8898,6 @@ components:
             campaign name")
           type: string
         applicationIds:
-          additionalProperties: true
           description: Application IDs of the applications to which a campaign should
             be copied to
           items:
