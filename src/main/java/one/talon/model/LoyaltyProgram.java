@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.LoyaltyTier;
 
 /**
  * A Loyalty Program
@@ -67,6 +68,10 @@ public class LoyaltyProgram {
   public static final String SERIALIZED_NAME_ALLOW_SUBLEDGER = "allowSubledger";
   @SerializedName(SERIALIZED_NAME_ALLOW_SUBLEDGER)
   private Boolean allowSubledger;
+
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<LoyaltyTier> tiers = null;
 
 
   public LoyaltyProgram id(Integer id) {
@@ -272,6 +277,37 @@ public class LoyaltyProgram {
   }
 
 
+  public LoyaltyProgram tiers(List<LoyaltyTier> tiers) {
+    
+    this.tiers = tiers;
+    return this;
+  }
+
+  public LoyaltyProgram addTiersItem(LoyaltyTier tiersItem) {
+    if (this.tiers == null) {
+      this.tiers = new ArrayList<LoyaltyTier>();
+    }
+    this.tiers.add(tiersItem);
+    return this;
+  }
+
+   /**
+   * The tiers in this loyalty program
+   * @return tiers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The tiers in this loyalty program")
+
+  public List<LoyaltyTier> getTiers() {
+    return tiers;
+  }
+
+
+  public void setTiers(List<LoyaltyTier> tiers) {
+    this.tiers = tiers;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -289,12 +325,13 @@ public class LoyaltyProgram {
         Objects.equals(this.subscribedApplications, loyaltyProgram.subscribedApplications) &&
         Objects.equals(this.defaultValidity, loyaltyProgram.defaultValidity) &&
         Objects.equals(this.defaultPending, loyaltyProgram.defaultPending) &&
-        Objects.equals(this.allowSubledger, loyaltyProgram.allowSubledger);
+        Objects.equals(this.allowSubledger, loyaltyProgram.allowSubledger) &&
+        Objects.equals(this.tiers, loyaltyProgram.tiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountID, name, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger);
+    return Objects.hash(id, accountID, name, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, tiers);
   }
 
 
@@ -311,6 +348,7 @@ public class LoyaltyProgram {
     sb.append("    defaultValidity: ").append(toIndentedString(defaultValidity)).append("\n");
     sb.append("    defaultPending: ").append(toIndentedString(defaultPending)).append("\n");
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
+    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -56,7 +56,11 @@ public class Export {
     
     EFFECT("Effect"),
     
-    CUSTOMERSESSION("CustomerSession");
+    CUSTOMERSESSION("CustomerSession"),
+    
+    LOYALTYLEDGER("LoyaltyLedger"),
+    
+    LOYALTYLEDGERLOG("LoyaltyLedgerLog");
 
     private String value;
 

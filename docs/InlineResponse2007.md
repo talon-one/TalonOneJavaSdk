@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
 
 
 

@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * 
@@ -36,9 +37,17 @@ public class Role {
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Integer accountID;
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_MODIFIED = "modified";
+  @SerializedName(SERIALIZED_NAME_MODIFIED)
+  private OffsetDateTime modified;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUP_I_D = "campaignGroupID";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUP_I_D)
@@ -68,10 +77,10 @@ public class Role {
   }
 
    /**
-   * The ID of the role corresponding to the DB row
+   * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "The ID of the role corresponding to the DB row")
+  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -83,25 +92,69 @@ public class Role {
   }
 
 
-  public Role accountID(Integer accountID) {
+  public Role created(OffsetDateTime created) {
     
-    this.accountID = accountID;
+    this.created = created;
     return this;
   }
 
    /**
-   * The ID of the Talon.One account that owns this role.
-   * @return accountID
+   * The exact moment this entity was created.
+   * @return created
   **/
-  @ApiModelProperty(required = true, value = "The ID of the Talon.One account that owns this role.")
+  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
 
-  public Integer getAccountID() {
-    return accountID;
+  public OffsetDateTime getCreated() {
+    return created;
   }
 
 
-  public void setAccountID(Integer accountID) {
-    this.accountID = accountID;
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public Role modified(OffsetDateTime modified) {
+    
+    this.modified = modified;
+    return this;
+  }
+
+   /**
+   * The exact moment this entity was last modified.
+   * @return modified
+  **/
+  @ApiModelProperty(required = true, value = "The exact moment this entity was last modified.")
+
+  public OffsetDateTime getModified() {
+    return modified;
+  }
+
+
+  public void setModified(OffsetDateTime modified) {
+    this.modified = modified;
+  }
+
+
+  public Role accountId(Integer accountId) {
+    
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * The ID of the account that owns this entity.
+   * @return accountId
+  **/
+  @ApiModelProperty(required = true, value = "The ID of the account that owns this entity.")
+
+  public Integer getAccountId() {
+    return accountId;
+  }
+
+
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
   }
 
 
@@ -138,8 +191,7 @@ public class Role {
    * Name of the role
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the role")
+  @ApiModelProperty(required = true, value = "Name of the role")
 
   public String getName() {
     return name;
@@ -215,8 +267,7 @@ public class Role {
    * Role ACL Policy
    * @return acl
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Role ACL Policy")
+  @ApiModelProperty(required = true, value = "Role ACL Policy")
 
   public Object getAcl() {
     return acl;
@@ -238,7 +289,9 @@ public class Role {
     }
     Role role = (Role) o;
     return Objects.equals(this.id, role.id) &&
-        Objects.equals(this.accountID, role.accountID) &&
+        Objects.equals(this.created, role.created) &&
+        Objects.equals(this.modified, role.modified) &&
+        Objects.equals(this.accountId, role.accountId) &&
         Objects.equals(this.campaignGroupID, role.campaignGroupID) &&
         Objects.equals(this.name, role.name) &&
         Objects.equals(this.description, role.description) &&
@@ -248,7 +301,7 @@ public class Role {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountID, campaignGroupID, name, description, members, acl);
+    return Objects.hash(id, created, modified, accountId, campaignGroupID, name, description, members, acl);
   }
 
 
@@ -257,7 +310,9 @@ public class Role {
     StringBuilder sb = new StringBuilder();
     sb.append("class Role {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    campaignGroupID: ").append(toIndentedString(campaignGroupID)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

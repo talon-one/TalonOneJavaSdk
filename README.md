@@ -49,7 +49,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>4.3.1</version>
+  <version>4.4.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -59,7 +59,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:4.3.1"
+compile "one.talon:talon-one-client:4.4.0"
 ```
 
 ### Others
@@ -72,12 +72,13 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-4.3.1.jar`
+* `target/talon-one-client-4.4.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
+
 ### Integration API
 
 #### V2
@@ -249,9 +250,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *IntegrationApi* | [**createCouponReservation**](docs/IntegrationApi.md#createCouponReservation) | **POST** /v1/coupon_reservations/{couponValue} | Create a new coupon reservation
 *IntegrationApi* | [**createReferral**](docs/IntegrationApi.md#createReferral) | **POST** /v1/referrals | Create a referral code for an advocate
+*IntegrationApi* | [**createReferralsForMultipleAdvocates**](docs/IntegrationApi.md#createReferralsForMultipleAdvocates) | **POST** /v1/referrals_for_multiple_advocates | Create referral codes for multiple advocates
 *IntegrationApi* | [**deleteCouponReservation**](docs/IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
-*IntegrationApi* | [**deleteCustomerData**](docs/IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer.
-*IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile.
+*IntegrationApi* | [**deleteCustomerData**](docs/IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete the personal data of a customer
+*IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile
 *IntegrationApi* | [**getReservedCustomers**](docs/IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 *IntegrationApi* | [**trackEvent**](docs/IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
 *IntegrationApi* | [**updateCustomerProfile**](docs/IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile V1
@@ -276,10 +278,11 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**deleteReferral**](docs/ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete one Referral
 *ManagementApi* | [**deleteRuleset**](docs/ManagementApi.md#deleteRuleset) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Delete a Ruleset
 *ManagementApi* | [**destroySession**](docs/ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy a Session
-*ManagementApi* | [**exportCoupons**](docs/ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export Coupons to a CSV file.
-*ManagementApi* | [**exportCustomerSessions**](docs/ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export Customer Sessions to a CSV file.
-*ManagementApi* | [**exportEffects**](docs/ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered Effects to a CSV file.
+*ManagementApi* | [**exportCoupons**](docs/ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export Coupons to a CSV file
+*ManagementApi* | [**exportCustomerSessions**](docs/ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export Customer Sessions to a CSV file
+*ManagementApi* | [**exportEffects**](docs/ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered Effects to a CSV file
 *ManagementApi* | [**exportLoyaltyBalance**](docs/ManagementApi.md#exportLoyaltyBalance) | **GET** /v1/loyalty_programs/{programID}/export_customer_balance | Export customer loyalty balance to a CSV file
+*ManagementApi* | [**exportLoyaltyLedger**](docs/ManagementApi.md#exportLoyaltyLedger) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID}/export_log | Export a customer&#39;s loyalty ledger log to a CSV file
 *ManagementApi* | [**getAccessLogs**](docs/ManagementApi.md#getAccessLogs) | **GET** /v1/applications/{applicationId}/access_logs | Get access logs for application (with total count)
 *ManagementApi* | [**getAccessLogsWithoutTotalCount**](docs/ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for application
 *ManagementApi* | [**getAccount**](docs/ManagementApi.md#getAccount) | **GET** /v1/accounts/{accountId} | Get Account Details
@@ -287,7 +290,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getAdditionalCost**](docs/ManagementApi.md#getAdditionalCost) | **GET** /v1/additional_costs/{additionalCostId} | Get an additional cost
 *ManagementApi* | [**getAdditionalCosts**](docs/ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs
 *ManagementApi* | [**getAllAccessLogs**](docs/ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | Get all access logs
-*ManagementApi* | [**getAllRoles**](docs/ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles.
+*ManagementApi* | [**getAllRoles**](docs/ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles
 *ManagementApi* | [**getApplication**](docs/ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
 *ManagementApi* | [**getApplicationApiHealth**](docs/ManagementApi.md#getApplicationApiHealth) | **GET** /v1/applications/{applicationId}/health_report | Get report of health of application API
 *ManagementApi* | [**getApplicationCustomer**](docs/ManagementApi.md#getApplicationCustomer) | **GET** /v1/applications/{applicationId}/customers/{customerId} | Get Application Customer
@@ -326,7 +329,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getLoyaltyStatistics**](docs/ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{programID}/statistics | Get loyalty program statistics by loyalty program ID
 *ManagementApi* | [**getReferrals**](docs/ManagementApi.md#getReferrals) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals | List Referrals (with total count)
 *ManagementApi* | [**getReferralsWithoutTotalCount**](docs/ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List Referrals
-*ManagementApi* | [**getRole**](docs/ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get information for the specified role.
+*ManagementApi* | [**getRole**](docs/ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get information for the specified role
 *ManagementApi* | [**getRuleset**](docs/ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get a Ruleset
 *ManagementApi* | [**getRulesets**](docs/ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List Campaign Rulesets
 *ManagementApi* | [**getUser**](docs/ManagementApi.md#getUser) | **GET** /v1/users/{userId} | Get a single User
@@ -335,6 +338,10 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getWebhookActivationLogs**](docs/ManagementApi.md#getWebhookActivationLogs) | **GET** /v1/webhook_activation_logs | List Webhook activation Log Entries
 *ManagementApi* | [**getWebhookLogs**](docs/ManagementApi.md#getWebhookLogs) | **GET** /v1/webhook_logs | List Webhook Log Entries
 *ManagementApi* | [**getWebhooks**](docs/ManagementApi.md#getWebhooks) | **GET** /v1/webhooks | List Webhooks
+*ManagementApi* | [**importCoupons**](docs/ManagementApi.md#importCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons via CSV file
+*ManagementApi* | [**importLoyaltyPoints**](docs/ManagementApi.md#importLoyaltyPoints) | **POST** /v1/loyalty_programs/{programID}/import_points | Import loyalty points via CSV file
+*ManagementApi* | [**importPoolGiveaways**](docs/ManagementApi.md#importPoolGiveaways) | **POST** /v1/giveaways/pools/{poolId}/import | Import giveaways codes into a giveaways pool
+*ManagementApi* | [**importReferrals**](docs/ManagementApi.md#importReferrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals via CSV file
 *ManagementApi* | [**removeLoyaltyPoints**](docs/ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/deduct_points | Deduct points in a certain loyalty program for the specified customer
 *ManagementApi* | [**resetPassword**](docs/ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
 *ManagementApi* | [**searchCouponsAdvanced**](docs/ManagementApi.md#searchCouponsAdvanced) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced | Get a list of the coupons that match the given attributes (with total count)
@@ -346,6 +353,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**updateCampaign**](docs/ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
 *ManagementApi* | [**updateCoupon**](docs/ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update a Coupon
 *ManagementApi* | [**updateCouponBatch**](docs/ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update a Batch of Coupons
+*ManagementApi* | [**updateReferral**](docs/ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update one Referral
 *ManagementApi* | [**updateRuleset**](docs/ManagementApi.md#updateRuleset) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Update a Ruleset
 
 
@@ -366,11 +374,13 @@ Class | Method | HTTP request | Description
  - [Application](docs/Application.md)
  - [ApplicationAPIKey](docs/ApplicationAPIKey.md)
  - [ApplicationApiHealth](docs/ApplicationApiHealth.md)
+ - [ApplicationCampaignStats](docs/ApplicationCampaignStats.md)
  - [ApplicationCustomer](docs/ApplicationCustomer.md)
  - [ApplicationCustomerEntity](docs/ApplicationCustomerEntity.md)
  - [ApplicationCustomerSearch](docs/ApplicationCustomerSearch.md)
  - [ApplicationEntity](docs/ApplicationEntity.md)
  - [ApplicationEvent](docs/ApplicationEvent.md)
+ - [ApplicationReferee](docs/ApplicationReferee.md)
  - [ApplicationSession](docs/ApplicationSession.md)
  - [ApplicationSessionEntity](docs/ApplicationSessionEntity.md)
  - [Attribute](docs/Attribute.md)
@@ -378,6 +388,7 @@ Class | Method | HTTP request | Description
  - [AttributesSettings](docs/AttributesSettings.md)
  - [Audience](docs/Audience.md)
  - [AudienceMembership](docs/AudienceMembership.md)
+ - [AwardGiveawayEffectProps](docs/AwardGiveawayEffectProps.md)
  - [BaseSamlConnection](docs/BaseSamlConnection.md)
  - [Binding](docs/Binding.md)
  - [Campaign](docs/Campaign.md)
@@ -403,6 +414,8 @@ Class | Method | HTTP request | Description
  - [CouponSearch](docs/CouponSearch.md)
  - [CouponValue](docs/CouponValue.md)
  - [CreateApplicationAPIKey](docs/CreateApplicationAPIKey.md)
+ - [CustomEffect](docs/CustomEffect.md)
+ - [CustomEffectProps](docs/CustomEffectProps.md)
  - [CustomerActivityReport](docs/CustomerActivityReport.md)
  - [CustomerAnalytics](docs/CustomerAnalytics.md)
  - [CustomerInventory](docs/CustomerInventory.md)
@@ -432,6 +445,9 @@ Class | Method | HTTP request | Description
  - [FeedNotification](docs/FeedNotification.md)
  - [FuncArgDef](docs/FuncArgDef.md)
  - [FunctionDef](docs/FunctionDef.md)
+ - [Giveaway](docs/Giveaway.md)
+ - [GiveawaysPool](docs/GiveawaysPool.md)
+ - [ImportEntity](docs/ImportEntity.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse20010](docs/InlineResponse20010.md)
@@ -456,19 +472,20 @@ Class | Method | HTTP request | Description
  - [InlineResponse20028](docs/InlineResponse20028.md)
  - [InlineResponse20029](docs/InlineResponse20029.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse20030](docs/InlineResponse20030.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
  - [InlineResponse2007](docs/InlineResponse2007.md)
  - [InlineResponse2008](docs/InlineResponse2008.md)
  - [InlineResponse2009](docs/InlineResponse2009.md)
+ - [InlineResponse201](docs/InlineResponse201.md)
  - [IntegrationEntity](docs/IntegrationEntity.md)
  - [IntegrationEvent](docs/IntegrationEvent.md)
  - [IntegrationProfileEntity](docs/IntegrationProfileEntity.md)
  - [IntegrationRequest](docs/IntegrationRequest.md)
  - [IntegrationState](docs/IntegrationState.md)
  - [IntegrationStateV2](docs/IntegrationStateV2.md)
+ - [InventoryCoupon](docs/InventoryCoupon.md)
  - [LedgerEntry](docs/LedgerEntry.md)
  - [LibraryAttribute](docs/LibraryAttribute.md)
  - [LimitConfig](docs/LimitConfig.md)
@@ -480,9 +497,11 @@ Class | Method | HTTP request | Description
  - [LoyaltyPoints](docs/LoyaltyPoints.md)
  - [LoyaltyProgram](docs/LoyaltyProgram.md)
  - [LoyaltyProgramBalance](docs/LoyaltyProgramBalance.md)
+ - [LoyaltyProgramEntity](docs/LoyaltyProgramEntity.md)
  - [LoyaltyProgramLedgers](docs/LoyaltyProgramLedgers.md)
  - [LoyaltyStatistics](docs/LoyaltyStatistics.md)
  - [LoyaltySubLedger](docs/LoyaltySubLedger.md)
+ - [LoyaltyTier](docs/LoyaltyTier.md)
  - [ManagerConfig](docs/ManagerConfig.md)
  - [Meta](docs/Meta.md)
  - [ModelImport](docs/ModelImport.md)
@@ -503,18 +522,22 @@ Class | Method | HTTP request | Description
  - [NewCampaignSet](docs/NewCampaignSet.md)
  - [NewCoupons](docs/NewCoupons.md)
  - [NewCouponsForMultipleRecipients](docs/NewCouponsForMultipleRecipients.md)
+ - [NewCustomEffect](docs/NewCustomEffect.md)
  - [NewCustomerProfile](docs/NewCustomerProfile.md)
  - [NewCustomerSession](docs/NewCustomerSession.md)
  - [NewCustomerSessionV2](docs/NewCustomerSessionV2.md)
  - [NewEvent](docs/NewEvent.md)
  - [NewEventType](docs/NewEventType.md)
  - [NewFeatureFlags](docs/NewFeatureFlags.md)
+ - [NewGiveawaysPool](docs/NewGiveawaysPool.md)
  - [NewInvitation](docs/NewInvitation.md)
  - [NewInviteEmail](docs/NewInviteEmail.md)
  - [NewLoyaltyProgram](docs/NewLoyaltyProgram.md)
+ - [NewLoyaltyTier](docs/NewLoyaltyTier.md)
  - [NewPassword](docs/NewPassword.md)
  - [NewPasswordEmail](docs/NewPasswordEmail.md)
  - [NewReferral](docs/NewReferral.md)
+ - [NewReferralsForMultipleAdvocates](docs/NewReferralsForMultipleAdvocates.md)
  - [NewRole](docs/NewRole.md)
  - [NewRuleset](docs/NewRuleset.md)
  - [NewSamlConnection](docs/NewSamlConnection.md)
@@ -525,6 +548,7 @@ Class | Method | HTTP request | Description
  - [ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
  - [RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
  - [Referral](docs/Referral.md)
+ - [ReferralConstraints](docs/ReferralConstraints.md)
  - [ReferralCreatedEffectProps](docs/ReferralCreatedEffectProps.md)
  - [ReferralRejectionReason](docs/ReferralRejectionReason.md)
  - [RejectCouponEffectProps](docs/RejectCouponEffectProps.md)
@@ -536,7 +560,9 @@ Class | Method | HTTP request | Description
  - [RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
  - [RollbackDeductedLoyaltyPointsEffectProps](docs/RollbackDeductedLoyaltyPointsEffectProps.md)
  - [RollbackDiscountEffectProps](docs/RollbackDiscountEffectProps.md)
+ - [RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
  - [Rule](docs/Rule.md)
+ - [RuleFailureReason](docs/RuleFailureReason.md)
  - [Ruleset](docs/Ruleset.md)
  - [SamlConnection](docs/SamlConnection.md)
  - [SamlConnectionMetadata](docs/SamlConnectionMetadata.md)
@@ -558,7 +584,10 @@ Class | Method | HTTP request | Description
  - [UpdateCampaignGroup](docs/UpdateCampaignGroup.md)
  - [UpdateCoupon](docs/UpdateCoupon.md)
  - [UpdateCouponBatch](docs/UpdateCouponBatch.md)
+ - [UpdateCustomEffect](docs/UpdateCustomEffect.md)
  - [UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
+ - [UpdateLoyaltyTier](docs/UpdateLoyaltyTier.md)
+ - [UpdateReferral](docs/UpdateReferral.md)
  - [UpdateRole](docs/UpdateRole.md)
  - [UpdateUser](docs/UpdateUser.md)
  - [UpdateUserLatestFeedTimestamp](docs/UpdateUserLatestFeedTimestamp.md)
@@ -568,6 +597,7 @@ Class | Method | HTTP request | Description
  - [Webhook](docs/Webhook.md)
  - [WebhookActivationLogEntry](docs/WebhookActivationLogEntry.md)
  - [WebhookLogEntry](docs/WebhookLogEntry.md)
+ - [WillAwardGiveawayEffectProps](docs/WillAwardGiveawayEffectProps.md)
 
 
 ## Documentation for Authorization

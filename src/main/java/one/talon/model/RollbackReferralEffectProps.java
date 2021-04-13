@@ -23,70 +23,37 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.Role;
 
 /**
- * InlineResponse20030
+ * The properties specific to the \&quot;rollbackReferral\&quot; effect. This gets triggered whenever previously closed session is now cancelled and a referral redemption was cancelled on our internal usage limit counters.
  */
+@ApiModel(description = "The properties specific to the \"rollbackReferral\" effect. This gets triggered whenever previously closed session is now cancelled and a referral redemption was cancelled on our internal usage limit counters.")
 
-public class InlineResponse20030 {
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Role> data = new ArrayList<Role>();
+public class RollbackReferralEffectProps {
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private String value;
 
 
-  public InlineResponse20030 totalResultSize(Integer totalResultSize) {
+  public RollbackReferralEffectProps value(String value) {
     
-    this.totalResultSize = totalResultSize;
+    this.value = value;
     return this;
   }
 
    /**
-   * Get totalResultSize
-   * @return totalResultSize
+   * The referral code whose usage has been rolled back
+   * @return value
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The referral code whose usage has been rolled back")
 
-  public Integer getTotalResultSize() {
-    return totalResultSize;
+  public String getValue() {
+    return value;
   }
 
 
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
-  public InlineResponse20030 data(List<Role> data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  public InlineResponse20030 addDataItem(Role dataItem) {
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public List<Role> getData() {
-    return data;
-  }
-
-
-  public void setData(List<Role> data) {
-    this.data = data;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -98,23 +65,21 @@ public class InlineResponse20030 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse20030 inlineResponse20030 = (InlineResponse20030) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20030.totalResultSize) &&
-        Objects.equals(this.data, inlineResponse20030.data);
+    RollbackReferralEffectProps rollbackReferralEffectProps = (RollbackReferralEffectProps) o;
+    return Objects.equals(this.value, rollbackReferralEffectProps.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse20030 {\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class RollbackReferralEffectProps {\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

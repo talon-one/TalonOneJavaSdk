@@ -31,8 +31,10 @@ import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerSessionV2;
 import one.talon.model.Effect;
 import one.talon.model.Event;
+import one.talon.model.Giveaway;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
+import one.talon.model.RuleFailureReason;
 
 /**
  * Contains all entities that might interest Talon.One integrations. This is the response type returned by the V2 PUT customer_session endpoint 
@@ -72,6 +74,10 @@ public class IntegrationStateV2 {
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<Effect> effects = new ArrayList<Effect>();
 
+  public static final String SERIALIZED_NAME_RULE_FAILURE_REASONS = "ruleFailureReasons";
+  @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
+  private List<RuleFailureReason> ruleFailureReasons = null;
+
   public static final String SERIALIZED_NAME_CREATED_COUPONS = "createdCoupons";
   @SerializedName(SERIALIZED_NAME_CREATED_COUPONS)
   private List<Coupon> createdCoupons = new ArrayList<Coupon>();
@@ -79,6 +85,10 @@ public class IntegrationStateV2 {
   public static final String SERIALIZED_NAME_CREATED_REFERRALS = "createdReferrals";
   @SerializedName(SERIALIZED_NAME_CREATED_REFERRALS)
   private List<Referral> createdReferrals = new ArrayList<Referral>();
+
+  public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
+  @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
+  private List<Giveaway> awardedGiveaways = null;
 
 
   public IntegrationStateV2 customerSession(CustomerSessionV2 customerSession) {
@@ -285,6 +295,37 @@ public class IntegrationStateV2 {
   }
 
 
+  public IntegrationStateV2 ruleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    
+    this.ruleFailureReasons = ruleFailureReasons;
+    return this;
+  }
+
+  public IntegrationStateV2 addRuleFailureReasonsItem(RuleFailureReason ruleFailureReasonsItem) {
+    if (this.ruleFailureReasons == null) {
+      this.ruleFailureReasons = new ArrayList<RuleFailureReason>();
+    }
+    this.ruleFailureReasons.add(ruleFailureReasonsItem);
+    return this;
+  }
+
+   /**
+   * Get ruleFailureReasons
+   * @return ruleFailureReasons
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<RuleFailureReason> getRuleFailureReasons() {
+    return ruleFailureReasons;
+  }
+
+
+  public void setRuleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
+    this.ruleFailureReasons = ruleFailureReasons;
+  }
+
+
   public IntegrationStateV2 createdCoupons(List<Coupon> createdCoupons) {
     
     this.createdCoupons = createdCoupons;
@@ -339,6 +380,37 @@ public class IntegrationStateV2 {
   }
 
 
+  public IntegrationStateV2 awardedGiveaways(List<Giveaway> awardedGiveaways) {
+    
+    this.awardedGiveaways = awardedGiveaways;
+    return this;
+  }
+
+  public IntegrationStateV2 addAwardedGiveawaysItem(Giveaway awardedGiveawaysItem) {
+    if (this.awardedGiveaways == null) {
+      this.awardedGiveaways = new ArrayList<Giveaway>();
+    }
+    this.awardedGiveaways.add(awardedGiveawaysItem);
+    return this;
+  }
+
+   /**
+   * Get awardedGiveaways
+   * @return awardedGiveaways
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<Giveaway> getAwardedGiveaways() {
+    return awardedGiveaways;
+  }
+
+
+  public void setAwardedGiveaways(List<Giveaway> awardedGiveaways) {
+    this.awardedGiveaways = awardedGiveaways;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -356,13 +428,15 @@ public class IntegrationStateV2 {
         Objects.equals(this.coupons, integrationStateV2.coupons) &&
         Objects.equals(this.triggeredCampaigns, integrationStateV2.triggeredCampaigns) &&
         Objects.equals(this.effects, integrationStateV2.effects) &&
+        Objects.equals(this.ruleFailureReasons, integrationStateV2.ruleFailureReasons) &&
         Objects.equals(this.createdCoupons, integrationStateV2.createdCoupons) &&
-        Objects.equals(this.createdReferrals, integrationStateV2.createdReferrals);
+        Objects.equals(this.createdReferrals, integrationStateV2.createdReferrals) &&
+        Objects.equals(this.awardedGiveaways, integrationStateV2.awardedGiveaways);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerSession, customerProfile, event, loyalty, referral, coupons, triggeredCampaigns, effects, createdCoupons, createdReferrals);
+    return Objects.hash(customerSession, customerProfile, event, loyalty, referral, coupons, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways);
   }
 
 
@@ -378,8 +452,10 @@ public class IntegrationStateV2 {
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    triggeredCampaigns: ").append(toIndentedString(triggeredCampaigns)).append("\n");
     sb.append("    effects: ").append(toIndentedString(effects)).append("\n");
+    sb.append("    ruleFailureReasons: ").append(toIndentedString(ruleFailureReasons)).append("\n");
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");
+    sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
     sb.append("}");
     return sb.toString();
   }

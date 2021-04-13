@@ -52,7 +52,11 @@ public class CustomerProfileIntegrationRequestV2 {
     
     LOYALTY("loyalty"),
     
-    EVENT("event");
+    EVENT("event"),
+    
+    AWARDEDGIVEAWAYS("awardedGiveaways"),
+    
+    RULEFAILUREREASONS("ruleFailureReasons");
 
     private String value;
 
@@ -158,11 +162,11 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
    /**
-   * Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \&quot;customerProfile\&quot;, \&quot;triggeredCampaigns\&quot;, \&quot;loyalty\&quot; and \&quot;event\&quot;. 
+   * Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \&quot;customerProfile\&quot;, \&quot;triggeredCampaigns\&quot;, \&quot;loyalty\&quot;, \&quot;event\&quot;, \&quot;awardedGiveaways\&quot;, \&quot;ruleFailureReasons\&quot;. 
    * @return responseContent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \"customerProfile\", \"triggeredCampaigns\", \"loyalty\" and \"event\". ")
+  @ApiModelProperty(value = "Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \"customerProfile\", \"triggeredCampaigns\", \"loyalty\", \"event\", \"awardedGiveaways\", \"ruleFailureReasons\". ")
 
   public List<ResponseContentEnum> getResponseContent() {
     return responseContent;

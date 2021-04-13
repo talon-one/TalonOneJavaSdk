@@ -31,6 +31,8 @@ CUSTOMERSESSION | &quot;CustomerSession&quot;
 CARTITEM | &quot;CartItem&quot;
 COUPON | &quot;Coupon&quot;
 EVENT | &quot;Event&quot;
+GIVEAWAY | &quot;Giveaway&quot;
+REFERRAL | &quot;Referral&quot;
 
 
 

@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;ApplicationSession&gt;**](ApplicationSession.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
 
 
 

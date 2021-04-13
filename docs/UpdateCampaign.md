@@ -39,6 +39,7 @@ Name | Value
 COUPONS | &quot;coupons&quot;
 REFERRALS | &quot;referrals&quot;
 LOYALTY | &quot;loyalty&quot;
+GIVEAWAYS | &quot;giveaways&quot;
 
 
 

@@ -56,4 +56,28 @@ public class RejectCouponEffectPropsTest {
         // TODO: test rejectionReason
     }
 
+    /**
+     * Test the property 'conditionIndex'
+     */
+    @Test
+    public void conditionIndexTest() {
+        // TODO: test conditionIndex
+    }
+
+    /**
+     * Test the property 'effectIndex'
+     */
+    @Test
+    public void effectIndexTest() {
+        // TODO: test effectIndex
+    }
+
+    /**
+     * Test the property 'details'
+     */
+    @Test
+    public void detailsTest() {
+        // TODO: test details
+    }
+
 }

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **type** | **String** | A string representing the event. Must not be a reserved event name. | 
 **attributes** | [**Object**](.md) | Additional JSON serialized data associated with the event. | 
 **effects** | **List&lt;Object&gt;** | An array containing the effects that were applied as a result of this event. | 
+**ruleFailureReasons** | [**List&lt;RuleFailureReason&gt;**](RuleFailureReason.md) | An array containing the rule failure reasons which happened during this event. |  [optional]
 
 
 

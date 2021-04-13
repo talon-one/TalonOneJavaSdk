@@ -128,10 +128,10 @@ public class NewRole {
   }
 
    /**
-   * An array of userIDs
+   * An array of user identifiers
    * @return users
   **/
-  @ApiModelProperty(required = true, value = "An array of userIDs")
+  @ApiModelProperty(required = true, value = "An array of user identifiers")
 
   public List<Integer> getUsers() {
     return users;

@@ -56,6 +56,10 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
+  private String transactionUUID;
+
 
   public RollbackDeductedLoyaltyPointsEffectProps programId(Integer programId) {
     
@@ -191,6 +195,28 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
 
+  public RollbackDeductedLoyaltyPointsEffectProps transactionUUID(String transactionUUID) {
+    
+    this.transactionUUID = transactionUUID;
+    return this;
+  }
+
+   /**
+   * The identifier of &#39;addition&#39; entries added to the ledger as the &#x60;deductLoyaltyPoints&#x60; effect is rolled back
+   * @return transactionUUID
+  **/
+  @ApiModelProperty(required = true, value = "The identifier of 'addition' entries added to the ledger as the `deductLoyaltyPoints` effect is rolled back")
+
+  public String getTransactionUUID() {
+    return transactionUUID;
+  }
+
+
+  public void setTransactionUUID(String transactionUUID) {
+    this.transactionUUID = transactionUUID;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -205,12 +231,13 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
         Objects.equals(this.value, rollbackDeductedLoyaltyPointsEffectProps.value) &&
         Objects.equals(this.recipientIntegrationId, rollbackDeductedLoyaltyPointsEffectProps.recipientIntegrationId) &&
         Objects.equals(this.startDate, rollbackDeductedLoyaltyPointsEffectProps.startDate) &&
-        Objects.equals(this.expiryDate, rollbackDeductedLoyaltyPointsEffectProps.expiryDate);
+        Objects.equals(this.expiryDate, rollbackDeductedLoyaltyPointsEffectProps.expiryDate) &&
+        Objects.equals(this.transactionUUID, rollbackDeductedLoyaltyPointsEffectProps.transactionUUID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate);
+    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID);
   }
 
 
@@ -224,6 +251,7 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

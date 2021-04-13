@@ -29,8 +29,10 @@ import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerSessionV2;
 import one.talon.model.Effect;
 import one.talon.model.Event;
+import one.talon.model.Giveaway;
 import one.talon.model.Loyalty;
 import one.talon.model.Referral;
+import one.talon.model.RuleFailureReason;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -115,6 +117,14 @@ public class IntegrationStateV2Test {
     }
 
     /**
+     * Test the property 'ruleFailureReasons'
+     */
+    @Test
+    public void ruleFailureReasonsTest() {
+        // TODO: test ruleFailureReasons
+    }
+
+    /**
      * Test the property 'createdCoupons'
      */
     @Test
@@ -128,6 +138,14 @@ public class IntegrationStateV2Test {
     @Test
     public void createdReferralsTest() {
         // TODO: test createdReferrals
+    }
+
+    /**
+     * Test the property 'awardedGiveaways'
+     */
+    @Test
+    public void awardedGiveawaysTest() {
+        // TODO: test awardedGiveaways
     }
 
 }

@@ -23,6 +23,8 @@ Name | Value
 COUPON | &quot;Coupon&quot;
 EFFECT | &quot;Effect&quot;
 CUSTOMERSESSION | &quot;CustomerSession&quot;
+LOYALTYLEDGER | &quot;LoyaltyLedger&quot;
+LOYALTYLEDGERLOG | &quot;LoyaltyLedgerLog&quot;
 
 
 

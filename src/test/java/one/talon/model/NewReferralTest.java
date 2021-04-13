@@ -42,6 +42,30 @@ public class NewReferralTest {
     }
 
     /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
+    }
+
+    /**
+     * Test the property 'usageLimit'
+     */
+    @Test
+    public void usageLimitTest() {
+        // TODO: test usageLimit
+    }
+
+    /**
      * Test the property 'campaignId'
      */
     @Test
@@ -66,19 +90,11 @@ public class NewReferralTest {
     }
 
     /**
-     * Test the property 'startDate'
+     * Test the property 'attributes'
      */
     @Test
-    public void startDateTest() {
-        // TODO: test startDate
-    }
-
-    /**
-     * Test the property 'expiryDate'
-     */
-    @Test
-    public void expiryDateTest() {
-        // TODO: test expiryDate
+    public void attributesTest() {
+        // TODO: test attributes
     }
 
 }

@@ -51,7 +51,11 @@ public class NewAttribute {
     
     COUPON("Coupon"),
     
-    EVENT("Event");
+    EVENT("Event"),
+    
+    GIVEAWAY("Giveaway"),
+    
+    REFERRAL("Referral");
 
     private String value;
 
