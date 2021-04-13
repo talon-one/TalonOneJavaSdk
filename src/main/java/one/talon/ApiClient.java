@@ -30,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.net.URI;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
@@ -51,6 +50,13 @@ import one.talon.auth.Authentication;
 import one.talon.auth.HttpBasicAuth;
 import one.talon.auth.HttpBearerAuth;
 import one.talon.auth.ApiKeyAuth;
+
+// Talon Dependencies Imports
+import okio.Buffer;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.ByteBuffer;
+import java.security.*;
 
 public class ApiClient {
 
@@ -75,13 +81,33 @@ public class ApiClient {
     private JSON json;
 
     private HttpLoggingInterceptor loggingInterceptor;
+    private String applicationKey; // Talon.One's integration_auth applicationKey
+    private String applicationId; // Talon.One's integration_auth applicationId
+
+    /*
+     * Conditional constructor for ApiClient
+     */
+    public ApiClient(String authenticationStrategy) {
+        init();
+
+        if (authenticationStrategy == "manager_auth") {
+            authentications.put("manager_auth", new ApiKeyAuth("header", "Authorization"));
+        }
+
+        if (authenticationStrategy == "api_key_v1") {
+            authentications.put("api_key_v1", new ApiKeyAuth("header", "Authorization"));
+        }
+
+        if (authenticationStrategy == "integration_auth") {
+            authentications.put("integration_auth", new ApiKeyAuth("header", "Content-Signature"));
+        }
+    }
 
     /*
      * Basic constructor for ApiClient
      */
     public ApiClient() {
         init();
-        initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("api_key_v1", new ApiKeyAuth("header", "Authorization"));
@@ -90,21 +116,12 @@ public class ApiClient {
         authentications = Collections.unmodifiableMap(authentications);
     }
 
-    private void initHttpClient() {
-        initHttpClient(Collections.<Interceptor>emptyList());
-    }
-
-    private void initHttpClient(List<Interceptor> interceptors) {
+    private void init() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
-        for (Interceptor interceptor: interceptors) {
-            builder.addInterceptor(interceptor);
-        }
-
         httpClient = builder.build();
-    }
 
-    private void init() {
+
         verifyingSsl = true;
 
         json = new JSON();
@@ -132,6 +149,46 @@ public class ApiClient {
      */
     public ApiClient setBasePath(String basePath) {
         this.basePath = basePath;
+        return this;
+    }
+
+    /**
+     * Talon Helper Method
+     *
+     * @return Key of the application on scope
+     */
+    public String getApplicationKey() {
+        return applicationKey;
+    }
+
+    /**
+     * Talon Helper Method
+     *
+     * @param key Key of the application on scope
+     * @return An instance of OkHttpClient
+     */
+    public ApiClient setApplicationKey(String key) {
+        this.applicationKey = key;
+        return this;
+    }
+
+    /**
+     * Talon Helper Method
+     *
+     * @return ID of the application on scope
+     */
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    /**
+     * Talon Helper Method
+     *
+     * @param id ID of the application on scope
+     * @return An instance of OkHttpClient
+     */
+    public ApiClient setApplicationId(String id) {
+        this.applicationId = id;
         return this;
     }
 
@@ -1031,7 +1088,7 @@ public class ApiClient {
      * @throws ApiException If fail to serialize the request body object
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
-        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
+        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams, body);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
@@ -1077,6 +1134,24 @@ public class ApiClient {
         }
 
         return request;
+    }
+
+    /**
+     * Talon Hmac Utility methods
+     */
+    private byte[] decodeHexString(String hex) {
+        String[] list=hex.split("(?<=\\G.{2})");
+        ByteBuffer buffer= ByteBuffer.allocate(list.length);
+        for(String str: list)
+            buffer.put((byte)(Integer.parseInt(str,16)));
+        return buffer.array();
+    }
+    private String encodeHexString(byte[] in) {
+        final StringBuilder builder = new StringBuilder();
+        for(byte b : in) {
+            builder.append(String.format("%02x", b));
+        }
+        return builder.toString();
     }
 
     /**
@@ -1170,13 +1245,41 @@ public class ApiClient {
      * @param headerParams Map of header parameters
      * @param cookieParams Map of cookie parameters
      */
-    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams, Object body) {
+        boolean foundAuth = false;
         for (String authName : authNames) {
             Authentication auth = authentications.get(authName);
-            if (auth == null) {
-                throw new RuntimeException("Authentication undefined: " + authName);
+            if (auth != null) {
+                foundAuth = true;
+                if (authName == "integration_auth") {
+                    try {
+                        if (body == null) {
+                            throw new RuntimeException("No body provided to sign with HMAC");
+                        }
+                        String content = json.serialize(body);
+                        SecretKeySpec keySpec = new SecretKeySpec(
+                                decodeHexString(this.applicationKey.toLowerCase()),
+                                "HmacMD5");
+                        Mac mac = Mac.getInstance("HmacMD5");
+                        mac.init(keySpec);
+                        byte[] result = mac.doFinal(content.getBytes());
+                        String signature = encodeHexString(result);
+                        String headerValue = "signer="+this.applicationId+"; signature="+signature;
+
+                        headerParams.put("Content-Signature", headerValue);
+                    } catch (NoSuchAlgorithmException e) {
+                        throw new RuntimeException(e.toString());
+                    } catch (InvalidKeyException e) {
+                        throw new RuntimeException(e.toString());
+                    }
+                } else {
+                    auth.applyToParams(queryParams, headerParams, cookieParams);
+                }
             }
-            auth.applyToParams(queryParams, headerParams, cookieParams);
+        }
+
+        if (foundAuth == false) {
+            throw new RuntimeException("No valid Authentication found");
         }
     }
 
