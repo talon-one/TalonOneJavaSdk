@@ -15315,17 +15315,10 @@ components:
           description: The exact path of the attribute that was updated
           type: string
         value:
-          anyOf:
-          - type: string
-          - type: number
-          - type: integer
-          - type: boolean
-          - items: {}
-            type: array
-          - type: object
           description: The new value of this attribute. Value can be any of the following
             types (time, string, number, location, boolean) or a list of any of those
             types
+          type: object
       required:
       - path
       - value
