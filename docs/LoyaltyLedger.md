@@ -8,7 +8,7 @@ Ledger of Balance in Loyalty Program for a Customer
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ledger** | [**LoyaltySubLedger**](LoyaltySubLedger.md) |  | 
-**subLedgers** | [**Map&lt;String, LoyaltySubLedger&gt;**](LoyaltySubLedger.md) | A map containing a list of all loyalty subledger balances |  [optional]
+**subLedgers** | [**Map&lt;String, LoyaltySubLedger&gt;**](LoyaltySubLedger.md) | A map containing a list of all loyalty subledger balances | 
 
 
 

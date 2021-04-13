@@ -2,7 +2,6 @@
 
 # NewCoupons
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Expiry date of the coupon. Coupon never expires if this is omitted, zero, or negative. |  [optional]
 **numberOfCoupons** | **Integer** | The number of new coupon codes to generate for the campaign. Must be at least 1. | 
 **uniquePrefix** | **String** | A unique prefix to prepend to all generated coupons. |  [optional]
-**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
+**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
 **recipientIntegrationId** | **String** | The integration ID for this coupon&#39;s beneficiary&#39;s profile |  [optional]
 **validCharacters** | **List&lt;String&gt;** | Set of characters to be used when generating random part of code. Defaults to [A-Z, 0-9] (in terms of RegExp). |  [optional]
 **couponPattern** | **String** | The pattern that will be used to generate coupon codes. The character &#x60;#&#x60; acts as a placeholder and will be replaced by a random character from the &#x60;validCharacters&#x60; set.  |  [optional]

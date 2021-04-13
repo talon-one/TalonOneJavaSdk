@@ -24,7 +24,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
@@ -52,7 +54,7 @@ public class NewCampaign {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
   /**
    * A disabled or archived campaign is not evaluated for rules or coupons. 
@@ -278,9 +280,17 @@ public class NewCampaign {
   }
 
 
-  public NewCampaign attributes(Object attributes) {
+  public NewCampaign attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public NewCampaign putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -291,12 +301,12 @@ public class NewCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

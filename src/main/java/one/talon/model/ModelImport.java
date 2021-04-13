@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ModelImport
  */
-@ApiModel(description = "")
 
 public class ModelImport {
   public static final String SERIALIZED_NAME_ID = "id";

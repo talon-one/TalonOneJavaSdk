@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * Effect
  */
-@ApiModel(description = "")
 
 public class Effect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";

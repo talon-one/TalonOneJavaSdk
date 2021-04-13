@@ -23,12 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * NewReferral
  */
-@ApiModel(description = "")
 
 public class NewReferral {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
@@ -57,7 +59,7 @@ public class NewReferral {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
 
   public NewReferral startDate(OffsetDateTime startDate) {
@@ -68,6 +70,7 @@ public class NewReferral {
 
    /**
    * Timestamp at which point the referral code becomes valid.
+   * minimum: 0
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -91,6 +94,7 @@ public class NewReferral {
 
    /**
    * Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.
+   * minimum: 0
    * @return expiryDate
   **/
   @javax.annotation.Nullable
@@ -198,9 +202,17 @@ public class NewReferral {
   }
 
 
-  public NewReferral attributes(Object attributes) {
+  public NewReferral attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public NewReferral putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -211,12 +223,12 @@ public class NewReferral {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

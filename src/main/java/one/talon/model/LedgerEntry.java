@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * LedgerEntry
  */
-@ApiModel(description = "")
 
 public class LedgerEntry {
   public static final String SERIALIZED_NAME_ID = "id";

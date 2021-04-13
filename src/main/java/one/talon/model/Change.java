@@ -23,12 +23,14 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Change
  */
-@ApiModel(description = "")
 
 public class Change {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -53,11 +55,11 @@ public class Change {
 
   public static final String SERIALIZED_NAME_OLD = "old";
   @SerializedName(SERIALIZED_NAME_OLD)
-  private Object old;
+  private Map<String, Object> old = null;
 
   public static final String SERIALIZED_NAME_NEW = "new";
   @SerializedName(SERIALIZED_NAME_NEW)
-  private Object _new;
+  private Map<String, Object> _new = null;
 
 
   public Change id(Integer id) {
@@ -171,9 +173,17 @@ public class Change {
   }
 
 
-  public Change old(Object old) {
+  public Change old(Map<String, Object> old) {
     
     this.old = old;
+    return this;
+  }
+
+  public Change putOldItem(String key, Object oldItem) {
+    if (this.old == null) {
+      this.old = new HashMap<String, Object>();
+    }
+    this.old.put(key, oldItem);
     return this;
   }
 
@@ -184,19 +194,27 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Resource before the change occurred.")
 
-  public Object getOld() {
+  public Map<String, Object> getOld() {
     return old;
   }
 
 
-  public void setOld(Object old) {
+  public void setOld(Map<String, Object> old) {
     this.old = old;
   }
 
 
-  public Change _new(Object _new) {
+  public Change _new(Map<String, Object> _new) {
     
     this._new = _new;
+    return this;
+  }
+
+  public Change putNewItem(String key, Object _newItem) {
+    if (this._new == null) {
+      this._new = new HashMap<String, Object>();
+    }
+    this._new.put(key, _newItem);
     return this;
   }
 
@@ -207,12 +225,12 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Resource after the change occurred.")
 
-  public Object getNew() {
+  public Map<String, Object> getNew() {
     return _new;
   }
 
 
-  public void setNew(Object _new) {
+  public void setNew(Map<String, Object> _new) {
     this._new = _new;
   }
 

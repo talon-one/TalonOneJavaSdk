@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 
+ * CustomerAnalytics
  */
-@ApiModel(description = "")
 
 public class CustomerAnalytics {
   public static final String SERIALIZED_NAME_ACCEPTED_COUPONS = "acceptedCoupons";

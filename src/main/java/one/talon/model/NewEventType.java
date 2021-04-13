@@ -24,12 +24,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * 
+ * NewEventType
  */
-@ApiModel(description = "")
 
 public class NewEventType {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
@@ -107,7 +108,7 @@ public class NewEventType {
 
   public static final String SERIALIZED_NAME_SCHEMA = "schema";
   @SerializedName(SERIALIZED_NAME_SCHEMA)
-  private Object schema;
+  private Map<String, Object> schema = null;
 
   /**
    * The language of the handler code. Currently only &#x60;\&quot;talang\&quot;&#x60; is supported.
@@ -305,9 +306,17 @@ public class NewEventType {
   }
 
 
-  public NewEventType schema(Object schema) {
+  public NewEventType schema(Map<String, Object> schema) {
     
     this.schema = schema;
+    return this;
+  }
+
+  public NewEventType putSchemaItem(String key, Object schemaItem) {
+    if (this.schema == null) {
+      this.schema = new HashMap<String, Object>();
+    }
+    this.schema.put(key, schemaItem);
     return this;
   }
 
@@ -318,12 +327,12 @@ public class NewEventType {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "It is strongly recommended to define a JSON schema that will be used to perform structural validation of request payloads after parsing. ")
 
-  public Object getSchema() {
+  public Map<String, Object> getSchema() {
     return schema;
   }
 
 
-  public void setSchema(Object schema) {
+  public void setSchema(Map<String, Object> schema) {
     this.schema = schema;
   }
 

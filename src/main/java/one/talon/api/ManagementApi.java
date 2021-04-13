@@ -44,7 +44,6 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
-import java.io.File;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -130,7 +129,7 @@ public class ManagementApi {
      * Build call for addLoyaltyPoints
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -140,8 +139,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addLoyaltyPointsCall(String programID, String integrationID, LoyaltyPoints body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call addLoyaltyPointsCall(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = loyaltyPoints;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{programID}/profile/{integrationID}/add_points"
@@ -172,7 +171,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addLoyaltyPointsValidateBeforeCall(String programID, String integrationID, LoyaltyPoints body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addLoyaltyPointsValidateBeforeCall(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -184,23 +183,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'integrationID' when calling addLoyaltyPoints(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling addLoyaltyPoints(Async)");
+        // verify the required parameter 'loyaltyPoints' is set
+        if (loyaltyPoints == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyPoints' when calling addLoyaltyPoints(Async)");
         }
         
 
-        okhttp3.Call localVarCall = addLoyaltyPointsCall(programID, integrationID, body, _callback);
+        okhttp3.Call localVarCall = addLoyaltyPointsCall(programID, integrationID, loyaltyPoints, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Add points in a certain loyalty program for the specified customer
+     * Add points in a loyalty program for the specified customer
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -208,16 +207,16 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void addLoyaltyPoints(String programID, String integrationID, LoyaltyPoints body) throws ApiException {
-        addLoyaltyPointsWithHttpInfo(programID, integrationID, body);
+    public void addLoyaltyPoints(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+        addLoyaltyPointsWithHttpInfo(programID, integrationID, loyaltyPoints);
     }
 
     /**
-     * Add points in a certain loyalty program for the specified customer
+     * Add points in a loyalty program for the specified customer
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -226,17 +225,17 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addLoyaltyPointsWithHttpInfo(String programID, String integrationID, LoyaltyPoints body) throws ApiException {
-        okhttp3.Call localVarCall = addLoyaltyPointsValidateBeforeCall(programID, integrationID, body, null);
+    public ApiResponse<Void> addLoyaltyPointsWithHttpInfo(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+        okhttp3.Call localVarCall = addLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Add points in a certain loyalty program for the specified customer (asynchronously)
+     * Add points in a loyalty program for the specified customer (asynchronously)
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -246,9 +245,9 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addLoyaltyPointsAsync(String programID, String integrationID, LoyaltyPoints body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addLoyaltyPointsAsync(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addLoyaltyPointsValidateBeforeCall(programID, integrationID, body, _callback);
+        okhttp3.Call localVarCall = addLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -256,7 +255,7 @@ public class ManagementApi {
      * Build call for copyCampaignToApplications
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param campaignCopy  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -266,8 +265,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call copyCampaignToApplicationsCall(Integer applicationId, Integer campaignId, CampaignCopy body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call copyCampaignToApplicationsCall(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = campaignCopy;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/copy"
@@ -298,7 +297,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call copyCampaignToApplicationsValidateBeforeCall(Integer applicationId, Integer campaignId, CampaignCopy body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call copyCampaignToApplicationsValidateBeforeCall(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -310,13 +309,13 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling copyCampaignToApplications(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling copyCampaignToApplications(Async)");
+        // verify the required parameter 'campaignCopy' is set
+        if (campaignCopy == null) {
+            throw new ApiException("Missing the required parameter 'campaignCopy' when calling copyCampaignToApplications(Async)");
         }
         
 
-        okhttp3.Call localVarCall = copyCampaignToApplicationsCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = copyCampaignToApplicationsCall(applicationId, campaignId, campaignCopy, _callback);
         return localVarCall;
 
     }
@@ -326,7 +325,7 @@ public class ManagementApi {
      * Copy the campaign into every specified application.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param campaignCopy  (required)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -335,8 +334,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2002 copyCampaignToApplications(Integer applicationId, Integer campaignId, CampaignCopy body) throws ApiException {
-        ApiResponse<InlineResponse2002> localVarResp = copyCampaignToApplicationsWithHttpInfo(applicationId, campaignId, body);
+    public InlineResponse2002 copyCampaignToApplications(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
+        ApiResponse<InlineResponse2002> localVarResp = copyCampaignToApplicationsWithHttpInfo(applicationId, campaignId, campaignCopy);
         return localVarResp.getData();
     }
 
@@ -345,7 +344,7 @@ public class ManagementApi {
      * Copy the campaign into every specified application.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param campaignCopy  (required)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -354,8 +353,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2002> copyCampaignToApplicationsWithHttpInfo(Integer applicationId, Integer campaignId, CampaignCopy body) throws ApiException {
-        okhttp3.Call localVarCall = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, body, null);
+    public ApiResponse<InlineResponse2002> copyCampaignToApplicationsWithHttpInfo(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy) throws ApiException {
+        okhttp3.Call localVarCall = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, campaignCopy, null);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -365,7 +364,7 @@ public class ManagementApi {
      * Copy the campaign into every specified application.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param campaignCopy  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -375,16 +374,16 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call copyCampaignToApplicationsAsync(Integer applicationId, Integer campaignId, CampaignCopy body, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
+    public okhttp3.Call copyCampaignToApplicationsAsync(Integer applicationId, Integer campaignId, CampaignCopy campaignCopy, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = copyCampaignToApplicationsValidateBeforeCall(applicationId, campaignId, campaignCopy, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createAdditionalCost
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -394,8 +393,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdditionalCostCall(NewAdditionalCost body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createAdditionalCostCall(NewAdditionalCost newAdditionalCost, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newAdditionalCost;
 
         // create path and map variables
         String localVarPath = "/v1/additional_costs";
@@ -424,15 +423,15 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdditionalCostValidateBeforeCall(NewAdditionalCost body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdditionalCostValidateBeforeCall(NewAdditionalCost newAdditionalCost, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createAdditionalCost(Async)");
+        // verify the required parameter 'newAdditionalCost' is set
+        if (newAdditionalCost == null) {
+            throw new ApiException("Missing the required parameter 'newAdditionalCost' when calling createAdditionalCost(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createAdditionalCostCall(body, _callback);
+        okhttp3.Call localVarCall = createAdditionalCostCall(newAdditionalCost, _callback);
         return localVarCall;
 
     }
@@ -440,7 +439,7 @@ public class ManagementApi {
     /**
      * Define a new additional cost
      * Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @return AccountAdditionalCost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -449,15 +448,15 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public AccountAdditionalCost createAdditionalCost(NewAdditionalCost body) throws ApiException {
-        ApiResponse<AccountAdditionalCost> localVarResp = createAdditionalCostWithHttpInfo(body);
+    public AccountAdditionalCost createAdditionalCost(NewAdditionalCost newAdditionalCost) throws ApiException {
+        ApiResponse<AccountAdditionalCost> localVarResp = createAdditionalCostWithHttpInfo(newAdditionalCost);
         return localVarResp.getData();
     }
 
     /**
      * Define a new additional cost
      * Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @return ApiResponse&lt;AccountAdditionalCost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -466,8 +465,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountAdditionalCost> createAdditionalCostWithHttpInfo(NewAdditionalCost body) throws ApiException {
-        okhttp3.Call localVarCall = createAdditionalCostValidateBeforeCall(body, null);
+    public ApiResponse<AccountAdditionalCost> createAdditionalCostWithHttpInfo(NewAdditionalCost newAdditionalCost) throws ApiException {
+        okhttp3.Call localVarCall = createAdditionalCostValidateBeforeCall(newAdditionalCost, null);
         Type localVarReturnType = new TypeToken<AccountAdditionalCost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -475,7 +474,7 @@ public class ManagementApi {
     /**
      * Define a new additional cost (asynchronously)
      * Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -485,16 +484,16 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdditionalCostAsync(NewAdditionalCost body, final ApiCallback<AccountAdditionalCost> _callback) throws ApiException {
+    public okhttp3.Call createAdditionalCostAsync(NewAdditionalCost newAdditionalCost, final ApiCallback<AccountAdditionalCost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdditionalCostValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = createAdditionalCostValidateBeforeCall(newAdditionalCost, _callback);
         Type localVarReturnType = new TypeToken<AccountAdditionalCost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createAttribute
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -504,8 +503,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAttributeCall(NewAttribute body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createAttributeCall(NewAttribute newAttribute, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newAttribute;
 
         // create path and map variables
         String localVarPath = "/v1/attributes";
@@ -534,15 +533,15 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAttributeValidateBeforeCall(NewAttribute body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAttributeValidateBeforeCall(NewAttribute newAttribute, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createAttribute(Async)");
+        // verify the required parameter 'newAttribute' is set
+        if (newAttribute == null) {
+            throw new ApiException("Missing the required parameter 'newAttribute' when calling createAttribute(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createAttributeCall(body, _callback);
+        okhttp3.Call localVarCall = createAttributeCall(newAttribute, _callback);
         return localVarCall;
 
     }
@@ -550,7 +549,7 @@ public class ManagementApi {
     /**
      * Define a new custom attribute
      * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @return Attribute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -559,15 +558,15 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public Attribute createAttribute(NewAttribute body) throws ApiException {
-        ApiResponse<Attribute> localVarResp = createAttributeWithHttpInfo(body);
+    public Attribute createAttribute(NewAttribute newAttribute) throws ApiException {
+        ApiResponse<Attribute> localVarResp = createAttributeWithHttpInfo(newAttribute);
         return localVarResp.getData();
     }
 
     /**
      * Define a new custom attribute
      * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @return ApiResponse&lt;Attribute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -576,8 +575,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Attribute> createAttributeWithHttpInfo(NewAttribute body) throws ApiException {
-        okhttp3.Call localVarCall = createAttributeValidateBeforeCall(body, null);
+    public ApiResponse<Attribute> createAttributeWithHttpInfo(NewAttribute newAttribute) throws ApiException {
+        okhttp3.Call localVarCall = createAttributeValidateBeforeCall(newAttribute, null);
         Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -585,7 +584,7 @@ public class ManagementApi {
     /**
      * Define a new custom attribute (asynchronously)
      * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -595,9 +594,9 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAttributeAsync(NewAttribute body, final ApiCallback<Attribute> _callback) throws ApiException {
+    public okhttp3.Call createAttributeAsync(NewAttribute newAttribute, final ApiCallback<Attribute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAttributeValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = createAttributeValidateBeforeCall(newAttribute, _callback);
         Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -605,7 +604,7 @@ public class ManagementApi {
     /**
      * Build call for createCampaign
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param newCampaign  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -615,8 +614,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCampaignCall(Integer applicationId, NewCampaign body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createCampaignCall(Integer applicationId, NewCampaign newCampaign, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newCampaign;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns"
@@ -646,29 +645,29 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCampaignValidateBeforeCall(Integer applicationId, NewCampaign body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCampaignValidateBeforeCall(Integer applicationId, NewCampaign newCampaign, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling createCampaign(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createCampaign(Async)");
+        // verify the required parameter 'newCampaign' is set
+        if (newCampaign == null) {
+            throw new ApiException("Missing the required parameter 'newCampaign' when calling createCampaign(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createCampaignCall(applicationId, body, _callback);
+        okhttp3.Call localVarCall = createCampaignCall(applicationId, newCampaign, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create a Campaign
+     * Create campaign
      * 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param newCampaign  (required)
      * @return Campaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -677,16 +676,16 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign createCampaign(Integer applicationId, NewCampaign body) throws ApiException {
-        ApiResponse<Campaign> localVarResp = createCampaignWithHttpInfo(applicationId, body);
+    public Campaign createCampaign(Integer applicationId, NewCampaign newCampaign) throws ApiException {
+        ApiResponse<Campaign> localVarResp = createCampaignWithHttpInfo(applicationId, newCampaign);
         return localVarResp.getData();
     }
 
     /**
-     * Create a Campaign
+     * Create campaign
      * 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param newCampaign  (required)
      * @return ApiResponse&lt;Campaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -695,17 +694,17 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> createCampaignWithHttpInfo(Integer applicationId, NewCampaign body) throws ApiException {
-        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(applicationId, body, null);
+    public ApiResponse<Campaign> createCampaignWithHttpInfo(Integer applicationId, NewCampaign newCampaign) throws ApiException {
+        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(applicationId, newCampaign, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create a Campaign (asynchronously)
+     * Create campaign (asynchronously)
      * 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param newCampaign  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -715,9 +714,9 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCampaignAsync(Integer applicationId, NewCampaign body, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call createCampaignAsync(Integer applicationId, NewCampaign newCampaign, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(applicationId, body, _callback);
+        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(applicationId, newCampaign, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -726,7 +725,7 @@ public class ManagementApi {
      * Build call for createCoupons
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCoupons  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -738,8 +737,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCouponsCall(Integer applicationId, Integer campaignId, NewCoupons body, String silent, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createCouponsCall(Integer applicationId, Integer campaignId, NewCoupons newCoupons, String silent, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newCoupons;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons"
@@ -774,7 +773,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCouponsValidateBeforeCall(Integer applicationId, Integer campaignId, NewCoupons body, String silent, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCouponsValidateBeforeCall(Integer applicationId, Integer campaignId, NewCoupons newCoupons, String silent, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -786,23 +785,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createCoupons(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createCoupons(Async)");
+        // verify the required parameter 'newCoupons' is set
+        if (newCoupons == null) {
+            throw new ApiException("Missing the required parameter 'newCoupons' when calling createCoupons(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createCouponsCall(applicationId, campaignId, body, silent, _callback);
+        okhttp3.Call localVarCall = createCouponsCall(applicationId, campaignId, newCoupons, silent, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create Coupons
+     * Create coupons
      * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCoupons  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @return InlineResponse2004
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -813,17 +812,17 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 createCoupons(Integer applicationId, Integer campaignId, NewCoupons body, String silent) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = createCouponsWithHttpInfo(applicationId, campaignId, body, silent);
+    public InlineResponse2004 createCoupons(Integer applicationId, Integer campaignId, NewCoupons newCoupons, String silent) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = createCouponsWithHttpInfo(applicationId, campaignId, newCoupons, silent);
         return localVarResp.getData();
     }
 
     /**
-     * Create Coupons
+     * Create coupons
      * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCoupons  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @return ApiResponse&lt;InlineResponse2004&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -834,18 +833,18 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, NewCoupons body, String silent) throws ApiException {
-        okhttp3.Call localVarCall = createCouponsValidateBeforeCall(applicationId, campaignId, body, silent, null);
+    public ApiResponse<InlineResponse2004> createCouponsWithHttpInfo(Integer applicationId, Integer campaignId, NewCoupons newCoupons, String silent) throws ApiException {
+        okhttp3.Call localVarCall = createCouponsValidateBeforeCall(applicationId, campaignId, newCoupons, silent, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create Coupons (asynchronously)
+     * Create coupons (asynchronously)
      * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCoupons  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -857,9 +856,9 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCouponsAsync(Integer applicationId, Integer campaignId, NewCoupons body, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call createCouponsAsync(Integer applicationId, Integer campaignId, NewCoupons newCoupons, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCouponsValidateBeforeCall(applicationId, campaignId, body, silent, _callback);
+        okhttp3.Call localVarCall = createCouponsValidateBeforeCall(applicationId, campaignId, newCoupons, silent, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -868,7 +867,7 @@ public class ManagementApi {
      * Build call for createCouponsForMultipleRecipients
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCouponsForMultipleRecipients  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -880,8 +879,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCouponsForMultipleRecipientsCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createCouponsForMultipleRecipientsCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients newCouponsForMultipleRecipients, String silent, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newCouponsForMultipleRecipients;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients"
@@ -916,7 +915,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCouponsForMultipleRecipientsValidateBeforeCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCouponsForMultipleRecipientsValidateBeforeCall(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients newCouponsForMultipleRecipients, String silent, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -928,23 +927,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createCouponsForMultipleRecipients(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createCouponsForMultipleRecipients(Async)");
+        // verify the required parameter 'newCouponsForMultipleRecipients' is set
+        if (newCouponsForMultipleRecipients == null) {
+            throw new ApiException("Missing the required parameter 'newCouponsForMultipleRecipients' when calling createCouponsForMultipleRecipients(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsCall(applicationId, campaignId, body, silent, _callback);
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsCall(applicationId, campaignId, newCouponsForMultipleRecipients, silent, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create Coupons for Multiple Recipients
-     * Create coupons according to some pattern for up to 1000 recipients.
+     * Create coupons for multiple recipients
+     * Create coupons according to the specified pattern for up to 1000 recipients.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCouponsForMultipleRecipients  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @return InlineResponse2004
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -955,17 +954,17 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 createCouponsForMultipleRecipients(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = createCouponsForMultipleRecipientsWithHttpInfo(applicationId, campaignId, body, silent);
+    public InlineResponse2004 createCouponsForMultipleRecipients(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients newCouponsForMultipleRecipients, String silent) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = createCouponsForMultipleRecipientsWithHttpInfo(applicationId, campaignId, newCouponsForMultipleRecipients, silent);
         return localVarResp.getData();
     }
 
     /**
-     * Create Coupons for Multiple Recipients
-     * Create coupons according to some pattern for up to 1000 recipients.
+     * Create coupons for multiple recipients
+     * Create coupons according to the specified pattern for up to 1000 recipients.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCouponsForMultipleRecipients  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @return ApiResponse&lt;InlineResponse2004&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -976,18 +975,18 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> createCouponsForMultipleRecipientsWithHttpInfo(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent) throws ApiException {
-        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, body, silent, null);
+    public ApiResponse<InlineResponse2004> createCouponsForMultipleRecipientsWithHttpInfo(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients newCouponsForMultipleRecipients, String silent) throws ApiException {
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, newCouponsForMultipleRecipients, silent, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create Coupons for Multiple Recipients (asynchronously)
-     * Create coupons according to some pattern for up to 1000 recipients.
+     * Create coupons for multiple recipients (asynchronously)
+     * Create coupons according to the specified pattern for up to 1000 recipients.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newCouponsForMultipleRecipients  (required)
      * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -999,16 +998,16 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCouponsForMultipleRecipientsAsync(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients body, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call createCouponsForMultipleRecipientsAsync(Integer applicationId, Integer campaignId, NewCouponsForMultipleRecipients newCouponsForMultipleRecipients, String silent, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, body, silent, _callback);
+        okhttp3.Call localVarCall = createCouponsForMultipleRecipientsValidateBeforeCall(applicationId, campaignId, newCouponsForMultipleRecipients, silent, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createPasswordRecoveryEmail
-     * @param body  (required)
+     * @param newPasswordEmail  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1018,8 +1017,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPasswordRecoveryEmailCall(NewPasswordEmail body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createPasswordRecoveryEmailCall(NewPasswordEmail newPasswordEmail, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newPasswordEmail;
 
         // create path and map variables
         String localVarPath = "/v1/password_recovery_emails";
@@ -1048,15 +1047,15 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPasswordRecoveryEmailValidateBeforeCall(NewPasswordEmail body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPasswordRecoveryEmailValidateBeforeCall(NewPasswordEmail newPasswordEmail, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createPasswordRecoveryEmail(Async)");
+        // verify the required parameter 'newPasswordEmail' is set
+        if (newPasswordEmail == null) {
+            throw new ApiException("Missing the required parameter 'newPasswordEmail' when calling createPasswordRecoveryEmail(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createPasswordRecoveryEmailCall(body, _callback);
+        okhttp3.Call localVarCall = createPasswordRecoveryEmailCall(newPasswordEmail, _callback);
         return localVarCall;
 
     }
@@ -1064,7 +1063,7 @@ public class ManagementApi {
     /**
      * Request a password reset
      * Sends an email with a password recovery link to the email of an existing account. 
-     * @param body  (required)
+     * @param newPasswordEmail  (required)
      * @return NewPasswordEmail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1073,15 +1072,15 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public NewPasswordEmail createPasswordRecoveryEmail(NewPasswordEmail body) throws ApiException {
-        ApiResponse<NewPasswordEmail> localVarResp = createPasswordRecoveryEmailWithHttpInfo(body);
+    public NewPasswordEmail createPasswordRecoveryEmail(NewPasswordEmail newPasswordEmail) throws ApiException {
+        ApiResponse<NewPasswordEmail> localVarResp = createPasswordRecoveryEmailWithHttpInfo(newPasswordEmail);
         return localVarResp.getData();
     }
 
     /**
      * Request a password reset
      * Sends an email with a password recovery link to the email of an existing account. 
-     * @param body  (required)
+     * @param newPasswordEmail  (required)
      * @return ApiResponse&lt;NewPasswordEmail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1090,8 +1089,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NewPasswordEmail> createPasswordRecoveryEmailWithHttpInfo(NewPasswordEmail body) throws ApiException {
-        okhttp3.Call localVarCall = createPasswordRecoveryEmailValidateBeforeCall(body, null);
+    public ApiResponse<NewPasswordEmail> createPasswordRecoveryEmailWithHttpInfo(NewPasswordEmail newPasswordEmail) throws ApiException {
+        okhttp3.Call localVarCall = createPasswordRecoveryEmailValidateBeforeCall(newPasswordEmail, null);
         Type localVarReturnType = new TypeToken<NewPasswordEmail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1099,7 +1098,7 @@ public class ManagementApi {
     /**
      * Request a password reset (asynchronously)
      * Sends an email with a password recovery link to the email of an existing account. 
-     * @param body  (required)
+     * @param newPasswordEmail  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1109,9 +1108,9 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPasswordRecoveryEmailAsync(NewPasswordEmail body, final ApiCallback<NewPasswordEmail> _callback) throws ApiException {
+    public okhttp3.Call createPasswordRecoveryEmailAsync(NewPasswordEmail newPasswordEmail, final ApiCallback<NewPasswordEmail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPasswordRecoveryEmailValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = createPasswordRecoveryEmailValidateBeforeCall(newPasswordEmail, _callback);
         Type localVarReturnType = new TypeToken<NewPasswordEmail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1120,7 +1119,7 @@ public class ManagementApi {
      * Build call for createRuleset
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1130,8 +1129,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRulesetCall(Integer applicationId, Integer campaignId, NewRuleset body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createRulesetCall(Integer applicationId, Integer campaignId, NewRuleset newRuleset, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newRuleset;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/rulesets"
@@ -1162,7 +1161,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRulesetValidateBeforeCall(Integer applicationId, Integer campaignId, NewRuleset body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRulesetValidateBeforeCall(Integer applicationId, Integer campaignId, NewRuleset newRuleset, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -1174,23 +1173,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling createRuleset(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createRuleset(Async)");
+        // verify the required parameter 'newRuleset' is set
+        if (newRuleset == null) {
+            throw new ApiException("Missing the required parameter 'newRuleset' when calling createRuleset(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createRulesetCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = createRulesetCall(applicationId, campaignId, newRuleset, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create a Ruleset
+     * Create ruleset
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @return Ruleset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1199,17 +1198,17 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public Ruleset createRuleset(Integer applicationId, Integer campaignId, NewRuleset body) throws ApiException {
-        ApiResponse<Ruleset> localVarResp = createRulesetWithHttpInfo(applicationId, campaignId, body);
+    public Ruleset createRuleset(Integer applicationId, Integer campaignId, NewRuleset newRuleset) throws ApiException {
+        ApiResponse<Ruleset> localVarResp = createRulesetWithHttpInfo(applicationId, campaignId, newRuleset);
         return localVarResp.getData();
     }
 
     /**
-     * Create a Ruleset
+     * Create ruleset
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @return ApiResponse&lt;Ruleset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1218,18 +1217,18 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Ruleset> createRulesetWithHttpInfo(Integer applicationId, Integer campaignId, NewRuleset body) throws ApiException {
-        okhttp3.Call localVarCall = createRulesetValidateBeforeCall(applicationId, campaignId, body, null);
+    public ApiResponse<Ruleset> createRulesetWithHttpInfo(Integer applicationId, Integer campaignId, NewRuleset newRuleset) throws ApiException {
+        okhttp3.Call localVarCall = createRulesetValidateBeforeCall(applicationId, campaignId, newRuleset, null);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create a Ruleset (asynchronously)
+     * Create ruleset (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1239,16 +1238,16 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRulesetAsync(Integer applicationId, Integer campaignId, NewRuleset body, final ApiCallback<Ruleset> _callback) throws ApiException {
+    public okhttp3.Call createRulesetAsync(Integer applicationId, Integer campaignId, NewRuleset newRuleset, final ApiCallback<Ruleset> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRulesetValidateBeforeCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = createRulesetValidateBeforeCall(applicationId, campaignId, newRuleset, _callback);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createSession
-     * @param body  (required)
+     * @param loginParams  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1258,8 +1257,8 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSessionCall(LoginParams body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call createSessionCall(LoginParams loginParams, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = loginParams;
 
         // create path and map variables
         String localVarPath = "/v1/sessions";
@@ -1283,28 +1282,28 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSessionValidateBeforeCall(LoginParams body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSessionValidateBeforeCall(LoginParams loginParams, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createSession(Async)");
+        // verify the required parameter 'loginParams' is set
+        if (loginParams == null) {
+            throw new ApiException("Missing the required parameter 'loginParams' when calling createSession(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createSessionCall(body, _callback);
+        okhttp3.Call localVarCall = createSessionCall(loginParams, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create a Session
-     * 
-     * @param body  (required)
+     * Create session
+     * Create a session to use the other Management API endpoints. Use the &#x60;token&#x60; property of the response as bearer token.
+     * @param loginParams  (required)
      * @return Session
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1313,15 +1312,15 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public Session createSession(LoginParams body) throws ApiException {
-        ApiResponse<Session> localVarResp = createSessionWithHttpInfo(body);
+    public Session createSession(LoginParams loginParams) throws ApiException {
+        ApiResponse<Session> localVarResp = createSessionWithHttpInfo(loginParams);
         return localVarResp.getData();
     }
 
     /**
-     * Create a Session
-     * 
-     * @param body  (required)
+     * Create session
+     * Create a session to use the other Management API endpoints. Use the &#x60;token&#x60; property of the response as bearer token.
+     * @param loginParams  (required)
      * @return ApiResponse&lt;Session&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1330,16 +1329,16 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Session> createSessionWithHttpInfo(LoginParams body) throws ApiException {
-        okhttp3.Call localVarCall = createSessionValidateBeforeCall(body, null);
+    public ApiResponse<Session> createSessionWithHttpInfo(LoginParams loginParams) throws ApiException {
+        okhttp3.Call localVarCall = createSessionValidateBeforeCall(loginParams, null);
         Type localVarReturnType = new TypeToken<Session>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create a Session (asynchronously)
-     * 
-     * @param body  (required)
+     * Create session (asynchronously)
+     * Create a session to use the other Management API endpoints. Use the &#x60;token&#x60; property of the response as bearer token.
+     * @param loginParams  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1349,9 +1348,9 @@ public class ManagementApi {
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createSessionAsync(LoginParams body, final ApiCallback<Session> _callback) throws ApiException {
+    public okhttp3.Call createSessionAsync(LoginParams loginParams, final ApiCallback<Session> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createSessionValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = createSessionValidateBeforeCall(loginParams, _callback);
         Type localVarReturnType = new TypeToken<Session>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1420,7 +1419,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Campaign
+     * Delete campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1436,7 +1435,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Campaign
+     * Delete campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1454,7 +1453,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Campaign (asynchronously)
+     * Delete campaign (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1515,7 +1514,7 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1544,7 +1543,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Coupon
+     * Delete coupon
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1561,7 +1560,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Coupon
+     * Delete coupon
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1580,7 +1579,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Coupon (asynchronously)
+     * Delete coupon (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1729,7 +1728,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete Coupons
+     * Delete coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1758,7 +1757,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete Coupons
+     * Delete coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1789,7 +1788,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete Coupons (asynchronously)
+     * Delete coupons (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1892,7 +1891,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Referral
+     * Delete referral
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1909,7 +1908,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Referral
+     * Delete referral
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -1928,7 +1927,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete one Referral (asynchronously)
+     * Delete referral (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -2019,7 +2018,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Ruleset
+     * Delete ruleset
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -2036,7 +2035,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Ruleset
+     * Delete ruleset
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -2055,7 +2054,7 @@ public class ManagementApi {
     }
 
     /**
-     * Delete a Ruleset (asynchronously)
+     * Delete ruleset (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -2076,107 +2075,10 @@ public class ManagementApi {
         return localVarCall;
     }
     /**
-     * Build call for destroySession
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call destroySessionCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/sessions";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "manager_auth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call destroySessionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = destroySessionCall(_callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Destroy a Session
-     * 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-     </table>
-     */
-    public void destroySession() throws ApiException {
-        destroySessionWithHttpInfo();
-    }
-
-    /**
-     * Destroy a Session
-     * 
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> destroySessionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = destroySessionValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Destroy a Session (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call destroySessionAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = destroySessionValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for exportCoupons
      * @param applicationId  (required)
      * @param campaignId Filter results by campaign. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -2262,7 +2164,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/csv"
+            "text/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2294,11 +2196,11 @@ public class ManagementApi {
     }
 
     /**
-     * Export Coupons to a CSV file
+     * Export coupons to a CSV file
      * Download a file with the coupons that match the given attributes.
      * @param applicationId  (required)
      * @param campaignId Filter results by campaign. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -2324,11 +2226,11 @@ public class ManagementApi {
     }
 
     /**
-     * Export Coupons to a CSV file
+     * Export coupons to a CSV file
      * Download a file with the coupons that match the given attributes.
      * @param applicationId  (required)
      * @param campaignId Filter results by campaign. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -2355,11 +2257,11 @@ public class ManagementApi {
     }
 
     /**
-     * Export Coupons to a CSV file (asynchronously)
+     * Export coupons to a CSV file (asynchronously)
      * Download a file with the coupons that match the given attributes.
      * @param applicationId  (required)
      * @param campaignId Filter results by campaign. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -2437,7 +2339,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/csv"
+            "text/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2583,7 +2485,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/csv"
+            "text/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2706,7 +2608,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/csv"
+            "text/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2834,7 +2736,7 @@ public class ManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/csv"
+            "text/csv"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2957,7 +2859,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3064,7 +2966,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3089,7 +2991,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3115,7 +3017,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3142,7 +3044,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3249,7 +3151,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3274,7 +3176,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3300,7 +3202,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3654,7 +3556,7 @@ public class ManagementApi {
      * Build call for getAdditionalCosts
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3719,7 +3621,7 @@ public class ManagementApi {
      * Returns all the defined additional costs for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse20021
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3738,7 +3640,7 @@ public class ManagementApi {
      * Returns all the defined additional costs for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse20021&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3758,7 +3660,7 @@ public class ManagementApi {
      * Returns all the defined additional costs for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3784,7 +3686,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3875,7 +3777,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all access logs
+     * List access logs
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -3884,7 +3786,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse2008
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3899,7 +3801,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all access logs
+     * List access logs
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -3908,7 +3810,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse2008&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3924,7 +3826,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all access logs (asynchronously)
+     * List access logs (asynchronously)
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
@@ -3933,7 +3835,7 @@ public class ManagementApi {
      * @param status Filter results by HTTP status codes. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3986,7 +3888,7 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4000,7 +3902,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all roles
+     * List roles
      * 
      * @return InlineResponse20029
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4016,7 +3918,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all roles
+     * List roles
      * 
      * @return ApiResponse&lt;InlineResponse20029&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4033,7 +3935,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get all roles (asynchronously)
+     * List roles (asynchronously)
      * 
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4400,7 +4302,7 @@ public class ManagementApi {
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4477,7 +4379,7 @@ public class ManagementApi {
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @return InlineResponse20011
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4498,7 +4400,7 @@ public class ManagementApi {
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @return ApiResponse&lt;InlineResponse20011&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4520,7 +4422,7 @@ public class ManagementApi {
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4539,7 +4441,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getApplicationCustomersByAttributes
-     * @param body  (required)
+     * @param applicationCustomerSearch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4551,8 +4453,8 @@ public class ManagementApi {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call getApplicationCustomersByAttributesCall(ApplicationCustomerSearch body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call getApplicationCustomersByAttributesCall(ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = applicationCustomerSearch;
 
         // create path and map variables
         String localVarPath = "/v1/application_customer_search";
@@ -4576,29 +4478,29 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "integration_auth" };
+        String[] localVarAuthNames = new String[] { "manager_auth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApplicationCustomersByAttributesValidateBeforeCall(ApplicationCustomerSearch body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApplicationCustomersByAttributesValidateBeforeCall(ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getApplicationCustomersByAttributes(Async)");
+        // verify the required parameter 'applicationCustomerSearch' is set
+        if (applicationCustomerSearch == null) {
+            throw new ApiException("Missing the required parameter 'applicationCustomerSearch' when calling getApplicationCustomersByAttributes(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getApplicationCustomersByAttributesCall(body, _callback);
+        okhttp3.Call localVarCall = getApplicationCustomersByAttributesCall(applicationCustomerSearch, _callback);
         return localVarCall;
 
     }
 
     /**
      * Get a list of the customer profiles that match the given attributes (with total count)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @return InlineResponse20012
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4609,15 +4511,15 @@ public class ManagementApi {
      * @deprecated
      */
     @Deprecated
-    public InlineResponse20012 getApplicationCustomersByAttributes(ApplicationCustomerSearch body) throws ApiException {
-        ApiResponse<InlineResponse20012> localVarResp = getApplicationCustomersByAttributesWithHttpInfo(body);
+    public InlineResponse20012 getApplicationCustomersByAttributes(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+        ApiResponse<InlineResponse20012> localVarResp = getApplicationCustomersByAttributesWithHttpInfo(applicationCustomerSearch);
         return localVarResp.getData();
     }
 
     /**
      * Get a list of the customer profiles that match the given attributes (with total count)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @return ApiResponse&lt;InlineResponse20012&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4628,16 +4530,16 @@ public class ManagementApi {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<InlineResponse20012> getApplicationCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch body) throws ApiException {
-        okhttp3.Call localVarCall = getApplicationCustomersByAttributesValidateBeforeCall(body, null);
+    public ApiResponse<InlineResponse20012> getApplicationCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch applicationCustomerSearch) throws ApiException {
+        okhttp3.Call localVarCall = getApplicationCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, null);
         Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get a list of the customer profiles that match the given attributes (with total count) (asynchronously)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4649,9 +4551,9 @@ public class ManagementApi {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call getApplicationCustomersByAttributesAsync(ApplicationCustomerSearch body, final ApiCallback<InlineResponse20012> _callback) throws ApiException {
+    public okhttp3.Call getApplicationCustomersByAttributesAsync(ApplicationCustomerSearch applicationCustomerSearch, final ApiCallback<InlineResponse20012> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApplicationCustomersByAttributesValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = getApplicationCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4661,7 +4563,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4733,7 +4635,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse20018
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4753,7 +4655,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse20018&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4774,7 +4676,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4796,7 +4698,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -4923,7 +4825,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -4954,7 +4856,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -4986,7 +4888,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5019,7 +4921,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5146,7 +5048,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5177,7 +5079,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5209,7 +5111,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param type Comma-separated list of types by which to filter events. Must be exact match(es). (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5363,7 +5265,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
      * @param state Filter by sessions with this state. Must be exact match. (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5470,7 +5372,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
      * @param state Filter by sessions with this state. Must be exact match. (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5497,7 +5399,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
      * @param state Filter by sessions with this state. Must be exact match. (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5525,7 +5427,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param profile Profile integration ID filter for sessions. Must be exact match. (optional)
      * @param state Filter by sessions with this state. Must be exact match. (optional)
      * @param createdBefore Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -5553,7 +5455,7 @@ public class ManagementApi {
      * Build call for getApplications
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5618,7 +5520,7 @@ public class ManagementApi {
      * List all application in the current account.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5637,7 +5539,7 @@ public class ManagementApi {
      * List all application in the current account.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5657,7 +5559,7 @@ public class ManagementApi {
      * List all application in the current account.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5789,8 +5691,8 @@ public class ManagementApi {
      * Build call for getAttributes
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param entity Returned attributes will be filtered by supplied entity (optional)
+     * @param sort  (optional)
+     * @param entity  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5859,8 +5761,8 @@ public class ManagementApi {
      * Returns all the defined custom attributes for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param entity Returned attributes will be filtered by supplied entity (optional)
+     * @param sort  (optional)
+     * @param entity  (optional)
      * @return InlineResponse20020
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5879,8 +5781,8 @@ public class ManagementApi {
      * Returns all the defined custom attributes for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param entity Returned attributes will be filtered by supplied entity (optional)
+     * @param sort  (optional)
+     * @param entity  (optional)
      * @return ApiResponse&lt;InlineResponse20020&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5900,8 +5802,8 @@ public class ManagementApi {
      * Returns all the defined custom attributes for the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param entity Returned attributes will be filtered by supplied entity (optional)
+     * @param sort  (optional)
+     * @param entity  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5922,8 +5824,8 @@ public class ManagementApi {
      * Build call for getAudiences
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param sort  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5988,12 +5890,12 @@ public class ManagementApi {
     }
 
     /**
-     * Get all audiences
+     * List audiences
      * Get All audiences created in the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param sort  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @return InlineResponse20019
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6008,12 +5910,12 @@ public class ManagementApi {
     }
 
     /**
-     * Get all audiences
+     * List audiences
      * Get All audiences created in the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param sort  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @return ApiResponse&lt;InlineResponse20019&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6029,12 +5931,12 @@ public class ManagementApi {
     }
 
     /**
-     * Get all audiences (asynchronously)
+     * List audiences (asynchronously)
      * Get All audiences created in the account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param sort  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6115,7 +6017,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Campaign
+     * Get campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -6133,7 +6035,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Campaign
+     * Get campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -6152,7 +6054,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Campaign (asynchronously)
+     * Get campaign (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
@@ -6330,10 +6232,10 @@ public class ManagementApi {
     /**
      * Build call for getCampaignByAttributes
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param campaignSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -6344,8 +6246,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignByAttributesCall(Integer applicationId, CampaignSearch body, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call getCampaignByAttributesCall(Integer applicationId, CampaignSearch campaignSearch, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = campaignSearch;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns_search"
@@ -6391,32 +6293,32 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignByAttributesValidateBeforeCall(Integer applicationId, CampaignSearch body, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignByAttributesValidateBeforeCall(Integer applicationId, CampaignSearch campaignSearch, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling getCampaignByAttributes(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getCampaignByAttributes(Async)");
+        // verify the required parameter 'campaignSearch' is set
+        if (campaignSearch == null) {
+            throw new ApiException("Missing the required parameter 'campaignSearch' when calling getCampaignByAttributes(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCampaignByAttributesCall(applicationId, body, pageSize, skip, sort, campaignState, _callback);
+        okhttp3.Call localVarCall = getCampaignByAttributesCall(applicationId, campaignSearch, pageSize, skip, sort, campaignState, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of all campaigns that match the given attributes
+     * List campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param campaignSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6426,19 +6328,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2002 getCampaignByAttributes(Integer applicationId, CampaignSearch body, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2002> localVarResp = getCampaignByAttributesWithHttpInfo(applicationId, body, pageSize, skip, sort, campaignState);
+    public InlineResponse2002 getCampaignByAttributes(Integer applicationId, CampaignSearch campaignSearch, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2002> localVarResp = getCampaignByAttributesWithHttpInfo(applicationId, campaignSearch, pageSize, skip, sort, campaignState);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of all campaigns that match the given attributes
+     * List campaigns that match the given attributes
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param campaignSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6448,20 +6350,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2002> getCampaignByAttributesWithHttpInfo(Integer applicationId, CampaignSearch body, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = getCampaignByAttributesValidateBeforeCall(applicationId, body, pageSize, skip, sort, campaignState, null);
+    public ApiResponse<InlineResponse2002> getCampaignByAttributesWithHttpInfo(Integer applicationId, CampaignSearch campaignSearch, Integer pageSize, Integer skip, String sort, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignByAttributesValidateBeforeCall(applicationId, campaignSearch, pageSize, skip, sort, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of all campaigns that match the given attributes (asynchronously)
+     * List campaigns that match the given attributes (asynchronously)
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param campaignSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6472,9 +6374,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignByAttributesAsync(Integer applicationId, CampaignSearch body, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
+    public okhttp3.Call getCampaignByAttributesAsync(Integer applicationId, CampaignSearch campaignSearch, Integer pageSize, Integer skip, String sort, String campaignState, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCampaignByAttributesValidateBeforeCall(applicationId, body, pageSize, skip, sort, campaignState, _callback);
+        okhttp3.Call localVarCall = getCampaignByAttributesValidateBeforeCall(applicationId, campaignSearch, pageSize, skip, sort, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6484,7 +6386,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param name Filter results performing case-insensitive matching against the name of the campaign. (optional)
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
@@ -6581,12 +6483,12 @@ public class ManagementApi {
     }
 
     /**
-     * List your Campaigns
+     * List campaigns
      * 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param name Filter results performing case-insensitive matching against the name of the campaign. (optional)
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
@@ -6607,12 +6509,12 @@ public class ManagementApi {
     }
 
     /**
-     * List your Campaigns
+     * List campaigns
      * 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param name Filter results performing case-insensitive matching against the name of the campaign. (optional)
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
@@ -6634,12 +6536,12 @@ public class ManagementApi {
     }
 
     /**
-     * List your Campaigns (asynchronously)
+     * List campaigns (asynchronously)
      * 
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param campaignState Filter results by the state of the campaign. (optional)
      * @param name Filter results performing case-insensitive matching against the name of the campaign. (optional)
      * @param tags Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  (optional)
@@ -6666,13 +6568,13 @@ public class ManagementApi {
      * Build call for getChanges
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param applicationId  (optional)
      * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
      * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -6766,13 +6668,13 @@ public class ManagementApi {
      * Get list of changes caused by API calls for an account. Only accessible for admins.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param applicationId  (optional)
      * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
      * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6792,13 +6694,13 @@ public class ManagementApi {
      * Get list of changes caused by API calls for an account. Only accessible for admins.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param applicationId  (optional)
      * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
      * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6819,13 +6721,13 @@ public class ManagementApi {
      * Get list of changes caused by API calls for an account. Only accessible for admins.
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param applicationId  (optional)
      * @param entityPath Filter results on a case insensitive matching of the url path of the entity (optional)
      * @param userId  (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
-     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  (optional)
+     * @param withTotalResultSize When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  (optional)
      * @param includeOld When this flag is set to false, the state without the change will not be returned. The default value is true. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -6849,7 +6751,7 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -6987,13 +6889,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons (with total count)
+     * List coupons (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7021,13 +6923,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons (with total count)
+     * List coupons (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7056,13 +6958,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons (with total count) (asynchronously)
+     * List coupons (with total count) (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7096,10 +6998,10 @@ public class ManagementApi {
      * Build call for getCouponsByAttributes
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7118,8 +7020,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCouponsByAttributesCall(Integer applicationId, Integer campaignId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call getCouponsByAttributesCall(Integer applicationId, Integer campaignId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = couponSearch;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search"
@@ -7198,7 +7100,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCouponsByAttributesValidateBeforeCall(Integer applicationId, Integer campaignId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCouponsByAttributesValidateBeforeCall(Integer applicationId, Integer campaignId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -7210,26 +7112,26 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getCouponsByAttributes(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getCouponsByAttributes(Async)");
+        // verify the required parameter 'couponSearch' is set
+        if (couponSearch == null) {
+            throw new ApiException("Missing the required parameter 'couponSearch' when calling getCouponsByAttributes(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCouponsByAttributesCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = getCouponsByAttributesCall(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons that match the given attributes
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7247,20 +7149,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 getCouponsByAttributes(Integer applicationId, Integer campaignId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+    public InlineResponse2004 getCouponsByAttributes(Integer applicationId, Integer campaignId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = getCouponsByAttributesWithHttpInfo(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons that match the given attributes
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7278,21 +7180,21 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
+    public ApiResponse<InlineResponse2004> getCouponsByAttributesWithHttpInfo(Integer applicationId, Integer campaignId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        okhttp3.Call localVarCall = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (asynchronously)
+     * List coupons that match the given attributes (asynchronously)
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7311,9 +7213,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call getCouponsByAttributesAsync(Integer applicationId, Integer campaignId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = getCouponsByAttributesValidateBeforeCall(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7321,10 +7223,10 @@ public class ManagementApi {
     /**
      * Build call for getCouponsByAttributesApplicationWide
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7344,8 +7246,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCouponsByAttributesApplicationWideCall(Integer applicationId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call getCouponsByAttributesApplicationWideCall(Integer applicationId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = couponSearch;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/coupons_search"
@@ -7427,32 +7329,32 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCouponsByAttributesApplicationWideValidateBeforeCall(Integer applicationId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCouponsByAttributesApplicationWideValidateBeforeCall(Integer applicationId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling getCouponsByAttributesApplicationWide(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getCouponsByAttributesApplicationWide(Async)");
+        // verify the required parameter 'couponSearch' is set
+        if (couponSearch == null) {
+            throw new ApiException("Missing the required parameter 'couponSearch' when calling getCouponsByAttributesApplicationWide(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideCall(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7471,19 +7373,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 getCouponsByAttributesApplicationWide(Integer applicationId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+    public InlineResponse2004 getCouponsByAttributesApplicationWide(Integer applicationId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = getCouponsByAttributesApplicationWideWithHttpInfo(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7502,20 +7404,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
+    public ApiResponse<InlineResponse2004> getCouponsByAttributesApplicationWideWithHttpInfo(Integer applicationId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
+     * List coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param couponSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7535,9 +7437,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, CouponSearch body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call getCouponsByAttributesApplicationWideAsync(Integer applicationId, CouponSearch couponSearch, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = getCouponsByAttributesApplicationWideValidateBeforeCall(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7548,7 +7450,7 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7666,13 +7568,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons
+     * List coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7696,13 +7598,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons
+     * List coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7727,13 +7629,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Coupons (asynchronously)
+     * List coupons (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -7929,7 +7831,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8041,7 +7943,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8067,7 +7969,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8094,7 +7996,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8122,7 +8024,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8234,7 +8136,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8260,7 +8162,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8287,7 +8189,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param name Only return reports matching the customer name (optional)
      * @param integrationId Only return reports matching the integrationId (optional)
      * @param campaignName Only return reports matching the campaignName (optional)
@@ -8314,7 +8216,7 @@ public class ManagementApi {
      * @param customerId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8393,7 +8295,7 @@ public class ManagementApi {
      * @param customerId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return CustomerAnalytics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8414,7 +8316,7 @@ public class ManagementApi {
      * @param customerId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;CustomerAnalytics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8436,7 +8338,7 @@ public class ManagementApi {
      * @param customerId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8683,7 +8585,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getCustomersByAttributes
-     * @param body  (required)
+     * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
@@ -8695,8 +8597,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomersByAttributesCall(ApplicationCustomerSearch body, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call getCustomersByAttributesCall(ApplicationCustomerSearch applicationCustomerSearch, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = applicationCustomerSearch;
 
         // create path and map variables
         String localVarPath = "/v1/customer_search/no_total";
@@ -8733,23 +8635,23 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomersByAttributesValidateBeforeCall(ApplicationCustomerSearch body, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomersByAttributesValidateBeforeCall(ApplicationCustomerSearch applicationCustomerSearch, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getCustomersByAttributes(Async)");
+        // verify the required parameter 'applicationCustomerSearch' is set
+        if (applicationCustomerSearch == null) {
+            throw new ApiException("Missing the required parameter 'applicationCustomerSearch' when calling getCustomersByAttributes(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCustomersByAttributesCall(body, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getCustomersByAttributesCall(applicationCustomerSearch, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * List customer profiles that match the given attributes
+     * Get a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return InlineResponse20012
@@ -8760,15 +8662,15 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse20012 getCustomersByAttributes(ApplicationCustomerSearch body, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse20012> localVarResp = getCustomersByAttributesWithHttpInfo(body, pageSize, skip);
+    public InlineResponse20012 getCustomersByAttributes(ApplicationCustomerSearch applicationCustomerSearch, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse20012> localVarResp = getCustomersByAttributesWithHttpInfo(applicationCustomerSearch, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * List customer profiles that match the given attributes
+     * Get a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse20012&gt;
@@ -8779,16 +8681,16 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse20012> getCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch body, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getCustomersByAttributesValidateBeforeCall(body, pageSize, skip, null);
+    public ApiResponse<InlineResponse20012> getCustomersByAttributesWithHttpInfo(ApplicationCustomerSearch applicationCustomerSearch, Integer pageSize, Integer skip) throws ApiException {
+        okhttp3.Call localVarCall = getCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the customer profiles that match the given attributes (asynchronously)
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
-     * @param body  (required)
+     * List customer profiles that match the given attributes (asynchronously)
+     * Get a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
+     * @param applicationCustomerSearch  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -8800,9 +8702,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomersByAttributesAsync(ApplicationCustomerSearch body, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20012> _callback) throws ApiException {
+    public okhttp3.Call getCustomersByAttributesAsync(ApplicationCustomerSearch applicationCustomerSearch, Integer pageSize, Integer skip, final ApiCallback<InlineResponse20012> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomersByAttributesValidateBeforeCall(body, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getCustomersByAttributesValidateBeforeCall(applicationCustomerSearch, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse20012>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8814,7 +8716,7 @@ public class ManagementApi {
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8887,14 +8789,14 @@ public class ManagementApi {
     }
 
     /**
-     * List Event Types
-     * Fetch all event type definitions for your account. Each event type can be 
+     * List event types
+     * Fetch all event type definitions for your account. 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8909,14 +8811,14 @@ public class ManagementApi {
     }
 
     /**
-     * List Event Types
-     * Fetch all event type definitions for your account. Each event type can be 
+     * List event types
+     * Fetch all event type definitions for your account. 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8932,14 +8834,14 @@ public class ManagementApi {
     }
 
     /**
-     * List Event Types (asynchronously)
-     * Fetch all event type definitions for your account. Each event type can be 
+     * List event types (asynchronously)
+     * Fetch all event type definitions for your account. 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
      * @param name Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. (optional)
      * @param includeOldVersions Include all versions of every event type. (optional, default to false)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9031,7 +8933,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Exports
+     * Get exports
      * Get a list of all past exports 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -9052,7 +8954,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Exports
+     * Get exports
      * Get a list of all past exports 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -9074,7 +8976,7 @@ public class ManagementApi {
     }
 
     /**
-     * Get Exports (asynchronously)
+     * Get exports (asynchronously)
      * Get a list of all past exports 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
@@ -9161,7 +9063,7 @@ public class ManagementApi {
     }
 
     /**
-     * get the Loyalty Ledger for this integrationID
+     * Get integration&#39;s Loyalty Ledger
      * Get the Loyalty Ledger for this profile integration ID.
      * @param programID The identifier for the application, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
@@ -9179,7 +9081,7 @@ public class ManagementApi {
     }
 
     /**
-     * get the Loyalty Ledger for this integrationID
+     * Get integration&#39;s Loyalty Ledger
      * Get the Loyalty Ledger for this profile integration ID.
      * @param programID The identifier for the application, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
@@ -9198,7 +9100,7 @@ public class ManagementApi {
     }
 
     /**
-     * get the Loyalty Ledger for this integrationID (asynchronously)
+     * Get integration&#39;s Loyalty Ledger (asynchronously)
      * Get the Loyalty Ledger for this profile integration ID.
      * @param programID The identifier for the application, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
@@ -9276,7 +9178,7 @@ public class ManagementApi {
 
     /**
      * Get a loyalty program
-     * 
+     * Get a loyalty program.
      * @param programID  (required)
      * @return LoyaltyProgram
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9293,7 +9195,7 @@ public class ManagementApi {
 
     /**
      * Get a loyalty program
-     * 
+     * Get a loyalty program.
      * @param programID  (required)
      * @return ApiResponse&lt;LoyaltyProgram&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9311,7 +9213,7 @@ public class ManagementApi {
 
     /**
      * Get a loyalty program (asynchronously)
-     * 
+     * Get a loyalty program.
      * @param programID  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9379,8 +9281,8 @@ public class ManagementApi {
     }
 
     /**
-     * List all loyalty Programs
-     * 
+     * List loyalty programs
+     * List all the loyalty programs.
      * @return InlineResponse2007
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9395,8 +9297,8 @@ public class ManagementApi {
     }
 
     /**
-     * List all loyalty Programs
-     * 
+     * List loyalty programs
+     * List all the loyalty programs.
      * @return ApiResponse&lt;InlineResponse2007&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9412,8 +9314,8 @@ public class ManagementApi {
     }
 
     /**
-     * List all loyalty Programs (asynchronously)
-     * 
+     * List loyalty programs (asynchronously)
+     * List all the loyalty programs.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9547,7 +9449,7 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9650,13 +9552,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals (with total count)
+     * List referrals (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9677,13 +9579,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals (with total count)
+     * List referrals (with total count)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9705,13 +9607,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals (with total count) (asynchronously)
+     * List referrals (with total count) (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9740,7 +9642,7 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9843,13 +9745,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals
+     * List referrals
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9870,13 +9772,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals
+     * List referrals
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9898,13 +9800,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Referrals (asynchronously)
+     * List referrals (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param code Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -9965,7 +9867,7 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10109,8 +10011,8 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Ruleset
-     * 
+     * Get ruleset
+     * Retrieve the details of a ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
@@ -10128,8 +10030,8 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Ruleset
-     * 
+     * Get ruleset
+     * Retrieve the details of a ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
@@ -10148,8 +10050,8 @@ public class ManagementApi {
     }
 
     /**
-     * Get a Ruleset (asynchronously)
-     * 
+     * Get ruleset (asynchronously)
+     * Retrieve the details of a ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
@@ -10175,7 +10077,7 @@ public class ManagementApi {
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10248,13 +10150,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Campaign Rulesets
-     * 
+     * List rulesets
+     * List all rulesets in the given campaign.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10269,13 +10171,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Campaign Rulesets
-     * 
+     * List rulesets
+     * List all rulesets in the given campaign.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10291,13 +10193,13 @@ public class ManagementApi {
     }
 
     /**
-     * List Campaign Rulesets (asynchronously)
-     * 
+     * List rulesets (asynchronously)
+     * List all rulesets in the given campaign.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -10429,7 +10331,7 @@ public class ManagementApi {
      * Build call for getUsers
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -10490,11 +10392,11 @@ public class ManagementApi {
     }
 
     /**
-     * List Users in your account
+     * List users
      * Retrieve all users in your account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10509,11 +10411,11 @@ public class ManagementApi {
     }
 
     /**
-     * List Users in your account
+     * List users
      * Retrieve all users in your account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -10529,11 +10431,11 @@ public class ManagementApi {
     }
 
     /**
-     * List Users in your account (asynchronously)
+     * List users (asynchronously)
      * Retrieve all users in your account. 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -10665,7 +10567,7 @@ public class ManagementApi {
      * Build call for getWebhookActivationLogs
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10760,7 +10662,7 @@ public class ManagementApi {
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10785,7 +10687,7 @@ public class ManagementApi {
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10811,7 +10713,7 @@ public class ManagementApi {
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10838,7 +10740,7 @@ public class ManagementApi {
      * Build call for getWebhookLogs
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10938,7 +10840,7 @@ public class ManagementApi {
      * 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10964,7 +10866,7 @@ public class ManagementApi {
      * 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -10991,7 +10893,7 @@ public class ManagementApi {
      * 
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param status Filter results by HTTP status codes. (optional)
      * @param webhookId Filter results by Webhook. (optional)
      * @param applicationId  (optional)
@@ -11018,7 +10920,7 @@ public class ManagementApi {
     /**
      * Build call for getWebhooks
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
@@ -11088,7 +10990,7 @@ public class ManagementApi {
      * List Webhooks
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return InlineResponse20022
@@ -11108,7 +11010,7 @@ public class ManagementApi {
      * List Webhooks
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse20022&gt;
@@ -11129,7 +11031,7 @@ public class ManagementApi {
      * List Webhooks (asynchronously)
      * 
      * @param applicationIds Filter by one or more application ids separated by comma (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -11152,7 +11054,7 @@ public class ManagementApi {
      * Build call for importCoupons
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11162,7 +11064,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importCouponsCall(Integer applicationId, Integer campaignId, File upFile, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call importCouponsCall(Integer applicationId, Integer campaignId, String upfile, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -11175,8 +11077,8 @@ public class ManagementApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (upFile != null) {
-            localVarFormParams.put("upFile", upFile);
+        if (upfile != null) {
+            localVarFormParams.put("upfile", upfile);
         }
 
         final String[] localVarAccepts = {
@@ -11193,12 +11095,12 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call importCouponsValidateBeforeCall(Integer applicationId, Integer campaignId, File upFile, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call importCouponsValidateBeforeCall(Integer applicationId, Integer campaignId, String upfile, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -11211,7 +11113,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = importCouponsCall(applicationId, campaignId, upFile, _callback);
+        okhttp3.Call localVarCall = importCouponsCall(applicationId, campaignId, upfile, _callback);
         return localVarCall;
 
     }
@@ -11221,7 +11123,7 @@ public class ManagementApi {
      * Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11230,8 +11132,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ModelImport importCoupons(Integer applicationId, Integer campaignId, File upFile) throws ApiException {
-        ApiResponse<ModelImport> localVarResp = importCouponsWithHttpInfo(applicationId, campaignId, upFile);
+    public ModelImport importCoupons(Integer applicationId, Integer campaignId, String upfile) throws ApiException {
+        ApiResponse<ModelImport> localVarResp = importCouponsWithHttpInfo(applicationId, campaignId, upfile);
         return localVarResp.getData();
     }
 
@@ -11240,7 +11142,7 @@ public class ManagementApi {
      * Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11249,8 +11151,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModelImport> importCouponsWithHttpInfo(Integer applicationId, Integer campaignId, File upFile) throws ApiException {
-        okhttp3.Call localVarCall = importCouponsValidateBeforeCall(applicationId, campaignId, upFile, null);
+    public ApiResponse<ModelImport> importCouponsWithHttpInfo(Integer applicationId, Integer campaignId, String upfile) throws ApiException {
+        okhttp3.Call localVarCall = importCouponsValidateBeforeCall(applicationId, campaignId, upfile, null);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11260,7 +11162,7 @@ public class ManagementApi {
      * Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11270,9 +11172,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importCouponsAsync(Integer applicationId, Integer campaignId, File upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+    public okhttp3.Call importCouponsAsync(Integer applicationId, Integer campaignId, String upfile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = importCouponsValidateBeforeCall(applicationId, campaignId, upFile, _callback);
+        okhttp3.Call localVarCall = importCouponsValidateBeforeCall(applicationId, campaignId, upfile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11280,7 +11182,7 @@ public class ManagementApi {
     /**
      * Build call for importLoyaltyPoints
      * @param programID  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11290,7 +11192,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importLoyaltyPointsCall(Integer programID, File upFile, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call importLoyaltyPointsCall(Integer programID, String upFile, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -11320,12 +11222,12 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call importLoyaltyPointsValidateBeforeCall(Integer programID, File upFile, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call importLoyaltyPointsValidateBeforeCall(Integer programID, String upFile, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -11342,7 +11244,7 @@ public class ManagementApi {
      * Import loyalty points via CSV file
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
      * @param programID  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11351,7 +11253,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ModelImport importLoyaltyPoints(Integer programID, File upFile) throws ApiException {
+    public ModelImport importLoyaltyPoints(Integer programID, String upFile) throws ApiException {
         ApiResponse<ModelImport> localVarResp = importLoyaltyPointsWithHttpInfo(programID, upFile);
         return localVarResp.getData();
     }
@@ -11360,7 +11262,7 @@ public class ManagementApi {
      * Import loyalty points via CSV file
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
      * @param programID  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11369,7 +11271,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModelImport> importLoyaltyPointsWithHttpInfo(Integer programID, File upFile) throws ApiException {
+    public ApiResponse<ModelImport> importLoyaltyPointsWithHttpInfo(Integer programID, String upFile) throws ApiException {
         okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(programID, upFile, null);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -11379,7 +11281,7 @@ public class ManagementApi {
      * Import loyalty points via CSV file (asynchronously)
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
      * @param programID  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11389,7 +11291,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importLoyaltyPointsAsync(Integer programID, File upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+    public okhttp3.Call importLoyaltyPointsAsync(Integer programID, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = importLoyaltyPointsValidateBeforeCall(programID, upFile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
@@ -11399,7 +11301,7 @@ public class ManagementApi {
     /**
      * Build call for importPoolGiveaways
      * @param poolId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11409,7 +11311,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importPoolGiveawaysCall(Integer poolId, File upFile, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call importPoolGiveawaysCall(Integer poolId, String upfile, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -11421,8 +11323,8 @@ public class ManagementApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        if (upFile != null) {
-            localVarFormParams.put("upFile", upFile);
+        if (upfile != null) {
+            localVarFormParams.put("upfile", upfile);
         }
 
         final String[] localVarAccepts = {
@@ -11439,12 +11341,12 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call importPoolGiveawaysValidateBeforeCall(Integer poolId, File upFile, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call importPoolGiveawaysValidateBeforeCall(Integer poolId, String upfile, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'poolId' is set
         if (poolId == null) {
@@ -11452,7 +11354,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = importPoolGiveawaysCall(poolId, upFile, _callback);
+        okhttp3.Call localVarCall = importPoolGiveawaysCall(poolId, upfile, _callback);
         return localVarCall;
 
     }
@@ -11461,7 +11363,7 @@ public class ManagementApi {
      * Import giveaways codes into a giveaways pool
      * Upload a CSV file containing the giveaways codes that should be created. Send the file as multipart data.  The CSV file can contain the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaways attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;provider&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param poolId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11470,8 +11372,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ModelImport importPoolGiveaways(Integer poolId, File upFile) throws ApiException {
-        ApiResponse<ModelImport> localVarResp = importPoolGiveawaysWithHttpInfo(poolId, upFile);
+    public ModelImport importPoolGiveaways(Integer poolId, String upfile) throws ApiException {
+        ApiResponse<ModelImport> localVarResp = importPoolGiveawaysWithHttpInfo(poolId, upfile);
         return localVarResp.getData();
     }
 
@@ -11479,7 +11381,7 @@ public class ManagementApi {
      * Import giveaways codes into a giveaways pool
      * Upload a CSV file containing the giveaways codes that should be created. Send the file as multipart data.  The CSV file can contain the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaways attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;provider&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param poolId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11488,8 +11390,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModelImport> importPoolGiveawaysWithHttpInfo(Integer poolId, File upFile) throws ApiException {
-        okhttp3.Call localVarCall = importPoolGiveawaysValidateBeforeCall(poolId, upFile, null);
+    public ApiResponse<ModelImport> importPoolGiveawaysWithHttpInfo(Integer poolId, String upfile) throws ApiException {
+        okhttp3.Call localVarCall = importPoolGiveawaysValidateBeforeCall(poolId, upfile, null);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11498,7 +11400,7 @@ public class ManagementApi {
      * Import giveaways codes into a giveaways pool (asynchronously)
      * Upload a CSV file containing the giveaways codes that should be created. Send the file as multipart data.  The CSV file can contain the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaways attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;provider&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param poolId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upfile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11508,9 +11410,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importPoolGiveawaysAsync(Integer poolId, File upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+    public okhttp3.Call importPoolGiveawaysAsync(Integer poolId, String upfile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = importPoolGiveawaysValidateBeforeCall(poolId, upFile, _callback);
+        okhttp3.Call localVarCall = importPoolGiveawaysValidateBeforeCall(poolId, upfile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11519,7 +11421,7 @@ public class ManagementApi {
      * Build call for importReferrals
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11529,7 +11431,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importReferralsCall(Integer applicationId, Integer campaignId, File upFile, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call importReferralsCall(Integer applicationId, Integer campaignId, String upFile, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -11560,12 +11462,12 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call importReferralsValidateBeforeCall(Integer applicationId, Integer campaignId, File upFile, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call importReferralsValidateBeforeCall(Integer applicationId, Integer campaignId, String upFile, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -11588,7 +11490,7 @@ public class ManagementApi {
      * Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file can contain the following colums:  - &#x60;code&#x60; (required): the referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: the start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: the end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. Unlimited (0) when blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;category&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11597,7 +11499,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ModelImport importReferrals(Integer applicationId, Integer campaignId, File upFile) throws ApiException {
+    public ModelImport importReferrals(Integer applicationId, Integer campaignId, String upFile) throws ApiException {
         ApiResponse<ModelImport> localVarResp = importReferralsWithHttpInfo(applicationId, campaignId, upFile);
         return localVarResp.getData();
     }
@@ -11607,7 +11509,7 @@ public class ManagementApi {
      * Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file can contain the following colums:  - &#x60;code&#x60; (required): the referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: the start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: the end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. Unlimited (0) when blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;category&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11616,7 +11518,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModelImport> importReferralsWithHttpInfo(Integer applicationId, Integer campaignId, File upFile) throws ApiException {
+    public ApiResponse<ModelImport> importReferralsWithHttpInfo(Integer applicationId, Integer campaignId, String upFile) throws ApiException {
         okhttp3.Call localVarCall = importReferralsValidateBeforeCall(applicationId, campaignId, upFile, null);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -11627,7 +11529,7 @@ public class ManagementApi {
      * Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file can contain the following colums:  - &#x60;code&#x60; (required): the referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: the start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: the end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. Unlimited (0) when blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;category&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param upFile The file with the information about the data that should be imported. (optional)
+     * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11637,7 +11539,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call importReferralsAsync(Integer applicationId, Integer campaignId, File upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
+    public okhttp3.Call importReferralsAsync(Integer applicationId, Integer campaignId, String upFile, final ApiCallback<ModelImport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = importReferralsValidateBeforeCall(applicationId, campaignId, upFile, _callback);
         Type localVarReturnType = new TypeToken<ModelImport>(){}.getType();
@@ -11648,7 +11550,7 @@ public class ManagementApi {
      * Build call for removeLoyaltyPoints
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11658,8 +11560,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call removeLoyaltyPointsCall(String programID, String integrationID, LoyaltyPoints body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call removeLoyaltyPointsCall(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = loyaltyPoints;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{programID}/profile/{integrationID}/deduct_points"
@@ -11690,7 +11592,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call removeLoyaltyPointsValidateBeforeCall(String programID, String integrationID, LoyaltyPoints body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call removeLoyaltyPointsValidateBeforeCall(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -11702,23 +11604,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'integrationID' when calling removeLoyaltyPoints(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling removeLoyaltyPoints(Async)");
+        // verify the required parameter 'loyaltyPoints' is set
+        if (loyaltyPoints == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyPoints' when calling removeLoyaltyPoints(Async)");
         }
         
 
-        okhttp3.Call localVarCall = removeLoyaltyPointsCall(programID, integrationID, body, _callback);
+        okhttp3.Call localVarCall = removeLoyaltyPointsCall(programID, integrationID, loyaltyPoints, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Deduct points in a certain loyalty program for the specified customer
+     * Deduct points in a loyalty program for the specified customer
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -11726,16 +11628,16 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void removeLoyaltyPoints(String programID, String integrationID, LoyaltyPoints body) throws ApiException {
-        removeLoyaltyPointsWithHttpInfo(programID, integrationID, body);
+    public void removeLoyaltyPoints(String programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+        removeLoyaltyPointsWithHttpInfo(programID, integrationID, loyaltyPoints);
     }
 
     /**
-     * Deduct points in a certain loyalty program for the specified customer
+     * Deduct points in a loyalty program for the specified customer
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11744,17 +11646,17 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> removeLoyaltyPointsWithHttpInfo(String programID, String integrationID, LoyaltyPoints body) throws ApiException {
-        okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, body, null);
+    public ApiResponse<Void> removeLoyaltyPointsWithHttpInfo(String programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+        okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Deduct points in a certain loyalty program for the specified customer (asynchronously)
+     * Deduct points in a loyalty program for the specified customer (asynchronously)
      * 
      * @param programID  (required)
      * @param integrationID  (required)
-     * @param body  (required)
+     * @param loyaltyPoints  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11764,15 +11666,15 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call removeLoyaltyPointsAsync(String programID, String integrationID, LoyaltyPoints body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call removeLoyaltyPointsAsync(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, body, _callback);
+        okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for resetPassword
-     * @param body  (required)
+     * @param newPassword  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11782,8 +11684,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call resetPasswordCall(NewPassword body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call resetPasswordCall(NewPassword newPassword, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newPassword;
 
         // create path and map variables
         String localVarPath = "/v1/reset_password";
@@ -11812,15 +11714,15 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call resetPasswordValidateBeforeCall(NewPassword body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call resetPasswordValidateBeforeCall(NewPassword newPassword, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling resetPassword(Async)");
+        // verify the required parameter 'newPassword' is set
+        if (newPassword == null) {
+            throw new ApiException("Missing the required parameter 'newPassword' when calling resetPassword(Async)");
         }
         
 
-        okhttp3.Call localVarCall = resetPasswordCall(body, _callback);
+        okhttp3.Call localVarCall = resetPasswordCall(newPassword, _callback);
         return localVarCall;
 
     }
@@ -11828,7 +11730,7 @@ public class ManagementApi {
     /**
      * Reset password
      * Consumes the supplied password reset token and updates the password for the associated account. 
-     * @param body  (required)
+     * @param newPassword  (required)
      * @return NewPassword
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11837,15 +11739,15 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public NewPassword resetPassword(NewPassword body) throws ApiException {
-        ApiResponse<NewPassword> localVarResp = resetPasswordWithHttpInfo(body);
+    public NewPassword resetPassword(NewPassword newPassword) throws ApiException {
+        ApiResponse<NewPassword> localVarResp = resetPasswordWithHttpInfo(newPassword);
         return localVarResp.getData();
     }
 
     /**
      * Reset password
      * Consumes the supplied password reset token and updates the password for the associated account. 
-     * @param body  (required)
+     * @param newPassword  (required)
      * @return ApiResponse&lt;NewPassword&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11854,8 +11756,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NewPassword> resetPasswordWithHttpInfo(NewPassword body) throws ApiException {
-        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(body, null);
+    public ApiResponse<NewPassword> resetPasswordWithHttpInfo(NewPassword newPassword) throws ApiException {
+        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(newPassword, null);
         Type localVarReturnType = new TypeToken<NewPassword>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11863,7 +11765,7 @@ public class ManagementApi {
     /**
      * Reset password (asynchronously)
      * Consumes the supplied password reset token and updates the password for the associated account. 
-     * @param body  (required)
+     * @param newPassword  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11873,9 +11775,9 @@ public class ManagementApi {
         <tr><td> 204 </td><td> Created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call resetPasswordAsync(NewPassword body, final ApiCallback<NewPassword> _callback) throws ApiException {
+    public okhttp3.Call resetPasswordAsync(NewPassword newPassword, final ApiCallback<NewPassword> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = resetPasswordValidateBeforeCall(newPassword, _callback);
         Type localVarReturnType = new TypeToken<NewPassword>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11884,10 +11786,10 @@ public class ManagementApi {
      * Build call for searchCouponsAdvanced
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -11906,8 +11808,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call searchCouponsAdvancedCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced"
@@ -11986,7 +11888,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedValidateBeforeCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedValidateBeforeCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -11998,26 +11900,26 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling searchCouponsAdvanced(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvanced(Async)");
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvanced(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (with total count)
+     * List coupons that match the given attributes (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12035,20 +11937,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+    public InlineResponse2004 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (with total count)
+     * List coupons that match the given attributes (with total count)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12066,21 +11968,21 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
+    public ApiResponse<InlineResponse2004> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (with total count) (asynchronously)
+     * List coupons that match the given attributes (with total count) (asynchronously)
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12099,9 +12001,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12109,10 +12011,10 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWide
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12132,8 +12034,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call searchCouponsAdvancedApplicationWideCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/coupons_search_advanced"
@@ -12215,32 +12117,32 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedApplicationWideValidateBeforeCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedApplicationWideValidateBeforeCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling searchCouponsAdvancedApplicationWide(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedApplicationWide(Async)");
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedApplicationWide(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
+     * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12259,19 +12161,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 searchCouponsAdvancedApplicationWide(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+    public InlineResponse2004 searchCouponsAdvancedApplicationWide(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
+     * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12290,20 +12192,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
+    public ApiResponse<InlineResponse2004> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
+     * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12323,9 +12225,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12333,10 +12235,10 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWideWithoutTotalCount
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12356,8 +12258,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/coupons_search_advanced/no_total"
@@ -12439,32 +12341,32 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application
+     * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12483,19 +12385,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+    public InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application
+     * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12514,20 +12416,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (asynchronously)
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List coupons that match the given attributes in all active campaigns of an application (asynchronously)
+     * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12547,9 +12449,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12558,10 +12460,10 @@ public class ManagementApi {
      * Build call for searchCouponsAdvancedWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12580,8 +12482,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total"
@@ -12660,7 +12562,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -12672,26 +12574,26 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
-     * Gets a list of all the coupons with attributes matching the query criteria 
+     * List coupons that match the given attributes
+     * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12709,20 +12611,20 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+    public InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
         return localVarResp.getData();
     }
 
     /**
-     * Get a list of the coupons that match the given attributes
-     * Gets a list of all the coupons with attributes matching the query criteria 
+     * List coupons that match the given attributes
+     * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12740,21 +12642,21 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a list of the coupons that match the given attributes (asynchronously)
-     * Gets a list of all the coupons with attributes matching the query criteria 
+     * List coupons that match the given attributes (asynchronously)
+     * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param requestBody  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @param sort The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. (optional)
+     * @param sort  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. (optional)
@@ -12773,9 +12675,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12783,7 +12685,7 @@ public class ManagementApi {
     /**
      * Build call for updateAdditionalCost
      * @param additionalCostId  (required)
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -12793,8 +12695,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdditionalCostCall(Integer additionalCostId, NewAdditionalCost body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateAdditionalCostCall(Integer additionalCostId, NewAdditionalCost newAdditionalCost, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newAdditionalCost;
 
         // create path and map variables
         String localVarPath = "/v1/additional_costs/{additionalCostId}"
@@ -12824,20 +12726,20 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAdditionalCostValidateBeforeCall(Integer additionalCostId, NewAdditionalCost body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAdditionalCostValidateBeforeCall(Integer additionalCostId, NewAdditionalCost newAdditionalCost, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'additionalCostId' is set
         if (additionalCostId == null) {
             throw new ApiException("Missing the required parameter 'additionalCostId' when calling updateAdditionalCost(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateAdditionalCost(Async)");
+        // verify the required parameter 'newAdditionalCost' is set
+        if (newAdditionalCost == null) {
+            throw new ApiException("Missing the required parameter 'newAdditionalCost' when calling updateAdditionalCost(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateAdditionalCostCall(additionalCostId, body, _callback);
+        okhttp3.Call localVarCall = updateAdditionalCostCall(additionalCostId, newAdditionalCost, _callback);
         return localVarCall;
 
     }
@@ -12846,7 +12748,7 @@ public class ManagementApi {
      * Update an additional cost
      * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
      * @param additionalCostId  (required)
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @return AccountAdditionalCost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12855,8 +12757,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public AccountAdditionalCost updateAdditionalCost(Integer additionalCostId, NewAdditionalCost body) throws ApiException {
-        ApiResponse<AccountAdditionalCost> localVarResp = updateAdditionalCostWithHttpInfo(additionalCostId, body);
+    public AccountAdditionalCost updateAdditionalCost(Integer additionalCostId, NewAdditionalCost newAdditionalCost) throws ApiException {
+        ApiResponse<AccountAdditionalCost> localVarResp = updateAdditionalCostWithHttpInfo(additionalCostId, newAdditionalCost);
         return localVarResp.getData();
     }
 
@@ -12864,7 +12766,7 @@ public class ManagementApi {
      * Update an additional cost
      * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
      * @param additionalCostId  (required)
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @return ApiResponse&lt;AccountAdditionalCost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12873,8 +12775,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountAdditionalCost> updateAdditionalCostWithHttpInfo(Integer additionalCostId, NewAdditionalCost body) throws ApiException {
-        okhttp3.Call localVarCall = updateAdditionalCostValidateBeforeCall(additionalCostId, body, null);
+    public ApiResponse<AccountAdditionalCost> updateAdditionalCostWithHttpInfo(Integer additionalCostId, NewAdditionalCost newAdditionalCost) throws ApiException {
+        okhttp3.Call localVarCall = updateAdditionalCostValidateBeforeCall(additionalCostId, newAdditionalCost, null);
         Type localVarReturnType = new TypeToken<AccountAdditionalCost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -12883,7 +12785,7 @@ public class ManagementApi {
      * Update an additional cost (asynchronously)
      * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
      * @param additionalCostId  (required)
-     * @param body  (required)
+     * @param newAdditionalCost  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -12893,9 +12795,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdditionalCostAsync(Integer additionalCostId, NewAdditionalCost body, final ApiCallback<AccountAdditionalCost> _callback) throws ApiException {
+    public okhttp3.Call updateAdditionalCostAsync(Integer additionalCostId, NewAdditionalCost newAdditionalCost, final ApiCallback<AccountAdditionalCost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAdditionalCostValidateBeforeCall(additionalCostId, body, _callback);
+        okhttp3.Call localVarCall = updateAdditionalCostValidateBeforeCall(additionalCostId, newAdditionalCost, _callback);
         Type localVarReturnType = new TypeToken<AccountAdditionalCost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12903,7 +12805,7 @@ public class ManagementApi {
     /**
      * Build call for updateAttribute
      * @param attributeId  (required)
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -12913,8 +12815,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAttributeCall(Integer attributeId, NewAttribute body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateAttributeCall(Integer attributeId, NewAttribute newAttribute, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newAttribute;
 
         // create path and map variables
         String localVarPath = "/v1/attributes/{attributeId}"
@@ -12944,20 +12846,20 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAttributeValidateBeforeCall(Integer attributeId, NewAttribute body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAttributeValidateBeforeCall(Integer attributeId, NewAttribute newAttribute, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'attributeId' is set
         if (attributeId == null) {
             throw new ApiException("Missing the required parameter 'attributeId' when calling updateAttribute(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateAttribute(Async)");
+        // verify the required parameter 'newAttribute' is set
+        if (newAttribute == null) {
+            throw new ApiException("Missing the required parameter 'newAttribute' when calling updateAttribute(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateAttributeCall(attributeId, body, _callback);
+        okhttp3.Call localVarCall = updateAttributeCall(attributeId, newAttribute, _callback);
         return localVarCall;
 
     }
@@ -12966,7 +12868,7 @@ public class ManagementApi {
      * Update a custom attribute
      * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
      * @param attributeId  (required)
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @return Attribute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12975,8 +12877,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public Attribute updateAttribute(Integer attributeId, NewAttribute body) throws ApiException {
-        ApiResponse<Attribute> localVarResp = updateAttributeWithHttpInfo(attributeId, body);
+    public Attribute updateAttribute(Integer attributeId, NewAttribute newAttribute) throws ApiException {
+        ApiResponse<Attribute> localVarResp = updateAttributeWithHttpInfo(attributeId, newAttribute);
         return localVarResp.getData();
     }
 
@@ -12984,7 +12886,7 @@ public class ManagementApi {
      * Update a custom attribute
      * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
      * @param attributeId  (required)
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @return ApiResponse&lt;Attribute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12993,8 +12895,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Attribute> updateAttributeWithHttpInfo(Integer attributeId, NewAttribute body) throws ApiException {
-        okhttp3.Call localVarCall = updateAttributeValidateBeforeCall(attributeId, body, null);
+    public ApiResponse<Attribute> updateAttributeWithHttpInfo(Integer attributeId, NewAttribute newAttribute) throws ApiException {
+        okhttp3.Call localVarCall = updateAttributeValidateBeforeCall(attributeId, newAttribute, null);
         Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -13003,7 +12905,7 @@ public class ManagementApi {
      * Update a custom attribute (asynchronously)
      * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
      * @param attributeId  (required)
-     * @param body  (required)
+     * @param newAttribute  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13013,9 +12915,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAttributeAsync(Integer attributeId, NewAttribute body, final ApiCallback<Attribute> _callback) throws ApiException {
+    public okhttp3.Call updateAttributeAsync(Integer attributeId, NewAttribute newAttribute, final ApiCallback<Attribute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAttributeValidateBeforeCall(attributeId, body, _callback);
+        okhttp3.Call localVarCall = updateAttributeValidateBeforeCall(attributeId, newAttribute, _callback);
         Type localVarReturnType = new TypeToken<Attribute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -13024,7 +12926,7 @@ public class ManagementApi {
      * Build call for updateCampaign
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCampaign  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13034,8 +12936,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCampaignCall(Integer applicationId, Integer campaignId, UpdateCampaign body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateCampaignCall(Integer applicationId, Integer campaignId, UpdateCampaign updateCampaign, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateCampaign;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}"
@@ -13066,7 +12968,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCampaignValidateBeforeCall(Integer applicationId, Integer campaignId, UpdateCampaign body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCampaignValidateBeforeCall(Integer applicationId, Integer campaignId, UpdateCampaign updateCampaign, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -13078,23 +12980,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling updateCampaign(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCampaign(Async)");
+        // verify the required parameter 'updateCampaign' is set
+        if (updateCampaign == null) {
+            throw new ApiException("Missing the required parameter 'updateCampaign' when calling updateCampaign(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateCampaignCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = updateCampaignCall(applicationId, campaignId, updateCampaign, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update a Campaign
+     * Update campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCampaign  (required)
      * @return Campaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13103,17 +13005,17 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign updateCampaign(Integer applicationId, Integer campaignId, UpdateCampaign body) throws ApiException {
-        ApiResponse<Campaign> localVarResp = updateCampaignWithHttpInfo(applicationId, campaignId, body);
+    public Campaign updateCampaign(Integer applicationId, Integer campaignId, UpdateCampaign updateCampaign) throws ApiException {
+        ApiResponse<Campaign> localVarResp = updateCampaignWithHttpInfo(applicationId, campaignId, updateCampaign);
         return localVarResp.getData();
     }
 
     /**
-     * Update a Campaign
+     * Update campaign
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCampaign  (required)
      * @return ApiResponse&lt;Campaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13122,18 +13024,18 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> updateCampaignWithHttpInfo(Integer applicationId, Integer campaignId, UpdateCampaign body) throws ApiException {
-        okhttp3.Call localVarCall = updateCampaignValidateBeforeCall(applicationId, campaignId, body, null);
+    public ApiResponse<Campaign> updateCampaignWithHttpInfo(Integer applicationId, Integer campaignId, UpdateCampaign updateCampaign) throws ApiException {
+        okhttp3.Call localVarCall = updateCampaignValidateBeforeCall(applicationId, campaignId, updateCampaign, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update a Campaign (asynchronously)
+     * Update campaign (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCampaign  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13143,9 +13045,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCampaignAsync(Integer applicationId, Integer campaignId, UpdateCampaign body, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call updateCampaignAsync(Integer applicationId, Integer campaignId, UpdateCampaign updateCampaign, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCampaignValidateBeforeCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = updateCampaignValidateBeforeCall(applicationId, campaignId, updateCampaign, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -13155,7 +13057,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param couponId The ID of the coupon code to update (required)
-     * @param body  (required)
+     * @param updateCoupon  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13165,8 +13067,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCouponCall(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateCouponCall(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon updateCoupon, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateCoupon;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId}"
@@ -13198,7 +13100,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCouponValidateBeforeCall(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCouponValidateBeforeCall(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon updateCoupon, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -13215,24 +13117,24 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'couponId' when calling updateCoupon(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCoupon(Async)");
+        // verify the required parameter 'updateCoupon' is set
+        if (updateCoupon == null) {
+            throw new ApiException("Missing the required parameter 'updateCoupon' when calling updateCoupon(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateCouponCall(applicationId, campaignId, couponId, body, _callback);
+        okhttp3.Call localVarCall = updateCouponCall(applicationId, campaignId, couponId, updateCoupon, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update a Coupon
+     * Update coupon
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param couponId The ID of the coupon code to update (required)
-     * @param body  (required)
+     * @param updateCoupon  (required)
      * @return Coupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13241,18 +13143,18 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public Coupon updateCoupon(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon body) throws ApiException {
-        ApiResponse<Coupon> localVarResp = updateCouponWithHttpInfo(applicationId, campaignId, couponId, body);
+    public Coupon updateCoupon(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon updateCoupon) throws ApiException {
+        ApiResponse<Coupon> localVarResp = updateCouponWithHttpInfo(applicationId, campaignId, couponId, updateCoupon);
         return localVarResp.getData();
     }
 
     /**
-     * Update a Coupon
+     * Update coupon
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param couponId The ID of the coupon code to update (required)
-     * @param body  (required)
+     * @param updateCoupon  (required)
      * @return ApiResponse&lt;Coupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13261,19 +13163,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Coupon> updateCouponWithHttpInfo(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon body) throws ApiException {
-        okhttp3.Call localVarCall = updateCouponValidateBeforeCall(applicationId, campaignId, couponId, body, null);
+    public ApiResponse<Coupon> updateCouponWithHttpInfo(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon updateCoupon) throws ApiException {
+        okhttp3.Call localVarCall = updateCouponValidateBeforeCall(applicationId, campaignId, couponId, updateCoupon, null);
         Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update a Coupon (asynchronously)
+     * Update coupon (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param couponId The ID of the coupon code to update (required)
-     * @param body  (required)
+     * @param updateCoupon  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13283,9 +13185,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCouponAsync(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon body, final ApiCallback<Coupon> _callback) throws ApiException {
+    public okhttp3.Call updateCouponAsync(Integer applicationId, Integer campaignId, String couponId, UpdateCoupon updateCoupon, final ApiCallback<Coupon> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCouponValidateBeforeCall(applicationId, campaignId, couponId, body, _callback);
+        okhttp3.Call localVarCall = updateCouponValidateBeforeCall(applicationId, campaignId, couponId, updateCoupon, _callback);
         Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -13294,7 +13196,7 @@ public class ManagementApi {
      * Build call for updateCouponBatch
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCouponBatch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13304,8 +13206,8 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCouponBatchCall(Integer applicationId, Integer campaignId, UpdateCouponBatch body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateCouponBatchCall(Integer applicationId, Integer campaignId, UpdateCouponBatch updateCouponBatch, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateCouponBatch;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons"
@@ -13336,7 +13238,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCouponBatchValidateBeforeCall(Integer applicationId, Integer campaignId, UpdateCouponBatch body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCouponBatchValidateBeforeCall(Integer applicationId, Integer campaignId, UpdateCouponBatch updateCouponBatch, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -13348,23 +13250,23 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling updateCouponBatch(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCouponBatch(Async)");
+        // verify the required parameter 'updateCouponBatch' is set
+        if (updateCouponBatch == null) {
+            throw new ApiException("Missing the required parameter 'updateCouponBatch' when calling updateCouponBatch(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateCouponBatchCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = updateCouponBatchCall(applicationId, campaignId, updateCouponBatch, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update a Batch of Coupons
+     * Update a batch of coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCouponBatch  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -13372,16 +13274,16 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void updateCouponBatch(Integer applicationId, Integer campaignId, UpdateCouponBatch body) throws ApiException {
-        updateCouponBatchWithHttpInfo(applicationId, campaignId, body);
+    public void updateCouponBatch(Integer applicationId, Integer campaignId, UpdateCouponBatch updateCouponBatch) throws ApiException {
+        updateCouponBatchWithHttpInfo(applicationId, campaignId, updateCouponBatch);
     }
 
     /**
-     * Update a Batch of Coupons
+     * Update a batch of coupons
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCouponBatch  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13390,17 +13292,17 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateCouponBatchWithHttpInfo(Integer applicationId, Integer campaignId, UpdateCouponBatch body) throws ApiException {
-        okhttp3.Call localVarCall = updateCouponBatchValidateBeforeCall(applicationId, campaignId, body, null);
+    public ApiResponse<Void> updateCouponBatchWithHttpInfo(Integer applicationId, Integer campaignId, UpdateCouponBatch updateCouponBatch) throws ApiException {
+        okhttp3.Call localVarCall = updateCouponBatchValidateBeforeCall(applicationId, campaignId, updateCouponBatch, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Update a Batch of Coupons (asynchronously)
+     * Update a batch of coupons (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param body  (required)
+     * @param updateCouponBatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13410,9 +13312,9 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateCouponBatchAsync(Integer applicationId, Integer campaignId, UpdateCouponBatch body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateCouponBatchAsync(Integer applicationId, Integer campaignId, UpdateCouponBatch updateCouponBatch, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCouponBatchValidateBeforeCall(applicationId, campaignId, body, _callback);
+        okhttp3.Call localVarCall = updateCouponBatchValidateBeforeCall(applicationId, campaignId, updateCouponBatch, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -13421,7 +13323,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param referralId The ID of the referral code to delete (required)
-     * @param body  (required)
+     * @param updateReferral  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13431,8 +13333,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReferralCall(Integer applicationId, Integer campaignId, String referralId, UpdateReferral body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateReferralCall(Integer applicationId, Integer campaignId, String referralId, UpdateReferral updateReferral, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = updateReferral;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId}"
@@ -13459,12 +13361,12 @@ public class ManagementApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "manager_auth" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateReferralValidateBeforeCall(Integer applicationId, Integer campaignId, String referralId, UpdateReferral body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateReferralValidateBeforeCall(Integer applicationId, Integer campaignId, String referralId, UpdateReferral updateReferral, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -13481,24 +13383,24 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'referralId' when calling updateReferral(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateReferral(Async)");
+        // verify the required parameter 'updateReferral' is set
+        if (updateReferral == null) {
+            throw new ApiException("Missing the required parameter 'updateReferral' when calling updateReferral(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateReferralCall(applicationId, campaignId, referralId, body, _callback);
+        okhttp3.Call localVarCall = updateReferralCall(applicationId, campaignId, referralId, updateReferral, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update one Referral
+     * Update referral
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param referralId The ID of the referral code to delete (required)
-     * @param body  (required)
+     * @param updateReferral  (required)
      * @return Referral
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13507,18 +13409,18 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public Referral updateReferral(Integer applicationId, Integer campaignId, String referralId, UpdateReferral body) throws ApiException {
-        ApiResponse<Referral> localVarResp = updateReferralWithHttpInfo(applicationId, campaignId, referralId, body);
+    public Referral updateReferral(Integer applicationId, Integer campaignId, String referralId, UpdateReferral updateReferral) throws ApiException {
+        ApiResponse<Referral> localVarResp = updateReferralWithHttpInfo(applicationId, campaignId, referralId, updateReferral);
         return localVarResp.getData();
     }
 
     /**
-     * Update one Referral
+     * Update referral
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param referralId The ID of the referral code to delete (required)
-     * @param body  (required)
+     * @param updateReferral  (required)
      * @return ApiResponse&lt;Referral&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13527,19 +13429,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Referral> updateReferralWithHttpInfo(Integer applicationId, Integer campaignId, String referralId, UpdateReferral body) throws ApiException {
-        okhttp3.Call localVarCall = updateReferralValidateBeforeCall(applicationId, campaignId, referralId, body, null);
+    public ApiResponse<Referral> updateReferralWithHttpInfo(Integer applicationId, Integer campaignId, String referralId, UpdateReferral updateReferral) throws ApiException {
+        okhttp3.Call localVarCall = updateReferralValidateBeforeCall(applicationId, campaignId, referralId, updateReferral, null);
         Type localVarReturnType = new TypeToken<Referral>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update one Referral (asynchronously)
+     * Update referral (asynchronously)
      * 
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param referralId The ID of the referral code to delete (required)
-     * @param body  (required)
+     * @param updateReferral  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13549,9 +13451,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateReferralAsync(Integer applicationId, Integer campaignId, String referralId, UpdateReferral body, final ApiCallback<Referral> _callback) throws ApiException {
+    public okhttp3.Call updateReferralAsync(Integer applicationId, Integer campaignId, String referralId, UpdateReferral updateReferral, final ApiCallback<Referral> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateReferralValidateBeforeCall(applicationId, campaignId, referralId, body, _callback);
+        okhttp3.Call localVarCall = updateReferralValidateBeforeCall(applicationId, campaignId, referralId, updateReferral, _callback);
         Type localVarReturnType = new TypeToken<Referral>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -13561,7 +13463,7 @@ public class ManagementApi {
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13571,8 +13473,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateRulesetCall(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset body, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
+    public okhttp3.Call updateRulesetCall(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset newRuleset, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newRuleset;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId}"
@@ -13604,7 +13506,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateRulesetValidateBeforeCall(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateRulesetValidateBeforeCall(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset newRuleset, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -13621,24 +13523,24 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'rulesetId' when calling updateRuleset(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateRuleset(Async)");
+        // verify the required parameter 'newRuleset' is set
+        if (newRuleset == null) {
+            throw new ApiException("Missing the required parameter 'newRuleset' when calling updateRuleset(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateRulesetCall(applicationId, campaignId, rulesetId, body, _callback);
+        okhttp3.Call localVarCall = updateRulesetCall(applicationId, campaignId, rulesetId, newRuleset, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update a Ruleset
-     * 
+     * Update ruleset
+     * Update the specified ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @return Ruleset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13647,18 +13549,18 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public Ruleset updateRuleset(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset body) throws ApiException {
-        ApiResponse<Ruleset> localVarResp = updateRulesetWithHttpInfo(applicationId, campaignId, rulesetId, body);
+    public Ruleset updateRuleset(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset newRuleset) throws ApiException {
+        ApiResponse<Ruleset> localVarResp = updateRulesetWithHttpInfo(applicationId, campaignId, rulesetId, newRuleset);
         return localVarResp.getData();
     }
 
     /**
-     * Update a Ruleset
-     * 
+     * Update ruleset
+     * Update the specified ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @return ApiResponse&lt;Ruleset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13667,19 +13569,19 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Ruleset> updateRulesetWithHttpInfo(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset body) throws ApiException {
-        okhttp3.Call localVarCall = updateRulesetValidateBeforeCall(applicationId, campaignId, rulesetId, body, null);
+    public ApiResponse<Ruleset> updateRulesetWithHttpInfo(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset newRuleset) throws ApiException {
+        okhttp3.Call localVarCall = updateRulesetValidateBeforeCall(applicationId, campaignId, rulesetId, newRuleset, null);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update a Ruleset (asynchronously)
-     * 
+     * Update ruleset (asynchronously)
+     * Update the specified ruleset.
      * @param applicationId  (required)
      * @param campaignId  (required)
      * @param rulesetId  (required)
-     * @param body  (required)
+     * @param newRuleset  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -13689,9 +13591,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateRulesetAsync(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset body, final ApiCallback<Ruleset> _callback) throws ApiException {
+    public okhttp3.Call updateRulesetAsync(Integer applicationId, Integer campaignId, Integer rulesetId, NewRuleset newRuleset, final ApiCallback<Ruleset> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateRulesetValidateBeforeCall(applicationId, campaignId, rulesetId, body, _callback);
+        okhttp3.Call localVarCall = updateRulesetValidateBeforeCall(applicationId, campaignId, rulesetId, newRuleset, _callback);
         Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

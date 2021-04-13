@@ -25,15 +25,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import one.talon.model.AudienceMembership;
 import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationCustomer
  */
-@ApiModel(description = "")
 
 public class ApplicationCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -50,7 +51,7 @@ public class ApplicationCustomer {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -143,9 +144,14 @@ public class ApplicationCustomer {
   }
 
 
-  public ApplicationCustomer attributes(Object attributes) {
+  public ApplicationCustomer attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public ApplicationCustomer putAttributesItem(String key, Object attributesItem) {
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -155,12 +161,12 @@ public class ApplicationCustomer {
   **/
   @ApiModelProperty(required = true, value = "Arbitrary properties associated with this item")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

@@ -23,11 +23,13 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * 
+ * IntegrationEvent
  */
-@ApiModel(description = "")
 
 public class IntegrationEvent {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
@@ -40,7 +42,7 @@ public class IntegrationEvent {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = new HashMap<String, Object>();
 
 
   public IntegrationEvent profileId(String profileId) {
@@ -88,9 +90,14 @@ public class IntegrationEvent {
   }
 
 
-  public IntegrationEvent attributes(Object attributes) {
+  public IntegrationEvent attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public IntegrationEvent putAttributesItem(String key, Object attributesItem) {
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -100,12 +107,12 @@ public class IntegrationEvent {
   **/
   @ApiModelProperty(required = true, value = "Arbitrary additional JSON data associated with the event.")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

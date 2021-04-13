@@ -36,9 +36,8 @@ import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Environment
  */
-@ApiModel(description = "")
 
 public class Environment {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -69,6 +68,10 @@ public class Environment {
   @SerializedName(SERIALIZED_NAME_GIVEAWAYS_POOLS)
   private List<GiveawaysPool> giveawaysPools = null;
 
+  public static final String SERIALIZED_NAME_VARIABLES = "variables";
+  @SerializedName(SERIALIZED_NAME_VARIABLES)
+  private String variables;
+
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
   private List<LoyaltyProgram> loyaltyPrograms = null;
@@ -84,10 +87,6 @@ public class Environment {
   public static final String SERIALIZED_NAME_AUDIENCES = "audiences";
   @SerializedName(SERIALIZED_NAME_AUDIENCES)
   private List<Audience> audiences = null;
-
-  public static final String SERIALIZED_NAME_VARIABLES = "variables";
-  @SerializedName(SERIALIZED_NAME_VARIABLES)
-  private String variables;
 
 
   public Environment id(Integer id) {
@@ -268,6 +267,28 @@ public class Environment {
   }
 
 
+  public Environment variables(String variables) {
+    
+    this.variables = variables;
+    return this;
+  }
+
+   /**
+   * Get variables
+   * @return variables
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public String getVariables() {
+    return variables;
+  }
+
+
+  public void setVariables(String variables) {
+    this.variables = variables;
+  }
+
+
   public Environment loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
     
     this.loyaltyPrograms = loyaltyPrograms;
@@ -392,28 +413,6 @@ public class Environment {
   }
 
 
-  public Environment variables(String variables) {
-    
-    this.variables = variables;
-    return this;
-  }
-
-   /**
-   * Get variables
-   * @return variables
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public String getVariables() {
-    return variables;
-  }
-
-
-  public void setVariables(String variables) {
-    this.variables = variables;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -430,16 +429,16 @@ public class Environment {
         Objects.equals(this.functions, environment.functions) &&
         Objects.equals(this.templates, environment.templates) &&
         Objects.equals(this.giveawaysPools, environment.giveawaysPools) &&
+        Objects.equals(this.variables, environment.variables) &&
         Objects.equals(this.loyaltyPrograms, environment.loyaltyPrograms) &&
         Objects.equals(this.attributes, environment.attributes) &&
         Objects.equals(this.additionalCosts, environment.additionalCosts) &&
-        Objects.equals(this.audiences, environment.audiences) &&
-        Objects.equals(this.variables, environment.variables);
+        Objects.equals(this.audiences, environment.audiences);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, giveawaysPools, loyaltyPrograms, attributes, additionalCosts, audiences, variables);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, giveawaysPools, variables, loyaltyPrograms, attributes, additionalCosts, audiences);
   }
 
 
@@ -454,11 +453,11 @@ public class Environment {
     sb.append("    functions: ").append(toIndentedString(functions)).append("\n");
     sb.append("    templates: ").append(toIndentedString(templates)).append("\n");
     sb.append("    giveawaysPools: ").append(toIndentedString(giveawaysPools)).append("\n");
+    sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");
-    sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
     sb.append("}");
     return sb.toString();
   }

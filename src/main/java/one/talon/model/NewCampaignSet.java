@@ -26,9 +26,8 @@ import java.io.IOException;
 import one.talon.model.CampaignSetBranchNode;
 
 /**
- * 
+ * NewCampaignSet
  */
-@ApiModel(description = "")
 
 public class NewCampaignSet {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";

@@ -23,6 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -48,7 +51,7 @@ public class UpdateReferral {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
 
   public UpdateReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
@@ -82,6 +85,7 @@ public class UpdateReferral {
 
    /**
    * Timestamp at which point the referral code becomes valid.
+   * minimum: 0
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -105,6 +109,7 @@ public class UpdateReferral {
 
    /**
    * Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.
+   * minimum: 0
    * @return expiryDate
   **/
   @javax.annotation.Nullable
@@ -145,9 +150,17 @@ public class UpdateReferral {
   }
 
 
-  public UpdateReferral attributes(Object attributes) {
+  public UpdateReferral attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public UpdateReferral putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -158,12 +171,12 @@ public class UpdateReferral {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

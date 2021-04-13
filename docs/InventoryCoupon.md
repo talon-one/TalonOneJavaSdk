@@ -2,7 +2,6 @@
 
 # InventoryCoupon
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -18,11 +17,11 @@ Name | Type | Description | Notes
 **usageCounter** | **Integer** | The number of times this coupon has been successfully used. | 
 **discountCounter** | [**BigDecimal**](BigDecimal.md) | The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon. |  [optional]
 **discountRemainder** | [**BigDecimal**](BigDecimal.md) | The remaining discount this coupon can give. |  [optional]
-**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
+**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
 **referralId** | **Integer** | The integration ID of the referring customer (if any) for whom this coupon was created as an effect. |  [optional]
 **recipientIntegrationId** | **String** | The Integration ID of the customer that is allowed to redeem this coupon. |  [optional]
 **importId** | **Integer** | The ID of the Import which created this coupon. |  [optional]
-**reservation** | **Boolean** | This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favorite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified. |  [optional]
+**reservation** | **Boolean** | This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favourite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified. |  [optional]
 **batchId** | **String** | The id of the batch the coupon belongs to. |  [optional]
 **profileRedemptionCount** | **Integer** | The number of times the coupon was redeemed by the profile. | 
 **state** | **String** | Can be either active, used, expired, or pending. active: reserved coupons that are neither pending nor used nor expired, and have a non-exhausted limit counter. used: coupons that are not pending, and have reached their redemption limit or were redeemed by the profile before expiration. expired: all non-pending, non-active, non-used coupons that were not redeemed by the profile. pending: coupons that have a start date in the future.  | 

@@ -1,26 +1,25 @@
 # ManagementApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://docs.talon.one*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addLoyaltyPoints**](ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
+[**addLoyaltyPoints**](ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a loyalty program for the specified customer
 [**copyCampaignToApplications**](ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
 [**createAdditionalCost**](ManagementApi.md#createAdditionalCost) | **POST** /v1/additional_costs | Define a new additional cost
 [**createAttribute**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Define a new custom attribute
-[**createCampaign**](ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create a Campaign
-[**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create Coupons
-[**createCouponsForMultipleRecipients**](ManagementApi.md#createCouponsForMultipleRecipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create Coupons for Multiple Recipients
+[**createCampaign**](ManagementApi.md#createCampaign) | **POST** /v1/applications/{applicationId}/campaigns | Create campaign
+[**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create coupons
+[**createCouponsForMultipleRecipients**](ManagementApi.md#createCouponsForMultipleRecipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create coupons for multiple recipients
 [**createPasswordRecoveryEmail**](ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
-[**createRuleset**](ManagementApi.md#createRuleset) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create a Ruleset
-[**createSession**](ManagementApi.md#createSession) | **POST** /v1/sessions | Create a Session
-[**deleteCampaign**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete a Campaign
-[**deleteCoupon**](ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete one Coupon
-[**deleteCoupons**](ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete Coupons
-[**deleteReferral**](ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete one Referral
-[**deleteRuleset**](ManagementApi.md#deleteRuleset) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Delete a Ruleset
-[**destroySession**](ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy a Session
-[**exportCoupons**](ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export Coupons to a CSV file
+[**createRuleset**](ManagementApi.md#createRuleset) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | Create ruleset
+[**createSession**](ManagementApi.md#createSession) | **POST** /v1/sessions | Create session
+[**deleteCampaign**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign
+[**deleteCoupon**](ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete coupon
+[**deleteCoupons**](ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete coupons
+[**deleteReferral**](ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete referral
+[**deleteRuleset**](ManagementApi.md#deleteRuleset) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Delete ruleset
+[**exportCoupons**](ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons to a CSV file
 [**exportCustomerSessions**](ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export Customer Sessions to a CSV file
 [**exportEffects**](ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered Effects to a CSV file
 [**exportLoyaltyBalance**](ManagementApi.md#exportLoyaltyBalance) | **GET** /v1/loyalty_programs/{programID}/export_customer_balance | Export customer loyalty balance to a CSV file
@@ -31,8 +30,8 @@ Method | HTTP request | Description
 [**getAccountAnalytics**](ManagementApi.md#getAccountAnalytics) | **GET** /v1/accounts/{accountId}/analytics | Get Account Analytics
 [**getAdditionalCost**](ManagementApi.md#getAdditionalCost) | **GET** /v1/additional_costs/{additionalCostId} | Get an additional cost
 [**getAdditionalCosts**](ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs
-[**getAllAccessLogs**](ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | Get all access logs
-[**getAllRoles**](ManagementApi.md#getAllRoles) | **GET** /v1/roles | Get all roles
+[**getAllAccessLogs**](ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | List access logs
+[**getAllRoles**](ManagementApi.md#getAllRoles) | **GET** /v1/roles | List roles
 [**getApplication**](ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
 [**getApplicationApiHealth**](ManagementApi.md#getApplicationApiHealth) | **GET** /v1/applications/{applicationId}/health_report | Get report of health of application API
 [**getApplicationCustomer**](ManagementApi.md#getApplicationCustomer) | **GET** /v1/applications/{applicationId}/customers/{customerId} | Get Application Customer
@@ -46,36 +45,36 @@ Method | HTTP request | Description
 [**getApplications**](ManagementApi.md#getApplications) | **GET** /v1/applications | List Applications
 [**getAttribute**](ManagementApi.md#getAttribute) | **GET** /v1/attributes/{attributeId} | Get a custom attribute
 [**getAttributes**](ManagementApi.md#getAttributes) | **GET** /v1/attributes | List custom attributes
-[**getAudiences**](ManagementApi.md#getAudiences) | **GET** /v1/audiences | Get all audiences
-[**getCampaign**](ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get a Campaign
+[**getAudiences**](ManagementApi.md#getAudiences) | **GET** /v1/audiences | List audiences
+[**getCampaign**](ManagementApi.md#getCampaign) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId} | Get campaign
 [**getCampaignAnalytics**](ManagementApi.md#getCampaignAnalytics) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/analytics | Get analytics of campaigns
-[**getCampaignByAttributes**](ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | Get a list of all campaigns that match the given attributes
-[**getCampaigns**](ManagementApi.md#getCampaigns) | **GET** /v1/applications/{applicationId}/campaigns | List your Campaigns
+[**getCampaignByAttributes**](ManagementApi.md#getCampaignByAttributes) | **POST** /v1/applications/{applicationId}/campaigns_search | List campaigns that match the given attributes
+[**getCampaigns**](ManagementApi.md#getCampaigns) | **GET** /v1/applications/{applicationId}/campaigns | List campaigns
 [**getChanges**](ManagementApi.md#getChanges) | **GET** /v1/changes | Get audit log for an account
-[**getCoupons**](ManagementApi.md#getCoupons) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | List Coupons (with total count)
-[**getCouponsByAttributes**](ManagementApi.md#getCouponsByAttributes) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search | Get a list of the coupons that match the given attributes
-[**getCouponsByAttributesApplicationWide**](ManagementApi.md#getCouponsByAttributesApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search | Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-[**getCouponsWithoutTotalCount**](ManagementApi.md#getCouponsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List Coupons
+[**getCoupons**](ManagementApi.md#getCoupons) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | List coupons (with total count)
+[**getCouponsByAttributes**](ManagementApi.md#getCouponsByAttributes) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search | List coupons that match the given attributes
+[**getCouponsByAttributesApplicationWide**](ManagementApi.md#getCouponsByAttributesApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search | List coupons that match the given attributes in all active campaigns of an application (with total count)
+[**getCouponsWithoutTotalCount**](ManagementApi.md#getCouponsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List coupons
 [**getCustomerActivityReport**](ManagementApi.md#getCustomerActivityReport) | **GET** /v1/applications/{applicationId}/customer_activity_reports/{customerId} | Get Activity Report for Single Customer
 [**getCustomerActivityReports**](ManagementApi.md#getCustomerActivityReports) | **GET** /v1/applications/{applicationId}/customer_activity_reports | Get Activity Reports for Application Customers (with total count)
 [**getCustomerActivityReportsWithoutTotalCount**](ManagementApi.md#getCustomerActivityReportsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/customer_activity_reports/no_total | Get Activity Reports for Application Customers
 [**getCustomerAnalytics**](ManagementApi.md#getCustomerAnalytics) | **GET** /v1/applications/{applicationId}/customers/{customerId}/analytics | Get Analytics Report for a Customer
 [**getCustomerProfile**](ManagementApi.md#getCustomerProfile) | **GET** /v1/customers/{customerId} | Get Customer Profile
 [**getCustomerProfiles**](ManagementApi.md#getCustomerProfiles) | **GET** /v1/customers/no_total | List Customer Profiles
-[**getCustomersByAttributes**](ManagementApi.md#getCustomersByAttributes) | **POST** /v1/customer_search/no_total | Get a list of the customer profiles that match the given attributes
-[**getEventTypes**](ManagementApi.md#getEventTypes) | **GET** /v1/event_types | List Event Types
-[**getExports**](ManagementApi.md#getExports) | **GET** /v1/exports | Get Exports
-[**getLoyaltyPoints**](ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID} | get the Loyalty Ledger for this integrationID
+[**getCustomersByAttributes**](ManagementApi.md#getCustomersByAttributes) | **POST** /v1/customer_search/no_total | List customer profiles that match the given attributes
+[**getEventTypes**](ManagementApi.md#getEventTypes) | **GET** /v1/event_types | List event types
+[**getExports**](ManagementApi.md#getExports) | **GET** /v1/exports | Get exports
+[**getLoyaltyPoints**](ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{programID}/profile/{integrationID} | Get integration&#39;s Loyalty Ledger
 [**getLoyaltyProgram**](ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{programID} | Get a loyalty program
-[**getLoyaltyPrograms**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List all loyalty Programs
+[**getLoyaltyPrograms**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs
 [**getLoyaltyStatistics**](ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{programID}/statistics | Get loyalty program statistics by loyalty program ID
-[**getReferrals**](ManagementApi.md#getReferrals) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals | List Referrals (with total count)
-[**getReferralsWithoutTotalCount**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List Referrals
+[**getReferrals**](ManagementApi.md#getReferrals) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals | List referrals (with total count)
+[**getReferralsWithoutTotalCount**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals
 [**getRole**](ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get information for the specified role
-[**getRuleset**](ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get a Ruleset
-[**getRulesets**](ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List Campaign Rulesets
+[**getRuleset**](ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset
+[**getRulesets**](ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List rulesets
 [**getUser**](ManagementApi.md#getUser) | **GET** /v1/users/{userId} | Get a single User
-[**getUsers**](ManagementApi.md#getUsers) | **GET** /v1/users | List Users in your account
+[**getUsers**](ManagementApi.md#getUsers) | **GET** /v1/users | List users
 [**getWebhook**](ManagementApi.md#getWebhook) | **GET** /v1/webhooks/{webhookId} | Get Webhook
 [**getWebhookActivationLogs**](ManagementApi.md#getWebhookActivationLogs) | **GET** /v1/webhook_activation_logs | List Webhook activation Log Entries
 [**getWebhookLogs**](ManagementApi.md#getWebhookLogs) | **GET** /v1/webhook_logs | List Webhook Log Entries
@@ -84,26 +83,26 @@ Method | HTTP request | Description
 [**importLoyaltyPoints**](ManagementApi.md#importLoyaltyPoints) | **POST** /v1/loyalty_programs/{programID}/import_points | Import loyalty points via CSV file
 [**importPoolGiveaways**](ManagementApi.md#importPoolGiveaways) | **POST** /v1/giveaways/pools/{poolId}/import | Import giveaways codes into a giveaways pool
 [**importReferrals**](ManagementApi.md#importReferrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals via CSV file
-[**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/deduct_points | Deduct points in a certain loyalty program for the specified customer
+[**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/deduct_points | Deduct points in a loyalty program for the specified customer
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
-[**searchCouponsAdvanced**](ManagementApi.md#searchCouponsAdvanced) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced | Get a list of the coupons that match the given attributes (with total count)
-[**searchCouponsAdvancedApplicationWide**](ManagementApi.md#searchCouponsAdvancedApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search_advanced | Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-[**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes in all active campaigns of an application
-[**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | Get a list of the coupons that match the given attributes
+[**searchCouponsAdvanced**](ManagementApi.md#searchCouponsAdvanced) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced | List coupons that match the given attributes (with total count)
+[**searchCouponsAdvancedApplicationWide**](ManagementApi.md#searchCouponsAdvancedApplicationWide) | **POST** /v1/applications/{applicationId}/coupons_search_advanced | List coupons that match the given attributes in all active campaigns of an application (with total count)
+[**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | List coupons that match the given attributes in all active campaigns of an application
+[**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | List coupons that match the given attributes
 [**updateAdditionalCost**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update an additional cost
 [**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update a custom attribute
-[**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update a Campaign
-[**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update a Coupon
-[**updateCouponBatch**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update a Batch of Coupons
-[**updateReferral**](ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update one Referral
-[**updateRuleset**](ManagementApi.md#updateRuleset) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Update a Ruleset
+[**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update campaign
+[**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon
+[**updateCouponBatch**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update a batch of coupons
+[**updateReferral**](ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral
+[**updateRuleset**](ManagementApi.md#updateRuleset) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Update ruleset
 
 
 <a name="addLoyaltyPoints"></a>
 # **addLoyaltyPoints**
-> addLoyaltyPoints(programID, integrationID, body)
+> addLoyaltyPoints(programID, integrationID, loyaltyPoints)
 
-Add points in a certain loyalty program for the specified customer
+Add points in a loyalty program for the specified customer
 
 ### Example
 ```java
@@ -118,20 +117,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    String programID = "programID_example"; // String | 
+    Integer programID = 56; // Integer | 
     String integrationID = "integrationID_example"; // String | 
-    LoyaltyPoints body = new LoyaltyPoints(); // LoyaltyPoints | 
+    LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
     try {
-      apiInstance.addLoyaltyPoints(programID, integrationID, body);
+      apiInstance.addLoyaltyPoints(programID, integrationID, loyaltyPoints);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#addLoyaltyPoints");
       System.err.println("Status code: " + e.getCode());
@@ -147,9 +144,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **String**|  |
+ **programID** | **Integer**|  |
  **integrationID** | **String**|  |
- **body** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
+ **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
 ### Return type
 
@@ -171,7 +168,7 @@ null (empty response body)
 
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2002 copyCampaignToApplications(applicationId, campaignId, body)
+> InlineResponse2002 copyCampaignToApplications(applicationId, campaignId, campaignCopy)
 
 Copy the campaign into every specified application
 
@@ -190,20 +187,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    CampaignCopy body = new CampaignCopy(); // CampaignCopy | 
+    CampaignCopy campaignCopy = new CampaignCopy(); // CampaignCopy | 
     try {
-      InlineResponse2002 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+      InlineResponse2002 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -222,7 +217,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**CampaignCopy**](CampaignCopy.md)|  |
+ **campaignCopy** | [**CampaignCopy**](CampaignCopy.md)|  |
 
 ### Return type
 
@@ -244,7 +239,7 @@ Name | Type | Description  | Notes
 
 <a name="createAdditionalCost"></a>
 # **createAdditionalCost**
-> AccountAdditionalCost createAdditionalCost(body)
+> AccountAdditionalCost createAdditionalCost(newAdditionalCost)
 
 Define a new additional cost
 
@@ -263,18 +258,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    NewAdditionalCost body = new NewAdditionalCost(); // NewAdditionalCost | 
+    NewAdditionalCost newAdditionalCost = new NewAdditionalCost(); // NewAdditionalCost | 
     try {
-      AccountAdditionalCost result = apiInstance.createAdditionalCost(body);
+      AccountAdditionalCost result = apiInstance.createAdditionalCost(newAdditionalCost);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createAdditionalCost");
@@ -291,7 +284,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
+ **newAdditionalCost** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
 
 ### Return type
 
@@ -313,7 +306,7 @@ Name | Type | Description  | Notes
 
 <a name="createAttribute"></a>
 # **createAttribute**
-> Attribute createAttribute(body)
+> Attribute createAttribute(newAttribute)
 
 Define a new custom attribute
 
@@ -332,18 +325,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    NewAttribute body = new NewAttribute(); // NewAttribute | 
+    NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
     try {
-      Attribute result = apiInstance.createAttribute(body);
+      Attribute result = apiInstance.createAttribute(newAttribute);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createAttribute");
@@ -360,7 +351,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewAttribute**](NewAttribute.md)|  |
+ **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
 
 ### Return type
 
@@ -382,9 +373,9 @@ Name | Type | Description  | Notes
 
 <a name="createCampaign"></a>
 # **createCampaign**
-> Campaign createCampaign(applicationId, body)
+> Campaign createCampaign(applicationId, newCampaign)
 
-Create a Campaign
+Create campaign
 
 ### Example
 ```java
@@ -399,19 +390,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    NewCampaign body = new NewCampaign(); // NewCampaign | 
+    NewCampaign newCampaign = new NewCampaign(); // NewCampaign | 
     try {
-      Campaign result = apiInstance.createCampaign(applicationId, body);
+      Campaign result = apiInstance.createCampaign(applicationId, newCampaign);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCampaign");
@@ -429,7 +418,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **body** | [**NewCampaign**](NewCampaign.md)|  |
+ **newCampaign** | [**NewCampaign**](NewCampaign.md)|  |
 
 ### Return type
 
@@ -451,9 +440,9 @@ Name | Type | Description  | Notes
 
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2004 createCoupons(applicationId, campaignId, body, silent)
+> InlineResponse2004 createCoupons(applicationId, campaignId, newCoupons, silent)
 
-Create Coupons
+Create coupons
 
 Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
 
@@ -470,21 +459,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    NewCoupons body = new NewCoupons(); // NewCoupons | 
+    NewCoupons newCoupons = new NewCoupons(); // NewCoupons | 
     String silent = "silent_example"; // String | If set to `yes`, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000).
     try {
-      InlineResponse2004 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+      InlineResponse2004 result = apiInstance.createCoupons(applicationId, campaignId, newCoupons, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -503,7 +490,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**NewCoupons**](NewCoupons.md)|  |
+ **newCoupons** | [**NewCoupons**](NewCoupons.md)|  |
  **silent** | **String**| If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). | [optional]
 
 ### Return type
@@ -527,11 +514,11 @@ Name | Type | Description  | Notes
 
 <a name="createCouponsForMultipleRecipients"></a>
 # **createCouponsForMultipleRecipients**
-> InlineResponse2004 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
+> InlineResponse2004 createCouponsForMultipleRecipients(applicationId, campaignId, newCouponsForMultipleRecipients, silent)
 
-Create Coupons for Multiple Recipients
+Create coupons for multiple recipients
 
-Create coupons according to some pattern for up to 1000 recipients.
+Create coupons according to the specified pattern for up to 1000 recipients.
 
 ### Example
 ```java
@@ -546,21 +533,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | 
+    NewCouponsForMultipleRecipients newCouponsForMultipleRecipients = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | 
     String silent = "silent_example"; // String | If set to `yes`, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000).
     try {
-      InlineResponse2004 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+      InlineResponse2004 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, newCouponsForMultipleRecipients, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCouponsForMultipleRecipients");
@@ -579,7 +564,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**NewCouponsForMultipleRecipients**](NewCouponsForMultipleRecipients.md)|  |
+ **newCouponsForMultipleRecipients** | [**NewCouponsForMultipleRecipients**](NewCouponsForMultipleRecipients.md)|  |
  **silent** | **String**| If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). | [optional]
 
 ### Return type
@@ -603,7 +588,7 @@ Name | Type | Description  | Notes
 
 <a name="createPasswordRecoveryEmail"></a>
 # **createPasswordRecoveryEmail**
-> NewPasswordEmail createPasswordRecoveryEmail(body)
+> NewPasswordEmail createPasswordRecoveryEmail(newPasswordEmail)
 
 Request a password reset
 
@@ -622,18 +607,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    NewPasswordEmail body = new NewPasswordEmail(); // NewPasswordEmail | 
+    NewPasswordEmail newPasswordEmail = new NewPasswordEmail(); // NewPasswordEmail | 
     try {
-      NewPasswordEmail result = apiInstance.createPasswordRecoveryEmail(body);
+      NewPasswordEmail result = apiInstance.createPasswordRecoveryEmail(newPasswordEmail);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createPasswordRecoveryEmail");
@@ -650,7 +633,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewPasswordEmail**](NewPasswordEmail.md)|  |
+ **newPasswordEmail** | [**NewPasswordEmail**](NewPasswordEmail.md)|  |
 
 ### Return type
 
@@ -672,9 +655,9 @@ Name | Type | Description  | Notes
 
 <a name="createRuleset"></a>
 # **createRuleset**
-> Ruleset createRuleset(applicationId, campaignId, body)
+> Ruleset createRuleset(applicationId, campaignId, newRuleset)
 
-Create a Ruleset
+Create ruleset
 
 ### Example
 ```java
@@ -689,20 +672,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    NewRuleset body = new NewRuleset(); // NewRuleset | 
+    NewRuleset newRuleset = new NewRuleset(); // NewRuleset | 
     try {
-      Ruleset result = apiInstance.createRuleset(applicationId, campaignId, body);
+      Ruleset result = apiInstance.createRuleset(applicationId, campaignId, newRuleset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createRuleset");
@@ -721,7 +702,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**NewRuleset**](NewRuleset.md)|  |
+ **newRuleset** | [**NewRuleset**](NewRuleset.md)|  |
 
 ### Return type
 
@@ -743,9 +724,11 @@ Name | Type | Description  | Notes
 
 <a name="createSession"></a>
 # **createSession**
-> Session createSession(body)
+> Session createSession(loginParams)
 
-Create a Session
+Create session
+
+Create a session to use the other Management API endpoints. Use the &#x60;token&#x60; property of the response as bearer token.
 
 ### Example
 ```java
@@ -753,25 +736,18 @@ Create a Session
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    LoginParams body = new LoginParams(); // LoginParams | 
+    LoginParams loginParams = new LoginParams(); // LoginParams | 
     try {
-      Session result = apiInstance.createSession(body);
+      Session result = apiInstance.createSession(loginParams);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createSession");
@@ -788,7 +764,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LoginParams**](LoginParams.md)|  |
+ **loginParams** | [**LoginParams**](LoginParams.md)|  |
 
 ### Return type
 
@@ -796,7 +772,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -812,7 +788,7 @@ Name | Type | Description  | Notes
 # **deleteCampaign**
 > deleteCampaign(applicationId, campaignId)
 
-Delete a Campaign
+Delete campaign
 
 ### Example
 ```java
@@ -827,13 +803,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -880,7 +854,7 @@ null (empty response body)
 # **deleteCoupon**
 > deleteCoupon(applicationId, campaignId, couponId)
 
-Delete one Coupon
+Delete coupon
 
 ### Example
 ```java
@@ -888,20 +862,13 @@ Delete one Coupon
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -934,7 +901,7 @@ null (empty response body)
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -950,7 +917,7 @@ null (empty response body)
 # **deleteCoupons**
 > deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
 
-Delete Coupons
+Delete coupons
 
 ### Example
 ```java
@@ -965,13 +932,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1044,7 +1009,7 @@ null (empty response body)
 # **deleteReferral**
 > deleteReferral(applicationId, campaignId, referralId)
 
-Delete one Referral
+Delete referral
 
 ### Example
 ```java
@@ -1059,13 +1024,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1114,7 +1077,7 @@ null (empty response body)
 # **deleteRuleset**
 > deleteRuleset(applicationId, campaignId, rulesetId)
 
-Delete a Ruleset
+Delete ruleset
 
 ### Example
 ```java
@@ -1129,13 +1092,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1180,73 +1141,11 @@ null (empty response body)
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
 
-<a name="destroySession"></a>
-# **destroySession**
-> destroySession()
-
-Destroy a Session
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    try {
-      apiInstance.destroySession();
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#destroySession");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-
 <a name="exportCoupons"></a>
 # **exportCoupons**
 > String exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState)
 
-Export Coupons to a CSV file
+Export coupons to a CSV file
 
 Download a file with the coupons that match the given attributes.
 
@@ -1263,18 +1162,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -1306,7 +1203,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -1330,7 +1227,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1358,13 +1255,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1409,7 +1304,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1437,13 +1332,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1486,7 +1379,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1514,13 +1407,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String programID = "programID_example"; // String | 
@@ -1555,7 +1446,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1583,13 +1474,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
@@ -1632,7 +1521,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1658,13 +1547,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1675,7 +1562,7 @@ public class Example {
     String status = "status_example"; // String | Filter results by HTTP status codes.
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse2008 result = apiInstance.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
@@ -1699,10 +1586,10 @@ Name | Type | Description  | Notes
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
- **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
+ **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: succesh, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -1741,13 +1628,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -1758,7 +1643,7 @@ public class Example {
     String status = "status_example"; // String | Filter results by HTTP status codes.
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse2009 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
@@ -1782,10 +1667,10 @@ Name | Type | Description  | Notes
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
- **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
+ **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: succesh, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -1826,13 +1711,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer accountId = 56; // Integer | 
@@ -1895,13 +1778,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer accountId = 56; // Integer | 
@@ -1964,13 +1845,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer additionalCostId = 56; // Integer | 
@@ -2033,18 +1912,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse20021 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
       System.out.println(result);
@@ -2065,7 +1942,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -2089,7 +1966,7 @@ Name | Type | Description  | Notes
 # **getAllAccessLogs**
 > InlineResponse2008 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
-Get all access logs
+List access logs
 
 Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
 
@@ -2106,13 +1983,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
@@ -2122,7 +1997,7 @@ public class Example {
     String status = "status_example"; // String | Filter results by HTTP status codes.
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse2008 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
@@ -2145,10 +2020,10 @@ Name | Type | Description  | Notes
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
- **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
+ **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: succesh, error]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -2172,7 +2047,7 @@ Name | Type | Description  | Notes
 # **getAllRoles**
 > InlineResponse20029 getAllRoles()
 
-Get all roles
+List roles
 
 ### Example
 ```java
@@ -2180,20 +2055,13 @@ Get all roles
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
@@ -2219,7 +2087,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -2252,13 +2120,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -2319,13 +2185,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -2386,13 +2250,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -2455,20 +2317,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, `hasMore` will be true whenever there is a next page. `totalResultSize` will always be zero. With this flag set to false, `hasMore` will always be set to false. `totalResultSize` will contain the total number of results for this query. 
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
     try {
       InlineResponse20011 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
       System.out.println(result);
@@ -2491,7 +2351,7 @@ Name | Type | Description  | Notes
  **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  | [optional]
 
 ### Return type
 
@@ -2513,11 +2373,11 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomersByAttributes"></a>
 # **getApplicationCustomersByAttributes**
-> InlineResponse20012 getApplicationCustomersByAttributes(body)
+> InlineResponse20012 getApplicationCustomersByAttributes(applicationCustomerSearch)
 
 Get a list of the customer profiles that match the given attributes (with total count)
 
-Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
 
 ### Example
 ```java
@@ -2532,18 +2392,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    ApplicationCustomerSearch body = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
+    ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
     try {
-      InlineResponse20012 result = apiInstance.getApplicationCustomersByAttributes(body);
+      InlineResponse20012 result = apiInstance.getApplicationCustomersByAttributes(applicationCustomerSearch);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
@@ -2560,7 +2418,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
+ **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
 
 ### Return type
 
@@ -2568,7 +2426,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[integration_auth](../README.md#integration_auth)
+[manager_auth](../README.md#manager_auth)
 
 ### HTTP request headers
 
@@ -2601,19 +2459,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse20018 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
       System.out.println(result);
@@ -2635,7 +2491,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -2676,19 +2532,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
@@ -2721,7 +2575,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -2773,19 +2627,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
@@ -2818,7 +2670,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -2868,13 +2720,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -2937,19 +2787,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
     String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
@@ -2978,7 +2826,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, cancelled]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -3026,18 +2874,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse2001 result = apiInstance.getApplications(pageSize, skip, sort);
       System.out.println(result);
@@ -3058,7 +2904,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -3099,13 +2945,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer attributeId = 56; // Integer | 
@@ -3168,19 +3012,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-    String entity = "entity_example"; // String | Returned attributes will be filtered by supplied entity
+    String sort = "sort_example"; // String | 
+    String entity = "entity_example"; // String | 
     try {
       InlineResponse20020 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
       System.out.println(result);
@@ -3201,8 +3043,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
- **entity** | **String**| Returned attributes will be filtered by supplied entity | [optional]
+ **sort** | **String**|  | [optional]
+ **entity** | **String**|  | [optional]
 
 ### Return type
 
@@ -3226,7 +3068,7 @@ Name | Type | Description  | Notes
 # **getAudiences**
 > InlineResponse20019 getAudiences(pageSize, skip, sort, withTotalResultSize)
 
-Get all audiences
+List audiences
 
 Get All audiences created in the account. 
 
@@ -3243,19 +3085,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
-    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, `hasMore` will be true whenever there is a next page. `totalResultSize` will always be zero. With this flag set to false, `hasMore` will always be set to false. `totalResultSize` will contain the total number of results for this query. 
+    String sort = "sort_example"; // String | 
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
     try {
       InlineResponse20019 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
       System.out.println(result);
@@ -3276,8 +3116,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
- **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  | [optional]
+ **sort** | **String**|  | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  | [optional]
 
 ### Return type
 
@@ -3301,7 +3141,7 @@ Name | Type | Description  | Notes
 # **getCampaign**
 > Campaign getCampaign(applicationId, campaignId)
 
-Get a Campaign
+Get campaign
 
 ### Example
 ```java
@@ -3316,13 +3156,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -3385,13 +3223,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -3443,9 +3279,9 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2002 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
+> InlineResponse2002 getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState)
 
-Get a list of all campaigns that match the given attributes
+List campaigns that match the given attributes
 
 Gets a list of all the campaigns that exactly match a set of attributes. 
 
@@ -3462,23 +3298,21 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    CampaignSearch body = new CampaignSearch(); // CampaignSearch | 
+    CampaignSearch campaignSearch = new CampaignSearch(); // CampaignSearch | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2002 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+      InlineResponse2002 result = apiInstance.getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -3496,10 +3330,10 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **body** | [**CampaignSearch**](CampaignSearch.md)|  |
+ **campaignSearch** | [**CampaignSearch**](CampaignSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
 
 ### Return type
@@ -3524,7 +3358,7 @@ Name | Type | Description  | Notes
 # **getCampaigns**
 > InlineResponse2002 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId)
 
-List your Campaigns
+List campaigns
 
 ### Example
 ```java
@@ -3539,19 +3373,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
     String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
@@ -3579,7 +3411,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign. | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
@@ -3626,24 +3458,22 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     Integer applicationId = 56; // Integer | 
     String entityPath = "entityPath_example"; // String | Filter results on a case insensitive matching of the url path of the entity
     Integer userId = 56; // Integer | 
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, `hasMore` will be true whenever there is a next page. `totalResultSize` will always be zero. With this flag set to false, `hasMore` will always be set to false. `totalResultSize` will contain the total number of results for this query. 
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query. 
     Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
     try {
       InlineResponse20027 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld);
@@ -3665,13 +3495,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **applicationId** | **Integer**|  | [optional]
  **entityPath** | **String**| Filter results on a case insensitive matching of the url path of the entity | [optional]
  **userId** | **Integer**|  | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, &#x60;hasMore&#x60; will be true whenever there is a next page. &#x60;totalResultSize&#x60; will always be zero. With this flag set to false, &#x60;hasMore&#x60; will always be set to false. &#x60;totalResultSize&#x60; will contain the total number of results for this query.  | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result will include the total size of the result, across all pages. This might decrease performance on large data sets. With this flag set to true, hasMore will be be true whenever there is a next page. totalResultSize will always be zero. With this flag set to false, hasMore will always be set to false. totalResultSize will contain the total number of results for this query.  | [optional]
  **includeOld** | **Boolean**| When this flag is set to false, the state without the change will not be returned. The default value is true. | [optional]
 
 ### Return type
@@ -3696,7 +3526,7 @@ Name | Type | Description  | Notes
 # **getCoupons**
 > InlineResponse2004 getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch)
 
-List Coupons (with total count)
+List coupons (with total count)
 
 ### Example
 ```java
@@ -3711,20 +3541,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -3760,7 +3588,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -3795,9 +3623,9 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributes"></a>
 # **getCouponsByAttributes**
-> InlineResponse2004 getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2004 getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
-Get a list of the coupons that match the given attributes
+List coupons that match the given attributes
 
 Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
 
@@ -3814,21 +3642,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    CouponSearch body = new CouponSearch(); // CouponSearch | 
+    CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -3839,7 +3665,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2004 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2004 result = apiInstance.getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsByAttributes");
@@ -3858,10 +3684,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**CouponSearch**](CouponSearch.md)|  |
+ **couponSearch** | [**CouponSearch**](CouponSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -3892,9 +3718,9 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsByAttributesApplicationWide"></a>
 # **getCouponsByAttributesApplicationWide**
-> InlineResponse2004 getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2004 getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
-Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+List coupons that match the given attributes in all active campaigns of an application (with total count)
 
 Gets a list of all the coupons with attributes matching the query criteria Application wide 
 
@@ -3911,20 +3737,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    CouponSearch body = new CouponSearch(); // CouponSearch | 
+    CouponSearch couponSearch = new CouponSearch(); // CouponSearch | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -3936,7 +3760,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2004 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2004 result = apiInstance.getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsByAttributesApplicationWide");
@@ -3954,10 +3778,10 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **body** | [**CouponSearch**](CouponSearch.md)|  |
+ **couponSearch** | [**CouponSearch**](CouponSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -3991,7 +3815,7 @@ Name | Type | Description  | Notes
 # **getCouponsWithoutTotalCount**
 > InlineResponse2005 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
 
-List Coupons
+List coupons
 
 ### Example
 ```java
@@ -4006,20 +3830,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -4051,7 +3873,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -4101,13 +3923,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
@@ -4180,13 +4000,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
@@ -4194,7 +4012,7 @@ public class Example {
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String name = "name_example"; // String | Only return reports matching the customer name
     String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
     String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
@@ -4222,7 +4040,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
  **integrationId** | **String**| Only return reports matching the integrationId | [optional]
  **campaignName** | **String**| Only return reports matching the campaignName | [optional]
@@ -4267,13 +4085,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
@@ -4281,7 +4097,7 @@ public class Example {
     Integer applicationId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String name = "name_example"; // String | Only return reports matching the customer name
     String integrationId = "integrationId_example"; // String | Only return reports matching the integrationId
     String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
@@ -4309,7 +4125,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **name** | **String**| Only return reports matching the customer name | [optional]
  **integrationId** | **String**| Only return reports matching the integrationId | [optional]
  **campaignName** | **String**| Only return reports matching the campaignName | [optional]
@@ -4354,20 +4170,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer customerId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       CustomerAnalytics result = apiInstance.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
       System.out.println(result);
@@ -4390,7 +4204,7 @@ Name | Type | Description  | Notes
  **customerId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -4429,13 +4243,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer customerId = 56; // Integer | 
@@ -4496,13 +4308,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
@@ -4548,11 +4358,11 @@ Name | Type | Description  | Notes
 
 <a name="getCustomersByAttributes"></a>
 # **getCustomersByAttributes**
-> InlineResponse20012 getCustomersByAttributes(body, pageSize, skip)
+> InlineResponse20012 getCustomersByAttributes(applicationCustomerSearch, pageSize, skip)
 
-Get a list of the customer profiles that match the given attributes
+List customer profiles that match the given attributes
 
-Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+Get a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
 
 ### Example
 ```java
@@ -4567,20 +4377,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    ApplicationCustomerSearch body = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
+    ApplicationCustomerSearch applicationCustomerSearch = new ApplicationCustomerSearch(); // ApplicationCustomerSearch | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      InlineResponse20012 result = apiInstance.getCustomersByAttributes(body, pageSize, skip);
+      InlineResponse20012 result = apiInstance.getCustomersByAttributes(applicationCustomerSearch, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
@@ -4597,7 +4405,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
+ **applicationCustomerSearch** | [**ApplicationCustomerSearch**](ApplicationCustomerSearch.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
@@ -4623,9 +4431,9 @@ Name | Type | Description  | Notes
 # **getEventTypes**
 > InlineResponse20025 getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort)
 
-List Event Types
+List event types
 
-Fetch all event type definitions for your account. Each event type can be 
+Fetch all event type definitions for your account. 
 
 ### Example
 ```java
@@ -4640,13 +4448,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
@@ -4654,7 +4460,7 @@ public class Example {
     Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse20025 result = apiInstance.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
       System.out.println(result);
@@ -4678,7 +4484,7 @@ Name | Type | Description  | Notes
  **includeOldVersions** | **Boolean**| Include all versions of every event type. | [optional] [default to false]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -4702,7 +4508,7 @@ Name | Type | Description  | Notes
 # **getExports**
 > InlineResponse20028 getExports(pageSize, skip, applicationId, campaignId, entity)
 
-Get Exports
+Get exports
 
 Get a list of all past exports 
 
@@ -4719,13 +4525,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
@@ -4779,7 +4583,7 @@ Name | Type | Description  | Notes
 # **getLoyaltyPoints**
 > LoyaltyLedger getLoyaltyPoints(programID, integrationID)
 
-get the Loyalty Ledger for this integrationID
+Get integration&#39;s Loyalty Ledger
 
 Get the Loyalty Ledger for this profile integration ID.
 
@@ -4796,13 +4600,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String programID = "programID_example"; // String | The identifier for the application, must be unique within the account.
@@ -4852,6 +4654,8 @@ Name | Type | Description  | Notes
 
 Get a loyalty program
 
+Get a loyalty program.
+
 ### Example
 ```java
 // Import classes:
@@ -4865,13 +4669,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer programID = 56; // Integer | 
@@ -4917,7 +4719,9 @@ Name | Type | Description  | Notes
 # **getLoyaltyPrograms**
 > InlineResponse2007 getLoyaltyPrograms()
 
-List all loyalty Programs
+List loyalty programs
+
+List all the loyalty programs.
 
 ### Example
 ```java
@@ -4932,13 +4736,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
@@ -4995,13 +4797,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String programID = "programID_example"; // String | 
@@ -5047,7 +4847,7 @@ Name | Type | Description  | Notes
 # **getReferrals**
 > InlineResponse201 getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
-List Referrals (with total count)
+List referrals (with total count)
 
 ### Example
 ```java
@@ -5062,20 +4862,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -5104,7 +4902,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -5134,7 +4932,7 @@ Name | Type | Description  | Notes
 # **getReferralsWithoutTotalCount**
 > InlineResponse2006 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
-List Referrals
+List referrals
 
 ### Example
 ```java
@@ -5149,20 +4947,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -5191,7 +4987,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -5229,20 +5025,13 @@ Get information for the specified role
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer roleId = 56; // Integer | 
@@ -5272,7 +5061,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -5288,7 +5077,9 @@ Name | Type | Description  | Notes
 # **getRuleset**
 > Ruleset getRuleset(applicationId, campaignId, rulesetId)
 
-Get a Ruleset
+Get ruleset
+
+Retrieve the details of a ruleset.
 
 ### Example
 ```java
@@ -5303,13 +5094,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -5359,7 +5148,9 @@ Name | Type | Description  | Notes
 # **getRulesets**
 > InlineResponse2003 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
-List Campaign Rulesets
+List rulesets
+
+List all rulesets in the given campaign.
 
 ### Example
 ```java
@@ -5374,20 +5165,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse2003 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
       System.out.println(result);
@@ -5410,7 +5199,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -5451,13 +5240,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer userId = 56; // Integer | 
@@ -5503,7 +5290,7 @@ Name | Type | Description  | Notes
 # **getUsers**
 > InlineResponse20026 getUsers(pageSize, skip, sort)
 
-List Users in your account
+List users
 
 Retrieve all users in your account. 
 
@@ -5520,18 +5307,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     try {
       InlineResponse20026 result = apiInstance.getUsers(pageSize, skip, sort);
       System.out.println(result);
@@ -5552,7 +5337,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
 
 ### Return type
 
@@ -5593,13 +5378,11 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer webhookId = 56; // Integer | 
@@ -5662,18 +5445,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
     BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
@@ -5700,7 +5481,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
  **webhookId** | **BigDecimal**| Filter results by Webhook. | [optional]
  **applicationId** | **BigDecimal**|  | [optional]
@@ -5745,18 +5526,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String status = "status_example"; // String | Filter results by HTTP status codes.
     BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | 
@@ -5784,8 +5563,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
- **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
+ **sort** | **String**|  | [optional]
+ **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: succesh, error]
  **webhookId** | **BigDecimal**| Filter results by Webhook. | [optional]
  **applicationId** | **BigDecimal**|  | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
@@ -5830,17 +5609,15 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String applicationIds = "applicationIds_example"; // String | Filter by one or more application ids separated by comma
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
@@ -5862,7 +5639,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIds** | **String**| Filter by one or more application ids separated by comma | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
 
@@ -5886,7 +5663,7 @@ Name | Type | Description  | Notes
 
 <a name="importCoupons"></a>
 # **importCoupons**
-> ModelImport importCoupons(applicationId, campaignId, upFile)
+> ModelImport importCoupons(applicationId, campaignId, upfile)
 
 Import coupons via CSV file
 
@@ -5898,27 +5675,20 @@ Upload a CSV file containing the coupons that should be created. The file should
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    File upFile = new File("/path/to/file"); // File | The file with the information about the data that should be imported.
+    String upfile = "upfile_example"; // String | The file with the information about the loyalty points that should be imported.
     try {
-      ModelImport result = apiInstance.importCoupons(applicationId, campaignId, upFile);
+      ModelImport result = apiInstance.importCoupons(applicationId, campaignId, upfile);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#importCoupons");
@@ -5937,7 +5707,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **upFile** | **File**| The file with the information about the data that should be imported. | [optional]
+ **upfile** | **String**| The file with the information about the loyalty points that should be imported. | [optional]
 
 ### Return type
 
@@ -5945,7 +5715,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -5971,24 +5741,17 @@ Upload a CSV file containing the loyalty points that should be created. The file
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer programID = 56; // Integer | 
-    File upFile = new File("/path/to/file"); // File | The file with the information about the data that should be imported.
+    String upFile = "upFile_example"; // String | The file with the information about the loyalty points that should be imported.
     try {
       ModelImport result = apiInstance.importLoyaltyPoints(programID, upFile);
       System.out.println(result);
@@ -6008,7 +5771,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **programID** | **Integer**|  |
- **upFile** | **File**| The file with the information about the data that should be imported. | [optional]
+ **upFile** | **String**| The file with the information about the loyalty points that should be imported. | [optional]
 
 ### Return type
 
@@ -6016,7 +5779,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -6030,7 +5793,7 @@ Name | Type | Description  | Notes
 
 <a name="importPoolGiveaways"></a>
 # **importPoolGiveaways**
-> ModelImport importPoolGiveaways(poolId, upFile)
+> ModelImport importPoolGiveaways(poolId, upfile)
 
 Import giveaways codes into a giveaways pool
 
@@ -6042,26 +5805,19 @@ Upload a CSV file containing the giveaways codes that should be created. Send th
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer poolId = 56; // Integer | 
-    File upFile = new File("/path/to/file"); // File | The file with the information about the data that should be imported.
+    String upfile = "upfile_example"; // String | The file with the information about the loyalty points that should be imported.
     try {
-      ModelImport result = apiInstance.importPoolGiveaways(poolId, upFile);
+      ModelImport result = apiInstance.importPoolGiveaways(poolId, upfile);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#importPoolGiveaways");
@@ -6079,7 +5835,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **poolId** | **Integer**|  |
- **upFile** | **File**| The file with the information about the data that should be imported. | [optional]
+ **upfile** | **String**| The file with the information about the loyalty points that should be imported. | [optional]
 
 ### Return type
 
@@ -6087,7 +5843,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -6113,25 +5869,18 @@ Upload a CSV file containing the referrals that should be created. The file shou
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    File upFile = new File("/path/to/file"); // File | The file with the information about the data that should be imported.
+    String upFile = "upFile_example"; // String | The file with the information about the loyalty points that should be imported.
     try {
       ModelImport result = apiInstance.importReferrals(applicationId, campaignId, upFile);
       System.out.println(result);
@@ -6152,7 +5901,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **upFile** | **File**| The file with the information about the data that should be imported. | [optional]
+ **upFile** | **String**| The file with the information about the loyalty points that should be imported. | [optional]
 
 ### Return type
 
@@ -6160,7 +5909,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -6174,9 +5923,9 @@ Name | Type | Description  | Notes
 
 <a name="removeLoyaltyPoints"></a>
 # **removeLoyaltyPoints**
-> removeLoyaltyPoints(programID, integrationID, body)
+> removeLoyaltyPoints(programID, integrationID, loyaltyPoints)
 
-Deduct points in a certain loyalty program for the specified customer
+Deduct points in a loyalty program for the specified customer
 
 ### Example
 ```java
@@ -6191,20 +5940,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String programID = "programID_example"; // String | 
     String integrationID = "integrationID_example"; // String | 
-    LoyaltyPoints body = new LoyaltyPoints(); // LoyaltyPoints | 
+    LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
     try {
-      apiInstance.removeLoyaltyPoints(programID, integrationID, body);
+      apiInstance.removeLoyaltyPoints(programID, integrationID, loyaltyPoints);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#removeLoyaltyPoints");
       System.err.println("Status code: " + e.getCode());
@@ -6222,7 +5969,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **programID** | **String**|  |
  **integrationID** | **String**|  |
- **body** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
+ **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
 ### Return type
 
@@ -6244,7 +5991,7 @@ null (empty response body)
 
 <a name="resetPassword"></a>
 # **resetPassword**
-> NewPassword resetPassword(body)
+> NewPassword resetPassword(newPassword)
 
 Reset password
 
@@ -6263,18 +6010,16 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    NewPassword body = new NewPassword(); // NewPassword | 
+    NewPassword newPassword = new NewPassword(); // NewPassword | 
     try {
-      NewPassword result = apiInstance.resetPassword(body);
+      NewPassword result = apiInstance.resetPassword(newPassword);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#resetPassword");
@@ -6291,7 +6036,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewPassword**](NewPassword.md)|  |
+ **newPassword** | [**NewPassword**](NewPassword.md)|  |
 
 ### Return type
 
@@ -6313,9 +6058,9 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvanced"></a>
 # **searchCouponsAdvanced**
-> InlineResponse2004 searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2004 searchCouponsAdvanced(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
-Get a list of the coupons that match the given attributes (with total count)
+List coupons that match the given attributes (with total count)
 
 Gets a list of all the coupons with attributes matching the query criteria 
 
@@ -6332,21 +6077,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    Object body = null; // Object | 
+    Map<String, Object> requestBody = null; // Map<String, Object> | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -6357,7 +6100,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2004 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
@@ -6376,10 +6119,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | **Object**|  |
+ **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -6410,11 +6153,11 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWide"></a>
 # **searchCouponsAdvancedApplicationWide**
-> InlineResponse2004 searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2004 searchCouponsAdvancedApplicationWide(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
-Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+List coupons that match the given attributes in all active campaigns of an application (with total count)
 
-Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
 
 ### Example
 ```java
@@ -6429,20 +6172,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    Object body = null; // Object | 
+    Map<String, Object> requestBody = null; // Map<String, Object> | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -6454,7 +6195,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
@@ -6472,10 +6213,10 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **body** | **Object**|  |
+ **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -6507,11 +6248,11 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
-Get a list of the coupons that match the given attributes in all active campaigns of an application
+List coupons that match the given attributes in all active campaigns of an application
 
-Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
 
 ### Example
 ```java
@@ -6526,20 +6267,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    Object body = null; // Object | 
+    Map<String, Object> requestBody = null; // Map<String, Object> | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -6551,7 +6290,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -6569,10 +6308,10 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **body** | **Object**|  |
+ **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -6604,11 +6343,11 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
-Get a list of the coupons that match the given attributes
+List coupons that match the given attributes
 
-Gets a list of all the coupons with attributes matching the query criteria 
+List of all the coupons with attributes matching the query criteria. 
 
 ### Example
 ```java
@@ -6623,21 +6362,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    Object body = null; // Object | 
+    Map<String, Object> requestBody = null; // Map<String, Object> | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
-    String sort = "sort_example"; // String | The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with `-` to sort in descending order.
+    String sort = "sort_example"; // String | 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
@@ -6648,7 +6385,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -6667,10 +6404,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | **Object**|  |
+ **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. Sorting defaults to ascending order, prefix the field name with &#x60;-&#x60; to sort in descending order. | [optional]
+ **sort** | **String**|  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
@@ -6701,7 +6438,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAdditionalCost"></a>
 # **updateAdditionalCost**
-> AccountAdditionalCost updateAdditionalCost(additionalCostId, body)
+> AccountAdditionalCost updateAdditionalCost(additionalCostId, newAdditionalCost)
 
 Update an additional cost
 
@@ -6720,19 +6457,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer additionalCostId = 56; // Integer | 
-    NewAdditionalCost body = new NewAdditionalCost(); // NewAdditionalCost | 
+    NewAdditionalCost newAdditionalCost = new NewAdditionalCost(); // NewAdditionalCost | 
     try {
-      AccountAdditionalCost result = apiInstance.updateAdditionalCost(additionalCostId, body);
+      AccountAdditionalCost result = apiInstance.updateAdditionalCost(additionalCostId, newAdditionalCost);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateAdditionalCost");
@@ -6750,7 +6485,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **additionalCostId** | **Integer**|  |
- **body** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
+ **newAdditionalCost** | [**NewAdditionalCost**](NewAdditionalCost.md)|  |
 
 ### Return type
 
@@ -6772,7 +6507,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAttribute"></a>
 # **updateAttribute**
-> Attribute updateAttribute(attributeId, body)
+> Attribute updateAttribute(attributeId, newAttribute)
 
 Update a custom attribute
 
@@ -6791,19 +6526,17 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer attributeId = 56; // Integer | 
-    NewAttribute body = new NewAttribute(); // NewAttribute | 
+    NewAttribute newAttribute = new NewAttribute(); // NewAttribute | 
     try {
-      Attribute result = apiInstance.updateAttribute(attributeId, body);
+      Attribute result = apiInstance.updateAttribute(attributeId, newAttribute);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateAttribute");
@@ -6821,7 +6554,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **attributeId** | **Integer**|  |
- **body** | [**NewAttribute**](NewAttribute.md)|  |
+ **newAttribute** | [**NewAttribute**](NewAttribute.md)|  |
 
 ### Return type
 
@@ -6843,9 +6576,9 @@ Name | Type | Description  | Notes
 
 <a name="updateCampaign"></a>
 # **updateCampaign**
-> Campaign updateCampaign(applicationId, campaignId, body)
+> Campaign updateCampaign(applicationId, campaignId, updateCampaign)
 
-Update a Campaign
+Update campaign
 
 ### Example
 ```java
@@ -6860,20 +6593,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    UpdateCampaign body = new UpdateCampaign(); // UpdateCampaign | 
+    UpdateCampaign updateCampaign = new UpdateCampaign(); // UpdateCampaign | 
     try {
-      Campaign result = apiInstance.updateCampaign(applicationId, campaignId, body);
+      Campaign result = apiInstance.updateCampaign(applicationId, campaignId, updateCampaign);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateCampaign");
@@ -6892,7 +6623,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**UpdateCampaign**](UpdateCampaign.md)|  |
+ **updateCampaign** | [**UpdateCampaign**](UpdateCampaign.md)|  |
 
 ### Return type
 
@@ -6914,9 +6645,9 @@ Name | Type | Description  | Notes
 
 <a name="updateCoupon"></a>
 # **updateCoupon**
-> Coupon updateCoupon(applicationId, campaignId, couponId, body)
+> Coupon updateCoupon(applicationId, campaignId, couponId, updateCoupon)
 
-Update a Coupon
+Update coupon
 
 ### Example
 ```java
@@ -6931,21 +6662,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     String couponId = "couponId_example"; // String | The ID of the coupon code to update
-    UpdateCoupon body = new UpdateCoupon(); // UpdateCoupon | 
+    UpdateCoupon updateCoupon = new UpdateCoupon(); // UpdateCoupon | 
     try {
-      Coupon result = apiInstance.updateCoupon(applicationId, campaignId, couponId, body);
+      Coupon result = apiInstance.updateCoupon(applicationId, campaignId, couponId, updateCoupon);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateCoupon");
@@ -6965,7 +6694,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **couponId** | **String**| The ID of the coupon code to update |
- **body** | [**UpdateCoupon**](UpdateCoupon.md)|  |
+ **updateCoupon** | [**UpdateCoupon**](UpdateCoupon.md)|  |
 
 ### Return type
 
@@ -6987,9 +6716,9 @@ Name | Type | Description  | Notes
 
 <a name="updateCouponBatch"></a>
 # **updateCouponBatch**
-> updateCouponBatch(applicationId, campaignId, body)
+> updateCouponBatch(applicationId, campaignId, updateCouponBatch)
 
-Update a Batch of Coupons
+Update a batch of coupons
 
 ### Example
 ```java
@@ -7004,20 +6733,18 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    UpdateCouponBatch body = new UpdateCouponBatch(); // UpdateCouponBatch | 
+    UpdateCouponBatch updateCouponBatch = new UpdateCouponBatch(); // UpdateCouponBatch | 
     try {
-      apiInstance.updateCouponBatch(applicationId, campaignId, body);
+      apiInstance.updateCouponBatch(applicationId, campaignId, updateCouponBatch);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateCouponBatch");
       System.err.println("Status code: " + e.getCode());
@@ -7035,7 +6762,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **body** | [**UpdateCouponBatch**](UpdateCouponBatch.md)|  |
+ **updateCouponBatch** | [**UpdateCouponBatch**](UpdateCouponBatch.md)|  |
 
 ### Return type
 
@@ -7057,9 +6784,9 @@ null (empty response body)
 
 <a name="updateReferral"></a>
 # **updateReferral**
-> Referral updateReferral(applicationId, campaignId, referralId, body)
+> Referral updateReferral(applicationId, campaignId, referralId, updateReferral)
 
-Update one Referral
+Update referral
 
 ### Example
 ```java
@@ -7067,28 +6794,21 @@ Update one Referral
 import one.talon.ApiClient;
 import one.talon.ApiException;
 import one.talon.Configuration;
-import one.talon.auth.*;
 import one.talon.models.*;
 import one.talon.api.ManagementApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    defaultClient.setBasePath("http://docs.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     String referralId = "referralId_example"; // String | The ID of the referral code to delete
-    UpdateReferral body = new UpdateReferral(); // UpdateReferral | 
+    UpdateReferral updateReferral = new UpdateReferral(); // UpdateReferral | 
     try {
-      Referral result = apiInstance.updateReferral(applicationId, campaignId, referralId, body);
+      Referral result = apiInstance.updateReferral(applicationId, campaignId, referralId, updateReferral);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateReferral");
@@ -7108,7 +6828,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **referralId** | **String**| The ID of the referral code to delete |
- **body** | [**UpdateReferral**](UpdateReferral.md)|  |
+ **updateReferral** | [**UpdateReferral**](UpdateReferral.md)|  |
 
 ### Return type
 
@@ -7116,7 +6836,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[manager_auth](../README.md#manager_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -7130,9 +6850,11 @@ Name | Type | Description  | Notes
 
 <a name="updateRuleset"></a>
 # **updateRuleset**
-> Ruleset updateRuleset(applicationId, campaignId, rulesetId, body)
+> Ruleset updateRuleset(applicationId, campaignId, rulesetId, newRuleset)
 
-Update a Ruleset
+Update ruleset
+
+Update the specified ruleset.
 
 ### Example
 ```java
@@ -7147,21 +6869,19 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
     Integer rulesetId = 56; // Integer | 
-    NewRuleset body = new NewRuleset(); // NewRuleset | 
+    NewRuleset newRuleset = new NewRuleset(); // NewRuleset | 
     try {
-      Ruleset result = apiInstance.updateRuleset(applicationId, campaignId, rulesetId, body);
+      Ruleset result = apiInstance.updateRuleset(applicationId, campaignId, rulesetId, newRuleset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateRuleset");
@@ -7181,7 +6901,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
  **rulesetId** | **Integer**|  |
- **body** | [**NewRuleset**](NewRuleset.md)|  |
+ **newRuleset** | [**NewRuleset**](NewRuleset.md)|  |
 
 ### Return type
 

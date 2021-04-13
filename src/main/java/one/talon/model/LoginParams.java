@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * LoginParams
  */
-@ApiModel(description = "")
 
 public class LoginParams {
   public static final String SERIALIZED_NAME_EMAIL = "email";

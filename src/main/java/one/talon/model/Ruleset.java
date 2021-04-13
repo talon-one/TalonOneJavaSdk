@@ -30,9 +30,8 @@ import one.talon.model.Rule;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Ruleset
  */
-@ApiModel(description = "")
 
 public class Ruleset {
   public static final String SERIALIZED_NAME_ID = "id";

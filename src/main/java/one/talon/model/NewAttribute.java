@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * NewAttribute
  */
-@ApiModel(description = "")
 
 public class NewAttribute {
   /**

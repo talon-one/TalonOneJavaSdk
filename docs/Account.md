@@ -2,7 +2,6 @@
 
 # Account
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -24,7 +23,7 @@ Name | Type | Description | Notes
 **userCount** | **Integer** | The current number of Campaign Manager Users in your account. | 
 **campaignsActiveCount** | **Integer** | The current number of active Campaigns in your account. | 
 **campaignsInactiveCount** | **Integer** | The current number of inactive Campaigns in your account. | 
-**attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
+**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this campaign |  [optional]
 
 
 

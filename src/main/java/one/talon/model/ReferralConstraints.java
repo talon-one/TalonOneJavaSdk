@@ -51,6 +51,7 @@ public class ReferralConstraints {
 
    /**
    * Timestamp at which point the referral code becomes valid.
+   * minimum: 0
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -74,6 +75,7 @@ public class ReferralConstraints {
 
    /**
    * Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.
+   * minimum: 0
    * @return expiryDate
   **/
   @javax.annotation.Nullable

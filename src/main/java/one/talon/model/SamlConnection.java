@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * SamlConnection
  */
-@ApiModel(description = "")
 
 public class SamlConnection {
   public static final String SERIALIZED_NAME_ASSERTION_CONSUMER_SERVICE_U_R_L = "assertionConsumerServiceURL";

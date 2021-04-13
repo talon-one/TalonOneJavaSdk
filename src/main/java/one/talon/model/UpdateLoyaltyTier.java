@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 
+ * UpdateLoyaltyTier
  */
-@ApiModel(description = "")
 
 public class UpdateLoyaltyTier {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -71,7 +70,7 @@ public class UpdateLoyaltyTier {
    /**
    * The minimum amount of points required to be eligible for the tier
    * minimum: 0
-   * maximum: 1E+8
+   * maximum: 100000000
    * @return minPoints
   **/
   @ApiModelProperty(required = true, value = "The minimum amount of points required to be eligible for the tier")

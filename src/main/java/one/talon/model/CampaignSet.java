@@ -27,9 +27,8 @@ import one.talon.model.CampaignSetBranchNode;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CampaignSet
  */
-@ApiModel(description = "")
 
 public class CampaignSet {
   public static final String SERIALIZED_NAME_ID = "id";

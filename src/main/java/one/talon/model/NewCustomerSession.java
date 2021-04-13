@@ -25,13 +25,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import one.talon.model.CartItem;
 
 /**
- * 
+ * NewCustomerSession
  */
-@ApiModel(description = "")
 
 public class NewCustomerSession {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
@@ -113,7 +114,7 @@ public class NewCustomerSession {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
 
   public NewCustomerSession profileId(String profileId) {
@@ -293,9 +294,17 @@ public class NewCustomerSession {
   }
 
 
-  public NewCustomerSession attributes(Object attributes) {
+  public NewCustomerSession attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public NewCustomerSession putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -306,12 +315,12 @@ public class NewCustomerSession {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. ")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

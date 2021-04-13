@@ -2,7 +2,6 @@
 
 # CustomerSessionV2
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | All items the customer will be purchasing in this session | 
 **additionalCosts** | [**Map&lt;String, AdditionalCost&gt;**](AdditionalCost.md) | Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees. |  [optional]
 **identifiers** | **List&lt;String&gt;** | Identifiers for the customer, this can be used for limits on values such as device ID. |  [optional]
-**attributes** | [**Object**](.md) | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  | 
+**attributes** | **Map&lt;String, Object&gt;** | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  | 
 **firstSession** | **Boolean** | Indicates whether this is the first session for the customer&#39;s profile. Will always be true for anonymous sessions. | 
 **total** | [**BigDecimal**](BigDecimal.md) | The total sum of cart-items, as well as additional costs, before any discounts applied | 
 **cartItemTotal** | [**BigDecimal**](BigDecimal.md) | The total sum of cart-items before any discounts applied | 

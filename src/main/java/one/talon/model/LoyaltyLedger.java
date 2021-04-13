@@ -40,7 +40,7 @@ public class LoyaltyLedger {
 
   public static final String SERIALIZED_NAME_SUB_LEDGERS = "subLedgers";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGERS)
-  private Map<String, LoyaltySubLedger> subLedgers = null;
+  private Map<String, LoyaltySubLedger> subLedgers = new HashMap<String, LoyaltySubLedger>();
 
 
   public LoyaltyLedger ledger(LoyaltySubLedger ledger) {
@@ -72,9 +72,6 @@ public class LoyaltyLedger {
   }
 
   public LoyaltyLedger putSubLedgersItem(String key, LoyaltySubLedger subLedgersItem) {
-    if (this.subLedgers == null) {
-      this.subLedgers = new HashMap<String, LoyaltySubLedger>();
-    }
     this.subLedgers.put(key, subLedgersItem);
     return this;
   }
@@ -83,8 +80,7 @@ public class LoyaltyLedger {
    * A map containing a list of all loyalty subledger balances
    * @return subLedgers
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A map containing a list of all loyalty subledger balances")
+  @ApiModelProperty(required = true, value = "A map containing a list of all loyalty subledger balances")
 
   public Map<String, LoyaltySubLedger> getSubLedgers() {
     return subLedgers;

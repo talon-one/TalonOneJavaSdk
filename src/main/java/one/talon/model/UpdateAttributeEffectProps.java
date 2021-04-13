@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.AnyOfstringnumberintegerbooleanarrayobject;
 
 /**
  * The properties specific to the \&quot;updateAttribute\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;update an attribute\&quot; effect.
@@ -36,7 +37,7 @@ public class UpdateAttributeEffectProps {
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  private Object value;
+  private AnyOfstringnumberintegerbooleanarrayobject value = null;
 
 
   public UpdateAttributeEffectProps path(String path) {
@@ -61,7 +62,7 @@ public class UpdateAttributeEffectProps {
   }
 
 
-  public UpdateAttributeEffectProps value(Object value) {
+  public UpdateAttributeEffectProps value(AnyOfstringnumberintegerbooleanarrayobject value) {
     
     this.value = value;
     return this;
@@ -73,12 +74,12 @@ public class UpdateAttributeEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The new value of this attribute. Value can be any of the following types (time, string, number, location, boolean) or a list of any of those types")
 
-  public Object getValue() {
+  public AnyOfstringnumberintegerbooleanarrayobject getValue() {
     return value;
   }
 
 
-  public void setValue(Object value) {
+  public void setValue(AnyOfstringnumberintegerbooleanarrayobject value) {
     this.value = value;
   }
 

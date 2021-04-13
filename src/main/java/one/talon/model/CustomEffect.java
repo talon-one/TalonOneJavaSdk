@@ -29,9 +29,8 @@ import one.talon.model.TemplateArgDef;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CustomEffect
  */
-@ApiModel(description = "")
 
 public class CustomEffect {
   public static final String SERIALIZED_NAME_ID = "id";

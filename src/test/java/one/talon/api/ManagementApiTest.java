@@ -31,7 +31,6 @@ import one.talon.model.Coupon;
 import one.talon.model.CouponSearch;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
-import java.io.File;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -105,7 +104,7 @@ public class ManagementApiTest {
 
     
     /**
-     * Add points in a certain loyalty program for the specified customer
+     * Add points in a loyalty program for the specified customer
      *
      * 
      *
@@ -114,10 +113,10 @@ public class ManagementApiTest {
      */
     @Test
     public void addLoyaltyPointsTest() throws ApiException {
-        String programID = null;
+        Integer programID = null;
         String integrationID = null;
-        LoyaltyPoints body = null;
-        api.addLoyaltyPoints(programID, integrationID, body);
+        LoyaltyPoints loyaltyPoints = null;
+        api.addLoyaltyPoints(programID, integrationID, loyaltyPoints);
 
         // TODO: test validations
     }
@@ -134,8 +133,8 @@ public class ManagementApiTest {
     public void copyCampaignToApplicationsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        CampaignCopy body = null;
-        InlineResponse2002 response = api.copyCampaignToApplications(applicationId, campaignId, body);
+        CampaignCopy campaignCopy = null;
+        InlineResponse2002 response = api.copyCampaignToApplications(applicationId, campaignId, campaignCopy);
 
         // TODO: test validations
     }
@@ -150,8 +149,8 @@ public class ManagementApiTest {
      */
     @Test
     public void createAdditionalCostTest() throws ApiException {
-        NewAdditionalCost body = null;
-        AccountAdditionalCost response = api.createAdditionalCost(body);
+        NewAdditionalCost newAdditionalCost = null;
+        AccountAdditionalCost response = api.createAdditionalCost(newAdditionalCost);
 
         // TODO: test validations
     }
@@ -166,14 +165,14 @@ public class ManagementApiTest {
      */
     @Test
     public void createAttributeTest() throws ApiException {
-        NewAttribute body = null;
-        Attribute response = api.createAttribute(body);
+        NewAttribute newAttribute = null;
+        Attribute response = api.createAttribute(newAttribute);
 
         // TODO: test validations
     }
     
     /**
-     * Create a Campaign
+     * Create campaign
      *
      * 
      *
@@ -183,14 +182,14 @@ public class ManagementApiTest {
     @Test
     public void createCampaignTest() throws ApiException {
         Integer applicationId = null;
-        NewCampaign body = null;
-        Campaign response = api.createCampaign(applicationId, body);
+        NewCampaign newCampaign = null;
+        Campaign response = api.createCampaign(applicationId, newCampaign);
 
         // TODO: test validations
     }
     
     /**
-     * Create Coupons
+     * Create coupons
      *
      * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      *
@@ -201,17 +200,17 @@ public class ManagementApiTest {
     public void createCouponsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        NewCoupons body = null;
+        NewCoupons newCoupons = null;
         String silent = null;
-        InlineResponse2004 response = api.createCoupons(applicationId, campaignId, body, silent);
+        InlineResponse2004 response = api.createCoupons(applicationId, campaignId, newCoupons, silent);
 
         // TODO: test validations
     }
     
     /**
-     * Create Coupons for Multiple Recipients
+     * Create coupons for multiple recipients
      *
-     * Create coupons according to some pattern for up to 1000 recipients.
+     * Create coupons according to the specified pattern for up to 1000 recipients.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -220,9 +219,9 @@ public class ManagementApiTest {
     public void createCouponsForMultipleRecipientsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        NewCouponsForMultipleRecipients body = null;
+        NewCouponsForMultipleRecipients newCouponsForMultipleRecipients = null;
         String silent = null;
-        InlineResponse2004 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+        InlineResponse2004 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, newCouponsForMultipleRecipients, silent);
 
         // TODO: test validations
     }
@@ -237,14 +236,14 @@ public class ManagementApiTest {
      */
     @Test
     public void createPasswordRecoveryEmailTest() throws ApiException {
-        NewPasswordEmail body = null;
-        NewPasswordEmail response = api.createPasswordRecoveryEmail(body);
+        NewPasswordEmail newPasswordEmail = null;
+        NewPasswordEmail response = api.createPasswordRecoveryEmail(newPasswordEmail);
 
         // TODO: test validations
     }
     
     /**
-     * Create a Ruleset
+     * Create ruleset
      *
      * 
      *
@@ -255,30 +254,30 @@ public class ManagementApiTest {
     public void createRulesetTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        NewRuleset body = null;
-        Ruleset response = api.createRuleset(applicationId, campaignId, body);
+        NewRuleset newRuleset = null;
+        Ruleset response = api.createRuleset(applicationId, campaignId, newRuleset);
 
         // TODO: test validations
     }
     
     /**
-     * Create a Session
+     * Create session
      *
-     * 
+     * Create a session to use the other Management API endpoints. Use the &#x60;token&#x60; property of the response as bearer token.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void createSessionTest() throws ApiException {
-        LoginParams body = null;
-        Session response = api.createSession(body);
+        LoginParams loginParams = null;
+        Session response = api.createSession(loginParams);
 
         // TODO: test validations
     }
     
     /**
-     * Delete a Campaign
+     * Delete campaign
      *
      * 
      *
@@ -295,7 +294,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete one Coupon
+     * Delete coupon
      *
      * 
      *
@@ -313,7 +312,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete Coupons
+     * Delete coupons
      *
      * 
      *
@@ -343,7 +342,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete one Referral
+     * Delete referral
      *
      * 
      *
@@ -361,7 +360,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete a Ruleset
+     * Delete ruleset
      *
      * 
      *
@@ -379,22 +378,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Destroy a Session
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void destroySessionTest() throws ApiException {
-        api.destroySession();
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Export Coupons to a CSV file
+     * Export coupons to a CSV file
      *
      * Download a file with the coupons that match the given attributes.
      *
@@ -614,7 +598,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get all access logs
+     * List access logs
      *
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      *
@@ -637,7 +621,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get all roles
+     * List roles
      *
      * 
      *
@@ -723,15 +707,15 @@ public class ManagementApiTest {
     /**
      * Get a list of the customer profiles that match the given attributes (with total count)
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getApplicationCustomersByAttributesTest() throws ApiException {
-        ApplicationCustomerSearch body = null;
-        InlineResponse20012 response = api.getApplicationCustomersByAttributes(body);
+        ApplicationCustomerSearch applicationCustomerSearch = null;
+        InlineResponse20012 response = api.getApplicationCustomersByAttributes(applicationCustomerSearch);
 
         // TODO: test validations
     }
@@ -912,7 +896,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get all audiences
+     * List audiences
      *
      * Get All audiences created in the account. 
      *
@@ -931,7 +915,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a Campaign
+     * Get campaign
      *
      * 
      *
@@ -968,7 +952,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a list of all campaigns that match the given attributes
+     * List campaigns that match the given attributes
      *
      * Gets a list of all the campaigns that exactly match a set of attributes. 
      *
@@ -978,18 +962,18 @@ public class ManagementApiTest {
     @Test
     public void getCampaignByAttributesTest() throws ApiException {
         Integer applicationId = null;
-        CampaignSearch body = null;
+        CampaignSearch campaignSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
         String campaignState = null;
-        InlineResponse2002 response = api.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+        InlineResponse2002 response = api.getCampaignByAttributes(applicationId, campaignSearch, pageSize, skip, sort, campaignState);
 
         // TODO: test validations
     }
     
     /**
-     * List your Campaigns
+     * List campaigns
      *
      * 
      *
@@ -1039,7 +1023,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Coupons (with total count)
+     * List coupons (with total count)
      *
      * 
      *
@@ -1072,7 +1056,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons that match the given attributes
      *
      * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
      *
@@ -1083,7 +1067,7 @@ public class ManagementApiTest {
     public void getCouponsByAttributesTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        CouponSearch body = null;
+        CouponSearch couponSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1096,13 +1080,13 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse2004 response = api.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse2004 response = api.getCouponsByAttributes(applicationId, campaignId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
      *
      * Gets a list of all the coupons with attributes matching the query criteria Application wide 
      *
@@ -1112,7 +1096,7 @@ public class ManagementApiTest {
     @Test
     public void getCouponsByAttributesApplicationWideTest() throws ApiException {
         Integer applicationId = null;
-        CouponSearch body = null;
+        CouponSearch couponSearch = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1126,13 +1110,13 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse2004 response = api.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse2004 response = api.getCouponsByAttributesApplicationWide(applicationId, couponSearch, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
     
     /**
-     * List Coupons
+     * List coupons
      *
      * 
      *
@@ -1285,27 +1269,27 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a list of the customer profiles that match the given attributes
+     * List customer profiles that match the given attributes
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+     * Get a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#/customerProfile 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getCustomersByAttributesTest() throws ApiException {
-        ApplicationCustomerSearch body = null;
+        ApplicationCustomerSearch applicationCustomerSearch = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20012 response = api.getCustomersByAttributes(body, pageSize, skip);
+        InlineResponse20012 response = api.getCustomersByAttributes(applicationCustomerSearch, pageSize, skip);
 
         // TODO: test validations
     }
     
     /**
-     * List Event Types
+     * List event types
      *
-     * Fetch all event type definitions for your account. Each event type can be 
+     * Fetch all event type definitions for your account. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1324,7 +1308,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Exports
+     * Get exports
      *
      * Get a list of all past exports 
      *
@@ -1344,7 +1328,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * get the Loyalty Ledger for this integrationID
+     * Get integration&#39;s Loyalty Ledger
      *
      * Get the Loyalty Ledger for this profile integration ID.
      *
@@ -1363,7 +1347,7 @@ public class ManagementApiTest {
     /**
      * Get a loyalty program
      *
-     * 
+     * Get a loyalty program.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1377,9 +1361,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List all loyalty Programs
+     * List loyalty programs
      *
-     * 
+     * List all the loyalty programs.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1408,7 +1392,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Referrals (with total count)
+     * List referrals (with total count)
      *
      * 
      *
@@ -1434,7 +1418,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Referrals
+     * List referrals
      *
      * 
      *
@@ -1476,9 +1460,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a Ruleset
+     * Get ruleset
      *
-     * 
+     * Retrieve the details of a ruleset.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1494,9 +1478,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Campaign Rulesets
+     * List rulesets
      *
-     * 
+     * List all rulesets in the given campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1530,7 +1514,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Users in your account
+     * List users
      *
      * Retrieve all users in your account. 
      *
@@ -1643,8 +1627,8 @@ public class ManagementApiTest {
     public void importCouponsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        File upFile = null;
-        ModelImport response = api.importCoupons(applicationId, campaignId, upFile);
+        String upfile = null;
+        ModelImport response = api.importCoupons(applicationId, campaignId, upfile);
 
         // TODO: test validations
     }
@@ -1660,7 +1644,7 @@ public class ManagementApiTest {
     @Test
     public void importLoyaltyPointsTest() throws ApiException {
         Integer programID = null;
-        File upFile = null;
+        String upFile = null;
         ModelImport response = api.importLoyaltyPoints(programID, upFile);
 
         // TODO: test validations
@@ -1677,8 +1661,8 @@ public class ManagementApiTest {
     @Test
     public void importPoolGiveawaysTest() throws ApiException {
         Integer poolId = null;
-        File upFile = null;
-        ModelImport response = api.importPoolGiveaways(poolId, upFile);
+        String upfile = null;
+        ModelImport response = api.importPoolGiveaways(poolId, upfile);
 
         // TODO: test validations
     }
@@ -1695,14 +1679,14 @@ public class ManagementApiTest {
     public void importReferralsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        File upFile = null;
+        String upFile = null;
         ModelImport response = api.importReferrals(applicationId, campaignId, upFile);
 
         // TODO: test validations
     }
     
     /**
-     * Deduct points in a certain loyalty program for the specified customer
+     * Deduct points in a loyalty program for the specified customer
      *
      * 
      *
@@ -1713,8 +1697,8 @@ public class ManagementApiTest {
     public void removeLoyaltyPointsTest() throws ApiException {
         String programID = null;
         String integrationID = null;
-        LoyaltyPoints body = null;
-        api.removeLoyaltyPoints(programID, integrationID, body);
+        LoyaltyPoints loyaltyPoints = null;
+        api.removeLoyaltyPoints(programID, integrationID, loyaltyPoints);
 
         // TODO: test validations
     }
@@ -1729,14 +1713,14 @@ public class ManagementApiTest {
      */
     @Test
     public void resetPasswordTest() throws ApiException {
-        NewPassword body = null;
-        NewPassword response = api.resetPassword(body);
+        NewPassword newPassword = null;
+        NewPassword response = api.resetPassword(newPassword);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes (with total count)
+     * List coupons that match the given attributes (with total count)
      *
      * Gets a list of all the coupons with attributes matching the query criteria 
      *
@@ -1747,7 +1731,7 @@ public class ManagementApiTest {
     public void searchCouponsAdvancedTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        Object body = null;
+        Map<String, Object> requestBody = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1760,15 +1744,15 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse2004 response = api.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse2004 response = api.searchCouponsAdvanced(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
+     * List coupons that match the given attributes in all active campaigns of an application (with total count)
      *
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1776,7 +1760,7 @@ public class ManagementApiTest {
     @Test
     public void searchCouponsAdvancedApplicationWideTest() throws ApiException {
         Integer applicationId = null;
-        Object body = null;
+        Map<String, Object> requestBody = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1790,15 +1774,15 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse2004 response = api.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse2004 response = api.searchCouponsAdvancedApplicationWide(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
+     * List coupons that match the given attributes in all active campaigns of an application
      *
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1806,7 +1790,7 @@ public class ManagementApiTest {
     @Test
     public void searchCouponsAdvancedApplicationWideWithoutTotalCountTest() throws ApiException {
         Integer applicationId = null;
-        Object body = null;
+        Map<String, Object> requestBody = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1820,15 +1804,15 @@ public class ManagementApiTest {
         String batchId = null;
         Boolean exactMatch = null;
         String campaignState = null;
-        InlineResponse2005 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+        InlineResponse2005 response = api.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons that match the given attributes
      *
-     * Gets a list of all the coupons with attributes matching the query criteria 
+     * List of all the coupons with attributes matching the query criteria. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1837,7 +1821,7 @@ public class ManagementApiTest {
     public void searchCouponsAdvancedWithoutTotalCountTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        Object body = null;
+        Map<String, Object> requestBody = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
@@ -1850,7 +1834,7 @@ public class ManagementApiTest {
         String recipientIntegrationId = null;
         Boolean exactMatch = null;
         String batchId = null;
-        InlineResponse2005 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+        InlineResponse2005 response = api.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
 
         // TODO: test validations
     }
@@ -1866,8 +1850,8 @@ public class ManagementApiTest {
     @Test
     public void updateAdditionalCostTest() throws ApiException {
         Integer additionalCostId = null;
-        NewAdditionalCost body = null;
-        AccountAdditionalCost response = api.updateAdditionalCost(additionalCostId, body);
+        NewAdditionalCost newAdditionalCost = null;
+        AccountAdditionalCost response = api.updateAdditionalCost(additionalCostId, newAdditionalCost);
 
         // TODO: test validations
     }
@@ -1883,14 +1867,14 @@ public class ManagementApiTest {
     @Test
     public void updateAttributeTest() throws ApiException {
         Integer attributeId = null;
-        NewAttribute body = null;
-        Attribute response = api.updateAttribute(attributeId, body);
+        NewAttribute newAttribute = null;
+        Attribute response = api.updateAttribute(attributeId, newAttribute);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Campaign
+     * Update campaign
      *
      * 
      *
@@ -1901,14 +1885,14 @@ public class ManagementApiTest {
     public void updateCampaignTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        UpdateCampaign body = null;
-        Campaign response = api.updateCampaign(applicationId, campaignId, body);
+        UpdateCampaign updateCampaign = null;
+        Campaign response = api.updateCampaign(applicationId, campaignId, updateCampaign);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Coupon
+     * Update coupon
      *
      * 
      *
@@ -1920,14 +1904,14 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         String couponId = null;
-        UpdateCoupon body = null;
-        Coupon response = api.updateCoupon(applicationId, campaignId, couponId, body);
+        UpdateCoupon updateCoupon = null;
+        Coupon response = api.updateCoupon(applicationId, campaignId, couponId, updateCoupon);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Batch of Coupons
+     * Update a batch of coupons
      *
      * 
      *
@@ -1938,14 +1922,14 @@ public class ManagementApiTest {
     public void updateCouponBatchTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        UpdateCouponBatch body = null;
-        api.updateCouponBatch(applicationId, campaignId, body);
+        UpdateCouponBatch updateCouponBatch = null;
+        api.updateCouponBatch(applicationId, campaignId, updateCouponBatch);
 
         // TODO: test validations
     }
     
     /**
-     * Update one Referral
+     * Update referral
      *
      * 
      *
@@ -1957,16 +1941,16 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         String referralId = null;
-        UpdateReferral body = null;
-        Referral response = api.updateReferral(applicationId, campaignId, referralId, body);
+        UpdateReferral updateReferral = null;
+        Referral response = api.updateReferral(applicationId, campaignId, referralId, updateReferral);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Ruleset
+     * Update ruleset
      *
-     * 
+     * Update the specified ruleset.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1976,8 +1960,8 @@ public class ManagementApiTest {
         Integer applicationId = null;
         Integer campaignId = null;
         Integer rulesetId = null;
-        NewRuleset body = null;
-        Ruleset response = api.updateRuleset(applicationId, campaignId, rulesetId, body);
+        NewRuleset newRuleset = null;
+        Ruleset response = api.updateRuleset(applicationId, campaignId, rulesetId, newRuleset);
 
         // TODO: test validations
     }

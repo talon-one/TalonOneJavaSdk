@@ -31,9 +31,8 @@ import one.talon.model.AdditionalCost;
 import one.talon.model.CartItem;
 
 /**
- * 
+ * NewCustomerSessionV2
  */
-@ApiModel(description = "")
 
 public class NewCustomerSessionV2 {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
@@ -115,7 +114,7 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
 
   public NewCustomerSessionV2 profileId(String profileId) {
@@ -311,9 +310,17 @@ public class NewCustomerSessionV2 {
   }
 
 
-  public NewCustomerSessionV2 attributes(Object attributes) {
+  public NewCustomerSessionV2 attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public NewCustomerSessionV2 putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -324,12 +331,12 @@ public class NewCustomerSessionV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. ")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

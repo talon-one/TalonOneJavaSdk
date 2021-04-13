@@ -2,7 +2,6 @@
 
 # Giveaway
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 **poolId** | **Integer** | The ID of the pool to return giveaway codes from. | 
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp at which point the giveaway becomes valid. |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp at which point the giveaway becomes invalid. |  [optional]
-**attributes** | [**Object**](.md) | Arbitrary properties associated with this giveaway. |  [optional]
+**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this giveaway. |  [optional]
 **used** | **Boolean** | Flag indicating whether this giveaway code was given before. |  [optional]
 **importId** | **Integer** | The ID of the Import which created this giveaway. |  [optional]
 

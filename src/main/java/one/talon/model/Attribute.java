@@ -28,9 +28,8 @@ import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Attribute
  */
-@ApiModel(description = "")
 
 public class Attribute {
   public static final String SERIALIZED_NAME_ID = "id";

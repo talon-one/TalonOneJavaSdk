@@ -29,9 +29,8 @@ import one.talon.model.TemplateArgDef;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * TemplateDef
  */
-@ApiModel(description = "")
 
 public class TemplateDef {
   public static final String SERIALIZED_NAME_ID = "id";

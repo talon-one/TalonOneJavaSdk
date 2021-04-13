@@ -61,7 +61,7 @@ public class LoyaltyPoints {
    /**
    * Amount of loyalty points
    * minimum: 0
-   * maximum: 1E+8
+   * maximum: 100000000
    * @return points
   **/
   @ApiModelProperty(required = true, value = "Amount of loyalty points")

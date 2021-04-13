@@ -24,16 +24,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import one.talon.model.AttributesSettings;
 import one.talon.model.LimitConfig;
 import one.talon.model.LoyaltyProgram;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Application
  */
-@ApiModel(description = "")
 
 public class Application {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -123,7 +124,7 @@ public class Application {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
@@ -509,9 +510,17 @@ public class Application {
   }
 
 
-  public Application attributes(Object attributes) {
+  public Application attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public Application putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -522,12 +531,12 @@ public class Application {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

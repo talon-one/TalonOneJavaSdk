@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 
+ * LoyaltyStatistics
  */
-@ApiModel(description = "")
 
 public class LoyaltyStatistics {
   public static final String SERIALIZED_NAME_TOTAL_ACTIVE_POINTS = "totalActivePoints";

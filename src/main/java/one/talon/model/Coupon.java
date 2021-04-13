@@ -24,12 +24,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Coupon
  */
-@ApiModel(description = "")
 
 public class Coupon {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -78,7 +80,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
@@ -246,6 +248,7 @@ public class Coupon {
 
    /**
    * Timestamp at which point the coupon becomes valid.
+   * minimum: 0
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -269,6 +272,7 @@ public class Coupon {
 
    /**
    * Expiry date of the coupon. Coupon never expires if this is omitted, zero, or negative.
+   * minimum: 0
    * @return expiryDate
   **/
   @javax.annotation.Nullable
@@ -352,9 +356,17 @@ public class Coupon {
   }
 
 
-  public Coupon attributes(Object attributes) {
+  public Coupon attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public Coupon putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -365,12 +377,12 @@ public class Coupon {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 
@@ -451,11 +463,11 @@ public class Coupon {
   }
 
    /**
-   * This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favorite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.
+   * This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favourite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.
    * @return reservation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favorite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.")
+  @ApiModelProperty(value = "This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favourite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.")
 
   public Boolean getReservation() {
     return reservation;

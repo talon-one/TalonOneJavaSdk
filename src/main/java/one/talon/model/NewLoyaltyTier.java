@@ -71,7 +71,7 @@ public class NewLoyaltyTier {
    /**
    * The minimum amount of points required to be eligible for the tier
    * minimum: 0
-   * maximum: 1E+8
+   * maximum: 100000000
    * @return minPoints
   **/
   @ApiModelProperty(required = true, value = "The minimum amount of points required to be eligible for the tier")

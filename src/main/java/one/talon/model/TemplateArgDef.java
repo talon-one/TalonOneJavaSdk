@@ -23,11 +23,13 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * 
+ * TemplateArgDef
  */
-@ApiModel(description = "")
 
 public class TemplateArgDef {
   /**
@@ -95,7 +97,7 @@ public class TemplateArgDef {
 
   public static final String SERIALIZED_NAME_UI = "ui";
   @SerializedName(SERIALIZED_NAME_UI)
-  private Object ui;
+  private Map<String, Object> ui = new HashMap<String, Object>();
 
 
   public TemplateArgDef type(TypeEnum type) {
@@ -164,9 +166,14 @@ public class TemplateArgDef {
   }
 
 
-  public TemplateArgDef ui(Object ui) {
+  public TemplateArgDef ui(Map<String, Object> ui) {
     
     this.ui = ui;
+    return this;
+  }
+
+  public TemplateArgDef putUiItem(String key, Object uiItem) {
+    this.ui.put(key, uiItem);
     return this;
   }
 
@@ -176,12 +183,12 @@ public class TemplateArgDef {
   **/
   @ApiModelProperty(required = true, value = "Arbitrary metadata that may be used to render an input for this argument.")
 
-  public Object getUi() {
+  public Map<String, Object> getUi() {
     return ui;
   }
 
 
-  public void setUi(Object ui) {
+  public void setUi(Map<String, Object> ui) {
     this.ui = ui;
   }
 

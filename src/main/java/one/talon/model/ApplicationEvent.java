@@ -24,14 +24,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import one.talon.model.RuleFailureReason;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationEvent
  */
-@ApiModel(description = "")
 
 public class ApplicationEvent {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -60,7 +61,7 @@ public class ApplicationEvent {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
@@ -205,9 +206,14 @@ public class ApplicationEvent {
   }
 
 
-  public ApplicationEvent attributes(Object attributes) {
+  public ApplicationEvent attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public ApplicationEvent putAttributesItem(String key, Object attributesItem) {
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -217,12 +223,12 @@ public class ApplicationEvent {
   **/
   @ApiModelProperty(required = true, value = "Additional JSON serialized data associated with the event.")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

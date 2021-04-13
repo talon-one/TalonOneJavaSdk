@@ -27,9 +27,8 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CustomerActivityReport
  */
-@ApiModel(description = "")
 
 public class CustomerActivityReport {
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";

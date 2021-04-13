@@ -32,9 +32,8 @@ import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CustomerSession
  */
-@ApiModel(description = "")
 
 public class CustomerSession {
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
@@ -128,7 +127,7 @@ public class CustomerSession {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_FIRST_SESSION = "firstSession";
   @SerializedName(SERIALIZED_NAME_FIRST_SESSION)
@@ -373,9 +372,14 @@ public class CustomerSession {
   }
 
 
-  public CustomerSession attributes(Object attributes) {
+  public CustomerSession attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public CustomerSession putAttributesItem(String key, Object attributesItem) {
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -385,12 +389,12 @@ public class CustomerSession {
   **/
   @ApiModelProperty(required = true, value = "A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. ")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

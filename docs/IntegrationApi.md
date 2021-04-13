@@ -1,6 +1,6 @@
 # IntegrationApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://docs.talon.one*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 <a name="createCouponReservation"></a>
 # **createCouponReservation**
-> Coupon createCouponReservation(couponValue, body)
+> Coupon createCouponReservation(couponValue, couponReservations)
 
 Create a new coupon reservation
 
@@ -41,7 +41,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -49,17 +49,11 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String couponValue = "couponValue_example"; // String | The value of a coupon
-    CouponReservations body = new CouponReservations(); // CouponReservations | 
+    CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
     try {
-      Coupon result = apiInstance.createCouponReservation(couponValue, body);
+      Coupon result = apiInstance.createCouponReservation(couponValue, couponReservations);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#createCouponReservation");
@@ -77,7 +71,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **couponValue** | **String**| The value of a coupon |
- **body** | [**CouponReservations**](CouponReservations.md)|  |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
@@ -85,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -99,7 +93,7 @@ Name | Type | Description  | Notes
 
 <a name="createReferral"></a>
 # **createReferral**
-> Referral createReferral(body)
+> Referral createReferral(newReferral)
 
 Create a referral code for an advocate
 
@@ -118,7 +112,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -126,16 +120,10 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    NewReferral body = new NewReferral(); // NewReferral | 
+    NewReferral newReferral = new NewReferral(); // NewReferral | 
     try {
-      Referral result = apiInstance.createReferral(body);
+      Referral result = apiInstance.createReferral(newReferral);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#createReferral");
@@ -152,7 +140,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewReferral**](NewReferral.md)|  |
+ **newReferral** | [**NewReferral**](NewReferral.md)|  |
 
 ### Return type
 
@@ -160,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -174,7 +162,7 @@ Name | Type | Description  | Notes
 
 <a name="createReferralsForMultipleAdvocates"></a>
 # **createReferralsForMultipleAdvocates**
-> InlineResponse201 createReferralsForMultipleAdvocates(body, silent)
+> InlineResponse201 createReferralsForMultipleAdvocates(newReferralsForMultipleAdvocates, silent)
 
 Create referral codes for multiple advocates
 
@@ -193,7 +181,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -201,17 +189,11 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    NewReferralsForMultipleAdvocates body = new NewReferralsForMultipleAdvocates(); // NewReferralsForMultipleAdvocates | 
+    NewReferralsForMultipleAdvocates newReferralsForMultipleAdvocates = new NewReferralsForMultipleAdvocates(); // NewReferralsForMultipleAdvocates | 
     String silent = "silent_example"; // String | If set to `yes`, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000).
     try {
-      InlineResponse201 result = apiInstance.createReferralsForMultipleAdvocates(body, silent);
+      InlineResponse201 result = apiInstance.createReferralsForMultipleAdvocates(newReferralsForMultipleAdvocates, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#createReferralsForMultipleAdvocates");
@@ -228,7 +210,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewReferralsForMultipleAdvocates**](NewReferralsForMultipleAdvocates.md)|  |
+ **newReferralsForMultipleAdvocates** | [**NewReferralsForMultipleAdvocates**](NewReferralsForMultipleAdvocates.md)|  |
  **silent** | **String**| If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). | [optional]
 
 ### Return type
@@ -237,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -252,7 +234,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteCouponReservation"></a>
 # **deleteCouponReservation**
-> deleteCouponReservation(couponValue, body)
+> deleteCouponReservation(couponValue, couponReservations)
 
 Delete coupon reservations
 
@@ -271,7 +253,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -279,17 +261,11 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String couponValue = "couponValue_example"; // String | The value of a coupon
-    CouponReservations body = new CouponReservations(); // CouponReservations | 
+    CouponReservations couponReservations = new CouponReservations(); // CouponReservations | 
     try {
-      apiInstance.deleteCouponReservation(couponValue, body);
+      apiInstance.deleteCouponReservation(couponValue, couponReservations);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#deleteCouponReservation");
       System.err.println("Status code: " + e.getCode());
@@ -306,7 +282,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **couponValue** | **String**| The value of a coupon |
- **body** | [**CouponReservations**](CouponReservations.md)|  |
+ **couponReservations** | [**CouponReservations**](CouponReservations.md)|  |
 
 ### Return type
 
@@ -314,7 +290,7 @@ null (empty response body)
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -347,19 +323,13 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
     api_key_v1.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
@@ -388,7 +358,7 @@ null (empty response body)
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -421,19 +391,13 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
     api_key_v1.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
@@ -473,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -506,19 +470,13 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
     api_key_v1.setApiKey("YOUR API KEY");
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String couponValue = "couponValue_example"; // String | The value of a coupon
@@ -548,7 +506,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -562,7 +520,7 @@ Name | Type | Description  | Notes
 
 <a name="trackEvent"></a>
 # **trackEvent**
-> IntegrationState trackEvent(body, dry)
+> IntegrationState trackEvent(newEvent, dry)
 
 Track an Event
 
@@ -581,7 +539,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -589,17 +547,11 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    NewEvent body = new NewEvent(); // NewEvent | 
+    NewEvent newEvent = new NewEvent(); // NewEvent | 
     Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
     try {
-      IntegrationState result = apiInstance.trackEvent(body, dry);
+      IntegrationState result = apiInstance.trackEvent(newEvent, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#trackEvent");
@@ -616,7 +568,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewEvent**](NewEvent.md)|  |
+ **newEvent** | [**NewEvent**](NewEvent.md)|  |
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional]
 
 ### Return type
@@ -625,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -639,11 +591,11 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerProfile"></a>
 # **updateCustomerProfile**
-> IntegrationState updateCustomerProfile(integrationId, body, dry)
+> IntegrationState updateCustomerProfile(integrationId, newCustomerProfile, dry)
 
 Update a Customer Profile V1
 
-⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#/customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#/customer-profile [Rules]: /Getting-Started/entities#/campaigns-rulesets-and-coupons 
 
 ### Example
 ```java
@@ -658,7 +610,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -666,18 +618,12 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile, must be unique within the account.
-    NewCustomerProfile body = new NewCustomerProfile(); // NewCustomerProfile | 
+    NewCustomerProfile newCustomerProfile = new NewCustomerProfile(); // NewCustomerProfile | 
     Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
     try {
-      IntegrationState result = apiInstance.updateCustomerProfile(integrationId, body, dry);
+      IntegrationState result = apiInstance.updateCustomerProfile(integrationId, newCustomerProfile, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerProfile");
@@ -695,7 +641,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile, must be unique within the account. |
- **body** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
+ **newCustomerProfile** | [**NewCustomerProfile**](NewCustomerProfile.md)|  |
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional]
 
 ### Return type
@@ -704,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -718,7 +664,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerProfileAudiences"></a>
 # **updateCustomerProfileAudiences**
-> updateCustomerProfileAudiences(body)
+> updateCustomerProfileAudiences(customerProfileAudienceRequest)
 
 Update a Customer Profile Audiences
 
@@ -737,18 +683,16 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
-    // Configure API key authorization: api_key_v1
-    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-    api_key_v1.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //api_key_v1.setApiKeyPrefix("Token");
+    // Configure HTTP bearer authorization: manager_auth
+    HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setBearerToken("BEARER TOKEN");
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    CustomerProfileAudienceRequest body = new CustomerProfileAudienceRequest(); // CustomerProfileAudienceRequest | 
+    CustomerProfileAudienceRequest customerProfileAudienceRequest = new CustomerProfileAudienceRequest(); // CustomerProfileAudienceRequest | 
     try {
-      apiInstance.updateCustomerProfileAudiences(body);
+      apiInstance.updateCustomerProfileAudiences(customerProfileAudienceRequest);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerProfileAudiences");
       System.err.println("Status code: " + e.getCode());
@@ -764,7 +708,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CustomerProfileAudienceRequest**](CustomerProfileAudienceRequest.md)|  |
+ **customerProfileAudienceRequest** | [**CustomerProfileAudienceRequest**](CustomerProfileAudienceRequest.md)|  |
 
 ### Return type
 
@@ -772,7 +716,7 @@ null (empty response body)
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1)
+[manager_auth](../README.md#manager_auth)
 
 ### HTTP request headers
 
@@ -786,11 +730,11 @@ null (empty response body)
 
 <a name="updateCustomerProfileV2"></a>
 # **updateCustomerProfileV2**
-> IntegrationStateV2 updateCustomerProfileV2(integrationId, body, runRuleEngine, dry)
+> IntegrationStateV2 updateCustomerProfileV2(integrationId, customerProfileIntegrationRequestV2, runRuleEngine, dry)
 
 Update a Customer Profile
 
-Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
+Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#/customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
 
 ### Example
 ```java
@@ -805,7 +749,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -815,11 +759,11 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String integrationId = "integrationId_example"; // String | The custom identifier for this profile. Must be unique within the account.
-    CustomerProfileIntegrationRequestV2 body = new CustomerProfileIntegrationRequestV2(); // CustomerProfileIntegrationRequestV2 | 
+    CustomerProfileIntegrationRequestV2 customerProfileIntegrationRequestV2 = new CustomerProfileIntegrationRequestV2(); // CustomerProfileIntegrationRequestV2 | 
     Boolean runRuleEngine = false; // Boolean | Indicates whether to run the rule engine.
     Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`. Only used when `runRuleEngine` is set to `true`. 
     try {
-      IntegrationStateV2 result = apiInstance.updateCustomerProfileV2(integrationId, body, runRuleEngine, dry);
+      IntegrationStateV2 result = apiInstance.updateCustomerProfileV2(integrationId, customerProfileIntegrationRequestV2, runRuleEngine, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerProfileV2");
@@ -837,7 +781,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The custom identifier for this profile. Must be unique within the account. |
- **body** | [**CustomerProfileIntegrationRequestV2**](CustomerProfileIntegrationRequestV2.md)|  |
+ **customerProfileIntegrationRequestV2** | [**CustomerProfileIntegrationRequestV2**](CustomerProfileIntegrationRequestV2.md)|  |
  **runRuleEngine** | **Boolean**| Indicates whether to run the rule engine. | [optional] [default to false]
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. Only used when &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;.  | [optional]
 
@@ -861,11 +805,11 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerProfilesV2"></a>
 # **updateCustomerProfilesV2**
-> MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(body, silent)
+> MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(multipleCustomerProfileIntegrationRequest, silent)
 
 Update multiple Customer Profiles
 
-Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
+Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#/customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
 
 ### Example
 ```java
@@ -880,7 +824,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -889,10 +833,10 @@ public class Example {
     //api_key_v1.setApiKeyPrefix("Token");
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    MultipleCustomerProfileIntegrationRequest body = new MultipleCustomerProfileIntegrationRequest(); // MultipleCustomerProfileIntegrationRequest | 
+    MultipleCustomerProfileIntegrationRequest multipleCustomerProfileIntegrationRequest = new MultipleCustomerProfileIntegrationRequest(); // MultipleCustomerProfileIntegrationRequest | 
     String silent = "silent_example"; // String | If set to `yes`, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000).
     try {
-      MultipleCustomerProfileIntegrationResponseV2 result = apiInstance.updateCustomerProfilesV2(body, silent);
+      MultipleCustomerProfileIntegrationResponseV2 result = apiInstance.updateCustomerProfilesV2(multipleCustomerProfileIntegrationRequest, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerProfilesV2");
@@ -909,7 +853,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultipleCustomerProfileIntegrationRequest**](MultipleCustomerProfileIntegrationRequest.md)|  |
+ **multipleCustomerProfileIntegrationRequest** | [**MultipleCustomerProfileIntegrationRequest**](MultipleCustomerProfileIntegrationRequest.md)|  |
  **silent** | **String**| If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). | [optional]
 
 ### Return type
@@ -932,11 +876,11 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerSession"></a>
 # **updateCustomerSession**
-> IntegrationState updateCustomerSession(customerSessionId, body, dry)
+> IntegrationState updateCustomerSession(customerSessionId, newCustomerSession, dry)
 
 Update a Customer Session V1
 
-⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
+⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#/customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
 
 ### Example
 ```java
@@ -951,7 +895,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -959,18 +903,12 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //api_key_v1.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: integration_auth
-    ApiKeyAuth integration_auth = (ApiKeyAuth) defaultClient.getAuthentication("integration_auth");
-    integration_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //integration_auth.setApiKeyPrefix("Token");
-
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
-    NewCustomerSession body = new NewCustomerSession(); // NewCustomerSession | 
+    NewCustomerSession newCustomerSession = new NewCustomerSession(); // NewCustomerSession | 
     Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
     try {
-      IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, body, dry);
+      IntegrationState result = apiInstance.updateCustomerSession(customerSessionId, newCustomerSession, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerSession");
@@ -988,7 +926,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
- **body** | [**NewCustomerSession**](NewCustomerSession.md)|  |
+ **newCustomerSession** | [**NewCustomerSession**](NewCustomerSession.md)|  |
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional]
 
 ### Return type
@@ -997,7 +935,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key_v1](../README.md#api_key_v1), [integration_auth](../README.md#integration_auth)
+[api_key_v1](../README.md#api_key_v1)
 
 ### HTTP request headers
 
@@ -1011,11 +949,11 @@ Name | Type | Description  | Notes
 
 <a name="updateCustomerSessionV2"></a>
 # **updateCustomerSessionV2**
-> IntegrationStateV2 updateCustomerSessionV2(customerSessionId, body, dry)
+> IntegrationStateV2 updateCustomerSessionV2(customerSessionId, integrationRequest, dry)
 
 Update a Customer Session
 
-Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
+Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#/customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
 
 ### Example
 ```java
@@ -1030,7 +968,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://docs.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -1040,10 +978,10 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The custom identifier for this session, must be unique within the account.
-    IntegrationRequest body = new IntegrationRequest(); // IntegrationRequest | 
+    IntegrationRequest integrationRequest = new IntegrationRequest(); // IntegrationRequest | 
     Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`.
     try {
-      IntegrationStateV2 result = apiInstance.updateCustomerSessionV2(customerSessionId, body, dry);
+      IntegrationStateV2 result = apiInstance.updateCustomerSessionV2(customerSessionId, integrationRequest, dry);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#updateCustomerSessionV2");
@@ -1061,7 +999,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customerSessionId** | **String**| The custom identifier for this session, must be unique within the account. |
- **body** | [**IntegrationRequest**](IntegrationRequest.md)|  |
+ **integrationRequest** | [**IntegrationRequest**](IntegrationRequest.md)|  |
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. | [optional]
 
 ### Return type

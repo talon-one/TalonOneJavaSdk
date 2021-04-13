@@ -2,7 +2,6 @@
 
 # Export
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 **accountId** | **Integer** | The ID of the account that owns this entity. | 
 **userId** | **Integer** | The ID of the account that owns this entity. | 
 **entity** | [**EntityEnum**](#EntityEnum) | The name of the entity that was exported. | 
-**filter** | [**Object**](.md) | Map of keys and values that were used to filter the exported rows | 
+**filter** | **Map&lt;String, Object&gt;** | Map of keys and values that were used to filter the exported rows | 
 
 
 

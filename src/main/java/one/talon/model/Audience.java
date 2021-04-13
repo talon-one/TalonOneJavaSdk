@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Audience
  */
-@ApiModel(description = "")
 
 public class Audience {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";

@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * NewSamlConnection
  */
-@ApiModel(description = "")
 
 public class NewSamlConnection {
   public static final String SERIALIZED_NAME_X509CERTIFICATE = "x509certificate";

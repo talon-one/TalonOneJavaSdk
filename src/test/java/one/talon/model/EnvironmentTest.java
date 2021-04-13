@@ -108,6 +108,14 @@ public class EnvironmentTest {
     }
 
     /**
+     * Test the property 'variables'
+     */
+    @Test
+    public void variablesTest() {
+        // TODO: test variables
+    }
+
+    /**
      * Test the property 'loyaltyPrograms'
      */
     @Test
@@ -137,14 +145,6 @@ public class EnvironmentTest {
     @Test
     public void audiencesTest() {
         // TODO: test audiences
-    }
-
-    /**
-     * Test the property 'variables'
-     */
-    @Test
-    public void variablesTest() {
-        // TODO: test variables
     }
 
 }

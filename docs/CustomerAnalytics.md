@@ -2,7 +2,6 @@
 
 # CustomerAnalytics
 
-
 ## Properties
 
 Name | Type | Description | Notes

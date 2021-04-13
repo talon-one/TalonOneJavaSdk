@@ -28,9 +28,8 @@ import java.util.List;
 import one.talon.model.TemplateArgDef;
 
 /**
- * 
+ * NewWebhook
  */
-@ApiModel(description = "")
 
 public class NewWebhook {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";

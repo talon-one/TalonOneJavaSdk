@@ -2,7 +2,6 @@
 
 # Environment
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -14,11 +13,11 @@ Name | Type | Description | Notes
 **functions** | [**List&lt;FunctionDef&gt;**](FunctionDef.md) | The functions defined for this application. | 
 **templates** | [**List&lt;TemplateDef&gt;**](TemplateDef.md) | The templates defined for this application. | 
 **giveawaysPools** | [**List&lt;GiveawaysPool&gt;**](GiveawaysPool.md) | The giveaways pools that the application is subscribed to. |  [optional]
+**variables** | **String** |  | 
 **loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | The loyalty programs that the application is subscribed to. |  [optional]
 **attributes** | [**List&lt;Attribute&gt;**](Attribute.md) | The attributes that the application is subscribed to. |  [optional]
 **additionalCosts** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) | The additional costs that the application is subscribed to. |  [optional]
 **audiences** | [**List&lt;Audience&gt;**](Audience.md) | The audiences contained in the account which the application belongs to. |  [optional]
-**variables** | **String** |  | 
 
 
 

@@ -27,9 +27,8 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * LoyaltyTier
  */
-@ApiModel(description = "")
 
 public class LoyaltyTier {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -150,7 +149,7 @@ public class LoyaltyTier {
    /**
    * The minimum amount of points required to be eligible for the tier
    * minimum: 0
-   * maximum: 1E+8
+   * maximum: 100000000
    * @return minPoints
   **/
   @ApiModelProperty(required = true, value = "The minimum amount of points required to be eligible for the tier")

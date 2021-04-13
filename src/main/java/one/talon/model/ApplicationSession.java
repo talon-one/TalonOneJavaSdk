@@ -32,9 +32,8 @@ import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationSession
  */
-@ApiModel(description = "")
 
 public class ApplicationSession {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -136,7 +135,7 @@ public class ApplicationSession {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
+  private Map<String, Object> attributes = null;
 
 
   public ApplicationSession id(Integer id) {
@@ -415,9 +414,17 @@ public class ApplicationSession {
   }
 
 
-  public ApplicationSession attributes(Object attributes) {
+  public ApplicationSession attributes(Map<String, Object> attributes) {
     
     this.attributes = attributes;
+    return this;
+  }
+
+  public ApplicationSession putAttributesItem(String key, Object attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<String, Object>();
+    }
+    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -428,12 +435,12 @@ public class ApplicationSession {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Object getAttributes() {
+  public Map<String, Object> getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Object attributes) {
+  public void setAttributes(Map<String, Object> attributes) {
     this.attributes = attributes;
   }
 

@@ -2,7 +2,6 @@
 
 # UpdateCustomEffect
 
-
 ## Properties
 
 Name | Type | Description | Notes

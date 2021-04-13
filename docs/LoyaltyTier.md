@@ -2,7 +2,6 @@
 
 # LoyaltyTier
 
-
 ## Properties
 
 Name | Type | Description | Notes

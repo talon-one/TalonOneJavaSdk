@@ -2,7 +2,6 @@
 
 # Effect
 
-
 ## Properties
 
 Name | Type | Description | Notes

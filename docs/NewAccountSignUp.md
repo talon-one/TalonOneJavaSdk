@@ -2,7 +2,6 @@
 
 # NewAccountSignUp
 
-
 ## Properties
 
 Name | Type | Description | Notes

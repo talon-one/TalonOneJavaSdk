@@ -106,6 +106,7 @@ public class CouponConstraints {
 
    /**
    * Timestamp at which point the coupon becomes valid.
+   * minimum: 0
    * @return startDate
   **/
   @javax.annotation.Nullable
@@ -129,6 +130,7 @@ public class CouponConstraints {
 
    /**
    * Expiry date of the coupon. Coupon never expires if this is omitted, zero, or negative.
+   * minimum: 0
    * @return expiryDate
   **/
   @javax.annotation.Nullable

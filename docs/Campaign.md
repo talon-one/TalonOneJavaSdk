@@ -2,7 +2,6 @@
 
 # Campaign
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -15,7 +14,7 @@ Name | Type | Description | Notes
 **description** | **String** | A detailed description of the campaign. | 
 **startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Datetime when the campaign will become active. |  [optional]
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Datetime when the campaign will become in-active. |  [optional]
-**attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
+**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this campaign |  [optional]
 **state** | [**StateEnum**](#StateEnum) | A disabled or archived campaign is not evaluated for rules or coupons.  | 
 **activeRulesetId** | **Integer** | ID of Ruleset this campaign applies on customer session evaluation. |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign. | 

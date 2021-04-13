@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * FeatureFlags
  */
-@ApiModel(description = "")
 
 public class FeatureFlags {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
