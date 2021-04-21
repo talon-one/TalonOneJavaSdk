@@ -244,7 +244,7 @@ public class TalonApiTest {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://docs.talon.one*
+All URIs are relative to *http://your_domain.your_region.talon.one*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,6 @@
 # IntegrationApi
 
-All URIs are relative to *http://docs.talon.one*
+All URIs are relative to *http://your_domain.your_region.talon.one*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -41,7 +41,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -112,7 +112,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -181,7 +181,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -253,7 +253,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -323,7 +323,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -391,7 +391,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -470,7 +470,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -539,7 +539,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -610,7 +610,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -683,7 +683,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -749,7 +749,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -824,7 +824,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -895,7 +895,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
@@ -968,7 +968,7 @@ import one.talon.api.IntegrationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure API key authorization: api_key_v1
     ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");

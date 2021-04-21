@@ -1,6 +1,6 @@
 # ManagementApi
 
-All URIs are relative to *http://docs.talon.one*
+All URIs are relative to *http://your_domain.your_region.talon.one*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -117,7 +117,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -187,7 +187,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -258,7 +258,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -325,7 +325,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -390,7 +390,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -459,7 +459,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -533,7 +533,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -607,7 +607,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -672,7 +672,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -742,7 +742,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     LoginParams loginParams = new LoginParams(); // LoginParams | 
@@ -803,7 +803,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -868,7 +868,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -932,7 +932,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1024,7 +1024,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1092,7 +1092,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1162,7 +1162,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1255,7 +1255,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1332,7 +1332,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1407,7 +1407,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1474,7 +1474,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1547,7 +1547,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1628,7 +1628,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1711,7 +1711,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1778,7 +1778,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1845,7 +1845,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1912,7 +1912,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -1983,7 +1983,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2061,7 +2061,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
@@ -2120,7 +2120,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2185,7 +2185,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2250,7 +2250,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2317,7 +2317,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2392,7 +2392,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2459,7 +2459,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2532,7 +2532,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2627,7 +2627,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2720,7 +2720,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2787,7 +2787,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2874,7 +2874,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -2945,7 +2945,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3012,7 +3012,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3085,7 +3085,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3156,7 +3156,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3223,7 +3223,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3298,7 +3298,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3373,7 +3373,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3458,7 +3458,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3541,7 +3541,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3642,7 +3642,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3737,7 +3737,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3830,7 +3830,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -3923,7 +3923,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4000,7 +4000,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4085,7 +4085,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4170,7 +4170,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4243,7 +4243,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4308,7 +4308,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4377,7 +4377,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4448,7 +4448,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4525,7 +4525,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4600,7 +4600,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4669,7 +4669,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4736,7 +4736,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4797,7 +4797,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4862,7 +4862,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -4947,7 +4947,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5031,7 +5031,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer roleId = 56; // Integer | 
@@ -5094,7 +5094,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5165,7 +5165,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5240,7 +5240,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5307,7 +5307,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5378,7 +5378,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5445,7 +5445,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5526,7 +5526,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5609,7 +5609,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -5681,7 +5681,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -5747,7 +5747,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer programID = 56; // Integer | 
@@ -5811,7 +5811,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer poolId = 56; // Integer | 
@@ -5875,7 +5875,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -5940,7 +5940,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6010,7 +6010,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6077,7 +6077,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6172,7 +6172,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6267,7 +6267,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6362,7 +6362,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6457,7 +6457,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6526,7 +6526,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6593,7 +6593,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6662,7 +6662,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6733,7 +6733,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");
@@ -6800,7 +6800,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
@@ -6869,7 +6869,7 @@ import one.talon.api.ManagementApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://docs.talon.one");
+    defaultClient.setBasePath("http://your_domain.your_region.talon.one");
     
     // Configure HTTP bearer authorization: manager_auth
     HttpBearerAuth manager_auth = (HttpBearerAuth) defaultClient.getAuthentication("manager_auth");

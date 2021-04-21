@@ -14,7 +14,7 @@ info:
   title: Talon.One API
   version: 1.0.0
 servers:
-- url: docs.talon.one
+- url: your_domain.your_region.talon.one
 tags:
 - description: |
     Use the Integration API to push data into the Talon.One platform.
