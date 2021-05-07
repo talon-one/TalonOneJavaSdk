@@ -14,28 +14,17 @@
 package one.talon.api;
 
 import one.talon.ApiException;
-import one.talon.model.Coupon;
-import one.talon.model.CouponReservations;
-import one.talon.model.CustomerInventory;
-import one.talon.model.CustomerProfileAudienceRequest;
-import one.talon.model.CustomerProfileIntegrationRequestV2;
-import one.talon.model.InlineResponse200;
-import one.talon.model.InlineResponse201;
-import one.talon.model.IntegrationRequest;
-import one.talon.model.IntegrationState;
-import one.talon.model.IntegrationStateV2;
-import one.talon.model.MultipleCustomerProfileIntegrationRequest;
-import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
-import one.talon.model.NewCustomerProfile;
-import one.talon.model.NewCustomerSession;
-import one.talon.model.NewEvent;
-import one.talon.model.NewReferral;
-import one.talon.model.NewReferralsForMultipleAdvocates;
-import one.talon.model.Referral;
+import one.talon.ApiClient;
+import one.talon.model.*;
 import org.junit.Test;
+import org.junit.Assert;
 import org.junit.Ignore;
+import com.google.gson.Gson;
+import org.hamcrest.core.*;
+import org.hamcrest.MatcherAssert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,10 +32,28 @@ import java.util.Map;
 /**
  * API tests for IntegrationApi
  */
-@Ignore
 public class IntegrationApiTest {
 
-    private final IntegrationApi api = new IntegrationApi();
+    private IntegrationApi api = new IntegrationApi();
+    private final Gson gson = new Gson();
+
+    public IntegrationApi initAPI() {
+        api = new IntegrationApi(new ApiClient("api_key_v1"));
+        // api = new IntegrationApi(new ApiClient("integration_auth"));
+        
+        
+        // // Setup: basePath, apiKeyPrefix and apiKey
+        api.getApiClient().setBasePath("http://host.docker.internal:9000");
+        // // 👇 If needed - prints more stuff about the requests/responses
+        api.getApiClient().setApiKeyPrefix("ApiKey-v1");
+        api.getApiClient().setApiKey("f10e9ee8463785b1aa0f40fa64bfed336253bddf2f3b55d76cb65055e638fdc9");
+        // api.getApiClient().setApiKey("c972ae569cb45e71d68e0738723de9becd39c677d365eb5e635a5f338ea96e75");
+        // api.getApiClient().setDebugging(true);
+        // api.getApiClient().setApplicationId("1");
+        // api.getApiClient().setApplicationKey("fee29ed73f67db39");
+        
+        return api;
+    }
 
     
     /**
@@ -142,13 +149,23 @@ public class IntegrationApiTest {
      */
     @Test
     public void getCustomerInventoryTest() throws ApiException {
-        String integrationId = null;
-        Boolean profile = null;
-        Boolean referrals = null;
-        Boolean coupons = null;
-        Boolean loyalty = null;
-        Boolean giveaways = null;
-        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons, loyalty, giveaways);
+        initAPI();
+        
+        try {
+            // Integration API example to send a session update
+            String integrationId = "example_prof_id";
+            Boolean profile = true;
+            Boolean referrals = false;
+            Boolean coupons = true;
+            Boolean loyalty = false;
+            Boolean giveaways = null;
+            CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons, loyalty, giveaways);
+            
+            System.out.println(response.toString());
+        } catch (ApiException e) {
+            System.out.println("WOOp");
+            System.out.println(e);
+        }
 
         // TODO: test validations
     }
@@ -230,13 +247,26 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateCustomerProfileV2Test() throws ApiException {
-        String integrationId = null;
-        CustomerProfileIntegrationRequestV2 customerProfileIntegrationRequestV2 = null;
-        Boolean runRuleEngine = null;
-        Boolean dry = null;
-        IntegrationStateV2 response = api.updateCustomerProfileV2(integrationId, customerProfileIntegrationRequestV2, runRuleEngine, dry);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            String integrationId = "NOT_null_lol_not_DRY";
+            Object attributes = gson.fromJson("{'Name': 'test'}", Object.class);
+            CustomerProfileIntegrationRequestV2 body = new CustomerProfileIntegrationRequestV2().
+                attributes(attributes).
+                responseContent(Arrays.asList(
+                    CustomerProfileIntegrationRequestV2.ResponseContentEnum.CUSTOMERPROFILE,
+                    CustomerProfileIntegrationRequestV2.ResponseContentEnum.LOYALTY
+                ));
+            Boolean runRuleEngine = true;
+            Boolean dry = false;
+            IntegrationStateV2 response = api.updateCustomerProfileV2(integrationId, body, runRuleEngine, dry);
+
+            System.out.println(response.toString());
+         } catch (ApiException e) {
+            System.out.println("WOOp");
+            System.out.println(e.toString());
+         }
     }
     
     /**
@@ -266,12 +296,22 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateCustomerSessionTest() throws ApiException {
-        String customerSessionId = null;
-        NewCustomerSession newCustomerSession = null;
-        Boolean dry = null;
-        IntegrationState response = api.updateCustomerSession(customerSessionId, newCustomerSession, dry);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            // Integration API example to send a session update
+            NewCustomerSession customerSession = new NewCustomerSession();
+            customerSession.setProfileId("Cool_Dude");
+            customerSession.setState(NewCustomerSession.StateEnum.OPEN);
+            customerSession.setTotal(new java.math.BigDecimal("47.0"));
+
+            // Create/update a customer session using `updateCustomerSession` function
+            IntegrationState ie = api.updateCustomerSession("deetdoot", customerSession, false);
+            System.out.println(ie.toString());
+        } catch (ApiException e) {
+            System.out.println("WOOp");
+            System.out.println(e);
+        }
     }
     
     /**
@@ -284,12 +324,64 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateCustomerSessionV2Test() throws ApiException {
-        String customerSessionId = null;
-        IntegrationRequest integrationRequest = null;
-        Boolean dry = null;
-        IntegrationStateV2 response = api.updateCustomerSessionV2(customerSessionId, integrationRequest, dry);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            // Creating a cart item object
+            CartItem cartItem = new CartItem();
+            cartItem.setName("Hawaiian Pizza");
+            cartItem.setSku("pizza-x");
+            cartItem.setQuantity(1);
+            cartItem.setPrice(new java.math.BigDecimal("5.5"));
+
+            // Creating a customer session of V2
+            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
+            customerSession.setProfileId("Cool_Dude");
+            customerSession.addCouponCodesItem("testing_test");
+            customerSession.addCartItemsItem(cartItem);
+
+            // Initiating integration request wrapping the customer session update
+            IntegrationRequest request = new IntegrationRequest()
+                .customerSession(customerSession)
+                // Optional parameter of requested information to be present on the response related to the customer session update
+                .responseContent(Arrays.asList(
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
+                ));
+
+            // Create/update a customer session using `updateCustomerSessionV2` function
+            IntegrationStateV2 is = api.updateCustomerSessionV2("deetdoot", request, true);
+            System.out.println(is.toString());
+
+            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
+            for (Effect eff : is.getEffects()) {
+                if (eff.getEffectType().equals("addLoyaltyPoints")) {
+                    // Typecasting according to the effect type
+                    AddLoyaltyPointsEffectProps props = (AddLoyaltyPointsEffectProps) eff.getProps();
+                    // Access the specific effect's properties
+                    System.out.println(props.getName());
+                    System.out.println(props.getProgramId());
+                    System.out.println(props.getValue());
+                }
+                if (eff.getEffectType().equals("rejectCoupon")) {
+                    System.out.println("YAAAAA");
+                    // Typecasting according to the effect type
+                    RejectCouponEffectProps props = gson.fromJson(gson.toJson(eff.getProps()), RejectCouponEffectProps.class);
+                    MatcherAssert.assertThat(props, IsInstanceOf.instanceOf(RejectCouponEffectProps.class));
+                    // RejectCouponEffectProps props = (RejectCouponEffectProps) eff.getProps();
+                    // Access the specific effect's properties
+                    System.out.println(props.getValue());
+                    System.out.println(props.getRejectionReason());
+                    Assert.assertEquals(props.getValue(), "testing_test");
+                    Assert.assertEquals(props.getRejectionReason(), "CouponPartOfNotRunningCampaign");
+                }
+            }
+
+            Assert.assertTrue( true );
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
     
 }

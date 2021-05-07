@@ -1,0 +1,9 @@
+# docker interactive with maven
+docker run -it --rm --network host -v $PWD:/t1 -w /t1 maven:3.5.2-jdk-9-slim /bin/bash
+
+# test a single test class
+mvn -Dtest=IntegrationApiTest test 
+
+# test a specific method inside a test class
+mvn -Dtest=IntegrationApiTest#updateCustomerSessionV2Test test 
+mvn -Dtest=ManagementApiTest#getApplicationTest test 

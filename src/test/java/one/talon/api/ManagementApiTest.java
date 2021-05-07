@@ -14,82 +14,18 @@
 package one.talon.api;
 
 import one.talon.ApiException;
-import one.talon.model.Account;
-import one.talon.model.AccountAdditionalCost;
-import one.talon.model.AccountAnalytics;
-import one.talon.model.Application;
-import one.talon.model.ApplicationApiHealth;
-import one.talon.model.ApplicationCustomer;
-import one.talon.model.ApplicationCustomerSearch;
-import one.talon.model.ApplicationSession;
-import one.talon.model.Attribute;
+import one.talon.ApiClient;
+import one.talon.model.*;
 import java.math.BigDecimal;
-import one.talon.model.Campaign;
-import one.talon.model.CampaignCopy;
-import one.talon.model.CampaignSearch;
-import one.talon.model.Coupon;
-import one.talon.model.CouponSearch;
-import one.talon.model.CustomerActivityReport;
-import one.talon.model.CustomerAnalytics;
-import one.talon.model.InlineResponse2001;
-import one.talon.model.InlineResponse20010;
-import one.talon.model.InlineResponse20011;
-import one.talon.model.InlineResponse20012;
-import one.talon.model.InlineResponse20013;
-import one.talon.model.InlineResponse20014;
-import one.talon.model.InlineResponse20015;
-import one.talon.model.InlineResponse20016;
-import one.talon.model.InlineResponse20017;
-import one.talon.model.InlineResponse20018;
-import one.talon.model.InlineResponse20019;
-import one.talon.model.InlineResponse2002;
-import one.talon.model.InlineResponse20020;
-import one.talon.model.InlineResponse20021;
-import one.talon.model.InlineResponse20022;
-import one.talon.model.InlineResponse20023;
-import one.talon.model.InlineResponse20024;
-import one.talon.model.InlineResponse20025;
-import one.talon.model.InlineResponse20026;
-import one.talon.model.InlineResponse20027;
-import one.talon.model.InlineResponse20028;
-import one.talon.model.InlineResponse20029;
-import one.talon.model.InlineResponse2003;
-import one.talon.model.InlineResponse2004;
-import one.talon.model.InlineResponse2005;
-import one.talon.model.InlineResponse2006;
-import one.talon.model.InlineResponse2007;
-import one.talon.model.InlineResponse2008;
-import one.talon.model.InlineResponse2009;
-import one.talon.model.InlineResponse201;
-import one.talon.model.LoginParams;
-import one.talon.model.LoyaltyLedger;
-import one.talon.model.LoyaltyPoints;
-import one.talon.model.LoyaltyProgram;
-import one.talon.model.LoyaltyStatistics;
-import one.talon.model.ModelImport;
-import one.talon.model.NewAdditionalCost;
-import one.talon.model.NewAttribute;
-import one.talon.model.NewCampaign;
-import one.talon.model.NewCoupons;
-import one.talon.model.NewCouponsForMultipleRecipients;
-import one.talon.model.NewPassword;
-import one.talon.model.NewPasswordEmail;
-import one.talon.model.NewRuleset;
+import java.io.File;
+import java.nio.file.Files;
 import org.threeten.bp.OffsetDateTime;
-import one.talon.model.Referral;
-import one.talon.model.Role;
-import one.talon.model.Ruleset;
-import one.talon.model.Session;
-import one.talon.model.UpdateCampaign;
-import one.talon.model.UpdateCoupon;
-import one.talon.model.UpdateCouponBatch;
-import one.talon.model.UpdateReferral;
-import one.talon.model.User;
-import one.talon.model.Webhook;
 import org.junit.Test;
+import org.junit.Assert;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,11 +33,33 @@ import java.util.Map;
 /**
  * API tests for ManagementApi
  */
-@Ignore
 public class ManagementApiTest {
 
-    private final ManagementApi api = new ManagementApi();
+    private ManagementApi api = new ManagementApi();
 
+    public ManagementApi initAPI() {
+        // Management API example to load application with id 7
+        api = new ManagementApi(new ApiClient("manager_auth"));
+
+        // Setup: basePath and bearer prefix
+        api.getApiClient().setBasePath("http://host.docker.internal:9000");
+        api.getApiClient().setApiKeyPrefix("Bearer");
+        
+        LoginParams lp = new LoginParams();
+        lp.setEmail("demo@talon.one");
+        lp.setPassword("Demo1234");
+
+        try {
+            // Acquire session token
+            Session s = api.createSession(lp);
+            api.getApiClient().setApiKey(s.getToken());
+        } catch (Exception e) {
+            Assert.fail(e.toString());
+        }
+
+
+        return api;
+    }
     
     /**
      * Add points in a loyalty program for the specified customer
@@ -113,12 +71,15 @@ public class ManagementApiTest {
      */
     @Test
     public void addLoyaltyPointsTest() throws ApiException {
-        Integer programID = null;
-        String integrationID = null;
-        LoyaltyPoints loyaltyPoints = null;
-        api.addLoyaltyPoints(programID, integrationID, loyaltyPoints);
+        initAPI();
 
-        // TODO: test validations
+        String programID = "1";
+        String integrationID = "Cool_Dude";
+        LoyaltyPoints body = new LoyaltyPoints()
+            .name("Some points with validity limitation")
+            .points(new java.math.BigDecimal("42.42"))
+            .validityDuration("48h"); // 2 days expiration limit
+        api.addLoyaltyPoints(programID, integrationID, body);
     }
     
     /**
@@ -198,13 +159,26 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        NewCoupons newCoupons = null;
-        String silent = null;
-        InlineResponse2004 response = api.createCoupons(applicationId, campaignId, newCoupons, silent);
+       initAPI();
 
-        // TODO: test validations
+        try {
+            Integer applicationId = 1;
+            Integer campaignId = 1;
+            NewCoupons body = new NewCoupons().
+                validCharacters(Arrays.asList("A","D","C")).
+                discountLimit(new java.math.BigDecimal("12.34")).
+                numberOfCoupons(1).
+                recipientIntegrationId("Cool_Dude").
+                usageLimit(0).
+                couponPattern("##-###");
+            String silent = "false";
+            InlineResponse2004 response = api.createCoupons(applicationId, campaignId, body, silent);
+            
+            System.out.println(response.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }
     
     /**
@@ -217,13 +191,23 @@ public class ManagementApiTest {
      */
     @Test
     public void createCouponsForMultipleRecipientsTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        NewCouponsForMultipleRecipients newCouponsForMultipleRecipients = null;
-        String silent = null;
-        InlineResponse2004 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, newCouponsForMultipleRecipients, silent);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            Integer applicationId = 1;
+            Integer campaignId = 1;
+            NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients().
+                validCharacters(Arrays.asList("A","D","C")).
+                discountLimit(new java.math.BigDecimal("120.305")).
+                usageLimit(1).
+                recipientsIntegrationIds(Arrays.asList("Cool_Dude", "Who_am_I")).
+                couponPattern("##-##-#");
+            String silent = "false";
+            InlineResponse2004 response = api.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+            System.out.println(response.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     /**
@@ -457,30 +441,16 @@ public class ManagementApiTest {
      */
     @Test
     public void exportLoyaltyBalanceTest() throws ApiException {
-        String programID = null;
-        String response = api.exportLoyaltyBalance(programID);
+        initAPI();
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Export a customer&#39;s loyalty ledger log to a CSV file
-     *
-     * Download a file with a customer&#39;s ledger log in the loyalty program
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void exportLoyaltyLedgerTest() throws ApiException {
-        OffsetDateTime rangeStart = null;
-        OffsetDateTime rangeEnd = null;
-        String programID = null;
-        String integrationID = null;
-        String dateFormat = null;
-        String response = api.exportLoyaltyLedger(rangeStart, rangeEnd, programID, integrationID, dateFormat);
-
-        // TODO: test validations
+        try {
+            String programID = "1";
+            String response = api.exportLoyaltyBalance(programID);
+            System.out.println(response);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
     }
     
     /**
@@ -645,10 +615,16 @@ public class ManagementApiTest {
      */
     @Test
     public void getApplicationTest() throws ApiException {
-        Integer applicationId = null;
-        Application response = api.getApplication(applicationId);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            // Calling `getApplication` function with the desired id (7)
+            Integer applicationId = 1;
+            Application application = api.getApplication(applicationId);
+            System.out.println(application.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     /**
@@ -924,11 +900,17 @@ public class ManagementApiTest {
      */
     @Test
     public void getCampaignTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        Campaign response = api.getCampaign(applicationId, campaignId);
+        initAPI();
 
-        // TODO: test validations
+        try {
+            // Calling `getApplication` function with the desired id (7)
+            Integer applicationId = 1;
+            Integer campaignId = 179;
+            Campaign response = api.getCampaign(applicationId, campaignId);
+            System.out.println(response.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     /**
@@ -1625,12 +1607,14 @@ public class ManagementApiTest {
      */
     @Test
     public void importCouponsTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        String upfile = null;
-        ModelImport response = api.importCoupons(applicationId, campaignId, upfile);
+        initAPI();
 
-        // TODO: test validations
+        Integer applicationId = 1;
+        Integer campaignId = 184;
+        File upFile = new File("coupons.csv");
+        ModelImport response = api.importCoupons(applicationId, campaignId, upFile);
+
+        System.out.println(response);
     }
     
     /**
