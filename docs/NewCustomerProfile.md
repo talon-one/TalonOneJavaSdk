@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 
 
 

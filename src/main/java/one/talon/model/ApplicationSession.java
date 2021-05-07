@@ -135,7 +135,7 @@ public class ApplicationSession {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
 
   public ApplicationSession id(Integer id) {
@@ -414,17 +414,9 @@ public class ApplicationSession {
   }
 
 
-  public ApplicationSession attributes(Map<String, Object> attributes) {
+  public ApplicationSession attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public ApplicationSession putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -435,12 +427,12 @@ public class ApplicationSession {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

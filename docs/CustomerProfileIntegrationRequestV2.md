@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 **audiencesChanges** | [**ProfileAudiencesChanges**](.md) |  |  [optional]
 **responseContent** | [**List&lt;ResponseContentEnum&gt;**](#List&lt;ResponseContentEnum&gt;) | Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \&quot;customerProfile\&quot;, \&quot;triggeredCampaigns\&quot;, \&quot;loyalty\&quot;, \&quot;event\&quot;, \&quot;awardedGiveaways\&quot;, \&quot;ruleFailureReasons\&quot;.  |  [optional]
 

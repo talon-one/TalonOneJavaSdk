@@ -114,7 +114,7 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
 
   public NewCustomerSessionV2 profileId(String profileId) {
@@ -310,17 +310,9 @@ public class NewCustomerSessionV2 {
   }
 
 
-  public NewCustomerSessionV2 attributes(Map<String, Object> attributes) {
+  public NewCustomerSessionV2 attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public NewCustomerSessionV2 putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -331,12 +323,12 @@ public class NewCustomerSessionV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. ")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

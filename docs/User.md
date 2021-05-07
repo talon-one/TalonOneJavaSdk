@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **policy** | [**Object**](.md) | User ACL Policy | 
 **latestFeedTimestamp** | [**OffsetDateTime**](OffsetDateTime.md) | Latest timestamp the user has been notified for feed. |  [optional]
 **roles** | **List&lt;Integer&gt;** | Contains a list of all roles the user is a member of |  [optional]
-**applicationNotificationSubscriptions** | **Map&lt;String, Object&gt;** |  |  [optional]
+**applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 **authMethod** | **String** | The Authentication method for this user |  [optional]
 
 

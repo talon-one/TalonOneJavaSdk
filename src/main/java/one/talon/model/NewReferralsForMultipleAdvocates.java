@@ -24,9 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -56,7 +54,7 @@ public class NewReferralsForMultipleAdvocates {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
   public static final String SERIALIZED_NAME_VALID_CHARACTERS = "validCharacters";
   @SerializedName(SERIALIZED_NAME_VALID_CHARACTERS)
@@ -188,17 +186,9 @@ public class NewReferralsForMultipleAdvocates {
   }
 
 
-  public NewReferralsForMultipleAdvocates attributes(Map<String, Object> attributes) {
+  public NewReferralsForMultipleAdvocates attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public NewReferralsForMultipleAdvocates putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -209,12 +199,12 @@ public class NewReferralsForMultipleAdvocates {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

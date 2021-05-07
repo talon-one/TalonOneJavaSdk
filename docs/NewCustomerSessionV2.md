@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | All items the customer will be purchasing in this session |  [optional]
 **additionalCosts** | [**Map&lt;String, AdditionalCost&gt;**](AdditionalCost.md) | Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees. |  [optional]
 **identifiers** | **List&lt;String&gt;** | Identifiers for the customer, this can be used for limits on values such as device ID. |  [optional]
-**attributes** | **Map&lt;String, Object&gt;** | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  |  [optional]
+**attributes** | [**Object**](.md) | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  |  [optional]
 
 
 

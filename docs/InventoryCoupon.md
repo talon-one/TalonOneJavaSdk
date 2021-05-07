@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **usageCounter** | **Integer** | The number of times this coupon has been successfully used. | 
 **discountCounter** | [**BigDecimal**](BigDecimal.md) | The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon. |  [optional]
 **discountRemainder** | [**BigDecimal**](BigDecimal.md) | The remaining discount this coupon can give. |  [optional]
-**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 **referralId** | **Integer** | The integration ID of the referring customer (if any) for whom this coupon was created as an effect. |  [optional]
 **recipientIntegrationId** | **String** | The Integration ID of the customer that is allowed to redeem this coupon. |  [optional]
 **importId** | **Integer** | The ID of the Import which created this coupon. |  [optional]

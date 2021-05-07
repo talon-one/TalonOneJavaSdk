@@ -24,9 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -80,7 +77,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
@@ -364,17 +361,9 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon attributes(Map<String, Object> attributes) {
+  public InventoryCoupon attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public InventoryCoupon putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -385,12 +374,12 @@ public class InventoryCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

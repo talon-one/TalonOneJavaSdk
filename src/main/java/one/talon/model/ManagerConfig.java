@@ -23,14 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * ManagerConfig
  */
 
-public class ManagerConfig extends HashMap<String, Object> {
+public class ManagerConfig {
   public static final String SERIALIZED_NAME_SCHEMA_VERSION = "schemaVersion";
   @SerializedName(SERIALIZED_NAME_SCHEMA_VERSION)
   private Integer schemaVersion;
@@ -67,13 +65,12 @@ public class ManagerConfig extends HashMap<String, Object> {
       return false;
     }
     ManagerConfig managerConfig = (ManagerConfig) o;
-    return Objects.equals(this.schemaVersion, managerConfig.schemaVersion) &&
-        super.equals(o);
+    return Objects.equals(this.schemaVersion, managerConfig.schemaVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(schemaVersion, super.hashCode());
+    return Objects.hash(schemaVersion);
   }
 
 
@@ -81,7 +78,6 @@ public class ManagerConfig extends HashMap<String, Object> {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ManagerConfig {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    schemaVersion: ").append(toIndentedString(schemaVersion)).append("\n");
     sb.append("}");
     return sb.toString();

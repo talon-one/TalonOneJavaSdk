@@ -124,7 +124,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer programID = 56; // Integer | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     String integrationID = "integrationID_example"; // String | 
     LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
     try {
@@ -144,7 +144,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **Integer**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
  **integrationID** | **String**|  |
  **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
@@ -1414,7 +1414,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    String programID = "programID_example"; // String | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     try {
       String result = apiInstance.exportLoyaltyBalance(programID);
       System.out.println(result);
@@ -1433,7 +1433,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **String**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
 
 ### Return type
 
@@ -1455,7 +1455,7 @@ Name | Type | Description  | Notes
 
 <a name="exportLoyaltyLedger"></a>
 # **exportLoyaltyLedger**
-> String exportLoyaltyLedger(rangeStart, rangeEnd, programID, integrationID, dateFormat)
+> String exportLoyaltyLedger(programID, integrationID, rangeStart, rangeEnd, dateFormat)
 
 Export a customer&#39;s loyalty ledger log to a CSV file
 
@@ -1481,13 +1481,13 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
+    String integrationID = "integrationID_example"; // String | 
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp, must be an RFC3339 timestamp string
     OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp, must be an RFC3339 timestamp string
-    String programID = "programID_example"; // String | 
-    String integrationID = "integrationID_example"; // String | 
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
-      String result = apiInstance.exportLoyaltyLedger(rangeStart, rangeEnd, programID, integrationID, dateFormat);
+      String result = apiInstance.exportLoyaltyLedger(programID, integrationID, rangeStart, rangeEnd, dateFormat);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportLoyaltyLedger");
@@ -1504,10 +1504,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
+ **integrationID** | **String**|  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp, must be an RFC3339 timestamp string |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp, must be an RFC3339 timestamp string |
- **programID** | **String**|  |
- **integrationID** | **String**|  |
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
 ### Return type
@@ -4607,7 +4607,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    String programID = "programID_example"; // String | The identifier for the application, must be unique within the account.
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     String integrationID = "integrationID_example"; // String | The identifier for the application, must be unique within the account.
     try {
       LoyaltyLedger result = apiInstance.getLoyaltyPoints(programID, integrationID);
@@ -4627,7 +4627,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **String**| The identifier for the application, must be unique within the account. |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
  **integrationID** | **String**| The identifier for the application, must be unique within the account. |
 
 ### Return type
@@ -4676,7 +4676,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer programID = 56; // Integer | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     try {
       LoyaltyProgram result = apiInstance.getLoyaltyProgram(programID);
       System.out.println(result);
@@ -4695,7 +4695,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **Integer**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
 
 ### Return type
 
@@ -4804,7 +4804,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    String programID = "programID_example"; // String | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     try {
       LoyaltyStatistics result = apiInstance.getLoyaltyStatistics(programID);
       System.out.println(result);
@@ -4823,7 +4823,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **String**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
 
 ### Return type
 
@@ -5750,7 +5750,7 @@ public class Example {
     defaultClient.setBasePath("http://your_domain.your_region.talon.one");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer programID = 56; // Integer | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     String upFile = "upFile_example"; // String | The file with the information about the loyalty points that should be imported.
     try {
       ModelImport result = apiInstance.importLoyaltyPoints(programID, upFile);
@@ -5770,7 +5770,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **Integer**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
  **upFile** | **String**| The file with the information about the loyalty points that should be imported. | [optional]
 
 ### Return type
@@ -5947,7 +5947,7 @@ public class Example {
     manager_auth.setBearerToken("BEARER TOKEN");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    String programID = "programID_example"; // String | 
+    Integer programID = 56; // Integer | The identifier for the loyalty program, must be unique within the account.
     String integrationID = "integrationID_example"; // String | 
     LoyaltyPoints loyaltyPoints = new LoyaltyPoints(); // LoyaltyPoints | 
     try {
@@ -5967,7 +5967,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **programID** | **String**|  |
+ **programID** | **Integer**| The identifier for the loyalty program, must be unique within the account. |
  **integrationID** | **String**|  |
  **loyaltyPoints** | [**LoyaltyPoints**](LoyaltyPoints.md)|  |
 
@@ -6058,7 +6058,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvanced"></a>
 # **searchCouponsAdvanced**
-> InlineResponse2004 searchCouponsAdvanced(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2004 searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 List coupons that match the given attributes (with total count)
 
@@ -6086,7 +6086,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    Map<String, Object> requestBody = null; // Map<String, Object> | 
+    Object body = null; // Object | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | 
@@ -6100,7 +6100,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2004 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvanced");
@@ -6119,7 +6119,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**|  | [optional]
@@ -6153,7 +6153,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWide"></a>
 # **searchCouponsAdvancedApplicationWide**
-> InlineResponse2004 searchCouponsAdvancedApplicationWide(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2004 searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 List coupons that match the given attributes in all active campaigns of an application (with total count)
 
@@ -6180,7 +6180,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    Map<String, Object> requestBody = null; // Map<String, Object> | 
+    Object body = null; // Object | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | 
@@ -6195,7 +6195,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2004 result = apiInstance.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWide");
@@ -6213,7 +6213,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**|  | [optional]
@@ -6248,7 +6248,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 List coupons that match the given attributes in all active campaigns of an application
 
@@ -6275,7 +6275,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
-    Map<String, Object> requestBody = null; // Map<String, Object> | 
+    Object body = null; // Object | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | 
@@ -6290,7 +6290,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.
     try {
-      InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -6308,7 +6308,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
- **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**|  | [optional]
@@ -6343,7 +6343,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 List coupons that match the given attributes
 
@@ -6371,7 +6371,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | 
     Integer campaignId = 56; // Integer | 
-    Map<String, Object> requestBody = null; // Map<String, Object> | 
+    Object body = null; // Object | 
     Integer pageSize = 56; // Integer | The number of items to include in this response. When omitted, the maximum value of 1000 will be used.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | 
@@ -6385,7 +6385,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2005 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -6404,7 +6404,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**|  |
  **campaignId** | **Integer**|  |
- **requestBody** | [**Map&lt;String, Object&gt;**](Object.md)|  |
+ **body** | **Object**|  |
  **pageSize** | **Integer**| The number of items to include in this response. When omitted, the maximum value of 1000 will be used. | [optional]
  **skip** | **Integer**| Skips the given number of items when paging through large result sets. | [optional]
  **sort** | **String**|  | [optional]

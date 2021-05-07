@@ -23,9 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Effect containing custom payload.
@@ -39,7 +36,7 @@ public class CustomEffectProps {
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
-  private Map<String, Object> payload = new HashMap<String, Object>();
+  private Object payload;
 
 
   public CustomEffectProps type(String type) {
@@ -64,14 +61,9 @@ public class CustomEffectProps {
   }
 
 
-  public CustomEffectProps payload(Map<String, Object> payload) {
+  public CustomEffectProps payload(Object payload) {
     
     this.payload = payload;
-    return this;
-  }
-
-  public CustomEffectProps putPayloadItem(String key, Object payloadItem) {
-    this.payload.put(key, payloadItem);
     return this;
   }
 
@@ -81,12 +73,12 @@ public class CustomEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The JSON payload of the custom effect.")
 
-  public Map<String, Object> getPayload() {
+  public Object getPayload() {
     return payload;
   }
 
 
-  public void setPayload(Map<String, Object> payload) {
+  public void setPayload(Object payload) {
     this.payload = payload;
   }
 

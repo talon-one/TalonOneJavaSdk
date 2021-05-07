@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | Serialized JSON representation. |  [optional]
 **identifiers** | **List&lt;String&gt;** | Identifiers for the customer, this can be used for limits on values such as device ID. |  [optional]
 **total** | [**BigDecimal**](BigDecimal.md) | The total sum of the cart in one session. |  [optional]
-**attributes** | **Map&lt;String, Object&gt;** | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  |  [optional]
+**attributes** | [**Object**](.md) | A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.  |  [optional]
 
 
 

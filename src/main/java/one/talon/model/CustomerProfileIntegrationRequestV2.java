@@ -24,9 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import one.talon.model.ProfileAudiencesChanges;
 
 /**
@@ -36,7 +34,7 @@ import one.talon.model.ProfileAudiencesChanges;
 public class CustomerProfileIntegrationRequestV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
   public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
   @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
@@ -102,17 +100,9 @@ public class CustomerProfileIntegrationRequestV2 {
   private List<ResponseContentEnum> responseContent = null;
 
 
-  public CustomerProfileIntegrationRequestV2 attributes(Map<String, Object> attributes) {
+  public CustomerProfileIntegrationRequestV2 attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public CustomerProfileIntegrationRequestV2 putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -123,12 +113,12 @@ public class CustomerProfileIntegrationRequestV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

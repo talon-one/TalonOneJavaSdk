@@ -3397,7 +3397,9 @@ paths:
       description: Get a loyalty program.
       operationId: getLoyaltyProgram
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
@@ -3423,7 +3425,9 @@ paths:
         created. The file should be sent as multipart data.
       operationId: importLoyaltyPoints
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
@@ -3456,14 +3460,14 @@ paths:
       description: Get the Loyalty Ledger for this profile integration ID.
       operationId: getLoyaltyPoints
       parameters:
-      - description: The identifier for the application, must be unique within the
-          account.
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
         explode: false
         in: path
         name: programID
         required: true
         schema:
-          type: string
+          type: integer
         style: simple
       - description: The identifier for the application, must be unique within the
           account.
@@ -3491,7 +3495,9 @@ paths:
     put:
       operationId: addLoyaltyPoints
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
@@ -3525,12 +3531,14 @@ paths:
     put:
       operationId: removeLoyaltyPoints
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
         schema:
-          type: string
+          type: integer
         style: simple
       - explode: false
         in: path
@@ -3560,6 +3568,22 @@ paths:
       description: Download a file with a customer's ledger log in the loyalty program
       operationId: exportLoyaltyLedger
       parameters:
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
+        in: path
+        name: programID
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: integrationID
+        required: true
+        schema:
+          type: string
+        style: simple
       - description: Only return results from after this timestamp, must be an RFC3339
           timestamp string
         explode: true
@@ -3591,20 +3615,6 @@ paths:
           - ISO8601
           type: string
         style: form
-      - explode: false
-        in: path
-        name: programID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: integrationID
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3622,12 +3632,14 @@ paths:
     get:
       operationId: getLoyaltyStatistics
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
         schema:
-          type: string
+          type: integer
         style: simple
       responses:
         "200":
@@ -3648,12 +3660,14 @@ paths:
         program
       operationId: exportLoyaltyBalance
       parameters:
-      - explode: false
+      - description: The identifier for the loyalty program, must be unique within
+          the account.
+        explode: false
         in: path
         name: programID
         required: true
         schema:
-          type: string
+          type: integer
         style: simple
       responses:
         "200":
@@ -6798,6 +6812,8 @@ components:
         type: string
       style: form
     programID:
+      description: The identifier for the loyalty program, must be unique within the
+        account.
       explode: false
       in: path
       name: programID
@@ -7319,7 +7335,6 @@ components:
           - insensitive-lowercase
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         limits:
@@ -7397,7 +7412,6 @@ components:
           - insensitive-lowercase
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         limits:
@@ -7523,8 +7537,7 @@ components:
         modified: 2000-01-23T04:56:07.000+00:00
         defaultDiscountScope: sessionTotal
         currency: currency
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 6
         limits:
         - entities:
@@ -7576,7 +7589,6 @@ components:
           - insensitive-lowercase
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         limits:
@@ -7759,8 +7771,7 @@ components:
           - validCharacters
           - validCharacters
         startTime: 2000-01-23T04:56:07.000+00:00
-        attributes:
-          key: '{}'
+        attributes: '{}'
         endTime: 2000-01-23T04:56:07.000+00:00
         state: enabled
         limits:
@@ -7793,7 +7804,6 @@ components:
           format: date-time
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         state:
@@ -7878,8 +7888,7 @@ components:
           - validCharacters
           - validCharacters
         startTime: 2000-01-23T04:56:07.000+00:00
-        attributes:
-          key: '{}'
+        attributes: '{}'
         endTime: 2000-01-23T04:56:07.000+00:00
         state: enabled
         limits:
@@ -7912,7 +7921,6 @@ components:
           format: date-time
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         state:
@@ -8024,8 +8032,7 @@ components:
           validCharacters:
           - validCharacters
           - validCharacters
-        attributes:
-          key: '{}'
+        attributes: '{}'
         lastActivity: 2000-01-23T04:56:07.000+00:00
         endTime: 2000-01-23T04:56:07.000+00:00
         applicationId: 0
@@ -8063,7 +8070,6 @@ components:
           format: date-time
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         state:
@@ -8570,8 +8576,7 @@ components:
         friendProfileIntegrationId: friendProfileIntegrationId
         usageLimit: 80082
         campaignId: 6
-        attributes:
-          key: '{}'
+        attributes: '{}'
         startDate: 2000-01-23T04:56:07.000+00:00
         advocateProfileIntegrationId: advocateProfileIntegrationId
       properties:
@@ -8609,7 +8614,6 @@ components:
           title: Friend's Profile ID
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item.
           type: object
       required:
@@ -8655,8 +8659,7 @@ components:
         usageLimit: 80082
         campaignId: 6
         referralPattern: referralPattern
-        attributes:
-          key: '{}'
+        attributes: '{}'
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         startDate:
@@ -8693,7 +8696,6 @@ components:
           title: Advocate Profile List
           type: array
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item.
           type: object
         validCharacters:
@@ -8734,8 +8736,7 @@ components:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         importId: 7
         friendProfileIntegrationId: friendProfileIntegrationId
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 3
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -8780,7 +8781,6 @@ components:
           title: Friend's Profile ID
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item.
           type: object
         importId:
@@ -8815,8 +8815,7 @@ components:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         friendProfileIntegrationId: friendProfileIntegrationId
         usageLimit: 80082
-        attributes:
-          key: '{}'
+        attributes: '{}'
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         friendProfileIntegrationId:
@@ -8844,20 +8843,16 @@ components:
           title: Referral code Usage Limit
           type: integer
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
       type: object
     AttributeQuery:
-      additionalProperties: true
       type: object
     CouponSearch:
       example:
-        attributes:
-          key: '{}'
+        attributes: '{}'
       properties:
         attributes:
-          additionalProperties: true
           description: Properties to match against a coupon. All provided attributes
             will be exactly matched against attributes
           type: object
@@ -8866,11 +8861,9 @@ components:
       type: object
     CampaignSearch:
       example:
-        attributes:
-          key: '{}'
+        attributes: '{}'
       properties:
         attributes:
-          additionalProperties: true
           description: Properties to match against a campaign. All provided attributes
             will be exactly matched against campaign attributes
           type: object
@@ -8938,8 +8931,7 @@ components:
         - validCharacters
         usageLimit: 80082
         numberOfCoupons: 1
-        attributes:
-          key: '{}'
+        attributes: '{}'
         discountLimit: 602745.015561422
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -8975,7 +8967,6 @@ components:
           title: Coupon code unique prefix
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         recipientIntegrationId:
@@ -9013,8 +9004,7 @@ components:
         - recipientsIntegrationIds
         - recipientsIntegrationIds
         - recipientsIntegrationIds
-        attributes:
-          key: '{}'
+        attributes: '{}'
         discountLimit: 602745.015561422
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9042,7 +9032,6 @@ components:
           minimum: 0
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         recipientsIntegrationIds:
@@ -9075,8 +9064,7 @@ components:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         recipientIntegrationId: recipientIntegrationId
         usageLimit: 80082
-        attributes:
-          key: '{}'
+        attributes: '{}'
         discountLimit: 602745.015561422
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -9108,7 +9096,6 @@ components:
           title: Receiving customer profile integration ID
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
       type: object
@@ -9117,8 +9104,7 @@ components:
       example:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         usageLimit: 80082
-        attributes:
-          key: '{}'
+        attributes: '{}'
         batchID: batchID
         discountLimit: 602745.015561422
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -9147,7 +9133,6 @@ components:
           minimum: 0
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         batchID:
@@ -9171,8 +9156,7 @@ components:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         importId: 3
         reservation: true
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 0
         value: value
         discountLimit: 774034.4078389355
@@ -9232,7 +9216,6 @@ components:
           title: Coupon Discount Remainder
           type: number
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           title: Attributes of coupon
           type: object
@@ -9284,8 +9267,7 @@ components:
         expiryDate: 2000-01-23T04:56:07.000+00:00
         importId: 3
         reservation: true
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 0
         state: state
         value: value
@@ -9346,7 +9328,6 @@ components:
           title: Coupon Discount Remainder
           type: number
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           title: Attributes of coupon
           type: object
@@ -9730,8 +9711,7 @@ components:
         - 5
         - 5
         accountId: 1
-        applicationNotificationSubscriptions:
-          key: '{}'
+        applicationNotificationSubscriptions: '{}'
         inviteToken: inviteToken
         name: name
         modified: 2000-01-23T04:56:07.000+00:00
@@ -9787,7 +9767,6 @@ components:
             type: integer
           type: array
         applicationNotificationSubscriptions:
-          additionalProperties: true
           type: object
         authMethod:
           description: The Authentication method for this user
@@ -9827,11 +9806,9 @@ components:
     Change:
       additionalProperties: false
       example:
-        new:
-          key: '{}'
+        new: '{}'
         created: 2000-01-23T04:56:07.000+00:00
-        old:
-          key: '{}'
+        old: '{}'
         id: 6
         applicationId: 5
         userId: 1
@@ -9854,11 +9831,9 @@ components:
           description: API endpoint on which the change was initiated.
           type: string
         old:
-          additionalProperties: true
           description: Resource before the change occurred.
           type: object
         new:
-          additionalProperties: true
           description: Resource after the change occurred.
           type: object
       required:
@@ -10758,7 +10733,6 @@ components:
     CustomerProfileSearchQuery:
       properties:
         attributes:
-          additionalProperties: true
           description: Properties to match against a customer profile. All provided
             attributes will be exactly matched against profile attributes
           type: object
@@ -10779,11 +10753,9 @@ components:
         profileIDs:
         - 0
         - 0
-        attributes:
-          key: '{}'
+        attributes: '{}'
       properties:
         attributes:
-          additionalProperties: true
           description: Properties to match against a customer profile. All provided
             attributes will be exactly matched against profile attributes
           type: object
@@ -10810,11 +10782,9 @@ components:
       type: object
     NewCustomerProfile:
       example:
-        attributes:
-          key: '{}'
+        attributes: '{}'
       properties:
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
       type: object
@@ -10825,8 +10795,7 @@ components:
         closedSessions: 1
         created: 2000-01-23T04:56:07.000+00:00
         integrationId: integrationId
-        attributes:
-          key: '{}'
+        attributes: '{}'
         totalSales: 1.4894159098541704
         lastActivity: 2000-01-23T04:56:07.000+00:00
         loyaltyMemberships:
@@ -10850,7 +10819,6 @@ components:
           format: date-time
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         accountId:
@@ -10907,8 +10875,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           state: state
           value: value
@@ -10927,8 +10894,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           state: state
           value: value
@@ -10946,8 +10912,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         - code: code
@@ -10960,8 +10925,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         profile:
@@ -10969,8 +10933,7 @@ components:
           closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
@@ -11008,8 +10971,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           poolId: 8
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 9
           used: true
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -11018,8 +10980,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           poolId: 8
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 9
           used: true
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -11054,8 +11015,7 @@ components:
         - identifiers
         - identifiers
         - identifiers
-        attributes:
-          key: '{}'
+        attributes: '{}'
         state: open
         cartItems:
         - quantity: 1
@@ -11064,8 +11024,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11076,8 +11035,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11131,7 +11089,6 @@ components:
           title: Session Total
           type: number
         attributes:
-          additionalProperties: true
           description: |
             A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
           type: object
@@ -11153,8 +11110,7 @@ components:
         - identifiers
         - identifiers
         referralCode: referralCode
-        attributes:
-          key: '{}'
+        attributes: '{}'
         state: open
         cartItems:
         - quantity: 1
@@ -11163,8 +11119,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11175,8 +11130,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11235,7 +11189,6 @@ components:
           maxItems: 5
           type: array
         attributes:
-          additionalProperties: true
           description: |
             A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
           type: object
@@ -11372,8 +11325,7 @@ components:
         discounts:
           key: 1.4658129805029452
         profileId: profileId
-        attributes:
-          key: '{}'
+        attributes: '{}'
         state: open
         applicationId: 0
         cartItems:
@@ -11383,8 +11335,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11395,8 +11346,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11463,7 +11413,6 @@ components:
           title: Session Total
           type: number
         attributes:
-          additionalProperties: true
           description: |
             A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
           type: object
@@ -11514,8 +11463,7 @@ components:
         additionalCostTotal: 7.386281948385884
         profileId: profileId
         referralCode: referralCode
-        attributes:
-          key: '{}'
+        attributes: '{}'
         state: open
         applicationId: 0
         cartItems:
@@ -11525,8 +11473,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11537,8 +11484,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -11611,7 +11557,6 @@ components:
           maxItems: 5
           type: array
         attributes:
-          additionalProperties: true
           description: |
             A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings.
           type: object
@@ -11656,8 +11601,7 @@ components:
         width: 2.3021358869347655
         length: 7.061401241503109
         weight: 5.962133916683182
-        attributes:
-          key: '{}'
+        attributes: '{}'
         position: 9.301444243932576
         sku: sku
         category: category
@@ -11702,7 +11646,6 @@ components:
           title: Position of Cart Item
           type: number
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           title: Item attributes
           type: object
@@ -11738,7 +11681,6 @@ components:
           title: Event Type
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary additional JSON data associated with the event.
           type: object
       required:
@@ -11749,8 +11691,7 @@ components:
       additionalProperties: false
       example:
         profileId: profileId
-        attributes:
-          key: '{}'
+        attributes: '{}'
         sessionId: sessionId
         type: type
       properties:
@@ -11766,7 +11707,6 @@ components:
           title: Event Type
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary additional JSON data associated with the event.
           type: object
         sessionId:
@@ -11788,16 +11728,13 @@ components:
         created: 2000-01-23T04:56:07.000+00:00
         profileId: profileId
         meta:
-          campaigns:
-            key: '{}'
-          coupons:
-            key: '{}'
+          campaigns: '{}'
+          coupons: '{}'
           referralRejectionReason:
             reason: ReferralNotFound
             campaignId: 6
             referralId: 1
-          warnings:
-            key: '{}'
+          warnings: '{}'
           couponRejectionReason:
             reason: CouponNotFound
             campaignId: 6
@@ -11823,8 +11760,7 @@ components:
           loyaltyProgramId: 9
           id: 5
           referenceId: 9
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 1
         sessionId: sessionId
         applicationId: 4
@@ -11852,7 +11788,6 @@ components:
           title: Event Type
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary additional JSON data associated with the event.
           type: object
         sessionId:
@@ -11897,8 +11832,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -11919,8 +11853,7 @@ components:
           discounts:
             key: 1.4658129805029452
           profileId: profileId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           state: open
           applicationId: 0
           cartItems:
@@ -11930,8 +11863,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -11942,8 +11874,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -11954,8 +11885,7 @@ components:
           closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
@@ -11994,16 +11924,13 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           profileId: profileId
           meta:
-            campaigns:
-              key: '{}'
-            coupons:
-              key: '{}'
+            campaigns: '{}'
+            coupons: '{}'
             referralRejectionReason:
               reason: ReferralNotFound
               campaignId: 6
               referralId: 1
-            warnings:
-              key: '{}'
+            warnings: '{}'
             couponRejectionReason:
               reason: CouponNotFound
               campaignId: 6
@@ -12029,8 +11956,7 @@ components:
             loyaltyProgramId: 9
             id: 5
             referenceId: 9
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 1
           sessionId: sessionId
           applicationId: 4
@@ -12081,8 +12007,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         triggeredCampaigns:
@@ -12140,8 +12065,7 @@ components:
             validCharacters:
             - validCharacters
             - validCharacters
-          attributes:
-            key: '{}'
+          attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
           applicationId: 0
@@ -12201,8 +12125,7 @@ components:
             validCharacters:
             - validCharacters
             - validCharacters
-          attributes:
-            key: '{}'
+          attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
           applicationId: 0
@@ -12220,8 +12143,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -12238,8 +12160,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -12250,8 +12171,7 @@ components:
           closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
@@ -12283,8 +12203,7 @@ components:
           additionalCostTotal: 7.386281948385884
           profileId: profileId
           referralCode: referralCode
-          attributes:
-            key: '{}'
+          attributes: '{}'
           state: open
           applicationId: 0
           cartItems:
@@ -12294,8 +12213,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -12306,8 +12224,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -12339,8 +12256,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           poolId: 8
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 9
           used: true
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -12349,8 +12265,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           created: 2000-01-23T04:56:07.000+00:00
           poolId: 8
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 9
           used: true
           startDate: 2000-01-23T04:56:07.000+00:00
@@ -12361,16 +12276,13 @@ components:
           created: 2000-01-23T04:56:07.000+00:00
           profileId: profileId
           meta:
-            campaigns:
-              key: '{}'
-            coupons:
-              key: '{}'
+            campaigns: '{}'
+            coupons: '{}'
             referralRejectionReason:
               reason: ReferralNotFound
               campaignId: 6
               referralId: 1
-            warnings:
-              key: '{}'
+            warnings: '{}'
             couponRejectionReason:
               reason: CouponNotFound
               campaignId: 6
@@ -12396,8 +12308,7 @@ components:
             loyaltyProgramId: 9
             id: 5
             referenceId: 9
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 1
           sessionId: sessionId
           applicationId: 4
@@ -12414,8 +12325,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -12432,8 +12342,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -12475,8 +12384,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         - code: code
@@ -12489,8 +12397,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -12544,8 +12451,7 @@ components:
         closedSessions: 5
         created: 2000-01-23T04:56:07.000+00:00
         integrationId: integrationId
-        attributes:
-          key: '{}'
+        attributes: '{}'
         totalSales: 5.637376656633329
         lastActivity: 2000-01-23T04:56:07.000+00:00
         id: 6
@@ -12575,7 +12481,6 @@ components:
           format: string
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         accountId:
@@ -12663,8 +12568,7 @@ components:
         discounts:
           key: 5.962133916683182
         profileId: 1
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 0
         state: open
         applicationId: 6
@@ -12675,8 +12579,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -12687,8 +12590,7 @@ components:
           width: 2.3021358869347655
           length: 7.061401241503109
           weight: 5.962133916683182
-          attributes:
-            key: '{}'
+          attributes: '{}'
           position: 9.301444243932576
           sku: sku
           category: category
@@ -12746,7 +12648,6 @@ components:
           description: The total sum of the session before any discounts applied.
           type: number
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
       required:
@@ -12769,8 +12670,7 @@ components:
         - '{}'
         created: 2000-01-23T04:56:07.000+00:00
         profileId: 5
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 6
         sessionId: 5
         applicationId: 1
@@ -12824,7 +12724,6 @@ components:
             name.
           type: string
         attributes:
-          additionalProperties: true
           description: Additional JSON serialized data associated with the event.
           type: object
         effects:
@@ -13009,7 +12908,6 @@ components:
     UpdateAccount:
       properties:
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
         companyName:
@@ -13051,8 +12949,7 @@ components:
         domainName: domainName
         apiLimit: 5
         modified: 2000-01-23T04:56:07.000+00:00
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 0
         state: active
         userLimit: 1
@@ -13118,7 +13015,6 @@ components:
           description: The current number of inactive Campaigns in your account.
           type: integer
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this campaign
           type: object
       required:
@@ -13194,7 +13090,6 @@ components:
             type: integer
           type: array
         applicationNotificationSubscriptions:
-          additionalProperties: true
           type: object
       type: object
     ChangeProfilePassword:
@@ -13361,8 +13256,7 @@ components:
     TemplateArgDef:
       additionalProperties: false
       example:
-        ui:
-          key: '{}'
+        ui: '{}'
         description: description
         type: string
         title: title
@@ -13386,7 +13280,6 @@ components:
           minLength: 1
           type: string
         ui:
-          additionalProperties: true
           description: Arbitrary metadata that may be used to render an input for
             this argument.
           type: object
@@ -13845,7 +13738,6 @@ components:
             event type definition for documentation purposes.
           type: string
         schema:
-          additionalProperties: true
           description: |
             It is strongly recommended to define a JSON schema that will be used to perform structural validation of request payloads after parsing.
           type: object
@@ -13876,8 +13768,7 @@ components:
     EventType:
       additionalProperties: false
       example:
-        schema:
-          key: '{}'
+        schema: '{}'
         handler: handler
         examplePayload: examplePayload
         created: 2000-01-23T04:56:07.000+00:00
@@ -13935,7 +13826,6 @@ components:
             event type definition for documentation purposes.
           type: string
         schema:
-          additionalProperties: true
           description: |
             It is strongly recommended to define a JSON schema that will be used to perform structural validation of request payloads after parsing.
           type: object
@@ -14029,13 +13919,11 @@ components:
         id: 6
         title: title
         params:
-        - ui:
-            key: '{}'
+        - ui: '{}'
           description: description
           type: string
           title: title
-        - ui:
-            key: '{}'
+        - ui: '{}'
           description: description
           type: string
           title: title
@@ -14179,7 +14067,6 @@ components:
       - name
       type: object
     ManagerConfig:
-      additionalProperties: true
       properties:
         schemaVersion:
           type: integer
@@ -14189,8 +14076,7 @@ components:
     Export:
       additionalProperties: false
       example:
-        filter:
-          key: '{}'
+        filter: '{}'
         accountId: 1
         created: 2000-01-23T04:56:07.000+00:00
         id: 6
@@ -14220,7 +14106,6 @@ components:
           - LoyaltyLedgerLog
           type: string
         filter:
-          additionalProperties: true
           description: Map of keys and values that were used to filter the exported
             rows
           type: object
@@ -14554,28 +14439,23 @@ components:
       type: object
     Meta:
       example:
-        campaigns:
-          key: '{}'
-        coupons:
-          key: '{}'
+        campaigns: '{}'
+        coupons: '{}'
         referralRejectionReason:
           reason: ReferralNotFound
           campaignId: 6
           referralId: 1
-        warnings:
-          key: '{}'
+        warnings: '{}'
         couponRejectionReason:
           reason: CouponNotFound
           campaignId: 6
           couponId: 3
       properties:
         campaigns:
-          additionalProperties: true
           description: Maps each evaluated campaign ID to a key-value list of that
             campaigns attributes. Campaigns without attributes will be omitted.
           type: object
         coupons:
-          additionalProperties: true
           description: Maps the coupon value to a key-value list of that coupons attributes.
           type: object
         couponRejectionReason:
@@ -14583,7 +14463,6 @@ components:
         referralRejectionReason:
           $ref: '#/components/schemas/ReferralRejectionReason'
         warnings:
-          additionalProperties: true
           description: Contains warnings about possible misuse.
           type: object
       type: object
@@ -15519,7 +15398,6 @@ components:
           description: The type of the custom effect.
           type: string
         payload:
-          additionalProperties: true
           description: The JSON payload of the custom effect.
           type: object
           x-arbitraryJSON: true
@@ -15547,8 +15425,7 @@ components:
           - identifiers
           - identifiers
           referralCode: referralCode
-          attributes:
-            key: '{}'
+          attributes: '{}'
           state: open
           cartItems:
           - quantity: 1
@@ -15557,8 +15434,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -15569,8 +15445,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -15603,8 +15478,7 @@ components:
     CustomerProfileIntegrationRequestV2:
       additionalProperties: false
       example:
-        attributes:
-          key: '{}'
+        attributes: '{}'
         audiencesChanges:
           deletes:
           - 6
@@ -15617,7 +15491,6 @@ components:
         - customerProfile
       properties:
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         audiencesChanges:
@@ -15682,11 +15555,9 @@ components:
       example:
         customerProfiles:
         - integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
         - integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
       properties:
         customerProfiles:
           items:
@@ -15697,11 +15568,9 @@ components:
       additionalProperties: false
       example:
         integrationId: integrationId
-        attributes:
-          key: '{}'
+        attributes: '{}'
       properties:
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this item
           type: object
         integrationId:
@@ -15740,8 +15609,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
           triggeredCampaigns:
@@ -15799,8 +15667,7 @@ components:
               validCharacters:
               - validCharacters
               - validCharacters
-            attributes:
-              key: '{}'
+            attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
             applicationId: 0
@@ -15860,8 +15727,7 @@ components:
               validCharacters:
               - validCharacters
               - validCharacters
-            attributes:
-              key: '{}'
+            attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
             applicationId: 0
@@ -15879,8 +15745,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -15897,8 +15762,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -15909,8 +15773,7 @@ components:
             closedSessions: 1
             created: 2000-01-23T04:56:07.000+00:00
             integrationId: integrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             totalSales: 1.4894159098541704
             lastActivity: 2000-01-23T04:56:07.000+00:00
             loyaltyMemberships:
@@ -15942,8 +15805,7 @@ components:
             additionalCostTotal: 7.386281948385884
             profileId: profileId
             referralCode: referralCode
-            attributes:
-              key: '{}'
+            attributes: '{}'
             state: open
             applicationId: 0
             cartItems:
@@ -15953,8 +15815,7 @@ components:
               width: 2.3021358869347655
               length: 7.061401241503109
               weight: 5.962133916683182
-              attributes:
-                key: '{}'
+              attributes: '{}'
               position: 9.301444243932576
               sku: sku
               category: category
@@ -15965,8 +15826,7 @@ components:
               width: 2.3021358869347655
               length: 7.061401241503109
               weight: 5.962133916683182
-              attributes:
-                key: '{}'
+              attributes: '{}'
               position: 9.301444243932576
               sku: sku
               category: category
@@ -15998,8 +15858,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             poolId: 8
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 9
             used: true
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -16008,8 +15867,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             poolId: 8
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 9
             used: true
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -16020,16 +15878,13 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             meta:
-              campaigns:
-                key: '{}'
-              coupons:
-                key: '{}'
+              campaigns: '{}'
+              coupons: '{}'
               referralRejectionReason:
                 reason: ReferralNotFound
                 campaignId: 6
                 referralId: 1
-              warnings:
-                key: '{}'
+              warnings: '{}'
               couponRejectionReason:
                 reason: CouponNotFound
                 campaignId: 6
@@ -16055,8 +15910,7 @@ components:
               loyaltyProgramId: 9
               id: 5
               referenceId: 9
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 1
             sessionId: sessionId
             applicationId: 4
@@ -16073,8 +15927,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16091,8 +15944,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16134,8 +15986,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
           - code: code
@@ -16148,8 +15999,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
         - effects:
@@ -16178,8 +16028,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
           triggeredCampaigns:
@@ -16237,8 +16086,7 @@ components:
               validCharacters:
               - validCharacters
               - validCharacters
-            attributes:
-              key: '{}'
+            attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
             applicationId: 0
@@ -16298,8 +16146,7 @@ components:
               validCharacters:
               - validCharacters
               - validCharacters
-            attributes:
-              key: '{}'
+            attributes: '{}'
             lastActivity: 2000-01-23T04:56:07.000+00:00
             endTime: 2000-01-23T04:56:07.000+00:00
             applicationId: 0
@@ -16317,8 +16164,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16335,8 +16181,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16347,8 +16192,7 @@ components:
             closedSessions: 1
             created: 2000-01-23T04:56:07.000+00:00
             integrationId: integrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             totalSales: 1.4894159098541704
             lastActivity: 2000-01-23T04:56:07.000+00:00
             loyaltyMemberships:
@@ -16380,8 +16224,7 @@ components:
             additionalCostTotal: 7.386281948385884
             profileId: profileId
             referralCode: referralCode
-            attributes:
-              key: '{}'
+            attributes: '{}'
             state: open
             applicationId: 0
             cartItems:
@@ -16391,8 +16234,7 @@ components:
               width: 2.3021358869347655
               length: 7.061401241503109
               weight: 5.962133916683182
-              attributes:
-                key: '{}'
+              attributes: '{}'
               position: 9.301444243932576
               sku: sku
               category: category
@@ -16403,8 +16245,7 @@ components:
               width: 2.3021358869347655
               length: 7.061401241503109
               weight: 5.962133916683182
-              attributes:
-                key: '{}'
+              attributes: '{}'
               position: 9.301444243932576
               sku: sku
               category: category
@@ -16436,8 +16277,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             poolId: 8
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 9
             used: true
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -16446,8 +16286,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             created: 2000-01-23T04:56:07.000+00:00
             poolId: 8
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 9
             used: true
             startDate: 2000-01-23T04:56:07.000+00:00
@@ -16458,16 +16297,13 @@ components:
             created: 2000-01-23T04:56:07.000+00:00
             profileId: profileId
             meta:
-              campaigns:
-                key: '{}'
-              coupons:
-                key: '{}'
+              campaigns: '{}'
+              coupons: '{}'
               referralRejectionReason:
                 reason: ReferralNotFound
                 campaignId: 6
                 referralId: 1
-              warnings:
-                key: '{}'
+              warnings: '{}'
               couponRejectionReason:
                 reason: CouponNotFound
                 campaignId: 6
@@ -16493,8 +16329,7 @@ components:
               loyaltyProgramId: 9
               id: 5
               referenceId: 9
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 1
             sessionId: sessionId
             applicationId: 4
@@ -16511,8 +16346,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16529,8 +16363,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 3
             reservation: true
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 0
             value: value
             discountLimit: 774034.4078389355
@@ -16572,8 +16405,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
           - code: code
@@ -16586,8 +16418,7 @@ components:
             expiryDate: 2000-01-23T04:56:07.000+00:00
             importId: 7
             friendProfileIntegrationId: friendProfileIntegrationId
-            attributes:
-              key: '{}'
+            attributes: '{}'
             id: 3
             startDate: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -16798,8 +16629,7 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         created: 2000-01-23T04:56:07.000+00:00
         poolId: 8
-        attributes:
-          key: '{}'
+        attributes: '{}'
         id: 9
         used: true
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -16826,7 +16656,6 @@ components:
           format: date-time
           type: string
         attributes:
-          additionalProperties: true
           description: Arbitrary properties associated with this giveaway.
           type: object
         used:
@@ -17042,8 +16871,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         - code: code
@@ -17056,8 +16884,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         totalResultSize: 0
@@ -17078,8 +16905,7 @@ components:
           closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
@@ -17096,8 +16922,7 @@ components:
           closedSessions: 1
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 1.4894159098541704
           lastActivity: 2000-01-23T04:56:07.000+00:00
           loyaltyMemberships:
@@ -17191,8 +17016,7 @@ components:
           modified: 2000-01-23T04:56:07.000+00:00
           defaultDiscountScope: sessionTotal
           currency: currency
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           limits:
           - entities:
@@ -17272,8 +17096,7 @@ components:
           modified: 2000-01-23T04:56:07.000+00:00
           defaultDiscountScope: sessionTotal
           currency: currency
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           limits:
           - entities:
@@ -17354,8 +17177,7 @@ components:
             validCharacters:
             - validCharacters
             - validCharacters
-          attributes:
-            key: '{}'
+          attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
           applicationId: 0
@@ -17415,8 +17237,7 @@ components:
             validCharacters:
             - validCharacters
             - validCharacters
-          attributes:
-            key: '{}'
+          attributes: '{}'
           lastActivity: 2000-01-23T04:56:07.000+00:00
           endTime: 2000-01-23T04:56:07.000+00:00
           applicationId: 0
@@ -17575,8 +17396,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -17593,8 +17413,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -17625,8 +17444,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -17643,8 +17461,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 3
           reservation: true
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           value: value
           discountLimit: 774034.4078389355
@@ -17674,8 +17491,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         - code: code
@@ -17688,8 +17504,7 @@ components:
           expiryDate: 2000-01-23T04:56:07.000+00:00
           importId: 7
           friendProfileIntegrationId: friendProfileIntegrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 3
           startDate: 2000-01-23T04:56:07.000+00:00
         hasMore: true
@@ -17888,8 +17703,7 @@ components:
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 5.637376656633329
           lastActivity: 2000-01-23T04:56:07.000+00:00
           id: 6
@@ -17907,8 +17721,7 @@ components:
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 5.637376656633329
           lastActivity: 2000-01-23T04:56:07.000+00:00
           id: 6
@@ -17942,8 +17755,7 @@ components:
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 5.637376656633329
           lastActivity: 2000-01-23T04:56:07.000+00:00
           id: 6
@@ -17961,8 +17773,7 @@ components:
           closedSessions: 5
           created: 2000-01-23T04:56:07.000+00:00
           integrationId: integrationId
-          attributes:
-            key: '{}'
+          attributes: '{}'
           totalSales: 5.637376656633329
           lastActivity: 2000-01-23T04:56:07.000+00:00
           id: 6
@@ -18079,8 +17890,7 @@ components:
           discounts:
             key: 5.962133916683182
           profileId: 1
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           state: open
           applicationId: 6
@@ -18091,8 +17901,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -18103,8 +17912,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -18118,8 +17926,7 @@ components:
           discounts:
             key: 5.962133916683182
           profileId: 1
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 0
           state: open
           applicationId: 6
@@ -18130,8 +17937,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -18142,8 +17948,7 @@ components:
             width: 2.3021358869347655
             length: 7.061401241503109
             weight: 5.962133916683182
-            attributes:
-              key: '{}'
+            attributes: '{}'
             position: 9.301444243932576
             sku: sku
             category: category
@@ -18166,8 +17971,7 @@ components:
           - '{}'
           created: 2000-01-23T04:56:07.000+00:00
           profileId: 5
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           sessionId: 5
           applicationId: 1
@@ -18202,8 +18006,7 @@ components:
           - '{}'
           created: 2000-01-23T04:56:07.000+00:00
           profileId: 5
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           sessionId: 5
           applicationId: 1
@@ -18252,8 +18055,7 @@ components:
           - '{}'
           created: 2000-01-23T04:56:07.000+00:00
           profileId: 5
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           sessionId: 5
           applicationId: 1
@@ -18288,8 +18090,7 @@ components:
           - '{}'
           created: 2000-01-23T04:56:07.000+00:00
           profileId: 5
-          attributes:
-            key: '{}'
+          attributes: '{}'
           id: 6
           sessionId: 5
           applicationId: 1
@@ -18471,13 +18272,11 @@ components:
           id: 6
           title: title
           params:
-          - ui:
-              key: '{}'
+          - ui: '{}'
             description: description
             type: string
             title: title
-          - ui:
-              key: '{}'
+          - ui: '{}'
             description: description
             type: string
             title: title
@@ -18496,13 +18295,11 @@ components:
           id: 6
           title: title
           params:
-          - ui:
-              key: '{}'
+          - ui: '{}'
             description: description
             type: string
             title: title
-          - ui:
-              key: '{}'
+          - ui: '{}'
             description: description
             type: string
             title: title
@@ -18583,8 +18380,7 @@ components:
     inline_response_200_25:
       example:
         data:
-        - schema:
-            key: '{}'
+        - schema: '{}'
           handler: handler
           examplePayload: examplePayload
           created: 2000-01-23T04:56:07.000+00:00
@@ -18598,8 +18394,7 @@ components:
           applicationIds:
           - 1
           - 1
-        - schema:
-            key: '{}'
+        - schema: '{}'
           handler: handler
           examplePayload: examplePayload
           created: 2000-01-23T04:56:07.000+00:00
@@ -18632,8 +18427,7 @@ components:
           - 5
           - 5
           accountId: 1
-          applicationNotificationSubscriptions:
-            key: '{}'
+          applicationNotificationSubscriptions: '{}'
           inviteToken: inviteToken
           name: name
           modified: 2000-01-23T04:56:07.000+00:00
@@ -18648,8 +18442,7 @@ components:
           - 5
           - 5
           accountId: 1
-          applicationNotificationSubscriptions:
-            key: '{}'
+          applicationNotificationSubscriptions: '{}'
           inviteToken: inviteToken
           name: name
           modified: 2000-01-23T04:56:07.000+00:00
@@ -18673,20 +18466,16 @@ components:
     inline_response_200_27:
       example:
         data:
-        - new:
-            key: '{}'
+        - new: '{}'
           created: 2000-01-23T04:56:07.000+00:00
-          old:
-            key: '{}'
+          old: '{}'
           id: 6
           applicationId: 5
           userId: 1
           entity: entity
-        - new:
-            key: '{}'
+        - new: '{}'
           created: 2000-01-23T04:56:07.000+00:00
-          old:
-            key: '{}'
+          old: '{}'
           id: 6
           applicationId: 5
           userId: 1
@@ -18707,15 +18496,13 @@ components:
     inline_response_200_28:
       example:
         data:
-        - filter:
-            key: '{}'
+        - filter: '{}'
           accountId: 1
           created: 2000-01-23T04:56:07.000+00:00
           id: 6
           userId: 5
           entity: Coupon
-        - filter:
-            key: '{}'
+        - filter: '{}'
           accountId: 1
           created: 2000-01-23T04:56:07.000+00:00
           id: 6

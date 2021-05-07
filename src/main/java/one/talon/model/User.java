@@ -24,9 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -129,7 +127,7 @@ public class User {
 
   public static final String SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS = "applicationNotificationSubscriptions";
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
-  private Map<String, Object> applicationNotificationSubscriptions = null;
+  private Object applicationNotificationSubscriptions;
 
   public static final String SERIALIZED_NAME_AUTH_METHOD = "authMethod";
   @SerializedName(SERIALIZED_NAME_AUTH_METHOD)
@@ -388,17 +386,9 @@ public class User {
   }
 
 
-  public User applicationNotificationSubscriptions(Map<String, Object> applicationNotificationSubscriptions) {
+  public User applicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
     
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
-    return this;
-  }
-
-  public User putApplicationNotificationSubscriptionsItem(String key, Object applicationNotificationSubscriptionsItem) {
-    if (this.applicationNotificationSubscriptions == null) {
-      this.applicationNotificationSubscriptions = new HashMap<String, Object>();
-    }
-    this.applicationNotificationSubscriptions.put(key, applicationNotificationSubscriptionsItem);
     return this;
   }
 
@@ -409,12 +399,12 @@ public class User {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Map<String, Object> getApplicationNotificationSubscriptions() {
+  public Object getApplicationNotificationSubscriptions() {
     return applicationNotificationSubscriptions;
   }
 
 
-  public void setApplicationNotificationSubscriptions(Map<String, Object> applicationNotificationSubscriptions) {
+  public void setApplicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
   }
 

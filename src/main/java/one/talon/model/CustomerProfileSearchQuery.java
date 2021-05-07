@@ -24,9 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * CustomerProfileSearchQuery
@@ -35,7 +33,7 @@ import java.util.Map;
 public class CustomerProfileSearchQuery {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
   public static final String SERIALIZED_NAME_INTEGRATION_I_DS = "integrationIDs";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_I_DS)
@@ -46,17 +44,9 @@ public class CustomerProfileSearchQuery {
   private List<Integer> profileIDs = null;
 
 
-  public CustomerProfileSearchQuery attributes(Map<String, Object> attributes) {
+  public CustomerProfileSearchQuery attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public CustomerProfileSearchQuery putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -67,12 +57,12 @@ public class CustomerProfileSearchQuery {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Properties to match against a customer profile. All provided attributes will be exactly matched against profile attributes")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

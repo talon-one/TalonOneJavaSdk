@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **cartItems** | [**List&lt;CartItem&gt;**](CartItem.md) | Serialized JSON representation. | 
 **discounts** | [**Map&lt;String, BigDecimal&gt;**](BigDecimal.md) | A map of labelled discount values, in the same currency as the session. | 
 **total** | [**BigDecimal**](BigDecimal.md) | The total sum of the session before any discounts applied. | 
-**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this item |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this item |  [optional]
 
 
 

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | **Map&lt;String, Object&gt;** | Arbitrary properties associated with this campaign |  [optional]
+**attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 **companyName** | **String** | Name of your company. | 
 **billingEmail** | **String** | The billing email address associated with your company account. | 
 **state** | [**StateEnum**](#StateEnum) | State of the account (active, deactivated) |  [optional]

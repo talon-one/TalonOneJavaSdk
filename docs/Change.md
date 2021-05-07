@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **userId** | **Integer** | The ID of the account that owns this entity. | 
 **applicationId** | **Integer** | ID of application associated with change |  [optional]
 **entity** | **String** | API endpoint on which the change was initiated. | 
-**old** | **Map&lt;String, Object&gt;** | Resource before the change occurred. |  [optional]
-**_new** | **Map&lt;String, Object&gt;** | Resource after the change occurred. |  [optional]
+**old** | [**Object**](.md) | Resource before the change occurred. |  [optional]
+**_new** | [**Object**](.md) | Resource after the change occurred. |  [optional]
 
 
 

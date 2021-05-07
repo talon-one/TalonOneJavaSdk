@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **policy** | **String** | a blob of acl json |  [optional]
 **state** | [**StateEnum**](#StateEnum) | New state (\&quot;deactivated\&quot; or \&quot;active\&quot;) for the user. Only usable by admins for the user. |  [optional]
 **roles** | **List&lt;Integer&gt;** | Update |  [optional]
-**applicationNotificationSubscriptions** | **Map&lt;String, Object&gt;** |  |  [optional]
+**applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 
 
 

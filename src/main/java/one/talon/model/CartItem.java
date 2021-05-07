@@ -24,9 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * CartItem
@@ -75,7 +72,7 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Map<String, Object> attributes = null;
+  private Object attributes;
 
 
   public CartItem name(String name) {
@@ -305,17 +302,9 @@ public class CartItem {
   }
 
 
-  public CartItem attributes(Map<String, Object> attributes) {
+  public CartItem attributes(Object attributes) {
     
     this.attributes = attributes;
-    return this;
-  }
-
-  public CartItem putAttributesItem(String key, Object attributesItem) {
-    if (this.attributes == null) {
-      this.attributes = new HashMap<String, Object>();
-    }
-    this.attributes.put(key, attributesItem);
     return this;
   }
 
@@ -326,12 +315,12 @@ public class CartItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item")
 
-  public Map<String, Object> getAttributes() {
+  public Object getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(Map<String, Object> attributes) {
+  public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 

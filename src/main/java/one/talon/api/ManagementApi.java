@@ -127,7 +127,7 @@ public class ManagementApi {
 
     /**
      * Build call for addLoyaltyPoints
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @param _callback Callback for upload/download progress
@@ -197,7 +197,7 @@ public class ManagementApi {
     /**
      * Add points in a loyalty program for the specified customer
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -214,7 +214,7 @@ public class ManagementApi {
     /**
      * Add points in a loyalty program for the specified customer
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -233,7 +233,7 @@ public class ManagementApi {
     /**
      * Add points in a loyalty program for the specified customer (asynchronously)
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2585,7 +2585,7 @@ public class ManagementApi {
     }
     /**
      * Build call for exportLoyaltyBalance
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2595,7 +2595,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyBalanceCall(String programID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyBalanceCall(Integer programID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2626,7 +2626,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call exportLoyaltyBalanceValidateBeforeCall(String programID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call exportLoyaltyBalanceValidateBeforeCall(Integer programID, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -2642,7 +2642,7 @@ public class ManagementApi {
     /**
      * Export customer loyalty balance to a CSV file
      * Download a file with the balance of each customer in the loyalty program
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2651,7 +2651,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public String exportLoyaltyBalance(String programID) throws ApiException {
+    public String exportLoyaltyBalance(Integer programID) throws ApiException {
         ApiResponse<String> localVarResp = exportLoyaltyBalanceWithHttpInfo(programID);
         return localVarResp.getData();
     }
@@ -2659,7 +2659,7 @@ public class ManagementApi {
     /**
      * Export customer loyalty balance to a CSV file
      * Download a file with the balance of each customer in the loyalty program
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2668,7 +2668,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> exportLoyaltyBalanceWithHttpInfo(String programID) throws ApiException {
+    public ApiResponse<String> exportLoyaltyBalanceWithHttpInfo(Integer programID) throws ApiException {
         okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2677,7 +2677,7 @@ public class ManagementApi {
     /**
      * Export customer loyalty balance to a CSV file (asynchronously)
      * Download a file with the balance of each customer in the loyalty program
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2687,7 +2687,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyBalanceAsync(String programID, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyBalanceAsync(Integer programID, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = exportLoyaltyBalanceValidateBeforeCall(programID, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
@@ -2696,10 +2696,10 @@ public class ManagementApi {
     }
     /**
      * Build call for exportLoyaltyLedger
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
+     * @param integrationID  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param programID  (required)
-     * @param integrationID  (required)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2710,7 +2710,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyLedgerCall(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String programID, String integrationID, String dateFormat, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyLedgerCall(Integer programID, String integrationID, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String dateFormat, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2754,17 +2754,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call exportLoyaltyLedgerValidateBeforeCall(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String programID, String integrationID, String dateFormat, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'rangeStart' is set
-        if (rangeStart == null) {
-            throw new ApiException("Missing the required parameter 'rangeStart' when calling exportLoyaltyLedger(Async)");
-        }
-        
-        // verify the required parameter 'rangeEnd' is set
-        if (rangeEnd == null) {
-            throw new ApiException("Missing the required parameter 'rangeEnd' when calling exportLoyaltyLedger(Async)");
-        }
+    private okhttp3.Call exportLoyaltyLedgerValidateBeforeCall(Integer programID, String integrationID, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String dateFormat, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -2776,8 +2766,18 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'integrationID' when calling exportLoyaltyLedger(Async)");
         }
         
+        // verify the required parameter 'rangeStart' is set
+        if (rangeStart == null) {
+            throw new ApiException("Missing the required parameter 'rangeStart' when calling exportLoyaltyLedger(Async)");
+        }
+        
+        // verify the required parameter 'rangeEnd' is set
+        if (rangeEnd == null) {
+            throw new ApiException("Missing the required parameter 'rangeEnd' when calling exportLoyaltyLedger(Async)");
+        }
+        
 
-        okhttp3.Call localVarCall = exportLoyaltyLedgerCall(rangeStart, rangeEnd, programID, integrationID, dateFormat, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyLedgerCall(programID, integrationID, rangeStart, rangeEnd, dateFormat, _callback);
         return localVarCall;
 
     }
@@ -2785,10 +2785,10 @@ public class ManagementApi {
     /**
      * Export a customer&#39;s loyalty ledger log to a CSV file
      * Download a file with a customer&#39;s ledger log in the loyalty program
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
+     * @param integrationID  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param programID  (required)
-     * @param integrationID  (required)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2798,18 +2798,18 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public String exportLoyaltyLedger(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String programID, String integrationID, String dateFormat) throws ApiException {
-        ApiResponse<String> localVarResp = exportLoyaltyLedgerWithHttpInfo(rangeStart, rangeEnd, programID, integrationID, dateFormat);
+    public String exportLoyaltyLedger(Integer programID, String integrationID, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String dateFormat) throws ApiException {
+        ApiResponse<String> localVarResp = exportLoyaltyLedgerWithHttpInfo(programID, integrationID, rangeStart, rangeEnd, dateFormat);
         return localVarResp.getData();
     }
 
     /**
      * Export a customer&#39;s loyalty ledger log to a CSV file
      * Download a file with a customer&#39;s ledger log in the loyalty program
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
+     * @param integrationID  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param programID  (required)
-     * @param integrationID  (required)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2819,8 +2819,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> exportLoyaltyLedgerWithHttpInfo(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String programID, String integrationID, String dateFormat) throws ApiException {
-        okhttp3.Call localVarCall = exportLoyaltyLedgerValidateBeforeCall(rangeStart, rangeEnd, programID, integrationID, dateFormat, null);
+    public ApiResponse<String> exportLoyaltyLedgerWithHttpInfo(Integer programID, String integrationID, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String dateFormat) throws ApiException {
+        okhttp3.Call localVarCall = exportLoyaltyLedgerValidateBeforeCall(programID, integrationID, rangeStart, rangeEnd, dateFormat, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2828,10 +2828,10 @@ public class ManagementApi {
     /**
      * Export a customer&#39;s loyalty ledger log to a CSV file (asynchronously)
      * Download a file with a customer&#39;s ledger log in the loyalty program
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
+     * @param integrationID  (required)
      * @param rangeStart Only return results from after this timestamp, must be an RFC3339 timestamp string (required)
      * @param rangeEnd Only return results from before this timestamp, must be an RFC3339 timestamp string (required)
-     * @param programID  (required)
-     * @param integrationID  (required)
      * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2842,9 +2842,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyLedgerAsync(OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String programID, String integrationID, String dateFormat, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyLedgerAsync(Integer programID, String integrationID, OffsetDateTime rangeStart, OffsetDateTime rangeEnd, String dateFormat, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = exportLoyaltyLedgerValidateBeforeCall(rangeStart, rangeEnd, programID, integrationID, dateFormat, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyLedgerValidateBeforeCall(programID, integrationID, rangeStart, rangeEnd, dateFormat, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9001,7 +9001,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getLoyaltyPoints
-     * @param programID The identifier for the application, must be unique within the account. (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -9012,7 +9012,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyPointsCall(String programID, String integrationID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyPointsCall(Integer programID, String integrationID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -9044,7 +9044,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyPointsValidateBeforeCall(String programID, String integrationID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyPointsValidateBeforeCall(Integer programID, String integrationID, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -9065,7 +9065,7 @@ public class ManagementApi {
     /**
      * Get integration&#39;s Loyalty Ledger
      * Get the Loyalty Ledger for this profile integration ID.
-     * @param programID The identifier for the application, must be unique within the account. (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
      * @return LoyaltyLedger
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9075,7 +9075,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyLedger getLoyaltyPoints(String programID, String integrationID) throws ApiException {
+    public LoyaltyLedger getLoyaltyPoints(Integer programID, String integrationID) throws ApiException {
         ApiResponse<LoyaltyLedger> localVarResp = getLoyaltyPointsWithHttpInfo(programID, integrationID);
         return localVarResp.getData();
     }
@@ -9083,7 +9083,7 @@ public class ManagementApi {
     /**
      * Get integration&#39;s Loyalty Ledger
      * Get the Loyalty Ledger for this profile integration ID.
-     * @param programID The identifier for the application, must be unique within the account. (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
      * @return ApiResponse&lt;LoyaltyLedger&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9093,7 +9093,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyLedger> getLoyaltyPointsWithHttpInfo(String programID, String integrationID) throws ApiException {
+    public ApiResponse<LoyaltyLedger> getLoyaltyPointsWithHttpInfo(Integer programID, String integrationID) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyPointsValidateBeforeCall(programID, integrationID, null);
         Type localVarReturnType = new TypeToken<LoyaltyLedger>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -9102,7 +9102,7 @@ public class ManagementApi {
     /**
      * Get integration&#39;s Loyalty Ledger (asynchronously)
      * Get the Loyalty Ledger for this profile integration ID.
-     * @param programID The identifier for the application, must be unique within the account. (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID The identifier for the application, must be unique within the account. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -9113,7 +9113,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyPointsAsync(String programID, String integrationID, final ApiCallback<LoyaltyLedger> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyPointsAsync(Integer programID, String integrationID, final ApiCallback<LoyaltyLedger> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyPointsValidateBeforeCall(programID, integrationID, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyLedger>(){}.getType();
@@ -9122,7 +9122,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getLoyaltyProgram
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9179,7 +9179,7 @@ public class ManagementApi {
     /**
      * Get a loyalty program
      * Get a loyalty program.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return LoyaltyProgram
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9196,7 +9196,7 @@ public class ManagementApi {
     /**
      * Get a loyalty program
      * Get a loyalty program.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return ApiResponse&lt;LoyaltyProgram&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9214,7 +9214,7 @@ public class ManagementApi {
     /**
      * Get a loyalty program (asynchronously)
      * Get a loyalty program.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9334,7 +9334,7 @@ public class ManagementApi {
     }
     /**
      * Build call for getLoyaltyStatistics
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9344,7 +9344,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyStatisticsCall(String programID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyStatisticsCall(Integer programID, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -9375,7 +9375,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyStatisticsValidateBeforeCall(String programID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyStatisticsValidateBeforeCall(Integer programID, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -9391,7 +9391,7 @@ public class ManagementApi {
     /**
      * Get loyalty program statistics by loyalty program ID
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return LoyaltyStatistics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9400,7 +9400,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyStatistics getLoyaltyStatistics(String programID) throws ApiException {
+    public LoyaltyStatistics getLoyaltyStatistics(Integer programID) throws ApiException {
         ApiResponse<LoyaltyStatistics> localVarResp = getLoyaltyStatisticsWithHttpInfo(programID);
         return localVarResp.getData();
     }
@@ -9408,7 +9408,7 @@ public class ManagementApi {
     /**
      * Get loyalty program statistics by loyalty program ID
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @return ApiResponse&lt;LoyaltyStatistics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9417,7 +9417,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyStatistics> getLoyaltyStatisticsWithHttpInfo(String programID) throws ApiException {
+    public ApiResponse<LoyaltyStatistics> getLoyaltyStatisticsWithHttpInfo(Integer programID) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyStatisticsValidateBeforeCall(programID, null);
         Type localVarReturnType = new TypeToken<LoyaltyStatistics>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -9426,7 +9426,7 @@ public class ManagementApi {
     /**
      * Get loyalty program statistics by loyalty program ID (asynchronously)
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9436,7 +9436,7 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyStatisticsAsync(String programID, final ApiCallback<LoyaltyStatistics> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyStatisticsAsync(Integer programID, final ApiCallback<LoyaltyStatistics> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyStatisticsValidateBeforeCall(programID, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyStatistics>(){}.getType();
@@ -11181,7 +11181,7 @@ public class ManagementApi {
     }
     /**
      * Build call for importLoyaltyPoints
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -11243,7 +11243,7 @@ public class ManagementApi {
     /**
      * Import loyalty points via CSV file
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ModelImport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11261,7 +11261,7 @@ public class ManagementApi {
     /**
      * Import loyalty points via CSV file
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @return ApiResponse&lt;ModelImport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11280,7 +11280,7 @@ public class ManagementApi {
     /**
      * Import loyalty points via CSV file (asynchronously)
      * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param upFile The file with the information about the loyalty points that should be imported. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -11548,7 +11548,7 @@ public class ManagementApi {
     }
     /**
      * Build call for removeLoyaltyPoints
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @param _callback Callback for upload/download progress
@@ -11560,7 +11560,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call removeLoyaltyPointsCall(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call removeLoyaltyPointsCall(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = loyaltyPoints;
 
         // create path and map variables
@@ -11592,7 +11592,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call removeLoyaltyPointsValidateBeforeCall(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call removeLoyaltyPointsValidateBeforeCall(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'programID' is set
         if (programID == null) {
@@ -11618,7 +11618,7 @@ public class ManagementApi {
     /**
      * Deduct points in a loyalty program for the specified customer
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11628,14 +11628,14 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void removeLoyaltyPoints(String programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+    public void removeLoyaltyPoints(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
         removeLoyaltyPointsWithHttpInfo(programID, integrationID, loyaltyPoints);
     }
 
     /**
      * Deduct points in a loyalty program for the specified customer
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -11646,7 +11646,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> removeLoyaltyPointsWithHttpInfo(String programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
+    public ApiResponse<Void> removeLoyaltyPointsWithHttpInfo(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints) throws ApiException {
         okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -11654,7 +11654,7 @@ public class ManagementApi {
     /**
      * Deduct points in a loyalty program for the specified customer (asynchronously)
      * 
-     * @param programID  (required)
+     * @param programID The identifier for the loyalty program, must be unique within the account. (required)
      * @param integrationID  (required)
      * @param loyaltyPoints  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -11666,7 +11666,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call removeLoyaltyPointsAsync(String programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call removeLoyaltyPointsAsync(Integer programID, String integrationID, LoyaltyPoints loyaltyPoints, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = removeLoyaltyPointsValidateBeforeCall(programID, integrationID, loyaltyPoints, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -11786,7 +11786,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvanced
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -11808,8 +11808,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call searchCouponsAdvancedCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced"
@@ -11888,7 +11888,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedValidateBeforeCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedValidateBeforeCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -11900,13 +11900,13 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling searchCouponsAdvanced(Async)");
         }
         
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvanced(Async)");
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvanced(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         return localVarCall;
 
     }
@@ -11916,7 +11916,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -11937,8 +11937,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+    public InlineResponse2004 searchCouponsAdvanced(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedWithHttpInfo(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
         return localVarResp.getData();
     }
 
@@ -11947,7 +11947,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -11968,8 +11968,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
+    public ApiResponse<InlineResponse2004> searchCouponsAdvancedWithHttpInfo(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11979,7 +11979,7 @@ public class ManagementApi {
      * Gets a list of all the coupons with attributes matching the query criteria 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12001,9 +12001,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedAsync(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12011,7 +12011,7 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWide
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12034,8 +12034,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call searchCouponsAdvancedApplicationWideCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/coupons_search_advanced"
@@ -12117,20 +12117,20 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedApplicationWideValidateBeforeCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedApplicationWideValidateBeforeCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling searchCouponsAdvancedApplicationWide(Async)");
         }
         
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedApplicationWide(Async)");
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedApplicationWide(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         return localVarCall;
 
     }
@@ -12139,7 +12139,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application (with total count)
      * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12161,8 +12161,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 searchCouponsAdvancedApplicationWide(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+    public InlineResponse2004 searchCouponsAdvancedApplicationWide(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = searchCouponsAdvancedApplicationWideWithHttpInfo(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
         return localVarResp.getData();
     }
 
@@ -12170,7 +12170,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application (with total count)
      * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12192,8 +12192,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
+    public ApiResponse<InlineResponse2004> searchCouponsAdvancedApplicationWideWithHttpInfo(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -12202,7 +12202,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application (with total count) (asynchronously)
      * Get a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12225,9 +12225,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedApplicationWideAsync(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12235,7 +12235,7 @@ public class ManagementApi {
     /**
      * Build call for searchCouponsAdvancedApplicationWideWithoutTotalCount
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12258,8 +12258,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/coupons_search_advanced/no_total"
@@ -12341,20 +12341,20 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
             throw new ApiException("Missing the required parameter 'applicationId' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
         }
         
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedApplicationWideWithoutTotalCount(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         return localVarCall;
 
     }
@@ -12363,7 +12363,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application
      * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12385,8 +12385,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+    public InlineResponse2005 searchCouponsAdvancedApplicationWideWithoutTotalCount(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
         return localVarResp.getData();
     }
 
@@ -12394,7 +12394,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application
      * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12416,8 +12416,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedApplicationWideWithoutTotalCountWithHttpInfo(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -12426,7 +12426,7 @@ public class ManagementApi {
      * List coupons that match the given attributes in all active campaigns of an application (asynchronously)
      * List of all the coupons with attributes matching the query criteria in all active campaigns of an application. 
      * @param applicationId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12449,9 +12449,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedApplicationWideWithoutTotalCountAsync(Integer applicationId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, String batchId, Boolean exactMatch, String campaignState, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedApplicationWideWithoutTotalCountValidateBeforeCall(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12460,7 +12460,7 @@ public class ManagementApi {
      * Build call for searchCouponsAdvancedWithoutTotalCount
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12482,8 +12482,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total"
@@ -12562,7 +12562,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'applicationId' is set
         if (applicationId == null) {
@@ -12574,13 +12574,13 @@ public class ManagementApi {
             throw new ApiException("Missing the required parameter 'campaignId' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
         }
         
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling searchCouponsAdvancedWithoutTotalCount(Async)");
         }
         
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         return localVarCall;
 
     }
@@ -12590,7 +12590,7 @@ public class ManagementApi {
      * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12611,8 +12611,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+    public InlineResponse2005 searchCouponsAdvancedWithoutTotalCount(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        ApiResponse<InlineResponse2005> localVarResp = searchCouponsAdvancedWithoutTotalCountWithHttpInfo(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
         return localVarResp.getData();
     }
 
@@ -12621,7 +12621,7 @@ public class ManagementApi {
      * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12642,8 +12642,8 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
+    public ApiResponse<InlineResponse2005> searchCouponsAdvancedWithoutTotalCountWithHttpInfo(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId) throws ApiException {
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -12653,7 +12653,7 @@ public class ManagementApi {
      * List of all the coupons with attributes matching the query criteria. 
      * @param applicationId  (required)
      * @param campaignId  (required)
-     * @param requestBody  (required)
+     * @param body  (required)
      * @param pageSize The number of items to include in this response. When omitted, the maximum value of 1000 will be used. (optional)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
      * @param sort  (optional)
@@ -12675,9 +12675,9 @@ public class ManagementApi {
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Map<String, Object> requestBody, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call searchCouponsAdvancedWithoutTotalCountAsync(Integer applicationId, Integer campaignId, Object body, Integer pageSize, Integer skip, String sort, String value, OffsetDateTime createdBefore, OffsetDateTime createdAfter, String valid, String usable, Integer referralId, String recipientIntegrationId, Boolean exactMatch, String batchId, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, requestBody, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
+        okhttp3.Call localVarCall = searchCouponsAdvancedWithoutTotalCountValidateBeforeCall(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

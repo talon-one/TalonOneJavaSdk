@@ -23,9 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -108,7 +105,7 @@ public class Export {
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
-  private Map<String, Object> filter = new HashMap<String, Object>();
+  private Object filter;
 
 
   public Export id(Integer id) {
@@ -221,14 +218,9 @@ public class Export {
   }
 
 
-  public Export filter(Map<String, Object> filter) {
+  public Export filter(Object filter) {
     
     this.filter = filter;
-    return this;
-  }
-
-  public Export putFilterItem(String key, Object filterItem) {
-    this.filter.put(key, filterItem);
     return this;
   }
 
@@ -238,12 +230,12 @@ public class Export {
   **/
   @ApiModelProperty(required = true, value = "Map of keys and values that were used to filter the exported rows")
 
-  public Map<String, Object> getFilter() {
+  public Object getFilter() {
     return filter;
   }
 
 
-  public void setFilter(Map<String, Object> filter) {
+  public void setFilter(Object filter) {
     this.filter = filter;
   }
 

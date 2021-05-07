@@ -23,9 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import one.talon.model.CouponRejectionReason;
 import one.talon.model.ReferralRejectionReason;
 
@@ -36,11 +33,11 @@ import one.talon.model.ReferralRejectionReason;
 public class Meta {
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
-  private Map<String, Object> campaigns = null;
+  private Object campaigns;
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
-  private Map<String, Object> coupons = null;
+  private Object coupons;
 
   public static final String SERIALIZED_NAME_COUPON_REJECTION_REASON = "couponRejectionReason";
   @SerializedName(SERIALIZED_NAME_COUPON_REJECTION_REASON)
@@ -52,20 +49,12 @@ public class Meta {
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private Map<String, Object> warnings = null;
+  private Object warnings;
 
 
-  public Meta campaigns(Map<String, Object> campaigns) {
+  public Meta campaigns(Object campaigns) {
     
     this.campaigns = campaigns;
-    return this;
-  }
-
-  public Meta putCampaignsItem(String key, Object campaignsItem) {
-    if (this.campaigns == null) {
-      this.campaigns = new HashMap<String, Object>();
-    }
-    this.campaigns.put(key, campaignsItem);
     return this;
   }
 
@@ -76,27 +65,19 @@ public class Meta {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Maps each evaluated campaign ID to a key-value list of that campaigns attributes. Campaigns without attributes will be omitted.")
 
-  public Map<String, Object> getCampaigns() {
+  public Object getCampaigns() {
     return campaigns;
   }
 
 
-  public void setCampaigns(Map<String, Object> campaigns) {
+  public void setCampaigns(Object campaigns) {
     this.campaigns = campaigns;
   }
 
 
-  public Meta coupons(Map<String, Object> coupons) {
+  public Meta coupons(Object coupons) {
     
     this.coupons = coupons;
-    return this;
-  }
-
-  public Meta putCouponsItem(String key, Object couponsItem) {
-    if (this.coupons == null) {
-      this.coupons = new HashMap<String, Object>();
-    }
-    this.coupons.put(key, couponsItem);
     return this;
   }
 
@@ -107,12 +88,12 @@ public class Meta {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Maps the coupon value to a key-value list of that coupons attributes.")
 
-  public Map<String, Object> getCoupons() {
+  public Object getCoupons() {
     return coupons;
   }
 
 
-  public void setCoupons(Map<String, Object> coupons) {
+  public void setCoupons(Object coupons) {
     this.coupons = coupons;
   }
 
@@ -163,17 +144,9 @@ public class Meta {
   }
 
 
-  public Meta warnings(Map<String, Object> warnings) {
+  public Meta warnings(Object warnings) {
     
     this.warnings = warnings;
-    return this;
-  }
-
-  public Meta putWarningsItem(String key, Object warningsItem) {
-    if (this.warnings == null) {
-      this.warnings = new HashMap<String, Object>();
-    }
-    this.warnings.put(key, warningsItem);
     return this;
   }
 
@@ -184,12 +157,12 @@ public class Meta {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Contains warnings about possible misuse.")
 
-  public Map<String, Object> getWarnings() {
+  public Object getWarnings() {
     return warnings;
   }
 
 
-  public void setWarnings(Map<String, Object> warnings) {
+  public void setWarnings(Object warnings) {
     this.warnings = warnings;
   }
 
