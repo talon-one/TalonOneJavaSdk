@@ -1252,7 +1252,7 @@ public class ApiClient {
             Authentication auth = authentications.get(authName);
             if (auth != null) {
                 foundAuth = true;
-                if (authName == "integration_auth") {
+                if (authName.equals("integration_auth")) {
                     try {
                         if (body == null) {
                             throw new RuntimeException("No body provided to sign with HMAC");
