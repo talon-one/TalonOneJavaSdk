@@ -3,16 +3,20 @@
 Talon.One API
 - API version: 1.0.0
 
-The Talon.One API is used to manage applications and campaigns, as well as to
-integrate with your application. The operations in the _Integration API_ section
-are used to integrate with our platform, while the other operations are
-used to manage applications and campaigns.
+Use the Talon.One API to integrate with your application and to
+manage applications and campaigns:
 
-### Where is the API?
+- Use the operations in the [Integration API section](#integration-api)
+are used to integrate with our platform
+- Use the operation in the [Management API section](#management-api) to
+manage applications and campaigns.
 
-The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`
+## Determining the base URL of the endpoints
 
-[updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put
+The API is available at the same hostname as your Campaign Manager deployment.
+For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`,
+the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint
+is `https://mycompany.talon.one/v2/customer_sessions/{Id}`
 
 
 
@@ -81,7 +85,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ### Integration API
 
-#### V2
+**Note:** The Integration API's V1 `Update customer session` and `Update customer profile` endpoints are now deprecated. Use their V2 instead. See [Migrating to V2](https://docs.talon.one/docs/dev/tutorials/migrating-to-v2) for more information.
 
 ```java
 package com.example.consumer;
@@ -97,7 +101,7 @@ public class TalonApiTest {
     public static void main(String[] args) {
         Gson gson = new Gson();
         IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
-        
+
         // Setup: basePath
         iApi.getApiClient().setBasePath("https://mycompany.talon.one");
         // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
@@ -164,46 +168,6 @@ public class TalonApiTest {
 }
 ```
 
-#### V1
-
-```java
-package com.example.consumer;
-
-import one.talon.ApiClient;
-import one.talon.api.IntegrationApi;
-import one.talon.api.ManagementApi;
-import one.talon.model.*;
-
-public class TalonApiTest {
-    public static void main(String[] args) {
-        IntegrationApi iApi = new IntegrationApi(new ApiClient("integration_auth"));
-        
-        // Setup: basePath
-        iApi.getApiClient().setBasePath("https://mycompany.talon.one");
-        // Setup: When using 'integration_auth', applicationId & applicationKey must be provided
-        iApi.getApiClient().setApplicationId("1");
-        iApi.getApiClient().setApplicationKey("fee29ed73f67db39");
-
-        try {
-            // Integration API example to send a session update
-            NewCustomerSession customerSession = new NewCustomerSession();
-            customerSession.setProfileId("Cool_Dude");
-            customerSession.setState(NewCustomerSession.StateEnum.OPEN);
-            customerSession.setTotal(new java.math.BigDecimal("42.0"));
-
-            // Flag to communicate whether the request is a "dry run"
-            Boolean dryRun = false;
-
-            // Create/update a customer session using `updateCustomerSession` function
-            IntegrationState ie = iApi.updateCustomerSession("deetdoot", customerSession, dryRun);
-            System.out.println(ie.toString());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-}
-```
-
 ### Management API
 
 ```java
@@ -222,7 +186,7 @@ public class TalonApiTest {
         // Setup: basePath and bearer prefix
         mApi.getApiClient().setBasePath("https://mycompany.talon.one");
         mApi.getApiClient().setApiKeyPrefix("Bearer");
-        
+
         LoginParams lp = new LoginParams();
         lp.setEmail("admin@talon.one");
         lp.setPassword("yourpassword");
@@ -256,11 +220,9 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | Get an inventory of all data associated with a specific customer profile
 *IntegrationApi* | [**getReservedCustomers**](docs/IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | Get the users that have this coupon reserved
 *IntegrationApi* | [**trackEvent**](docs/IntegrationApi.md#trackEvent) | **POST** /v1/events | Track an Event
-*IntegrationApi* | [**updateCustomerProfile**](docs/IntegrationApi.md#updateCustomerProfile) | **PUT** /v1/customer_profiles/{integrationId} | Update a Customer Profile V1
 *IntegrationApi* | [**updateCustomerProfileAudiences**](docs/IntegrationApi.md#updateCustomerProfileAudiences) | **POST** /v2/customer_audiences | Update a Customer Profile Audiences
 *IntegrationApi* | [**updateCustomerProfileV2**](docs/IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{integrationId} | Update a Customer Profile
 *IntegrationApi* | [**updateCustomerProfilesV2**](docs/IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple Customer Profiles
-*IntegrationApi* | [**updateCustomerSession**](docs/IntegrationApi.md#updateCustomerSession) | **PUT** /v1/customer_sessions/{customerSessionId} | Update a Customer Session V1
 *IntegrationApi* | [**updateCustomerSessionV2**](docs/IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update a Customer Session
 *ManagementApi* | [**addLoyaltyPoints**](docs/ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{programID}/profile/{integrationID}/add_points | Add points in a certain loyalty program for the specified customer
 *ManagementApi* | [**copyCampaignToApplications**](docs/ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into every specified application
