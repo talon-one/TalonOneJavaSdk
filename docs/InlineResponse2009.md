@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
+**data** | [**List&lt;Collection&gt;**](Collection.md) |  | 
 
 
 

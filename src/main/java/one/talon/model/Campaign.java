@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -224,9 +224,17 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_COUPON_CREATION_COUNT)
   private Integer couponCreationCount;
 
+  public static final String SERIALIZED_NAME_CUSTOM_EFFECT_COUNT = "customEffectCount";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_EFFECT_COUNT)
+  private Integer customEffectCount;
+
   public static final String SERIALIZED_NAME_REFERRAL_CREATION_COUNT = "referralCreationCount";
   @SerializedName(SERIALIZED_NAME_REFERRAL_CREATION_COUNT)
   private Integer referralCreationCount;
+
+  public static final String SERIALIZED_NAME_ADD_FREE_ITEM_EFFECT_COUNT = "addFreeItemEffectCount";
+  @SerializedName(SERIALIZED_NAME_ADD_FREE_ITEM_EFFECT_COUNT)
+  private Integer addFreeItemEffectCount;
 
   public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT = "awardedGiveawaysCount";
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT)
@@ -248,6 +256,10 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_EFFECT_COUNT)
   private Integer redeemedLoyaltyPointsEffectCount;
 
+  public static final String SERIALIZED_NAME_CALL_API_EFFECT_COUNT = "callApiEffectCount";
+  @SerializedName(SERIALIZED_NAME_CALL_API_EFFECT_COUNT)
+  private Integer callApiEffectCount;
+
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
   private OffsetDateTime lastActivity;
@@ -263,6 +275,10 @@ public class Campaign {
   public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   private String updatedBy;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
+  private Integer templateId;
 
 
   public Campaign id(Integer id) {
@@ -319,7 +335,7 @@ public class Campaign {
    * The ID of the application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -360,10 +376,10 @@ public class Campaign {
   }
 
    /**
-   * A friendly name for this campaign.
+   * A user-facing name for this campaign.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "A friendly name for this campaign.")
+  @ApiModelProperty(example = "Summer promotions", required = true, value = "A user-facing name for this campaign.")
 
   public String getName() {
     return name;
@@ -385,7 +401,7 @@ public class Campaign {
    * A detailed description of the campaign.
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "A detailed description of the campaign.")
+  @ApiModelProperty(example = "Campaign for all summer 2021 promotions", required = true, value = "A detailed description of the campaign.")
 
   public String getDescription() {
     return description;
@@ -404,11 +420,11 @@ public class Campaign {
   }
 
    /**
-   * Datetime when the campaign will become active.
+   * Timestamp when the campaign will become active.
    * @return startTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime when the campaign will become active.")
+  @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp when the campaign will become active.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -427,11 +443,11 @@ public class Campaign {
   }
 
    /**
-   * Datetime when the campaign will become in-active.
+   * Timestamp the campaign will become inactive.
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime when the campaign will become in-active.")
+  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp the campaign will become inactive.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -495,11 +511,11 @@ public class Campaign {
   }
 
    /**
-   * ID of Ruleset this campaign applies on customer session evaluation.
+   * [ID of Ruleset](https://docs.talon.one/management-api/#operation/getRulesets) this campaign applies on customer session evaluation. 
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ID of Ruleset this campaign applies on customer session evaluation.")
+  @ApiModelProperty(value = "[ID of Ruleset](https://docs.talon.one/management-api/#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
   public Integer getActiveRulesetId() {
     return activeRulesetId;
@@ -526,7 +542,7 @@ public class Campaign {
    * A list of tags for the campaign.
    * @return tags
   **/
-  @ApiModelProperty(required = true, value = "A list of tags for the campaign.")
+  @ApiModelProperty(example = "[summer]", required = true, value = "A list of tags for the campaign.")
 
   public List<String> getTags() {
     return tags;
@@ -550,10 +566,10 @@ public class Campaign {
   }
 
    /**
-   * A list of features for the campaign.
+   * The features enabled in this campaign.
    * @return features
   **/
-  @ApiModelProperty(required = true, value = "A list of features for the campaign.")
+  @ApiModelProperty(example = "[coupons, referrals]", required = true, value = "The features enabled in this campaign.")
 
   public List<FeaturesEnum> getFeatures() {
     return features;
@@ -623,10 +639,10 @@ public class Campaign {
   }
 
    /**
-   * The set of limits that will operate for this campaign
+   * The set of [budget limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/) for this campaign. 
    * @return limits
   **/
-  @ApiModelProperty(required = true, value = "The set of limits that will operate for this campaign")
+  @ApiModelProperty(required = true, value = "The set of [budget limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/) for this campaign. ")
 
   public List<LimitConfig> getLimits() {
     return limits;
@@ -653,11 +669,11 @@ public class Campaign {
   }
 
    /**
-   * The IDs of the campaign groups that own this entity.
+   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups/) this campaign belongs to. 
    * @return campaignGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the campaign groups that own this entity.")
+  @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups/) this campaign belongs to. ")
 
   public List<Integer> getCampaignGroups() {
     return campaignGroups;
@@ -784,6 +800,29 @@ public class Campaign {
   }
 
 
+  public Campaign customEffectCount(Integer customEffectCount) {
+    
+    this.customEffectCount = customEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of custom effects triggered by rules in this campaign.
+   * @return customEffectCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of custom effects triggered by rules in this campaign.")
+
+  public Integer getCustomEffectCount() {
+    return customEffectCount;
+  }
+
+
+  public void setCustomEffectCount(Integer customEffectCount) {
+    this.customEffectCount = customEffectCount;
+  }
+
+
   public Campaign referralCreationCount(Integer referralCreationCount) {
     
     this.referralCreationCount = referralCreationCount;
@@ -804,6 +843,29 @@ public class Campaign {
 
   public void setReferralCreationCount(Integer referralCreationCount) {
     this.referralCreationCount = referralCreationCount;
+  }
+
+
+  public Campaign addFreeItemEffectCount(Integer addFreeItemEffectCount) {
+    
+    this.addFreeItemEffectCount = addFreeItemEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of times triggering add free item effext is allowed in this campaign.
+   * @return addFreeItemEffectCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of times triggering add free item effext is allowed in this campaign.")
+
+  public Integer getAddFreeItemEffectCount() {
+    return addFreeItemEffectCount;
+  }
+
+
+  public void setAddFreeItemEffectCount(Integer addFreeItemEffectCount) {
+    this.addFreeItemEffectCount = addFreeItemEffectCount;
   }
 
 
@@ -922,6 +984,29 @@ public class Campaign {
   }
 
 
+  public Campaign callApiEffectCount(Integer callApiEffectCount) {
+    
+    this.callApiEffectCount = callApiEffectCount;
+    return this;
+  }
+
+   /**
+   * Total number of webhook triggered by rules in this campaign.
+   * @return callApiEffectCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Total number of webhook triggered by rules in this campaign.")
+
+  public Integer getCallApiEffectCount() {
+    return callApiEffectCount;
+  }
+
+
+  public void setCallApiEffectCount(Integer callApiEffectCount) {
+    this.callApiEffectCount = callApiEffectCount;
+  }
+
+
   public Campaign lastActivity(OffsetDateTime lastActivity) {
     
     this.lastActivity = lastActivity;
@@ -952,11 +1037,11 @@ public class Campaign {
   }
 
    /**
-   * Timestamp of the most recent update to the campaign or any of its elements.
+   * Timestamp of the most recent update to the campaign&#39;s property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. 
    * @return updated
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp of the most recent update to the campaign or any of its elements.")
+  @ApiModelProperty(value = "Timestamp of the most recent update to the campaign's property. Updates to external entities used in this campaign are **not** registered by this property, such as collection or coupon updates. ")
 
   public OffsetDateTime getUpdated() {
     return updated;
@@ -979,7 +1064,7 @@ public class Campaign {
    * @return createdBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the user who created this campaign if available.")
+  @ApiModelProperty(example = "John Doe", value = "Name of the user who created this campaign if available.")
 
   public String getCreatedBy() {
     return createdBy;
@@ -1002,7 +1087,7 @@ public class Campaign {
    * @return updatedBy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the user who last updated this campaign if available.")
+  @ApiModelProperty(example = "Jane Doe", value = "Name of the user who last updated this campaign if available.")
 
   public String getUpdatedBy() {
     return updatedBy;
@@ -1011,6 +1096,29 @@ public class Campaign {
 
   public void setUpdatedBy(String updatedBy) {
     this.updatedBy = updatedBy;
+  }
+
+
+  public Campaign templateId(Integer templateId) {
+    
+    this.templateId = templateId;
+    return this;
+  }
+
+   /**
+   * The ID of the Campaign Template this Campaign was created from.
+   * @return templateId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the Campaign Template this Campaign was created from.")
+
+  public Integer getTemplateId() {
+    return templateId;
+  }
+
+
+  public void setTemplateId(Integer templateId) {
+    this.templateId = templateId;
   }
 
 
@@ -1045,21 +1153,25 @@ public class Campaign {
         Objects.equals(this.discountCount, campaign.discountCount) &&
         Objects.equals(this.discountEffectCount, campaign.discountEffectCount) &&
         Objects.equals(this.couponCreationCount, campaign.couponCreationCount) &&
+        Objects.equals(this.customEffectCount, campaign.customEffectCount) &&
         Objects.equals(this.referralCreationCount, campaign.referralCreationCount) &&
+        Objects.equals(this.addFreeItemEffectCount, campaign.addFreeItemEffectCount) &&
         Objects.equals(this.awardedGiveawaysCount, campaign.awardedGiveawaysCount) &&
         Objects.equals(this.createdLoyaltyPointsCount, campaign.createdLoyaltyPointsCount) &&
         Objects.equals(this.createdLoyaltyPointsEffectCount, campaign.createdLoyaltyPointsEffectCount) &&
         Objects.equals(this.redeemedLoyaltyPointsCount, campaign.redeemedLoyaltyPointsCount) &&
         Objects.equals(this.redeemedLoyaltyPointsEffectCount, campaign.redeemedLoyaltyPointsEffectCount) &&
+        Objects.equals(this.callApiEffectCount, campaign.callApiEffectCount) &&
         Objects.equals(this.lastActivity, campaign.lastActivity) &&
         Objects.equals(this.updated, campaign.updated) &&
         Objects.equals(this.createdBy, campaign.createdBy) &&
-        Objects.equals(this.updatedBy, campaign.updatedBy);
+        Objects.equals(this.updatedBy, campaign.updatedBy) &&
+        Objects.equals(this.templateId, campaign.templateId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, referralCreationCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, lastActivity, updated, createdBy, updatedBy);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, lastActivity, updated, createdBy, updatedBy, templateId);
   }
 
 
@@ -1089,16 +1201,20 @@ public class Campaign {
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");
     sb.append("    discountEffectCount: ").append(toIndentedString(discountEffectCount)).append("\n");
     sb.append("    couponCreationCount: ").append(toIndentedString(couponCreationCount)).append("\n");
+    sb.append("    customEffectCount: ").append(toIndentedString(customEffectCount)).append("\n");
     sb.append("    referralCreationCount: ").append(toIndentedString(referralCreationCount)).append("\n");
+    sb.append("    addFreeItemEffectCount: ").append(toIndentedString(addFreeItemEffectCount)).append("\n");
     sb.append("    awardedGiveawaysCount: ").append(toIndentedString(awardedGiveawaysCount)).append("\n");
     sb.append("    createdLoyaltyPointsCount: ").append(toIndentedString(createdLoyaltyPointsCount)).append("\n");
     sb.append("    createdLoyaltyPointsEffectCount: ").append(toIndentedString(createdLoyaltyPointsEffectCount)).append("\n");
     sb.append("    redeemedLoyaltyPointsCount: ").append(toIndentedString(redeemedLoyaltyPointsCount)).append("\n");
     sb.append("    redeemedLoyaltyPointsEffectCount: ").append(toIndentedString(redeemedLoyaltyPointsEffectCount)).append("\n");
+    sb.append("    callApiEffectCount: ").append(toIndentedString(callApiEffectCount)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
+    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

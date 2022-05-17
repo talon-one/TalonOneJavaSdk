@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **customerProfile** | [**CustomerProfile**](CustomerProfile.md) |  |  [optional]
 **event** | [**Event**](Event.md) |  |  [optional]
 **loyalty** | [**Loyalty**](Loyalty.md) |  |  [optional]
-**referral** | [**Referral**](Referral.md) |  |  [optional]
+**referral** | [**InventoryReferral**](InventoryReferral.md) |  |  [optional]
 **coupons** | [**List&lt;Coupon&gt;**](Coupon.md) |  |  [optional]
 **triggeredCampaigns** | [**List&lt;Campaign&gt;**](Campaign.md) |  |  [optional]
 **effects** | [**List&lt;Effect&gt;**](Effect.md) |  | 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **createdCoupons** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
 **createdReferrals** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 **awardedGiveaways** | [**List&lt;Giveaway&gt;**](Giveaway.md) |  |  [optional]
+**_return** | [**ModelReturn**](ModelReturn.md) |  |  [optional]
+**previousReturns** | [**List&lt;ModelReturn&gt;**](ModelReturn.md) |  |  [optional]
 
 
 

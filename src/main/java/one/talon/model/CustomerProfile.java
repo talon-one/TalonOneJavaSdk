@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -36,13 +36,17 @@ import org.threeten.bp.OffsetDateTime;
 @ApiModel(description = "")
 
 public class CustomerProfile {
-  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
-  private String integrationId;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
+  private String integrationId;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -73,25 +77,25 @@ public class CustomerProfile {
   private OffsetDateTime lastActivity;
 
 
-  public CustomerProfile integrationId(String integrationId) {
+  public CustomerProfile id(Integer id) {
     
-    this.integrationId = integrationId;
+    this.id = id;
     return this;
   }
 
    /**
-   * The integration ID for this entity sent to and used in the Talon.One system.
-   * @return integrationId
+   * Unique ID for this entity.
+   * @return id
   **/
-  @ApiModelProperty(required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public String getIntegrationId() {
-    return integrationId;
+  public Integer getId() {
+    return id;
   }
 
 
-  public void setIntegrationId(String integrationId) {
-    this.integrationId = integrationId;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
 
@@ -102,10 +106,10 @@ public class CustomerProfile {
   }
 
    /**
-   * The exact moment this entity was created.
+   * The exact moment this entity was created. The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(required = true, value = "The exact moment this entity was created. The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -114,6 +118,28 @@ public class CustomerProfile {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
+  }
+
+
+  public CustomerProfile integrationId(String integrationId) {
+    
+    this.integrationId = integrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID for this entity sent to and used in the Talon.One system.
+   * @return integrationId
+  **/
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
+
+  public String getIntegrationId() {
+    return integrationId;
+  }
+
+
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
   }
 
 
@@ -127,7 +153,7 @@ public class CustomerProfile {
    * Arbitrary properties associated with this item
    * @return attributes
   **/
-  @ApiModelProperty(required = true, value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", required = true, value = "Arbitrary properties associated with this item")
 
   public Object getAttributes() {
     return attributes;
@@ -149,7 +175,7 @@ public class CustomerProfile {
    * The ID of the Talon.One account that owns this profile.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the Talon.One account that owns this profile.")
+  @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
   public Integer getAccountId() {
     return accountId;
@@ -171,7 +197,7 @@ public class CustomerProfile {
    * The total amount of closed sessions by a customer. A closed session is a successful purchase.
    * @return closedSessions
   **/
-  @ApiModelProperty(required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
+  @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
 
   public Integer getClosedSessions() {
     return closedSessions;
@@ -193,7 +219,7 @@ public class CustomerProfile {
    * Sum of all purchases made by this customer
    * @return totalSales
   **/
-  @ApiModelProperty(required = true, value = "Sum of all purchases made by this customer")
+  @ApiModelProperty(example = "299.99", required = true, value = "Sum of all purchases made by this customer")
 
   public BigDecimal getTotalSales() {
     return totalSales;
@@ -220,11 +246,11 @@ public class CustomerProfile {
   }
 
    /**
-   * A list of loyalty programs joined by the customer
+   * **DEPRECATED** A list of loyalty programs joined by the customer. 
    * @return loyaltyMemberships
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of loyalty programs joined by the customer")
+  @ApiModelProperty(value = "**DEPRECATED** A list of loyalty programs joined by the customer. ")
 
   public List<LoyaltyMembership> getLoyaltyMemberships() {
     return loyaltyMemberships;
@@ -274,10 +300,10 @@ public class CustomerProfile {
   }
 
    /**
-   * Timestamp of the most recent event received from this customer
+   * Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the rule-engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api/#operation/createCouponReservation) for a customer doesn&#39;t impact this field. 
    * @return lastActivity
   **/
-  @ApiModelProperty(required = true, value = "Timestamp of the most recent event received from this customer")
+  @ApiModelProperty(example = "2020-02-08T14:15:20Z", required = true, value = "Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the rule-engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api/#operation/createCouponReservation) for a customer doesn't impact this field. ")
 
   public OffsetDateTime getLastActivity() {
     return lastActivity;
@@ -298,8 +324,9 @@ public class CustomerProfile {
       return false;
     }
     CustomerProfile customerProfile = (CustomerProfile) o;
-    return Objects.equals(this.integrationId, customerProfile.integrationId) &&
+    return Objects.equals(this.id, customerProfile.id) &&
         Objects.equals(this.created, customerProfile.created) &&
+        Objects.equals(this.integrationId, customerProfile.integrationId) &&
         Objects.equals(this.attributes, customerProfile.attributes) &&
         Objects.equals(this.accountId, customerProfile.accountId) &&
         Objects.equals(this.closedSessions, customerProfile.closedSessions) &&
@@ -311,7 +338,7 @@ public class CustomerProfile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, created, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity);
+    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity);
   }
 
 
@@ -319,8 +346,9 @@ public class CustomerProfile {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerProfile {\n");
-    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    closedSessions: ").append(toIndentedString(closedSessions)).append("\n");

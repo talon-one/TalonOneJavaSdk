@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -50,6 +50,10 @@ public class CustomEffect {
   @SerializedName(SERIALIZED_NAME_MODIFIED)
   private OffsetDateTime modified;
 
+  public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
+  private List<Integer> applicationIds = new ArrayList<Integer>();
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -69,10 +73,6 @@ public class CustomEffect {
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
-
-  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
-  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
@@ -97,7 +97,7 @@ public class CustomEffect {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -119,7 +119,7 @@ public class CustomEffect {
    * The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -141,7 +141,7 @@ public class CustomEffect {
    * The ID of the account that owns this entity.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the account that owns this entity.")
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
   public Integer getAccountId() {
     return accountId;
@@ -163,7 +163,7 @@ public class CustomEffect {
    * The exact moment this entity was last modified.
    * @return modified
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was last modified.")
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The exact moment this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
@@ -172,6 +172,33 @@ public class CustomEffect {
 
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
+  }
+
+
+  public CustomEffect applicationIds(List<Integer> applicationIds) {
+    
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public CustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the applications that are related to this entity.
+   * @return applicationIds
+  **/
+  @ApiModelProperty(required = true, value = "The IDs of the applications that are related to this entity.")
+
+  public List<Integer> getApplicationIds() {
+    return applicationIds;
+  }
+
+
+  public void setApplicationIds(List<Integer> applicationIds) {
+    this.applicationIds = applicationIds;
   }
 
 
@@ -286,37 +313,6 @@ public class CustomEffect {
   }
 
 
-  public CustomEffect subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
-    this.subscribedApplicationsIds = subscribedApplicationsIds;
-    return this;
-  }
-
-  public CustomEffect addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
-    if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
-    }
-    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
-    return this;
-  }
-
-   /**
-   * A list of the IDs of the applications that this effect is enabled for
-   * @return subscribedApplicationsIds
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of the IDs of the applications that this effect is enabled for")
-
-  public List<Integer> getSubscribedApplicationsIds() {
-    return subscribedApplicationsIds;
-  }
-
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    this.subscribedApplicationsIds = subscribedApplicationsIds;
-  }
-
-
   public CustomEffect params(List<TemplateArgDef> params) {
     
     this.params = params;
@@ -406,12 +402,12 @@ public class CustomEffect {
         Objects.equals(this.created, customEffect.created) &&
         Objects.equals(this.accountId, customEffect.accountId) &&
         Objects.equals(this.modified, customEffect.modified) &&
+        Objects.equals(this.applicationIds, customEffect.applicationIds) &&
         Objects.equals(this.name, customEffect.name) &&
         Objects.equals(this.title, customEffect.title) &&
         Objects.equals(this.payload, customEffect.payload) &&
         Objects.equals(this.description, customEffect.description) &&
         Objects.equals(this.enabled, customEffect.enabled) &&
-        Objects.equals(this.subscribedApplicationsIds, customEffect.subscribedApplicationsIds) &&
         Objects.equals(this.params, customEffect.params) &&
         Objects.equals(this.modifiedBy, customEffect.modifiedBy) &&
         Objects.equals(this.createdBy, customEffect.createdBy);
@@ -419,7 +415,7 @@ public class CustomEffect {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, modified, name, title, payload, description, enabled, subscribedApplicationsIds, params, modifiedBy, createdBy);
+    return Objects.hash(id, created, accountId, modified, applicationIds, name, title, payload, description, enabled, params, modifiedBy, createdBy);
   }
 
 
@@ -431,12 +427,12 @@ public class CustomEffect {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");

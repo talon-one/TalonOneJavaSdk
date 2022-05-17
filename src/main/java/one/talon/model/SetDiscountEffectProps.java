@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -42,6 +42,10 @@ public class SetDiscountEffectProps {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
+
+  public static final String SERIALIZED_NAME_DESIRED_VALUE = "desiredValue";
+  @SerializedName(SERIALIZED_NAME_DESIRED_VALUE)
+  private BigDecimal desiredValue;
 
 
   public SetDiscountEffectProps name(String name) {
@@ -111,6 +115,29 @@ public class SetDiscountEffectProps {
   }
 
 
+  public SetDiscountEffectProps desiredValue(BigDecimal desiredValue) {
+    
+    this.desiredValue = desiredValue;
+    return this;
+  }
+
+   /**
+   * The original value of the discount
+   * @return desiredValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The original value of the discount")
+
+  public BigDecimal getDesiredValue() {
+    return desiredValue;
+  }
+
+
+  public void setDesiredValue(BigDecimal desiredValue) {
+    this.desiredValue = desiredValue;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -122,12 +149,13 @@ public class SetDiscountEffectProps {
     SetDiscountEffectProps setDiscountEffectProps = (SetDiscountEffectProps) o;
     return Objects.equals(this.name, setDiscountEffectProps.name) &&
         Objects.equals(this.value, setDiscountEffectProps.value) &&
-        Objects.equals(this.scope, setDiscountEffectProps.scope);
+        Objects.equals(this.scope, setDiscountEffectProps.scope) &&
+        Objects.equals(this.desiredValue, setDiscountEffectProps.desiredValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, scope);
+    return Objects.hash(name, value, scope, desiredValue);
   }
 
 
@@ -138,6 +166,7 @@ public class SetDiscountEffectProps {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    desiredValue: ").append(toIndentedString(desiredValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }

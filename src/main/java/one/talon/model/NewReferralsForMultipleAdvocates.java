@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -77,7 +77,7 @@ public class NewReferralsForMultipleAdvocates {
    * @return startDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp at which point the referral code becomes valid.")
+  @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -100,7 +100,7 @@ public class NewReferralsForMultipleAdvocates {
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.")
+  @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
@@ -119,12 +119,12 @@ public class NewReferralsForMultipleAdvocates {
   }
 
    /**
-   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+   * The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply. 
    * minimum: 0
    * maximum: 999999
    * @return usageLimit
   **/
-  @ApiModelProperty(required = true, value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @ApiModelProperty(example = "1", required = true, value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
   public Integer getUsageLimit() {
     return usageLimit;
@@ -146,7 +146,7 @@ public class NewReferralsForMultipleAdvocates {
    * The ID of the campaign from which the referral received the referral code.
    * @return campaignId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the campaign from which the referral received the referral code.")
+  @ApiModelProperty(example = "45", required = true, value = "The ID of the campaign from which the referral received the referral code.")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -173,7 +173,7 @@ public class NewReferralsForMultipleAdvocates {
    * An array containing all the respective advocate profiles.
    * @return advocateProfileIntegrationIds
   **/
-  @ApiModelProperty(required = true, value = "An array containing all the respective advocate profiles.")
+  @ApiModelProperty(example = "[URNGV8294NV, DRPVV9476AF]", required = true, value = "An array containing all the respective advocate profiles.")
 
   public List<String> getAdvocateProfileIntegrationIds() {
     return advocateProfileIntegrationIds;
@@ -223,11 +223,11 @@ public class NewReferralsForMultipleAdvocates {
   }
 
    /**
-   * Set of characters to be used when generating random part of code. Defaults to [A-Z, 0-9] (in terms of RegExp).
+   * List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular expression. 
    * @return validCharacters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Set of characters to be used when generating random part of code. Defaults to [A-Z, 0-9] (in terms of RegExp).")
+  @ApiModelProperty(example = "[E, F, I, Z, 1, 2, 3]", value = "List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the `[A-Z, 0-9]` regular expression. ")
 
   public List<String> getValidCharacters() {
     return validCharacters;
@@ -246,11 +246,11 @@ public class NewReferralsForMultipleAdvocates {
   }
 
    /**
-   * The pattern that will be used to generate referrals. The character &#x60;#&#x60; acts as a placeholder and will be replaced by a random character from the &#x60;validCharacters&#x60; set. 
+   * The pattern used to generate referrals. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. 
    * @return referralPattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The pattern that will be used to generate referrals. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set. ")
+  @ApiModelProperty(example = "REF-###-###", value = "The pattern used to generate referrals. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set. ")
 
   public String getReferralPattern() {
     return referralPattern;

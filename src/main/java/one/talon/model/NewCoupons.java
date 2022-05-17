@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -49,6 +50,10 @@ public class NewCoupons {
   public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
+
+  public static final String SERIALIZED_NAME_LIMITS = "limits";
+  @SerializedName(SERIALIZED_NAME_LIMITS)
+  private List<LimitConfig> limits = null;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_COUPONS = "numberOfCoupons";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
@@ -82,12 +87,12 @@ public class NewCoupons {
   }
 
    /**
-   * The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
    * minimum: 0
    * maximum: 999999
    * @return usageLimit
   **/
-  @ApiModelProperty(required = true, value = "The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
   public Integer getUsageLimit() {
     return usageLimit;
@@ -112,7 +117,7 @@ public class NewCoupons {
    * @return discountLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+  @ApiModelProperty(example = "30.0", value = "The amount of discounts that can be given with this coupon code. ")
 
   public BigDecimal getDiscountLimit() {
     return discountLimit;
@@ -170,6 +175,37 @@ public class NewCoupons {
   }
 
 
+  public NewCoupons limits(List<LimitConfig> limits) {
+    
+    this.limits = limits;
+    return this;
+  }
+
+  public NewCoupons addLimitsItem(LimitConfig limitsItem) {
+    if (this.limits == null) {
+      this.limits = new ArrayList<LimitConfig>();
+    }
+    this.limits.add(limitsItem);
+    return this;
+  }
+
+   /**
+   * Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. 
+   * @return limits
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. ")
+
+  public List<LimitConfig> getLimits() {
+    return limits;
+  }
+
+
+  public void setLimits(List<LimitConfig> limits) {
+    this.limits = limits;
+  }
+
+
   public NewCoupons numberOfCoupons(Integer numberOfCoupons) {
     
     this.numberOfCoupons = numberOfCoupons;
@@ -180,7 +216,7 @@ public class NewCoupons {
    * The number of new coupon codes to generate for the campaign. Must be at least 1.
    * @return numberOfCoupons
   **/
-  @ApiModelProperty(required = true, value = "The number of new coupon codes to generate for the campaign. Must be at least 1.")
+  @ApiModelProperty(example = "1", required = true, value = "The number of new coupon codes to generate for the campaign. Must be at least 1.")
 
   public Integer getNumberOfCoupons() {
     return numberOfCoupons;
@@ -199,11 +235,11 @@ public class NewCoupons {
   }
 
    /**
-   * A unique prefix to prepend to all generated coupons.
+   * **DEPRECATED** To create more than 20,000 coupons in one request, use [Create coupons asynchronously endpoint](https://docs.talon.one/management-api/#operation/createCouponsAsync). 
    * @return uniquePrefix
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A unique prefix to prepend to all generated coupons.")
+  @ApiModelProperty(value = "**DEPRECATED** To create more than 20,000 coupons in one request, use [Create coupons asynchronously endpoint](https://docs.talon.one/management-api/#operation/createCouponsAsync). ")
 
   public String getUniquePrefix() {
     return uniquePrefix;
@@ -249,7 +285,7 @@ public class NewCoupons {
    * @return recipientIntegrationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The integration ID for this coupon's beneficiary's profile")
+  @ApiModelProperty(example = "URNGV8294NV", value = "The integration ID for this coupon's beneficiary's profile")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
@@ -276,11 +312,11 @@ public class NewCoupons {
   }
 
    /**
-   * Set of characters to be used when generating random part of code. Defaults to [A-Z, 0-9] (in terms of RegExp).
+   * List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular expression. 
    * @return validCharacters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Set of characters to be used when generating random part of code. Defaults to [A-Z, 0-9] (in terms of RegExp).")
+  @ApiModelProperty(example = "[A, B, G, Y]", value = "List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the `[A-Z, 0-9]` regular expression. ")
 
   public List<String> getValidCharacters() {
     return validCharacters;
@@ -299,11 +335,11 @@ public class NewCoupons {
   }
 
    /**
-   * The pattern that will be used to generate coupon codes. The character &#x60;#&#x60; acts as a placeholder and will be replaced by a random character from the &#x60;validCharacters&#x60; set. 
+   * The pattern used to generate coupon codes. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. 
    * @return couponPattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The pattern that will be used to generate coupon codes. The character `#` acts as a placeholder and will be replaced by a random character from the `validCharacters` set. ")
+  @ApiModelProperty(example = "SUMMER-#####", value = "The pattern used to generate coupon codes. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set. ")
 
   public String getCouponPattern() {
     return couponPattern;
@@ -328,6 +364,7 @@ public class NewCoupons {
         Objects.equals(this.discountLimit, newCoupons.discountLimit) &&
         Objects.equals(this.startDate, newCoupons.startDate) &&
         Objects.equals(this.expiryDate, newCoupons.expiryDate) &&
+        Objects.equals(this.limits, newCoupons.limits) &&
         Objects.equals(this.numberOfCoupons, newCoupons.numberOfCoupons) &&
         Objects.equals(this.uniquePrefix, newCoupons.uniquePrefix) &&
         Objects.equals(this.attributes, newCoupons.attributes) &&
@@ -338,7 +375,7 @@ public class NewCoupons {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern);
+    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, limits, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern);
   }
 
 
@@ -350,6 +387,7 @@ public class NewCoupons {
     sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    numberOfCoupons: ").append(toIndentedString(numberOfCoupons)).append("\n");
     sb.append("    uniquePrefix: ").append(toIndentedString(uniquePrefix)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

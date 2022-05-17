@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** | The actual coupon code. |  [optional]
+**value** | **String** | The coupon code. |  [optional]
 
 
 

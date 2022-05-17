@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -39,6 +39,61 @@ public class LimitConfig {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private BigDecimal limit;
+
+  /**
+   * The period on which the budget limit recurs.
+   */
+  @JsonAdapter(PeriodEnum.Adapter.class)
+  public enum PeriodEnum {
+    DAILY("daily"),
+    
+    WEEKLY("weekly"),
+    
+    MONTHLY("monthly"),
+    
+    YEARLY("yearly");
+
+    private String value;
+
+    PeriodEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PeriodEnum fromValue(String value) {
+      for (PeriodEnum b : PeriodEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PeriodEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PeriodEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PeriodEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PeriodEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PERIOD = "period";
+  @SerializedName(SERIALIZED_NAME_PERIOD)
+  private PeriodEnum period;
 
   /**
    * Gets or Sets entities
@@ -103,10 +158,10 @@ public class LimitConfig {
   }
 
    /**
-   * The limitable action to which this limit will be applied
+   * The limitable action to which this limit applies. For example: - &#x60;setDiscount&#x60; - &#x60;setDiscountEffect&#x60; - &#x60;redeemCoupon&#x60; - &#x60;createCoupon&#x60; 
    * @return action
   **/
-  @ApiModelProperty(required = true, value = "The limitable action to which this limit will be applied")
+  @ApiModelProperty(example = "createCoupon", required = true, value = "The limitable action to which this limit applies. For example: - `setDiscount` - `setDiscountEffect` - `redeemCoupon` - `createCoupon` ")
 
   public String getAction() {
     return action;
@@ -125,11 +180,11 @@ public class LimitConfig {
   }
 
    /**
-   * The value to set for the limit
+   * The value to set for the limit.
    * minimum: 0
    * @return limit
   **/
-  @ApiModelProperty(required = true, value = "The value to set for the limit")
+  @ApiModelProperty(example = "1000.0", required = true, value = "The value to set for the limit.")
 
   public BigDecimal getLimit() {
     return limit;
@@ -138,6 +193,29 @@ public class LimitConfig {
 
   public void setLimit(BigDecimal limit) {
     this.limit = limit;
+  }
+
+
+  public LimitConfig period(PeriodEnum period) {
+    
+    this.period = period;
+    return this;
+  }
+
+   /**
+   * The period on which the budget limit recurs.
+   * @return period
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "yearly", value = "The period on which the budget limit recurs.")
+
+  public PeriodEnum getPeriod() {
+    return period;
+  }
+
+
+  public void setPeriod(PeriodEnum period) {
+    this.period = period;
   }
 
 
@@ -153,10 +231,10 @@ public class LimitConfig {
   }
 
    /**
-   * The entities that make the address of this limit
+   * The entity that this limit applies to.
    * @return entities
   **/
-  @ApiModelProperty(required = true, value = "The entities that make the address of this limit")
+  @ApiModelProperty(example = "[Coupon]", required = true, value = "The entity that this limit applies to.")
 
   public List<EntitiesEnum> getEntities() {
     return entities;
@@ -179,12 +257,13 @@ public class LimitConfig {
     LimitConfig limitConfig = (LimitConfig) o;
     return Objects.equals(this.action, limitConfig.action) &&
         Objects.equals(this.limit, limitConfig.limit) &&
+        Objects.equals(this.period, limitConfig.period) &&
         Objects.equals(this.entities, limitConfig.entities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, limit, entities);
+    return Objects.hash(action, limit, period, entities);
   }
 
 
@@ -194,6 +273,7 @@ public class LimitConfig {
     sb.append("class LimitConfig {\n");
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    entities: ").append(toIndentedString(entities)).append("\n");
     sb.append("}");
     return sb.toString();

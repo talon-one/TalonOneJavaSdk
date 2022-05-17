@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -43,9 +43,9 @@ public class UpdateRole {
   @SerializedName(SERIALIZED_NAME_ACL)
   private String acl;
 
-  public static final String SERIALIZED_NAME_USERS = "users";
-  @SerializedName(SERIALIZED_NAME_USERS)
-  private List<Integer> users = null;
+  public static final String SERIALIZED_NAME_MEMBERS = "members";
+  @SerializedName(SERIALIZED_NAME_MEMBERS)
+  private List<Integer> members = null;
 
 
   public UpdateRole name(String name) {
@@ -117,34 +117,34 @@ public class UpdateRole {
   }
 
 
-  public UpdateRole users(List<Integer> users) {
+  public UpdateRole members(List<Integer> members) {
     
-    this.users = users;
+    this.members = members;
     return this;
   }
 
-  public UpdateRole addUsersItem(Integer usersItem) {
-    if (this.users == null) {
-      this.users = new ArrayList<Integer>();
+  public UpdateRole addMembersItem(Integer membersItem) {
+    if (this.members == null) {
+      this.members = new ArrayList<Integer>();
     }
-    this.users.add(usersItem);
+    this.members.add(membersItem);
     return this;
   }
 
    /**
    * An array of user identifiers
-   * @return users
+   * @return members
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "An array of user identifiers")
 
-  public List<Integer> getUsers() {
-    return users;
+  public List<Integer> getMembers() {
+    return members;
   }
 
 
-  public void setUsers(List<Integer> users) {
-    this.users = users;
+  public void setMembers(List<Integer> members) {
+    this.members = members;
   }
 
 
@@ -160,12 +160,12 @@ public class UpdateRole {
     return Objects.equals(this.name, updateRole.name) &&
         Objects.equals(this.description, updateRole.description) &&
         Objects.equals(this.acl, updateRole.acl) &&
-        Objects.equals(this.users, updateRole.users);
+        Objects.equals(this.members, updateRole.members);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, acl, users);
+    return Objects.hash(name, description, acl, members);
   }
 
 
@@ -176,7 +176,7 @@ public class UpdateRole {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    acl: ").append(toIndentedString(acl)).append("\n");
-    sb.append("    users: ").append(toIndentedString(users)).append("\n");
+    sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("}");
     return sb.toString();
   }

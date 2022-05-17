@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -48,14 +48,20 @@ public class NewCustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_REFERRAL_CODE)
   private String referralCode;
 
+  public static final String SERIALIZED_NAME_LOYALTY_CARDS = "loyaltyCards";
+  @SerializedName(SERIALIZED_NAME_LOYALTY_CARDS)
+  private List<String> loyaltyCards = null;
+
   /**
-   * Indicates the current state of the session. All sessions must start in the \&quot;open\&quot; state, after which valid transitions are...  1. open -&gt; closed 2. open -&gt; cancelled 3. closed -&gt; cancelled 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;, after which valid transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60;  For more information, see [Entites](/docs/dev/concepts/entities#customer-session). 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     OPEN("open"),
     
     CLOSED("closed"),
+    
+    PARTIALLY_RETURNED("partially_returned"),
     
     CANCELLED("cancelled");
 
@@ -125,11 +131,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * ID of the customers profile as used within this Talon.One account. May be omitted or set to the empty string if the customer does not yet have a known profile ID.
+   * ID of the customers profile as used within this Talon.One account.  **Note:** If the customer does not yet have a known profileId, we recommend you use a guest profileId. 
    * @return profileId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ID of the customers profile as used within this Talon.One account. May be omitted or set to the empty string if the customer does not yet have a known profile ID.")
+  @ApiModelProperty(example = "URNGV8294NV", value = "ID of the customers profile as used within this Talon.One account.  **Note:** If the customer does not yet have a known profileId, we recommend you use a guest profileId. ")
 
   public String getProfileId() {
     return profileId;
@@ -156,11 +162,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any coupon codes entered.
+   * Any coupon codes entered.  **Important**: If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. 
    * @return couponCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Any coupon codes entered.")
+  @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important**: If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. ")
 
   public List<String> getCouponCodes() {
     return couponCodes;
@@ -179,11 +185,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any referral code entered.
+   * Any referral code entered.  **Important**: If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. 
    * @return referralCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Any referral code entered.")
+  @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important**: If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. ")
 
   public String getReferralCode() {
     return referralCode;
@@ -195,6 +201,37 @@ public class NewCustomerSessionV2 {
   }
 
 
+  public NewCustomerSessionV2 loyaltyCards(List<String> loyaltyCards) {
+    
+    this.loyaltyCards = loyaltyCards;
+    return this;
+  }
+
+  public NewCustomerSessionV2 addLoyaltyCardsItem(String loyaltyCardsItem) {
+    if (this.loyaltyCards == null) {
+      this.loyaltyCards = new ArrayList<String>();
+    }
+    this.loyaltyCards.add(loyaltyCardsItem);
+    return this;
+  }
+
+   /**
+   * Any loyalty cards used.
+   * @return loyaltyCards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[loyalty-card-1]", value = "Any loyalty cards used.")
+
+  public List<String> getLoyaltyCards() {
+    return loyaltyCards;
+  }
+
+
+  public void setLoyaltyCards(List<String> loyaltyCards) {
+    this.loyaltyCards = loyaltyCards;
+  }
+
+
   public NewCustomerSessionV2 state(StateEnum state) {
     
     this.state = state;
@@ -202,11 +239,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Indicates the current state of the session. All sessions must start in the \&quot;open\&quot; state, after which valid transitions are...  1. open -&gt; closed 2. open -&gt; cancelled 3. closed -&gt; cancelled 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;, after which valid transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60;  For more information, see [Entites](/docs/dev/concepts/entities#customer-session). 
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the current state of the session. All sessions must start in the \"open\" state, after which valid transitions are...  1. open -> closed 2. open -> cancelled 3. closed -> cancelled ")
+  @ApiModelProperty(example = "open", value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`, after which valid transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. `closed` → `cancelled`  For more information, see [Entites](/docs/dev/concepts/entities#customer-session). ")
 
   public StateEnum getState() {
     return state;
@@ -233,11 +270,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * All items the customer will be purchasing in this session
+   * The items to add to this sessions. - If cart item flattening is disabled: **Do not exceed 1000 items** (regardless of their &#x60;quantity&#x60;) per request. - If cart item flattening is enabled: **Do not exceed 1000 items** and ensure the sum of all cart item&#39;s &#x60;quantity&#x60; **does not exceed 10.000** per request. 
    * @return cartItems
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "All items the customer will be purchasing in this session")
+  @ApiModelProperty(value = "The items to add to this sessions. - If cart item flattening is disabled: **Do not exceed 1000 items** (regardless of their `quantity`) per request. - If cart item flattening is enabled: **Do not exceed 1000 items** and ensure the sum of all cart item's `quantity` **does not exceed 10.000** per request. ")
 
   public List<CartItem> getCartItems() {
     return cartItems;
@@ -264,11 +301,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees.
+   * Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees. [Create them in the Campaign Manager](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs/#creating-additional-costs) before setting them with this property. 
    * @return additionalCosts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees.")
+  @ApiModelProperty(example = "{\"shipping\":{\"price\":9}}", value = "Any costs associated with the session that can not be explicitly attributed to cart items. Examples include shipping costs and service fees. [Create them in the Campaign Manager](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs/#creating-additional-costs) before setting them with this property. ")
 
   public Map<String, AdditionalCost> getAdditionalCosts() {
     return additionalCosts;
@@ -295,11 +332,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Identifiers for the customer, this can be used for limits on values such as device ID.
+   * Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers/).  **Important**: If you [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains an identifier by the time you close it. 
    * @return identifiers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Identifiers for the customer, this can be used for limits on values such as device ID.")
+  @ApiModelProperty(example = "[91.11.156.141]", value = "Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers/).  **Important**: If you [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains an identifier by the time you close it. ")
 
   public List<String> getIdentifiers() {
     return identifiers;
@@ -318,11 +355,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. 
+   * A key-value map of the sessions attributes. If you use custom attributes, they must be created in the Campaign Manager before you set them with this property. For more information, see [Attributes](https://docs.talon.one/docs/dev/concepts/attributes). 
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A key-value map of the sessions attributes. The potentially valid attributes are configured in your accounts developer settings. ")
+  @ApiModelProperty(example = "{\"ShippingCity\":\"Berlin\"}", value = "A key-value map of the sessions attributes. If you use custom attributes, they must be created in the Campaign Manager before you set them with this property. For more information, see [Attributes](https://docs.talon.one/docs/dev/concepts/attributes). ")
 
   public Object getAttributes() {
     return attributes;
@@ -346,6 +383,7 @@ public class NewCustomerSessionV2 {
     return Objects.equals(this.profileId, newCustomerSessionV2.profileId) &&
         Objects.equals(this.couponCodes, newCustomerSessionV2.couponCodes) &&
         Objects.equals(this.referralCode, newCustomerSessionV2.referralCode) &&
+        Objects.equals(this.loyaltyCards, newCustomerSessionV2.loyaltyCards) &&
         Objects.equals(this.state, newCustomerSessionV2.state) &&
         Objects.equals(this.cartItems, newCustomerSessionV2.cartItems) &&
         Objects.equals(this.additionalCosts, newCustomerSessionV2.additionalCosts) &&
@@ -355,7 +393,7 @@ public class NewCustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, couponCodes, referralCode, state, cartItems, additionalCosts, identifiers, attributes);
+    return Objects.hash(profileId, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes);
   }
 
 
@@ -366,6 +404,7 @@ public class NewCustomerSessionV2 {
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
     sb.append("    couponCodes: ").append(toIndentedString(couponCodes)).append("\n");
     sb.append("    referralCode: ").append(toIndentedString(referralCode)).append("\n");
+    sb.append("    loyaltyCards: ").append(toIndentedString(loyaltyCards)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");

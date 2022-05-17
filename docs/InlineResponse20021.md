@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**hasMore** | **Boolean** |  | 
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) |  | 
+**data** | [**List&lt;ApplicationReferee&gt;**](ApplicationReferee.md) |  | 
 
 
 

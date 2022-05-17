@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -59,6 +59,10 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
   private String transactionUUID;
+
+  public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
+  @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
+  private String cardIdentifier;
 
 
   public RollbackDeductedLoyaltyPointsEffectProps programId(Integer programId) {
@@ -217,6 +221,29 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
 
+  public RollbackDeductedLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
+    
+    this.cardIdentifier = cardIdentifier;
+    return this;
+  }
+
+   /**
+   * The card on which these points were added.
+   * @return cardIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The card on which these points were added.")
+
+  public String getCardIdentifier() {
+    return cardIdentifier;
+  }
+
+
+  public void setCardIdentifier(String cardIdentifier) {
+    this.cardIdentifier = cardIdentifier;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -232,12 +259,13 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
         Objects.equals(this.recipientIntegrationId, rollbackDeductedLoyaltyPointsEffectProps.recipientIntegrationId) &&
         Objects.equals(this.startDate, rollbackDeductedLoyaltyPointsEffectProps.startDate) &&
         Objects.equals(this.expiryDate, rollbackDeductedLoyaltyPointsEffectProps.expiryDate) &&
-        Objects.equals(this.transactionUUID, rollbackDeductedLoyaltyPointsEffectProps.transactionUUID);
+        Objects.equals(this.transactionUUID, rollbackDeductedLoyaltyPointsEffectProps.transactionUUID) &&
+        Objects.equals(this.cardIdentifier, rollbackDeductedLoyaltyPointsEffectProps.cardIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID);
+    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID, cardIdentifier);
   }
 
 
@@ -252,6 +280,7 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
+    sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

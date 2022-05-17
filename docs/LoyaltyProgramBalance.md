@@ -7,11 +7,11 @@ The balance in a Loyalty Program for some Customer.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of current active points amounts | 
-**pendingBalance** | [**BigDecimal**](BigDecimal.md) | Sum of pending points amounts | 
-**expiredBalance** | [**BigDecimal**](BigDecimal.md) | Sum of expired points amounts | 
-**spentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of spent points amounts | 
-**tentativeCurrentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of current active points amounts, including additions and deductions on open sessions | 
+**currentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of currently active points | 
+**pendingBalance** | [**BigDecimal**](BigDecimal.md) | Sum of pending points | 
+**expiredBalance** | [**BigDecimal**](BigDecimal.md) | Sum of expired points | 
+**spentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of spent points | 
+**tentativeCurrentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of currently active points, including points added and deducted in open sessions | 
 
 
 

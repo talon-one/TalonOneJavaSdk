@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;ApplicationSession&gt;**](ApplicationSession.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
 

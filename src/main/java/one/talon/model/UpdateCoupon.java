@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -24,6 +24,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -48,6 +51,10 @@ public class UpdateCoupon {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
+  public static final String SERIALIZED_NAME_LIMITS = "limits";
+  @SerializedName(SERIALIZED_NAME_LIMITS)
+  private List<LimitConfig> limits = null;
+
   public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
   private String recipientIntegrationId;
@@ -64,13 +71,13 @@ public class UpdateCoupon {
   }
 
    /**
-   * The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
    * minimum: 0
    * maximum: 999999
    * @return usageLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @ApiModelProperty(example = "100", value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
   public Integer getUsageLimit() {
     return usageLimit;
@@ -95,7 +102,7 @@ public class UpdateCoupon {
    * @return discountLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+  @ApiModelProperty(example = "30.0", value = "The amount of discounts that can be given with this coupon code. ")
 
   public BigDecimal getDiscountLimit() {
     return discountLimit;
@@ -150,6 +157,37 @@ public class UpdateCoupon {
 
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
+  }
+
+
+  public UpdateCoupon limits(List<LimitConfig> limits) {
+    
+    this.limits = limits;
+    return this;
+  }
+
+  public UpdateCoupon addLimitsItem(LimitConfig limitsItem) {
+    if (this.limits == null) {
+      this.limits = new ArrayList<LimitConfig>();
+    }
+    this.limits.add(limitsItem);
+    return this;
+  }
+
+   /**
+   * Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. 
+   * @return limits
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. ")
+
+  public List<LimitConfig> getLimits() {
+    return limits;
+  }
+
+
+  public void setLimits(List<LimitConfig> limits) {
+    this.limits = limits;
   }
 
 
@@ -212,13 +250,14 @@ public class UpdateCoupon {
         Objects.equals(this.discountLimit, updateCoupon.discountLimit) &&
         Objects.equals(this.startDate, updateCoupon.startDate) &&
         Objects.equals(this.expiryDate, updateCoupon.expiryDate) &&
+        Objects.equals(this.limits, updateCoupon.limits) &&
         Objects.equals(this.recipientIntegrationId, updateCoupon.recipientIntegrationId) &&
         Objects.equals(this.attributes, updateCoupon.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, recipientIntegrationId, attributes);
+    return Objects.hash(usageLimit, discountLimit, startDate, expiryDate, limits, recipientIntegrationId, attributes);
   }
 
 
@@ -230,6 +269,7 @@ public class UpdateCoupon {
     sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");

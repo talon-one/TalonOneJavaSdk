@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
+**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
 
 
 
