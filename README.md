@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>4.4.2</version>
+  <version>4.5.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -63,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:4.4.2"
+compile "one.talon:talon-one-client:4.5.0"
 ```
 
 ### Others
@@ -76,134 +76,49 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-4.4.2.jar`
+* `target/talon-one-client-4.5.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
-### Integration API
-
-**Note:** The Integration API's V1 `Update customer session` and `Update customer profile` endpoints are now deprecated. Use their V2 instead. See [Migrating to V2](https://docs.talon.one/docs/dev/tutorials/migrating-to-v2) for more information.
-
 ```java
-package com.example.consumer;
 
-import com.google.gson.Gson;
-
+// Import classes:
 import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
 import one.talon.api.IntegrationApi;
-import one.talon.api.ManagementApi;
-import one.talon.model.*;
 
-public class TalonApiTest {
-    public static void main(String[] args) {
-        Gson gson = new Gson();
-        IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-        // Setup: basePath
-        iApi.getApiClient().setBasePath("https://mycompany.talon.one");
-        // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
-        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
-        iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
-
-        try {
-          // Creating a cart item object
-            CartItem cartItem = new CartItem();
-            cartItem.setName("Hawaiian Pizza");
-            cartItem.setSku("pizza-x");
-            cartItem.setQuantity(1);
-            cartItem.setPrice(new java.math.BigDecimal("5.5"));
-
-            // Creating a customer session of V2
-            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
-            customerSession.setProfileId("Cool_Dude");
-            customerSession.addCouponCodesItem("Cool-Summer!");
-            customerSession.addCartItemsItem(cartItem);
-
-            // Initiating integration request wrapping the customer session update
-            IntegrationRequest request = new IntegrationRequest()
-                .customerSession(customerSession)
-                // Optional parameter of requested information to be present on the response related to the customer session update
-                .responseContent(Arrays.asList(
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
-                ));
-
-            // Flag to communicate whether the request is a "dry run"
-            Boolean dryRun = false;
-
-            // Create/update a customer session using `updateCustomerSessionV2` function
-            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun);
-            System.out.println(is.toString());
-
-            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
-            for (Effect eff : is.getEffects()) {
-                if (eff.getEffectType().equals("addLoyaltyPoints")) {
-                    // Typecasting according to the specific effect type
-                    AddLoyaltyPointsEffectProps props = gson.fromJson(
-                        gson.toJson(eff.getProps()),
-                        AddLoyaltyPointsEffectProps.class
-                    );
-                    // Access the specific effect's properties
-                    System.out.println(props.getName());
-                    System.out.println(props.getProgramId());
-                    System.out.println(props.getValue());
-                }
-                if (eff.getEffectType().equals("acceptCoupon")) {
-                    // Typecasting according to the specific effect type
-                    AcceptCouponEffectProps props = gson.fromJson(
-                      gson.toJson(eff.getProps()),
-                      AcceptCouponEffectProps.class
-                    );
-                    // work with AcceptCouponEffectProps' properties
-                    // ...
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    NewAudience body = new NewAudience(); // NewAudience | 
+    try {
+      Audience result = apiInstance.createAudienceV2(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#createAudienceV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
-```
 
-### Management API
-
-```java
-package com.example.consumer;
-
-import one.talon.ApiClient;
-import one.talon.api.IntegrationApi;
-import one.talon.api.ManagementApi;
-import one.talon.model.*;
-
-public class TalonApiTest {
-    public static void main(String[] args) {
-        // Management API example to load application with id 7
-        ManagementApi mApi = new ManagementApi(new ApiClient("manager_auth"));
-
-        // Setup: basePath and bearer prefix
-        mApi.getApiClient().setBasePath("https://mycompany.talon.one");
-        mApi.getApiClient().setApiKeyPrefix("Bearer");
-
-        LoginParams lp = new LoginParams();
-        lp.setEmail("admin@talon.one");
-        lp.setPassword("yourpassword");
-
-        try {
-            // Acquire session token
-            Session s = mApi.createSession(lp);
-            mApi.getApiClient().setApiKey(s.getToken());
-
-            // Calling `getApplication` function with the desired id (7)
-            Application application = mApi.getApplication(7);
-            System.out.println(application.toString());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-}
 ```
 
 ## Documentation for API Endpoints
