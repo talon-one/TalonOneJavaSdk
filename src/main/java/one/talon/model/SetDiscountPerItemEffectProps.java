@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscountPerItem\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set per item discount\&quot; effect. This is a discount that should be applied on a specific item.
+ * The properties specific to the &#x60;setDiscountPerItem&#x60; effect, triggered whenever a validated rule contained a \&quot;set per item discount\&quot; effect. This is a discount that will be applied either on a specific item, on a specific item + additional cost or on all additional costs per item. This depends on the chosen scope. 
  */
-@ApiModel(description = "The properties specific to the \"setDiscountPerItem\" effect. This gets triggered whenever a validated rule contained a \"set per item discount\" effect. This is a discount that should be applied on a specific item.")
+@ApiModel(description = "The properties specific to the `setDiscountPerItem` effect, triggered whenever a validated rule contained a \"set per item discount\" effect. This is a discount that will be applied either on a specific item, on a specific item + additional cost or on all additional costs per item. This depends on the chosen scope. ")
 
 public class SetDiscountPerItemEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -47,6 +47,22 @@ public class SetDiscountPerItemEffectProps {
   @SerializedName(SERIALIZED_NAME_SUB_POSITION)
   private BigDecimal subPosition;
 
+  public static final String SERIALIZED_NAME_DESIRED_VALUE = "desiredValue";
+  @SerializedName(SERIALIZED_NAME_DESIRED_VALUE)
+  private BigDecimal desiredValue;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
+  public static final String SERIALIZED_NAME_TOTAL_DISCOUNT = "totalDiscount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNT)
+  private BigDecimal totalDiscount;
+
+  public static final String SERIALIZED_NAME_DESIRED_TOTAL_DISCOUNT = "desiredTotalDiscount";
+  @SerializedName(SERIALIZED_NAME_DESIRED_TOTAL_DISCOUNT)
+  private BigDecimal desiredTotalDiscount;
+
 
   public SetDiscountPerItemEffectProps name(String name) {
     
@@ -55,10 +71,10 @@ public class SetDiscountPerItemEffectProps {
   }
 
    /**
-   * The name/description of this discount
+   * The name of the discount. Contains a hashtag character indicating the index of the position of the item the discount applies to. It is identical to the value of the &#x60;position&#x60; property. 
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name/description of this discount")
+  @ApiModelProperty(required = true, value = "The name of the discount. Contains a hashtag character indicating the index of the position of the item the discount applies to. It is identical to the value of the `position` property. ")
 
   public String getName() {
     return name;
@@ -77,10 +93,10 @@ public class SetDiscountPerItemEffectProps {
   }
 
    /**
-   * The total monetary value of the discount
+   * The total monetary value of the discount.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The total monetary value of the discount")
+  @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
 
   public BigDecimal getValue() {
     return value;
@@ -99,10 +115,10 @@ public class SetDiscountPerItemEffectProps {
   }
 
    /**
-   * The index of the item in the cart items list on which this discount should be applied
+   * The index of the item in the cart items list on which this discount should be applied.
    * @return position
   **/
-  @ApiModelProperty(required = true, value = "The index of the item in the cart items list on which this discount should be applied")
+  @ApiModelProperty(required = true, value = "The index of the item in the cart items list on which this discount should be applied.")
 
   public BigDecimal getPosition() {
     return position;
@@ -121,11 +137,11 @@ public class SetDiscountPerItemEffectProps {
   }
 
    /**
-   * The sub-index of the item in an item stack on which this discount should be applied
+   * Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled. Indicates which item the discount applies to for cart items with &#x60;quantity&#x60; &gt; 1. 
    * @return subPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sub-index of the item in an item stack on which this discount should be applied")
+  @ApiModelProperty(value = "Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled. Indicates which item the discount applies to for cart items with `quantity` > 1. ")
 
   public BigDecimal getSubPosition() {
     return subPosition;
@@ -134,6 +150,98 @@ public class SetDiscountPerItemEffectProps {
 
   public void setSubPosition(BigDecimal subPosition) {
     this.subPosition = subPosition;
+  }
+
+
+  public SetDiscountPerItemEffectProps desiredValue(BigDecimal desiredValue) {
+    
+    this.desiredValue = desiredValue;
+    return this;
+  }
+
+   /**
+   * The original value of the discount
+   * @return desiredValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The original value of the discount")
+
+  public BigDecimal getDesiredValue() {
+    return desiredValue;
+  }
+
+
+  public void setDesiredValue(BigDecimal desiredValue) {
+    this.desiredValue = desiredValue;
+  }
+
+
+  public SetDiscountPerItemEffectProps scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope of the discount: - &#x60;additionalCosts&#x60;: The discount applies to all the additional costs of the item. - &#x60;itemTotal&#x60;: The discount applies to the price of the item + the additional costs of the item. - &#x60;price&#x60;: The discount applies to the price of the item. 
+   * @return scope
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The scope of the discount: - `additionalCosts`: The discount applies to all the additional costs of the item. - `itemTotal`: The discount applies to the price of the item + the additional costs of the item. - `price`: The discount applies to the price of the item. ")
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
+  public SetDiscountPerItemEffectProps totalDiscount(BigDecimal totalDiscount) {
+    
+    this.totalDiscount = totalDiscount;
+    return this;
+  }
+
+   /**
+   * The total discount given if this effect is a result of a prorated discount
+   * @return totalDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The total discount given if this effect is a result of a prorated discount")
+
+  public BigDecimal getTotalDiscount() {
+    return totalDiscount;
+  }
+
+
+  public void setTotalDiscount(BigDecimal totalDiscount) {
+    this.totalDiscount = totalDiscount;
+  }
+
+
+  public SetDiscountPerItemEffectProps desiredTotalDiscount(BigDecimal desiredTotalDiscount) {
+    
+    this.desiredTotalDiscount = desiredTotalDiscount;
+    return this;
+  }
+
+   /**
+   * The original total discount to give if this effect is a result of a prorated discount
+   * @return desiredTotalDiscount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The original total discount to give if this effect is a result of a prorated discount")
+
+  public BigDecimal getDesiredTotalDiscount() {
+    return desiredTotalDiscount;
+  }
+
+
+  public void setDesiredTotalDiscount(BigDecimal desiredTotalDiscount) {
+    this.desiredTotalDiscount = desiredTotalDiscount;
   }
 
 
@@ -149,12 +257,16 @@ public class SetDiscountPerItemEffectProps {
     return Objects.equals(this.name, setDiscountPerItemEffectProps.name) &&
         Objects.equals(this.value, setDiscountPerItemEffectProps.value) &&
         Objects.equals(this.position, setDiscountPerItemEffectProps.position) &&
-        Objects.equals(this.subPosition, setDiscountPerItemEffectProps.subPosition);
+        Objects.equals(this.subPosition, setDiscountPerItemEffectProps.subPosition) &&
+        Objects.equals(this.desiredValue, setDiscountPerItemEffectProps.desiredValue) &&
+        Objects.equals(this.scope, setDiscountPerItemEffectProps.scope) &&
+        Objects.equals(this.totalDiscount, setDiscountPerItemEffectProps.totalDiscount) &&
+        Objects.equals(this.desiredTotalDiscount, setDiscountPerItemEffectProps.desiredTotalDiscount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, position, subPosition);
+    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount);
   }
 
 
@@ -166,6 +278,10 @@ public class SetDiscountPerItemEffectProps {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    subPosition: ").append(toIndentedString(subPosition)).append("\n");
+    sb.append("    desiredValue: ").append(toIndentedString(desiredValue)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    totalDiscount: ").append(toIndentedString(totalDiscount)).append("\n");
+    sb.append("    desiredTotalDiscount: ").append(toIndentedString(desiredTotalDiscount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

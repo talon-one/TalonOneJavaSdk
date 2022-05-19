@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -23,9 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import one.talon.model.LoyaltyCard;
 import one.talon.model.LoyaltyProgramLedgers;
 
 /**
@@ -34,9 +36,44 @@ import one.talon.model.LoyaltyProgramLedgers;
 @ApiModel(description = "Customer specific information about loyalty points.")
 
 public class Loyalty {
+  public static final String SERIALIZED_NAME_CARDS = "cards";
+  @SerializedName(SERIALIZED_NAME_CARDS)
+  private List<LoyaltyCard> cards = null;
+
   public static final String SERIALIZED_NAME_PROGRAMS = "programs";
   @SerializedName(SERIALIZED_NAME_PROGRAMS)
   private Map<String, LoyaltyProgramLedgers> programs = new HashMap<String, LoyaltyProgramLedgers>();
+
+
+  public Loyalty cards(List<LoyaltyCard> cards) {
+    
+    this.cards = cards;
+    return this;
+  }
+
+  public Loyalty addCardsItem(LoyaltyCard cardsItem) {
+    if (this.cards == null) {
+      this.cards = new ArrayList<LoyaltyCard>();
+    }
+    this.cards.add(cardsItem);
+    return this;
+  }
+
+   /**
+   * Displays information about the balances of the loyalty cards.
+   * @return cards
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Displays information about the balances of the loyalty cards.")
+
+  public List<LoyaltyCard> getCards() {
+    return cards;
+  }
+
+
+  public void setCards(List<LoyaltyCard> cards) {
+    this.cards = cards;
+  }
 
 
   public Loyalty programs(Map<String, LoyaltyProgramLedgers> programs) {
@@ -51,10 +88,10 @@ public class Loyalty {
   }
 
    /**
-   * A map holding information about the loyalty programs balance
+   * Displays information about point balances in profile-based programs.
    * @return programs
   **/
-  @ApiModelProperty(required = true, value = "A map holding information about the loyalty programs balance")
+  @ApiModelProperty(required = true, value = "Displays information about point balances in profile-based programs.")
 
   public Map<String, LoyaltyProgramLedgers> getPrograms() {
     return programs;
@@ -75,12 +112,13 @@ public class Loyalty {
       return false;
     }
     Loyalty loyalty = (Loyalty) o;
-    return Objects.equals(this.programs, loyalty.programs);
+    return Objects.equals(this.cards, loyalty.cards) &&
+        Objects.equals(this.programs, loyalty.programs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(programs);
+    return Objects.hash(cards, programs);
   }
 
 
@@ -88,6 +126,7 @@ public class Loyalty {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Loyalty {\n");
+    sb.append("    cards: ").append(toIndentedString(cards)).append("\n");
     sb.append("    programs: ").append(toIndentedString(programs)).append("\n");
     sb.append("}");
     return sb.toString();

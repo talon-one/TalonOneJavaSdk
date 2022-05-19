@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
 
 
 

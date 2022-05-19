@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
 
 
 

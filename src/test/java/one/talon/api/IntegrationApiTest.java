@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -14,24 +14,31 @@
 package one.talon.api;
 
 import one.talon.ApiException;
+import one.talon.model.Audience;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.CustomerInventory;
 import one.talon.model.CustomerProfileAudienceRequest;
 import one.talon.model.CustomerProfileIntegrationRequestV2;
+import one.talon.model.ErrorResponse;
+import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse201;
+import one.talon.model.IntegrationCustomerSessionResponse;
+import one.talon.model.IntegrationEventV2Request;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationState;
 import one.talon.model.IntegrationStateV2;
 import one.talon.model.MultipleCustomerProfileIntegrationRequest;
 import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
-import one.talon.model.NewCustomerProfile;
-import one.talon.model.NewCustomerSession;
+import one.talon.model.NewAudience;
 import one.talon.model.NewEvent;
 import one.talon.model.NewReferral;
 import one.talon.model.NewReferralsForMultipleAdvocates;
+import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
+import one.talon.model.ReturnIntegrationRequest;
+import one.talon.model.UpdateAudience;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -50,9 +57,25 @@ public class IntegrationApiTest {
 
     
     /**
-     * Create a new coupon reservation
+     * Create audience
      *
-     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  To create an audience from an existing audience in mParticle or Segment: 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60; or &#x60;segment&#x60; depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform than mParticle: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAudienceV2Test() throws ApiException {
+        NewAudience body = null;
+        Audience response = api.createAudienceV2(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create coupon reservation
+     *
+     * Create a coupon reservation for specified customer profiles on the specified coupon.  Reserving a coupon allows you to associate a coupon code to a given customer(s). You can then list the reserved coupons of a given customer with the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  If a coupon gets created for a specific user, it will automatically show up in their coupons.  When a user redeems a coupon, a reservation is automatically created after the redemption and the used coupon will be returned in the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  **Important:** - This endpoint creates a **soft** reservation. _Any_ customer   can use a reserved coupon code and proceed to checkout. - To create a hard reservation, use the   [Create coupons](/management-api/#operation/createCoupons) or   [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints   setting the &#x60;recipientsIntegrationId&#x60; property.  For example, you can use this endpoint and &#x60;List customer data&#x60; to create a \&quot;coupon wallet\&quot; by reserving coupon codes for a customer, and then displaying their \&quot;coupon wallet\&quot; when they visit your store. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -67,7 +90,7 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Create a referral code for an advocate
+     * Create referral code for an advocate
      *
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      *
@@ -100,9 +123,41 @@ public class IntegrationApiTest {
     }
     
     /**
+     * Delete audience memberships
+     *
+     * Remove all members from this audience. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteAudienceMembershipsV2Test() throws ApiException {
+        Integer audienceId = null;
+        api.deleteAudienceMembershipsV2(audienceId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete audience
+     *
+     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteAudienceV2Test() throws ApiException {
+        Integer audienceId = null;
+        api.deleteAudienceV2(audienceId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete coupon reservations
      *
-     * Removes all passed customer profiles reservation from this coupon 
+     * Remove all passed customer profiles reservation from this coupon. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -117,9 +172,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Delete the personal data of a customer
+     * Delete customer&#39;s personal data
      *
-     * Delete all attributes on the customer profile and on entities that reference that customer profile. 
+     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -133,9 +188,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Get an inventory of all data associated with a specific customer profile
+     * List customer data
      *
-     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
+     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points and reserved coupons. Reserved coupons also include redeemed coupons.  You can also use this endpoint to get the projected loyalty balances in order to notify your customers about points that are about to expire, or to remind them how many points they have. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -148,15 +203,32 @@ public class IntegrationApiTest {
         Boolean coupons = null;
         Boolean loyalty = null;
         Boolean giveaways = null;
-        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons, loyalty, giveaways);
+        OffsetDateTime loyaltyProjectionEndDate = null;
+        CustomerInventory response = api.getCustomerInventory(integrationId, profile, referrals, coupons, loyalty, giveaways, loyaltyProjectionEndDate);
 
         // TODO: test validations
     }
     
     /**
-     * Get the users that have this coupon reserved
+     * Get customer session
      *
-     * Returns all users that have this coupon marked as reserved 
+     * Get customer session data. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCustomerSessionTest() throws ApiException {
+        String customerSessionId = null;
+        IntegrationCustomerSessionResponse response = api.getCustomerSession(customerSessionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List customers that have this coupon reserved
+     *
+     * Return all customers that have this coupon marked as reserved.  Coupons are reserved in the following ways: - To create a soft reservation (any customer can use the coupon), use the [Create coupon reservation](#operation/createCouponReservation) endpoint. - To create a hard reservation (only the given customer can use the coupon), create a coupon in the Campaign Manager for a given &#x60;recipientIntegrationId&#x60; or use the [Create coupons](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -170,9 +242,27 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Track an Event
+     * Return cart items
      *
-     * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
+     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially returned&#x60;.  Its behavior depends on whether [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled for the campaign.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void returnCartItemsTest() throws ApiException {
+        String customerSessionId = null;
+        ReturnIntegrationRequest body = null;
+        Boolean dry = null;
+        IntegrationStateV2 response = api.returnCartItems(customerSessionId, body, dry);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Track event
+     *
+     * **Important:** This endpoint is **DEPRECATED**. Use [Track Event V2](https://docs.talon.one/integration-api/#tag/Events/operation/trackEventV2) instead.  &gt; Triggers a custom event in a customer session. You can then check this event in your rules. **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event. &gt; For example, use this endpoint to trigger an event when a user updates their payment information.  &gt; Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;.  See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  &gt; An event is always part of a session. If either the profile or the session does not exist, a new empty profile/session is created. If the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -187,27 +277,61 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Update a Customer Profile V1
+     * Track event V2
      *
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
+     * Triggers a custom event. You can then check this event in your rules.  **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a user updates their payment information.  Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;. See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  **Important:** &#x60;profileId&#x60; is required. An event V2 is associated with a customer profile. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void updateCustomerProfileTest() throws ApiException {
-        String integrationId = null;
-        NewCustomerProfile body = null;
+    public void trackEventV2Test() throws ApiException {
+        IntegrationEventV2Request body = null;
+        String silent = null;
         Boolean dry = null;
-        IntegrationState response = api.updateCustomerProfile(integrationId, body, dry);
+        IntegrationStateV2 response = api.trackEventV2(body, silent, dry);
 
         // TODO: test validations
     }
     
     /**
-     * Update a Customer Profile Audiences
+     * Update profile attributes for all customers in audience
      *
-     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAudienceCustomersAttributesTest() throws ApiException {
+        Integer audienceId = null;
+        Object body = null;
+        api.updateAudienceCustomersAttributes(audienceId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update audience
+     *
+     * Update an Audience created by a third-party integration. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAudienceV2Test() throws ApiException {
+        Integer audienceId = null;
+        UpdateAudience body = null;
+        Audience response = api.updateAudienceV2(audienceId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update multiple customer profiles&#39; audiences
+     *
+     * Update the specified customer profiles with the specified audiences. Use this endpoint when customers join or leave audiences.  The limit of customer profiles per request is 1000. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -221,9 +345,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Update a Customer Profile
+     * Update customer profile
      *
-     * Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
+     * Update (or create) a [Customer Profile](/docs/dev/concepts/entities#customer-profile).  **Performance tips**  Updating a customer profile returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  You can also set &#x60;runRuleEngine&#x60; to &#x60;false&#x60; to prevent unwanted rule executions. This allows you to improve response times.  If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -240,9 +364,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Update multiple Customer Profiles
+     * Update multiple customer profiles
      *
-     * Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
+     * Update (or create) up to 1000 [customer profiles](/docs/dev/concepts/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](/integration-api/#tag/Customer-sessions). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -257,27 +381,9 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Update a Customer Session V1
+     * Update customer session
      *
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void updateCustomerSessionTest() throws ApiException {
-        String customerSessionId = null;
-        NewCustomerSession body = null;
-        Boolean dry = null;
-        IntegrationState response = api.updateCustomerSession(customerSessionId, body, dry);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Update a Customer Session
-     *
-     * Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
+     * Update or create a [customer session](/docs/dev/concepts/entities#customer-session). For example, use this endpoint to share the content of a customer&#39;s cart with Talon.One and to check which promotion rules apply.  **Note:** The currency for the session and the cart items in the session is the same as the Application that owns this session.  **Session management**  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same Application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  See more information and tips about session management in the [documentation](/docs/dev/concepts/entities#customer-session).  **Sessions and customer profiles**  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead.  **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  **Performance tips**  Updating a customer session returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  For more information, see the [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
      *
      * @throws ApiException
      *          if the Api call fails

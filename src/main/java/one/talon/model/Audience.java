@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -47,54 +47,9 @@ public class Audience {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  /**
-   * Integration that this audience was created in.
-   */
-  @JsonAdapter(IntegrationEnum.Adapter.class)
-  public enum IntegrationEnum {
-    MPARTICLE("mparticle");
-
-    private String value;
-
-    IntegrationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static IntegrationEnum fromValue(String value) {
-      for (IntegrationEnum b : IntegrationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<IntegrationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final IntegrationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public IntegrationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return IntegrationEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_INTEGRATION = "integration";
   @SerializedName(SERIALIZED_NAME_INTEGRATION)
-  private IntegrationEnum integration;
+  private String integration;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
@@ -111,7 +66,7 @@ public class Audience {
    * The ID of the account that owns this entity.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the account that owns this entity.")
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
   public Integer getAccountId() {
     return accountId;
@@ -133,7 +88,7 @@ public class Audience {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -155,7 +110,7 @@ public class Audience {
    * The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -174,10 +129,10 @@ public class Audience {
   }
 
    /**
-   * The human-friendly display name for this Audience.
+   * The human-friendly display name for this audience.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The human-friendly display name for this Audience.")
+  @ApiModelProperty(example = "mPTravel", required = true, value = "The human-friendly display name for this audience.")
 
   public String getName() {
     return name;
@@ -189,24 +144,25 @@ public class Audience {
   }
 
 
-  public Audience integration(IntegrationEnum integration) {
+  public Audience integration(String integration) {
     
     this.integration = integration;
     return this;
   }
 
    /**
-   * Integration that this audience was created in.
+   * The 3rd-party platform that this audience was created in. For example, mParticle.
    * @return integration
   **/
-  @ApiModelProperty(required = true, value = "Integration that this audience was created in.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "mparticle", value = "The 3rd-party platform that this audience was created in. For example, mParticle.")
 
-  public IntegrationEnum getIntegration() {
+  public String getIntegration() {
     return integration;
   }
 
 
-  public void setIntegration(IntegrationEnum integration) {
+  public void setIntegration(String integration) {
     this.integration = integration;
   }
 
@@ -218,10 +174,11 @@ public class Audience {
   }
 
    /**
-   * The ID of this Audience in the third-party integration
+   * The ID of this audience in the third-party integration.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The ID of this Audience in the third-party integration")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "382370BKDB946", value = "The ID of this audience in the third-party integration.")
 
   public String getIntegrationId() {
     return integrationId;

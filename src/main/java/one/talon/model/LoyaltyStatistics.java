@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -24,6 +24,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.model.LoyaltyDashboardPointsBreakdown;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * 
@@ -31,6 +33,10 @@ import java.math.BigDecimal;
 @ApiModel(description = "")
 
 public class LoyaltyStatistics {
+  public static final String SERIALIZED_NAME_DATE = "date";
+  @SerializedName(SERIALIZED_NAME_DATE)
+  private OffsetDateTime date;
+
   public static final String SERIALIZED_NAME_TOTAL_ACTIVE_POINTS = "totalActivePoints";
   @SerializedName(SERIALIZED_NAME_TOTAL_ACTIVE_POINTS)
   private BigDecimal totalActivePoints;
@@ -47,6 +53,44 @@ public class LoyaltyStatistics {
   @SerializedName(SERIALIZED_NAME_TOTAL_EXPIRED_POINTS)
   private BigDecimal totalExpiredPoints;
 
+  public static final String SERIALIZED_NAME_TOTAL_MEMBERS = "totalMembers";
+  @SerializedName(SERIALIZED_NAME_TOTAL_MEMBERS)
+  private BigDecimal totalMembers;
+
+  public static final String SERIALIZED_NAME_NEW_MEMBERS = "newMembers";
+  @SerializedName(SERIALIZED_NAME_NEW_MEMBERS)
+  private BigDecimal newMembers;
+
+  public static final String SERIALIZED_NAME_SPENT_POINTS = "spentPoints";
+  @SerializedName(SERIALIZED_NAME_SPENT_POINTS)
+  private LoyaltyDashboardPointsBreakdown spentPoints;
+
+  public static final String SERIALIZED_NAME_EARNED_POINTS = "earnedPoints";
+  @SerializedName(SERIALIZED_NAME_EARNED_POINTS)
+  private LoyaltyDashboardPointsBreakdown earnedPoints;
+
+
+  public LoyaltyStatistics date(OffsetDateTime date) {
+    
+    this.date = date;
+    return this;
+  }
+
+   /**
+   * Date at which data point was collected.
+   * @return date
+  **/
+  @ApiModelProperty(required = true, value = "Date at which data point was collected.")
+
+  public OffsetDateTime getDate() {
+    return date;
+  }
+
+
+  public void setDate(OffsetDateTime date) {
+    this.date = date;
+  }
+
 
   public LoyaltyStatistics totalActivePoints(BigDecimal totalActivePoints) {
     
@@ -55,10 +99,10 @@ public class LoyaltyStatistics {
   }
 
    /**
-   * Total of active points for this loyalty program
+   * Total of active points for this loyalty program.
    * @return totalActivePoints
   **/
-  @ApiModelProperty(required = true, value = "Total of active points for this loyalty program")
+  @ApiModelProperty(required = true, value = "Total of active points for this loyalty program.")
 
   public BigDecimal getTotalActivePoints() {
     return totalActivePoints;
@@ -77,10 +121,10 @@ public class LoyaltyStatistics {
   }
 
    /**
-   * Total of pending points for this loyalty program
+   * Total of pending points for this loyalty program.
    * @return totalPendingPoints
   **/
-  @ApiModelProperty(required = true, value = "Total of pending points for this loyalty program")
+  @ApiModelProperty(required = true, value = "Total of pending points for this loyalty program.")
 
   public BigDecimal getTotalPendingPoints() {
     return totalPendingPoints;
@@ -99,10 +143,10 @@ public class LoyaltyStatistics {
   }
 
    /**
-   * Total of spent points for this loyalty program
+   * Total of spent points for this loyalty program.
    * @return totalSpentPoints
   **/
-  @ApiModelProperty(required = true, value = "Total of spent points for this loyalty program")
+  @ApiModelProperty(required = true, value = "Total of spent points for this loyalty program.")
 
   public BigDecimal getTotalSpentPoints() {
     return totalSpentPoints;
@@ -121,10 +165,10 @@ public class LoyaltyStatistics {
   }
 
    /**
-   * Total of expired points for this loyalty program
+   * Total of expired points for this loyalty program.
    * @return totalExpiredPoints
   **/
-  @ApiModelProperty(required = true, value = "Total of expired points for this loyalty program")
+  @ApiModelProperty(required = true, value = "Total of expired points for this loyalty program.")
 
   public BigDecimal getTotalExpiredPoints() {
     return totalExpiredPoints;
@@ -133,6 +177,94 @@ public class LoyaltyStatistics {
 
   public void setTotalExpiredPoints(BigDecimal totalExpiredPoints) {
     this.totalExpiredPoints = totalExpiredPoints;
+  }
+
+
+  public LoyaltyStatistics totalMembers(BigDecimal totalMembers) {
+    
+    this.totalMembers = totalMembers;
+    return this;
+  }
+
+   /**
+   * Number of loyalty program members.
+   * @return totalMembers
+  **/
+  @ApiModelProperty(required = true, value = "Number of loyalty program members.")
+
+  public BigDecimal getTotalMembers() {
+    return totalMembers;
+  }
+
+
+  public void setTotalMembers(BigDecimal totalMembers) {
+    this.totalMembers = totalMembers;
+  }
+
+
+  public LoyaltyStatistics newMembers(BigDecimal newMembers) {
+    
+    this.newMembers = newMembers;
+    return this;
+  }
+
+   /**
+   * Number of members who joined on this day.
+   * @return newMembers
+  **/
+  @ApiModelProperty(required = true, value = "Number of members who joined on this day.")
+
+  public BigDecimal getNewMembers() {
+    return newMembers;
+  }
+
+
+  public void setNewMembers(BigDecimal newMembers) {
+    this.newMembers = newMembers;
+  }
+
+
+  public LoyaltyStatistics spentPoints(LoyaltyDashboardPointsBreakdown spentPoints) {
+    
+    this.spentPoints = spentPoints;
+    return this;
+  }
+
+   /**
+   * Get spentPoints
+   * @return spentPoints
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public LoyaltyDashboardPointsBreakdown getSpentPoints() {
+    return spentPoints;
+  }
+
+
+  public void setSpentPoints(LoyaltyDashboardPointsBreakdown spentPoints) {
+    this.spentPoints = spentPoints;
+  }
+
+
+  public LoyaltyStatistics earnedPoints(LoyaltyDashboardPointsBreakdown earnedPoints) {
+    
+    this.earnedPoints = earnedPoints;
+    return this;
+  }
+
+   /**
+   * Get earnedPoints
+   * @return earnedPoints
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public LoyaltyDashboardPointsBreakdown getEarnedPoints() {
+    return earnedPoints;
+  }
+
+
+  public void setEarnedPoints(LoyaltyDashboardPointsBreakdown earnedPoints) {
+    this.earnedPoints = earnedPoints;
   }
 
 
@@ -145,15 +277,20 @@ public class LoyaltyStatistics {
       return false;
     }
     LoyaltyStatistics loyaltyStatistics = (LoyaltyStatistics) o;
-    return Objects.equals(this.totalActivePoints, loyaltyStatistics.totalActivePoints) &&
+    return Objects.equals(this.date, loyaltyStatistics.date) &&
+        Objects.equals(this.totalActivePoints, loyaltyStatistics.totalActivePoints) &&
         Objects.equals(this.totalPendingPoints, loyaltyStatistics.totalPendingPoints) &&
         Objects.equals(this.totalSpentPoints, loyaltyStatistics.totalSpentPoints) &&
-        Objects.equals(this.totalExpiredPoints, loyaltyStatistics.totalExpiredPoints);
+        Objects.equals(this.totalExpiredPoints, loyaltyStatistics.totalExpiredPoints) &&
+        Objects.equals(this.totalMembers, loyaltyStatistics.totalMembers) &&
+        Objects.equals(this.newMembers, loyaltyStatistics.newMembers) &&
+        Objects.equals(this.spentPoints, loyaltyStatistics.spentPoints) &&
+        Objects.equals(this.earnedPoints, loyaltyStatistics.earnedPoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints);
+    return Objects.hash(date, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, totalMembers, newMembers, spentPoints, earnedPoints);
   }
 
 
@@ -161,10 +298,15 @@ public class LoyaltyStatistics {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoyaltyStatistics {\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    totalActivePoints: ").append(toIndentedString(totalActivePoints)).append("\n");
     sb.append("    totalPendingPoints: ").append(toIndentedString(totalPendingPoints)).append("\n");
     sb.append("    totalSpentPoints: ").append(toIndentedString(totalSpentPoints)).append("\n");
     sb.append("    totalExpiredPoints: ").append(toIndentedString(totalExpiredPoints)).append("\n");
+    sb.append("    totalMembers: ").append(toIndentedString(totalMembers)).append("\n");
+    sb.append("    newMembers: ").append(toIndentedString(newMembers)).append("\n");
+    sb.append("    spentPoints: ").append(toIndentedString(spentPoints)).append("\n");
+    sb.append("    earnedPoints: ").append(toIndentedString(earnedPoints)).append("\n");
     sb.append("}");
     return sb.toString();
   }

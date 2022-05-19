@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import one.talon.model.LoyaltyProgramBalance;
+import one.talon.model.LedgerInfo;
 
 /**
  * Customer specific information about loyalty points.
@@ -48,11 +48,11 @@ public class LoyaltyProgramLedgers {
 
   public static final String SERIALIZED_NAME_LEDGER = "ledger";
   @SerializedName(SERIALIZED_NAME_LEDGER)
-  private LoyaltyProgramBalance ledger;
+  private LedgerInfo ledger;
 
   public static final String SERIALIZED_NAME_SUB_LEDGERS = "subLedgers";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGERS)
-  private Map<String, LoyaltyProgramBalance> subLedgers = null;
+  private Map<String, LedgerInfo> subLedgers = null;
 
 
   public LoyaltyProgramLedgers id(Integer id) {
@@ -65,7 +65,7 @@ public class LoyaltyProgramLedgers {
    * The internal ID of loyalty program
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "The internal ID of loyalty program")
+  @ApiModelProperty(example = "5", required = true, value = "The internal ID of loyalty program")
 
   public Integer getId() {
     return id;
@@ -87,7 +87,7 @@ public class LoyaltyProgramLedgers {
    * Visible name of loyalty program
    * @return title
   **/
-  @ApiModelProperty(required = true, value = "Visible name of loyalty program")
+  @ApiModelProperty(example = "My loyalty program", required = true, value = "Visible name of loyalty program")
 
   public String getTitle() {
     return title;
@@ -109,7 +109,7 @@ public class LoyaltyProgramLedgers {
    * Internal name of loyalty program
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "Internal name of loyalty program")
+  @ApiModelProperty(example = "program1", required = true, value = "Internal name of loyalty program")
 
   public String getName() {
     return name;
@@ -121,7 +121,7 @@ public class LoyaltyProgramLedgers {
   }
 
 
-  public LoyaltyProgramLedgers ledger(LoyaltyProgramBalance ledger) {
+  public LoyaltyProgramLedgers ledger(LedgerInfo ledger) {
     
     this.ledger = ledger;
     return this;
@@ -133,43 +133,43 @@ public class LoyaltyProgramLedgers {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public LoyaltyProgramBalance getLedger() {
+  public LedgerInfo getLedger() {
     return ledger;
   }
 
 
-  public void setLedger(LoyaltyProgramBalance ledger) {
+  public void setLedger(LedgerInfo ledger) {
     this.ledger = ledger;
   }
 
 
-  public LoyaltyProgramLedgers subLedgers(Map<String, LoyaltyProgramBalance> subLedgers) {
+  public LoyaltyProgramLedgers subLedgers(Map<String, LedgerInfo> subLedgers) {
     
     this.subLedgers = subLedgers;
     return this;
   }
 
-  public LoyaltyProgramLedgers putSubLedgersItem(String key, LoyaltyProgramBalance subLedgersItem) {
+  public LoyaltyProgramLedgers putSubLedgersItem(String key, LedgerInfo subLedgersItem) {
     if (this.subLedgers == null) {
-      this.subLedgers = new HashMap<String, LoyaltyProgramBalance>();
+      this.subLedgers = new HashMap<String, LedgerInfo>();
     }
     this.subLedgers.put(key, subLedgersItem);
     return this;
   }
 
    /**
-   * A map containing a list of all loyalty subledger balances
+   * A map containing information about each loyalty subledger
    * @return subLedgers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A map containing a list of all loyalty subledger balances")
+  @ApiModelProperty(value = "A map containing information about each loyalty subledger")
 
-  public Map<String, LoyaltyProgramBalance> getSubLedgers() {
+  public Map<String, LedgerInfo> getSubLedgers() {
     return subLedgers;
   }
 
 
-  public void setSubLedgers(Map<String, LoyaltyProgramBalance> subLedgers) {
+  public void setSubLedgers(Map<String, LedgerInfo> subLedgers) {
     this.subLedgers = subLedgers;
   }
 

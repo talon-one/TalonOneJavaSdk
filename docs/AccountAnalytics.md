@@ -23,7 +23,8 @@ Name | Type | Description | Notes
 **roles** | **Integer** | Total number of roles in the account | 
 **customAttributes** | **Integer** | Total number of custom attributes in the account | 
 **webhooks** | **Integer** | Total number of webhooks in the account | 
-**loyaltyPrograms** | **Integer** | Total number of loyalty programs in the account | 
+**loyaltyPrograms** | **Integer** | Total number of all loyalty programs in the account | 
+**liveLoyaltyPrograms** | **Integer** | Total number of live loyalty programs in the account | 
 
 
 

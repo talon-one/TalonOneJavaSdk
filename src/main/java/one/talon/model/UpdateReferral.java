@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -62,7 +62,7 @@ public class UpdateReferral {
    * @return friendProfileIntegrationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An optional Integration ID of the Friend's Profile")
+  @ApiModelProperty(example = "BZGGC2454PA", value = "An optional Integration ID of the Friend's Profile")
 
   public String getFriendProfileIntegrationId() {
     return friendProfileIntegrationId;
@@ -85,7 +85,7 @@ public class UpdateReferral {
    * @return startDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Timestamp at which point the referral code becomes valid.")
+  @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -108,7 +108,7 @@ public class UpdateReferral {
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.")
+  @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiry date of the referral code. Referral never expires if this is omitted, zero, or negative.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
@@ -133,7 +133,7 @@ public class UpdateReferral {
    * @return usageLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
 
   public Integer getUsageLimit() {
     return usageLimit;

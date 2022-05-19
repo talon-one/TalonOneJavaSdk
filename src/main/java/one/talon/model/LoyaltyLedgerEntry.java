@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -43,6 +43,10 @@ public class LoyaltyLedgerEntry {
   public static final String SERIALIZED_NAME_CUSTOMER_PROFILE_I_D = "customerProfileID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE_I_D)
   private String customerProfileID;
+
+  public static final String SERIALIZED_NAME_CARD_I_D = "cardID";
+  @SerializedName(SERIALIZED_NAME_CARD_I_D)
+  private Integer cardID;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_I_D = "customerSessionID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_I_D)
@@ -135,7 +139,8 @@ public class LoyaltyLedgerEntry {
    * Get customerProfileID
    * @return customerProfileID
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public String getCustomerProfileID() {
     return customerProfileID;
@@ -144,6 +149,29 @@ public class LoyaltyLedgerEntry {
 
   public void setCustomerProfileID(String customerProfileID) {
     this.customerProfileID = customerProfileID;
+  }
+
+
+  public LoyaltyLedgerEntry cardID(Integer cardID) {
+    
+    this.cardID = cardID;
+    return this;
+  }
+
+   /**
+   * Get cardID
+   * @return cardID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getCardID() {
+    return cardID;
+  }
+
+
+  public void setCardID(Integer cardID) {
+    this.cardID = cardID;
   }
 
 
@@ -362,6 +390,7 @@ public class LoyaltyLedgerEntry {
     return Objects.equals(this.created, loyaltyLedgerEntry.created) &&
         Objects.equals(this.programID, loyaltyLedgerEntry.programID) &&
         Objects.equals(this.customerProfileID, loyaltyLedgerEntry.customerProfileID) &&
+        Objects.equals(this.cardID, loyaltyLedgerEntry.cardID) &&
         Objects.equals(this.customerSessionID, loyaltyLedgerEntry.customerSessionID) &&
         Objects.equals(this.eventID, loyaltyLedgerEntry.eventID) &&
         Objects.equals(this.type, loyaltyLedgerEntry.type) &&
@@ -375,7 +404,7 @@ public class LoyaltyLedgerEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID);
+    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID);
   }
 
 
@@ -386,6 +415,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programID: ").append(toIndentedString(programID)).append("\n");
     sb.append("    customerProfileID: ").append(toIndentedString(customerProfileID)).append("\n");
+    sb.append("    cardID: ").append(toIndentedString(cardID)).append("\n");
     sb.append("    customerSessionID: ").append(toIndentedString(customerSessionID)).append("\n");
     sb.append("    eventID: ").append(toIndentedString(eventID)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

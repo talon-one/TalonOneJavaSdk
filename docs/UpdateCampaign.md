@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | A friendly name for this campaign. | 
+**name** | **String** | A user-facing name for this campaign. | 
 **description** | **String** | A detailed description of the campaign. |  [optional]
-**startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Datetime when the campaign will become active. |  [optional]
-**endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Datetime when the campaign will become in-active. |  [optional]
+**startTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become active. |  [optional]
+**endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign |  [optional]
 **state** | [**StateEnum**](#StateEnum) | A disabled or archived campaign is not evaluated for rules or coupons.  |  [optional]
 **activeRulesetId** | **Integer** | ID of Ruleset this campaign applies on customer session evaluation. |  [optional]

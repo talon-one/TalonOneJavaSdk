@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -112,7 +112,7 @@ public class CustomerProfileIntegrationRequestV2 {
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", value = "Arbitrary properties associated with this item")
 
   public Object getAttributes() {
     return attributes;
@@ -162,11 +162,11 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
    /**
-   * Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \&quot;customerProfile\&quot;, \&quot;triggeredCampaigns\&quot;, \&quot;loyalty\&quot;, \&quot;event\&quot;, \&quot;awardedGiveaways\&quot;, \&quot;ruleFailureReasons\&quot;. 
+   * Optional list of requested information to be present on the response related to the customer profile update.  Currently supported: \&quot;customerProfile\&quot;, \&quot;triggeredCampaigns\&quot;, \&quot;loyalty\&quot;, \&quot;event\&quot;, \&quot;awardedGiveaways\&quot;, \&quot;ruleFailureReasons\&quot;.  **Note:** &#x60;ruleFailureReasons&#x60; is always part of the response when the Application type is &#x60;sandbox&#x60;. 
    * @return responseContent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional list of requested information to be present on the response related to the customer profile update. Currently supported: \"customerProfile\", \"triggeredCampaigns\", \"loyalty\", \"event\", \"awardedGiveaways\", \"ruleFailureReasons\". ")
+  @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Optional list of requested information to be present on the response related to the customer profile update.  Currently supported: \"customerProfile\", \"triggeredCampaigns\", \"loyalty\", \"event\", \"awardedGiveaways\", \"ruleFailureReasons\".  **Note:** `ruleFailureReasons` is always part of the response when the Application type is `sandbox`. ")
 
   public List<ResponseContentEnum> getResponseContent() {
     return responseContent;

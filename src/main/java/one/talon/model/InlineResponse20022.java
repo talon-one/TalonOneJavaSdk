@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Webhook;
+import one.talon.model.Attribute;
 
 /**
  * InlineResponse20022
@@ -38,7 +38,7 @@ public class InlineResponse20022 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Webhook> data = new ArrayList<Webhook>();
+  private List<Attribute> data = new ArrayList<Attribute>();
 
 
   public InlineResponse20022 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20022 {
   }
 
 
-  public InlineResponse20022 data(List<Webhook> data) {
+  public InlineResponse20022 data(List<Attribute> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20022 addDataItem(Webhook dataItem) {
+  public InlineResponse20022 addDataItem(Attribute dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20022 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Webhook> getData() {
+  public List<Attribute> getData() {
     return data;
   }
 
 
-  public void setData(List<Webhook> data) {
+  public void setData(List<Attribute> data) {
     this.data = data;
   }
 

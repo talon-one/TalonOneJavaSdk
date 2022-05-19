@@ -2,7 +2,7 @@
 
 # RuleFailureReason
 
-Details about why a rule failed
+Details about why a rule failed.
 ## Properties
 
 Name | Type | Description | Notes

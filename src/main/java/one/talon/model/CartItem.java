@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -24,6 +24,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import one.talon.model.AdditionalCost;
 
 /**
  * CartItem
@@ -41,6 +45,14 @@ public class CartItem {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   private Integer quantity;
+
+  public static final String SERIALIZED_NAME_RETURNED_QUANTITY = "returnedQuantity";
+  @SerializedName(SERIALIZED_NAME_RETURNED_QUANTITY)
+  private Integer returnedQuantity;
+
+  public static final String SERIALIZED_NAME_REMAINING_QUANTITY = "remainingQuantity";
+  @SerializedName(SERIALIZED_NAME_REMAINING_QUANTITY)
+  private Integer remainingQuantity;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -74,6 +86,10 @@ public class CartItem {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_COSTS)
+  private Map<String, AdditionalCost> additionalCosts = null;
+
 
   public CartItem name(String name) {
     
@@ -82,10 +98,10 @@ public class CartItem {
   }
 
    /**
-   * Get name
+   * Name of item
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "Air Glide", required = true, value = "Name of item")
 
   public String getName() {
     return name;
@@ -104,10 +120,10 @@ public class CartItem {
   }
 
    /**
-   * Get sku
+   * Stock keeping unit of item
    * @return sku
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "SKU1241028", required = true, value = "Stock keeping unit of item")
 
   public String getSku() {
     return sku;
@@ -126,11 +142,11 @@ public class CartItem {
   }
 
    /**
-   * Get quantity
+   * Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. 
    * minimum: 1
    * @return quantity
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. ")
 
   public Integer getQuantity() {
     return quantity;
@@ -142,6 +158,52 @@ public class CartItem {
   }
 
 
+  public CartItem returnedQuantity(Integer returnedQuantity) {
+    
+    this.returnedQuantity = returnedQuantity;
+    return this;
+  }
+
+   /**
+   * Number of returned items, calculated internally based on returns of this item.
+   * @return returnedQuantity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "Number of returned items, calculated internally based on returns of this item.")
+
+  public Integer getReturnedQuantity() {
+    return returnedQuantity;
+  }
+
+
+  public void setReturnedQuantity(Integer returnedQuantity) {
+    this.returnedQuantity = returnedQuantity;
+  }
+
+
+  public CartItem remainingQuantity(Integer remainingQuantity) {
+    
+    this.remainingQuantity = remainingQuantity;
+    return this;
+  }
+
+   /**
+   * Remaining quantity of the item, calculated internally based on returns of this item.
+   * @return remainingQuantity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "Remaining quantity of the item, calculated internally based on returns of this item.")
+
+  public Integer getRemainingQuantity() {
+    return remainingQuantity;
+  }
+
+
+  public void setRemainingQuantity(Integer remainingQuantity) {
+    this.remainingQuantity = remainingQuantity;
+  }
+
+
   public CartItem price(BigDecimal price) {
     
     this.price = price;
@@ -149,10 +211,10 @@ public class CartItem {
   }
 
    /**
-   * Get price
+   * Price of item
    * @return price
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "99.99", required = true, value = "Price of item")
 
   public BigDecimal getPrice() {
     return price;
@@ -171,11 +233,11 @@ public class CartItem {
   }
 
    /**
-   * Get category
+   * Type, group or model of the item
    * @return category
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "shoes", value = "Type, group or model of the item")
 
   public String getCategory() {
     return category;
@@ -194,11 +256,11 @@ public class CartItem {
   }
 
    /**
-   * Weight of item in mm
+   * Weight of item in grams
    * @return weight
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Weight of item in mm")
+  @ApiModelProperty(example = "1130.0", value = "Weight of item in grams")
 
   public BigDecimal getWeight() {
     return weight;
@@ -309,11 +371,11 @@ public class CartItem {
   }
 
    /**
-   * Arbitrary properties associated with this item
+   * Arbitrary properties associated with this item. You can use built-in attributes or create your own. See [Attributes](https://docs.talon.one/docs/dev/concepts/attributes). 
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(example = "{\"image\":\"11.jpeg\",\"material\":\"leather\"}", value = "Arbitrary properties associated with this item. You can use built-in attributes or create your own. See [Attributes](https://docs.talon.one/docs/dev/concepts/attributes). ")
 
   public Object getAttributes() {
     return attributes;
@@ -322,6 +384,37 @@ public class CartItem {
 
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
+  }
+
+
+  public CartItem additionalCosts(Map<String, AdditionalCost> additionalCosts) {
+    
+    this.additionalCosts = additionalCosts;
+    return this;
+  }
+
+  public CartItem putAdditionalCostsItem(String key, AdditionalCost additionalCostsItem) {
+    if (this.additionalCosts == null) {
+      this.additionalCosts = new HashMap<String, AdditionalCost>();
+    }
+    this.additionalCosts.put(key, additionalCostsItem);
+    return this;
+  }
+
+   /**
+   * Any additional costs associated with the cart item 
+   * @return additionalCosts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"shipping\":{\"price\":9}}", value = "Any additional costs associated with the cart item ")
+
+  public Map<String, AdditionalCost> getAdditionalCosts() {
+    return additionalCosts;
+  }
+
+
+  public void setAdditionalCosts(Map<String, AdditionalCost> additionalCosts) {
+    this.additionalCosts = additionalCosts;
   }
 
 
@@ -337,6 +430,8 @@ public class CartItem {
     return Objects.equals(this.name, cartItem.name) &&
         Objects.equals(this.sku, cartItem.sku) &&
         Objects.equals(this.quantity, cartItem.quantity) &&
+        Objects.equals(this.returnedQuantity, cartItem.returnedQuantity) &&
+        Objects.equals(this.remainingQuantity, cartItem.remainingQuantity) &&
         Objects.equals(this.price, cartItem.price) &&
         Objects.equals(this.category, cartItem.category) &&
         Objects.equals(this.weight, cartItem.weight) &&
@@ -344,12 +439,13 @@ public class CartItem {
         Objects.equals(this.width, cartItem.width) &&
         Objects.equals(this.length, cartItem.length) &&
         Objects.equals(this.position, cartItem.position) &&
-        Objects.equals(this.attributes, cartItem.attributes);
+        Objects.equals(this.attributes, cartItem.attributes) &&
+        Objects.equals(this.additionalCosts, cartItem.additionalCosts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, quantity, price, category, weight, height, width, length, position, attributes);
+    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, weight, height, width, length, position, attributes, additionalCosts);
   }
 
 
@@ -360,6 +456,8 @@ public class CartItem {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+    sb.append("    returnedQuantity: ").append(toIndentedString(returnedQuantity)).append("\n");
+    sb.append("    remainingQuantity: ").append(toIndentedString(remainingQuantity)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
@@ -368,6 +466,7 @@ public class CartItem {
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

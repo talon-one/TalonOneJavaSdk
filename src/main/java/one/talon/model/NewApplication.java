@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -51,7 +51,7 @@ public class NewApplication {
   private String currency;
 
   /**
-   * A string indicating how should campaigns in this application deal with case sensitivity on coupon codes.
+   * The case sensitivity behavior to check coupon codes in the campaigns of this Application.
    */
   @JsonAdapter(CaseSensitivityEnum.Adapter.class)
   public enum CaseSensitivityEnum {
@@ -112,7 +112,7 @@ public class NewApplication {
   private List<LimitConfig> limits = null;
 
   /**
-   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \&quot;universal\&quot;
+   * Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. 
    */
   @JsonAdapter(CampaignPriorityEnum.Adapter.class)
   public enum CampaignPriorityEnum {
@@ -162,10 +162,10 @@ public class NewApplication {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_PRIORITY = "campaignPriority";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_PRIORITY)
-  private CampaignPriorityEnum campaignPriority;
+  private CampaignPriorityEnum campaignPriority = CampaignPriorityEnum.UNIVERSAL;
 
   /**
-   * The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \&quot;listOrder\&quot;
+   * The strategy used when choosing exclusive campaigns for evaluation.
    */
   @JsonAdapter(ExclusiveCampaignsStrategyEnum.Adapter.class)
   public enum ExclusiveCampaignsStrategyEnum {
@@ -215,10 +215,10 @@ public class NewApplication {
 
   public static final String SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY = "exclusiveCampaignsStrategy";
   @SerializedName(SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY)
-  private ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy;
+  private ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy = ExclusiveCampaignsStrategyEnum.LISTORDER;
 
   /**
-   * The default scope to apply \&quot;setDiscount\&quot; effects on if no scope was provided with the effect.
+   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect. 
    */
   @JsonAdapter(DefaultDiscountScopeEnum.Adapter.class)
   public enum DefaultDiscountScopeEnum {
@@ -286,6 +286,63 @@ public class NewApplication {
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
 
+  public static final String SERIALIZED_NAME_ENABLE_PARTIAL_DISCOUNTS = "enablePartialDiscounts";
+  @SerializedName(SERIALIZED_NAME_ENABLE_PARTIAL_DISCOUNTS)
+  private Boolean enablePartialDiscounts;
+
+  /**
+   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect. 
+   */
+  @JsonAdapter(DefaultDiscountAdditionalCostPerItemScopeEnum.Adapter.class)
+  public enum DefaultDiscountAdditionalCostPerItemScopeEnum {
+    PRICE("price"),
+    
+    ITEMTOTAL("itemTotal"),
+    
+    ADDITIONALCOSTS("additionalCosts");
+
+    private String value;
+
+    DefaultDiscountAdditionalCostPerItemScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DefaultDiscountAdditionalCostPerItemScopeEnum fromValue(String value) {
+      for (DefaultDiscountAdditionalCostPerItemScopeEnum b : DefaultDiscountAdditionalCostPerItemScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DefaultDiscountAdditionalCostPerItemScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DefaultDiscountAdditionalCostPerItemScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DefaultDiscountAdditionalCostPerItemScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DefaultDiscountAdditionalCostPerItemScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DEFAULT_DISCOUNT_ADDITIONAL_COST_PER_ITEM_SCOPE = "defaultDiscountAdditionalCostPerItemScope";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_DISCOUNT_ADDITIONAL_COST_PER_ITEM_SCOPE)
+  private DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope;
+
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
@@ -301,7 +358,7 @@ public class NewApplication {
    * The name of this application.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of this application.")
+  @ApiModelProperty(example = "My Application", required = true, value = "The name of this application.")
 
   public String getName() {
     return name;
@@ -324,7 +381,7 @@ public class NewApplication {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A longer description of the application.")
+  @ApiModelProperty(example = "A test Application", value = "A longer description of the application.")
 
   public String getDescription() {
     return description;
@@ -346,7 +403,7 @@ public class NewApplication {
    * A string containing an IANA timezone descriptor.
    * @return timezone
   **/
-  @ApiModelProperty(required = true, value = "A string containing an IANA timezone descriptor.")
+  @ApiModelProperty(example = "Europe/Berlin", required = true, value = "A string containing an IANA timezone descriptor.")
 
   public String getTimezone() {
     return timezone;
@@ -365,10 +422,10 @@ public class NewApplication {
   }
 
    /**
-   * A string describing a default currency for new customer sessions.
+   * The default currency for new customer sessions.
    * @return currency
   **/
-  @ApiModelProperty(required = true, value = "A string describing a default currency for new customer sessions.")
+  @ApiModelProperty(example = "EUR", required = true, value = "The default currency for new customer sessions.")
 
   public String getCurrency() {
     return currency;
@@ -387,11 +444,11 @@ public class NewApplication {
   }
 
    /**
-   * A string indicating how should campaigns in this application deal with case sensitivity on coupon codes.
+   * The case sensitivity behavior to check coupon codes in the campaigns of this Application.
    * @return caseSensitivity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A string indicating how should campaigns in this application deal with case sensitivity on coupon codes.")
+  @ApiModelProperty(value = "The case sensitivity behavior to check coupon codes in the campaigns of this Application.")
 
   public CaseSensitivityEnum getCaseSensitivity() {
     return caseSensitivity;
@@ -410,11 +467,11 @@ public class NewApplication {
   }
 
    /**
-   * Arbitrary properties associated with this campaign
+   * Arbitrary properties associated with this campaign.
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary properties associated with this campaign")
+  @ApiModelProperty(value = "Arbitrary properties associated with this campaign.")
 
   public Object getAttributes() {
     return attributes;
@@ -441,11 +498,11 @@ public class NewApplication {
   }
 
    /**
-   * Default limits for campaigns created in this application
+   * Default limits for campaigns created in this application.
    * @return limits
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Default limits for campaigns created in this application")
+  @ApiModelProperty(value = "Default limits for campaigns created in this application.")
 
   public List<LimitConfig> getLimits() {
     return limits;
@@ -464,11 +521,11 @@ public class NewApplication {
   }
 
    /**
-   * Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \&quot;universal\&quot;
+   * Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. 
    * @return campaignPriority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Default priority for campaigns created in this application, can be one of (universal, stackable, exclusive). If no value is provided, this is set to \"universal\"")
+  @ApiModelProperty(value = "Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. ")
 
   public CampaignPriorityEnum getCampaignPriority() {
     return campaignPriority;
@@ -487,11 +544,11 @@ public class NewApplication {
   }
 
    /**
-   * The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \&quot;listOrder\&quot;
+   * The strategy used when choosing exclusive campaigns for evaluation.
    * @return exclusiveCampaignsStrategy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The strategy used when choosing exclusive campaigns for evaluation, can be one of (listOrder, lowestDiscount, highestDiscount). If no value is provided, this is set to \"listOrder\"")
+  @ApiModelProperty(value = "The strategy used when choosing exclusive campaigns for evaluation.")
 
   public ExclusiveCampaignsStrategyEnum getExclusiveCampaignsStrategy() {
     return exclusiveCampaignsStrategy;
@@ -510,11 +567,11 @@ public class NewApplication {
   }
 
    /**
-   * The default scope to apply \&quot;setDiscount\&quot; effects on if no scope was provided with the effect.
+   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect. 
    * @return defaultDiscountScope
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The default scope to apply \"setDiscount\" effects on if no scope was provided with the effect.")
+  @ApiModelProperty(value = "The default scope to apply `setDiscount` effects on if no scope was provided with the effect. ")
 
   public DefaultDiscountScopeEnum getDefaultDiscountScope() {
     return defaultDiscountScope;
@@ -533,11 +590,11 @@ public class NewApplication {
   }
 
    /**
-   * Flag indicating if discounts should cascade for this application
+   * Indicates if discounts should cascade for this Application.
    * @return enableCascadingDiscounts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Flag indicating if discounts should cascade for this application")
+  @ApiModelProperty(value = "Indicates if discounts should cascade for this Application.")
 
   public Boolean getEnableCascadingDiscounts() {
     return enableCascadingDiscounts;
@@ -556,11 +613,11 @@ public class NewApplication {
   }
 
    /**
-   * Flag indicating if cart items of quantity larger than one should be separated into different items of quantity one
+   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See [the docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items). 
    * @return enableFlattenedCartItems
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Flag indicating if cart items of quantity larger than one should be separated into different items of quantity one")
+  @ApiModelProperty(value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See [the docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items). ")
 
   public Boolean getEnableFlattenedCartItems() {
     return enableFlattenedCartItems;
@@ -602,11 +659,11 @@ public class NewApplication {
   }
 
    /**
-   * Flag indicating if this is a live or sandbox application
+   * Indicates if this is a live or sandbox Application.
    * @return sandbox
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Flag indicating if this is a live or sandbox application")
+  @ApiModelProperty(value = "Indicates if this is a live or sandbox Application.")
 
   public Boolean getSandbox() {
     return sandbox;
@@ -615,6 +672,52 @@ public class NewApplication {
 
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
+  }
+
+
+  public NewApplication enablePartialDiscounts(Boolean enablePartialDiscounts) {
+    
+    this.enablePartialDiscounts = enablePartialDiscounts;
+    return this;
+  }
+
+   /**
+   * Indicates if this Application supports partial discounts.
+   * @return enablePartialDiscounts
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates if this Application supports partial discounts.")
+
+  public Boolean getEnablePartialDiscounts() {
+    return enablePartialDiscounts;
+  }
+
+
+  public void setEnablePartialDiscounts(Boolean enablePartialDiscounts) {
+    this.enablePartialDiscounts = enablePartialDiscounts;
+  }
+
+
+  public NewApplication defaultDiscountAdditionalCostPerItemScope(DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
+    
+    this.defaultDiscountAdditionalCostPerItemScope = defaultDiscountAdditionalCostPerItemScope;
+    return this;
+  }
+
+   /**
+   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect. 
+   * @return defaultDiscountAdditionalCostPerItemScope
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The default scope to apply `setDiscountPerItem` effects on if no scope was provided with the effect. ")
+
+  public DefaultDiscountAdditionalCostPerItemScopeEnum getDefaultDiscountAdditionalCostPerItemScope() {
+    return defaultDiscountAdditionalCostPerItemScope;
+  }
+
+
+  public void setDefaultDiscountAdditionalCostPerItemScope(DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
+    this.defaultDiscountAdditionalCostPerItemScope = defaultDiscountAdditionalCostPerItemScope;
   }
 
 
@@ -664,12 +767,14 @@ public class NewApplication {
         Objects.equals(this.enableFlattenedCartItems, newApplication.enableFlattenedCartItems) &&
         Objects.equals(this.attributesSettings, newApplication.attributesSettings) &&
         Objects.equals(this.sandbox, newApplication.sandbox) &&
+        Objects.equals(this.enablePartialDiscounts, newApplication.enablePartialDiscounts) &&
+        Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, newApplication.defaultDiscountAdditionalCostPerItemScope) &&
         Objects.equals(this.key, newApplication.key);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, key);
   }
 
 
@@ -691,6 +796,8 @@ public class NewApplication {
     sb.append("    enableFlattenedCartItems: ").append(toIndentedString(enableFlattenedCartItems)).append("\n");
     sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    enablePartialDiscounts: ").append(toIndentedString(enablePartialDiscounts)).append("\n");
+    sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("}");
     return sb.toString();

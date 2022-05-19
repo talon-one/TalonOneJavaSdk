@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -28,8 +28,8 @@ import java.util.List;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;
+import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
-import one.talon.model.Referral;
 
 /**
  * CustomerInventory
@@ -46,7 +46,7 @@ public class CustomerInventory {
 
   public static final String SERIALIZED_NAME_REFERRALS = "referrals";
   @SerializedName(SERIALIZED_NAME_REFERRALS)
-  private List<Referral> referrals = null;
+  private List<InventoryReferral> referrals = null;
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
@@ -103,15 +103,15 @@ public class CustomerInventory {
   }
 
 
-  public CustomerInventory referrals(List<Referral> referrals) {
+  public CustomerInventory referrals(List<InventoryReferral> referrals) {
     
     this.referrals = referrals;
     return this;
   }
 
-  public CustomerInventory addReferralsItem(Referral referralsItem) {
+  public CustomerInventory addReferralsItem(InventoryReferral referralsItem) {
     if (this.referrals == null) {
-      this.referrals = new ArrayList<Referral>();
+      this.referrals = new ArrayList<InventoryReferral>();
     }
     this.referrals.add(referralsItem);
     return this;
@@ -124,12 +124,12 @@ public class CustomerInventory {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Referral> getReferrals() {
+  public List<InventoryReferral> getReferrals() {
     return referrals;
   }
 
 
-  public void setReferrals(List<Referral> referrals) {
+  public void setReferrals(List<InventoryReferral> referrals) {
     this.referrals = referrals;
   }
 
@@ -149,11 +149,11 @@ public class CustomerInventory {
   }
 
    /**
-   * Get coupons
+   * The coupons reserved by this profile. This array includes hard and soft reservations. See each coupon&#39;s &#x60;reservation&#x60; property. 
    * @return coupons
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The coupons reserved by this profile. This array includes hard and soft reservations. See each coupon's `reservation` property. ")
 
   public List<InventoryCoupon> getCoupons() {
     return coupons;

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -27,11 +27,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.LoyaltyLedgerEntry;
+import one.talon.model.Tier;
 
 /**
- * Ledger of Balance in Loyalty Program for a Customer
+ * Ledger of Balance in Loyalty Program for a Customer.
  */
-@ApiModel(description = "Ledger of Balance in Loyalty Program for a Customer")
+@ApiModel(description = "Ledger of Balance in Loyalty Program for a Customer.")
 
 public class LoyaltySubLedger {
   public static final String SERIALIZED_NAME_TOTAL = "total";
@@ -74,6 +75,10 @@ public class LoyaltySubLedger {
   @SerializedName(SERIALIZED_NAME_EXPIRED_POINTS)
   private List<LoyaltyLedgerEntry> expiredPoints = null;
 
+  public static final String SERIALIZED_NAME_CURRENT_TIER = "currentTier";
+  @SerializedName(SERIALIZED_NAME_CURRENT_TIER)
+  private Tier currentTier;
+
 
   public LoyaltySubLedger total(BigDecimal total) {
     
@@ -82,10 +87,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * ⚠️ Deprecated: Use &#39;totalActivePoints&#39; property instead. Total amount of currently active and available points in the customer&#39;s balance 
+   * **DEPRECATED** Use &#x60;totalActivePoints&#x60;&#x60; property instead. Total amount of currently active and available points in the customer&#39;s balance. 
    * @return total
   **/
-  @ApiModelProperty(required = true, value = "⚠️ Deprecated: Use 'totalActivePoints' property instead. Total amount of currently active and available points in the customer's balance ")
+  @ApiModelProperty(required = true, value = "**DEPRECATED** Use `totalActivePoints`` property instead. Total amount of currently active and available points in the customer's balance. ")
 
   public BigDecimal getTotal() {
     return total;
@@ -104,10 +109,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Total amount of currently active and available points in the customer&#39;s balance
+   * Total amount of currently active and available points in the customer&#39;s balance.
    * @return totalActivePoints
   **/
-  @ApiModelProperty(required = true, value = "Total amount of currently active and available points in the customer's balance")
+  @ApiModelProperty(required = true, value = "Total amount of currently active and available points in the customer's balance.")
 
   public BigDecimal getTotalActivePoints() {
     return totalActivePoints;
@@ -126,10 +131,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Total amount of pending points, which are not active yet but will become active in the future
+   * Total amount of pending points, which are not active yet but will become active in the future.
    * @return totalPendingPoints
   **/
-  @ApiModelProperty(required = true, value = "Total amount of pending points, which are not active yet but will become active in the future")
+  @ApiModelProperty(required = true, value = "Total amount of pending points, which are not active yet but will become active in the future.")
 
   public BigDecimal getTotalPendingPoints() {
     return totalPendingPoints;
@@ -148,10 +153,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Total amount of points already spent by this customer
+   * Total amount of points already spent by this customer.
    * @return totalSpentPoints
   **/
-  @ApiModelProperty(required = true, value = "Total amount of points already spent by this customer")
+  @ApiModelProperty(required = true, value = "Total amount of points already spent by this customer.")
 
   public BigDecimal getTotalSpentPoints() {
     return totalSpentPoints;
@@ -170,10 +175,10 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * Total amount of points, that expired without ever being spent
+   * Total amount of points, that expired without ever being spent.
    * @return totalExpiredPoints
   **/
-  @ApiModelProperty(required = true, value = "Total amount of points, that expired without ever being spent")
+  @ApiModelProperty(required = true, value = "Total amount of points, that expired without ever being spent.")
 
   public BigDecimal getTotalExpiredPoints() {
     return totalExpiredPoints;
@@ -200,11 +205,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * List of all events that have happened such as additions, subtractions and expiries
+   * List of all events that have happened such as additions, subtractions and expiries.
    * @return transactions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of all events that have happened such as additions, subtractions and expiries")
+  @ApiModelProperty(value = "List of all events that have happened such as additions, subtractions and expiries.")
 
   public List<LoyaltyLedgerEntry> getTransactions() {
     return transactions;
@@ -231,11 +236,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * List of all points that will expire
+   * List of all points that will expire.
    * @return expiringPoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of all points that will expire")
+  @ApiModelProperty(value = "List of all points that will expire.")
 
   public List<LoyaltyLedgerEntry> getExpiringPoints() {
     return expiringPoints;
@@ -262,11 +267,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * List of all currently active points
+   * List of all currently active points.
    * @return activePoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of all currently active points")
+  @ApiModelProperty(value = "List of all currently active points.")
 
   public List<LoyaltyLedgerEntry> getActivePoints() {
     return activePoints;
@@ -293,11 +298,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * List of all points pending activation
+   * List of all points pending activation.
    * @return pendingPoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of all points pending activation")
+  @ApiModelProperty(value = "List of all points pending activation.")
 
   public List<LoyaltyLedgerEntry> getPendingPoints() {
     return pendingPoints;
@@ -324,11 +329,11 @@ public class LoyaltySubLedger {
   }
 
    /**
-   * List of expired points
+   * List of expired points.
    * @return expiredPoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of expired points")
+  @ApiModelProperty(value = "List of expired points.")
 
   public List<LoyaltyLedgerEntry> getExpiredPoints() {
     return expiredPoints;
@@ -337,6 +342,29 @@ public class LoyaltySubLedger {
 
   public void setExpiredPoints(List<LoyaltyLedgerEntry> expiredPoints) {
     this.expiredPoints = expiredPoints;
+  }
+
+
+  public LoyaltySubLedger currentTier(Tier currentTier) {
+    
+    this.currentTier = currentTier;
+    return this;
+  }
+
+   /**
+   * Get currentTier
+   * @return currentTier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Tier getCurrentTier() {
+    return currentTier;
+  }
+
+
+  public void setCurrentTier(Tier currentTier) {
+    this.currentTier = currentTier;
   }
 
 
@@ -358,12 +386,13 @@ public class LoyaltySubLedger {
         Objects.equals(this.expiringPoints, loyaltySubLedger.expiringPoints) &&
         Objects.equals(this.activePoints, loyaltySubLedger.activePoints) &&
         Objects.equals(this.pendingPoints, loyaltySubLedger.pendingPoints) &&
-        Objects.equals(this.expiredPoints, loyaltySubLedger.expiredPoints);
+        Objects.equals(this.expiredPoints, loyaltySubLedger.expiredPoints) &&
+        Objects.equals(this.currentTier, loyaltySubLedger.currentTier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, transactions, expiringPoints, activePoints, pendingPoints, expiredPoints);
+    return Objects.hash(total, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, transactions, expiringPoints, activePoints, pendingPoints, expiredPoints, currentTier);
   }
 
 
@@ -381,6 +410,7 @@ public class LoyaltySubLedger {
     sb.append("    activePoints: ").append(toIndentedString(activePoints)).append("\n");
     sb.append("    pendingPoints: ").append(toIndentedString(pendingPoints)).append("\n");
     sb.append("    expiredPoints: ").append(toIndentedString(expiredPoints)).append("\n");
+    sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

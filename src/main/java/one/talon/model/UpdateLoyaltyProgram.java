@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,11 +25,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.NewLoyaltyTier;
 
 /**
- * Update Loyalty Program
+ * 
  */
-@ApiModel(description = "Update Loyalty Program")
+@ApiModel(description = "")
 
 public class UpdateLoyaltyProgram {
   public static final String SERIALIZED_NAME_TITLE = "title";
@@ -56,6 +57,14 @@ public class UpdateLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_ALLOW_SUBLEDGER)
   private Boolean allowSubledger;
 
+  public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
+  @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
+  private Integer usersPerCardLimit;
+
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<NewLoyaltyTier> tiers = null;
+
 
   public UpdateLoyaltyProgram title(String title) {
     
@@ -68,7 +77,7 @@ public class UpdateLoyaltyProgram {
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The display title for the Loyalty Program.")
+  @ApiModelProperty(example = "Point collection", value = "The display title for the Loyalty Program.")
 
   public String getTitle() {
     return title;
@@ -91,7 +100,7 @@ public class UpdateLoyaltyProgram {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Description of our Loyalty Program.")
+  @ApiModelProperty(example = "Customers collect 10 points per 1$ spent", value = "Description of our Loyalty Program.")
 
   public String getDescription() {
     return description;
@@ -122,7 +131,7 @@ public class UpdateLoyaltyProgram {
    * @return subscribedApplications
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
+  @ApiModelProperty(example = "[132, 97]", value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
 
   public List<Integer> getSubscribedApplications() {
     return subscribedApplications;
@@ -145,7 +154,7 @@ public class UpdateLoyaltyProgram {
    * @return defaultValidity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m'.")
+  @ApiModelProperty(example = "unlimited", value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m'.")
 
   public String getDefaultValidity() {
     return defaultValidity;
@@ -168,7 +177,7 @@ public class UpdateLoyaltyProgram {
    * @return defaultPending
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like '1h' or '40m'.")
+  @ApiModelProperty(example = "immediate", value = "Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like '1h' or '40m'.")
 
   public String getDefaultPending() {
     return defaultPending;
@@ -191,7 +200,7 @@ public class UpdateLoyaltyProgram {
    * @return allowSubledger
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates if this program supports subledgers inside the program")
+  @ApiModelProperty(example = "false", value = "Indicates if this program supports subledgers inside the program")
 
   public Boolean getAllowSubledger() {
     return allowSubledger;
@@ -200,6 +209,61 @@ public class UpdateLoyaltyProgram {
 
   public void setAllowSubledger(Boolean allowSubledger) {
     this.allowSubledger = allowSubledger;
+  }
+
+
+  public UpdateLoyaltyProgram usersPerCardLimit(Integer usersPerCardLimit) {
+    
+    this.usersPerCardLimit = usersPerCardLimit;
+    return this;
+  }
+
+   /**
+   * The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when &#x60;cardBased&#x60; is &#x60;true&#x60;. 
+   * minimum: 0
+   * @return usersPerCardLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "111", value = "The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when `cardBased` is `true`. ")
+
+  public Integer getUsersPerCardLimit() {
+    return usersPerCardLimit;
+  }
+
+
+  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
+    this.usersPerCardLimit = usersPerCardLimit;
+  }
+
+
+  public UpdateLoyaltyProgram tiers(List<NewLoyaltyTier> tiers) {
+    
+    this.tiers = tiers;
+    return this;
+  }
+
+  public UpdateLoyaltyProgram addTiersItem(NewLoyaltyTier tiersItem) {
+    if (this.tiers == null) {
+      this.tiers = new ArrayList<NewLoyaltyTier>();
+    }
+    this.tiers.add(tiersItem);
+    return this;
+  }
+
+   /**
+   * The tiers in this loyalty program
+   * @return tiers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The tiers in this loyalty program")
+
+  public List<NewLoyaltyTier> getTiers() {
+    return tiers;
+  }
+
+
+  public void setTiers(List<NewLoyaltyTier> tiers) {
+    this.tiers = tiers;
   }
 
 
@@ -217,12 +281,14 @@ public class UpdateLoyaltyProgram {
         Objects.equals(this.subscribedApplications, updateLoyaltyProgram.subscribedApplications) &&
         Objects.equals(this.defaultValidity, updateLoyaltyProgram.defaultValidity) &&
         Objects.equals(this.defaultPending, updateLoyaltyProgram.defaultPending) &&
-        Objects.equals(this.allowSubledger, updateLoyaltyProgram.allowSubledger);
+        Objects.equals(this.allowSubledger, updateLoyaltyProgram.allowSubledger) &&
+        Objects.equals(this.usersPerCardLimit, updateLoyaltyProgram.usersPerCardLimit) &&
+        Objects.equals(this.tiers, updateLoyaltyProgram.tiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger);
+    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, tiers);
   }
 
 
@@ -236,6 +302,8 @@ public class UpdateLoyaltyProgram {
     sb.append("    defaultValidity: ").append(toIndentedString(defaultValidity)).append("\n");
     sb.append("    defaultPending: ").append(toIndentedString(defaultPending)).append("\n");
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
+    sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
+    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

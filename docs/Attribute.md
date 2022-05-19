@@ -17,8 +17,11 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) | The data type of the attribute, a &#x60;time&#x60; attribute must be sent as a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp format. | 
 **description** | **String** | A description of this attribute. | 
 **suggestions** | **List&lt;String&gt;** | A list of suggestions for the attribute. | 
+**hasAllowedList** | **Boolean** | Whether or not this attribute has an allowed list of values associated with it. |  [optional]
+**restrictedBySuggestions** | **Boolean** | Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property).  |  [optional]
 **editable** | **Boolean** | Whether or not this attribute can be edited. | 
 **subscribedApplicationsIds** | **List&lt;Integer&gt;** | A list of the IDs of the applications that are subscribed to this attribute |  [optional]
+**eventTypeId** | **Integer** |  |  [optional]
 
 
 

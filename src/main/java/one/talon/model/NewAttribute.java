@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -184,6 +184,14 @@ public class NewAttribute {
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   private List<String> suggestions = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_HAS_ALLOWED_LIST = "hasAllowedList";
+  @SerializedName(SERIALIZED_NAME_HAS_ALLOWED_LIST)
+  private Boolean hasAllowedList = false;
+
+  public static final String SERIALIZED_NAME_RESTRICTED_BY_SUGGESTIONS = "restrictedBySuggestions";
+  @SerializedName(SERIALIZED_NAME_RESTRICTED_BY_SUGGESTIONS)
+  private Boolean restrictedBySuggestions = false;
+
   public static final String SERIALIZED_NAME_EDITABLE = "editable";
   @SerializedName(SERIALIZED_NAME_EDITABLE)
   private Boolean editable;
@@ -353,6 +361,52 @@ public class NewAttribute {
   }
 
 
+  public NewAttribute hasAllowedList(Boolean hasAllowedList) {
+    
+    this.hasAllowedList = hasAllowedList;
+    return this;
+  }
+
+   /**
+   * Whether or not this attribute has an allowed list of values associated with it.
+   * @return hasAllowedList
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether or not this attribute has an allowed list of values associated with it.")
+
+  public Boolean getHasAllowedList() {
+    return hasAllowedList;
+  }
+
+
+  public void setHasAllowedList(Boolean hasAllowedList) {
+    this.hasAllowedList = hasAllowedList;
+  }
+
+
+  public NewAttribute restrictedBySuggestions(Boolean restrictedBySuggestions) {
+    
+    this.restrictedBySuggestions = restrictedBySuggestions;
+    return this;
+  }
+
+   /**
+   * Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property). 
+   * @return restrictedBySuggestions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether or not this attribute's value is restricted by suggestions (`suggestions` property) or by an allowed list of value (`hasAllowedList` property). ")
+
+  public Boolean getRestrictedBySuggestions() {
+    return restrictedBySuggestions;
+  }
+
+
+  public void setRestrictedBySuggestions(Boolean restrictedBySuggestions) {
+    this.restrictedBySuggestions = restrictedBySuggestions;
+  }
+
+
   public NewAttribute editable(Boolean editable) {
     
     this.editable = editable;
@@ -422,13 +476,15 @@ public class NewAttribute {
         Objects.equals(this.type, newAttribute.type) &&
         Objects.equals(this.description, newAttribute.description) &&
         Objects.equals(this.suggestions, newAttribute.suggestions) &&
+        Objects.equals(this.hasAllowedList, newAttribute.hasAllowedList) &&
+        Objects.equals(this.restrictedBySuggestions, newAttribute.restrictedBySuggestions) &&
         Objects.equals(this.editable, newAttribute.editable) &&
         Objects.equals(this.subscribedApplicationsIds, newAttribute.subscribedApplicationsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entity, eventType, name, title, type, description, suggestions, editable, subscribedApplicationsIds);
+    return Objects.hash(entity, eventType, name, title, type, description, suggestions, hasAllowedList, restrictedBySuggestions, editable, subscribedApplicationsIds);
   }
 
 
@@ -443,6 +499,8 @@ public class NewAttribute {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    suggestions: ").append(toIndentedString(suggestions)).append("\n");
+    sb.append("    hasAllowedList: ").append(toIndentedString(hasAllowedList)).append("\n");
+    sb.append("    restrictedBySuggestions: ").append(toIndentedString(restrictedBySuggestions)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
     sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("}");

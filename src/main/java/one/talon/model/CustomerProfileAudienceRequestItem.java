@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class CustomerProfileAudienceRequestItem {
   /**
-   * Gets or Sets action
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
    */
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
@@ -96,10 +96,10 @@ public class CustomerProfileAudienceRequestItem {
   }
 
    /**
-   * Get action
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
    * @return action
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "add", required = true, value = "Defines the action to perform: - `add`: Adds the customer profile to the audience. - `delete`: Removes the customer profile from the audience. ")
 
   public ActionEnum getAction() {
     return action;
@@ -118,10 +118,10 @@ public class CustomerProfileAudienceRequestItem {
   }
 
    /**
-   * Get profileIntegrationId
+   * The ID of this customer profile in the third-party integration.
    * @return profileIntegrationId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "R195412", required = true, value = "The ID of this customer profile in the third-party integration.")
 
   public String getProfileIntegrationId() {
     return profileIntegrationId;
@@ -140,10 +140,10 @@ public class CustomerProfileAudienceRequestItem {
   }
 
    /**
-   * Get audienceId
+   * The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2).
    * @return audienceId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "748", required = true, value = "The ID of the audience. You get it via the `id` property when [creating an audience](#operation/createAudienceV2).")
 
   public Integer getAudienceId() {
     return audienceId;

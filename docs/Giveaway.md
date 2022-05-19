@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp at which point the giveaway becomes valid. |  [optional]
 **endDate** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp at which point the giveaway becomes invalid. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this giveaway. |  [optional]
-**used** | **Boolean** | Flag indicating whether this giveaway code was given before. |  [optional]
+**used** | **Boolean** | Indicates whether this giveaway code was given before. |  [optional]
 **importId** | **Integer** | The ID of the Import which created this giveaway. |  [optional]
 
 

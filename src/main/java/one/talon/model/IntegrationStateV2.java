@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -32,7 +32,9 @@ import one.talon.model.CustomerSessionV2;
 import one.talon.model.Effect;
 import one.talon.model.Event;
 import one.talon.model.Giveaway;
+import one.talon.model.InventoryReferral;
 import one.talon.model.Loyalty;
+import one.talon.model.ModelReturn;
 import one.talon.model.Referral;
 import one.talon.model.RuleFailureReason;
 
@@ -60,7 +62,7 @@ public class IntegrationStateV2 {
 
   public static final String SERIALIZED_NAME_REFERRAL = "referral";
   @SerializedName(SERIALIZED_NAME_REFERRAL)
-  private Referral referral;
+  private InventoryReferral referral;
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
@@ -89,6 +91,14 @@ public class IntegrationStateV2 {
   public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS = "awardedGiveaways";
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS)
   private List<Giveaway> awardedGiveaways = null;
+
+  public static final String SERIALIZED_NAME_RETURN = "return";
+  @SerializedName(SERIALIZED_NAME_RETURN)
+  private ModelReturn _return;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_RETURNS = "previousReturns";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_RETURNS)
+  private List<ModelReturn> previousReturns = null;
 
 
   public IntegrationStateV2 customerSession(CustomerSessionV2 customerSession) {
@@ -183,7 +193,7 @@ public class IntegrationStateV2 {
   }
 
 
-  public IntegrationStateV2 referral(Referral referral) {
+  public IntegrationStateV2 referral(InventoryReferral referral) {
     
     this.referral = referral;
     return this;
@@ -196,12 +206,12 @@ public class IntegrationStateV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Referral getReferral() {
+  public InventoryReferral getReferral() {
     return referral;
   }
 
 
-  public void setReferral(Referral referral) {
+  public void setReferral(InventoryReferral referral) {
     this.referral = referral;
   }
 
@@ -411,6 +421,60 @@ public class IntegrationStateV2 {
   }
 
 
+  public IntegrationStateV2 _return(ModelReturn _return) {
+    
+    this._return = _return;
+    return this;
+  }
+
+   /**
+   * Get _return
+   * @return _return
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ModelReturn getReturn() {
+    return _return;
+  }
+
+
+  public void setReturn(ModelReturn _return) {
+    this._return = _return;
+  }
+
+
+  public IntegrationStateV2 previousReturns(List<ModelReturn> previousReturns) {
+    
+    this.previousReturns = previousReturns;
+    return this;
+  }
+
+  public IntegrationStateV2 addPreviousReturnsItem(ModelReturn previousReturnsItem) {
+    if (this.previousReturns == null) {
+      this.previousReturns = new ArrayList<ModelReturn>();
+    }
+    this.previousReturns.add(previousReturnsItem);
+    return this;
+  }
+
+   /**
+   * Get previousReturns
+   * @return previousReturns
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<ModelReturn> getPreviousReturns() {
+    return previousReturns;
+  }
+
+
+  public void setPreviousReturns(List<ModelReturn> previousReturns) {
+    this.previousReturns = previousReturns;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -431,12 +495,14 @@ public class IntegrationStateV2 {
         Objects.equals(this.ruleFailureReasons, integrationStateV2.ruleFailureReasons) &&
         Objects.equals(this.createdCoupons, integrationStateV2.createdCoupons) &&
         Objects.equals(this.createdReferrals, integrationStateV2.createdReferrals) &&
-        Objects.equals(this.awardedGiveaways, integrationStateV2.awardedGiveaways);
+        Objects.equals(this.awardedGiveaways, integrationStateV2.awardedGiveaways) &&
+        Objects.equals(this._return, integrationStateV2._return) &&
+        Objects.equals(this.previousReturns, integrationStateV2.previousReturns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerSession, customerProfile, event, loyalty, referral, coupons, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways);
+    return Objects.hash(customerSession, customerProfile, event, loyalty, referral, coupons, triggeredCampaigns, effects, ruleFailureReasons, createdCoupons, createdReferrals, awardedGiveaways, _return, previousReturns);
   }
 
 
@@ -456,6 +522,8 @@ public class IntegrationStateV2 {
     sb.append("    createdCoupons: ").append(toIndentedString(createdCoupons)).append("\n");
     sb.append("    createdReferrals: ").append(toIndentedString(createdReferrals)).append("\n");
     sb.append("    awardedGiveaways: ").append(toIndentedString(awardedGiveaways)).append("\n");
+    sb.append("    _return: ").append(toIndentedString(_return)).append("\n");
+    sb.append("    previousReturns: ").append(toIndentedString(previousReturns)).append("\n");
     sb.append("}");
     return sb.toString();
   }

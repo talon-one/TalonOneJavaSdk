@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -43,10 +43,6 @@ public class Ruleset {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
-
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private Integer userId;
@@ -67,6 +63,14 @@ public class Ruleset {
   @SerializedName(SERIALIZED_NAME_ACTIVATE)
   private Boolean activate;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private Integer campaignId;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
+  private Integer templateId;
+
   public static final String SERIALIZED_NAME_ACTIVATED_AT = "activatedAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_AT)
   private OffsetDateTime activatedAt;
@@ -82,7 +86,7 @@ public class Ruleset {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -104,7 +108,7 @@ public class Ruleset {
    * The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -113,28 +117,6 @@ public class Ruleset {
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
-  }
-
-
-  public Ruleset campaignId(Integer campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * The ID of the campaign that owns this entity.
-   * @return campaignId
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the campaign that owns this entity.")
-
-  public Integer getCampaignId() {
-    return campaignId;
-  }
-
-
-  public void setCampaignId(Integer campaignId) {
-    this.campaignId = campaignId;
   }
 
 
@@ -202,7 +184,7 @@ public class Ruleset {
    * An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.
    * @return bindings
   **/
-  @ApiModelProperty(required = true, value = "An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.")
+  @ApiModelProperty(example = "[]", required = true, value = "An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.")
 
   public List<Binding> getBindings() {
     return bindings;
@@ -221,11 +203,11 @@ public class Ruleset {
   }
 
    /**
-   * A string indicating which version of the rulebuilder was used to create this ruleset.
+   * The version of the rulebuilder used to create this ruleset.
    * @return rbVersion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A string indicating which version of the rulebuilder was used to create this ruleset.")
+  @ApiModelProperty(example = "v2", value = "The version of the rulebuilder used to create this ruleset.")
 
   public String getRbVersion() {
     return rbVersion;
@@ -244,11 +226,11 @@ public class Ruleset {
   }
 
    /**
-   * A boolean indicating whether this newly created ruleset should also be activated for the campaign owns it
+   * Indicates whether this created ruleset should be activated for the campaign that owns it.
    * @return activate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A boolean indicating whether this newly created ruleset should also be activated for the campaign owns it")
+  @ApiModelProperty(value = "Indicates whether this created ruleset should be activated for the campaign that owns it.")
 
   public Boolean getActivate() {
     return activate;
@@ -257,6 +239,52 @@ public class Ruleset {
 
   public void setActivate(Boolean activate) {
     this.activate = activate;
+  }
+
+
+  public Ruleset campaignId(Integer campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign that owns this entity.
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "320", value = "The ID of the campaign that owns this entity.")
+
+  public Integer getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Integer campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public Ruleset templateId(Integer templateId) {
+    
+    this.templateId = templateId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign template that owns this entity.
+   * @return templateId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the campaign template that owns this entity.")
+
+  public Integer getTemplateId() {
+    return templateId;
+  }
+
+
+  public void setTemplateId(Integer templateId) {
+    this.templateId = templateId;
   }
 
 
@@ -294,18 +322,19 @@ public class Ruleset {
     Ruleset ruleset = (Ruleset) o;
     return Objects.equals(this.id, ruleset.id) &&
         Objects.equals(this.created, ruleset.created) &&
-        Objects.equals(this.campaignId, ruleset.campaignId) &&
         Objects.equals(this.userId, ruleset.userId) &&
         Objects.equals(this.rules, ruleset.rules) &&
         Objects.equals(this.bindings, ruleset.bindings) &&
         Objects.equals(this.rbVersion, ruleset.rbVersion) &&
         Objects.equals(this.activate, ruleset.activate) &&
+        Objects.equals(this.campaignId, ruleset.campaignId) &&
+        Objects.equals(this.templateId, ruleset.templateId) &&
         Objects.equals(this.activatedAt, ruleset.activatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, userId, rules, bindings, rbVersion, activate, activatedAt);
+    return Objects.hash(id, created, userId, rules, bindings, rbVersion, activate, campaignId, templateId, activatedAt);
   }
 
 
@@ -315,12 +344,13 @@ public class Ruleset {
     sb.append("class Ruleset {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    bindings: ").append(toIndentedString(bindings)).append("\n");
     sb.append("    rbVersion: ").append(toIndentedString(rbVersion)).append("\n");
     sb.append("    activate: ").append(toIndentedString(activate)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    activatedAt: ").append(toIndentedString(activatedAt)).append("\n");
     sb.append("}");
     return sb.toString();

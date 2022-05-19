@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -70,13 +70,15 @@ public class ApplicationSession {
   private String referral;
 
   /**
-   * Indicating if the customer session is in progress (\&quot;open\&quot;), \&quot;closed\&quot;, or \&quot;cancelled\&quot;.
+   * Indicating if the customer session is in progress (&#x60;open&#x60;), &#x60;closed&#x60;, or &#x60;cancelled&#x60;. For more information about customer sessions, see [Customer sessions](/docs/dev/concepts/entities#customer-session-states) in the docs. 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     OPEN("open"),
     
     CLOSED("closed"),
+    
+    PARTIALLY_RETURNED("partially_returned"),
     
     CANCELLED("cancelled");
 
@@ -130,6 +132,10 @@ public class ApplicationSession {
   @SerializedName(SERIALIZED_NAME_DISCOUNTS)
   private Map<String, BigDecimal> discounts = new HashMap<String, BigDecimal>();
 
+  public static final String SERIALIZED_NAME_TOTAL_DISCOUNTS = "totalDiscounts";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNTS)
+  private BigDecimal totalDiscounts;
+
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private BigDecimal total;
@@ -149,7 +155,7 @@ public class ApplicationSession {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -193,7 +199,7 @@ public class ApplicationSession {
    * The ID of the application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -216,7 +222,7 @@ public class ApplicationSession {
    * @return profileId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The globally unique Talon.One ID of the customer that created this entity.")
+  @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
   public Integer getProfileId() {
     return profileId;
@@ -238,7 +244,7 @@ public class ApplicationSession {
    * The integration ID for this entity sent to and used in the Talon.One system.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID for this entity sent to and used in the Talon.One system.")
 
   public String getIntegrationId() {
     return integrationId;
@@ -261,7 +267,7 @@ public class ApplicationSession {
    * @return profileintegrationid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Integration ID of the customer for the session.")
+  @ApiModelProperty(example = "382370BKDB946", value = "Integration ID of the customer for the session.")
 
   public String getProfileintegrationid() {
     return profileintegrationid;
@@ -283,7 +289,7 @@ public class ApplicationSession {
    * Any coupon code entered.
    * @return coupon
   **/
-  @ApiModelProperty(required = true, value = "Any coupon code entered.")
+  @ApiModelProperty(example = "BKDB946", required = true, value = "Any coupon code entered.")
 
   public String getCoupon() {
     return coupon;
@@ -305,7 +311,7 @@ public class ApplicationSession {
    * Any referral code entered.
    * @return referral
   **/
-  @ApiModelProperty(required = true, value = "Any referral code entered.")
+  @ApiModelProperty(example = "BKDB946", required = true, value = "Any referral code entered.")
 
   public String getReferral() {
     return referral;
@@ -324,10 +330,10 @@ public class ApplicationSession {
   }
 
    /**
-   * Indicating if the customer session is in progress (\&quot;open\&quot;), \&quot;closed\&quot;, or \&quot;cancelled\&quot;.
+   * Indicating if the customer session is in progress (&#x60;open&#x60;), &#x60;closed&#x60;, or &#x60;cancelled&#x60;. For more information about customer sessions, see [Customer sessions](/docs/dev/concepts/entities#customer-session-states) in the docs. 
    * @return state
   **/
-  @ApiModelProperty(required = true, value = "Indicating if the customer session is in progress (\"open\"), \"closed\", or \"cancelled\".")
+  @ApiModelProperty(example = "closed", required = true, value = "Indicating if the customer session is in progress (`open`), `closed`, or `cancelled`. For more information about customer sessions, see [Customer sessions](/docs/dev/concepts/entities#customer-session-states) in the docs. ")
 
   public StateEnum getState() {
     return state;
@@ -378,10 +384,10 @@ public class ApplicationSession {
   }
 
    /**
-   * A map of labelled discount values, in the same currency as the session.
+   * **API V1 only.** A map of labeled discount values, in the same currency as the session.  If you are using the V2 endpoints, refer to the &#x60;totalDiscounts&#x60; property instead. 
    * @return discounts
   **/
-  @ApiModelProperty(required = true, value = "A map of labelled discount values, in the same currency as the session.")
+  @ApiModelProperty(required = true, value = "**API V1 only.** A map of labeled discount values, in the same currency as the session.  If you are using the V2 endpoints, refer to the `totalDiscounts` property instead. ")
 
   public Map<String, BigDecimal> getDiscounts() {
     return discounts;
@@ -390,6 +396,28 @@ public class ApplicationSession {
 
   public void setDiscounts(Map<String, BigDecimal> discounts) {
     this.discounts = discounts;
+  }
+
+
+  public ApplicationSession totalDiscounts(BigDecimal totalDiscounts) {
+    
+    this.totalDiscounts = totalDiscounts;
+    return this;
+  }
+
+   /**
+   * The total sum of the discounts applied to this session.
+   * @return totalDiscounts
+  **/
+  @ApiModelProperty(example = "100.0", required = true, value = "The total sum of the discounts applied to this session.")
+
+  public BigDecimal getTotalDiscounts() {
+    return totalDiscounts;
+  }
+
+
+  public void setTotalDiscounts(BigDecimal totalDiscounts) {
+    this.totalDiscounts = totalDiscounts;
   }
 
 
@@ -403,7 +431,7 @@ public class ApplicationSession {
    * The total sum of the session before any discounts applied.
    * @return total
   **/
-  @ApiModelProperty(required = true, value = "The total sum of the session before any discounts applied.")
+  @ApiModelProperty(example = "200.0", required = true, value = "The total sum of the session before any discounts applied.")
 
   public BigDecimal getTotal() {
     return total;
@@ -458,13 +486,14 @@ public class ApplicationSession {
         Objects.equals(this.state, applicationSession.state) &&
         Objects.equals(this.cartItems, applicationSession.cartItems) &&
         Objects.equals(this.discounts, applicationSession.discounts) &&
+        Objects.equals(this.totalDiscounts, applicationSession.totalDiscounts) &&
         Objects.equals(this.total, applicationSession.total) &&
         Objects.equals(this.attributes, applicationSession.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, integrationId, profileintegrationid, coupon, referral, state, cartItems, discounts, total, attributes);
+    return Objects.hash(id, created, applicationId, profileId, integrationId, profileintegrationid, coupon, referral, state, cartItems, discounts, totalDiscounts, total, attributes);
   }
 
 
@@ -483,6 +512,7 @@ public class ApplicationSession {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    cartItems: ").append(toIndentedString(cartItems)).append("\n");
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
+    sb.append("    totalDiscounts: ").append(toIndentedString(totalDiscounts)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
