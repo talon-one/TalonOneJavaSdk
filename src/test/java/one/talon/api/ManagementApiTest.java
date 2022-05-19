@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -20,18 +20,23 @@ import one.talon.model.AccountAnalytics;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
 import one.talon.model.ApplicationCustomer;
-import one.talon.model.ApplicationCustomerSearch;
 import one.talon.model.ApplicationSession;
+import one.talon.model.AsyncCouponCreationResponse;
 import one.talon.model.Attribute;
 import java.math.BigDecimal;
 import one.talon.model.Campaign;
 import one.talon.model.CampaignCopy;
 import one.talon.model.CampaignSearch;
+import one.talon.model.Collection;
 import one.talon.model.Coupon;
-import one.talon.model.CouponSearch;
+import one.talon.model.CreateTemplateCampaign;
+import one.talon.model.CreateTemplateCampaignResponse;
 import one.talon.model.CustomerActivityReport;
 import one.talon.model.CustomerAnalytics;
-import java.io.File;
+import one.talon.model.CustomerProfile;
+import one.talon.model.CustomerProfileSearchQuery;
+import one.talon.model.ErrorResponse;
+import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse20010;
 import one.talon.model.InlineResponse20011;
@@ -55,13 +60,14 @@ import one.talon.model.InlineResponse20027;
 import one.talon.model.InlineResponse20028;
 import one.talon.model.InlineResponse20029;
 import one.talon.model.InlineResponse2003;
+import one.talon.model.InlineResponse20030;
+import one.talon.model.InlineResponse20031;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse2005;
 import one.talon.model.InlineResponse2006;
 import one.talon.model.InlineResponse2007;
 import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
-import one.talon.model.InlineResponse201;
 import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyPoints;
@@ -70,18 +76,21 @@ import one.talon.model.LoyaltyStatistics;
 import one.talon.model.ModelImport;
 import one.talon.model.NewAdditionalCost;
 import one.talon.model.NewAttribute;
-import one.talon.model.NewCampaign;
+import one.talon.model.NewCampaignCollection;
+import one.talon.model.NewCollection;
+import one.talon.model.NewCouponCreationJob;
 import one.talon.model.NewCoupons;
 import one.talon.model.NewCouponsForMultipleRecipients;
 import one.talon.model.NewPassword;
 import one.talon.model.NewPasswordEmail;
-import one.talon.model.NewRuleset;
 import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
 import one.talon.model.Role;
 import one.talon.model.Ruleset;
 import one.talon.model.Session;
 import one.talon.model.UpdateCampaign;
+import one.talon.model.UpdateCampaignCollection;
+import one.talon.model.UpdateCollection;
 import one.talon.model.UpdateCoupon;
 import one.talon.model.UpdateCouponBatch;
 import one.talon.model.UpdateReferral;
@@ -105,27 +114,27 @@ public class ManagementApiTest {
 
     
     /**
-     * Add points in a certain loyalty program for the specified customer
+     * Add points in loyalty program for given customer
      *
-     * 
+     * Add points in the specified loyalty program for the given customer.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](/integration-api/#operation/updateCustomerSessionV2). 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void addLoyaltyPointsTest() throws ApiException {
-        String programID = null;
-        String integrationID = null;
+        String loyaltyProgramId = null;
+        String integrationId = null;
         LoyaltyPoints body = null;
-        api.addLoyaltyPoints(programID, integrationID, body);
+        api.addLoyaltyPoints(loyaltyProgramId, integrationId, body);
 
         // TODO: test validations
     }
     
     /**
-     * Copy the campaign into every specified application
+     * Copy the campaign into the specified application
      *
-     * Copy the campaign into every specified application.
+     * Copy the campaign into all specified application.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -141,9 +150,25 @@ public class ManagementApiTest {
     }
     
     /**
-     * Define a new additional cost
+     * Create account-level collection
      *
-     * Defines a new _additional cost_ in this account.  These additional costs are shared across all applications in your account, and are never required. 
+     * Create account-level collection.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createAccountCollectionTest() throws ApiException {
+        NewCollection body = null;
+        Collection response = api.createAccountCollection(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create additional cost
+     *
+     * Create an [additional cost](/docs/product/account/dev-tools/managing-additional-costs/).  These additional costs are shared across all applications in your account, and are never required. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -157,9 +182,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Define a new custom attribute
+     * Create custom attribute
      *
-     * Defines a new _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on. These attributes can then be given values when creating / updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
+     * Create a _custom attribute_ in this account. Custom attributes allow you to attach new fields to Talon.One domain objects like campaigns, coupons, customers and so on.  These attributes can then be given values when creating/updating these objects, and these values can be used in your campaign rules. For example, you could define a &#x60;zipCode&#x60; field for customer sessions, and add a rule to your campaign that only allows certain ZIP codes.  These attributes are shared across all applications in your account, and are never required. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -173,24 +198,42 @@ public class ManagementApiTest {
     }
     
     /**
-     * Create a Campaign
+     * Create campaign from campaign template
      *
-     * 
+     * Use the campaign template referenced in the request body to create a new campaign in one of the connected Applications.  If the template was created from a campaign with rules referencing [campaign collections](https://docs.talon.one/docs/product/campaigns/managing-collections), the corresponding collections for the new campaign are created automatically. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void createCampaignTest() throws ApiException {
+    public void createCampaignFromTemplateTest() throws ApiException {
         Integer applicationId = null;
-        NewCampaign body = null;
-        Campaign response = api.createCampaign(applicationId, body);
+        CreateTemplateCampaign body = null;
+        CreateTemplateCampaignResponse response = api.createCampaignFromTemplate(applicationId, body);
 
         // TODO: test validations
     }
     
     /**
-     * Create Coupons
+     * Create collection
+     *
+     * Create a collection.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCollectionTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        NewCampaignCollection body = null;
+        Collection response = api.createCollection(applicationId, campaignId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create coupons
      *
      * Create coupons according to some pattern. Up to 20.000 coupons can be created without a unique prefix. When a unique prefix is provided, up to 200.000 coupons can be created.
      *
@@ -209,7 +252,25 @@ public class ManagementApiTest {
     }
     
     /**
-     * Create Coupons for Multiple Recipients
+     * Create coupons asynchronously
+     *
+     * Create any number of coupons from 20,001 to 5,000,000.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCouponsAsyncTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        NewCouponCreationJob body = null;
+        AsyncCouponCreationResponse response = api.createCouponsAsync(applicationId, campaignId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create coupons for multiple recipients
      *
      * Create coupons according to some pattern for up to 1000 recipients.
      *
@@ -230,7 +291,7 @@ public class ManagementApiTest {
     /**
      * Request a password reset
      *
-     * Sends an email with a password recovery link to the email of an existing account. 
+     * Send an email with a password recovery link to the email address of an existing account. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -244,27 +305,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Create a Ruleset
+     * Create session
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void createRulesetTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        NewRuleset body = null;
-        Ruleset response = api.createRuleset(applicationId, campaignId, body);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Create a Session
-     *
-     * 
+     * Create a session to use the Management API endpoints. Use the value of the &#x60;token&#x60; property provided in the response as bearer token in other API calls.  A token is valid for 3 months. In accordance with best pratices, use your generated token for all your API requests. Do **not** regenerate a token for each request.  This endpoint has a rate limit of 3 to 6 requests per second per account, depending on your setup.  **Note:** You can also use your browser&#39;s developer&#39;s console to [display your token](https://docs.talon.one/docs/dev/tutorials/receiving-loyalty-ledger-braze/#extracting-the-session-token) when you log into the Campaign Manager.  In this case, keep in mind that logging out destroys the token. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -278,9 +321,25 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete a Campaign
+     * Delete account-level collection
      *
-     * 
+     * Delete the given account-level collection
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteAccountCollectionTest() throws ApiException {
+        Integer collectionId = null;
+        api.deleteAccountCollection(collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete campaign
+     *
+     * Delete the given campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -295,9 +354,27 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete one Coupon
+     * Delete collection
      *
-     * 
+     * Delete the given collection.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCollectionTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
+        api.deleteCollection(applicationId, campaignId, collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete coupon
+     *
+     * Delete the specified coupon.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -313,9 +390,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete Coupons
+     * Delete coupons
      *
-     * 
+     * Deletes all the coupons matching the specified criteria.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -343,9 +420,26 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete one Referral
+     * Delete loyalty card
      *
-     * 
+     * Delete the specified loyalty card.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteLoyaltyCardTest() throws ApiException {
+        Integer loyaltyProgramId = null;
+        String loyaltyCardIdentifier = null;
+        api.deleteLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete referral
+     *
+     * Delete the specified referral.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -361,27 +455,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Delete a Ruleset
+     * Destroy session
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deleteRulesetTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        Integer rulesetId = null;
-        api.deleteRuleset(applicationId, campaignId, rulesetId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Destroy a Session
-     *
-     * 
+     * Destroys the session.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -394,9 +470,43 @@ public class ManagementApiTest {
     }
     
     /**
-     * Export Coupons to a CSV file
+     * Export account-level collection items to CSV file
      *
-     * Download a file with the coupons that match the given attributes.
+     * Download a file containing an account-level collection&#39;s items.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportAccountCollectionItemsTest() throws ApiException {
+        Integer collectionId = null;
+        String response = api.exportAccountCollectionItems(collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Export a collection&#39;s items to CSV file
+     *
+     * Download a file containing a collection&#39;s items.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportCollectionItemsTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
+        String response = api.exportCollectionItems(applicationId, campaignId, collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Export coupons to CSV file
+     *
+     * Download a file containing the coupons that match the given properties.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -423,9 +533,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Export Customer Sessions to a CSV file
+     * Export customer sessions to CSV file
      *
-     * Download a file with the customer sessions that match the request.
+     * Download a file containing the customer sessions that match the request.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -444,9 +554,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Export triggered Effects to a CSV file
+     * Export triggered effects to CSV file
      *
-     * Download a file with the triggered effects that match the given attributes.
+     * Download a file containing the triggered effects that match the given attributes.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -466,21 +576,21 @@ public class ManagementApiTest {
     /**
      * Export customer loyalty balance to a CSV file
      *
-     * Download a file with the balance of each customer in the loyalty program
+     * Download a file with the balance of each customer in the loyalty program.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void exportLoyaltyBalanceTest() throws ApiException {
-        String programID = null;
-        String response = api.exportLoyaltyBalance(programID);
+        String loyaltyProgramId = null;
+        String response = api.exportLoyaltyBalance(loyaltyProgramId);
 
         // TODO: test validations
     }
     
     /**
-     * Export a customer&#39;s loyalty ledger log to a CSV file
+     * Export a customer&#39;s loyalty ledger log to CSV file
      *
      * Download a file with a customer&#39;s ledger log in the loyalty program
      *
@@ -491,42 +601,41 @@ public class ManagementApiTest {
     public void exportLoyaltyLedgerTest() throws ApiException {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
-        String programID = null;
-        String integrationID = null;
+        String loyaltyProgramId = null;
+        String integrationId = null;
         String dateFormat = null;
-        String response = api.exportLoyaltyLedger(rangeStart, rangeEnd, programID, integrationID, dateFormat);
+        String response = api.exportLoyaltyLedger(rangeStart, rangeEnd, loyaltyProgramId, integrationId, dateFormat);
 
         // TODO: test validations
     }
     
     /**
-     * Get access logs for application (with total count)
+     * Export referrals to CSV file
      *
-     * 
+     * Download a file containing the referrals that match the given parameters.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getAccessLogsTest() throws ApiException {
+    public void exportReferralsTest() throws ApiException {
         Integer applicationId = null;
-        OffsetDateTime rangeStart = null;
-        OffsetDateTime rangeEnd = null;
-        String path = null;
-        String method = null;
-        String status = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        InlineResponse2008 response = api.getAccessLogs(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        BigDecimal campaignId = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
+        String valid = null;
+        String usable = null;
+        String batchId = null;
+        String dateFormat = null;
+        String response = api.exportReferrals(applicationId, campaignId, createdBefore, createdAfter, valid, usable, batchId, dateFormat);
 
         // TODO: test validations
     }
     
     /**
-     * Get access logs for application
+     * Get access logs for Application
      *
-     * 
+     * Retrieve the list of API calls to this Application matching the specified criteria. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -542,13 +651,13 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2009 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse20010 response = api.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * Get Account Details
+     * Get account details
      *
      * Return the details of your companies Talon.One account. 
      *
@@ -564,9 +673,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Account Analytics
+     * Get account analytics
      *
-     * Return the analytics of your companies Talon.One account. 
+     * Return the analytics of your Talon.One account. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -580,9 +689,25 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get an additional cost
+     * Get account-level collection
      *
-     * Returns additional cost for the account by its id. 
+     * Retrieve the given account-level collection
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAccountCollectionTest() throws ApiException {
+        Integer collectionId = null;
+        Collection response = api.getAccountCollection(collectionId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get additional cost
+     *
+     * Returns the additional cost. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -608,13 +733,13 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20021 response = api.getAdditionalCosts(pageSize, skip, sort);
+        InlineResponse20023 response = api.getAdditionalCosts(pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * Get all access logs
+     * List access logs
      *
      * Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs. 
      *
@@ -631,28 +756,28 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse2008 response = api.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+        InlineResponse20011 response = api.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * Get all roles
+     * List roles
      *
-     * 
+     * List all roles.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllRolesTest() throws ApiException {
-        InlineResponse20029 response = api.getAllRoles();
+        InlineResponse20031 response = api.getAllRoles();
 
         // TODO: test validations
     }
     
     /**
-     * Get Application
+     * Get application
      *
      * Get the application specified by the ID.
      *
@@ -670,7 +795,7 @@ public class ManagementApiTest {
     /**
      * Get report of health of application API
      *
-     * 
+     * Display the health of the application and show the last time the Application was used. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -684,9 +809,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Application Customer
+     * Get application&#39;s customer
      *
-     * 
+     * Retrieve the customers of the specified application. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -701,9 +826,30 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Application Customers
+     * List friends referred by customer profile
      *
-     * 
+     * List the friends referred by the specified customer profile in this Application. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getApplicationCustomerFriendsTest() throws ApiException {
+        Integer applicationId = null;
+        String integrationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        Boolean withTotalResultSize = null;
+        InlineResponse20021 response = api.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List application&#39;s customers
+     *
+     * List all the customers of the specified application.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -715,31 +861,35 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20011 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
+        InlineResponse20013 response = api.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the customer profiles that match the given attributes (with total count)
+     * List application customers matching the given attributes
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+     * Get a list of the application customers matching the provided criteria.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getApplicationCustomersByAttributesTest() throws ApiException {
-        ApplicationCustomerSearch body = null;
-        InlineResponse20012 response = api.getApplicationCustomersByAttributes(body);
+        Integer applicationId = null;
+        CustomerProfileSearchQuery body = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        Boolean withTotalResultSize = null;
+        InlineResponse20014 response = api.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
 
         // TODO: test validations
     }
     
     /**
-     * List Applications Event Types
+     * List Applications event types
      *
-     * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/reference/#trackEvent) 
+     * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](/integration-api/#operation/trackEvent) 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -750,43 +900,13 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20018 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+        InlineResponse20019 response = api.getApplicationEventTypes(applicationId, pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * List Applications Events (with total count)
-     *
-     * Lists all events recorded for an application. 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getApplicationEventsTest() throws ApiException {
-        Integer applicationId = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String type = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String session = null;
-        String profile = null;
-        String customerName = null;
-        String customerEmail = null;
-        String couponCode = null;
-        String referralCode = null;
-        String ruleQuery = null;
-        String campaignQuery = null;
-        InlineResponse20016 response = api.getApplicationEvents(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List Applications Events
+     * List Applications events
      *
      * Lists all events recorded for an application. Instead of having the total number of results in the response, this endpoint only if there are more results. 
      *
@@ -810,15 +930,15 @@ public class ManagementApiTest {
         String referralCode = null;
         String ruleQuery = null;
         String campaignQuery = null;
-        InlineResponse20017 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+        InlineResponse20018 response = api.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
 
         // TODO: test validations
     }
     
     /**
-     * Get Application Session
+     * Get Application session
      *
-     * 
+     * Get the details of the given session. You can list the sessions with the [List Application sessions](#operation/getApplicationSessions) endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -833,9 +953,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Application Sessions
+     * List Application sessions
      *
-     * 
+     * List all the sessions of the specified Application. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -853,15 +973,15 @@ public class ManagementApiTest {
         String coupon = null;
         String referral = null;
         String integrationId = null;
-        InlineResponse20015 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
+        InlineResponse20017 response = api.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
 
         // TODO: test validations
     }
     
     /**
-     * List Applications
+     * List applications
      *
-     * List all application in the current account.
+     * List all applications in the current account.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -877,7 +997,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a custom attribute
+     * Get custom attribute
      *
      * Returns custom attribute for the account by its id. 
      *
@@ -906,13 +1026,13 @@ public class ManagementApiTest {
         Integer skip = null;
         String sort = null;
         String entity = null;
-        InlineResponse20020 response = api.getAttributes(pageSize, skip, sort, entity);
+        InlineResponse20022 response = api.getAttributes(pageSize, skip, sort, entity);
 
         // TODO: test validations
     }
     
     /**
-     * Get all audiences
+     * List audiences
      *
      * Get All audiences created in the account. 
      *
@@ -925,15 +1045,15 @@ public class ManagementApiTest {
         Integer skip = null;
         String sort = null;
         Boolean withTotalResultSize = null;
-        InlineResponse20019 response = api.getAudiences(pageSize, skip, sort, withTotalResultSize);
+        InlineResponse20020 response = api.getAudiences(pageSize, skip, sort, withTotalResultSize);
 
         // TODO: test validations
     }
     
     /**
-     * Get a Campaign
+     * Get campaign
      *
-     * 
+     * Retrieve the given campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -950,7 +1070,7 @@ public class ManagementApiTest {
     /**
      * Get analytics of campaigns
      *
-     * 
+     * Retrieve statistical data about the performance of the given campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -962,15 +1082,15 @@ public class ManagementApiTest {
         OffsetDateTime rangeStart = null;
         OffsetDateTime rangeEnd = null;
         String granularity = null;
-        InlineResponse20010 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+        InlineResponse20012 response = api.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of all campaigns that match the given attributes
+     * List campaigns that match the given attributes
      *
-     * Gets a list of all the campaigns that exactly match a set of attributes. 
+     * Get a list of all the campaigns that match a set of attributes. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -989,9 +1109,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List your Campaigns
+     * List campaigns
      *
-     * 
+     * List the campaigns of the specified application that match your filter criteria. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1008,7 +1128,8 @@ public class ManagementApiTest {
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         Integer campaignGroupId = null;
-        InlineResponse2002 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId);
+        Integer templateId = null;
+        InlineResponse2002 response = api.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId);
 
         // TODO: test validations
     }
@@ -1026,115 +1147,40 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        Integer applicationId = null;
+        BigDecimal applicationId = null;
         String entityPath = null;
         Integer userId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
         Boolean withTotalResultSize = null;
         Boolean includeOld = null;
-        InlineResponse20027 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld);
+        InlineResponse20029 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, includeOld);
 
         // TODO: test validations
     }
     
     /**
-     * List Coupons (with total count)
+     * Get collection
      *
-     * 
+     * Retrieve the given collection.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getCouponsTest() throws ApiException {
+    public void getCollectionTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String value = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        OffsetDateTime startsAfter = null;
-        OffsetDateTime startsBefore = null;
-        OffsetDateTime expiresAfter = null;
-        OffsetDateTime expiresBefore = null;
-        String valid = null;
-        String batchId = null;
-        String usable = null;
-        Integer referralId = null;
-        String recipientIntegrationId = null;
-        Boolean exactMatch = null;
-        InlineResponse2004 response = api.getCoupons(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
+        Integer collectionId = null;
+        Collection response = api.getCollection(applicationId, campaignId, collectionId);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons
      *
-     * Gets a list of all the coupons that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request. 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCouponsByAttributesTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        CouponSearch body = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String value = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String valid = null;
-        String usable = null;
-        Integer referralId = null;
-        String recipientIntegrationId = null;
-        Boolean exactMatch = null;
-        String batchId = null;
-        InlineResponse2004 response = api.getCouponsByAttributes(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-     *
-     * Gets a list of all the coupons with attributes matching the query criteria Application wide 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCouponsByAttributesApplicationWideTest() throws ApiException {
-        Integer applicationId = null;
-        CouponSearch body = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String value = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String valid = null;
-        String usable = null;
-        Integer referralId = null;
-        String recipientIntegrationId = null;
-        String batchId = null;
-        Boolean exactMatch = null;
-        String campaignState = null;
-        InlineResponse2004 response = api.getCouponsByAttributesApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List Coupons
-     *
-     * 
+     * List all the coupons matching the specified criteria. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1161,9 +1207,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Activity Report for Single Customer
+     * Get customer&#39;s activity report
      *
-     * Fetch summary report for single application customer based on a time range
+     * Fetch the summary report of a given customer in the given application, in a time range.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1177,31 +1223,6 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         CustomerActivityReport response = api.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get Activity Reports for Application Customers (with total count)
-     *
-     * Fetch summary reports for all application customers based on a time range
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCustomerActivityReportsTest() throws ApiException {
-        OffsetDateTime rangeStart = null;
-        OffsetDateTime rangeEnd = null;
-        Integer applicationId = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String name = null;
-        String integrationId = null;
-        String campaignName = null;
-        String advocateName = null;
-        InlineResponse20013 response = api.getCustomerActivityReports(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
 
         // TODO: test validations
     }
@@ -1226,15 +1247,15 @@ public class ManagementApiTest {
         String integrationId = null;
         String campaignName = null;
         String advocateName = null;
-        InlineResponse20014 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+        InlineResponse20016 response = api.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
 
         // TODO: test validations
     }
     
     /**
-     * Get Analytics Report for a Customer
+     * Get customer&#39;s analytics report
      *
-     * Fetch analytics for single application customer
+     * Fetch analytics for a given customer in the given application.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1252,9 +1273,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get Customer Profile
+     * Get customer profile
      *
-     * 
+     * Return the details of the specified customer profile.  **Performance tip:** You can retrieve the same information via the Integration API, which can save you extra API requests. Consider these options: - Request the customer profile to be part of the response content using   [Update Customer Session](/integration-api/operation#updateCustomerSessionV2). - Send an empty update with the [Update Customer Profile](/integration-api/#operation/updateCustomerProfileV2) endpoint with &#x60;runRuleEngine&#x3D;false&#x60;. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1262,15 +1283,15 @@ public class ManagementApiTest {
     @Test
     public void getCustomerProfileTest() throws ApiException {
         Integer customerId = null;
-        ApplicationCustomer response = api.getCustomerProfile(customerId);
+        CustomerProfile response = api.getCustomerProfile(customerId);
 
         // TODO: test validations
     }
     
     /**
-     * List Customer Profiles
+     * List customer profiles
      *
-     * 
+     * List all customer profiles.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1279,54 +1300,53 @@ public class ManagementApiTest {
     public void getCustomerProfilesTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20012 response = api.getCustomerProfiles(pageSize, skip);
+        InlineResponse20015 response = api.getCustomerProfiles(pageSize, skip);
 
         // TODO: test validations
     }
     
     /**
-     * Get a list of the customer profiles that match the given attributes
+     * List customer profiles matching the given attributes
      *
-     * Gets a list of all the customer profiles for the account that exactly match a set of attributes.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request.  [Customer Profile]: https://help.talon.one/hc/en-us/articles/360005130739-Data-Model#CustomerProfile 
+     * Get a list of the customer profiles matching the provided criteria.  The match is successful if all the attributes of the request are found in a profile, even if the profile has more attributes that are not present on the request. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getCustomersByAttributesTest() throws ApiException {
-        ApplicationCustomerSearch body = null;
+        CustomerProfileSearchQuery body = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20012 response = api.getCustomersByAttributes(body, pageSize, skip);
+        InlineResponse20015 response = api.getCustomersByAttributes(body, pageSize, skip);
 
         // TODO: test validations
     }
     
     /**
-     * List Event Types
+     * List event types
      *
-     * Fetch all event type definitions for your account. Each event type can be 
+     * Fetch all event type definitions for your account. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getEventTypesTest() throws ApiException {
-        String applicationIds = null;
         String name = null;
         Boolean includeOldVersions = null;
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20025 response = api.getEventTypes(applicationIds, name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20027 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * Get Exports
+     * Get exports
      *
-     * Get a list of all past exports 
+     * List all past exports 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1335,51 +1355,51 @@ public class ManagementApiTest {
     public void getExportsTest() throws ApiException {
         Integer pageSize = null;
         Integer skip = null;
-        Integer applicationId = null;
+        BigDecimal applicationId = null;
         Integer campaignId = null;
         String entity = null;
-        InlineResponse20028 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20030 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
     
     /**
-     * get the Loyalty Ledger for this integrationID
+     * Get the Loyalty Ledger for this integrationID
      *
-     * Get the Loyalty Ledger for this profile integration ID.
+     * Get the loyalty ledger for this profile integration ID.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](/integration-api/#operation/updateCustomerSessionV2). 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getLoyaltyPointsTest() throws ApiException {
-        String programID = null;
-        String integrationID = null;
-        LoyaltyLedger response = api.getLoyaltyPoints(programID, integrationID);
+        String loyaltyProgramId = null;
+        String integrationId = null;
+        LoyaltyLedger response = api.getLoyaltyPoints(loyaltyProgramId, integrationId);
 
         // TODO: test validations
     }
     
     /**
-     * Get a loyalty program
+     * Get loyalty program
      *
-     * 
+     * Get the specified [loyalty program](https://www.talon.one/glossary/loyalty). To list all loyalty programs in your Application, use [List loyalty programs](#operation/getLoyaltyPrograms).  To list the loyalty programs that a customer profile is part of, use the [List customer profile data](/integration-api/#operation/getCustomerInventory) 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getLoyaltyProgramTest() throws ApiException {
-        Integer programID = null;
-        LoyaltyProgram response = api.getLoyaltyProgram(programID);
+        Integer loyaltyProgramId = null;
+        LoyaltyProgram response = api.getLoyaltyProgram(loyaltyProgramId);
 
         // TODO: test validations
     }
     
     /**
-     * List all loyalty Programs
+     * List loyalty programs
      *
-     * 
+     * List the loyalty programs of the account.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1394,49 +1414,23 @@ public class ManagementApiTest {
     /**
      * Get loyalty program statistics by loyalty program ID
      *
-     * 
+     * Retrieve the statistics of the specified loyalty program such as the total active points, pending points, spent points and expired points. 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getLoyaltyStatisticsTest() throws ApiException {
-        String programID = null;
-        LoyaltyStatistics response = api.getLoyaltyStatistics(programID);
+        Integer loyaltyProgramId = null;
+        LoyaltyStatistics response = api.getLoyaltyStatistics(loyaltyProgramId);
 
         // TODO: test validations
     }
     
     /**
-     * List Referrals (with total count)
+     * List referrals
      *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getReferralsTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String code = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String valid = null;
-        String usable = null;
-        String advocate = null;
-        InlineResponse201 response = api.getReferrals(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * List Referrals
-     *
-     * 
+     * List all referrals of the specified campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1460,9 +1454,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get information for the specified role
+     * Get role
      *
-     * 
+     * Get the details of the specified role. To see all the roles, use [List roles](#operation/getAllRoles). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1476,9 +1470,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a Ruleset
+     * Get ruleset
      *
-     * 
+     * Retrieve the specified ruleset.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1494,9 +1488,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Campaign Rulesets
+     * List campaign rulesets
      *
-     * 
+     * List all rulesets of this campaign. A ruleset is a revision of the rules of a campaign. **Important:** The response also includes deleted rules. You should only consider the latest revision of the returned rulesets. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1514,9 +1508,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a single User
+     * Get user
      *
-     * Retrieves the data (including an invitation code) for a user. Non-admin users can only get themselves. 
+     * Retrieve the data (including an invitation code) for a user. Non-admin users can only get their own profile. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1530,7 +1524,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Users in your account
+     * List users in account
      *
      * Retrieve all users in your account. 
      *
@@ -1542,15 +1536,15 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20026 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20028 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
     
     /**
-     * Get Webhook
+     * Get webhook
      *
-     * Returns an webhook by its id.
+     * Returns a webhook by its id.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1564,7 +1558,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * List Webhook activation Log Entries
+     * List webhook activation log entries
      *
      * Webhook activation log entries would be created as soon as an integration request triggered an effect with a webhook
      *
@@ -1582,15 +1576,15 @@ public class ManagementApiTest {
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20023 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+        InlineResponse20025 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
 
         // TODO: test validations
     }
     
     /**
-     * List Webhook Log Entries
+     * List webhook log entries
      *
-     * 
+     * Retrieve all webhook log entries.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1607,15 +1601,15 @@ public class ManagementApiTest {
         String requestUuid = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20024 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+        InlineResponse20026 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
     
     /**
-     * List Webhooks
+     * List webhooks
      *
-     * 
+     * List all webhooks.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1626,7 +1620,60 @@ public class ManagementApiTest {
         String sort = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20022 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+        InlineResponse20024 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import data in existing account-level collection via CSV file
+     *
+     * Upload a CSV file containing the collection of string values that should be attached as payload for collection. The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60; item Addidas Nike Asics &#x60;&#x60;&#x60;  **Note:** Before sending a request to this endpoint, ensure the data in the CSV to import is different from the data currently stored in the collection. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importAccountCollectionTest() throws ApiException {
+        Integer collectionId = null;
+        String upFile = null;
+        ModelImport response = api.importAccountCollection(collectionId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import allowed values for attribute
+     *
+     * Upload a CSV file containing a list of allowed values for the specified attribute. These values are also called [picklist values](/docs/product/account/dev-tools/managing-attributes/#picklist-values).  The file should be sent as multipart data.  The import **replaces** the previous list of allowed values for this attribute, if any.  The CSV file **must** only contain the following column: - &#x60;item&#x60; (required): the values in your allowed list, for example a list of SKU&#39;s.  An allowed list is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60;text item CS-VG-04032021-UP-50D-10 CS-DV-04042021-UP-49D-12 CS-DG-02082021-UP-50G-07 &#x60;&#x60;&#x60; 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importAllowedListTest() throws ApiException {
+        Integer attributeId = null;
+        String upFile = null;
+        ModelImport response = api.importAllowedList(attributeId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Import data in existing collection via CSV file
+     *
+     * Upload a CSV file containing the collection of string values that should be attached as payload for collection. The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60; item Addidas Nike Asics &#x60;&#x60;&#x60;  **Note:** Before sending a request to this endpoint, ensure the data in the CSV to import is different from the data currently stored in the collection. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importCollectionTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
+        String upFile = null;
+        ModelImport response = api.importCollection(applicationId, campaignId, collectionId, upFile);
 
         // TODO: test validations
     }
@@ -1634,7 +1681,7 @@ public class ManagementApiTest {
     /**
      * Import coupons via CSV file
      *
-     * Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.
+     * Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.  The CSV file can contain the following columns:  - &#x60;value&#x60; (required): The coupon code. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. For unlimited redemptions, use &#x60;0&#x60;. Defaults to &#x60;1&#x60; when not provided. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object. - &#x60;discountlimit&#x60;: The amount of discounts that can be given with this coupon code.   For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated to the coupon entity, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  **Important:** Do not leave empty columns in the file.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One.  **Example:**  &#x60;&#x60;&#x60;text \&quot;value\&quot;,\&quot;expirydate\&quot;,\&quot;startdate\&quot;,\&quot;recipientintegrationid\&quot;,\&quot;limitval\&quot;,\&quot;attributes\&quot;,\&quot;discountlimit\&quot; COUP1,2018-07-01T04:00:00Z,2018-05-01T04:00:00Z,cust123,1,\&quot;{\&quot;\&quot;Category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;,2.4 &#x60;&#x60;&#x60;  Once imported, you can find the &#x60;batchId&#x60; in the Campaign Manager or by using [List coupons](#operation/getReservedCustomers). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1643,7 +1690,7 @@ public class ManagementApiTest {
     public void importCouponsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        File upFile = null;
+        String upFile = null;
         ModelImport response = api.importCoupons(applicationId, campaignId, upFile);
 
         // TODO: test validations
@@ -1652,24 +1699,24 @@ public class ManagementApiTest {
     /**
      * Import loyalty points via CSV file
      *
-     * Upload a CSV file containing the loyalty points that should be created. The file should be sent as multipart data.
+     * Upload a CSV file containing the [loyalty](https://www.talon.one/pillar-pages/loyalty) points that should be created. The file should be sent as multipart data.  **Important**: For existing customer profiles, the imported points are _added_ to their active points. Learn more about [Loyalty programs](https://docs.talon.one/docs/product/loyalty-programs/overview).  The CSV file can contain the following columns:  - &#x60;customerprofileid&#x60;: The integration ID of the customer profile that should receive the loyalty points. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60;: The earliest date when the points can be redeemed. On this date and until the expiry date, the points are &#x60;active&#x60;. - &#x60;expirydate&#x60;: The latest date when the points can be redeemed. After this date, the points are &#x60;expired&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): A reason why these points were awarded.  **Important:** Do not leave empty columns in the file.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One.  **Example:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void importLoyaltyPointsTest() throws ApiException {
-        Integer programID = null;
-        File upFile = null;
-        ModelImport response = api.importLoyaltyPoints(programID, upFile);
+        Integer loyaltyProgramId = null;
+        String upFile = null;
+        ModelImport response = api.importLoyaltyPoints(loyaltyProgramId, upFile);
 
         // TODO: test validations
     }
     
     /**
-     * Import giveaways codes into a giveaways pool
+     * Import giveaway codes into a giveaway pool
      *
-     * Upload a CSV file containing the giveaways codes that should be created. Send the file as multipart data.  The CSV file can contain the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaways attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;provider&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
+     * Upload a CSV file containing the giveaway codes that should be created. Send the file as multipart data.  The CSV file can contain the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaway attribute names and their values. Double the double-quotes in the object.   For example, if you [created a custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;provider&#x60; associated to the giveaway entity, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  **Important:** Do not leave empty columns in the file.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the timezone of your choice. It is converted to UTC internally by Talon.One.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,enddate,attributes GIVEAWAY1,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY2,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY3,2021-01-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Aliexpress\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1677,7 +1724,7 @@ public class ManagementApiTest {
     @Test
     public void importPoolGiveawaysTest() throws ApiException {
         Integer poolId = null;
-        File upFile = null;
+        String upFile = null;
         ModelImport response = api.importPoolGiveaways(poolId, upFile);
 
         // TODO: test validations
@@ -1686,7 +1733,7 @@ public class ManagementApiTest {
     /**
      * Import referrals via CSV file
      *
-     * Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file can contain the following colums:  - &#x60;code&#x60; (required): the referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: the start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: the end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. Unlimited (0) when blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.   For example, if you created a custom attribute called &#x60;category&#x60;, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One. 
+     * Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file can contain the following columns:  - &#x60;code&#x60; (required): The referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum amount of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.    For example, if you [created a custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated to the referral entity, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the timezone of your choice. It is converted to UTC internally by Talon.One.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,expirydate,advocateprofileintegrationid,limitval,attributes REFERRAL_CODE1,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid_4,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot; REFERRAL_CODE2,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid1,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;20_off\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1695,26 +1742,89 @@ public class ManagementApiTest {
     public void importReferralsTest() throws ApiException {
         Integer applicationId = null;
         Integer campaignId = null;
-        File upFile = null;
+        String upFile = null;
         ModelImport response = api.importReferrals(applicationId, campaignId, upFile);
 
         // TODO: test validations
     }
     
     /**
-     * Deduct points in a certain loyalty program for the specified customer
+     * List collections in account
      *
-     * 
+     * List collections in account.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listAccountCollectionsTest() throws ApiException {
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        Boolean withTotalResultSize = null;
+        String name = null;
+        InlineResponse2008 response = api.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List collections
+     *
+     * List collections in the campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listCollectionsTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        Boolean withTotalResultSize = null;
+        String name = null;
+        InlineResponse2009 response = api.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List collections in application
+     *
+     * List collections from all campaigns in the Application.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listCollectionsInApplicationTest() throws ApiException {
+        Integer applicationId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        String sort = null;
+        Boolean withTotalResultSize = null;
+        String name = null;
+        InlineResponse2009 response = api.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Deduct points in loyalty program for given customer
+     *
+     * Remove points from the specified loyalty program and specified customer profile.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](/integration-api/#operation/updateCustomerSessionV2). 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void removeLoyaltyPointsTest() throws ApiException {
-        String programID = null;
-        String integrationID = null;
+        String loyaltyProgramId = null;
+        String integrationId = null;
         LoyaltyPoints body = null;
-        api.removeLoyaltyPoints(programID, integrationID, body);
+        api.removeLoyaltyPoints(loyaltyProgramId, integrationId, body);
 
         // TODO: test validations
     }
@@ -1736,69 +1846,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a list of the coupons that match the given attributes (with total count)
+     * List coupons that match the given attributes (without total count)
      *
-     * Gets a list of all the coupons with attributes matching the query criteria 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void searchCouponsAdvancedTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        Object body = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String value = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String valid = null;
-        String usable = null;
-        Integer referralId = null;
-        String recipientIntegrationId = null;
-        Boolean exactMatch = null;
-        String batchId = null;
-        InlineResponse2004 response = api.searchCouponsAdvanced(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application (with total count)
-     *
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void searchCouponsAdvancedApplicationWideTest() throws ApiException {
-        Integer applicationId = null;
-        Object body = null;
-        Integer pageSize = null;
-        Integer skip = null;
-        String sort = null;
-        String value = null;
-        OffsetDateTime createdBefore = null;
-        OffsetDateTime createdAfter = null;
-        String valid = null;
-        String usable = null;
-        Integer referralId = null;
-        String recipientIntegrationId = null;
-        String batchId = null;
-        Boolean exactMatch = null;
-        String campaignState = null;
-        InlineResponse2004 response = api.searchCouponsAdvancedApplicationWide(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Get a list of the coupons that match the given attributes in all active campaigns of an application
-     *
-     * Gets a list of all the coupons with attributes matching the query criteria in all active campaigns of an application 
+     * List the coupons whose attributes match the query criteria in all **active** campaigns of the given Application.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request.  **Note:** The total count is not included in the response. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1826,9 +1876,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Get a list of the coupons that match the given attributes
+     * List coupons that match the given attributes in campaign (without total count)
      *
-     * Gets a list of all the coupons with attributes matching the query criteria 
+     * List the coupons whose attributes match the query criteria in the given campaign.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request.  **Note:** The total count is not included in the response. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1856,7 +1906,24 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update an additional cost
+     * Update account-level collection description and connected Applications
+     *
+     * Edit the description of the account-level collection and enable or disable the collection in different Applications.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateAccountCollectionTest() throws ApiException {
+        Integer collectionId = null;
+        UpdateCollection body = null;
+        Collection response = api.updateAccountCollection(collectionId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update additional cost
      *
      * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
      *
@@ -1873,7 +1940,7 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update a custom attribute
+     * Update custom attribute
      *
      * Updates an existing custom attribute. Once created, the only property of a custom attribute that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. E.g. if you have a customer profile attribute with the name &#x60;region&#x60;, and your integration is sending &#x60;attributes.region&#x60; with customer profile updates, changing the name to &#x60;locale&#x60; would cause the integration requests to begin failing.  If you **really** need to change the &#x60;type&#x60; or &#x60;name&#x60; property of a custom attribute, create a new attribute and update any relevant integrations and rules to use the new attribute. Then delete the old attribute when you are confident you have migrated any needed data from the old attribute to the new one. 
      *
@@ -1890,9 +1957,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update a Campaign
+     * Update campaign
      *
-     * 
+     * Update the given campaign.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1908,9 +1975,28 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update a Coupon
+     * Update collection description
      *
-     * 
+     * Edit the description of the collection.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateCollectionTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        Integer collectionId = null;
+        UpdateCampaignCollection body = null;
+        Collection response = api.updateCollection(applicationId, campaignId, collectionId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update coupon
+     *
+     * Update the specified coupon.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1927,9 +2013,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update a Batch of Coupons
+     * Update coupons
      *
-     * 
+     * Update all coupons of an campaign, or a specific batch of coupons. You can find the &#x60;batchId&#x60; in the **Coupons** view of your Application in the Campaign Manager or by using [List coupons](#operation/getCouponsWithoutTotalCount).  **Important**: - Only send sequential requests to this endpoint. - Requests to this endpoint timeout after 30 minutes. If you hit a timeout, reach out to our support team.  To update a specific coupon, use [Update coupon](#operation/updateCoupon). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1945,9 +2031,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Update one Referral
+     * Update referral
      *
-     * 
+     * Update the specified referral.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1959,25 +2045,6 @@ public class ManagementApiTest {
         String referralId = null;
         UpdateReferral body = null;
         Referral response = api.updateReferral(applicationId, campaignId, referralId, body);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Update a Ruleset
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void updateRulesetTest() throws ApiException {
-        Integer applicationId = null;
-        Integer campaignId = null;
-        Integer rulesetId = null;
-        NewRuleset body = null;
-        Ruleset response = api.updateRuleset(applicationId, campaignId, rulesetId, body);
 
         // TODO: test validations
     }

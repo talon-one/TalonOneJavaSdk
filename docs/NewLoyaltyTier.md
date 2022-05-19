@@ -2,7 +2,7 @@
 
 # NewLoyaltyTier
 
-A new loyalty tier
+A tier in a loyalty program
 ## Properties
 
 Name | Type | Description | Notes

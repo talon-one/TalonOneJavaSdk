@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -30,34 +30,60 @@ import java.io.IOException;
 @ApiModel(description = "Effect containing custom payload.")
 
 public class CustomEffectProps {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_EFFECT_ID = "effectId";
+  @SerializedName(SERIALIZED_NAME_EFFECT_ID)
+  private Integer effectId;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private Object payload;
 
 
-  public CustomEffectProps type(String type) {
+  public CustomEffectProps effectId(Integer effectId) {
     
-    this.type = type;
+    this.effectId = effectId;
+    return this;
+  }
+
+   /**
+   * The ID of the custom effect that was triggered
+   * @return effectId
+  **/
+  @ApiModelProperty(required = true, value = "The ID of the custom effect that was triggered")
+
+  public Integer getEffectId() {
+    return effectId;
+  }
+
+
+  public void setEffectId(Integer effectId) {
+    this.effectId = effectId;
+  }
+
+
+  public CustomEffectProps name(String name) {
+    
+    this.name = name;
     return this;
   }
 
    /**
    * The type of the custom effect.
-   * @return type
+   * @return name
   **/
   @ApiModelProperty(required = true, value = "The type of the custom effect.")
 
-  public String getType() {
-    return type;
+  public String getName() {
+    return name;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -92,13 +118,14 @@ public class CustomEffectProps {
       return false;
     }
     CustomEffectProps customEffectProps = (CustomEffectProps) o;
-    return Objects.equals(this.type, customEffectProps.type) &&
+    return Objects.equals(this.effectId, customEffectProps.effectId) &&
+        Objects.equals(this.name, customEffectProps.name) &&
         Objects.equals(this.payload, customEffectProps.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, payload);
+    return Objects.hash(effectId, name, payload);
   }
 
 
@@ -106,7 +133,8 @@ public class CustomEffectProps {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomEffectProps {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("}");
     return sb.toString();

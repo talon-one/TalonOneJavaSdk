@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;rollbackDiscount\&quot; effect. This gets triggered whenever previously closed session is now cancelled and a setDiscount effect was cancelled on our internal discount limit counters.
+ * The properties specific to the \&quot;rollbackDiscount\&quot; effect. This gets triggered whenever previously closed session is now cancelled or partially returned and a setDiscount effect was cancelled on our internal discount limit counters.
  */
-@ApiModel(description = "The properties specific to the \"rollbackDiscount\" effect. This gets triggered whenever previously closed session is now cancelled and a setDiscount effect was cancelled on our internal discount limit counters.")
+@ApiModel(description = "The properties specific to the \"rollbackDiscount\" effect. This gets triggered whenever previously closed session is now cancelled or partially returned and a setDiscount effect was cancelled on our internal discount limit counters.")
 
 public class RollbackDiscountEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -38,6 +38,26 @@ public class RollbackDiscountEffectProps {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_POSITION = "cartItemPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_POSITION)
+  private BigDecimal cartItemPosition;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_SUB_POSITION = "cartItemSubPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_SUB_POSITION)
+  private BigDecimal cartItemSubPosition;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
+  private Integer additionalCostId;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_COST = "additionalCost";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST)
+  private String additionalCost;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
 
 
   public RollbackDiscountEffectProps name(String name) {
@@ -69,10 +89,10 @@ public class RollbackDiscountEffectProps {
   }
 
    /**
-   * The value of the discount that was rolled back
+   * The value of the discount that was rolled back.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The value of the discount that was rolled back")
+  @ApiModelProperty(required = true, value = "The value of the discount that was rolled back.")
 
   public BigDecimal getValue() {
     return value;
@@ -81,6 +101,121 @@ public class RollbackDiscountEffectProps {
 
   public void setValue(BigDecimal value) {
     this.value = value;
+  }
+
+
+  public RollbackDiscountEffectProps cartItemPosition(BigDecimal cartItemPosition) {
+    
+    this.cartItemPosition = cartItemPosition;
+    return this;
+  }
+
+   /**
+   * The index of the item in the cart items for which the discount was rolled back.
+   * @return cartItemPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the item in the cart items for which the discount was rolled back.")
+
+  public BigDecimal getCartItemPosition() {
+    return cartItemPosition;
+  }
+
+
+  public void setCartItemPosition(BigDecimal cartItemPosition) {
+    this.cartItemPosition = cartItemPosition;
+  }
+
+
+  public RollbackDiscountEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
+    
+    this.cartItemSubPosition = cartItemSubPosition;
+    return this;
+  }
+
+   /**
+   * The index of the item unit in its line item. It is only used for cart items with &#x60;quantity&#x60; &gt; 1 and is only returned when cart item flattening is enabled. 
+   * @return cartItemSubPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the item unit in its line item. It is only used for cart items with `quantity` > 1 and is only returned when cart item flattening is enabled. ")
+
+  public BigDecimal getCartItemSubPosition() {
+    return cartItemSubPosition;
+  }
+
+
+  public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
+    this.cartItemSubPosition = cartItemSubPosition;
+  }
+
+
+  public RollbackDiscountEffectProps additionalCostId(Integer additionalCostId) {
+    
+    this.additionalCostId = additionalCostId;
+    return this;
+  }
+
+   /**
+   * The ID of the additional cost that was rolled back
+   * @return additionalCostId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the additional cost that was rolled back")
+
+  public Integer getAdditionalCostId() {
+    return additionalCostId;
+  }
+
+
+  public void setAdditionalCostId(Integer additionalCostId) {
+    this.additionalCostId = additionalCostId;
+  }
+
+
+  public RollbackDiscountEffectProps additionalCost(String additionalCost) {
+    
+    this.additionalCost = additionalCost;
+    return this;
+  }
+
+   /**
+   * The name of the additional cost that was rolled back
+   * @return additionalCost
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The name of the additional cost that was rolled back")
+
+  public String getAdditionalCost() {
+    return additionalCost;
+  }
+
+
+  public void setAdditionalCost(String additionalCost) {
+    this.additionalCost = additionalCost;
+  }
+
+
+  public RollbackDiscountEffectProps scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope of the rolled back discount - For a discount per session, it can be one of &#x60;cartItems&#x60;, &#x60;additionalCosts&#x60; or &#x60;sessionTotal&#x60; - For a discount per item, it can be one of &#x60;price&#x60;, &#x60;additionalCosts&#x60; or &#x60;itemTotal&#x60; 
+   * @return scope
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The scope of the rolled back discount - For a discount per session, it can be one of `cartItems`, `additionalCosts` or `sessionTotal` - For a discount per item, it can be one of `price`, `additionalCosts` or `itemTotal` ")
+
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
 
@@ -94,12 +229,17 @@ public class RollbackDiscountEffectProps {
     }
     RollbackDiscountEffectProps rollbackDiscountEffectProps = (RollbackDiscountEffectProps) o;
     return Objects.equals(this.name, rollbackDiscountEffectProps.name) &&
-        Objects.equals(this.value, rollbackDiscountEffectProps.value);
+        Objects.equals(this.value, rollbackDiscountEffectProps.value) &&
+        Objects.equals(this.cartItemPosition, rollbackDiscountEffectProps.cartItemPosition) &&
+        Objects.equals(this.cartItemSubPosition, rollbackDiscountEffectProps.cartItemSubPosition) &&
+        Objects.equals(this.additionalCostId, rollbackDiscountEffectProps.additionalCostId) &&
+        Objects.equals(this.additionalCost, rollbackDiscountEffectProps.additionalCost) &&
+        Objects.equals(this.scope, rollbackDiscountEffectProps.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value);
+    return Objects.hash(name, value, cartItemPosition, cartItemSubPosition, additionalCostId, additionalCost, scope);
   }
 
 
@@ -109,6 +249,11 @@ public class RollbackDiscountEffectProps {
     sb.append("class RollbackDiscountEffectProps {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    cartItemPosition: ").append(toIndentedString(cartItemPosition)).append("\n");
+    sb.append("    cartItemSubPosition: ").append(toIndentedString(cartItemSubPosition)).append("\n");
+    sb.append("    additionalCostId: ").append(toIndentedString(additionalCostId)).append("\n");
+    sb.append("    additionalCost: ").append(toIndentedString(additionalCost)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -27,9 +27,9 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;addLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add loyalty\&quot; effect. These points are automatically stored and managed inside Talon.One.
+ * The properties specific to the \&quot;addLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add loyalty\&quot; effect. These points are automatically stored and managed inside Talon.One. 
  */
-@ApiModel(description = "The properties specific to the \"addLoyaltyPoints\" effect. This gets triggered whenever a validated rule contained an \"add loyalty\" effect. These points are automatically stored and managed inside Talon.One.")
+@ApiModel(description = "The properties specific to the \"addLoyaltyPoints\" effect. This gets triggered whenever a validated rule contained an \"add loyalty\" effect. These points are automatically stored and managed inside Talon.One. ")
 
 public class AddLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -48,6 +48,10 @@ public class AddLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
 
+  public static final String SERIALIZED_NAME_DESIRED_VALUE = "desiredValue";
+  @SerializedName(SERIALIZED_NAME_DESIRED_VALUE)
+  private BigDecimal desiredValue;
+
   public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
   private String recipientIntegrationId;
@@ -64,6 +68,18 @@ public class AddLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
   private String transactionUUID;
 
+  public static final String SERIALIZED_NAME_CART_ITEM_POSITION = "cartItemPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_POSITION)
+  private BigDecimal cartItemPosition;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_SUB_POSITION = "cartItemSubPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_SUB_POSITION)
+  private BigDecimal cartItemSubPosition;
+
+  public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
+  @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
+  private String cardIdentifier;
+
 
   public AddLoyaltyPointsEffectProps name(String name) {
     
@@ -72,10 +88,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The name/description of this loyalty point addition
+   * The name/description of this loyalty point addition.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name/description of this loyalty point addition")
+  @ApiModelProperty(required = true, value = "The name/description of this loyalty point addition.")
 
   public String getName() {
     return name;
@@ -94,10 +110,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The ID of the loyalty program where these points were added
+   * The ID of the loyalty program where these points were added.
    * @return programId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added")
+  @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
   public Integer getProgramId() {
     return programId;
@@ -116,10 +132,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The ID of the subledger within the loyalty program where these points were added
+   * The ID of the subledger within the loyalty program where these points were added.
    * @return subLedgerId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added")
+  @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
 
   public String getSubLedgerId() {
     return subLedgerId;
@@ -138,10 +154,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The amount of points that were added
+   * The amount of points that were added.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The amount of points that were added")
+  @ApiModelProperty(required = true, value = "The amount of points that were added.")
 
   public BigDecimal getValue() {
     return value;
@@ -153,6 +169,29 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 
+  public AddLoyaltyPointsEffectProps desiredValue(BigDecimal desiredValue) {
+    
+    this.desiredValue = desiredValue;
+    return this;
+  }
+
+   /**
+   * The original amount of loyalty points to be awarded.
+   * @return desiredValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The original amount of loyalty points to be awarded.")
+
+  public BigDecimal getDesiredValue() {
+    return desiredValue;
+  }
+
+
+  public void setDesiredValue(BigDecimal desiredValue) {
+    this.desiredValue = desiredValue;
+  }
+
+
   public AddLoyaltyPointsEffectProps recipientIntegrationId(String recipientIntegrationId) {
     
     this.recipientIntegrationId = recipientIntegrationId;
@@ -160,10 +199,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The user for whom these points were added
+   * The user for whom these points were added.
    * @return recipientIntegrationId
   **/
-  @ApiModelProperty(required = true, value = "The user for whom these points were added")
+  @ApiModelProperty(required = true, value = "The user for whom these points were added.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
@@ -182,11 +221,11 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * Date after which points will be valid
+   * Date after which points will be valid.
    * @return startDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date after which points will be valid")
+  @ApiModelProperty(value = "Date after which points will be valid.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -205,11 +244,11 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * Date after which points will expire
+   * Date after which points will expire.
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date after which points will expire")
+  @ApiModelProperty(value = "Date after which points will expire.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
@@ -228,10 +267,10 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The identifier of this addition in the loyalty ledger
+   * The identifier of this addition in the loyalty ledger.
    * @return transactionUUID
   **/
-  @ApiModelProperty(required = true, value = "The identifier of this addition in the loyalty ledger")
+  @ApiModelProperty(required = true, value = "The identifier of this addition in the loyalty ledger.")
 
   public String getTransactionUUID() {
     return transactionUUID;
@@ -240,6 +279,75 @@ public class AddLoyaltyPointsEffectProps {
 
   public void setTransactionUUID(String transactionUUID) {
     this.transactionUUID = transactionUUID;
+  }
+
+
+  public AddLoyaltyPointsEffectProps cartItemPosition(BigDecimal cartItemPosition) {
+    
+    this.cartItemPosition = cartItemPosition;
+    return this;
+  }
+
+   /**
+   * The index of the item in the cart items list on which the loyal points addition should be applied.
+   * @return cartItemPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the item in the cart items list on which the loyal points addition should be applied.")
+
+  public BigDecimal getCartItemPosition() {
+    return cartItemPosition;
+  }
+
+
+  public void setCartItemPosition(BigDecimal cartItemPosition) {
+    this.cartItemPosition = cartItemPosition;
+  }
+
+
+  public AddLoyaltyPointsEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
+    
+    this.cartItemSubPosition = cartItemSubPosition;
+    return this;
+  }
+
+   /**
+   * The sub position is triggered when application flattening is enabled. It indicates to which item the loyalty points addition applies, for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * @return cartItemSubPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The sub position is triggered when application flattening is enabled. It indicates to which item the loyalty points addition applies, for cart items with `quantity` > 1. ")
+
+  public BigDecimal getCartItemSubPosition() {
+    return cartItemSubPosition;
+  }
+
+
+  public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
+    this.cartItemSubPosition = cartItemSubPosition;
+  }
+
+
+  public AddLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
+    
+    this.cardIdentifier = cardIdentifier;
+    return this;
+  }
+
+   /**
+   * The card on which these points were added.
+   * @return cardIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The card on which these points were added.")
+
+  public String getCardIdentifier() {
+    return cardIdentifier;
+  }
+
+
+  public void setCardIdentifier(String cardIdentifier) {
+    this.cardIdentifier = cardIdentifier;
   }
 
 
@@ -256,15 +364,19 @@ public class AddLoyaltyPointsEffectProps {
         Objects.equals(this.programId, addLoyaltyPointsEffectProps.programId) &&
         Objects.equals(this.subLedgerId, addLoyaltyPointsEffectProps.subLedgerId) &&
         Objects.equals(this.value, addLoyaltyPointsEffectProps.value) &&
+        Objects.equals(this.desiredValue, addLoyaltyPointsEffectProps.desiredValue) &&
         Objects.equals(this.recipientIntegrationId, addLoyaltyPointsEffectProps.recipientIntegrationId) &&
         Objects.equals(this.startDate, addLoyaltyPointsEffectProps.startDate) &&
         Objects.equals(this.expiryDate, addLoyaltyPointsEffectProps.expiryDate) &&
-        Objects.equals(this.transactionUUID, addLoyaltyPointsEffectProps.transactionUUID);
+        Objects.equals(this.transactionUUID, addLoyaltyPointsEffectProps.transactionUUID) &&
+        Objects.equals(this.cartItemPosition, addLoyaltyPointsEffectProps.cartItemPosition) &&
+        Objects.equals(this.cartItemSubPosition, addLoyaltyPointsEffectProps.cartItemSubPosition) &&
+        Objects.equals(this.cardIdentifier, addLoyaltyPointsEffectProps.cardIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID);
+    return Objects.hash(name, programId, subLedgerId, value, desiredValue, recipientIntegrationId, startDate, expiryDate, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier);
   }
 
 
@@ -276,10 +388,14 @@ public class AddLoyaltyPointsEffectProps {
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
     sb.append("    subLedgerId: ").append(toIndentedString(subLedgerId)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    desiredValue: ").append(toIndentedString(desiredValue)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
+    sb.append("    cartItemPosition: ").append(toIndentedString(cartItemPosition)).append("\n");
+    sb.append("    cartItemSubPosition: ").append(toIndentedString(cartItemSubPosition)).append("\n");
+    sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

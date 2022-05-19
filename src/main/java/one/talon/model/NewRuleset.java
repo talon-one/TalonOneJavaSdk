@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -92,7 +92,7 @@ public class NewRuleset {
    * An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.
    * @return bindings
   **/
-  @ApiModelProperty(required = true, value = "An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.")
+  @ApiModelProperty(example = "[]", required = true, value = "An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.")
 
   public List<Binding> getBindings() {
     return bindings;
@@ -111,11 +111,11 @@ public class NewRuleset {
   }
 
    /**
-   * A string indicating which version of the rulebuilder was used to create this ruleset.
+   * The version of the rulebuilder used to create this ruleset.
    * @return rbVersion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A string indicating which version of the rulebuilder was used to create this ruleset.")
+  @ApiModelProperty(example = "v2", value = "The version of the rulebuilder used to create this ruleset.")
 
   public String getRbVersion() {
     return rbVersion;
@@ -134,11 +134,11 @@ public class NewRuleset {
   }
 
    /**
-   * A boolean indicating whether this newly created ruleset should also be activated for the campaign owns it
+   * Indicates whether this created ruleset should be activated for the campaign that owns it.
    * @return activate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A boolean indicating whether this newly created ruleset should also be activated for the campaign owns it")
+  @ApiModelProperty(value = "Indicates whether this created ruleset should be activated for the campaign that owns it.")
 
   public Boolean getActivate() {
     return activate;

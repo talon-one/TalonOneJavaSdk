@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Attribute&gt;**](Attribute.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
+**data** | [**List&lt;Audience&gt;**](Audience.md) |  | 
 
 
 

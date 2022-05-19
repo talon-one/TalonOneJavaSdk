@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -25,17 +25,14 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.NewLoyaltyTier;
 
 /**
- * A new loyalty program
+ * 
  */
-@ApiModel(description = "A new loyalty program")
+@ApiModel(description = "")
 
 public class NewLoyaltyProgram {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -60,27 +57,25 @@ public class NewLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_ALLOW_SUBLEDGER)
   private Boolean allowSubledger;
 
+  public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
+  @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
+  private Integer usersPerCardLimit;
 
-  public NewLoyaltyProgram name(String name) {
-    
-    this.name = name;
-    return this;
-  }
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
-   /**
-   * The internal name for the Loyalty Program. This is an immutable value.
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "The internal name for the Loyalty Program. This is an immutable value.")
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<NewLoyaltyTier> tiers = null;
 
-  public String getName() {
-    return name;
-  }
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
 
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  public static final String SERIALIZED_NAME_CARD_BASED = "cardBased";
+  @SerializedName(SERIALIZED_NAME_CARD_BASED)
+  private Boolean cardBased = false;
 
 
   public NewLoyaltyProgram title(String title) {
@@ -93,7 +88,7 @@ public class NewLoyaltyProgram {
    * The display title for the Loyalty Program.
    * @return title
   **/
-  @ApiModelProperty(required = true, value = "The display title for the Loyalty Program.")
+  @ApiModelProperty(example = "Point collection", required = true, value = "The display title for the Loyalty Program.")
 
   public String getTitle() {
     return title;
@@ -116,7 +111,7 @@ public class NewLoyaltyProgram {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Description of our Loyalty Program.")
+  @ApiModelProperty(example = "Customers collect 10 points per 1$ spent", value = "Description of our Loyalty Program.")
 
   public String getDescription() {
     return description;
@@ -147,7 +142,7 @@ public class NewLoyaltyProgram {
    * @return subscribedApplications
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
+  @ApiModelProperty(example = "[132, 97]", value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
 
   public List<Integer> getSubscribedApplications() {
     return subscribedApplications;
@@ -169,7 +164,7 @@ public class NewLoyaltyProgram {
    * Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like &#39;1h&#39; or &#39;40m&#39;.
    * @return defaultValidity
   **/
-  @ApiModelProperty(required = true, value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m'.")
+  @ApiModelProperty(example = "unlimited", required = true, value = "Indicates the default duration after which new loyalty points should expire. The format is a number, followed by one letter indicating the unit; like '1h' or '40m'.")
 
   public String getDefaultValidity() {
     return defaultValidity;
@@ -191,7 +186,7 @@ public class NewLoyaltyProgram {
    * Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like &#39;1h&#39; or &#39;40m&#39;.
    * @return defaultPending
   **/
-  @ApiModelProperty(required = true, value = "Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like '1h' or '40m'.")
+  @ApiModelProperty(example = "immediate", required = true, value = "Indicates the default duration for the pending time, after which points will be valid. The format is a number followed by a duration unit, like '1h' or '40m'.")
 
   public String getDefaultPending() {
     return defaultPending;
@@ -213,7 +208,7 @@ public class NewLoyaltyProgram {
    * Indicates if this program supports subledgers inside the program
    * @return allowSubledger
   **/
-  @ApiModelProperty(required = true, value = "Indicates if this program supports subledgers inside the program")
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if this program supports subledgers inside the program")
 
   public Boolean getAllowSubledger() {
     return allowSubledger;
@@ -222,6 +217,127 @@ public class NewLoyaltyProgram {
 
   public void setAllowSubledger(Boolean allowSubledger) {
     this.allowSubledger = allowSubledger;
+  }
+
+
+  public NewLoyaltyProgram usersPerCardLimit(Integer usersPerCardLimit) {
+    
+    this.usersPerCardLimit = usersPerCardLimit;
+    return this;
+  }
+
+   /**
+   * The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when &#x60;cardBased&#x60; is &#x60;true&#x60;. 
+   * minimum: 0
+   * @return usersPerCardLimit
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "111", value = "The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when `cardBased` is `true`. ")
+
+  public Integer getUsersPerCardLimit() {
+    return usersPerCardLimit;
+  }
+
+
+  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
+    this.usersPerCardLimit = usersPerCardLimit;
+  }
+
+
+  public NewLoyaltyProgram name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The internal name for the Loyalty Program. This is an immutable value.
+   * @return name
+  **/
+  @ApiModelProperty(example = "GeneralPointCollection", required = true, value = "The internal name for the Loyalty Program. This is an immutable value.")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public NewLoyaltyProgram tiers(List<NewLoyaltyTier> tiers) {
+    
+    this.tiers = tiers;
+    return this;
+  }
+
+  public NewLoyaltyProgram addTiersItem(NewLoyaltyTier tiersItem) {
+    if (this.tiers == null) {
+      this.tiers = new ArrayList<NewLoyaltyTier>();
+    }
+    this.tiers.add(tiersItem);
+    return this;
+  }
+
+   /**
+   * The tiers in this loyalty program
+   * @return tiers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The tiers in this loyalty program")
+
+  public List<NewLoyaltyTier> getTiers() {
+    return tiers;
+  }
+
+
+  public void setTiers(List<NewLoyaltyTier> tiers) {
+    this.tiers = tiers;
+  }
+
+
+  public NewLoyaltyProgram timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * A string containing an IANA timezone descriptor.
+   * @return timezone
+  **/
+  @ApiModelProperty(required = true, value = "A string containing an IANA timezone descriptor.")
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public NewLoyaltyProgram cardBased(Boolean cardBased) {
+    
+    this.cardBased = cardBased;
+    return this;
+  }
+
+   /**
+   * Defines the type of loyalty program: - &#x60;true&#x60;: the program is a card-based. - &#x60;false&#x60;: the program is profile-based. 
+   * @return cardBased
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Defines the type of loyalty program: - `true`: the program is a card-based. - `false`: the program is profile-based. ")
+
+  public Boolean getCardBased() {
+    return cardBased;
+  }
+
+
+  public void setCardBased(Boolean cardBased) {
+    this.cardBased = cardBased;
   }
 
 
@@ -234,18 +350,22 @@ public class NewLoyaltyProgram {
       return false;
     }
     NewLoyaltyProgram newLoyaltyProgram = (NewLoyaltyProgram) o;
-    return Objects.equals(this.name, newLoyaltyProgram.name) &&
-        Objects.equals(this.title, newLoyaltyProgram.title) &&
+    return Objects.equals(this.title, newLoyaltyProgram.title) &&
         Objects.equals(this.description, newLoyaltyProgram.description) &&
         Objects.equals(this.subscribedApplications, newLoyaltyProgram.subscribedApplications) &&
         Objects.equals(this.defaultValidity, newLoyaltyProgram.defaultValidity) &&
         Objects.equals(this.defaultPending, newLoyaltyProgram.defaultPending) &&
-        Objects.equals(this.allowSubledger, newLoyaltyProgram.allowSubledger);
+        Objects.equals(this.allowSubledger, newLoyaltyProgram.allowSubledger) &&
+        Objects.equals(this.usersPerCardLimit, newLoyaltyProgram.usersPerCardLimit) &&
+        Objects.equals(this.name, newLoyaltyProgram.name) &&
+        Objects.equals(this.tiers, newLoyaltyProgram.tiers) &&
+        Objects.equals(this.timezone, newLoyaltyProgram.timezone) &&
+        Objects.equals(this.cardBased, newLoyaltyProgram.cardBased);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger);
+    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, name, tiers, timezone, cardBased);
   }
 
 
@@ -253,13 +373,17 @@ public class NewLoyaltyProgram {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewLoyaltyProgram {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    subscribedApplications: ").append(toIndentedString(subscribedApplications)).append("\n");
     sb.append("    defaultValidity: ").append(toIndentedString(defaultValidity)).append("\n");
     sb.append("    defaultPending: ").append(toIndentedString(defaultPending)).append("\n");
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
+    sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    cardBased: ").append(toIndentedString(cardBased)).append("\n");
     sb.append("}");
     return sb.toString();
   }

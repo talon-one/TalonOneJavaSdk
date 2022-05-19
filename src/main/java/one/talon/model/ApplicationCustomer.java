@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -76,6 +76,10 @@ public class ApplicationCustomer {
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
   private OffsetDateTime lastActivity;
 
+  public static final String SERIALIZED_NAME_ADVOCATE_INTEGRATION_ID = "advocateIntegrationId";
+  @SerializedName(SERIALIZED_NAME_ADVOCATE_INTEGRATION_ID)
+  private String advocateIntegrationId;
+
 
   public ApplicationCustomer id(Integer id) {
     
@@ -84,10 +88,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * Unique ID for this entity.
+   * Unique ID for this entity. Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(required = true, value = "Unique ID for this entity. Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -106,10 +110,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created.
+   * The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created.")
+  @ApiModelProperty(required = true, value = "The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created. The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -153,7 +157,7 @@ public class ApplicationCustomer {
    * Arbitrary properties associated with this item
    * @return attributes
   **/
-  @ApiModelProperty(required = true, value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", required = true, value = "Arbitrary properties associated with this item")
 
   public Object getAttributes() {
     return attributes;
@@ -197,7 +201,7 @@ public class ApplicationCustomer {
    * The total amount of closed sessions by a customer. A closed session is a successful purchase.
    * @return closedSessions
   **/
-  @ApiModelProperty(required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
+  @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
 
   public Integer getClosedSessions() {
     return closedSessions;
@@ -219,7 +223,7 @@ public class ApplicationCustomer {
    * Sum of all purchases made by this customer
    * @return totalSales
   **/
-  @ApiModelProperty(required = true, value = "Sum of all purchases made by this customer")
+  @ApiModelProperty(example = "299.99", required = true, value = "Sum of all purchases made by this customer")
 
   public BigDecimal getTotalSales() {
     return totalSales;
@@ -246,11 +250,11 @@ public class ApplicationCustomer {
   }
 
    /**
-   * A list of loyalty programs joined by the customer
+   * **DEPRECATED** A list of loyalty programs joined by the customer. 
    * @return loyaltyMemberships
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of loyalty programs joined by the customer")
+  @ApiModelProperty(value = "**DEPRECATED** A list of loyalty programs joined by the customer. ")
 
   public List<LoyaltyMembership> getLoyaltyMemberships() {
     return loyaltyMemberships;
@@ -300,10 +304,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * Timestamp of the most recent event received from this customer
+   * Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the rule-engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api/#operation/createCouponReservation) for a customer doesn&#39;t impact this field. 
    * @return lastActivity
   **/
-  @ApiModelProperty(required = true, value = "Timestamp of the most recent event received from this customer")
+  @ApiModelProperty(example = "2020-02-08T14:15:20Z", required = true, value = "Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the rule-engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api/#operation/createCouponReservation) for a customer doesn't impact this field. ")
 
   public OffsetDateTime getLastActivity() {
     return lastActivity;
@@ -312,6 +316,29 @@ public class ApplicationCustomer {
 
   public void setLastActivity(OffsetDateTime lastActivity) {
     this.lastActivity = lastActivity;
+  }
+
+
+  public ApplicationCustomer advocateIntegrationId(String advocateIntegrationId) {
+    
+    this.advocateIntegrationId = advocateIntegrationId;
+    return this;
+  }
+
+   /**
+   * The Integration ID of the Customer Profile that referred this Customer in the Application.
+   * @return advocateIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The Integration ID of the Customer Profile that referred this Customer in the Application.")
+
+  public String getAdvocateIntegrationId() {
+    return advocateIntegrationId;
+  }
+
+
+  public void setAdvocateIntegrationId(String advocateIntegrationId) {
+    this.advocateIntegrationId = advocateIntegrationId;
   }
 
 
@@ -333,12 +360,13 @@ public class ApplicationCustomer {
         Objects.equals(this.totalSales, applicationCustomer.totalSales) &&
         Objects.equals(this.loyaltyMemberships, applicationCustomer.loyaltyMemberships) &&
         Objects.equals(this.audienceMemberships, applicationCustomer.audienceMemberships) &&
-        Objects.equals(this.lastActivity, applicationCustomer.lastActivity);
+        Objects.equals(this.lastActivity, applicationCustomer.lastActivity) &&
+        Objects.equals(this.advocateIntegrationId, applicationCustomer.advocateIntegrationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity);
+    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity, advocateIntegrationId);
   }
 
 
@@ -356,6 +384,7 @@ public class ApplicationCustomer {
     sb.append("    loyaltyMemberships: ").append(toIndentedString(loyaltyMemberships)).append("\n");
     sb.append("    audienceMemberships: ").append(toIndentedString(audienceMemberships)).append("\n");
     sb.append("    lastActivity: ").append(toIndentedString(lastActivity)).append("\n");
+    sb.append("    advocateIntegrationId: ").append(toIndentedString(advocateIntegrationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

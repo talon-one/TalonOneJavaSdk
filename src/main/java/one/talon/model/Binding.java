@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -43,6 +43,10 @@ public class Binding {
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
   private List<Object> expression = new ArrayList<Object>();
 
+  public static final String SERIALIZED_NAME_VALUE_TYPE = "valueType";
+  @SerializedName(SERIALIZED_NAME_VALUE_TYPE)
+  private String valueType;
+
 
   public Binding name(String name) {
     
@@ -54,7 +58,7 @@ public class Binding {
    * A descriptive name for the value to be bound.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "A descriptive name for the value to be bound.")
+  @ApiModelProperty(example = "my property", required = true, value = "A descriptive name for the value to be bound.")
 
   public String getName() {
     return name;
@@ -73,11 +77,11 @@ public class Binding {
   }
 
    /**
-   * The kind of binding. Possible values are cartItemFilter, subledgerBalance.
+   * The kind of binding. Possible values are: - &#x60;bundle&#x60; - &#x60;cartItemFilter&#x60; - &#x60;subledgerBalance&#x60; - &#x60;templateParameter&#x60; 
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The kind of binding. Possible values are cartItemFilter, subledgerBalance.")
+  @ApiModelProperty(example = "templateParameter", value = "The kind of binding. Possible values are: - `bundle` - `cartItemFilter` - `subledgerBalance` - `templateParameter` ")
 
   public String getType() {
     return type;
@@ -116,6 +120,29 @@ public class Binding {
   }
 
 
+  public Binding valueType(String valueType) {
+    
+    this.valueType = valueType;
+    return this;
+  }
+
+   /**
+   * Can be one of the following: - &#x60;string&#x60; - &#x60;number&#x60; - &#x60;boolean&#x60; 
+   * @return valueType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "string", value = "Can be one of the following: - `string` - `number` - `boolean` ")
+
+  public String getValueType() {
+    return valueType;
+  }
+
+
+  public void setValueType(String valueType) {
+    this.valueType = valueType;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -127,12 +154,13 @@ public class Binding {
     Binding binding = (Binding) o;
     return Objects.equals(this.name, binding.name) &&
         Objects.equals(this.type, binding.type) &&
-        Objects.equals(this.expression, binding.expression);
+        Objects.equals(this.expression, binding.expression) &&
+        Objects.equals(this.valueType, binding.valueType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, expression);
+    return Objects.hash(name, type, expression, valueType);
   }
 
 
@@ -143,6 +171,7 @@ public class Binding {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

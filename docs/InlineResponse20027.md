@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  |  [optional]
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;Change&gt;**](Change.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;EventType&gt;**](EventType.md) |  | 
 
 
 

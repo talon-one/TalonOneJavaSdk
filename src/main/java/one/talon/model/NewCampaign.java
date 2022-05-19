@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -194,10 +194,10 @@ public class NewCampaign {
   }
 
    /**
-   * A friendly name for this campaign.
+   * A user-facing name for this campaign.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "A friendly name for this campaign.")
+  @ApiModelProperty(example = "Summer promotions", required = true, value = "A user-facing name for this campaign.")
 
   public String getName() {
     return name;
@@ -220,7 +220,7 @@ public class NewCampaign {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A detailed description of the campaign.")
+  @ApiModelProperty(example = "Campaign for all summer 2021 promotions", value = "A detailed description of the campaign.")
 
   public String getDescription() {
     return description;
@@ -239,11 +239,11 @@ public class NewCampaign {
   }
 
    /**
-   * Datetime when the campaign will become active.
+   * Timestamp when the campaign will become active.
    * @return startTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime when the campaign will become active.")
+  @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp when the campaign will become active.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -262,11 +262,11 @@ public class NewCampaign {
   }
 
    /**
-   * Datetime when the campaign will become in-active.
+   * Timestamp the campaign will become inactive.
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Datetime when the campaign will become in-active.")
+  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp the campaign will become inactive.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -330,11 +330,11 @@ public class NewCampaign {
   }
 
    /**
-   * ID of Ruleset this campaign applies on customer session evaluation.
+   * [ID of Ruleset](https://docs.talon.one/management-api/#operation/getRulesets) this campaign applies on customer session evaluation. 
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ID of Ruleset this campaign applies on customer session evaluation.")
+  @ApiModelProperty(value = "[ID of Ruleset](https://docs.talon.one/management-api/#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
   public Integer getActiveRulesetId() {
     return activeRulesetId;
@@ -361,7 +361,7 @@ public class NewCampaign {
    * A list of tags for the campaign.
    * @return tags
   **/
-  @ApiModelProperty(required = true, value = "A list of tags for the campaign.")
+  @ApiModelProperty(example = "[summer]", required = true, value = "A list of tags for the campaign.")
 
   public List<String> getTags() {
     return tags;
@@ -385,10 +385,10 @@ public class NewCampaign {
   }
 
    /**
-   * A list of features for the campaign.
+   * The features enabled in this campaign.
    * @return features
   **/
-  @ApiModelProperty(required = true, value = "A list of features for the campaign.")
+  @ApiModelProperty(example = "[coupons, referrals]", required = true, value = "The features enabled in this campaign.")
 
   public List<FeaturesEnum> getFeatures() {
     return features;
@@ -458,10 +458,10 @@ public class NewCampaign {
   }
 
    /**
-   * The set of limits that will operate for this campaign
+   * The set of [budget limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/) for this campaign. 
    * @return limits
   **/
-  @ApiModelProperty(required = true, value = "The set of limits that will operate for this campaign")
+  @ApiModelProperty(required = true, value = "The set of [budget limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/) for this campaign. ")
 
   public List<LimitConfig> getLimits() {
     return limits;
@@ -488,11 +488,11 @@ public class NewCampaign {
   }
 
    /**
-   * The IDs of the campaign groups that own this entity.
+   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups/) this campaign belongs to. 
    * @return campaignGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the campaign groups that own this entity.")
+  @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups/) this campaign belongs to. ")
 
   public List<Integer> getCampaignGroups() {
     return campaignGroups;

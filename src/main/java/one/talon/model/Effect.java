@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -69,7 +69,7 @@ public class Effect {
    * The ID of the campaign that triggered this effect
    * @return campaignId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the campaign that triggered this effect")
+  @ApiModelProperty(example = "244", required = true, value = "The ID of the campaign that triggered this effect")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -91,7 +91,7 @@ public class Effect {
    * The ID of the ruleset that was active in the campaign when this effect was triggered
    * @return rulesetId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the ruleset that was active in the campaign when this effect was triggered")
+  @ApiModelProperty(example = "73", required = true, value = "The ID of the ruleset that was active in the campaign when this effect was triggered")
 
   public Integer getRulesetId() {
     return rulesetId;
@@ -113,7 +113,7 @@ public class Effect {
    * The position of the rule that triggered this effect within the ruleset
    * @return ruleIndex
   **/
-  @ApiModelProperty(required = true, value = "The position of the rule that triggered this effect within the ruleset")
+  @ApiModelProperty(example = "2", required = true, value = "The position of the rule that triggered this effect within the ruleset")
 
   public Integer getRuleIndex() {
     return ruleIndex;
@@ -135,7 +135,7 @@ public class Effect {
    * The name of the rule that triggered this effect
    * @return ruleName
   **/
-  @ApiModelProperty(required = true, value = "The name of the rule that triggered this effect")
+  @ApiModelProperty(example = "Give 20% discount", required = true, value = "The name of the rule that triggered this effect")
 
   public String getRuleName() {
     return ruleName;
@@ -157,7 +157,7 @@ public class Effect {
    * The type of effect that was triggered
    * @return effectType
   **/
-  @ApiModelProperty(required = true, value = "The type of effect that was triggered")
+  @ApiModelProperty(example = "rejectCoupon", required = true, value = "The type of effect that was triggered")
 
   public String getEffectType() {
     return effectType;
@@ -180,7 +180,7 @@ public class Effect {
    * @return triggeredByCoupon
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the coupon that was being evaluated when this effect was triggered")
+  @ApiModelProperty(example = "4928", value = "The ID of the coupon that was being evaluated when this effect was triggered")
 
   public Integer getTriggeredByCoupon() {
     return triggeredByCoupon;

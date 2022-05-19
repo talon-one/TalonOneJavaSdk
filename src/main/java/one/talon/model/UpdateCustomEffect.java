@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -33,6 +33,10 @@ import one.talon.model.TemplateArgDef;
 @ApiModel(description = "")
 
 public class UpdateCustomEffect {
+  public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
+  private List<Integer> applicationIds = new ArrayList<Integer>();
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -53,13 +57,36 @@ public class UpdateCustomEffect {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
-  public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
-  @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
-
   public static final String SERIALIZED_NAME_PARAMS = "params";
   @SerializedName(SERIALIZED_NAME_PARAMS)
   private List<TemplateArgDef> params = null;
+
+
+  public UpdateCustomEffect applicationIds(List<Integer> applicationIds) {
+    
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public UpdateCustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * The IDs of the applications that are related to this entity.
+   * @return applicationIds
+  **/
+  @ApiModelProperty(required = true, value = "The IDs of the applications that are related to this entity.")
+
+  public List<Integer> getApplicationIds() {
+    return applicationIds;
+  }
+
+
+  public void setApplicationIds(List<Integer> applicationIds) {
+    this.applicationIds = applicationIds;
+  }
 
 
   public UpdateCustomEffect name(String name) {
@@ -173,37 +200,6 @@ public class UpdateCustomEffect {
   }
 
 
-  public UpdateCustomEffect subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
-    this.subscribedApplicationsIds = subscribedApplicationsIds;
-    return this;
-  }
-
-  public UpdateCustomEffect addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
-    if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
-    }
-    this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
-    return this;
-  }
-
-   /**
-   * A list of the IDs of the applications that this effect is enabled for
-   * @return subscribedApplicationsIds
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of the IDs of the applications that this effect is enabled for")
-
-  public List<Integer> getSubscribedApplicationsIds() {
-    return subscribedApplicationsIds;
-  }
-
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    this.subscribedApplicationsIds = subscribedApplicationsIds;
-  }
-
-
   public UpdateCustomEffect params(List<TemplateArgDef> params) {
     
     this.params = params;
@@ -244,18 +240,18 @@ public class UpdateCustomEffect {
       return false;
     }
     UpdateCustomEffect updateCustomEffect = (UpdateCustomEffect) o;
-    return Objects.equals(this.name, updateCustomEffect.name) &&
+    return Objects.equals(this.applicationIds, updateCustomEffect.applicationIds) &&
+        Objects.equals(this.name, updateCustomEffect.name) &&
         Objects.equals(this.title, updateCustomEffect.title) &&
         Objects.equals(this.payload, updateCustomEffect.payload) &&
         Objects.equals(this.description, updateCustomEffect.description) &&
         Objects.equals(this.enabled, updateCustomEffect.enabled) &&
-        Objects.equals(this.subscribedApplicationsIds, updateCustomEffect.subscribedApplicationsIds) &&
         Objects.equals(this.params, updateCustomEffect.params);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, payload, description, enabled, subscribedApplicationsIds, params);
+    return Objects.hash(applicationIds, name, title, payload, description, enabled, params);
   }
 
 
@@ -263,12 +259,12 @@ public class UpdateCustomEffect {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateCustomEffect {\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("}");
     return sb.toString();

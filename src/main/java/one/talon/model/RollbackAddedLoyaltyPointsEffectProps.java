@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -50,6 +50,18 @@ public class RollbackAddedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_TRANSACTION_U_U_I_D = "transactionUUID";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_U_U_I_D)
   private String transactionUUID;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_POSITION = "cartItemPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_POSITION)
+  private BigDecimal cartItemPosition;
+
+  public static final String SERIALIZED_NAME_CART_ITEM_SUB_POSITION = "cartItemSubPosition";
+  @SerializedName(SERIALIZED_NAME_CART_ITEM_SUB_POSITION)
+  private BigDecimal cartItemSubPosition;
+
+  public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
+  @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
+  private String cardIdentifier;
 
 
   public RollbackAddedLoyaltyPointsEffectProps programId(Integer programId) {
@@ -162,6 +174,75 @@ public class RollbackAddedLoyaltyPointsEffectProps {
   }
 
 
+  public RollbackAddedLoyaltyPointsEffectProps cartItemPosition(BigDecimal cartItemPosition) {
+    
+    this.cartItemPosition = cartItemPosition;
+    return this;
+  }
+
+   /**
+   * The index of the item in the cart items for which the loyalty points were rolled back.
+   * @return cartItemPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the item in the cart items for which the loyalty points were rolled back.")
+
+  public BigDecimal getCartItemPosition() {
+    return cartItemPosition;
+  }
+
+
+  public void setCartItemPosition(BigDecimal cartItemPosition) {
+    this.cartItemPosition = cartItemPosition;
+  }
+
+
+  public RollbackAddedLoyaltyPointsEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
+    
+    this.cartItemSubPosition = cartItemSubPosition;
+    return this;
+  }
+
+   /**
+   * The sub-position is returned when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled. It indicates to which item the loyalty points were rolled back, for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * @return cartItemSubPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The sub-position is returned when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled. It indicates to which item the loyalty points were rolled back, for cart items with `quantity` > 1. ")
+
+  public BigDecimal getCartItemSubPosition() {
+    return cartItemSubPosition;
+  }
+
+
+  public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
+    this.cartItemSubPosition = cartItemSubPosition;
+  }
+
+
+  public RollbackAddedLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
+    
+    this.cardIdentifier = cardIdentifier;
+    return this;
+  }
+
+   /**
+   * The card on which these points were originally added.
+   * @return cardIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The card on which these points were originally added.")
+
+  public String getCardIdentifier() {
+    return cardIdentifier;
+  }
+
+
+  public void setCardIdentifier(String cardIdentifier) {
+    this.cardIdentifier = cardIdentifier;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -175,12 +256,15 @@ public class RollbackAddedLoyaltyPointsEffectProps {
         Objects.equals(this.subLedgerId, rollbackAddedLoyaltyPointsEffectProps.subLedgerId) &&
         Objects.equals(this.value, rollbackAddedLoyaltyPointsEffectProps.value) &&
         Objects.equals(this.recipientIntegrationId, rollbackAddedLoyaltyPointsEffectProps.recipientIntegrationId) &&
-        Objects.equals(this.transactionUUID, rollbackAddedLoyaltyPointsEffectProps.transactionUUID);
+        Objects.equals(this.transactionUUID, rollbackAddedLoyaltyPointsEffectProps.transactionUUID) &&
+        Objects.equals(this.cartItemPosition, rollbackAddedLoyaltyPointsEffectProps.cartItemPosition) &&
+        Objects.equals(this.cartItemSubPosition, rollbackAddedLoyaltyPointsEffectProps.cartItemSubPosition) &&
+        Objects.equals(this.cardIdentifier, rollbackAddedLoyaltyPointsEffectProps.cardIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, transactionUUID);
+    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier);
   }
 
 
@@ -193,6 +277,9 @@ public class RollbackAddedLoyaltyPointsEffectProps {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    transactionUUID: ").append(toIndentedString(transactionUUID)).append("\n");
+    sb.append("    cartItemPosition: ").append(toIndentedString(cartItemPosition)).append("\n");
+    sb.append("    cartItemSubPosition: ").append(toIndentedString(cartItemSubPosition)).append("\n");
+    sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

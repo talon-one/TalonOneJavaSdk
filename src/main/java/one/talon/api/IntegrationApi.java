@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -27,24 +27,31 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import one.talon.model.Audience;
 import one.talon.model.Coupon;
 import one.talon.model.CouponReservations;
 import one.talon.model.CustomerInventory;
 import one.talon.model.CustomerProfileAudienceRequest;
 import one.talon.model.CustomerProfileIntegrationRequestV2;
+import one.talon.model.ErrorResponse;
+import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse201;
+import one.talon.model.IntegrationCustomerSessionResponse;
+import one.talon.model.IntegrationEventV2Request;
 import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationState;
 import one.talon.model.IntegrationStateV2;
 import one.talon.model.MultipleCustomerProfileIntegrationRequest;
 import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
-import one.talon.model.NewCustomerProfile;
-import one.talon.model.NewCustomerSession;
+import one.talon.model.NewAudience;
 import one.talon.model.NewEvent;
 import one.talon.model.NewReferral;
 import one.talon.model.NewReferralsForMultipleAdvocates;
+import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
+import one.talon.model.ReturnIntegrationRequest;
+import one.talon.model.UpdateAudience;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -72,6 +79,128 @@ public class IntegrationApi {
     }
 
     /**
+     * Build call for createAudienceV2
+     * @param body  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudienceV2Call(NewAudience body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/audiences";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAudienceV2ValidateBeforeCall(NewAudience body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createAudienceV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAudienceV2Call(body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create audience
+     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  To create an audience from an existing audience in mParticle or Segment: 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60; or &#x60;segment&#x60; depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform than mParticle: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     * @param body  (required)
+     * @return Audience
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Audience createAudienceV2(NewAudience body) throws ApiException {
+        ApiResponse<Audience> localVarResp = createAudienceV2WithHttpInfo(body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create audience
+     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  To create an audience from an existing audience in mParticle or Segment: 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60; or &#x60;segment&#x60; depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform than mParticle: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     * @param body  (required)
+     * @return ApiResponse&lt;Audience&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Audience> createAudienceV2WithHttpInfo(NewAudience body) throws ApiException {
+        okhttp3.Call localVarCall = createAudienceV2ValidateBeforeCall(body, null);
+        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create audience (asynchronously)
+     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  To create an audience from an existing audience in mParticle or Segment: 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60; or &#x60;segment&#x60; depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform than mParticle: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     * @param body  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAudienceV2Async(NewAudience body, final ApiCallback<Audience> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAudienceV2ValidateBeforeCall(body, _callback);
+        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createCouponReservation
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
@@ -82,6 +211,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCouponReservationCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
@@ -110,7 +242,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -134,8 +266,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a new coupon reservation
-     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * Create coupon reservation
+     * Create a coupon reservation for specified customer profiles on the specified coupon.  Reserving a coupon allows you to associate a coupon code to a given customer(s). You can then list the reserved coupons of a given customer with the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  If a coupon gets created for a specific user, it will automatically show up in their coupons.  When a user redeems a coupon, a reservation is automatically created after the redemption and the used coupon will be returned in the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  **Important:** - This endpoint creates a **soft** reservation. _Any_ customer   can use a reserved coupon code and proceed to checkout. - To create a hard reservation, use the   [Create coupons](/management-api/#operation/createCoupons) or   [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints   setting the &#x60;recipientsIntegrationId&#x60; property.  For example, you can use this endpoint and &#x60;List customer data&#x60; to create a \&quot;coupon wallet\&quot; by reserving coupon codes for a customer, and then displaying their \&quot;coupon wallet\&quot; when they visit your store. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @return Coupon
@@ -144,6 +276,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public Coupon createCouponReservation(String couponValue, CouponReservations body) throws ApiException {
@@ -152,8 +287,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a new coupon reservation
-     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * Create coupon reservation
+     * Create a coupon reservation for specified customer profiles on the specified coupon.  Reserving a coupon allows you to associate a coupon code to a given customer(s). You can then list the reserved coupons of a given customer with the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  If a coupon gets created for a specific user, it will automatically show up in their coupons.  When a user redeems a coupon, a reservation is automatically created after the redemption and the used coupon will be returned in the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  **Important:** - This endpoint creates a **soft** reservation. _Any_ customer   can use a reserved coupon code and proceed to checkout. - To create a hard reservation, use the   [Create coupons](/management-api/#operation/createCoupons) or   [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints   setting the &#x60;recipientsIntegrationId&#x60; property.  For example, you can use this endpoint and &#x60;List customer data&#x60; to create a \&quot;coupon wallet\&quot; by reserving coupon codes for a customer, and then displaying their \&quot;coupon wallet\&quot; when they visit your store. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @return ApiResponse&lt;Coupon&gt;
@@ -162,6 +297,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Coupon> createCouponReservationWithHttpInfo(String couponValue, CouponReservations body) throws ApiException {
@@ -171,8 +309,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a new coupon reservation (asynchronously)
-     * Creates a coupon reservation for all passed customer profiles on this couponID 
+     * Create coupon reservation (asynchronously)
+     * Create a coupon reservation for specified customer profiles on the specified coupon.  Reserving a coupon allows you to associate a coupon code to a given customer(s). You can then list the reserved coupons of a given customer with the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  If a coupon gets created for a specific user, it will automatically show up in their coupons.  When a user redeems a coupon, a reservation is automatically created after the redemption and the used coupon will be returned in the [List customer data endpoint](/integration-api/#operation/getCustomerInventory).  **Important:** - This endpoint creates a **soft** reservation. _Any_ customer   can use a reserved coupon code and proceed to checkout. - To create a hard reservation, use the   [Create coupons](/management-api/#operation/createCoupons) or   [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints   setting the &#x60;recipientsIntegrationId&#x60; property.  For example, you can use this endpoint and &#x60;List customer data&#x60; to create a \&quot;coupon wallet\&quot; by reserving coupon codes for a customer, and then displaying their \&quot;coupon wallet\&quot; when they visit your store. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -182,6 +320,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createCouponReservationAsync(String couponValue, CouponReservations body, final ApiCallback<Coupon> _callback) throws ApiException {
@@ -201,6 +342,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createReferralCall(NewReferral body, final ApiCallback _callback) throws ApiException {
@@ -228,7 +371,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -247,7 +390,7 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a referral code for an advocate
+     * Create referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
      * @return Referral
@@ -256,6 +399,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public Referral createReferral(NewReferral body) throws ApiException {
@@ -264,7 +409,7 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a referral code for an advocate
+     * Create referral code for an advocate
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
      * @return ApiResponse&lt;Referral&gt;
@@ -273,6 +418,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Referral> createReferralWithHttpInfo(NewReferral body) throws ApiException {
@@ -282,7 +429,7 @@ public class IntegrationApi {
     }
 
     /**
-     * Create a referral code for an advocate (asynchronously)
+     * Create referral code for an advocate (asynchronously)
      * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -292,6 +439,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createReferralAsync(NewReferral body, final ApiCallback<Referral> _callback) throws ApiException {
@@ -304,7 +453,7 @@ public class IntegrationApi {
     /**
      * Build call for createReferralsForMultipleAdvocates
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -313,6 +462,8 @@ public class IntegrationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createReferralsForMultipleAdvocatesCall(NewReferralsForMultipleAdvocates body, String silent, final ApiCallback _callback) throws ApiException {
@@ -344,7 +495,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -366,7 +517,7 @@ public class IntegrationApi {
      * Create referral codes for multiple advocates
      * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @return InlineResponse201
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -374,6 +525,8 @@ public class IntegrationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public InlineResponse201 createReferralsForMultipleAdvocates(NewReferralsForMultipleAdvocates body, String silent) throws ApiException {
@@ -385,7 +538,7 @@ public class IntegrationApi {
      * Create referral codes for multiple advocates
      * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @return ApiResponse&lt;InlineResponse201&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -393,6 +546,8 @@ public class IntegrationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<InlineResponse201> createReferralsForMultipleAdvocatesWithHttpInfo(NewReferralsForMultipleAdvocates body, String silent) throws ApiException {
@@ -405,7 +560,7 @@ public class IntegrationApi {
      * Create referral codes for multiple advocates (asynchronously)
      * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -414,6 +569,8 @@ public class IntegrationApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createReferralsForMultipleAdvocatesAsync(NewReferralsForMultipleAdvocates body, String silent, final ApiCallback<InlineResponse201> _callback) throws ApiException {
@@ -421,6 +578,240 @@ public class IntegrationApi {
         okhttp3.Call localVarCall = createReferralsForMultipleAdvocatesValidateBeforeCall(body, silent, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAudienceMembershipsV2
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceMembershipsV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/audiences/{audienceId}/memberships"
+            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAudienceMembershipsV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling deleteAudienceMembershipsV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAudienceMembershipsV2Call(audienceId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete audience memberships
+     * Remove all members from this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteAudienceMembershipsV2(Integer audienceId) throws ApiException {
+        deleteAudienceMembershipsV2WithHttpInfo(audienceId);
+    }
+
+    /**
+     * Delete audience memberships
+     * Remove all members from this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteAudienceMembershipsV2WithHttpInfo(Integer audienceId) throws ApiException {
+        okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete audience memberships (asynchronously)
+     * Remove all members from this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceMembershipsV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAudienceV2
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/audiences/{audienceId}"
+            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "manager_auth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAudienceV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling deleteAudienceV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAudienceV2Call(audienceId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Delete audience
+     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteAudienceV2(Integer audienceId) throws ApiException {
+        deleteAudienceV2WithHttpInfo(audienceId);
+    }
+
+    /**
+     * Delete audience
+     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteAudienceV2WithHttpInfo(Integer audienceId) throws ApiException {
+        okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete audience (asynchronously)
+     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAudienceV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -434,6 +825,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCouponReservationCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
@@ -449,7 +843,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -462,7 +856,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -487,7 +881,7 @@ public class IntegrationApi {
 
     /**
      * Delete coupon reservations
-     * Removes all passed customer profiles reservation from this coupon 
+     * Remove all passed customer profiles reservation from this coupon. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -495,6 +889,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public void deleteCouponReservation(String couponValue, CouponReservations body) throws ApiException {
@@ -503,7 +900,7 @@ public class IntegrationApi {
 
     /**
      * Delete coupon reservations
-     * Removes all passed customer profiles reservation from this coupon 
+     * Remove all passed customer profiles reservation from this coupon. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -512,6 +909,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteCouponReservationWithHttpInfo(String couponValue, CouponReservations body) throws ApiException {
@@ -521,7 +921,7 @@ public class IntegrationApi {
 
     /**
      * Delete coupon reservations (asynchronously)
-     * Removes all passed customer profiles reservation from this coupon 
+     * Remove all passed customer profiles reservation from this coupon. 
      * @param couponValue The value of a coupon (required)
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -531,6 +931,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCouponReservationAsync(String couponValue, CouponReservations body, final ApiCallback<Void> _callback) throws ApiException {
@@ -541,7 +944,7 @@ public class IntegrationApi {
     }
     /**
      * Build call for deleteCustomerData
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -549,6 +952,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCustomerDataCall(String integrationId, final ApiCallback _callback) throws ApiException {
@@ -564,7 +969,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -577,7 +982,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -596,14 +1001,16 @@ public class IntegrationApi {
     }
 
     /**
-     * Delete the personal data of a customer
-     * Delete all attributes on the customer profile and on entities that reference that customer profile. 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Delete customer&#39;s personal data
+     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public void deleteCustomerData(String integrationId) throws ApiException {
@@ -611,15 +1018,17 @@ public class IntegrationApi {
     }
 
     /**
-     * Delete the personal data of a customer
-     * Delete all attributes on the customer profile and on entities that reference that customer profile. 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Delete customer&#39;s personal data
+     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteCustomerDataWithHttpInfo(String integrationId) throws ApiException {
@@ -628,9 +1037,9 @@ public class IntegrationApi {
     }
 
     /**
-     * Delete the personal data of a customer (asynchronously)
-     * Delete all attributes on the customer profile and on entities that reference that customer profile. 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Delete customer&#39;s personal data (asynchronously)
+     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -638,6 +1047,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCustomerDataAsync(String integrationId, final ApiCallback<Void> _callback) throws ApiException {
@@ -648,12 +1059,13 @@ public class IntegrationApi {
     }
     /**
      * Build call for getCustomerInventory
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param profile optional flag to decide if you would like customer profile information in the response (optional)
-     * @param referrals optional flag to decide if you would like referral information in the response (optional)
-     * @param coupons optional flag to decide if you would like coupon information in the response (optional)
-     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
-     * @param giveaways optional flag to decide if you would like giveaways information in the response (optional)
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
+     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
+     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
+     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
+     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
+     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
+     * @param loyaltyProjectionEndDate Set an end date to query the projected loyalty balances. You can project results up to 31 days from today. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -661,9 +1073,11 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, OffsetDateTime loyaltyProjectionEndDate, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -692,6 +1106,10 @@ public class IntegrationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("giveaways", giveaways));
         }
 
+        if (loyaltyProjectionEndDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("loyaltyProjectionEndDate", loyaltyProjectionEndDate));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -709,12 +1127,12 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, OffsetDateTime loyaltyProjectionEndDate, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
@@ -722,65 +1140,72 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, loyalty, giveaways, _callback);
+        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, loyalty, giveaways, loyaltyProjectionEndDate, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get an inventory of all data associated with a specific customer profile
-     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param profile optional flag to decide if you would like customer profile information in the response (optional)
-     * @param referrals optional flag to decide if you would like referral information in the response (optional)
-     * @param coupons optional flag to decide if you would like coupon information in the response (optional)
-     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
-     * @param giveaways optional flag to decide if you would like giveaways information in the response (optional)
+     * List customer data
+     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points and reserved coupons. Reserved coupons also include redeemed coupons.  You can also use this endpoint to get the projected loyalty balances in order to notify your customers about points that are about to expire, or to remind them how many points they have. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
+     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
+     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
+     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
+     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
+     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
+     * @param loyaltyProjectionEndDate Set an end date to query the projected loyalty balances. You can project results up to 31 days from today. (optional)
      * @return CustomerInventory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways) throws ApiException {
-        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals, coupons, loyalty, giveaways);
+    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, OffsetDateTime loyaltyProjectionEndDate) throws ApiException {
+        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals, coupons, loyalty, giveaways, loyaltyProjectionEndDate);
         return localVarResp.getData();
     }
 
     /**
-     * Get an inventory of all data associated with a specific customer profile
-     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param profile optional flag to decide if you would like customer profile information in the response (optional)
-     * @param referrals optional flag to decide if you would like referral information in the response (optional)
-     * @param coupons optional flag to decide if you would like coupon information in the response (optional)
-     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
-     * @param giveaways optional flag to decide if you would like giveaways information in the response (optional)
+     * List customer data
+     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points and reserved coupons. Reserved coupons also include redeemed coupons.  You can also use this endpoint to get the projected loyalty balances in order to notify your customers about points that are about to expire, or to remind them how many points they have. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
+     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
+     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
+     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
+     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
+     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
+     * @param loyaltyProjectionEndDate Set an end date to query the projected loyalty balances. You can project results up to 31 days from today. (optional)
      * @return ApiResponse&lt;CustomerInventory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, null);
+    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, OffsetDateTime loyaltyProjectionEndDate) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, loyaltyProjectionEndDate, null);
         Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get an inventory of all data associated with a specific customer profile (asynchronously)
-     * Get information regarding entities referencing this customer profile&#39;s integrationId. Currently we support customer profile information, referral codes and reserved coupons. In the future, this will be expanded with loyalty points.
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
-     * @param profile optional flag to decide if you would like customer profile information in the response (optional)
-     * @param referrals optional flag to decide if you would like referral information in the response (optional)
-     * @param coupons optional flag to decide if you would like coupon information in the response (optional)
-     * @param loyalty optional flag to decide if you would like loyalty information in the response (optional)
-     * @param giveaways optional flag to decide if you would like giveaways information in the response (optional)
+     * List customer data (asynchronously)
+     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points and reserved coupons. Reserved coupons also include redeemed coupons.  You can also use this endpoint to get the projected loyalty balances in order to notify your customers about points that are about to expire, or to remind them how many points they have. 
+     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration Id with the [Update customer session endpoint](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2). - The Management API with the [List application&#39;s customers endpoint](https://docs.talon.one/management-api/#operation/getApplicationCustomers).  (required)
+     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
+     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
+     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
+     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
+     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
+     * @param loyaltyProjectionEndDate Set an end date to query the projected loyalty balances. You can project results up to 31 days from today. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -788,12 +1213,133 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, final ApiCallback<CustomerInventory> _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, OffsetDateTime loyaltyProjectionEndDate, final ApiCallback<CustomerInventory> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, _callback);
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, loyaltyProjectionEndDate, _callback);
         Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCustomerSession
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCustomerSessionCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/customer_sessions/{customerSessionId}"
+            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCustomerSessionValidateBeforeCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'customerSessionId' is set
+        if (customerSessionId == null) {
+            throw new ApiException("Missing the required parameter 'customerSessionId' when calling getCustomerSession(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCustomerSessionCall(customerSessionId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Get customer session
+     * Get customer session data. 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @return IntegrationCustomerSessionResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationCustomerSessionResponse getCustomerSession(String customerSessionId) throws ApiException {
+        ApiResponse<IntegrationCustomerSessionResponse> localVarResp = getCustomerSessionWithHttpInfo(customerSessionId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get customer session
+     * Get customer session data. 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @return ApiResponse&lt;IntegrationCustomerSessionResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IntegrationCustomerSessionResponse> getCustomerSessionWithHttpInfo(String customerSessionId) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerSessionValidateBeforeCall(customerSessionId, null);
+        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get customer session (asynchronously)
+     * Get customer session data. 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCustomerSessionAsync(String customerSessionId, final ApiCallback<IntegrationCustomerSessionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCustomerSessionValidateBeforeCall(customerSessionId, _callback);
+        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -807,6 +1353,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getReservedCustomersCall(String couponValue, final ApiCallback _callback) throws ApiException {
@@ -835,7 +1384,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -854,8 +1403,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Get the users that have this coupon reserved
-     * Returns all users that have this coupon marked as reserved 
+     * List customers that have this coupon reserved
+     * Return all customers that have this coupon marked as reserved.  Coupons are reserved in the following ways: - To create a soft reservation (any customer can use the coupon), use the [Create coupon reservation](#operation/createCouponReservation) endpoint. - To create a hard reservation (only the given customer can use the coupon), create a coupon in the Campaign Manager for a given &#x60;recipientIntegrationId&#x60; or use the [Create coupons](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints. 
      * @param couponValue The value of a coupon (required)
      * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -863,6 +1412,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public InlineResponse200 getReservedCustomers(String couponValue) throws ApiException {
@@ -871,8 +1423,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Get the users that have this coupon reserved
-     * Returns all users that have this coupon marked as reserved 
+     * List customers that have this coupon reserved
+     * Return all customers that have this coupon marked as reserved.  Coupons are reserved in the following ways: - To create a soft reservation (any customer can use the coupon), use the [Create coupon reservation](#operation/createCouponReservation) endpoint. - To create a hard reservation (only the given customer can use the coupon), create a coupon in the Campaign Manager for a given &#x60;recipientIntegrationId&#x60; or use the [Create coupons](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints. 
      * @param couponValue The value of a coupon (required)
      * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -880,6 +1432,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<InlineResponse200> getReservedCustomersWithHttpInfo(String couponValue) throws ApiException {
@@ -889,8 +1444,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Get the users that have this coupon reserved (asynchronously)
-     * Returns all users that have this coupon marked as reserved 
+     * List customers that have this coupon reserved (asynchronously)
+     * Return all customers that have this coupon marked as reserved.  Coupons are reserved in the following ways: - To create a soft reservation (any customer can use the coupon), use the [Create coupon reservation](#operation/createCouponReservation) endpoint. - To create a hard reservation (only the given customer can use the coupon), create a coupon in the Campaign Manager for a given &#x60;recipientIntegrationId&#x60; or use the [Create coupons](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients](/management-api/#operation/createCouponsForMultipleRecipients) endpoints. 
      * @param couponValue The value of a coupon (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -899,12 +1454,151 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getReservedCustomersAsync(String couponValue, final ApiCallback<InlineResponse200> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReservedCustomersValidateBeforeCall(couponValue, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for returnCartItems
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param body  (required)
+     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call returnCartItemsCall(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/customer_sessions/{customerSessionId}/returns"
+            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (dry != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dry", dry));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call returnCartItemsValidateBeforeCall(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'customerSessionId' is set
+        if (customerSessionId == null) {
+            throw new ApiException("Missing the required parameter 'customerSessionId' when calling returnCartItems(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling returnCartItems(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = returnCartItemsCall(customerSessionId, body, dry, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Return cart items
+     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially returned&#x60;.  Its behavior depends on whether [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled for the campaign.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param body  (required)
+     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @return IntegrationStateV2
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public IntegrationStateV2 returnCartItems(String customerSessionId, ReturnIntegrationRequest body, Boolean dry) throws ApiException {
+        ApiResponse<IntegrationStateV2> localVarResp = returnCartItemsWithHttpInfo(customerSessionId, body, dry);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Return cart items
+     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially returned&#x60;.  Its behavior depends on whether [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled for the campaign.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param body  (required)
+     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @return ApiResponse&lt;IntegrationStateV2&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IntegrationStateV2> returnCartItemsWithHttpInfo(String customerSessionId, ReturnIntegrationRequest body, Boolean dry) throws ApiException {
+        okhttp3.Call localVarCall = returnCartItemsValidateBeforeCall(customerSessionId, body, dry, null);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Return cart items (asynchronously)
+     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially returned&#x60;.  Its behavior depends on whether [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items) is enabled for the campaign.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
+     * @param body  (required)
+     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call returnCartItemsAsync(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = returnCartItemsValidateBeforeCall(customerSessionId, body, dry, _callback);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -919,6 +1613,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call trackEventCall(NewEvent body, Boolean dry, final ApiCallback _callback) throws ApiException {
@@ -950,7 +1647,7 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -969,8 +1666,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Track an Event
-     * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
+     * Track event
+     * **Important:** This endpoint is **DEPRECATED**. Use [Track Event V2](https://docs.talon.one/integration-api/#tag/Events/operation/trackEventV2) instead.  &gt; Triggers a custom event in a customer session. You can then check this event in your rules. **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event. &gt; For example, use this endpoint to trigger an event when a user updates their payment information.  &gt; Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;.  See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  &gt; An event is always part of a session. If either the profile or the session does not exist, a new empty profile/session is created. If the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned. 
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @return IntegrationState
@@ -979,6 +1676,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public IntegrationState trackEvent(NewEvent body, Boolean dry) throws ApiException {
@@ -987,8 +1687,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Track an Event
-     * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
+     * Track event
+     * **Important:** This endpoint is **DEPRECATED**. Use [Track Event V2](https://docs.talon.one/integration-api/#tag/Events/operation/trackEventV2) instead.  &gt; Triggers a custom event in a customer session. You can then check this event in your rules. **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event. &gt; For example, use this endpoint to trigger an event when a user updates their payment information.  &gt; Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;.  See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  &gt; An event is always part of a session. If either the profile or the session does not exist, a new empty profile/session is created. If the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned. 
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @return ApiResponse&lt;IntegrationState&gt;
@@ -997,6 +1697,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IntegrationState> trackEventWithHttpInfo(NewEvent body, Boolean dry) throws ApiException {
@@ -1006,8 +1709,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Track an Event (asynchronously)
-     * Records an arbitrary event in a customer session. For example, an integration might record an event when a user updates their payment information.  The &#x60;sessionId&#x60; body parameter is required, an event is always part of a session. Much like updating a customer session, if either the profile or the session do not exist, a new empty one will be created. Note that if the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned.  As with customer sessions, you can use an empty string for &#x60;profileId&#x60; to indicate that this is an anonymous session.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place. 
+     * Track event (asynchronously)
+     * **Important:** This endpoint is **DEPRECATED**. Use [Track Event V2](https://docs.talon.one/integration-api/#tag/Events/operation/trackEventV2) instead.  &gt; Triggers a custom event in a customer session. You can then check this event in your rules. **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event. &gt; For example, use this endpoint to trigger an event when a user updates their payment information.  &gt; Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;.  See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  &gt; An event is always part of a session. If either the profile or the session does not exist, a new empty profile/session is created. If the specified session already exists, it must belong to the same &#x60;profileId&#x60; or an error will be returned. 
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1017,6 +1720,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call trackEventAsync(NewEvent body, Boolean dry, final ApiCallback<IntegrationState> _callback) throws ApiException {
@@ -1027,9 +1733,9 @@ public class IntegrationApi {
         return localVarCall;
     }
     /**
-     * Build call for updateCustomerProfile
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Build call for trackEventV2
      * @param body  (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1038,19 +1744,22 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call updateCustomerProfileCall(String integrationId, NewCustomerProfile body, Boolean dry, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call trackEventV2Call(IntegrationEventV2Request body, String silent, Boolean dry, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/v1/customer_profiles/{integrationId}"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/v2/events";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (silent != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("silent", silent));
+        }
+
         if (dry != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("dry", dry));
         }
@@ -1072,78 +1781,72 @@ public class IntegrationApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerProfileValidateBeforeCall(String integrationId, NewCustomerProfile body, Boolean dry, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling updateCustomerProfile(Async)");
-        }
+    private okhttp3.Call trackEventV2ValidateBeforeCall(IntegrationEventV2Request body, String silent, Boolean dry, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfile(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling trackEventV2(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateCustomerProfileCall(integrationId, body, dry, _callback);
+        okhttp3.Call localVarCall = trackEventV2Call(body, silent, dry, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update a Customer Profile V1
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Track event V2
+     * Triggers a custom event. You can then check this event in your rules.  **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a user updates their payment information.  Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;. See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  **Important:** &#x60;profileId&#x60; is required. An event V2 is associated with a customer profile. 
      * @param body  (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @return IntegrationState
+     * @return IntegrationStateV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public IntegrationState updateCustomerProfile(String integrationId, NewCustomerProfile body, Boolean dry) throws ApiException {
-        ApiResponse<IntegrationState> localVarResp = updateCustomerProfileWithHttpInfo(integrationId, body, dry);
+    public IntegrationStateV2 trackEventV2(IntegrationEventV2Request body, String silent, Boolean dry) throws ApiException {
+        ApiResponse<IntegrationStateV2> localVarResp = trackEventV2WithHttpInfo(body, silent, dry);
         return localVarResp.getData();
     }
 
     /**
-     * Update a Customer Profile V1
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Track event V2
+     * Triggers a custom event. You can then check this event in your rules.  **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a user updates their payment information.  Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;. See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  **Important:** &#x60;profileId&#x60; is required. An event V2 is associated with a customer profile. 
      * @param body  (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @return ApiResponse&lt;IntegrationState&gt;
+     * @return ApiResponse&lt;IntegrationStateV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public ApiResponse<IntegrationState> updateCustomerProfileWithHttpInfo(String integrationId, NewCustomerProfile body, Boolean dry) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomerProfileValidateBeforeCall(integrationId, body, dry, null);
-        Type localVarReturnType = new TypeToken<IntegrationState>(){}.getType();
+    public ApiResponse<IntegrationStateV2> trackEventV2WithHttpInfo(IntegrationEventV2Request body, String silent, Boolean dry) throws ApiException {
+        okhttp3.Call localVarCall = trackEventV2ValidateBeforeCall(body, silent, dry, null);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update a Customer Profile V1 (asynchronously)
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](/Getting-Started/APIV2).  Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile). This profile information can then be matched and/or updated by campaign [Rules][].  The &#x60;integrationId&#x60; may be any identifier that will remain stable for the customer. For example, you might use a database ID, an email, or a phone number as the &#x60;integrationId&#x60;. It is vital that this ID **not** change over time, so **don&#39;t** use any identifier that the customer can update themselves. E.g. if your application allows a customer to update their e-mail address, you should instead use a database ID.  Updating a customer profile will return a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  [Customer Profile]: /Getting-Started/entities#customer-profile [Rules]: /Getting-Started/entities#campaigns-rulesets-and-coupons 
-     * @param integrationId The custom identifier for this profile, must be unique within the account. (required)
+     * Track event V2 (asynchronously)
+     * Triggers a custom event. You can then check this event in your rules.  **Important:** Talon.One offers a set of [built-in events](/docs/dev/concepts/events), ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a user updates their payment information.  Before using this endpoint, create your event as a custom attribute of type &#x60;event&#x60;. See the [Developer docs](/docs/dev/concepts/events/#creating-a-custom-event).  **Important:** &#x60;profileId&#x60; is required. An event V2 is associated with a customer profile. 
      * @param body  (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1152,14 +1855,266 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
-     * @deprecated
      */
-    @Deprecated
-    public okhttp3.Call updateCustomerProfileAsync(String integrationId, NewCustomerProfile body, Boolean dry, final ApiCallback<IntegrationState> _callback) throws ApiException {
+    public okhttp3.Call trackEventV2Async(IntegrationEventV2Request body, String silent, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomerProfileValidateBeforeCall(integrationId, body, dry, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationState>(){}.getType();
+        okhttp3.Call localVarCall = trackEventV2ValidateBeforeCall(body, silent, dry, _callback);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAudienceCustomersAttributes
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceCustomersAttributesCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/audience_customers/{audienceId}/attributes"
+            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAudienceCustomersAttributesValidateBeforeCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling updateAudienceCustomersAttributes(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateAudienceCustomersAttributes(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateAudienceCustomersAttributesCall(audienceId, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update profile attributes for all customers in audience
+     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateAudienceCustomersAttributes(Integer audienceId, Object body) throws ApiException {
+        updateAudienceCustomersAttributesWithHttpInfo(audienceId, body);
+    }
+
+    /**
+     * Update profile attributes for all customers in audience
+     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateAudienceCustomersAttributesWithHttpInfo(Integer audienceId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Update profile attributes for all customers in audience (asynchronously)
+     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceCustomersAttributesAsync(Integer audienceId, Object body, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAudienceV2
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceV2Call(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v2/audiences/{audienceId}"
+            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "api_key_v1" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAudienceV2ValidateBeforeCall(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling updateAudienceV2(Async)");
+        }
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateAudienceV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateAudienceV2Call(audienceId, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update audience
+     * Update an Audience created by a third-party integration. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @return Audience
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public Audience updateAudienceV2(Integer audienceId, UpdateAudience body) throws ApiException {
+        ApiResponse<Audience> localVarResp = updateAudienceV2WithHttpInfo(audienceId, body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update audience
+     * Update an Audience created by a third-party integration. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @return ApiResponse&lt;Audience&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Audience> updateAudienceV2WithHttpInfo(Integer audienceId, UpdateAudience body) throws ApiException {
+        okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, null);
+        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update audience (asynchronously)
+     * Update an Audience created by a third-party integration. 
+     * @param audienceId The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2). (required)
+     * @param body  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAudienceV2Async(Integer audienceId, UpdateAudience body, final ApiCallback<Audience> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, _callback);
+        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1173,6 +2128,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfileAudiencesCall(CustomerProfileAudienceRequest body, final ApiCallback _callback) throws ApiException {
@@ -1187,7 +2145,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1219,14 +2177,17 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile Audiences
-     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * Update multiple customer profiles&#39; audiences
+     * Update the specified customer profiles with the specified audiences. Use this endpoint when customers join or leave audiences.  The limit of customer profiles per request is 1000. 
      * @param body  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public void updateCustomerProfileAudiences(CustomerProfileAudienceRequest body) throws ApiException {
@@ -1234,8 +2195,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile Audiences
-     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * Update multiple customer profiles&#39; audiences
+     * Update the specified customer profiles with the specified audiences. Use this endpoint when customers join or leave audiences.  The limit of customer profiles per request is 1000. 
      * @param body  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1243,6 +2204,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> updateCustomerProfileAudiencesWithHttpInfo(CustomerProfileAudienceRequest body) throws ApiException {
@@ -1251,8 +2215,8 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile Audiences (asynchronously)
-     * Update one ore multiple Customer Profiles with the specified Audiences 
+     * Update multiple customer profiles&#39; audiences (asynchronously)
+     * Update the specified customer profiles with the specified audiences. Use this endpoint when customers join or leave audiences.  The limit of customer profiles per request is 1000. 
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1261,6 +2225,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfileAudiencesAsync(CustomerProfileAudienceRequest body, final ApiCallback<Void> _callback) throws ApiException {
@@ -1271,9 +2238,9 @@ public class IntegrationApi {
     }
     /**
      * Build call for updateCustomerProfileV2
-     * @param integrationId The custom identifier for this profile. Must be unique within the account. (required)
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body  (required)
-     * @param runRuleEngine Indicates whether to run the rule engine. (optional, default to false)
+     * @param runRuleEngine Indicates whether to run the rule engine. Setting this property to &#x60;false&#x60; improves response times. (optional, default to false)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. Only used when &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1282,6 +2249,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfileV2Call(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
@@ -1342,11 +2312,11 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile
-     * Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
-     * @param integrationId The custom identifier for this profile. Must be unique within the account. (required)
+     * Update customer profile
+     * Update (or create) a [Customer Profile](/docs/dev/concepts/entities#customer-profile).  **Performance tips**  Updating a customer profile returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  You can also set &#x60;runRuleEngine&#x60; to &#x60;false&#x60; to prevent unwanted rule executions. This allows you to improve response times.  If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. 
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body  (required)
-     * @param runRuleEngine Indicates whether to run the rule engine. (optional, default to false)
+     * @param runRuleEngine Indicates whether to run the rule engine. Setting this property to &#x60;false&#x60; improves response times. (optional, default to false)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. Only used when &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;.  (optional)
      * @return IntegrationStateV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1354,6 +2324,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public IntegrationStateV2 updateCustomerProfileV2(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
@@ -1362,11 +2335,11 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile
-     * Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
-     * @param integrationId The custom identifier for this profile. Must be unique within the account. (required)
+     * Update customer profile
+     * Update (or create) a [Customer Profile](/docs/dev/concepts/entities#customer-profile).  **Performance tips**  Updating a customer profile returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  You can also set &#x60;runRuleEngine&#x60; to &#x60;false&#x60; to prevent unwanted rule executions. This allows you to improve response times.  If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. 
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body  (required)
-     * @param runRuleEngine Indicates whether to run the rule engine. (optional, default to false)
+     * @param runRuleEngine Indicates whether to run the rule engine. Setting this property to &#x60;false&#x60; improves response times. (optional, default to false)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. Only used when &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;.  (optional)
      * @return ApiResponse&lt;IntegrationStateV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1374,6 +2347,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IntegrationStateV2> updateCustomerProfileV2WithHttpInfo(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
@@ -1383,11 +2359,11 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Profile (asynchronously)
-     * Update (or create) a [Customer Profile](https://developers.talon.one/Getting-Started/entities#customer-profile).  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Updating a customer profile returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter. 
-     * @param integrationId The custom identifier for this profile. Must be unique within the account. (required)
+     * Update customer profile (asynchronously)
+     * Update (or create) a [Customer Profile](/docs/dev/concepts/entities#customer-profile).  **Performance tips**  Updating a customer profile returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  You can also set &#x60;runRuleEngine&#x60; to &#x60;false&#x60; to prevent unwanted rule executions. This allows you to improve response times.  If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. 
+     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body  (required)
-     * @param runRuleEngine Indicates whether to run the rule engine. (optional, default to false)
+     * @param runRuleEngine Indicates whether to run the rule engine. Setting this property to &#x60;false&#x60; improves response times. (optional, default to false)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. Only used when &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1396,6 +2372,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfileV2Async(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
@@ -1408,7 +2387,7 @@ public class IntegrationApi {
     /**
      * Build call for updateCustomerProfilesV2
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1416,6 +2395,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfilesV2Call(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback _callback) throws ApiException {
@@ -1466,16 +2447,18 @@ public class IntegrationApi {
     }
 
     /**
-     * Update multiple Customer Profiles
-     * Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
+     * Update multiple customer profiles
+     * Update (or create) up to 1000 [customer profiles](/docs/dev/concepts/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](/integration-api/#tag/Customer-sessions). 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @return MultipleCustomerProfileIntegrationResponseV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
@@ -1484,16 +2467,18 @@ public class IntegrationApi {
     }
 
     /**
-     * Update multiple Customer Profiles
-     * Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
+     * Update multiple customer profiles
+     * Update (or create) up to 1000 [customer profiles](/docs/dev/concepts/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](/integration-api/#tag/Customer-sessions). 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @return ApiResponse&lt;MultipleCustomerProfileIntegrationResponseV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MultipleCustomerProfileIntegrationResponseV2> updateCustomerProfilesV2WithHttpInfo(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
@@ -1503,10 +2488,10 @@ public class IntegrationApi {
     }
 
     /**
-     * Update multiple Customer Profiles (asynchronously)
-     * Update (or create) up to 1000 [Customer Profiles](https://developers.talon.one/Getting-Started/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://developers.talon.one/Integration-API/API-Reference#updateCustomerSessionV2). 
+     * Update multiple customer profiles (asynchronously)
+     * Update (or create) up to 1000 [customer profiles](/docs/dev/concepts/entities#customer-profile) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](/integration-api/#tag/Customer-sessions). 
      * @param body  (required)
-     * @param silent If set to &#x60;yes&#x60;, response will be an empty 204, otherwise a list of integration states will be generated (up to 1000). (optional)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains essential data such as the updated customer profiles and session-related information.  (optional, default to &quot;yes&quot;)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1514,6 +2499,8 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerProfilesV2Async(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback<MultipleCustomerProfileIntegrationResponseV2> _callback) throws ApiException {
@@ -1524,145 +2511,8 @@ public class IntegrationApi {
         return localVarCall;
     }
     /**
-     * Build call for updateCustomerSession
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param body  (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public okhttp3.Call updateCustomerSessionCall(String customerSessionId, NewCustomerSession body, Boolean dry, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = body;
-
-        // create path and map variables
-        String localVarPath = "/v1/customer_sessions/{customerSessionId}"
-            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (dry != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dry", dry));
-        }
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "api_key_v1", "integration_auth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerSessionValidateBeforeCall(String customerSessionId, NewCustomerSession body, Boolean dry, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'customerSessionId' is set
-        if (customerSessionId == null) {
-            throw new ApiException("Missing the required parameter 'customerSessionId' when calling updateCustomerSession(Async)");
-        }
-        
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerSession(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = updateCustomerSessionCall(customerSessionId, body, dry, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Update a Customer Session V1
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param body  (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @return IntegrationState
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public IntegrationState updateCustomerSession(String customerSessionId, NewCustomerSession body, Boolean dry) throws ApiException {
-        ApiResponse<IntegrationState> localVarResp = updateCustomerSessionWithHttpInfo(customerSessionId, body, dry);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Update a Customer Session V1
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param body  (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @return ApiResponse&lt;IntegrationState&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<IntegrationState> updateCustomerSessionWithHttpInfo(String customerSessionId, NewCustomerSession body, Boolean dry) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomerSessionValidateBeforeCall(customerSessionId, body, dry, null);
-        Type localVarReturnType = new TypeToken<IntegrationState>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Update a Customer Session V1 (asynchronously)
-     * ⚠️ Deprecation Notice: Support for requests to this endpoint will end on 15.07.2021. We will not remove the endpoint, and it will still be accessible for you to use. For new features support, migrate to [API V2.0](https://developers.talon.one/Getting-Started/APIV2).  Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer profile returns a response with the full integration state. This includes the current state of the customer profile, the customer session, the event that was recorded, and an array of effects that took place.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
-     * @param body  (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-     </table>
-     * @deprecated
-     */
-    @Deprecated
-    public okhttp3.Call updateCustomerSessionAsync(String customerSessionId, NewCustomerSession body, Boolean dry, final ApiCallback<IntegrationState> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateCustomerSessionValidateBeforeCall(customerSessionId, body, dry, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationState>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for updateCustomerSessionV2
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param _callback Callback for upload/download progress
@@ -1672,6 +2522,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerSessionV2Call(String customerSessionId, IntegrationRequest body, Boolean dry, final ApiCallback _callback) throws ApiException {
@@ -1728,9 +2581,9 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session
-     * Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
+     * Update customer session
+     * Update or create a [customer session](/docs/dev/concepts/entities#customer-session). For example, use this endpoint to share the content of a customer&#39;s cart with Talon.One and to check which promotion rules apply.  **Note:** The currency for the session and the cart items in the session is the same as the Application that owns this session.  **Session management**  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same Application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  See more information and tips about session management in the [documentation](/docs/dev/concepts/entities#customer-session).  **Sessions and customer profiles**  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead.  **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  **Performance tips**  Updating a customer session returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  For more information, see the [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @return IntegrationStateV2
@@ -1739,6 +2592,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public IntegrationStateV2 updateCustomerSessionV2(String customerSessionId, IntegrationRequest body, Boolean dry) throws ApiException {
@@ -1747,9 +2603,9 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session
-     * Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
+     * Update customer session
+     * Update or create a [customer session](/docs/dev/concepts/entities#customer-session). For example, use this endpoint to share the content of a customer&#39;s cart with Talon.One and to check which promotion rules apply.  **Note:** The currency for the session and the cart items in the session is the same as the Application that owns this session.  **Session management**  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same Application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  See more information and tips about session management in the [documentation](/docs/dev/concepts/entities#customer-session).  **Sessions and customer profiles**  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead.  **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  **Performance tips**  Updating a customer session returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  For more information, see the [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @return ApiResponse&lt;IntegrationStateV2&gt;
@@ -1758,6 +2614,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IntegrationStateV2> updateCustomerSessionV2WithHttpInfo(String customerSessionId, IntegrationRequest body, Boolean dry) throws ApiException {
@@ -1767,9 +2626,9 @@ public class IntegrationApi {
     }
 
     /**
-     * Update a Customer Session (asynchronously)
-     * Update (or create) a [Customer Session](https://developers.talon.one/Getting-Started/entities#customer-session). For example, use this endpoint to represent which items are in the customer&#39;s cart.  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. To track an anonymous session use the empty string (&#x60;\&quot;\&quot;&#x60;) as the &#x60;profileId&#x60;. **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  Updating a customer session returns a response with the requested integration state. If &#x60;runRuleEngine&#x60; is set to &#x60;true&#x60;, the response includes:  - The effects generated by the triggered campaigns. - The created coupons and referral objects. - Any entity that was requested in the &#x60;responseContent&#x60; request parameter.  The currency for the session and the cart items in the session is the same as that of the application with which the session is associated. 
-     * @param customerSessionId The custom identifier for this session, must be unique within the account. (required)
+     * Update customer session (asynchronously)
+     * Update or create a [customer session](/docs/dev/concepts/entities#customer-session). For example, use this endpoint to share the content of a customer&#39;s cart with Talon.One and to check which promotion rules apply.  **Note:** The currency for the session and the cart items in the session is the same as the Application that owns this session.  **Session management**  The Talon.One platform supports multiple simultaneous sessions for the same profile. If you have multiple ways of accessing the same Application you can either:  - Track multiple independent sessions or, - Use the same session across all of them.  You should share sessions when application access points share other state, such as the user&#39;s cart. If two points of access to the application have independent states, for example a user can have different items in their cart across the two) they should use independent customer session ID&#39;s.  See more information and tips about session management in the [documentation](/docs/dev/concepts/entities#customer-session).  **Sessions and customer profiles**  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead.  **Note:** You do **not** have to create a customer profile first. If the specified profile does not exist, an empty profile is created automatically.  **Performance tips**  Updating a customer session returns a response with the requested integration state.  You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get the customer profile details directly without extra requests.  For more information, see the [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session endpoint](https://docs.talon.one/management-api/#operation/getApplicationSessions).  (required)
      * @param body  (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1779,6 +2638,9 @@ public class IntegrationApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Too many requests - Avoid parallel requests, see the [docs](/docs/dev/tutorials/integrating-talon-one/#managing-parallel-requests) </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateCustomerSessionV2Async(String customerSessionId, IntegrationRequest body, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {

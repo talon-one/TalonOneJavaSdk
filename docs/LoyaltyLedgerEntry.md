@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **programID** | **Integer** |  | 
-**customerProfileID** | **String** |  | 
+**customerProfileID** | **String** |  |  [optional]
+**cardID** | **Integer** |  |  [optional]
 **customerSessionID** | **String** |  |  [optional]
 **eventID** | **Integer** |  |  [optional]
 **type** | **String** | The type of the ledger transaction. Possible values are addition, subtraction, expire or expiring (for expiring points ledgers)  | 

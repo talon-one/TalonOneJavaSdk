@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -101,6 +101,10 @@ public class AccountAnalytics {
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
   private Integer loyaltyPrograms;
 
+  public static final String SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS = "liveLoyaltyPrograms";
+  @SerializedName(SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS)
+  private Integer liveLoyaltyPrograms;
+
 
   public AccountAnalytics applications(Integer applications) {
     
@@ -112,7 +116,7 @@ public class AccountAnalytics {
    * Total number of applications in the account
    * @return applications
   **/
-  @ApiModelProperty(required = true, value = "Total number of applications in the account")
+  @ApiModelProperty(example = "11", required = true, value = "Total number of applications in the account")
 
   public Integer getApplications() {
     return applications;
@@ -134,7 +138,7 @@ public class AccountAnalytics {
    * Total number of live applications in the account
    * @return liveApplications
   **/
-  @ApiModelProperty(required = true, value = "Total number of live applications in the account")
+  @ApiModelProperty(example = "6", required = true, value = "Total number of live applications in the account")
 
   public Integer getLiveApplications() {
     return liveApplications;
@@ -156,7 +160,7 @@ public class AccountAnalytics {
    * Total number of sandbox applications in the account
    * @return sandboxApplications
   **/
-  @ApiModelProperty(required = true, value = "Total number of sandbox applications in the account")
+  @ApiModelProperty(example = "2", required = true, value = "Total number of sandbox applications in the account")
 
   public Integer getSandboxApplications() {
     return sandboxApplications;
@@ -178,7 +182,7 @@ public class AccountAnalytics {
    * Total number of campaigns in the account
    * @return campaigns
   **/
-  @ApiModelProperty(required = true, value = "Total number of campaigns in the account")
+  @ApiModelProperty(example = "35", required = true, value = "Total number of campaigns in the account")
 
   public Integer getCampaigns() {
     return campaigns;
@@ -200,7 +204,7 @@ public class AccountAnalytics {
    * Total number of active campaigns in the account
    * @return activeCampaigns
   **/
-  @ApiModelProperty(required = true, value = "Total number of active campaigns in the account")
+  @ApiModelProperty(example = "15", required = true, value = "Total number of active campaigns in the account")
 
   public Integer getActiveCampaigns() {
     return activeCampaigns;
@@ -222,7 +226,7 @@ public class AccountAnalytics {
    * Total number of active campaigns in live applications in the account
    * @return liveActiveCampaigns
   **/
-  @ApiModelProperty(required = true, value = "Total number of active campaigns in live applications in the account")
+  @ApiModelProperty(example = "10", required = true, value = "Total number of active campaigns in live applications in the account")
 
   public Integer getLiveActiveCampaigns() {
     return liveActiveCampaigns;
@@ -244,7 +248,7 @@ public class AccountAnalytics {
    * Total number of coupons in the account
    * @return coupons
   **/
-  @ApiModelProperty(required = true, value = "Total number of coupons in the account")
+  @ApiModelProperty(example = "850", required = true, value = "Total number of coupons in the account")
 
   public Integer getCoupons() {
     return coupons;
@@ -266,7 +270,7 @@ public class AccountAnalytics {
    * Total number of active coupons in the account
    * @return activeCoupons
   **/
-  @ApiModelProperty(required = true, value = "Total number of active coupons in the account")
+  @ApiModelProperty(example = "650", required = true, value = "Total number of active coupons in the account")
 
   public Integer getActiveCoupons() {
     return activeCoupons;
@@ -288,7 +292,7 @@ public class AccountAnalytics {
    * Total number of expired coupons in the account
    * @return expiredCoupons
   **/
-  @ApiModelProperty(required = true, value = "Total number of expired coupons in the account")
+  @ApiModelProperty(example = "200", required = true, value = "Total number of expired coupons in the account")
 
   public Integer getExpiredCoupons() {
     return expiredCoupons;
@@ -310,7 +314,7 @@ public class AccountAnalytics {
    * Total number of referral codes in the account
    * @return referralCodes
   **/
-  @ApiModelProperty(required = true, value = "Total number of referral codes in the account")
+  @ApiModelProperty(example = "500", required = true, value = "Total number of referral codes in the account")
 
   public Integer getReferralCodes() {
     return referralCodes;
@@ -332,7 +336,7 @@ public class AccountAnalytics {
    * Total number of active referral codes in the account
    * @return activeReferralCodes
   **/
-  @ApiModelProperty(required = true, value = "Total number of active referral codes in the account")
+  @ApiModelProperty(example = "100", required = true, value = "Total number of active referral codes in the account")
 
   public Integer getActiveReferralCodes() {
     return activeReferralCodes;
@@ -354,7 +358,7 @@ public class AccountAnalytics {
    * Total number of expired referral codes in the account
    * @return expiredReferralCodes
   **/
-  @ApiModelProperty(required = true, value = "Total number of expired referral codes in the account")
+  @ApiModelProperty(example = "400", required = true, value = "Total number of expired referral codes in the account")
 
   public Integer getExpiredReferralCodes() {
     return expiredReferralCodes;
@@ -376,7 +380,7 @@ public class AccountAnalytics {
    * Total number of active rules in the account
    * @return activeRules
   **/
-  @ApiModelProperty(required = true, value = "Total number of active rules in the account")
+  @ApiModelProperty(example = "35", required = true, value = "Total number of active rules in the account")
 
   public Integer getActiveRules() {
     return activeRules;
@@ -420,7 +424,7 @@ public class AccountAnalytics {
    * Total number of roles in the account
    * @return roles
   **/
-  @ApiModelProperty(required = true, value = "Total number of roles in the account")
+  @ApiModelProperty(example = "10", required = true, value = "Total number of roles in the account")
 
   public Integer getRoles() {
     return roles;
@@ -442,7 +446,7 @@ public class AccountAnalytics {
    * Total number of custom attributes in the account
    * @return customAttributes
   **/
-  @ApiModelProperty(required = true, value = "Total number of custom attributes in the account")
+  @ApiModelProperty(example = "18", required = true, value = "Total number of custom attributes in the account")
 
   public Integer getCustomAttributes() {
     return customAttributes;
@@ -464,7 +468,7 @@ public class AccountAnalytics {
    * Total number of webhooks in the account
    * @return webhooks
   **/
-  @ApiModelProperty(required = true, value = "Total number of webhooks in the account")
+  @ApiModelProperty(example = "2", required = true, value = "Total number of webhooks in the account")
 
   public Integer getWebhooks() {
     return webhooks;
@@ -483,10 +487,10 @@ public class AccountAnalytics {
   }
 
    /**
-   * Total number of loyalty programs in the account
+   * Total number of all loyalty programs in the account
    * @return loyaltyPrograms
   **/
-  @ApiModelProperty(required = true, value = "Total number of loyalty programs in the account")
+  @ApiModelProperty(example = "5", required = true, value = "Total number of all loyalty programs in the account")
 
   public Integer getLoyaltyPrograms() {
     return loyaltyPrograms;
@@ -495,6 +499,28 @@ public class AccountAnalytics {
 
   public void setLoyaltyPrograms(Integer loyaltyPrograms) {
     this.loyaltyPrograms = loyaltyPrograms;
+  }
+
+
+  public AccountAnalytics liveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
+    
+    this.liveLoyaltyPrograms = liveLoyaltyPrograms;
+    return this;
+  }
+
+   /**
+   * Total number of live loyalty programs in the account
+   * @return liveLoyaltyPrograms
+  **/
+  @ApiModelProperty(example = "5", required = true, value = "Total number of live loyalty programs in the account")
+
+  public Integer getLiveLoyaltyPrograms() {
+    return liveLoyaltyPrograms;
+  }
+
+
+  public void setLiveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
+    this.liveLoyaltyPrograms = liveLoyaltyPrograms;
   }
 
 
@@ -524,12 +550,13 @@ public class AccountAnalytics {
         Objects.equals(this.roles, accountAnalytics.roles) &&
         Objects.equals(this.customAttributes, accountAnalytics.customAttributes) &&
         Objects.equals(this.webhooks, accountAnalytics.webhooks) &&
-        Objects.equals(this.loyaltyPrograms, accountAnalytics.loyaltyPrograms);
+        Objects.equals(this.loyaltyPrograms, accountAnalytics.loyaltyPrograms) &&
+        Objects.equals(this.liveLoyaltyPrograms, accountAnalytics.liveLoyaltyPrograms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applications, liveApplications, sandboxApplications, campaigns, activeCampaigns, liveActiveCampaigns, coupons, activeCoupons, expiredCoupons, referralCodes, activeReferralCodes, expiredReferralCodes, activeRules, users, roles, customAttributes, webhooks, loyaltyPrograms);
+    return Objects.hash(applications, liveApplications, sandboxApplications, campaigns, activeCampaigns, liveActiveCampaigns, coupons, activeCoupons, expiredCoupons, referralCodes, activeReferralCodes, expiredReferralCodes, activeRules, users, roles, customAttributes, webhooks, loyaltyPrograms, liveLoyaltyPrograms);
   }
 
 
@@ -555,6 +582,7 @@ public class AccountAnalytics {
     sb.append("    customAttributes: ").append(toIndentedString(customAttributes)).append("\n");
     sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
+    sb.append("    liveLoyaltyPrograms: ").append(toIndentedString(liveLoyaltyPrograms)).append("\n");
     sb.append("}");
     return sb.toString();
   }

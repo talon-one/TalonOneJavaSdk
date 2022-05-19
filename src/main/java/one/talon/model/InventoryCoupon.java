@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -24,6 +24,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -64,6 +67,10 @@ public class InventoryCoupon {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
+  public static final String SERIALIZED_NAME_LIMITS = "limits";
+  @SerializedName(SERIALIZED_NAME_LIMITS)
+  private List<LimitConfig> limits = null;
+
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
   private Integer usageCounter;
@@ -94,7 +101,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_RESERVATION = "reservation";
   @SerializedName(SERIALIZED_NAME_RESERVATION)
-  private Boolean reservation;
+  private Boolean reservation = true;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -119,7 +126,7 @@ public class InventoryCoupon {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -141,7 +148,7 @@ public class InventoryCoupon {
    * The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -163,7 +170,7 @@ public class InventoryCoupon {
    * The ID of the campaign that owns this entity.
    * @return campaignId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the campaign that owns this entity.")
+  @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -182,10 +189,10 @@ public class InventoryCoupon {
   }
 
    /**
-   * The actual coupon code.
+   * The coupon code.
    * @return value
   **/
-  @ApiModelProperty(required = true, value = "The actual coupon code.")
+  @ApiModelProperty(example = "XMAS-20-2021", required = true, value = "The coupon code.")
 
   public String getValue() {
     return value;
@@ -204,12 +211,12 @@ public class InventoryCoupon {
   }
 
    /**
-   * The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
    * minimum: 0
    * maximum: 999999
    * @return usageLimit
   **/
-  @ApiModelProperty(required = true, value = "The number of times a coupon code can be redeemed. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
+  @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
   public Integer getUsageLimit() {
     return usageLimit;
@@ -234,7 +241,7 @@ public class InventoryCoupon {
    * @return discountLimit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amount of discounts that can be given with this coupon code. ")
+  @ApiModelProperty(example = "30.0", value = "The amount of discounts that can be given with this coupon code. ")
 
   public BigDecimal getDiscountLimit() {
     return discountLimit;
@@ -292,6 +299,37 @@ public class InventoryCoupon {
   }
 
 
+  public InventoryCoupon limits(List<LimitConfig> limits) {
+    
+    this.limits = limits;
+    return this;
+  }
+
+  public InventoryCoupon addLimitsItem(LimitConfig limitsItem) {
+    if (this.limits == null) {
+      this.limits = new ArrayList<LimitConfig>();
+    }
+    this.limits.add(limitsItem);
+    return this;
+  }
+
+   /**
+   * Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. 
+   * @return limits
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. ")
+
+  public List<LimitConfig> getLimits() {
+    return limits;
+  }
+
+
+  public void setLimits(List<LimitConfig> limits) {
+    this.limits = limits;
+  }
+
+
   public InventoryCoupon usageCounter(Integer usageCounter) {
     
     this.usageCounter = usageCounter;
@@ -302,7 +340,7 @@ public class InventoryCoupon {
    * The number of times this coupon has been successfully used.
    * @return usageCounter
   **/
-  @ApiModelProperty(required = true, value = "The number of times this coupon has been successfully used.")
+  @ApiModelProperty(example = "10", required = true, value = "The number of times this coupon has been successfully used.")
 
   public Integer getUsageCounter() {
     return usageCounter;
@@ -367,11 +405,11 @@ public class InventoryCoupon {
   }
 
    /**
-   * Arbitrary properties associated with this item
+   * Custom attributes associated with this coupon.
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(value = "Custom attributes associated with this coupon.")
 
   public Object getAttributes() {
     return attributes;
@@ -394,7 +432,7 @@ public class InventoryCoupon {
    * @return referralId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The integration ID of the referring customer (if any) for whom this coupon was created as an effect.")
+  @ApiModelProperty(example = "326632952", value = "The integration ID of the referring customer (if any) for whom this coupon was created as an effect.")
 
   public Integer getReferralId() {
     return referralId;
@@ -417,7 +455,7 @@ public class InventoryCoupon {
    * @return recipientIntegrationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Integration ID of the customer that is allowed to redeem this coupon.")
+  @ApiModelProperty(example = "URNGV8294NV", value = "The Integration ID of the customer that is allowed to redeem this coupon.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
@@ -459,11 +497,11 @@ public class InventoryCoupon {
   }
 
    /**
-   * This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favorite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.
+   * Defines the type of reservation: - &#x60;true&#x60;: The reservation is a soft reservation. Any customer can use the coupon. This is done via the [Create coupon reservation endpoint](/integration-api/#operation/createCouponReservation). - &#x60;false&#x60;: The reservation is a hard reservation. Only the associated customer (&#x60;recipientIntegrationId&#x60;) can use the coupon. This is done via the Campaign Manager when you create a coupon for a given &#x60;recipientIntegrationId&#x60;, the [Create coupons endpoint](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients endpoint](/management-api/#operation/createCouponsForMultipleRecipients). 
    * @return reservation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This value controls what reservations mean to a coupon. If set to true the coupon reservation is used to mark it as a favorite, if set to false the coupon reservation is used as a requirement of usage. This value defaults to true if not specified.")
+  @ApiModelProperty(example = "false", value = "Defines the type of reservation: - `true`: The reservation is a soft reservation. Any customer can use the coupon. This is done via the [Create coupon reservation endpoint](/integration-api/#operation/createCouponReservation). - `false`: The reservation is a hard reservation. Only the associated customer (`recipientIntegrationId`) can use the coupon. This is done via the Campaign Manager when you create a coupon for a given `recipientIntegrationId`, the [Create coupons endpoint](/management-api/#operation/createCoupons) or [Create coupons for multiple recipients endpoint](/management-api/#operation/createCouponsForMultipleRecipients). ")
 
   public Boolean getReservation() {
     return reservation;
@@ -486,7 +524,7 @@ public class InventoryCoupon {
    * @return batchId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The id of the batch the coupon belongs to.")
+  @ApiModelProperty(example = "32535-43255", value = "The id of the batch the coupon belongs to.")
 
   public String getBatchId() {
     return batchId;
@@ -527,10 +565,10 @@ public class InventoryCoupon {
   }
 
    /**
-   * Can be either active, used, expired, or pending. active: reserved coupons that are neither pending nor used nor expired, and have a non-exhausted limit counter. used: coupons that are not pending, and have reached their redemption limit or were redeemed by the profile before expiration. expired: all non-pending, non-active, non-used coupons that were not redeemed by the profile. pending: coupons that have a start date in the future. 
+   * Can be:  - &#x60;active&#x60;: The coupon can be used. It is a reserved coupon that is neither pending, used nor expired, and has a non-exhausted limit counter. - &#x60;used&#x60;: The coupon has been redeemed and cannot be used again. It is not pending and has reached its redemption limit or was redeemed by the profile before expiration. - &#x60;expired&#x60;: The coupon was never redeemed and it is now expired. It is non-pending, non-active and non-used by the profile. - &#x60;pending&#x60;: The coupon will be usable in the future. - &#x60;disabled&#x60;: The coupon is part of a non-active campaign. 
    * @return state
   **/
-  @ApiModelProperty(required = true, value = "Can be either active, used, expired, or pending. active: reserved coupons that are neither pending nor used nor expired, and have a non-exhausted limit counter. used: coupons that are not pending, and have reached their redemption limit or were redeemed by the profile before expiration. expired: all non-pending, non-active, non-used coupons that were not redeemed by the profile. pending: coupons that have a start date in the future. ")
+  @ApiModelProperty(example = "active", required = true, value = "Can be:  - `active`: The coupon can be used. It is a reserved coupon that is neither pending, used nor expired, and has a non-exhausted limit counter. - `used`: The coupon has been redeemed and cannot be used again. It is not pending and has reached its redemption limit or was redeemed by the profile before expiration. - `expired`: The coupon was never redeemed and it is now expired. It is non-pending, non-active and non-used by the profile. - `pending`: The coupon will be usable in the future. - `disabled`: The coupon is part of a non-active campaign. ")
 
   public String getState() {
     return state;
@@ -559,6 +597,7 @@ public class InventoryCoupon {
         Objects.equals(this.discountLimit, inventoryCoupon.discountLimit) &&
         Objects.equals(this.startDate, inventoryCoupon.startDate) &&
         Objects.equals(this.expiryDate, inventoryCoupon.expiryDate) &&
+        Objects.equals(this.limits, inventoryCoupon.limits) &&
         Objects.equals(this.usageCounter, inventoryCoupon.usageCounter) &&
         Objects.equals(this.discountCounter, inventoryCoupon.discountCounter) &&
         Objects.equals(this.discountRemainder, inventoryCoupon.discountRemainder) &&
@@ -574,7 +613,7 @@ public class InventoryCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, startDate, expiryDate, usageCounter, discountCounter, discountRemainder, attributes, referralId, recipientIntegrationId, importId, reservation, batchId, profileRedemptionCount, state);
+    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, startDate, expiryDate, limits, usageCounter, discountCounter, discountRemainder, attributes, referralId, recipientIntegrationId, importId, reservation, batchId, profileRedemptionCount, state);
   }
 
 
@@ -590,6 +629,7 @@ public class InventoryCoupon {
     sb.append("    discountLimit: ").append(toIndentedString(discountLimit)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    usageCounter: ").append(toIndentedString(usageCounter)).append("\n");
     sb.append("    discountCounter: ").append(toIndentedString(discountCounter)).append("\n");
     sb.append("    discountRemainder: ").append(toIndentedString(discountRemainder)).append("\n");

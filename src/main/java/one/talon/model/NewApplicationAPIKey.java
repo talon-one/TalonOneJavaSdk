@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -40,7 +40,7 @@ public class NewApplicationAPIKey {
   private OffsetDateTime expires;
 
   /**
-   * Platform the API key is valid for.
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
    */
   @JsonAdapter(PlatformEnum.Adapter.class)
   public enum PlatformEnum {
@@ -52,7 +52,13 @@ public class NewApplicationAPIKey {
     
     MPARTICLE("mparticle"),
     
-    SELLIGENT("selligent");
+    SELLIGENT("selligent"),
+    
+    ITERABLE("iterable"),
+    
+    CUSTOMER_ENGAGEMENT("customer_engagement"),
+    
+    CUSTOMER_DATA("customer_data");
 
     private String value;
 
@@ -131,7 +137,7 @@ public class NewApplicationAPIKey {
    * Title for API Key
    * @return title
   **/
-  @ApiModelProperty(required = true, value = "Title for API Key")
+  @ApiModelProperty(example = "My generated key", required = true, value = "Title for API Key")
 
   public String getTitle() {
     return title;
@@ -153,7 +159,7 @@ public class NewApplicationAPIKey {
    * The date the API key expired
    * @return expires
   **/
-  @ApiModelProperty(required = true, value = "The date the API key expired")
+  @ApiModelProperty(example = "2023-08-24T14:00Z", required = true, value = "The date the API key expired")
 
   public OffsetDateTime getExpires() {
     return expires;
@@ -172,11 +178,11 @@ public class NewApplicationAPIKey {
   }
 
    /**
-   * Platform the API key is valid for.
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
    * @return platform
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Platform the API key is valid for.")
+  @ApiModelProperty(example = "none", value = "The third-party platform the API key is valid for. Use `none` for a generic API key to be used from your own integration layer. ")
 
   public PlatformEnum getPlatform() {
     return platform;
@@ -198,7 +204,7 @@ public class NewApplicationAPIKey {
    * ID of the API Key
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "ID of the API Key")
+  @ApiModelProperty(example = "34", required = true, value = "ID of the API Key")
 
   public Integer getId() {
     return id;
@@ -220,7 +226,7 @@ public class NewApplicationAPIKey {
    * ID of user who created
    * @return createdBy
   **/
-  @ApiModelProperty(required = true, value = "ID of user who created")
+  @ApiModelProperty(example = "280", required = true, value = "ID of user who created")
 
   public Integer getCreatedBy() {
     return createdBy;
@@ -242,7 +248,7 @@ public class NewApplicationAPIKey {
    * ID of account the key is used for
    * @return accountID
   **/
-  @ApiModelProperty(required = true, value = "ID of account the key is used for")
+  @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for")
 
   public Integer getAccountID() {
     return accountID;
@@ -264,7 +270,7 @@ public class NewApplicationAPIKey {
    * ID of application the key is used for
    * @return applicationID
   **/
-  @ApiModelProperty(required = true, value = "ID of application the key is used for")
+  @ApiModelProperty(example = "54", required = true, value = "ID of application the key is used for")
 
   public Integer getApplicationID() {
     return applicationID;
@@ -286,7 +292,7 @@ public class NewApplicationAPIKey {
    * The date the API key was created
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The date the API key was created")
+  @ApiModelProperty(example = "2022-03-02T16:46:17.758585Z", required = true, value = "The date the API key was created")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -305,10 +311,10 @@ public class NewApplicationAPIKey {
   }
 
    /**
-   * Raw API Key
+   * The API key
    * @return key
   **/
-  @ApiModelProperty(required = true, value = "Raw API Key")
+  @ApiModelProperty(example = "f45f90d21dcd9bac965c45e547e9754a3196891d09948e35adbcbedc4e9e4b01", required = true, value = "The API key")
 
   public String getKey() {
     return key;

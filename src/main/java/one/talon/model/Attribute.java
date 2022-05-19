@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * The Talon.One API is used to manage applications and campaigns, as well as to integrate with your application. The operations in the _Integration API_ section are used to integrate with our platform, while the other operations are used to manage applications and campaigns.  ### Where is the API?  The API is available at the same hostname as these docs. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerProfile][] operation is `https://mycompany.talon.one/v1/customer_profiles/id`  [updateCustomerProfile]: #operation--v1-customer_profiles--integrationId--put 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSession](https://docs.talon.one/integration-api/#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -197,6 +197,14 @@ public class Attribute {
   @SerializedName(SERIALIZED_NAME_SUGGESTIONS)
   private List<String> suggestions = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_HAS_ALLOWED_LIST = "hasAllowedList";
+  @SerializedName(SERIALIZED_NAME_HAS_ALLOWED_LIST)
+  private Boolean hasAllowedList = false;
+
+  public static final String SERIALIZED_NAME_RESTRICTED_BY_SUGGESTIONS = "restrictedBySuggestions";
+  @SerializedName(SERIALIZED_NAME_RESTRICTED_BY_SUGGESTIONS)
+  private Boolean restrictedBySuggestions = false;
+
   public static final String SERIALIZED_NAME_EDITABLE = "editable";
   @SerializedName(SERIALIZED_NAME_EDITABLE)
   private Boolean editable;
@@ -204,6 +212,10 @@ public class Attribute {
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
   private List<Integer> subscribedApplicationsIds = null;
+
+  public static final String SERIALIZED_NAME_EVENT_TYPE_ID = "eventTypeId";
+  @SerializedName(SERIALIZED_NAME_EVENT_TYPE_ID)
+  private Integer eventTypeId;
 
 
   public Attribute id(Integer id) {
@@ -216,7 +228,7 @@ public class Attribute {
    * Unique ID for this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique ID for this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
   public Integer getId() {
     return id;
@@ -238,7 +250,7 @@ public class Attribute {
    * The exact moment this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The exact moment this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The exact moment this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -260,7 +272,7 @@ public class Attribute {
    * The ID of the account that owns this entity.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the account that owns this entity.")
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
   public Integer getAccountId() {
     return accountId;
@@ -432,6 +444,52 @@ public class Attribute {
   }
 
 
+  public Attribute hasAllowedList(Boolean hasAllowedList) {
+    
+    this.hasAllowedList = hasAllowedList;
+    return this;
+  }
+
+   /**
+   * Whether or not this attribute has an allowed list of values associated with it.
+   * @return hasAllowedList
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether or not this attribute has an allowed list of values associated with it.")
+
+  public Boolean getHasAllowedList() {
+    return hasAllowedList;
+  }
+
+
+  public void setHasAllowedList(Boolean hasAllowedList) {
+    this.hasAllowedList = hasAllowedList;
+  }
+
+
+  public Attribute restrictedBySuggestions(Boolean restrictedBySuggestions) {
+    
+    this.restrictedBySuggestions = restrictedBySuggestions;
+    return this;
+  }
+
+   /**
+   * Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property). 
+   * @return restrictedBySuggestions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether or not this attribute's value is restricted by suggestions (`suggestions` property) or by an allowed list of value (`hasAllowedList` property). ")
+
+  public Boolean getRestrictedBySuggestions() {
+    return restrictedBySuggestions;
+  }
+
+
+  public void setRestrictedBySuggestions(Boolean restrictedBySuggestions) {
+    this.restrictedBySuggestions = restrictedBySuggestions;
+  }
+
+
   public Attribute editable(Boolean editable) {
     
     this.editable = editable;
@@ -485,6 +543,29 @@ public class Attribute {
   }
 
 
+  public Attribute eventTypeId(Integer eventTypeId) {
+    
+    this.eventTypeId = eventTypeId;
+    return this;
+  }
+
+   /**
+   * Get eventTypeId
+   * @return eventTypeId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "22", value = "")
+
+  public Integer getEventTypeId() {
+    return eventTypeId;
+  }
+
+
+  public void setEventTypeId(Integer eventTypeId) {
+    this.eventTypeId = eventTypeId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -504,13 +585,16 @@ public class Attribute {
         Objects.equals(this.type, attribute.type) &&
         Objects.equals(this.description, attribute.description) &&
         Objects.equals(this.suggestions, attribute.suggestions) &&
+        Objects.equals(this.hasAllowedList, attribute.hasAllowedList) &&
+        Objects.equals(this.restrictedBySuggestions, attribute.restrictedBySuggestions) &&
         Objects.equals(this.editable, attribute.editable) &&
-        Objects.equals(this.subscribedApplicationsIds, attribute.subscribedApplicationsIds);
+        Objects.equals(this.subscribedApplicationsIds, attribute.subscribedApplicationsIds) &&
+        Objects.equals(this.eventTypeId, attribute.eventTypeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions, editable, subscribedApplicationsIds);
+    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions, hasAllowedList, restrictedBySuggestions, editable, subscribedApplicationsIds, eventTypeId);
   }
 
 
@@ -528,8 +612,11 @@ public class Attribute {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    suggestions: ").append(toIndentedString(suggestions)).append("\n");
+    sb.append("    hasAllowedList: ").append(toIndentedString(hasAllowedList)).append("\n");
+    sb.append("    restrictedBySuggestions: ").append(toIndentedString(restrictedBySuggestions)).append("\n");
     sb.append("    editable: ").append(toIndentedString(editable)).append("\n");
     sb.append("    subscribedApplicationsIds: ").append(toIndentedString(subscribedApplicationsIds)).append("\n");
+    sb.append("    eventTypeId: ").append(toIndentedString(eventTypeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
