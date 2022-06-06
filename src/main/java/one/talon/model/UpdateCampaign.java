@@ -28,11 +28,13 @@ import java.util.List;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * UpdateCampaign
  */
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class UpdateCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -52,6 +54,8 @@ public class UpdateCampaign {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /* allow serializing null values for Object field */
+  @JsonNullable
   private Object attributes;
 
   /**

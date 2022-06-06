@@ -31,12 +31,14 @@ import java.util.Map;
 import one.talon.model.AdditionalCost;
 import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -139,6 +141,8 @@ public class CustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /* allow serializing null values for Object field */
+  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_FIRST_SESSION = "firstSession";

@@ -26,15 +26,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.ProfileAudiencesChanges;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class CustomerProfileIntegrationRequestV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /* allow serializing null values for Object field */
+  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";

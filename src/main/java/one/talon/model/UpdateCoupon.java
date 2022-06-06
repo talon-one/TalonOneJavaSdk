@@ -28,12 +28,14 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class UpdateCoupon {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
@@ -61,6 +63,8 @@ public class UpdateCoupon {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /* allow serializing null values for Object field */
+  @JsonNullable
   private Object attributes;
 
 
