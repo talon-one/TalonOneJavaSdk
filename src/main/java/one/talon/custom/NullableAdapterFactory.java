@@ -60,6 +60,17 @@ public class NullableAdapterFactory implements TypeAdapterFactory {
                         }
                     }
                 }
+
+                // remove null-valued nullablae fields; preventing them getting output if they do not have _any value_
+                for (String name: nullableFieldNames) {
+                    if (jsonObject.has(name)) {
+                       JsonElement element =jsonObject.get(name);
+                       if(element==null || element instanceof JsonNull){
+                           jsonObject.remove(name);
+                       }
+                    }
+                }
+
                 boolean originalSerializeNulls = out.getSerializeNulls();
                 out.setSerializeNulls(true);
                 elementAdapter.write(out, jsonObject);
