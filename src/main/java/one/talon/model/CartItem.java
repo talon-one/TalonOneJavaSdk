@@ -28,11 +28,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * CartItem
  */
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class CartItem {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -84,6 +86,8 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /*allow Serializing null for this field */
+  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
