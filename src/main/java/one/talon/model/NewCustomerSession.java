@@ -27,12 +27,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CartItem;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class NewCustomerSession {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -115,6 +117,8 @@ public class NewCustomerSession {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /* allow serializing null values for Object field */
+  @JsonNullable
   private Object attributes;
 
 
