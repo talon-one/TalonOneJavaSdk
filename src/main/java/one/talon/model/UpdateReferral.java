@@ -24,13 +24,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
  * UpdateReferral
  */
-@JsonAdapter(NullableAdapterFactory.class)
+
 public class UpdateReferral {
   public static final String SERIALIZED_NAME_FRIEND_PROFILE_INTEGRATION_ID = "friendProfileIntegrationId";
   @SerializedName(SERIALIZED_NAME_FRIEND_PROFILE_INTEGRATION_ID)
@@ -50,8 +48,6 @@ public class UpdateReferral {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  /* allow serializing null values for Object field */
-  @JsonNullable
   private Object attributes;
 
 

@@ -28,14 +28,12 @@ import java.util.List;
 import one.talon.model.LedgerEntry;
 import one.talon.model.Meta;
 import org.threeten.bp.OffsetDateTime;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-@JsonAdapter(NullableAdapterFactory.class)
+
 public class Event {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -59,8 +57,6 @@ public class Event {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  /* allow serializing null values for Object field */
-  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
