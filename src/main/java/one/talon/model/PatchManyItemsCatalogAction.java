@@ -27,12 +27,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CatalogActionFilter;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * The specific properties of the \&quot;PATCH_MANY\&quot; catalog sync action.
  */
 @ApiModel(description = "The specific properties of the \"PATCH_MANY\" catalog sync action.")
-
+@JsonAdapter(NullableAdapterFactory.class)
 public class PatchManyItemsCatalogAction {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -44,6 +46,8 @@ public class PatchManyItemsCatalogAction {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /*allow Serializing null for this field */
+  @JsonNullable
   private Object attributes;
 
 
