@@ -7,9 +7,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Unique ID for this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
-**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was last modified. | 
+**id** | **Integer** | Internal ID of this entity. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
+**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
 **accountId** | **Integer** | The ID of the account that owns this entity. | 
 **name** | **String** | The name of this application. | 
 **description** | **String** | A longer description of the application. |  [optional]
@@ -22,12 +22,12 @@ Name | Type | Description | Notes
 **exclusiveCampaignsStrategy** | [**ExclusiveCampaignsStrategyEnum**](#ExclusiveCampaignsStrategyEnum) | The strategy used when choosing exclusive campaigns for evaluation. |  [optional]
 **defaultDiscountScope** | [**DefaultDiscountScopeEnum**](#DefaultDiscountScopeEnum) | The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect.  |  [optional]
 **enableCascadingDiscounts** | **Boolean** | Indicates if discounts should cascade for this Application. |  [optional]
-**enableFlattenedCartItems** | **Boolean** | Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See [the docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#flattened-cart-items).  |  [optional]
+**enableFlattenedCartItems** | **Boolean** | Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening).  |  [optional]
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
 **sandbox** | **Boolean** | Indicates if this is a live or sandbox Application. |  [optional]
 **enablePartialDiscounts** | **Boolean** | Indicates if this Application supports partial discounts. |  [optional]
 **defaultDiscountAdditionalCostPerItemScope** | [**DefaultDiscountAdditionalCostPerItemScopeEnum**](#DefaultDiscountAdditionalCostPerItemScopeEnum) | The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect.  |  [optional]
-**loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed | 
+**loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed. | 
 
 
 

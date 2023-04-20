@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Your name. |  [optional]
-**policy** | **String** | a blob of acl json |  [optional]
+**name** | **String** | The user name. |  [optional]
+**policy** | **String** | The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level. |  [optional]
 **state** | [**StateEnum**](#StateEnum) | New state (\&quot;deactivated\&quot; or \&quot;active\&quot;) for the user. Only usable by admins for the user. |  [optional]
-**roles** | **List&lt;Integer&gt;** | Update |  [optional]
+**roles** | **List&lt;Integer&gt;** | List of roles to assign to the user. |  [optional]
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 
 

@@ -7,7 +7,7 @@ The properties specific to the \"referralCreated\" effect. This gets triggered w
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** | The referral code that was created | 
+**value** | **String** | The referral code that was created. | 
 
 
 

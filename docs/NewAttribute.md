@@ -17,7 +17,9 @@ Name | Type | Description | Notes
 **hasAllowedList** | **Boolean** | Whether or not this attribute has an allowed list of values associated with it. |  [optional]
 **restrictedBySuggestions** | **Boolean** | Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property).  |  [optional]
 **editable** | **Boolean** | Whether or not this attribute can be edited. | 
-**subscribedApplicationsIds** | **List&lt;Integer&gt;** | A list of the IDs of the applications that are subscribed to this attribute |  [optional]
+**subscribedApplicationsIds** | **List&lt;Integer&gt;** | A list of the IDs of the applications where this attribute is available. |  [optional]
+**subscribedCatalogsIds** | **List&lt;Integer&gt;** | A list of the IDs of the catalogs where this attribute is available. |  [optional]
+**allowedSubscriptions** | [**List&lt;AllowedSubscriptionsEnum&gt;**](#List&lt;AllowedSubscriptionsEnum&gt;) | A list of allowed subscription types for this attribute.  **Note:** This only applies to attributes associated with the &#x60;CartItem&#x60; entity.  |  [optional]
 
 
 
@@ -51,6 +53,15 @@ _LIST_NUMBER_ | &quot;(list number)&quot;
 _LIST_TIME_ | &quot;(list time)&quot;
 LOCATION | &quot;location&quot;
 _LIST_LOCATION_ | &quot;(list location)&quot;
+
+
+
+## Enum: List&lt;AllowedSubscriptionsEnum&gt;
+
+Name | Value
+---- | -----
+APPLICATION | &quot;application&quot;
+CATALOG | &quot;catalog&quot;
 
 
 

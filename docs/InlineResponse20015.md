@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
+**data** | [**List&lt;CollectionItem&gt;**](CollectionItem.md) |  | 
 
 
 

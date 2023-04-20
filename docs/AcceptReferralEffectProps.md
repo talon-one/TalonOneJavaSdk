@@ -7,7 +7,7 @@ The properties specific to the \"acceptReferral\" effect. TThis gets triggered w
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** | The referral code that was accepted | 
+**value** | **String** | The referral code that was accepted. | 
 
 
 

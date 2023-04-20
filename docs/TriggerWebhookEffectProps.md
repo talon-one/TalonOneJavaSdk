@@ -7,8 +7,8 @@ The properties specific to the \"triggerWebhook\" effect. This gets triggered wh
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**webhookId** | [**BigDecimal**](BigDecimal.md) | The ID of the webhook that was triggered | 
-**webhookName** | **String** | The name of the webhook that was triggered | 
+**webhookId** | [**BigDecimal**](BigDecimal.md) | The ID of the webhook that was triggered. | 
+**webhookName** | **String** | The name of the webhook that was triggered. | 
 
 
 

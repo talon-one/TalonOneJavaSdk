@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**TypeEnum**](#TypeEnum) | Indicates the node type | 
+**type** | [**TypeEnum**](#TypeEnum) | Indicates the node type. | 
 **name** | **String** | Name of the set | 
-**operator** | [**OperatorEnum**](#OperatorEnum) | How does the set operates on its elements | 
-**elements** | [**List&lt;CampaignSetNode&gt;**](CampaignSetNode.md) | Child elements of this set | 
+**operator** | [**OperatorEnum**](#OperatorEnum) | How does the set operates on its elements. | 
+**elements** | [**List&lt;CampaignSetNode&gt;**](CampaignSetNode.md) | Child elements of this set. | 
 
 
 

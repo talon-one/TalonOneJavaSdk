@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;LoyaltyCard&gt;**](LoyaltyCard.md) |  | 
 
 
 

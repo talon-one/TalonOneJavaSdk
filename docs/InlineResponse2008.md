@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;CollectionWithoutPayload&gt;**](CollectionWithoutPayload.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 
 
 

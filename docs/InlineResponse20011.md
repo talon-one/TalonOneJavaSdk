@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;LoyaltyProgramTransaction&gt;**](LoyaltyProgramTransaction.md) |  | 
 
 
 

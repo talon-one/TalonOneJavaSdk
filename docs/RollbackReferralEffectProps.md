@@ -7,7 +7,7 @@ The properties specific to the \"rollbackReferral\" effect. This gets triggered 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** | The referral code whose usage has been rolled back | 
+**value** | **String** | The referral code whose usage has been rolled back. | 
 
 
 

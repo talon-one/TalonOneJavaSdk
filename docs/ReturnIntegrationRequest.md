@@ -8,7 +8,7 @@ The body of a return integration API request. Next to the cart items details, th
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_return** | [**NewReturn**](NewReturn.md) |  | 
-**responseContent** | [**List&lt;ResponseContentEnum&gt;**](#List&lt;ResponseContentEnum&gt;) | Optional list of requested information to be present on the response related to the return request.  |  [optional]
+**responseContent** | [**List&lt;ResponseContentEnum&gt;**](#List&lt;ResponseContentEnum&gt;) | Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints.  |  [optional]
 
 
 

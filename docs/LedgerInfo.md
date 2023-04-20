@@ -7,14 +7,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of currently active points | 
-**pendingBalance** | [**BigDecimal**](BigDecimal.md) | Sum of pending points | 
-**expiredBalance** | [**BigDecimal**](BigDecimal.md) | Sum of expired points | 
-**spentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of spent points | 
-**tentativeCurrentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of currently active points, including points added and deducted in open sessions | 
+**currentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of currently active points. | 
+**pendingBalance** | [**BigDecimal**](BigDecimal.md) | Sum of pending points. | 
+**expiredBalance** | [**BigDecimal**](BigDecimal.md) | **DEPRECATED** Value is shown as 0.  | 
+**spentBalance** | [**BigDecimal**](BigDecimal.md) | **DEPRECATED** Value is shown as 0.  | 
+**tentativeCurrentBalance** | [**BigDecimal**](BigDecimal.md) | Sum of the tentative active points (including additions and deductions) inside the currently open session. The &#x60;currentBalance&#x60; is updated to this value when you close the session, and the effects are applied. | 
+**tentativePendingBalance** | [**BigDecimal**](BigDecimal.md) | Sum of pending points (including additions and deductions) inside the currently open session. The &#x60;pendingBalance&#x60; is updated to this value when you close the session, and the effects are applied. |  [optional]
 **currentTier** | [**Tier**](Tier.md) |  |  [optional]
 **pointsToNextTier** | [**BigDecimal**](BigDecimal.md) | Points required to move up a tier. |  [optional]
-**projection** | [**LoyaltyProjection**](LoyaltyProjection.md) |  |  [optional]
 
 
 

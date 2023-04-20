@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was last modified. | 
+**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
 
 
 

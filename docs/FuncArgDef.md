@@ -19,6 +19,7 @@ STRING | &quot;string&quot;
 BOOLEAN | &quot;boolean&quot;
 NUMBER | &quot;number&quot;
 TIME | &quot;time&quot;
+_LIST_STRING_ | &quot;(list string)&quot;
 
 
 

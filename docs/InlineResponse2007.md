@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
 
 
 

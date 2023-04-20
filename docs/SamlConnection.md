@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **signOutURL** | **String** | Single Sign-Out URL. |  [optional]
 **metadataURL** | **String** | Metadata URL. |  [optional]
 **audienceURI** | **String** | The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used.  | 
-**id** | **Integer** | Unique ID for this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
+**id** | **Integer** | Internal ID of this entity. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 
 
 
