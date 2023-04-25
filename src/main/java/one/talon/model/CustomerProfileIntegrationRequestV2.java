@@ -41,6 +41,10 @@ public class CustomerProfileIntegrationRequestV2 {
   @JsonNullable
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
+  @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
+  private List<Integer> evaluableCampaignIds = null;
+
   public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
   @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
   private ProfileAudiencesChanges audiencesChanges;
@@ -112,11 +116,11 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
    /**
-   * Arbitrary properties associated with this item
+   * Arbitrary properties associated with this item.
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", value = "Arbitrary properties associated with this item")
+  @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", value = "Arbitrary properties associated with this item.")
 
   public Object getAttributes() {
     return attributes;

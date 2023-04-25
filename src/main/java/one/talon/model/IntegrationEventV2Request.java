@@ -38,6 +38,10 @@ public class IntegrationEventV2Request {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
 
+  public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
+  @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
+  private List<Integer> evaluableCampaignIds = null;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
