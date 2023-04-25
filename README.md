@@ -14,9 +14,9 @@ manage applications and campaigns.
 ## Determining the base URL of the endpoints
 
 The API is available at the same hostname as your Campaign Manager deployment.
-For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`,
+For example, if you are reading this page at `https://yourbaseurl.talon.one/docs/api/`,
 the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint
-is `https://mycompany.talon.one/v2/customer_sessions/{Id}`
+is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`
 
 
 
@@ -103,7 +103,7 @@ public class TalonApiTest {
         IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
 
         // Setup: basePath
-        iApi.getApiClient().setBasePath("https://mycompany.talon.one");
+        iApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
         // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
         iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
         iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
@@ -181,21 +181,15 @@ import one.talon.model.*;
 public class TalonApiTest {
     public static void main(String[] args) {
         // Management API example to load application with id 7
-        ManagementApi mApi = new ManagementApi(new ApiClient("manager_auth"));
+        ManagementApi mApi = new ManagementApi(new ApiClient("management_key"));
 
-        // Setup: basePath and bearer prefix
-        mApi.getApiClient().setBasePath("https://mycompany.talon.one");
-        mApi.getApiClient().setApiKeyPrefix("Bearer");
-
-        LoginParams lp = new LoginParams();
-        lp.setEmail("admin@talon.one");
-        lp.setPassword("yourpassword");
+        // Setup: basePath
+        mApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
+        // Setup: when using 'management_key', set apiKey & apiKeyPrefix must be provided
+        mApi.getApiClient().setApiKeyPrefix("ManagementKey-v1");
+        mApi.getApiClient().setApiKey("2f0dce055da01ae595005d7d79154bae7448d319d5fc7c5b2951fadd6ba1ea07");
 
         try {
-            // Acquire session token
-            Session s = mApi.createSession(lp);
-            mApi.getApiClient().setApiKey(s.getToken());
-
             // Calling `getApplication` function with the desired id (7)
             Application application = mApi.getApplication(7);
             System.out.println(application.toString());
