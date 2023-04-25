@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
 

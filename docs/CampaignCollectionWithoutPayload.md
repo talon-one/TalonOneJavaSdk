@@ -7,10 +7,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Unique ID for this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
+**id** | **Integer** | Internal ID of this entity. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **accountId** | **Integer** | The ID of the account that owns this entity. | 
-**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was last modified. | 
+**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
 **description** | **String** | A short description of the purpose of this collection. |  [optional]
 **name** | **String** | The name of this collection. | 
 **modifiedBy** | **Integer** | ID of the user who last updated this effect if available. |  [optional]

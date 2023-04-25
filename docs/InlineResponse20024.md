@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Webhook&gt;**](Webhook.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
 
 
 

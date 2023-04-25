@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**integrationStates** | [**List&lt;IntegrationStateV2&gt;**](IntegrationStateV2.md) |  |  [optional]
+**integrationStates** | [**List&lt;CustomerProfileUpdateV2Response&gt;**](CustomerProfileUpdateV2Response.md) |  |  [optional]
 
 
 

@@ -28,6 +28,7 @@ REFERRALEXPIRED | &quot;ReferralExpired&quot;
 REFERRALSTARTDATEINFUTURE | &quot;ReferralStartDateInFuture&quot;
 REFERRALREJECTEDBYCONDITION | &quot;ReferralRejectedByCondition&quot;
 EFFECTCOULDNOTBEAPPLIED | &quot;EffectCouldNotBeApplied&quot;
+REFERRALPARTOFNOTTRIGGEREDCAMPAIGN | &quot;ReferralPartOfNotTriggeredCampaign&quot;
 
 
 

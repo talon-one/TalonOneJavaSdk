@@ -2,13 +2,13 @@
 
 # CustomerActivityReport
 
-
+A summary report of customer activity for a given time range.
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**integrationId** | **String** | The integration ID for this entity sent to and used in the Talon.One system. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
+**integrationId** | **String** | The integration ID set by your integration layer. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **name** | **String** | The name for this customer profile. | 
 **customerId** | **Integer** | The internal Talon.One ID of the customer. | 
 **lastActivity** | [**OffsetDateTime**](OffsetDateTime.md) | The last activity of the customer. |  [optional]

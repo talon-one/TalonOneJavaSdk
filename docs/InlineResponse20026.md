@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;WebhookLogEntry&gt;**](WebhookLogEntry.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
 
 
 

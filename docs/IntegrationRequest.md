@@ -8,7 +8,7 @@ The body of a V2 integration API request (customer session update). Next to the 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customerSession** | [**NewCustomerSessionV2**](NewCustomerSessionV2.md) |  | 
-**responseContent** | [**List&lt;ResponseContentEnum&gt;**](#List&lt;ResponseContentEnum&gt;) | Optional list of requested information to be present on the response related to the customer session update.  **Note:** &#x60;ruleFailureReasons&#x60; is always part of the response when the Application type is &#x60;sandbox&#x60;.  |  [optional]
+**responseContent** | [**List&lt;ResponseContentEnum&gt;**](#List&lt;ResponseContentEnum&gt;) | Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints.  |  [optional]
 
 
 

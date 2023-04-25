@@ -7,8 +7,8 @@ The properties specific to the \"couponCreated\" effect. This gets triggered whe
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** | The coupon code that was created | 
-**profileId** | **String** | The integration identifier of the customer for whom this coupon was created | 
+**value** | **String** | The coupon code that was created. | 
+**profileId** | **String** | The integration identifier of the customer for whom this coupon was created. | 
 
 
 

@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**integrationId** | **String** | Integration ID of the customer associated with the card. | 
-**timestamp** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the registration to the card | 
+**integrationId** | **String** | Integration ID of the customer profile linked to the card. | 
+**timestamp** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the registration to the card. | 
 
 
 

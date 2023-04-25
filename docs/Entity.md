@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Unique ID for this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The exact moment this entity was created. | 
+**id** | **Integer** | Internal ID of this entity. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 
 
 

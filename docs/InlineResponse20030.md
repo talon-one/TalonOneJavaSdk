@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Export&gt;**](Export.md) |  | 
+**data** | [**List&lt;Attribute&gt;**](Attribute.md) |  | 
 
 
 

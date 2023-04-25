@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
+**data** | [**List&lt;CollectionWithoutPayload&gt;**](CollectionWithoutPayload.md) |  | 
 
 
 

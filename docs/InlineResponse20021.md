@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;ApplicationReferee&gt;**](ApplicationReferee.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
+**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
 
 
 
