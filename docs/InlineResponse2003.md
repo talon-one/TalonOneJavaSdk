@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Campaign&gt;**](Campaign.md) |  | 
+**data** | [**List&lt;Application&gt;**](Application.md) |  | 
 
 
 

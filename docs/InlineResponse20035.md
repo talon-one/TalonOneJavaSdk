@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;EventType&gt;**](EventType.md) |  | 
+**data** | [**List&lt;WebhookLogEntry&gt;**](WebhookLogEntry.md) |  | 
 
 
 

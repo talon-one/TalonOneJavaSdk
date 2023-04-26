@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -15,7 +15,6 @@ package one.talon.api;
 
 import one.talon.ApiException;
 import one.talon.model.Audience;
-import one.talon.model.CardLedgerTransactionLogEntryIntegrationAPI;
 import one.talon.model.Catalog;
 import one.talon.model.CatalogSyncRequest;
 import one.talon.model.Coupon;
@@ -27,6 +26,7 @@ import one.talon.model.ErrorResponse;
 import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
+import one.talon.model.InlineResponse2002;
 import one.talon.model.InlineResponse201;
 import one.talon.model.IntegrationCustomerSessionResponse;
 import one.talon.model.IntegrationEventV2Request;
@@ -44,6 +44,7 @@ import one.talon.model.NewReferral;
 import one.talon.model.NewReferralsForMultipleAdvocates;
 import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
+import one.talon.model.ReopenSessionResponse;
 import one.talon.model.ReturnIntegrationRequest;
 import one.talon.model.UpdateAudience;
 import org.junit.Test;
@@ -250,7 +251,7 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Get loyalty balances for a loyalty card
+     * Get card&#39;s point balances
      *
      * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
      *
@@ -260,15 +261,15 @@ public class IntegrationApiTest {
     @Test
     public void getLoyaltyCardBalancesTest() throws ApiException {
         Integer loyaltyProgramId = null;
-        String loyaltyCardIdentifier = null;
+        String loyaltyCardId = null;
         OffsetDateTime endDate = null;
-        LoyaltyBalances response = api.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardIdentifier, endDate);
+        LoyaltyBalances response = api.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardId, endDate);
 
         // TODO: test validations
     }
     
     /**
-     * Get loyalty card transaction logs
+     * List card&#39;s transactions
      *
      * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      *
@@ -278,13 +279,13 @@ public class IntegrationApiTest {
     @Test
     public void getLoyaltyCardTransactionsTest() throws ApiException {
         Integer loyaltyProgramId = null;
-        String loyaltyCardIdentifier = null;
+        String loyaltyCardId = null;
         String subledgerId = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
         Integer pageSize = null;
         Integer skip = null;
-        CardLedgerTransactionLogEntryIntegrationAPI response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip);
+        InlineResponse2001 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
     }
@@ -306,7 +307,7 @@ public class IntegrationApiTest {
         OffsetDateTime endDate = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse2001 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
+        InlineResponse2002 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
     }
@@ -328,7 +329,7 @@ public class IntegrationApiTest {
     }
     
     /**
-     * Link customer profile to loyalty card
+     * Link customer profile to card
      *
      * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/creating-loyalty-programs#creating-card-based-loyalty-programs) allows. 
      *
@@ -338,9 +339,9 @@ public class IntegrationApiTest {
     @Test
     public void linkLoyaltyCardToProfileTest() throws ApiException {
         Integer loyaltyProgramId = null;
-        String loyaltyCardIdentifier = null;
+        String loyaltyCardId = null;
         LoyaltyCardRegistration body = null;
-        LoyaltyCard response = api.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardIdentifier, body);
+        LoyaltyCard response = api.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardId, body);
 
         // TODO: test validations
     }
@@ -356,7 +357,7 @@ public class IntegrationApiTest {
     @Test
     public void reopenCustomerSessionTest() throws ApiException {
         String customerSessionId = null;
-        IntegrationStateV2 response = api.reopenCustomerSession(customerSessionId);
+        ReopenSessionResponse response = api.reopenCustomerSession(customerSessionId);
 
         // TODO: test validations
     }

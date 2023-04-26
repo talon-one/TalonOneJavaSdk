@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -29,6 +29,10 @@ import java.io.IOException;
  */
 
 public class OutgoingIntegrationConfiguration {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
+
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private Integer accountId;
@@ -40,6 +44,28 @@ public class OutgoingIntegrationConfiguration {
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
+
+
+  public OutgoingIntegrationConfiguration id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique ID for this entity.
+   * @return id
+  **/
+  @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
+
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
 
   public OutgoingIntegrationConfiguration accountId(Integer accountId) {
@@ -117,14 +143,15 @@ public class OutgoingIntegrationConfiguration {
       return false;
     }
     OutgoingIntegrationConfiguration outgoingIntegrationConfiguration = (OutgoingIntegrationConfiguration) o;
-    return Objects.equals(this.accountId, outgoingIntegrationConfiguration.accountId) &&
+    return Objects.equals(this.id, outgoingIntegrationConfiguration.id) &&
+        Objects.equals(this.accountId, outgoingIntegrationConfiguration.accountId) &&
         Objects.equals(this.typeId, outgoingIntegrationConfiguration.typeId) &&
         Objects.equals(this.policy, outgoingIntegrationConfiguration.policy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, typeId, policy);
+    return Objects.hash(id, accountId, typeId, policy);
   }
 
 
@@ -132,6 +159,7 @@ public class OutgoingIntegrationConfiguration {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OutgoingIntegrationConfiguration {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
