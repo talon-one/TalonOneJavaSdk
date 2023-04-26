@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;NotificationWebhook&gt;**](NotificationWebhook.md) |  | 
+**data** | [**List&lt;Campaign&gt;**](Campaign.md) |  | 
 
 
 

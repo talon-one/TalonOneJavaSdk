@@ -15,11 +15,11 @@ Method | HTTP request | Description
 [**getCustomerInventory**](IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | List customer data
 [**getCustomerSession**](IntegrationApi.md#getCustomerSession) | **GET** /v2/customer_sessions/{customerSessionId} | Get customer session
 [**getLoyaltyBalances**](IntegrationApi.md#getLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances | Get customer&#39;s loyalty points
-[**getLoyaltyCardBalances**](IntegrationApi.md#getLoyaltyCardBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/balances | Get loyalty balances for a loyalty card
-[**getLoyaltyCardTransactions**](IntegrationApi.md#getLoyaltyCardTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/transactions | Get loyalty card transaction logs
+[**getLoyaltyCardBalances**](IntegrationApi.md#getLoyaltyCardBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances | Get card&#39;s point balances
+[**getLoyaltyCardTransactions**](IntegrationApi.md#getLoyaltyCardTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions | List card&#39;s transactions
 [**getLoyaltyProgramProfileTransactions**](IntegrationApi.md#getLoyaltyProgramProfileTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions | List customer&#39;s loyalty transactions
 [**getReservedCustomers**](IntegrationApi.md#getReservedCustomers) | **GET** /v1/coupon_reservations/customerprofiles/{couponValue} | List customers that have this coupon reserved
-[**linkLoyaltyCardToProfile**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/link_profile | Link customer profile to loyalty card
+[**linkLoyaltyCardToProfile**](IntegrationApi.md#linkLoyaltyCardToProfile) | **POST** /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile | Link customer profile to card
 [**reopenCustomerSession**](IntegrationApi.md#reopenCustomerSession) | **PUT** /v2/customer_sessions/{customerSessionId}/reopen | Reopen customer session
 [**returnCartItems**](IntegrationApi.md#returnCartItems) | **POST** /v2/customer_sessions/{customerSessionId}/returns | Return cart items
 [**syncCatalog**](IntegrationApi.md#syncCatalog) | **PUT** /v1/catalogs/{catalogId}/sync | Sync cart item catalog
@@ -838,9 +838,9 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCardBalances"></a>
 # **getLoyaltyCardBalances**
-> LoyaltyBalances getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardIdentifier, endDate)
+> LoyaltyBalances getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardId, endDate)
 
-Get loyalty balances for a loyalty card
+Get card&#39;s point balances
 
 Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
 
@@ -867,10 +867,10 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string. 
     try {
-      LoyaltyBalances result = apiInstance.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardIdentifier, endDate);
+      LoyaltyBalances result = apiInstance.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardId, endDate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#getLoyaltyCardBalances");
@@ -888,7 +888,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **endDate** | **OffsetDateTime**| Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
 
 ### Return type
@@ -914,9 +914,9 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCardTransactions"></a>
 # **getLoyaltyCardTransactions**
-> CardLedgerTransactionLogEntryIntegrationAPI getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip)
+> InlineResponse2001 getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip)
 
-Get loyalty card transaction logs
+List card&#39;s transactions
 
 Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
 
@@ -943,14 +943,14 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
     OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
     OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      CardLedgerTransactionLogEntryIntegrationAPI result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip);
+      InlineResponse2001 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#getLoyaltyCardTransactions");
@@ -968,7 +968,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
@@ -977,7 +977,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CardLedgerTransactionLogEntryIntegrationAPI**](CardLedgerTransactionLogEntryIntegrationAPI.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -998,7 +998,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyProgramProfileTransactions"></a>
 # **getLoyaltyProgramProfileTransactions**
-> InlineResponse2001 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip)
+> InlineResponse2002 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip)
 
 List customer&#39;s loyalty transactions
 
@@ -1034,7 +1034,7 @@ public class Example {
     Integer pageSize = 50; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      InlineResponse2001 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
+      InlineResponse2002 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#getLoyaltyProgramProfileTransactions");
@@ -1061,7 +1061,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -1154,9 +1154,9 @@ Name | Type | Description  | Notes
 
 <a name="linkLoyaltyCardToProfile"></a>
 # **linkLoyaltyCardToProfile**
-> LoyaltyCard linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardIdentifier, body)
+> LoyaltyCard linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardId, body)
 
-Link customer profile to loyalty card
+Link customer profile to card
 
 [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/creating-loyalty-programs#creating-card-based-loyalty-programs) allows. 
 
@@ -1183,10 +1183,10 @@ public class Example {
 
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     LoyaltyCardRegistration body = new LoyaltyCardRegistration(); // LoyaltyCardRegistration | body
     try {
-      LoyaltyCard result = apiInstance.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardIdentifier, body);
+      LoyaltyCard result = apiInstance.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#linkLoyaltyCardToProfile");
@@ -1204,7 +1204,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**LoyaltyCardRegistration**](LoyaltyCardRegistration.md)| body |
 
 ### Return type
@@ -1230,7 +1230,7 @@ Name | Type | Description  | Notes
 
 <a name="reopenCustomerSession"></a>
 # **reopenCustomerSession**
-> IntegrationStateV2 reopenCustomerSession(customerSessionId)
+> ReopenSessionResponse reopenCustomerSession(customerSessionId)
 
 Reopen customer session
 
@@ -1260,7 +1260,7 @@ public class Example {
     IntegrationApi apiInstance = new IntegrationApi(defaultClient);
     String customerSessionId = "customerSessionId_example"; // String | The `integration ID` of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager's **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint. 
     try {
-      IntegrationStateV2 result = apiInstance.reopenCustomerSession(customerSessionId);
+      ReopenSessionResponse result = apiInstance.reopenCustomerSession(customerSessionId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling IntegrationApi#reopenCustomerSession");
@@ -1281,7 +1281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IntegrationStateV2**](IntegrationStateV2.md)
+[**ReopenSessionResponse**](ReopenSessionResponse.md)
 
 ### Authorization
 

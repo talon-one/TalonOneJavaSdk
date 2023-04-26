@@ -4,7 +4,7 @@ All URIs are relative to *https://yourbaseurl.talon.one*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addLoyaltyCardPoints**](ManagementApi.md#addLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/add_points | Add points to card in a given loyalty program
+[**addLoyaltyCardPoints**](ManagementApi.md#addLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/add_points | Add points to card
 [**addLoyaltyPoints**](ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/add_points | Add points to customer profile
 [**copyCampaignToApplications**](ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into the specified Application
 [**createAccountCollection**](ManagementApi.md#createAccountCollection) | **POST** /v1/collections | Create account-level collection
@@ -18,13 +18,13 @@ Method | HTTP request | Description
 [**createNotificationWebhook**](ManagementApi.md#createNotificationWebhook) | **POST** /v1/applications/{applicationId}/notification_webhooks | Create notification about campaign-related changes
 [**createPasswordRecoveryEmail**](ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
 [**createSession**](ManagementApi.md#createSession) | **POST** /v1/sessions | Create session
-[**deductLoyaltyCardPoints**](ManagementApi.md#deductLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/deduct_points | Deduct points from card in a given loyalty program.
+[**deductLoyaltyCardPoints**](ManagementApi.md#deductLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points | Deduct points from card
 [**deleteAccountCollection**](ManagementApi.md#deleteAccountCollection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection
 [**deleteCampaign**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign
 [**deleteCollection**](ManagementApi.md#deleteCollection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete collection
 [**deleteCoupon**](ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete coupon
 [**deleteCoupons**](ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete coupons
-[**deleteLoyaltyCard**](ManagementApi.md#deleteLoyaltyCard) | **DELETE** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier} | Delete loyalty card
+[**deleteLoyaltyCard**](ManagementApi.md#deleteLoyaltyCard) | **DELETE** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Delete loyalty card
 [**deleteNotificationWebhook**](ManagementApi.md#deleteNotificationWebhook) | **DELETE** /v1/applications/{applicationId}/notification_webhooks/{notificationWebhookId} | Delete notification about campaign-related changes
 [**deleteReferral**](ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete referral
 [**destroySession**](ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy session
@@ -35,8 +35,8 @@ Method | HTTP request | Description
 [**exportEffects**](ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered effects
 [**exportLoyaltyBalance**](ManagementApi.md#exportLoyaltyBalance) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_customer_balance | Export customer loyalty balance to CSV
 [**exportLoyaltyBalances**](ManagementApi.md#exportLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_customer_balances | Export customer loyalty balances
-[**exportLoyaltyCardBalances**](ManagementApi.md#exportLoyaltyCardBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_card_balances | Export loyalty card transaction logs to CSV
-[**exportLoyaltyCardLedger**](ManagementApi.md#exportLoyaltyCardLedger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/export_log | Export a loyalty card ledger log
+[**exportLoyaltyCardBalances**](ManagementApi.md#exportLoyaltyCardBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_card_balances | Export all card transaction logs
+[**exportLoyaltyCardLedger**](ManagementApi.md#exportLoyaltyCardLedger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/export_log | Export card&#39;s ledger log
 [**exportLoyaltyLedger**](ManagementApi.md#exportLoyaltyLedger) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/export_log | Export customer&#39;s transaction logs
 [**exportReferrals**](ManagementApi.md#exportReferrals) | **GET** /v1/applications/{applicationId}/export_referrals | Export referrals
 [**getAccessLogsWithoutTotalCount**](ManagementApi.md#getAccessLogsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/access_logs/no_total | Get access logs for Application
@@ -78,8 +78,8 @@ Method | HTTP request | Description
 [**getCustomersByAttributes**](ManagementApi.md#getCustomersByAttributes) | **POST** /v1/customer_search/no_total | List customer profiles matching the given attributes
 [**getEventTypes**](ManagementApi.md#getEventTypes) | **GET** /v1/event_types | List event types
 [**getExports**](ManagementApi.md#getExports) | **GET** /v1/exports | Get exports
-[**getLoyaltyCard**](ManagementApi.md#getLoyaltyCard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier} | Get loyalty card
-[**getLoyaltyCardTransactionLogs**](ManagementApi.md#getLoyaltyCardTransactionLogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/logs | Get loyalty card transaction logs
+[**getLoyaltyCard**](ManagementApi.md#getLoyaltyCard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
+[**getLoyaltyCardTransactionLogs**](ManagementApi.md#getLoyaltyCardTransactionLogs) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs | List card&#39;s transactions
 [**getLoyaltyCards**](ManagementApi.md#getLoyaltyCards) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards | List loyalty cards
 [**getLoyaltyPoints**](ManagementApi.md#getLoyaltyPoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId} | Get customer&#39;s full loyalty ledger
 [**getLoyaltyProgram**](ManagementApi.md#getLoyaltyProgram) | **GET** /v1/loyalty_programs/{loyaltyProgramId} | Get loyalty program
@@ -115,7 +115,7 @@ Method | HTTP request | Description
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
 [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | List coupons that match the given attributes (without total count)
 [**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | List coupons that match the given attributes in campaign (without total count)
-[**transferLoyaltyCard**](ManagementApi.md#transferLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/transfer | Transfer loyalty card data
+[**transferLoyaltyCard**](ManagementApi.md#transferLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer | Transfer card data
 [**updateAccountCollection**](ManagementApi.md#updateAccountCollection) | **PUT** /v1/collections/{collectionId} | Update account-level collection
 [**updateAdditionalCost**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update additional cost
 [**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update custom attribute
@@ -123,16 +123,16 @@ Method | HTTP request | Description
 [**updateCollection**](ManagementApi.md#updateCollection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update collection description
 [**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon
 [**updateCouponBatch**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update coupons
-[**updateLoyaltyCard**](ManagementApi.md#updateLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier} | Update loyalty card status
+[**updateLoyaltyCard**](ManagementApi.md#updateLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card status
 [**updateNotificationWebhook**](ManagementApi.md#updateNotificationWebhook) | **PUT** /v1/applications/{applicationId}/notification_webhooks/{notificationWebhookId} | Update notification about campaign-related changes
 [**updateReferral**](ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral
 
 
 <a name="addLoyaltyCardPoints"></a>
 # **addLoyaltyCardPoints**
-> addLoyaltyCardPoints(loyaltyProgramId, loyaltyCardIdentifier, body)
+> addLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body)
 
-Add points to card in a given loyalty program
+Add points to card
 
 Add points to the given loyalty card in the specified card-based loyalty program. 
 
@@ -165,10 +165,10 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     AddLoyaltyPoints body = new AddLoyaltyPoints(); // AddLoyaltyPoints | body
     try {
-      apiInstance.addLoyaltyCardPoints(loyaltyProgramId, loyaltyCardIdentifier, body);
+      apiInstance.addLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#addLoyaltyCardPoints");
       System.err.println("Status code: " + e.getCode());
@@ -185,7 +185,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**AddLoyaltyPoints**](AddLoyaltyPoints.md)| body |
 
 ### Return type
@@ -292,7 +292,7 @@ null (empty response body)
 
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2003 copyCampaignToApplications(applicationId, campaignId, body)
+> InlineResponse2004 copyCampaignToApplications(applicationId, campaignId, body)
 
 Copy the campaign into the specified Application
 
@@ -330,7 +330,7 @@ public class Example {
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
     CampaignCopy body = new CampaignCopy(); // CampaignCopy | body
     try {
-      InlineResponse2003 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+      InlineResponse2004 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -755,7 +755,7 @@ Name | Type | Description  | Notes
 
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2006 createCoupons(applicationId, campaignId, body, silent)
+> InlineResponse2007 createCoupons(applicationId, campaignId, body, silent)
 
 Create coupons
 
@@ -794,7 +794,7 @@ public class Example {
     NewCoupons body = new NewCoupons(); // NewCoupons | body
     String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
     try {
-      InlineResponse2006 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+      InlineResponse2007 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -916,7 +916,7 @@ Name | Type | Description  | Notes
 
 <a name="createCouponsForMultipleRecipients"></a>
 # **createCouponsForMultipleRecipients**
-> InlineResponse2006 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
+> InlineResponse2007 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
 
 Create coupons for multiple recipients
 
@@ -955,7 +955,7 @@ public class Example {
     NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | body
     String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
     try {
-      InlineResponse2006 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+      InlineResponse2007 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCouponsForMultipleRecipients");
@@ -979,7 +979,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -1225,9 +1225,9 @@ Name | Type | Description  | Notes
 
 <a name="deductLoyaltyCardPoints"></a>
 # **deductLoyaltyCardPoints**
-> deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardIdentifier, body)
+> deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body)
 
-Deduct points from card in a given loyalty program.
+Deduct points from card
 
 Deduct points from the given loyalty card in the specified card-based loyalty program. 
 
@@ -1260,10 +1260,10 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     DeductLoyaltyPoints body = new DeductLoyaltyPoints(); // DeductLoyaltyPoints | body
     try {
-      apiInstance.deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardIdentifier, body);
+      apiInstance.deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#deductLoyaltyCardPoints");
       System.err.println("Status code: " + e.getCode());
@@ -1280,7 +1280,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**DeductLoyaltyPoints**](DeductLoyaltyPoints.md)| body |
 
 ### Return type
@@ -1716,7 +1716,7 @@ null (empty response body)
 
 <a name="deleteLoyaltyCard"></a>
 # **deleteLoyaltyCard**
-> deleteLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier)
+> deleteLoyaltyCard(loyaltyProgramId, loyaltyCardId)
 
 Delete loyalty card
 
@@ -1751,9 +1751,9 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     try {
-      apiInstance.deleteLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier);
+      apiInstance.deleteLoyaltyCard(loyaltyProgramId, loyaltyCardId);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#deleteLoyaltyCard");
       System.err.println("Status code: " + e.getCode());
@@ -1770,7 +1770,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
 
 ### Return type
 
@@ -2605,7 +2605,7 @@ Name | Type | Description  | Notes
 # **exportLoyaltyCardBalances**
 > String exportLoyaltyCardBalances(loyaltyProgramId, endDate)
 
-Export loyalty card transaction logs to CSV
+Export all card transaction logs
 
 Download a CSV file containing the balances of all cards in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;loyaltyProgramID&#x60;: The ID of the loyalty program. - &#x60;loyaltySubledger&#x60;: The name of the subdleger, when applicatble. - &#x60;cardIdentifier&#x60;: The alphanumeric identifier of the loyalty card. - &#x60;cardState&#x60;:The state of the loyalty card. It can be &#x60;active&#x60; or &#x60;inactive&#x60;. - &#x60;currentBalance&#x60;: The current point balance. - &#x60;pendingBalance&#x60;: The number of pending points. - &#x60;expiredBalance&#x60;: The number of expired points. - &#x60;spentBalance&#x60;: The number of spent points. 
 
@@ -2682,9 +2682,9 @@ Name | Type | Description  | Notes
 
 <a name="exportLoyaltyCardLedger"></a>
 # **exportLoyaltyCardLedger**
-> String exportLoyaltyCardLedger(loyaltyProgramId, loyaltyCardIdentifier, rangeStart, rangeEnd, dateFormat)
+> String exportLoyaltyCardLedger(loyaltyProgramId, loyaltyCardId, rangeStart, rangeEnd, dateFormat)
 
-Export a loyalty card ledger log
+Export card&#39;s ledger log
 
 Download a CSV file containing a loyalty card ledger log of the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/). 
 
@@ -2717,12 +2717,12 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
     OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
-      String result = apiInstance.exportLoyaltyCardLedger(loyaltyProgramId, loyaltyCardIdentifier, rangeStart, rangeEnd, dateFormat);
+      String result = apiInstance.exportLoyaltyCardLedger(loyaltyProgramId, loyaltyCardId, rangeStart, rangeEnd, dateFormat);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportLoyaltyCardLedger");
@@ -2740,7 +2740,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
@@ -2939,7 +2939,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccessLogsWithoutTotalCount"></a>
 # **getAccessLogsWithoutTotalCount**
-> InlineResponse20017 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20018 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get access logs for Application
 
@@ -2983,7 +2983,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20017 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      InlineResponse20018 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
@@ -3012,7 +3012,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20018**](InlineResponse20018.md)
 
 ### Authorization
 
@@ -3331,7 +3331,7 @@ Name | Type | Description  | Notes
 
 <a name="getAdditionalCosts"></a>
 # **getAdditionalCosts**
-> InlineResponse20031 getAdditionalCosts(pageSize, skip, sort)
+> InlineResponse20032 getAdditionalCosts(pageSize, skip, sort)
 
 List additional costs
 
@@ -3369,7 +3369,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20031 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
+      InlineResponse20032 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAdditionalCosts");
@@ -3392,7 +3392,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20031**](InlineResponse20031.md)
+[**InlineResponse20032**](InlineResponse20032.md)
 
 ### Authorization
 
@@ -3410,7 +3410,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllAccessLogs"></a>
 # **getAllAccessLogs**
-> InlineResponse20018 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20019 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 List access logs
 
@@ -3453,7 +3453,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20018 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      InlineResponse20019 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAllAccessLogs");
@@ -3481,7 +3481,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20018**](InlineResponse20018.md)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -3499,7 +3499,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllRoles"></a>
 # **getAllRoles**
-> InlineResponse20039 getAllRoles()
+> InlineResponse20040 getAllRoles()
 
 List roles
 
@@ -3534,7 +3534,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
-      InlineResponse20039 result = apiInstance.getAllRoles();
+      InlineResponse20040 result = apiInstance.getAllRoles();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAllRoles");
@@ -3552,7 +3552,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20039**](InlineResponse20039.md)
+[**InlineResponse20040**](InlineResponse20040.md)
 
 ### Authorization
 
@@ -3797,7 +3797,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomerFriends"></a>
 # **getApplicationCustomerFriends**
-> InlineResponse20029 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20030 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
 
 List friends referred by customer profile
 
@@ -3838,7 +3838,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20029 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
+      InlineResponse20030 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomerFriends");
@@ -3864,7 +3864,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20029**](InlineResponse20029.md)
+[**InlineResponse20030**](InlineResponse20030.md)
 
 ### Authorization
 
@@ -3882,7 +3882,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomers"></a>
 # **getApplicationCustomers**
-> InlineResponse20020 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
+> InlineResponse20021 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
 
 List application&#39;s customers
 
@@ -3922,7 +3922,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20020 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
+      InlineResponse20021 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
@@ -3947,7 +3947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -3965,7 +3965,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomersByAttributes"></a>
 # **getApplicationCustomersByAttributes**
-> InlineResponse20021 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
+> InlineResponse20022 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
 
 List application customers matching the given attributes
 
@@ -4005,7 +4005,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20021 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
+      InlineResponse20022 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
@@ -4030,7 +4030,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -4048,7 +4048,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventTypes"></a>
 # **getApplicationEventTypes**
-> InlineResponse20027 getApplicationEventTypes(applicationId, pageSize, skip, sort)
+> InlineResponse20028 getApplicationEventTypes(applicationId, pageSize, skip, sort)
 
 List Applications event types
 
@@ -4087,7 +4087,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20027 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+      InlineResponse20028 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
@@ -4111,7 +4111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -4129,7 +4129,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventsWithoutTotalCount"></a>
 # **getApplicationEventsWithoutTotalCount**
-> InlineResponse20026 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
+> InlineResponse20027 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
 
 List Applications events
 
@@ -4179,7 +4179,7 @@ public class Example {
     String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
     String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
     try {
-      InlineResponse20026 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+      InlineResponse20027 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
@@ -4214,7 +4214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -4309,7 +4309,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationSessions"></a>
 # **getApplicationSessions**
-> InlineResponse20025 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId)
+> InlineResponse20026 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId)
 
 List Application sessions
 
@@ -4355,7 +4355,7 @@ public class Example {
     String referral = "referral_example"; // String | Filter by sessions with this referral. Must be exact match.
     String integrationId = "integrationId_example"; // String | Filter by sessions with this integrationId. Must be exact match.
     try {
-      InlineResponse20025 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
+      InlineResponse20026 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationSessions");
@@ -4386,7 +4386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -4404,7 +4404,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplications"></a>
 # **getApplications**
-> InlineResponse2002 getApplications(pageSize, skip, sort)
+> InlineResponse2003 getApplications(pageSize, skip, sort)
 
 List Applications
 
@@ -4442,7 +4442,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse2002 result = apiInstance.getApplications(pageSize, skip, sort);
+      InlineResponse2003 result = apiInstance.getApplications(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplications");
@@ -4465,7 +4465,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -4558,7 +4558,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttributes"></a>
 # **getAttributes**
-> InlineResponse20030 getAttributes(pageSize, skip, sort, entity)
+> InlineResponse20031 getAttributes(pageSize, skip, sort, entity)
 
 List custom attributes
 
@@ -4597,7 +4597,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String entity = "entity_example"; // String | Returned attributes will be filtered by supplied entity.
     try {
-      InlineResponse20030 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
+      InlineResponse20031 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAttributes");
@@ -4621,7 +4621,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20030**](InlineResponse20030.md)
+[**InlineResponse20031**](InlineResponse20031.md)
 
 ### Authorization
 
@@ -4639,7 +4639,7 @@ Name | Type | Description  | Notes
 
 <a name="getAudiences"></a>
 # **getAudiences**
-> InlineResponse20028 getAudiences(pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20029 getAudiences(pageSize, skip, sort, withTotalResultSize)
 
 List audiences
 
@@ -4678,7 +4678,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20028 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
+      InlineResponse20029 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAudiences");
@@ -4702,7 +4702,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20028**](InlineResponse20028.md)
+[**InlineResponse20029**](InlineResponse20029.md)
 
 ### Authorization
 
@@ -4797,7 +4797,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignAnalytics"></a>
 # **getCampaignAnalytics**
-> InlineResponse20019 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
+> InlineResponse20020 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
 
 Get analytics of campaigns
 
@@ -4837,7 +4837,7 @@ public class Example {
     OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
     String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
     try {
-      InlineResponse20019 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+      InlineResponse20020 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
@@ -4862,7 +4862,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -4880,7 +4880,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2003 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
+> InlineResponse2004 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
 
 List campaigns that match the given attributes
 
@@ -4921,7 +4921,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
     try {
-      InlineResponse2003 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+      InlineResponse2004 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -4947,7 +4947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -4965,7 +4965,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignTemplates"></a>
 # **getCampaignTemplates**
-> InlineResponse2009 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
+> InlineResponse20010 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
 
 List campaign templates
 
@@ -5007,7 +5007,7 @@ public class Example {
     String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values. 
     Integer userId = 56; // Integer | Filter results by user ID.
     try {
-      InlineResponse2009 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
+      InlineResponse20010 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignTemplates");
@@ -5034,7 +5034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -5052,7 +5052,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaigns"></a>
 # **getCampaigns**
-> InlineResponse2003 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId)
+> InlineResponse2004 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId)
 
 List campaigns
 
@@ -5098,7 +5098,7 @@ public class Example {
     Integer campaignGroupId = 56; // Integer | Filter results to campaigns owned by the specified campaign group ID.
     Integer templateId = 56; // Integer | The ID of the Campaign Template this Campaign was created from.
     try {
-      InlineResponse2003 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId);
+      InlineResponse2004 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -5129,7 +5129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -5148,7 +5148,7 @@ Name | Type | Description  | Notes
 
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20037 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
+> InlineResponse20038 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
 
 Get audit logs for an account
 
@@ -5194,7 +5194,7 @@ public class Example {
     Integer managementKeyId = 56; // Integer | Filter results that match the given management key ID.
     Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
     try {
-      InlineResponse20037 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+      InlineResponse20038 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getChanges");
@@ -5225,7 +5225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20037**](InlineResponse20037.md)
+[**InlineResponse20038**](InlineResponse20038.md)
 
 ### Authorization
 
@@ -5323,7 +5323,7 @@ Name | Type | Description  | Notes
 
 <a name="getCollectionItems"></a>
 # **getCollectionItems**
-> InlineResponse20015 getCollectionItems(collectionId, pageSize, skip)
+> InlineResponse20016 getCollectionItems(collectionId, pageSize, skip)
 
 Get collection items
 
@@ -5361,7 +5361,7 @@ public class Example {
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      InlineResponse20015 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
+      InlineResponse20016 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCollectionItems");
@@ -5384,7 +5384,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+[**InlineResponse20016**](InlineResponse20016.md)
 
 ### Authorization
 
@@ -5403,7 +5403,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsWithoutTotalCount"></a>
 # **getCouponsWithoutTotalCount**
-> InlineResponse2007 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
+> InlineResponse2008 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
 
 List coupons
 
@@ -5452,7 +5452,7 @@ public class Example {
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     try {
-      InlineResponse2007 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+      InlineResponse2008 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
@@ -5486,7 +5486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -5589,7 +5589,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerActivityReportsWithoutTotalCount"></a>
 # **getCustomerActivityReportsWithoutTotalCount**
-> InlineResponse20024 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
+> InlineResponse20025 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
 
 Get Activity Reports for Application Customers
 
@@ -5634,7 +5634,7 @@ public class Example {
     String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
     String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
     try {
-      InlineResponse20024 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+      InlineResponse20025 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
@@ -5664,7 +5664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -5840,7 +5840,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerProfiles"></a>
 # **getCustomerProfiles**
-> InlineResponse20023 getCustomerProfiles(pageSize, skip, sandbox)
+> InlineResponse20024 getCustomerProfiles(pageSize, skip, sandbox)
 
 List customer profiles
 
@@ -5878,7 +5878,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
     try {
-      InlineResponse20023 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
+      InlineResponse20024 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
@@ -5901,7 +5901,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -5919,7 +5919,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomersByAttributes"></a>
 # **getCustomersByAttributes**
-> InlineResponse20022 getCustomersByAttributes(body, pageSize, skip, sandbox)
+> InlineResponse20023 getCustomersByAttributes(body, pageSize, skip, sandbox)
 
 List customer profiles matching the given attributes
 
@@ -5958,7 +5958,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
     try {
-      InlineResponse20022 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
+      InlineResponse20023 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
@@ -5982,7 +5982,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -6000,7 +6000,7 @@ Name | Type | Description  | Notes
 
 <a name="getEventTypes"></a>
 # **getEventTypes**
-> InlineResponse20035 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20036 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
 
 List event types
 
@@ -6040,7 +6040,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20035 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+      InlineResponse20036 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getEventTypes");
@@ -6065,7 +6065,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20035**](InlineResponse20035.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -6083,7 +6083,7 @@ Name | Type | Description  | Notes
 
 <a name="getExports"></a>
 # **getExports**
-> InlineResponse20038 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20039 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get exports
 
@@ -6123,7 +6123,7 @@ public class Example {
     Integer campaignId = 56; // Integer | Filter by the campaign ID on which the limit counters are used.
     String entity = "entity_example"; // String | The name of the entity type that was exported.
     try {
-      InlineResponse20038 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+      InlineResponse20039 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getExports");
@@ -6148,7 +6148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20038**](InlineResponse20038.md)
+[**InlineResponse20039**](InlineResponse20039.md)
 
 ### Authorization
 
@@ -6166,7 +6166,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCard"></a>
 # **getLoyaltyCard**
-> LoyaltyCard getLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier)
+> LoyaltyCard getLoyaltyCard(loyaltyProgramId, loyaltyCardId)
 
 Get loyalty card
 
@@ -6201,9 +6201,9 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     try {
-      LoyaltyCard result = apiInstance.getLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier);
+      LoyaltyCard result = apiInstance.getLoyaltyCard(loyaltyProgramId, loyaltyCardId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyCard");
@@ -6221,7 +6221,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
 
 ### Return type
 
@@ -6246,9 +6246,9 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCardTransactionLogs"></a>
 # **getLoyaltyCardTransactionLogs**
-> InlineResponse20013 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardIdentifier, startDate, endDate, pageSize, skip, subledgerId)
+> InlineResponse20014 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId)
 
-Get loyalty card transaction logs
+List card&#39;s transactions
 
 Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
 
@@ -6281,14 +6281,14 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
     OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
     try {
-      InlineResponse20013 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardIdentifier, startDate, endDate, pageSize, skip, subledgerId);
+      InlineResponse20014 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyCardTransactionLogs");
@@ -6306,7 +6306,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
@@ -6315,7 +6315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20013**](InlineResponse20013.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -6335,7 +6335,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCards"></a>
 # **getLoyaltyCards**
-> InlineResponse20012 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId)
+> InlineResponse20013 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId)
 
 List loyalty cards
 
@@ -6376,7 +6376,7 @@ public class Example {
     String identifier = "identifier_example"; // String | Optional query parameter to search cards by identifier.
     Integer profileId = 56; // Integer | Filter by the profile ID.
     try {
-      InlineResponse20012 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId);
+      InlineResponse20013 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyCards");
@@ -6402,7 +6402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -6574,7 +6574,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyProgramTransactions"></a>
 # **getLoyaltyProgramTransactions**
-> InlineResponse20011 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
+> InlineResponse20012 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
 
 List loyalty program transactions
 
@@ -6616,7 +6616,7 @@ public class Example {
     Integer pageSize = 50; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      InlineResponse20011 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
+      InlineResponse20012 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyProgramTransactions");
@@ -6643,7 +6643,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20011**](InlineResponse20011.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -6664,7 +6664,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyPrograms"></a>
 # **getLoyaltyPrograms**
-> InlineResponse20010 getLoyaltyPrograms()
+> InlineResponse20011 getLoyaltyPrograms()
 
 List loyalty programs
 
@@ -6699,7 +6699,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
-      InlineResponse20010 result = apiInstance.getLoyaltyPrograms();
+      InlineResponse20011 result = apiInstance.getLoyaltyPrograms();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
@@ -6717,7 +6717,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -6887,7 +6887,7 @@ Name | Type | Description  | Notes
 
 <a name="getNotificationWebhooks"></a>
 # **getNotificationWebhooks**
-> InlineResponse2004 getNotificationWebhooks(applicationId)
+> InlineResponse2005 getNotificationWebhooks(applicationId)
 
 List notifications about campaign-related changes
 
@@ -6923,7 +6923,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     try {
-      InlineResponse2004 result = apiInstance.getNotificationWebhooks(applicationId);
+      InlineResponse2005 result = apiInstance.getNotificationWebhooks(applicationId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getNotificationWebhooks");
@@ -6944,7 +6944,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -6962,7 +6962,7 @@ Name | Type | Description  | Notes
 
 <a name="getReferralsWithoutTotalCount"></a>
 # **getReferralsWithoutTotalCount**
-> InlineResponse2008 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
+> InlineResponse2009 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
 List referrals
 
@@ -7008,7 +7008,7 @@ public class Example {
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
     String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
     try {
-      InlineResponse2008 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+      InlineResponse2009 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
@@ -7039,7 +7039,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -7211,7 +7211,7 @@ Name | Type | Description  | Notes
 
 <a name="getRulesets"></a>
 # **getRulesets**
-> InlineResponse2005 getRulesets(applicationId, campaignId, pageSize, skip, sort)
+> InlineResponse2006 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
 List campaign rulesets
 
@@ -7251,7 +7251,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse2005 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+      InlineResponse2006 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getRulesets");
@@ -7276,7 +7276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -7369,7 +7369,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> InlineResponse20036 getUsers(pageSize, skip, sort)
+> InlineResponse20037 getUsers(pageSize, skip, sort)
 
 List users in account
 
@@ -7407,7 +7407,7 @@ public class Example {
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20036 result = apiInstance.getUsers(pageSize, skip, sort);
+      InlineResponse20037 result = apiInstance.getUsers(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getUsers");
@@ -7430,7 +7430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20036**](InlineResponse20036.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -7523,7 +7523,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookActivationLogs"></a>
 # **getWebhookActivationLogs**
-> InlineResponse20033 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20034 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List webhook activation log entries
 
@@ -7567,7 +7567,7 @@ public class Example {
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
     try {
-      InlineResponse20033 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+      InlineResponse20034 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
@@ -7596,7 +7596,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20033**](InlineResponse20033.md)
+[**InlineResponse20034**](InlineResponse20034.md)
 
 ### Authorization
 
@@ -7614,7 +7614,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookLogs"></a>
 # **getWebhookLogs**
-> InlineResponse20034 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20035 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List webhook log entries
 
@@ -7659,7 +7659,7 @@ public class Example {
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally.
     try {
-      InlineResponse20034 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+      InlineResponse20035 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhookLogs");
@@ -7689,7 +7689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20034**](InlineResponse20034.md)
+[**InlineResponse20035**](InlineResponse20035.md)
 
 ### Authorization
 
@@ -7707,7 +7707,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhooks"></a>
 # **getWebhooks**
-> InlineResponse20032 getWebhooks(applicationIds, sort, pageSize, skip)
+> InlineResponse20033 getWebhooks(applicationIds, sort, pageSize, skip)
 
 List webhooks
 
@@ -7746,7 +7746,7 @@ public class Example {
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | Skips the given number of items when paging through large result sets.
     try {
-      InlineResponse20032 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
+      InlineResponse20033 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhooks");
@@ -7770,7 +7770,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20032**](InlineResponse20032.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -8420,7 +8420,7 @@ Name | Type | Description  | Notes
 
 <a name="listAccountCollections"></a>
 # **listAccountCollections**
-> InlineResponse20014 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20015 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in account
 
@@ -8460,7 +8460,7 @@ public class Example {
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     String name = "name_example"; // String | Filter by the name of the Collection.
     try {
-      InlineResponse20014 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20015 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listAccountCollections");
@@ -8485,7 +8485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20015**](InlineResponse20015.md)
 
 ### Authorization
 
@@ -8506,7 +8506,7 @@ Name | Type | Description  | Notes
 
 <a name="listCollections"></a>
 # **listCollections**
-> InlineResponse20016 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20017 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
 
 List collections
 
@@ -8548,7 +8548,7 @@ public class Example {
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     String name = "name_example"; // String | Filter by the name of the Collection.
     try {
-      InlineResponse20016 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20017 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listCollections");
@@ -8575,7 +8575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -8594,7 +8594,7 @@ Name | Type | Description  | Notes
 
 <a name="listCollectionsInApplication"></a>
 # **listCollectionsInApplication**
-> InlineResponse20016 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20017 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in application
 
@@ -8635,7 +8635,7 @@ public class Example {
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     String name = "name_example"; // String | Filter by the name of the Collection.
     try {
-      InlineResponse20016 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20017 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listCollectionsInApplication");
@@ -8661,7 +8661,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -8996,7 +8996,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2007 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2008 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 List coupons that match the given attributes (without total count)
 
@@ -9046,7 +9046,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
     try {
-      InlineResponse2007 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2008 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -9081,7 +9081,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -9099,7 +9099,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2007 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2008 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 List coupons that match the given attributes in campaign (without total count)
 
@@ -9149,7 +9149,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2007 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2008 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -9184,7 +9184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -9202,11 +9202,11 @@ Name | Type | Description  | Notes
 
 <a name="transferLoyaltyCard"></a>
 # **transferLoyaltyCard**
-> transferLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier, body)
+> transferLoyaltyCard(loyaltyProgramId, loyaltyCardId, body)
 
-Transfer loyalty card data
+Transfer card data
 
-Transfer card data, such as linked customers, loyalty balances and transactions, from a given loyalty card to a new, automatically created loyalty card.  **Important:**  - The original card is automatically blocked once the new card is created, and it cannot be activated again. - The default status of the new card is _active_. 
+Transfer loyalty card data, such as linked customers, loyalty balances and transactions, from a given loyalty card to a new, automatically created loyalty card.  **Important:**  - The original card is automatically blocked once the new card is created, and it cannot be activated again. - The default status of the new card is _active_. 
 
 ### Example
 ```java
@@ -9237,10 +9237,10 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     TransferLoyaltyCard body = new TransferLoyaltyCard(); // TransferLoyaltyCard | body
     try {
-      apiInstance.transferLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier, body);
+      apiInstance.transferLoyaltyCard(loyaltyProgramId, loyaltyCardId, body);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#transferLoyaltyCard");
       System.err.println("Status code: " + e.getCode());
@@ -9257,7 +9257,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**TransferLoyaltyCard**](TransferLoyaltyCard.md)| body |
 
 ### Return type
@@ -9837,7 +9837,7 @@ null (empty response body)
 
 <a name="updateLoyaltyCard"></a>
 # **updateLoyaltyCard**
-> LoyaltyCard updateLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier, body)
+> LoyaltyCard updateLoyaltyCard(loyaltyProgramId, loyaltyCardId, body)
 
 Update loyalty card status
 
@@ -9872,10 +9872,10 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    String loyaltyCardIdentifier = "loyaltyCardIdentifier_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
+    String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
     UpdateLoyaltyCard body = new UpdateLoyaltyCard(); // UpdateLoyaltyCard | body
     try {
-      LoyaltyCard result = apiInstance.updateLoyaltyCard(loyaltyProgramId, loyaltyCardIdentifier, body);
+      LoyaltyCard result = apiInstance.updateLoyaltyCard(loyaltyProgramId, loyaltyCardId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#updateLoyaltyCard");
@@ -9893,7 +9893,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **loyaltyCardIdentifier** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
+ **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**UpdateLoyaltyCard**](UpdateLoyaltyCard.md)| body |
 
 ### Return type

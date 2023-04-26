@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationReferee;
+import one.talon.model.Audience;
 
 /**
  * InlineResponse20029
@@ -42,7 +42,7 @@ public class InlineResponse20029 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationReferee> data = new ArrayList<ApplicationReferee>();
+  private List<Audience> data = new ArrayList<Audience>();
 
 
   public InlineResponse20029 hasMore(Boolean hasMore) {
@@ -91,13 +91,13 @@ public class InlineResponse20029 {
   }
 
 
-  public InlineResponse20029 data(List<ApplicationReferee> data) {
+  public InlineResponse20029 data(List<Audience> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20029 addDataItem(ApplicationReferee dataItem) {
+  public InlineResponse20029 addDataItem(Audience dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,12 +108,12 @@ public class InlineResponse20029 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<ApplicationReferee> getData() {
+  public List<Audience> getData() {
     return data;
   }
 
 
-  public void setData(List<ApplicationReferee> data) {
+  public void setData(List<Audience> data) {
     this.data = data;
   }
 

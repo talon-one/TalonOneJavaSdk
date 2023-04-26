@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -48,6 +48,63 @@ public class OutgoingIntegrationWebhookTemplate {
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private String payload;
+
+  /**
+   * API method for this webhook.
+   */
+  @JsonAdapter(MethodEnum.Adapter.class)
+  public enum MethodEnum {
+    POST("POST"),
+    
+    PUT("PUT"),
+    
+    GET("GET"),
+    
+    DELETE("DELETE"),
+    
+    PATCH("PATCH");
+
+    private String value;
+
+    MethodEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MethodEnum fromValue(String value) {
+      for (MethodEnum b : MethodEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MethodEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MethodEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MethodEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MethodEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
+  private MethodEnum method;
 
 
   public OutgoingIntegrationWebhookTemplate id(Integer id) {
@@ -160,6 +217,28 @@ public class OutgoingIntegrationWebhookTemplate {
   }
 
 
+  public OutgoingIntegrationWebhookTemplate method(MethodEnum method) {
+    
+    this.method = method;
+    return this;
+  }
+
+   /**
+   * API method for this webhook.
+   * @return method
+  **/
+  @ApiModelProperty(example = "POST", required = true, value = "API method for this webhook.")
+
+  public MethodEnum getMethod() {
+    return method;
+  }
+
+
+  public void setMethod(MethodEnum method) {
+    this.method = method;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -173,12 +252,13 @@ public class OutgoingIntegrationWebhookTemplate {
         Objects.equals(this.integrationType, outgoingIntegrationWebhookTemplate.integrationType) &&
         Objects.equals(this.title, outgoingIntegrationWebhookTemplate.title) &&
         Objects.equals(this.description, outgoingIntegrationWebhookTemplate.description) &&
-        Objects.equals(this.payload, outgoingIntegrationWebhookTemplate.payload);
+        Objects.equals(this.payload, outgoingIntegrationWebhookTemplate.payload) &&
+        Objects.equals(this.method, outgoingIntegrationWebhookTemplate.method);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, integrationType, title, description, payload);
+    return Objects.hash(id, integrationType, title, description, payload, method);
   }
 
 
@@ -191,6 +271,7 @@ public class OutgoingIntegrationWebhookTemplate {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("}");
     return sb.toString();
   }

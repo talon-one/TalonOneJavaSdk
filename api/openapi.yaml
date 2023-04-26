@@ -12,9 +12,9 @@ info:
     ## Determining the base URL of the endpoints
 
     The API is available at the same hostname as your Campaign Manager deployment.
-    For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`,
+    For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`,
     the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint
-    is `https://mycompany.talon.one/v2/customer_sessions/{Id}`
+    is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}`
   title: Talon.One API
   version: ""
 servers:
@@ -501,7 +501,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationStateV2'
+                $ref: '#/components/schemas/ReopenSessionResponse'
           description: OK
         "400":
           content:
@@ -948,7 +948,7 @@ paths:
       x-codegen-request-body-name: body
       x-contentType: application/json
       x-accepts: application/json
-  /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/link_profile:
+  /v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile:
     post:
       description: |
         [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect
@@ -973,7 +973,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -1012,7 +1012,7 @@ paths:
           description: Not found
       security:
       - api_key_v1: []
-      summary: Link customer profile to loyalty card
+      summary: Link customer profile to card
       tags:
       - integration
       x-codegen-request-body-name: body
@@ -1529,7 +1529,7 @@ paths:
       tags:
       - integration
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/balances:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances:
     get:
       description: |
         Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied.
@@ -1548,7 +1548,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -1589,7 +1589,7 @@ paths:
           description: Not found
       security:
       - api_key_v1: []
-      summary: Get loyalty balances for a loyalty card
+      summary: Get card's point balances
       tags:
       - integration
       x-accepts: application/json
@@ -1663,7 +1663,7 @@ paths:
       tags:
       - integration
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/transactions:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions:
     get:
       description: |
         Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied.
@@ -1682,7 +1682,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -1729,7 +1729,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CardLedgerTransactionLogEntryIntegrationAPI'
+                $ref: '#/components/schemas/inline_response_200_1'
           description: OK
         "400":
           content:
@@ -1751,7 +1751,7 @@ paths:
           description: Not found
       security:
       - api_key_v1: []
-      summary: Get loyalty card transaction logs
+      summary: List card's transactions
       tags:
       - integration
       x-accepts: application/json
@@ -1827,7 +1827,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
+                $ref: '#/components/schemas/inline_response_200_2'
           description: OK
         "400":
           content:
@@ -1885,7 +1885,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_2'
+                $ref: '#/components/schemas/inline_response_200_3'
           description: OK
       summary: List Applications
       tags:
@@ -2014,7 +2014,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
+                $ref: '#/components/schemas/inline_response_200_4'
           description: OK
         "400":
           content:
@@ -2046,7 +2046,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_4'
+                $ref: '#/components/schemas/inline_response_200_5'
           description: OK
       summary: List notifications about campaign-related changes
       tags:
@@ -2322,7 +2322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
+                $ref: '#/components/schemas/inline_response_200_4'
           description: OK
       summary: Copy the campaign into the specified Application
       tags:
@@ -2508,7 +2508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
+                $ref: '#/components/schemas/inline_response_200_4'
           description: OK
       summary: List campaigns that match the given attributes
       tags:
@@ -2565,7 +2565,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_5'
+                $ref: '#/components/schemas/inline_response_200_6'
           description: OK
       summary: List campaign rulesets
       tags:
@@ -2776,7 +2776,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_6'
+                $ref: '#/components/schemas/inline_response_200_7'
           description: OK
         "204":
           content: {}
@@ -2877,7 +2877,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_6'
+                $ref: '#/components/schemas/inline_response_200_7'
           description: OK
         "204":
           content: {}
@@ -3043,7 +3043,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_7'
+                $ref: '#/components/schemas/inline_response_200_8'
           description: OK
       summary: List coupons
       tags:
@@ -3265,7 +3265,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_7'
+                $ref: '#/components/schemas/inline_response_200_8'
           description: OK
       summary: List coupons that match the given attributes in campaign (without total
         count)
@@ -3413,7 +3413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_7'
+                $ref: '#/components/schemas/inline_response_200_8'
           description: OK
       summary: List coupons that match the given attributes (without total count)
       tags:
@@ -3592,7 +3592,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_8'
+                $ref: '#/components/schemas/inline_response_200_9'
           description: OK
       summary: List referrals
       tags:
@@ -3656,7 +3656,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_9'
+                $ref: '#/components/schemas/inline_response_200_10'
           description: OK
       summary: List campaign templates
       tags:
@@ -3708,7 +3708,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_10'
+                $ref: '#/components/schemas/inline_response_200_11'
           description: OK
       summary: List loyalty programs
       tags:
@@ -4254,7 +4254,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_11'
+                $ref: '#/components/schemas/inline_response_200_12'
           description: OK
         "400":
           content:
@@ -4400,7 +4400,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Unauthorized
-      summary: Export loyalty card transaction logs to CSV
+      summary: Export all card transaction logs
       tags:
       - management
       x-accepts: application/csv
@@ -4457,7 +4457,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_12'
+                $ref: '#/components/schemas/inline_response_200_13'
           description: OK
         "400":
           content:
@@ -4475,7 +4475,7 @@ paths:
       tags:
       - management
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}:
     delete:
       description: Delete the given loyalty card.
       operationId: deleteLoyaltyCard
@@ -4492,7 +4492,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4533,7 +4533,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4584,7 +4584,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4627,7 +4627,7 @@ paths:
       x-codegen-request-body-name: body
       x-contentType: application/json
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/add_points:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/add_points:
     put:
       description: |
         Add points to the given loyalty card in the specified card-based loyalty program.
@@ -4645,7 +4645,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4679,13 +4679,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Not found
-      summary: Add points to card in a given loyalty program
+      summary: Add points to card
       tags:
       - management
       x-codegen-request-body-name: body
       x-contentType: application/json
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/deduct_points:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points:
     put:
       description: |
         Deduct points from the given loyalty card in the specified card-based loyalty program.
@@ -4703,7 +4703,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4737,13 +4737,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Not found
-      summary: Deduct points from card in a given loyalty program.
+      summary: Deduct points from card
       tags:
       - management
       x-codegen-request-body-name: body
       x-contentType: application/json
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/export_log:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/export_log:
     get:
       description: |
         Download a CSV file containing a loyalty card ledger log of the loyalty program.
@@ -4763,7 +4763,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4812,11 +4812,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Not found
-      summary: Export a loyalty card ledger log
+      summary: Export card's ledger log
       tags:
       - management
       x-accepts: application/csv
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/logs:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/logs:
     get:
       description: |
         Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview)
@@ -4836,7 +4836,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4883,7 +4883,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_13'
+                $ref: '#/components/schemas/inline_response_200_14'
           description: OK
         "401":
           content:
@@ -4897,14 +4897,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Not found
-      summary: Get loyalty card transaction logs
+      summary: List card's transactions
       tags:
       - management
       x-accepts: application/json
-  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/transfer:
+  /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer:
     put:
       description: |
-        Transfer card data, such as linked customers, loyalty balances and transactions, from a given loyalty card to a new, automatically created loyalty card.
+        Transfer loyalty card data, such as linked customers, loyalty balances and transactions, from a given loyalty card to a new, automatically created loyalty card.
 
         **Important:**
 
@@ -4924,7 +4924,7 @@ paths:
           Identifier of the loyalty card. You can get the identifier with
           the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.
         in: path
-        name: loyaltyCardIdentifier
+        name: loyaltyCardId
         required: true
         schema:
           maxLength: 108
@@ -4958,7 +4958,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseWithStatus'
           description: Not found
-      summary: Transfer loyalty card data
+      summary: Transfer card data
       tags:
       - management
       x-codegen-request-body-name: body
@@ -5067,7 +5067,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_14'
+                $ref: '#/components/schemas/inline_response_200_15'
           description: OK
         "400":
           content:
@@ -5267,7 +5267,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_15'
+                $ref: '#/components/schemas/inline_response_200_16'
           description: OK
         "404":
           content:
@@ -5332,7 +5332,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_16'
+                $ref: '#/components/schemas/inline_response_200_17'
           description: OK
         "404":
           content:
@@ -5404,7 +5404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_16'
+                $ref: '#/components/schemas/inline_response_200_17'
           description: OK
         "404":
           content:
@@ -5941,7 +5941,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_17'
+                $ref: '#/components/schemas/inline_response_200_18'
           description: OK
       summary: Get access logs for Application
       tags:
@@ -6022,7 +6022,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_18'
+                $ref: '#/components/schemas/inline_response_200_19'
           description: OK
       summary: List access logs
       tags:
@@ -6079,7 +6079,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_19'
+                $ref: '#/components/schemas/inline_response_200_20'
           description: OK
       summary: Get analytics of campaigns
       tags:
@@ -6131,7 +6131,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_20'
+                $ref: '#/components/schemas/inline_response_200_21'
           description: OK
       summary: List application's customers
       tags:
@@ -6187,7 +6187,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_21'
+                $ref: '#/components/schemas/inline_response_200_22'
           description: OK
       summary: List application customers matching the given attributes
       tags:
@@ -6235,7 +6235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_22'
+                $ref: '#/components/schemas/inline_response_200_23'
           description: OK
       summary: List customer profiles matching the given attributes
       tags:
@@ -6308,7 +6308,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_23'
+                $ref: '#/components/schemas/inline_response_200_24'
           description: OK
       summary: List customer profiles
       tags:
@@ -6424,7 +6424,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_24'
+                $ref: '#/components/schemas/inline_response_200_25'
           description: OK
       summary: Get Activity Reports for Application Customers
       tags:
@@ -6629,7 +6629,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_25'
+                $ref: '#/components/schemas/inline_response_200_26'
           description: OK
       summary: List Application sessions
       tags:
@@ -6770,7 +6770,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_26'
+                $ref: '#/components/schemas/inline_response_200_27'
           description: OK
       summary: List Applications events
       tags:
@@ -6818,7 +6818,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_27'
+                $ref: '#/components/schemas/inline_response_200_28'
           description: OK
       summary: List Applications event types
       tags:
@@ -6866,7 +6866,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_28'
+                $ref: '#/components/schemas/inline_response_200_29'
           description: OK
       summary: List audiences
       tags:
@@ -6927,7 +6927,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_29'
+                $ref: '#/components/schemas/inline_response_200_30'
           description: OK
       summary: List friends referred by customer profile
       tags:
@@ -6971,7 +6971,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_30'
+                $ref: '#/components/schemas/inline_response_200_31'
           description: OK
       summary: List custom attributes
       tags:
@@ -7423,7 +7423,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_31'
+                $ref: '#/components/schemas/inline_response_200_32'
           description: OK
       summary: List additional costs
       tags:
@@ -7548,7 +7548,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_32'
+                $ref: '#/components/schemas/inline_response_200_33'
           description: OK
       summary: List webhooks
       tags:
@@ -7645,7 +7645,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_33'
+                $ref: '#/components/schemas/inline_response_200_34'
           description: OK
       summary: List webhook activation log entries
       tags:
@@ -7727,7 +7727,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_34'
+                $ref: '#/components/schemas/inline_response_200_35'
           description: OK
       summary: List webhook log entries
       tags:
@@ -7778,7 +7778,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_35'
+                $ref: '#/components/schemas/inline_response_200_36'
           description: OK
       summary: List event types
       tags:
@@ -8384,7 +8384,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_36'
+                $ref: '#/components/schemas/inline_response_200_37'
           description: OK
       summary: List users in account
       tags:
@@ -8498,7 +8498,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_37'
+                $ref: '#/components/schemas/inline_response_200_38'
           description: OK
       summary: Get audit logs for an account
       tags:
@@ -8706,7 +8706,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_38'
+                $ref: '#/components/schemas/inline_response_200_39'
           description: OK
       summary: Get exports
       tags:
@@ -8721,7 +8721,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_39'
+                $ref: '#/components/schemas/inline_response_200_40'
           description: OK
       summary: List roles
       tags:
@@ -8930,7 +8930,7 @@ components:
     MultiApplicationEntity:
       properties:
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
           items:
             type: integer
           minItems: 1
@@ -13267,11 +13267,26 @@ components:
           type: string
         validityDuration:
           description: |
-            The duration after which the added loyalty points should expire.
-            The time format is an integer followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported:
-              - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day.
-              - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
-              If passed, `validUntil` should be omitted.
+            The time format is either:
+            - `immediate` or,
+            - an **integer** followed by one letter indicating the time unit.
+
+            Examples: `immediate`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`.
+
+            Available units:
+
+            - `s`: seconds
+            - `m`: minutes
+            - `h`: hours
+            - `D`: days
+            - `W`: weeks
+            - `M`: months
+
+            You can round certain units up or down:
+            - `_D` for rounding down days only. Signifies the start of the day.
+            - `_U` for rounding up days, weeks and months. Signifies the end of the day, week, or month.
+
+            If passed, `validUntil` should be omitted.
           example: 5D
           type: string
         validUntil:
@@ -13284,10 +13299,25 @@ components:
         pendingDuration:
           description: |
             The amount of time before the points are considered valid.
-            The time format is an integer followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported:
-              - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day.
-              - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month.
-            If passed, `pendingUntil` should be omitted.
+
+            The time format is either:
+            - `immediate` or,
+            - an **integer** followed by one letter indicating the time unit.
+
+            Examples: `immediate`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`.
+
+            Available units:
+
+            - `s`: seconds
+            - `m`: minutes
+            - `h`: hours
+            - `D`: days
+            - `W`: weeks
+            - `M`: months
+
+            You can round certain units up or down:
+            - `_D` for rounding down days only. Signifies the start of the day.
+            - `_U` for rounding up days, weeks and months. Signifies the end of the day, week, or month.
           example: 12h
           type: string
         pendingUntil:
@@ -17834,6 +17864,37 @@ components:
       - createdReferrals
       - effects
       type: object
+    ReopenSessionResponse:
+      description: |
+        This is the response type returned by the Reopen customer sessions endpoint. It contains the rolled back effects.
+      example:
+        effects:
+        - rulesetId: 73
+          ruleIndex: 2
+          triggeredForCatalogItem: 786
+          campaignId: 244
+          ruleName: Give 20% discount
+          triggeredByCoupon: 4928
+          effectType: rejectCoupon
+          props: '{}'
+        - rulesetId: 73
+          ruleIndex: 2
+          triggeredForCatalogItem: 786
+          campaignId: 244
+          ruleName: Give 20% discount
+          triggeredByCoupon: 4928
+          effectType: rejectCoupon
+          props: '{}'
+      properties:
+        effects:
+          description: The effects generated by the rules in your running campaigns.
+            See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+          items:
+            $ref: '#/components/schemas/Effect'
+          type: array
+      required:
+      - effects
+      type: object
     CustomerProfileUpdateV2Response:
       description: |
         Contains the updated customer profiles entities. This is the response type returned by the V2 PUT customer_profiles endpoint
@@ -20650,7 +20711,7 @@ components:
       description: ""
       properties:
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
           items:
             type: integer
           minItems: 1
@@ -20671,7 +20732,7 @@ components:
           example: POST
           type: string
         url:
-          description: API url (supports templating using parameters) for this webhook.
+          description: API URL (supports templating using parameters) for this webhook.
           example: www.my-company.com/my-endpoint-name
           type: string
         headers:
@@ -20695,7 +20756,7 @@ components:
             $ref: '#/components/schemas/TemplateArgDef'
           type: array
         enabled:
-          description: Enables or disables webhook from showing in rule builder.
+          description: Enables or disables webhook from showing in the Rule Builder.
           example: true
           type: boolean
       required:
@@ -20741,8 +20802,8 @@ components:
           format: date-time
           type: string
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
-            The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
+            The IDs of the Applications that are related to this entity.
           items:
             description: ""
             type: integer
@@ -20764,7 +20825,7 @@ components:
           example: POST
           type: string
         url:
-          description: API url (supports templating using parameters) for this webhook.
+          description: API URL (supports templating using parameters) for this webhook.
           example: www.my-company.com/my-endpoint-name
           type: string
         headers:
@@ -20788,7 +20849,7 @@ components:
             $ref: '#/components/schemas/TemplateArgDef'
           type: array
         enabled:
-          description: Enables or disables webhook from showing in rule builder.
+          description: Enables or disables webhook from showing in the Rule Builder.
           example: true
           type: boolean
       required:
@@ -23796,7 +23857,7 @@ components:
       description: ""
       properties:
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
           items:
             type: integer
           minItems: 1
@@ -23947,7 +24008,7 @@ components:
       description: ""
       properties:
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
           items:
             type: integer
           minItems: 1
@@ -24007,7 +24068,7 @@ components:
           format: date-time
           type: string
         applicationIds:
-          description: The IDs of the applications that are related to this entity.
+          description: The IDs of the Applications that are related to this entity.
           items:
             type: integer
           minItems: 1
@@ -25113,6 +25174,27 @@ components:
       - name
       - value
       type: object
+    StrikethroughCustomEffectPerItemProps:
+      description: customEffectPerItem effect in strikethrough pricing payload.
+      properties:
+        effectId:
+          description: ID of the effect.
+          example: 1
+          type: integer
+        name:
+          description: The type of the custom effect.
+          example: my_custom_effect
+          type: string
+        payload:
+          description: The JSON payload of the custom effect.
+          properties: {}
+          type: object
+          x-arbitraryJSON: true
+      required:
+      - effectId
+      - name
+      - payload
+      type: object
     NewBaseNotification:
       description: ""
       example:
@@ -25412,6 +25494,10 @@ components:
       type: object
     OutgoingIntegrationConfiguration:
       properties:
+        id:
+          description: Unique ID for this entity.
+          example: 6
+          type: integer
         accountId:
           description: The ID of the account to which this configuration belongs.
           example: 3886
@@ -25424,6 +25510,7 @@ components:
           type: object
       required:
       - accountId
+      - id
       - policy
       - typeId
       type: object
@@ -25480,11 +25567,41 @@ components:
             webhook template.
           example: "{\n\t\"message\": \"${message}\"\n}"
           type: string
+        method:
+          description: API method for this webhook.
+          enum:
+          - POST
+          - PUT
+          - GET
+          - DELETE
+          - PATCH
+          example: POST
+          type: string
       required:
       - description
       - id
       - integrationType
+      - method
       - payload
+      - title
+      type: object
+    NewOutgoingIntegrationWebhook:
+      properties:
+        title:
+          description: Webhook title.
+          example: Send email to customer via Braze
+          type: string
+        applicationIds:
+          description: IDs of the Applications to which a webhook must be linked.
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: integer
+          type: array
+      required:
+      - applicationIds
       - title
       type: object
     CouponLimitConfigs:
@@ -26323,6 +26440,47 @@ components:
     inline_response_200_1:
       example:
         data:
+        - rulesetId: 11
+          amount: 10.25
+          created: 2000-01-23T04:56:07.000+00:00
+          customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
+          type: addition
+          cardIdentifier: summer-loyalty-card-0543
+          expiryDate: 2022-08-02T15:04:05Z07:00
+          subledgerId: sub-123
+          name: Reward 10% points of a purchase's current total
+          ruleName: Add 2 points
+          id: 123
+          programId: 324
+          startDate: 2022-01-02T15:04:05Z07:00
+        - rulesetId: 11
+          amount: 10.25
+          created: 2000-01-23T04:56:07.000+00:00
+          customerSessionId: 05c2da0d-48fa-4aa1-b629-898f58f1584d
+          type: addition
+          cardIdentifier: summer-loyalty-card-0543
+          expiryDate: 2022-08-02T15:04:05Z07:00
+          subledgerId: sub-123
+          name: Reward 10% points of a purchase's current total
+          ruleName: Add 2 points
+          id: 123
+          programId: 324
+          startDate: 2022-01-02T15:04:05Z07:00
+        hasMore: true
+      properties:
+        hasMore:
+          example: true
+          type: boolean
+        data:
+          items:
+            $ref: '#/components/schemas/CardLedgerTransactionLogEntryIntegrationAPI'
+          type: array
+      required:
+      - data
+      - hasMore
+    inline_response_200_2:
+      example:
+        data:
         - expiryDate: 2022-08-02T15:04:05Z07:00
           rulesetId: 11
           amount: 10.25
@@ -26359,7 +26517,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_2:
+    inline_response_200_3:
       example:
         data:
         - enableFlattenedCartItems: true
@@ -26578,7 +26736,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_3:
+    inline_response_200_4:
       example:
         data:
         - callApiEffectCount: 0
@@ -26849,7 +27007,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_4:
+    inline_response_200_5:
       example:
         data:
         - headers: 'content-type: application/json'
@@ -26876,7 +27034,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_5:
+    inline_response_200_6:
       example:
         data:
         - rbVersion: v2
@@ -27169,7 +27327,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_6:
+    inline_response_200_7:
       example:
         data:
         - recipientIntegrationId: URNGV8294NV
@@ -27246,7 +27404,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_7:
+    inline_response_200_8:
       example:
         data:
         - recipientIntegrationId: URNGV8294NV
@@ -27323,7 +27481,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_8:
+    inline_response_200_9:
       example:
         data:
         - code: 27G47Y54VH9L
@@ -27366,7 +27524,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_9:
+    inline_response_200_10:
       example:
         data:
         - activeRulesetId: 5
@@ -27643,7 +27801,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_10:
+    inline_response_200_11:
       example:
         data:
         - cardBased: true
@@ -27722,7 +27880,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_11:
+    inline_response_200_12:
       example:
         data:
         - rulesetId: 11
@@ -27771,7 +27929,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_12:
+    inline_response_200_13:
       example:
         data:
         - ledger:
@@ -27860,7 +28018,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_13:
+    inline_response_200_14:
       example:
         data:
         - amount: 10.25
@@ -27903,7 +28061,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_14:
+    inline_response_200_15:
       example:
         data:
         - accountId: 3886
@@ -27948,7 +28106,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_15:
+    inline_response_200_16:
       example:
         data:
         - item: item
@@ -27964,7 +28122,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_16:
+    inline_response_200_17:
       example:
         data:
         - accountId: 3886
@@ -28015,7 +28173,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_17:
+    inline_response_200_18:
       example:
         data:
         - method: PUT
@@ -28055,7 +28213,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_18:
+    inline_response_200_19:
       example:
         data:
         - method: PUT
@@ -28096,7 +28254,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_19:
+    inline_response_200_20:
       example:
         data:
         - date: 2021-10-12T10:12:42Z
@@ -28161,7 +28319,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_20:
+    inline_response_200_21:
       example:
         data:
         - accountId: 6
@@ -28222,7 +28380,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_21:
+    inline_response_200_22:
       example:
         data:
         - accountId: 6
@@ -28282,7 +28440,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_22:
+    inline_response_200_23:
       example:
         data:
         - accountId: 31
@@ -28340,7 +28498,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_23:
+    inline_response_200_24:
       example:
         data:
         - accountId: 31
@@ -28396,7 +28554,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_24:
+    inline_response_200_25:
       example:
         data:
         - couponUseAttempts: 1
@@ -28436,7 +28594,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_25:
+    inline_response_200_26:
       example:
         data:
         - coupon: BKDB946
@@ -28555,7 +28713,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_26:
+    inline_response_200_27:
       example:
         data:
         - effects:
@@ -28667,7 +28825,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_27:
+    inline_response_200_28:
       example:
         data:
         - data
@@ -28684,7 +28842,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_28:
+    inline_response_200_29:
       example:
         data:
         - accountId: 3886
@@ -28721,7 +28879,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_29:
+    inline_response_200_30:
       example:
         data:
         - friendIntegrationId: friendIntegrationId
@@ -28750,7 +28908,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_30:
+    inline_response_200_31:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -28823,7 +28981,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_31:
+    inline_response_200_32:
       example:
         data:
         - accountId: 3886
@@ -28858,7 +29016,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_32:
+    inline_response_200_33:
       example:
         data:
         - headers:
@@ -28903,7 +29061,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_33:
+    inline_response_200_34:
       example:
         data:
         - webhookId: 1
@@ -28928,7 +29086,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_34:
+    inline_response_200_35:
       example:
         data:
         - requestTime: 2021-07-20T22:00:00Z
@@ -28969,7 +29127,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_35:
+    inline_response_200_36:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -28994,7 +29152,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_36:
+    inline_response_200_37:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -29039,7 +29197,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_37:
+    inline_response_200_38:
       example:
         data:
         - new:
@@ -29090,7 +29248,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_38:
+    inline_response_200_39:
       example:
         data:
         - filter: '{}'
@@ -29117,7 +29275,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_39:
+    inline_response_200_40:
       example:
         data:
         - accountId: 3886

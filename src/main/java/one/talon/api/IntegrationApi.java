@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import one.talon.model.Audience;
-import one.talon.model.CardLedgerTransactionLogEntryIntegrationAPI;
 import one.talon.model.Catalog;
 import one.talon.model.CatalogSyncRequest;
 import one.talon.model.Coupon;
@@ -40,6 +39,7 @@ import one.talon.model.ErrorResponse;
 import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse200;
 import one.talon.model.InlineResponse2001;
+import one.talon.model.InlineResponse2002;
 import one.talon.model.InlineResponse201;
 import one.talon.model.IntegrationCustomerSessionResponse;
 import one.talon.model.IntegrationEventV2Request;
@@ -57,6 +57,7 @@ import one.talon.model.NewReferral;
 import one.talon.model.NewReferralsForMultipleAdvocates;
 import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
+import one.talon.model.ReopenSessionResponse;
 import one.talon.model.ReturnIntegrationRequest;
 import one.talon.model.UpdateAudience;
 
@@ -1486,7 +1487,7 @@ public class IntegrationApi {
     /**
      * Build call for getLoyaltyCardBalances
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param endDate Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1500,13 +1501,13 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/balances"
+        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances"
             .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardIdentifier" + "\\}", localVarApiClient.escapeString(loyaltyCardIdentifier.toString()));
+            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1536,29 +1537,29 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
             throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardBalances(Async)");
         }
         
-        // verify the required parameter 'loyaltyCardIdentifier' is set
-        if (loyaltyCardIdentifier == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardIdentifier' when calling getLoyaltyCardBalances(Async)");
+        // verify the required parameter 'loyaltyCardId' is set
+        if (loyaltyCardId == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardBalances(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesCall(loyaltyProgramId, loyaltyCardIdentifier, endDate, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesCall(loyaltyProgramId, loyaltyCardId, endDate, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get loyalty balances for a loyalty card
+     * Get card&#39;s point balances
      * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param endDate Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @return LoyaltyBalances
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1571,16 +1572,16 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyBalances getLoyaltyCardBalances(Integer loyaltyProgramId, String loyaltyCardIdentifier, OffsetDateTime endDate) throws ApiException {
-        ApiResponse<LoyaltyBalances> localVarResp = getLoyaltyCardBalancesWithHttpInfo(loyaltyProgramId, loyaltyCardIdentifier, endDate);
+    public LoyaltyBalances getLoyaltyCardBalances(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate) throws ApiException {
+        ApiResponse<LoyaltyBalances> localVarResp = getLoyaltyCardBalancesWithHttpInfo(loyaltyProgramId, loyaltyCardId, endDate);
         return localVarResp.getData();
     }
 
     /**
-     * Get loyalty balances for a loyalty card
+     * Get card&#39;s point balances
      * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param endDate Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @return ApiResponse&lt;LoyaltyBalances&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1593,17 +1594,17 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyBalances> getLoyaltyCardBalancesWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardIdentifier, OffsetDateTime endDate) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, endDate, null);
+    public ApiResponse<LoyaltyBalances> getLoyaltyCardBalancesWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, null);
         Type localVarReturnType = new TypeToken<LoyaltyBalances>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get loyalty balances for a loyalty card (asynchronously)
+     * Get card&#39;s point balances (asynchronously)
      * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param endDate Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1617,9 +1618,9 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesAsync(Integer loyaltyProgramId, String loyaltyCardIdentifier, OffsetDateTime endDate, final ApiCallback<LoyaltyBalances> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesAsync(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, final ApiCallback<LoyaltyBalances> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, endDate, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyBalances>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1627,7 +1628,7 @@ public class IntegrationApi {
     /**
      * Build call for getLoyaltyCardTransactions
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
@@ -1645,13 +1646,13 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsCall(Integer loyaltyProgramId, String loyaltyCardId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/transactions"
+        String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions"
             .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardIdentifier" + "\\}", localVarApiClient.escapeString(loyaltyCardIdentifier.toString()));
+            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1697,35 +1698,35 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
             throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardTransactions(Async)");
         }
         
-        // verify the required parameter 'loyaltyCardIdentifier' is set
-        if (loyaltyCardIdentifier == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardIdentifier' when calling getLoyaltyCardTransactions(Async)");
+        // verify the required parameter 'loyaltyCardId' is set
+        if (loyaltyCardId == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardTransactions(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get loyalty card transaction logs
+     * List card&#39;s transactions
      * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param pageSize The number of items in this response. (optional, default to 1000)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return CardLedgerTransactionLogEntryIntegrationAPI
+     * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1736,22 +1737,22 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public CardLedgerTransactionLogEntryIntegrationAPI getLoyaltyCardTransactions(Integer loyaltyProgramId, String loyaltyCardIdentifier, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<CardLedgerTransactionLogEntryIntegrationAPI> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip);
+    public InlineResponse2001 getLoyaltyCardTransactions(Integer loyaltyProgramId, String loyaltyCardId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse2001> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
-     * Get loyalty card transaction logs
+     * List card&#39;s transactions
      * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param pageSize The number of items in this response. (optional, default to 1000)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;CardLedgerTransactionLogEntryIntegrationAPI&gt;
+     * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1762,17 +1763,17 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CardLedgerTransactionLogEntryIntegrationAPI> getLoyaltyCardTransactionsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardIdentifier, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<CardLedgerTransactionLogEntryIntegrationAPI>(){}.getType();
+    public ApiResponse<InlineResponse2001> getLoyaltyCardTransactionsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get loyalty card transaction logs (asynchronously)
+     * List card&#39;s transactions (asynchronously)
      * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
@@ -1790,10 +1791,10 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsAsync(Integer loyaltyProgramId, String loyaltyCardIdentifier, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<CardLedgerTransactionLogEntryIntegrationAPI> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsAsync(Integer loyaltyProgramId, String loyaltyCardId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, subledgerId, startDate, endDate, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<CardLedgerTransactionLogEntryIntegrationAPI>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, startDate, endDate, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1898,7 +1899,7 @@ public class IntegrationApi {
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param pageSize The number of items in this response. (optional, default to 50)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return InlineResponse2001
+     * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1909,8 +1910,8 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2001 getLoyaltyProgramProfileTransactions(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2001> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
+    public InlineResponse2002 getLoyaltyProgramProfileTransactions(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
+        ApiResponse<InlineResponse2002> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
 
@@ -1924,7 +1925,7 @@ public class IntegrationApi {
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  (optional)
      * @param pageSize The number of items in this response. (optional, default to 50)
      * @param skip Skips the given number of items when paging through large result sets. (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
+     * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1935,9 +1936,9 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2001> getLoyaltyProgramProfileTransactionsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
+    public ApiResponse<InlineResponse2002> getLoyaltyProgramProfileTransactionsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1963,10 +1964,10 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Integer loyaltyProgramId, String integrationId, String subledgerId, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, startDate, endDate, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2096,7 +2097,7 @@ public class IntegrationApi {
     /**
      * Build call for linkLoyaltyCardToProfile
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param body body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2110,13 +2111,13 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardIdentifier}/link_profile"
+        String localVarPath = "/v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile"
             .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardIdentifier" + "\\}", localVarApiClient.escapeString(loyaltyCardIdentifier.toString()));
+            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2142,16 +2143,16 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardIdentifier, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
             throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling linkLoyaltyCardToProfile(Async)");
         }
         
-        // verify the required parameter 'loyaltyCardIdentifier' is set
-        if (loyaltyCardIdentifier == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardIdentifier' when calling linkLoyaltyCardToProfile(Async)");
+        // verify the required parameter 'loyaltyCardId' is set
+        if (loyaltyCardId == null) {
+            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling linkLoyaltyCardToProfile(Async)");
         }
         
         // verify the required parameter 'body' is set
@@ -2160,16 +2161,16 @@ public class IntegrationApi {
         }
         
 
-        okhttp3.Call localVarCall = linkLoyaltyCardToProfileCall(loyaltyProgramId, loyaltyCardIdentifier, body, _callback);
+        okhttp3.Call localVarCall = linkLoyaltyCardToProfileCall(loyaltyProgramId, loyaltyCardId, body, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Link customer profile to loyalty card
+     * Link customer profile to card
      * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/creating-loyalty-programs#creating-card-based-loyalty-programs) allows. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param body body (required)
      * @return LoyaltyCard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2182,16 +2183,16 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyCard linkLoyaltyCardToProfile(Integer loyaltyProgramId, String loyaltyCardIdentifier, LoyaltyCardRegistration body) throws ApiException {
-        ApiResponse<LoyaltyCard> localVarResp = linkLoyaltyCardToProfileWithHttpInfo(loyaltyProgramId, loyaltyCardIdentifier, body);
+    public LoyaltyCard linkLoyaltyCardToProfile(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
+        ApiResponse<LoyaltyCard> localVarResp = linkLoyaltyCardToProfileWithHttpInfo(loyaltyProgramId, loyaltyCardId, body);
         return localVarResp.getData();
     }
 
     /**
-     * Link customer profile to loyalty card
+     * Link customer profile to card
      * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/creating-loyalty-programs#creating-card-based-loyalty-programs) allows. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param body body (required)
      * @return ApiResponse&lt;LoyaltyCard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2204,17 +2205,17 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardIdentifier, LoyaltyCardRegistration body) throws ApiException {
-        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, body, null);
+    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
+        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, null);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Link customer profile to loyalty card (asynchronously)
+     * Link customer profile to card (asynchronously)
      * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/creating-loyalty-programs#creating-card-based-loyalty-programs) allows. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardIdentifier Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
+     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param body body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2228,9 +2229,9 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileAsync(Integer loyaltyProgramId, String loyaltyCardIdentifier, LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileAsync(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardIdentifier, body, _callback);
+        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2297,7 +2298,7 @@ public class IntegrationApi {
      * Reopen customer session
      * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities#customer-session). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Modified budgets and triggered effects when the session was closed are rolled back except for the list below.  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets are left the way they were once the session was originally closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Any &lt;strong&gt;not pending&lt;/strong&gt; pending loyalty points.&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt; &lt;p&gt;To see an example of roll back, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt; &lt;/details&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
      * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @return IntegrationStateV2
+     * @return ReopenSessionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2307,8 +2308,8 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationStateV2 reopenCustomerSession(String customerSessionId) throws ApiException {
-        ApiResponse<IntegrationStateV2> localVarResp = reopenCustomerSessionWithHttpInfo(customerSessionId);
+    public ReopenSessionResponse reopenCustomerSession(String customerSessionId) throws ApiException {
+        ApiResponse<ReopenSessionResponse> localVarResp = reopenCustomerSessionWithHttpInfo(customerSessionId);
         return localVarResp.getData();
     }
 
@@ -2316,7 +2317,7 @@ public class IntegrationApi {
      * Reopen customer session
      * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities#customer-session). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Modified budgets and triggered effects when the session was closed are rolled back except for the list below.  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets are left the way they were once the session was originally closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Any &lt;strong&gt;not pending&lt;/strong&gt; pending loyalty points.&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt; &lt;p&gt;To see an example of roll back, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt; &lt;/details&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
      * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @return ApiResponse&lt;IntegrationStateV2&gt;
+     * @return ApiResponse&lt;ReopenSessionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2326,9 +2327,9 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationStateV2> reopenCustomerSessionWithHttpInfo(String customerSessionId) throws ApiException {
+    public ApiResponse<ReopenSessionResponse> reopenCustomerSessionWithHttpInfo(String customerSessionId) throws ApiException {
         okhttp3.Call localVarCall = reopenCustomerSessionValidateBeforeCall(customerSessionId, null);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReopenSessionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2347,10 +2348,10 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reopenCustomerSessionAsync(String customerSessionId, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
+    public okhttp3.Call reopenCustomerSessionAsync(String customerSessionId, final ApiCallback<ReopenSessionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reopenCustomerSessionValidateBeforeCall(customerSessionId, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReopenSessionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

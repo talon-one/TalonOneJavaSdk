@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CampaignTemplate&gt;**](CampaignTemplate.md) |  | 
+**data** | [**List&lt;Referral&gt;**](Referral.md) |  | 
 
 
 

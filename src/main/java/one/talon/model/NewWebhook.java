@@ -1,6 +1,6 @@
 /*
  * Talon.One API
- * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you are reading this page at `https://mycompany.talon.one/docs/api/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://mycompany.talon.one/v2/customer_sessions/{Id}` 
+ * Use the Talon.One API to integrate with your application and to manage applications and campaigns:  - Use the operations in the [Integration API section](#integration-api) are used to integrate with our platform - Use the operation in the [Management API section](#management-api) to manage applications and campaigns.  ## Determining the base URL of the endpoints  The API is available at the same hostname as your Campaign Manager deployment. For example, if you access the Campaign Manager at `https://yourbaseurl.talon.one/`, the URL for the [updateCustomerSessionV2](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint is `https://yourbaseurl.talon.one/v2/customer_sessions/{Id}` 
  *
  * The version of the OpenAPI document: 
  * 
@@ -131,10 +131,10 @@ public class NewWebhook {
   }
 
    /**
-   * The IDs of the applications that are related to this entity.
+   * The IDs of the Applications that are related to this entity.
    * @return applicationIds
   **/
-  @ApiModelProperty(required = true, value = "The IDs of the applications that are related to this entity.")
+  @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
   public List<Integer> getApplicationIds() {
     return applicationIds;
@@ -197,10 +197,10 @@ public class NewWebhook {
   }
 
    /**
-   * API url (supports templating using parameters) for this webhook.
+   * API URL (supports templating using parameters) for this webhook.
    * @return url
   **/
-  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "API url (supports templating using parameters) for this webhook.")
+  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "API URL (supports templating using parameters) for this webhook.")
 
   public String getUrl() {
     return url;
@@ -296,10 +296,10 @@ public class NewWebhook {
   }
 
    /**
-   * Enables or disables webhook from showing in rule builder.
+   * Enables or disables webhook from showing in the Rule Builder.
    * @return enabled
   **/
-  @ApiModelProperty(example = "true", required = true, value = "Enables or disables webhook from showing in rule builder.")
+  @ApiModelProperty(example = "true", required = true, value = "Enables or disables webhook from showing in the Rule Builder.")
 
   public Boolean getEnabled() {
     return enabled;
