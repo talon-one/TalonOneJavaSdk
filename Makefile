@@ -1,4 +1,4 @@
-VERSION=$(shell grep -om1 -E '<version>[0-9\.]+<\/version>' pom.xml | head -n 1 | sed 's/<version>\(.*\)<\/version>/\1/')
+VERSION=$(shell grep -om1 -E '<version>[0-9\.]+</version>' pom.xml | head -n 1 | sed 's/<version>\(.*\)<\/version>/\1/')
 DIST=target/dist
 
 clean:
