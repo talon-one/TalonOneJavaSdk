@@ -78,10 +78,18 @@ public class Campaign {
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     ENABLED("enabled"),
-    
+
     DISABLED("disabled"),
-    
-    ARCHIVED("archived");
+
+    ARCHIVED("archived"),
+
+    EXPIRED("expired"),
+
+    SCHEDULED("scheduled"),
+
+    RUNNING("running"),
+
+    DRAFT("draft");
 
     private String value;
 
