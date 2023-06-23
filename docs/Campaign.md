@@ -54,7 +54,10 @@ Name | Value
 ENABLED | &quot;enabled&quot;
 DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
-
+EXPIREfD | &quot;expired&quot;
+SCHEDULED | &quot;scheduled&quot;
+RUNNING | &quot;running&quot;
+DRAFT | &quot;draft&quot;
 
 
 ## Enum: List&lt;FeaturesEnum&gt;
