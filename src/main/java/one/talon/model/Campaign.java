@@ -83,7 +83,7 @@ public class Campaign {
 
     ARCHIVED("archived"),
 
-    EXPIREfD("expired"),
+    EXPIRED("expired"),
 
     SCHEDULED("scheduled"),
 
