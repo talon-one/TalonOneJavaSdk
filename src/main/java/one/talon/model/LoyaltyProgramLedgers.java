@@ -29,9 +29,9 @@ import java.util.Map;
 import one.talon.model.LedgerInfo;
 
 /**
- * Customer specific information about loyalty points.
+ * Customer-specific information about loyalty points.
  */
-@ApiModel(description = "Customer specific information about loyalty points.")
+@ApiModel(description = "Customer-specific information about loyalty points.")
 
 public class LoyaltyProgramLedgers {
   public static final String SERIALIZED_NAME_ID = "id";

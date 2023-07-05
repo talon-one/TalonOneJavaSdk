@@ -134,6 +134,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_AUTH_METHOD)
   private String authMethod;
 
+  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
+  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
+  private Boolean isAdmin;
+
 
   public User id(Integer id) {
     
@@ -433,6 +437,29 @@ public class User {
   }
 
 
+  public User isAdmin(Boolean isAdmin) {
+    
+    this.isAdmin = isAdmin;
+    return this;
+  }
+
+   /**
+   * An indication of whether the user has admin permissions.
+   * @return isAdmin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the user has admin permissions.")
+
+  public Boolean getIsAdmin() {
+    return isAdmin;
+  }
+
+
+  public void setIsAdmin(Boolean isAdmin) {
+    this.isAdmin = isAdmin;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -454,12 +481,13 @@ public class User {
         Objects.equals(this.latestFeedTimestamp, user.latestFeedTimestamp) &&
         Objects.equals(this.roles, user.roles) &&
         Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions) &&
-        Objects.equals(this.authMethod, user.authMethod);
+        Objects.equals(this.authMethod, user.authMethod) &&
+        Objects.equals(this.isAdmin, user.isAdmin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, latestFeedTimestamp, roles, applicationNotificationSubscriptions, authMethod);
+    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, latestFeedTimestamp, roles, applicationNotificationSubscriptions, authMethod, isAdmin);
   }
 
 
@@ -480,6 +508,7 @@ public class User {
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("    authMethod: ").append(toIndentedString(authMethod)).append("\n");
+    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("}");
     return sb.toString();
   }

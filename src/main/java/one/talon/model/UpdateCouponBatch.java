@@ -189,11 +189,11 @@ public class UpdateCouponBatch {
   }
 
    /**
-   * Arbitrary properties associated with this item.
+   * Optional property to set the value of custom coupon attributes. They are defined in the Campaign Manager, see [Managing attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes).  Coupon attributes can also be set to _mandatory_ in your Application [settings](https://docs.talon.one/docs/product/applications/using-attributes#making-attributes-mandatory). If your Application uses mandatory attributes, you must use this property to set their value. 
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Arbitrary properties associated with this item.")
+  @ApiModelProperty(value = "Optional property to set the value of custom coupon attributes. They are defined in the Campaign Manager, see [Managing attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes).  Coupon attributes can also be set to _mandatory_ in your Application [settings](https://docs.talon.one/docs/product/applications/using-attributes#making-attributes-mandatory). If your Application uses mandatory attributes, you must use this property to set their value. ")
 
   public Object getAttributes() {
     return attributes;
@@ -212,11 +212,11 @@ public class UpdateCouponBatch {
   }
 
    /**
-   * The id of the batch the coupon belongs to.
+   * The ID of the batch the coupon(s) belong to.
    * @return batchID
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The id of the batch the coupon belongs to.")
+  @ApiModelProperty(value = "The ID of the batch the coupon(s) belong to.")
 
   public String getBatchID() {
     return batchID;

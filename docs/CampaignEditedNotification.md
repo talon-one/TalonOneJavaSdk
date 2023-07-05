@@ -7,8 +7,8 @@ A notification regarding a campaign which was edited.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign** | [**Campaign**](Campaign.md) |  | 
-**oldCampaign** | [**Campaign**](Campaign.md) |  | 
+**campaign** | [**CampaignStateNotification**](CampaignStateNotification.md) |  | 
+**oldCampaign** | [**CampaignStateNotification**](CampaignStateNotification.md) |  | 
 **ruleset** | [**Ruleset**](Ruleset.md) |  |  [optional]
 
 

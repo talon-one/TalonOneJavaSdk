@@ -119,10 +119,10 @@ public class OutgoingIntegrationConfiguration {
   }
 
    /**
-   * Get policy
+   * The outgoing integration policy specific to each integration type.
    * @return policy
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The outgoing integration policy specific to each integration type.")
 
   public Object getPolicy() {
     return policy;

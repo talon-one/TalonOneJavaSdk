@@ -67,6 +67,14 @@ public class NewInvitationTest {
     }
 
     /**
+     * Test the property 'isAdmin'
+     */
+    @Test
+    public void isAdminTest() {
+        // TODO: test isAdmin
+    }
+
+    /**
      * Test the property 'roles'
      */
     @Test

@@ -41,6 +41,10 @@ public class RoleV2ApplicationDetails {
   @SerializedName(SERIALIZED_NAME_DRAFT_CAMPAIGN)
   private String draftCampaign;
 
+  public static final String SERIALIZED_NAME_TOOLS = "tools";
+  @SerializedName(SERIALIZED_NAME_TOOLS)
+  private String tools;
+
 
   public RoleV2ApplicationDetails application(String application) {
     
@@ -49,11 +53,11 @@ public class RoleV2ApplicationDetails {
   }
 
    /**
-   * Name of the Application-level permission set.
+   * Name of the Application-related permission set for the given Application.
    * @return application
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the Application-level permission set.")
+  @ApiModelProperty(value = "Name of the Application-related permission set for the given Application.")
 
   public String getApplication() {
     return application;
@@ -72,11 +76,11 @@ public class RoleV2ApplicationDetails {
   }
 
    /**
-   * Name of the campaign-level permission set.
+   * Name of the campaign-related permission set for the given Application.
    * @return campaign
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the campaign-level permission set.")
+  @ApiModelProperty(value = "Name of the campaign-related permission set for the given Application.")
 
   public String getCampaign() {
     return campaign;
@@ -95,11 +99,11 @@ public class RoleV2ApplicationDetails {
   }
 
    /**
-   * Name of the draft campaign-level permission set.
+   * Name of the draft campaign-related permission set for the given Application.
    * @return draftCampaign
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the draft campaign-level permission set.")
+  @ApiModelProperty(value = "Name of the draft campaign-related permission set for the given Application.")
 
   public String getDraftCampaign() {
     return draftCampaign;
@@ -108,6 +112,29 @@ public class RoleV2ApplicationDetails {
 
   public void setDraftCampaign(String draftCampaign) {
     this.draftCampaign = draftCampaign;
+  }
+
+
+  public RoleV2ApplicationDetails tools(String tools) {
+    
+    this.tools = tools;
+    return this;
+  }
+
+   /**
+   * Name of the tools-related permission set.
+   * @return tools
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Tools permission set", value = "Name of the tools-related permission set.")
+
+  public String getTools() {
+    return tools;
+  }
+
+
+  public void setTools(String tools) {
+    this.tools = tools;
   }
 
 
@@ -122,12 +149,13 @@ public class RoleV2ApplicationDetails {
     RoleV2ApplicationDetails roleV2ApplicationDetails = (RoleV2ApplicationDetails) o;
     return Objects.equals(this.application, roleV2ApplicationDetails.application) &&
         Objects.equals(this.campaign, roleV2ApplicationDetails.campaign) &&
-        Objects.equals(this.draftCampaign, roleV2ApplicationDetails.draftCampaign);
+        Objects.equals(this.draftCampaign, roleV2ApplicationDetails.draftCampaign) &&
+        Objects.equals(this.tools, roleV2ApplicationDetails.tools);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(application, campaign, draftCampaign);
+    return Objects.hash(application, campaign, draftCampaign, tools);
   }
 
 
@@ -138,6 +166,7 @@ public class RoleV2ApplicationDetails {
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    draftCampaign: ").append(toIndentedString(draftCampaign)).append("\n");
+    sb.append("    tools: ").append(toIndentedString(tools)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -119,6 +119,10 @@ public class InventoryCoupon {
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
   private Boolean isReservationMandatory = true;
 
+  public static final String SERIALIZED_NAME_IMPLICITLY_RESERVED = "implicitlyReserved";
+  @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
+  private Boolean implicitlyReserved;
+
   public static final String SERIALIZED_NAME_PROFILE_REDEMPTION_COUNT = "profileRedemptionCount";
   @SerializedName(SERIALIZED_NAME_PROFILE_REDEMPTION_COUNT)
   private Integer profileRedemptionCount;
@@ -619,6 +623,29 @@ public class InventoryCoupon {
   }
 
 
+  public InventoryCoupon implicitlyReserved(Boolean implicitlyReserved) {
+    
+    this.implicitlyReserved = implicitlyReserved;
+    return this;
+  }
+
+   /**
+   * An indication of whether the coupon is implicitly reserved for all customers.
+   * @return implicitlyReserved
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the coupon is implicitly reserved for all customers.")
+
+  public Boolean getImplicitlyReserved() {
+    return implicitlyReserved;
+  }
+
+
+  public void setImplicitlyReserved(Boolean implicitlyReserved) {
+    this.implicitlyReserved = implicitlyReserved;
+  }
+
+
   public InventoryCoupon profileRedemptionCount(Integer profileRedemptionCount) {
     
     this.profileRedemptionCount = profileRedemptionCount;
@@ -693,13 +720,14 @@ public class InventoryCoupon {
         Objects.equals(this.reservation, inventoryCoupon.reservation) &&
         Objects.equals(this.batchId, inventoryCoupon.batchId) &&
         Objects.equals(this.isReservationMandatory, inventoryCoupon.isReservationMandatory) &&
+        Objects.equals(this.implicitlyReserved, inventoryCoupon.implicitlyReserved) &&
         Objects.equals(this.profileRedemptionCount, inventoryCoupon.profileRedemptionCount) &&
         Objects.equals(this.state, inventoryCoupon.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, usageCounter, discountCounter, discountRemainder, reservationCounter, attributes, referralId, recipientIntegrationId, importId, reservation, batchId, isReservationMandatory, profileRedemptionCount, state);
+    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, usageCounter, discountCounter, discountRemainder, reservationCounter, attributes, referralId, recipientIntegrationId, importId, reservation, batchId, isReservationMandatory, implicitlyReserved, profileRedemptionCount, state);
   }
 
 
@@ -728,6 +756,7 @@ public class InventoryCoupon {
     sb.append("    reservation: ").append(toIndentedString(reservation)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
+    sb.append("    implicitlyReserved: ").append(toIndentedString(implicitlyReserved)).append("\n");
     sb.append("    profileRedemptionCount: ").append(toIndentedString(profileRedemptionCount)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("}");

@@ -165,11 +165,11 @@ public class Role {
   }
 
    /**
-   * The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/managing-campaign-groups) this role was created for. 
+   * The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this role was created for. 
    * @return campaignGroupID
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "3", value = "The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/managing-campaign-groups) this role was created for. ")
+  @ApiModelProperty(example = "3", value = "The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this role was created for. ")
 
   public Integer getCampaignGroupID() {
     return campaignGroupID;

@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2PermissionSet;
-import one.talon.model.RoleV2PermissionsRoles;
+import one.talon.model.RoleV2RolesGroup;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

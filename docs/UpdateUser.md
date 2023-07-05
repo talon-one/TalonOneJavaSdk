@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **state** | [**StateEnum**](#StateEnum) | New state (\&quot;deactivated\&quot; or \&quot;active\&quot;) for the user. Only usable by admins for the user. |  [optional]
 **roles** | **List&lt;Integer&gt;** | List of roles to assign to the user. |  [optional]
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
+**isAdmin** | **Boolean** | An indication of whether the user has admin permissions. |  [optional]
 
 
 

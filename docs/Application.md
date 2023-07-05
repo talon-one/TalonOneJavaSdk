@@ -18,15 +18,14 @@ Name | Type | Description | Notes
 **caseSensitivity** | [**CaseSensitivityEnum**](#CaseSensitivityEnum) | The case sensitivity behavior to check coupon codes in the campaigns of this Application. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign. |  [optional]
 **limits** | [**List&lt;LimitConfig&gt;**](LimitConfig.md) | Default limits for campaigns created in this application. |  [optional]
-**campaignPriority** | [**CampaignPriorityEnum**](#CampaignPriorityEnum) | Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application.  |  [optional]
-**exclusiveCampaignsStrategy** | [**ExclusiveCampaignsStrategyEnum**](#ExclusiveCampaignsStrategyEnum) | The strategy used when choosing exclusive campaigns for evaluation. |  [optional]
 **defaultDiscountScope** | [**DefaultDiscountScopeEnum**](#DefaultDiscountScopeEnum) | The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect.  |  [optional]
 **enableCascadingDiscounts** | **Boolean** | Indicates if discounts should cascade for this Application. |  [optional]
-**enableFlattenedCartItems** | **Boolean** | Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening).  |  [optional]
+**enableFlattenedCartItems** | **Boolean** | Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening).  |  [optional]
 **attributesSettings** | [**AttributesSettings**](AttributesSettings.md) |  |  [optional]
 **sandbox** | **Boolean** | Indicates if this is a live or sandbox Application. |  [optional]
 **enablePartialDiscounts** | **Boolean** | Indicates if this Application supports partial discounts. |  [optional]
 **defaultDiscountAdditionalCostPerItemScope** | [**DefaultDiscountAdditionalCostPerItemScopeEnum**](#DefaultDiscountAdditionalCostPerItemScopeEnum) | The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect.  |  [optional]
+**defaultEvaluationGroupId** | **Integer** | The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign. |  [optional]
 **loyaltyPrograms** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) | An array containing all the loyalty programs to which this application is subscribed. | 
 
 
@@ -38,26 +37,6 @@ Name | Value
 SENSITIVE | &quot;sensitive&quot;
 INSENSITIVE_UPPERCASE | &quot;insensitive-uppercase&quot;
 INSENSITIVE_LOWERCASE | &quot;insensitive-lowercase&quot;
-
-
-
-## Enum: CampaignPriorityEnum
-
-Name | Value
----- | -----
-UNIVERSAL | &quot;universal&quot;
-STACKABLE | &quot;stackable&quot;
-EXCLUSIVE | &quot;exclusive&quot;
-
-
-
-## Enum: ExclusiveCampaignsStrategyEnum
-
-Name | Value
----- | -----
-LISTORDER | &quot;listOrder&quot;
-LOWESTDISCOUNT | &quot;lowestDiscount&quot;
-HIGHESTDISCOUNT | &quot;highestDiscount&quot;
 
 
 

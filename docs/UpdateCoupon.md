@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **recipientIntegrationId** | **String** | The integration ID for this coupon&#39;s beneficiary&#39;s profile. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this item. |  [optional]
 **isReservationMandatory** | **Boolean** | Whether the reservation effect actually created a new reservation. |  [optional]
+**implicitlyReserved** | **Boolean** | An indication of whether the coupon is implicitly reserved for all customers. |  [optional]
 
 
 

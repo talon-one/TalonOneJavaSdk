@@ -26,12 +26,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2Permissions;
+import org.threeten.bp.OffsetDateTime;
 
 /**
- * RoleV2
+ * 
  */
+@ApiModel(description = "")
 
 public class RoleV2 {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
+
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private OffsetDateTime created;
+
+  public static final String SERIALIZED_NAME_MODIFIED = "modified";
+  @SerializedName(SERIALIZED_NAME_MODIFIED)
+  private OffsetDateTime modified;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  private Integer accountId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -40,10 +58,6 @@ public class RoleV2 {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
-  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
-  private Boolean isAdmin;
-
   public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
   private RoleV2Permissions permissions;
@@ -51,6 +65,94 @@ public class RoleV2 {
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
   private List<Integer> members = null;
+
+
+  public RoleV2 id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Internal ID of this entity.
+   * @return id
+  **/
+  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+
+  public RoleV2 created(OffsetDateTime created) {
+    
+    this.created = created;
+    return this;
+  }
+
+   /**
+   * The time this entity was created.
+   * @return created
+  **/
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
+
+  public OffsetDateTime getCreated() {
+    return created;
+  }
+
+
+  public void setCreated(OffsetDateTime created) {
+    this.created = created;
+  }
+
+
+  public RoleV2 modified(OffsetDateTime modified) {
+    
+    this.modified = modified;
+    return this;
+  }
+
+   /**
+   * The time this entity was last modified.
+   * @return modified
+  **/
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
+
+  public OffsetDateTime getModified() {
+    return modified;
+  }
+
+
+  public void setModified(OffsetDateTime modified) {
+    this.modified = modified;
+  }
+
+
+  public RoleV2 accountId(Integer accountId) {
+    
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * The ID of the account that owns this entity.
+   * @return accountId
+  **/
+  @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
+
+  public Integer getAccountId() {
+    return accountId;
+  }
+
+
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
+  }
 
 
   public RoleV2 name(String name) {
@@ -64,7 +166,7 @@ public class RoleV2 {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Campaign manager", value = "Name of the role.")
+  @ApiModelProperty(example = "Campaign and campaign access group manager", value = "Name of the role.")
 
   public String getName() {
     return name;
@@ -87,7 +189,7 @@ public class RoleV2 {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Manages the campaigns", value = "Description of the role.")
+  @ApiModelProperty(example = "Allows you to create and edit campaigns for specific Applications, delete specific campaign access groups, and view loyalty programs.", value = "Description of the role.")
 
   public String getDescription() {
     return description;
@@ -96,29 +198,6 @@ public class RoleV2 {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-
-  public RoleV2 isAdmin(Boolean isAdmin) {
-    
-    this.isAdmin = isAdmin;
-    return this;
-  }
-
-   /**
-   * Indicates whether the role grants admin permissions.
-   * @return isAdmin
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates whether the role grants admin permissions.")
-
-  public Boolean getIsAdmin() {
-    return isAdmin;
-  }
-
-
-  public void setIsAdmin(Boolean isAdmin) {
-    this.isAdmin = isAdmin;
   }
 
 
@@ -160,11 +239,11 @@ public class RoleV2 {
   }
 
    /**
-   * An array of user identifiers.
+   * A list of user identifiers the role is assigned to.
    * @return members
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[48, 562, 475, 18]", value = "An array of user identifiers.")
+  @ApiModelProperty(example = "[10, 12]", value = "A list of user identifiers the role is assigned to.")
 
   public List<Integer> getMembers() {
     return members;
@@ -185,16 +264,19 @@ public class RoleV2 {
       return false;
     }
     RoleV2 roleV2 = (RoleV2) o;
-    return Objects.equals(this.name, roleV2.name) &&
+    return Objects.equals(this.id, roleV2.id) &&
+        Objects.equals(this.created, roleV2.created) &&
+        Objects.equals(this.modified, roleV2.modified) &&
+        Objects.equals(this.accountId, roleV2.accountId) &&
+        Objects.equals(this.name, roleV2.name) &&
         Objects.equals(this.description, roleV2.description) &&
-        Objects.equals(this.isAdmin, roleV2.isAdmin) &&
         Objects.equals(this.permissions, roleV2.permissions) &&
         Objects.equals(this.members, roleV2.members);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, isAdmin, permissions, members);
+    return Objects.hash(id, created, modified, accountId, name, description, permissions, members);
   }
 
 
@@ -202,9 +284,12 @@ public class RoleV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RoleV2 {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("}");

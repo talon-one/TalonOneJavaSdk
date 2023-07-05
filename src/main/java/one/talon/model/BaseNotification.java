@@ -43,6 +43,10 @@ public class BaseNotification {
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
 
   public BaseNotification policy(Object policy) {
     
@@ -111,6 +115,29 @@ public class BaseNotification {
   }
 
 
+  public BaseNotification enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether the notification is enabled.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether the notification is enabled.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -122,12 +149,13 @@ public class BaseNotification {
     BaseNotification baseNotification = (BaseNotification) o;
     return Objects.equals(this.policy, baseNotification.policy) &&
         Objects.equals(this.webhook, baseNotification.webhook) &&
-        Objects.equals(this.id, baseNotification.id);
+        Objects.equals(this.id, baseNotification.id) &&
+        Objects.equals(this.enabled, baseNotification.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(policy, webhook, id);
+    return Objects.hash(policy, webhook, id, enabled);
   }
 
 
@@ -138,6 +166,7 @@ public class BaseNotification {
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

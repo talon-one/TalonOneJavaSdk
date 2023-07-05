@@ -82,7 +82,7 @@ public class OutgoingIntegrationType {
    * Name of the outgoing integration.
    * @return name
   **/
-  @ApiModelProperty(example = "braze", required = true, value = "Name of the outgoing integration.")
+  @ApiModelProperty(example = "Braze", required = true, value = "Name of the outgoing integration.")
 
   public String getName() {
     return name;

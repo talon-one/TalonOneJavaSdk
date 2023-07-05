@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -54,6 +55,22 @@ public class TierTest {
     @Test
     public void nameTest() {
         // TODO: test name
+    }
+
+    /**
+     * Test the property 'expiryDate'
+     */
+    @Test
+    public void expiryDateTest() {
+        // TODO: test expiryDate
+    }
+
+    /**
+     * Test the property 'downgradePolicy'
+     */
+    @Test
+    public void downgradePolicyTest() {
+        // TODO: test downgradePolicy
     }
 
 }

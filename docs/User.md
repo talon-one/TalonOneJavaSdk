@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **roles** | **List&lt;Integer&gt;** | Contains a list of all roles the user is a member of. |  [optional]
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 **authMethod** | **String** | The Authentication method for this user. |  [optional]
+**isAdmin** | **Boolean** | An indication of whether the user has admin permissions. |  [optional]
 
 
 

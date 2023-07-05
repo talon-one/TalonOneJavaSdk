@@ -78,18 +78,10 @@ public class Campaign {
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     ENABLED("enabled"),
-
+    
     DISABLED("disabled"),
-
-    ARCHIVED("archived"),
-
-    EXPIRED("expired"),
-
-    SCHEDULED("scheduled"),
-
-    RUNNING("running"),
-
-    DRAFT("draft");
+    
+    ARCHIVED("archived");
 
     private String value;
 
@@ -457,11 +449,11 @@ public class Campaign {
   }
 
    /**
-   * Timestamp the campaign will become inactive.
+   * Timestamp when the campaign will become inactive.
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp the campaign will become inactive.")
+  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp when the campaign will become inactive.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -867,11 +859,11 @@ public class Campaign {
   }
 
    /**
-   * Total number of times triggering add free item effext is allowed in this campaign.
+   * Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign.
    * @return addFreeItemEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Total number of times triggering add free item effext is allowed in this campaign.")
+  @ApiModelProperty(example = "0", value = "Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign.")
 
   public Integer getAddFreeItemEffectCount() {
     return addFreeItemEffectCount;
@@ -1005,11 +997,11 @@ public class Campaign {
   }
 
    /**
-   * Total number of webhook triggered by rules in this campaign.
+   * Total number of webhooks triggered by rules in this campaign.
    * @return callApiEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Total number of webhook triggered by rules in this campaign.")
+  @ApiModelProperty(example = "0", value = "Total number of webhooks triggered by rules in this campaign.")
 
   public Integer getCallApiEffectCount() {
     return callApiEffectCount;

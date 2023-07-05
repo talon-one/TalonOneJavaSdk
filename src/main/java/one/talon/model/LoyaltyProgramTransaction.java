@@ -444,11 +444,11 @@ public class LoyaltyProgramTransaction {
   }
 
    /**
-   * ID of the user who manually added or deducted points. Applies only for manual transactions.
+   * ID of the user who manually added or deducted points. Applies only to manual transactions.
    * @return userId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5", value = "ID of the user who manually added or deducted points. Applies only for manual transactions.")
+  @ApiModelProperty(example = "5", value = "ID of the user who manually added or deducted points. Applies only to manual transactions.")
 
   public Integer getUserId() {
     return userId;
@@ -467,11 +467,11 @@ public class LoyaltyProgramTransaction {
   }
 
    /**
-   * The email of the user who manually added or deducted points. Applies only for manual transactions.
+   * The email of the Campaign Manager account that manually added or deducted points. Applies only to manual transactions.
    * @return userEmail
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "john.doe@example.com", value = "The email of the user who manually added or deducted points. Applies only for manual transactions.")
+  @ApiModelProperty(example = "john.doe@example.com", value = "The email of the Campaign Manager account that manually added or deducted points. Applies only to manual transactions.")
 
   public String getUserEmail() {
     return userEmail;
