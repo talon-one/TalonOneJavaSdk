@@ -24,11 +24,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * The specific properties of the \&quot;PATCH\&quot; catalog sync action.
  */
 @ApiModel(description = "The specific properties of the \"PATCH\" catalog sync action.")
+@JsonAdapter(NullableAdapterFactory.class)
 
 public class PatchItemCatalogAction {
   public static final String SERIALIZED_NAME_SKU = "sku";
@@ -41,6 +44,8 @@ public class PatchItemCatalogAction {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    /*allow Serializing null for this field */
+      @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_CREATE_IF_NOT_EXISTS = "createIfNotExists";
