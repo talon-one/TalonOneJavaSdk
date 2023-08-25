@@ -108,4 +108,12 @@ public class CreateTemplateCampaignTest {
         // TODO: test tags
     }
 
+    /**
+     * Test the property 'evaluationGroupId'
+     */
+    @Test
+    public void evaluationGroupIdTest() {
+        // TODO: test evaluationGroupId
+    }
+
 }

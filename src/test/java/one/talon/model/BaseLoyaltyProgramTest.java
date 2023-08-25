@@ -106,4 +106,20 @@ public class BaseLoyaltyProgramTest {
         // TODO: test sandbox
     }
 
+    /**
+     * Test the property 'tiersExpireIn'
+     */
+    @Test
+    public void tiersExpireInTest() {
+        // TODO: test tiersExpireIn
+    }
+
+    /**
+     * Test the property 'tiersDowngradePolicy'
+     */
+    @Test
+    public void tiersDowngradePolicyTest() {
+        // TODO: test tiersDowngradePolicy
+    }
+
 }

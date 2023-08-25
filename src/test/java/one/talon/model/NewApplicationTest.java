@@ -101,22 +101,6 @@ public class NewApplicationTest {
     }
 
     /**
-     * Test the property 'campaignPriority'
-     */
-    @Test
-    public void campaignPriorityTest() {
-        // TODO: test campaignPriority
-    }
-
-    /**
-     * Test the property 'exclusiveCampaignsStrategy'
-     */
-    @Test
-    public void exclusiveCampaignsStrategyTest() {
-        // TODO: test exclusiveCampaignsStrategy
-    }
-
-    /**
      * Test the property 'defaultDiscountScope'
      */
     @Test

@@ -98,6 +98,10 @@ public class UpdateUser {
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
   private Object applicationNotificationSubscriptions;
 
+  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
+  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
+  private Boolean isAdmin;
+
 
   public UpdateUser name(String name) {
     
@@ -222,6 +226,29 @@ public class UpdateUser {
   }
 
 
+  public UpdateUser isAdmin(Boolean isAdmin) {
+    
+    this.isAdmin = isAdmin;
+    return this;
+  }
+
+   /**
+   * An indication of whether the user has admin permissions.
+   * @return isAdmin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the user has admin permissions.")
+
+  public Boolean getIsAdmin() {
+    return isAdmin;
+  }
+
+
+  public void setIsAdmin(Boolean isAdmin) {
+    this.isAdmin = isAdmin;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -235,12 +262,13 @@ public class UpdateUser {
         Objects.equals(this.policy, updateUser.policy) &&
         Objects.equals(this.state, updateUser.state) &&
         Objects.equals(this.roles, updateUser.roles) &&
-        Objects.equals(this.applicationNotificationSubscriptions, updateUser.applicationNotificationSubscriptions);
+        Objects.equals(this.applicationNotificationSubscriptions, updateUser.applicationNotificationSubscriptions) &&
+        Objects.equals(this.isAdmin, updateUser.isAdmin);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, policy, state, roles, applicationNotificationSubscriptions);
+    return Objects.hash(name, policy, state, roles, applicationNotificationSubscriptions, isAdmin);
   }
 
 
@@ -253,6 +281,7 @@ public class UpdateUser {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
+    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("}");
     return sb.toString();
   }

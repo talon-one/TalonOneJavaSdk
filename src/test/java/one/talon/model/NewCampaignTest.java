@@ -149,4 +149,12 @@ public class NewCampaignTest {
         // TODO: test campaignGroups
     }
 
+    /**
+     * Test the property 'evaluationGroupId'
+     */
+    @Test
+    public void evaluationGroupIdTest() {
+        // TODO: test evaluationGroupId
+    }
+
 }

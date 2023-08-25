@@ -31,9 +31,9 @@ import one.talon.model.LoyaltyCard;
 import one.talon.model.LoyaltyProgramLedgers;
 
 /**
- * Customer specific information about loyalty points.
+ * Customer-specific information about loyalty points.
  */
-@ApiModel(description = "Customer specific information about loyalty points.")
+@ApiModel(description = "Customer-specific information about loyalty points.")
 
 public class Loyalty {
   public static final String SERIALIZED_NAME_CARDS = "cards";

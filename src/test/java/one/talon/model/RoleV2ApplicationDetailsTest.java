@@ -64,4 +64,12 @@ public class RoleV2ApplicationDetailsTest {
         // TODO: test draftCampaign
     }
 
+    /**
+     * Test the property 'tools'
+     */
+    @Test
+    public void toolsTest() {
+        // TODO: test tools
+    }
+
 }

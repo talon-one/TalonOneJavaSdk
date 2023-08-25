@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;WebhookActivationLogEntry&gt;**](WebhookActivationLogEntry.md) |  | 
+**data** | [**List&lt;WebhookWithOutgoingIntegrationDetails&gt;**](WebhookWithOutgoingIntegrationDetails.md) |  | 
 
 
 

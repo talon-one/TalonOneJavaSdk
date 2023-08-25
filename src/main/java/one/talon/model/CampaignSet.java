@@ -24,7 +24,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.CampaignSetBranchNode;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * 
@@ -32,17 +31,13 @@ import org.threeten.bp.OffsetDateTime;
 @ApiModel(description = "")
 
 public class CampaignSet {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
-
-  public static final String SERIALIZED_NAME_CREATED = "created";
-  @SerializedName(SERIALIZED_NAME_CREATED)
-  private OffsetDateTime created;
-
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -55,50 +50,6 @@ public class CampaignSet {
   public static final String SERIALIZED_NAME_UPDATED_BY = "updatedBy";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   private String updatedBy;
-
-
-  public CampaignSet id(Integer id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Internal ID of this entity.
-   * @return id
-  **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
-
-  public Integer getId() {
-    return id;
-  }
-
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-
-  public CampaignSet created(OffsetDateTime created) {
-    
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * The time this entity was created.
-   * @return created
-  **/
-  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
-
-  public OffsetDateTime getCreated() {
-    return created;
-  }
-
-
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
-  }
 
 
   public CampaignSet applicationId(Integer applicationId) {
@@ -120,6 +71,28 @@ public class CampaignSet {
 
   public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
+  }
+
+
+  public CampaignSet id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Internal ID of this entity.
+   * @return id
+  **/
+  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
 
@@ -200,9 +173,8 @@ public class CampaignSet {
       return false;
     }
     CampaignSet campaignSet = (CampaignSet) o;
-    return Objects.equals(this.id, campaignSet.id) &&
-        Objects.equals(this.created, campaignSet.created) &&
-        Objects.equals(this.applicationId, campaignSet.applicationId) &&
+    return Objects.equals(this.applicationId, campaignSet.applicationId) &&
+        Objects.equals(this.id, campaignSet.id) &&
         Objects.equals(this.version, campaignSet.version) &&
         Objects.equals(this.set, campaignSet.set) &&
         Objects.equals(this.updatedBy, campaignSet.updatedBy);
@@ -210,7 +182,7 @@ public class CampaignSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, version, set, updatedBy);
+    return Objects.hash(applicationId, id, version, set, updatedBy);
   }
 
 
@@ -218,9 +190,8 @@ public class CampaignSet {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignSet {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    set: ").append(toIndentedString(set)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");

@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2PermissionSet;
-import one.talon.model.RoleV2PermissionsRoles;
+import one.talon.model.RoleV2RolesGroup;
 
 /**
  * RoleV2Permissions
@@ -39,7 +39,7 @@ public class RoleV2Permissions {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private RoleV2PermissionsRoles roles;
+  private RoleV2RolesGroup roles;
 
 
   public RoleV2Permissions permissionSets(List<RoleV2PermissionSet> permissionSets) {
@@ -57,11 +57,11 @@ public class RoleV2Permissions {
   }
 
    /**
-   * List of grouped operation IDs to use as a reference in the roles section. Each group of operation IDs has a name.
+   * List of grouped logical operations to use as a reference in the roles section. Each group of logical operations has a name.
    * @return permissionSets
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "List of grouped operation IDs to use as a reference in the roles section. Each group of operation IDs has a name.")
+  @ApiModelProperty(example = "[{name=Application permission set, logicalOperations=[getApplicationOperations, editApplicationOperations]}, {name=Campaign manager permission set, logicalOperations=[getCampaignOperations, createCampaignOperations, updateCampaignOperations]}, {name=Campaign read-only permission set, logicalOperations=[getCampaignOperations]}, {name=Loyalty program read-only permission set, logicalOperations=[getLoyaltyProgramOperations]}, {name=Campaign access group manager permission set, logicalOperations=[getCampaignAccessGroupOperations, updateCampaignAccessGroupOperations, deleteCampaignAccessGroupOperations]}]", value = "List of grouped logical operations to use as a reference in the roles section. Each group of logical operations has a name.")
 
   public List<RoleV2PermissionSet> getPermissionSets() {
     return permissionSets;
@@ -73,7 +73,7 @@ public class RoleV2Permissions {
   }
 
 
-  public RoleV2Permissions roles(RoleV2PermissionsRoles roles) {
+  public RoleV2Permissions roles(RoleV2RolesGroup roles) {
     
     this.roles = roles;
     return this;
@@ -86,12 +86,12 @@ public class RoleV2Permissions {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public RoleV2PermissionsRoles getRoles() {
+  public RoleV2RolesGroup getRoles() {
     return roles;
   }
 
 
-  public void setRoles(RoleV2PermissionsRoles roles) {
+  public void setRoles(RoleV2RolesGroup roles) {
     this.roles = roles;
   }
 

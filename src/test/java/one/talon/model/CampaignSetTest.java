@@ -22,7 +22,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import one.talon.model.CampaignSetBranchNode;
-import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,27 +42,19 @@ public class CampaignSetTest {
     }
 
     /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'created'
-     */
-    @Test
-    public void createdTest() {
-        // TODO: test created
-    }
-
-    /**
      * Test the property 'applicationId'
      */
     @Test
     public void applicationIdTest() {
         // TODO: test applicationId
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
     }
 
     /**

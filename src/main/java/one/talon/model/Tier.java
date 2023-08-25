@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Tier
@@ -36,6 +37,61 @@ public class Tier {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
+  @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+  private OffsetDateTime expiryDate;
+
+  /**
+   * Customers&#39;s tier downgrade policy. - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down. - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   */
+  @JsonAdapter(DowngradePolicyEnum.Adapter.class)
+  public enum DowngradePolicyEnum {
+    ONE_DOWN("one_down"),
+    
+    BALANCE_BASED("balance_based");
+
+    private String value;
+
+    DowngradePolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DowngradePolicyEnum fromValue(String value) {
+      for (DowngradePolicyEnum b : DowngradePolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DowngradePolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DowngradePolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DowngradePolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DowngradePolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DOWNGRADE_POLICY = "downgradePolicy";
+  @SerializedName(SERIALIZED_NAME_DOWNGRADE_POLICY)
+  private DowngradePolicyEnum downgradePolicy;
 
 
   public Tier id(Integer id) {
@@ -82,6 +138,52 @@ public class Tier {
   }
 
 
+  public Tier expiryDate(OffsetDateTime expiryDate) {
+    
+    this.expiryDate = expiryDate;
+    return this;
+  }
+
+   /**
+   * Date when tier level expires in the RFC3339 format (in the Loyalty Program&#39;s timezone).
+   * @return expiryDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Date when tier level expires in the RFC3339 format (in the Loyalty Program's timezone).")
+
+  public OffsetDateTime getExpiryDate() {
+    return expiryDate;
+  }
+
+
+  public void setExpiryDate(OffsetDateTime expiryDate) {
+    this.expiryDate = expiryDate;
+  }
+
+
+  public Tier downgradePolicy(DowngradePolicyEnum downgradePolicy) {
+    
+    this.downgradePolicy = downgradePolicy;
+    return this;
+  }
+
+   /**
+   * Customers&#39;s tier downgrade policy. - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down. - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   * @return downgradePolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Customers's tier downgrade policy. - `one_down`: Once the tier expires and if the user doesn't have enough points to stay in the tier, the user is downgraded one tier down. - `balance_based`: Once the tier expires, the user's tier is evaluated based on the amount of active points the user has at this instant. ")
+
+  public DowngradePolicyEnum getDowngradePolicy() {
+    return downgradePolicy;
+  }
+
+
+  public void setDowngradePolicy(DowngradePolicyEnum downgradePolicy) {
+    this.downgradePolicy = downgradePolicy;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -92,12 +194,14 @@ public class Tier {
     }
     Tier tier = (Tier) o;
     return Objects.equals(this.id, tier.id) &&
-        Objects.equals(this.name, tier.name);
+        Objects.equals(this.name, tier.name) &&
+        Objects.equals(this.expiryDate, tier.expiryDate) &&
+        Objects.equals(this.downgradePolicy, tier.downgradePolicy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(id, name, expiryDate, downgradePolicy);
   }
 
 
@@ -107,6 +211,8 @@ public class Tier {
     sb.append("class Tier {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
+    sb.append("    downgradePolicy: ").append(toIndentedString(downgradePolicy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

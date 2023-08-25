@@ -75,4 +75,36 @@ public class CampaignSetBranchNodeTest {
         // TODO: test elements
     }
 
+    /**
+     * Test the property 'groupId'
+     */
+    @Test
+    public void groupIdTest() {
+        // TODO: test groupId
+    }
+
+    /**
+     * Test the property 'locked'
+     */
+    @Test
+    public void lockedTest() {
+        // TODO: test locked
+    }
+
+    /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
+     * Test the property 'evaluationMode'
+     */
+    @Test
+    public void evaluationModeTest() {
+        // TODO: test evaluationMode
+    }
+
 }

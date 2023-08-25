@@ -142,11 +142,11 @@ public class IntegrationRequest {
   }
 
    /**
-   * Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints. 
+   * Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints.  **Note:** To retrieve loyalty card details, your request must include a loyalty card ID. 
    * @return responseContent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[customerSession, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints. ")
+  @ApiModelProperty(example = "[customerSession, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer session_ request instead of sending extra requests to other endpoints.  **Note:** To retrieve loyalty card details, your request must include a loyalty card ID. ")
 
   public List<ResponseContentEnum> getResponseContent() {
     return responseContent;

@@ -86,7 +86,7 @@ public class CampaignSetBranchNode {
   private String name;
 
   /**
-   * How does the set operates on its elements.
+   * An indicator of how the set operates on its elements.
    */
   @JsonAdapter(OperatorEnum.Adapter.class)
   public enum OperatorEnum {
@@ -140,6 +140,73 @@ public class CampaignSetBranchNode {
   @SerializedName(SERIALIZED_NAME_ELEMENTS)
   private List<CampaignSetNode> elements = new ArrayList<CampaignSetNode>();
 
+  public static final String SERIALIZED_NAME_GROUP_ID = "groupId";
+  @SerializedName(SERIALIZED_NAME_GROUP_ID)
+  private Integer groupId;
+
+  public static final String SERIALIZED_NAME_LOCKED = "locked";
+  @SerializedName(SERIALIZED_NAME_LOCKED)
+  private Boolean locked;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  /**
+   * Gets or Sets evaluationMode
+   */
+  @JsonAdapter(EvaluationModeEnum.Adapter.class)
+  public enum EvaluationModeEnum {
+    STACKABLE("stackable"),
+    
+    LISTORDER("listOrder"),
+    
+    LOWESTDISCOUNT("lowestDiscount"),
+    
+    HIGHESTDISCOUNT("highestDiscount");
+
+    private String value;
+
+    EvaluationModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EvaluationModeEnum fromValue(String value) {
+      for (EvaluationModeEnum b : EvaluationModeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EvaluationModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EvaluationModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EvaluationModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EvaluationModeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_EVALUATION_MODE = "evaluationMode";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_MODE)
+  private EvaluationModeEnum evaluationMode;
+
 
   public CampaignSetBranchNode type(TypeEnum type) {
     
@@ -170,10 +237,10 @@ public class CampaignSetBranchNode {
   }
 
    /**
-   * Name of the set
+   * Name of the set.
    * @return name
   **/
-  @ApiModelProperty(example = "name", required = true, value = "Name of the set")
+  @ApiModelProperty(example = "name", required = true, value = "Name of the set.")
 
   public String getName() {
     return name;
@@ -192,10 +259,10 @@ public class CampaignSetBranchNode {
   }
 
    /**
-   * How does the set operates on its elements.
+   * An indicator of how the set operates on its elements.
    * @return operator
   **/
-  @ApiModelProperty(example = "ALL", required = true, value = "How does the set operates on its elements.")
+  @ApiModelProperty(example = "ALL", required = true, value = "An indicator of how the set operates on its elements.")
 
   public OperatorEnum getOperator() {
     return operator;
@@ -234,6 +301,95 @@ public class CampaignSetBranchNode {
   }
 
 
+  public CampaignSetBranchNode groupId(Integer groupId) {
+    
+    this.groupId = groupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign set.
+   * @return groupId
+  **/
+  @ApiModelProperty(required = true, value = "The ID of the campaign set.")
+
+  public Integer getGroupId() {
+    return groupId;
+  }
+
+
+  public void setGroupId(Integer groupId) {
+    this.groupId = groupId;
+  }
+
+
+  public CampaignSetBranchNode locked(Boolean locked) {
+    
+    this.locked = locked;
+    return this;
+  }
+
+   /**
+   * An indicator of whether the campaign set is locked for modification.
+   * @return locked
+  **/
+  @ApiModelProperty(required = true, value = "An indicator of whether the campaign set is locked for modification.")
+
+  public Boolean getLocked() {
+    return locked;
+  }
+
+
+  public void setLocked(Boolean locked) {
+    this.locked = locked;
+  }
+
+
+  public CampaignSetBranchNode description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the campaign set.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A description of the campaign set.")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public CampaignSetBranchNode evaluationMode(EvaluationModeEnum evaluationMode) {
+    
+    this.evaluationMode = evaluationMode;
+    return this;
+  }
+
+   /**
+   * Get evaluationMode
+   * @return evaluationMode
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public EvaluationModeEnum getEvaluationMode() {
+    return evaluationMode;
+  }
+
+
+  public void setEvaluationMode(EvaluationModeEnum evaluationMode) {
+    this.evaluationMode = evaluationMode;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -246,12 +402,16 @@ public class CampaignSetBranchNode {
     return Objects.equals(this.type, campaignSetBranchNode.type) &&
         Objects.equals(this.name, campaignSetBranchNode.name) &&
         Objects.equals(this.operator, campaignSetBranchNode.operator) &&
-        Objects.equals(this.elements, campaignSetBranchNode.elements);
+        Objects.equals(this.elements, campaignSetBranchNode.elements) &&
+        Objects.equals(this.groupId, campaignSetBranchNode.groupId) &&
+        Objects.equals(this.locked, campaignSetBranchNode.locked) &&
+        Objects.equals(this.description, campaignSetBranchNode.description) &&
+        Objects.equals(this.evaluationMode, campaignSetBranchNode.evaluationMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, operator, elements);
+    return Objects.hash(type, name, operator, elements, groupId, locked, description, evaluationMode);
   }
 
 
@@ -263,6 +423,10 @@ public class CampaignSetBranchNode {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
     sb.append("    elements: ").append(toIndentedString(elements)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+    sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    evaluationMode: ").append(toIndentedString(evaluationMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

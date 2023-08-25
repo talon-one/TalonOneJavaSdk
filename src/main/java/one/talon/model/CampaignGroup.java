@@ -161,10 +161,10 @@ public class CampaignGroup {
   }
 
    /**
-   * The name of this campaign group.
+   * The name of this campaign access group.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of this campaign group.")
+  @ApiModelProperty(required = true, value = "The name of this campaign access group.")
 
   public String getName() {
     return name;
@@ -183,11 +183,11 @@ public class CampaignGroup {
   }
 
    /**
-   * A longer description of the campaign group.
+   * A longer description of the campaign access group.
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "My campaign group.", value = "A longer description of the campaign group.")
+  @ApiModelProperty(example = "My campaign access group.", value = "A longer description of the campaign access group.")
 
   public String getDescription() {
     return description;
@@ -214,11 +214,11 @@ public class CampaignGroup {
   }
 
    /**
-   * A list of the IDs of the applications that this campaign group is enabled for.
+   * A list of IDs of the Applications that this campaign access group is enabled for.
    * @return subscribedApplicationsIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the applications that this campaign group is enabled for.")
+  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of IDs of the Applications that this campaign access group is enabled for.")
 
   public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
@@ -245,11 +245,11 @@ public class CampaignGroup {
   }
 
    /**
-   * A list of the IDs of the campaigns that this campaign group owns.
+   * A list of IDs of the campaigns that are part of the campaign access group.
    * @return campaignIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[4, 6, 8]", value = "A list of the IDs of the campaigns that this campaign group owns.")
+  @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are part of the campaign access group.")
 
   public List<Integer> getCampaignIds() {
     return campaignIds;

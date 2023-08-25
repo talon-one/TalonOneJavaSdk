@@ -82,4 +82,12 @@ public class UpdateUserTest {
         // TODO: test applicationNotificationSubscriptions
     }
 
+    /**
+     * Test the property 'isAdmin'
+     */
+    @Test
+    public void isAdminTest() {
+        // TODO: test isAdmin
+    }
+
 }

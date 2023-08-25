@@ -91,4 +91,12 @@ public class CampaignCopyTest {
         // TODO: test tags
     }
 
+    /**
+     * Test the property 'evaluationGroupId'
+     */
+    @Test
+    public void evaluationGroupIdTest() {
+        // TODO: test evaluationGroupId
+    }
+
 }

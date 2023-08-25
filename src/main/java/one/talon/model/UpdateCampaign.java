@@ -333,11 +333,11 @@ public class UpdateCampaign {
   }
 
    /**
-   * ID of Ruleset this campaign applies on customer session evaluation.
+   * [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. 
    * @return activeRulesetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "ID of Ruleset this campaign applies on customer session evaluation.")
+  @ApiModelProperty(example = "2", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
   public Integer getActiveRulesetId() {
     return activeRulesetId;
@@ -491,11 +491,11 @@ public class UpdateCampaign {
   }
 
    /**
-   * The IDs of the campaign groups that own this entity.
+   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. 
    * @return campaignGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[4, 5]", value = "The IDs of the campaign groups that own this entity.")
+  @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. ")
 
   public List<Integer> getCampaignGroups() {
     return campaignGroups;

@@ -135,22 +135,6 @@ public class ApplicationTest {
     }
 
     /**
-     * Test the property 'campaignPriority'
-     */
-    @Test
-    public void campaignPriorityTest() {
-        // TODO: test campaignPriority
-    }
-
-    /**
-     * Test the property 'exclusiveCampaignsStrategy'
-     */
-    @Test
-    public void exclusiveCampaignsStrategyTest() {
-        // TODO: test exclusiveCampaignsStrategy
-    }
-
-    /**
      * Test the property 'defaultDiscountScope'
      */
     @Test
@@ -204,6 +188,14 @@ public class ApplicationTest {
     @Test
     public void defaultDiscountAdditionalCostPerItemScopeTest() {
         // TODO: test defaultDiscountAdditionalCostPerItemScope
+    }
+
+    /**
+     * Test the property 'defaultEvaluationGroupId'
+     */
+    @Test
+    public void defaultEvaluationGroupIdTest() {
+        // TODO: test defaultEvaluationGroupId
     }
 
     /**

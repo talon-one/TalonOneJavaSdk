@@ -41,10 +41,10 @@ public class ApplicationNotification {
   }
 
    /**
-   * Event type. It can be one of the following: [&#39;campaign_priorities_changed&#39;] 
+   * Event type. It can be one of the following: [&#39;campaign_evaluation_tree_changed&#39;] 
    * @return event
   **/
-  @ApiModelProperty(required = true, value = "Event type. It can be one of the following: ['campaign_priorities_changed'] ")
+  @ApiModelProperty(required = true, value = "Event type. It can be one of the following: ['campaign_evaluation_tree_changed'] ")
 
   public String getEvent() {
     return event;

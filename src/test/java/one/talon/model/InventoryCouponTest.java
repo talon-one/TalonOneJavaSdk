@@ -214,6 +214,14 @@ public class InventoryCouponTest {
     }
 
     /**
+     * Test the property 'implicitlyReserved'
+     */
+    @Test
+    public void implicitlyReservedTest() {
+        // TODO: test implicitlyReserved
+    }
+
+    /**
      * Test the property 'profileRedemptionCount'
      */
     @Test

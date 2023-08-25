@@ -67,11 +67,11 @@ public class ReturnedCartItem {
   }
 
    /**
-   * Number of cart items to return. It is only available when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening) is enabled. If cart item flattening is disabled, the cart item can only be returned in its entirety. 
+   * Number of cart items to return. It is only available when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. If cart item flattening is disabled, the cart item can only be returned in its entirety. 
    * @return quantity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "Number of cart items to return. It is only available when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening) is enabled. If cart item flattening is disabled, the cart item can only be returned in its entirety. ")
+  @ApiModelProperty(example = "1", value = "Number of cart items to return. It is only available when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. If cart item flattening is disabled, the cart item can only be returned in its entirety. ")
 
   public Integer getQuantity() {
     return quantity;
