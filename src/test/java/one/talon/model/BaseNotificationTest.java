@@ -65,4 +65,12 @@ public class BaseNotificationTest {
         // TODO: test id
     }
 
+    /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
 }

@@ -57,6 +57,10 @@ public class NotificationWebhook {
   @SerializedName(SERIALIZED_NAME_HEADERS)
   private List<String> headers = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
 
   public NotificationWebhook id(Integer id) {
     
@@ -195,6 +199,29 @@ public class NotificationWebhook {
   }
 
 
+  public NotificationWebhook enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether sending the notification is enabled.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether sending the notification is enabled.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -209,12 +236,13 @@ public class NotificationWebhook {
         Objects.equals(this.modified, notificationWebhook.modified) &&
         Objects.equals(this.applicationId, notificationWebhook.applicationId) &&
         Objects.equals(this.url, notificationWebhook.url) &&
-        Objects.equals(this.headers, notificationWebhook.headers);
+        Objects.equals(this.headers, notificationWebhook.headers) &&
+        Objects.equals(this.enabled, notificationWebhook.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationId, url, headers);
+    return Objects.hash(id, created, modified, applicationId, url, headers, enabled);
   }
 
 
@@ -228,6 +256,7 @@ public class NotificationWebhook {
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

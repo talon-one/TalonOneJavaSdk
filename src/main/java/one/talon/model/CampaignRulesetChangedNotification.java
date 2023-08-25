@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
+import one.talon.model.CampaignStateNotification;
 import one.talon.model.Ruleset;
 
 /**
@@ -34,7 +34,7 @@ import one.talon.model.Ruleset;
 public class CampaignRulesetChangedNotification {
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  private CampaignStateNotification campaign;
 
   public static final String SERIALIZED_NAME_OLD_RULESET = "oldRuleset";
   @SerializedName(SERIALIZED_NAME_OLD_RULESET)
@@ -45,7 +45,7 @@ public class CampaignRulesetChangedNotification {
   private Ruleset ruleset;
 
 
-  public CampaignRulesetChangedNotification campaign(Campaign campaign) {
+  public CampaignRulesetChangedNotification campaign(CampaignStateNotification campaign) {
     
     this.campaign = campaign;
     return this;
@@ -57,12 +57,12 @@ public class CampaignRulesetChangedNotification {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Campaign getCampaign() {
+  public CampaignStateNotification getCampaign() {
     return campaign;
   }
 
 
-  public void setCampaign(Campaign campaign) {
+  public void setCampaign(CampaignStateNotification campaign) {
     this.campaign = campaign;
   }
 

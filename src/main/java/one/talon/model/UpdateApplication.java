@@ -111,112 +111,6 @@ public class UpdateApplication {
   private List<LimitConfig> limits = null;
 
   /**
-   * Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. 
-   */
-  @JsonAdapter(CampaignPriorityEnum.Adapter.class)
-  public enum CampaignPriorityEnum {
-    UNIVERSAL("universal"),
-    
-    STACKABLE("stackable"),
-    
-    EXCLUSIVE("exclusive");
-
-    private String value;
-
-    CampaignPriorityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CampaignPriorityEnum fromValue(String value) {
-      for (CampaignPriorityEnum b : CampaignPriorityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<CampaignPriorityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CampaignPriorityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CampaignPriorityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CampaignPriorityEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_PRIORITY = "campaignPriority";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_PRIORITY)
-  private CampaignPriorityEnum campaignPriority = CampaignPriorityEnum.UNIVERSAL;
-
-  /**
-   * The strategy used when choosing exclusive campaigns for evaluation.
-   */
-  @JsonAdapter(ExclusiveCampaignsStrategyEnum.Adapter.class)
-  public enum ExclusiveCampaignsStrategyEnum {
-    LISTORDER("listOrder"),
-    
-    LOWESTDISCOUNT("lowestDiscount"),
-    
-    HIGHESTDISCOUNT("highestDiscount");
-
-    private String value;
-
-    ExclusiveCampaignsStrategyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ExclusiveCampaignsStrategyEnum fromValue(String value) {
-      for (ExclusiveCampaignsStrategyEnum b : ExclusiveCampaignsStrategyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ExclusiveCampaignsStrategyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ExclusiveCampaignsStrategyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ExclusiveCampaignsStrategyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ExclusiveCampaignsStrategyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY = "exclusiveCampaignsStrategy";
-  @SerializedName(SERIALIZED_NAME_EXCLUSIVE_CAMPAIGNS_STRATEGY)
-  private ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy = ExclusiveCampaignsStrategyEnum.LISTORDER;
-
-  /**
    * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect. 
    */
   @JsonAdapter(DefaultDiscountScopeEnum.Adapter.class)
@@ -341,6 +235,10 @@ public class UpdateApplication {
   public static final String SERIALIZED_NAME_DEFAULT_DISCOUNT_ADDITIONAL_COST_PER_ITEM_SCOPE = "defaultDiscountAdditionalCostPerItemScope";
   @SerializedName(SERIALIZED_NAME_DEFAULT_DISCOUNT_ADDITIONAL_COST_PER_ITEM_SCOPE)
   private DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope;
+
+  public static final String SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID = "defaultEvaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID)
+  private Integer defaultEvaluationGroupId;
 
 
   public UpdateApplication name(String name) {
@@ -509,52 +407,6 @@ public class UpdateApplication {
   }
 
 
-  public UpdateApplication campaignPriority(CampaignPriorityEnum campaignPriority) {
-    
-    this.campaignPriority = campaignPriority;
-    return this;
-  }
-
-   /**
-   * Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. 
-   * @return campaignPriority
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "universal", value = "Default [priority](https://docs.talon.one/docs/product/applications/setting-up-campaign-priorities) for campaigns created in this Application. ")
-
-  public CampaignPriorityEnum getCampaignPriority() {
-    return campaignPriority;
-  }
-
-
-  public void setCampaignPriority(CampaignPriorityEnum campaignPriority) {
-    this.campaignPriority = campaignPriority;
-  }
-
-
-  public UpdateApplication exclusiveCampaignsStrategy(ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy) {
-    
-    this.exclusiveCampaignsStrategy = exclusiveCampaignsStrategy;
-    return this;
-  }
-
-   /**
-   * The strategy used when choosing exclusive campaigns for evaluation.
-   * @return exclusiveCampaignsStrategy
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "listOrder", value = "The strategy used when choosing exclusive campaigns for evaluation.")
-
-  public ExclusiveCampaignsStrategyEnum getExclusiveCampaignsStrategy() {
-    return exclusiveCampaignsStrategy;
-  }
-
-
-  public void setExclusiveCampaignsStrategy(ExclusiveCampaignsStrategyEnum exclusiveCampaignsStrategy) {
-    this.exclusiveCampaignsStrategy = exclusiveCampaignsStrategy;
-  }
-
-
   public UpdateApplication defaultDiscountScope(DefaultDiscountScopeEnum defaultDiscountScope) {
     
     this.defaultDiscountScope = defaultDiscountScope;
@@ -608,11 +460,11 @@ public class UpdateApplication {
   }
 
    /**
-   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening). 
+   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening). 
    * @return enableFlattenedCartItems
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening). ")
+  @ApiModelProperty(example = "true", value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See the [docs](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening). ")
 
   public Boolean getEnableFlattenedCartItems() {
     return enableFlattenedCartItems;
@@ -716,6 +568,29 @@ public class UpdateApplication {
   }
 
 
+  public UpdateApplication defaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+    
+    this.defaultEvaluationGroupId = defaultEvaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.
+   * @return defaultEvaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.")
+
+  public Integer getDefaultEvaluationGroupId() {
+    return defaultEvaluationGroupId;
+  }
+
+
+  public void setDefaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+    this.defaultEvaluationGroupId = defaultEvaluationGroupId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -732,20 +607,19 @@ public class UpdateApplication {
         Objects.equals(this.caseSensitivity, updateApplication.caseSensitivity) &&
         Objects.equals(this.attributes, updateApplication.attributes) &&
         Objects.equals(this.limits, updateApplication.limits) &&
-        Objects.equals(this.campaignPriority, updateApplication.campaignPriority) &&
-        Objects.equals(this.exclusiveCampaignsStrategy, updateApplication.exclusiveCampaignsStrategy) &&
         Objects.equals(this.defaultDiscountScope, updateApplication.defaultDiscountScope) &&
         Objects.equals(this.enableCascadingDiscounts, updateApplication.enableCascadingDiscounts) &&
         Objects.equals(this.enableFlattenedCartItems, updateApplication.enableFlattenedCartItems) &&
         Objects.equals(this.attributesSettings, updateApplication.attributesSettings) &&
         Objects.equals(this.sandbox, updateApplication.sandbox) &&
         Objects.equals(this.enablePartialDiscounts, updateApplication.enablePartialDiscounts) &&
-        Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, updateApplication.defaultDiscountAdditionalCostPerItemScope);
+        Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, updateApplication.defaultDiscountAdditionalCostPerItemScope) &&
+        Objects.equals(this.defaultEvaluationGroupId, updateApplication.defaultEvaluationGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, campaignPriority, exclusiveCampaignsStrategy, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId);
   }
 
 
@@ -760,8 +634,6 @@ public class UpdateApplication {
     sb.append("    caseSensitivity: ").append(toIndentedString(caseSensitivity)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
-    sb.append("    campaignPriority: ").append(toIndentedString(campaignPriority)).append("\n");
-    sb.append("    exclusiveCampaignsStrategy: ").append(toIndentedString(exclusiveCampaignsStrategy)).append("\n");
     sb.append("    defaultDiscountScope: ").append(toIndentedString(defaultDiscountScope)).append("\n");
     sb.append("    enableCascadingDiscounts: ").append(toIndentedString(enableCascadingDiscounts)).append("\n");
     sb.append("    enableFlattenedCartItems: ").append(toIndentedString(enableFlattenedCartItems)).append("\n");
@@ -769,6 +641,7 @@ public class UpdateApplication {
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    enablePartialDiscounts: ").append(toIndentedString(enablePartialDiscounts)).append("\n");
     sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
+    sb.append("    defaultEvaluationGroupId: ").append(toIndentedString(defaultEvaluationGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

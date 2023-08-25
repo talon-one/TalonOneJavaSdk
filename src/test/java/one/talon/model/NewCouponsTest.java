@@ -149,4 +149,12 @@ public class NewCouponsTest {
         // TODO: test isReservationMandatory
     }
 
+    /**
+     * Test the property 'implicitlyReserved'
+     */
+    @Test
+    public void implicitlyReservedTest() {
+        // TODO: test implicitlyReserved
+    }
+
 }

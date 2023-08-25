@@ -2,15 +2,19 @@
 
 # RoleV2
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **Integer** | Internal ID of this entity. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
+**modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
+**accountId** | **Integer** | The ID of the account that owns this entity. | 
 **name** | **String** | Name of the role. |  [optional]
 **description** | **String** | Description of the role. |  [optional]
-**isAdmin** | **Boolean** | Indicates whether the role grants admin permissions. |  [optional]
 **permissions** | [**RoleV2Permissions**](RoleV2Permissions.md) |  |  [optional]
-**members** | **List&lt;Integer&gt;** | An array of user identifiers. |  [optional]
+**members** | **List&lt;Integer&gt;** | A list of user identifiers the role is assigned to. |  [optional]
 
 
 

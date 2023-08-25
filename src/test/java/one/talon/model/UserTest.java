@@ -147,4 +147,12 @@ public class UserTest {
         // TODO: test authMethod
     }
 
+    /**
+     * Test the property 'isAdmin'
+     */
+    @Test
+    public void isAdminTest() {
+        // TODO: test isAdmin
+    }
+
 }

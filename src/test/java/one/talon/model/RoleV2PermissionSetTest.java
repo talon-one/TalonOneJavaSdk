@@ -51,11 +51,11 @@ public class RoleV2PermissionSetTest {
     }
 
     /**
-     * Test the property 'operationIds'
+     * Test the property 'logicalOperations'
      */
     @Test
-    public void operationIdsTest() {
-        // TODO: test operationIds
+    public void logicalOperationsTest() {
+        // TODO: test logicalOperations
     }
 
 }

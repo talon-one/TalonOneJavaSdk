@@ -44,6 +44,10 @@ public class NewInvitation {
   @SerializedName(SERIALIZED_NAME_ACL)
   private String acl;
 
+  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
+  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
+  private Boolean isAdmin;
+
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   private List<Integer> roles = null;
@@ -104,7 +108,8 @@ public class NewInvitation {
    * The &#x60;Access Control List&#x60; json defining the role of the user.  This represents the access control on the user level. Use one of the following: - normal user: &#x60;{\&quot;Role\&quot;: 0}&#x60; - admin: &#x60;{\&quot;Role\&quot;: 127}&#x60; 
    * @return acl
   **/
-  @ApiModelProperty(example = "{\"Role\":0}", required = true, value = "The `Access Control List` json defining the role of the user.  This represents the access control on the user level. Use one of the following: - normal user: `{\"Role\": 0}` - admin: `{\"Role\": 127}` ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"Role\":0}", value = "The `Access Control List` json defining the role of the user.  This represents the access control on the user level. Use one of the following: - normal user: `{\"Role\": 0}` - admin: `{\"Role\": 127}` ")
 
   public String getAcl() {
     return acl;
@@ -113,6 +118,29 @@ public class NewInvitation {
 
   public void setAcl(String acl) {
     this.acl = acl;
+  }
+
+
+  public NewInvitation isAdmin(Boolean isAdmin) {
+    
+    this.isAdmin = isAdmin;
+    return this;
+  }
+
+   /**
+   * An indication of whether the user has admin permissions. We recommend using this flag over using the &#x60;acl&#x60; with value &#x60;{\&quot;Role\&quot;: 127}&#x60;. 
+   * @return isAdmin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the user has admin permissions. We recommend using this flag over using the `acl` with value `{\"Role\": 127}`. ")
+
+  public Boolean getIsAdmin() {
+    return isAdmin;
+  }
+
+
+  public void setIsAdmin(Boolean isAdmin) {
+    this.isAdmin = isAdmin;
   }
 
 
@@ -131,11 +159,11 @@ public class NewInvitation {
   }
 
    /**
-   * An array of roleIDs to assign the new user to.
+   * An array of role IDs to assign to the new user.
    * @return roles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of roleIDs to assign the new user to.")
+  @ApiModelProperty(value = "An array of role IDs to assign to the new user.")
 
   public List<Integer> getRoles() {
     return roles;
@@ -159,12 +187,13 @@ public class NewInvitation {
     return Objects.equals(this.name, newInvitation.name) &&
         Objects.equals(this.email, newInvitation.email) &&
         Objects.equals(this.acl, newInvitation.acl) &&
+        Objects.equals(this.isAdmin, newInvitation.isAdmin) &&
         Objects.equals(this.roles, newInvitation.roles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, email, acl, roles);
+    return Objects.hash(name, email, acl, isAdmin, roles);
   }
 
 
@@ -175,6 +204,7 @@ public class NewInvitation {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    acl: ").append(toIndentedString(acl)).append("\n");
+    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("}");
     return sb.toString();

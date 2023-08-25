@@ -71,6 +71,10 @@ public class UpdateCoupon {
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
   private Boolean isReservationMandatory = true;
 
+  public static final String SERIALIZED_NAME_IMPLICITLY_RESERVED = "implicitlyReserved";
+  @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
+  private Boolean implicitlyReserved;
+
 
   public UpdateCoupon usageLimit(Integer usageLimit) {
     
@@ -293,6 +297,29 @@ public class UpdateCoupon {
   }
 
 
+  public UpdateCoupon implicitlyReserved(Boolean implicitlyReserved) {
+    
+    this.implicitlyReserved = implicitlyReserved;
+    return this;
+  }
+
+   /**
+   * An indication of whether the coupon is implicitly reserved for all customers.
+   * @return implicitlyReserved
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the coupon is implicitly reserved for all customers.")
+
+  public Boolean getImplicitlyReserved() {
+    return implicitlyReserved;
+  }
+
+
+  public void setImplicitlyReserved(Boolean implicitlyReserved) {
+    this.implicitlyReserved = implicitlyReserved;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -310,12 +337,13 @@ public class UpdateCoupon {
         Objects.equals(this.limits, updateCoupon.limits) &&
         Objects.equals(this.recipientIntegrationId, updateCoupon.recipientIntegrationId) &&
         Objects.equals(this.attributes, updateCoupon.attributes) &&
-        Objects.equals(this.isReservationMandatory, updateCoupon.isReservationMandatory);
+        Objects.equals(this.isReservationMandatory, updateCoupon.isReservationMandatory) &&
+        Objects.equals(this.implicitlyReserved, updateCoupon.implicitlyReserved);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, recipientIntegrationId, attributes, isReservationMandatory);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, recipientIntegrationId, attributes, isReservationMandatory, implicitlyReserved);
   }
 
 
@@ -332,6 +360,7 @@ public class UpdateCoupon {
     sb.append("    recipientIntegrationId: ").append(toIndentedString(recipientIntegrationId)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
+    sb.append("    implicitlyReserved: ").append(toIndentedString(implicitlyReserved)).append("\n");
     sb.append("}");
     return sb.toString();
   }

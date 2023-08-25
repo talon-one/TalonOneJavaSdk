@@ -35,9 +35,9 @@ public class RoleV2PermissionSet {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_OPERATION_IDS = "operationIds";
-  @SerializedName(SERIALIZED_NAME_OPERATION_IDS)
-  private List<String> operationIds = new ArrayList<String>();
+  public static final String SERIALIZED_NAME_LOGICAL_OPERATIONS = "logicalOperations";
+  @SerializedName(SERIALIZED_NAME_LOGICAL_OPERATIONS)
+  private List<String> logicalOperations = new ArrayList<String>();
 
 
   public RoleV2PermissionSet name(String name) {
@@ -50,7 +50,7 @@ public class RoleV2PermissionSet {
    * Name of the permission set.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "Name of the permission set.")
+  @ApiModelProperty(example = "Campaign manager permission set", required = true, value = "Name of the permission set.")
 
   public String getName() {
     return name;
@@ -62,30 +62,30 @@ public class RoleV2PermissionSet {
   }
 
 
-  public RoleV2PermissionSet operationIds(List<String> operationIds) {
+  public RoleV2PermissionSet logicalOperations(List<String> logicalOperations) {
     
-    this.operationIds = operationIds;
+    this.logicalOperations = logicalOperations;
     return this;
   }
 
-  public RoleV2PermissionSet addOperationIdsItem(String operationIdsItem) {
-    this.operationIds.add(operationIdsItem);
+  public RoleV2PermissionSet addLogicalOperationsItem(String logicalOperationsItem) {
+    this.logicalOperations.add(logicalOperationsItem);
     return this;
   }
 
    /**
-   * Get operationIds
-   * @return operationIds
+   * List of logical operations in the permission set. Each logical operation must be shown under the &#x60;x-logicalPermissionOperation&#x60; tag on an endpoint level. 
+   * @return logicalOperations
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "[createCampaignOperations, getCampaignOperations, deleteCampaignOperations]", required = true, value = "List of logical operations in the permission set. Each logical operation must be shown under the `x-logicalPermissionOperation` tag on an endpoint level. ")
 
-  public List<String> getOperationIds() {
-    return operationIds;
+  public List<String> getLogicalOperations() {
+    return logicalOperations;
   }
 
 
-  public void setOperationIds(List<String> operationIds) {
-    this.operationIds = operationIds;
+  public void setLogicalOperations(List<String> logicalOperations) {
+    this.logicalOperations = logicalOperations;
   }
 
 
@@ -99,12 +99,12 @@ public class RoleV2PermissionSet {
     }
     RoleV2PermissionSet roleV2PermissionSet = (RoleV2PermissionSet) o;
     return Objects.equals(this.name, roleV2PermissionSet.name) &&
-        Objects.equals(this.operationIds, roleV2PermissionSet.operationIds);
+        Objects.equals(this.logicalOperations, roleV2PermissionSet.logicalOperations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, operationIds);
+    return Objects.hash(name, logicalOperations);
   }
 
 
@@ -113,7 +113,7 @@ public class RoleV2PermissionSet {
     StringBuilder sb = new StringBuilder();
     sb.append("class RoleV2PermissionSet {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    operationIds: ").append(toIndentedString(operationIds)).append("\n");
+    sb.append("    logicalOperations: ").append(toIndentedString(logicalOperations)).append("\n");
     sb.append("}");
     return sb.toString();
   }

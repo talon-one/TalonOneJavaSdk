@@ -65,6 +65,10 @@ public class CreateTemplateCampaign {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
+  private Integer evaluationGroupId;
+
 
   public CreateTemplateCampaign name(String name) {
     
@@ -233,11 +237,11 @@ public class CreateTemplateCampaign {
   }
 
    /**
-   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to. 
+   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. 
    * @return campaignGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to. ")
+  @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. ")
 
   public List<Integer> getCampaignGroups() {
     return campaignGroups;
@@ -280,6 +284,29 @@ public class CreateTemplateCampaign {
   }
 
 
+  public CreateTemplateCampaign evaluationGroupId(Integer evaluationGroupId) {
+    
+    this.evaluationGroupId = evaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign evaluation group the campaign belongs to.
+   * @return evaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
+
+  public Integer getEvaluationGroupId() {
+    return evaluationGroupId;
+  }
+
+
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
+    this.evaluationGroupId = evaluationGroupId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -296,12 +323,13 @@ public class CreateTemplateCampaign {
         Objects.equals(this.templateParamValues, createTemplateCampaign.templateParamValues) &&
         Objects.equals(this.limitOverrides, createTemplateCampaign.limitOverrides) &&
         Objects.equals(this.campaignGroups, createTemplateCampaign.campaignGroups) &&
-        Objects.equals(this.tags, createTemplateCampaign.tags);
+        Objects.equals(this.tags, createTemplateCampaign.tags) &&
+        Objects.equals(this.evaluationGroupId, createTemplateCampaign.evaluationGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, templateId, campaignAttributesOverrides, templateParamValues, limitOverrides, campaignGroups, tags);
+    return Objects.hash(name, description, templateId, campaignAttributesOverrides, templateParamValues, limitOverrides, campaignGroups, tags, evaluationGroupId);
   }
 
 
@@ -317,6 +345,7 @@ public class CreateTemplateCampaign {
     sb.append("    limitOverrides: ").append(toIndentedString(limitOverrides)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -155,11 +155,11 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
    /**
-   * Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening) is enabled. Indicates which item the discount applies to for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. Indicates which item the discount applies to for cart items with &#x60;quantity&#x60; &gt; 1. 
    * @return subPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening) is enabled. Indicates which item the discount applies to for cart items with `quantity` > 1. ")
+  @ApiModelProperty(value = "Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. Indicates which item the discount applies to for cart items with `quantity` > 1. ")
 
   public BigDecimal getSubPosition() {
     return subPosition;

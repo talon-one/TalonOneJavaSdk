@@ -7,7 +7,7 @@ A notification regarding a campaign that was deleted.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign** | [**Campaign**](Campaign.md) |  | 
+**campaign** | [**CampaignStateNotification**](CampaignStateNotification.md) |  | 
 **deletedAt** | [**OffsetDateTime**](OffsetDateTime.md) | Time when the campaign was deleted. | 
 
 

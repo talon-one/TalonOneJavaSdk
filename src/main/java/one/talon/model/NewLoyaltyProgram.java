@@ -65,6 +65,61 @@ public class NewLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
 
+  public static final String SERIALIZED_NAME_TIERS_EXPIRE_IN = "tiersExpireIn";
+  @SerializedName(SERIALIZED_NAME_TIERS_EXPIRE_IN)
+  private String tiersExpireIn;
+
+  /**
+   * Customers&#39;s tier downgrade policy.  - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down.  - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   */
+  @JsonAdapter(TiersDowngradePolicyEnum.Adapter.class)
+  public enum TiersDowngradePolicyEnum {
+    ONE_DOWN("one_down"),
+    
+    BALANCE_BASED("balance_based");
+
+    private String value;
+
+    TiersDowngradePolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TiersDowngradePolicyEnum fromValue(String value) {
+      for (TiersDowngradePolicyEnum b : TiersDowngradePolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TiersDowngradePolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TiersDowngradePolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TiersDowngradePolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TiersDowngradePolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TIERS_DOWNGRADE_POLICY = "tiersDowngradePolicy";
+  @SerializedName(SERIALIZED_NAME_TIERS_DOWNGRADE_POLICY)
+  private TiersDowngradePolicyEnum tiersDowngradePolicy;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -270,6 +325,52 @@ public class NewLoyaltyProgram {
   }
 
 
+  public NewLoyaltyProgram tiersExpireIn(String tiersExpireIn) {
+    
+    this.tiersExpireIn = tiersExpireIn;
+    return this;
+  }
+
+   /**
+   * The duration is an **integer** followed by one letter indicating the time unit.  Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. 
+   * @return tiersExpireIn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "27W_U", value = "The duration is an **integer** followed by one letter indicating the time unit.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. ")
+
+  public String getTiersExpireIn() {
+    return tiersExpireIn;
+  }
+
+
+  public void setTiersExpireIn(String tiersExpireIn) {
+    this.tiersExpireIn = tiersExpireIn;
+  }
+
+
+  public NewLoyaltyProgram tiersDowngradePolicy(TiersDowngradePolicyEnum tiersDowngradePolicy) {
+    
+    this.tiersDowngradePolicy = tiersDowngradePolicy;
+    return this;
+  }
+
+   /**
+   * Customers&#39;s tier downgrade policy.  - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down.  - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   * @return tiersDowngradePolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Customers's tier downgrade policy.  - `one_down`: Once the tier expires and if the user doesn't have enough points to stay in the tier, the user is downgraded one tier down.  - `balance_based`: Once the tier expires, the user's tier is evaluated based on the amount of active points the user has at this instant. ")
+
+  public TiersDowngradePolicyEnum getTiersDowngradePolicy() {
+    return tiersDowngradePolicy;
+  }
+
+
+  public void setTiersDowngradePolicy(TiersDowngradePolicyEnum tiersDowngradePolicy) {
+    this.tiersDowngradePolicy = tiersDowngradePolicy;
+  }
+
+
   public NewLoyaltyProgram name(String name) {
     
     this.name = name;
@@ -384,6 +485,8 @@ public class NewLoyaltyProgram {
         Objects.equals(this.allowSubledger, newLoyaltyProgram.allowSubledger) &&
         Objects.equals(this.usersPerCardLimit, newLoyaltyProgram.usersPerCardLimit) &&
         Objects.equals(this.sandbox, newLoyaltyProgram.sandbox) &&
+        Objects.equals(this.tiersExpireIn, newLoyaltyProgram.tiersExpireIn) &&
+        Objects.equals(this.tiersDowngradePolicy, newLoyaltyProgram.tiersDowngradePolicy) &&
         Objects.equals(this.name, newLoyaltyProgram.name) &&
         Objects.equals(this.tiers, newLoyaltyProgram.tiers) &&
         Objects.equals(this.timezone, newLoyaltyProgram.timezone) &&
@@ -392,7 +495,7 @@ public class NewLoyaltyProgram {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, name, tiers, timezone, cardBased);
+    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, tiersExpireIn, tiersDowngradePolicy, name, tiers, timezone, cardBased);
   }
 
 
@@ -408,6 +511,8 @@ public class NewLoyaltyProgram {
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
     sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    tiersExpireIn: ").append(toIndentedString(tiersExpireIn)).append("\n");
+    sb.append("    tiersDowngradePolicy: ").append(toIndentedString(tiersDowngradePolicy)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");

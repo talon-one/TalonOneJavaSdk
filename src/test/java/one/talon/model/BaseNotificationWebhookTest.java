@@ -83,4 +83,12 @@ public class BaseNotificationWebhookTest {
         // TODO: test headers
     }
 
+    /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
 }

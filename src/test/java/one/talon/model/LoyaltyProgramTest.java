@@ -125,6 +125,22 @@ public class LoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'tiersExpireIn'
+     */
+    @Test
+    public void tiersExpireInTest() {
+        // TODO: test tiersExpireIn
+    }
+
+    /**
+     * Test the property 'tiersDowngradePolicy'
+     */
+    @Test
+    public void tiersDowngradePolicyTest() {
+        // TODO: test tiersDowngradePolicy
+    }
+
+    /**
      * Test the property 'accountID'
      */
     @Test
@@ -162,6 +178,22 @@ public class LoyaltyProgramTest {
     @Test
     public void cardBasedTest() {
         // TODO: test cardBased
+    }
+
+    /**
+     * Test the property 'canUpdateTiers'
+     */
+    @Test
+    public void canUpdateTiersTest() {
+        // TODO: test canUpdateTiers
+    }
+
+    /**
+     * Test the property 'canUpgradeToAdvancedTiers'
+     */
+    @Test
+    public void canUpgradeToAdvancedTiersTest() {
+        // TODO: test canUpgradeToAdvancedTiers
     }
 
 }

@@ -23,8 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.PriorityPosition;
+import one.talon.model.CampaignEvaluationPosition;
+import one.talon.model.CampaignStateNotification;
 import one.talon.model.Ruleset;
 
 /**
@@ -35,18 +35,18 @@ import one.talon.model.Ruleset;
 public class CampaignCreatedNotification {
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private Campaign campaign;
+  private CampaignStateNotification campaign;
 
   public static final String SERIALIZED_NAME_RULESET = "ruleset";
   @SerializedName(SERIALIZED_NAME_RULESET)
   private Ruleset ruleset;
 
-  public static final String SERIALIZED_NAME_PRIORITY = "priority";
-  @SerializedName(SERIALIZED_NAME_PRIORITY)
-  private PriorityPosition priority;
+  public static final String SERIALIZED_NAME_EVALUATION_POSITION = "evaluationPosition";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_POSITION)
+  private CampaignEvaluationPosition evaluationPosition;
 
 
-  public CampaignCreatedNotification campaign(Campaign campaign) {
+  public CampaignCreatedNotification campaign(CampaignStateNotification campaign) {
     
     this.campaign = campaign;
     return this;
@@ -58,12 +58,12 @@ public class CampaignCreatedNotification {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Campaign getCampaign() {
+  public CampaignStateNotification getCampaign() {
     return campaign;
   }
 
 
-  public void setCampaign(Campaign campaign) {
+  public void setCampaign(CampaignStateNotification campaign) {
     this.campaign = campaign;
   }
 
@@ -91,25 +91,25 @@ public class CampaignCreatedNotification {
   }
 
 
-  public CampaignCreatedNotification priority(PriorityPosition priority) {
+  public CampaignCreatedNotification evaluationPosition(CampaignEvaluationPosition evaluationPosition) {
     
-    this.priority = priority;
+    this.evaluationPosition = evaluationPosition;
     return this;
   }
 
    /**
-   * Get priority
-   * @return priority
+   * Get evaluationPosition
+   * @return evaluationPosition
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public PriorityPosition getPriority() {
-    return priority;
+  public CampaignEvaluationPosition getEvaluationPosition() {
+    return evaluationPosition;
   }
 
 
-  public void setPriority(PriorityPosition priority) {
-    this.priority = priority;
+  public void setEvaluationPosition(CampaignEvaluationPosition evaluationPosition) {
+    this.evaluationPosition = evaluationPosition;
   }
 
 
@@ -124,12 +124,12 @@ public class CampaignCreatedNotification {
     CampaignCreatedNotification campaignCreatedNotification = (CampaignCreatedNotification) o;
     return Objects.equals(this.campaign, campaignCreatedNotification.campaign) &&
         Objects.equals(this.ruleset, campaignCreatedNotification.ruleset) &&
-        Objects.equals(this.priority, campaignCreatedNotification.priority);
+        Objects.equals(this.evaluationPosition, campaignCreatedNotification.evaluationPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaign, ruleset, priority);
+    return Objects.hash(campaign, ruleset, evaluationPosition);
   }
 
 
@@ -139,7 +139,7 @@ public class CampaignCreatedNotification {
     sb.append("class CampaignCreatedNotification {\n");
     sb.append("    campaign: ").append(toIndentedString(campaign)).append("\n");
     sb.append("    ruleset: ").append(toIndentedString(ruleset)).append("\n");
-    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    evaluationPosition: ").append(toIndentedString(evaluationPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }

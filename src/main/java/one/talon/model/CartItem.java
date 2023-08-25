@@ -28,11 +28,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
+import one.talon.custom.JsonNullable;
+import one.talon.custom.NullableAdapterFactory;
 
 /**
  * CartItem
  */
 
+@JsonAdapter(NullableAdapterFactory.class)
 public class CartItem {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -84,6 +87,8 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  /*allow Serializing null for this field */
+    @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
@@ -147,11 +152,11 @@ public class CartItem {
   }
 
    /**
-   * Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. 
+   * Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. 
    * minimum: 1
    * @return quantity
   **/
-  @ApiModelProperty(example = "1", required = true, value = "Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/campaign-evaluation#flattening), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. ")
+  @ApiModelProperty(example = "1", required = true, value = "Quantity of item. **Important:** If you enabled [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening), the quantity is always one and the same cart item might receive multiple per-item discounts. Ensure you can process multiple discounts on one cart item correctly. ")
 
   public Integer getQuantity() {
     return quantity;

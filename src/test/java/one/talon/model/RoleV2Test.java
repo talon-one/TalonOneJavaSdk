@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.RoleV2Permissions;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -44,6 +45,38 @@ public class RoleV2Test {
     }
 
     /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+    }
+
+    /**
+     * Test the property 'created'
+     */
+    @Test
+    public void createdTest() {
+        // TODO: test created
+    }
+
+    /**
+     * Test the property 'modified'
+     */
+    @Test
+    public void modifiedTest() {
+        // TODO: test modified
+    }
+
+    /**
+     * Test the property 'accountId'
+     */
+    @Test
+    public void accountIdTest() {
+        // TODO: test accountId
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test
@@ -57,14 +90,6 @@ public class RoleV2Test {
     @Test
     public void descriptionTest() {
         // TODO: test description
-    }
-
-    /**
-     * Test the property 'isAdmin'
-     */
-    @Test
-    public void isAdminTest() {
-        // TODO: test isAdmin
     }
 
     /**

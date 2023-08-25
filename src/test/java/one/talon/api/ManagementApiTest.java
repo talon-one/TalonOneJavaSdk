@@ -73,6 +73,7 @@ import one.talon.model.InlineResponse20038;
 import one.talon.model.InlineResponse20039;
 import one.talon.model.InlineResponse2004;
 import one.talon.model.InlineResponse20040;
+import one.talon.model.InlineResponse20041;
 import one.talon.model.InlineResponse2005;
 import one.talon.model.InlineResponse2006;
 import one.talon.model.InlineResponse2007;
@@ -95,6 +96,7 @@ import one.talon.model.NewCouponsForMultipleRecipients;
 import one.talon.model.NewNotificationWebhook;
 import one.talon.model.NewPassword;
 import one.talon.model.NewPasswordEmail;
+import one.talon.model.NotificationActivation;
 import one.talon.model.NotificationWebhook;
 import org.threeten.bp.OffsetDateTime;
 import one.talon.model.Referral;
@@ -324,7 +326,7 @@ public class ManagementApiTest {
     /**
      * Create notification about campaign-related changes
      *
-     * Create a [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  A notification about campaign-related changes is different from regular webhooks in that it is Application-scoped and has a predefined payload. [Regular webhooks](https://docs.talon.one/docs/dev/getting-started/webhooks) have user-definable payloads.  **Tip:**  - You can create these notifications using the Campaign Manager. See [Managing notifications](https://docs.talon.one/docs/product/applications/outbound-notifications). - You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#/paths/campaign_created/post). 
+     * Create a [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  A notification about campaign-related changes is different from regular webhooks in that it is Application-scoped and has a predefined payload. [Regular webhooks](https://docs.talon.one/docs/dev/getting-started/webhooks) have user-definable payloads.  **Tip:**  - You can create these notifications using the Campaign Manager. See [Managing notifications](https://docs.talon.one/docs/product/applications/outbound-notifications). - You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#tag/Campaign-notifications/paths/campaign_created/post). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -750,6 +752,24 @@ public class ManagementApiTest {
     }
     
     /**
+     * Export giveaway codes of a giveaway pool
+     *
+     * Download a CSV file containing the giveaway codes of a specific giveaway pool.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;id&#x60;: The internal ID of the giveaway. - &#x60;poolid&#x60;: The internal ID of the giveaway pool. - &#x60;code&#x60;: The giveaway code. - &#x60;startdate&#x60;: The validity start date in RFC3339 of the giveaway (can be empty). - &#x60;enddate&#x60;: The validity end date in RFC3339 of the giveaway (can be empty). - &#x60;attributes&#x60;: Any custom attributes associated with the giveaway code (can be empty). - &#x60;used&#x60;: An indication of whether the giveaway is already awarded. - &#x60;importid&#x60;: The ID of the import which created the giveaway. - &#x60;created&#x60;: The creation time of the giveaway code. - &#x60;profileintegrationid&#x60;: The third-party integration ID of the customer profile that was awarded the giveaway. Can be empty if the giveaway was not awarded. - &#x60;profileid&#x60;: The internal ID of the customer profile that was awarded the giveaway. Can be empty if the giveaway was not awarded or an internal ID does not exist. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportPoolGiveawaysTest() throws ApiException {
+        Integer poolId = null;
+        OffsetDateTime createdBefore = null;
+        OffsetDateTime createdAfter = null;
+        String response = api.exportPoolGiveaways(poolId, createdBefore, createdAfter);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Export referrals
      *
      * Download a CSV file containing the referrals that match the given parameters.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;code&#x60;: The referral code. - &#x60;advocateprofileintegrationid&#x60;: The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. 
@@ -873,7 +893,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20032 response = api.getAdditionalCosts(pageSize, skip, sort);
+        InlineResponse20033 response = api.getAdditionalCosts(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -911,7 +931,7 @@ public class ManagementApiTest {
      */
     @Test
     public void getAllRolesTest() throws ApiException {
-        InlineResponse20040 response = api.getAllRoles();
+        InlineResponse20041 response = api.getAllRoles();
 
         // TODO: test validations
     }
@@ -1029,7 +1049,7 @@ public class ManagementApiTest {
     /**
      * List Applications event types
      *
-     * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](https://docs.talon.one/integration-api#operation/trackEvent) 
+     * Get all of the distinct values of the Event &#x60;type&#x60; property for events recorded in the application.  See also: [Track an event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1317,7 +1337,7 @@ public class ManagementApiTest {
         Boolean withTotalResultSize = null;
         Integer managementKeyId = null;
         Boolean includeOld = null;
-        InlineResponse20038 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+        InlineResponse20039 response = api.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
 
         // TODO: test validations
     }
@@ -1521,7 +1541,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20036 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+        InlineResponse20037 response = api.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1541,7 +1561,7 @@ public class ManagementApiTest {
         BigDecimal applicationId = null;
         Integer campaignId = null;
         String entity = null;
-        InlineResponse20039 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
+        InlineResponse20040 response = api.getExports(pageSize, skip, applicationId, campaignId, entity);
 
         // TODO: test validations
     }
@@ -1566,7 +1586,7 @@ public class ManagementApiTest {
     /**
      * List card&#39;s transactions
      *
-     * Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/loyalty-cards/loyalty-card-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
+     * Retrieve the transaction logs for the given [loyalty card](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) within the specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types) with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1754,7 +1774,7 @@ public class ManagementApiTest {
     /**
      * Get role
      *
-     * Get the details of the specified role. To see all the roles, use [List roles](#operation/getAllRoles). 
+     * Get the details of a specific role. To see all the roles, use [List roles](#operation/getAllRoles). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1834,7 +1854,7 @@ public class ManagementApiTest {
         Integer pageSize = null;
         Integer skip = null;
         String sort = null;
-        InlineResponse20037 response = api.getUsers(pageSize, skip, sort);
+        InlineResponse20038 response = api.getUsers(pageSize, skip, sort);
 
         // TODO: test validations
     }
@@ -1874,7 +1894,7 @@ public class ManagementApiTest {
         BigDecimal campaignId = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20034 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+        InlineResponse20035 response = api.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1899,7 +1919,7 @@ public class ManagementApiTest {
         String requestUuid = null;
         OffsetDateTime createdBefore = null;
         OffsetDateTime createdAfter = null;
-        InlineResponse20035 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+        InlineResponse20036 response = api.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
 
         // TODO: test validations
     }
@@ -1918,7 +1938,11 @@ public class ManagementApiTest {
         String sort = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse20033 response = api.getWebhooks(applicationIds, sort, pageSize, skip);
+        String creationType = null;
+        String visibility = null;
+        Integer outgoingIntegrationsTypeId = null;
+        String title = null;
+        InlineResponse20034 response = api.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
 
         // TODO: test validations
     }
@@ -2012,9 +2036,26 @@ public class ManagementApiTest {
     }
     
     /**
+     * Import customers into loyalty tiers
+     *
+     * Upload a CSV file containing existing customers to be assigned to existing tiers. Send the file as multipart data.  **Important:** This endpoint only works with loyalty programs with advanced tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns: - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiration date of the tier. It should be a future date.  About customer assignment to a tier: - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in a tier, the customer is assigned to match the new information provided in the CSV file. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiration date is updated.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:** &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importLoyaltyCustomersTiersTest() throws ApiException {
+        Integer loyaltyProgramId = null;
+        String upFile = null;
+        ModelImport response = api.importLoyaltyCustomersTiers(loyaltyProgramId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Import loyalty points
      *
-     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the loyalty program type, you can import the points into a given customer profile or into a given _active_ loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60;: The earliest date when the points can be redeemed. On this date and until the expiration date, the points are &#x60;active&#x60;. - &#x60;expirydate&#x60;: The latest date when the points can be redeemed. After this date, the points are &#x60;expired&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing the loyalty points you want to import into a given loyalty program. Send the file as multipart data.  Depending on the loyalty program type, you can import the points into a given customer profile or into a given _active_ loyalty card.  The CSV file contains the following columns:  - &#x60;customerprofileid&#x60; (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported. - &#x60;identifier&#x60; (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported. - &#x60;amount&#x60;: The amount of points to award to the customer profile. - &#x60;startdate&#x60; (optional): The earliest date when the points can be redeemed. The points are &#x60;active&#x60; from this date until the expiration date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;immediate&#x60;. Empty or missing values are considered &#x60;immediate&#x60;. - &#x60;expirydate&#x60; (optional): The latest date when the points can be redeemed. The points are &#x60;expired&#x60; after this date.    **Note**: It must be an RFC3339 timestamp string or string &#x60;unlimited&#x60;. Empty or missing values are considered &#x60;unlimited&#x60;. - &#x60;subledgerid&#x60; (optional): The ID of the subledger that should received the points. - &#x60;reason&#x60; (optional): The reason why these points are awarded.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** For existing customer profiles and loyalty cards, the imported points are added to any previous active or pending points, depending on the value provided for &#x60;startdate&#x60;. If &#x60;startdate&#x60; matches the current date, the imported points are _active_. If it is later, the points are _pending_ until the date provided for &#x60;startdate&#x60; is reached.  **Note:** We recommend limiting your file size to 500MB.  **Example for profile-based programs:**  &#x60;&#x60;&#x60;text customerprofileid,amount,startdate,expirydate,subledgerid,reason URNGV8294NV,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60;  **Example for card-based programs:**  &#x60;&#x60;&#x60;text identifier,amount,startdate,expirydate,subledgerid,reason summer-loyalty-card-0543,100,2009-11-10T23:00:00Z,2009-11-11T23:00:00Z,subledger1,appeasement &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2084,6 +2125,26 @@ public class ManagementApiTest {
     }
     
     /**
+     * List items in a catalog
+     *
+     * Return a paginated list of cart items in the given catalog. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listCatalogItemsTest() throws ApiException {
+        Integer catalogId = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        Boolean withTotalResultSize = null;
+        String sku = null;
+        InlineResponse20032 response = api.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku);
+
+        // TODO: test validations
+    }
+    
+    /**
      * List collections
      *
      * List collections in the campaign.
@@ -2127,9 +2188,26 @@ public class ManagementApiTest {
     }
     
     /**
+     * Activate or deactivate notification
+     *
+     * Activate or deactivate the given notification. When &#x60;enabled&#x60; is false, updates will no longer be sent for the given notification. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void notificationActivationTest() throws ApiException {
+        Integer notificationId = null;
+        NotificationActivation body = null;
+        api.notificationActivation(notificationId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create notification about added or deducted loyalty points
      *
-     * Create a notification about added or deducted loyalty points in a given profile-based loyalty program. A notification for added or deducted loyalty points is different from regular webhooks in that it is loyalty program-scoped and has a predefined payload.  For more information, see [Managing notifications](https://docs.talon.one/docs/product/loyalty-programs/managing-notifications). 
+     * Create a notification about added or deducted loyalty points in a given profile-based loyalty program. A notification for added or deducted loyalty points is different from regular webhooks in that it is loyalty program-scoped and has a predefined payload.  For more information, see [Managing loyalty notifications](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-loyalty-notifications). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2161,9 +2239,26 @@ public class ManagementApiTest {
     }
     
     /**
+     * Create notification about pending loyalty points
+     *
+     * Create a notification about pending loyalty points for a given profile-based loyalty program. For more information, see [Managing loyalty notifications](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-loyalty-notifications). 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postPendingPointsNotificationTest() throws ApiException {
+        Integer loyaltyProgramId = null;
+        NewBaseNotification body = null;
+        BaseNotification response = api.postPendingPointsNotification(loyaltyProgramId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Deduct points from customer profile
      *
-     * Deduct points from the specified loyalty program and specified customer profile.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. 
+     * Deduct points from the specified loyalty program and specified customer profile.  **Important:** - Only active points can be deducted. - Only pending points are rolled back when a session is cancelled or reopened.  To get the &#x60;integrationId&#x60; of the profile from a &#x60;sessionId&#x60;, use the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2292,7 +2387,7 @@ public class ManagementApiTest {
     /**
      * Update additional cost
      *
-     * Updates an existing additional cost. Once created, the only property of an additional cost that can be changed is the title (human readable description). This restriction is in place to prevent accidentally breaking live integrations. 
+     * Updates an existing additional cost. Once created, the only property of an additional cost that cannot be changed is the &#x60;name&#x60; property (or **API name** in the Campaign Manager). This restriction is in place to prevent accidentally breaking live integrations. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2382,7 +2477,7 @@ public class ManagementApiTest {
     /**
      * Update coupons
      *
-     * Update all coupons, or a specific batch of coupons, in a campaign. You can find the &#x60;batchId&#x60; in the **Coupons** view of your Application in the Campaign Manager, or you can use [List coupons](#operation/getCouponsWithoutTotalCount).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    &lt;ul&gt;     &lt;li&gt;Only send sequential requests to this endpoint.&lt;/li&gt;     &lt;li&gt;Requests to this endpoint timeout after 30 minutes. If you hit a timeout, reach out to our support team.&lt;/li&gt;   &lt;/ul&gt;  &lt;/div&gt;  To update a specific coupon, use [Update coupon](#operation/updateCoupon). 
+     * Update all coupons, or a specific batch of coupons in the given campaign. You can find the &#x60;batchId&#x60; in the **Coupons** view of your Application in the Campaign Manager, or you can use [List coupons](#operation/getCouponsWithoutTotalCount).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    &lt;ul&gt;     &lt;li&gt;Only send sequential requests to this endpoint.&lt;/li&gt;     &lt;li&gt;Requests to this endpoint timeout after 30 minutes. If you hit a timeout, reach out to our support team.&lt;/li&gt;   &lt;/ul&gt;  &lt;/div&gt;  To update a specific coupon, use [Update coupon](#operation/updateCoupon). 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2418,7 +2513,7 @@ public class ManagementApiTest {
     /**
      * Update notification about campaign-related changes
      *
-     * Update the given [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  **Tip:** You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#/paths/campaign_edited/post). 
+     * Update the given [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  **Tip:** You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#tag/Campaign-notifications/paths/campaign_edited/post). 
      *
      * @throws ApiException
      *          if the Api call fails

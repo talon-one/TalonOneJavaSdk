@@ -7,9 +7,9 @@ A notification regarding a campaign that was created.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaign** | [**Campaign**](Campaign.md) |  | 
+**campaign** | [**CampaignStateNotification**](CampaignStateNotification.md) |  | 
 **ruleset** | [**Ruleset**](Ruleset.md) |  |  [optional]
-**priority** | [**PriorityPosition**](PriorityPosition.md) |  | 
+**evaluationPosition** | [**CampaignEvaluationPosition**](CampaignEvaluationPosition.md) |  | 
 
 
 

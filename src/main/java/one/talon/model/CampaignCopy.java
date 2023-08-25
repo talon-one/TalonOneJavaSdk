@@ -56,6 +56,10 @@ public class CampaignCopy {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
+  private Integer evaluationGroupId;
+
 
   public CampaignCopy name(String name) {
     
@@ -207,6 +211,29 @@ public class CampaignCopy {
   }
 
 
+  public CampaignCopy evaluationGroupId(Integer evaluationGroupId) {
+    
+    this.evaluationGroupId = evaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign evaluation group the campaign belongs to.
+   * @return evaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
+
+  public Integer getEvaluationGroupId() {
+    return evaluationGroupId;
+  }
+
+
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
+    this.evaluationGroupId = evaluationGroupId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -221,12 +248,13 @@ public class CampaignCopy {
         Objects.equals(this.description, campaignCopy.description) &&
         Objects.equals(this.startTime, campaignCopy.startTime) &&
         Objects.equals(this.endTime, campaignCopy.endTime) &&
-        Objects.equals(this.tags, campaignCopy.tags);
+        Objects.equals(this.tags, campaignCopy.tags) &&
+        Objects.equals(this.evaluationGroupId, campaignCopy.evaluationGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, applicationIds, description, startTime, endTime, tags);
+    return Objects.hash(name, applicationIds, description, startTime, endTime, tags, evaluationGroupId);
   }
 
 
@@ -240,6 +268,7 @@ public class CampaignCopy {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

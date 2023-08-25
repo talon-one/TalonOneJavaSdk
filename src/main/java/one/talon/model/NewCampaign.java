@@ -30,8 +30,9 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * NewCampaign
+ * 
  */
+@ApiModel(description = "")
 
 public class NewCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -188,6 +189,10 @@ public class NewCampaign {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
   private List<Integer> campaignGroups = null;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
+  private Integer evaluationGroupId;
+
 
   public NewCampaign name(String name) {
     
@@ -264,11 +269,11 @@ public class NewCampaign {
   }
 
    /**
-   * Timestamp the campaign will become inactive.
+   * Timestamp when the campaign will become inactive.
    * @return endTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp the campaign will become inactive.")
+  @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp when the campaign will become inactive.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -506,6 +511,29 @@ public class NewCampaign {
   }
 
 
+  public NewCampaign evaluationGroupId(Integer evaluationGroupId) {
+    
+    this.evaluationGroupId = evaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign evaluation group the campaign belongs to.
+   * @return evaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
+
+  public Integer getEvaluationGroupId() {
+    return evaluationGroupId;
+  }
+
+
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
+    this.evaluationGroupId = evaluationGroupId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -527,12 +555,13 @@ public class NewCampaign {
         Objects.equals(this.couponSettings, newCampaign.couponSettings) &&
         Objects.equals(this.referralSettings, newCampaign.referralSettings) &&
         Objects.equals(this.limits, newCampaign.limits) &&
-        Objects.equals(this.campaignGroups, newCampaign.campaignGroups);
+        Objects.equals(this.campaignGroups, newCampaign.campaignGroups) &&
+        Objects.equals(this.evaluationGroupId, newCampaign.evaluationGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId);
   }
 
 
@@ -553,6 +582,7 @@ public class NewCampaign {
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
+    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

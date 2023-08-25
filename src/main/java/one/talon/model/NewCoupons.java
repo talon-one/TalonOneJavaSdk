@@ -87,6 +87,10 @@ public class NewCoupons {
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
   private Boolean isReservationMandatory = true;
 
+  public static final String SERIALIZED_NAME_IMPLICITLY_RESERVED = "implicitlyReserved";
+  @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
+  private Boolean implicitlyReserved;
+
 
   public NewCoupons usageLimit(Integer usageLimit) {
     
@@ -407,6 +411,29 @@ public class NewCoupons {
   }
 
 
+  public NewCoupons implicitlyReserved(Boolean implicitlyReserved) {
+    
+    this.implicitlyReserved = implicitlyReserved;
+    return this;
+  }
+
+   /**
+   * An indication of whether the coupon is implicitly reserved for all customers.
+   * @return implicitlyReserved
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "An indication of whether the coupon is implicitly reserved for all customers.")
+
+  public Boolean getImplicitlyReserved() {
+    return implicitlyReserved;
+  }
+
+
+  public void setImplicitlyReserved(Boolean implicitlyReserved) {
+    this.implicitlyReserved = implicitlyReserved;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -428,12 +455,13 @@ public class NewCoupons {
         Objects.equals(this.recipientIntegrationId, newCoupons.recipientIntegrationId) &&
         Objects.equals(this.validCharacters, newCoupons.validCharacters) &&
         Objects.equals(this.couponPattern, newCoupons.couponPattern) &&
-        Objects.equals(this.isReservationMandatory, newCoupons.isReservationMandatory);
+        Objects.equals(this.isReservationMandatory, newCoupons.isReservationMandatory) &&
+        Objects.equals(this.implicitlyReserved, newCoupons.implicitlyReserved);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern, isReservationMandatory);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, numberOfCoupons, uniquePrefix, attributes, recipientIntegrationId, validCharacters, couponPattern, isReservationMandatory, implicitlyReserved);
   }
 
 
@@ -454,6 +482,7 @@ public class NewCoupons {
     sb.append("    validCharacters: ").append(toIndentedString(validCharacters)).append("\n");
     sb.append("    couponPattern: ").append(toIndentedString(couponPattern)).append("\n");
     sb.append("    isReservationMandatory: ").append(toIndentedString(isReservationMandatory)).append("\n");
+    sb.append("    implicitlyReserved: ").append(toIndentedString(implicitlyReserved)).append("\n");
     sb.append("}");
     return sb.toString();
   }

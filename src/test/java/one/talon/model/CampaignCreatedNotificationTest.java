@@ -21,8 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.Campaign;
-import one.talon.model.PriorityPosition;
+import one.talon.model.CampaignEvaluationPosition;
+import one.talon.model.CampaignStateNotification;
 import one.talon.model.Ruleset;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -60,11 +60,11 @@ public class CampaignCreatedNotificationTest {
     }
 
     /**
-     * Test the property 'priority'
+     * Test the property 'evaluationPosition'
      */
     @Test
-    public void priorityTest() {
-        // TODO: test priority
+    public void evaluationPositionTest() {
+        // TODO: test evaluationPosition
     }
 
 }

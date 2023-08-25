@@ -39,6 +39,10 @@ public class NewNotificationWebhook {
   @SerializedName(SERIALIZED_NAME_HEADERS)
   private List<String> headers = new ArrayList<String>();
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
 
   public NewNotificationWebhook url(String url) {
     
@@ -89,6 +93,29 @@ public class NewNotificationWebhook {
   }
 
 
+  public NewNotificationWebhook enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether sending the notification is enabled.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether sending the notification is enabled.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -99,12 +126,13 @@ public class NewNotificationWebhook {
     }
     NewNotificationWebhook newNotificationWebhook = (NewNotificationWebhook) o;
     return Objects.equals(this.url, newNotificationWebhook.url) &&
-        Objects.equals(this.headers, newNotificationWebhook.headers);
+        Objects.equals(this.headers, newNotificationWebhook.headers) &&
+        Objects.equals(this.enabled, newNotificationWebhook.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, headers);
+    return Objects.hash(url, headers, enabled);
   }
 
 
@@ -114,6 +142,7 @@ public class NewNotificationWebhook {
     sb.append("class NewNotificationWebhook {\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
