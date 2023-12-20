@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **campaignGroups** | **List&lt;Integer&gt;** | The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to.  |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign. If the campaign template has tags, they will be overridden by this list. |  [optional]
 **evaluationGroupId** | **Integer** | The ID of the campaign evaluation group the campaign belongs to. |  [optional]
+**linkedStoreIds** | **List&lt;Integer&gt;** | A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store.  |  [optional]
 
 
 

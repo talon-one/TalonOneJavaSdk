@@ -35,6 +35,10 @@ public class BaseNotification {
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
   public static final String SERIALIZED_NAME_WEBHOOK = "webhook";
   @SerializedName(SERIALIZED_NAME_WEBHOOK)
   private BaseNotificationWebhook webhook;
@@ -43,9 +47,70 @@ public class BaseNotification {
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
 
-  public static final String SERIALIZED_NAME_ENABLED = "enabled";
-  @SerializedName(SERIALIZED_NAME_ENABLED)
-  private Boolean enabled = true;
+  /**
+   * The notification type.
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    CAMPAIGN("campaign"),
+    
+    LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
+    
+    COUPON("coupon"),
+    
+    EXPIRING_POINTS("expiring_points"),
+    
+    PENDING_TO_ACTIVE_POINTS("pending_to_active_points"),
+    
+    STRIKETHROUGH_PRICING("strikethrough_pricing"),
+    
+    TIER_DOWNGRADE("tier_downgrade"),
+    
+    TIER_UPGRADE("tier_upgrade"),
+    
+    TIER_WILL_DOWNGRADE("tier_will_downgrade");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
 
   public BaseNotification policy(Object policy) {
@@ -67,6 +132,29 @@ public class BaseNotification {
 
   public void setPolicy(Object policy) {
     this.policy = policy;
+  }
+
+
+  public BaseNotification enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether the notification is activated.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates whether the notification is activated.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
   }
 
 
@@ -115,26 +203,25 @@ public class BaseNotification {
   }
 
 
-  public BaseNotification enabled(Boolean enabled) {
+  public BaseNotification type(TypeEnum type) {
     
-    this.enabled = enabled;
+    this.type = type;
     return this;
   }
 
    /**
-   * Indicates whether the notification is enabled.
-   * @return enabled
+   * The notification type.
+   * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates whether the notification is enabled.")
+  @ApiModelProperty(example = "loyalty_added_deducted_points", required = true, value = "The notification type.")
 
-  public Boolean getEnabled() {
-    return enabled;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -148,14 +235,15 @@ public class BaseNotification {
     }
     BaseNotification baseNotification = (BaseNotification) o;
     return Objects.equals(this.policy, baseNotification.policy) &&
+        Objects.equals(this.enabled, baseNotification.enabled) &&
         Objects.equals(this.webhook, baseNotification.webhook) &&
         Objects.equals(this.id, baseNotification.id) &&
-        Objects.equals(this.enabled, baseNotification.enabled);
+        Objects.equals(this.type, baseNotification.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(policy, webhook, id, enabled);
+    return Objects.hash(policy, enabled, webhook, id, type);
   }
 
 
@@ -164,9 +252,10 @@ public class BaseNotification {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseNotification {\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

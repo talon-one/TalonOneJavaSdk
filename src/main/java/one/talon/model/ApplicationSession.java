@@ -45,6 +45,14 @@ public class ApplicationSession {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
+  private String integrationId;
+
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
@@ -52,10 +60,6 @@ public class ApplicationSession {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private Integer profileId;
-
-  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
-  private String integrationId;
 
   public static final String SERIALIZED_NAME_PROFILEINTEGRATIONID = "profileintegrationid";
   @SerializedName(SERIALIZED_NAME_PROFILEINTEGRATIONID)
@@ -70,7 +74,7 @@ public class ApplicationSession {
   private String referral;
 
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -189,6 +193,51 @@ public class ApplicationSession {
   }
 
 
+  public ApplicationSession integrationId(String integrationId) {
+    
+    this.integrationId = integrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID set by your integration layer.
+   * @return integrationId
+  **/
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
+
+  public String getIntegrationId() {
+    return integrationId;
+  }
+
+
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
+  }
+
+
+  public ApplicationSession storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
+  }
+
+
   public ApplicationSession applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
@@ -231,28 +280,6 @@ public class ApplicationSession {
 
   public void setProfileId(Integer profileId) {
     this.profileId = profileId;
-  }
-
-
-  public ApplicationSession integrationId(String integrationId) {
-    
-    this.integrationId = integrationId;
-    return this;
-  }
-
-   /**
-   * The integration ID set by your integration layer.
-   * @return integrationId
-  **/
-  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
-
-  public String getIntegrationId() {
-    return integrationId;
-  }
-
-
-  public void setIntegrationId(String integrationId) {
-    this.integrationId = integrationId;
   }
 
 
@@ -330,10 +357,10 @@ public class ApplicationSession {
   }
 
    /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session). 
+   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
    * @return state
   **/
-  @ApiModelProperty(example = "closed", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. `closed` → `cancelled` or `partially_returned` 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities#customer-session). ")
+  @ApiModelProperty(example = "closed", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. `closed` → `cancelled` or `partially_returned` 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
   public StateEnum getState() {
     return state;
@@ -477,9 +504,10 @@ public class ApplicationSession {
     ApplicationSession applicationSession = (ApplicationSession) o;
     return Objects.equals(this.id, applicationSession.id) &&
         Objects.equals(this.created, applicationSession.created) &&
+        Objects.equals(this.integrationId, applicationSession.integrationId) &&
+        Objects.equals(this.storeIntegrationId, applicationSession.storeIntegrationId) &&
         Objects.equals(this.applicationId, applicationSession.applicationId) &&
         Objects.equals(this.profileId, applicationSession.profileId) &&
-        Objects.equals(this.integrationId, applicationSession.integrationId) &&
         Objects.equals(this.profileintegrationid, applicationSession.profileintegrationid) &&
         Objects.equals(this.coupon, applicationSession.coupon) &&
         Objects.equals(this.referral, applicationSession.referral) &&
@@ -493,7 +521,7 @@ public class ApplicationSession {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, integrationId, profileintegrationid, coupon, referral, state, cartItems, discounts, totalDiscounts, total, attributes);
+    return Objects.hash(id, created, integrationId, storeIntegrationId, applicationId, profileId, profileintegrationid, coupon, referral, state, cartItems, discounts, totalDiscounts, total, attributes);
   }
 
 
@@ -503,9 +531,10 @@ public class ApplicationSession {
     sb.append("class ApplicationSession {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    profileintegrationid: ").append(toIndentedString(profileintegrationid)).append("\n");
     sb.append("    coupon: ").append(toIndentedString(coupon)).append("\n");
     sb.append("    referral: ").append(toIndentedString(referral)).append("\n");

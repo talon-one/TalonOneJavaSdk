@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationSession;
+import one.talon.model.CustomerActivityReport;
 
 /**
  * InlineResponse20026
@@ -38,7 +38,7 @@ public class InlineResponse20026 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationSession> data = new ArrayList<ApplicationSession>();
+  private List<CustomerActivityReport> data = new ArrayList<CustomerActivityReport>();
 
 
   public InlineResponse20026 hasMore(Boolean hasMore) {
@@ -51,8 +51,7 @@ public class InlineResponse20026 {
    * Get hasMore
    * @return hasMore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -64,13 +63,13 @@ public class InlineResponse20026 {
   }
 
 
-  public InlineResponse20026 data(List<ApplicationSession> data) {
+  public InlineResponse20026 data(List<CustomerActivityReport> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20026 addDataItem(ApplicationSession dataItem) {
+  public InlineResponse20026 addDataItem(CustomerActivityReport dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -81,12 +80,12 @@ public class InlineResponse20026 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<ApplicationSession> getData() {
+  public List<CustomerActivityReport> getData() {
     return data;
   }
 
 
-  public void setData(List<ApplicationSession> data) {
+  public void setData(List<CustomerActivityReport> data) {
     this.data = data;
   }
 

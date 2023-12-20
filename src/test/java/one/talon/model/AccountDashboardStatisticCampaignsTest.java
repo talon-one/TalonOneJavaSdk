@@ -56,4 +56,12 @@ public class AccountDashboardStatisticCampaignsTest {
         // TODO: test endingSoon
     }
 
+    /**
+     * Test the property 'lowOnBudget'
+     */
+    @Test
+    public void lowOnBudgetTest() {
+        // TODO: test lowOnBudget
+    }
+
 }

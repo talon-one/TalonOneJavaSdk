@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;Collection&gt;**](Collection.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CollectionItem&gt;**](CollectionItem.md) |  | 
 
 
 

@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;WebhookWithOutgoingIntegrationDetails&gt;**](WebhookWithOutgoingIntegrationDetails.md) |  | 
+**data** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) |  | 
 
 
 

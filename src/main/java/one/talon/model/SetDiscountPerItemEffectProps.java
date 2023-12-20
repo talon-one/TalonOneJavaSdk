@@ -71,6 +71,14 @@ public class SetDiscountPerItemEffectProps {
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
   private String bundleName;
 
+  public static final String SERIALIZED_NAME_TARGETED_ITEM_POSITION = "targetedItemPosition";
+  @SerializedName(SERIALIZED_NAME_TARGETED_ITEM_POSITION)
+  private BigDecimal targetedItemPosition;
+
+  public static final String SERIALIZED_NAME_TARGETED_ITEM_SUB_POSITION = "targetedItemSubPosition";
+  @SerializedName(SERIALIZED_NAME_TARGETED_ITEM_SUB_POSITION)
+  private BigDecimal targetedItemSubPosition;
+
 
   public SetDiscountPerItemEffectProps name(String name) {
     
@@ -145,11 +153,11 @@ public class SetDiscountPerItemEffectProps {
   }
 
    /**
-   * Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. Indicates which item the discount applies to for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates which item the discount applies to. 
    * @return subPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Only used when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. Indicates which item the discount applies to for cart items with `quantity` > 1. ")
+  @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates which item the discount applies to. ")
 
   public BigDecimal getSubPosition() {
     return subPosition;
@@ -299,6 +307,52 @@ public class SetDiscountPerItemEffectProps {
   }
 
 
+  public SetDiscountPerItemEffectProps targetedItemPosition(BigDecimal targetedItemPosition) {
+    
+    this.targetedItemPosition = targetedItemPosition;
+    return this;
+  }
+
+   /**
+   * The index of the targeted bundle item on which the applied discount is based.
+   * @return targetedItemPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The index of the targeted bundle item on which the applied discount is based.")
+
+  public BigDecimal getTargetedItemPosition() {
+    return targetedItemPosition;
+  }
+
+
+  public void setTargetedItemPosition(BigDecimal targetedItemPosition) {
+    this.targetedItemPosition = targetedItemPosition;
+  }
+
+
+  public SetDiscountPerItemEffectProps targetedItemSubPosition(BigDecimal targetedItemSubPosition) {
+    
+    this.targetedItemSubPosition = targetedItemSubPosition;
+    return this;
+  }
+
+   /**
+   * The sub-position of the targeted bundle item on which the applied discount is based. 
+   * @return targetedItemSubPosition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The sub-position of the targeted bundle item on which the applied discount is based. ")
+
+  public BigDecimal getTargetedItemSubPosition() {
+    return targetedItemSubPosition;
+  }
+
+
+  public void setTargetedItemSubPosition(BigDecimal targetedItemSubPosition) {
+    this.targetedItemSubPosition = targetedItemSubPosition;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -317,12 +371,14 @@ public class SetDiscountPerItemEffectProps {
         Objects.equals(this.totalDiscount, setDiscountPerItemEffectProps.totalDiscount) &&
         Objects.equals(this.desiredTotalDiscount, setDiscountPerItemEffectProps.desiredTotalDiscount) &&
         Objects.equals(this.bundleIndex, setDiscountPerItemEffectProps.bundleIndex) &&
-        Objects.equals(this.bundleName, setDiscountPerItemEffectProps.bundleName);
+        Objects.equals(this.bundleName, setDiscountPerItemEffectProps.bundleName) &&
+        Objects.equals(this.targetedItemPosition, setDiscountPerItemEffectProps.targetedItemPosition) &&
+        Objects.equals(this.targetedItemSubPosition, setDiscountPerItemEffectProps.targetedItemSubPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount, bundleIndex, bundleName);
+    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount, bundleIndex, bundleName, targetedItemPosition, targetedItemSubPosition);
   }
 
 
@@ -340,6 +396,8 @@ public class SetDiscountPerItemEffectProps {
     sb.append("    desiredTotalDiscount: ").append(toIndentedString(desiredTotalDiscount)).append("\n");
     sb.append("    bundleIndex: ").append(toIndentedString(bundleIndex)).append("\n");
     sb.append("    bundleName: ").append(toIndentedString(bundleName)).append("\n");
+    sb.append("    targetedItemPosition: ").append(toIndentedString(targetedItemPosition)).append("\n");
+    sb.append("    targetedItemSubPosition: ").append(toIndentedString(targetedItemSubPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }

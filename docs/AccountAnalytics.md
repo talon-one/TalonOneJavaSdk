@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **webhooks** | **Integer** | Total number of webhooks in the account. | 
 **loyaltyPrograms** | **Integer** | Total number of all loyalty programs in the account. | 
 **liveLoyaltyPrograms** | **Integer** | Total number of live loyalty programs in the account. | 
+**lastUpdatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The point in time when the analytics numbers were updated last. | 
 
 
 

@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CampaignBudget;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
@@ -213,6 +214,69 @@ public class CampaignForNotification {
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
   private List<Integer> campaignGroups = null;
+
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
+  private Integer evaluationGroupId;
+
+  /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    CARTITEM("cartItem"),
+    
+    ADVANCED("advanced");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type = TypeEnum.ADVANCED;
+
+  public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
+  @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
+  private List<Integer> linkedStoreIds = null;
+
+  public static final String SERIALIZED_NAME_BUDGETS = "budgets";
+  @SerializedName(SERIALIZED_NAME_BUDGETS)
+  private List<CampaignBudget> budgets = new ArrayList<CampaignBudget>();
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTION_COUNT = "couponRedemptionCount";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTION_COUNT)
@@ -699,6 +763,109 @@ public class CampaignForNotification {
   }
 
 
+  public CampaignForNotification evaluationGroupId(Integer evaluationGroupId) {
+    
+    this.evaluationGroupId = evaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign evaluation group the campaign belongs to.
+   * @return evaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
+
+  public Integer getEvaluationGroupId() {
+    return evaluationGroupId;
+  }
+
+
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
+    this.evaluationGroupId = evaluationGroupId;
+  }
+
+
+  public CampaignForNotification type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   * @return type
+  **/
+  @ApiModelProperty(example = "advanced", required = true, value = "The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items. ")
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public CampaignForNotification linkedStoreIds(List<Integer> linkedStoreIds) {
+    
+    this.linkedStoreIds = linkedStoreIds;
+    return this;
+  }
+
+  public CampaignForNotification addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
+    if (this.linkedStoreIds == null) {
+      this.linkedStoreIds = new ArrayList<Integer>();
+    }
+    this.linkedStoreIds.add(linkedStoreIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. 
+   * @return linkedStoreIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
+
+  public List<Integer> getLinkedStoreIds() {
+    return linkedStoreIds;
+  }
+
+
+  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
+    this.linkedStoreIds = linkedStoreIds;
+  }
+
+
+  public CampaignForNotification budgets(List<CampaignBudget> budgets) {
+    
+    this.budgets = budgets;
+    return this;
+  }
+
+  public CampaignForNotification addBudgetsItem(CampaignBudget budgetsItem) {
+    this.budgets.add(budgetsItem);
+    return this;
+  }
+
+   /**
+   * A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. 
+   * @return budgets
+  **/
+  @ApiModelProperty(required = true, value = "A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. ")
+
+  public List<CampaignBudget> getBudgets() {
+    return budgets;
+  }
+
+
+  public void setBudgets(List<CampaignBudget> budgets) {
+    this.budgets = budgets;
+  }
+
+
   public CampaignForNotification couponRedemptionCount(Integer couponRedemptionCount) {
     
     this.couponRedemptionCount = couponRedemptionCount;
@@ -706,11 +873,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Number of coupons redeemed in the campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign. 
    * @return couponRedemptionCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "163", value = "Number of coupons redeemed in the campaign.")
+  @ApiModelProperty(example = "163", value = "This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign. ")
 
   public Integer getCouponRedemptionCount() {
     return couponRedemptionCount;
@@ -729,11 +896,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Number of referral codes redeemed in the campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign. 
    * @return referralRedemptionCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "3", value = "Number of referral codes redeemed in the campaign.")
+  @ApiModelProperty(example = "3", value = "This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign. ")
 
   public Integer getReferralRedemptionCount() {
     return referralRedemptionCount;
@@ -752,11 +919,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total amount of discounts redeemed in the campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total amount of discounts redeemed in the campaign. 
    * @return discountCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "288.0", value = "Total amount of discounts redeemed in the campaign.")
+  @ApiModelProperty(example = "288.0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total amount of discounts redeemed in the campaign. ")
 
   public BigDecimal getDiscountCount() {
     return discountCount;
@@ -775,11 +942,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of times discounts were redeemed in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of times discounts were redeemed in this campaign. 
    * @return discountEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "343", value = "Total number of times discounts were redeemed in this campaign.")
+  @ApiModelProperty(example = "343", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of times discounts were redeemed in this campaign. ")
 
   public Integer getDiscountEffectCount() {
     return discountEffectCount;
@@ -798,11 +965,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of coupons created by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of coupons created by rules in this campaign. 
    * @return couponCreationCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "16", value = "Total number of coupons created by rules in this campaign.")
+  @ApiModelProperty(example = "16", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of coupons created by rules in this campaign. ")
 
   public Integer getCouponCreationCount() {
     return couponCreationCount;
@@ -821,11 +988,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of custom effects triggered by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of custom effects triggered by rules in this campaign. 
    * @return customEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Total number of custom effects triggered by rules in this campaign.")
+  @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of custom effects triggered by rules in this campaign. ")
 
   public Integer getCustomEffectCount() {
     return customEffectCount;
@@ -844,11 +1011,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of referrals created by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of referrals created by rules in this campaign. 
    * @return referralCreationCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "8", value = "Total number of referrals created by rules in this campaign.")
+  @ApiModelProperty(example = "8", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of referrals created by rules in this campaign. ")
 
   public Integer getReferralCreationCount() {
     return referralCreationCount;
@@ -867,11 +1034,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign. 
    * @return addFreeItemEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign.")
+  @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign. ")
 
   public Integer getAddFreeItemEffectCount() {
     return addFreeItemEffectCount;
@@ -890,11 +1057,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of giveaways awarded by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of giveaways awarded by rules in this campaign. 
    * @return awardedGiveawaysCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9", value = "Total number of giveaways awarded by rules in this campaign.")
+  @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of giveaways awarded by rules in this campaign. ")
 
   public Integer getAwardedGiveawaysCount() {
     return awardedGiveawaysCount;
@@ -913,11 +1080,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of loyalty points created by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points created by rules in this campaign. 
    * @return createdLoyaltyPointsCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9.0", value = "Total number of loyalty points created by rules in this campaign.")
+  @ApiModelProperty(example = "9.0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points created by rules in this campaign. ")
 
   public BigDecimal getCreatedLoyaltyPointsCount() {
     return createdLoyaltyPointsCount;
@@ -936,11 +1103,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of loyalty point creation effects triggered by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point creation effects triggered by rules in this campaign. 
    * @return createdLoyaltyPointsEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "Total number of loyalty point creation effects triggered by rules in this campaign.")
+  @ApiModelProperty(example = "2", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point creation effects triggered by rules in this campaign. ")
 
   public Integer getCreatedLoyaltyPointsEffectCount() {
     return createdLoyaltyPointsEffectCount;
@@ -959,11 +1126,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of loyalty points redeemed by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points redeemed by rules in this campaign. 
    * @return redeemedLoyaltyPointsCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "8.0", value = "Total number of loyalty points redeemed by rules in this campaign.")
+  @ApiModelProperty(example = "8.0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty points redeemed by rules in this campaign. ")
 
   public BigDecimal getRedeemedLoyaltyPointsCount() {
     return redeemedLoyaltyPointsCount;
@@ -982,11 +1149,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of loyalty point redemption effects triggered by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point redemption effects triggered by rules in this campaign. 
    * @return redeemedLoyaltyPointsEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9", value = "Total number of loyalty point redemption effects triggered by rules in this campaign.")
+  @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point redemption effects triggered by rules in this campaign. ")
 
   public Integer getRedeemedLoyaltyPointsEffectCount() {
     return redeemedLoyaltyPointsEffectCount;
@@ -1005,11 +1172,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of webhooks triggered by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of webhooks triggered by rules in this campaign. 
    * @return callApiEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "Total number of webhooks triggered by rules in this campaign.")
+  @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of webhooks triggered by rules in this campaign. ")
 
   public Integer getCallApiEffectCount() {
     return callApiEffectCount;
@@ -1028,11 +1195,11 @@ public class CampaignForNotification {
   }
 
    /**
-   * Total number of reserve coupon effects triggered by rules in this campaign.
+   * This property is **deprecated**. The count should be available under *budgets* property. Total number of reserve coupon effects triggered by rules in this campaign. 
    * @return reservecouponEffectCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9", value = "Total number of reserve coupon effects triggered by rules in this campaign.")
+  @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of reserve coupon effects triggered by rules in this campaign. ")
 
   public Integer getReservecouponEffectCount() {
     return reservecouponEffectCount;
@@ -1185,6 +1352,10 @@ public class CampaignForNotification {
         Objects.equals(this.referralSettings, campaignForNotification.referralSettings) &&
         Objects.equals(this.limits, campaignForNotification.limits) &&
         Objects.equals(this.campaignGroups, campaignForNotification.campaignGroups) &&
+        Objects.equals(this.evaluationGroupId, campaignForNotification.evaluationGroupId) &&
+        Objects.equals(this.type, campaignForNotification.type) &&
+        Objects.equals(this.linkedStoreIds, campaignForNotification.linkedStoreIds) &&
+        Objects.equals(this.budgets, campaignForNotification.budgets) &&
         Objects.equals(this.couponRedemptionCount, campaignForNotification.couponRedemptionCount) &&
         Objects.equals(this.referralRedemptionCount, campaignForNotification.referralRedemptionCount) &&
         Objects.equals(this.discountCount, campaignForNotification.discountCount) &&
@@ -1209,7 +1380,7 @@ public class CampaignForNotification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId);
   }
 
 
@@ -1234,6 +1405,10 @@ public class CampaignForNotification {
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
+    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
+    sb.append("    budgets: ").append(toIndentedString(budgets)).append("\n");
     sb.append("    couponRedemptionCount: ").append(toIndentedString(couponRedemptionCount)).append("\n");
     sb.append("    referralRedemptionCount: ").append(toIndentedString(referralRedemptionCount)).append("\n");
     sb.append("    discountCount: ").append(toIndentedString(discountCount)).append("\n");

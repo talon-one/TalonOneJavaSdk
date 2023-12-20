@@ -42,7 +42,7 @@ public class NewCampaignEvaluationGroup {
   private String description;
 
   /**
-   * Gets or Sets evaluationMode
+   * The mode by which campaigns in the campaign evaluation group are evaluated.
    */
   @JsonAdapter(EvaluationModeEnum.Adapter.class)
   public enum EvaluationModeEnum {
@@ -95,6 +95,57 @@ public class NewCampaignEvaluationGroup {
   public static final String SERIALIZED_NAME_EVALUATION_MODE = "evaluationMode";
   @SerializedName(SERIALIZED_NAME_EVALUATION_MODE)
   private EvaluationModeEnum evaluationMode;
+
+  /**
+   * The evaluation scope of the campaign evaluation group.
+   */
+  @JsonAdapter(EvaluationScopeEnum.Adapter.class)
+  public enum EvaluationScopeEnum {
+    CARTITEM("cartItem"),
+    
+    SESSION("session");
+
+    private String value;
+
+    EvaluationScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EvaluationScopeEnum fromValue(String value) {
+      for (EvaluationScopeEnum b : EvaluationScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EvaluationScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EvaluationScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EvaluationScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EvaluationScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_EVALUATION_SCOPE = "evaluationScope";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_SCOPE)
+  private EvaluationScopeEnum evaluationScope;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
@@ -176,10 +227,10 @@ public class NewCampaignEvaluationGroup {
   }
 
    /**
-   * Get evaluationMode
+   * The mode by which campaigns in the campaign evaluation group are evaluated.
    * @return evaluationMode
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The mode by which campaigns in the campaign evaluation group are evaluated.")
 
   public EvaluationModeEnum getEvaluationMode() {
     return evaluationMode;
@@ -188,6 +239,28 @@ public class NewCampaignEvaluationGroup {
 
   public void setEvaluationMode(EvaluationModeEnum evaluationMode) {
     this.evaluationMode = evaluationMode;
+  }
+
+
+  public NewCampaignEvaluationGroup evaluationScope(EvaluationScopeEnum evaluationScope) {
+    
+    this.evaluationScope = evaluationScope;
+    return this;
+  }
+
+   /**
+   * The evaluation scope of the campaign evaluation group.
+   * @return evaluationScope
+  **/
+  @ApiModelProperty(required = true, value = "The evaluation scope of the campaign evaluation group.")
+
+  public EvaluationScopeEnum getEvaluationScope() {
+    return evaluationScope;
+  }
+
+
+  public void setEvaluationScope(EvaluationScopeEnum evaluationScope) {
+    this.evaluationScope = evaluationScope;
   }
 
 
@@ -226,12 +299,13 @@ public class NewCampaignEvaluationGroup {
         Objects.equals(this.parentId, newCampaignEvaluationGroup.parentId) &&
         Objects.equals(this.description, newCampaignEvaluationGroup.description) &&
         Objects.equals(this.evaluationMode, newCampaignEvaluationGroup.evaluationMode) &&
+        Objects.equals(this.evaluationScope, newCampaignEvaluationGroup.evaluationScope) &&
         Objects.equals(this.locked, newCampaignEvaluationGroup.locked);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, parentId, description, evaluationMode, locked);
+    return Objects.hash(name, parentId, description, evaluationMode, evaluationScope, locked);
   }
 
 
@@ -243,6 +317,7 @@ public class NewCampaignEvaluationGroup {
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    evaluationMode: ").append(toIndentedString(evaluationMode)).append("\n");
+    sb.append("    evaluationScope: ").append(toIndentedString(evaluationScope)).append("\n");
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("}");
     return sb.toString();

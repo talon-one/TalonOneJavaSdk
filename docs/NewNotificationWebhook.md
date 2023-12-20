@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **String** | API URL for the given webhook-based notification. | 
 **headers** | **List&lt;String&gt;** | List of API HTTP headers for the given webhook-based notification. | 
-**enabled** | **Boolean** | Indicates whether sending the notification is enabled. |  [optional]
+**enabled** | **Boolean** | Indicates whether the notification is activated. |  [optional]
 
 
 

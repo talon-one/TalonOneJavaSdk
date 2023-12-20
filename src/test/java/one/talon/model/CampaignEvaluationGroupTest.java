@@ -81,6 +81,14 @@ public class CampaignEvaluationGroupTest {
     }
 
     /**
+     * Test the property 'evaluationScope'
+     */
+    @Test
+    public void evaluationScopeTest() {
+        // TODO: test evaluationScope
+    }
+
+    /**
      * Test the property 'locked'
      */
     @Test

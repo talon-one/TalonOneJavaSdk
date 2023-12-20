@@ -89,6 +89,14 @@ public class CustomerSessionV2Test {
     }
 
     /**
+     * Test the property 'storeIntegrationId'
+     */
+    @Test
+    public void storeIntegrationIdTest() {
+        // TODO: test storeIntegrationId
+    }
+
+    /**
      * Test the property 'evaluableCampaignIds'
      */
     @Test

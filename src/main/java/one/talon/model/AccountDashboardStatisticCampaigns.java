@@ -37,6 +37,10 @@ public class AccountDashboardStatisticCampaigns {
   @SerializedName(SERIALIZED_NAME_ENDING_SOON)
   private Integer endingSoon;
 
+  public static final String SERIALIZED_NAME_LOW_ON_BUDGET = "lowOnBudget";
+  @SerializedName(SERIALIZED_NAME_LOW_ON_BUDGET)
+  private Integer lowOnBudget;
+
 
   public AccountDashboardStatisticCampaigns live(Integer live) {
     
@@ -67,10 +71,10 @@ public class AccountDashboardStatisticCampaigns {
   }
 
    /**
-   * Campaigns with a schedule ending in 7 days or with only 10% of budget left.
+   * Campaigns scheduled to expire sometime in the next 7 days.
    * @return endingSoon
   **/
-  @ApiModelProperty(required = true, value = "Campaigns with a schedule ending in 7 days or with only 10% of budget left.")
+  @ApiModelProperty(required = true, value = "Campaigns scheduled to expire sometime in the next 7 days.")
 
   public Integer getEndingSoon() {
     return endingSoon;
@@ -79,6 +83,28 @@ public class AccountDashboardStatisticCampaigns {
 
   public void setEndingSoon(Integer endingSoon) {
     this.endingSoon = endingSoon;
+  }
+
+
+  public AccountDashboardStatisticCampaigns lowOnBudget(Integer lowOnBudget) {
+    
+    this.lowOnBudget = lowOnBudget;
+    return this;
+  }
+
+   /**
+   * Campaigns with less than 10% of budget left.
+   * @return lowOnBudget
+  **/
+  @ApiModelProperty(required = true, value = "Campaigns with less than 10% of budget left.")
+
+  public Integer getLowOnBudget() {
+    return lowOnBudget;
+  }
+
+
+  public void setLowOnBudget(Integer lowOnBudget) {
+    this.lowOnBudget = lowOnBudget;
   }
 
 
@@ -92,12 +118,13 @@ public class AccountDashboardStatisticCampaigns {
     }
     AccountDashboardStatisticCampaigns accountDashboardStatisticCampaigns = (AccountDashboardStatisticCampaigns) o;
     return Objects.equals(this.live, accountDashboardStatisticCampaigns.live) &&
-        Objects.equals(this.endingSoon, accountDashboardStatisticCampaigns.endingSoon);
+        Objects.equals(this.endingSoon, accountDashboardStatisticCampaigns.endingSoon) &&
+        Objects.equals(this.lowOnBudget, accountDashboardStatisticCampaigns.lowOnBudget);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(live, endingSoon);
+    return Objects.hash(live, endingSoon, lowOnBudget);
   }
 
 
@@ -107,6 +134,7 @@ public class AccountDashboardStatisticCampaigns {
     sb.append("class AccountDashboardStatisticCampaigns {\n");
     sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    endingSoon: ").append(toIndentedString(endingSoon)).append("\n");
+    sb.append("    lowOnBudget: ").append(toIndentedString(lowOnBudget)).append("\n");
     sb.append("}");
     return sb.toString();
   }

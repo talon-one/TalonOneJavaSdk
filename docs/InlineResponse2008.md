@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
+**totalResultSize** | **Integer** |  | 
 **data** | [**List&lt;Coupon&gt;**](Coupon.md) |  | 
 
 

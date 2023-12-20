@@ -64,6 +64,22 @@ public class ApplicationSessionTest {
     }
 
     /**
+     * Test the property 'integrationId'
+     */
+    @Test
+    public void integrationIdTest() {
+        // TODO: test integrationId
+    }
+
+    /**
+     * Test the property 'storeIntegrationId'
+     */
+    @Test
+    public void storeIntegrationIdTest() {
+        // TODO: test storeIntegrationId
+    }
+
+    /**
      * Test the property 'applicationId'
      */
     @Test
@@ -77,14 +93,6 @@ public class ApplicationSessionTest {
     @Test
     public void profileIdTest() {
         // TODO: test profileId
-    }
-
-    /**
-     * Test the property 'integrationId'
-     */
-    @Test
-    public void integrationIdTest() {
-        // TODO: test integrationId
     }
 
     /**

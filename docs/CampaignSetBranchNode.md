@@ -13,7 +13,8 @@ Name | Type | Description | Notes
 **groupId** | **Integer** | The ID of the campaign set. | 
 **locked** | **Boolean** | An indicator of whether the campaign set is locked for modification. | 
 **description** | **String** | A description of the campaign set. |  [optional]
-**evaluationMode** | [**EvaluationModeEnum**](#EvaluationModeEnum) |  | 
+**evaluationMode** | [**EvaluationModeEnum**](#EvaluationModeEnum) | The mode by which campaigns in the campaign evaluation group are evaluated. | 
+**evaluationScope** | [**EvaluationScopeEnum**](#EvaluationScopeEnum) | The evaluation scope of the campaign evaluation group. | 
 
 
 
@@ -42,6 +43,15 @@ STACKABLE | &quot;stackable&quot;
 LISTORDER | &quot;listOrder&quot;
 LOWESTDISCOUNT | &quot;lowestDiscount&quot;
 HIGHESTDISCOUNT | &quot;highestDiscount&quot;
+
+
+
+## Enum: EvaluationScopeEnum
+
+Name | Value
+---- | -----
+CARTITEM | &quot;cartItem&quot;
+SESSION | &quot;session&quot;
 
 
 

@@ -37,6 +37,10 @@ public class NewEvent {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
 
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -72,6 +76,29 @@ public class NewEvent {
 
   public void setProfileId(String profileId) {
     this.profileId = profileId;
+  }
+
+
+  public NewEvent storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
   }
 
 
@@ -151,6 +178,7 @@ public class NewEvent {
     }
     NewEvent newEvent = (NewEvent) o;
     return Objects.equals(this.profileId, newEvent.profileId) &&
+        Objects.equals(this.storeIntegrationId, newEvent.storeIntegrationId) &&
         Objects.equals(this.type, newEvent.type) &&
         Objects.equals(this.attributes, newEvent.attributes) &&
         Objects.equals(this.sessionId, newEvent.sessionId);
@@ -158,7 +186,7 @@ public class NewEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, type, attributes, sessionId);
+    return Objects.hash(profileId, storeIntegrationId, type, attributes, sessionId);
   }
 
 
@@ -167,6 +195,7 @@ public class NewEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewEvent {\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");

@@ -51,6 +51,10 @@ public class Event {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
 
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -162,6 +166,29 @@ public class Event {
 
   public void setProfileId(String profileId) {
     this.profileId = profileId;
+  }
+
+
+  public Event storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
   }
 
 
@@ -322,6 +349,7 @@ public class Event {
         Objects.equals(this.created, event.created) &&
         Objects.equals(this.applicationId, event.applicationId) &&
         Objects.equals(this.profileId, event.profileId) &&
+        Objects.equals(this.storeIntegrationId, event.storeIntegrationId) &&
         Objects.equals(this.type, event.type) &&
         Objects.equals(this.attributes, event.attributes) &&
         Objects.equals(this.sessionId, event.sessionId) &&
@@ -332,7 +360,7 @@ public class Event {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, type, attributes, sessionId, effects, ledgerEntries, meta);
+    return Objects.hash(id, created, applicationId, profileId, storeIntegrationId, type, attributes, sessionId, effects, ledgerEntries, meta);
   }
 
 
@@ -344,6 +372,7 @@ public class Event {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");

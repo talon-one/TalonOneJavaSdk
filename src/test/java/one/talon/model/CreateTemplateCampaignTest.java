@@ -116,4 +116,12 @@ public class CreateTemplateCampaignTest {
         // TODO: test evaluationGroupId
     }
 
+    /**
+     * Test the property 'linkedStoreIds'
+     */
+    @Test
+    public void linkedStoreIdsTest() {
+        // TODO: test linkedStoreIds
+    }
+
 }

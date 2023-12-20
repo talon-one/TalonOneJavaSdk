@@ -36,6 +36,10 @@ public class EventV2 {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private String profileId;
 
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
   private List<Integer> evaluableCampaignIds = null;
@@ -69,6 +73,29 @@ public class EventV2 {
 
   public void setProfileId(String profileId) {
     this.profileId = profileId;
+  }
+
+
+  public EventV2 storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
   }
 
 
@@ -110,10 +137,10 @@ public class EventV2 {
   }
 
    /**
-   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
+   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
    * @return type
   **/
-  @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
+  @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
 
   public String getType() {
     return type;
@@ -132,11 +159,11 @@ public class EventV2 {
   }
 
    /**
-   * Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-custom-attributes).
+   * Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"myAttribute\":\"myValue\"}", value = "Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-custom-attributes).")
+  @ApiModelProperty(example = "{\"myAttribute\":\"myValue\"}", value = "Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).")
 
   public Object getAttributes() {
     return attributes;
@@ -158,6 +185,7 @@ public class EventV2 {
     }
     EventV2 eventV2 = (EventV2) o;
     return Objects.equals(this.profileId, eventV2.profileId) &&
+        Objects.equals(this.storeIntegrationId, eventV2.storeIntegrationId) &&
         Objects.equals(this.evaluableCampaignIds, eventV2.evaluableCampaignIds) &&
         Objects.equals(this.type, eventV2.type) &&
         Objects.equals(this.attributes, eventV2.attributes);
@@ -165,7 +193,7 @@ public class EventV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, evaluableCampaignIds, type, attributes);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes);
   }
 
 
@@ -174,6 +202,7 @@ public class EventV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventV2 {\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    evaluableCampaignIds: ").append(toIndentedString(evaluableCampaignIds)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

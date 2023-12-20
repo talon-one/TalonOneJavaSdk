@@ -35,6 +35,10 @@ public class NewBaseNotification {
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
   public static final String SERIALIZED_NAME_WEBHOOK = "webhook";
   @SerializedName(SERIALIZED_NAME_WEBHOOK)
   private NewNotificationWebhook webhook;
@@ -59,6 +63,29 @@ public class NewBaseNotification {
 
   public void setPolicy(Object policy) {
     this.policy = policy;
+  }
+
+
+  public NewBaseNotification enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether the notification is activated.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates whether the notification is activated.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
   }
 
 
@@ -94,12 +121,13 @@ public class NewBaseNotification {
     }
     NewBaseNotification newBaseNotification = (NewBaseNotification) o;
     return Objects.equals(this.policy, newBaseNotification.policy) &&
+        Objects.equals(this.enabled, newBaseNotification.enabled) &&
         Objects.equals(this.webhook, newBaseNotification.webhook);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(policy, webhook);
+    return Objects.hash(policy, enabled, webhook);
   }
 
 
@@ -108,6 +136,7 @@ public class NewBaseNotification {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewBaseNotification {\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
     sb.append("}");
     return sb.toString();

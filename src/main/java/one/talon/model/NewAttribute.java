@@ -55,7 +55,9 @@ public class NewAttribute {
     
     GIVEAWAY("Giveaway"),
     
-    REFERRAL("Referral");
+    REFERRAL("Referral"),
+    
+    STORE("Store");
 
     private String value;
 

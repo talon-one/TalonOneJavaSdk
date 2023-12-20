@@ -48,4 +48,12 @@ public class BaseNotificationEntityTest {
         // TODO: test policy
     }
 
+    /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
 }

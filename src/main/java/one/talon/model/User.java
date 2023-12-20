@@ -138,6 +138,14 @@ public class User {
   @SerializedName(SERIALIZED_NAME_IS_ADMIN)
   private Boolean isAdmin;
 
+  public static final String SERIALIZED_NAME_LAST_SIGNED_IN = "lastSignedIn";
+  @SerializedName(SERIALIZED_NAME_LAST_SIGNED_IN)
+  private OffsetDateTime lastSignedIn;
+
+  public static final String SERIALIZED_NAME_LAST_ACCESSED = "lastAccessed";
+  @SerializedName(SERIALIZED_NAME_LAST_ACCESSED)
+  private OffsetDateTime lastAccessed;
+
 
   public User id(Integer id) {
     
@@ -460,6 +468,52 @@ public class User {
   }
 
 
+  public User lastSignedIn(OffsetDateTime lastSignedIn) {
+    
+    this.lastSignedIn = lastSignedIn;
+    return this;
+  }
+
+   /**
+   * Date and time when the user last signed in to Talon.One.
+   * @return lastSignedIn
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "Date and time when the user last signed in to Talon.One.")
+
+  public OffsetDateTime getLastSignedIn() {
+    return lastSignedIn;
+  }
+
+
+  public void setLastSignedIn(OffsetDateTime lastSignedIn) {
+    this.lastSignedIn = lastSignedIn;
+  }
+
+
+  public User lastAccessed(OffsetDateTime lastAccessed) {
+    
+    this.lastAccessed = lastAccessed;
+    return this;
+  }
+
+   /**
+   * Date and time of the user&#39;s last activity after signing in to Talon.One.
+   * @return lastAccessed
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-09-12T10:14:42Z", value = "Date and time of the user's last activity after signing in to Talon.One.")
+
+  public OffsetDateTime getLastAccessed() {
+    return lastAccessed;
+  }
+
+
+  public void setLastAccessed(OffsetDateTime lastAccessed) {
+    this.lastAccessed = lastAccessed;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -482,12 +536,14 @@ public class User {
         Objects.equals(this.roles, user.roles) &&
         Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions) &&
         Objects.equals(this.authMethod, user.authMethod) &&
-        Objects.equals(this.isAdmin, user.isAdmin);
+        Objects.equals(this.isAdmin, user.isAdmin) &&
+        Objects.equals(this.lastSignedIn, user.lastSignedIn) &&
+        Objects.equals(this.lastAccessed, user.lastAccessed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, latestFeedTimestamp, roles, applicationNotificationSubscriptions, authMethod, isAdmin);
+    return Objects.hash(id, created, modified, email, accountId, inviteToken, state, name, policy, latestFeedTimestamp, roles, applicationNotificationSubscriptions, authMethod, isAdmin, lastSignedIn, lastAccessed);
   }
 
 
@@ -509,6 +565,8 @@ public class User {
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("    authMethod: ").append(toIndentedString(authMethod)).append("\n");
     sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
+    sb.append("    lastSignedIn: ").append(toIndentedString(lastSignedIn)).append("\n");
+    sb.append("    lastAccessed: ").append(toIndentedString(lastAccessed)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -51,6 +51,14 @@ public class IntegrationEventV2RequestTest {
     }
 
     /**
+     * Test the property 'storeIntegrationId'
+     */
+    @Test
+    public void storeIntegrationIdTest() {
+        // TODO: test storeIntegrationId
+    }
+
+    /**
      * Test the property 'evaluableCampaignIds'
      */
     @Test
