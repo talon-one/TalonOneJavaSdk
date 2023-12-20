@@ -196,6 +196,65 @@ public class BaseCampaignForNotification {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
   private List<Integer> campaignGroups = null;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
+  private Integer evaluationGroupId;
+
+  /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    CARTITEM("cartItem"),
+    
+    ADVANCED("advanced");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type = TypeEnum.ADVANCED;
+
+  public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
+  @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
+  private List<Integer> linkedStoreIds = null;
+
 
   public BaseCampaignForNotification name(String name) {
     
@@ -514,6 +573,83 @@ public class BaseCampaignForNotification {
   }
 
 
+  public BaseCampaignForNotification evaluationGroupId(Integer evaluationGroupId) {
+    
+    this.evaluationGroupId = evaluationGroupId;
+    return this;
+  }
+
+   /**
+   * The ID of the campaign evaluation group the campaign belongs to.
+   * @return evaluationGroupId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
+
+  public Integer getEvaluationGroupId() {
+    return evaluationGroupId;
+  }
+
+
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
+    this.evaluationGroupId = evaluationGroupId;
+  }
+
+
+  public BaseCampaignForNotification type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "advanced", value = "The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items. ")
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public BaseCampaignForNotification linkedStoreIds(List<Integer> linkedStoreIds) {
+    
+    this.linkedStoreIds = linkedStoreIds;
+    return this;
+  }
+
+  public BaseCampaignForNotification addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
+    if (this.linkedStoreIds == null) {
+      this.linkedStoreIds = new ArrayList<Integer>();
+    }
+    this.linkedStoreIds.add(linkedStoreIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. 
+   * @return linkedStoreIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
+
+  public List<Integer> getLinkedStoreIds() {
+    return linkedStoreIds;
+  }
+
+
+  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
+    this.linkedStoreIds = linkedStoreIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -535,12 +671,15 @@ public class BaseCampaignForNotification {
         Objects.equals(this.couponSettings, baseCampaignForNotification.couponSettings) &&
         Objects.equals(this.referralSettings, baseCampaignForNotification.referralSettings) &&
         Objects.equals(this.limits, baseCampaignForNotification.limits) &&
-        Objects.equals(this.campaignGroups, baseCampaignForNotification.campaignGroups);
+        Objects.equals(this.campaignGroups, baseCampaignForNotification.campaignGroups) &&
+        Objects.equals(this.evaluationGroupId, baseCampaignForNotification.evaluationGroupId) &&
+        Objects.equals(this.type, baseCampaignForNotification.type) &&
+        Objects.equals(this.linkedStoreIds, baseCampaignForNotification.linkedStoreIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds);
   }
 
 
@@ -561,6 +700,9 @@ public class BaseCampaignForNotification {
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
+    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

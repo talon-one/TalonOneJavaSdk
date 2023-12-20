@@ -157,4 +157,20 @@ public class NewCampaignTest {
         // TODO: test evaluationGroupId
     }
 
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'linkedStoreIds'
+     */
+    @Test
+    public void linkedStoreIdsTest() {
+        // TODO: test linkedStoreIds
+    }
+
 }

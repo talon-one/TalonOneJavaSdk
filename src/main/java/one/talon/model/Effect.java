@@ -58,6 +58,10 @@ public class Effect {
   @SerializedName(SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM)
   private Integer triggeredForCatalogItem;
 
+  public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
+  @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
+  private Integer conditionIndex;
+
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   private Object props;
@@ -219,6 +223,29 @@ public class Effect {
   }
 
 
+  public Effect conditionIndex(Integer conditionIndex) {
+    
+    this.conditionIndex = conditionIndex;
+    return this;
+  }
+
+   /**
+   * The index of the condition that was triggered.
+   * @return conditionIndex
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "786", value = "The index of the condition that was triggered.")
+
+  public Integer getConditionIndex() {
+    return conditionIndex;
+  }
+
+
+  public void setConditionIndex(Integer conditionIndex) {
+    this.conditionIndex = conditionIndex;
+  }
+
+
   public Effect props(Object props) {
     
     this.props = props;
@@ -257,12 +284,13 @@ public class Effect {
         Objects.equals(this.effectType, effect.effectType) &&
         Objects.equals(this.triggeredByCoupon, effect.triggeredByCoupon) &&
         Objects.equals(this.triggeredForCatalogItem, effect.triggeredForCatalogItem) &&
+        Objects.equals(this.conditionIndex, effect.conditionIndex) &&
         Objects.equals(this.props, effect.props);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, props);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, props);
   }
 
 
@@ -277,6 +305,7 @@ public class Effect {
     sb.append("    effectType: ").append(toIndentedString(effectType)).append("\n");
     sb.append("    triggeredByCoupon: ").append(toIndentedString(triggeredByCoupon)).append("\n");
     sb.append("    triggeredForCatalogItem: ").append(toIndentedString(triggeredForCatalogItem)).append("\n");
+    sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
     sb.append("    props: ").append(toIndentedString(props)).append("\n");
     sb.append("}");
     return sb.toString();

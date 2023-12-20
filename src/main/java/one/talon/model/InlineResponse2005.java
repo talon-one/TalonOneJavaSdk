@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.NotificationWebhook;
+import one.talon.model.Application;
 
 /**
  * InlineResponse2005
@@ -38,7 +38,7 @@ public class InlineResponse2005 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<NotificationWebhook> data = new ArrayList<NotificationWebhook>();
+  private List<Application> data = new ArrayList<Application>();
 
 
   public InlineResponse2005 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse2005 {
   }
 
 
-  public InlineResponse2005 data(List<NotificationWebhook> data) {
+  public InlineResponse2005 data(List<Application> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2005 addDataItem(NotificationWebhook dataItem) {
+  public InlineResponse2005 addDataItem(Application dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2005 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<NotificationWebhook> getData() {
+  public List<Application> getData() {
     return data;
   }
 
 
-  public void setData(List<NotificationWebhook> data) {
+  public void setData(List<Application> data) {
     this.data = data;
   }
 

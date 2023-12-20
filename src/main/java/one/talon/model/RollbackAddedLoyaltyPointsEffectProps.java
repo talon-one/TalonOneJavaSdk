@@ -204,11 +204,11 @@ public class RollbackAddedLoyaltyPointsEffectProps {
   }
 
    /**
-   * The sub-position is returned when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. It indicates to which item the loyalty points were rolled back, for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub-position indicates to which item the loyalty points were rolled back. 
    * @return cartItemSubPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sub-position is returned when [cart item flattening](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening) is enabled. It indicates to which item the loyalty points were rolled back, for cart items with `quantity` > 1. ")
+  @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub-position indicates to which item the loyalty points were rolled back. ")
 
   public BigDecimal getCartItemSubPosition() {
     return cartItemSubPosition;

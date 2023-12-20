@@ -208,6 +208,14 @@ public class CampaignTemplateTest {
     }
 
     /**
+     * Test the property 'campaignType'
+     */
+    @Test
+    public void campaignTypeTest() {
+        // TODO: test campaignType
+    }
+
+    /**
      * Test the property 'updated'
      */
     @Test

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**type** | [**TypeEnum**](#TypeEnum) | The type of allowed values in the picklist. If type time is chosen, it must be an RFC3339 timestamp string. | 
+**type** | [**TypeEnum**](#TypeEnum) | The type of allowed values in the picklist. If the type &#x60;time&#x60; is chosen, it must be an RFC3339 timestamp string. | 
 **values** | **List&lt;String&gt;** | The list of allowed values provided by this picklist. | 
 **modifiedBy** | **Integer** | ID of the user who last updated this effect if available. |  [optional]
 **createdBy** | **Integer** | ID of the user who created this effect. | 

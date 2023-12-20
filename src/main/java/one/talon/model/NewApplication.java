@@ -460,11 +460,11 @@ public class NewApplication {
   }
 
    /**
-   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See [the docs](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening). 
+   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. 
    * @return enableFlattenedCartItems
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. See [the docs](https://docs.talon.one/docs/product/campaigns/managing-general-settings#flattening). ")
+  @ApiModelProperty(value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. ")
 
   public Boolean getEnableFlattenedCartItems() {
     return enableFlattenedCartItems;

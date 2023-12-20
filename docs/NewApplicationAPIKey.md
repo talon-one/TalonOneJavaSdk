@@ -32,6 +32,7 @@ ITERABLE | &quot;iterable&quot;
 CUSTOMER_ENGAGEMENT | &quot;customer_engagement&quot;
 CUSTOMER_DATA | &quot;customer_data&quot;
 SALESFORCE | &quot;salesforce&quot;
+EMARSYS | &quot;emarsys&quot;
 
 
 

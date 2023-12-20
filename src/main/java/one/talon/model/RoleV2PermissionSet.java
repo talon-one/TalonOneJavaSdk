@@ -74,10 +74,10 @@ public class RoleV2PermissionSet {
   }
 
    /**
-   * List of logical operations in the permission set. Each logical operation must be shown under the &#x60;x-logicalPermissionOperation&#x60; tag on an endpoint level. 
+   * List of logical operations in the permission set. Each logical operation must be shown under the &#x60;x-permission&#x60; tag on an endpoint level. 
    * @return logicalOperations
   **/
-  @ApiModelProperty(example = "[createCampaignOperations, getCampaignOperations, deleteCampaignOperations]", required = true, value = "List of logical operations in the permission set. Each logical operation must be shown under the `x-logicalPermissionOperation` tag on an endpoint level. ")
+  @ApiModelProperty(example = "[createCampaignOperations, getCampaignOperations, deleteCampaignOperations]", required = true, value = "List of logical operations in the permission set. Each logical operation must be shown under the `x-permission` tag on an endpoint level. ")
 
   public List<String> getLogicalOperations() {
     return logicalOperations;

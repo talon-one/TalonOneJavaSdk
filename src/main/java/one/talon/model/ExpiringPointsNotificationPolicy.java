@@ -40,6 +40,10 @@ public class ExpiringPointsNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   private List<ExpiringPointsNotificationTrigger> triggers = new ArrayList<ExpiringPointsNotificationTrigger>();
 
+  public static final String SERIALIZED_NAME_BATCHING_ENABLED = "batchingEnabled";
+  @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
+  private Boolean batchingEnabled = true;
+
 
   public ExpiringPointsNotificationPolicy name(String name) {
     
@@ -51,7 +55,7 @@ public class ExpiringPointsNotificationPolicy {
    * Notification name.
    * @return name
   **/
-  @ApiModelProperty(example = "notification to google.", required = true, value = "Notification name.")
+  @ApiModelProperty(example = "Notification to Google", required = true, value = "Notification name.")
 
   public String getName() {
     return name;
@@ -90,6 +94,29 @@ public class ExpiringPointsNotificationPolicy {
   }
 
 
+  public ExpiringPointsNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
+    
+    this.batchingEnabled = batchingEnabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether batching is activated.
+   * @return batchingEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether batching is activated.")
+
+  public Boolean getBatchingEnabled() {
+    return batchingEnabled;
+  }
+
+
+  public void setBatchingEnabled(Boolean batchingEnabled) {
+    this.batchingEnabled = batchingEnabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -100,12 +127,13 @@ public class ExpiringPointsNotificationPolicy {
     }
     ExpiringPointsNotificationPolicy expiringPointsNotificationPolicy = (ExpiringPointsNotificationPolicy) o;
     return Objects.equals(this.name, expiringPointsNotificationPolicy.name) &&
-        Objects.equals(this.triggers, expiringPointsNotificationPolicy.triggers);
+        Objects.equals(this.triggers, expiringPointsNotificationPolicy.triggers) &&
+        Objects.equals(this.batchingEnabled, expiringPointsNotificationPolicy.batchingEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, triggers);
+    return Objects.hash(name, triggers, batchingEnabled);
   }
 
 
@@ -115,6 +143,7 @@ public class ExpiringPointsNotificationPolicy {
     sb.append("class ExpiringPointsNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    triggers: ").append(toIndentedString(triggers)).append("\n");
+    sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

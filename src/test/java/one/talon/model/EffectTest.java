@@ -97,6 +97,14 @@ public class EffectTest {
     }
 
     /**
+     * Test the property 'conditionIndex'
+     */
+    @Test
+    public void conditionIndexTest() {
+        // TODO: test conditionIndex
+    }
+
+    /**
      * Test the property 'props'
      */
     @Test

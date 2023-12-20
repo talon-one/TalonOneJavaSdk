@@ -50,6 +50,14 @@ public class BaseNotificationTest {
     }
 
     /**
+     * Test the property 'enabled'
+     */
+    @Test
+    public void enabledTest() {
+        // TODO: test enabled
+    }
+
+    /**
      * Test the property 'webhook'
      */
     @Test
@@ -66,11 +74,11 @@ public class BaseNotificationTest {
     }
 
     /**
-     * Test the property 'enabled'
+     * Test the property 'type'
      */
     @Test
-    public void enabledTest() {
-        // TODO: test enabled
+    public void typeTest() {
+        // TODO: test type
     }
 
 }

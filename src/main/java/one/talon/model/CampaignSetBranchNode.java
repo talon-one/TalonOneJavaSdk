@@ -153,7 +153,7 @@ public class CampaignSetBranchNode {
   private String description;
 
   /**
-   * Gets or Sets evaluationMode
+   * The mode by which campaigns in the campaign evaluation group are evaluated.
    */
   @JsonAdapter(EvaluationModeEnum.Adapter.class)
   public enum EvaluationModeEnum {
@@ -206,6 +206,57 @@ public class CampaignSetBranchNode {
   public static final String SERIALIZED_NAME_EVALUATION_MODE = "evaluationMode";
   @SerializedName(SERIALIZED_NAME_EVALUATION_MODE)
   private EvaluationModeEnum evaluationMode;
+
+  /**
+   * The evaluation scope of the campaign evaluation group.
+   */
+  @JsonAdapter(EvaluationScopeEnum.Adapter.class)
+  public enum EvaluationScopeEnum {
+    CARTITEM("cartItem"),
+    
+    SESSION("session");
+
+    private String value;
+
+    EvaluationScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EvaluationScopeEnum fromValue(String value) {
+      for (EvaluationScopeEnum b : EvaluationScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EvaluationScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EvaluationScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EvaluationScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EvaluationScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_EVALUATION_SCOPE = "evaluationScope";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_SCOPE)
+  private EvaluationScopeEnum evaluationScope;
 
 
   public CampaignSetBranchNode type(TypeEnum type) {
@@ -375,10 +426,10 @@ public class CampaignSetBranchNode {
   }
 
    /**
-   * Get evaluationMode
+   * The mode by which campaigns in the campaign evaluation group are evaluated.
    * @return evaluationMode
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The mode by which campaigns in the campaign evaluation group are evaluated.")
 
   public EvaluationModeEnum getEvaluationMode() {
     return evaluationMode;
@@ -387,6 +438,28 @@ public class CampaignSetBranchNode {
 
   public void setEvaluationMode(EvaluationModeEnum evaluationMode) {
     this.evaluationMode = evaluationMode;
+  }
+
+
+  public CampaignSetBranchNode evaluationScope(EvaluationScopeEnum evaluationScope) {
+    
+    this.evaluationScope = evaluationScope;
+    return this;
+  }
+
+   /**
+   * The evaluation scope of the campaign evaluation group.
+   * @return evaluationScope
+  **/
+  @ApiModelProperty(required = true, value = "The evaluation scope of the campaign evaluation group.")
+
+  public EvaluationScopeEnum getEvaluationScope() {
+    return evaluationScope;
+  }
+
+
+  public void setEvaluationScope(EvaluationScopeEnum evaluationScope) {
+    this.evaluationScope = evaluationScope;
   }
 
 
@@ -406,12 +479,13 @@ public class CampaignSetBranchNode {
         Objects.equals(this.groupId, campaignSetBranchNode.groupId) &&
         Objects.equals(this.locked, campaignSetBranchNode.locked) &&
         Objects.equals(this.description, campaignSetBranchNode.description) &&
-        Objects.equals(this.evaluationMode, campaignSetBranchNode.evaluationMode);
+        Objects.equals(this.evaluationMode, campaignSetBranchNode.evaluationMode) &&
+        Objects.equals(this.evaluationScope, campaignSetBranchNode.evaluationScope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, operator, elements, groupId, locked, description, evaluationMode);
+    return Objects.hash(type, name, operator, elements, groupId, locked, description, evaluationMode, evaluationScope);
   }
 
 
@@ -427,6 +501,7 @@ public class CampaignSetBranchNode {
     sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    evaluationMode: ").append(toIndentedString(evaluationMode)).append("\n");
+    sb.append("    evaluationScope: ").append(toIndentedString(evaluationScope)).append("\n");
     sb.append("}");
     return sb.toString();
   }

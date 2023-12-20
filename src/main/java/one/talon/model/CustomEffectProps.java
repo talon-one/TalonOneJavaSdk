@@ -134,11 +134,11 @@ public class CustomEffectProps {
   }
 
    /**
-   * When cart item flattening is enabled, the sub position indicates to which item unit the custom effect is applied, for cart items with quantity &gt; 1. 
+   * For cart items with quantity &gt; 1, the sub position indicates to which item unit the custom effect is applied. 
    * @return cartItemSubPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2.0", value = "When cart item flattening is enabled, the sub position indicates to which item unit the custom effect is applied, for cart items with quantity > 1. ")
+  @ApiModelProperty(example = "2.0", value = "For cart items with quantity > 1, the sub position indicates to which item unit the custom effect is applied. ")
 
   public BigDecimal getCartItemSubPosition() {
     return cartItemSubPosition;

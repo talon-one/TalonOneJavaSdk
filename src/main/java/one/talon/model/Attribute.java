@@ -68,7 +68,9 @@ public class Attribute {
     
     GIVEAWAY("Giveaway"),
     
-    REFERRAL("Referral");
+    REFERRAL("Referral"),
+    
+    STORE("Store");
 
     private String value;
 

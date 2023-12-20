@@ -96,4 +96,12 @@ public class EffectEntityTest {
         // TODO: test triggeredForCatalogItem
     }
 
+    /**
+     * Test the property 'conditionIndex'
+     */
+    @Test
+    public void conditionIndexTest() {
+        // TODO: test conditionIndex
+    }
+
 }

@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **applicationNotificationSubscriptions** | [**Object**](.md) |  |  [optional]
 **authMethod** | **String** | The Authentication method for this user. |  [optional]
 **isAdmin** | **Boolean** | An indication of whether the user has admin permissions. |  [optional]
+**lastSignedIn** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time when the user last signed in to Talon.One. |  [optional]
+**lastAccessed** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time of the user&#39;s last activity after signing in to Talon.One. |  [optional]
 
 
 

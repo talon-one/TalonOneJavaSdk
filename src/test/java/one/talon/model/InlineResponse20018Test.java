@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AccessLogEntry;
+import one.talon.model.Collection;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -49,6 +49,14 @@ public class InlineResponse20018Test {
     @Test
     public void hasMoreTest() {
         // TODO: test hasMore
+    }
+
+    /**
+     * Test the property 'totalResultSize'
+     */
+    @Test
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
     }
 
     /**

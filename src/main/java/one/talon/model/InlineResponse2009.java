@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Referral;
+import one.talon.model.Coupon;
 
 /**
  * InlineResponse2009
@@ -38,7 +38,7 @@ public class InlineResponse2009 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Referral> data = new ArrayList<Referral>();
+  private List<Coupon> data = new ArrayList<Coupon>();
 
 
   public InlineResponse2009 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse2009 {
   }
 
 
-  public InlineResponse2009 data(List<Referral> data) {
+  public InlineResponse2009 data(List<Coupon> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2009 addDataItem(Referral dataItem) {
+  public InlineResponse2009 addDataItem(Coupon dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2009 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Referral> getData() {
+  public List<Coupon> getData() {
     return data;
   }
 
 
-  public void setData(List<Referral> data) {
+  public void setData(List<Coupon> data) {
     this.data = data;
   }
 

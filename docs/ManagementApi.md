@@ -11,27 +11,28 @@ Method | HTTP request | Description
 [**createAdditionalCost**](ManagementApi.md#createAdditionalCost) | **POST** /v1/additional_costs | Create additional cost
 [**createAttribute**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Create custom attribute
 [**createCampaignFromTemplate**](ManagementApi.md#createCampaignFromTemplate) | **POST** /v1/applications/{applicationId}/create_campaign_from_template | Create campaign from campaign template
-[**createCollection**](ManagementApi.md#createCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | Create collection
+[**createCollection**](ManagementApi.md#createCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | Create campaign-level collection
 [**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create coupons
 [**createCouponsAsync**](ManagementApi.md#createCouponsAsync) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
 [**createCouponsForMultipleRecipients**](ManagementApi.md#createCouponsForMultipleRecipients) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_with_recipients | Create coupons for multiple recipients
-[**createNotificationWebhook**](ManagementApi.md#createNotificationWebhook) | **POST** /v1/applications/{applicationId}/notification_webhooks | Create notification about campaign-related changes
 [**createPasswordRecoveryEmail**](ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
 [**createSession**](ManagementApi.md#createSession) | **POST** /v1/sessions | Create session
+[**createStore**](ManagementApi.md#createStore) | **POST** /v1/applications/{applicationId}/stores | Create store
 [**deductLoyaltyCardPoints**](ManagementApi.md#deductLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points | Deduct points from card
 [**deleteAccountCollection**](ManagementApi.md#deleteAccountCollection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection
 [**deleteCampaign**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign
-[**deleteCollection**](ManagementApi.md#deleteCollection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete collection
+[**deleteCollection**](ManagementApi.md#deleteCollection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete campaign-level collection
 [**deleteCoupon**](ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete coupon
 [**deleteCoupons**](ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete coupons
 [**deleteLoyaltyCard**](ManagementApi.md#deleteLoyaltyCard) | **DELETE** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Delete loyalty card
-[**deleteNotificationWebhook**](ManagementApi.md#deleteNotificationWebhook) | **DELETE** /v1/applications/{applicationId}/notification_webhooks/{notificationWebhookId} | Delete notification about campaign-related changes
 [**deleteReferral**](ManagementApi.md#deleteReferral) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Delete referral
+[**deleteStore**](ManagementApi.md#deleteStore) | **DELETE** /v1/applications/{applicationId}/stores/{storeId} | Delete store
 [**destroySession**](ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy session
 [**exportAccountCollectionItems**](ManagementApi.md#exportAccountCollectionItems) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items
-[**exportCollectionItems**](ManagementApi.md#exportCollectionItems) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export a collection&#39;s items
+[**exportCollectionItems**](ManagementApi.md#exportCollectionItems) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export campaign-level collection&#39;s items
 [**exportCoupons**](ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons
 [**exportCustomerSessions**](ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export customer sessions
+[**exportCustomersTiers**](ManagementApi.md#exportCustomersTiers) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_customers_tiers | Export customers&#39; tier data
 [**exportEffects**](ManagementApi.md#exportEffects) | **GET** /v1/applications/{applicationId}/export_effects | Export triggered effects
 [**exportLoyaltyBalance**](ManagementApi.md#exportLoyaltyBalance) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_customer_balance | Export customer loyalty balance to CSV
 [**exportLoyaltyBalances**](ManagementApi.md#exportLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/export_customer_balances | Export customer loyalty balances
@@ -68,7 +69,7 @@ Method | HTTP request | Description
 [**getCampaignTemplates**](ManagementApi.md#getCampaignTemplates) | **GET** /v1/campaign_templates | List campaign templates
 [**getCampaigns**](ManagementApi.md#getCampaigns) | **GET** /v1/applications/{applicationId}/campaigns | List campaigns
 [**getChanges**](ManagementApi.md#getChanges) | **GET** /v1/changes | Get audit logs for an account
-[**getCollection**](ManagementApi.md#getCollection) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Get collection
+[**getCollection**](ManagementApi.md#getCollection) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Get campaign-level collection
 [**getCollectionItems**](ManagementApi.md#getCollectionItems) | **GET** /v1/collections/{collectionId}/items | Get collection items
 [**getCouponsWithoutTotalCount**](ManagementApi.md#getCouponsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/no_total | List coupons
 [**getCustomerActivityReport**](ManagementApi.md#getCustomerActivityReport) | **GET** /v1/applications/{applicationId}/customer_activity_reports/{customerId} | Get customer&#39;s activity report
@@ -87,21 +88,20 @@ Method | HTTP request | Description
 [**getLoyaltyProgramTransactions**](ManagementApi.md#getLoyaltyProgramTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions
 [**getLoyaltyPrograms**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs
 [**getLoyaltyStatistics**](ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
-[**getNotificationWebhook**](ManagementApi.md#getNotificationWebhook) | **GET** /v1/applications/{applicationId}/notification_webhooks/{notificationWebhookId} | Get notification about campaign-related changes
-[**getNotificationWebhooks**](ManagementApi.md#getNotificationWebhooks) | **GET** /v1/applications/{applicationId}/notification_webhooks | List notifications about campaign-related changes
 [**getReferralsWithoutTotalCount**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals
 [**getRole**](ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get role
 [**getRuleset**](ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset
 [**getRulesets**](ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List campaign rulesets
+[**getStore**](ManagementApi.md#getStore) | **GET** /v1/applications/{applicationId}/stores/{storeId} | Get store
 [**getUser**](ManagementApi.md#getUser) | **GET** /v1/users/{userId} | Get user
 [**getUsers**](ManagementApi.md#getUsers) | **GET** /v1/users | List users in account
 [**getWebhook**](ManagementApi.md#getWebhook) | **GET** /v1/webhooks/{webhookId} | Get webhook
 [**getWebhookActivationLogs**](ManagementApi.md#getWebhookActivationLogs) | **GET** /v1/webhook_activation_logs | List webhook activation log entries
 [**getWebhookLogs**](ManagementApi.md#getWebhookLogs) | **GET** /v1/webhook_logs | List webhook log entries
 [**getWebhooks**](ManagementApi.md#getWebhooks) | **GET** /v1/webhooks | List webhooks
-[**importAccountCollection**](ManagementApi.md#importAccountCollection) | **POST** /v1/collections/{collectionId}/import | Import data in existing account-level collection
+[**importAccountCollection**](ManagementApi.md#importAccountCollection) | **POST** /v1/collections/{collectionId}/import | Import data into existing account-level collection
 [**importAllowedList**](ManagementApi.md#importAllowedList) | **POST** /v1/attributes/{attributeId}/allowed_list/import | Import allowed values for attribute
-[**importCollection**](ManagementApi.md#importCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/import | Import data in existing collection
+[**importCollection**](ManagementApi.md#importCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/import | Import data into existing campaign-level collection
 [**importCoupons**](ManagementApi.md#importCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons
 [**importLoyaltyCards**](ManagementApi.md#importLoyaltyCards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_cards | Import loyalty cards
 [**importLoyaltyCustomersTiers**](ManagementApi.md#importLoyaltyCustomersTiers) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_customers_tiers | Import customers into loyalty tiers
@@ -110,11 +110,12 @@ Method | HTTP request | Description
 [**importReferrals**](ManagementApi.md#importReferrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals
 [**listAccountCollections**](ManagementApi.md#listAccountCollections) | **GET** /v1/collections | List collections in account
 [**listCatalogItems**](ManagementApi.md#listCatalogItems) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog
-[**listCollections**](ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections
-[**listCollectionsInApplication**](ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in application
+[**listCollections**](ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
+[**listCollectionsInApplication**](ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
+[**listStores**](ManagementApi.md#listStores) | **GET** /v1/applications/{applicationId}/stores | List stores
 [**notificationActivation**](ManagementApi.md#notificationActivation) | **PUT** /v1/notifications/{notificationId}/activation | Activate or deactivate notification
 [**postAddedDeductedPointsNotification**](ManagementApi.md#postAddedDeductedPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/added_deducted_points | Create notification about added or deducted loyalty points
-[**postCatalogsStrikethroughNotification**](ManagementApi.md#postCatalogsStrikethroughNotification) | **POST** /v1/catalogs/{applicationId}/notifications/strikethrough | Create strikethrough notification
+[**postCatalogsStrikethroughNotification**](ManagementApi.md#postCatalogsStrikethroughNotification) | **POST** /v1/applications/{applicationId}/catalogs/notifications/strikethrough | Create strikethrough notification
 [**postPendingPointsNotification**](ManagementApi.md#postPendingPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/pending_points | Create notification about pending loyalty points
 [**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
@@ -125,12 +126,12 @@ Method | HTTP request | Description
 [**updateAdditionalCost**](ManagementApi.md#updateAdditionalCost) | **PUT** /v1/additional_costs/{additionalCostId} | Update additional cost
 [**updateAttribute**](ManagementApi.md#updateAttribute) | **PUT** /v1/attributes/{attributeId} | Update custom attribute
 [**updateCampaign**](ManagementApi.md#updateCampaign) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId} | Update campaign
-[**updateCollection**](ManagementApi.md#updateCollection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update collection description
+[**updateCollection**](ManagementApi.md#updateCollection) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Update campaign-level collection&#39;s description
 [**updateCoupon**](ManagementApi.md#updateCoupon) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Update coupon
 [**updateCouponBatch**](ManagementApi.md#updateCouponBatch) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Update coupons
 [**updateLoyaltyCard**](ManagementApi.md#updateLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Update loyalty card status
-[**updateNotificationWebhook**](ManagementApi.md#updateNotificationWebhook) | **PUT** /v1/applications/{applicationId}/notification_webhooks/{notificationWebhookId} | Update notification about campaign-related changes
 [**updateReferral**](ManagementApi.md#updateReferral) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/{referralId} | Update referral
+[**updateStore**](ManagementApi.md#updateStore) | **PUT** /v1/applications/{applicationId}/stores/{storeId} | Update store
 
 
 <a name="addLoyaltyCardPoints"></a>
@@ -297,7 +298,7 @@ null (empty response body)
 
 <a name="copyCampaignToApplications"></a>
 # **copyCampaignToApplications**
-> InlineResponse2004 copyCampaignToApplications(applicationId, campaignId, body)
+> InlineResponse2006 copyCampaignToApplications(applicationId, campaignId, body)
 
 Copy the campaign into the specified Application
 
@@ -335,7 +336,7 @@ public class Example {
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
     CampaignCopy body = new CampaignCopy(); // CampaignCopy | body
     try {
-      InlineResponse2004 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+      InlineResponse2006 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -358,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -380,7 +381,7 @@ Name | Type | Description  | Notes
 
 Create account-level collection
 
-Create account-level collection.
+Create an account-level collection.
 
 ### Example
 ```java
@@ -450,7 +451,7 @@ Name | Type | Description  | Notes
 **201** | Created |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
-**409** | Conflict. A Collection with this name already exists. |  -  |
+**409** | Conflict. A collection with this name already exists. |  -  |
 
 <a name="createAdditionalCost"></a>
 # **createAdditionalCost**
@@ -683,9 +684,9 @@ Name | Type | Description  | Notes
 # **createCollection**
 > Collection createCollection(applicationId, campaignId, body)
 
-Create collection
+Create campaign-level collection
 
-Create a collection.
+Create a campaign-level collection in a given campaign.
 
 ### Example
 ```java
@@ -760,7 +761,7 @@ Name | Type | Description  | Notes
 
 <a name="createCoupons"></a>
 # **createCoupons**
-> InlineResponse2007 createCoupons(applicationId, campaignId, body, silent)
+> InlineResponse2008 createCoupons(applicationId, campaignId, body, silent)
 
 Create coupons
 
@@ -799,7 +800,7 @@ public class Example {
     NewCoupons body = new NewCoupons(); // NewCoupons | body
     String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
     try {
-      InlineResponse2007 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+      InlineResponse2008 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -823,7 +824,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -921,7 +922,7 @@ Name | Type | Description  | Notes
 
 <a name="createCouponsForMultipleRecipients"></a>
 # **createCouponsForMultipleRecipients**
-> InlineResponse2007 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
+> InlineResponse2008 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
 
 Create coupons for multiple recipients
 
@@ -960,7 +961,7 @@ public class Example {
     NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | body
     String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
     try {
-      InlineResponse2007 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+      InlineResponse2008 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#createCouponsForMultipleRecipients");
@@ -984,7 +985,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -1000,83 +1001,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **204** | No Content |  -  |
-
-<a name="createNotificationWebhook"></a>
-# **createNotificationWebhook**
-> NotificationWebhook createNotificationWebhook(applicationId, body)
-
-Create notification about campaign-related changes
-
-Create a [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  A notification about campaign-related changes is different from regular webhooks in that it is Application-scoped and has a predefined payload. [Regular webhooks](https://docs.talon.one/docs/dev/getting-started/webhooks) have user-definable payloads.  **Tip:**  - You can create these notifications using the Campaign Manager. See [Managing notifications](https://docs.talon.one/docs/product/applications/outbound-notifications). - You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#tag/Campaign-notifications/paths/campaign_created/post). 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: management_key
-    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-    management_key.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //management_key.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    NewNotificationWebhook body = new NewNotificationWebhook(); // NewNotificationWebhook | body
-    try {
-      NotificationWebhook result = apiInstance.createNotificationWebhook(applicationId, body);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#createNotificationWebhook");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **body** | [**NewNotificationWebhook**](NewNotificationWebhook.md)| body |
-
-### Return type
-
-[**NotificationWebhook**](NotificationWebhook.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Created |  -  |
 
 <a name="createPasswordRecoveryEmail"></a>
 # **createPasswordRecoveryEmail**
@@ -1228,6 +1152,85 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Created |  -  |
 
+<a name="createStore"></a>
+# **createStore**
+> Store createStore(applicationId, body)
+
+Create store
+
+Create a new store in a specific Application.
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+    NewStore body = new NewStore(); // NewStore | body
+    try {
+      Store result = apiInstance.createStore(applicationId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#createStore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **body** | [**NewStore**](NewStore.md)| body |
+
+### Return type
+
+[**Store**](Store.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad request |  -  |
+**409** | Conflict. A store with this integration ID already exists for this application. |  -  |
+
 <a name="deductLoyaltyCardPoints"></a>
 # **deductLoyaltyCardPoints**
 > deductLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, body)
@@ -1315,7 +1318,7 @@ null (empty response body)
 
 Delete account-level collection
 
-Delete the given account-level collection.
+Delete a given account-level collection.
 
 ### Example
 ```java
@@ -1345,7 +1348,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     try {
       apiInstance.deleteAccountCollection(collectionId);
     } catch (ApiException e) {
@@ -1363,7 +1366,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type
 
@@ -1464,9 +1467,9 @@ null (empty response body)
 # **deleteCollection**
 > deleteCollection(applicationId, campaignId, collectionId)
 
-Delete collection
+Delete campaign-level collection
 
-Delete the given collection.
+Delete a given campaign-level collection.
 
 ### Example
 ```java
@@ -1498,7 +1501,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
     try {
       apiInstance.deleteCollection(applicationId, campaignId, collectionId);
     } catch (ApiException e) {
@@ -1518,7 +1521,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type
 
@@ -1656,12 +1659,12 @@ public class Example {
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | - `expired`: Matches coupons in which the expiration date is set and in the past. - `validNow`: Matches coupons in which start date is null or in the past and expiration date is null or in the future. - `validFuture`: Matches coupons in which start date is set and in the future. 
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     String usable = "usable_example"; // String | - `true`: only coupons where `usageCounter < usageLimit` will be returned. - `false`: only coupons where `usageCounter >= usageLimit` will be returned. 
@@ -1688,12 +1691,12 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **startsAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **startsBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **expiresAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **expiresBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **startsAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **startsBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **expiresAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **expiresBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| - &#x60;expired&#x60;: Matches coupons in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches coupons in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **usable** | **String**| - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  | [optional] [enum: true, false]
@@ -1797,82 +1800,6 @@ null (empty response body)
 **401** | Unauthorized |  -  |
 **404** | Not found |  -  |
 
-<a name="deleteNotificationWebhook"></a>
-# **deleteNotificationWebhook**
-> deleteNotificationWebhook(applicationId, notificationWebhookId)
-
-Delete notification about campaign-related changes
-
-Remove the given existing [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications). 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: management_key
-    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-    management_key.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //management_key.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    Integer notificationWebhookId = 56; // Integer | The ID of the webhook. Get it with the appropriate _List notifications_ endpoint.
-    try {
-      apiInstance.deleteNotificationWebhook(applicationId, notificationWebhookId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#deleteNotificationWebhook");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **notificationWebhookId** | **Integer**| The ID of the webhook. Get it with the appropriate _List notifications_ endpoint. |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-
 <a name="deleteReferral"></a>
 # **deleteReferral**
 > deleteReferral(applicationId, campaignId, referralId)
@@ -1951,6 +1878,83 @@ null (empty response body)
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
 
+<a name="deleteStore"></a>
+# **deleteStore**
+> deleteStore(applicationId, storeId)
+
+Delete store
+
+Delete the specified store.
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+    String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
+    try {
+      apiInstance.deleteStore(applicationId, storeId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#deleteStore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not found |  -  |
+
 <a name="destroySession"></a>
 # **destroySession**
 > destroySession()
@@ -2027,7 +2031,7 @@ null (empty response body)
 
 Export account-level collection&#39;s items
 
-Download a CSV file containing items from an account-level collection.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/). 
+Download a CSV file containing items from a given account-level collection.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/). 
 
 ### Example
 ```java
@@ -2057,7 +2061,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     try {
       String result = apiInstance.exportAccountCollectionItems(collectionId);
       System.out.println(result);
@@ -2076,7 +2080,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type
 
@@ -2102,9 +2106,9 @@ Name | Type | Description  | Notes
 # **exportCollectionItems**
 > String exportCollectionItems(applicationId, campaignId, collectionId)
 
-Export a collection&#39;s items
+Export campaign-level collection&#39;s items
 
-Download a CSV file containing a collection&#39;s items.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/). 
+Download a CSV file containing items from a given campaign-level collection.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/). 
 
 ### Example
 ```java
@@ -2136,7 +2140,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
     try {
       String result = apiInstance.exportCollectionItems(applicationId, campaignId, collectionId);
       System.out.println(result);
@@ -2157,7 +2161,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type
 
@@ -2181,11 +2185,11 @@ Name | Type | Description  | Notes
 
 <a name="exportCoupons"></a>
 # **exportCoupons**
-> String exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState)
+> String exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, valuesOnly)
 
 Export coupons
 
-Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the customer considered as recipient of the coupon.   Only the customer with this integration ID can redeem the corresponding coupon code.   Learn about [coupon reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code). - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon is reserved. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
+Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the customer considered as recipient of the coupon.   Only the customer with this integration ID can redeem the corresponding coupon code.   Learn about [coupon reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code). - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon is reserved. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
 
 ### Example
 ```java
@@ -2219,18 +2223,19 @@ public class Example {
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
-    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field.
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
-    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
+    Boolean valuesOnly = false; // Boolean | Filter results to only return the coupon codes (`value` column) without the associated coupon data.
     try {
-      String result = apiInstance.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState);
+      String result = apiInstance.exportCoupons(applicationId, campaignId, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, dateFormat, campaignState, valuesOnly);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportCoupons");
@@ -2251,16 +2256,17 @@ Name | Type | Description  | Notes
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
- **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field | [optional]
+ **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
- **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
+ **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. - &#x60;draft&#x60;: Campaigns that are drafts.  | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
+ **valuesOnly** | **Boolean**| Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. | [optional] [default to false]
 
 ### Return type
 
@@ -2286,7 +2292,7 @@ Name | Type | Description  | Notes
 
 Export customer sessions
 
-Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of the session. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;coupons&#x60;: Coupon codes in the session. 
+Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
 
 ### Example
 ```java
@@ -2365,13 +2371,92 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 
+<a name="exportCustomersTiers"></a>
+# **exportCustomersTiers**
+> String exportCustomersTiers(loyaltyProgramId, subledgerIds, tierNames)
+
+Export customers&#39; tier data
+
+Download a CSV file containing the tier information for customers of the specified loyalty program.  The generated file contains the following columns:  - &#x60;programid&#x60;: The identifier of the loyalty program. It is displayed in your Talon.One deployment URL. - &#x60;subledgerid&#x60;: The ID of the subledger associated with the loyalty program. This column is empty if the loyalty program has no subledger. In this case, refer to the export file name to get the ID of the loyalty program. - &#x60;customerprofileid&#x60;: The ID used to integrate customer profiles with the loyalty program. - &#x60;tiername&#x60;: The name of the tier. - &#x60;startdate&#x60;: The tier start date in RFC3339. - &#x60;expirydate&#x60;: The tier expiry date in RFC3339.  You can filter the results by providing the following optional input parameters:  - &#x60;subledgerId&#x60; (optional): Filter results by subledger ID. If no value is provided, all subledger data for the specified loyalty program will be exported. - &#x60;tierName&#x60; (optional): Filter results by tier name. If no value is provided, all tier data for the specified loyalty program will be exported. 
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
+    List<String> subledgerIds = Arrays.asList(); // List<String> | An array of subledgers IDs to filter the export by.
+    List<String> tierNames = Arrays.asList(); // List<String> | An array of tier names to filter the export by.
+    try {
+      String result = apiInstance.exportCustomersTiers(loyaltyProgramId, subledgerIds, tierNames);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#exportCustomersTiers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
+ **subledgerIds** | [**List&lt;String&gt;**](String.md)| An array of subledgers IDs to filter the export by. | [optional]
+ **tierNames** | [**List&lt;String&gt;**](String.md)| An array of tier names to filter the export by. | [optional]
+
+### Return type
+
+**String**
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/csv
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
 <a name="exportEffects"></a>
 # **exportEffects**
 > String exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat)
 
 Export triggered effects
 
-Download a CSV file containing the triggered effects that match the given attributes.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. 
+Download a CSV file containing the triggered effects that match the given attributes.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
 
 ### Example
 ```java
@@ -2403,8 +2488,8 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
       String result = apiInstance.exportEffects(applicationId, campaignId, createdBefore, createdAfter, dateFormat);
@@ -2426,8 +2511,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
 ### Return type
@@ -2485,7 +2570,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string. 
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     try {
       String result = apiInstance.exportLoyaltyBalance(loyaltyProgramId, endDate);
       System.out.println(result);
@@ -2505,7 +2590,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **endDate** | **OffsetDateTime**| Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
+ **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
 
 ### Return type
 
@@ -2564,7 +2649,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string. 
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     try {
       String result = apiInstance.exportLoyaltyBalances(loyaltyProgramId, endDate);
       System.out.println(result);
@@ -2584,7 +2669,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **endDate** | **OffsetDateTime**| Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
+ **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
 
 ### Return type
 
@@ -2643,7 +2728,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string. 
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     try {
       String result = apiInstance.exportLoyaltyCardBalances(loyaltyProgramId, endDate);
       System.out.println(result);
@@ -2663,7 +2748,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **endDate** | **OffsetDateTime**| Used to return balances only for entries older than this timestamp. The expired, active, and pending points are relative to this timestamp.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
+ **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
 
 ### Return type
 
@@ -2723,8 +2808,8 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
       String result = apiInstance.exportLoyaltyCardLedger(loyaltyProgramId, loyaltyCardId, rangeStart, rangeEnd, dateFormat);
@@ -2746,8 +2831,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
 ### Return type
@@ -2806,8 +2891,8 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
     String integrationId = "integrationId_example"; // String | The identifier of the profile.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
@@ -2829,8 +2914,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
  **integrationId** | **String**| The identifier of the profile. |
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
@@ -2931,6 +3016,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad request |  -  |
 
 <a name="exportReferrals"></a>
 # **exportReferrals**
@@ -2970,8 +3056,8 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | - `expired`: Matches referrals in which the expiration date is set and in the past. - `validNow`: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - `validFuture`: Matches referrals in which start date is set and in the future. 
     String usable = "usable_example"; // String | - `true`, only referrals where `usageCounter < usageLimit` will be returned. - `false`, only referrals where `usageCounter >= usageLimit` will be returned. 
     String batchId = "batchId_example"; // String | Filter results by batches of referrals
@@ -2996,8 +3082,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| - &#x60;true&#x60;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;, only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  | [optional] [enum: true, false]
  **batchId** | **String**| Filter results by batches of referrals | [optional]
@@ -3023,7 +3109,7 @@ Name | Type | Description  | Notes
 
 <a name="getAccessLogsWithoutTotalCount"></a>
 # **getAccessLogsWithoutTotalCount**
-> InlineResponse20018 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20019 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get access logs for Application
 
@@ -3058,8 +3144,8 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
     String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
     String status = "status_example"; // String | Filter results by HTTP status codes.
@@ -3067,7 +3153,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20018 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      InlineResponse20019 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
@@ -3085,8 +3171,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
@@ -3096,7 +3182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20018**](InlineResponse20018.md)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -3298,7 +3384,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     try {
       Collection result = apiInstance.getAccountCollection(collectionId);
       System.out.println(result);
@@ -3317,7 +3403,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type
 
@@ -3415,7 +3501,7 @@ Name | Type | Description  | Notes
 
 <a name="getAdditionalCosts"></a>
 # **getAdditionalCosts**
-> InlineResponse20033 getAdditionalCosts(pageSize, skip, sort)
+> InlineResponse20034 getAdditionalCosts(pageSize, skip, sort)
 
 List additional costs
 
@@ -3453,7 +3539,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20033 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
+      InlineResponse20034 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAdditionalCosts");
@@ -3476,7 +3562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20033**](InlineResponse20033.md)
+[**InlineResponse20034**](InlineResponse20034.md)
 
 ### Authorization
 
@@ -3494,7 +3580,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllAccessLogs"></a>
 # **getAllAccessLogs**
-> InlineResponse20019 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20020 getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 List access logs
 
@@ -3528,8 +3614,8 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
     String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
     String status = "status_example"; // String | Filter results by HTTP status codes.
@@ -3537,7 +3623,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20019 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+      InlineResponse20020 result = apiInstance.getAllAccessLogs(rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAllAccessLogs");
@@ -3554,8 +3640,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
@@ -3565,7 +3651,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -3583,7 +3669,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllRoles"></a>
 # **getAllRoles**
-> InlineResponse20041 getAllRoles()
+> InlineResponse20042 getAllRoles()
 
 List roles
 
@@ -3618,7 +3704,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
-      InlineResponse20041 result = apiInstance.getAllRoles();
+      InlineResponse20042 result = apiInstance.getAllRoles();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAllRoles");
@@ -3636,7 +3722,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20041**](InlineResponse20041.md)
+[**InlineResponse20042**](InlineResponse20042.md)
 
 ### Authorization
 
@@ -3881,7 +3967,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomerFriends"></a>
 # **getApplicationCustomerFriends**
-> InlineResponse20030 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20031 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
 
 List friends referred by customer profile
 
@@ -3922,7 +4008,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20030 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
+      InlineResponse20031 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomerFriends");
@@ -3948,7 +4034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20030**](InlineResponse20030.md)
+[**InlineResponse20031**](InlineResponse20031.md)
 
 ### Authorization
 
@@ -3966,7 +4052,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomers"></a>
 # **getApplicationCustomers**
-> InlineResponse20021 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
+> InlineResponse20022 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
 
 List application&#39;s customers
 
@@ -4006,7 +4092,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20021 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
+      InlineResponse20022 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
@@ -4031,7 +4117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -4049,7 +4135,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationCustomersByAttributes"></a>
 # **getApplicationCustomersByAttributes**
-> InlineResponse20022 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
+> InlineResponse20023 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
 
 List application customers matching the given attributes
 
@@ -4089,7 +4175,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20022 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
+      InlineResponse20023 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
@@ -4114,7 +4200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -4132,7 +4218,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventTypes"></a>
 # **getApplicationEventTypes**
-> InlineResponse20028 getApplicationEventTypes(applicationId, pageSize, skip, sort)
+> InlineResponse20029 getApplicationEventTypes(applicationId, pageSize, skip, sort)
 
 List Applications event types
 
@@ -4171,7 +4257,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20028 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+      InlineResponse20029 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
@@ -4195,7 +4281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20028**](InlineResponse20028.md)
+[**InlineResponse20029**](InlineResponse20029.md)
 
 ### Authorization
 
@@ -4213,7 +4299,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationEventsWithoutTotalCount"></a>
 # **getApplicationEventsWithoutTotalCount**
-> InlineResponse20027 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
+> InlineResponse20028 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
 
 List Applications events
 
@@ -4252,8 +4338,8 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     String session = "session_example"; // String | Session integration ID filter for events. Must be exact match.
     String profile = "profile_example"; // String | Profile integration ID filter for events. Must be exact match.
     String customerName = "customerName_example"; // String | Customer name filter for events. Will match substrings case-insensitively.
@@ -4263,7 +4349,7 @@ public class Example {
     String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
     String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
     try {
-      InlineResponse20027 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+      InlineResponse20028 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
@@ -4285,8 +4371,8 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
- **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **session** | **String**| Session integration ID filter for events. Must be exact match. | [optional]
  **profile** | **String**| Profile integration ID filter for events. Must be exact match. | [optional]
  **customerName** | **String**| Customer name filter for events. Will match substrings case-insensitively. | [optional]
@@ -4298,7 +4384,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -4393,7 +4479,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplicationSessions"></a>
 # **getApplicationSessions**
-> InlineResponse20026 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId)
+> InlineResponse20027 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId)
 
 List Application sessions
 
@@ -4433,13 +4519,13 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
     String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     String coupon = "coupon_example"; // String | Filter by sessions with this coupon. Must be exact match.
     String referral = "referral_example"; // String | Filter by sessions with this referral. Must be exact match.
     String integrationId = "integrationId_example"; // String | Filter by sessions with this integrationId. Must be exact match.
     try {
-      InlineResponse20026 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
+      InlineResponse20027 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplicationSessions");
@@ -4462,15 +4548,15 @@ Name | Type | Description  | Notes
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, partially_returned, cancelled]
- **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **coupon** | **String**| Filter by sessions with this coupon. Must be exact match. | [optional]
  **referral** | **String**| Filter by sessions with this referral. Must be exact match. | [optional]
  **integrationId** | **String**| Filter by sessions with this integrationId. Must be exact match. | [optional]
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -4488,7 +4574,7 @@ Name | Type | Description  | Notes
 
 <a name="getApplications"></a>
 # **getApplications**
-> InlineResponse2003 getApplications(pageSize, skip, sort)
+> InlineResponse2005 getApplications(pageSize, skip, sort)
 
 List Applications
 
@@ -4526,7 +4612,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse2003 result = apiInstance.getApplications(pageSize, skip, sort);
+      InlineResponse2005 result = apiInstance.getApplications(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getApplications");
@@ -4549,7 +4635,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -4642,7 +4728,7 @@ Name | Type | Description  | Notes
 
 <a name="getAttributes"></a>
 # **getAttributes**
-> InlineResponse20031 getAttributes(pageSize, skip, sort, entity)
+> InlineResponse20032 getAttributes(pageSize, skip, sort, entity)
 
 List custom attributes
 
@@ -4681,7 +4767,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String entity = "entity_example"; // String | Returned attributes will be filtered by supplied entity.
     try {
-      InlineResponse20031 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
+      InlineResponse20032 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAttributes");
@@ -4705,7 +4791,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20031**](InlineResponse20031.md)
+[**InlineResponse20032**](InlineResponse20032.md)
 
 ### Authorization
 
@@ -4723,7 +4809,7 @@ Name | Type | Description  | Notes
 
 <a name="getAudiences"></a>
 # **getAudiences**
-> InlineResponse20029 getAudiences(pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20030 getAudiences(pageSize, skip, sort, withTotalResultSize)
 
 List audiences
 
@@ -4762,7 +4848,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     try {
-      InlineResponse20029 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
+      InlineResponse20030 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getAudiences");
@@ -4786,7 +4872,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20029**](InlineResponse20029.md)
+[**InlineResponse20030**](InlineResponse20030.md)
 
 ### Authorization
 
@@ -4881,7 +4967,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignAnalytics"></a>
 # **getCampaignAnalytics**
-> InlineResponse20020 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
+> InlineResponse20021 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
 
 Get analytics of campaigns
 
@@ -4917,11 +5003,11 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
     try {
-      InlineResponse20020 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+      InlineResponse20021 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
@@ -4940,13 +5026,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **granularity** | **String**| The time interval between the results in the returned time-series. | [optional] [enum: 1 hour, 1 day, 1 week, 1 month, 1 year]
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -4964,7 +5050,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignByAttributes"></a>
 # **getCampaignByAttributes**
-> InlineResponse2004 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
+> InlineResponse2006 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
 
 List campaigns that match the given attributes
 
@@ -5005,7 +5091,7 @@ public class Example {
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
     try {
-      InlineResponse2004 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+      InlineResponse2006 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -5031,7 +5117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -5049,7 +5135,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaignTemplates"></a>
 # **getCampaignTemplates**
-> InlineResponse20010 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
+> InlineResponse20011 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
 
 List campaign templates
 
@@ -5091,7 +5177,7 @@ public class Example {
     String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values. 
     Integer userId = 56; // Integer | Filter results by user ID.
     try {
-      InlineResponse20010 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
+      InlineResponse20011 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaignTemplates");
@@ -5118,7 +5204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -5136,7 +5222,7 @@ Name | Type | Description  | Notes
 
 <a name="getCampaigns"></a>
 # **getCampaigns**
-> InlineResponse2004 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId)
+> InlineResponse2006 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId)
 
 List campaigns
 
@@ -5177,12 +5263,13 @@ public class Example {
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
     String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
     String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     Integer campaignGroupId = 56; // Integer | Filter results to campaigns owned by the specified campaign access group ID.
     Integer templateId = 56; // Integer | The ID of the Campaign Template this Campaign was created from.
+    Integer storeId = 56; // Integer | Filter results to campaigns linked to the specified store ID.
     try {
-      InlineResponse2004 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId);
+      InlineResponse2006 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -5206,14 +5293,15 @@ Name | Type | Description  | Notes
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived. - &#x60;draft&#x60;: Campaigns that are drafts.  | [optional] [enum: enabled, disabled, archived, draft, scheduled, running, expired]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **campaignGroupId** | **Integer**| Filter results to campaigns owned by the specified campaign access group ID. | [optional]
  **templateId** | **Integer**| The ID of the Campaign Template this Campaign was created from. | [optional]
+ **storeId** | **Integer**| Filter results to campaigns linked to the specified store ID. | [optional]
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -5232,7 +5320,7 @@ Name | Type | Description  | Notes
 
 <a name="getChanges"></a>
 # **getChanges**
-> InlineResponse20039 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
+> InlineResponse20040 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
 
 Get audit logs for an account
 
@@ -5272,13 +5360,13 @@ public class Example {
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
     String entityPath = "entityPath_example"; // String | Filter results on a case insensitive matching of the url path of the entity
     Integer userId = 56; // Integer | Filter results by user ID.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     Integer managementKeyId = 56; // Integer | Filter results that match the given management key ID.
     Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
     try {
-      InlineResponse20039 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+      InlineResponse20040 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getChanges");
@@ -5301,15 +5389,15 @@ Name | Type | Description  | Notes
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **entityPath** | **String**| Filter results on a case insensitive matching of the url path of the entity | [optional]
  **userId** | **Integer**| Filter results by user ID. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **managementKeyId** | **Integer**| Filter results that match the given management key ID. | [optional]
  **includeOld** | **Boolean**| When this flag is set to false, the state without the change will not be returned. The default value is true. | [optional]
 
 ### Return type
 
-[**InlineResponse20039**](InlineResponse20039.md)
+[**InlineResponse20040**](InlineResponse20040.md)
 
 ### Authorization
 
@@ -5329,9 +5417,9 @@ Name | Type | Description  | Notes
 # **getCollection**
 > Collection getCollection(applicationId, campaignId, collectionId)
 
-Get collection
+Get campaign-level collection
 
-Retrieve a given collection.
+Retrieve a given campaign-level collection.
 
 ### Example
 ```java
@@ -5363,7 +5451,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
     try {
       Collection result = apiInstance.getCollection(applicationId, campaignId, collectionId);
       System.out.println(result);
@@ -5384,7 +5472,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type
 
@@ -5407,11 +5495,11 @@ Name | Type | Description  | Notes
 
 <a name="getCollectionItems"></a>
 # **getCollectionItems**
-> InlineResponse20016 getCollectionItems(collectionId, pageSize, skip)
+> InlineResponse20017 getCollectionItems(collectionId, pageSize, skip)
 
 Get collection items
 
-Retrieve the items from the given collection.
+Retrieve items from a given collection.  You can retrieve items from both account-level collections and campaign-level collections using this endpoint. 
 
 ### Example
 ```java
@@ -5441,11 +5529,11 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     try {
-      InlineResponse20016 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
+      InlineResponse20017 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCollectionItems");
@@ -5462,13 +5550,13 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -5487,7 +5575,7 @@ Name | Type | Description  | Notes
 
 <a name="getCouponsWithoutTotalCount"></a>
 # **getCouponsWithoutTotalCount**
-> InlineResponse2008 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
+> InlineResponse2009 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch)
 
 List coupons
 
@@ -5527,8 +5615,8 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
@@ -5536,7 +5624,7 @@ public class Example {
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     try {
-      InlineResponse2008 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+      InlineResponse2009 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
@@ -5559,8 +5647,8 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
@@ -5570,7 +5658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -5622,8 +5710,8 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
     Integer pageSize = 1000; // Integer | The number of items in this response.
@@ -5646,8 +5734,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
@@ -5673,7 +5761,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerActivityReportsWithoutTotalCount"></a>
 # **getCustomerActivityReportsWithoutTotalCount**
-> InlineResponse20025 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
+> InlineResponse20026 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
 
 Get Activity Reports for Application Customers
 
@@ -5707,8 +5795,8 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp. This must be an RFC3339 timestamp string.
-    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp. This must be an RFC3339 timestamp string.
+    OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
@@ -5718,7 +5806,7 @@ public class Example {
     String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
     String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
     try {
-      InlineResponse20025 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+      InlineResponse20026 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
@@ -5735,8 +5823,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp. This must be an RFC3339 timestamp string. |
- **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp. This must be an RFC3339 timestamp string. |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.   **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
@@ -5748,7 +5836,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -5924,7 +6012,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomerProfiles"></a>
 # **getCustomerProfiles**
-> InlineResponse20024 getCustomerProfiles(pageSize, skip, sandbox)
+> InlineResponse20025 getCustomerProfiles(pageSize, skip, sandbox)
 
 List customer profiles
 
@@ -5962,7 +6050,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
     try {
-      InlineResponse20024 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
+      InlineResponse20025 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
@@ -5985,7 +6073,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -6003,7 +6091,7 @@ Name | Type | Description  | Notes
 
 <a name="getCustomersByAttributes"></a>
 # **getCustomersByAttributes**
-> InlineResponse20023 getCustomersByAttributes(body, pageSize, skip, sandbox)
+> InlineResponse20024 getCustomersByAttributes(body, pageSize, skip, sandbox)
 
 List customer profiles matching the given attributes
 
@@ -6042,7 +6130,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
     try {
-      InlineResponse20023 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
+      InlineResponse20024 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
@@ -6066,7 +6154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -6084,7 +6172,7 @@ Name | Type | Description  | Notes
 
 <a name="getEventTypes"></a>
 # **getEventTypes**
-> InlineResponse20037 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20038 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
 
 List event types
 
@@ -6124,7 +6212,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20037 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+      InlineResponse20038 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getEventTypes");
@@ -6149,7 +6237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20037**](InlineResponse20037.md)
+[**InlineResponse20038**](InlineResponse20038.md)
 
 ### Authorization
 
@@ -6167,7 +6255,7 @@ Name | Type | Description  | Notes
 
 <a name="getExports"></a>
 # **getExports**
-> InlineResponse20040 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20041 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get exports
 
@@ -6207,7 +6295,7 @@ public class Example {
     Integer campaignId = 56; // Integer | Filter by the campaign ID on which the limit counters are used.
     String entity = "entity_example"; // String | The name of the entity type that was exported.
     try {
-      InlineResponse20040 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+      InlineResponse20041 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getExports");
@@ -6232,7 +6320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20040**](InlineResponse20040.md)
+[**InlineResponse20041**](InlineResponse20041.md)
 
 ### Authorization
 
@@ -6330,7 +6418,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCardTransactionLogs"></a>
 # **getLoyaltyCardTransactionLogs**
-> InlineResponse20014 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId)
+> InlineResponse20015 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId)
 
 List card&#39;s transactions
 
@@ -6366,13 +6454,13 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
-    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
-    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
+    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**   - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     Integer pageSize = 1000; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
     try {
-      InlineResponse20014 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
+      InlineResponse20015 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyCardTransactionLogs");
@@ -6391,15 +6479,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
- **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
- **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
+ **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**   - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
+ **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20015**](InlineResponse20015.md)
 
 ### Authorization
 
@@ -6419,7 +6507,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyCards"></a>
 # **getLoyaltyCards**
-> InlineResponse20013 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId)
+> InlineResponse20014 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId)
 
 List loyalty cards
 
@@ -6460,7 +6548,7 @@ public class Example {
     String identifier = "identifier_example"; // String | Optional query parameter to search cards by identifier.
     Integer profileId = 56; // Integer | Filter by the profile ID.
     try {
-      InlineResponse20013 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId);
+      InlineResponse20014 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyCards");
@@ -6486,7 +6574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20013**](InlineResponse20013.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -6658,7 +6746,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyProgramTransactions"></a>
 # **getLoyaltyProgramTransactions**
-> InlineResponse20012 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
+> InlineResponse20013 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
 
 List loyalty program transactions
 
@@ -6695,12 +6783,12 @@ public class Example {
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     String loyaltyTransactionType = "loyaltyTransactionType_example"; // String | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file. 
     String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
-    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
-    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string. 
+    OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**   - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+    OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
     Integer pageSize = 50; // Integer | The number of items in this response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     try {
-      InlineResponse20012 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
+      InlineResponse20013 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyProgramTransactions");
@@ -6720,14 +6808,14 @@ Name | Type | Description  | Notes
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyTransactionType** | **String**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  | [optional] [enum: manual, session, import]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
- **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
- **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:** It must be an RFC3339 timestamp string.  | [optional]
+ **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**   - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
+ **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 50]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -6748,7 +6836,7 @@ Name | Type | Description  | Notes
 
 <a name="getLoyaltyPrograms"></a>
 # **getLoyaltyPrograms**
-> InlineResponse20011 getLoyaltyPrograms()
+> InlineResponse20012 getLoyaltyPrograms()
 
 List loyalty programs
 
@@ -6783,7 +6871,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     try {
-      InlineResponse20011 result = apiInstance.getLoyaltyPrograms();
+      InlineResponse20012 result = apiInstance.getLoyaltyPrograms();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
@@ -6801,7 +6889,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20011**](InlineResponse20011.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -6819,7 +6907,7 @@ This endpoint does not need any parameter.
 
 <a name="getLoyaltyStatistics"></a>
 # **getLoyaltyStatistics**
-> LoyaltyStatistics getLoyaltyStatistics(loyaltyProgramId)
+> LoyaltyDashboardData getLoyaltyStatistics(loyaltyProgramId)
 
 Get loyalty program statistics
 
@@ -6855,7 +6943,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     try {
-      LoyaltyStatistics result = apiInstance.getLoyaltyStatistics(loyaltyProgramId);
+      LoyaltyDashboardData result = apiInstance.getLoyaltyStatistics(loyaltyProgramId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getLoyaltyStatistics");
@@ -6876,159 +6964,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LoyaltyStatistics**](LoyaltyStatistics.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-<a name="getNotificationWebhook"></a>
-# **getNotificationWebhook**
-> NotificationWebhook getNotificationWebhook(applicationId, notificationWebhookId)
-
-Get notification about campaign-related changes
-
-Return the given [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications). 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: management_key
-    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-    management_key.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //management_key.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    Integer notificationWebhookId = 56; // Integer | The ID of the webhook. Get it with the appropriate _List notifications_ endpoint.
-    try {
-      NotificationWebhook result = apiInstance.getNotificationWebhook(applicationId, notificationWebhookId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#getNotificationWebhook");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **notificationWebhookId** | **Integer**| The ID of the webhook. Get it with the appropriate _List notifications_ endpoint. |
-
-### Return type
-
-[**NotificationWebhook**](NotificationWebhook.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-<a name="getNotificationWebhooks"></a>
-# **getNotificationWebhooks**
-> InlineResponse2005 getNotificationWebhooks(applicationId)
-
-List notifications about campaign-related changes
-
-List all [notifications about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications) for the given Application. 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: management_key
-    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-    management_key.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //management_key.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    try {
-      InlineResponse2005 result = apiInstance.getNotificationWebhooks(applicationId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#getNotificationWebhooks");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
-
-### Return type
-
-[**InlineResponse2005**](InlineResponse2005.md)
+[**LoyaltyDashboardData**](LoyaltyDashboardData.md)
 
 ### Authorization
 
@@ -7046,7 +6982,7 @@ Name | Type | Description  | Notes
 
 <a name="getReferralsWithoutTotalCount"></a>
 # **getReferralsWithoutTotalCount**
-> InlineResponse2009 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
+> InlineResponse20010 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
 List referrals
 
@@ -7086,13 +7022,13 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
     String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
     try {
-      InlineResponse2009 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+      InlineResponse20010 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
@@ -7115,15 +7051,15 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **advocate** | **String**| Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field | [optional]
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -7295,7 +7231,7 @@ Name | Type | Description  | Notes
 
 <a name="getRulesets"></a>
 # **getRulesets**
-> InlineResponse2006 getRulesets(applicationId, campaignId, pageSize, skip, sort)
+> InlineResponse2007 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
 List campaign rulesets
 
@@ -7335,7 +7271,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse2006 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+      InlineResponse2007 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getRulesets");
@@ -7360,7 +7296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -7375,6 +7311,84 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+<a name="getStore"></a>
+# **getStore**
+> Store getStore(applicationId, storeId)
+
+Get store
+
+Get store details for a specific store ID.
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+    String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
+    try {
+      Store result = apiInstance.getStore(applicationId, storeId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#getStore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
+
+### Return type
+
+[**Store**](Store.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not found |  -  |
 
 <a name="getUser"></a>
 # **getUser**
@@ -7453,7 +7467,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> InlineResponse20038 getUsers(pageSize, skip, sort)
+> InlineResponse20039 getUsers(pageSize, skip, sort)
 
 List users in account
 
@@ -7491,7 +7505,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     try {
-      InlineResponse20038 result = apiInstance.getUsers(pageSize, skip, sort);
+      InlineResponse20039 result = apiInstance.getUsers(pageSize, skip, sort);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getUsers");
@@ -7514,7 +7528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20038**](InlineResponse20038.md)
+[**InlineResponse20039**](InlineResponse20039.md)
 
 ### Authorization
 
@@ -7607,7 +7621,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookActivationLogs"></a>
 # **getWebhookActivationLogs**
-> InlineResponse20035 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20036 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List webhook activation log entries
 
@@ -7648,10 +7662,10 @@ public class Example {
     BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     try {
-      InlineResponse20035 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+      InlineResponse20036 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
@@ -7675,12 +7689,12 @@ Name | Type | Description  | Notes
  **webhookId** | **BigDecimal**| Filter results by Webhook. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
- **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
 
 ### Return type
 
-[**InlineResponse20035**](InlineResponse20035.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -7698,7 +7712,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhookLogs"></a>
 # **getWebhookLogs**
-> InlineResponse20036 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20037 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List webhook log entries
 
@@ -7740,10 +7754,10 @@ public class Example {
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
     BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
     String requestUuid = "requestUuid_example"; // String | Filter results by request UUID.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
     try {
-      InlineResponse20036 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+      InlineResponse20037 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhookLogs");
@@ -7768,12 +7782,12 @@ Name | Type | Description  | Notes
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
  **requestUuid** | **String**| Filter results by request UUID. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
 
 ### Return type
 
-[**InlineResponse20036**](InlineResponse20036.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -7791,7 +7805,7 @@ Name | Type | Description  | Notes
 
 <a name="getWebhooks"></a>
 # **getWebhooks**
-> InlineResponse20034 getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title)
+> InlineResponse20035 getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title)
 
 List webhooks
 
@@ -7834,7 +7848,7 @@ public class Example {
     Integer outgoingIntegrationsTypeId = 56; // Integer | Filter results by outgoing integration type ID.
     String title = "title_example"; // String | Filter results performing case-insensitive matching against the webhook title.
     try {
-      InlineResponse20034 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
+      InlineResponse20035 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#getWebhooks");
@@ -7862,7 +7876,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20034**](InlineResponse20034.md)
+[**InlineResponse20035**](InlineResponse20035.md)
 
 ### Authorization
 
@@ -7882,7 +7896,7 @@ Name | Type | Description  | Notes
 # **importAccountCollection**
 > ModelImport importAccountCollection(collectionId, upFile)
 
-Import data in existing account-level collection
+Import data into existing account-level collection
 
 Upload a CSV file containing the collection of string values that should be attached as payload for collection. The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60; item Addidas Nike Asics &#x60;&#x60;&#x60;  **Note:** Before sending a request to this endpoint, ensure the data in the CSV to import is different from the data currently stored in the collection. 
 
@@ -7914,7 +7928,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     String upFile = "upFile_example"; // String | The file with the information about the data that should be imported.
     try {
       ModelImport result = apiInstance.importAccountCollection(collectionId, upFile);
@@ -7934,7 +7948,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
  **upFile** | **String**| The file with the information about the data that should be imported. | [optional]
 
 ### Return type
@@ -8041,7 +8055,7 @@ Name | Type | Description  | Notes
 # **importCollection**
 > ModelImport importCollection(applicationId, campaignId, collectionId, upFile)
 
-Import data in existing collection
+Import data into existing campaign-level collection
 
 Upload a CSV file containing the collection of string values that should be attached as payload for collection. The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60; item Addidas Nike Asics &#x60;&#x60;&#x60;  **Note:** Before sending a request to this endpoint, ensure the data in the CSV to import is different from the data currently stored in the collection. 
 
@@ -8075,7 +8089,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
     String upFile = "upFile_example"; // String | The file with the information about the data that should be imported.
     try {
       ModelImport result = apiInstance.importCollection(applicationId, campaignId, collectionId, upFile);
@@ -8097,7 +8111,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
  **upFile** | **String**| The file with the information about the data that should be imported. | [optional]
 
 ### Return type
@@ -8125,7 +8139,7 @@ Name | Type | Description  | Notes
 
 Import coupons
 
-Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - &#x60;value&#x60; (required): The coupon code. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;recipientintegrationid&#x60;: The integration ID of the customer who receives the coupon.   Only the customer with this integration ID can redeem the corresponding coupon code.   Learn about [coupon reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code). - &#x60;limitval&#x60;: The maximum number of redemptions of this code. For unlimited redemptions, use &#x60;0&#x60;. Defaults to &#x60;1&#x60; when not provided. - &#x60;discountlimit&#x60;: The total discount value that the code can give. This is typically used to represent a gift card value. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.   For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated to the coupon entity, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  &#x60;&#x60;&#x60;text \&quot;value\&quot;,\&quot;expirydate\&quot;,\&quot;startdate\&quot;,\&quot;recipientintegrationid\&quot;,\&quot;limitval\&quot;,\&quot;attributes\&quot;,\&quot;discountlimit\&quot; COUP1,2018-07-01T04:00:00Z,2018-05-01T04:00:00Z,cust123,1,\&quot;{\&quot;\&quot;Category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;,2.4 &#x60;&#x60;&#x60;  Once imported, you can find the &#x60;batchId&#x60; in the Campaign Manager or by using [List coupons](#tag/Coupons/operation/getCouponsWithoutTotalCount). 
+Upload a CSV file containing the coupons that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - &#x60;value&#x60; (required): The coupon code. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;recipientintegrationid&#x60;: The integration ID of the customer who receives the coupon.   Only the customer with this integration ID can redeem the corresponding coupon code.   Learn about [coupon reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code). - &#x60;limitval&#x60;: The maximum number of redemptions of this code. For unlimited redemptions, use &#x60;0&#x60;. Defaults to &#x60;1&#x60; when not provided. - &#x60;discountlimit&#x60;: The total discount value that the code can give. This is typically used to represent a gift card value. - &#x60;attributes&#x60;: A JSON object describing _custom_ coupon attribute names and their values, enclosed with double quotation marks.    For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated with the coupon entity, the object in the CSV file, when opened in a text editor, must be: &#x60;\&quot;{\&quot;category\&quot;: \&quot;10_off\&quot;}\&quot;&#x60;.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  &#x60;&#x60;&#x60;text \&quot;value\&quot;,\&quot;expirydate\&quot;,\&quot;startdate\&quot;,\&quot;recipientintegrationid\&quot;,\&quot;limitval\&quot;,\&quot;attributes\&quot;,\&quot;discountlimit\&quot; COUP1,2018-07-01T04:00:00Z,2018-05-01T04:00:00Z,cust123,1,\&quot;{\&quot;\&quot;Category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;,2.4 &#x60;&#x60;&#x60;  Once imported, you can find the &#x60;batchId&#x60; in the Campaign Manager or by using [List coupons](#tag/Coupons/operation/getCouponsWithoutTotalCount). 
 
 ### Example
 ```java
@@ -8440,7 +8454,7 @@ Name | Type | Description  | Notes
 
 Import giveaway codes into a giveaway pool
 
-Upload a CSV file containing the giveaway codes that should be created. Send the file as multipart data.  The CSV file contains the following columns: - &#x60;code&#x60; (required): the code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  the start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: the last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A json object describing _custom_ giveaway attribute names and their values. Double the double-quotes in the object.   For example, if you [created a custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;provider&#x60; associated to the giveaway entity, set it with &#x60;\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;myPartnerCompany\&quot;\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,enddate,attributes GIVEAWAY1,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY2,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY3,2021-01-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Aliexpress\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
+Upload a CSV file containing the giveaway codes that should be created. Send the file as multipart data.  The CSV file contains the following columns: - &#x60;code&#x60; (required): The code of your giveaway, for instance, a gift card redemption code. - &#x60;startdate&#x60;:  The start date in RFC3339 of the code redemption period. - &#x60;enddate&#x60;: The last date in RFC3339 of the code redemption period. - &#x60;attributes&#x60;: A JSON object describing _custom_ giveaway attribute names and their values, enclosed with double quotation marks.    For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;provider&#x60; associated with the giveaway entity, the object in the CSV file, when opened in a text editor, must be: &#x60;\&quot;{\&quot;provider\&quot;: \&quot;myPartnerCompany\&quot;}\&quot;&#x60;.  The &#x60;startdate&#x60; and &#x60;enddate&#x60; have nothing to do with the _validity_ of the codes. They are only used by the Rule Engine to award the codes or not. You can use the time zone setting of your choice. The values are converted to UTC internally by Talon.One.  **Note:**  - We recommend limiting your file size to 500MB. - You can import the same code multiple times. Duplicate codes are treated and distributed to customers as unique codes.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,enddate,attributes GIVEAWAY1,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY2,2020-11-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Amazon\&quot;\&quot;}\&quot; GIVEAWAY3,2021-01-10T23:00:00Z,2022-11-11T23:00:00Z,\&quot;{\&quot;\&quot;provider\&quot;\&quot;: \&quot;\&quot;Aliexpress\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
 
 ### Example
 ```java
@@ -8517,7 +8531,7 @@ Name | Type | Description  | Notes
 
 Import referrals
 
-Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - &#x60;code&#x60; (required): The referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. Double the double-quotes in the object.    For example, if you [created a custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated to the referral entity, set it with &#x60;\&quot;{\&quot;\&quot;category\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot;&#x60;.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,expirydate,advocateprofileintegrationid,limitval,attributes REFERRAL_CODE1,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid_4,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot; REFERRAL_CODE2,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid1,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;20_off\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
+Upload a CSV file containing the referrals that should be created. The file should be sent as multipart data.  The CSV file contains the following columns:  - &#x60;code&#x60; (required): The referral code. - &#x60;advocateprofileintegrationid&#x60; (required): The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A JSON object describing _custom_ referral attribute names and their values, enclosed with double quotation marks.    For example, if you created a [custom attribute](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes)   called &#x60;category&#x60; associated with the referral entity, the object in the CSV file, when opened in a text editor, must be: &#x60;\&quot;{\&quot;category\&quot;: \&quot;10_off\&quot;}\&quot;&#x60;.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Important:** When you import a CSV file with referrals, a [customer profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles) is **not** automatically created for each &#x60;advocateprofileintegrationid&#x60; column value. Use the [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint or the [Update multiple customer profiles](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfilesV2) endpoint to create the customer profiles.  **Note:** We recommend limiting your file size to 500MB.  **Example:**  &#x60;&#x60;&#x60;text code,startdate,expirydate,advocateprofileintegrationid,limitval,attributes REFERRAL_CODE1,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid_4,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;10_off\&quot;\&quot;}\&quot; REFERRAL_CODE2,2020-11-10T23:00:00Z,2021-11-11T23:00:00Z,integid1,1,\&quot;{\&quot;\&quot;my_attribute\&quot;\&quot;: \&quot;\&quot;20_off\&quot;\&quot;}\&quot; &#x60;&#x60;&#x60; 
 
 ### Example
 ```java
@@ -8592,11 +8606,11 @@ Name | Type | Description  | Notes
 
 <a name="listAccountCollections"></a>
 # **listAccountCollections**
-> InlineResponse20015 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20016 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in account
 
-List collections in account.
+List account-level collections in the account.
 
 ### Example
 ```java
@@ -8630,9 +8644,9 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
-    String name = "name_example"; // String | Filter by the name of the Collection.
+    String name = "name_example"; // String | Filter by collection name.
     try {
-      InlineResponse20015 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20016 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listAccountCollections");
@@ -8653,11 +8667,11 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
- **name** | **String**| Filter by the name of the Collection. | [optional]
+ **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type
 
-[**InlineResponse20015**](InlineResponse20015.md)
+[**InlineResponse20016**](InlineResponse20016.md)
 
 ### Authorization
 
@@ -8678,7 +8692,7 @@ Name | Type | Description  | Notes
 
 <a name="listCatalogItems"></a>
 # **listCatalogItems**
-> InlineResponse20032 listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku)
+> InlineResponse20033 listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku)
 
 List items in a catalog
 
@@ -8718,7 +8732,7 @@ public class Example {
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
     String sku = "sku_example"; // String | The SKU of the item.
     try {
-      InlineResponse20032 result = apiInstance.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku);
+      InlineResponse20033 result = apiInstance.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listCatalogItems");
@@ -8743,7 +8757,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20032**](InlineResponse20032.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -8761,11 +8775,11 @@ Name | Type | Description  | Notes
 
 <a name="listCollections"></a>
 # **listCollections**
-> InlineResponse20017 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20018 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
 
-List collections
+List collections in campaign
 
-List collections in the campaign.
+List collections in a given campaign.
 
 ### Example
 ```java
@@ -8801,9 +8815,9 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
-    String name = "name_example"; // String | Filter by the name of the Collection.
+    String name = "name_example"; // String | Filter by collection name.
     try {
-      InlineResponse20017 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20018 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listCollections");
@@ -8826,11 +8840,11 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
- **name** | **String**| Filter by the name of the Collection. | [optional]
+ **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20018**](InlineResponse20018.md)
 
 ### Authorization
 
@@ -8849,11 +8863,11 @@ Name | Type | Description  | Notes
 
 <a name="listCollectionsInApplication"></a>
 # **listCollectionsInApplication**
-> InlineResponse20017 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20018 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
 
-List collections in application
+List collections in Application
 
-List collections from all campaigns in the Application.
+List campaign-level collections from all campaigns in a given Application.
 
 ### Example
 ```java
@@ -8888,9 +8902,9 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
-    String name = "name_example"; // String | Filter by the name of the Collection.
+    String name = "name_example"; // String | Filter by collection name.
     try {
-      InlineResponse20017 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
+      InlineResponse20018 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#listCollectionsInApplication");
@@ -8912,11 +8926,11 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
- **name** | **String**| Filter by the name of the Collection. | [optional]
+ **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20018**](InlineResponse20018.md)
 
 ### Authorization
 
@@ -8932,6 +8946,95 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not found |  -  |
+
+<a name="listStores"></a>
+# **listStores**
+> InlineResponse20043 listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId)
+
+List stores
+
+List all stores for a specific Application.
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+    Integer pageSize = 1000; // Integer | The number of items in this response.
+    Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+    String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+    Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    String name = "name_example"; // String | The name of the store.
+    String integrationId = "integrationId_example"; // String | The integration ID of the store.
+    try {
+      InlineResponse20043 result = apiInstance.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#listStores");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in this response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **name** | **String**| The name of the store. | [optional]
+ **integrationId** | **String**| The integration ID of the store. | [optional]
+
+### Return type
+
+[**InlineResponse20043**](InlineResponse20043.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 
 <a name="notificationActivation"></a>
 # **notificationActivation**
@@ -9407,11 +9510,11 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedApplicationWideWithoutTotalCount"></a>
 # **searchCouponsAdvancedApplicationWideWithoutTotalCount**
-> InlineResponse2008 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse2009 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 List coupons that match the given attributes (without total count)
 
-List the coupons whose attributes match the query criteria in all **active** campaigns of the given Application.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request.  **Note:** The total count is not included in the response. 
+List the coupons whose attributes match the query criteria in all the campaigns of the given Application.  The match is successful if all the attributes of the request are found in a coupon, even if the coupon has more attributes that are not present on the request.  **Note:** The total count is not included in the response. 
 
 ### Example
 ```java
@@ -9447,8 +9550,8 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
@@ -9457,7 +9560,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. - `draft`: Campaigns that are drafts. 
     try {
-      InlineResponse2008 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+      InlineResponse2009 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -9480,8 +9583,8 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
@@ -9492,7 +9595,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -9510,7 +9613,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCouponsAdvancedWithoutTotalCount"></a>
 # **searchCouponsAdvancedWithoutTotalCount**
-> InlineResponse2008 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse2009 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 List coupons that match the given attributes in campaign (without total count)
 
@@ -9551,8 +9654,8 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
-    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
-    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally.
+    OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+    OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
@@ -9560,7 +9663,7 @@ public class Example {
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
-      InlineResponse2008 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+      InlineResponse2009 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -9584,8 +9687,8 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
- **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
- **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any timezone. Talon.One will convert to UTC internally. | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
@@ -9595,7 +9698,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -9698,7 +9801,7 @@ null (empty response body)
 
 Update account-level collection
 
-Edit the description of the account-level collection and enable or disable the collection in the specified Applications.
+Edit the description of a given account-level collection and enable or disable the collection in the specified Applications.
 
 ### Example
 ```java
@@ -9728,7 +9831,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
     UpdateCollection body = new UpdateCollection(); // UpdateCollection | body
     try {
       Collection result = apiInstance.updateAccountCollection(collectionId, body);
@@ -9748,7 +9851,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
  **body** | [**UpdateCollection**](UpdateCollection.md)| body |
 
 ### Return type
@@ -9770,7 +9873,7 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
-**409** | Conflict. A Collection with this name already exists. |  -  |
+**409** | Conflict. A collection with this name already exists. |  -  |
 
 <a name="updateAdditionalCost"></a>
 # **updateAdditionalCost**
@@ -10009,9 +10112,9 @@ Name | Type | Description  | Notes
 # **updateCollection**
 > Collection updateCollection(applicationId, campaignId, collectionId, body)
 
-Update collection description
+Update campaign-level collection&#39;s description
 
-Edit the description of the collection.
+Edit the description of a given campaign-level collection.
 
 ### Example
 ```java
@@ -10043,7 +10146,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
     Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint.
+    Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
     UpdateCampaignCollection body = new UpdateCampaignCollection(); // UpdateCampaignCollection | body
     try {
       Collection result = apiInstance.updateCollection(applicationId, campaignId, collectionId, body);
@@ -10065,7 +10168,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collection in account](#operation/listCollectionsInApplication) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
  **body** | [**UpdateCampaignCollection**](UpdateCampaignCollection.md)| body |
 
 ### Return type
@@ -10328,85 +10431,6 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **404** | Not found |  -  |
 
-<a name="updateNotificationWebhook"></a>
-# **updateNotificationWebhook**
-> NotificationWebhook updateNotificationWebhook(applicationId, notificationWebhookId, body)
-
-Update notification about campaign-related changes
-
-Update the given [notification about campaign-related changes](https://docs.talon.one/docs/product/applications/outbound-notifications).  **Tip:** You can review the payload you will receive in the [specs](https://docs.talon.one/outbound-notifications#tag/Campaign-notifications/paths/campaign_edited/post). 
-
-### Example
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: management_key
-    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-    management_key.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //management_key.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: manager_auth
-    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-    manager_auth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //manager_auth.setApiKeyPrefix("Token");
-
-    ManagementApi apiInstance = new ManagementApi(defaultClient);
-    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    Integer notificationWebhookId = 56; // Integer | The ID of the webhook. Get it with the appropriate _List notifications_ endpoint.
-    NewNotificationWebhook body = new NewNotificationWebhook(); // NewNotificationWebhook | body
-    try {
-      NotificationWebhook result = apiInstance.updateNotificationWebhook(applicationId, notificationWebhookId, body);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ManagementApi#updateNotificationWebhook");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **notificationWebhookId** | **Integer**| The ID of the webhook. Get it with the appropriate _List notifications_ endpoint. |
- **body** | [**NewNotificationWebhook**](NewNotificationWebhook.md)| body |
-
-### Return type
-
-[**NotificationWebhook**](NotificationWebhook.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
 <a name="updateReferral"></a>
 # **updateReferral**
 > Referral updateReferral(applicationId, campaignId, referralId, body)
@@ -10487,4 +10511,85 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+<a name="updateStore"></a>
+# **updateStore**
+> Store updateStore(applicationId, storeId, body)
+
+Update store
+
+Update store details for a specific store ID.
+
+### Example
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: management_key
+    ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+    management_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //management_key.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: manager_auth
+    ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+    manager_auth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //manager_auth.setApiKeyPrefix("Token");
+
+    ManagementApi apiInstance = new ManagementApi(defaultClient);
+    Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+    String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
+    NewStore body = new NewStore(); // NewStore | body
+    try {
+      Store result = apiInstance.updateStore(applicationId, storeId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ManagementApi#updateStore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
+ **body** | [**NewStore**](NewStore.md)| body |
+
+### Return type
+
+[**Store**](Store.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad request |  -  |
+**404** | Not found |  -  |
 

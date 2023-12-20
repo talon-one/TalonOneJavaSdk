@@ -320,11 +320,11 @@ public class AddLoyaltyPointsEffectProps {
   }
 
    /**
-   * The sub position is triggered when application flattening is enabled. It indicates to which item the loyalty points addition applies, for cart items with &#x60;quantity&#x60; &gt; 1. 
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates to which item the loyalty points addition is applied. 
    * @return cartItemSubPosition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sub position is triggered when application flattening is enabled. It indicates to which item the loyalty points addition applies, for cart items with `quantity` > 1. ")
+  @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates to which item the loyalty points addition is applied. ")
 
   public BigDecimal getCartItemSubPosition() {
     return cartItemSubPosition;

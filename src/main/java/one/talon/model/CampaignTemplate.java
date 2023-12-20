@@ -219,6 +219,57 @@ public class CampaignTemplate {
   @SerializedName(SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID)
   private Integer defaultCampaignGroupId;
 
+  /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   */
+  @JsonAdapter(CampaignTypeEnum.Adapter.class)
+  public enum CampaignTypeEnum {
+    CARTITEM("cartItem"),
+    
+    ADVANCED("advanced");
+
+    private String value;
+
+    CampaignTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CampaignTypeEnum fromValue(String value) {
+      for (CampaignTypeEnum b : CampaignTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.ADVANCED;
+
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private OffsetDateTime updated;
@@ -728,6 +779,28 @@ public class CampaignTemplate {
   }
 
 
+  public CampaignTemplate campaignType(CampaignTypeEnum campaignType) {
+    
+    this.campaignType = campaignType;
+    return this;
+  }
+
+   /**
+   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   * @return campaignType
+  **/
+  @ApiModelProperty(example = "advanced", required = true, value = "The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items. ")
+
+  public CampaignTypeEnum getCampaignType() {
+    return campaignType;
+  }
+
+
+  public void setCampaignType(CampaignTypeEnum campaignType) {
+    this.campaignType = campaignType;
+  }
+
+
   public CampaignTemplate updated(OffsetDateTime updated) {
     
     this.updated = updated;
@@ -830,6 +903,7 @@ public class CampaignTemplate {
         Objects.equals(this.applicationsIds, campaignTemplate.applicationsIds) &&
         Objects.equals(this.campaignCollections, campaignTemplate.campaignCollections) &&
         Objects.equals(this.defaultCampaignGroupId, campaignTemplate.defaultCampaignGroupId) &&
+        Objects.equals(this.campaignType, campaignTemplate.campaignType) &&
         Objects.equals(this.updated, campaignTemplate.updated) &&
         Objects.equals(this.updatedBy, campaignTemplate.updatedBy) &&
         Objects.equals(this.validApplicationIds, campaignTemplate.validApplicationIds);
@@ -837,7 +911,7 @@ public class CampaignTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, updated, updatedBy, validApplicationIds);
+    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds);
   }
 
 
@@ -865,6 +939,7 @@ public class CampaignTemplate {
     sb.append("    applicationsIds: ").append(toIndentedString(applicationsIds)).append("\n");
     sb.append("    campaignCollections: ").append(toIndentedString(campaignCollections)).append("\n");
     sb.append("    defaultCampaignGroupId: ").append(toIndentedString(defaultCampaignGroupId)).append("\n");
+    sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    validApplicationIds: ").append(toIndentedString(validApplicationIds)).append("\n");

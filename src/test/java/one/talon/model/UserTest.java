@@ -155,4 +155,20 @@ public class UserTest {
         // TODO: test isAdmin
     }
 
+    /**
+     * Test the property 'lastSignedIn'
+     */
+    @Test
+    public void lastSignedInTest() {
+        // TODO: test lastSignedIn
+    }
+
+    /**
+     * Test the property 'lastAccessed'
+     */
+    @Test
+    public void lastAccessedTest() {
+        // TODO: test lastAccessed
+    }
+
 }

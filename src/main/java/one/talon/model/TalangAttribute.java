@@ -69,7 +69,9 @@ public class TalangAttribute {
     
     REFERRAL("Referral"),
     
-    SESSION("Session");
+    SESSION("Session"),
+    
+    STORE("Store");
 
     private String value;
 

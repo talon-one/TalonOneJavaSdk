@@ -60,7 +60,9 @@ public class ApplicationAPIKey {
     
     CUSTOMER_DATA("customer_data"),
     
-    SALESFORCE("salesforce");
+    SALESFORCE("salesforce"),
+    
+    EMARSYS("emarsys");
 
     private String value;
 
