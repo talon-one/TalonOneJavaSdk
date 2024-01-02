@@ -97,7 +97,7 @@ import one.talon.api.IntegrationApi;
 import one.talon.api.ManagementApi;
 import one.talon.model.*;
 
-import java.util.*
+import java.util.*;
 
 public class TalonApiTest {
     public static void main(String[] args) {
