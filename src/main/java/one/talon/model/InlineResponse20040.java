@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Export;
+import one.talon.model.Change;
 
 /**
  * InlineResponse20040
@@ -36,9 +36,13 @@ public class InlineResponse20040 {
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Export> data = new ArrayList<Export>();
+  private List<Change> data = new ArrayList<Change>();
 
 
   public InlineResponse20040 totalResultSize(Integer totalResultSize) {
@@ -51,7 +55,8 @@ public class InlineResponse20040 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @ApiModelProperty(example = "1", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
 
   public Integer getTotalResultSize() {
     return totalResultSize;
@@ -63,13 +68,36 @@ public class InlineResponse20040 {
   }
 
 
-  public InlineResponse20040 data(List<Export> data) {
+  public InlineResponse20040 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
+
+
+  public InlineResponse20040 data(List<Change> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20040 addDataItem(Export dataItem) {
+  public InlineResponse20040 addDataItem(Change dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +108,12 @@ public class InlineResponse20040 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Export> getData() {
+  public List<Change> getData() {
     return data;
   }
 
 
-  public void setData(List<Export> data) {
+  public void setData(List<Change> data) {
     this.data = data;
   }
 
@@ -100,12 +128,13 @@ public class InlineResponse20040 {
     }
     InlineResponse20040 inlineResponse20040 = (InlineResponse20040) o;
     return Objects.equals(this.totalResultSize, inlineResponse20040.totalResultSize) &&
+        Objects.equals(this.hasMore, inlineResponse20040.hasMore) &&
         Objects.equals(this.data, inlineResponse20040.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(totalResultSize, hasMore, data);
   }
 
 
@@ -114,6 +143,7 @@ public class InlineResponse20040 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20040 {\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

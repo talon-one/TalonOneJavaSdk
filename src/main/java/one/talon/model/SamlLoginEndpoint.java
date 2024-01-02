@@ -29,6 +29,10 @@ import java.io.IOException;
  */
 
 public class SamlLoginEndpoint {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private Integer id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -36,6 +40,28 @@ public class SamlLoginEndpoint {
   public static final String SERIALIZED_NAME_LOGIN_U_R_L = "loginURL";
   @SerializedName(SERIALIZED_NAME_LOGIN_U_R_L)
   private String loginURL;
+
+
+  public SamlLoginEndpoint id(Integer id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * ID of the SAML login endpoint.
+   * @return id
+  **/
+  @ApiModelProperty(example = "2", required = true, value = "ID of the SAML login endpoint.")
+
+  public Integer getId() {
+    return id;
+  }
+
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
 
   public SamlLoginEndpoint name(String name) {
@@ -91,13 +117,14 @@ public class SamlLoginEndpoint {
       return false;
     }
     SamlLoginEndpoint samlLoginEndpoint = (SamlLoginEndpoint) o;
-    return Objects.equals(this.name, samlLoginEndpoint.name) &&
+    return Objects.equals(this.id, samlLoginEndpoint.id) &&
+        Objects.equals(this.name, samlLoginEndpoint.name) &&
         Objects.equals(this.loginURL, samlLoginEndpoint.loginURL);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, loginURL);
+    return Objects.hash(id, name, loginURL);
   }
 
 
@@ -105,6 +132,7 @@ public class SamlLoginEndpoint {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SamlLoginEndpoint {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    loginURL: ").append(toIndentedString(loginURL)).append("\n");
     sb.append("}");

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CampaignBudget;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
@@ -180,6 +181,38 @@ public class CampaignTest {
     @Test
     public void campaignGroupsTest() {
         // TODO: test campaignGroups
+    }
+
+    /**
+     * Test the property 'evaluationGroupId'
+     */
+    @Test
+    public void evaluationGroupIdTest() {
+        // TODO: test evaluationGroupId
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'linkedStoreIds'
+     */
+    @Test
+    public void linkedStoreIdsTest() {
+        // TODO: test linkedStoreIds
+    }
+
+    /**
+     * Test the property 'budgets'
+     */
+    @Test
+    public void budgetsTest() {
+        // TODO: test budgets
     }
 
     /**

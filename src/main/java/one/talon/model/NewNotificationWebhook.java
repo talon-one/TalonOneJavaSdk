@@ -100,11 +100,11 @@ public class NewNotificationWebhook {
   }
 
    /**
-   * Indicates whether sending the notification is enabled.
+   * Indicates whether the notification is activated.
    * @return enabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "Indicates whether sending the notification is enabled.")
+  @ApiModelProperty(example = "true", value = "Indicates whether the notification is activated.")
 
   public Boolean getEnabled() {
     return enabled;

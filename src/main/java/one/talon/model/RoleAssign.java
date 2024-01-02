@@ -53,10 +53,10 @@ public class RoleAssign {
   }
 
    /**
-   * An array of userIDs.
+   * An array of user IDs.
    * @return users
   **/
-  @ApiModelProperty(example = "[48, 562, 475, 18]", required = true, value = "An array of userIDs.")
+  @ApiModelProperty(example = "[48, 562, 475, 18]", required = true, value = "An array of user IDs.")
 
   public List<Integer> getUsers() {
     return users;
@@ -80,10 +80,10 @@ public class RoleAssign {
   }
 
    /**
-   * An array of roleIDs.
+   * An array of role IDs.
    * @return roles
   **/
-  @ApiModelProperty(example = "[128, 147]", required = true, value = "An array of roleIDs.")
+  @ApiModelProperty(example = "[128, 147]", required = true, value = "An array of role IDs.")
 
   public List<Integer> getRoles() {
     return roles;

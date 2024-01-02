@@ -174,4 +174,12 @@ public class UpdateCampaignTemplateTest {
         // TODO: test defaultCampaignGroupId
     }
 
+    /**
+     * Test the property 'campaignType'
+     */
+    @Test
+    public void campaignTypeTest() {
+        // TODO: test campaignType
+    }
+
 }

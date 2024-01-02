@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * AccountAnalytics
@@ -104,6 +105,10 @@ public class AccountAnalytics {
   public static final String SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS = "liveLoyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS)
   private Integer liveLoyaltyPrograms;
+
+  public static final String SERIALIZED_NAME_LAST_UPDATED_AT = "lastUpdatedAt";
+  @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
+  private OffsetDateTime lastUpdatedAt;
 
 
   public AccountAnalytics applications(Integer applications) {
@@ -524,6 +529,28 @@ public class AccountAnalytics {
   }
 
 
+  public AccountAnalytics lastUpdatedAt(OffsetDateTime lastUpdatedAt) {
+    
+    this.lastUpdatedAt = lastUpdatedAt;
+    return this;
+  }
+
+   /**
+   * The point in time when the analytics numbers were updated last.
+   * @return lastUpdatedAt
+  **/
+  @ApiModelProperty(required = true, value = "The point in time when the analytics numbers were updated last.")
+
+  public OffsetDateTime getLastUpdatedAt() {
+    return lastUpdatedAt;
+  }
+
+
+  public void setLastUpdatedAt(OffsetDateTime lastUpdatedAt) {
+    this.lastUpdatedAt = lastUpdatedAt;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -551,12 +578,13 @@ public class AccountAnalytics {
         Objects.equals(this.customAttributes, accountAnalytics.customAttributes) &&
         Objects.equals(this.webhooks, accountAnalytics.webhooks) &&
         Objects.equals(this.loyaltyPrograms, accountAnalytics.loyaltyPrograms) &&
-        Objects.equals(this.liveLoyaltyPrograms, accountAnalytics.liveLoyaltyPrograms);
+        Objects.equals(this.liveLoyaltyPrograms, accountAnalytics.liveLoyaltyPrograms) &&
+        Objects.equals(this.lastUpdatedAt, accountAnalytics.lastUpdatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applications, liveApplications, sandboxApplications, campaigns, activeCampaigns, liveActiveCampaigns, coupons, activeCoupons, expiredCoupons, referralCodes, activeReferralCodes, expiredReferralCodes, activeRules, users, roles, customAttributes, webhooks, loyaltyPrograms, liveLoyaltyPrograms);
+    return Objects.hash(applications, liveApplications, sandboxApplications, campaigns, activeCampaigns, liveActiveCampaigns, coupons, activeCoupons, expiredCoupons, referralCodes, activeReferralCodes, expiredReferralCodes, activeRules, users, roles, customAttributes, webhooks, loyaltyPrograms, liveLoyaltyPrograms, lastUpdatedAt);
   }
 
 
@@ -583,6 +611,7 @@ public class AccountAnalytics {
     sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
     sb.append("    liveLoyaltyPrograms: ").append(toIndentedString(liveLoyaltyPrograms)).append("\n");
+    sb.append("    lastUpdatedAt: ").append(toIndentedString(lastUpdatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -107,4 +107,12 @@ public class CampaignSetBranchNodeTest {
         // TODO: test evaluationMode
     }
 
+    /**
+     * Test the property 'evaluationScope'
+     */
+    @Test
+    public void evaluationScopeTest() {
+        // TODO: test evaluationScope
+    }
+
 }

@@ -33,6 +33,10 @@ public class BaseNotificationEntity {
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled = true;
+
 
   public BaseNotificationEntity policy(Object policy) {
     
@@ -56,6 +60,29 @@ public class BaseNotificationEntity {
   }
 
 
+  public BaseNotificationEntity enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether the notification is activated.
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates whether the notification is activated.")
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +92,13 @@ public class BaseNotificationEntity {
       return false;
     }
     BaseNotificationEntity baseNotificationEntity = (BaseNotificationEntity) o;
-    return Objects.equals(this.policy, baseNotificationEntity.policy);
+    return Objects.equals(this.policy, baseNotificationEntity.policy) &&
+        Objects.equals(this.enabled, baseNotificationEntity.enabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(policy);
+    return Objects.hash(policy, enabled);
   }
 
 
@@ -79,6 +107,7 @@ public class BaseNotificationEntity {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseNotificationEntity {\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

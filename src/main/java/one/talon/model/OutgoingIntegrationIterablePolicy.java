@@ -45,11 +45,10 @@ public class OutgoingIntegrationIterablePolicy {
   }
 
    /**
-   * The base URL of Iterable&#39;s API. It is always &#x60;https://api.iterable.com&#x60;.
+   * The base URL that is based on the region key of your Iterable account.
    * @return baseUrl
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://api.iterable.com", value = "The base URL of Iterable's API. It is always `https://api.iterable.com`.")
+  @ApiModelProperty(example = "https://api.iterable.com", required = true, value = "The base URL that is based on the region key of your Iterable account.")
 
   public String getBaseUrl() {
     return baseUrl;

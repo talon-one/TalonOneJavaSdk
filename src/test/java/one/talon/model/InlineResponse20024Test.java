@@ -52,6 +52,14 @@ public class InlineResponse20024Test {
     }
 
     /**
+     * Test the property 'totalResultSize'
+     */
+    @Test
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
+    }
+
+    /**
      * Test the property 'data'
      */
     @Test

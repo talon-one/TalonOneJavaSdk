@@ -452,10 +452,10 @@ public class CouponCreationJob {
   }
 
    /**
-   * The current status of this request. Possible values: - &#x60;pending&#x60; - &#x60;completed&#x60; - &#x60;failed&#x60; - &#x60;coupon pattern full&#x60; 
+   * The current status of this request. Possible values: - &#x60;pending verification&#x60; - &#x60;pending&#x60; - &#x60;completed&#x60; - &#x60;failed&#x60; - &#x60;coupon pattern full&#x60; 
    * @return status
   **/
-  @ApiModelProperty(example = "pending", required = true, value = "The current status of this request. Possible values: - `pending` - `completed` - `failed` - `coupon pattern full` ")
+  @ApiModelProperty(example = "pending", required = true, value = "The current status of this request. Possible values: - `pending verification` - `pending` - `completed` - `failed` - `coupon pattern full` ")
 
   public String getStatus() {
     return status;

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
+**hasMore** | **Boolean** |  | 
 **data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
 
 

@@ -78,6 +78,22 @@ public class ApplicationEventTest {
     }
 
     /**
+     * Test the property 'storeId'
+     */
+    @Test
+    public void storeIdTest() {
+        // TODO: test storeId
+    }
+
+    /**
+     * Test the property 'storeIntegrationId'
+     */
+    @Test
+    public void storeIntegrationIdTest() {
+        // TODO: test storeIntegrationId
+    }
+
+    /**
      * Test the property 'sessionId'
      */
     @Test

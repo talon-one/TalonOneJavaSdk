@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | **List&lt;Integer&gt;** | An array of userIDs. | 
-**roles** | **List&lt;Integer&gt;** | An array of roleIDs. | 
+**users** | **List&lt;Integer&gt;** | An array of user IDs. | 
+**roles** | **List&lt;Integer&gt;** | An array of role IDs. | 
 
 
 

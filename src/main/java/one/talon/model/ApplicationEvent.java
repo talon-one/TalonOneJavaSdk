@@ -51,6 +51,14 @@ public class ApplicationEvent {
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
   private Integer profileId;
 
+  public static final String SERIALIZED_NAME_STORE_ID = "storeId";
+  @SerializedName(SERIALIZED_NAME_STORE_ID)
+  private Integer storeId;
+
+  public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
+  @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
+  private String storeIntegrationId;
+
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
   private Integer sessionId;
@@ -158,6 +166,52 @@ public class ApplicationEvent {
 
   public void setProfileId(Integer profileId) {
     this.profileId = profileId;
+  }
+
+
+  public ApplicationEvent storeId(Integer storeId) {
+    
+    this.storeId = storeId;
+    return this;
+  }
+
+   /**
+   * The ID of the store.
+   * @return storeId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The ID of the store.")
+
+  public Integer getStoreId() {
+    return storeId;
+  }
+
+
+  public void setStoreId(Integer storeId) {
+    this.storeId = storeId;
+  }
+
+
+  public ApplicationEvent storeIntegrationId(String storeIntegrationId) {
+    
+    this.storeIntegrationId = storeIntegrationId;
+    return this;
+  }
+
+   /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * @return storeIntegrationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
+
+  public String getStoreIntegrationId() {
+    return storeIntegrationId;
+  }
+
+
+  public void setStoreIntegrationId(String storeIntegrationId) {
+    this.storeIntegrationId = storeIntegrationId;
   }
 
 
@@ -299,6 +353,8 @@ public class ApplicationEvent {
         Objects.equals(this.created, applicationEvent.created) &&
         Objects.equals(this.applicationId, applicationEvent.applicationId) &&
         Objects.equals(this.profileId, applicationEvent.profileId) &&
+        Objects.equals(this.storeId, applicationEvent.storeId) &&
+        Objects.equals(this.storeIntegrationId, applicationEvent.storeIntegrationId) &&
         Objects.equals(this.sessionId, applicationEvent.sessionId) &&
         Objects.equals(this.type, applicationEvent.type) &&
         Objects.equals(this.attributes, applicationEvent.attributes) &&
@@ -308,7 +364,7 @@ public class ApplicationEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, sessionId, type, attributes, effects, ruleFailureReasons);
+    return Objects.hash(id, created, applicationId, profileId, storeId, storeIntegrationId, sessionId, type, attributes, effects, ruleFailureReasons);
   }
 
 
@@ -320,6 +376,8 @@ public class ApplicationEvent {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+    sb.append("    storeId: ").append(toIndentedString(storeId)).append("\n");
+    sb.append("    storeIntegrationId: ").append(toIndentedString(storeIntegrationId)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");

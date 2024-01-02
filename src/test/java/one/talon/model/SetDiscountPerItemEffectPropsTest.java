@@ -121,4 +121,20 @@ public class SetDiscountPerItemEffectPropsTest {
         // TODO: test bundleName
     }
 
+    /**
+     * Test the property 'targetedItemPosition'
+     */
+    @Test
+    public void targetedItemPositionTest() {
+        // TODO: test targetedItemPosition
+    }
+
+    /**
+     * Test the property 'targetedItemSubPosition'
+     */
+    @Test
+    public void targetedItemSubPositionTest() {
+        // TODO: test targetedItemSubPosition
+    }
+
 }

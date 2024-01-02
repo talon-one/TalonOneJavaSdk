@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignAnalytics;
+import one.talon.model.AccessLogEntry;
 
 /**
  * InlineResponse20020
@@ -38,7 +38,7 @@ public class InlineResponse20020 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CampaignAnalytics> data = new ArrayList<CampaignAnalytics>();
+  private List<AccessLogEntry> data = new ArrayList<AccessLogEntry>();
 
 
   public InlineResponse20020 totalResultSize(Integer totalResultSize) {
@@ -63,13 +63,13 @@ public class InlineResponse20020 {
   }
 
 
-  public InlineResponse20020 data(List<CampaignAnalytics> data) {
+  public InlineResponse20020 data(List<AccessLogEntry> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20020 addDataItem(CampaignAnalytics dataItem) {
+  public InlineResponse20020 addDataItem(AccessLogEntry dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20020 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CampaignAnalytics> getData() {
+  public List<AccessLogEntry> getData() {
     return data;
   }
 
 
-  public void setData(List<CampaignAnalytics> data) {
+  public void setData(List<AccessLogEntry> data) {
     this.data = data;
   }
 

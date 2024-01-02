@@ -41,6 +41,7 @@ COUPON | &quot;Coupon&quot;
 EVENT | &quot;Event&quot;
 GIVEAWAY | &quot;Giveaway&quot;
 REFERRAL | &quot;Referral&quot;
+STORE | &quot;Store&quot;
 
 
 

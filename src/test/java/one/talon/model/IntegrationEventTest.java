@@ -49,6 +49,14 @@ public class IntegrationEventTest {
     }
 
     /**
+     * Test the property 'storeIntegrationId'
+     */
+    @Test
+    public void storeIntegrationIdTest() {
+        // TODO: test storeIntegrationId
+    }
+
+    /**
      * Test the property 'type'
      */
     @Test

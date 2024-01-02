@@ -69,6 +69,10 @@ public class CreateTemplateCampaign {
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
   private Integer evaluationGroupId;
 
+  public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
+  @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
+  private List<Integer> linkedStoreIds = null;
+
 
   public CreateTemplateCampaign name(String name) {
     
@@ -307,6 +311,37 @@ public class CreateTemplateCampaign {
   }
 
 
+  public CreateTemplateCampaign linkedStoreIds(List<Integer> linkedStoreIds) {
+    
+    this.linkedStoreIds = linkedStoreIds;
+    return this;
+  }
+
+  public CreateTemplateCampaign addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
+    if (this.linkedStoreIds == null) {
+      this.linkedStoreIds = new ArrayList<Integer>();
+    }
+    this.linkedStoreIds.add(linkedStoreIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. 
+   * @return linkedStoreIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
+
+  public List<Integer> getLinkedStoreIds() {
+    return linkedStoreIds;
+  }
+
+
+  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
+    this.linkedStoreIds = linkedStoreIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -324,12 +359,13 @@ public class CreateTemplateCampaign {
         Objects.equals(this.limitOverrides, createTemplateCampaign.limitOverrides) &&
         Objects.equals(this.campaignGroups, createTemplateCampaign.campaignGroups) &&
         Objects.equals(this.tags, createTemplateCampaign.tags) &&
-        Objects.equals(this.evaluationGroupId, createTemplateCampaign.evaluationGroupId);
+        Objects.equals(this.evaluationGroupId, createTemplateCampaign.evaluationGroupId) &&
+        Objects.equals(this.linkedStoreIds, createTemplateCampaign.linkedStoreIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, templateId, campaignAttributesOverrides, templateParamValues, limitOverrides, campaignGroups, tags, evaluationGroupId);
+    return Objects.hash(name, description, templateId, campaignAttributesOverrides, templateParamValues, limitOverrides, campaignGroups, tags, evaluationGroupId, linkedStoreIds);
   }
 
 
@@ -346,6 +382,7 @@ public class CreateTemplateCampaign {
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
+    sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
