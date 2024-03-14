@@ -101,6 +101,10 @@ public class ApiClient {
         if (authenticationStrategy.equals("integration_auth")) {
             authentications.put("integration_auth", new ApiKeyAuth("header", "Content-Signature"));
         }
+
+        if (authenticationStrategy.equals("management_key")) {
+            authentications.put("management_key", new ApiKeyAuth("header", "Authorization"));
+        }
     }
 
     /*
@@ -128,7 +132,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/6.0.0/java");
+        setUserAgent("OpenAPI-Generator/6.0.1/java");
 
         authentications = new HashMap<String, Authentication>();
     }
