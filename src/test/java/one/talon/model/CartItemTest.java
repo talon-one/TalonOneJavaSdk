@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
+import one.talon.model.Product;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -99,6 +100,14 @@ public class CartItemTest {
     @Test
     public void categoryTest() {
         // TODO: test category
+    }
+
+    /**
+     * Test the property 'product'
+     */
+    @Test
+    public void productTest() {
+        // TODO: test product
     }
 
     /**

@@ -128,7 +128,9 @@ public class BaseCampaign {
     
     GIVEAWAYS("giveaways"),
     
-    STRIKETHROUGH("strikethrough");
+    STRIKETHROUGH("strikethrough"),
+    
+    ACHIEVEMENTS("achievements");
 
     private String value;
 
@@ -187,10 +189,6 @@ public class BaseCampaign {
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
   private List<Integer> campaignGroups = null;
-
-  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
-  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Integer evaluationGroupId;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -565,29 +563,6 @@ public class BaseCampaign {
   }
 
 
-  public BaseCampaign evaluationGroupId(Integer evaluationGroupId) {
-    
-    this.evaluationGroupId = evaluationGroupId;
-    return this;
-  }
-
-   /**
-   * The ID of the campaign evaluation group the campaign belongs to.
-   * @return evaluationGroupId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
-
-  public Integer getEvaluationGroupId() {
-    return evaluationGroupId;
-  }
-
-
-  public void setEvaluationGroupId(Integer evaluationGroupId) {
-    this.evaluationGroupId = evaluationGroupId;
-  }
-
-
   public BaseCampaign type(TypeEnum type) {
     
     this.type = type;
@@ -664,14 +639,13 @@ public class BaseCampaign {
         Objects.equals(this.referralSettings, baseCampaign.referralSettings) &&
         Objects.equals(this.limits, baseCampaign.limits) &&
         Objects.equals(this.campaignGroups, baseCampaign.campaignGroups) &&
-        Objects.equals(this.evaluationGroupId, baseCampaign.evaluationGroupId) &&
         Objects.equals(this.type, baseCampaign.type) &&
         Objects.equals(this.linkedStoreIds, baseCampaign.linkedStoreIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds);
   }
 
 
@@ -692,7 +666,6 @@ public class BaseCampaign {
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
-    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
     sb.append("}");

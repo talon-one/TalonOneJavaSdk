@@ -36,6 +36,10 @@ public class TierWillDowngradeNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_BATCHING_ENABLED = "batchingEnabled";
+  @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
+  private Boolean batchingEnabled = true;
+
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   private List<TierWillDowngradeNotificationTrigger> triggers = new ArrayList<TierWillDowngradeNotificationTrigger>();
@@ -60,6 +64,29 @@ public class TierWillDowngradeNotificationPolicy {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public TierWillDowngradeNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
+    
+    this.batchingEnabled = batchingEnabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether batching is activated.
+   * @return batchingEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether batching is activated.")
+
+  public Boolean getBatchingEnabled() {
+    return batchingEnabled;
+  }
+
+
+  public void setBatchingEnabled(Boolean batchingEnabled) {
+    this.batchingEnabled = batchingEnabled;
   }
 
 
@@ -100,12 +127,13 @@ public class TierWillDowngradeNotificationPolicy {
     }
     TierWillDowngradeNotificationPolicy tierWillDowngradeNotificationPolicy = (TierWillDowngradeNotificationPolicy) o;
     return Objects.equals(this.name, tierWillDowngradeNotificationPolicy.name) &&
+        Objects.equals(this.batchingEnabled, tierWillDowngradeNotificationPolicy.batchingEnabled) &&
         Objects.equals(this.triggers, tierWillDowngradeNotificationPolicy.triggers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, triggers);
+    return Objects.hash(name, batchingEnabled, triggers);
   }
 
 
@@ -114,6 +142,7 @@ public class TierWillDowngradeNotificationPolicy {
     StringBuilder sb = new StringBuilder();
     sb.append("class TierWillDowngradeNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
     sb.append("    triggers: ").append(toIndentedString(triggers)).append("\n");
     sb.append("}");
     return sb.toString();

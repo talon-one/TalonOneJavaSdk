@@ -48,4 +48,12 @@ public class TierUpgradeNotificationPolicyTest {
         // TODO: test name
     }
 
+    /**
+     * Test the property 'batchingEnabled'
+     */
+    @Test
+    public void batchingEnabledTest() {
+        // TODO: test batchingEnabled
+    }
+
 }

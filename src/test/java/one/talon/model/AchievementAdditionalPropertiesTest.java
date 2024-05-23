@@ -41,6 +41,14 @@ public class AchievementAdditionalPropertiesTest {
     }
 
     /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
+    }
+
+    /**
      * Test the property 'userId'
      */
     @Test
@@ -54,6 +62,14 @@ public class AchievementAdditionalPropertiesTest {
     @Test
     public void createdByTest() {
         // TODO: test createdBy
+    }
+
+    /**
+     * Test the property 'hasProgress'
+     */
+    @Test
+    public void hasProgressTest() {
+        // TODO: test hasProgress
     }
 
 }

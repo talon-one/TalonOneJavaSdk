@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import one.talon.model.TimePoint;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,6 +43,14 @@ public class UpdateAchievementTest {
     }
 
     /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
+    /**
      * Test the property 'title'
      */
     @Test
@@ -54,6 +64,30 @@ public class UpdateAchievementTest {
     @Test
     public void descriptionTest() {
         // TODO: test description
+    }
+
+    /**
+     * Test the property 'target'
+     */
+    @Test
+    public void targetTest() {
+        // TODO: test target
+    }
+
+    /**
+     * Test the property 'period'
+     */
+    @Test
+    public void periodTest() {
+        // TODO: test period
+    }
+
+    /**
+     * Test the property 'periodEndOverride'
+     */
+    @Test
+    public void periodEndOverrideTest() {
+        // TODO: test periodEndOverride
     }
 
 }

@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AccountDashboardStatisticApiCalls;
 import one.talon.model.AccountDashboardStatisticCampaigns;
 import one.talon.model.AccountDashboardStatisticDiscount;
 import one.talon.model.AccountDashboardStatisticLoyaltyPoints;
@@ -52,10 +51,6 @@ public class AccountDashboardStatistic {
   public static final String SERIALIZED_NAME_REFERRALS = "referrals";
   @SerializedName(SERIALIZED_NAME_REFERRALS)
   private List<AccountDashboardStatisticReferrals> referrals = null;
-
-  public static final String SERIALIZED_NAME_API_CALLS = "apiCalls";
-  @SerializedName(SERIALIZED_NAME_API_CALLS)
-  private List<AccountDashboardStatisticApiCalls> apiCalls = null;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
@@ -186,37 +181,6 @@ public class AccountDashboardStatistic {
   }
 
 
-  public AccountDashboardStatistic apiCalls(List<AccountDashboardStatisticApiCalls> apiCalls) {
-    
-    this.apiCalls = apiCalls;
-    return this;
-  }
-
-  public AccountDashboardStatistic addApiCallsItem(AccountDashboardStatisticApiCalls apiCallsItem) {
-    if (this.apiCalls == null) {
-      this.apiCalls = new ArrayList<AccountDashboardStatisticApiCalls>();
-    }
-    this.apiCalls.add(apiCallsItem);
-    return this;
-  }
-
-   /**
-   * Aggregated statistic for the number of account API calls.
-   * @return apiCalls
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Aggregated statistic for the number of account API calls.")
-
-  public List<AccountDashboardStatisticApiCalls> getApiCalls() {
-    return apiCalls;
-  }
-
-
-  public void setApiCalls(List<AccountDashboardStatisticApiCalls> apiCalls) {
-    this.apiCalls = apiCalls;
-  }
-
-
   public AccountDashboardStatistic campaigns(AccountDashboardStatisticCampaigns campaigns) {
     
     this.campaigns = campaigns;
@@ -252,13 +216,12 @@ public class AccountDashboardStatistic {
         Objects.equals(this.discounts, accountDashboardStatistic.discounts) &&
         Objects.equals(this.loyaltyPoints, accountDashboardStatistic.loyaltyPoints) &&
         Objects.equals(this.referrals, accountDashboardStatistic.referrals) &&
-        Objects.equals(this.apiCalls, accountDashboardStatistic.apiCalls) &&
         Objects.equals(this.campaigns, accountDashboardStatistic.campaigns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(revenue, discounts, loyaltyPoints, referrals, apiCalls, campaigns);
+    return Objects.hash(revenue, discounts, loyaltyPoints, referrals, campaigns);
   }
 
 
@@ -270,7 +233,6 @@ public class AccountDashboardStatistic {
     sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
     sb.append("    loyaltyPoints: ").append(toIndentedString(loyaltyPoints)).append("\n");
     sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
-    sb.append("    apiCalls: ").append(toIndentedString(apiCalls)).append("\n");
     sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
     sb.append("}");
     return sb.toString();

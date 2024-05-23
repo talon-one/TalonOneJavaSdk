@@ -35,12 +35,8 @@ public class UpdateUser {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_POLICY = "policy";
-  @SerializedName(SERIALIZED_NAME_POLICY)
-  private String policy;
-
   /**
-   * New state (\&quot;deactivated\&quot; or \&quot;active\&quot;) for the user. Only usable by admins for the user.
+   * The state of the user.   - &#x60;deactivated&#x60;: The user has been deactivated.   - &#x60;active&#x60;: The user is active.  **Note**: Only &#x60;admin&#x60; users can update the state of another user. 
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
@@ -90,6 +86,14 @@ public class UpdateUser {
   @SerializedName(SERIALIZED_NAME_STATE)
   private StateEnum state;
 
+  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
+  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
+  private Boolean isAdmin;
+
+  public static final String SERIALIZED_NAME_POLICY = "policy";
+  @SerializedName(SERIALIZED_NAME_POLICY)
+  private String policy;
+
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   private List<Integer> roles = null;
@@ -97,10 +101,6 @@ public class UpdateUser {
   public static final String SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS = "applicationNotificationSubscriptions";
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
   private Object applicationNotificationSubscriptions;
-
-  public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
-  @SerializedName(SERIALIZED_NAME_IS_ADMIN)
-  private Boolean isAdmin;
 
 
   public UpdateUser name(String name) {
@@ -110,11 +110,11 @@ public class UpdateUser {
   }
 
    /**
-   * The user name.
+   * Name of the user.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "John Doe", value = "The user name.")
+  @ApiModelProperty(example = "John Doe", value = "Name of the user.")
 
   public String getName() {
     return name;
@@ -126,29 +126,6 @@ public class UpdateUser {
   }
 
 
-  public UpdateUser policy(String policy) {
-    
-    this.policy = policy;
-    return this;
-  }
-
-   /**
-   * The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level.
-   * @return policy
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "", value = "The `Access Control List` json defining the role of the user. This represents the access control on the user level.")
-
-  public String getPolicy() {
-    return policy;
-  }
-
-
-  public void setPolicy(String policy) {
-    this.policy = policy;
-  }
-
-
   public UpdateUser state(StateEnum state) {
     
     this.state = state;
@@ -156,11 +133,11 @@ public class UpdateUser {
   }
 
    /**
-   * New state (\&quot;deactivated\&quot; or \&quot;active\&quot;) for the user. Only usable by admins for the user.
+   * The state of the user.   - &#x60;deactivated&#x60;: The user has been deactivated.   - &#x60;active&#x60;: The user is active.  **Note**: Only &#x60;admin&#x60; users can update the state of another user. 
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "deactivated", value = "New state (\"deactivated\" or \"active\") for the user. Only usable by admins for the user.")
+  @ApiModelProperty(example = "deactivated", value = "The state of the user.   - `deactivated`: The user has been deactivated.   - `active`: The user is active.  **Note**: Only `admin` users can update the state of another user. ")
 
   public StateEnum getState() {
     return state;
@@ -169,6 +146,52 @@ public class UpdateUser {
 
   public void setState(StateEnum state) {
     this.state = state;
+  }
+
+
+  public UpdateUser isAdmin(Boolean isAdmin) {
+    
+    this.isAdmin = isAdmin;
+    return this;
+  }
+
+   /**
+   * Indicates whether the user is an &#x60;admin&#x60;.
+   * @return isAdmin
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the user is an `admin`.")
+
+  public Boolean getIsAdmin() {
+    return isAdmin;
+  }
+
+
+  public void setIsAdmin(Boolean isAdmin) {
+    this.isAdmin = isAdmin;
+  }
+
+
+  public UpdateUser policy(String policy) {
+    
+    this.policy = policy;
+    return this;
+  }
+
+   /**
+   * Indicates the access level of the user.
+   * @return policy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "", value = "Indicates the access level of the user.")
+
+  public String getPolicy() {
+    return policy;
+  }
+
+
+  public void setPolicy(String policy) {
+    this.policy = policy;
   }
 
 
@@ -187,11 +210,11 @@ public class UpdateUser {
   }
 
    /**
-   * List of roles to assign to the user.
+   * A list of the IDs of the roles assigned to the user.  **Note**: Use the [List roles](https://docs.talon.one/management-api#tag/Roles/operation/getAllRoles) endpoint to find the ID of a role. 
    * @return roles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1, 3]", value = "List of roles to assign to the user.")
+  @ApiModelProperty(example = "[1, 3]", value = "A list of the IDs of the roles assigned to the user.  **Note**: Use the [List roles](https://docs.talon.one/management-api#tag/Roles/operation/getAllRoles) endpoint to find the ID of a role. ")
 
   public List<Integer> getRoles() {
     return roles;
@@ -210,11 +233,11 @@ public class UpdateUser {
   }
 
    /**
-   * Get applicationNotificationSubscriptions
+   * Application notifications that the user is subscribed to.
    * @return applicationNotificationSubscriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Application notifications that the user is subscribed to.")
 
   public Object getApplicationNotificationSubscriptions() {
     return applicationNotificationSubscriptions;
@@ -223,29 +246,6 @@ public class UpdateUser {
 
   public void setApplicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
-  }
-
-
-  public UpdateUser isAdmin(Boolean isAdmin) {
-    
-    this.isAdmin = isAdmin;
-    return this;
-  }
-
-   /**
-   * An indication of whether the user has admin permissions.
-   * @return isAdmin
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "An indication of whether the user has admin permissions.")
-
-  public Boolean getIsAdmin() {
-    return isAdmin;
-  }
-
-
-  public void setIsAdmin(Boolean isAdmin) {
-    this.isAdmin = isAdmin;
   }
 
 
@@ -259,16 +259,16 @@ public class UpdateUser {
     }
     UpdateUser updateUser = (UpdateUser) o;
     return Objects.equals(this.name, updateUser.name) &&
-        Objects.equals(this.policy, updateUser.policy) &&
         Objects.equals(this.state, updateUser.state) &&
+        Objects.equals(this.isAdmin, updateUser.isAdmin) &&
+        Objects.equals(this.policy, updateUser.policy) &&
         Objects.equals(this.roles, updateUser.roles) &&
-        Objects.equals(this.applicationNotificationSubscriptions, updateUser.applicationNotificationSubscriptions) &&
-        Objects.equals(this.isAdmin, updateUser.isAdmin);
+        Objects.equals(this.applicationNotificationSubscriptions, updateUser.applicationNotificationSubscriptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, policy, state, roles, applicationNotificationSubscriptions, isAdmin);
+    return Objects.hash(name, state, isAdmin, policy, roles, applicationNotificationSubscriptions);
   }
 
 
@@ -277,11 +277,11 @@ public class UpdateUser {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateUser {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
+    sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
-    sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("}");
     return sb.toString();
   }

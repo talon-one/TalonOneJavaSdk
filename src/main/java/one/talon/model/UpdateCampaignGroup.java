@@ -56,10 +56,10 @@ public class UpdateCampaignGroup {
   }
 
    /**
-   * The name of this campaign access group.
+   * The name of the campaign access group.
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of this campaign access group.")
+  @ApiModelProperty(example = "Europe access group", required = true, value = "The name of the campaign access group.")
 
   public String getName() {
     return name;
@@ -82,7 +82,7 @@ public class UpdateCampaignGroup {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "My campaign access group.", value = "A longer description of the campaign access group.")
+  @ApiModelProperty(example = "A group that gives access to all the campaigns for the Europe market.", value = "A longer description of the campaign access group.")
 
   public String getDescription() {
     return description;

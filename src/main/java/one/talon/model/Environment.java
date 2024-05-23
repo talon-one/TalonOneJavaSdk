@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AccountAdditionalCost;
+import one.talon.model.Achievement;
 import one.talon.model.Attribute;
 import one.talon.model.Audience;
 import one.talon.model.Collection;
@@ -77,6 +78,10 @@ public class Environment {
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
   private List<LoyaltyProgram> loyaltyPrograms = null;
+
+  public static final String SERIALIZED_NAME_ACHIEVEMENTS = "achievements";
+  @SerializedName(SERIALIZED_NAME_ACHIEVEMENTS)
+  private List<Achievement> achievements = null;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -326,6 +331,37 @@ public class Environment {
   }
 
 
+  public Environment achievements(List<Achievement> achievements) {
+    
+    this.achievements = achievements;
+    return this;
+  }
+
+  public Environment addAchievementsItem(Achievement achievementsItem) {
+    if (this.achievements == null) {
+      this.achievements = new ArrayList<Achievement>();
+    }
+    this.achievements.add(achievementsItem);
+    return this;
+  }
+
+   /**
+   * The achievements, linked to the campaigns, belonging to the application.
+   * @return achievements
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The achievements, linked to the campaigns, belonging to the application.")
+
+  public List<Achievement> getAchievements() {
+    return achievements;
+  }
+
+
+  public void setAchievements(List<Achievement> achievements) {
+    this.achievements = achievements;
+  }
+
+
   public Environment attributes(List<Attribute> attributes) {
     
     this.attributes = attributes;
@@ -468,6 +504,7 @@ public class Environment {
         Objects.equals(this.variables, environment.variables) &&
         Objects.equals(this.giveawaysPools, environment.giveawaysPools) &&
         Objects.equals(this.loyaltyPrograms, environment.loyaltyPrograms) &&
+        Objects.equals(this.achievements, environment.achievements) &&
         Objects.equals(this.attributes, environment.attributes) &&
         Objects.equals(this.additionalCosts, environment.additionalCosts) &&
         Objects.equals(this.audiences, environment.audiences) &&
@@ -476,7 +513,7 @@ public class Environment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, attributes, additionalCosts, audiences, collections);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections);
   }
 
 
@@ -493,6 +530,7 @@ public class Environment {
     sb.append("    variables: ").append(toIndentedString(variables)).append("\n");
     sb.append("    giveawaysPools: ").append(toIndentedString(giveawaysPools)).append("\n");
     sb.append("    loyaltyPrograms: ").append(toIndentedString(loyaltyPrograms)).append("\n");
+    sb.append("    achievements: ").append(toIndentedString(achievements)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");

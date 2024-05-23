@@ -6,8 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Role&gt;**](Role.md) |  | 
+**totalResultSize** | **Integer** |  |  [optional]
+**hasMore** | **Boolean** |  |  [optional]
+**data** | [**List&lt;Change&gt;**](Change.md) |  | 
 
 
 

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.LedgerInfo;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Customer-specific information about loyalty points.
@@ -45,6 +46,10 @@ public class LoyaltyProgramLedgers {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_JOIN_DATE = "joinDate";
+  @SerializedName(SERIALIZED_NAME_JOIN_DATE)
+  private OffsetDateTime joinDate;
 
   public static final String SERIALIZED_NAME_LEDGER = "ledger";
   @SerializedName(SERIALIZED_NAME_LEDGER)
@@ -121,6 +126,29 @@ public class LoyaltyProgramLedgers {
   }
 
 
+  public LoyaltyProgramLedgers joinDate(OffsetDateTime joinDate) {
+    
+    this.joinDate = joinDate;
+    return this;
+  }
+
+   /**
+   * The date on which the customer joined the loyalty program in RFC3339.  **Note**: This is in the loyalty program&#39;s time zone. 
+   * @return joinDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The date on which the customer joined the loyalty program in RFC3339.  **Note**: This is in the loyalty program's time zone. ")
+
+  public OffsetDateTime getJoinDate() {
+    return joinDate;
+  }
+
+
+  public void setJoinDate(OffsetDateTime joinDate) {
+    this.joinDate = joinDate;
+  }
+
+
   public LoyaltyProgramLedgers ledger(LedgerInfo ledger) {
     
     this.ledger = ledger;
@@ -186,13 +214,14 @@ public class LoyaltyProgramLedgers {
     return Objects.equals(this.id, loyaltyProgramLedgers.id) &&
         Objects.equals(this.title, loyaltyProgramLedgers.title) &&
         Objects.equals(this.name, loyaltyProgramLedgers.name) &&
+        Objects.equals(this.joinDate, loyaltyProgramLedgers.joinDate) &&
         Objects.equals(this.ledger, loyaltyProgramLedgers.ledger) &&
         Objects.equals(this.subLedgers, loyaltyProgramLedgers.subLedgers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, name, ledger, subLedgers);
+    return Objects.hash(id, title, name, joinDate, ledger, subLedgers);
   }
 
 
@@ -203,6 +232,7 @@ public class LoyaltyProgramLedgers {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    joinDate: ").append(toIndentedString(joinDate)).append("\n");
     sb.append("    ledger: ").append(toIndentedString(ledger)).append("\n");
     sb.append("    subLedgers: ").append(toIndentedString(subLedgers)).append("\n");
     sb.append("}");

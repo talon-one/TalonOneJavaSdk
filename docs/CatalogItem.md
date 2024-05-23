@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **catalogid** | **Integer** | The ID of the catalog the item belongs to. | 
 **version** | **Integer** | The version of the catalog item. | 
 **attributes** | [**List&lt;ItemAttribute&gt;**](ItemAttribute.md) |  |  [optional]
+**product** | [**Product**](Product.md) |  |  [optional]
 
 
 

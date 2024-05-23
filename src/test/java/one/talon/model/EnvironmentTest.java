@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AccountAdditionalCost;
+import one.talon.model.Achievement;
 import one.talon.model.Attribute;
 import one.talon.model.Audience;
 import one.talon.model.Collection;
@@ -122,6 +123,14 @@ public class EnvironmentTest {
     @Test
     public void loyaltyProgramsTest() {
         // TODO: test loyaltyPrograms
+    }
+
+    /**
+     * Test the property 'achievements'
+     */
+    @Test
+    public void achievementsTest() {
+        // TODO: test achievements
     }
 
     /**

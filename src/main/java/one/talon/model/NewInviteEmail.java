@@ -45,10 +45,10 @@ public class NewInviteEmail {
   }
 
    /**
-   * Get email
+   * Email address of the user.
    * @return email
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "Email address of the user.")
 
   public String getEmail() {
     return email;
@@ -67,10 +67,10 @@ public class NewInviteEmail {
   }
 
    /**
-   * Get token
+   * Invitation token of the user.
    * @return token
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "Gy9b8w1irmQtEPo5RmbMmSPheL5h4", required = true, value = "Invitation token of the user.")
 
   public String getToken() {
     return token;

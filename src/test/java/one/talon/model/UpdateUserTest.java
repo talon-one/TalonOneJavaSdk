@@ -51,19 +51,27 @@ public class UpdateUserTest {
     }
 
     /**
-     * Test the property 'policy'
-     */
-    @Test
-    public void policyTest() {
-        // TODO: test policy
-    }
-
-    /**
      * Test the property 'state'
      */
     @Test
     public void stateTest() {
         // TODO: test state
+    }
+
+    /**
+     * Test the property 'isAdmin'
+     */
+    @Test
+    public void isAdminTest() {
+        // TODO: test isAdmin
+    }
+
+    /**
+     * Test the property 'policy'
+     */
+    @Test
+    public void policyTest() {
+        // TODO: test policy
     }
 
     /**
@@ -80,14 +88,6 @@ public class UpdateUserTest {
     @Test
     public void applicationNotificationSubscriptionsTest() {
         // TODO: test applicationNotificationSubscriptions
-    }
-
-    /**
-     * Test the property 'isAdmin'
-     */
-    @Test
-    public void isAdminTest() {
-        // TODO: test isAdmin
     }
 
 }

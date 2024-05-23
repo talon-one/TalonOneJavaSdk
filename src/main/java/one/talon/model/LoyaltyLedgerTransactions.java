@@ -49,11 +49,11 @@ public class LoyaltyLedgerTransactions {
   }
 
    /**
-   * true means there is more data in the source collection to request.
+   * If &#x60;true&#x60;, it means that there is more data to request in the source collection.
    * @return hasMore
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "true", value = "true means there is more data in the source collection to request.")
+  @ApiModelProperty(example = "true", value = "If `true`, it means that there is more data to request in the source collection.")
 
   public Boolean getHasMore() {
     return hasMore;

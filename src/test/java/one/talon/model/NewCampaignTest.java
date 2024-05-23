@@ -150,14 +150,6 @@ public class NewCampaignTest {
     }
 
     /**
-     * Test the property 'evaluationGroupId'
-     */
-    @Test
-    public void evaluationGroupIdTest() {
-        // TODO: test evaluationGroupId
-    }
-
-    /**
      * Test the property 'type'
      */
     @Test
@@ -171,6 +163,14 @@ public class NewCampaignTest {
     @Test
     public void linkedStoreIdsTest() {
         // TODO: test linkedStoreIds
+    }
+
+    /**
+     * Test the property 'evaluationGroupId'
+     */
+    @Test
+    public void evaluationGroupIdTest() {
+        // TODO: test evaluationGroupId
     }
 
 }

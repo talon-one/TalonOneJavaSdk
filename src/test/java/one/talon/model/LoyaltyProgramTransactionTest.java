@@ -59,6 +59,14 @@ public class LoyaltyProgramTransactionTest {
     }
 
     /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
+    }
+
+    /**
      * Test the property 'created'
      */
     @Test

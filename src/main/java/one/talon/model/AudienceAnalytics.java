@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The audiences and their members count.
+ * The audiences and their member count.
  */
-@ApiModel(description = "The audiences and their members count.")
+@ApiModel(description = "The audiences and their member count.")
 
 public class AudienceAnalytics {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
@@ -69,11 +69,11 @@ public class AudienceAnalytics {
   }
 
    /**
-   * The count of members under a single audience.
+   * The member count of the audience.
    * @return membersCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1234", value = "The count of members under a single audience.")
+  @ApiModelProperty(example = "1234", value = "The member count of the audience.")
 
   public Integer getMembersCount() {
     return membersCount;

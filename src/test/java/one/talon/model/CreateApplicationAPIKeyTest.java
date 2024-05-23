@@ -65,4 +65,20 @@ public class CreateApplicationAPIKeyTest {
         // TODO: test platform
     }
 
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'timeOffset'
+     */
+    @Test
+    public void timeOffsetTest() {
+        // TODO: test timeOffset
+    }
+
 }

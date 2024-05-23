@@ -39,6 +39,10 @@ public class LoyaltyProgramTransaction {
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
   private Integer programId;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private Integer campaignId;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -188,6 +192,29 @@ public class LoyaltyProgramTransaction {
 
   public void setProgramId(Integer programId) {
     this.programId = programId;
+  }
+
+
+  public LoyaltyProgramTransaction campaignId(Integer campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * ID of the campaign.
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "324", value = "ID of the campaign.")
+
+  public Integer getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Integer campaignId) {
+    this.campaignId = campaignId;
   }
 
 
@@ -540,6 +567,7 @@ public class LoyaltyProgramTransaction {
     LoyaltyProgramTransaction loyaltyProgramTransaction = (LoyaltyProgramTransaction) o;
     return Objects.equals(this.id, loyaltyProgramTransaction.id) &&
         Objects.equals(this.programId, loyaltyProgramTransaction.programId) &&
+        Objects.equals(this.campaignId, loyaltyProgramTransaction.campaignId) &&
         Objects.equals(this.created, loyaltyProgramTransaction.created) &&
         Objects.equals(this.type, loyaltyProgramTransaction.type) &&
         Objects.equals(this.amount, loyaltyProgramTransaction.amount) &&
@@ -559,7 +587,7 @@ public class LoyaltyProgramTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, programId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName);
+    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName);
   }
 
 
@@ -569,6 +597,7 @@ public class LoyaltyProgramTransaction {
     sb.append("class LoyaltyProgramTransaction {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    programId: ").append(toIndentedString(programId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");

@@ -44,6 +44,7 @@ REFERRALS | &quot;referrals&quot;
 LOYALTY | &quot;loyalty&quot;
 GIVEAWAYS | &quot;giveaways&quot;
 STRIKETHROUGH | &quot;strikethrough&quot;
+ACHIEVEMENTS | &quot;achievements&quot;
 
 
 

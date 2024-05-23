@@ -41,6 +41,7 @@ GIVEAWAY | &quot;Giveaway&quot;
 REFERRAL | &quot;Referral&quot;
 SESSION | &quot;Session&quot;
 STORE | &quot;Store&quot;
+ACHIEVEMENTS | &quot;Achievements&quot;
 
 
 

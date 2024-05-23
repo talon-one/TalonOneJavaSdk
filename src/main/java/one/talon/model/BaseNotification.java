@@ -58,7 +58,11 @@ public class BaseNotification {
     
     COUPON("coupon"),
     
+    EXPIRING_COUPONS("expiring_coupons"),
+    
     EXPIRING_POINTS("expiring_points"),
+    
+    CARD_EXPIRING_POINTS("card_expiring_points"),
     
     PENDING_TO_ACTIVE_POINTS("pending_to_active_points"),
     

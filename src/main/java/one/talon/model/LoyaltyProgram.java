@@ -74,6 +74,57 @@ public class LoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
 
+  /**
+   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program. 
+   */
+  @JsonAdapter(TiersExpirationPolicyEnum.Adapter.class)
+  public enum TiersExpirationPolicyEnum {
+    TIER_START_DATE("tier_start_date"),
+    
+    PROGRAM_JOIN_DATE("program_join_date");
+
+    private String value;
+
+    TiersExpirationPolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TiersExpirationPolicyEnum fromValue(String value) {
+      for (TiersExpirationPolicyEnum b : TiersExpirationPolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TiersExpirationPolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TiersExpirationPolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TiersExpirationPolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TiersExpirationPolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TIERS_EXPIRATION_POLICY = "tiersExpirationPolicy";
+  @SerializedName(SERIALIZED_NAME_TIERS_EXPIRATION_POLICY)
+  private TiersExpirationPolicyEnum tiersExpirationPolicy;
+
   public static final String SERIALIZED_NAME_TIERS_EXPIRE_IN = "tiersExpireIn";
   @SerializedName(SERIALIZED_NAME_TIERS_EXPIRE_IN)
   private String tiersExpireIn;
@@ -129,6 +180,59 @@ public class LoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_TIERS_DOWNGRADE_POLICY)
   private TiersDowngradePolicyEnum tiersDowngradePolicy;
 
+  /**
+   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+   */
+  @JsonAdapter(ProgramJoinPolicyEnum.Adapter.class)
+  public enum ProgramJoinPolicyEnum {
+    NOT_JOIN("not_join"),
+    
+    POINTS_ACTIVATED("points_activated"),
+    
+    POINTS_EARNED("points_earned");
+
+    private String value;
+
+    ProgramJoinPolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ProgramJoinPolicyEnum fromValue(String value) {
+      for (ProgramJoinPolicyEnum b : ProgramJoinPolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ProgramJoinPolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProgramJoinPolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProgramJoinPolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ProgramJoinPolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PROGRAM_JOIN_POLICY = "programJoinPolicy";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_JOIN_POLICY)
+  private ProgramJoinPolicyEnum programJoinPolicy;
+
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
   private Integer accountID;
@@ -152,6 +256,10 @@ public class LoyaltyProgram {
   public static final String SERIALIZED_NAME_CAN_UPDATE_TIERS = "canUpdateTiers";
   @SerializedName(SERIALIZED_NAME_CAN_UPDATE_TIERS)
   private Boolean canUpdateTiers = false;
+
+  public static final String SERIALIZED_NAME_CAN_UPDATE_JOIN_POLICY = "canUpdateJoinPolicy";
+  @SerializedName(SERIALIZED_NAME_CAN_UPDATE_JOIN_POLICY)
+  private Boolean canUpdateJoinPolicy;
 
   public static final String SERIALIZED_NAME_CAN_UPGRADE_TO_ADVANCED_TIERS = "canUpgradeToAdvancedTiers";
   @SerializedName(SERIALIZED_NAME_CAN_UPGRADE_TO_ADVANCED_TIERS)
@@ -385,6 +493,29 @@ public class LoyaltyProgram {
   }
 
 
+  public LoyaltyProgram tiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
+    
+    this.tiersExpirationPolicy = tiersExpirationPolicy;
+    return this;
+  }
+
+   /**
+   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program. 
+   * @return tiersExpirationPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The policy that defines which date is used to calculate the expiration date of a customer's current tier.  - `tier_start_date`: The tier expiration date is calculated based on when the customer joined the current tier.  - `program_join_date`: The tier expiration date is calculated based on when the customer joined the loyalty program. ")
+
+  public TiersExpirationPolicyEnum getTiersExpirationPolicy() {
+    return tiersExpirationPolicy;
+  }
+
+
+  public void setTiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
+    this.tiersExpirationPolicy = tiersExpirationPolicy;
+  }
+
+
   public LoyaltyProgram tiersExpireIn(String tiersExpireIn) {
     
     this.tiersExpireIn = tiersExpireIn;
@@ -392,11 +523,11 @@ public class LoyaltyProgram {
   }
 
    /**
-   * The amount of time until the expiration of every tier, starting from the date when the customer joined the considered tier for the first time.  The time format is an **integer** followed by one letter indicating the time unit. Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. 
+   * The amount of time after which the tier expires.  The time format is an **integer** followed by one letter indicating the time unit. Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. 
    * @return tiersExpireIn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "27W_U", value = "The amount of time until the expiration of every tier, starting from the date when the customer joined the considered tier for the first time.  The time format is an **integer** followed by one letter indicating the time unit. Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. ")
+  @ApiModelProperty(example = "27W_U", value = "The amount of time after which the tier expires.  The time format is an **integer** followed by one letter indicating the time unit. Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. ")
 
   public String getTiersExpireIn() {
     return tiersExpireIn;
@@ -428,6 +559,29 @@ public class LoyaltyProgram {
 
   public void setTiersDowngradePolicy(TiersDowngradePolicyEnum tiersDowngradePolicy) {
     this.tiersDowngradePolicy = tiersDowngradePolicy;
+  }
+
+
+  public LoyaltyProgram programJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
+    
+    this.programJoinPolicy = programJoinPolicy;
+    return this;
+  }
+
+   /**
+   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+   * @return programJoinPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The policy that defines when the customer joins the loyalty program.   - `not_join`: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - `points_activated`: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - `points_earned`: The customer joins the loyalty program when they earn loyalty points for the first time. ")
+
+  public ProgramJoinPolicyEnum getProgramJoinPolicy() {
+    return programJoinPolicy;
+  }
+
+
+  public void setProgramJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
+    this.programJoinPolicy = programJoinPolicy;
   }
 
 
@@ -573,6 +727,29 @@ public class LoyaltyProgram {
   }
 
 
+  public LoyaltyProgram canUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
+    
+    this.canUpdateJoinPolicy = canUpdateJoinPolicy;
+    return this;
+  }
+
+   /**
+   * Indicates whether the program join policy can be updated. The join policy can be updated when this value is set to &#x60;true&#x60;. 
+   * @return canUpdateJoinPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether the program join policy can be updated. The join policy can be updated when this value is set to `true`. ")
+
+  public Boolean getCanUpdateJoinPolicy() {
+    return canUpdateJoinPolicy;
+  }
+
+
+  public void setCanUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
+    this.canUpdateJoinPolicy = canUpdateJoinPolicy;
+  }
+
+
   public LoyaltyProgram canUpgradeToAdvancedTiers(Boolean canUpgradeToAdvancedTiers) {
     
     this.canUpgradeToAdvancedTiers = canUpgradeToAdvancedTiers;
@@ -615,20 +792,23 @@ public class LoyaltyProgram {
         Objects.equals(this.allowSubledger, loyaltyProgram.allowSubledger) &&
         Objects.equals(this.usersPerCardLimit, loyaltyProgram.usersPerCardLimit) &&
         Objects.equals(this.sandbox, loyaltyProgram.sandbox) &&
+        Objects.equals(this.tiersExpirationPolicy, loyaltyProgram.tiersExpirationPolicy) &&
         Objects.equals(this.tiersExpireIn, loyaltyProgram.tiersExpireIn) &&
         Objects.equals(this.tiersDowngradePolicy, loyaltyProgram.tiersDowngradePolicy) &&
+        Objects.equals(this.programJoinPolicy, loyaltyProgram.programJoinPolicy) &&
         Objects.equals(this.accountID, loyaltyProgram.accountID) &&
         Objects.equals(this.name, loyaltyProgram.name) &&
         Objects.equals(this.tiers, loyaltyProgram.tiers) &&
         Objects.equals(this.timezone, loyaltyProgram.timezone) &&
         Objects.equals(this.cardBased, loyaltyProgram.cardBased) &&
         Objects.equals(this.canUpdateTiers, loyaltyProgram.canUpdateTiers) &&
+        Objects.equals(this.canUpdateJoinPolicy, loyaltyProgram.canUpdateJoinPolicy) &&
         Objects.equals(this.canUpgradeToAdvancedTiers, loyaltyProgram.canUpgradeToAdvancedTiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, tiersExpireIn, tiersDowngradePolicy, accountID, name, tiers, timezone, cardBased, canUpdateTiers, canUpgradeToAdvancedTiers);
+    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, tiersExpirationPolicy, tiersExpireIn, tiersDowngradePolicy, programJoinPolicy, accountID, name, tiers, timezone, cardBased, canUpdateTiers, canUpdateJoinPolicy, canUpgradeToAdvancedTiers);
   }
 
 
@@ -646,14 +826,17 @@ public class LoyaltyProgram {
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
     sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    tiersExpirationPolicy: ").append(toIndentedString(tiersExpirationPolicy)).append("\n");
     sb.append("    tiersExpireIn: ").append(toIndentedString(tiersExpireIn)).append("\n");
     sb.append("    tiersDowngradePolicy: ").append(toIndentedString(tiersDowngradePolicy)).append("\n");
+    sb.append("    programJoinPolicy: ").append(toIndentedString(programJoinPolicy)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    cardBased: ").append(toIndentedString(cardBased)).append("\n");
     sb.append("    canUpdateTiers: ").append(toIndentedString(canUpdateTiers)).append("\n");
+    sb.append("    canUpdateJoinPolicy: ").append(toIndentedString(canUpdateJoinPolicy)).append("\n");
     sb.append("    canUpgradeToAdvancedTiers: ").append(toIndentedString(canUpgradeToAdvancedTiers)).append("\n");
     sb.append("}");
     return sb.toString();

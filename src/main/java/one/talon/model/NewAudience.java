@@ -116,7 +116,7 @@ public class NewAudience {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Travel audience 18-25", value = "A description of the audience.")
+  @ApiModelProperty(example = "Travel audience 18-27", value = "A description of the audience.")
 
   public String getDescription() {
     return description;

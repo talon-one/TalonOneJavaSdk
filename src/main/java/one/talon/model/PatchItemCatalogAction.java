@@ -48,6 +48,10 @@ public class PatchItemCatalogAction {
       @JsonNullable
   private Object attributes;
 
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private Product product;
+
   public static final String SERIALIZED_NAME_CREATE_IF_NOT_EXISTS = "createIfNotExists";
   @SerializedName(SERIALIZED_NAME_CREATE_IF_NOT_EXISTS)
   private Boolean createIfNotExists = false;
@@ -121,6 +125,29 @@ public class PatchItemCatalogAction {
   }
 
 
+  public PatchItemCatalogAction product(Product product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Product getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
+
   public PatchItemCatalogAction createIfNotExists(Boolean createIfNotExists) {
     
     this.createIfNotExists = createIfNotExists;
@@ -156,12 +183,13 @@ public class PatchItemCatalogAction {
     return Objects.equals(this.sku, patchItemCatalogAction.sku) &&
         Objects.equals(this.price, patchItemCatalogAction.price) &&
         Objects.equals(this.attributes, patchItemCatalogAction.attributes) &&
+        Objects.equals(this.product, patchItemCatalogAction.product) &&
         Objects.equals(this.createIfNotExists, patchItemCatalogAction.createIfNotExists);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sku, price, attributes, createIfNotExists);
+    return Objects.hash(sku, price, attributes, product, createIfNotExists);
   }
 
 
@@ -172,6 +200,7 @@ public class PatchItemCatalogAction {
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    createIfNotExists: ").append(toIndentedString(createIfNotExists)).append("\n");
     sb.append("}");
     return sb.toString();

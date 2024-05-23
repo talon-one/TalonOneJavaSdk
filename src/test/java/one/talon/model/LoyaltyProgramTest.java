@@ -125,6 +125,14 @@ public class LoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'tiersExpirationPolicy'
+     */
+    @Test
+    public void tiersExpirationPolicyTest() {
+        // TODO: test tiersExpirationPolicy
+    }
+
+    /**
      * Test the property 'tiersExpireIn'
      */
     @Test
@@ -138,6 +146,14 @@ public class LoyaltyProgramTest {
     @Test
     public void tiersDowngradePolicyTest() {
         // TODO: test tiersDowngradePolicy
+    }
+
+    /**
+     * Test the property 'programJoinPolicy'
+     */
+    @Test
+    public void programJoinPolicyTest() {
+        // TODO: test programJoinPolicy
     }
 
     /**
@@ -186,6 +202,14 @@ public class LoyaltyProgramTest {
     @Test
     public void canUpdateTiersTest() {
         // TODO: test canUpdateTiers
+    }
+
+    /**
+     * Test the property 'canUpdateJoinPolicy'
+     */
+    @Test
+    public void canUpdateJoinPolicyTest() {
+        // TODO: test canUpdateJoinPolicy
     }
 
     /**

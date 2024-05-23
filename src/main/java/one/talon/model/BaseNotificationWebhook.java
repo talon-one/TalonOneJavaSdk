@@ -161,7 +161,7 @@ public class BaseNotificationWebhook {
    * List of API HTTP headers for the given webhook-based notification.
    * @return headers
   **/
-  @ApiModelProperty(example = "content-type: application/json", required = true, value = "List of API HTTP headers for the given webhook-based notification.")
+  @ApiModelProperty(required = true, value = "List of API HTTP headers for the given webhook-based notification.")
 
   public List<String> getHeaders() {
     return headers;

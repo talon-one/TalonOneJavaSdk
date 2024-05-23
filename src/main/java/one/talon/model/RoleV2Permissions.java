@@ -57,11 +57,11 @@ public class RoleV2Permissions {
   }
 
    /**
-   * List of grouped logical operations to use as a reference in the roles section. Each group of logical operations has a name.
+   * List of grouped logical operations referenced by roles.
    * @return permissionSets
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[{name=Application permission set, logicalOperations=[getApplicationOperations, editApplicationOperations]}, {name=Campaign manager permission set, logicalOperations=[getCampaignOperations, createCampaignOperations, updateCampaignOperations]}, {name=Campaign read-only permission set, logicalOperations=[getCampaignOperations]}, {name=Loyalty program read-only permission set, logicalOperations=[getLoyaltyProgramOperations]}, {name=Campaign access group manager permission set, logicalOperations=[getCampaignAccessGroupOperations, updateCampaignAccessGroupOperations, deleteCampaignAccessGroupOperations]}]", value = "List of grouped logical operations to use as a reference in the roles section. Each group of logical operations has a name.")
+  @ApiModelProperty(example = "[{name=Application permission set, logicalOperations=[getApplicationOperations, editApplicationOperations]}, {name=Campaign manager permission set, logicalOperations=[getCampaignOperations, createCampaignOperations, updateCampaignOperations]}, {name=Campaign read-only permission set, logicalOperations=[getCampaignOperations]}, {name=Loyalty program read-only permission set, logicalOperations=[getLoyaltyProgramOperations]}, {name=Campaign access group manager permission set, logicalOperations=[getCampaignAccessGroupOperations, updateCampaignAccessGroupOperations, deleteCampaignAccessGroupOperations]}]", value = "List of grouped logical operations referenced by roles.")
 
   public List<RoleV2PermissionSet> getPermissionSets() {
     return permissionSets;

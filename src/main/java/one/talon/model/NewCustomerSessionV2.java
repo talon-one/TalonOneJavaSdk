@@ -283,11 +283,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any loyalty cards used.
+   * Identifier of a loyalty card.
    * @return loyaltyCards
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[loyalty-card-1]", value = "Any loyalty cards used.")
+  @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifier of a loyalty card.")
 
   public List<String> getLoyaltyCards() {
     return loyaltyCards;

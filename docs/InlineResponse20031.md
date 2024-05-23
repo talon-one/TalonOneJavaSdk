@@ -7,8 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;ApplicationReferee&gt;**](ApplicationReferee.md) |  | 
+**data** | [**List&lt;AudienceAnalytics&gt;**](AudienceAnalytics.md) |  | 
 
 
 

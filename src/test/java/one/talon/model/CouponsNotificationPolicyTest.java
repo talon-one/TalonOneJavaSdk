@@ -58,4 +58,12 @@ public class CouponsNotificationPolicyTest {
         // TODO: test scopes
     }
 
+    /**
+     * Test the property 'batchingEnabled'
+     */
+    @Test
+    public void batchingEnabledTest() {
+        // TODO: test batchingEnabled
+    }
+
 }

@@ -93,10 +93,10 @@ public class SamlLoginEndpoint {
   }
 
    /**
-   * Single Sign-On URL.
+   * The single sign-on URL.
    * @return loginURL
   **/
-  @ApiModelProperty(required = true, value = "Single Sign-On URL.")
+  @ApiModelProperty(required = true, value = "The single sign-on URL.")
 
   public String getLoginURL() {
     return loginURL;

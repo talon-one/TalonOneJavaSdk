@@ -23,8 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * NewNotificationTest
@@ -42,6 +43,8 @@ public class NewNotificationTest {
     
     COUPON("coupon"),
     
+    EXPIRING_COUPONS("expiring_coupons"),
+    
     EXPIRING_POINTS("expiring_points"),
     
     PENDING_TO_ACTIVE_POINTS("pending_to_active_points"),
@@ -52,7 +55,9 @@ public class NewNotificationTest {
     
     TIER_UPGRADE("tier_upgrade"),
     
-    TIER_WILL_DOWNGRADE("tier_will_downgrade");
+    TIER_WILL_DOWNGRADE("tier_will_downgrade"),
+    
+    CARD_EXPIRING_POINTS("card_expiring_points");
 
     private String value;
 
@@ -98,11 +103,11 @@ public class NewNotificationTest {
 
   public static final String SERIALIZED_NAME_QUERY_PARAMS = "queryParams";
   @SerializedName(SERIALIZED_NAME_QUERY_PARAMS)
-  private List<String> queryParams = null;
+  private Map<String, String> queryParams = null;
 
   public static final String SERIALIZED_NAME_HEADERS = "headers";
   @SerializedName(SERIALIZED_NAME_HEADERS)
-  private List<String> headers = null;
+  private Map<String, String> headers = null;
 
   /**
    * API method for this notification.
@@ -192,17 +197,17 @@ public class NewNotificationTest {
   }
 
 
-  public NewNotificationTest queryParams(List<String> queryParams) {
+  public NewNotificationTest queryParams(Map<String, String> queryParams) {
     
     this.queryParams = queryParams;
     return this;
   }
 
-  public NewNotificationTest addQueryParamsItem(String queryParamsItem) {
+  public NewNotificationTest putQueryParamsItem(String key, String queryParamsItem) {
     if (this.queryParams == null) {
-      this.queryParams = new ArrayList<String>();
+      this.queryParams = new HashMap<String, String>();
     }
-    this.queryParams.add(queryParamsItem);
+    this.queryParams.put(key, queryParamsItem);
     return this;
   }
 
@@ -211,29 +216,29 @@ public class NewNotificationTest {
    * @return queryParams
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[param1: value1]", value = "Array of query parameters.")
+  @ApiModelProperty(example = "{\"param1\":\"value1\",\"param2\":\"value2\"}", value = "Array of query parameters.")
 
-  public List<String> getQueryParams() {
+  public Map<String, String> getQueryParams() {
     return queryParams;
   }
 
 
-  public void setQueryParams(List<String> queryParams) {
+  public void setQueryParams(Map<String, String> queryParams) {
     this.queryParams = queryParams;
   }
 
 
-  public NewNotificationTest headers(List<String> headers) {
+  public NewNotificationTest headers(Map<String, String> headers) {
     
     this.headers = headers;
     return this;
   }
 
-  public NewNotificationTest addHeadersItem(String headersItem) {
+  public NewNotificationTest putHeadersItem(String key, String headersItem) {
     if (this.headers == null) {
-      this.headers = new ArrayList<String>();
+      this.headers = new HashMap<String, String>();
     }
-    this.headers.add(headersItem);
+    this.headers.put(key, headersItem);
     return this;
   }
 
@@ -242,14 +247,14 @@ public class NewNotificationTest {
    * @return headers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "content-type: application/json", value = "List of API HTTP headers for the given webhook-based notification.")
+  @ApiModelProperty(example = "{\"content-type\":\"application/json\"}", value = "List of API HTTP headers for the given webhook-based notification.")
 
-  public List<String> getHeaders() {
+  public Map<String, String> getHeaders() {
     return headers;
   }
 
 
-  public void setHeaders(List<String> headers) {
+  public void setHeaders(Map<String, String> headers) {
     this.headers = headers;
   }
 

@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.AchievementProgress;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;
@@ -55,6 +56,10 @@ public class CustomerInventory {
   public static final String SERIALIZED_NAME_GIVEAWAYS = "giveaways";
   @SerializedName(SERIALIZED_NAME_GIVEAWAYS)
   private List<Giveaway> giveaways = null;
+
+  public static final String SERIALIZED_NAME_ACHIEVEMENTS = "achievements";
+  @SerializedName(SERIALIZED_NAME_ACHIEVEMENTS)
+  private List<AchievementProgress> achievements = null;
 
 
   public CustomerInventory profile(CustomerProfile profile) {
@@ -196,6 +201,37 @@ public class CustomerInventory {
   }
 
 
+  public CustomerInventory achievements(List<AchievementProgress> achievements) {
+    
+    this.achievements = achievements;
+    return this;
+  }
+
+  public CustomerInventory addAchievementsItem(AchievementProgress achievementsItem) {
+    if (this.achievements == null) {
+      this.achievements = new ArrayList<AchievementProgress>();
+    }
+    this.achievements.add(achievementsItem);
+    return this;
+  }
+
+   /**
+   * Get achievements
+   * @return achievements
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<AchievementProgress> getAchievements() {
+    return achievements;
+  }
+
+
+  public void setAchievements(List<AchievementProgress> achievements) {
+    this.achievements = achievements;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -209,12 +245,13 @@ public class CustomerInventory {
         Objects.equals(this.loyalty, customerInventory.loyalty) &&
         Objects.equals(this.referrals, customerInventory.referrals) &&
         Objects.equals(this.coupons, customerInventory.coupons) &&
-        Objects.equals(this.giveaways, customerInventory.giveaways);
+        Objects.equals(this.giveaways, customerInventory.giveaways) &&
+        Objects.equals(this.achievements, customerInventory.achievements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile, loyalty, referrals, coupons, giveaways);
+    return Objects.hash(profile, loyalty, referrals, coupons, giveaways, achievements);
   }
 
 
@@ -227,6 +264,7 @@ public class CustomerInventory {
     sb.append("    referrals: ").append(toIndentedString(referrals)).append("\n");
     sb.append("    coupons: ").append(toIndentedString(coupons)).append("\n");
     sb.append("    giveaways: ").append(toIndentedString(giveaways)).append("\n");
+    sb.append("    achievements: ").append(toIndentedString(achievements)).append("\n");
     sb.append("}");
     return sb.toString();
   }
