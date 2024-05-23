@@ -137,7 +137,7 @@ public class TalonApiTest {
             Boolean dryRun = false;
 
             // Create/update a customer session using `updateCustomerSessionV2` function
-            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun);
+            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun, null);
             System.out.println(is.toString());
 
             // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
