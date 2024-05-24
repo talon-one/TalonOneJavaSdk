@@ -28,9 +28,9 @@ import one.talon.custom.JsonNullable;
 import one.talon.custom.NullableAdapterFactory;
 
 /**
- * The specific properties of the \&quot;ADD\&quot; catalog sync action.
+ * The specific properties of the \&quot;ADD\&quot; catalog sync action. 
  */
-@ApiModel(description = "The specific properties of the \"ADD\" catalog sync action.")
+@ApiModel(description = "The specific properties of the \"ADD\" catalog sync action. ")
 @JsonAdapter(NullableAdapterFactory.class)
 
 public class AddItemCatalogAction {
@@ -47,6 +47,10 @@ public class AddItemCatalogAction {
    /*allow Serializing null for this field */
     @JsonNullable
   private Object attributes;
+
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private Product product;
 
   public static final String SERIALIZED_NAME_REPLACE_IF_EXISTS = "replaceIfExists";
   @SerializedName(SERIALIZED_NAME_REPLACE_IF_EXISTS)
@@ -121,6 +125,29 @@ public class AddItemCatalogAction {
   }
 
 
+  public AddItemCatalogAction product(Product product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Product getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
+
   public AddItemCatalogAction replaceIfExists(Boolean replaceIfExists) {
     
     this.replaceIfExists = replaceIfExists;
@@ -128,11 +155,11 @@ public class AddItemCatalogAction {
   }
 
    /**
-   * Indicates whether to replace the attributes of the item if the same SKU exists.
+   * Indicates whether to replace the attributes of the item if the same SKU exists.  **Note**: When set to &#x60;true&#x60;:   - If you do not provide a new &#x60;price&#x60; value, the existing &#x60;price&#x60; value is retained.   - If you do not provide a new &#x60;product&#x60; value, the &#x60;product&#x60; value is set to &#x60;null&#x60;. 
    * @return replaceIfExists
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Indicates whether to replace the attributes of the item if the same SKU exists.")
+  @ApiModelProperty(example = "false", value = "Indicates whether to replace the attributes of the item if the same SKU exists.  **Note**: When set to `true`:   - If you do not provide a new `price` value, the existing `price` value is retained.   - If you do not provide a new `product` value, the `product` value is set to `null`. ")
 
   public Boolean getReplaceIfExists() {
     return replaceIfExists;
@@ -156,12 +183,13 @@ public class AddItemCatalogAction {
     return Objects.equals(this.sku, addItemCatalogAction.sku) &&
         Objects.equals(this.price, addItemCatalogAction.price) &&
         Objects.equals(this.attributes, addItemCatalogAction.attributes) &&
+        Objects.equals(this.product, addItemCatalogAction.product) &&
         Objects.equals(this.replaceIfExists, addItemCatalogAction.replaceIfExists);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sku, price, attributes, replaceIfExists);
+    return Objects.hash(sku, price, attributes, product, replaceIfExists);
   }
 
 
@@ -172,6 +200,7 @@ public class AddItemCatalogAction {
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    replaceIfExists: ").append(toIndentedString(replaceIfExists)).append("\n");
     sb.append("}");
     return sb.toString();

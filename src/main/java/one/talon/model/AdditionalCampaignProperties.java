@@ -118,6 +118,61 @@ public class AdditionalCampaignProperties {
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
   private Integer templateId;
 
+  /**
+   * A campaign state described exactly as in the Campaign Manager.
+   */
+  @JsonAdapter(FrontendStateEnum.Adapter.class)
+  public enum FrontendStateEnum {
+    EXPIRED("expired"),
+    
+    SCHEDULED("scheduled"),
+    
+    RUNNING("running"),
+    
+    DRAFT("draft");
+
+    private String value;
+
+    FrontendStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FrontendStateEnum fromValue(String value) {
+      for (FrontendStateEnum b : FrontendStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FrontendStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FrontendStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FrontendStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FrontendStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FRONTEND_STATE = "frontendState";
+  @SerializedName(SERIALIZED_NAME_FRONTEND_STATE)
+  private FrontendStateEnum frontendState;
+
 
   public AdditionalCampaignProperties budgets(List<CampaignBudget> budgets) {
     
@@ -606,6 +661,28 @@ public class AdditionalCampaignProperties {
   }
 
 
+  public AdditionalCampaignProperties frontendState(FrontendStateEnum frontendState) {
+    
+    this.frontendState = frontendState;
+    return this;
+  }
+
+   /**
+   * A campaign state described exactly as in the Campaign Manager.
+   * @return frontendState
+  **/
+  @ApiModelProperty(example = "running", required = true, value = "A campaign state described exactly as in the Campaign Manager.")
+
+  public FrontendStateEnum getFrontendState() {
+    return frontendState;
+  }
+
+
+  public void setFrontendState(FrontendStateEnum frontendState) {
+    this.frontendState = frontendState;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -635,12 +712,13 @@ public class AdditionalCampaignProperties {
         Objects.equals(this.updated, additionalCampaignProperties.updated) &&
         Objects.equals(this.createdBy, additionalCampaignProperties.createdBy) &&
         Objects.equals(this.updatedBy, additionalCampaignProperties.updatedBy) &&
-        Objects.equals(this.templateId, additionalCampaignProperties.templateId);
+        Objects.equals(this.templateId, additionalCampaignProperties.templateId) &&
+        Objects.equals(this.frontendState, additionalCampaignProperties.frontendState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId);
+    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState);
   }
 
 
@@ -669,6 +747,7 @@ public class AdditionalCampaignProperties {
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
+    sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("}");
     return sb.toString();
   }

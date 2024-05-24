@@ -133,11 +133,11 @@ public class RoleV2Base {
   }
 
    /**
-   * A list of user identifiers the role is assigned to.
+   * A list of user IDs the role is assigned to.
    * @return members
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[10, 12]", value = "A list of user identifiers the role is assigned to.")
+  @ApiModelProperty(example = "[10, 12]", value = "A list of user IDs the role is assigned to.")
 
   public List<Integer> getMembers() {
     return members;

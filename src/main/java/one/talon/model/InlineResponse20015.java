@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CardLedgerTransactionLogEntry;
+import one.talon.model.LoyaltyCard;
 
 /**
  * InlineResponse20015
@@ -38,7 +38,7 @@ public class InlineResponse20015 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CardLedgerTransactionLogEntry> data = new ArrayList<CardLedgerTransactionLogEntry>();
+  private List<LoyaltyCard> data = new ArrayList<LoyaltyCard>();
 
 
   public InlineResponse20015 hasMore(Boolean hasMore) {
@@ -48,10 +48,10 @@ public class InlineResponse20015 {
   }
 
    /**
-   * true means there is more data in the source collection to request..
+   * Get hasMore
    * @return hasMore
   **/
-  @ApiModelProperty(example = "true", required = true, value = "true means there is more data in the source collection to request..")
+  @ApiModelProperty(example = "true", required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -63,29 +63,29 @@ public class InlineResponse20015 {
   }
 
 
-  public InlineResponse20015 data(List<CardLedgerTransactionLogEntry> data) {
+  public InlineResponse20015 data(List<LoyaltyCard> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20015 addDataItem(CardLedgerTransactionLogEntry dataItem) {
+  public InlineResponse20015 addDataItem(LoyaltyCard dataItem) {
     this.data.add(dataItem);
     return this;
   }
 
    /**
-   * List of loyalty card transaction logs.
+   * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "List of loyalty card transaction logs.")
+  @ApiModelProperty(required = true, value = "")
 
-  public List<CardLedgerTransactionLogEntry> getData() {
+  public List<LoyaltyCard> getData() {
     return data;
   }
 
 
-  public void setData(List<CardLedgerTransactionLogEntry> data) {
+  public void setData(List<LoyaltyCard> data) {
     this.data = data;
   }
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Notification name. | 
 **scopes** | [**List&lt;ScopesEnum&gt;**](#List&lt;ScopesEnum&gt;) |  | 
+**batchingEnabled** | **Boolean** | Indicates whether batching is activated. |  [optional]
 
 
 

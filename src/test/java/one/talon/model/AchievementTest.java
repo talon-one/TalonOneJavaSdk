@@ -108,6 +108,14 @@ public class AchievementTest {
     }
 
     /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
+    }
+
+    /**
      * Test the property 'userId'
      */
     @Test
@@ -121,6 +129,14 @@ public class AchievementTest {
     @Test
     public void createdByTest() {
         // TODO: test createdBy
+    }
+
+    /**
+     * Test the property 'hasProgress'
+     */
+    @Test
+    public void hasProgressTest() {
+        // TODO: test hasProgress
     }
 
 }

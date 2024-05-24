@@ -90,6 +90,10 @@ public class CouponsNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_SCOPES)
   private List<ScopesEnum> scopes = new ArrayList<ScopesEnum>();
 
+  public static final String SERIALIZED_NAME_BATCHING_ENABLED = "batchingEnabled";
+  @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
+  private Boolean batchingEnabled = true;
+
 
   public CouponsNotificationPolicy name(String name) {
     
@@ -140,6 +144,29 @@ public class CouponsNotificationPolicy {
   }
 
 
+  public CouponsNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
+    
+    this.batchingEnabled = batchingEnabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether batching is activated.
+   * @return batchingEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Indicates whether batching is activated.")
+
+  public Boolean getBatchingEnabled() {
+    return batchingEnabled;
+  }
+
+
+  public void setBatchingEnabled(Boolean batchingEnabled) {
+    this.batchingEnabled = batchingEnabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -150,12 +177,13 @@ public class CouponsNotificationPolicy {
     }
     CouponsNotificationPolicy couponsNotificationPolicy = (CouponsNotificationPolicy) o;
     return Objects.equals(this.name, couponsNotificationPolicy.name) &&
-        Objects.equals(this.scopes, couponsNotificationPolicy.scopes);
+        Objects.equals(this.scopes, couponsNotificationPolicy.scopes) &&
+        Objects.equals(this.batchingEnabled, couponsNotificationPolicy.batchingEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, scopes);
+    return Objects.hash(name, scopes, batchingEnabled);
   }
 
 
@@ -165,6 +193,7 @@ public class CouponsNotificationPolicy {
     sb.append("class CouponsNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
+    sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

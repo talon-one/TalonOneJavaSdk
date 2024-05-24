@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.LedgerInfo;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -66,6 +67,14 @@ public class LoyaltyProgramLedgersTest {
     @Test
     public void nameTest() {
         // TODO: test name
+    }
+
+    /**
+     * Test the property 'joinDate'
+     */
+    @Test
+    public void joinDateTest() {
+        // TODO: test joinDate
     }
 
     /**

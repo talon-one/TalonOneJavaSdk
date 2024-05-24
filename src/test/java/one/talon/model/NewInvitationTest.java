@@ -59,14 +59,6 @@ public class NewInvitationTest {
     }
 
     /**
-     * Test the property 'acl'
-     */
-    @Test
-    public void aclTest() {
-        // TODO: test acl
-    }
-
-    /**
      * Test the property 'isAdmin'
      */
     @Test
@@ -80,6 +72,14 @@ public class NewInvitationTest {
     @Test
     public void rolesTest() {
         // TODO: test roles
+    }
+
+    /**
+     * Test the property 'acl'
+     */
+    @Test
+    public void aclTest() {
+        // TODO: test acl
     }
 
 }

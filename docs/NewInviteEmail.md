@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  | 
-**token** | **String** |  | 
+**email** | **String** | Email address of the user. | 
+**token** | **String** | Invitation token of the user. | 
 
 
 

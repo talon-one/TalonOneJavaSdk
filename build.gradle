@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'one.talon'
-version = '6.0.1'
+version = '7.0.0'
 
 buildscript {
     repositories {

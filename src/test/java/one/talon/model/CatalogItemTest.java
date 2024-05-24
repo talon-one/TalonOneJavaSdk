@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.ItemAttribute;
+import one.talon.model.Product;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -99,6 +100,14 @@ public class CatalogItemTest {
     @Test
     public void attributesTest() {
         // TODO: test attributes
+    }
+
+    /**
+     * Test the property 'product'
+     */
+    @Test
+    public void productTest() {
+        // TODO: test product
     }
 
 }

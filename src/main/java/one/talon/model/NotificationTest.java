@@ -35,7 +35,7 @@ public class NotificationTest {
 
   public static final String SERIALIZED_NAME_HTTP_STATUS = "httpStatus";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS)
-  private String httpStatus;
+  private Integer httpStatus;
 
 
   public NotificationTest httpResponse(String httpResponse) {
@@ -60,24 +60,24 @@ public class NotificationTest {
   }
 
 
-  public NotificationTest httpStatus(String httpStatus) {
+  public NotificationTest httpStatus(Integer httpStatus) {
     
     this.httpStatus = httpStatus;
     return this;
   }
 
    /**
-   * The returned http status code and status message.
+   * The returned http status code.
    * @return httpStatus
   **/
-  @ApiModelProperty(example = "200 OK", required = true, value = "The returned http status code and status message.")
+  @ApiModelProperty(example = "200", required = true, value = "The returned http status code.")
 
-  public String getHttpStatus() {
+  public Integer getHttpStatus() {
     return httpStatus;
   }
 
 
-  public void setHttpStatus(String httpStatus) {
+  public void setHttpStatus(Integer httpStatus) {
     this.httpStatus = httpStatus;
   }
 

@@ -128,7 +128,9 @@ public class UpdateCampaign {
     
     GIVEAWAYS("giveaways"),
     
-    STRIKETHROUGH("strikethrough");
+    STRIKETHROUGH("strikethrough"),
+    
+    ACHIEVEMENTS("achievements");
 
     private String value;
 

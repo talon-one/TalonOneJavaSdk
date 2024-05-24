@@ -84,11 +84,11 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'inviteToken'
+     * Test the property 'name'
      */
     @Test
-    public void inviteTokenTest() {
-        // TODO: test inviteToken
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
@@ -100,11 +100,19 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'name'
+     * Test the property 'inviteToken'
      */
     @Test
-    public void nameTest() {
-        // TODO: test name
+    public void inviteTokenTest() {
+        // TODO: test inviteToken
+    }
+
+    /**
+     * Test the property 'isAdmin'
+     */
+    @Test
+    public void isAdminTest() {
+        // TODO: test isAdmin
     }
 
     /**
@@ -116,27 +124,11 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'latestFeedTimestamp'
-     */
-    @Test
-    public void latestFeedTimestampTest() {
-        // TODO: test latestFeedTimestamp
-    }
-
-    /**
      * Test the property 'roles'
      */
     @Test
     public void rolesTest() {
         // TODO: test roles
-    }
-
-    /**
-     * Test the property 'applicationNotificationSubscriptions'
-     */
-    @Test
-    public void applicationNotificationSubscriptionsTest() {
-        // TODO: test applicationNotificationSubscriptions
     }
 
     /**
@@ -148,11 +140,11 @@ public class UserTest {
     }
 
     /**
-     * Test the property 'isAdmin'
+     * Test the property 'applicationNotificationSubscriptions'
      */
     @Test
-    public void isAdminTest() {
-        // TODO: test isAdmin
+    public void applicationNotificationSubscriptionsTest() {
+        // TODO: test applicationNotificationSubscriptions
     }
 
     /**
@@ -169,6 +161,14 @@ public class UserTest {
     @Test
     public void lastAccessedTest() {
         // TODO: test lastAccessed
+    }
+
+    /**
+     * Test the property 'latestFeedTimestamp'
+     */
+    @Test
+    public void latestFeedTimestampTest() {
+        // TODO: test latestFeedTimestamp
     }
 
 }

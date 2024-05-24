@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CampaignTemplate&gt;**](CampaignTemplate.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;CampaignGroup&gt;**](CampaignGroup.md) |  | 
 
 
 

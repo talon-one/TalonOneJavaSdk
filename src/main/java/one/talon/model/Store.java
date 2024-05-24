@@ -188,10 +188,10 @@ public class Store {
   }
 
    /**
-   * The integration ID of the store. You choose this ID when you create a store.
+   * The integration ID of the store. You choose this ID when you create a store.  **Note**: You cannot edit the &#x60;integrationId&#x60; after the store has been created. 
    * @return integrationId
   **/
-  @ApiModelProperty(example = "STORE-001", required = true, value = "The integration ID of the store. You choose this ID when you create a store.")
+  @ApiModelProperty(example = "STORE-001", required = true, value = "The integration ID of the store. You choose this ID when you create a store.  **Note**: You cannot edit the `integrationId` after the store has been created. ")
 
   public String getIntegrationId() {
     return integrationId;

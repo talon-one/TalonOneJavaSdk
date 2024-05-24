@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.CampaignStateNotification;
+import one.talon.model.Campaign;
 import one.talon.model.Ruleset;
 
 /**
@@ -34,18 +34,18 @@ import one.talon.model.Ruleset;
 public class CampaignEditedNotification {
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private CampaignStateNotification campaign;
+  private Campaign campaign;
 
   public static final String SERIALIZED_NAME_OLD_CAMPAIGN = "oldCampaign";
   @SerializedName(SERIALIZED_NAME_OLD_CAMPAIGN)
-  private CampaignStateNotification oldCampaign;
+  private Campaign oldCampaign;
 
   public static final String SERIALIZED_NAME_RULESET = "ruleset";
   @SerializedName(SERIALIZED_NAME_RULESET)
   private Ruleset ruleset;
 
 
-  public CampaignEditedNotification campaign(CampaignStateNotification campaign) {
+  public CampaignEditedNotification campaign(Campaign campaign) {
     
     this.campaign = campaign;
     return this;
@@ -57,17 +57,17 @@ public class CampaignEditedNotification {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public CampaignStateNotification getCampaign() {
+  public Campaign getCampaign() {
     return campaign;
   }
 
 
-  public void setCampaign(CampaignStateNotification campaign) {
+  public void setCampaign(Campaign campaign) {
     this.campaign = campaign;
   }
 
 
-  public CampaignEditedNotification oldCampaign(CampaignStateNotification oldCampaign) {
+  public CampaignEditedNotification oldCampaign(Campaign oldCampaign) {
     
     this.oldCampaign = oldCampaign;
     return this;
@@ -79,12 +79,12 @@ public class CampaignEditedNotification {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public CampaignStateNotification getOldCampaign() {
+  public Campaign getOldCampaign() {
     return oldCampaign;
   }
 
 
-  public void setOldCampaign(CampaignStateNotification oldCampaign) {
+  public void setOldCampaign(Campaign oldCampaign) {
     this.oldCampaign = oldCampaign;
   }
 

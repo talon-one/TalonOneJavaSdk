@@ -117,7 +117,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_IS_RESERVATION_MANDATORY = "isReservationMandatory";
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
-  private Boolean isReservationMandatory = true;
+  private Boolean isReservationMandatory = false;
 
   public static final String SERIALIZED_NAME_IMPLICITLY_RESERVED = "implicitlyReserved";
   @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)

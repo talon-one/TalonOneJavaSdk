@@ -29,6 +29,10 @@ import java.io.IOException;
  */
 
 public class AchievementAdditionalProperties {
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private Integer campaignId;
+
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private Integer userId;
@@ -36,6 +40,32 @@ public class AchievementAdditionalProperties {
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private String createdBy;
+
+  public static final String SERIALIZED_NAME_HAS_PROGRESS = "hasProgress";
+  @SerializedName(SERIALIZED_NAME_HAS_PROGRESS)
+  private Boolean hasProgress;
+
+
+  public AchievementAdditionalProperties campaignId(Integer campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * ID of the campaign, to which the achievement belongs to
+   * @return campaignId
+  **/
+  @ApiModelProperty(example = "1", required = true, value = "ID of the campaign, to which the achievement belongs to")
+
+  public Integer getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Integer campaignId) {
+    this.campaignId = campaignId;
+  }
 
 
   public AchievementAdditionalProperties userId(Integer userId) {
@@ -82,6 +112,29 @@ public class AchievementAdditionalProperties {
   }
 
 
+  public AchievementAdditionalProperties hasProgress(Boolean hasProgress) {
+    
+    this.hasProgress = hasProgress;
+    return this;
+  }
+
+   /**
+   * Indicates if a customer has made progress in the achievement.
+   * @return hasProgress
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates if a customer has made progress in the achievement.")
+
+  public Boolean getHasProgress() {
+    return hasProgress;
+  }
+
+
+  public void setHasProgress(Boolean hasProgress) {
+    this.hasProgress = hasProgress;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -91,13 +144,15 @@ public class AchievementAdditionalProperties {
       return false;
     }
     AchievementAdditionalProperties achievementAdditionalProperties = (AchievementAdditionalProperties) o;
-    return Objects.equals(this.userId, achievementAdditionalProperties.userId) &&
-        Objects.equals(this.createdBy, achievementAdditionalProperties.createdBy);
+    return Objects.equals(this.campaignId, achievementAdditionalProperties.campaignId) &&
+        Objects.equals(this.userId, achievementAdditionalProperties.userId) &&
+        Objects.equals(this.createdBy, achievementAdditionalProperties.createdBy) &&
+        Objects.equals(this.hasProgress, achievementAdditionalProperties.hasProgress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, createdBy);
+    return Objects.hash(campaignId, userId, createdBy, hasProgress);
   }
 
 
@@ -105,8 +160,10 @@ public class AchievementAdditionalProperties {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AchievementAdditionalProperties {\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    hasProgress: ").append(toIndentedString(hasProgress)).append("\n");
     sb.append("}");
     return sb.toString();
   }

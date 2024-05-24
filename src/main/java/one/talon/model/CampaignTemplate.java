@@ -147,7 +147,9 @@ public class CampaignTemplate {
     
     GIVEAWAYS("giveaways"),
     
-    STRIKETHROUGH("strikethrough");
+    STRIKETHROUGH("strikethrough"),
+    
+    ACHIEVEMENTS("achievements");
 
     private String value;
 

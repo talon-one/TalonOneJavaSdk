@@ -22,7 +22,9 @@ Name | Value
 CAMPAIGN | &quot;campaign&quot;
 LOYALTY_ADDED_DEDUCTED_POINTS | &quot;loyalty_added_deducted_points&quot;
 COUPON | &quot;coupon&quot;
+EXPIRING_COUPONS | &quot;expiring_coupons&quot;
 EXPIRING_POINTS | &quot;expiring_points&quot;
+CARD_EXPIRING_POINTS | &quot;card_expiring_points&quot;
 PENDING_TO_ACTIVE_POINTS | &quot;pending_to_active_points&quot;
 STRIKETHROUGH_PRICING | &quot;strikethrough_pricing&quot;
 TIER_DOWNGRADE | &quot;tier_downgrade&quot;

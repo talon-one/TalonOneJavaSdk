@@ -40,10 +40,6 @@ public class NewInvitation {
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
 
-  public static final String SERIALIZED_NAME_ACL = "acl";
-  @SerializedName(SERIALIZED_NAME_ACL)
-  private String acl;
-
   public static final String SERIALIZED_NAME_IS_ADMIN = "isAdmin";
   @SerializedName(SERIALIZED_NAME_IS_ADMIN)
   private Boolean isAdmin;
@@ -51,6 +47,10 @@ public class NewInvitation {
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
   private List<Integer> roles = null;
+
+  public static final String SERIALIZED_NAME_ACL = "acl";
+  @SerializedName(SERIALIZED_NAME_ACL)
+  private String acl;
 
 
   public NewInvitation name(String name) {
@@ -60,11 +60,11 @@ public class NewInvitation {
   }
 
    /**
-   * Name of the user being invited.
+   * Name of the user.
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "John Doe", value = "Name of the user being invited.")
+  @ApiModelProperty(example = "John Doe", value = "Name of the user.")
 
   public String getName() {
     return name;
@@ -83,10 +83,10 @@ public class NewInvitation {
   }
 
    /**
-   * Get email
+   * Email address of the user.
    * @return email
   **/
-  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "")
+  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "Email address of the user.")
 
   public String getEmail() {
     return email;
@@ -98,29 +98,6 @@ public class NewInvitation {
   }
 
 
-  public NewInvitation acl(String acl) {
-    
-    this.acl = acl;
-    return this;
-  }
-
-   /**
-   * The &#x60;Access Control List&#x60; json defining the role of the user.  This represents the access control on the user level. Use one of the following: - normal user: &#x60;{\&quot;Role\&quot;: 0}&#x60; - admin: &#x60;{\&quot;Role\&quot;: 127}&#x60; 
-   * @return acl
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"Role\":0}", value = "The `Access Control List` json defining the role of the user.  This represents the access control on the user level. Use one of the following: - normal user: `{\"Role\": 0}` - admin: `{\"Role\": 127}` ")
-
-  public String getAcl() {
-    return acl;
-  }
-
-
-  public void setAcl(String acl) {
-    this.acl = acl;
-  }
-
-
   public NewInvitation isAdmin(Boolean isAdmin) {
     
     this.isAdmin = isAdmin;
@@ -128,11 +105,11 @@ public class NewInvitation {
   }
 
    /**
-   * An indication of whether the user has admin permissions. We recommend using this flag over using the &#x60;acl&#x60; with value &#x60;{\&quot;Role\&quot;: 127}&#x60;. 
+   * Indicates whether the user is an &#x60;admin&#x60;.
    * @return isAdmin
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "An indication of whether the user has admin permissions. We recommend using this flag over using the `acl` with value `{\"Role\": 127}`. ")
+  @ApiModelProperty(example = "false", value = "Indicates whether the user is an `admin`.")
 
   public Boolean getIsAdmin() {
     return isAdmin;
@@ -159,11 +136,11 @@ public class NewInvitation {
   }
 
    /**
-   * An array of role IDs to assign to the new user.
+   * A list of the IDs of the roles assigned to the user.
    * @return roles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An array of role IDs to assign to the new user.")
+  @ApiModelProperty(value = "A list of the IDs of the roles assigned to the user.")
 
   public List<Integer> getRoles() {
     return roles;
@@ -172,6 +149,29 @@ public class NewInvitation {
 
   public void setRoles(List<Integer> roles) {
     this.roles = roles;
+  }
+
+
+  public NewInvitation acl(String acl) {
+    
+    this.acl = acl;
+    return this;
+  }
+
+   /**
+   * Indicates the access level of the user.
+   * @return acl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Indicates the access level of the user.")
+
+  public String getAcl() {
+    return acl;
+  }
+
+
+  public void setAcl(String acl) {
+    this.acl = acl;
   }
 
 
@@ -186,14 +186,14 @@ public class NewInvitation {
     NewInvitation newInvitation = (NewInvitation) o;
     return Objects.equals(this.name, newInvitation.name) &&
         Objects.equals(this.email, newInvitation.email) &&
-        Objects.equals(this.acl, newInvitation.acl) &&
         Objects.equals(this.isAdmin, newInvitation.isAdmin) &&
-        Objects.equals(this.roles, newInvitation.roles);
+        Objects.equals(this.roles, newInvitation.roles) &&
+        Objects.equals(this.acl, newInvitation.acl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, email, acl, isAdmin, roles);
+    return Objects.hash(name, email, isAdmin, roles, acl);
   }
 
 
@@ -203,9 +203,9 @@ public class NewInvitation {
     sb.append("class NewInvitation {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    acl: ").append(toIndentedString(acl)).append("\n");
     sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    acl: ").append(toIndentedString(acl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

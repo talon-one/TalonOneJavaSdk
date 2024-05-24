@@ -213,4 +213,12 @@ public class AdditionalCampaignPropertiesTest {
         // TODO: test templateId
     }
 
+    /**
+     * Test the property 'frontendState'
+     */
+    @Test
+    public void frontendStateTest() {
+        // TODO: test frontendState
+    }
+
 }

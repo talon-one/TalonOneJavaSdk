@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **httpResponse** | **String** | The returned http response. | 
-**httpStatus** | **String** | The returned http status code and status message. | 
+**httpStatus** | **Integer** | The returned http status code. | 
 
 
 

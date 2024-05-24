@@ -33,6 +33,10 @@ public class TierDowngradeNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_BATCHING_ENABLED = "batchingEnabled";
+  @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
+  private Boolean batchingEnabled = true;
+
 
   public TierDowngradeNotificationPolicy name(String name) {
     
@@ -56,6 +60,29 @@ public class TierDowngradeNotificationPolicy {
   }
 
 
+  public TierDowngradeNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
+    
+    this.batchingEnabled = batchingEnabled;
+    return this;
+  }
+
+   /**
+   * Indicates whether batching is activated.
+   * @return batchingEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether batching is activated.")
+
+  public Boolean getBatchingEnabled() {
+    return batchingEnabled;
+  }
+
+
+  public void setBatchingEnabled(Boolean batchingEnabled) {
+    this.batchingEnabled = batchingEnabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +92,13 @@ public class TierDowngradeNotificationPolicy {
       return false;
     }
     TierDowngradeNotificationPolicy tierDowngradeNotificationPolicy = (TierDowngradeNotificationPolicy) o;
-    return Objects.equals(this.name, tierDowngradeNotificationPolicy.name);
+    return Objects.equals(this.name, tierDowngradeNotificationPolicy.name) &&
+        Objects.equals(this.batchingEnabled, tierDowngradeNotificationPolicy.batchingEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, batchingEnabled);
   }
 
 
@@ -79,6 +107,7 @@ public class TierDowngradeNotificationPolicy {
     StringBuilder sb = new StringBuilder();
     sb.append("class TierDowngradeNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

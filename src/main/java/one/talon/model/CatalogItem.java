@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.ItemAttribute;
+import one.talon.model.Product;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -62,6 +63,10 @@ public class CatalogItem {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private List<ItemAttribute> attributes = null;
+
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private Product product;
 
 
   public CatalogItem id(Integer id) {
@@ -229,6 +234,29 @@ public class CatalogItem {
   }
 
 
+  public CatalogItem product(Product product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Product getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -244,12 +272,13 @@ public class CatalogItem {
         Objects.equals(this.price, catalogItem.price) &&
         Objects.equals(this.catalogid, catalogItem.catalogid) &&
         Objects.equals(this.version, catalogItem.version) &&
-        Objects.equals(this.attributes, catalogItem.attributes);
+        Objects.equals(this.attributes, catalogItem.attributes) &&
+        Objects.equals(this.product, catalogItem.product);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, sku, price, catalogid, version, attributes);
+    return Objects.hash(id, created, sku, price, catalogid, version, attributes, product);
   }
 
 
@@ -264,6 +293,7 @@ public class CatalogItem {
     sb.append("    catalogid: ").append(toIndentedString(catalogid)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("}");
     return sb.toString();
   }

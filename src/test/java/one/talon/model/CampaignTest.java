@@ -184,14 +184,6 @@ public class CampaignTest {
     }
 
     /**
-     * Test the property 'evaluationGroupId'
-     */
-    @Test
-    public void evaluationGroupIdTest() {
-        // TODO: test evaluationGroupId
-    }
-
-    /**
      * Test the property 'type'
      */
     @Test
@@ -373,6 +365,14 @@ public class CampaignTest {
     @Test
     public void templateIdTest() {
         // TODO: test templateId
+    }
+
+    /**
+     * Test the property 'frontendState'
+     */
+    @Test
+    public void frontendStateTest() {
+        // TODO: test frontendState
     }
 
 }

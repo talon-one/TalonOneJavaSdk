@@ -50,10 +50,10 @@ public class NewAccountSignUp {
   }
 
    /**
-   * The email address associated with your account.
+   * The email address associated with the user profile.
    * @return email
   **/
-  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "The email address associated with your account.")
+  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "The email address associated with the user profile.")
 
   public String getEmail() {
     return email;

@@ -26,9 +26,9 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;changeLoyaltyTierLevel\&quot; effect. This is triggered whenever the user&#39;s loyalty tier is upgraded or downgraded due to a validated rule that contained an \&quot;add loyalty points\&quot; effect. 
+ * The properties specific to the \&quot;changeLoyaltyTierLevel\&quot; effect. This is triggered whenever the user&#39;s loyalty tier is upgraded due to a validated rule that contained an \&quot;addLoyaltyPoints\&quot; effect. 
  */
-@ApiModel(description = "The properties specific to the \"changeLoyaltyTierLevel\" effect. This is triggered whenever the user's loyalty tier is upgraded or downgraded due to a validated rule that contained an \"add loyalty points\" effect. ")
+@ApiModel(description = "The properties specific to the \"changeLoyaltyTierLevel\" effect. This is triggered whenever the user's loyalty tier is upgraded due to a validated rule that contained an \"addLoyaltyPoints\" effect. ")
 
 public class ChangeLoyaltyTierLevelEffectProps {
   public static final String SERIALIZED_NAME_RULE_TITLE = "ruleTitle";
@@ -63,10 +63,10 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
    /**
-   * The title of the rule that triggered the tier upgrade or downgrade.
+   * The title of the rule that triggered the tier upgrade.
    * @return ruleTitle
   **/
-  @ApiModelProperty(required = true, value = "The title of the rule that triggered the tier upgrade or downgrade.")
+  @ApiModelProperty(required = true, value = "The title of the rule that triggered the tier upgrade.")
 
   public String getRuleTitle() {
     return ruleTitle;
@@ -129,11 +129,11 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
    /**
-   * The name of the tier from which the user was upgraded or downgraded.
+   * The name of the tier from which the user was upgraded.
    * @return previousTierName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the tier from which the user was upgraded or downgraded.")
+  @ApiModelProperty(value = "The name of the tier from which the user was upgraded.")
 
   public String getPreviousTierName() {
     return previousTierName;
@@ -152,10 +152,10 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
    /**
-   * The name of the tier to which the user has been upgraded or downgraded.
+   * The name of the tier to which the user has been upgraded.
    * @return newTierName
   **/
-  @ApiModelProperty(required = true, value = "The name of the tier to which the user has been upgraded or downgraded.")
+  @ApiModelProperty(required = true, value = "The name of the tier to which the user has been upgraded.")
 
   public String getNewTierName() {
     return newTierName;

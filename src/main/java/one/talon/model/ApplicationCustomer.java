@@ -330,11 +330,11 @@ public class ApplicationCustomer {
   }
 
    /**
-   * Shows whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). 
+   * An indicator of whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). 
    * @return sandbox
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Shows whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). ")
+  @ApiModelProperty(example = "false", value = "An indicator of whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). ")
 
   public Boolean getSandbox() {
     return sandbox;

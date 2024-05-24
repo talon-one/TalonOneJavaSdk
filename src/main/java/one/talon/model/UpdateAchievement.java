@@ -23,12 +23,18 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import one.talon.model.TimePoint;
 
 /**
  * UpdateAchievement
  */
 
 public class UpdateAchievement {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
@@ -36,6 +42,41 @@ public class UpdateAchievement {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_TARGET = "target";
+  @SerializedName(SERIALIZED_NAME_TARGET)
+  private BigDecimal target;
+
+  public static final String SERIALIZED_NAME_PERIOD = "period";
+  @SerializedName(SERIALIZED_NAME_PERIOD)
+  private String period;
+
+  public static final String SERIALIZED_NAME_PERIOD_END_OVERRIDE = "periodEndOverride";
+  @SerializedName(SERIALIZED_NAME_PERIOD_END_OVERRIDE)
+  private TimePoint periodEndOverride;
+
+
+  public UpdateAchievement name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The internal name of the achievement used in API requests. 
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Order50Discount", value = "The internal name of the achievement used in API requests. ")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
 
   public UpdateAchievement title(String title) {
@@ -84,6 +125,75 @@ public class UpdateAchievement {
   }
 
 
+  public UpdateAchievement target(BigDecimal target) {
+    
+    this.target = target;
+    return this;
+  }
+
+   /**
+   * The required number of actions or the transactional milestone to complete the achievement.
+   * @return target
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "50.0", value = "The required number of actions or the transactional milestone to complete the achievement.")
+
+  public BigDecimal getTarget() {
+    return target;
+  }
+
+
+  public void setTarget(BigDecimal target) {
+    this.target = target;
+  }
+
+
+  public UpdateAchievement period(String period) {
+    
+    this.period = period;
+    return this;
+  }
+
+   /**
+   * The relative duration after which the achievement ends and resets for a particular customer profile. 
+   * @return period
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1Y", value = "The relative duration after which the achievement ends and resets for a particular customer profile. ")
+
+  public String getPeriod() {
+    return period;
+  }
+
+
+  public void setPeriod(String period) {
+    this.period = period;
+  }
+
+
+  public UpdateAchievement periodEndOverride(TimePoint periodEndOverride) {
+    
+    this.periodEndOverride = periodEndOverride;
+    return this;
+  }
+
+   /**
+   * Get periodEndOverride
+   * @return periodEndOverride
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public TimePoint getPeriodEndOverride() {
+    return periodEndOverride;
+  }
+
+
+  public void setPeriodEndOverride(TimePoint periodEndOverride) {
+    this.periodEndOverride = periodEndOverride;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,13 +203,17 @@ public class UpdateAchievement {
       return false;
     }
     UpdateAchievement updateAchievement = (UpdateAchievement) o;
-    return Objects.equals(this.title, updateAchievement.title) &&
-        Objects.equals(this.description, updateAchievement.description);
+    return Objects.equals(this.name, updateAchievement.name) &&
+        Objects.equals(this.title, updateAchievement.title) &&
+        Objects.equals(this.description, updateAchievement.description) &&
+        Objects.equals(this.target, updateAchievement.target) &&
+        Objects.equals(this.period, updateAchievement.period) &&
+        Objects.equals(this.periodEndOverride, updateAchievement.periodEndOverride);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description);
+    return Objects.hash(name, title, description, target, period, periodEndOverride);
   }
 
 
@@ -107,8 +221,12 @@ public class UpdateAchievement {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAchievement {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    target: ").append(toIndentedString(target)).append("\n");
+    sb.append("    period: ").append(toIndentedString(period)).append("\n");
+    sb.append("    periodEndOverride: ").append(toIndentedString(periodEndOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }

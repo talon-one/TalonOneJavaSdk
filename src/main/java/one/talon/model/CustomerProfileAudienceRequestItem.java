@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class CustomerProfileAudienceRequestItem {
   /**
-   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. If the customer profile does not exist, it will be created. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
    */
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
@@ -96,10 +96,10 @@ public class CustomerProfileAudienceRequestItem {
   }
 
    /**
-   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience. If the customer profile does not exist, it will be created. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
    * @return action
   **/
-  @ApiModelProperty(example = "add", required = true, value = "Defines the action to perform: - `add`: Adds the customer profile to the audience. - `delete`: Removes the customer profile from the audience. ")
+  @ApiModelProperty(example = "add", required = true, value = "Defines the action to perform: - `add`: Adds the customer profile to the audience. If the customer profile does not exist, it will be created. - `delete`: Removes the customer profile from the audience. ")
 
   public ActionEnum getAction() {
     return action;

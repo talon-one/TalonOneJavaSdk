@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.CampaignStateNotification;
+import one.talon.model.Campaign;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -34,14 +34,14 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignDeletedNotification {
   public static final String SERIALIZED_NAME_CAMPAIGN = "campaign";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN)
-  private CampaignStateNotification campaign;
+  private Campaign campaign;
 
   public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
   @SerializedName(SERIALIZED_NAME_DELETED_AT)
   private OffsetDateTime deletedAt;
 
 
-  public CampaignDeletedNotification campaign(CampaignStateNotification campaign) {
+  public CampaignDeletedNotification campaign(Campaign campaign) {
     
     this.campaign = campaign;
     return this;
@@ -53,12 +53,12 @@ public class CampaignDeletedNotification {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public CampaignStateNotification getCampaign() {
+  public Campaign getCampaign() {
     return campaign;
   }
 
 
-  public void setCampaign(CampaignStateNotification campaign) {
+  public void setCampaign(Campaign campaign) {
     this.campaign = campaign;
   }
 

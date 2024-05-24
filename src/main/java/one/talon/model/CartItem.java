@@ -65,6 +65,10 @@ public class CartItem {
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private String category;
 
+  public static final String SERIALIZED_NAME_PRODUCT = "product";
+  @SerializedName(SERIALIZED_NAME_PRODUCT)
+  private Product product;
+
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   private BigDecimal weight;
@@ -257,6 +261,29 @@ public class CartItem {
 
   public void setCategory(String category) {
     this.category = category;
+  }
+
+
+  public CartItem product(Product product) {
+    
+    this.product = product;
+    return this;
+  }
+
+   /**
+   * Get product
+   * @return product
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Product getProduct() {
+    return product;
+  }
+
+
+  public void setProduct(Product product) {
+    this.product = product;
   }
 
 
@@ -468,6 +495,7 @@ public class CartItem {
         Objects.equals(this.remainingQuantity, cartItem.remainingQuantity) &&
         Objects.equals(this.price, cartItem.price) &&
         Objects.equals(this.category, cartItem.category) &&
+        Objects.equals(this.product, cartItem.product) &&
         Objects.equals(this.weight, cartItem.weight) &&
         Objects.equals(this.height, cartItem.height) &&
         Objects.equals(this.width, cartItem.width) &&
@@ -480,7 +508,7 @@ public class CartItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, weight, height, width, length, position, attributes, additionalCosts, catalogItemID);
+    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, product, weight, height, width, length, position, attributes, additionalCosts, catalogItemID);
   }
 
 
@@ -495,6 +523,7 @@ public class CartItem {
     sb.append("    remainingQuantity: ").append(toIndentedString(remainingQuantity)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");

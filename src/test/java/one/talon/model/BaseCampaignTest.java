@@ -150,14 +150,6 @@ public class BaseCampaignTest {
     }
 
     /**
-     * Test the property 'evaluationGroupId'
-     */
-    @Test
-    public void evaluationGroupIdTest() {
-        // TODO: test evaluationGroupId
-    }
-
-    /**
      * Test the property 'type'
      */
     @Test

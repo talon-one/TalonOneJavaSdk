@@ -140,7 +140,8 @@ public class TemplateArgDef {
    * A campaigner-friendly description of the argument, this will also be shown in the rule editor.
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "A campaigner-friendly description of the argument, this will also be shown in the rule editor.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A campaigner-friendly description of the argument, this will also be shown in the rule editor.")
 
   public String getDescription() {
     return description;

@@ -52,6 +52,14 @@ public class TierWillDowngradeNotificationPolicyTest {
     }
 
     /**
+     * Test the property 'batchingEnabled'
+     */
+    @Test
+    public void batchingEnabledTest() {
+        // TODO: test batchingEnabled
+    }
+
+    /**
      * Test the property 'triggers'
      */
     @Test

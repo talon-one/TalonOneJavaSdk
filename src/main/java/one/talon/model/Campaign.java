@@ -147,7 +147,9 @@ public class Campaign {
     
     GIVEAWAYS("giveaways"),
     
-    STRIKETHROUGH("strikethrough");
+    STRIKETHROUGH("strikethrough"),
+    
+    ACHIEVEMENTS("achievements");
 
     private String value;
 
@@ -206,10 +208,6 @@ public class Campaign {
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
   private List<Integer> campaignGroups = null;
-
-  public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
-  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Integer evaluationGroupId;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -349,6 +347,61 @@ public class Campaign {
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
   private Integer templateId;
+
+  /**
+   * A campaign state described exactly as in the Campaign Manager.
+   */
+  @JsonAdapter(FrontendStateEnum.Adapter.class)
+  public enum FrontendStateEnum {
+    EXPIRED("expired"),
+    
+    SCHEDULED("scheduled"),
+    
+    RUNNING("running"),
+    
+    DRAFT("draft");
+
+    private String value;
+
+    FrontendStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FrontendStateEnum fromValue(String value) {
+      for (FrontendStateEnum b : FrontendStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FrontendStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FrontendStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FrontendStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FrontendStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FRONTEND_STATE = "frontendState";
+  @SerializedName(SERIALIZED_NAME_FRONTEND_STATE)
+  private FrontendStateEnum frontendState;
 
 
   public Campaign id(Integer id) {
@@ -752,29 +805,6 @@ public class Campaign {
 
   public void setCampaignGroups(List<Integer> campaignGroups) {
     this.campaignGroups = campaignGroups;
-  }
-
-
-  public Campaign evaluationGroupId(Integer evaluationGroupId) {
-    
-    this.evaluationGroupId = evaluationGroupId;
-    return this;
-  }
-
-   /**
-   * The ID of the campaign evaluation group the campaign belongs to.
-   * @return evaluationGroupId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
-
-  public Integer getEvaluationGroupId() {
-    return evaluationGroupId;
-  }
-
-
-  public void setEvaluationGroupId(Integer evaluationGroupId) {
-    this.evaluationGroupId = evaluationGroupId;
   }
 
 
@@ -1318,6 +1348,28 @@ public class Campaign {
   }
 
 
+  public Campaign frontendState(FrontendStateEnum frontendState) {
+    
+    this.frontendState = frontendState;
+    return this;
+  }
+
+   /**
+   * A campaign state described exactly as in the Campaign Manager.
+   * @return frontendState
+  **/
+  @ApiModelProperty(example = "running", required = true, value = "A campaign state described exactly as in the Campaign Manager.")
+
+  public FrontendStateEnum getFrontendState() {
+    return frontendState;
+  }
+
+
+  public void setFrontendState(FrontendStateEnum frontendState) {
+    this.frontendState = frontendState;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -1344,7 +1396,6 @@ public class Campaign {
         Objects.equals(this.referralSettings, campaign.referralSettings) &&
         Objects.equals(this.limits, campaign.limits) &&
         Objects.equals(this.campaignGroups, campaign.campaignGroups) &&
-        Objects.equals(this.evaluationGroupId, campaign.evaluationGroupId) &&
         Objects.equals(this.type, campaign.type) &&
         Objects.equals(this.linkedStoreIds, campaign.linkedStoreIds) &&
         Objects.equals(this.budgets, campaign.budgets) &&
@@ -1367,12 +1418,13 @@ public class Campaign {
         Objects.equals(this.updated, campaign.updated) &&
         Objects.equals(this.createdBy, campaign.createdBy) &&
         Objects.equals(this.updatedBy, campaign.updatedBy) &&
-        Objects.equals(this.templateId, campaign.templateId);
+        Objects.equals(this.templateId, campaign.templateId) &&
+        Objects.equals(this.frontendState, campaign.frontendState);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState);
   }
 
 
@@ -1397,7 +1449,6 @@ public class Campaign {
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    campaignGroups: ").append(toIndentedString(campaignGroups)).append("\n");
-    sb.append("    evaluationGroupId: ").append(toIndentedString(evaluationGroupId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    linkedStoreIds: ").append(toIndentedString(linkedStoreIds)).append("\n");
     sb.append("    budgets: ").append(toIndentedString(budgets)).append("\n");
@@ -1421,6 +1472,7 @@ public class Campaign {
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
+    sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("}");
     return sb.toString();
   }

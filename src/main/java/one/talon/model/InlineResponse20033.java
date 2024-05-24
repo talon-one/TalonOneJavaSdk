@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CatalogItem;
+import one.talon.model.ApplicationReferee;
 
 /**
  * InlineResponse20033
@@ -42,7 +42,7 @@ public class InlineResponse20033 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CatalogItem> data = new ArrayList<CatalogItem>();
+  private List<ApplicationReferee> data = new ArrayList<ApplicationReferee>();
 
 
   public InlineResponse20033 hasMore(Boolean hasMore) {
@@ -91,13 +91,13 @@ public class InlineResponse20033 {
   }
 
 
-  public InlineResponse20033 data(List<CatalogItem> data) {
+  public InlineResponse20033 data(List<ApplicationReferee> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20033 addDataItem(CatalogItem dataItem) {
+  public InlineResponse20033 addDataItem(ApplicationReferee dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,12 +108,12 @@ public class InlineResponse20033 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CatalogItem> getData() {
+  public List<ApplicationReferee> getData() {
     return data;
   }
 
 
-  public void setData(List<CatalogItem> data) {
+  public void setData(List<ApplicationReferee> data) {
     this.data = data;
   }
 

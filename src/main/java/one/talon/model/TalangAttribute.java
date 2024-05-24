@@ -71,7 +71,9 @@ public class TalangAttribute {
     
     SESSION("Session"),
     
-    STORE("Store");
+    STORE("Store"),
+    
+    ACHIEVEMENTS("Achievements");
 
     private String value;
 

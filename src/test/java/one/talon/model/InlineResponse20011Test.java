@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignTemplate;
+import one.talon.model.CampaignGroup;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -44,11 +44,11 @@ public class InlineResponse20011Test {
     }
 
     /**
-     * Test the property 'hasMore'
+     * Test the property 'totalResultSize'
      */
     @Test
-    public void hasMoreTest() {
-        // TODO: test hasMore
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
     }
 
     /**

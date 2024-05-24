@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;Store&gt;**](Store.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;Export&gt;**](Export.md) |  | 
 
 
 

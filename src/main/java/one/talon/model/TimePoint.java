@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The absolute duration after which the achievement is reset for a particular customer profile.
+ * The absolute duration after which the achievement ends and resets for a particular customer profile.  **Note**: The duration follows the time zone of the Application this achievement belongs to. 
  */
-@ApiModel(description = "The absolute duration after which the achievement is reset for a particular customer profile.")
+@ApiModel(description = "The absolute duration after which the achievement ends and resets for a particular customer profile.  **Note**: The duration follows the time zone of the Application this achievement belongs to. ")
 
 public class TimePoint {
   public static final String SERIALIZED_NAME_MONTH = "month";
@@ -62,13 +62,13 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset in this month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60;. 
+   * The achievement ends and resets in this month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60;. 
    * minimum: 1
    * maximum: 12
    * @return month
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "11", value = "The achievement is reset in this month.  **Note**: Only applicable if the period is set to `Y`. ")
+  @ApiModelProperty(example = "11", value = "The achievement ends and resets in this month.  **Note**: Only applicable if the period is set to `Y`. ")
 
   public Integer getMonth() {
     return month;
@@ -87,13 +87,13 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset on this day of the month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60; or &#x60;M&#x60;. 
+   * The achievement ends and resets on this day of the month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60; or &#x60;M&#x60;. 
    * minimum: 1
-   * maximum: 28
+   * maximum: 31
    * @return dayOfMonth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "23", value = "The achievement is reset on this day of the month.  **Note**: Only applicable if the period is set to `Y` or `M`. ")
+  @ApiModelProperty(example = "23", value = "The achievement ends and resets on this day of the month.  **Note**: Only applicable if the period is set to `Y` or `M`. ")
 
   public Integer getDayOfMonth() {
     return dayOfMonth;
@@ -112,13 +112,13 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset on this day of the week. &#x60;1&#x60; represents &#x60;Monday&#x60; and &#x60;7&#x60; represents &#x60;Sunday&#x60;.  **Note**: Only applicable if the period is set to &#x60;W&#x60;. 
+   * The achievement ends and resets on this day of the week. &#x60;1&#x60; represents &#x60;Monday&#x60; and &#x60;7&#x60; represents &#x60;Sunday&#x60;.  **Note**: Only applicable if the period is set to &#x60;W&#x60;. 
    * minimum: 1
    * maximum: 7
    * @return dayOfWeek
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The achievement is reset on this day of the week. `1` represents `Monday` and `7` represents `Sunday`.  **Note**: Only applicable if the period is set to `W`. ")
+  @ApiModelProperty(value = "The achievement ends and resets on this day of the week. `1` represents `Monday` and `7` represents `Sunday`.  **Note**: Only applicable if the period is set to `W`. ")
 
   public Integer getDayOfWeek() {
     return dayOfWeek;
@@ -137,10 +137,10 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset at this hour.
+   * The achievement ends and resets at this hour.
    * @return hour
   **/
-  @ApiModelProperty(example = "23", required = true, value = "The achievement is reset at this hour.")
+  @ApiModelProperty(example = "23", required = true, value = "The achievement ends and resets at this hour.")
 
   public Integer getHour() {
     return hour;
@@ -159,10 +159,10 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset at this minute.
+   * The achievement ends and resets at this minute.
    * @return minute
   **/
-  @ApiModelProperty(example = "59", required = true, value = "The achievement is reset at this minute.")
+  @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this minute.")
 
   public Integer getMinute() {
     return minute;
@@ -181,10 +181,10 @@ public class TimePoint {
   }
 
    /**
-   * The achievement is reset at this second.
+   * The achievement ends and resets at this second.
    * @return second
   **/
-  @ApiModelProperty(example = "59", required = true, value = "The achievement is reset at this second.")
+  @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this second.")
 
   public Integer getSecond() {
     return second;

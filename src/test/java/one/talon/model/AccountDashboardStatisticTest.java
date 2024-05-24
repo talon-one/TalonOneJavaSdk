@@ -23,7 +23,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AccountDashboardStatisticApiCalls;
 import one.talon.model.AccountDashboardStatisticCampaigns;
 import one.talon.model.AccountDashboardStatisticDiscount;
 import one.talon.model.AccountDashboardStatisticLoyaltyPoints;
@@ -78,14 +77,6 @@ public class AccountDashboardStatisticTest {
     @Test
     public void referralsTest() {
         // TODO: test referrals
-    }
-
-    /**
-     * Test the property 'apiCalls'
-     */
-    @Test
-    public void apiCallsTest() {
-        // TODO: test apiCalls
     }
 
     /**
