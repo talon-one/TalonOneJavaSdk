@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>7.0.0</version>
+  <version>8.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -63,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:7.0.0"
+compile "one.talon:talon-one-client:8.0.0"
 ```
 
 ### Others
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-7.0.0.jar`
+* `target/talon-one-client-8.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -236,6 +236,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**updateCustomerProfileV2**](docs/IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{integrationId} | Update customer profile
 *IntegrationApi* | [**updateCustomerProfilesV2**](docs/IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple customer profiles
 *IntegrationApi* | [**updateCustomerSessionV2**](docs/IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update customer session
+*ManagementApi* | [**activateUserByEmail**](docs/ManagementApi.md#activateUserByEmail) | **POST** /v1/users/activate | Activate user by email address
 *ManagementApi* | [**addLoyaltyCardPoints**](docs/ManagementApi.md#addLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/add_points | Add points to card
 *ManagementApi* | [**addLoyaltyPoints**](docs/ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/add_points | Add points to customer profile
 *ManagementApi* | [**copyCampaignToApplications**](docs/ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into the specified Application
@@ -290,7 +291,6 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getAdditionalCost**](docs/ManagementApi.md#getAdditionalCost) | **GET** /v1/additional_costs/{additionalCostId} | Get additional cost
 *ManagementApi* | [**getAdditionalCosts**](docs/ManagementApi.md#getAdditionalCosts) | **GET** /v1/additional_costs | List additional costs
 *ManagementApi* | [**getAllAccessLogs**](docs/ManagementApi.md#getAllAccessLogs) | **GET** /v1/access_logs | List access logs
-*ManagementApi* | [**getAllRoles**](docs/ManagementApi.md#getAllRoles) | **GET** /v1/roles | List roles
 *ManagementApi* | [**getApplication**](docs/ManagementApi.md#getApplication) | **GET** /v1/applications/{applicationId} | Get Application
 *ManagementApi* | [**getApplicationApiHealth**](docs/ManagementApi.md#getApplicationApiHealth) | **GET** /v1/applications/{applicationId}/health_report | Get Application health
 *ManagementApi* | [**getApplicationCustomer**](docs/ManagementApi.md#getApplicationCustomer) | **GET** /v1/applications/{applicationId}/customers/{customerId} | Get application&#39;s customer
@@ -336,7 +336,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**getLoyaltyPrograms**](docs/ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs
 *ManagementApi* | [**getLoyaltyStatistics**](docs/ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
 *ManagementApi* | [**getReferralsWithoutTotalCount**](docs/ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals
-*ManagementApi* | [**getRole**](docs/ManagementApi.md#getRole) | **GET** /v1/roles/{roleId} | Get role
+*ManagementApi* | [**getRoleV2**](docs/ManagementApi.md#getRoleV2) | **GET** /v2/roles/{roleId} | Get role
 *ManagementApi* | [**getRuleset**](docs/ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset
 *ManagementApi* | [**getRulesets**](docs/ManagementApi.md#getRulesets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets | List campaign rulesets
 *ManagementApi* | [**getStore**](docs/ManagementApi.md#getStore) | **GET** /v1/applications/{applicationId}/stores/{storeId} | Get store
@@ -356,8 +356,10 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**importLoyaltyPoints**](docs/ManagementApi.md#importLoyaltyPoints) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_points | Import loyalty points
 *ManagementApi* | [**importPoolGiveaways**](docs/ManagementApi.md#importPoolGiveaways) | **POST** /v1/giveaways/pools/{poolId}/import | Import giveaway codes into a giveaway pool
 *ManagementApi* | [**importReferrals**](docs/ManagementApi.md#importReferrals) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_referrals | Import referrals
+*ManagementApi* | [**inviteUserExternal**](docs/ManagementApi.md#inviteUserExternal) | **POST** /v1/users/invite | Invite user from identity provider
 *ManagementApi* | [**listAccountCollections**](docs/ManagementApi.md#listAccountCollections) | **GET** /v1/collections | List collections in account
 *ManagementApi* | [**listAchievements**](docs/ManagementApi.md#listAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements
+*ManagementApi* | [**listAllRolesV2**](docs/ManagementApi.md#listAllRolesV2) | **GET** /v2/roles | List roles
 *ManagementApi* | [**listCatalogItems**](docs/ManagementApi.md#listCatalogItems) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog
 *ManagementApi* | [**listCollections**](docs/ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 *ManagementApi* | [**listCollectionsInApplication**](docs/ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
@@ -406,6 +408,7 @@ Class | Method | HTTP request | Description
  - [Achievement](docs/Achievement.md)
  - [AchievementAdditionalProperties](docs/AchievementAdditionalProperties.md)
  - [AchievementProgress](docs/AchievementProgress.md)
+ - [ActivateUserRequest](docs/ActivateUserRequest.md)
  - [AddFreeItemEffectProps](docs/AddFreeItemEffectProps.md)
  - [AddItemCatalogAction](docs/AddItemCatalogAction.md)
  - [AddLoyaltyPoints](docs/AddLoyaltyPoints.md)
@@ -644,6 +647,7 @@ Class | Method | HTTP request | Description
  - [LoyaltyBalance](docs/LoyaltyBalance.md)
  - [LoyaltyBalances](docs/LoyaltyBalances.md)
  - [LoyaltyCard](docs/LoyaltyCard.md)
+ - [LoyaltyCardBalances](docs/LoyaltyCardBalances.md)
  - [LoyaltyCardProfileRegistration](docs/LoyaltyCardProfileRegistration.md)
  - [LoyaltyCardRegistration](docs/LoyaltyCardRegistration.md)
  - [LoyaltyDashboardData](docs/LoyaltyDashboardData.md)
@@ -704,6 +708,7 @@ Class | Method | HTTP request | Description
  - [NewCustomerSessionV2](docs/NewCustomerSessionV2.md)
  - [NewEvent](docs/NewEvent.md)
  - [NewEventType](docs/NewEventType.md)
+ - [NewExternalInvitation](docs/NewExternalInvitation.md)
  - [NewGiveawaysPool](docs/NewGiveawaysPool.md)
  - [NewInternalAudience](docs/NewInternalAudience.md)
  - [NewInvitation](docs/NewInvitation.md)

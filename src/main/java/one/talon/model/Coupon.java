@@ -553,11 +553,11 @@ public class Coupon {
   }
 
    /**
-   * Defines the type of reservation: - &#x60;true&#x60;: The reservation is a soft reservation. Any customer can use the coupon. This is done via the [Create coupon reservation](https://docs.talon.one/integration-api#operation/createCouponReservation) endpoint. - &#x60;false&#x60;: The reservation is a hard reservation. Only the associated customer (&#x60;recipientIntegrationId&#x60;) can use the coupon. This is done via the Campaign Manager when you create a coupon for a given &#x60;recipientIntegrationId&#x60;, the [Create coupons](https://docs.talon.one/management-api#operation/createCoupons) endpoint or [Create coupons for multiple recipients](https://docs.talon.one/management-api#operation/createCouponsForMultipleRecipients) endpoint. 
+   * Defines the reservation type: - &#x60;true&#x60;: The coupon can be reserved for multiple customers. - &#x60;false&#x60;: The coupon can be reserved only for one customer. It is a personal code. 
    * @return reservation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Defines the type of reservation: - `true`: The reservation is a soft reservation. Any customer can use the coupon. This is done via the [Create coupon reservation](https://docs.talon.one/integration-api#operation/createCouponReservation) endpoint. - `false`: The reservation is a hard reservation. Only the associated customer (`recipientIntegrationId`) can use the coupon. This is done via the Campaign Manager when you create a coupon for a given `recipientIntegrationId`, the [Create coupons](https://docs.talon.one/management-api#operation/createCoupons) endpoint or [Create coupons for multiple recipients](https://docs.talon.one/management-api#operation/createCouponsForMultipleRecipients) endpoint. ")
+  @ApiModelProperty(example = "false", value = "Defines the reservation type: - `true`: The coupon can be reserved for multiple customers. - `false`: The coupon can be reserved only for one customer. It is a personal code. ")
 
   public Boolean getReservation() {
     return reservation;
@@ -599,11 +599,11 @@ public class Coupon {
   }
 
    /**
-   * Whether the reservation effect actually created a new reservation.
+   * An indication of whether the code can be redeemed only if it has been reserved first.
    * @return isReservationMandatory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Whether the reservation effect actually created a new reservation.")
+  @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
 
   public Boolean getIsReservationMandatory() {
     return isReservationMandatory;

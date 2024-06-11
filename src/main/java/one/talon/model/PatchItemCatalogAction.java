@@ -28,9 +28,9 @@ import one.talon.custom.JsonNullable;
 import one.talon.custom.NullableAdapterFactory;
 
 /**
- * The specific properties of the \&quot;PATCH\&quot; catalog sync action.
+ * The specific properties of the \&quot;PATCH\&quot; catalog sync action.  **Note:**   - If you do not provide a new &#x60;price&#x60; value, the existing &#x60;price&#x60; value is retained.   - If you do not provide a new &#x60;product&#x60; value, the &#x60;product&#x60; value is set to &#x60;null&#x60;. 
  */
-@ApiModel(description = "The specific properties of the \"PATCH\" catalog sync action.")
+@ApiModel(description = "The specific properties of the \"PATCH\" catalog sync action.  **Note:**   - If you do not provide a new `price` value, the existing `price` value is retained.   - If you do not provide a new `product` value, the `product` value is set to `null`. ")
 @JsonAdapter(NullableAdapterFactory.class)
 
 public class PatchItemCatalogAction {

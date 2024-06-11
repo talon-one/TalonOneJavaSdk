@@ -37,6 +37,7 @@ import one.talon.model.IntegrationRequest;
 import one.talon.model.IntegrationStateV2;
 import one.talon.model.LoyaltyBalances;
 import one.talon.model.LoyaltyCard;
+import one.talon.model.LoyaltyCardBalances;
 import one.talon.model.LoyaltyCardRegistration;
 import one.talon.model.MultipleCustomerProfileIntegrationRequest;
 import one.talon.model.MultipleCustomerProfileIntegrationResponseV2;
@@ -85,7 +86,7 @@ public class IntegrationApiTest {
     /**
      * Create coupon reservation
      *
-     * Create a coupon reservation for specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation effect](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code).  Reserving a coupon allows you to associate a coupon code to a given customer(s). You can then list the reserved coupons of a given customer with the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  If a coupon gets created for a specific user, it will automatically appear in their coupons.  When a user redeems a coupon, a reservation is automatically created after the redemption and the used coupon will be returned in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  For example, you can use this endpoint and &#x60;List customer data&#x60; to create a _coupon wallet_ by reserving coupon codes for a customer, and then displaying their coupon wallet when they visit your store.  If the **Coupon visibility** checkbox was selected when [creating a universal code](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons#generating-a-universal-code), the coupon code is implicitly reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    This endpoint creates a **soft** reservation. _Any_ customer   can use a reserved coupon code and proceed to checkout.    To create a hard reservation, you can:   - use the [Create coupons](https://docs.talon.one/management-api#operation/createCoupons) endpoint or,   - use the [Create coupons for multiple recipients](https://docs.talon.one/management-api#operation/createCouponsForMultipleRecipients)     endpoint setting the &#x60;recipientsIntegrationId&#x60; property or,   - create a coupon code with the **Reservation mandatory** option then use the [Create coupon code reservation effect](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code).    This endpoint overrides the reservation limit set for the coupon code during coupon creation. &lt;/div&gt;  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
+     * Create a coupon reservation for the specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation effect](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code).  - If the **Reservation mandatory** option was selected when creating the specified coupon, the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it. Otherwise, the endpoint creates a **soft** reservation, meaning the coupon will be associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it. This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.  - If the **Coupon visibility** option was selected when creating the specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -238,7 +239,7 @@ public class IntegrationApiTest {
     /**
      * Get customer&#39;s loyalty points
      *
-     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date. If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  **Note:** For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
+     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -248,7 +249,8 @@ public class IntegrationApiTest {
         Integer loyaltyProgramId = null;
         String integrationId = null;
         OffsetDateTime endDate = null;
-        LoyaltyBalances response = api.getLoyaltyBalances(loyaltyProgramId, integrationId, endDate);
+        String subledgerId = null;
+        LoyaltyBalances response = api.getLoyaltyBalances(loyaltyProgramId, integrationId, endDate, subledgerId);
 
         // TODO: test validations
     }
@@ -266,7 +268,8 @@ public class IntegrationApiTest {
         Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         OffsetDateTime endDate = null;
-        LoyaltyBalances response = api.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardId, endDate);
+        List<String> subledgerId = null;
+        LoyaltyCardBalances response = api.getLoyaltyCardBalances(loyaltyProgramId, loyaltyCardId, endDate, subledgerId);
 
         // TODO: test validations
     }
@@ -284,7 +287,7 @@ public class IntegrationApiTest {
         Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         String status = null;
-        String subledgerId = null;
+        List<String> subledgerId = null;
         Integer pageSize = null;
         Integer skip = null;
         InlineResponse2003 response = api.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
@@ -304,7 +307,7 @@ public class IntegrationApiTest {
     public void getLoyaltyCardTransactionsTest() throws ApiException {
         Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
-        String subledgerId = null;
+        List<String> subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
@@ -362,7 +365,7 @@ public class IntegrationApiTest {
     /**
      * List customers that have this coupon reserved
      *
-     * Return all customers that have this coupon marked as reserved.  Coupons are reserved in the following ways: - To create a soft reservation (any customer can use the coupon), use the [Create coupon reservation](#operation/createCouponReservation) endpoint. - To create a hard reservation (only the given customer can use the coupon), create a coupon in the Campaign Manager for a given &#x60;recipientIntegrationId&#x60; or use the [Create coupons](https://docs.talon.one/management-api#operation/createCoupons) or [Create coupons for multiple recipients](https://docs.talon.one/management-api#operation/createCouponsForMultipleRecipients) endpoints. 
+     * Return all customers that have this coupon marked as reserved. This includes hard and soft reservations. 
      *
      * @throws ApiException
      *          if the Api call fails

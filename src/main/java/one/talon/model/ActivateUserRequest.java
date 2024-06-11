@@ -23,63 +23,37 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
 
 /**
- * LoyaltyCardProfileRegistration
+ * 
  */
+@ApiModel(description = "")
 
-public class LoyaltyCardProfileRegistration {
-  public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
-  private String integrationId;
-
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
-  private OffsetDateTime timestamp;
+public class ActivateUserRequest {
+  public static final String SERIALIZED_NAME_EMAIL = "email";
+  @SerializedName(SERIALIZED_NAME_EMAIL)
+  private String email;
 
 
-  public LoyaltyCardProfileRegistration integrationId(String integrationId) {
+  public ActivateUserRequest email(String email) {
     
-    this.integrationId = integrationId;
+    this.email = email;
     return this;
   }
 
    /**
-   * Integration ID of the customer profile linked to the card.
-   * @return integrationId
+   * The email address associated with the user profile.
+   * @return email
   **/
-  @ApiModelProperty(example = "R195412", required = true, value = "Integration ID of the customer profile linked to the card.")
+  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "The email address associated with the user profile.")
 
-  public String getIntegrationId() {
-    return integrationId;
+  public String getEmail() {
+    return email;
   }
 
 
-  public void setIntegrationId(String integrationId) {
-    this.integrationId = integrationId;
-  }
-
-
-  public LoyaltyCardProfileRegistration timestamp(OffsetDateTime timestamp) {
-    
-    this.timestamp = timestamp;
-    return this;
-  }
-
-   /**
-   * Timestamp the customer profile was linked to the card.
-   * @return timestamp
-  **/
-  @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "Timestamp the customer profile was linked to the card.")
-
-  public OffsetDateTime getTimestamp() {
-    return timestamp;
-  }
-
-
-  public void setTimestamp(OffsetDateTime timestamp) {
-    this.timestamp = timestamp;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
 
@@ -91,23 +65,21 @@ public class LoyaltyCardProfileRegistration {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LoyaltyCardProfileRegistration loyaltyCardProfileRegistration = (LoyaltyCardProfileRegistration) o;
-    return Objects.equals(this.integrationId, loyaltyCardProfileRegistration.integrationId) &&
-        Objects.equals(this.timestamp, loyaltyCardProfileRegistration.timestamp);
+    ActivateUserRequest activateUserRequest = (ActivateUserRequest) o;
+    return Objects.equals(this.email, activateUserRequest.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, timestamp);
+    return Objects.hash(email);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LoyaltyCardProfileRegistration {\n");
-    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("class ActivateUserRequest {\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("}");
     return sb.toString();
   }

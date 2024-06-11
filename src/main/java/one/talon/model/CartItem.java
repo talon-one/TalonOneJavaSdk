@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
+import one.talon.model.Product;
 import one.talon.custom.JsonNullable;
 import one.talon.custom.NullableAdapterFactory;
 

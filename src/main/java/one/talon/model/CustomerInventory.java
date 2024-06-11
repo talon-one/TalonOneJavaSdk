@@ -154,11 +154,11 @@ public class CustomerInventory {
   }
 
    /**
-   * The coupons reserved by this profile. This array includes hard and soft reservations. See each coupon&#39;s &#x60;reservation&#x60; property. 
+   * The coupons reserved by this profile. This array includes hard and soft reservations. 
    * @return coupons
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The coupons reserved by this profile. This array includes hard and soft reservations. See each coupon's `reservation` property. ")
+  @ApiModelProperty(value = "The coupons reserved by this profile. This array includes hard and soft reservations. ")
 
   public List<InventoryCoupon> getCoupons() {
     return coupons;

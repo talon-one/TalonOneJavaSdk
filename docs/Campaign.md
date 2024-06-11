@@ -91,6 +91,8 @@ EXPIRED | &quot;expired&quot;
 SCHEDULED | &quot;scheduled&quot;
 RUNNING | &quot;running&quot;
 DRAFT | &quot;draft&quot;
+DISABLED | &quot;disabled&quot;
+ARCHIVED | &quot;archived&quot;
 
 
 

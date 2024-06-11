@@ -1,13 +1,13 @@
 
 
-# InlineResponse20044
+# ActivateUserRequest
+
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
+**email** | **String** | The email address associated with the user profile. | 
 
 
 

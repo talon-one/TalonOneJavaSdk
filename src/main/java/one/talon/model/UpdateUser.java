@@ -210,11 +210,11 @@ public class UpdateUser {
   }
 
    /**
-   * A list of the IDs of the roles assigned to the user.  **Note**: Use the [List roles](https://docs.talon.one/management-api#tag/Roles/operation/getAllRoles) endpoint to find the ID of a role. 
+   * A list of the IDs of the roles assigned to the user.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
    * @return roles
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[1, 3]", value = "A list of the IDs of the roles assigned to the user.  **Note**: Use the [List roles](https://docs.talon.one/management-api#tag/Roles/operation/getAllRoles) endpoint to find the ID of a role. ")
+  @ApiModelProperty(example = "[1, 3]", value = "A list of the IDs of the roles assigned to the user.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. ")
 
   public List<Integer> getRoles() {
     return roles;

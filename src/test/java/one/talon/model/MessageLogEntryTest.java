@@ -116,14 +116,6 @@ public class MessageLogEntryTest {
     }
 
     /**
-     * Test the property 'url'
-     */
-    @Test
-    public void urlTest() {
-        // TODO: test url
-    }
-
-    /**
      * Test the property 'applicationId'
      */
     @Test

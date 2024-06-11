@@ -21,42 +21,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import one.talon.model.RoleV2;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20044
+ * Model tests for ActivateUserRequest
  */
-public class InlineResponse20044Test {
-    private final InlineResponse20044 model = new InlineResponse20044();
+public class ActivateUserRequestTest {
+    private final ActivateUserRequest model = new ActivateUserRequest();
 
     /**
-     * Model tests for InlineResponse20044
+     * Model tests for ActivateUserRequest
      */
     @Test
-    public void testInlineResponse20044() {
-        // TODO: test InlineResponse20044
+    public void testActivateUserRequest() {
+        // TODO: test ActivateUserRequest
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'email'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
-    }
-
-    /**
-     * Test the property 'data'
-     */
-    @Test
-    public void dataTest() {
-        // TODO: test data
+    public void emailTest() {
+        // TODO: test email
     }
 
 }
