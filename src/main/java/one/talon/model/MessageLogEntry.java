@@ -66,15 +66,13 @@ public class MessageLogEntry {
   private OffsetDateTime createdAt;
 
   /**
-   * The entity type the log is related to. 
+   * The entity type the notification is related to. 
    */
   @JsonAdapter(EntityTypeEnum.Adapter.class)
   public enum EntityTypeEnum {
     APPLICATION("application"),
     
-    LOYALTY_PROGRAM("loyalty_program"),
-    
-    WEBHOOK("webhook");
+    LOYALTY_PROGRAM("loyalty_program");
 
     private String value;
 
@@ -117,10 +115,6 @@ public class MessageLogEntry {
   public static final String SERIALIZED_NAME_ENTITY_TYPE = "entityType";
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
   private EntityTypeEnum entityType;
-
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private String url;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
@@ -319,11 +313,11 @@ public class MessageLogEntry {
   }
 
    /**
-   * The entity type the log is related to. 
+   * The entity type the notification is related to. 
    * @return entityType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "loyalty_program", value = "The entity type the log is related to. ")
+  @ApiModelProperty(example = "loyalty_program", value = "The entity type the notification is related to. ")
 
   public EntityTypeEnum getEntityType() {
     return entityType;
@@ -332,29 +326,6 @@ public class MessageLogEntry {
 
   public void setEntityType(EntityTypeEnum entityType) {
     this.entityType = entityType;
-  }
-
-
-  public MessageLogEntry url(String url) {
-    
-    this.url = url;
-    return this;
-  }
-
-   /**
-   * The target URL of the request.
-   * @return url
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", value = "The target URL of the request.")
-
-  public String getUrl() {
-    return url;
-  }
-
-
-  public void setUrl(String url) {
-    this.url = url;
   }
 
 
@@ -424,14 +395,13 @@ public class MessageLogEntry {
         Objects.equals(this.response, messageLogEntry.response) &&
         Objects.equals(this.createdAt, messageLogEntry.createdAt) &&
         Objects.equals(this.entityType, messageLogEntry.entityType) &&
-        Objects.equals(this.url, messageLogEntry.url) &&
         Objects.equals(this.applicationId, messageLogEntry.applicationId) &&
         Objects.equals(this.loyaltyProgramId, messageLogEntry.loyaltyProgramId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, service, changeType, notificationId, notificationName, request, response, createdAt, entityType, url, applicationId, loyaltyProgramId);
+    return Objects.hash(id, service, changeType, notificationId, notificationName, request, response, createdAt, entityType, applicationId, loyaltyProgramId);
   }
 
 
@@ -448,7 +418,6 @@ public class MessageLogEntry {
     sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    loyaltyProgramId: ").append(toIndentedString(loyaltyProgramId)).append("\n");
     sb.append("}");

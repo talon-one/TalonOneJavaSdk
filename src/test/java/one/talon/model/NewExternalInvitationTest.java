@@ -23,40 +23,47 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.RoleV2;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20044
+ * Model tests for NewExternalInvitation
  */
-public class InlineResponse20044Test {
-    private final InlineResponse20044 model = new InlineResponse20044();
+public class NewExternalInvitationTest {
+    private final NewExternalInvitation model = new NewExternalInvitation();
 
     /**
-     * Model tests for InlineResponse20044
+     * Model tests for NewExternalInvitation
      */
     @Test
-    public void testInlineResponse20044() {
-        // TODO: test InlineResponse20044
+    public void testNewExternalInvitation() {
+        // TODO: test NewExternalInvitation
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'name'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void nameTest() {
+        // TODO: test name
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'userGroups'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void userGroupsTest() {
+        // TODO: test userGroups
+    }
+
+    /**
+     * Test the property 'email'
+     */
+    @Test
+    public void emailTest() {
+        // TODO: test email
     }
 
 }

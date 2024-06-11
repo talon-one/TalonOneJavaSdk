@@ -395,11 +395,11 @@ public class NewCoupons {
   }
 
    /**
-   * Whether the reservation effect actually created a new reservation.
+   * An indication of whether the code can be redeemed only if it has been reserved first.
    * @return isReservationMandatory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Whether the reservation effect actually created a new reservation.")
+  @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
 
   public Boolean getIsReservationMandatory() {
     return isReservationMandatory;

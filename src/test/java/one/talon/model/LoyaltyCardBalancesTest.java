@@ -22,41 +22,52 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import one.talon.model.RoleV2;
+import java.util.Map;
+import one.talon.model.LoyaltyBalance;
+import one.talon.model.LoyaltyCardProfileRegistration;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for InlineResponse20044
+ * Model tests for LoyaltyCardBalances
  */
-public class InlineResponse20044Test {
-    private final InlineResponse20044 model = new InlineResponse20044();
+public class LoyaltyCardBalancesTest {
+    private final LoyaltyCardBalances model = new LoyaltyCardBalances();
 
     /**
-     * Model tests for InlineResponse20044
+     * Model tests for LoyaltyCardBalances
      */
     @Test
-    public void testInlineResponse20044() {
-        // TODO: test InlineResponse20044
+    public void testLoyaltyCardBalances() {
+        // TODO: test LoyaltyCardBalances
     }
 
     /**
-     * Test the property 'totalResultSize'
+     * Test the property 'balance'
      */
     @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
+    public void balanceTest() {
+        // TODO: test balance
     }
 
     /**
-     * Test the property 'data'
+     * Test the property 'subledgerBalances'
      */
     @Test
-    public void dataTest() {
-        // TODO: test data
+    public void subledgerBalancesTest() {
+        // TODO: test subledgerBalances
+    }
+
+    /**
+     * Test the property 'profiles'
+     */
+    @Test
+    public void profilesTest() {
+        // TODO: test profiles
     }
 
 }

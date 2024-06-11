@@ -129,7 +129,11 @@ public class AdditionalCampaignProperties {
     
     RUNNING("running"),
     
-    DRAFT("draft");
+    DRAFT("draft"),
+    
+    DISABLED("disabled"),
+    
+    ARCHIVED("archived");
 
     private String value;
 
