@@ -50,6 +50,10 @@ public class RejectReferralEffectProps {
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private String details;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_EXCLUSION_REASON = "campaignExclusionReason";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_EXCLUSION_REASON)
+  private String campaignExclusionReason;
+
 
   public RejectReferralEffectProps value(String value) {
     
@@ -164,6 +168,29 @@ public class RejectReferralEffectProps {
   }
 
 
+  public RejectReferralEffectProps campaignExclusionReason(String campaignExclusionReason) {
+    
+    this.campaignExclusionReason = campaignExclusionReason;
+    return this;
+  }
+
+   /**
+   * The reason why the campaign was not applied.
+   * @return campaignExclusionReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "CampaignGaveLowerDiscount", value = "The reason why the campaign was not applied.")
+
+  public String getCampaignExclusionReason() {
+    return campaignExclusionReason;
+  }
+
+
+  public void setCampaignExclusionReason(String campaignExclusionReason) {
+    this.campaignExclusionReason = campaignExclusionReason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -177,12 +204,13 @@ public class RejectReferralEffectProps {
         Objects.equals(this.rejectionReason, rejectReferralEffectProps.rejectionReason) &&
         Objects.equals(this.conditionIndex, rejectReferralEffectProps.conditionIndex) &&
         Objects.equals(this.effectIndex, rejectReferralEffectProps.effectIndex) &&
-        Objects.equals(this.details, rejectReferralEffectProps.details);
+        Objects.equals(this.details, rejectReferralEffectProps.details) &&
+        Objects.equals(this.campaignExclusionReason, rejectReferralEffectProps.campaignExclusionReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details);
+    return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details, campaignExclusionReason);
   }
 
 
@@ -195,6 +223,7 @@ public class RejectReferralEffectProps {
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
     sb.append("    effectIndex: ").append(toIndentedString(effectIndex)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    campaignExclusionReason: ").append(toIndentedString(campaignExclusionReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

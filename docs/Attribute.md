@@ -31,7 +31,6 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-ACCOUNT | &quot;Account&quot;
 APPLICATION | &quot;Application&quot;
 CAMPAIGN | &quot;Campaign&quot;
 CUSTOMERPROFILE | &quot;CustomerProfile&quot;

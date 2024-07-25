@@ -23,12 +23,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationCampaignAnalyticsAvgItemsPerSession;
-import one.talon.model.ApplicationCampaignAnalyticsAvgSessionValue;
-import one.talon.model.ApplicationCampaignAnalyticsCouponsCount;
-import one.talon.model.ApplicationCampaignAnalyticsSessionsCount;
-import one.talon.model.ApplicationCampaignAnalyticsTotalDiscounts;
-import one.talon.model.ApplicationCampaignAnalyticsTotalRevenue;
+import one.talon.model.AnalyticsDataPointWithTrend;
+import one.talon.model.AnalyticsDataPointWithTrendAndInfluencedRate;
+import one.talon.model.AnalyticsDataPointWithTrendAndUplift;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -95,30 +92,6 @@ public class ApplicationCampaignAnalyticsTest {
     @Test
     public void campaignStateTest() {
         // TODO: test campaignState
-    }
-
-    /**
-     * Test the property 'campaignActiveRulesetId'
-     */
-    @Test
-    public void campaignActiveRulesetIdTest() {
-        // TODO: test campaignActiveRulesetId
-    }
-
-    /**
-     * Test the property 'campaignStartTime'
-     */
-    @Test
-    public void campaignStartTimeTest() {
-        // TODO: test campaignStartTime
-    }
-
-    /**
-     * Test the property 'campaignEndTime'
-     */
-    @Test
-    public void campaignEndTimeTest() {
-        // TODO: test campaignEndTime
     }
 
     /**

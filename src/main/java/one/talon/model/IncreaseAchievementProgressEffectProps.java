@@ -178,10 +178,10 @@ public class IncreaseAchievementProgressEffectProps {
   }
 
    /**
-   * The required number of actions or the transactional milestone to complete the achievement.
+   * The target value to complete the achievement.
    * @return target
   **/
-  @ApiModelProperty(required = true, value = "The required number of actions or the transactional milestone to complete the achievement.")
+  @ApiModelProperty(required = true, value = "The target value to complete the achievement.")
 
   public BigDecimal getTarget() {
     return target;

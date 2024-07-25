@@ -56,6 +56,8 @@ public class BaseNotification {
     
     LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
     
+    CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
+    
     COUPON("coupon"),
     
     EXPIRING_COUPONS("expiring_coupons"),
@@ -124,10 +126,10 @@ public class BaseNotification {
   }
 
    /**
-   * Get policy
+   * Indicates which notification properties to apply.
    * @return policy
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Indicates which notification properties to apply.")
 
   public Object getPolicy() {
     return policy;

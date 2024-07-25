@@ -38,6 +38,10 @@ public class Tier {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
   public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
@@ -138,6 +142,29 @@ public class Tier {
   }
 
 
+  public Tier startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Date and time when the customer moved to this tier. This value uses the loyalty program&#39;s time zone setting.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Date and time when the customer moved to this tier. This value uses the loyalty program's time zone setting.")
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
   public Tier expiryDate(OffsetDateTime expiryDate) {
     
     this.expiryDate = expiryDate;
@@ -195,13 +222,14 @@ public class Tier {
     Tier tier = (Tier) o;
     return Objects.equals(this.id, tier.id) &&
         Objects.equals(this.name, tier.name) &&
+        Objects.equals(this.startDate, tier.startDate) &&
         Objects.equals(this.expiryDate, tier.expiryDate) &&
         Objects.equals(this.downgradePolicy, tier.downgradePolicy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, expiryDate, downgradePolicy);
+    return Objects.hash(id, name, startDate, expiryDate, downgradePolicy);
   }
 
 
@@ -211,6 +239,7 @@ public class Tier {
     sb.append("class Tier {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    downgradePolicy: ").append(toIndentedString(downgradePolicy)).append("\n");
     sb.append("}");

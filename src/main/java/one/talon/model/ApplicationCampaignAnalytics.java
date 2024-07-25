@@ -25,12 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationCampaignAnalyticsAvgItemsPerSession;
-import one.talon.model.ApplicationCampaignAnalyticsAvgSessionValue;
-import one.talon.model.ApplicationCampaignAnalyticsCouponsCount;
-import one.talon.model.ApplicationCampaignAnalyticsSessionsCount;
-import one.talon.model.ApplicationCampaignAnalyticsTotalDiscounts;
-import one.talon.model.ApplicationCampaignAnalyticsTotalRevenue;
+import one.talon.model.AnalyticsDataPointWithTrend;
+import one.talon.model.AnalyticsDataPointWithTrendAndInfluencedRate;
+import one.talon.model.AnalyticsDataPointWithTrendAndUplift;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -56,14 +53,20 @@ public class ApplicationCampaignAnalytics {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_TAGS = "campaignTags";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TAGS)
-  private List<String> campaignTags = null;
+  private List<String> campaignTags = new ArrayList<String>();
 
   /**
    * The state of the campaign.  **Note:** A disabled or archived campaign is not evaluated for rules or coupons. 
    */
   @JsonAdapter(CampaignStateEnum.Adapter.class)
   public enum CampaignStateEnum {
-    ENABLED("enabled"),
+    EXPIRED("expired"),
+    
+    SCHEDULED("scheduled"),
+    
+    RUNNING("running"),
+    
+    DRAFT("draft"),
     
     DISABLED("disabled"),
     
@@ -109,43 +112,31 @@ public class ApplicationCampaignAnalytics {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_STATE = "campaignState";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_STATE)
-  private CampaignStateEnum campaignState = CampaignStateEnum.ENABLED;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ACTIVE_RULESET_ID = "campaignActiveRulesetId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ACTIVE_RULESET_ID)
-  private Integer campaignActiveRulesetId;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_START_TIME = "campaignStartTime";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_START_TIME)
-  private OffsetDateTime campaignStartTime;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_END_TIME = "campaignEndTime";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_END_TIME)
-  private OffsetDateTime campaignEndTime;
+  private CampaignStateEnum campaignState;
 
   public static final String SERIALIZED_NAME_TOTAL_REVENUE = "totalRevenue";
   @SerializedName(SERIALIZED_NAME_TOTAL_REVENUE)
-  private ApplicationCampaignAnalyticsTotalRevenue totalRevenue;
+  private AnalyticsDataPointWithTrendAndInfluencedRate totalRevenue;
 
   public static final String SERIALIZED_NAME_SESSIONS_COUNT = "sessionsCount";
   @SerializedName(SERIALIZED_NAME_SESSIONS_COUNT)
-  private ApplicationCampaignAnalyticsSessionsCount sessionsCount;
+  private AnalyticsDataPointWithTrendAndInfluencedRate sessionsCount;
 
   public static final String SERIALIZED_NAME_AVG_ITEMS_PER_SESSION = "avgItemsPerSession";
   @SerializedName(SERIALIZED_NAME_AVG_ITEMS_PER_SESSION)
-  private ApplicationCampaignAnalyticsAvgItemsPerSession avgItemsPerSession;
+  private AnalyticsDataPointWithTrendAndUplift avgItemsPerSession;
 
   public static final String SERIALIZED_NAME_AVG_SESSION_VALUE = "avgSessionValue";
   @SerializedName(SERIALIZED_NAME_AVG_SESSION_VALUE)
-  private ApplicationCampaignAnalyticsAvgSessionValue avgSessionValue;
+  private AnalyticsDataPointWithTrendAndUplift avgSessionValue;
 
   public static final String SERIALIZED_NAME_TOTAL_DISCOUNTS = "totalDiscounts";
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNTS)
-  private ApplicationCampaignAnalyticsTotalDiscounts totalDiscounts;
+  private AnalyticsDataPointWithTrend totalDiscounts;
 
   public static final String SERIALIZED_NAME_COUPONS_COUNT = "couponsCount";
   @SerializedName(SERIALIZED_NAME_COUPONS_COUNT)
-  private ApplicationCampaignAnalyticsCouponsCount couponsCount;
+  private AnalyticsDataPointWithTrend couponsCount;
 
 
   public ApplicationCampaignAnalytics startTime(OffsetDateTime startTime) {
@@ -158,8 +149,7 @@ public class ApplicationCampaignAnalytics {
    * The start of the aggregation time frame in UTC.
    * @return startTime
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2024-02-01T00:00Z", value = "The start of the aggregation time frame in UTC.")
+  @ApiModelProperty(example = "2024-02-01T00:00Z", required = true, value = "The start of the aggregation time frame in UTC.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -181,8 +171,7 @@ public class ApplicationCampaignAnalytics {
    * The end of the aggregation time frame in UTC.
    * @return endTime
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The end of the aggregation time frame in UTC.")
+  @ApiModelProperty(required = true, value = "The end of the aggregation time frame in UTC.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -204,8 +193,7 @@ public class ApplicationCampaignAnalytics {
    * The ID of the campaign.
    * @return campaignId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The ID of the campaign.")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign.")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -227,8 +215,7 @@ public class ApplicationCampaignAnalytics {
    * The name of the campaign.
    * @return campaignName
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Summer promotions", value = "The name of the campaign.")
+  @ApiModelProperty(example = "Summer promotions", required = true, value = "The name of the campaign.")
 
   public String getCampaignName() {
     return campaignName;
@@ -247,9 +234,6 @@ public class ApplicationCampaignAnalytics {
   }
 
   public ApplicationCampaignAnalytics addCampaignTagsItem(String campaignTagsItem) {
-    if (this.campaignTags == null) {
-      this.campaignTags = new ArrayList<String>();
-    }
     this.campaignTags.add(campaignTagsItem);
     return this;
   }
@@ -258,8 +242,7 @@ public class ApplicationCampaignAnalytics {
    * A list of tags for the campaign.
    * @return campaignTags
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[summer]", value = "A list of tags for the campaign.")
+  @ApiModelProperty(example = "[summer]", required = true, value = "A list of tags for the campaign.")
 
   public List<String> getCampaignTags() {
     return campaignTags;
@@ -281,8 +264,7 @@ public class ApplicationCampaignAnalytics {
    * The state of the campaign.  **Note:** A disabled or archived campaign is not evaluated for rules or coupons. 
    * @return campaignState
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "enabled", value = "The state of the campaign.  **Note:** A disabled or archived campaign is not evaluated for rules or coupons. ")
+  @ApiModelProperty(example = "running", required = true, value = "The state of the campaign.  **Note:** A disabled or archived campaign is not evaluated for rules or coupons. ")
 
   public CampaignStateEnum getCampaignState() {
     return campaignState;
@@ -294,76 +276,7 @@ public class ApplicationCampaignAnalytics {
   }
 
 
-  public ApplicationCampaignAnalytics campaignActiveRulesetId(Integer campaignActiveRulesetId) {
-    
-    this.campaignActiveRulesetId = campaignActiveRulesetId;
-    return this;
-  }
-
-   /**
-   * The [ID of the ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. 
-   * @return campaignActiveRulesetId
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2", value = "The [ID of the ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
-
-  public Integer getCampaignActiveRulesetId() {
-    return campaignActiveRulesetId;
-  }
-
-
-  public void setCampaignActiveRulesetId(Integer campaignActiveRulesetId) {
-    this.campaignActiveRulesetId = campaignActiveRulesetId;
-  }
-
-
-  public ApplicationCampaignAnalytics campaignStartTime(OffsetDateTime campaignStartTime) {
-    
-    this.campaignStartTime = campaignStartTime;
-    return this;
-  }
-
-   /**
-   * Date and time when the campaign becomes active.
-   * @return campaignStartTime
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Date and time when the campaign becomes active.")
-
-  public OffsetDateTime getCampaignStartTime() {
-    return campaignStartTime;
-  }
-
-
-  public void setCampaignStartTime(OffsetDateTime campaignStartTime) {
-    this.campaignStartTime = campaignStartTime;
-  }
-
-
-  public ApplicationCampaignAnalytics campaignEndTime(OffsetDateTime campaignEndTime) {
-    
-    this.campaignEndTime = campaignEndTime;
-    return this;
-  }
-
-   /**
-   * Date and time when the campaign becomes inactive.
-   * @return campaignEndTime
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-10-01T02:00Z", value = "Date and time when the campaign becomes inactive.")
-
-  public OffsetDateTime getCampaignEndTime() {
-    return campaignEndTime;
-  }
-
-
-  public void setCampaignEndTime(OffsetDateTime campaignEndTime) {
-    this.campaignEndTime = campaignEndTime;
-  }
-
-
-  public ApplicationCampaignAnalytics totalRevenue(ApplicationCampaignAnalyticsTotalRevenue totalRevenue) {
+  public ApplicationCampaignAnalytics totalRevenue(AnalyticsDataPointWithTrendAndInfluencedRate totalRevenue) {
     
     this.totalRevenue = totalRevenue;
     return this;
@@ -376,17 +289,17 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsTotalRevenue getTotalRevenue() {
+  public AnalyticsDataPointWithTrendAndInfluencedRate getTotalRevenue() {
     return totalRevenue;
   }
 
 
-  public void setTotalRevenue(ApplicationCampaignAnalyticsTotalRevenue totalRevenue) {
+  public void setTotalRevenue(AnalyticsDataPointWithTrendAndInfluencedRate totalRevenue) {
     this.totalRevenue = totalRevenue;
   }
 
 
-  public ApplicationCampaignAnalytics sessionsCount(ApplicationCampaignAnalyticsSessionsCount sessionsCount) {
+  public ApplicationCampaignAnalytics sessionsCount(AnalyticsDataPointWithTrendAndInfluencedRate sessionsCount) {
     
     this.sessionsCount = sessionsCount;
     return this;
@@ -399,17 +312,17 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsSessionsCount getSessionsCount() {
+  public AnalyticsDataPointWithTrendAndInfluencedRate getSessionsCount() {
     return sessionsCount;
   }
 
 
-  public void setSessionsCount(ApplicationCampaignAnalyticsSessionsCount sessionsCount) {
+  public void setSessionsCount(AnalyticsDataPointWithTrendAndInfluencedRate sessionsCount) {
     this.sessionsCount = sessionsCount;
   }
 
 
-  public ApplicationCampaignAnalytics avgItemsPerSession(ApplicationCampaignAnalyticsAvgItemsPerSession avgItemsPerSession) {
+  public ApplicationCampaignAnalytics avgItemsPerSession(AnalyticsDataPointWithTrendAndUplift avgItemsPerSession) {
     
     this.avgItemsPerSession = avgItemsPerSession;
     return this;
@@ -422,17 +335,17 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsAvgItemsPerSession getAvgItemsPerSession() {
+  public AnalyticsDataPointWithTrendAndUplift getAvgItemsPerSession() {
     return avgItemsPerSession;
   }
 
 
-  public void setAvgItemsPerSession(ApplicationCampaignAnalyticsAvgItemsPerSession avgItemsPerSession) {
+  public void setAvgItemsPerSession(AnalyticsDataPointWithTrendAndUplift avgItemsPerSession) {
     this.avgItemsPerSession = avgItemsPerSession;
   }
 
 
-  public ApplicationCampaignAnalytics avgSessionValue(ApplicationCampaignAnalyticsAvgSessionValue avgSessionValue) {
+  public ApplicationCampaignAnalytics avgSessionValue(AnalyticsDataPointWithTrendAndUplift avgSessionValue) {
     
     this.avgSessionValue = avgSessionValue;
     return this;
@@ -445,17 +358,17 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsAvgSessionValue getAvgSessionValue() {
+  public AnalyticsDataPointWithTrendAndUplift getAvgSessionValue() {
     return avgSessionValue;
   }
 
 
-  public void setAvgSessionValue(ApplicationCampaignAnalyticsAvgSessionValue avgSessionValue) {
+  public void setAvgSessionValue(AnalyticsDataPointWithTrendAndUplift avgSessionValue) {
     this.avgSessionValue = avgSessionValue;
   }
 
 
-  public ApplicationCampaignAnalytics totalDiscounts(ApplicationCampaignAnalyticsTotalDiscounts totalDiscounts) {
+  public ApplicationCampaignAnalytics totalDiscounts(AnalyticsDataPointWithTrend totalDiscounts) {
     
     this.totalDiscounts = totalDiscounts;
     return this;
@@ -468,17 +381,17 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsTotalDiscounts getTotalDiscounts() {
+  public AnalyticsDataPointWithTrend getTotalDiscounts() {
     return totalDiscounts;
   }
 
 
-  public void setTotalDiscounts(ApplicationCampaignAnalyticsTotalDiscounts totalDiscounts) {
+  public void setTotalDiscounts(AnalyticsDataPointWithTrend totalDiscounts) {
     this.totalDiscounts = totalDiscounts;
   }
 
 
-  public ApplicationCampaignAnalytics couponsCount(ApplicationCampaignAnalyticsCouponsCount couponsCount) {
+  public ApplicationCampaignAnalytics couponsCount(AnalyticsDataPointWithTrend couponsCount) {
     
     this.couponsCount = couponsCount;
     return this;
@@ -491,12 +404,12 @@ public class ApplicationCampaignAnalytics {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationCampaignAnalyticsCouponsCount getCouponsCount() {
+  public AnalyticsDataPointWithTrend getCouponsCount() {
     return couponsCount;
   }
 
 
-  public void setCouponsCount(ApplicationCampaignAnalyticsCouponsCount couponsCount) {
+  public void setCouponsCount(AnalyticsDataPointWithTrend couponsCount) {
     this.couponsCount = couponsCount;
   }
 
@@ -516,9 +429,6 @@ public class ApplicationCampaignAnalytics {
         Objects.equals(this.campaignName, applicationCampaignAnalytics.campaignName) &&
         Objects.equals(this.campaignTags, applicationCampaignAnalytics.campaignTags) &&
         Objects.equals(this.campaignState, applicationCampaignAnalytics.campaignState) &&
-        Objects.equals(this.campaignActiveRulesetId, applicationCampaignAnalytics.campaignActiveRulesetId) &&
-        Objects.equals(this.campaignStartTime, applicationCampaignAnalytics.campaignStartTime) &&
-        Objects.equals(this.campaignEndTime, applicationCampaignAnalytics.campaignEndTime) &&
         Objects.equals(this.totalRevenue, applicationCampaignAnalytics.totalRevenue) &&
         Objects.equals(this.sessionsCount, applicationCampaignAnalytics.sessionsCount) &&
         Objects.equals(this.avgItemsPerSession, applicationCampaignAnalytics.avgItemsPerSession) &&
@@ -529,7 +439,7 @@ public class ApplicationCampaignAnalytics {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, campaignId, campaignName, campaignTags, campaignState, campaignActiveRulesetId, campaignStartTime, campaignEndTime, totalRevenue, sessionsCount, avgItemsPerSession, avgSessionValue, totalDiscounts, couponsCount);
+    return Objects.hash(startTime, endTime, campaignId, campaignName, campaignTags, campaignState, totalRevenue, sessionsCount, avgItemsPerSession, avgSessionValue, totalDiscounts, couponsCount);
   }
 
 
@@ -543,9 +453,6 @@ public class ApplicationCampaignAnalytics {
     sb.append("    campaignName: ").append(toIndentedString(campaignName)).append("\n");
     sb.append("    campaignTags: ").append(toIndentedString(campaignTags)).append("\n");
     sb.append("    campaignState: ").append(toIndentedString(campaignState)).append("\n");
-    sb.append("    campaignActiveRulesetId: ").append(toIndentedString(campaignActiveRulesetId)).append("\n");
-    sb.append("    campaignStartTime: ").append(toIndentedString(campaignStartTime)).append("\n");
-    sb.append("    campaignEndTime: ").append(toIndentedString(campaignEndTime)).append("\n");
     sb.append("    totalRevenue: ").append(toIndentedString(totalRevenue)).append("\n");
     sb.append("    sessionsCount: ").append(toIndentedString(sessionsCount)).append("\n");
     sb.append("    avgItemsPerSession: ").append(toIndentedString(avgItemsPerSession)).append("\n");
