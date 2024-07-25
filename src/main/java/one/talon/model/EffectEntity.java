@@ -62,6 +62,14 @@ public class EffectEntity {
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
   private Integer conditionIndex;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
+  private Integer evaluationGroupID;
+
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
+  private String evaluationGroupMode;
+
 
   public EffectEntity campaignId(Integer campaignId) {
     
@@ -242,6 +250,52 @@ public class EffectEntity {
   }
 
 
+  public EffectEntity evaluationGroupID(Integer evaluationGroupID) {
+    
+    this.evaluationGroupID = evaluationGroupID;
+    return this;
+  }
+
+   /**
+   * The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * @return evaluationGroupID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
+
+  public Integer getEvaluationGroupID() {
+    return evaluationGroupID;
+  }
+
+
+  public void setEvaluationGroupID(Integer evaluationGroupID) {
+    this.evaluationGroupID = evaluationGroupID;
+  }
+
+
+  public EffectEntity evaluationGroupMode(String evaluationGroupMode) {
+    
+    this.evaluationGroupMode = evaluationGroupMode;
+    return this;
+  }
+
+   /**
+   * The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * @return evaluationGroupMode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "stackable", value = "The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
+
+  public String getEvaluationGroupMode() {
+    return evaluationGroupMode;
+  }
+
+
+  public void setEvaluationGroupMode(String evaluationGroupMode) {
+    this.evaluationGroupMode = evaluationGroupMode;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -258,12 +312,14 @@ public class EffectEntity {
         Objects.equals(this.effectType, effectEntity.effectType) &&
         Objects.equals(this.triggeredByCoupon, effectEntity.triggeredByCoupon) &&
         Objects.equals(this.triggeredForCatalogItem, effectEntity.triggeredForCatalogItem) &&
-        Objects.equals(this.conditionIndex, effectEntity.conditionIndex);
+        Objects.equals(this.conditionIndex, effectEntity.conditionIndex) &&
+        Objects.equals(this.evaluationGroupID, effectEntity.evaluationGroupID) &&
+        Objects.equals(this.evaluationGroupMode, effectEntity.evaluationGroupMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode);
   }
 
 
@@ -279,6 +335,8 @@ public class EffectEntity {
     sb.append("    triggeredByCoupon: ").append(toIndentedString(triggeredByCoupon)).append("\n");
     sb.append("    triggeredForCatalogItem: ").append(toIndentedString(triggeredForCatalogItem)).append("\n");
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
+    sb.append("    evaluationGroupID: ").append(toIndentedString(evaluationGroupID)).append("\n");
+    sb.append("    evaluationGroupMode: ").append(toIndentedString(evaluationGroupMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

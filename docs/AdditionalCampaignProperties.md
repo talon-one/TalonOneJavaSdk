@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **updatedBy** | **String** | Name of the user who last updated this campaign if available. |  [optional]
 **templateId** | **Integer** | The ID of the Campaign Template this Campaign was created from. |  [optional]
 **frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | A campaign state described exactly as in the Campaign Manager. | 
+**storesImported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. | 
 
 
 

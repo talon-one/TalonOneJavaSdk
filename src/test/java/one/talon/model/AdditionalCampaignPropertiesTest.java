@@ -221,4 +221,12 @@ public class AdditionalCampaignPropertiesTest {
         // TODO: test frontendState
     }
 
+    /**
+     * Test the property 'storesImported'
+     */
+    @Test
+    public void storesImportedTest() {
+        // TODO: test storesImported
+    }
+
 }

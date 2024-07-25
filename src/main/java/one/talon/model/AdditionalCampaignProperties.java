@@ -177,6 +177,10 @@ public class AdditionalCampaignProperties {
   @SerializedName(SERIALIZED_NAME_FRONTEND_STATE)
   private FrontendStateEnum frontendState;
 
+  public static final String SERIALIZED_NAME_STORES_IMPORTED = "storesImported";
+  @SerializedName(SERIALIZED_NAME_STORES_IMPORTED)
+  private Boolean storesImported;
+
 
   public AdditionalCampaignProperties budgets(List<CampaignBudget> budgets) {
     
@@ -687,6 +691,28 @@ public class AdditionalCampaignProperties {
   }
 
 
+  public AdditionalCampaignProperties storesImported(Boolean storesImported) {
+    
+    this.storesImported = storesImported;
+    return this;
+  }
+
+   /**
+   * Indicates whether the linked stores were imported via a CSV file.
+   * @return storesImported
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Indicates whether the linked stores were imported via a CSV file.")
+
+  public Boolean getStoresImported() {
+    return storesImported;
+  }
+
+
+  public void setStoresImported(Boolean storesImported) {
+    this.storesImported = storesImported;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -717,12 +743,13 @@ public class AdditionalCampaignProperties {
         Objects.equals(this.createdBy, additionalCampaignProperties.createdBy) &&
         Objects.equals(this.updatedBy, additionalCampaignProperties.updatedBy) &&
         Objects.equals(this.templateId, additionalCampaignProperties.templateId) &&
-        Objects.equals(this.frontendState, additionalCampaignProperties.frontendState);
+        Objects.equals(this.frontendState, additionalCampaignProperties.frontendState) &&
+        Objects.equals(this.storesImported, additionalCampaignProperties.storesImported);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState);
+    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported);
   }
 
 
@@ -752,6 +779,7 @@ public class AdditionalCampaignProperties {
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
+    sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
     sb.append("}");
     return sb.toString();
   }

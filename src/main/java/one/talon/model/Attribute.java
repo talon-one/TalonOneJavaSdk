@@ -50,8 +50,6 @@ public class Attribute {
    */
   @JsonAdapter(EntityEnum.Adapter.class)
   public enum EntityEnum {
-    ACCOUNT("Account"),
-    
     APPLICATION("Application"),
     
     CAMPAIGN("Campaign"),

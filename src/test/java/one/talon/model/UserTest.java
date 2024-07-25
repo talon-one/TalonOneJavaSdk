@@ -171,4 +171,12 @@ public class UserTest {
         // TODO: test latestFeedTimestamp
     }
 
+    /**
+     * Test the property 'additionalAttributes'
+     */
+    @Test
+    public void additionalAttributesTest() {
+        // TODO: test additionalAttributes
+    }
+
 }

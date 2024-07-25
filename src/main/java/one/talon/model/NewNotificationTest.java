@@ -41,6 +41,8 @@ public class NewNotificationTest {
     
     LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
     
+    CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
+    
     COUPON("coupon"),
     
     EXPIRING_COUPONS("expiring_coupons"),

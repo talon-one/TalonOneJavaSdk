@@ -26,14 +26,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.threeten.bp.OffsetDateTime;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
  * 
  */
 @ApiModel(description = "")
-@JsonAdapter(NullableAdapterFactory.class)
 
 public class NewReferralsForMultipleAdvocates {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
@@ -58,8 +55,6 @@ public class NewReferralsForMultipleAdvocates {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_VALID_CHARACTERS = "validCharacters";

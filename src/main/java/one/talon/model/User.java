@@ -146,6 +146,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_LATEST_FEED_TIMESTAMP)
   private OffsetDateTime latestFeedTimestamp;
 
+  public static final String SERIALIZED_NAME_ADDITIONAL_ATTRIBUTES = "additionalAttributes";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_ATTRIBUTES)
+  private Object additionalAttributes;
+
 
   public User id(Integer id) {
     
@@ -514,6 +518,29 @@ public class User {
   }
 
 
+  public User additionalAttributes(Object additionalAttributes) {
+    
+    this.additionalAttributes = additionalAttributes;
+    return this;
+  }
+
+   /**
+   * Additional user attributes, created and used by external identity providers.
+   * @return additionalAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Additional user attributes, created and used by external identity providers.")
+
+  public Object getAdditionalAttributes() {
+    return additionalAttributes;
+  }
+
+
+  public void setAdditionalAttributes(Object additionalAttributes) {
+    this.additionalAttributes = additionalAttributes;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -538,12 +565,13 @@ public class User {
         Objects.equals(this.applicationNotificationSubscriptions, user.applicationNotificationSubscriptions) &&
         Objects.equals(this.lastSignedIn, user.lastSignedIn) &&
         Objects.equals(this.lastAccessed, user.lastAccessed) &&
-        Objects.equals(this.latestFeedTimestamp, user.latestFeedTimestamp);
+        Objects.equals(this.latestFeedTimestamp, user.latestFeedTimestamp) &&
+        Objects.equals(this.additionalAttributes, user.additionalAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, email, accountId, name, state, inviteToken, isAdmin, policy, roles, authMethod, applicationNotificationSubscriptions, lastSignedIn, lastAccessed, latestFeedTimestamp);
+    return Objects.hash(id, created, modified, email, accountId, name, state, inviteToken, isAdmin, policy, roles, authMethod, applicationNotificationSubscriptions, lastSignedIn, lastAccessed, latestFeedTimestamp, additionalAttributes);
   }
 
 
@@ -567,6 +595,7 @@ public class User {
     sb.append("    lastSignedIn: ").append(toIndentedString(lastSignedIn)).append("\n");
     sb.append("    lastAccessed: ").append(toIndentedString(lastAccessed)).append("\n");
     sb.append("    latestFeedTimestamp: ").append(toIndentedString(latestFeedTimestamp)).append("\n");
+    sb.append("    additionalAttributes: ").append(toIndentedString(additionalAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

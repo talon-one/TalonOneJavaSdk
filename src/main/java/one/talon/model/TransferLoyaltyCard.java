@@ -33,6 +33,10 @@ public class TransferLoyaltyCard {
   @SerializedName(SERIALIZED_NAME_NEW_CARD_IDENTIFIER)
   private String newCardIdentifier;
 
+  public static final String SERIALIZED_NAME_BLOCK_REASON = "blockReason";
+  @SerializedName(SERIALIZED_NAME_BLOCK_REASON)
+  private String blockReason;
+
 
   public TransferLoyaltyCard newCardIdentifier(String newCardIdentifier) {
     
@@ -56,6 +60,29 @@ public class TransferLoyaltyCard {
   }
 
 
+  public TransferLoyaltyCard blockReason(String blockReason) {
+    
+    this.blockReason = blockReason;
+    return this;
+  }
+
+   /**
+   * Reason for transferring and blocking the loyalty card. 
+   * @return blockReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Current card lost. Customer needs a new card.", value = "Reason for transferring and blocking the loyalty card. ")
+
+  public String getBlockReason() {
+    return blockReason;
+  }
+
+
+  public void setBlockReason(String blockReason) {
+    this.blockReason = blockReason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +92,13 @@ public class TransferLoyaltyCard {
       return false;
     }
     TransferLoyaltyCard transferLoyaltyCard = (TransferLoyaltyCard) o;
-    return Objects.equals(this.newCardIdentifier, transferLoyaltyCard.newCardIdentifier);
+    return Objects.equals(this.newCardIdentifier, transferLoyaltyCard.newCardIdentifier) &&
+        Objects.equals(this.blockReason, transferLoyaltyCard.blockReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(newCardIdentifier);
+    return Objects.hash(newCardIdentifier, blockReason);
   }
 
 
@@ -79,6 +107,7 @@ public class TransferLoyaltyCard {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransferLoyaltyCard {\n");
     sb.append("    newCardIdentifier: ").append(toIndentedString(newCardIdentifier)).append("\n");
+    sb.append("    blockReason: ").append(toIndentedString(blockReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

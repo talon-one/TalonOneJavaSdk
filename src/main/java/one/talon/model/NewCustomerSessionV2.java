@@ -29,14 +29,11 @@ import java.util.List;
 import java.util.Map;
 import one.talon.model.AdditionalCost;
 import one.talon.model.CartItem;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
  * The representation of the customer session.
  */
 @ApiModel(description = "The representation of the customer session.")
-@JsonAdapter(NullableAdapterFactory.class)
 
 public class NewCustomerSessionV2 {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
@@ -132,8 +129,6 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
   private Object attributes;
 
 
