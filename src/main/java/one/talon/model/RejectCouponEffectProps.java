@@ -50,6 +50,10 @@ public class RejectCouponEffectProps {
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private String details;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_EXCLUSION_REASON = "campaignExclusionReason";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_EXCLUSION_REASON)
+  private String campaignExclusionReason;
+
 
   public RejectCouponEffectProps value(String value) {
     
@@ -164,6 +168,29 @@ public class RejectCouponEffectProps {
   }
 
 
+  public RejectCouponEffectProps campaignExclusionReason(String campaignExclusionReason) {
+    
+    this.campaignExclusionReason = campaignExclusionReason;
+    return this;
+  }
+
+   /**
+   * The reason why the campaign was not applied.
+   * @return campaignExclusionReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "CampaignGaveLowerDiscount", value = "The reason why the campaign was not applied.")
+
+  public String getCampaignExclusionReason() {
+    return campaignExclusionReason;
+  }
+
+
+  public void setCampaignExclusionReason(String campaignExclusionReason) {
+    this.campaignExclusionReason = campaignExclusionReason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -177,12 +204,13 @@ public class RejectCouponEffectProps {
         Objects.equals(this.rejectionReason, rejectCouponEffectProps.rejectionReason) &&
         Objects.equals(this.conditionIndex, rejectCouponEffectProps.conditionIndex) &&
         Objects.equals(this.effectIndex, rejectCouponEffectProps.effectIndex) &&
-        Objects.equals(this.details, rejectCouponEffectProps.details);
+        Objects.equals(this.details, rejectCouponEffectProps.details) &&
+        Objects.equals(this.campaignExclusionReason, rejectCouponEffectProps.campaignExclusionReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details);
+    return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details, campaignExclusionReason);
   }
 
 
@@ -195,6 +223,7 @@ public class RejectCouponEffectProps {
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
     sb.append("    effectIndex: ").append(toIndentedString(effectIndex)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    campaignExclusionReason: ").append(toIndentedString(campaignExclusionReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

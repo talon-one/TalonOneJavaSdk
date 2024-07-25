@@ -54,7 +54,8 @@ public class MessageLogResponse {
    * Timestamp when the response was received.
    * @return createdAt
   **/
-  @ApiModelProperty(example = "2021-07-20T22:00:50Z", required = true, value = "Timestamp when the response was received.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-07-20T22:00:50Z", value = "Timestamp when the response was received.")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -76,7 +77,8 @@ public class MessageLogResponse {
    * Raw response data.
    * @return response
   **/
-  @ApiModelProperty(example = "UmVzcG9uc2UgY29udGVudA==", required = true, value = "Raw response data.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "UmVzcG9uc2UgY29udGVudA==", value = "Raw response data.")
 
   public byte[] getResponse() {
     return response;
@@ -98,7 +100,8 @@ public class MessageLogResponse {
    * HTTP status code of the response.
    * @return status
   **/
-  @ApiModelProperty(example = "200", required = true, value = "HTTP status code of the response.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "200", value = "HTTP status code of the response.")
 
   public Integer getStatus() {
     return status;

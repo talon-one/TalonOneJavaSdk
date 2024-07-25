@@ -54,6 +54,10 @@ public class Webhook {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   /**
    * API method for this webhook.
    */
@@ -247,6 +251,29 @@ public class Webhook {
   }
 
 
+  public Webhook description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the webhook.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "A webhook to send a coupon to the user.", value = "A description of the webhook.")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public Webhook verb(VerbEnum verb) {
     
     this.verb = verb;
@@ -404,6 +431,7 @@ public class Webhook {
         Objects.equals(this.modified, webhook.modified) &&
         Objects.equals(this.applicationIds, webhook.applicationIds) &&
         Objects.equals(this.title, webhook.title) &&
+        Objects.equals(this.description, webhook.description) &&
         Objects.equals(this.verb, webhook.verb) &&
         Objects.equals(this.url, webhook.url) &&
         Objects.equals(this.headers, webhook.headers) &&
@@ -414,7 +442,7 @@ public class Webhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, verb, url, headers, payload, params, enabled);
+    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled);
   }
 
 
@@ -427,6 +455,7 @@ public class Webhook {
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");

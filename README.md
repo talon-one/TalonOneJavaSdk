@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>8.0.0</version>
+  <version>9.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -63,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:8.0.0"
+compile "one.talon:talon-one-client:9.0.0"
 ```
 
 ### Others
@@ -76,130 +76,49 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-8.0.0.jar`
+* `target/talon-one-client-9.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
-### Integration API
-
-**Note:** The Integration API's V1 `Update customer session` and `Update customer profile` endpoints are now deprecated. Use their V2 instead. See [Migrating to V2](https://docs.talon.one/docs/dev/tutorials/migrating-to-v2) for more information.
-
 ```java
-package com.example.consumer;
 
-import com.google.gson.Gson;
-
+// Import classes:
 import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
 import one.talon.api.IntegrationApi;
-import one.talon.api.ManagementApi;
-import one.talon.model.*;
 
-import java.util.*;
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-public class TalonApiTest {
-    public static void main(String[] args) {
-        Gson gson = new Gson();
-        IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
-
-        // Setup: basePath
-        iApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
-        // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
-        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
-        iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
-
-        try {
-          // Creating a cart item object
-            CartItem cartItem = new CartItem();
-            cartItem.setName("Hawaiian Pizza");
-            cartItem.setSku("pizza-x");
-            cartItem.setQuantity(1);
-            cartItem.setPrice(new java.math.BigDecimal("5.5"));
-
-            // Creating a customer session of V2
-            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
-            customerSession.setProfileId("Cool_Dude");
-            customerSession.addCouponCodesItem("Cool-Summer!");
-            customerSession.addCartItemsItem(cartItem);
-
-            // Initiating integration request wrapping the customer session update
-            IntegrationRequest request = new IntegrationRequest()
-                .customerSession(customerSession)
-                // Optional parameter of requested information to be present on the response related to the customer session update
-                .responseContent(Arrays.asList(
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
-                ));
-
-            // Flag to communicate whether the request is a "dry run"
-            Boolean dryRun = false;
-
-            // Create/update a customer session using `updateCustomerSessionV2` function
-            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun, null);
-            System.out.println(is.toString());
-
-            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
-            for (Effect eff : is.getEffects()) {
-                if (eff.getEffectType().equals("addLoyaltyPoints")) {
-                    // Typecasting according to the specific effect type
-                    AddLoyaltyPointsEffectProps props = gson.fromJson(
-                        gson.toJson(eff.getProps()),
-                        AddLoyaltyPointsEffectProps.class
-                    );
-                    // Access the specific effect's properties
-                    System.out.println(props.getName());
-                    System.out.println(props.getProgramId());
-                    System.out.println(props.getValue());
-                }
-                if (eff.getEffectType().equals("acceptCoupon")) {
-                    // Typecasting according to the specific effect type
-                    AcceptCouponEffectProps props = gson.fromJson(
-                      gson.toJson(eff.getProps()),
-                      AcceptCouponEffectProps.class
-                    );
-                    // work with AcceptCouponEffectProps' properties
-                    // ...
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    NewAudience body = new NewAudience(); // NewAudience | body
+    try {
+      Audience result = apiInstance.createAudienceV2(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#createAudienceV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
-```
 
-### Management API
-
-```java
-package com.example.consumer;
-
-import one.talon.ApiClient;
-import one.talon.api.IntegrationApi;
-import one.talon.api.ManagementApi;
-import one.talon.model.*;
-
-public class TalonApiTest {
-    public static void main(String[] args) {
-        // Management API example to load application with id 7
-        ManagementApi mApi = new ManagementApi(new ApiClient("management_key"));
-
-        // Setup: basePath
-        mApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
-        // Setup: when using 'management_key', set apiKey & apiKeyPrefix must be provided
-        mApi.getApiClient().setApiKeyPrefix("ManagementKey-v1");
-        mApi.getApiClient().setApiKey("2f0dce055da01ae595005d7d79154bae7448d319d5fc7c5b2951fadd6ba1ea07");
-
-        try {
-            // Calling `getApplication` function with the desired id (7)
-            Application application = mApi.getApplication(7);
-            System.out.println(application.toString());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-}
 ```
 
 ## Documentation for API Endpoints
@@ -236,7 +155,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**updateCustomerProfileV2**](docs/IntegrationApi.md#updateCustomerProfileV2) | **PUT** /v2/customer_profiles/{integrationId} | Update customer profile
 *IntegrationApi* | [**updateCustomerProfilesV2**](docs/IntegrationApi.md#updateCustomerProfilesV2) | **PUT** /v2/customer_profiles | Update multiple customer profiles
 *IntegrationApi* | [**updateCustomerSessionV2**](docs/IntegrationApi.md#updateCustomerSessionV2) | **PUT** /v2/customer_sessions/{customerSessionId} | Update customer session
-*ManagementApi* | [**activateUserByEmail**](docs/ManagementApi.md#activateUserByEmail) | **POST** /v1/users/activate | Activate user by email address
+*ManagementApi* | [**activateUserByEmail**](docs/ManagementApi.md#activateUserByEmail) | **POST** /v1/users/activate | Enable user by email address
 *ManagementApi* | [**addLoyaltyCardPoints**](docs/ManagementApi.md#addLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/add_points | Add points to card
 *ManagementApi* | [**addLoyaltyPoints**](docs/ManagementApi.md#addLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/add_points | Add points to customer profile
 *ManagementApi* | [**copyCampaignToApplications**](docs/ManagementApi.md#copyCampaignToApplications) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/copy | Copy the campaign into the specified Application
@@ -254,7 +173,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**createPasswordRecoveryEmail**](docs/ManagementApi.md#createPasswordRecoveryEmail) | **POST** /v1/password_recovery_emails | Request a password reset
 *ManagementApi* | [**createSession**](docs/ManagementApi.md#createSession) | **POST** /v1/sessions | Create session
 *ManagementApi* | [**createStore**](docs/ManagementApi.md#createStore) | **POST** /v1/applications/{applicationId}/stores | Create store
-*ManagementApi* | [**deactivateUserByEmail**](docs/ManagementApi.md#deactivateUserByEmail) | **POST** /v1/users/deactivate | Deactivate user by email address
+*ManagementApi* | [**deactivateUserByEmail**](docs/ManagementApi.md#deactivateUserByEmail) | **POST** /v1/users/deactivate | Disable user by email address
 *ManagementApi* | [**deductLoyaltyCardPoints**](docs/ManagementApi.md#deductLoyaltyCardPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/deduct_points | Deduct points from card
 *ManagementApi* | [**deleteAccountCollection**](docs/ManagementApi.md#deleteAccountCollection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection
 *ManagementApi* | [**deleteAchievement**](docs/ManagementApi.md#deleteAchievement) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Delete achievement
@@ -268,9 +187,11 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**deleteUser**](docs/ManagementApi.md#deleteUser) | **DELETE** /v1/users/{userId} | Delete user
 *ManagementApi* | [**deleteUserByEmail**](docs/ManagementApi.md#deleteUserByEmail) | **POST** /v1/users/delete | Delete user by email address
 *ManagementApi* | [**destroySession**](docs/ManagementApi.md#destroySession) | **DELETE** /v1/sessions | Destroy session
+*ManagementApi* | [**disconnectCampaignStores**](docs/ManagementApi.md#disconnectCampaignStores) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores | Disconnect stores
 *ManagementApi* | [**exportAccountCollectionItems**](docs/ManagementApi.md#exportAccountCollectionItems) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items
 *ManagementApi* | [**exportAchievements**](docs/ManagementApi.md#exportAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data
 *ManagementApi* | [**exportAudiencesMemberships**](docs/ManagementApi.md#exportAudiencesMemberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members
+*ManagementApi* | [**exportCampaignStores**](docs/ManagementApi.md#exportCampaignStores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores
 *ManagementApi* | [**exportCollectionItems**](docs/ManagementApi.md#exportCollectionItems) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export campaign-level collection&#39;s items
 *ManagementApi* | [**exportCoupons**](docs/ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons
 *ManagementApi* | [**exportCustomerSessions**](docs/ManagementApi.md#exportCustomerSessions) | **GET** /v1/applications/{applicationId}/export_customer_sessions | Export customer sessions
@@ -349,6 +270,7 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**importAccountCollection**](docs/ManagementApi.md#importAccountCollection) | **POST** /v1/collections/{collectionId}/import | Import data into existing account-level collection
 *ManagementApi* | [**importAllowedList**](docs/ManagementApi.md#importAllowedList) | **POST** /v1/attributes/{attributeId}/allowed_list/import | Import allowed values for attribute
 *ManagementApi* | [**importAudiencesMemberships**](docs/ManagementApi.md#importAudiencesMemberships) | **POST** /v1/audiences/{audienceId}/memberships/import | Import audience members
+*ManagementApi* | [**importCampaignStores**](docs/ManagementApi.md#importCampaignStores) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/import | Import stores
 *ManagementApi* | [**importCollection**](docs/ManagementApi.md#importCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/import | Import data into existing campaign-level collection
 *ManagementApi* | [**importCoupons**](docs/ManagementApi.md#importCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons
 *ManagementApi* | [**importLoyaltyCards**](docs/ManagementApi.md#importLoyaltyCards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/import_cards | Import loyalty cards
@@ -365,11 +287,21 @@ Class | Method | HTTP request | Description
 *ManagementApi* | [**listCollectionsInApplication**](docs/ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
 *ManagementApi* | [**listStores**](docs/ManagementApi.md#listStores) | **GET** /v1/applications/{applicationId}/stores | List stores
 *ManagementApi* | [**notificationActivation**](docs/ManagementApi.md#notificationActivation) | **PUT** /v1/notifications/{notificationId}/activation | Activate or deactivate notification
+*ManagementApi* | [**oktaEventHandlerChallenge**](docs/ManagementApi.md#oktaEventHandlerChallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
 *ManagementApi* | [**postAddedDeductedPointsNotification**](docs/ManagementApi.md#postAddedDeductedPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/added_deducted_points | Create notification about added or deducted loyalty points
 *ManagementApi* | [**postCatalogsStrikethroughNotification**](docs/ManagementApi.md#postCatalogsStrikethroughNotification) | **POST** /v1/applications/{applicationId}/catalogs/notifications/strikethrough | Create strikethrough notification
 *ManagementApi* | [**postPendingPointsNotification**](docs/ManagementApi.md#postPendingPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/pending_points | Create notification about pending loyalty points
 *ManagementApi* | [**removeLoyaltyPoints**](docs/ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 *ManagementApi* | [**resetPassword**](docs/ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
+*ManagementApi* | [**scimCreateUser**](docs/ManagementApi.md#scimCreateUser) | **POST** /v1/provisioning/scim/Users | Create SCIM user
+*ManagementApi* | [**scimDeleteUser**](docs/ManagementApi.md#scimDeleteUser) | **DELETE** /v1/provisioning/scim/Users/{userId} | Delete SCIM user
+*ManagementApi* | [**scimGetResourceTypes**](docs/ManagementApi.md#scimGetResourceTypes) | **GET** /v1/provisioning/scim/ResourceTypes | List supported SCIM resource types
+*ManagementApi* | [**scimGetSchemas**](docs/ManagementApi.md#scimGetSchemas) | **GET** /v1/provisioning/scim/Schemas | List supported SCIM schemas
+*ManagementApi* | [**scimGetServiceProviderConfig**](docs/ManagementApi.md#scimGetServiceProviderConfig) | **GET** /v1/provisioning/scim/ServiceProviderConfig | Service config endpoint for SCIM provisioning protocol
+*ManagementApi* | [**scimGetUser**](docs/ManagementApi.md#scimGetUser) | **GET** /v1/provisioning/scim/Users/{userId} | Get SCIM user
+*ManagementApi* | [**scimGetUsers**](docs/ManagementApi.md#scimGetUsers) | **GET** /v1/provisioning/scim/Users | List SCIM users
+*ManagementApi* | [**scimPatchUser**](docs/ManagementApi.md#scimPatchUser) | **PATCH** /v1/provisioning/scim/Users/{userId} | Update SCIM user attributes
+*ManagementApi* | [**scimReplaceUserAttributes**](docs/ManagementApi.md#scimReplaceUserAttributes) | **PUT** /v1/provisioning/scim/Users/{userId} | Update SCIM user
 *ManagementApi* | [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](docs/ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | List coupons that match the given attributes (without total count)
 *ManagementApi* | [**searchCouponsAdvancedWithoutTotalCount**](docs/ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | List coupons that match the given attributes in campaign (without total count)
 *ManagementApi* | [**transferLoyaltyCard**](docs/ManagementApi.md#transferLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer | Transfer card data
@@ -417,21 +349,15 @@ Class | Method | HTTP request | Description
  - [AddedDeductedPointsNotificationPolicy](docs/AddedDeductedPointsNotificationPolicy.md)
  - [AdditionalCampaignProperties](docs/AdditionalCampaignProperties.md)
  - [AdditionalCost](docs/AdditionalCost.md)
+ - [AnalyticsDataPoint](docs/AnalyticsDataPoint.md)
+ - [AnalyticsDataPointWithTrend](docs/AnalyticsDataPointWithTrend.md)
+ - [AnalyticsDataPointWithTrendAndInfluencedRate](docs/AnalyticsDataPointWithTrendAndInfluencedRate.md)
+ - [AnalyticsDataPointWithTrendAndUplift](docs/AnalyticsDataPointWithTrendAndUplift.md)
  - [Application](docs/Application.md)
  - [ApplicationAPIKey](docs/ApplicationAPIKey.md)
  - [ApplicationAnalyticsDataPoint](docs/ApplicationAnalyticsDataPoint.md)
- - [ApplicationAnalyticsDataPointAvgItemsPerSession](docs/ApplicationAnalyticsDataPointAvgItemsPerSession.md)
- - [ApplicationAnalyticsDataPointAvgSessionValue](docs/ApplicationAnalyticsDataPointAvgSessionValue.md)
- - [ApplicationAnalyticsDataPointSessionsCount](docs/ApplicationAnalyticsDataPointSessionsCount.md)
- - [ApplicationAnalyticsDataPointTotalRevenue](docs/ApplicationAnalyticsDataPointTotalRevenue.md)
  - [ApplicationApiHealth](docs/ApplicationApiHealth.md)
  - [ApplicationCampaignAnalytics](docs/ApplicationCampaignAnalytics.md)
- - [ApplicationCampaignAnalyticsAvgItemsPerSession](docs/ApplicationCampaignAnalyticsAvgItemsPerSession.md)
- - [ApplicationCampaignAnalyticsAvgSessionValue](docs/ApplicationCampaignAnalyticsAvgSessionValue.md)
- - [ApplicationCampaignAnalyticsCouponsCount](docs/ApplicationCampaignAnalyticsCouponsCount.md)
- - [ApplicationCampaignAnalyticsSessionsCount](docs/ApplicationCampaignAnalyticsSessionsCount.md)
- - [ApplicationCampaignAnalyticsTotalDiscounts](docs/ApplicationCampaignAnalyticsTotalDiscounts.md)
- - [ApplicationCampaignAnalyticsTotalRevenue](docs/ApplicationCampaignAnalyticsTotalRevenue.md)
  - [ApplicationCampaignStats](docs/ApplicationCampaignStats.md)
  - [ApplicationCustomer](docs/ApplicationCustomer.md)
  - [ApplicationCustomerEntity](docs/ApplicationCustomerEntity.md)
@@ -491,6 +417,7 @@ Class | Method | HTTP request | Description
  - [CampaignTemplate](docs/CampaignTemplate.md)
  - [CampaignTemplateCollection](docs/CampaignTemplateCollection.md)
  - [CampaignTemplateParams](docs/CampaignTemplateParams.md)
+ - [CardAddedDeductedPointsNotificationPolicy](docs/CardAddedDeductedPointsNotificationPolicy.md)
  - [CardExpiringPointsNotificationPolicy](docs/CardExpiringPointsNotificationPolicy.md)
  - [CardExpiringPointsNotificationTrigger](docs/CardExpiringPointsNotificationTrigger.md)
  - [CardLedgerPointsEntryIntegrationAPI](docs/CardLedgerPointsEntryIntegrationAPI.md)
@@ -567,6 +494,11 @@ Class | Method | HTTP request | Description
  - [FeaturesFeed](docs/FeaturesFeed.md)
  - [FuncArgDef](docs/FuncArgDef.md)
  - [FunctionDef](docs/FunctionDef.md)
+ - [GenerateCampaignDescription](docs/GenerateCampaignDescription.md)
+ - [GenerateCampaignTags](docs/GenerateCampaignTags.md)
+ - [GenerateItemFilterDescription](docs/GenerateItemFilterDescription.md)
+ - [GenerateRuleTitle](docs/GenerateRuleTitle.md)
+ - [GenerateRuleTitleRule](docs/GenerateRuleTitleRule.md)
  - [GetIntegrationCouponRequest](docs/GetIntegrationCouponRequest.md)
  - [Giveaway](docs/Giveaway.md)
  - [GiveawaysPool](docs/GiveawaysPool.md)
@@ -645,7 +577,9 @@ Class | Method | HTTP request | Description
  - [LoginParams](docs/LoginParams.md)
  - [Loyalty](docs/Loyalty.md)
  - [LoyaltyBalance](docs/LoyaltyBalance.md)
+ - [LoyaltyBalanceWithTier](docs/LoyaltyBalanceWithTier.md)
  - [LoyaltyBalances](docs/LoyaltyBalances.md)
+ - [LoyaltyBalancesWithTiers](docs/LoyaltyBalancesWithTiers.md)
  - [LoyaltyCard](docs/LoyaltyCard.md)
  - [LoyaltyCardBalances](docs/LoyaltyCardBalances.md)
  - [LoyaltyCardProfileRegistration](docs/LoyaltyCardProfileRegistration.md)
@@ -738,6 +672,10 @@ Class | Method | HTTP request | Description
  - [NotificationActivation](docs/NotificationActivation.md)
  - [NotificationListItem](docs/NotificationListItem.md)
  - [NotificationTest](docs/NotificationTest.md)
+ - [OktaEvent](docs/OktaEvent.md)
+ - [OktaEventPayload](docs/OktaEventPayload.md)
+ - [OktaEventPayloadData](docs/OktaEventPayloadData.md)
+ - [OktaEventTarget](docs/OktaEventTarget.md)
  - [OneTimeCode](docs/OneTimeCode.md)
  - [OutgoingIntegrationBrazePolicy](docs/OutgoingIntegrationBrazePolicy.md)
  - [OutgoingIntegrationCleverTapPolicy](docs/OutgoingIntegrationCleverTapPolicy.md)
@@ -755,6 +693,7 @@ Class | Method | HTTP request | Description
  - [Picklist](docs/Picklist.md)
  - [Product](docs/Product.md)
  - [ProfileAudiencesChanges](docs/ProfileAudiencesChanges.md)
+ - [ProjectedTier](docs/ProjectedTier.md)
  - [RedeemReferralEffectProps](docs/RedeemReferralEffectProps.md)
  - [Referral](docs/Referral.md)
  - [ReferralConstraints](docs/ReferralConstraints.md)
@@ -782,6 +721,7 @@ Class | Method | HTTP request | Description
  - [RollbackCouponEffectProps](docs/RollbackCouponEffectProps.md)
  - [RollbackDeductedLoyaltyPointsEffectProps](docs/RollbackDeductedLoyaltyPointsEffectProps.md)
  - [RollbackDiscountEffectProps](docs/RollbackDiscountEffectProps.md)
+ - [RollbackIncreasedAchievementProgressEffectProps](docs/RollbackIncreasedAchievementProgressEffectProps.md)
  - [RollbackReferralEffectProps](docs/RollbackReferralEffectProps.md)
  - [Rule](docs/Rule.md)
  - [RuleFailureReason](docs/RuleFailureReason.md)
@@ -791,6 +731,11 @@ Class | Method | HTTP request | Description
  - [SamlConnectionInternal](docs/SamlConnectionInternal.md)
  - [SamlConnectionMetadata](docs/SamlConnectionMetadata.md)
  - [SamlLoginEndpoint](docs/SamlLoginEndpoint.md)
+ - [ScimNewUser](docs/ScimNewUser.md)
+ - [ScimResource](docs/ScimResource.md)
+ - [ScimResourceTypesListResponse](docs/ScimResourceTypesListResponse.md)
+ - [ScimUser](docs/ScimUser.md)
+ - [ScimUsersListResponse](docs/ScimUsersListResponse.md)
  - [Session](docs/Session.md)
  - [SetDiscountEffectProps](docs/SetDiscountEffectProps.md)
  - [SetDiscountPerAdditionalCostEffectProps](docs/SetDiscountPerAdditionalCostEffectProps.md)

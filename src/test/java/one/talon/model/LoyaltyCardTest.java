@@ -80,6 +80,14 @@ public class LoyaltyCardTest {
     }
 
     /**
+     * Test the property 'blockReason'
+     */
+    @Test
+    public void blockReasonTest() {
+        // TODO: test blockReason
+    }
+
+    /**
      * Test the property 'identifier'
      */
     @Test

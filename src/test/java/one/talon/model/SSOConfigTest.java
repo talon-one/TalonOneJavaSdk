@@ -48,4 +48,12 @@ public class SSOConfigTest {
         // TODO: test enforced
     }
 
+    /**
+     * Test the property 'newAcsUrl'
+     */
+    @Test
+    public void newAcsUrlTest() {
+        // TODO: test newAcsUrl
+    }
+
 }

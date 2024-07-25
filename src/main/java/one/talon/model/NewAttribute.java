@@ -37,8 +37,6 @@ public class NewAttribute {
    */
   @JsonAdapter(EntityEnum.Adapter.class)
   public enum EntityEnum {
-    ACCOUNT("Account"),
-    
     APPLICATION("Application"),
     
     CAMPAIGN("Campaign"),

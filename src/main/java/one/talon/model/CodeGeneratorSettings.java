@@ -74,10 +74,10 @@ public class CodeGeneratorSettings {
   }
 
    /**
-   * The pattern used to generate coupon codes. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. 
+   * The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. 
    * @return couponPattern
   **/
-  @ApiModelProperty(example = "SUMMER-####-####", required = true, value = "The pattern used to generate coupon codes. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set. ")
+  @ApiModelProperty(example = "SUMMER-####-####", required = true, value = "The pattern used to generate codes, such as coupon codes, referral codes, and loyalty cards. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set. ")
 
   public String getCouponPattern() {
     return couponPattern;
