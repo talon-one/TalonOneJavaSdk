@@ -51,10 +51,10 @@ public class NewBaseNotification {
   }
 
    /**
-   * Get policy
+   * Indicates which notification properties to apply.
    * @return policy
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Indicates which notification properties to apply.")
 
   public Object getPolicy() {
     return policy;

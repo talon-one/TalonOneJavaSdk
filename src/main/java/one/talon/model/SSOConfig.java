@@ -33,6 +33,10 @@ public class SSOConfig {
   @SerializedName(SERIALIZED_NAME_ENFORCED)
   private Boolean enforced;
 
+  public static final String SERIALIZED_NAME_NEW_ACS_URL = "newAcsUrl";
+  @SerializedName(SERIALIZED_NAME_NEW_ACS_URL)
+  private String newAcsUrl;
+
 
   public SSOConfig enforced(Boolean enforced) {
     
@@ -56,6 +60,29 @@ public class SSOConfig {
   }
 
 
+  public SSOConfig newAcsUrl(String newAcsUrl) {
+    
+    this.newAcsUrl = newAcsUrl;
+    return this;
+  }
+
+   /**
+   * Assertion Consumer Service (ACS) URL for setting up a new SAML connection with an identity provider like Okta or Microsoft Entra ID. 
+   * @return newAcsUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "https://yourdeployment.talon.one/v1/saml_connections/5/saml_callback", value = "Assertion Consumer Service (ACS) URL for setting up a new SAML connection with an identity provider like Okta or Microsoft Entra ID. ")
+
+  public String getNewAcsUrl() {
+    return newAcsUrl;
+  }
+
+
+  public void setNewAcsUrl(String newAcsUrl) {
+    this.newAcsUrl = newAcsUrl;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +92,13 @@ public class SSOConfig {
       return false;
     }
     SSOConfig ssOConfig = (SSOConfig) o;
-    return Objects.equals(this.enforced, ssOConfig.enforced);
+    return Objects.equals(this.enforced, ssOConfig.enforced) &&
+        Objects.equals(this.newAcsUrl, ssOConfig.newAcsUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enforced);
+    return Objects.hash(enforced, newAcsUrl);
   }
 
 
@@ -79,6 +107,7 @@ public class SSOConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class SSOConfig {\n");
     sb.append("    enforced: ").append(toIndentedString(enforced)).append("\n");
+    sb.append("    newAcsUrl: ").append(toIndentedString(newAcsUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

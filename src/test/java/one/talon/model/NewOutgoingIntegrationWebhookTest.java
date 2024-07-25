@@ -51,6 +51,14 @@ public class NewOutgoingIntegrationWebhookTest {
     }
 
     /**
+     * Test the property 'description'
+     */
+    @Test
+    public void descriptionTest() {
+        // TODO: test description
+    }
+
+    /**
      * Test the property 'applicationIds'
      */
     @Test

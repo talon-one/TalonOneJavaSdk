@@ -25,6 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CodeGeneratorSettings;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * BaseLoyaltyProgram
@@ -64,13 +66,70 @@ public class BaseLoyaltyProgram {
   private Boolean sandbox;
 
   /**
-   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program. 
+   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+   */
+  @JsonAdapter(ProgramJoinPolicyEnum.Adapter.class)
+  public enum ProgramJoinPolicyEnum {
+    NOT_JOIN("not_join"),
+    
+    POINTS_ACTIVATED("points_activated"),
+    
+    POINTS_EARNED("points_earned");
+
+    private String value;
+
+    ProgramJoinPolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ProgramJoinPolicyEnum fromValue(String value) {
+      for (ProgramJoinPolicyEnum b : ProgramJoinPolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ProgramJoinPolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProgramJoinPolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProgramJoinPolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ProgramJoinPolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PROGRAM_JOIN_POLICY = "programJoinPolicy";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_JOIN_POLICY)
+  private ProgramJoinPolicyEnum programJoinPolicy;
+
+  /**
+   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program.  - &#x60;customer_attribute&#x60;: The tier expiration date is calculated based on a custom customer attribute.  - &#x60;absolute_expiration&#x60;: The tier expires on a specified date and time. **Note**: For absolute expiration, it is required to provide a &#x60;tiersStartDate.&#x60; 
    */
   @JsonAdapter(TiersExpirationPolicyEnum.Adapter.class)
   public enum TiersExpirationPolicyEnum {
     TIER_START_DATE("tier_start_date"),
     
-    PROGRAM_JOIN_DATE("program_join_date");
+    PROGRAM_JOIN_DATE("program_join_date"),
+    
+    CUSTOMER_ATTRIBUTE("customer_attribute"),
+    
+    ABSOLUTE_EXPIRATION("absolute_expiration");
 
     private String value;
 
@@ -113,6 +172,10 @@ public class BaseLoyaltyProgram {
   public static final String SERIALIZED_NAME_TIERS_EXPIRATION_POLICY = "tiersExpirationPolicy";
   @SerializedName(SERIALIZED_NAME_TIERS_EXPIRATION_POLICY)
   private TiersExpirationPolicyEnum tiersExpirationPolicy;
+
+  public static final String SERIALIZED_NAME_TIERS_START_DATE = "tiersStartDate";
+  @SerializedName(SERIALIZED_NAME_TIERS_START_DATE)
+  private OffsetDateTime tiersStartDate;
 
   public static final String SERIALIZED_NAME_TIERS_EXPIRE_IN = "tiersExpireIn";
   @SerializedName(SERIALIZED_NAME_TIERS_EXPIRE_IN)
@@ -169,58 +232,9 @@ public class BaseLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_TIERS_DOWNGRADE_POLICY)
   private TiersDowngradePolicyEnum tiersDowngradePolicy;
 
-  /**
-   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
-   */
-  @JsonAdapter(ProgramJoinPolicyEnum.Adapter.class)
-  public enum ProgramJoinPolicyEnum {
-    NOT_JOIN("not_join"),
-    
-    POINTS_ACTIVATED("points_activated"),
-    
-    POINTS_EARNED("points_earned");
-
-    private String value;
-
-    ProgramJoinPolicyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ProgramJoinPolicyEnum fromValue(String value) {
-      for (ProgramJoinPolicyEnum b : ProgramJoinPolicyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ProgramJoinPolicyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ProgramJoinPolicyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ProgramJoinPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ProgramJoinPolicyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PROGRAM_JOIN_POLICY = "programJoinPolicy";
-  @SerializedName(SERIALIZED_NAME_PROGRAM_JOIN_POLICY)
-  private ProgramJoinPolicyEnum programJoinPolicy;
+  public static final String SERIALIZED_NAME_CARD_CODE_SETTINGS = "cardCodeSettings";
+  @SerializedName(SERIALIZED_NAME_CARD_CODE_SETTINGS)
+  private CodeGeneratorSettings cardCodeSettings;
 
 
   public BaseLoyaltyProgram title(String title) {
@@ -416,6 +430,29 @@ public class BaseLoyaltyProgram {
   }
 
 
+  public BaseLoyaltyProgram programJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
+    
+    this.programJoinPolicy = programJoinPolicy;
+    return this;
+  }
+
+   /**
+   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+   * @return programJoinPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The policy that defines when the customer joins the loyalty program.   - `not_join`: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - `points_activated`: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - `points_earned`: The customer joins the loyalty program when they earn loyalty points for the first time. ")
+
+  public ProgramJoinPolicyEnum getProgramJoinPolicy() {
+    return programJoinPolicy;
+  }
+
+
+  public void setProgramJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
+    this.programJoinPolicy = programJoinPolicy;
+  }
+
+
   public BaseLoyaltyProgram tiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
     
     this.tiersExpirationPolicy = tiersExpirationPolicy;
@@ -423,11 +460,11 @@ public class BaseLoyaltyProgram {
   }
 
    /**
-   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program. 
+   * The policy that defines which date is used to calculate the expiration date of a customer&#39;s current tier.  - &#x60;tier_start_date&#x60;: The tier expiration date is calculated based on when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration date is calculated based on when the customer joined the loyalty program.  - &#x60;customer_attribute&#x60;: The tier expiration date is calculated based on a custom customer attribute.  - &#x60;absolute_expiration&#x60;: The tier expires on a specified date and time. **Note**: For absolute expiration, it is required to provide a &#x60;tiersStartDate.&#x60; 
    * @return tiersExpirationPolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The policy that defines which date is used to calculate the expiration date of a customer's current tier.  - `tier_start_date`: The tier expiration date is calculated based on when the customer joined the current tier.  - `program_join_date`: The tier expiration date is calculated based on when the customer joined the loyalty program. ")
+  @ApiModelProperty(value = "The policy that defines which date is used to calculate the expiration date of a customer's current tier.  - `tier_start_date`: The tier expiration date is calculated based on when the customer joined the current tier.  - `program_join_date`: The tier expiration date is calculated based on when the customer joined the loyalty program.  - `customer_attribute`: The tier expiration date is calculated based on a custom customer attribute.  - `absolute_expiration`: The tier expires on a specified date and time. **Note**: For absolute expiration, it is required to provide a `tiersStartDate.` ")
 
   public TiersExpirationPolicyEnum getTiersExpirationPolicy() {
     return tiersExpirationPolicy;
@@ -436,6 +473,29 @@ public class BaseLoyaltyProgram {
 
   public void setTiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
     this.tiersExpirationPolicy = tiersExpirationPolicy;
+  }
+
+
+  public BaseLoyaltyProgram tiersStartDate(OffsetDateTime tiersStartDate) {
+    
+    this.tiersStartDate = tiersStartDate;
+    return this;
+  }
+
+   /**
+   * Timestamp at which the tier starts for all customers.  **Note**: This is only required when the tier expiration policy is set to &#x60;absolute_expiration&#x60;. 
+   * @return tiersStartDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "Timestamp at which the tier starts for all customers.  **Note**: This is only required when the tier expiration policy is set to `absolute_expiration`. ")
+
+  public OffsetDateTime getTiersStartDate() {
+    return tiersStartDate;
+  }
+
+
+  public void setTiersStartDate(OffsetDateTime tiersStartDate) {
+    this.tiersStartDate = tiersStartDate;
   }
 
 
@@ -485,26 +545,26 @@ public class BaseLoyaltyProgram {
   }
 
 
-  public BaseLoyaltyProgram programJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
+  public BaseLoyaltyProgram cardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
     
-    this.programJoinPolicy = programJoinPolicy;
+    this.cardCodeSettings = cardCodeSettings;
     return this;
   }
 
    /**
-   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
-   * @return programJoinPolicy
+   * Get cardCodeSettings
+   * @return cardCodeSettings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The policy that defines when the customer joins the loyalty program.   - `not_join`: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - `points_activated`: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - `points_earned`: The customer joins the loyalty program when they earn loyalty points for the first time. ")
+  @ApiModelProperty(value = "")
 
-  public ProgramJoinPolicyEnum getProgramJoinPolicy() {
-    return programJoinPolicy;
+  public CodeGeneratorSettings getCardCodeSettings() {
+    return cardCodeSettings;
   }
 
 
-  public void setProgramJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
-    this.programJoinPolicy = programJoinPolicy;
+  public void setCardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
+    this.cardCodeSettings = cardCodeSettings;
   }
 
 
@@ -525,15 +585,17 @@ public class BaseLoyaltyProgram {
         Objects.equals(this.allowSubledger, baseLoyaltyProgram.allowSubledger) &&
         Objects.equals(this.usersPerCardLimit, baseLoyaltyProgram.usersPerCardLimit) &&
         Objects.equals(this.sandbox, baseLoyaltyProgram.sandbox) &&
+        Objects.equals(this.programJoinPolicy, baseLoyaltyProgram.programJoinPolicy) &&
         Objects.equals(this.tiersExpirationPolicy, baseLoyaltyProgram.tiersExpirationPolicy) &&
+        Objects.equals(this.tiersStartDate, baseLoyaltyProgram.tiersStartDate) &&
         Objects.equals(this.tiersExpireIn, baseLoyaltyProgram.tiersExpireIn) &&
         Objects.equals(this.tiersDowngradePolicy, baseLoyaltyProgram.tiersDowngradePolicy) &&
-        Objects.equals(this.programJoinPolicy, baseLoyaltyProgram.programJoinPolicy);
+        Objects.equals(this.cardCodeSettings, baseLoyaltyProgram.cardCodeSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, tiersExpirationPolicy, tiersExpireIn, tiersDowngradePolicy, programJoinPolicy);
+    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tiersStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings);
   }
 
 
@@ -549,10 +611,12 @@ public class BaseLoyaltyProgram {
     sb.append("    allowSubledger: ").append(toIndentedString(allowSubledger)).append("\n");
     sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
+    sb.append("    programJoinPolicy: ").append(toIndentedString(programJoinPolicy)).append("\n");
     sb.append("    tiersExpirationPolicy: ").append(toIndentedString(tiersExpirationPolicy)).append("\n");
+    sb.append("    tiersStartDate: ").append(toIndentedString(tiersStartDate)).append("\n");
     sb.append("    tiersExpireIn: ").append(toIndentedString(tiersExpireIn)).append("\n");
     sb.append("    tiersDowngradePolicy: ").append(toIndentedString(tiersDowngradePolicy)).append("\n");
-    sb.append("    programJoinPolicy: ").append(toIndentedString(programJoinPolicy)).append("\n");
+    sb.append("    cardCodeSettings: ").append(toIndentedString(cardCodeSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
