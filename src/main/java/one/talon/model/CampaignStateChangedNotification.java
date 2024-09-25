@@ -78,10 +78,10 @@ public class CampaignStateChangedNotification {
   }
 
    /**
-   * The campaign&#39;s old state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;draft&#39;, &#39;archived&#39;] 
+   * The campaign&#39;s old state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;archived&#39;] 
    * @return oldState
   **/
-  @ApiModelProperty(example = "disabled", required = true, value = "The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'draft', 'archived'] ")
+  @ApiModelProperty(example = "disabled", required = true, value = "The campaign's old state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived'] ")
 
   public String getOldState() {
     return oldState;
@@ -100,10 +100,10 @@ public class CampaignStateChangedNotification {
   }
 
    /**
-   * The campaign&#39;s new state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;draft&#39;, &#39;archived&#39;] 
+   * The campaign&#39;s new state. Can be one of the following: [&#39;running&#39;, &#39;disabled&#39;, &#39;scheduled&#39;, &#39;expired&#39;, &#39;archived&#39;] 
    * @return newState
   **/
-  @ApiModelProperty(example = "running", required = true, value = "The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'draft', 'archived'] ")
+  @ApiModelProperty(example = "running", required = true, value = "The campaign's new state. Can be one of the following: ['running', 'disabled', 'scheduled', 'expired', 'archived'] ")
 
   public String getNewState() {
     return newState;

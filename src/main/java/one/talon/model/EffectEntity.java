@@ -62,6 +62,22 @@ public class EffectEntity {
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
   private Integer conditionIndex;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
+  private Integer evaluationGroupID;
+
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
+  private String evaluationGroupMode;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_ID = "campaignRevisionId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_ID)
+  private Integer campaignRevisionId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID = "campaignRevisionVersionId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID)
+  private Integer campaignRevisionVersionId;
+
 
   public EffectEntity campaignId(Integer campaignId) {
     
@@ -242,6 +258,98 @@ public class EffectEntity {
   }
 
 
+  public EffectEntity evaluationGroupID(Integer evaluationGroupID) {
+    
+    this.evaluationGroupID = evaluationGroupID;
+    return this;
+  }
+
+   /**
+   * The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * @return evaluationGroupID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
+
+  public Integer getEvaluationGroupID() {
+    return evaluationGroupID;
+  }
+
+
+  public void setEvaluationGroupID(Integer evaluationGroupID) {
+    this.evaluationGroupID = evaluationGroupID;
+  }
+
+
+  public EffectEntity evaluationGroupMode(String evaluationGroupMode) {
+    
+    this.evaluationGroupMode = evaluationGroupMode;
+    return this;
+  }
+
+   /**
+   * The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * @return evaluationGroupMode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "stackable", value = "The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
+
+  public String getEvaluationGroupMode() {
+    return evaluationGroupMode;
+  }
+
+
+  public void setEvaluationGroupMode(String evaluationGroupMode) {
+    this.evaluationGroupMode = evaluationGroupMode;
+  }
+
+
+  public EffectEntity campaignRevisionId(Integer campaignRevisionId) {
+    
+    this.campaignRevisionId = campaignRevisionId;
+    return this;
+  }
+
+   /**
+   * The revision ID of the campaign that was used when triggering the effect.
+   * @return campaignRevisionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The revision ID of the campaign that was used when triggering the effect.")
+
+  public Integer getCampaignRevisionId() {
+    return campaignRevisionId;
+  }
+
+
+  public void setCampaignRevisionId(Integer campaignRevisionId) {
+    this.campaignRevisionId = campaignRevisionId;
+  }
+
+
+  public EffectEntity campaignRevisionVersionId(Integer campaignRevisionVersionId) {
+    
+    this.campaignRevisionVersionId = campaignRevisionVersionId;
+    return this;
+  }
+
+   /**
+   * The revision version ID of the campaign that was used when triggering the effect.
+   * @return campaignRevisionVersionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "5", value = "The revision version ID of the campaign that was used when triggering the effect.")
+
+  public Integer getCampaignRevisionVersionId() {
+    return campaignRevisionVersionId;
+  }
+
+
+  public void setCampaignRevisionVersionId(Integer campaignRevisionVersionId) {
+    this.campaignRevisionVersionId = campaignRevisionVersionId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -258,12 +366,16 @@ public class EffectEntity {
         Objects.equals(this.effectType, effectEntity.effectType) &&
         Objects.equals(this.triggeredByCoupon, effectEntity.triggeredByCoupon) &&
         Objects.equals(this.triggeredForCatalogItem, effectEntity.triggeredForCatalogItem) &&
-        Objects.equals(this.conditionIndex, effectEntity.conditionIndex);
+        Objects.equals(this.conditionIndex, effectEntity.conditionIndex) &&
+        Objects.equals(this.evaluationGroupID, effectEntity.evaluationGroupID) &&
+        Objects.equals(this.evaluationGroupMode, effectEntity.evaluationGroupMode) &&
+        Objects.equals(this.campaignRevisionId, effectEntity.campaignRevisionId) &&
+        Objects.equals(this.campaignRevisionVersionId, effectEntity.campaignRevisionVersionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId);
   }
 
 
@@ -279,6 +391,10 @@ public class EffectEntity {
     sb.append("    triggeredByCoupon: ").append(toIndentedString(triggeredByCoupon)).append("\n");
     sb.append("    triggeredForCatalogItem: ").append(toIndentedString(triggeredForCatalogItem)).append("\n");
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
+    sb.append("    evaluationGroupID: ").append(toIndentedString(evaluationGroupID)).append("\n");
+    sb.append("    evaluationGroupMode: ").append(toIndentedString(evaluationGroupMode)).append("\n");
+    sb.append("    campaignRevisionId: ").append(toIndentedString(campaignRevisionId)).append("\n");
+    sb.append("    campaignRevisionVersionId: ").append(toIndentedString(campaignRevisionVersionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

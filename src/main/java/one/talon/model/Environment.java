@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AccountAdditionalCost;
 import one.talon.model.Achievement;
+import one.talon.model.ApplicationCIF;
 import one.talon.model.Attribute;
 import one.talon.model.Audience;
 import one.talon.model.Collection;
@@ -98,6 +99,10 @@ public class Environment {
   public static final String SERIALIZED_NAME_COLLECTIONS = "collections";
   @SerializedName(SERIALIZED_NAME_COLLECTIONS)
   private List<Collection> collections = null;
+
+  public static final String SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTERS = "applicationCartItemFilters";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTERS)
+  private List<ApplicationCIF> applicationCartItemFilters = null;
 
 
   public Environment id(Integer id) {
@@ -486,6 +491,37 @@ public class Environment {
   }
 
 
+  public Environment applicationCartItemFilters(List<ApplicationCIF> applicationCartItemFilters) {
+    
+    this.applicationCartItemFilters = applicationCartItemFilters;
+    return this;
+  }
+
+  public Environment addApplicationCartItemFiltersItem(ApplicationCIF applicationCartItemFiltersItem) {
+    if (this.applicationCartItemFilters == null) {
+      this.applicationCartItemFilters = new ArrayList<ApplicationCIF>();
+    }
+    this.applicationCartItemFilters.add(applicationCartItemFiltersItem);
+    return this;
+  }
+
+   /**
+   * The cart item filters belonging to the Application.
+   * @return applicationCartItemFilters
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The cart item filters belonging to the Application.")
+
+  public List<ApplicationCIF> getApplicationCartItemFilters() {
+    return applicationCartItemFilters;
+  }
+
+
+  public void setApplicationCartItemFilters(List<ApplicationCIF> applicationCartItemFilters) {
+    this.applicationCartItemFilters = applicationCartItemFilters;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -508,12 +544,13 @@ public class Environment {
         Objects.equals(this.attributes, environment.attributes) &&
         Objects.equals(this.additionalCosts, environment.additionalCosts) &&
         Objects.equals(this.audiences, environment.audiences) &&
-        Objects.equals(this.collections, environment.collections);
+        Objects.equals(this.collections, environment.collections) &&
+        Objects.equals(this.applicationCartItemFilters, environment.applicationCartItemFilters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters);
   }
 
 
@@ -535,6 +572,7 @@ public class Environment {
     sb.append("    additionalCosts: ").append(toIndentedString(additionalCosts)).append("\n");
     sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");
     sb.append("    collections: ").append(toIndentedString(collections)).append("\n");
+    sb.append("    applicationCartItemFilters: ").append(toIndentedString(applicationCartItemFilters)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -199,6 +199,22 @@ public class ApplicationTest {
     }
 
     /**
+     * Test the property 'defaultCartItemFilterId'
+     */
+    @Test
+    public void defaultCartItemFilterIdTest() {
+        // TODO: test defaultCartItemFilterId
+    }
+
+    /**
+     * Test the property 'enableCampaignStateManagement'
+     */
+    @Test
+    public void enableCampaignStateManagementTest() {
+        // TODO: test enableCampaignStateManagement
+    }
+
+    /**
      * Test the property 'loyaltyPrograms'
      */
     @Test

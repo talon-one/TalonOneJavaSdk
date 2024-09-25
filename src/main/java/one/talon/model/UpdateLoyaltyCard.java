@@ -33,6 +33,10 @@ public class UpdateLoyaltyCard {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public static final String SERIALIZED_NAME_BLOCK_REASON = "blockReason";
+  @SerializedName(SERIALIZED_NAME_BLOCK_REASON)
+  private String blockReason;
+
 
   public UpdateLoyaltyCard status(String status) {
     
@@ -41,10 +45,10 @@ public class UpdateLoyaltyCard {
   }
 
    /**
-   * Status of the loyalty card. Can be one of: [&#39;active&#39;, &#39;inactive&#39;] 
+   * Status of the loyalty card. Can be &#x60;active&#x60; or &#x60;inactive&#x60;. 
    * @return status
   **/
-  @ApiModelProperty(example = "active", required = true, value = "Status of the loyalty card. Can be one of: ['active', 'inactive'] ")
+  @ApiModelProperty(example = "active", required = true, value = "Status of the loyalty card. Can be `active` or `inactive`. ")
 
   public String getStatus() {
     return status;
@@ -53,6 +57,29 @@ public class UpdateLoyaltyCard {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public UpdateLoyaltyCard blockReason(String blockReason) {
+    
+    this.blockReason = blockReason;
+    return this;
+  }
+
+   /**
+   * Reason for transferring and blocking the loyalty card. 
+   * @return blockReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Current card lost. Customer needs a new card.", value = "Reason for transferring and blocking the loyalty card. ")
+
+  public String getBlockReason() {
+    return blockReason;
+  }
+
+
+  public void setBlockReason(String blockReason) {
+    this.blockReason = blockReason;
   }
 
 
@@ -65,12 +92,13 @@ public class UpdateLoyaltyCard {
       return false;
     }
     UpdateLoyaltyCard updateLoyaltyCard = (UpdateLoyaltyCard) o;
-    return Objects.equals(this.status, updateLoyaltyCard.status);
+    return Objects.equals(this.status, updateLoyaltyCard.status) &&
+        Objects.equals(this.blockReason, updateLoyaltyCard.blockReason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(status, blockReason);
   }
 
 
@@ -79,6 +107,7 @@ public class UpdateLoyaltyCard {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateLoyaltyCard {\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    blockReason: ").append(toIndentedString(blockReason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

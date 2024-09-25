@@ -104,4 +104,36 @@ public class EffectEntityTest {
         // TODO: test conditionIndex
     }
 
+    /**
+     * Test the property 'evaluationGroupID'
+     */
+    @Test
+    public void evaluationGroupIDTest() {
+        // TODO: test evaluationGroupID
+    }
+
+    /**
+     * Test the property 'evaluationGroupMode'
+     */
+    @Test
+    public void evaluationGroupModeTest() {
+        // TODO: test evaluationGroupMode
+    }
+
+    /**
+     * Test the property 'campaignRevisionId'
+     */
+    @Test
+    public void campaignRevisionIdTest() {
+        // TODO: test campaignRevisionId
+    }
+
+    /**
+     * Test the property 'campaignRevisionVersionId'
+     */
+    @Test
+    public void campaignRevisionVersionIdTest() {
+        // TODO: test campaignRevisionVersionId
+    }
+
 }

@@ -38,12 +38,16 @@ public class Tier {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
   public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
   /**
-   * Customers&#39;s tier downgrade policy. - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down. - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
    */
   @JsonAdapter(DowngradePolicyEnum.Adapter.class)
   public enum DowngradePolicyEnum {
@@ -138,6 +142,29 @@ public class Tier {
   }
 
 
+  public Tier startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Date and time when the customer moved to this tier. This value uses the loyalty program&#39;s time zone setting.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Date and time when the customer moved to this tier. This value uses the loyalty program's time zone setting.")
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
   public Tier expiryDate(OffsetDateTime expiryDate) {
     
     this.expiryDate = expiryDate;
@@ -168,11 +195,11 @@ public class Tier {
   }
 
    /**
-   * Customers&#39;s tier downgrade policy. - &#x60;one_down&#x60;: Once the tier expires and if the user doesn&#39;t have enough points to stay in the tier, the user is downgraded one tier down. - &#x60;balance_based&#x60;: Once the tier expires, the user&#39;s tier is evaluated based on the amount of active points the user has at this instant. 
+   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
    * @return downgradePolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Customers's tier downgrade policy. - `one_down`: Once the tier expires and if the user doesn't have enough points to stay in the tier, the user is downgraded one tier down. - `balance_based`: Once the tier expires, the user's tier is evaluated based on the amount of active points the user has at this instant. ")
+  @ApiModelProperty(value = "The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - `one_down`: If the customer doesn't have enough points to stay in the current tier, they are downgraded by one tier.  - `balance_based`: The customer's tier is reevaluated based on the amount of active points they have at the moment. ")
 
   public DowngradePolicyEnum getDowngradePolicy() {
     return downgradePolicy;
@@ -195,13 +222,14 @@ public class Tier {
     Tier tier = (Tier) o;
     return Objects.equals(this.id, tier.id) &&
         Objects.equals(this.name, tier.name) &&
+        Objects.equals(this.startDate, tier.startDate) &&
         Objects.equals(this.expiryDate, tier.expiryDate) &&
         Objects.equals(this.downgradePolicy, tier.downgradePolicy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, expiryDate, downgradePolicy);
+    return Objects.hash(id, name, startDate, expiryDate, downgradePolicy);
   }
 
 
@@ -211,6 +239,7 @@ public class Tier {
     sb.append("class Tier {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    expiryDate: ").append(toIndentedString(expiryDate)).append("\n");
     sb.append("    downgradePolicy: ").append(toIndentedString(downgradePolicy)).append("\n");
     sb.append("}");

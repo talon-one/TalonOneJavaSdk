@@ -338,11 +338,11 @@ public class CouponCreationJob {
   }
 
    /**
-   * Expiration date of the coupon. Coupon never expires if this is omitted, zero, or negative.
+   * Expiration date of the coupon. Coupon never expires if this is omitted.
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted, zero, or negative.")
+  @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;

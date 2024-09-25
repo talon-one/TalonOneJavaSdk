@@ -30,10 +30,6 @@ import java.io.IOException;
 @ApiModel(description = "Provides statistics regarding an application's campaigns.")
 
 public class ApplicationCampaignStats {
-  public static final String SERIALIZED_NAME_DRAFT = "draft";
-  @SerializedName(SERIALIZED_NAME_DRAFT)
-  private Integer draft;
-
   public static final String SERIALIZED_NAME_DISABLED = "disabled";
   @SerializedName(SERIALIZED_NAME_DISABLED)
   private Integer disabled;
@@ -53,28 +49,6 @@ public class ApplicationCampaignStats {
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
   private Integer archived;
-
-
-  public ApplicationCampaignStats draft(Integer draft) {
-    
-    this.draft = draft;
-    return this;
-  }
-
-   /**
-   * Number of draft campaigns.
-   * @return draft
-  **/
-  @ApiModelProperty(required = true, value = "Number of draft campaigns.")
-
-  public Integer getDraft() {
-    return draft;
-  }
-
-
-  public void setDraft(Integer draft) {
-    this.draft = draft;
-  }
 
 
   public ApplicationCampaignStats disabled(Integer disabled) {
@@ -196,8 +170,7 @@ public class ApplicationCampaignStats {
       return false;
     }
     ApplicationCampaignStats applicationCampaignStats = (ApplicationCampaignStats) o;
-    return Objects.equals(this.draft, applicationCampaignStats.draft) &&
-        Objects.equals(this.disabled, applicationCampaignStats.disabled) &&
+    return Objects.equals(this.disabled, applicationCampaignStats.disabled) &&
         Objects.equals(this.scheduled, applicationCampaignStats.scheduled) &&
         Objects.equals(this.running, applicationCampaignStats.running) &&
         Objects.equals(this.expired, applicationCampaignStats.expired) &&
@@ -206,7 +179,7 @@ public class ApplicationCampaignStats {
 
   @Override
   public int hashCode() {
-    return Objects.hash(draft, disabled, scheduled, running, expired, archived);
+    return Objects.hash(disabled, scheduled, running, expired, archived);
   }
 
 
@@ -214,7 +187,6 @@ public class ApplicationCampaignStats {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationCampaignStats {\n");
-    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    scheduled: ").append(toIndentedString(scheduled)).append("\n");
     sb.append("    running: ").append(toIndentedString(running)).append("\n");

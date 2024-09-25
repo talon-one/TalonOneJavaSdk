@@ -90,11 +90,11 @@ public class NewReferral {
   }
 
    /**
-   * Expiration date of the referral code. Referral never expires if this is omitted, zero, or negative.
+   * Expiration date of the referral code. Referral never expires if this is omitted.
    * @return expiryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted, zero, or negative.")
+  @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;

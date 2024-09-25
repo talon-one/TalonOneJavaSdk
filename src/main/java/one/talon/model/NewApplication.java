@@ -240,6 +240,10 @@ public class NewApplication {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
+  public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
+  @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
+  private Boolean enableCampaignStateManagement;
+
 
   public NewApplication name(String name) {
     
@@ -591,6 +595,29 @@ public class NewApplication {
   }
 
 
+  public NewApplication enableCampaignStateManagement(Boolean enableCampaignStateManagement) {
+    
+    this.enableCampaignStateManagement = enableCampaignStateManagement;
+    return this;
+  }
+
+   /**
+   * Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. 
+   * @return enableCampaignStateManagement
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. ")
+
+  public Boolean getEnableCampaignStateManagement() {
+    return enableCampaignStateManagement;
+  }
+
+
+  public void setEnableCampaignStateManagement(Boolean enableCampaignStateManagement) {
+    this.enableCampaignStateManagement = enableCampaignStateManagement;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -614,12 +641,13 @@ public class NewApplication {
         Objects.equals(this.sandbox, newApplication.sandbox) &&
         Objects.equals(this.enablePartialDiscounts, newApplication.enablePartialDiscounts) &&
         Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, newApplication.defaultDiscountAdditionalCostPerItemScope) &&
-        Objects.equals(this.key, newApplication.key);
+        Objects.equals(this.key, newApplication.key) &&
+        Objects.equals(this.enableCampaignStateManagement, newApplication.enableCampaignStateManagement);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, key);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, key, enableCampaignStateManagement);
   }
 
 
@@ -642,6 +670,7 @@ public class NewApplication {
     sb.append("    enablePartialDiscounts: ").append(toIndentedString(enablePartialDiscounts)).append("\n");
     sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement)).append("\n");
     sb.append("}");
     return sb.toString();
   }

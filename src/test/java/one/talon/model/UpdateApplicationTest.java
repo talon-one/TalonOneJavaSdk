@@ -164,4 +164,20 @@ public class UpdateApplicationTest {
         // TODO: test defaultEvaluationGroupId
     }
 
+    /**
+     * Test the property 'defaultCartItemFilterId'
+     */
+    @Test
+    public void defaultCartItemFilterIdTest() {
+        // TODO: test defaultCartItemFilterId
+    }
+
+    /**
+     * Test the property 'enableCampaignStateManagement'
+     */
+    @Test
+    public void enableCampaignStateManagementTest() {
+        // TODO: test enableCampaignStateManagement
+    }
+
 }

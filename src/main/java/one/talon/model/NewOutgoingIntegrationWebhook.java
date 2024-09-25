@@ -35,6 +35,10 @@ public class NewOutgoingIntegrationWebhook {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
   private List<Integer> applicationIds = new ArrayList<Integer>();
@@ -59,6 +63,29 @@ public class NewOutgoingIntegrationWebhook {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+
+  public NewOutgoingIntegrationWebhook description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description of the webhook.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "A webhook to send a coupon to the user.", value = "A description of the webhook.")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -99,12 +126,13 @@ public class NewOutgoingIntegrationWebhook {
     }
     NewOutgoingIntegrationWebhook newOutgoingIntegrationWebhook = (NewOutgoingIntegrationWebhook) o;
     return Objects.equals(this.title, newOutgoingIntegrationWebhook.title) &&
+        Objects.equals(this.description, newOutgoingIntegrationWebhook.description) &&
         Objects.equals(this.applicationIds, newOutgoingIntegrationWebhook.applicationIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, applicationIds);
+    return Objects.hash(title, description, applicationIds);
   }
 
 
@@ -113,6 +141,7 @@ public class NewOutgoingIntegrationWebhook {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewOutgoingIntegrationWebhook {\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("}");
     return sb.toString();

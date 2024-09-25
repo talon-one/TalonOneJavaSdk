@@ -80,6 +80,14 @@ public class LoyaltyCardTest {
     }
 
     /**
+     * Test the property 'blockReason'
+     */
+    @Test
+    public void blockReasonTest() {
+        // TODO: test blockReason
+    }
+
+    /**
      * Test the property 'identifier'
      */
     @Test
@@ -141,6 +149,14 @@ public class LoyaltyCardTest {
     @Test
     public void newCardIdentifierTest() {
         // TODO: test newCardIdentifier
+    }
+
+    /**
+     * Test the property 'batchId'
+     */
+    @Test
+    public void batchIdTest() {
+        // TODO: test batchId
     }
 
 }

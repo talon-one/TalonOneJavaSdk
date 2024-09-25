@@ -43,6 +43,10 @@ public class AchievementProgress {
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private Integer campaignId;
@@ -184,6 +188,28 @@ public class AchievementProgress {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+
+  public AchievementProgress description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The description of the achievement in the Campaign Manager.
+   * @return description
+  **/
+  @ApiModelProperty(example = "50% off for every 50th purchase in a year.", required = true, value = "The description of the achievement in the Campaign Manager.")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -355,6 +381,7 @@ public class AchievementProgress {
     return Objects.equals(this.achievementId, achievementProgress.achievementId) &&
         Objects.equals(this.name, achievementProgress.name) &&
         Objects.equals(this.title, achievementProgress.title) &&
+        Objects.equals(this.description, achievementProgress.description) &&
         Objects.equals(this.campaignId, achievementProgress.campaignId) &&
         Objects.equals(this.status, achievementProgress.status) &&
         Objects.equals(this.target, achievementProgress.target) &&
@@ -366,7 +393,7 @@ public class AchievementProgress {
 
   @Override
   public int hashCode() {
-    return Objects.hash(achievementId, name, title, campaignId, status, target, progress, startDate, completionDate, endDate);
+    return Objects.hash(achievementId, name, title, description, campaignId, status, target, progress, startDate, completionDate, endDate);
   }
 
 
@@ -377,6 +404,7 @@ public class AchievementProgress {
     sb.append("    achievementId: ").append(toIndentedString(achievementId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
