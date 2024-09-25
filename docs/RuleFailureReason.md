@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **conditionIndex** | **Integer** | The index of the condition that failed. |  [optional]
 **effectIndex** | **Integer** | The index of the effect that failed. |  [optional]
 **details** | **String** | More details about the failure. |  [optional]
+**evaluationGroupID** | **Integer** | The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). |  [optional]
+**evaluationGroupMode** | **String** | The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign- |  [optional]
 
 
 

@@ -53,6 +53,10 @@ public class LoyaltyCard {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public static final String SERIALIZED_NAME_BLOCK_REASON = "blockReason";
+  @SerializedName(SERIALIZED_NAME_BLOCK_REASON)
+  private String blockReason;
+
   public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
   private String identifier;
@@ -84,6 +88,10 @@ public class LoyaltyCard {
   public static final String SERIALIZED_NAME_NEW_CARD_IDENTIFIER = "newCardIdentifier";
   @SerializedName(SERIALIZED_NAME_NEW_CARD_IDENTIFIER)
   private String newCardIdentifier;
+
+  public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
+  @SerializedName(SERIALIZED_NAME_BATCH_ID)
+  private String batchId;
 
 
   public LoyaltyCard id(Integer id) {
@@ -159,10 +167,10 @@ public class LoyaltyCard {
   }
 
    /**
-   * Status of the loyalty card. Can be one of: [&#39;active&#39;, &#39;inactive&#39;] 
+   * Status of the loyalty card. Can be &#x60;active&#x60; or &#x60;inactive&#x60;. 
    * @return status
   **/
-  @ApiModelProperty(example = "active", required = true, value = "Status of the loyalty card. Can be one of: ['active', 'inactive'] ")
+  @ApiModelProperty(example = "active", required = true, value = "Status of the loyalty card. Can be `active` or `inactive`. ")
 
   public String getStatus() {
     return status;
@@ -171,6 +179,29 @@ public class LoyaltyCard {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public LoyaltyCard blockReason(String blockReason) {
+    
+    this.blockReason = blockReason;
+    return this;
+  }
+
+   /**
+   * Reason for transferring and blocking the loyalty card. 
+   * @return blockReason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Current card lost. Customer needs a new card.", value = "Reason for transferring and blocking the loyalty card. ")
+
+  public String getBlockReason() {
+    return blockReason;
+  }
+
+
+  public void setBlockReason(String blockReason) {
+    this.blockReason = blockReason;
   }
 
 
@@ -373,6 +404,29 @@ public class LoyaltyCard {
   }
 
 
+  public LoyaltyCard batchId(String batchId) {
+    
+    this.batchId = batchId;
+    return this;
+  }
+
+   /**
+   * The ID of the batch in which the loyalty card was created.
+   * @return batchId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "wdefpov", value = "The ID of the batch in which the loyalty card was created.")
+
+  public String getBatchId() {
+    return batchId;
+  }
+
+
+  public void setBatchId(String batchId) {
+    this.batchId = batchId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -386,6 +440,7 @@ public class LoyaltyCard {
         Objects.equals(this.created, loyaltyCard.created) &&
         Objects.equals(this.programID, loyaltyCard.programID) &&
         Objects.equals(this.status, loyaltyCard.status) &&
+        Objects.equals(this.blockReason, loyaltyCard.blockReason) &&
         Objects.equals(this.identifier, loyaltyCard.identifier) &&
         Objects.equals(this.usersPerCardLimit, loyaltyCard.usersPerCardLimit) &&
         Objects.equals(this.profiles, loyaltyCard.profiles) &&
@@ -393,12 +448,13 @@ public class LoyaltyCard {
         Objects.equals(this.subledgers, loyaltyCard.subledgers) &&
         Objects.equals(this.modified, loyaltyCard.modified) &&
         Objects.equals(this.oldCardIdentifier, loyaltyCard.oldCardIdentifier) &&
-        Objects.equals(this.newCardIdentifier, loyaltyCard.newCardIdentifier);
+        Objects.equals(this.newCardIdentifier, loyaltyCard.newCardIdentifier) &&
+        Objects.equals(this.batchId, loyaltyCard.batchId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programID, status, identifier, usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier);
+    return Objects.hash(id, created, programID, status, blockReason, identifier, usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier, batchId);
   }
 
 
@@ -410,6 +466,7 @@ public class LoyaltyCard {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programID: ").append(toIndentedString(programID)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    blockReason: ").append(toIndentedString(blockReason)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    usersPerCardLimit: ").append(toIndentedString(usersPerCardLimit)).append("\n");
     sb.append("    profiles: ").append(toIndentedString(profiles)).append("\n");
@@ -418,6 +475,7 @@ public class LoyaltyCard {
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("    oldCardIdentifier: ").append(toIndentedString(oldCardIdentifier)).append("\n");
     sb.append("    newCardIdentifier: ").append(toIndentedString(newCardIdentifier)).append("\n");
+    sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

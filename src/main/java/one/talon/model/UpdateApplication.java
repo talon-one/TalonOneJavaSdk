@@ -240,6 +240,14 @@ public class UpdateApplication {
   @SerializedName(SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID)
   private Integer defaultEvaluationGroupId;
 
+  public static final String SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID = "defaultCartItemFilterId";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID)
+  private Integer defaultCartItemFilterId;
+
+  public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
+  @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
+  private Boolean enableCampaignStateManagement;
+
 
   public UpdateApplication name(String name) {
     
@@ -591,6 +599,52 @@ public class UpdateApplication {
   }
 
 
+  public UpdateApplication defaultCartItemFilterId(Integer defaultCartItemFilterId) {
+    
+    this.defaultCartItemFilterId = defaultCartItemFilterId;
+    return this;
+  }
+
+   /**
+   * The ID of the default Cart-Item-Filter for this application.
+   * @return defaultCartItemFilterId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the default Cart-Item-Filter for this application.")
+
+  public Integer getDefaultCartItemFilterId() {
+    return defaultCartItemFilterId;
+  }
+
+
+  public void setDefaultCartItemFilterId(Integer defaultCartItemFilterId) {
+    this.defaultCartItemFilterId = defaultCartItemFilterId;
+  }
+
+
+  public UpdateApplication enableCampaignStateManagement(Boolean enableCampaignStateManagement) {
+    
+    this.enableCampaignStateManagement = enableCampaignStateManagement;
+    return this;
+  }
+
+   /**
+   * Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. 
+   * @return enableCampaignStateManagement
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. ")
+
+  public Boolean getEnableCampaignStateManagement() {
+    return enableCampaignStateManagement;
+  }
+
+
+  public void setEnableCampaignStateManagement(Boolean enableCampaignStateManagement) {
+    this.enableCampaignStateManagement = enableCampaignStateManagement;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -614,12 +668,14 @@ public class UpdateApplication {
         Objects.equals(this.sandbox, updateApplication.sandbox) &&
         Objects.equals(this.enablePartialDiscounts, updateApplication.enablePartialDiscounts) &&
         Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, updateApplication.defaultDiscountAdditionalCostPerItemScope) &&
-        Objects.equals(this.defaultEvaluationGroupId, updateApplication.defaultEvaluationGroupId);
+        Objects.equals(this.defaultEvaluationGroupId, updateApplication.defaultEvaluationGroupId) &&
+        Objects.equals(this.defaultCartItemFilterId, updateApplication.defaultCartItemFilterId) &&
+        Objects.equals(this.enableCampaignStateManagement, updateApplication.enableCampaignStateManagement);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId, defaultCartItemFilterId, enableCampaignStateManagement);
   }
 
 
@@ -642,6 +698,8 @@ public class UpdateApplication {
     sb.append("    enablePartialDiscounts: ").append(toIndentedString(enablePartialDiscounts)).append("\n");
     sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
     sb.append("    defaultEvaluationGroupId: ").append(toIndentedString(defaultEvaluationGroupId)).append("\n");
+    sb.append("    defaultCartItemFilterId: ").append(toIndentedString(defaultCartItemFilterId)).append("\n");
+    sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **achievementId** | **Integer** | The internal ID of the achievement. | 
 **name** | **String** | The internal name of the achievement used in API requests.  | 
 **title** | **String** | The display name of the achievement in the Campaign Manager. | 
+**description** | **String** | The description of the achievement in the Campaign Manager. | 
 **campaignId** | **Integer** | The ID of the campaign the achievement belongs to. | 
 **status** | [**StatusEnum**](#StatusEnum) | The status of the achievement. | 
 **target** | [**BigDecimal**](BigDecimal.md) | The required number of actions or the transactional milestone to complete the achievement. |  [optional]

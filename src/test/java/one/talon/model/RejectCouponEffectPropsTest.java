@@ -80,4 +80,12 @@ public class RejectCouponEffectPropsTest {
         // TODO: test details
     }
 
+    /**
+     * Test the property 'campaignExclusionReason'
+     */
+    @Test
+    public void campaignExclusionReasonTest() {
+        // TODO: test campaignExclusionReason
+    }
+
 }

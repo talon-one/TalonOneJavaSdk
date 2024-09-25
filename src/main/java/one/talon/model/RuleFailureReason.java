@@ -78,6 +78,14 @@ public class RuleFailureReason {
   @SerializedName(SERIALIZED_NAME_DETAILS)
   private String details;
 
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
+  private Integer evaluationGroupID;
+
+  public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
+  @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
+  private String evaluationGroupMode;
+
 
   public RuleFailureReason campaignID(Integer campaignID) {
     
@@ -350,6 +358,52 @@ public class RuleFailureReason {
   }
 
 
+  public RuleFailureReason evaluationGroupID(Integer evaluationGroupID) {
+    
+    this.evaluationGroupID = evaluationGroupID;
+    return this;
+  }
+
+   /**
+   * The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * @return evaluationGroupID
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
+
+  public Integer getEvaluationGroupID() {
+    return evaluationGroupID;
+  }
+
+
+  public void setEvaluationGroupID(Integer evaluationGroupID) {
+    this.evaluationGroupID = evaluationGroupID;
+  }
+
+
+  public RuleFailureReason evaluationGroupMode(String evaluationGroupMode) {
+    
+    this.evaluationGroupMode = evaluationGroupMode;
+    return this;
+  }
+
+   /**
+   * The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-
+   * @return evaluationGroupMode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "stackable", value = "The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-")
+
+  public String getEvaluationGroupMode() {
+    return evaluationGroupMode;
+  }
+
+
+  public void setEvaluationGroupMode(String evaluationGroupMode) {
+    this.evaluationGroupMode = evaluationGroupMode;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -370,12 +424,14 @@ public class RuleFailureReason {
         Objects.equals(this.ruleName, ruleFailureReason.ruleName) &&
         Objects.equals(this.conditionIndex, ruleFailureReason.conditionIndex) &&
         Objects.equals(this.effectIndex, ruleFailureReason.effectIndex) &&
-        Objects.equals(this.details, ruleFailureReason.details);
+        Objects.equals(this.details, ruleFailureReason.details) &&
+        Objects.equals(this.evaluationGroupID, ruleFailureReason.evaluationGroupID) &&
+        Objects.equals(this.evaluationGroupMode, ruleFailureReason.evaluationGroupMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignID, campaignName, rulesetID, couponID, couponValue, referralID, referralValue, ruleIndex, ruleName, conditionIndex, effectIndex, details);
+    return Objects.hash(campaignID, campaignName, rulesetID, couponID, couponValue, referralID, referralValue, ruleIndex, ruleName, conditionIndex, effectIndex, details, evaluationGroupID, evaluationGroupMode);
   }
 
 
@@ -395,6 +451,8 @@ public class RuleFailureReason {
     sb.append("    conditionIndex: ").append(toIndentedString(conditionIndex)).append("\n");
     sb.append("    effectIndex: ").append(toIndentedString(effectIndex)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    evaluationGroupID: ").append(toIndentedString(evaluationGroupID)).append("\n");
+    sb.append("    evaluationGroupMode: ").append(toIndentedString(evaluationGroupMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

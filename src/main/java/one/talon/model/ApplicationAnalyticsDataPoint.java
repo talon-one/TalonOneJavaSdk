@@ -24,10 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import one.talon.model.ApplicationAnalyticsDataPointAvgItemsPerSession;
-import one.talon.model.ApplicationAnalyticsDataPointAvgSessionValue;
-import one.talon.model.ApplicationAnalyticsDataPointSessionsCount;
-import one.talon.model.ApplicationAnalyticsDataPointTotalRevenue;
+import one.talon.model.AnalyticsDataPoint;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -45,19 +42,19 @@ public class ApplicationAnalyticsDataPoint {
 
   public static final String SERIALIZED_NAME_TOTAL_REVENUE = "totalRevenue";
   @SerializedName(SERIALIZED_NAME_TOTAL_REVENUE)
-  private ApplicationAnalyticsDataPointTotalRevenue totalRevenue;
+  private AnalyticsDataPoint totalRevenue;
 
   public static final String SERIALIZED_NAME_SESSIONS_COUNT = "sessionsCount";
   @SerializedName(SERIALIZED_NAME_SESSIONS_COUNT)
-  private ApplicationAnalyticsDataPointSessionsCount sessionsCount;
+  private AnalyticsDataPoint sessionsCount;
 
   public static final String SERIALIZED_NAME_AVG_ITEMS_PER_SESSION = "avgItemsPerSession";
   @SerializedName(SERIALIZED_NAME_AVG_ITEMS_PER_SESSION)
-  private ApplicationAnalyticsDataPointAvgItemsPerSession avgItemsPerSession;
+  private AnalyticsDataPoint avgItemsPerSession;
 
   public static final String SERIALIZED_NAME_AVG_SESSION_VALUE = "avgSessionValue";
   @SerializedName(SERIALIZED_NAME_AVG_SESSION_VALUE)
-  private ApplicationAnalyticsDataPointAvgSessionValue avgSessionValue;
+  private AnalyticsDataPoint avgSessionValue;
 
   public static final String SERIALIZED_NAME_TOTAL_DISCOUNTS = "totalDiscounts";
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNTS)
@@ -78,8 +75,7 @@ public class ApplicationAnalyticsDataPoint {
    * The start of the aggregation time frame in UTC.
    * @return startTime
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2024-02-01T00:00Z", value = "The start of the aggregation time frame in UTC.")
+  @ApiModelProperty(example = "2024-02-01T00:00Z", required = true, value = "The start of the aggregation time frame in UTC.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
@@ -101,8 +97,7 @@ public class ApplicationAnalyticsDataPoint {
    * The end of the aggregation time frame in UTC.
    * @return endTime
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The end of the aggregation time frame in UTC.")
+  @ApiModelProperty(required = true, value = "The end of the aggregation time frame in UTC.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
@@ -114,7 +109,7 @@ public class ApplicationAnalyticsDataPoint {
   }
 
 
-  public ApplicationAnalyticsDataPoint totalRevenue(ApplicationAnalyticsDataPointTotalRevenue totalRevenue) {
+  public ApplicationAnalyticsDataPoint totalRevenue(AnalyticsDataPoint totalRevenue) {
     
     this.totalRevenue = totalRevenue;
     return this;
@@ -127,17 +122,17 @@ public class ApplicationAnalyticsDataPoint {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationAnalyticsDataPointTotalRevenue getTotalRevenue() {
+  public AnalyticsDataPoint getTotalRevenue() {
     return totalRevenue;
   }
 
 
-  public void setTotalRevenue(ApplicationAnalyticsDataPointTotalRevenue totalRevenue) {
+  public void setTotalRevenue(AnalyticsDataPoint totalRevenue) {
     this.totalRevenue = totalRevenue;
   }
 
 
-  public ApplicationAnalyticsDataPoint sessionsCount(ApplicationAnalyticsDataPointSessionsCount sessionsCount) {
+  public ApplicationAnalyticsDataPoint sessionsCount(AnalyticsDataPoint sessionsCount) {
     
     this.sessionsCount = sessionsCount;
     return this;
@@ -150,17 +145,17 @@ public class ApplicationAnalyticsDataPoint {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationAnalyticsDataPointSessionsCount getSessionsCount() {
+  public AnalyticsDataPoint getSessionsCount() {
     return sessionsCount;
   }
 
 
-  public void setSessionsCount(ApplicationAnalyticsDataPointSessionsCount sessionsCount) {
+  public void setSessionsCount(AnalyticsDataPoint sessionsCount) {
     this.sessionsCount = sessionsCount;
   }
 
 
-  public ApplicationAnalyticsDataPoint avgItemsPerSession(ApplicationAnalyticsDataPointAvgItemsPerSession avgItemsPerSession) {
+  public ApplicationAnalyticsDataPoint avgItemsPerSession(AnalyticsDataPoint avgItemsPerSession) {
     
     this.avgItemsPerSession = avgItemsPerSession;
     return this;
@@ -173,17 +168,17 @@ public class ApplicationAnalyticsDataPoint {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationAnalyticsDataPointAvgItemsPerSession getAvgItemsPerSession() {
+  public AnalyticsDataPoint getAvgItemsPerSession() {
     return avgItemsPerSession;
   }
 
 
-  public void setAvgItemsPerSession(ApplicationAnalyticsDataPointAvgItemsPerSession avgItemsPerSession) {
+  public void setAvgItemsPerSession(AnalyticsDataPoint avgItemsPerSession) {
     this.avgItemsPerSession = avgItemsPerSession;
   }
 
 
-  public ApplicationAnalyticsDataPoint avgSessionValue(ApplicationAnalyticsDataPointAvgSessionValue avgSessionValue) {
+  public ApplicationAnalyticsDataPoint avgSessionValue(AnalyticsDataPoint avgSessionValue) {
     
     this.avgSessionValue = avgSessionValue;
     return this;
@@ -196,12 +191,12 @@ public class ApplicationAnalyticsDataPoint {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ApplicationAnalyticsDataPointAvgSessionValue getAvgSessionValue() {
+  public AnalyticsDataPoint getAvgSessionValue() {
     return avgSessionValue;
   }
 
 
-  public void setAvgSessionValue(ApplicationAnalyticsDataPointAvgSessionValue avgSessionValue) {
+  public void setAvgSessionValue(AnalyticsDataPoint avgSessionValue) {
     this.avgSessionValue = avgSessionValue;
   }
 

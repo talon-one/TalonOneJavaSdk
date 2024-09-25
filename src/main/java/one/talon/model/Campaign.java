@@ -359,8 +359,6 @@ public class Campaign {
     
     RUNNING("running"),
     
-    DRAFT("draft"),
-    
     DISABLED("disabled"),
     
     ARCHIVED("archived");
@@ -406,6 +404,34 @@ public class Campaign {
   public static final String SERIALIZED_NAME_FRONTEND_STATE = "frontendState";
   @SerializedName(SERIALIZED_NAME_FRONTEND_STATE)
   private FrontendStateEnum frontendState;
+
+  public static final String SERIALIZED_NAME_STORES_IMPORTED = "storesImported";
+  @SerializedName(SERIALIZED_NAME_STORES_IMPORTED)
+  private Boolean storesImported;
+
+  public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
+  private Integer activeRevisionId;
+
+  public static final String SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID = "activeRevisionVersionId";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID)
+  private Integer activeRevisionVersionId;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Integer version;
+
+  public static final String SERIALIZED_NAME_CURRENT_REVISION_ID = "currentRevisionId";
+  @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_ID)
+  private Integer currentRevisionId;
+
+  public static final String SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID = "currentRevisionVersionId";
+  @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID)
+  private Integer currentRevisionVersionId;
+
+  public static final String SERIALIZED_NAME_STAGE_REVISION = "stageRevision";
+  @SerializedName(SERIALIZED_NAME_STAGE_REVISION)
+  private Boolean stageRevision = false;
 
 
   public Campaign id(Integer id) {
@@ -1374,6 +1400,166 @@ public class Campaign {
   }
 
 
+  public Campaign storesImported(Boolean storesImported) {
+    
+    this.storesImported = storesImported;
+    return this;
+  }
+
+   /**
+   * Indicates whether the linked stores were imported via a CSV file.
+   * @return storesImported
+  **/
+  @ApiModelProperty(example = "true", required = true, value = "Indicates whether the linked stores were imported via a CSV file.")
+
+  public Boolean getStoresImported() {
+    return storesImported;
+  }
+
+
+  public void setStoresImported(Boolean storesImported) {
+    this.storesImported = storesImported;
+  }
+
+
+  public Campaign activeRevisionId(Integer activeRevisionId) {
+    
+    this.activeRevisionId = activeRevisionId;
+    return this;
+  }
+
+   /**
+   * ID of the revision that was last activated on this campaign. 
+   * @return activeRevisionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "6", value = "ID of the revision that was last activated on this campaign. ")
+
+  public Integer getActiveRevisionId() {
+    return activeRevisionId;
+  }
+
+
+  public void setActiveRevisionId(Integer activeRevisionId) {
+    this.activeRevisionId = activeRevisionId;
+  }
+
+
+  public Campaign activeRevisionVersionId(Integer activeRevisionVersionId) {
+    
+    this.activeRevisionVersionId = activeRevisionVersionId;
+    return this;
+  }
+
+   /**
+   * ID of the revision version that is active on the campaign. 
+   * @return activeRevisionVersionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "6", value = "ID of the revision version that is active on the campaign. ")
+
+  public Integer getActiveRevisionVersionId() {
+    return activeRevisionVersionId;
+  }
+
+
+  public void setActiveRevisionVersionId(Integer activeRevisionVersionId) {
+    this.activeRevisionVersionId = activeRevisionVersionId;
+  }
+
+
+  public Campaign version(Integer version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. 
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
+
+  public Integer getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Integer version) {
+    this.version = version;
+  }
+
+
+  public Campaign currentRevisionId(Integer currentRevisionId) {
+    
+    this.currentRevisionId = currentRevisionId;
+    return this;
+  }
+
+   /**
+   * ID of the revision currently being modified for the campaign. 
+   * @return currentRevisionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "6", value = "ID of the revision currently being modified for the campaign. ")
+
+  public Integer getCurrentRevisionId() {
+    return currentRevisionId;
+  }
+
+
+  public void setCurrentRevisionId(Integer currentRevisionId) {
+    this.currentRevisionId = currentRevisionId;
+  }
+
+
+  public Campaign currentRevisionVersionId(Integer currentRevisionVersionId) {
+    
+    this.currentRevisionVersionId = currentRevisionVersionId;
+    return this;
+  }
+
+   /**
+   * ID of the latest version applied on the current revision. 
+   * @return currentRevisionVersionId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "6", value = "ID of the latest version applied on the current revision. ")
+
+  public Integer getCurrentRevisionVersionId() {
+    return currentRevisionVersionId;
+  }
+
+
+  public void setCurrentRevisionVersionId(Integer currentRevisionVersionId) {
+    this.currentRevisionVersionId = currentRevisionVersionId;
+  }
+
+
+  public Campaign stageRevision(Boolean stageRevision) {
+    
+    this.stageRevision = stageRevision;
+    return this;
+  }
+
+   /**
+   * Flag for determining whether we use current revision when sending requests with staging API key. 
+   * @return stageRevision
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "Flag for determining whether we use current revision when sending requests with staging API key. ")
+
+  public Boolean getStageRevision() {
+    return stageRevision;
+  }
+
+
+  public void setStageRevision(Boolean stageRevision) {
+    this.stageRevision = stageRevision;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -1423,12 +1609,19 @@ public class Campaign {
         Objects.equals(this.createdBy, campaign.createdBy) &&
         Objects.equals(this.updatedBy, campaign.updatedBy) &&
         Objects.equals(this.templateId, campaign.templateId) &&
-        Objects.equals(this.frontendState, campaign.frontendState);
+        Objects.equals(this.frontendState, campaign.frontendState) &&
+        Objects.equals(this.storesImported, campaign.storesImported) &&
+        Objects.equals(this.activeRevisionId, campaign.activeRevisionId) &&
+        Objects.equals(this.activeRevisionVersionId, campaign.activeRevisionVersionId) &&
+        Objects.equals(this.version, campaign.version) &&
+        Objects.equals(this.currentRevisionId, campaign.currentRevisionId) &&
+        Objects.equals(this.currentRevisionVersionId, campaign.currentRevisionVersionId) &&
+        Objects.equals(this.stageRevision, campaign.stageRevision);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
   }
 
 
@@ -1477,6 +1670,13 @@ public class Campaign {
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
+    sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
+    sb.append("    activeRevisionId: ").append(toIndentedString(activeRevisionId)).append("\n");
+    sb.append("    activeRevisionVersionId: ").append(toIndentedString(activeRevisionVersionId)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    currentRevisionId: ").append(toIndentedString(currentRevisionId)).append("\n");
+    sb.append("    currentRevisionVersionId: ").append(toIndentedString(currentRevisionVersionId)).append("\n");
+    sb.append("    stageRevision: ").append(toIndentedString(stageRevision)).append("\n");
     sb.append("}");
     return sb.toString();
   }

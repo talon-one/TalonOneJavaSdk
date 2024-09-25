@@ -48,4 +48,12 @@ public class TransferLoyaltyCardTest {
         // TODO: test newCardIdentifier
     }
 
+    /**
+     * Test the property 'blockReason'
+     */
+    @Test
+    public void blockReasonTest() {
+        // TODO: test blockReason
+    }
+
 }

@@ -25,6 +25,7 @@ import one.talon.model.ApplicationApiHealth;
 import one.talon.model.ApplicationCustomer;
 import one.talon.model.ApplicationSession;
 import one.talon.model.AsyncCouponCreationResponse;
+import one.talon.model.AsyncCouponDeletionJobResponse;
 import one.talon.model.Attribute;
 import one.talon.model.BaseNotification;
 import java.math.BigDecimal;
@@ -91,6 +92,8 @@ import one.talon.model.InlineResponse2008;
 import one.talon.model.InlineResponse2009;
 import one.talon.model.LoginParams;
 import one.talon.model.LoyaltyCard;
+import one.talon.model.LoyaltyCardBatch;
+import one.talon.model.LoyaltyCardBatchResponse;
 import one.talon.model.LoyaltyDashboardData;
 import one.talon.model.LoyaltyLedger;
 import one.talon.model.LoyaltyProgram;
@@ -101,6 +104,7 @@ import one.talon.model.NewBaseNotification;
 import one.talon.model.NewCampaignCollection;
 import one.talon.model.NewCollection;
 import one.talon.model.NewCouponCreationJob;
+import one.talon.model.NewCouponDeletionJob;
 import one.talon.model.NewCoupons;
 import one.talon.model.NewCouponsForMultipleRecipients;
 import one.talon.model.NewExternalInvitation;
@@ -115,6 +119,13 @@ import one.talon.model.Referral;
 import one.talon.model.RoleV2;
 import one.talon.model.RoleV2Base;
 import one.talon.model.Ruleset;
+import one.talon.model.ScimNewUser;
+import one.talon.model.ScimPatchRequest;
+import one.talon.model.ScimResourceTypesListResponse;
+import one.talon.model.ScimSchemasListResponse;
+import one.talon.model.ScimServiceProviderConfigResponse;
+import one.talon.model.ScimUser;
+import one.talon.model.ScimUsersListResponse;
 import one.talon.model.Session;
 import one.talon.model.Store;
 import one.talon.model.TransferLoyaltyCard;
@@ -147,9 +158,9 @@ public class ManagementApiTest {
 
     
     /**
-     * Activate user by email address
+     * Enable user by email address
      *
-     * Activate a deactivated user by their email address. 
+     * Enable a [disabled user](https://docs.talon.one/docs/product/account/account-settings/managing-users#disabling-a-user) by their email address. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -283,6 +294,23 @@ public class ManagementApiTest {
     }
     
     /**
+     * Create loyalty cards
+     *
+     * Create a batch of loyalty cards in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types).  Customers can use loyalty cards to collect and spend loyalty points.  **Important:**  - The specified card-based loyalty program must have a defined card code format that is used to generate the loyalty card codes. - Trying to create more than 20,000 loyalty cards in a single request returns an error message with a &#x60;400&#x60; status code. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createBatchLoyaltyCardsTest() throws ApiException {
+        Integer loyaltyProgramId = null;
+        LoyaltyCardBatch body = null;
+        LoyaltyCardBatchResponse response = api.createBatchLoyaltyCards(loyaltyProgramId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create campaign from campaign template
      *
      * Use the campaign template referenced in the request body to create a new campaign in one of the connected Applications.  If the template was created from a campaign with rules referencing [campaign collections](https://docs.talon.one/docs/product/campaigns/managing-collections), the corresponding collections for the new campaign are created automatically. 
@@ -350,6 +378,24 @@ public class ManagementApiTest {
         Integer campaignId = null;
         NewCouponCreationJob body = null;
         AsyncCouponCreationResponse response = api.createCouponsAsync(applicationId, campaignId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Creates a coupon deletion job
+     *
+     * This endpoint handles creating a job to delete coupons asynchronously. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createCouponsDeletionJobTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        NewCouponDeletionJob body = null;
+        AsyncCouponDeletionJobResponse response = api.createCouponsDeletionJob(applicationId, campaignId, body);
 
         // TODO: test validations
     }
@@ -455,9 +501,9 @@ public class ManagementApiTest {
     }
     
     /**
-     * Deactivate user by email address
+     * Disable user by email address
      *
-     * Deactivate a specific user by their email address. 
+     * [Disable a specific user](https://docs.talon.one/docs/product/account/account-settings/managing-users#disabling-a-user) by their email address. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -676,7 +722,7 @@ public class ManagementApiTest {
     /**
      * Delete user by email address
      *
-     * Delete a specific user by their email address. 
+     * [Delete a specific user](https://docs.talon.one/docs/product/account/account-settings/managing-users#deleting-a-user) by their email address. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -700,6 +746,23 @@ public class ManagementApiTest {
     @Test
     public void destroySessionTest() throws ApiException {
         api.destroySession();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Disconnect stores
+     *
+     * Disconnect the stores linked to a specific campaign.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void disconnectCampaignStoresTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        api.disconnectCampaignStores(applicationId, campaignId);
 
         // TODO: test validations
     }
@@ -750,6 +813,23 @@ public class ManagementApiTest {
     public void exportAudiencesMembershipsTest() throws ApiException {
         Integer audienceId = null;
         String response = api.exportAudiencesMemberships(audienceId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Export stores
+     *
+     * Download a CSV file containing the stores linked to a specific campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following column:  - &#x60;store_integration_id&#x60;: The identifier of the store. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportCampaignStoresTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String response = api.exportCampaignStores(applicationId, campaignId);
 
         // TODO: test validations
     }
@@ -826,7 +906,7 @@ public class ManagementApiTest {
     /**
      * Export customers&#39; tier data
      *
-     * Download a CSV file containing the tier information for customers of the specified loyalty program.  The generated file contains the following columns:  - &#x60;programid&#x60;: The identifier of the loyalty program. It is displayed in your Talon.One deployment URL. - &#x60;subledgerid&#x60;: The ID of the subledger associated with the loyalty program. This column is empty if the loyalty program has no subledger. In this case, refer to the export file name to get the ID of the loyalty program. - &#x60;customerprofileid&#x60;: The ID used to integrate customer profiles with the loyalty program. - &#x60;tiername&#x60;: The name of the tier. - &#x60;startdate&#x60;: The tier start date in RFC3339. - &#x60;expirydate&#x60;: The tier expiry date in RFC3339.  You can filter the results by providing the following optional input parameters:  - &#x60;subledgerId&#x60; (optional): Filter results by subledger ID. If no value is provided, all subledger data for the specified loyalty program will be exported. - &#x60;tierName&#x60; (optional): Filter results by tier name. If no value is provided, all tier data for the specified loyalty program will be exported. 
+     * Download a CSV file containing the tier information for customers of the specified loyalty program.  The generated file contains the following columns:  - &#x60;programid&#x60;: The identifier of the loyalty program. It is displayed in your Talon.One deployment URL. - &#x60;subledgerid&#x60;: The ID of the subledger associated with the loyalty program. This column is empty if the loyalty program has no subledger. In this case, refer to the export file name to get the ID of the loyalty program. - &#x60;customerprofileid&#x60;: The ID used to integrate customer profiles with the loyalty program. - &#x60;tiername&#x60;: The name of the tier. - &#x60;startdate&#x60;: The tier start date in RFC3339. - &#x60;expirydate&#x60;: The tier expiry date in RFC3339.  You can filter the results by providing the following optional input parameters:  - &#x60;subledgerIds&#x60; (optional): Filter results by an array of subledger IDs. If no value is provided, all subledger data for the specified loyalty program will be exported. - &#x60;tierNames&#x60; (optional): Filter results by an array of tier names. If no value is provided, all tier data for the specified loyalty program will be exported. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -933,9 +1013,26 @@ public class ManagementApiTest {
     }
     
     /**
+     * Export loyalty cards
+     *
+     * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void exportLoyaltyCardsTest() throws ApiException {
+        Integer loyaltyProgramId = null;
+        String batchId = null;
+        String response = api.exportLoyaltyCards(loyaltyProgramId, batchId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Export customer&#39;s transaction logs
      *
-     * Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The type of the loyalty program. - &#x60;name&#x60;: The name of the loyalty program. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. 
+     * Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1675,11 +1772,17 @@ public class ManagementApiTest {
         OffsetDateTime createdAfter = null;
         String valid = null;
         String usable = null;
+        String redeemed = null;
         Integer referralId = null;
         String recipientIntegrationId = null;
         String batchId = null;
         Boolean exactMatch = null;
-        InlineResponse2009 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch);
+        OffsetDateTime expiresBefore = null;
+        OffsetDateTime expiresAfter = null;
+        OffsetDateTime startsBefore = null;
+        OffsetDateTime startsAfter = null;
+        Boolean valuesOnly = null;
+        InlineResponse2009 response = api.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly);
 
         // TODO: test validations
     }
@@ -1919,7 +2022,8 @@ public class ManagementApiTest {
         String sort = null;
         String identifier = null;
         Integer profileId = null;
-        InlineResponse20015 response = api.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId);
+        String batchId = null;
+        InlineResponse20015 response = api.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
 
         // TODO: test validations
     }
@@ -2281,6 +2385,24 @@ public class ManagementApiTest {
     }
     
     /**
+     * Import stores
+     *
+     * Upload a CSV file containing the stores you want to link to a specific campaign.  Send the file as multipart data.  The CSV file **must** only contain the following column: - &#x60;store_integration_id&#x60;: The identifier of the store.  The import **replaces** the previous list of stores linked to the campaign. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void importCampaignStoresTest() throws ApiException {
+        Integer applicationId = null;
+        Integer campaignId = null;
+        String upFile = null;
+        ModelImport response = api.importCampaignStores(applicationId, campaignId, upFile);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Import data into existing campaign-level collection
      *
      * Upload a CSV file containing the collection of string values that should be attached as payload for collection. The file should be sent as multipart data.  The import **replaces** the initial content of the collection.  The CSV file **must** only contain the following column:  - &#x60;item&#x60;: the values in your collection.  A collection is limited to 500,000 items.  Example:  &#x60;&#x60;&#x60; item Addidas Nike Asics &#x60;&#x60;&#x60;  **Note:** Before sending a request to this endpoint, ensure the data in the CSV to import is different from the data currently stored in the collection. 
@@ -2338,7 +2460,7 @@ public class ManagementApiTest {
     /**
      * Import customers into loyalty tiers
      *
-     * Upload a CSV file containing existing customers to be assigned to existing tiers. Send the file as multipart data.  **Important:** This endpoint only works with loyalty programs with advanced tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns: - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiration date of the tier. It should be a future date.  About customer assignment to a tier: - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiration date is updated.  **Note:** We recommend not using this endpoint to update the tier of a customer. To update a customer&#39;s tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:** &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
+     * Upload a CSV file containing existing customers to be assigned to existing tiers. Send the file as multipart data.  **Important:** This endpoint only works with loyalty programs with advanced tiers (with expiration and downgrade policy) feature enabled.  The CSV file should contain the following columns: - &#x60;subledgerid&#x60; (optional): The ID of the subledger. If this field is empty, the main ledger will be used. - &#x60;customerprofileid&#x60;: The integration ID of the customer profile to whom the tier should be assigned. - &#x60;tiername&#x60;: The name of an existing tier to assign to the customer. - &#x60;expirydate&#x60;: The expiration date of the tier when the tier is reevaluated. It should be a future date.  About customer assignment to a tier: - If the customer isn&#39;t already in a tier, the customer is assigned to the specified tier during the tier import. - If the customer is already in the tier that&#39;s specified in the CSV file, only the expiration date is updated.  **Note:** We recommend not using this endpoint to update the tier of a customer. To update a customer&#39;s tier, you can [add](/management-api#tag/Loyalty/operation/addLoyaltyPoints) or [deduct](/management-api#tag/Loyalty/operation/removeLoyaltyPoints) their loyalty points.  You can use the time zone of your choice. It is converted to UTC internally by Talon.One.  **Note:** We recommend limiting your file size to 500MB.  **Example:** &#x60;&#x60;&#x60;csv subledgerid,customerprofileid,tiername,expirydate SUB1,alexa,Gold,2024-03-21T07:32:14Z ,george,Silver,2025-04-16T21:12:37Z SUB2,avocado,Bronze,2026-05-03T11:47:01Z &#x60;&#x60;&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2407,7 +2529,7 @@ public class ManagementApiTest {
     /**
      * Invite user from identity provider
      *
-     * Invite a user from an external identity provider to Talon.One by sending an invitation to their email address. 
+     * [Invite a user](https://docs.talon.one/docs/product/account/account-settings/managing-users#inviting-a-user) from an external identity provider to Talon.One by sending an invitation to their email address. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -2581,6 +2703,21 @@ public class ManagementApiTest {
     }
     
     /**
+     * Validate Okta API ownership
+     *
+     * Validate the ownership of the API through a challenge-response mechanism.  This challenger endpoint is used by Okta to confirm that communication between Talon.One and Okta is correctly configured and accessible for provisioning and deprovisioning of Talon.One users, and that only Talon.One can receive and respond to events from Okta. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void oktaEventHandlerChallengeTest() throws ApiException {
+        api.oktaEventHandlerChallenge();
+
+        // TODO: test validations
+    }
+    
+    /**
      * Create notification about added or deducted loyalty points
      *
      * Create a notification about added or deducted loyalty points in a given profile-based loyalty program. A notification for added or deducted loyalty points is different from regular webhooks in that it is loyalty program-scoped and has a predefined payload.  For more information, see [Managing loyalty notifications](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-notifications). 
@@ -2661,6 +2798,148 @@ public class ManagementApiTest {
     public void resetPasswordTest() throws ApiException {
         NewPassword body = null;
         NewPassword response = api.resetPassword(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Create SCIM user
+     *
+     * Create a new Talon.One user using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimCreateUserTest() throws ApiException {
+        ScimNewUser body = null;
+        ScimUser response = api.scimCreateUser(body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Delete SCIM user
+     *
+     * Delete a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimDeleteUserTest() throws ApiException {
+        Integer userId = null;
+        api.scimDeleteUser(userId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List supported SCIM resource types
+     *
+     * Retrieve a list of resource types supported by the SCIM provisioning protocol.  Resource types define the various kinds of resources that can be managed via the SCIM API, such as users, groups, or custom-defined resources. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetResourceTypesTest() throws ApiException {
+        ScimResourceTypesListResponse response = api.scimGetResourceTypes();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List supported SCIM schemas
+     *
+     * Retrieve a list of schemas supported by the SCIM provisioning protocol.  Schemas define the structure and attributes of the different resources that can be managed via the SCIM API, such as users, groups, and any custom-defined resources. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetSchemasTest() throws ApiException {
+        ScimSchemasListResponse response = api.scimGetSchemas();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get SCIM service provider configuration
+     *
+     * Retrieve the configuration settings of the SCIM service provider. It provides details about the features and capabilities supported by the SCIM API, such as the different operation settings. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetServiceProviderConfigTest() throws ApiException {
+        ScimServiceProviderConfigResponse response = api.scimGetServiceProviderConfig();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get SCIM user
+     *
+     * Retrieve data for a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetUserTest() throws ApiException {
+        Integer userId = null;
+        ScimUser response = api.scimGetUser(userId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List SCIM users
+     *
+     * Retrieve a paginated list of users that have been provisioned using the SCIM protocol with an identity provider, for example, Microsoft Entra ID.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimGetUsersTest() throws ApiException {
+        ScimUsersListResponse response = api.scimGetUsers();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update SCIM user attributes
+     *
+     * Update certain attributes of a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.  This endpoint allows for selective adding, removing, or replacing specific attributes while leaving other attributes unchanged. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimPatchUserTest() throws ApiException {
+        Integer userId = null;
+        ScimPatchRequest body = null;
+        ScimUser response = api.scimPatchUser(userId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update SCIM user
+     *
+     * Update the details of a specific Talon.One user created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID.  This endpoint replaces all attributes of the specific user with the attributes provided in the request payload. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void scimReplaceUserAttributesTest() throws ApiException {
+        Integer userId = null;
+        ScimNewUser body = null;
+        ScimUser response = api.scimReplaceUserAttributes(userId, body);
 
         // TODO: test validations
     }
@@ -2853,7 +3132,7 @@ public class ManagementApiTest {
     /**
      * Update coupon
      *
-     * Update the specified coupon.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    &lt;p&gt;With this PUT endpoint only, any property you do not explicitly set in your request   will be set to &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;  &lt;/div&gt; 
+     * Update the specified coupon.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    &lt;p&gt;With this &lt;code&gt;PUT&lt;/code&gt; endpoint alone, if you do not explicitly set a value for the &lt;code&gt;startDate&lt;/code&gt;, &lt;code&gt;expiryDate&lt;/code&gt;, and &lt;code&gt;recipientIntegrationId&lt;/code&gt; properties in your request, it is automatically set to &lt;code&gt;null&lt;/code&gt;.&lt;/p&gt;  &lt;/div&gt; 
      *
      * @throws ApiException
      *          if the Api call fails

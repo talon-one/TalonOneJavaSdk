@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.AccountAdditionalCost;
 import one.talon.model.Achievement;
+import one.talon.model.ApplicationCIF;
 import one.talon.model.Attribute;
 import one.talon.model.Audience;
 import one.talon.model.Collection;
@@ -163,6 +164,14 @@ public class EnvironmentTest {
     @Test
     public void collectionsTest() {
         // TODO: test collections
+    }
+
+    /**
+     * Test the property 'applicationCartItemFilters'
+     */
+    @Test
+    public void applicationCartItemFiltersTest() {
+        // TODO: test applicationCartItemFilters
     }
 
 }

@@ -375,4 +375,60 @@ public class CampaignTest {
         // TODO: test frontendState
     }
 
+    /**
+     * Test the property 'storesImported'
+     */
+    @Test
+    public void storesImportedTest() {
+        // TODO: test storesImported
+    }
+
+    /**
+     * Test the property 'activeRevisionId'
+     */
+    @Test
+    public void activeRevisionIdTest() {
+        // TODO: test activeRevisionId
+    }
+
+    /**
+     * Test the property 'activeRevisionVersionId'
+     */
+    @Test
+    public void activeRevisionVersionIdTest() {
+        // TODO: test activeRevisionVersionId
+    }
+
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
+    }
+
+    /**
+     * Test the property 'currentRevisionId'
+     */
+    @Test
+    public void currentRevisionIdTest() {
+        // TODO: test currentRevisionId
+    }
+
+    /**
+     * Test the property 'currentRevisionVersionId'
+     */
+    @Test
+    public void currentRevisionVersionIdTest() {
+        // TODO: test currentRevisionVersionId
+    }
+
+    /**
+     * Test the property 'stageRevision'
+     */
+    @Test
+    public void stageRevisionTest() {
+        // TODO: test stageRevision
+    }
+
 }

@@ -41,14 +41,6 @@ public class ApplicationCampaignStatsTest {
     }
 
     /**
-     * Test the property 'draft'
-     */
-    @Test
-    public void draftTest() {
-        // TODO: test draft
-    }
-
-    /**
      * Test the property 'disabled'
      */
     @Test

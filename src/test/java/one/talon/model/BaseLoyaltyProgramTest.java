@@ -23,6 +23,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import one.talon.model.CodeGeneratorSettings;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -107,11 +109,27 @@ public class BaseLoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'programJoinPolicy'
+     */
+    @Test
+    public void programJoinPolicyTest() {
+        // TODO: test programJoinPolicy
+    }
+
+    /**
      * Test the property 'tiersExpirationPolicy'
      */
     @Test
     public void tiersExpirationPolicyTest() {
         // TODO: test tiersExpirationPolicy
+    }
+
+    /**
+     * Test the property 'tierCycleStartDate'
+     */
+    @Test
+    public void tierCycleStartDateTest() {
+        // TODO: test tierCycleStartDate
     }
 
     /**
@@ -131,11 +149,11 @@ public class BaseLoyaltyProgramTest {
     }
 
     /**
-     * Test the property 'programJoinPolicy'
+     * Test the property 'cardCodeSettings'
      */
     @Test
-    public void programJoinPolicyTest() {
-        // TODO: test programJoinPolicy
+    public void cardCodeSettingsTest() {
+        // TODO: test cardCodeSettings
     }
 
 }

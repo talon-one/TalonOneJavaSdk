@@ -229,11 +229,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any coupon codes entered.  **Important**: If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. 
+   * Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty array discards any previous coupons. To avoid this, provide &#x60;\&quot;couponCodes\&quot;: null&#x60; or omit the parameter entirely. 
    * @return couponCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important**: If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. ")
+  @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, provide `\"couponCodes\": null` or omit the parameter entirely. ")
 
   public List<String> getCouponCodes() {
     return couponCodes;
@@ -252,11 +252,11 @@ public class NewCustomerSessionV2 {
   }
 
    /**
-   * Any referral code entered.  **Important**: If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. 
+   * Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty value discards the previous referral code. To avoid this, provide &#x60;\&quot;referralCode\&quot;: null&#x60; or omit the parameter entirely. 
    * @return referralCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important**: If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. ")
+  @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, provide `\"referralCode\": null` or omit the parameter entirely. ")
 
   public String getReferralCode() {
     return referralCode;

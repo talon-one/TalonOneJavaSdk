@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **additionalCosts** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) | The additional costs that the application is subscribed to. |  [optional]
 **audiences** | [**List&lt;Audience&gt;**](Audience.md) | The audiences contained in the account which the application belongs to. |  [optional]
 **collections** | [**List&lt;Collection&gt;**](Collection.md) | The account-level collections that the application is subscribed to. |  [optional]
+**applicationCartItemFilters** | [**List&lt;ApplicationCIF&gt;**](ApplicationCIF.md) | The cart item filters belonging to the Application. |  [optional]
 
 
 

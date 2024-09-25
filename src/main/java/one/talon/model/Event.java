@@ -73,7 +73,7 @@ public class Event {
 
   public static final String SERIALIZED_NAME_LEDGER_ENTRIES = "ledgerEntries";
   @SerializedName(SERIALIZED_NAME_LEDGER_ENTRIES)
-  private List<LedgerEntry> ledgerEntries = new ArrayList<LedgerEntry>();
+  private List<LedgerEntry> ledgerEntries = null;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -293,6 +293,9 @@ public class Event {
   }
 
   public Event addLedgerEntriesItem(LedgerEntry ledgerEntriesItem) {
+    if (this.ledgerEntries == null) {
+      this.ledgerEntries = new ArrayList<LedgerEntry>();
+    }
     this.ledgerEntries.add(ledgerEntriesItem);
     return this;
   }
@@ -301,7 +304,8 @@ public class Event {
    * Ledger entries for the event.
    * @return ledgerEntries
   **/
-  @ApiModelProperty(required = true, value = "Ledger entries for the event.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Ledger entries for the event.")
 
   public List<LedgerEntry> getLedgerEntries() {
     return ledgerEntries;

@@ -164,4 +164,12 @@ public class NewApplicationTest {
         // TODO: test key
     }
 
+    /**
+     * Test the property 'enableCampaignStateManagement'
+     */
+    @Test
+    public void enableCampaignStateManagementTest() {
+        // TODO: test enableCampaignStateManagement
+    }
+
 }

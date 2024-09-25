@@ -7,7 +7,6 @@ Provides statistics regarding an application's campaigns.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**draft** | **Integer** | Number of draft campaigns. | 
 **disabled** | **Integer** | Number of disabled campaigns. | 
 **scheduled** | **Integer** | Number of scheduled campaigns. | 
 **running** | **Integer** | Number of running campaigns. | 
