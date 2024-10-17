@@ -19,7 +19,9 @@ bundle:
 	cp pom.xml $(DIST)/talon-one-client-$(VERSION).pom && \
 	cp target/_remote.repositories $(DIST) && \
 	cp target/talon-one-client-$(VERSION)-sources.jar $(DIST) && \
-	cp target/talon-one-client-$(VERSION).jar $(DIST)
+	cp target/talon-one-client-$(VERSION)-sources.jar.md5 $(DIST) && \
+	cp target/talon-one-client-$(VERSION).jar $(DIST) && \
+	cp target/talon-one-client-$(VERSION).jar.md5 $(DIST)
 
 prepare: build bundle
 
