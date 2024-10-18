@@ -21,7 +21,8 @@ bundle:
 	cp target/talon-one-client-$(VERSION)-sources.jar $(DIST) && \
 	cp target/talon-one-client-$(VERSION)-sources.jar.md5 $(DIST) && \
 	cp target/talon-one-client-$(VERSION).jar $(DIST) && \
-	cp target/talon-one-client-$(VERSION).jar.md5 $(DIST)
+	cp target/talon-one-client-$(VERSION).jar.md5 $(DIST) && \
+	md5sum $(DIST)/talon-one-client-$(VERSION).pom | cut -f 1 -d " " > $(DIST)/talon-one-client-9.0.1.pom.md5
 
 prepare: build bundle
 
