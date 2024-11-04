@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * NewCollection
  */
-@ApiModel(description = "")
 
 public class NewCollection {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";

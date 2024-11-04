@@ -68,7 +68,9 @@ public class ApplicationCampaignAnalytics {
     
     DISABLED("disabled"),
     
-    ARCHIVED("archived");
+    ARCHIVED("archived"),
+    
+    STAGED("staged");
 
     private String value;
 

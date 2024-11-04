@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Referral
  */
-@ApiModel(description = "")
 
 public class Referral {
   public static final String SERIALIZED_NAME_ID = "id";

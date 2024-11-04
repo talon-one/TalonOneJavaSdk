@@ -26,15 +26,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CampaignTemplateCollection;
+import one.talon.model.CampaignTemplateCouponReservationSettings;
 import one.talon.model.CampaignTemplateParams;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.TemplateLimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CampaignTemplate
  */
-@ApiModel(description = "")
 
 public class CampaignTemplate {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -196,6 +196,10 @@ public class CampaignTemplate {
   public static final String SERIALIZED_NAME_COUPON_SETTINGS = "couponSettings";
   @SerializedName(SERIALIZED_NAME_COUPON_SETTINGS)
   private CodeGeneratorSettings couponSettings;
+
+  public static final String SERIALIZED_NAME_COUPON_RESERVATION_SETTINGS = "couponReservationSettings";
+  @SerializedName(SERIALIZED_NAME_COUPON_RESERVATION_SETTINGS)
+  private CampaignTemplateCouponReservationSettings couponReservationSettings;
 
   public static final String SERIALIZED_NAME_REFERRAL_SETTINGS = "referralSettings";
   @SerializedName(SERIALIZED_NAME_REFERRAL_SETTINGS)
@@ -615,6 +619,29 @@ public class CampaignTemplate {
   }
 
 
+  public CampaignTemplate couponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
+    
+    this.couponReservationSettings = couponReservationSettings;
+    return this;
+  }
+
+   /**
+   * Get couponReservationSettings
+   * @return couponReservationSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CampaignTemplateCouponReservationSettings getCouponReservationSettings() {
+    return couponReservationSettings;
+  }
+
+
+  public void setCouponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
+    this.couponReservationSettings = couponReservationSettings;
+  }
+
+
   public CampaignTemplate referralSettings(CodeGeneratorSettings referralSettings) {
     
     this.referralSettings = referralSettings;
@@ -715,7 +742,7 @@ public class CampaignTemplate {
    * A list of IDs of the Applications that are subscribed to this campaign template.
    * @return applicationsIds
   **/
-  @ApiModelProperty(required = true, value = "A list of IDs of the Applications that are subscribed to this campaign template.")
+  @ApiModelProperty(example = "[1, 2, 3, 1, 2, 3]", required = true, value = "A list of IDs of the Applications that are subscribed to this campaign template.")
 
   public List<Integer> getApplicationsIds() {
     return applicationsIds;
@@ -899,6 +926,7 @@ public class CampaignTemplate {
         Objects.equals(this.tags, campaignTemplate.tags) &&
         Objects.equals(this.features, campaignTemplate.features) &&
         Objects.equals(this.couponSettings, campaignTemplate.couponSettings) &&
+        Objects.equals(this.couponReservationSettings, campaignTemplate.couponReservationSettings) &&
         Objects.equals(this.referralSettings, campaignTemplate.referralSettings) &&
         Objects.equals(this.limits, campaignTemplate.limits) &&
         Objects.equals(this.templateParams, campaignTemplate.templateParams) &&
@@ -913,7 +941,7 @@ public class CampaignTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds);
+    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds);
   }
 
 
@@ -935,6 +963,7 @@ public class CampaignTemplate {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
+    sb.append("    couponReservationSettings: ").append(toIndentedString(couponReservationSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    templateParams: ").append(toIndentedString(templateParams)).append("\n");

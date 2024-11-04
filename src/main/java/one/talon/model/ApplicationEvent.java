@@ -30,9 +30,8 @@ import one.talon.model.RuleFailureReason;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationEvent
  */
-@ApiModel(description = "")
 
 public class ApplicationEvent {
   public static final String SERIALIZED_NAME_ID = "id";

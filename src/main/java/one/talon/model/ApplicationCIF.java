@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationCIF
  */
-@ApiModel(description = "")
 
 public class ApplicationCIF {
   public static final String SERIALIZED_NAME_ID = "id";

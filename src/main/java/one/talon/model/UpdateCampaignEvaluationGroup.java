@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * UpdateCampaignEvaluationGroup
  */
-@ApiModel(description = "")
 
 public class UpdateCampaignEvaluationGroup {
   public static final String SERIALIZED_NAME_NAME = "name";

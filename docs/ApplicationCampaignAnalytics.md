@@ -30,6 +30,7 @@ SCHEDULED | &quot;scheduled&quot;
 RUNNING | &quot;running&quot;
 DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
+STAGED | &quot;staged&quot;
 
 
 

@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * LibraryAttribute
  */
-@ApiModel(description = "")
 
 public class LibraryAttribute {
   /**

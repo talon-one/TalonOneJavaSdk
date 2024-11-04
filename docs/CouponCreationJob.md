@@ -2,7 +2,6 @@
 
 # CouponCreationJob
 
-
 ## Properties
 
 Name | Type | Description | Notes

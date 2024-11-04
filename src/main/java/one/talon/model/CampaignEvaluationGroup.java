@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * CampaignEvaluationGroup
  */
-@ApiModel(description = "")
 
 public class CampaignEvaluationGroup {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";

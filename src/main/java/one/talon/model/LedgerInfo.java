@@ -27,9 +27,9 @@ import java.math.BigDecimal;
 import one.talon.model.Tier;
 
 /**
- * 
+ * The balance in a Loyalty Program for some Customer.
  */
-@ApiModel(description = "")
+@ApiModel(description = "The balance in a Loyalty Program for some Customer.")
 
 public class LedgerInfo {
   public static final String SERIALIZED_NAME_CURRENT_BALANCE = "currentBalance";

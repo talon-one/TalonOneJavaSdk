@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * EventType
  */
-@ApiModel(description = "")
 
 public class EventType {
   public static final String SERIALIZED_NAME_ID = "id";

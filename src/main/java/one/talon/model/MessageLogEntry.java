@@ -53,6 +53,14 @@ public class MessageLogEntry {
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_NAME)
   private String notificationName;
 
+  public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
+  private Integer webhookId;
+
+  public static final String SERIALIZED_NAME_WEBHOOK_NAME = "webhookName";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK_NAME)
+  private String webhookName;
+
   public static final String SERIALIZED_NAME_REQUEST = "request";
   @SerializedName(SERIALIZED_NAME_REQUEST)
   private MessageLogRequest request;
@@ -66,13 +74,15 @@ public class MessageLogEntry {
   private OffsetDateTime createdAt;
 
   /**
-   * The entity type the notification is related to. 
+   * The entity type the log is related to. 
    */
   @JsonAdapter(EntityTypeEnum.Adapter.class)
   public enum EntityTypeEnum {
     APPLICATION("application"),
     
-    LOYALTY_PROGRAM("loyalty_program");
+    LOYALTY_PROGRAM("loyalty_program"),
+    
+    WEBHOOK("webhook");
 
     private String value;
 
@@ -116,6 +126,10 @@ public class MessageLogEntry {
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
   private EntityTypeEnum entityType;
 
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  private String url;
+
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
@@ -123,6 +137,10 @@ public class MessageLogEntry {
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
   private Integer loyaltyProgramId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private Integer campaignId;
 
 
   public MessageLogEntry id(String id) {
@@ -238,6 +256,52 @@ public class MessageLogEntry {
   }
 
 
+  public MessageLogEntry webhookId(Integer webhookId) {
+    
+    this.webhookId = webhookId;
+    return this;
+  }
+
+   /**
+   * ID of the webhook.
+   * @return webhookId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "101", value = "ID of the webhook.")
+
+  public Integer getWebhookId() {
+    return webhookId;
+  }
+
+
+  public void setWebhookId(Integer webhookId) {
+    this.webhookId = webhookId;
+  }
+
+
+  public MessageLogEntry webhookName(String webhookName) {
+    
+    this.webhookName = webhookName;
+    return this;
+  }
+
+   /**
+   * The name of the webhook.
+   * @return webhookName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "My webhook", value = "The name of the webhook.")
+
+  public String getWebhookName() {
+    return webhookName;
+  }
+
+
+  public void setWebhookName(String webhookName) {
+    this.webhookName = webhookName;
+  }
+
+
   public MessageLogEntry request(MessageLogRequest request) {
     
     this.request = request;
@@ -313,11 +377,10 @@ public class MessageLogEntry {
   }
 
    /**
-   * The entity type the notification is related to. 
+   * The entity type the log is related to. 
    * @return entityType
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "loyalty_program", value = "The entity type the notification is related to. ")
+  @ApiModelProperty(example = "loyalty_program", required = true, value = "The entity type the log is related to. ")
 
   public EntityTypeEnum getEntityType() {
     return entityType;
@@ -326,6 +389,29 @@ public class MessageLogEntry {
 
   public void setEntityType(EntityTypeEnum entityType) {
     this.entityType = entityType;
+  }
+
+
+  public MessageLogEntry url(String url) {
+    
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * The target URL of the request.
+   * @return url
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", value = "The target URL of the request.")
+
+  public String getUrl() {
+    return url;
+  }
+
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -377,6 +463,30 @@ public class MessageLogEntry {
   }
 
 
+  public MessageLogEntry campaignId(Integer campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * Identifier of the campaign.
+   * minimum: 1
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2", value = "Identifier of the campaign.")
+
+  public Integer getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(Integer campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -391,17 +501,21 @@ public class MessageLogEntry {
         Objects.equals(this.changeType, messageLogEntry.changeType) &&
         Objects.equals(this.notificationId, messageLogEntry.notificationId) &&
         Objects.equals(this.notificationName, messageLogEntry.notificationName) &&
+        Objects.equals(this.webhookId, messageLogEntry.webhookId) &&
+        Objects.equals(this.webhookName, messageLogEntry.webhookName) &&
         Objects.equals(this.request, messageLogEntry.request) &&
         Objects.equals(this.response, messageLogEntry.response) &&
         Objects.equals(this.createdAt, messageLogEntry.createdAt) &&
         Objects.equals(this.entityType, messageLogEntry.entityType) &&
+        Objects.equals(this.url, messageLogEntry.url) &&
         Objects.equals(this.applicationId, messageLogEntry.applicationId) &&
-        Objects.equals(this.loyaltyProgramId, messageLogEntry.loyaltyProgramId);
+        Objects.equals(this.loyaltyProgramId, messageLogEntry.loyaltyProgramId) &&
+        Objects.equals(this.campaignId, messageLogEntry.campaignId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, service, changeType, notificationId, notificationName, request, response, createdAt, entityType, applicationId, loyaltyProgramId);
+    return Objects.hash(id, service, changeType, notificationId, notificationName, webhookId, webhookName, request, response, createdAt, entityType, url, applicationId, loyaltyProgramId, campaignId);
   }
 
 
@@ -414,12 +528,16 @@ public class MessageLogEntry {
     sb.append("    changeType: ").append(toIndentedString(changeType)).append("\n");
     sb.append("    notificationId: ").append(toIndentedString(notificationId)).append("\n");
     sb.append("    notificationName: ").append(toIndentedString(notificationName)).append("\n");
+    sb.append("    webhookId: ").append(toIndentedString(webhookId)).append("\n");
+    sb.append("    webhookName: ").append(toIndentedString(webhookName)).append("\n");
     sb.append("    request: ").append(toIndentedString(request)).append("\n");
     sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    loyaltyProgramId: ").append(toIndentedString(loyaltyProgramId)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

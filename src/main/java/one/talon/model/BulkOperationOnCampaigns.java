@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * BulkOperationOnCampaigns
@@ -38,7 +39,9 @@ public class BulkOperationOnCampaigns {
   public enum OperationEnum {
     DISABLE("disable"),
     
-    DELETE("delete");
+    DELETE("delete"),
+    
+    ACTIVATE_REVISION("activate_revision");
 
     private String value;
 
@@ -85,6 +88,10 @@ public class BulkOperationOnCampaigns {
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<Integer> campaignIds = new ArrayList<Integer>();
+
+  public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
+  @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
+  private OffsetDateTime activateAt;
 
 
   public BulkOperationOnCampaigns operation(OperationEnum operation) {
@@ -136,6 +143,29 @@ public class BulkOperationOnCampaigns {
   }
 
 
+  public BulkOperationOnCampaigns activateAt(OffsetDateTime activateAt) {
+    
+    this.activateAt = activateAt;
+    return this;
+  }
+
+   /**
+   * Timestamp when the revisions are finalized after the &#x60;activate_revision&#x60; operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. 
+   * @return activateAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp when the revisions are finalized after the `activate_revision` operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. ")
+
+  public OffsetDateTime getActivateAt() {
+    return activateAt;
+  }
+
+
+  public void setActivateAt(OffsetDateTime activateAt) {
+    this.activateAt = activateAt;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -146,12 +176,13 @@ public class BulkOperationOnCampaigns {
     }
     BulkOperationOnCampaigns bulkOperationOnCampaigns = (BulkOperationOnCampaigns) o;
     return Objects.equals(this.operation, bulkOperationOnCampaigns.operation) &&
-        Objects.equals(this.campaignIds, bulkOperationOnCampaigns.campaignIds);
+        Objects.equals(this.campaignIds, bulkOperationOnCampaigns.campaignIds) &&
+        Objects.equals(this.activateAt, bulkOperationOnCampaigns.activateAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, campaignIds);
+    return Objects.hash(operation, campaignIds, activateAt);
   }
 
 
@@ -161,6 +192,7 @@ public class BulkOperationOnCampaigns {
     sb.append("class BulkOperationOnCampaigns {\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    activateAt: ").append(toIndentedString(activateAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

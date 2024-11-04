@@ -2,7 +2,6 @@
 
 # NewReferralsForMultipleAdvocates
 
-
 ## Properties
 
 Name | Type | Description | Notes

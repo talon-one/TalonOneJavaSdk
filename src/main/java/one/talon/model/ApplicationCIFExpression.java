@@ -28,9 +28,8 @@ import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationCIFExpression
  */
-@ApiModel(description = "")
 
 public class ApplicationCIFExpression {
   public static final String SERIALIZED_NAME_ID = "id";

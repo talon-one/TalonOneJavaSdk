@@ -2,7 +2,7 @@
 
 # CustomerProfileIntegrationRequestV2
 
-
+The body of a V2 integration API request (customer profile update). Next to the customer profile details, this contains an optional listing of extra properties that should be returned in the response.
 ## Properties
 
 Name | Type | Description | Notes

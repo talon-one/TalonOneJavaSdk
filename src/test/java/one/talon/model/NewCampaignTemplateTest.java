@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CampaignTemplateCollection;
+import one.talon.model.CampaignTemplateCouponReservationSettings;
 import one.talon.model.CampaignTemplateParams;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.TemplateLimitConfig;
@@ -116,6 +117,14 @@ public class NewCampaignTemplateTest {
     @Test
     public void couponSettingsTest() {
         // TODO: test couponSettings
+    }
+
+    /**
+     * Test the property 'couponReservationSettings'
+     */
+    @Test
+    public void couponReservationSettingsTest() {
+        // TODO: test couponReservationSettings
     }
 
     /**

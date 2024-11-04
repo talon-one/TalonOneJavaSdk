@@ -32,9 +32,8 @@ import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CustomerSession
  */
-@ApiModel(description = "")
 
 public class CustomerSession {
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
@@ -155,7 +154,7 @@ public class CustomerSession {
    * The integration ID set by your integration layer.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The integration ID set by your integration layer.")
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;

@@ -25,6 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import one.talon.model.TimePoint;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * CreateAchievement
@@ -54,6 +55,116 @@ public class CreateAchievement {
   public static final String SERIALIZED_NAME_PERIOD_END_OVERRIDE = "periodEndOverride";
   @SerializedName(SERIALIZED_NAME_PERIOD_END_OVERRIDE)
   private TimePoint periodEndOverride;
+
+  /**
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   */
+  @JsonAdapter(RecurrencePolicyEnum.Adapter.class)
+  public enum RecurrencePolicyEnum {
+    NO_RECURRENCE("no_recurrence"),
+    
+    ON_EXPIRATION("on_expiration");
+
+    private String value;
+
+    RecurrencePolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RecurrencePolicyEnum fromValue(String value) {
+      for (RecurrencePolicyEnum b : RecurrencePolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RecurrencePolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RecurrencePolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RecurrencePolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RecurrencePolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RECURRENCE_POLICY = "recurrencePolicy";
+  @SerializedName(SERIALIZED_NAME_RECURRENCE_POLICY)
+  private RecurrencePolicyEnum recurrencePolicy;
+
+  /**
+   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+   */
+  @JsonAdapter(ActivationPolicyEnum.Adapter.class)
+  public enum ActivationPolicyEnum {
+    USER_ACTION("user_action"),
+    
+    FIXED_SCHEDULE("fixed_schedule");
+
+    private String value;
+
+    ActivationPolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ActivationPolicyEnum fromValue(String value) {
+      for (ActivationPolicyEnum b : ActivationPolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ActivationPolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ActivationPolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ActivationPolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ActivationPolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ACTIVATION_POLICY = "activationPolicy";
+  @SerializedName(SERIALIZED_NAME_ACTIVATION_POLICY)
+  private ActivationPolicyEnum activationPolicy;
+
+  public static final String SERIALIZED_NAME_FIXED_START_DATE = "fixedStartDate";
+  @SerializedName(SERIALIZED_NAME_FIXED_START_DATE)
+  private OffsetDateTime fixedStartDate;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
 
 
   public CreateAchievement name(String name) {
@@ -189,6 +300,98 @@ public class CreateAchievement {
   }
 
 
+  public CreateAchievement recurrencePolicy(RecurrencePolicyEnum recurrencePolicy) {
+    
+    this.recurrencePolicy = recurrencePolicy;
+    return this;
+  }
+
+   /**
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * @return recurrencePolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
+
+  public RecurrencePolicyEnum getRecurrencePolicy() {
+    return recurrencePolicy;
+  }
+
+
+  public void setRecurrencePolicy(RecurrencePolicyEnum recurrencePolicy) {
+    this.recurrencePolicy = recurrencePolicy;
+  }
+
+
+  public CreateAchievement activationPolicy(ActivationPolicyEnum activationPolicy) {
+    
+    this.activationPolicy = activationPolicy;
+    return this;
+  }
+
+   /**
+   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+   * @return activationPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "fixed_schedule", value = "The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule. ")
+
+  public ActivationPolicyEnum getActivationPolicy() {
+    return activationPolicy;
+  }
+
+
+  public void setActivationPolicy(ActivationPolicyEnum activationPolicy) {
+    this.activationPolicy = activationPolicy;
+  }
+
+
+  public CreateAchievement fixedStartDate(OffsetDateTime fixedStartDate) {
+    
+    this.fixedStartDate = fixedStartDate;
+    return this;
+  }
+
+   /**
+   * The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to &#x60;fixed_schedule&#x60;.  **Note:** It must be an RFC3339 timestamp string. 
+   * @return fixedStartDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The achievement's start date when `activationPolicy` is set to `fixed_schedule`.  **Note:** It must be an RFC3339 timestamp string. ")
+
+  public OffsetDateTime getFixedStartDate() {
+    return fixedStartDate;
+  }
+
+
+  public void setFixedStartDate(OffsetDateTime fixedStartDate) {
+    this.fixedStartDate = fixedStartDate;
+  }
+
+
+  public CreateAchievement endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string. 
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The achievement's end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string. ")
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -203,12 +406,16 @@ public class CreateAchievement {
         Objects.equals(this.description, createAchievement.description) &&
         Objects.equals(this.target, createAchievement.target) &&
         Objects.equals(this.period, createAchievement.period) &&
-        Objects.equals(this.periodEndOverride, createAchievement.periodEndOverride);
+        Objects.equals(this.periodEndOverride, createAchievement.periodEndOverride) &&
+        Objects.equals(this.recurrencePolicy, createAchievement.recurrencePolicy) &&
+        Objects.equals(this.activationPolicy, createAchievement.activationPolicy) &&
+        Objects.equals(this.fixedStartDate, createAchievement.fixedStartDate) &&
+        Objects.equals(this.endDate, createAchievement.endDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, target, period, periodEndOverride);
+    return Objects.hash(name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate);
   }
 
 
@@ -222,6 +429,10 @@ public class CreateAchievement {
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    periodEndOverride: ").append(toIndentedString(periodEndOverride)).append("\n");
+    sb.append("    recurrencePolicy: ").append(toIndentedString(recurrencePolicy)).append("\n");
+    sb.append("    activationPolicy: ").append(toIndentedString(activationPolicy)).append("\n");
+    sb.append("    fixedStartDate: ").append(toIndentedString(fixedStartDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

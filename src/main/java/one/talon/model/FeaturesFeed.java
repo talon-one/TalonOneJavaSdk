@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * FeaturesFeed
  */
-@ApiModel(description = "")
 
 public class FeaturesFeed {
   public static final String SERIALIZED_NAME_TITLE = "title";

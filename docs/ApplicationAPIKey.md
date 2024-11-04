@@ -2,7 +2,6 @@
 
 # ApplicationAPIKey
 
-
 ## Properties
 
 Name | Type | Description | Notes

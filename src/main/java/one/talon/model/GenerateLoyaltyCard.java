@@ -87,6 +87,10 @@ public class GenerateLoyaltyCard {
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE_IDS)
   private List<String> customerProfileIds = null;
 
+  public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
+  @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
+  private String cardIdentifier;
+
 
   public GenerateLoyaltyCard status(StatusEnum status) {
     
@@ -142,6 +146,29 @@ public class GenerateLoyaltyCard {
   }
 
 
+  public GenerateLoyaltyCard cardIdentifier(String cardIdentifier) {
+    
+    this.cardIdentifier = cardIdentifier;
+    return this;
+  }
+
+   /**
+   * The alphanumeric identifier of the loyalty card. 
+   * @return cardIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
+
+  public String getCardIdentifier() {
+    return cardIdentifier;
+  }
+
+
+  public void setCardIdentifier(String cardIdentifier) {
+    this.cardIdentifier = cardIdentifier;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -152,12 +179,13 @@ public class GenerateLoyaltyCard {
     }
     GenerateLoyaltyCard generateLoyaltyCard = (GenerateLoyaltyCard) o;
     return Objects.equals(this.status, generateLoyaltyCard.status) &&
-        Objects.equals(this.customerProfileIds, generateLoyaltyCard.customerProfileIds);
+        Objects.equals(this.customerProfileIds, generateLoyaltyCard.customerProfileIds) &&
+        Objects.equals(this.cardIdentifier, generateLoyaltyCard.cardIdentifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, customerProfileIds);
+    return Objects.hash(status, customerProfileIds, cardIdentifier);
   }
 
 
@@ -167,6 +195,7 @@ public class GenerateLoyaltyCard {
     sb.append("class GenerateLoyaltyCard {\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    customerProfileIds: ").append(toIndentedString(customerProfileIds)).append("\n");
+    sb.append("    cardIdentifier: ").append(toIndentedString(cardIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

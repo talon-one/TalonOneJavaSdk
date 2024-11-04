@@ -2,7 +2,6 @@
 
 # Webhook
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
-**applicationIds** | **List&lt;Integer&gt;** | The IDs of the Applications that are related to this entity. The IDs of the Applications that are related to this entity. | 
+**applicationIds** | **List&lt;Integer&gt;** | The IDs of the Applications that are related to this entity. | 
 **title** | **String** | Name or title for this webhook. | 
 **description** | **String** | A description of the webhook. |  [optional]
 **verb** | [**VerbEnum**](#VerbEnum) | API method for this webhook. | 

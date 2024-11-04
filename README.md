@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>one.talon</groupId>
   <artifactId>talon-one-client</artifactId>
-  <version>9.0.2</version>
+  <version>9.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -63,7 +63,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "one.talon:talon-one-client:9.0.2"
+compile "one.talon:talon-one-client:9.1.0"
 ```
 
 ### Others
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/talon-one-client-9.0.2.jar`
+* `target/talon-one-client-9.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -90,83 +90,40 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 package com.example.consumer;
 
-import com.google.gson.Gson;
-
+// Import classes:
 import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
 import one.talon.api.IntegrationApi;
 import one.talon.api.ManagementApi;
 import one.talon.model.*;
 
-import java.util.*;
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://yourbaseurl.talon.one");
+    
+    // Configure API key authorization: api_key_v1
+    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+    api_key_v1.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key_v1.setApiKeyPrefix("Token");
 
-public class TalonApiTest {
-    public static void main(String[] args) {
-        Gson gson = new Gson();
-        IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
-
-        // Setup: basePath
-        iApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
-        // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
-        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
-        iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
-
-        try {
-          // Creating a cart item object
-            CartItem cartItem = new CartItem();
-            cartItem.setName("Hawaiian Pizza");
-            cartItem.setSku("pizza-x");
-            cartItem.setQuantity(1);
-            cartItem.setPrice(new java.math.BigDecimal("5.5"));
-
-            // Creating a customer session of V2
-            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
-            customerSession.setProfileId("Cool_Dude");
-            customerSession.addCouponCodesItem("Cool-Summer!");
-            customerSession.addCartItemsItem(cartItem);
-
-            // Initiating integration request wrapping the customer session update
-            IntegrationRequest request = new IntegrationRequest()
-                .customerSession(customerSession)
-                // Optional parameter of requested information to be present on the response related to the customer session update
-                .responseContent(Arrays.asList(
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
-                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
-                ));
-
-            // Flag to communicate whether the request is a "dry run"
-            Boolean dryRun = false;
-
-            // Create/update a customer session using `updateCustomerSessionV2` function
-            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun, null);
-            System.out.println(is.toString());
-
-            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
-            for (Effect eff : is.getEffects()) {
-                if (eff.getEffectType().equals("addLoyaltyPoints")) {
-                    // Typecasting according to the specific effect type
-                    AddLoyaltyPointsEffectProps props = gson.fromJson(
-                        gson.toJson(eff.getProps()),
-                        AddLoyaltyPointsEffectProps.class
-                    );
-                    // Access the specific effect's properties
-                    System.out.println(props.getName());
-                    System.out.println(props.getProgramId());
-                    System.out.println(props.getValue());
-                }
-                if (eff.getEffectType().equals("acceptCoupon")) {
-                    // Typecasting according to the specific effect type
-                    AcceptCouponEffectProps props = gson.fromJson(
-                      gson.toJson(eff.getProps()),
-                      AcceptCouponEffectProps.class
-                    );
-                    // work with AcceptCouponEffectProps' properties
-                    // ...
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+    NewAudience body = new NewAudience(); // NewAudience | body
+    try {
+      Audience result = apiInstance.createAudienceV2(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling IntegrationApi#createAudienceV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
+  }
 }
 ```
 
@@ -219,7 +176,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**generateLoyaltyCard**](docs/IntegrationApi.md#generateLoyaltyCard) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards | Generate loyalty card
 *IntegrationApi* | [**getCustomerInventory**](docs/IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | List customer data
 *IntegrationApi* | [**getCustomerSession**](docs/IntegrationApi.md#getCustomerSession) | **GET** /v2/customer_sessions/{customerSessionId} | Get customer session
-*IntegrationApi* | [**getLoyaltyBalances**](docs/IntegrationApi.md#getLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances | Get customer&#39;s loyalty points
+*IntegrationApi* | [**getLoyaltyBalances**](docs/IntegrationApi.md#getLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances | Get customer&#39;s loyalty balances
 *IntegrationApi* | [**getLoyaltyCardBalances**](docs/IntegrationApi.md#getLoyaltyCardBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances | Get card&#39;s point balances
 *IntegrationApi* | [**getLoyaltyCardPoints**](docs/IntegrationApi.md#getLoyaltyCardPoints) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/points | List card&#39;s unused loyalty points
 *IntegrationApi* | [**getLoyaltyCardTransactions**](docs/IntegrationApi.md#getLoyaltyCardTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions | List card&#39;s transactions
@@ -425,7 +382,6 @@ Class | Method | HTTP request | Description
  - [Achievement](docs/Achievement.md)
  - [AchievementAdditionalProperties](docs/AchievementAdditionalProperties.md)
  - [AchievementProgress](docs/AchievementProgress.md)
- - [ActivateUserRequest](docs/ActivateUserRequest.md)
  - [AddFreeItemEffectProps](docs/AddFreeItemEffectProps.md)
  - [AddItemCatalogAction](docs/AddItemCatalogAction.md)
  - [AddLoyaltyPoints](docs/AddLoyaltyPoints.md)
@@ -506,6 +462,7 @@ Class | Method | HTTP request | Description
  - [CampaignStoreBudget](docs/CampaignStoreBudget.md)
  - [CampaignTemplate](docs/CampaignTemplate.md)
  - [CampaignTemplateCollection](docs/CampaignTemplateCollection.md)
+ - [CampaignTemplateCouponReservationSettings](docs/CampaignTemplateCouponReservationSettings.md)
  - [CampaignTemplateParams](docs/CampaignTemplateParams.md)
  - [CampaignVersions](docs/CampaignVersions.md)
  - [CardAddedDeductedPointsNotificationPolicy](docs/CardAddedDeductedPointsNotificationPolicy.md)
@@ -562,7 +519,6 @@ Class | Method | HTTP request | Description
  - [DeactivateUserRequest](docs/DeactivateUserRequest.md)
  - [DeductLoyaltyPoints](docs/DeductLoyaltyPoints.md)
  - [DeductLoyaltyPointsEffectProps](docs/DeductLoyaltyPointsEffectProps.md)
- - [DeleteUserRequest](docs/DeleteUserRequest.md)
  - [Effect](docs/Effect.md)
  - [EffectEntity](docs/EffectEntity.md)
  - [EmailEntity](docs/EmailEntity.md)
@@ -668,6 +624,8 @@ Class | Method | HTTP request | Description
  - [LibraryAttribute](docs/LibraryAttribute.md)
  - [LimitConfig](docs/LimitConfig.md)
  - [LimitCounter](docs/LimitCounter.md)
+ - [ListCampaignStoreBudgets](docs/ListCampaignStoreBudgets.md)
+ - [ListCampaignStoreBudgetsStore](docs/ListCampaignStoreBudgetsStore.md)
  - [LoginParams](docs/LoginParams.md)
  - [Loyalty](docs/Loyalty.md)
  - [LoyaltyBalance](docs/LoyaltyBalance.md)
@@ -728,6 +686,8 @@ Class | Method | HTTP request | Description
  - [NewCampaignEvaluationGroup](docs/NewCampaignEvaluationGroup.md)
  - [NewCampaignGroup](docs/NewCampaignGroup.md)
  - [NewCampaignSet](docs/NewCampaignSet.md)
+ - [NewCampaignStoreBudget](docs/NewCampaignStoreBudget.md)
+ - [NewCampaignStoreBudgetStoreLimit](docs/NewCampaignStoreBudgetStoreLimit.md)
  - [NewCampaignTemplate](docs/NewCampaignTemplate.md)
  - [NewCatalog](docs/NewCatalog.md)
  - [NewCollection](docs/NewCollection.md)
@@ -848,6 +808,7 @@ Class | Method | HTTP request | Description
  - [ScimServiceProviderConfigResponseChangePassword](docs/ScimServiceProviderConfigResponseChangePassword.md)
  - [ScimServiceProviderConfigResponseFilter](docs/ScimServiceProviderConfigResponseFilter.md)
  - [ScimServiceProviderConfigResponsePatch](docs/ScimServiceProviderConfigResponsePatch.md)
+ - [ScimServiceProviderConfigResponseSort](docs/ScimServiceProviderConfigResponseSort.md)
  - [ScimUser](docs/ScimUser.md)
  - [ScimUsersListResponse](docs/ScimUsersListResponse.md)
  - [Session](docs/Session.md)
@@ -865,6 +826,7 @@ Class | Method | HTTP request | Description
  - [StrikethroughLabelingNotification](docs/StrikethroughLabelingNotification.md)
  - [StrikethroughSetDiscountPerItemEffectProps](docs/StrikethroughSetDiscountPerItemEffectProps.md)
  - [StrikethroughTrigger](docs/StrikethroughTrigger.md)
+ - [SummaryCampaignStoreBudget](docs/SummaryCampaignStoreBudget.md)
  - [TalangAttribute](docs/TalangAttribute.md)
  - [TalangAttributeVisibility](docs/TalangAttributeVisibility.md)
  - [TemplateArgDef](docs/TemplateArgDef.md)
@@ -896,9 +858,9 @@ Class | Method | HTTP request | Description
  - [UpdateCollection](docs/UpdateCollection.md)
  - [UpdateCoupon](docs/UpdateCoupon.md)
  - [UpdateCouponBatch](docs/UpdateCouponBatch.md)
- - [UpdateCustomEffect](docs/UpdateCustomEffect.md)
  - [UpdateLoyaltyCard](docs/UpdateLoyaltyCard.md)
  - [UpdateLoyaltyProgram](docs/UpdateLoyaltyProgram.md)
+ - [UpdateLoyaltyProgramTier](docs/UpdateLoyaltyProgramTier.md)
  - [UpdatePicklist](docs/UpdatePicklist.md)
  - [UpdateReferral](docs/UpdateReferral.md)
  - [UpdateReferralBatch](docs/UpdateReferralBatch.md)

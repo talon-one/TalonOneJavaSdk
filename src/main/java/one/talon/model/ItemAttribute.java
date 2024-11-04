@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * ItemAttribute
  */
-@ApiModel(description = "")
 
 public class ItemAttribute {
   public static final String SERIALIZED_NAME_ATTRIBUTEID = "attributeid";

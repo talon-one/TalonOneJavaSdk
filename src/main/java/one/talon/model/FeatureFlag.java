@@ -125,7 +125,7 @@ public class FeatureFlag {
    * @return modified
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The time this entity was last modified.")
+  @ApiModelProperty(example = "2021-09-25T10:34:12.956203Z", value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;

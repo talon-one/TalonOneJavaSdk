@@ -31,9 +31,8 @@ import one.talon.model.Product;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CatalogItem
  */
-@ApiModel(description = "")
 
 public class CatalogItem {
   public static final String SERIALIZED_NAME_ID = "id";

@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * UpdateCampaignGroup
  */
-@ApiModel(description = "")
 
 public class UpdateCampaignGroup {
   public static final String SERIALIZED_NAME_NAME = "name";

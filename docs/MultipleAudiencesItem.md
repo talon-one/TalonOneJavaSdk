@@ -2,7 +2,6 @@
 
 # MultipleAudiencesItem
 
-
 ## Properties
 
 Name | Type | Description | Notes

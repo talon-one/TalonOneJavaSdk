@@ -2,7 +2,6 @@
 
 # NewCouponsForMultipleRecipients
 
-
 ## Properties
 
 Name | Type | Description | Notes

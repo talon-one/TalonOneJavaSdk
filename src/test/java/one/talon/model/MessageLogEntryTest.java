@@ -84,6 +84,22 @@ public class MessageLogEntryTest {
     }
 
     /**
+     * Test the property 'webhookId'
+     */
+    @Test
+    public void webhookIdTest() {
+        // TODO: test webhookId
+    }
+
+    /**
+     * Test the property 'webhookName'
+     */
+    @Test
+    public void webhookNameTest() {
+        // TODO: test webhookName
+    }
+
+    /**
      * Test the property 'request'
      */
     @Test
@@ -116,6 +132,14 @@ public class MessageLogEntryTest {
     }
 
     /**
+     * Test the property 'url'
+     */
+    @Test
+    public void urlTest() {
+        // TODO: test url
+    }
+
+    /**
      * Test the property 'applicationId'
      */
     @Test
@@ -129,6 +153,14 @@ public class MessageLogEntryTest {
     @Test
     public void loyaltyProgramIdTest() {
         // TODO: test loyaltyProgramId
+    }
+
+    /**
+     * Test the property 'campaignId'
+     */
+    @Test
+    public void campaignIdTest() {
+        // TODO: test campaignId
     }
 
 }

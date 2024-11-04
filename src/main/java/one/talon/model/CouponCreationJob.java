@@ -30,9 +30,8 @@ import one.talon.model.CodeGeneratorSettings;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CouponCreationJob
  */
-@ApiModel(description = "")
 
 public class CouponCreationJob {
   public static final String SERIALIZED_NAME_ID = "id";

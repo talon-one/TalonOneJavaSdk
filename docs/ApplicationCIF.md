@@ -2,7 +2,6 @@
 
 # ApplicationCIF
 
-
 ## Properties
 
 Name | Type | Description | Notes

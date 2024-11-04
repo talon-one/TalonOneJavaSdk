@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * NewApplicationAPIKey
  */
-@ApiModel(description = "")
 
 public class NewApplicationAPIKey {
   public static final String SERIALIZED_NAME_TITLE = "title";

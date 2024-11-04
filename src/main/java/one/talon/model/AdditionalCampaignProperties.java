@@ -119,7 +119,7 @@ public class AdditionalCampaignProperties {
   private Integer templateId;
 
   /**
-   * A campaign state described exactly as in the Campaign Manager.
+   * The campaign state displayed in the Campaign Manager.
    */
   @JsonAdapter(FrontendStateEnum.Adapter.class)
   public enum FrontendStateEnum {
@@ -131,7 +131,9 @@ public class AdditionalCampaignProperties {
     
     DISABLED("disabled"),
     
-    ARCHIVED("archived");
+    ARCHIVED("archived"),
+    
+    STAGED("staged");
 
     private String value;
 
@@ -674,10 +676,10 @@ public class AdditionalCampaignProperties {
   }
 
    /**
-   * A campaign state described exactly as in the Campaign Manager.
+   * The campaign state displayed in the Campaign Manager.
    * @return frontendState
   **/
-  @ApiModelProperty(example = "running", required = true, value = "A campaign state described exactly as in the Campaign Manager.")
+  @ApiModelProperty(example = "running", required = true, value = "The campaign state displayed in the Campaign Manager.")
 
   public FrontendStateEnum getFrontendState() {
     return frontendState;

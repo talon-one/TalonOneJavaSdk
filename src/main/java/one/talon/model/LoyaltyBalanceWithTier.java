@@ -28,9 +28,9 @@ import one.talon.model.ProjectedTier;
 import one.talon.model.Tier;
 
 /**
- * 
+ * Point balance of a ledger in the Loyalty Program.
  */
-@ApiModel(description = "")
+@ApiModel(description = "Point balance of a ledger in the Loyalty Program.")
 
 public class LoyaltyBalanceWithTier {
   public static final String SERIALIZED_NAME_ACTIVE_POINTS = "activePoints";

@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * EventV2
  */
-@ApiModel(description = "")
 
 public class EventV2 {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";

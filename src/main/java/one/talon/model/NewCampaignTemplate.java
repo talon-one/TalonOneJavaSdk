@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.CampaignTemplateCollection;
+import one.talon.model.CampaignTemplateCouponReservationSettings;
 import one.talon.model.CampaignTemplateParams;
 import one.talon.model.CodeGeneratorSettings;
 import one.talon.model.TemplateLimitConfig;
@@ -174,6 +175,10 @@ public class NewCampaignTemplate {
   public static final String SERIALIZED_NAME_COUPON_SETTINGS = "couponSettings";
   @SerializedName(SERIALIZED_NAME_COUPON_SETTINGS)
   private CodeGeneratorSettings couponSettings;
+
+  public static final String SERIALIZED_NAME_COUPON_RESERVATION_SETTINGS = "couponReservationSettings";
+  @SerializedName(SERIALIZED_NAME_COUPON_RESERVATION_SETTINGS)
+  private CampaignTemplateCouponReservationSettings couponReservationSettings;
 
   public static final String SERIALIZED_NAME_REFERRAL_SETTINGS = "referralSettings";
   @SerializedName(SERIALIZED_NAME_REFERRAL_SETTINGS)
@@ -466,6 +471,29 @@ public class NewCampaignTemplate {
   }
 
 
+  public NewCampaignTemplate couponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
+    
+    this.couponReservationSettings = couponReservationSettings;
+    return this;
+  }
+
+   /**
+   * Get couponReservationSettings
+   * @return couponReservationSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CampaignTemplateCouponReservationSettings getCouponReservationSettings() {
+    return couponReservationSettings;
+  }
+
+
+  public void setCouponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
+    this.couponReservationSettings = couponReservationSettings;
+  }
+
+
   public NewCampaignTemplate referralSettings(CodeGeneratorSettings referralSettings) {
     
     this.referralSettings = referralSettings;
@@ -645,6 +673,7 @@ public class NewCampaignTemplate {
         Objects.equals(this.tags, newCampaignTemplate.tags) &&
         Objects.equals(this.features, newCampaignTemplate.features) &&
         Objects.equals(this.couponSettings, newCampaignTemplate.couponSettings) &&
+        Objects.equals(this.couponReservationSettings, newCampaignTemplate.couponReservationSettings) &&
         Objects.equals(this.referralSettings, newCampaignTemplate.referralSettings) &&
         Objects.equals(this.limits, newCampaignTemplate.limits) &&
         Objects.equals(this.templateParams, newCampaignTemplate.templateParams) &&
@@ -655,7 +684,7 @@ public class NewCampaignTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, instructions, campaignAttributes, couponAttributes, state, tags, features, couponSettings, referralSettings, limits, templateParams, campaignCollections, defaultCampaignGroupId, campaignType);
+    return Objects.hash(name, description, instructions, campaignAttributes, couponAttributes, state, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, campaignCollections, defaultCampaignGroupId, campaignType);
   }
 
 
@@ -672,6 +701,7 @@ public class NewCampaignTemplate {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    features: ").append(toIndentedString(features)).append("\n");
     sb.append("    couponSettings: ").append(toIndentedString(couponSettings)).append("\n");
+    sb.append("    couponReservationSettings: ").append(toIndentedString(couponReservationSettings)).append("\n");
     sb.append("    referralSettings: ").append(toIndentedString(referralSettings)).append("\n");
     sb.append("    limits: ").append(toIndentedString(limits)).append("\n");
     sb.append("    templateParams: ").append(toIndentedString(templateParams)).append("\n");

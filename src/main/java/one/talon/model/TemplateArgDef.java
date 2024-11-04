@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * TemplateArgDef
  */
-@ApiModel(description = "")
 
 public class TemplateArgDef {
   /**

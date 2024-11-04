@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **integrationRequestUuid** | **String** | UUID reference of the integration request linked to this webhook request. | 
 **webhookId** | **Integer** | ID of the webhook that triggered the request. | 
 **applicationId** | **Integer** | ID of the application that triggered the webhook. |  [optional]
-**url** | **String** | Target url of request | 
+**url** | **String** | The target URL of the request. | 
 **request** | **String** | Request message | 
 **response** | **String** | Response message |  [optional]
 **status** | **Integer** | HTTP status code of response. |  [optional]

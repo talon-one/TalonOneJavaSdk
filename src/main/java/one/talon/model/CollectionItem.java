@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * CollectionItem
  */
-@ApiModel(description = "")
 
 public class CollectionItem {
   public static final String SERIALIZED_NAME_ITEM = "item";

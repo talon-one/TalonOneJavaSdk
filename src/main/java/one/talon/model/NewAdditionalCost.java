@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * NewAdditionalCost
  */
-@ApiModel(description = "")
 
 public class NewAdditionalCost {
   public static final String SERIALIZED_NAME_NAME = "name";

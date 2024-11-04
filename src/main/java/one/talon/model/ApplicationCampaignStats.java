@@ -34,6 +34,10 @@ public class ApplicationCampaignStats {
   @SerializedName(SERIALIZED_NAME_DISABLED)
   private Integer disabled;
 
+  public static final String SERIALIZED_NAME_STAGED = "staged";
+  @SerializedName(SERIALIZED_NAME_STAGED)
+  private Integer staged;
+
   public static final String SERIALIZED_NAME_SCHEDULED = "scheduled";
   @SerializedName(SERIALIZED_NAME_SCHEDULED)
   private Integer scheduled;
@@ -70,6 +74,28 @@ public class ApplicationCampaignStats {
 
   public void setDisabled(Integer disabled) {
     this.disabled = disabled;
+  }
+
+
+  public ApplicationCampaignStats staged(Integer staged) {
+    
+    this.staged = staged;
+    return this;
+  }
+
+   /**
+   * Number of staged campaigns.
+   * @return staged
+  **/
+  @ApiModelProperty(required = true, value = "Number of staged campaigns.")
+
+  public Integer getStaged() {
+    return staged;
+  }
+
+
+  public void setStaged(Integer staged) {
+    this.staged = staged;
   }
 
 
@@ -171,6 +197,7 @@ public class ApplicationCampaignStats {
     }
     ApplicationCampaignStats applicationCampaignStats = (ApplicationCampaignStats) o;
     return Objects.equals(this.disabled, applicationCampaignStats.disabled) &&
+        Objects.equals(this.staged, applicationCampaignStats.staged) &&
         Objects.equals(this.scheduled, applicationCampaignStats.scheduled) &&
         Objects.equals(this.running, applicationCampaignStats.running) &&
         Objects.equals(this.expired, applicationCampaignStats.expired) &&
@@ -179,7 +206,7 @@ public class ApplicationCampaignStats {
 
   @Override
   public int hashCode() {
-    return Objects.hash(disabled, scheduled, running, expired, archived);
+    return Objects.hash(disabled, staged, scheduled, running, expired, archived);
   }
 
 
@@ -188,6 +215,7 @@ public class ApplicationCampaignStats {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationCampaignStats {\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
+    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    scheduled: ").append(toIndentedString(scheduled)).append("\n");
     sb.append("    running: ").append(toIndentedString(running)).append("\n");
     sb.append("    expired: ").append(toIndentedString(expired)).append("\n");

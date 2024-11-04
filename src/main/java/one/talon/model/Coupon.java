@@ -30,9 +30,8 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Coupon
  */
-@ApiModel(description = "")
 
 public class Coupon {
   public static final String SERIALIZED_NAME_ID = "id";

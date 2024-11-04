@@ -29,9 +29,8 @@ import one.talon.model.Endpoint;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ManagementKey
  */
-@ApiModel(description = "")
 
 public class ManagementKey {
   public static final String SERIALIZED_NAME_NAME = "name";

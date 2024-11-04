@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * NewMultipleAudiencesItem
  */
-@ApiModel(description = "")
 
 public class NewMultipleAudiencesItem {
   public static final String SERIALIZED_NAME_NAME = "name";

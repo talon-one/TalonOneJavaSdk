@@ -29,6 +29,57 @@ import java.io.IOException;
  */
 
 public class CampaignVersions {
+  /**
+   * The campaign revision state displayed in the Campaign Manager.
+   */
+  @JsonAdapter(RevisionFrontendStateEnum.Adapter.class)
+  public enum RevisionFrontendStateEnum {
+    REVISED("revised"),
+    
+    PENDING("pending");
+
+    private String value;
+
+    RevisionFrontendStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RevisionFrontendStateEnum fromValue(String value) {
+      for (RevisionFrontendStateEnum b : RevisionFrontendStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RevisionFrontendStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RevisionFrontendStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RevisionFrontendStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RevisionFrontendStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_REVISION_FRONTEND_STATE = "revisionFrontendState";
+  @SerializedName(SERIALIZED_NAME_REVISION_FRONTEND_STATE)
+  private RevisionFrontendStateEnum revisionFrontendState;
+
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
   private Integer activeRevisionId;
@@ -52,6 +103,29 @@ public class CampaignVersions {
   public static final String SERIALIZED_NAME_STAGE_REVISION = "stageRevision";
   @SerializedName(SERIALIZED_NAME_STAGE_REVISION)
   private Boolean stageRevision = false;
+
+
+  public CampaignVersions revisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
+    
+    this.revisionFrontendState = revisionFrontendState;
+    return this;
+  }
+
+   /**
+   * The campaign revision state displayed in the Campaign Manager.
+   * @return revisionFrontendState
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "revised", value = "The campaign revision state displayed in the Campaign Manager.")
+
+  public RevisionFrontendStateEnum getRevisionFrontendState() {
+    return revisionFrontendState;
+  }
+
+
+  public void setRevisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
+    this.revisionFrontendState = revisionFrontendState;
+  }
 
 
   public CampaignVersions activeRevisionId(Integer activeRevisionId) {
@@ -201,7 +275,8 @@ public class CampaignVersions {
       return false;
     }
     CampaignVersions campaignVersions = (CampaignVersions) o;
-    return Objects.equals(this.activeRevisionId, campaignVersions.activeRevisionId) &&
+    return Objects.equals(this.revisionFrontendState, campaignVersions.revisionFrontendState) &&
+        Objects.equals(this.activeRevisionId, campaignVersions.activeRevisionId) &&
         Objects.equals(this.activeRevisionVersionId, campaignVersions.activeRevisionVersionId) &&
         Objects.equals(this.version, campaignVersions.version) &&
         Objects.equals(this.currentRevisionId, campaignVersions.currentRevisionId) &&
@@ -211,7 +286,7 @@ public class CampaignVersions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
+    return Objects.hash(revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
   }
 
 
@@ -219,6 +294,7 @@ public class CampaignVersions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignVersions {\n");
+    sb.append("    revisionFrontendState: ").append(toIndentedString(revisionFrontendState)).append("\n");
     sb.append("    activeRevisionId: ").append(toIndentedString(activeRevisionId)).append("\n");
     sb.append("    activeRevisionVersionId: ").append(toIndentedString(activeRevisionVersionId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");

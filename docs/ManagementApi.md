@@ -208,7 +208,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    ActivateUserRequest body = new ActivateUserRequest(); // ActivateUserRequest | body
+    DeactivateUserRequest body = new DeactivateUserRequest(); // DeactivateUserRequest | body
     try {
       apiInstance.activateUserByEmail(body);
     } catch (ApiException e) {
@@ -226,7 +226,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ActivateUserRequest**](ActivateUserRequest.md)| body |
+ **body** | **DeactivateUserRequest**| body |
 
 ### Return type
 
@@ -2326,7 +2326,7 @@ public class Example {
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     String usable = "usable_example"; // String | - `true`: only coupons where `usageCounter < usageLimit` will be returned. - `false`: only coupons where `usageCounter >= usageLimit` will be returned. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
-    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's `RecipientIntegrationId` field. 
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's `RecipientIntegrationId` field. 
     Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
     try {
       apiInstance.deleteCoupons(applicationId, campaignId, value, createdBefore, createdAfter, startsAfter, startsBefore, expiresAfter, expiresBefore, valid, batchId, usable, referralId, recipientIntegrationId, exactMatch);
@@ -2358,7 +2358,7 @@ Name | Type | Description  | Notes
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **usable** | **String**| - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
- **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  | [optional]
+ **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
 
 ### Return type
@@ -2722,7 +2722,7 @@ public class Example {
     //manager_auth.setApiKeyPrefix("Token");
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
-    DeleteUserRequest body = new DeleteUserRequest(); // DeleteUserRequest | body
+    DeactivateUserRequest body = new DeactivateUserRequest(); // DeactivateUserRequest | body
     try {
       apiInstance.deleteUserByEmail(body);
     } catch (ApiException e) {
@@ -2740,7 +2740,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**DeleteUserRequest**](DeleteUserRequest.md)| body |
+ **body** | **DeactivateUserRequest**| body |
 
 ### Return type
 
@@ -3313,7 +3313,7 @@ Name | Type | Description  | Notes
 
 Export coupons
 
-Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
+Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date in RFC3339 of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
 
 ### Example
 ```java
@@ -3344,7 +3344,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -3377,7 +3377,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -3389,7 +3389,7 @@ Name | Type | Description  | Notes
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
- **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired]
+ **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
  **valuesOnly** | **Boolean**| Filter results to only return the coupon codes (&#x60;value&#x60; column) without the associated coupon data. | [optional] [default to false]
 
 ### Return type
@@ -3611,7 +3611,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
     String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
@@ -3634,7 +3634,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
@@ -3981,7 +3981,7 @@ Name | Type | Description  | Notes
 
 <a name="exportLoyaltyCards"></a>
 # **exportLoyaltyCards**
-> String exportLoyaltyCards(loyaltyProgramId, batchId)
+> String exportLoyaltyCards(loyaltyProgramId, batchId, dateFormat)
 
 Export loyalty cards
 
@@ -4017,8 +4017,9 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
     String batchId = "batchId_example"; // String | Filter results by loyalty card batch ID.
+    String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
     try {
-      String result = apiInstance.exportLoyaltyCards(loyaltyProgramId, batchId);
+      String result = apiInstance.exportLoyaltyCards(loyaltyProgramId, batchId, dateFormat);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementApi#exportLoyaltyCards");
@@ -4037,6 +4038,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **batchId** | **String**| Filter results by loyalty card batch ID. | [optional]
+ **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
 ### Return type
 
@@ -4258,7 +4260,7 @@ public class Example {
 
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | - `expired`: Matches referrals in which the expiration date is set and in the past. - `validNow`: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - `validFuture`: Matches referrals in which start date is set and in the future. 
@@ -4284,7 +4286,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
@@ -5736,7 +5738,7 @@ public class Example {
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     String coupon = "coupon_example"; // String | Filter by sessions with this coupon. Must be exact match.
     String referral = "referral_example"; // String | Filter by sessions with this referral. Must be exact match.
-    String integrationId = "integrationId_example"; // String | Filter by sessions with this integrationId. Must be exact match.
+    String integrationId = "integrationId_example"; // String | Filter by sessions with this integration ID. Must be exact match.
     String storeIntegrationId = "storeIntegrationId_example"; // String | The integration ID of the store. You choose this ID when you create a store.
     try {
       InlineResponse20027 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId);
@@ -5766,7 +5768,7 @@ Name | Type | Description  | Notes
  **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **coupon** | **String**| Filter by sessions with this coupon. Must be exact match. | [optional]
  **referral** | **String**| Filter by sessions with this referral. Must be exact match. | [optional]
- **integrationId** | **String**| Filter by sessions with this integrationId. Must be exact match. | [optional]
+ **integrationId** | **String**| Filter by sessions with this integration ID. Must be exact match. | [optional]
  **storeIntegrationId** | **String**| The integration ID of the store. You choose this ID when you create a store. | [optional]
 
 ### Return type
@@ -6489,7 +6491,7 @@ Name | Type | Description  | Notes
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
- **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired]
+ **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
 
 ### Return type
 
@@ -6796,7 +6798,7 @@ public class Example {
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     Integer campaignGroupId = 56; // Integer | Filter results to campaigns owned by the specified campaign access group ID.
-    Integer templateId = 56; // Integer | The ID of the Campaign Template this Campaign was created from.
+    Integer templateId = 56; // Integer | The ID of the campaign template this campaign was created from.
     Integer storeId = 56; // Integer | Filter results to campaigns linked to the specified store ID.
     try {
       InlineResponse2006 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
@@ -6820,13 +6822,13 @@ Name | Type | Description  | Notes
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
- **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired]
+ **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **campaignGroupId** | **Integer**| Filter results to campaigns owned by the specified campaign access group ID. | [optional]
- **templateId** | **Integer**| The ID of the Campaign Template this Campaign was created from. | [optional]
+ **templateId** | **Integer**| The ID of the campaign template this campaign was created from. | [optional]
  **storeId** | **Integer**| Filter results to campaigns linked to the specified store ID. | [optional]
 
 ### Return type
@@ -7151,9 +7153,9 @@ public class Example {
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     String redeemed = "redeemed_example"; // String | - `true`: only coupons where `usageCounter > 0` will be returned. - `false`: only coupons where `usageCounter = 0` will be returned. - This field cannot be used in conjunction with the `usable` query parameter. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
-    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
-    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
     OffsetDateTime expiresBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime expiresAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime startsBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -7189,9 +7191,9 @@ Name | Type | Description  | Notes
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **redeemed** | **String**| - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
- **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field | [optional]
+ **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
- **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
+ **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
  **expiresBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **expiresAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **startsBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -7343,10 +7345,10 @@ public class Example {
     Integer pageSize = 1000; // Integer | The number of items in the response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
-    String name = "name_example"; // String | Only return reports matching the customer name
+    String name = "name_example"; // String | Only return reports matching the customer name.
     String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
-    String campaignName = "campaignName_example"; // String | Only return reports matching the campaignName
-    String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name
+    String campaignName = "campaignName_example"; // String | Only return reports matching the campaign name.
+    String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name.
     try {
       InlineResponse20026 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
       System.out.println(result);
@@ -7371,10 +7373,10 @@ Name | Type | Description  | Notes
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
- **name** | **String**| Only return reports matching the customer name | [optional]
+ **name** | **String**| Only return reports matching the customer name. | [optional]
  **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
- **campaignName** | **String**| Only return reports matching the campaignName | [optional]
- **advocateName** | **String**| Only return reports matching the current customer referrer name | [optional]
+ **campaignName** | **String**| Only return reports matching the campaign name. | [optional]
+ **advocateName** | **String**| Only return reports matching the current customer referrer name. | [optional]
 
 ### Return type
 
@@ -7677,7 +7679,7 @@ public class Example {
     ManagementApi apiInstance = new ManagementApi(defaultClient);
     Integer pageSize = 1000; // Integer | The number of items in the response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-    Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
+    Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
     try {
       InlineResponse20025 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
       System.out.println(result);
@@ -7698,7 +7700,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or Live customer. | [optional] [default to false]
+ **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or live customer. | [optional] [default to false]
 
 ### Return type
 
@@ -7757,7 +7759,7 @@ public class Example {
     CustomerProfileSearchQuery body = new CustomerProfileSearchQuery(); // CustomerProfileSearchQuery | body
     Integer pageSize = 1000; // Integer | The number of items in the response.
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-    Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or Live customer.
+    Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
     try {
       InlineResponse20024 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
       System.out.println(result);
@@ -7779,7 +7781,7 @@ Name | Type | Description  | Notes
  **body** | [**CustomerProfileSearchQuery**](CustomerProfileSearchQuery.md)| body |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or Live customer. | [optional] [default to false]
+ **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or live customer. | [optional] [default to false]
 
 ### Return type
 
@@ -8657,7 +8659,7 @@ public class Example {
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
-    String advocate = "advocate_example"; // String | Filter results by match with a profile id specified in the referral's AdvocateProfileIntegrationId field
+    String advocate = "advocate_example"; // String | Filter results by match with a profile ID specified in the referral's AdvocateProfileIntegrationId field.
     try {
       InlineResponse20010 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
       System.out.println(result);
@@ -8686,7 +8688,7 @@ Name | Type | Description  | Notes
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
- **advocate** | **String**| Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field | [optional]
+ **advocate** | **String**| Filter results by match with a profile ID specified in the referral&#39;s AdvocateProfileIntegrationId field. | [optional]
 
 ### Return type
 
@@ -9290,9 +9292,9 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
-    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
+    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
     try {
@@ -9317,9 +9319,9 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
- **webhookId** | **BigDecimal**| Filter results by Webhook. | [optional]
+ **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
 
@@ -9381,9 +9383,9 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     String status = "status_example"; // String | Filter results by HTTP status codes.
-    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by Webhook.
+    BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
     BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     String requestUuid = "requestUuid_example"; // String | Filter results by request UUID.
     OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
     OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -9409,9 +9411,9 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **webhookId** | **BigDecimal**| Filter results by Webhook. | [optional]
+ **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **requestUuid** | **String**| Filter results by request UUID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -11013,7 +11015,7 @@ public class Example {
     Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
     String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
     Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
-    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign.
+    BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
     String name = "name_example"; // String | The name of the store.
     String integrationId = "integrationId_example"; // String | The integration ID of the store.
     String query = "query_example"; // String | Filter results by `name` or `integrationId`.
@@ -11040,7 +11042,7 @@ Name | Type | Description  | Notes
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
- **campaignId** | **BigDecimal**| Filter results by campaign. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **name** | **String**| The name of the store. | [optional]
  **integrationId** | **String**| The integration ID of the store. | [optional]
  **query** | **String**| Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. | [optional]
@@ -12314,9 +12316,9 @@ public class Example {
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
-    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
-    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
     String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
     try {
       InlineResponse2009 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
@@ -12347,10 +12349,10 @@ Name | Type | Description  | Notes
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
- **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field | [optional]
+ **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
- **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
- **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired]
+ **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
+ **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
 
 ### Return type
 
@@ -12418,8 +12420,8 @@ public class Example {
     String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
     String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
     Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
-    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field
-    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
+    String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
+    Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
     String batchId = "batchId_example"; // String | Filter results by batches of coupons
     try {
       InlineResponse2009 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
@@ -12451,8 +12453,8 @@ Name | Type | Description  | Notes
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
- **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field | [optional]
- **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
+ **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
+ **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
 
 ### Return type

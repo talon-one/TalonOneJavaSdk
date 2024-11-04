@@ -2,7 +2,6 @@
 
 # UpdateCampaignEvaluationGroup
 
-
 ## Properties
 
 Name | Type | Description | Notes

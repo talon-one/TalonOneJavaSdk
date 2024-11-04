@@ -28,9 +28,8 @@ import java.util.List;
 import one.talon.model.TemplateArgDef;
 
 /**
- * 
+ * NewCustomEffect
  */
-@ApiModel(description = "")
 
 public class NewCustomEffect {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";

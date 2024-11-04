@@ -27,9 +27,9 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * A tier in a loyalty program.
  */
-@ApiModel(description = "")
+@ApiModel(description = "A tier in a loyalty program.")
 
 public class LoyaltyTier {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -126,10 +126,10 @@ public class LoyaltyTier {
   }
 
    /**
-   * The name of the tier
+   * The name of the tier.
    * @return name
   **/
-  @ApiModelProperty(example = "Gold", required = true, value = "The name of the tier")
+  @ApiModelProperty(example = "Gold", required = true, value = "The name of the tier.")
 
   public String getName() {
     return name;
@@ -148,12 +148,12 @@ public class LoyaltyTier {
   }
 
    /**
-   * The minimum amount of points required to be eligible for the tier.
+   * The minimum amount of points required to enter the tier.
    * minimum: 0
    * maximum: 999999999999.99
    * @return minPoints
   **/
-  @ApiModelProperty(example = "300.0", required = true, value = "The minimum amount of points required to be eligible for the tier.")
+  @ApiModelProperty(example = "300.0", required = true, value = "The minimum amount of points required to enter the tier.")
 
   public BigDecimal getMinPoints() {
     return minPoints;

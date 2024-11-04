@@ -174,6 +174,14 @@ public class LoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'returnPolicy'
+     */
+    @Test
+    public void returnPolicyTest() {
+        // TODO: test returnPolicy
+    }
+
+    /**
      * Test the property 'accountID'
      */
     @Test

@@ -27,9 +27,8 @@ import one.talon.model.RevisionVersion;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Revision
  */
-@ApiModel(description = "")
 
 public class Revision {
   public static final String SERIALIZED_NAME_ID = "id";

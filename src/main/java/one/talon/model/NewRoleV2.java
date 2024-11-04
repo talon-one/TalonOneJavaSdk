@@ -28,9 +28,8 @@ import java.util.List;
 import one.talon.model.RoleV2Permissions;
 
 /**
- * 
+ * NewRoleV2
  */
-@ApiModel(description = "")
 
 public class NewRoleV2 {
   public static final String SERIALIZED_NAME_NAME = "name";
