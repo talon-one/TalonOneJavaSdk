@@ -90,40 +90,83 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 package com.example.consumer;
 
-// Import classes:
+import com.google.gson.Gson;
+
 import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
 import one.talon.api.IntegrationApi;
 import one.talon.api.ManagementApi;
 import one.talon.model.*;
 
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://yourbaseurl.talon.one");
-    
-    // Configure API key authorization: api_key_v1
-    ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
-    api_key_v1.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //api_key_v1.setApiKeyPrefix("Token");
+import java.util.*;
 
-    IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-    NewAudience body = new NewAudience(); // NewAudience | body
-    try {
-      Audience result = apiInstance.createAudienceV2(body);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling IntegrationApi#createAudienceV2");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+public class TalonApiTest {
+    public static void main(String[] args) {
+        Gson gson = new Gson();
+        IntegrationApi iApi = new IntegrationApi(new ApiClient("api_key_v1"));
+
+        // Setup: basePath
+        iApi.getApiClient().setBasePath("https://yourbaseurl.talon.one");
+        // Setup: when using 'api_key_v1', set apiKey & apiKeyPrefix must be provided
+        iApi.getApiClient().setApiKeyPrefix("ApiKey-v1");
+        iApi.getApiClient().setApiKey("dbc644d33aa74d582bd9479c59e16f970fe13bf34a208c39d6c7fa7586968468");
+
+        try {
+          // Creating a cart item object
+            CartItem cartItem = new CartItem();
+            cartItem.setName("Hawaiian Pizza");
+            cartItem.setSku("pizza-x");
+            cartItem.setQuantity(1);
+            cartItem.setPrice(new java.math.BigDecimal("5.5"));
+
+            // Creating a customer session of V2
+            NewCustomerSessionV2 customerSession = new NewCustomerSessionV2();
+            customerSession.setProfileId("Cool_Dude");
+            customerSession.addCouponCodesItem("Cool-Summer!");
+            customerSession.addCartItemsItem(cartItem);
+
+            // Initiating integration request wrapping the customer session update
+            IntegrationRequest request = new IntegrationRequest()
+                .customerSession(customerSession)
+                // Optional parameter of requested information to be present on the response related to the customer session update
+                .responseContent(Arrays.asList(
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
+                    IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
+                ));
+
+            // Flag to communicate whether the request is a "dry run"
+            Boolean dryRun = false;
+
+            // Create/update a customer session using `updateCustomerSessionV2` function
+            IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun, null);
+            System.out.println(is.toString());
+
+            // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
+            for (Effect eff : is.getEffects()) {
+                if (eff.getEffectType().equals("addLoyaltyPoints")) {
+                    // Typecasting according to the specific effect type
+                    AddLoyaltyPointsEffectProps props = gson.fromJson(
+                        gson.toJson(eff.getProps()),
+                        AddLoyaltyPointsEffectProps.class
+                    );
+                    // Access the specific effect's properties
+                    System.out.println(props.getName());
+                    System.out.println(props.getProgramId());
+                    System.out.println(props.getValue());
+                }
+                if (eff.getEffectType().equals("acceptCoupon")) {
+                    // Typecasting according to the specific effect type
+                    AcceptCouponEffectProps props = gson.fromJson(
+                      gson.toJson(eff.getProps()),
+                      AcceptCouponEffectProps.class
+                    );
+                    // work with AcceptCouponEffectProps' properties
+                    // ...
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
-  }
 }
 ```
 
