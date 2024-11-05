@@ -27,6 +27,7 @@ import one.talon.model.ScimServiceProviderConfigResponseBulk;
 import one.talon.model.ScimServiceProviderConfigResponseChangePassword;
 import one.talon.model.ScimServiceProviderConfigResponseFilter;
 import one.talon.model.ScimServiceProviderConfigResponsePatch;
+import one.talon.model.ScimServiceProviderConfigResponseSort;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -92,6 +93,14 @@ public class ScimServiceProviderConfigResponseTest {
     @Test
     public void schemasTest() {
         // TODO: test schemas
+    }
+
+    /**
+     * Test the property 'sort'
+     */
+    @Test
+    public void sortTest() {
+        // TODO: test sort
     }
 
 }

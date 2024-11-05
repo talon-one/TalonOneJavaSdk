@@ -33,9 +33,9 @@ import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * The representation of the customer session.
  */
-@ApiModel(description = "")
+@ApiModel(description = "The representation of the customer session.")
 
 public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -199,10 +199,10 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * The time this entity was created. The time this entity was created.
+   * The time this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The time this entity was created. The time this entity was created.")
+  @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -514,11 +514,11 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). 
+   * Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). - We recommend passing an anonymized (hashed) version of the identifier value. 
    * @return identifiers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[91.11.156.141]", value = "Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). ")
+  @ApiModelProperty(example = "[d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea]", value = "Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). - We recommend passing an anonymized (hashed) version of the identifier value. ")
 
   public List<String> getIdentifiers() {
     return identifiers;

@@ -32,9 +32,8 @@ import one.talon.model.LoyaltyCardProfileRegistration;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * LoyaltyCard
  */
-@ApiModel(description = "")
 
 public class LoyaltyCard {
   public static final String SERIALIZED_NAME_ID = "id";

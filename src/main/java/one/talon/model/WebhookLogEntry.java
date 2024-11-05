@@ -168,10 +168,10 @@ public class WebhookLogEntry {
   }
 
    /**
-   * Target url of request
+   * The target URL of the request.
    * @return url
   **/
-  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "Target url of request")
+  @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "The target URL of the request.")
 
   public String getUrl() {
     return url;

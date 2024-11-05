@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 
+ * LimitCounter
  */
-@ApiModel(description = "")
 
 public class LimitCounter {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";

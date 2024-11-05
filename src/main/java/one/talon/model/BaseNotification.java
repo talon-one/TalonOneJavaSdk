@@ -26,9 +26,8 @@ import java.io.IOException;
 import one.talon.model.BaseNotificationWebhook;
 
 /**
- * 
+ * BaseNotification
  */
-@ApiModel(description = "")
 
 public class BaseNotification {
   public static final String SERIALIZED_NAME_POLICY = "policy";

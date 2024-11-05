@@ -27,9 +27,8 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CampaignAnalytics
  */
-@ApiModel(description = "")
 
 public class CampaignAnalytics {
   public static final String SERIALIZED_NAME_DATE = "date";

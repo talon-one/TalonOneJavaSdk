@@ -2,7 +2,6 @@
 
 # Giveaway
 
-
 ## Properties
 
 Name | Type | Description | Notes

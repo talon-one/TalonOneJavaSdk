@@ -28,9 +28,8 @@ import one.talon.model.CodeGeneratorSettings;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * NewCouponCreationJob
  */
-@ApiModel(description = "")
 
 public class NewCouponCreationJob {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";

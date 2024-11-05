@@ -50,7 +50,7 @@ public class LoyaltyMembership {
    * @return joined
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The moment in which the loyalty program was joined.")
+  @ApiModelProperty(example = "2012-03-20T14:15:22Z", value = "The moment in which the loyalty program was joined.")
 
   public OffsetDateTime getJoined() {
     return joined;

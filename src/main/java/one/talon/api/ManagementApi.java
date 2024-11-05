@@ -31,7 +31,6 @@ import one.talon.model.Account;
 import one.talon.model.AccountAdditionalCost;
 import one.talon.model.AccountAnalytics;
 import one.talon.model.Achievement;
-import one.talon.model.ActivateUserRequest;
 import one.talon.model.AddLoyaltyPoints;
 import one.talon.model.Application;
 import one.talon.model.ApplicationApiHealth;
@@ -57,7 +56,6 @@ import one.talon.model.CustomerProfile;
 import one.talon.model.CustomerProfileSearchQuery;
 import one.talon.model.DeactivateUserRequest;
 import one.talon.model.DeductLoyaltyPoints;
-import one.talon.model.DeleteUserRequest;
 import one.talon.model.ErrorResponse;
 import one.talon.model.ErrorResponseWithStatus;
 import one.talon.model.InlineResponse20010;
@@ -191,7 +189,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call activateUserByEmailCall(ActivateUserRequest body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call activateUserByEmailCall(DeactivateUserRequest body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -221,7 +219,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call activateUserByEmailValidateBeforeCall(ActivateUserRequest body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call activateUserByEmailValidateBeforeCall(DeactivateUserRequest body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -245,7 +243,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void activateUserByEmail(ActivateUserRequest body) throws ApiException {
+    public void activateUserByEmail(DeactivateUserRequest body) throws ApiException {
         activateUserByEmailWithHttpInfo(body);
     }
 
@@ -261,7 +259,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> activateUserByEmailWithHttpInfo(ActivateUserRequest body) throws ApiException {
+    public ApiResponse<Void> activateUserByEmailWithHttpInfo(DeactivateUserRequest body) throws ApiException {
         okhttp3.Call localVarCall = activateUserByEmailValidateBeforeCall(body, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -279,7 +277,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call activateUserByEmailAsync(ActivateUserRequest body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call activateUserByEmailAsync(DeactivateUserRequest body, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = activateUserByEmailValidateBeforeCall(body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -3549,7 +3547,7 @@ public class ManagementApi {
      * @param batchId Filter results by batches of coupons (optional)
      * @param usable - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3678,7 +3676,7 @@ public class ManagementApi {
      * @param batchId Filter results by batches of coupons (optional)
      * @param usable - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3707,7 +3705,7 @@ public class ManagementApi {
      * @param batchId Filter results by batches of coupons (optional)
      * @param usable - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3738,7 +3736,7 @@ public class ManagementApi {
      * @param batchId Filter results by batches of coupons (optional)
      * @param usable - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  (optional)
      * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4247,7 +4245,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserByEmailCall(DeleteUserRequest body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteUserByEmailCall(DeactivateUserRequest body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -4277,7 +4275,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteUserByEmailValidateBeforeCall(DeleteUserRequest body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteUserByEmailValidateBeforeCall(DeactivateUserRequest body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -4301,7 +4299,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteUserByEmail(DeleteUserRequest body) throws ApiException {
+    public void deleteUserByEmail(DeactivateUserRequest body) throws ApiException {
         deleteUserByEmailWithHttpInfo(body);
     }
 
@@ -4317,7 +4315,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteUserByEmailWithHttpInfo(DeleteUserRequest body) throws ApiException {
+    public ApiResponse<Void> deleteUserByEmailWithHttpInfo(DeactivateUserRequest body) throws ApiException {
         okhttp3.Call localVarCall = deleteUserByEmailValidateBeforeCall(body, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -4335,7 +4333,7 @@ public class ManagementApi {
         <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteUserByEmailAsync(DeleteUserRequest body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteUserByEmailAsync(DeactivateUserRequest body, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteUserByEmailValidateBeforeCall(body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -5227,7 +5225,7 @@ public class ManagementApi {
     /**
      * Build call for exportCoupons
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -5352,9 +5350,9 @@ public class ManagementApi {
 
     /**
      * Export coupons
-     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
+     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date in RFC3339 of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -5383,9 +5381,9 @@ public class ManagementApi {
 
     /**
      * Export coupons
-     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
+     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date in RFC3339 of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -5415,9 +5413,9 @@ public class ManagementApi {
 
     /**
      * Export coupons (asynchronously)
-     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
+     * Download a CSV file containing the coupons that match the given properties.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file can contain the following columns:  - &#x60;accountid&#x60;: The ID of your deployment. - &#x60;applicationid&#x60;: The ID of the Application this coupon is related to. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. - &#x60;batchid&#x60;: The ID of the batch this coupon is part of. - &#x60;campaignid&#x60;: The ID of the campaign this coupon is related to. - &#x60;counter&#x60;: The number of times this coupon has been redeemed. - &#x60;created&#x60;: The creation date in RFC3339 of the coupon code. - &#x60;deleted&#x60;: Whether the coupon code is deleted. - &#x60;deleted_changelogid&#x60;: The ID of the delete event in the logs. - &#x60;discount_counter&#x60;: The amount of discount given by this coupon. - &#x60;discount_limitval&#x60;: The maximum discount amount that can be given be this coupon. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;id&#x60;: The internal ID of the coupon code. - &#x60;importid&#x60;: The ID of the import job that created this coupon. - &#x60;is_reservation_mandatory&#x60;: Whether this coupon requires a reservation to be redeemed. - &#x60;limits&#x60;: The limits set on this coupon. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. - &#x60;recipientintegrationid&#x60;: The integration ID of the recipient of the coupon.   Only the customer with this integration ID can redeem this code. Available only for personal codes. - &#x60;referralid&#x60;: The ID of the referral code that triggered the creation of this coupon (create coupon effect). - &#x60;reservation&#x60;: Whether the coupon can be reserved for multiple customers. - &#x60;reservation_counter&#x60;: How many times this coupon has been reserved. - &#x60;reservation_limitval&#x60;: The maximum of number of reservations this coupon can have. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;value&#x60;: The coupon code. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param value Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -5728,7 +5726,7 @@ public class ManagementApi {
     /**
      * Build call for exportEffects
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
@@ -5805,7 +5803,7 @@ public class ManagementApi {
      * Export triggered effects
      * Download a CSV file containing the triggered effects that match the given attributes.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
@@ -5826,7 +5824,7 @@ public class ManagementApi {
      * Export triggered effects
      * Download a CSV file containing the triggered effects that match the given attributes.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
@@ -5848,7 +5846,7 @@ public class ManagementApi {
      * Export triggered effects (asynchronously)
      * Download a CSV file containing the triggered effects that match the given attributes.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;couponid&#x60;: The ID of the coupon, when applicable to the effect. - &#x60;created&#x60;: The timestamp of the effect. - &#x60;event_type&#x60;: The name of the event. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/events). - &#x60;eventid&#x60;: The internal ID of the effect. - &#x60;name&#x60;: The effect name. See the [docs](https://docs.talon.one/docs/dev/integration-api/api-effects). - &#x60;profileintegrationid&#x60;: The ID of the customer profile, when applicable. - &#x60;props&#x60;: The [properties](https://docs.talon.one/docs/dev/integration-api/api-effects) of the effect. - &#x60;ruleindex&#x60;: The index of the rule. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;sessionid&#x60;: The internal ID of the session that triggered the effect. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;sessionintegrationid&#x60;: The integration ID of the session. - &#x60;total_revenue&#x60;: The total revenue. - &#x60;store_integration_id&#x60;: The integration ID of the store. You choose this ID when you create a store. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param dateFormat Determines the format of dates in the export document. (optional)
@@ -6425,6 +6423,7 @@ public class ManagementApi {
      * Build call for exportLoyaltyCards
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -6436,7 +6435,7 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyCardsCall(Integer loyaltyProgramId, String batchId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyCardsCall(Integer loyaltyProgramId, String batchId, String dateFormat, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6447,6 +6446,10 @@ public class ManagementApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (batchId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("batchId", batchId));
+        }
+
+        if (dateFormat != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dateFormat", dateFormat));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -6471,7 +6474,7 @@ public class ManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call exportLoyaltyCardsValidateBeforeCall(Integer loyaltyProgramId, String batchId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call exportLoyaltyCardsValidateBeforeCall(Integer loyaltyProgramId, String batchId, String dateFormat, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -6479,7 +6482,7 @@ public class ManagementApi {
         }
         
 
-        okhttp3.Call localVarCall = exportLoyaltyCardsCall(loyaltyProgramId, batchId, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyCardsCall(loyaltyProgramId, batchId, dateFormat, _callback);
         return localVarCall;
 
     }
@@ -6489,6 +6492,7 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6499,8 +6503,8 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public String exportLoyaltyCards(Integer loyaltyProgramId, String batchId) throws ApiException {
-        ApiResponse<String> localVarResp = exportLoyaltyCardsWithHttpInfo(loyaltyProgramId, batchId);
+    public String exportLoyaltyCards(Integer loyaltyProgramId, String batchId, String dateFormat) throws ApiException {
+        ApiResponse<String> localVarResp = exportLoyaltyCardsWithHttpInfo(loyaltyProgramId, batchId, dateFormat);
         return localVarResp.getData();
     }
 
@@ -6509,6 +6513,7 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6519,8 +6524,8 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> exportLoyaltyCardsWithHttpInfo(Integer loyaltyProgramId, String batchId) throws ApiException {
-        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, null);
+    public ApiResponse<String> exportLoyaltyCardsWithHttpInfo(Integer loyaltyProgramId, String batchId, String dateFormat) throws ApiException {
+        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, dateFormat, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6530,6 +6535,7 @@ public class ManagementApi {
      * Download a CSV file containing the loyalty cards from a specified loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns: - &#x60;identifier&#x60;: The unique identifier of the loyalty card. - &#x60;created&#x60;: The date and time the loyalty card was created. - &#x60;status&#x60;: The status of the loyalty card. - &#x60;userpercardlimit&#x60;: The maximum number of customer profiles that can be linked to the card. - &#x60;customerprofileids&#x60;: Integration IDs of the customer profiles linked to the card. - &#x60;blockreason&#x60;: The reason for transferring and blocking the loyalty card. - &#x60;generated&#x60;: An indicator of whether the loyalty card was generated. - &#x60;batchid&#x60;: The ID of the batch the loyalty card is in. 
      * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
      * @param batchId Filter results by loyalty card batch ID. (optional)
+     * @param dateFormat Determines the format of dates in the export document. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6541,9 +6547,9 @@ public class ManagementApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call exportLoyaltyCardsAsync(Integer loyaltyProgramId, String batchId, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call exportLoyaltyCardsAsync(Integer loyaltyProgramId, String batchId, String dateFormat, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, _callback);
+        okhttp3.Call localVarCall = exportLoyaltyCardsValidateBeforeCall(loyaltyProgramId, batchId, dateFormat, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6837,7 +6843,7 @@ public class ManagementApi {
     /**
      * Build call for exportReferrals
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  (optional)
@@ -6929,7 +6935,7 @@ public class ManagementApi {
      * Export referrals
      * Download a CSV file containing the referrals that match the given parameters.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;code&#x60;: The referral code. - &#x60;advocateprofileintegrationid&#x60;: The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  (optional)
@@ -6953,7 +6959,7 @@ public class ManagementApi {
      * Export referrals
      * Download a CSV file containing the referrals that match the given parameters.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;code&#x60;: The referral code. - &#x60;advocateprofileintegrationid&#x60;: The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  (optional)
@@ -6978,7 +6984,7 @@ public class ManagementApi {
      * Export referrals (asynchronously)
      * Download a CSV file containing the referrals that match the given parameters.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;code&#x60;: The referral code. - &#x60;advocateprofileintegrationid&#x60;: The profile ID of the advocate. - &#x60;startdate&#x60;: The start date in RFC3339 of the code redemption period. - &#x60;expirydate&#x60;: The end date in RFC3339 of the code redemption period. - &#x60;limitval&#x60;: The maximum number of redemptions of this code. Defaults to &#x60;1&#x60; when left blank. - &#x60;attributes&#x60;: A json object describing _custom_ referral attribute names and their values. 
      * @param applicationId The ID of the Application. It is displayed in your Talon.One deployment URL. (required)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid - &#x60;expired&#x60;: Matches referrals in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches referrals in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches referrals in which start date is set and in the future.  (optional)
@@ -9337,7 +9343,7 @@ public class ManagementApi {
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param coupon Filter by sessions with this coupon. Must be exact match. (optional)
      * @param referral Filter by sessions with this referral. Must be exact match. (optional)
-     * @param integrationId Filter by sessions with this integrationId. Must be exact match. (optional)
+     * @param integrationId Filter by sessions with this integration ID. Must be exact match. (optional)
      * @param storeIntegrationId The integration ID of the store. You choose this ID when you create a store. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -9449,7 +9455,7 @@ public class ManagementApi {
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param coupon Filter by sessions with this coupon. Must be exact match. (optional)
      * @param referral Filter by sessions with this referral. Must be exact match. (optional)
-     * @param integrationId Filter by sessions with this integrationId. Must be exact match. (optional)
+     * @param integrationId Filter by sessions with this integration ID. Must be exact match. (optional)
      * @param storeIntegrationId The integration ID of the store. You choose this ID when you create a store. (optional)
      * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9477,7 +9483,7 @@ public class ManagementApi {
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param coupon Filter by sessions with this coupon. Must be exact match. (optional)
      * @param referral Filter by sessions with this referral. Must be exact match. (optional)
-     * @param integrationId Filter by sessions with this integrationId. Must be exact match. (optional)
+     * @param integrationId Filter by sessions with this integration ID. Must be exact match. (optional)
      * @param storeIntegrationId The integration ID of the store. You choose this ID when you create a store. (optional)
      * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9506,7 +9512,7 @@ public class ManagementApi {
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param coupon Filter by sessions with this coupon. Must be exact match. (optional)
      * @param referral Filter by sessions with this referral. Must be exact match. (optional)
-     * @param integrationId Filter by sessions with this integrationId. Must be exact match. (optional)
+     * @param integrationId Filter by sessions with this integration ID. Must be exact match. (optional)
      * @param storeIntegrationId The integration ID of the store. You choose this ID when you create a store. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -11128,7 +11134,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
-     * @param templateId The ID of the Campaign Template this Campaign was created from. (optional)
+     * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -11241,7 +11247,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
-     * @param templateId The ID of the Campaign Template this Campaign was created from. (optional)
+     * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
      * @return InlineResponse2006
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11270,7 +11276,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
-     * @param templateId The ID of the Campaign Template this Campaign was created from. (optional)
+     * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
      * @return ApiResponse&lt;InlineResponse2006&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -11300,7 +11306,7 @@ public class ManagementApi {
      * @param createdBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param campaignGroupId Filter results to campaigns owned by the specified campaign access group ID. (optional)
-     * @param templateId The ID of the Campaign Template this Campaign was created from. (optional)
+     * @param templateId The ID of the campaign template this campaign was created from. (optional)
      * @param storeId Filter results to campaigns linked to the specified store ID. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -11788,9 +11794,9 @@ public class ManagementApi {
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param redeemed - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param expiresBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param expiresAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param startsBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -11942,9 +11948,9 @@ public class ManagementApi {
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param redeemed - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param expiresBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param expiresAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param startsBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -11978,9 +11984,9 @@ public class ManagementApi {
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param redeemed - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param expiresBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param expiresAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param startsBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -12015,9 +12021,9 @@ public class ManagementApi {
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param redeemed - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param expiresBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param expiresAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon expiration date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param startsBefore Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -12210,10 +12216,10 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
-     * @param name Only return reports matching the customer name (optional)
+     * @param name Only return reports matching the customer name. (optional)
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
-     * @param campaignName Only return reports matching the campaignName (optional)
-     * @param advocateName Only return reports matching the current customer referrer name (optional)
+     * @param campaignName Only return reports matching the campaign name. (optional)
+     * @param advocateName Only return reports matching the current customer referrer name. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -12322,10 +12328,10 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
-     * @param name Only return reports matching the customer name (optional)
+     * @param name Only return reports matching the customer name. (optional)
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
-     * @param campaignName Only return reports matching the campaignName (optional)
-     * @param advocateName Only return reports matching the current customer referrer name (optional)
+     * @param campaignName Only return reports matching the campaign name. (optional)
+     * @param advocateName Only return reports matching the current customer referrer name. (optional)
      * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12348,10 +12354,10 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
-     * @param name Only return reports matching the customer name (optional)
+     * @param name Only return reports matching the customer name. (optional)
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
-     * @param campaignName Only return reports matching the campaignName (optional)
-     * @param advocateName Only return reports matching the current customer referrer name (optional)
+     * @param campaignName Only return reports matching the campaign name. (optional)
+     * @param advocateName Only return reports matching the current customer referrer name. (optional)
      * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12375,10 +12381,10 @@ public class ManagementApi {
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
-     * @param name Only return reports matching the customer name (optional)
+     * @param name Only return reports matching the customer name. (optional)
      * @param integrationId Filter results performing an exact matching against the profile integration identifier. (optional)
-     * @param campaignName Only return reports matching the campaignName (optional)
-     * @param advocateName Only return reports matching the current customer referrer name (optional)
+     * @param campaignName Only return reports matching the campaign name. (optional)
+     * @param advocateName Only return reports matching the current customer referrer name. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -12816,7 +12822,7 @@ public class ManagementApi {
      * Build call for getCustomerProfiles
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -12881,7 +12887,7 @@ public class ManagementApi {
      * List all customer profiles.
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12900,7 +12906,7 @@ public class ManagementApi {
      * List all customer profiles.
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -12920,7 +12926,7 @@ public class ManagementApi {
      * List all customer profiles.
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -12942,7 +12948,7 @@ public class ManagementApi {
      * @param body body (required)
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -13013,7 +13019,7 @@ public class ManagementApi {
      * @param body body (required)
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @return InlineResponse20024
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13033,7 +13039,7 @@ public class ManagementApi {
      * @param body body (required)
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @return ApiResponse&lt;InlineResponse20024&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -13054,7 +13060,7 @@ public class ManagementApi {
      * @param body body (required)
      * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param sandbox Indicates whether you are pointing to a sandbox or Live customer. (optional, default to false)
+     * @param sandbox Indicates whether you are pointing to a sandbox or live customer. (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -14449,7 +14455,7 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
-     * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
+     * @param advocate Filter results by match with a profile ID specified in the referral&#39;s AdvocateProfileIntegrationId field. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -14558,7 +14564,7 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
-     * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
+     * @param advocate Filter results by match with a profile ID specified in the referral&#39;s AdvocateProfileIntegrationId field. (optional)
      * @return InlineResponse20010
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -14585,7 +14591,7 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
-     * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
+     * @param advocate Filter results by match with a profile ID specified in the referral&#39;s AdvocateProfileIntegrationId field. (optional)
      * @return ApiResponse&lt;InlineResponse20010&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -14613,7 +14619,7 @@ public class ManagementApi {
      * @param createdAfter Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches referrals in which the expiration date is set and in the past. The second matches referrals in which start date is null or in the past and expiration date is null or in the future, the third matches referrals in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only referrals where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only referrals where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
-     * @param advocate Filter results by match with a profile id specified in the referral&#39;s AdvocateProfileIntegrationId field (optional)
+     * @param advocate Filter results by match with a profile ID specified in the referral&#39;s AdvocateProfileIntegrationId field. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -15495,9 +15501,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param _callback Callback for upload/download progress
@@ -15590,9 +15596,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @return InlineResponse20038
@@ -15615,9 +15621,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @return ApiResponse&lt;InlineResponse20038&gt;
@@ -15641,9 +15647,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param integrationRequestUuid Filter results by integration request UUID. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param createdBefore Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -15668,9 +15674,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -15768,9 +15774,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -15794,9 +15800,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -15821,9 +15827,9 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param status Filter results by HTTP status codes. (optional)
-     * @param webhookId Filter results by Webhook. (optional)
+     * @param webhookId Filter results by webhook id. (optional)
      * @param applicationId Filter results by Application ID. (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param requestUuid Filter results by request UUID. (optional)
      * @param createdBefore Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
      * @param createdAfter Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. (optional)
@@ -18426,7 +18432,7 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
@@ -18523,7 +18529,7 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
@@ -18548,7 +18554,7 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
@@ -18574,7 +18580,7 @@ public class ManagementApi {
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param sort The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  (optional)
      * @param withTotalResultSize When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  (optional)
-     * @param campaignId Filter results by campaign. (optional)
+     * @param campaignId Filter results by campaign ID. (optional)
      * @param name The name of the store. (optional)
      * @param integrationId The integration ID of the store. (optional)
      * @param query Filter results by &#x60;name&#x60; or &#x60;integrationId&#x60;. (optional)
@@ -20436,9 +20442,9 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -20564,9 +20570,9 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  (optional)
      * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -20595,9 +20601,9 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  (optional)
      * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -20627,9 +20633,9 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
      * @param batchId Filter results by batches of coupons (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param campaignState Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -20661,8 +20667,8 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -20791,8 +20797,8 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @return InlineResponse2009
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -20822,8 +20828,8 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @return ApiResponse&lt;InlineResponse2009&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -20854,8 +20860,8 @@ public class ManagementApi {
      * @param valid Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  (optional)
      * @param usable Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  (optional)
      * @param referralId Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. (optional)
-     * @param recipientIntegrationId Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field (optional)
-     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code (optional, default to false)
+     * @param recipientIntegrationId Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. (optional)
+     * @param exactMatch Filter results to an exact case-insensitive matching against the coupon code. (optional, default to false)
      * @param batchId Filter results by batches of coupons (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

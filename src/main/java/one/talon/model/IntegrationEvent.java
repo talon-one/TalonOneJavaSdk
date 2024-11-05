@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * IntegrationEvent
  */
-@ApiModel(description = "")
 
 public class IntegrationEvent {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";

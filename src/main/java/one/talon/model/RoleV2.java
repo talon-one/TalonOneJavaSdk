@@ -29,9 +29,8 @@ import one.talon.model.RoleV2Permissions;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * RoleV2
  */
-@ApiModel(description = "")
 
 public class RoleV2 {
   public static final String SERIALIZED_NAME_ID = "id";

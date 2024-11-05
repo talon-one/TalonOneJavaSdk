@@ -106,7 +106,9 @@ public class LimitConfig {
     
     PROFILE("Profile"),
     
-    IDENTIFIER("Identifier");
+    IDENTIFIER("Identifier"),
+    
+    STORE("Store");
 
     private String value;
 

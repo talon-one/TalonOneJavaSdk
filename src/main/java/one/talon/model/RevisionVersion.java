@@ -30,9 +30,8 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * RevisionVersion
  */
-@ApiModel(description = "")
 
 public class RevisionVersion {
   public static final String SERIALIZED_NAME_ID = "id";

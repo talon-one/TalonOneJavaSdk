@@ -156,4 +156,12 @@ public class BaseLoyaltyProgramTest {
         // TODO: test cardCodeSettings
     }
 
+    /**
+     * Test the property 'returnPolicy'
+     */
+    @Test
+    public void returnPolicyTest() {
+        // TODO: test returnPolicy
+    }
+
 }

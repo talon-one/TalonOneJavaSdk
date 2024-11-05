@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import one.talon.model.TimePoint;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -88,6 +89,38 @@ public class UpdateAchievementTest {
     @Test
     public void periodEndOverrideTest() {
         // TODO: test periodEndOverride
+    }
+
+    /**
+     * Test the property 'recurrencePolicy'
+     */
+    @Test
+    public void recurrencePolicyTest() {
+        // TODO: test recurrencePolicy
+    }
+
+    /**
+     * Test the property 'activationPolicy'
+     */
+    @Test
+    public void activationPolicyTest() {
+        // TODO: test activationPolicy
+    }
+
+    /**
+     * Test the property 'fixedStartDate'
+     */
+    @Test
+    public void fixedStartDateTest() {
+        // TODO: test fixedStartDate
+    }
+
+    /**
+     * Test the property 'endDate'
+     */
+    @Test
+    public void endDateTest() {
+        // TODO: test endDate
     }
 
 }

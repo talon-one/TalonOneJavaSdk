@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * TalangAttribute
  */
-@ApiModel(description = "")
 
 public class TalangAttribute {
   /**

@@ -27,9 +27,8 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * UpdateCouponBatch
  */
-@ApiModel(description = "")
 
 public class UpdateCouponBatch {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";

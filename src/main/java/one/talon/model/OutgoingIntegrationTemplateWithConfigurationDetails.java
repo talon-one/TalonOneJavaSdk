@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * OutgoingIntegrationTemplateWithConfigurationDetails
  */
-@ApiModel(description = "")
 
 public class OutgoingIntegrationTemplateWithConfigurationDetails {
   public static final String SERIALIZED_NAME_ID = "id";

@@ -236,6 +236,57 @@ public class BaseLoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_CARD_CODE_SETTINGS)
   private CodeGeneratorSettings cardCodeSettings;
 
+  /**
+   * The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - &#x60;only_pending&#x60;: Only pending points can be rolled back. - &#x60;within_balance&#x60;: Available active points can be rolled back if there aren&#39;t enough pending points. The active balance of the customer cannot be negative. 
+   */
+  @JsonAdapter(ReturnPolicyEnum.Adapter.class)
+  public enum ReturnPolicyEnum {
+    ONLY_PENDING("only_pending"),
+    
+    WITHIN_BALANCE("within_balance");
+
+    private String value;
+
+    ReturnPolicyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ReturnPolicyEnum fromValue(String value) {
+      for (ReturnPolicyEnum b : ReturnPolicyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ReturnPolicyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ReturnPolicyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ReturnPolicyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ReturnPolicyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_RETURN_POLICY = "returnPolicy";
+  @SerializedName(SERIALIZED_NAME_RETURN_POLICY)
+  private ReturnPolicyEnum returnPolicy;
+
 
   public BaseLoyaltyProgram title(String title) {
     
@@ -568,6 +619,29 @@ public class BaseLoyaltyProgram {
   }
 
 
+  public BaseLoyaltyProgram returnPolicy(ReturnPolicyEnum returnPolicy) {
+    
+    this.returnPolicy = returnPolicy;
+    return this;
+  }
+
+   /**
+   * The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - &#x60;only_pending&#x60;: Only pending points can be rolled back. - &#x60;within_balance&#x60;: Available active points can be rolled back if there aren&#39;t enough pending points. The active balance of the customer cannot be negative. 
+   * @return returnPolicy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - `only_pending`: Only pending points can be rolled back. - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative. ")
+
+  public ReturnPolicyEnum getReturnPolicy() {
+    return returnPolicy;
+  }
+
+
+  public void setReturnPolicy(ReturnPolicyEnum returnPolicy) {
+    this.returnPolicy = returnPolicy;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -590,12 +664,13 @@ public class BaseLoyaltyProgram {
         Objects.equals(this.tierCycleStartDate, baseLoyaltyProgram.tierCycleStartDate) &&
         Objects.equals(this.tiersExpireIn, baseLoyaltyProgram.tiersExpireIn) &&
         Objects.equals(this.tiersDowngradePolicy, baseLoyaltyProgram.tiersDowngradePolicy) &&
-        Objects.equals(this.cardCodeSettings, baseLoyaltyProgram.cardCodeSettings);
+        Objects.equals(this.cardCodeSettings, baseLoyaltyProgram.cardCodeSettings) &&
+        Objects.equals(this.returnPolicy, baseLoyaltyProgram.returnPolicy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings);
+    return Objects.hash(title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings, returnPolicy);
   }
 
 
@@ -617,6 +692,7 @@ public class BaseLoyaltyProgram {
     sb.append("    tiersExpireIn: ").append(toIndentedString(tiersExpireIn)).append("\n");
     sb.append("    tiersDowngradePolicy: ").append(toIndentedString(tiersDowngradePolicy)).append("\n");
     sb.append("    cardCodeSettings: ").append(toIndentedString(cardCodeSettings)).append("\n");
+    sb.append("    returnPolicy: ").append(toIndentedString(returnPolicy)).append("\n");
     sb.append("}");
     return sb.toString();
   }

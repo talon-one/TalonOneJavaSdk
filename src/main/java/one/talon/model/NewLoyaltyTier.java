@@ -47,10 +47,10 @@ public class NewLoyaltyTier {
   }
 
    /**
-   * The name of the tier
+   * The name of the tier.
    * @return name
   **/
-  @ApiModelProperty(example = "Gold", required = true, value = "The name of the tier")
+  @ApiModelProperty(example = "Gold", required = true, value = "The name of the tier.")
 
   public String getName() {
     return name;
@@ -69,12 +69,12 @@ public class NewLoyaltyTier {
   }
 
    /**
-   * The minimum amount of points required to be eligible for the tier.
+   * The minimum amount of points required to enter the tier.
    * minimum: 0
    * maximum: 999999999999.99
    * @return minPoints
   **/
-  @ApiModelProperty(example = "300.0", required = true, value = "The minimum amount of points required to be eligible for the tier.")
+  @ApiModelProperty(example = "300.0", required = true, value = "The minimum amount of points required to enter the tier.")
 
   public BigDecimal getMinPoints() {
     return minPoints;

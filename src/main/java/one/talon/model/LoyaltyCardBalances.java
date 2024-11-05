@@ -31,9 +31,9 @@ import one.talon.model.LoyaltyBalance;
 import one.talon.model.LoyaltyCardProfileRegistration;
 
 /**
- * 
+ * List of customer profiles linked to the loyalty card.
  */
-@ApiModel(description = "")
+@ApiModel(description = "List of customer profiles linked to the loyalty card.")
 
 public class LoyaltyCardBalances {
   public static final String SERIALIZED_NAME_BALANCE = "balance";

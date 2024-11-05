@@ -2,7 +2,6 @@
 
 # NewEvent
 
-
 ## Properties
 
 Name | Type | Description | Notes

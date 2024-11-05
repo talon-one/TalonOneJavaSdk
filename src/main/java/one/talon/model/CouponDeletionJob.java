@@ -29,9 +29,8 @@ import one.talon.model.CouponDeletionFilters;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CouponDeletionJob
  */
-@ApiModel(description = "")
 
 public class CouponDeletionJob {
   public static final String SERIALIZED_NAME_ID = "id";

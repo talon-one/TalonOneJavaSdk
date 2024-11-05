@@ -2,7 +2,6 @@
 
 # TemplateLimitConfig
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -33,6 +32,7 @@ COUPON | &quot;Coupon&quot;
 REFERRAL | &quot;Referral&quot;
 PROFILE | &quot;Profile&quot;
 IDENTIFIER | &quot;Identifier&quot;
+STORE | &quot;Store&quot;
 
 
 

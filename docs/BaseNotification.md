@@ -2,7 +2,6 @@
 
 # BaseNotification
 
-
 ## Properties
 
 Name | Type | Description | Notes

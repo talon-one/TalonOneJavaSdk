@@ -28,9 +28,8 @@ import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Store
  */
-@ApiModel(description = "")
 
 public class Store {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -99,10 +98,10 @@ public class Store {
   }
 
    /**
-   * The time this entity was created. The time this entity was created.
+   * The time this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The time this entity was created. The time this entity was created.")
+  @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;

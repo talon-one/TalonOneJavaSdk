@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * A generic effect that is fired by a triggered campaign. The props property will contain information specific to the specific effect type.
  */
-@ApiModel(description = "")
+@ApiModel(description = "A generic effect that is fired by a triggered campaign. The props property will contain information specific to the specific effect type.")
 
 public class Effect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";

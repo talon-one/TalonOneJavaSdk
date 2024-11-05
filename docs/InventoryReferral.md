@@ -2,7 +2,6 @@
 
 # InventoryReferral
 
-
 ## Properties
 
 Name | Type | Description | Notes

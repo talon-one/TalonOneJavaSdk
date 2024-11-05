@@ -539,7 +539,7 @@ public class AccountAnalytics {
    * The point in time when the analytics numbers were updated last.
    * @return lastUpdatedAt
   **/
-  @ApiModelProperty(required = true, value = "The point in time when the analytics numbers were updated last.")
+  @ApiModelProperty(example = "2022-12-12T12:12:12Z", required = true, value = "The point in time when the analytics numbers were updated last.")
 
   public OffsetDateTime getLastUpdatedAt() {
     return lastUpdatedAt;

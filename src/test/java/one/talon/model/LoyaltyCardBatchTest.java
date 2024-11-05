@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.CodeGeneratorSettings;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -62,6 +63,14 @@ public class LoyaltyCardBatchTest {
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'cardCodeSettings'
+     */
+    @Test
+    public void cardCodeSettingsTest() {
+        // TODO: test cardCodeSettings
     }
 
 }

@@ -108,6 +108,38 @@ public class AchievementTest {
     }
 
     /**
+     * Test the property 'recurrencePolicy'
+     */
+    @Test
+    public void recurrencePolicyTest() {
+        // TODO: test recurrencePolicy
+    }
+
+    /**
+     * Test the property 'activationPolicy'
+     */
+    @Test
+    public void activationPolicyTest() {
+        // TODO: test activationPolicy
+    }
+
+    /**
+     * Test the property 'fixedStartDate'
+     */
+    @Test
+    public void fixedStartDateTest() {
+        // TODO: test fixedStartDate
+    }
+
+    /**
+     * Test the property 'endDate'
+     */
+    @Test
+    public void endDateTest() {
+        // TODO: test endDate
+    }
+
+    /**
      * Test the property 'campaignId'
      */
     @Test

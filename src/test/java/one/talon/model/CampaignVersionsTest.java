@@ -41,6 +41,14 @@ public class CampaignVersionsTest {
     }
 
     /**
+     * Test the property 'revisionFrontendState'
+     */
+    @Test
+    public void revisionFrontendStateTest() {
+        // TODO: test revisionFrontendState
+    }
+
+    /**
      * Test the property 'activeRevisionId'
      */
     @Test

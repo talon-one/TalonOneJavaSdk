@@ -2,7 +2,6 @@
 
 # NewAdditionalCost
 
-
 ## Properties
 
 Name | Type | Description | Notes

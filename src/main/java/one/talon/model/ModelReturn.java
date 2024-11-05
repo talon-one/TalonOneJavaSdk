@@ -29,9 +29,8 @@ import one.talon.model.ReturnedCartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ModelReturn
  */
-@ApiModel(description = "")
 
 public class ModelReturn {
   public static final String SERIALIZED_NAME_ID = "id";

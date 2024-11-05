@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * NewStore
  */
-@ApiModel(description = "")
 
 public class NewStore {
   public static final String SERIALIZED_NAME_NAME = "name";

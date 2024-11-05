@@ -158,6 +158,14 @@ public class NewLoyaltyProgramTest {
     }
 
     /**
+     * Test the property 'returnPolicy'
+     */
+    @Test
+    public void returnPolicyTest() {
+        // TODO: test returnPolicy
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test

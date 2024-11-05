@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * NewEventType
  */
-@ApiModel(description = "")
 
 public class NewEventType {
   public static final String SERIALIZED_NAME_TITLE = "title";

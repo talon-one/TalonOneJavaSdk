@@ -58,4 +58,12 @@ public class GenerateLoyaltyCardTest {
         // TODO: test customerProfileIds
     }
 
+    /**
+     * Test the property 'cardIdentifier'
+     */
+    @Test
+    public void cardIdentifierTest() {
+        // TODO: test cardIdentifier
+    }
+
 }

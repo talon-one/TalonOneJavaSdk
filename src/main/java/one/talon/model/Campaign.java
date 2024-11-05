@@ -32,9 +32,8 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Campaign
  */
-@ApiModel(description = "")
 
 public class Campaign {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -349,7 +348,7 @@ public class Campaign {
   private Integer templateId;
 
   /**
-   * A campaign state described exactly as in the Campaign Manager.
+   * The campaign state displayed in the Campaign Manager.
    */
   @JsonAdapter(FrontendStateEnum.Adapter.class)
   public enum FrontendStateEnum {
@@ -361,7 +360,9 @@ public class Campaign {
     
     DISABLED("disabled"),
     
-    ARCHIVED("archived");
+    ARCHIVED("archived"),
+    
+    STAGED("staged");
 
     private String value;
 
@@ -408,6 +409,57 @@ public class Campaign {
   public static final String SERIALIZED_NAME_STORES_IMPORTED = "storesImported";
   @SerializedName(SERIALIZED_NAME_STORES_IMPORTED)
   private Boolean storesImported;
+
+  /**
+   * The campaign revision state displayed in the Campaign Manager.
+   */
+  @JsonAdapter(RevisionFrontendStateEnum.Adapter.class)
+  public enum RevisionFrontendStateEnum {
+    REVISED("revised"),
+    
+    PENDING("pending");
+
+    private String value;
+
+    RevisionFrontendStateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RevisionFrontendStateEnum fromValue(String value) {
+      for (RevisionFrontendStateEnum b : RevisionFrontendStateEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RevisionFrontendStateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RevisionFrontendStateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RevisionFrontendStateEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RevisionFrontendStateEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_REVISION_FRONTEND_STATE = "revisionFrontendState";
+  @SerializedName(SERIALIZED_NAME_REVISION_FRONTEND_STATE)
+  private RevisionFrontendStateEnum revisionFrontendState;
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
@@ -1385,10 +1437,10 @@ public class Campaign {
   }
 
    /**
-   * A campaign state described exactly as in the Campaign Manager.
+   * The campaign state displayed in the Campaign Manager.
    * @return frontendState
   **/
-  @ApiModelProperty(example = "running", required = true, value = "A campaign state described exactly as in the Campaign Manager.")
+  @ApiModelProperty(example = "running", required = true, value = "The campaign state displayed in the Campaign Manager.")
 
   public FrontendStateEnum getFrontendState() {
     return frontendState;
@@ -1419,6 +1471,29 @@ public class Campaign {
 
   public void setStoresImported(Boolean storesImported) {
     this.storesImported = storesImported;
+  }
+
+
+  public Campaign revisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
+    
+    this.revisionFrontendState = revisionFrontendState;
+    return this;
+  }
+
+   /**
+   * The campaign revision state displayed in the Campaign Manager.
+   * @return revisionFrontendState
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "revised", value = "The campaign revision state displayed in the Campaign Manager.")
+
+  public RevisionFrontendStateEnum getRevisionFrontendState() {
+    return revisionFrontendState;
+  }
+
+
+  public void setRevisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
+    this.revisionFrontendState = revisionFrontendState;
   }
 
 
@@ -1611,6 +1686,7 @@ public class Campaign {
         Objects.equals(this.templateId, campaign.templateId) &&
         Objects.equals(this.frontendState, campaign.frontendState) &&
         Objects.equals(this.storesImported, campaign.storesImported) &&
+        Objects.equals(this.revisionFrontendState, campaign.revisionFrontendState) &&
         Objects.equals(this.activeRevisionId, campaign.activeRevisionId) &&
         Objects.equals(this.activeRevisionVersionId, campaign.activeRevisionVersionId) &&
         Objects.equals(this.version, campaign.version) &&
@@ -1621,7 +1697,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
   }
 
 
@@ -1671,6 +1747,7 @@ public class Campaign {
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
+    sb.append("    revisionFrontendState: ").append(toIndentedString(revisionFrontendState)).append("\n");
     sb.append("    activeRevisionId: ").append(toIndentedString(activeRevisionId)).append("\n");
     sb.append("    activeRevisionVersionId: ").append(toIndentedString(activeRevisionVersionId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");

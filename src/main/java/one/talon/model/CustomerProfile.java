@@ -31,9 +31,8 @@ import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * CustomerProfile
  */
-@ApiModel(description = "")
 
 public class CustomerProfile {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -110,10 +109,10 @@ public class CustomerProfile {
   }
 
    /**
-   * The time this entity was created. The time this entity was created.
+   * The time this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The time this entity was created. The time this entity was created.")
+  @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;

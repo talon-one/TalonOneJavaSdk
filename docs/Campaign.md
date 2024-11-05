@@ -2,7 +2,6 @@
 
 # Campaign
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -47,8 +46,9 @@ Name | Type | Description | Notes
 **createdBy** | **String** | Name of the user who created this campaign if available. |  [optional]
 **updatedBy** | **String** | Name of the user who last updated this campaign if available. |  [optional]
 **templateId** | **Integer** | The ID of the Campaign Template this Campaign was created from. |  [optional]
-**frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | A campaign state described exactly as in the Campaign Manager. | 
+**frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | The campaign state displayed in the Campaign Manager. | 
 **storesImported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. | 
+**revisionFrontendState** | [**RevisionFrontendStateEnum**](#RevisionFrontendStateEnum) | The campaign revision state displayed in the Campaign Manager. |  [optional]
 **activeRevisionId** | **Integer** | ID of the revision that was last activated on this campaign.  |  [optional]
 **activeRevisionVersionId** | **Integer** | ID of the revision version that is active on the campaign.  |  [optional]
 **version** | **Integer** | Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign.  |  [optional]
@@ -99,6 +99,16 @@ SCHEDULED | &quot;scheduled&quot;
 RUNNING | &quot;running&quot;
 DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
+STAGED | &quot;staged&quot;
+
+
+
+## Enum: RevisionFrontendStateEnum
+
+Name | Value
+---- | -----
+REVISED | &quot;revised&quot;
+PENDING | &quot;pending&quot;
 
 
 

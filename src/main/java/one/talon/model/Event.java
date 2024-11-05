@@ -30,9 +30,8 @@ import one.talon.model.Meta;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Event
  */
-@ApiModel(description = "")
 
 public class Event {
   public static final String SERIALIZED_NAME_ID = "id";

@@ -2,13 +2,12 @@
 
 # ApplicationSession
 
-
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Internal ID of this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. The time this entity was created. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **storeIntegrationId** | **String** | The integration ID of the store. You choose this ID when you create a store. |  [optional]
 **applicationId** | **Integer** | The ID of the application that owns this entity. | 

@@ -2,7 +2,7 @@
 
 # LoyaltyCardBalances
 
-
+List of customer profiles linked to the loyalty card.
 ## Properties
 
 Name | Type | Description | Notes

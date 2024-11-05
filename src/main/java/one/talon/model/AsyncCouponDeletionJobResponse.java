@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * AsyncCouponDeletionJobResponse
  */
-@ApiModel(description = "")
 
 public class AsyncCouponDeletionJobResponse {
   public static final String SERIALIZED_NAME_ID = "id";

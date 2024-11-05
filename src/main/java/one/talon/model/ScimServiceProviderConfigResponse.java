@@ -29,6 +29,7 @@ import one.talon.model.ScimServiceProviderConfigResponseBulk;
 import one.talon.model.ScimServiceProviderConfigResponseChangePassword;
 import one.talon.model.ScimServiceProviderConfigResponseFilter;
 import one.talon.model.ScimServiceProviderConfigResponsePatch;
+import one.talon.model.ScimServiceProviderConfigResponseSort;
 
 /**
  * Service provider configuration details.
@@ -59,6 +60,10 @@ public class ScimServiceProviderConfigResponse {
   public static final String SERIALIZED_NAME_SCHEMAS = "schemas";
   @SerializedName(SERIALIZED_NAME_SCHEMAS)
   private List<String> schemas = null;
+
+  public static final String SERIALIZED_NAME_SORT = "sort";
+  @SerializedName(SERIALIZED_NAME_SORT)
+  private ScimServiceProviderConfigResponseSort sort;
 
 
   public ScimServiceProviderConfigResponse bulk(ScimServiceProviderConfigResponseBulk bulk) {
@@ -207,6 +212,29 @@ public class ScimServiceProviderConfigResponse {
   }
 
 
+  public ScimServiceProviderConfigResponse sort(ScimServiceProviderConfigResponseSort sort) {
+    
+    this.sort = sort;
+    return this;
+  }
+
+   /**
+   * Get sort
+   * @return sort
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ScimServiceProviderConfigResponseSort getSort() {
+    return sort;
+  }
+
+
+  public void setSort(ScimServiceProviderConfigResponseSort sort) {
+    this.sort = sort;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -221,12 +249,13 @@ public class ScimServiceProviderConfigResponse {
         Objects.equals(this.documentationUri, scimServiceProviderConfigResponse.documentationUri) &&
         Objects.equals(this.filter, scimServiceProviderConfigResponse.filter) &&
         Objects.equals(this.patch, scimServiceProviderConfigResponse.patch) &&
-        Objects.equals(this.schemas, scimServiceProviderConfigResponse.schemas);
+        Objects.equals(this.schemas, scimServiceProviderConfigResponse.schemas) &&
+        Objects.equals(this.sort, scimServiceProviderConfigResponse.sort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bulk, changePassword, documentationUri, filter, patch, schemas);
+    return Objects.hash(bulk, changePassword, documentationUri, filter, patch, schemas, sort);
   }
 
 
@@ -240,6 +269,7 @@ public class ScimServiceProviderConfigResponse {
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
     sb.append("    patch: ").append(toIndentedString(patch)).append("\n");
     sb.append("    schemas: ").append(toIndentedString(schemas)).append("\n");
+    sb.append("    sort: ").append(toIndentedString(sort)).append("\n");
     sb.append("}");
     return sb.toString();
   }

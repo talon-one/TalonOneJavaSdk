@@ -31,9 +31,8 @@ import one.talon.model.LoyaltyMembership;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationCustomer
  */
-@ApiModel(description = "")
 
 public class ApplicationCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -92,10 +91,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * Internal ID of this entity. Internal ID of this entity.
+   * Internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Internal ID of this entity. Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
   public Integer getId() {
     return id;
@@ -114,10 +113,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * The time this entity was created. The time this entity was created. The time this entity was created. The time this entity was created.
+   * The time this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The time this entity was created. The time this entity was created. The time this entity was created. The time this entity was created.")
+  @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -136,10 +135,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * The integration ID set by your integration layer. The integration ID set by your integration layer.
+   * The integration ID set by your integration layer.
    * @return integrationId
   **/
-  @ApiModelProperty(required = true, value = "The integration ID set by your integration layer. The integration ID set by your integration layer.")
+  @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;
@@ -180,10 +179,10 @@ public class ApplicationCustomer {
   }
 
    /**
-   * The ID of the Talon.One account that owns this profile. The ID of the Talon.One account that owns this profile.
+   * The ID of the Talon.One account that owns this profile.
    * @return accountId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the Talon.One account that owns this profile. The ID of the Talon.One account that owns this profile.")
+  @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
   public Integer getAccountId() {
     return accountId;

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **createdBy** | **String** | Name of the user who created this campaign if available. |  [optional]
 **updatedBy** | **String** | Name of the user who last updated this campaign if available. |  [optional]
 **templateId** | **Integer** | The ID of the Campaign Template this Campaign was created from. |  [optional]
-**frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | A campaign state described exactly as in the Campaign Manager. | 
+**frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | The campaign state displayed in the Campaign Manager. | 
 **storesImported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. | 
 
 
@@ -41,6 +41,7 @@ SCHEDULED | &quot;scheduled&quot;
 RUNNING | &quot;running&quot;
 DISABLED | &quot;disabled&quot;
 ARCHIVED | &quot;archived&quot;
+STAGED | &quot;staged&quot;
 
 
 

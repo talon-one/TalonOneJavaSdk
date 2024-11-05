@@ -28,9 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * TemplateLimitConfig
  */
-@ApiModel(description = "")
 
 public class TemplateLimitConfig {
   public static final String SERIALIZED_NAME_ACTION = "action";
@@ -107,7 +106,9 @@ public class TemplateLimitConfig {
     
     PROFILE("Profile"),
     
-    IDENTIFIER("Identifier");
+    IDENTIFIER("Identifier"),
+    
+    STORE("Store");
 
     private String value;
 

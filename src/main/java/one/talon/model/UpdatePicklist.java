@@ -27,9 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * UpdatePicklist
  */
-@ApiModel(description = "")
 
 public class UpdatePicklist {
   /**

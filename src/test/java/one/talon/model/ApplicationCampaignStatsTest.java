@@ -49,6 +49,14 @@ public class ApplicationCampaignStatsTest {
     }
 
     /**
+     * Test the property 'staged'
+     */
+    @Test
+    public void stagedTest() {
+        // TODO: test staged
+    }
+
+    /**
      * Test the property 'scheduled'
      */
     @Test

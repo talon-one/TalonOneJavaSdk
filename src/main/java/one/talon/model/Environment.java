@@ -39,9 +39,8 @@ import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Environment
  */
-@ApiModel(description = "")
 
 public class Environment {
   public static final String SERIALIZED_NAME_ID = "id";

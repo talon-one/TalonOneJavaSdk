@@ -2,7 +2,6 @@
 
 # CampaignCollection
 
-
 ## Properties
 
 Name | Type | Description | Notes

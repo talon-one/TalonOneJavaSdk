@@ -26,9 +26,8 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * MultipleAudiencesItem
  */
-@ApiModel(description = "")
 
 public class MultipleAudiencesItem {
   public static final String SERIALIZED_NAME_ID = "id";

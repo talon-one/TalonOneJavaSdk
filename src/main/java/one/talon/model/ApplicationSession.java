@@ -32,9 +32,8 @@ import one.talon.model.CartItem;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * ApplicationSession
  */
-@ApiModel(description = "")
 
 public class ApplicationSession {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -178,10 +177,10 @@ public class ApplicationSession {
   }
 
    /**
-   * The time this entity was created. The time this entity was created.
+   * The time this entity was created.
    * @return created
   **/
-  @ApiModelProperty(required = true, value = "The time this entity was created. The time this entity was created.")
+  @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;

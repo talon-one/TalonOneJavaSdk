@@ -2,7 +2,7 @@
 
 # LedgerEntry
 
-
+Entry in the point ledger.
 ## Properties
 
 Name | Type | Description | Notes

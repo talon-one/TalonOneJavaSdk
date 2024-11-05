@@ -24,15 +24,6 @@ security:
 - management_key: []
 tags:
 - description: |
-    Endpoints used for communication between Talon.One and the AI assistant.
-  name: AI assistant
-- description: |
-    Represents the API used to send [Integration API](https://docs.talon.one/docs/dev/integration-api/overview) requests to a given Application.
-  name: API keys
-- description: |
-    Operations regarding account statistics.
-  name: Account statistics
-- description: |
     Operations for updating account information such as billing email addresses, inviting users, etc.
   name: Accounts and users
 - description: |
@@ -96,19 +87,11 @@ tags:
     See the [docs](https://docs.talon.one/docs/product/campaigns/managing-collections).
   name: Collections
 - description: |
-    Represents a configuration for the Campaign Manager.
-  name: Config
-- description: |
     Coupons are unique codes belonging to a particular campaign. They don't define any behavior on their own.
     Instead the campaign ruleset can include rules that validate coupons and carry out particular effects.
 
     See the [docs](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview).
   name: Coupons
-- description: |
-    Represents the custom effects that users can create.
-
-    See the [docs](https://docs.talon.one/docs/product/account/dev-tools/managing-custom-effects).
-  name: Custom effects
 - description: |
     Represents the data of a customer, including sessions and events used for reporting and debugging in the Campaign Manager.
   name: Customer data
@@ -124,9 +107,6 @@ tags:
     Sessions are a key concept of Talon.One. We strongly recommend you read the [documentation about customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
   name: Customer sessions
 - description: |
-    Represents internal database-related operations.
-  name: Database
-- description: |
     Represents a single occurrence of a specific customer action, for example, updating the cart or signing up for a newsletter.
 
     There are 2 types of events:
@@ -134,19 +114,10 @@ tags:
     - **Custom events:** They are triggered by the [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.
   name: Events
 - description: |
-    How we enable features in accounts.
-  name: Feature flags
-- description: |
     Represents a program that rewards customers with giveaways, such as free gift cards.
 
     See the [docs](https://docs.talon.one/docs/product/giveaways/overview).
   name: Giveaways
-- description: |
-    Represents internal notification operations. Not to be confused with the [notifications relying on webhooks](#tag/Notifications).
-  name: Internal notifications
-- description: Represents endpoints used internally by other endpoints. Do not use
-    them.
-  name: Internal routing
 - description: |
     Operations to query the Talon.One logs. They contain all incoming and outgoing requests.
   name: Logs
@@ -164,22 +135,8 @@ tags:
     [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow your customers to collect and spend loyalty points within a card-based loyalty program.
   name: Loyalty cards
 - description: |
-    Represents a key to access specified endpoints of the Management API programmatically.
-  name: Management keys
-- description: |
     Represents the notifications that customers can create about various events. See [Managing notifications](https://docs.talon.one/docs/product/applications/outbound-notifications).
   name: Notifications
-- description: |
-    Represents various Integration API endpoints used internally for authentication. Do not use them.
-  name: Other
-- description: |
-    Represents the outgoing integrations that we currently support.
-
-    An outgoing integration may be, for example, a customer data platform or customer engagement platform.
-  name: Outgoing integrations
-- description: |
-    Represents the picklist that users can create for a custom effect.
-  name: Picklists
 - description: |
     A referral is a code shared between a customer and a prospect.
 
@@ -196,26 +153,12 @@ tags:
     See the [docs](https://docs.talon.one/docs/product/account/account-settings/managing-roles).
   name: Roles
 - description: |
-    Represents the endpoints related to the SAML configuration used for single sign-on (SSO).
-  name: SAML
-- description: |
     Represents a session used for authentication purposes.
     Create one with the [Create session](#operation/createSession) endpoint.
   name: Sessions
 - description: |
-    Represents [single sign-on](https://docs.talon.one/docs/product/account/account-settings/setting-up-sso) (SSO) configuration-related endpoints.
-
-    Single sign-on is a way to allow users to access many service providers using a single username and password by relying on a single identity provider.
-  name: Single sign-on
-- description: |
     Represents physical or digital stores, branches, and franchises.
   name: Stores
-- description: |
-    Talang template operations.
-  name: Talang templates
-- description: |
-    Represents [two-factor authentication](https://docs.talon.one/docs/product/account/account-settings/setting-up-2fa) (2FA) that requires users of an organization to enter a one-time security code sent to their email address when signing in to their Talon.One account.
-  name: Two-factor authentication
 - description: |
     A way to send information from Talon.One to the URI of your choice.
 
@@ -1195,7 +1138,12 @@ paths:
       description: |
         Delete all attributes on the customer profile and on entities that reference this customer profile.
 
-        **Important:** To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours.
+        **Important:**
+        - Customer data is deleted from all Applications in the [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)
+          that the API key belongs to. For example, if you use this endpoint with an API key that belongs to a sandbox Application,
+          customer data will be deleted from all sandbox Applications. This is because customer data is shared
+          between Applications from the same environment.
+        - To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours.
       operationId: deleteCustomerData
       parameters:
       - description: |
@@ -1495,7 +1443,7 @@ paths:
           format: date-time
           type: string
       - description: Filter results by one or more subledger IDs. Must be exact match.
-        explode: false
+        explode: true
         in: query
         name: subledgerId
         schema:
@@ -1538,7 +1486,7 @@ paths:
     get:
       description: |
         Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program.
-        You can filter balances by date and subledger ID.
+        You can filter balances by date and subledger ID, and include tier-related information in the response.
 
         **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.
 
@@ -1597,7 +1545,7 @@ paths:
       - description: |
           Indicates whether the customer's projected tier information is included in the response.
 
-          When set to `true`, the response includes information about the customer’s active points and the name of the projected tier.
+          When set to `true`, the response includes information about the customer's active points and the name of the projected tier.
 
           **Note** We recommend filtering by `subledgerId` for better performance.
         in: query
@@ -1632,7 +1580,7 @@ paths:
           description: Not found
       security:
       - api_key_v1: []
-      summary: Get customer's loyalty points
+      summary: Get customer's loyalty balances
       tags:
       - integration
       x-accepts: application/json
@@ -1661,7 +1609,7 @@ paths:
           maxLength: 108
           type: string
       - description: Filter results by one or more subledger IDs. Must be exact match.
-        explode: false
+        explode: true
         in: query
         name: subledgerId
         schema:
@@ -1907,7 +1855,7 @@ paths:
           - expired
           type: string
       - description: Filter results by one or more subledger IDs. Must be exact match.
-        explode: false
+        explode: true
         in: query
         name: subledgerId
         schema:
@@ -2164,6 +2112,7 @@ paths:
           - scheduled
           - running
           - expired
+          - staged
           type: string
       - description: Filter results performing case-insensitive matching against the
           name of the campaign.
@@ -2199,7 +2148,7 @@ paths:
         name: campaignGroupId
         schema:
           type: integer
-      - description: The ID of the Campaign Template this Campaign was created from.
+      - description: The ID of the campaign template this campaign was created from.
         in: query
         name: templateId
         schema:
@@ -2605,6 +2554,7 @@ paths:
           - scheduled
           - running
           - expired
+          - staged
           type: string
       requestBody:
         content:
@@ -2825,7 +2775,7 @@ paths:
         schema:
           type: integer
       - description: |
-          Filter results by match with a profile id specified in the coupon's `RecipientIntegrationId` field.
+          Filter results by match with a profile ID specified in the coupon's `RecipientIntegrationId` field.
         in: query
         name: recipientIntegrationId
         schema:
@@ -3182,8 +3132,8 @@ paths:
         name: referralId
         schema:
           type: integer
-      - description: Filter results by match with a profile id specified in the coupon's
-          RecipientIntegrationId field
+      - description: Filter results by match with a profile ID specified in the coupon's
+          RecipientIntegrationId field.
         in: query
         name: recipientIntegrationId
         schema:
@@ -3194,7 +3144,7 @@ paths:
         schema:
           type: string
       - description: Filter results to an exact case-insensitive matching against
-          the coupon code
+          the coupon code.
         in: query
         name: exactMatch
         schema:
@@ -3435,14 +3385,14 @@ paths:
         name: referralId
         schema:
           type: integer
-      - description: Filter results by match with a profile id specified in the coupon's
-          RecipientIntegrationId field
+      - description: Filter results by match with a profile ID specified in the coupon's
+          RecipientIntegrationId field.
         in: query
         name: recipientIntegrationId
         schema:
           type: string
       - description: Filter results to an exact case-insensitive matching against
-          the coupon code
+          the coupon code.
         in: query
         name: exactMatch
         schema:
@@ -3562,8 +3512,8 @@ paths:
         name: referralId
         schema:
           type: integer
-      - description: Filter results by match with a profile id specified in the coupon's
-          RecipientIntegrationId field
+      - description: Filter results by match with a profile ID specified in the coupon's
+          RecipientIntegrationId field.
         in: query
         name: recipientIntegrationId
         schema:
@@ -3574,7 +3524,7 @@ paths:
         schema:
           type: string
       - description: Filter results to an exact case-insensitive matching against
-          the coupon code
+          the coupon code.
         in: query
         name: exactMatch
         schema:
@@ -3598,6 +3548,7 @@ paths:
           - scheduled
           - running
           - expired
+          - staged
           type: string
       requestBody:
         content:
@@ -3779,8 +3730,8 @@ paths:
           - "true"
           - "false"
           type: string
-      - description: Filter results by match with a profile id specified in the referral's
-          AdvocateProfileIntegrationId field
+      - description: Filter results by match with a profile ID specified in the referral's
+          AdvocateProfileIntegrationId field.
         in: query
         name: advocate
         schema:
@@ -4381,10 +4332,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                customerprofileid,customersessionid,rulesetid,rulename,programid,type,name,subledgerid,startdate,expirydate,id,created,amount,archived,campaignid
-                8NHOS78H,06b0fafb-ccbf-42c7-b44b-d858e8b525022,1691,test,37,subtraction,10% of current total,,immediate,unlimited,60803,2022-11-29 16:16:10,100.00,false,5
-                EB780RDN,06b0fafb-ccbf-42c7-b44b-d858e8b525022,1691,test,37,addition,Reimbursed loyalty points,,immediate,unlimited,60804,2022-11-29 16:16:23,100.00,false,5
               schema:
                 format: csv
                 type: string
@@ -4441,10 +4388,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                programid,subledgerid,customerprofileid,tiername,startdate,expirydate
-                1,SUB1,Dinesh,Golden,2023-08-02T15:04:05Z07:00,2024-08-02T15:04:05Z07:00
-                1,SUB2,Gilfoyle,Silver,2023-03-21T03:45:12Z05:00,2026-03-21T03:45:12Z05:00
               schema:
                 format: csv
                 type: string
@@ -4523,10 +4466,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                loyaltyProgramID,loyaltySubledger,profileIntegrationID,currentBalance,pendingBalance,expiredBalance,spentBalance,currentTier
-                40,,8786NTHSAO8,10.00,0.00,0.00,0.00,First
-                40,,2735HATHOH8,20.00,0.00,0.00,0.00,First
               schema:
                 format: csv
                 type: string
@@ -4868,9 +4807,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                loyaltyProgramID,loyaltySubledger,cardIdentifier,cardState,currentBalance,pendingBalance,expiredBalance,spentBalance
-                40,,111,active,10,0,0,0,5
               schema:
                 format: csv
                 type: string
@@ -5051,13 +4987,18 @@ paths:
         name: batchId
         schema:
           type: string
+      - description: Determines the format of dates in the export document.
+        in: query
+        name: dateFormat
+        schema:
+          enum:
+          - excel
+          - ISO8601
+          type: string
       responses:
         "200":
           content:
             application/csv:
-              example: |
-                identifier,created,status,userpercardlimit,customerprofileids,blockreason,generated,batchid
-                CARD-1234,2020-06-10T09:05:27.993483Z,active,3,['profile1'],card limit reached,false,gwedcbfp
               schema:
                 format: csv
                 type: string
@@ -5688,9 +5629,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                id,poolid,code,startdate,enddate,attributes,used,importid,created,profileintegrationid,profileid
-                1,7,af18bc3839799451fb6d6b6467cf4c25e,2023-04-11T12:47:47Z,2024-04-11T12:47:47Z,"{""attribute"": ""value""}",true,2,2023-04-11T12:47:47Z,R195412,35
               schema:
                 format: csv
                 type: string
@@ -6433,11 +6371,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                item
-                SKU1
-                SKU2
-                SKU3
               schema:
                 format: csv
                 type: string
@@ -6491,11 +6424,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                item
-                SKU1
-                SKU2
-                SKU3
               schema:
                 format: csv
                 type: string
@@ -6924,7 +6852,7 @@ paths:
         name: skip
         schema:
           type: integer
-      - description: Indicates whether you are pointing to a sandbox or Live customer.
+      - description: Indicates whether you are pointing to a sandbox or live customer.
         in: query
         name: sandbox
         schema:
@@ -7004,7 +6932,7 @@ paths:
         name: skip
         schema:
           type: integer
-      - description: Indicates whether you are pointing to a sandbox or Live customer.
+      - description: Indicates whether you are pointing to a sandbox or live customer.
         in: query
         name: sandbox
         schema:
@@ -7113,7 +7041,7 @@ paths:
         required: true
         schema:
           type: integer
-      - description: Only return reports matching the customer name
+      - description: Only return reports matching the customer name.
         in: query
         name: name
         schema:
@@ -7124,12 +7052,12 @@ paths:
         name: integrationId
         schema:
           type: string
-      - description: Only return reports matching the campaignName
+      - description: Only return reports matching the campaign name.
         in: query
         name: campaignName
         schema:
           type: string
-      - description: Only return reports matching the current customer referrer name
+      - description: Only return reports matching the current customer referrer name.
         in: query
         name: advocateName
         schema:
@@ -7335,7 +7263,7 @@ paths:
         name: referral
         schema:
           type: string
-      - description: Filter by sessions with this integrationId. Must be exact match.
+      - description: Filter by sessions with this integration ID. Must be exact match.
         in: query
         name: integrationId
         schema:
@@ -7778,10 +7706,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                profileintegrationid
-                URNGV8294NV
-                BZGGC2454PA
               schema:
                 format: csv
                 type: string
@@ -8695,7 +8619,7 @@ paths:
         name: integrationRequestUuid
         schema:
           type: string
-      - description: Filter results by Webhook.
+      - description: Filter results by webhook id.
         in: query
         name: webhookId
         schema:
@@ -8705,7 +8629,7 @@ paths:
         name: applicationId
         schema:
           type: number
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -8770,7 +8694,7 @@ paths:
           - success
           - error
           type: string
-      - description: Filter results by Webhook.
+      - description: Filter results by webhook id.
         in: query
         name: webhookId
         schema:
@@ -8780,7 +8704,7 @@ paths:
         name: applicationId
         schema:
           type: number
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -8959,7 +8883,7 @@ paths:
         - `batchid`: The ID of the batch this coupon is part of.
         - `campaignid`: The ID of the campaign this coupon is related to.
         - `counter`: The number of times this coupon has been redeemed.
-        - `created`: The creation date of the coupon code.
+        - `created`: The creation date in RFC3339 of the coupon code.
         - `deleted`: Whether the coupon code is deleted.
         - `deleted_changelogid`: The ID of the delete event in the logs.
         - `discount_counter`: The amount of discount given by this coupon.
@@ -8987,7 +8911,7 @@ paths:
         required: true
         schema:
           type: integer
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -9092,6 +9016,7 @@ paths:
           - scheduled
           - running
           - expired
+          - staged
           type: string
       - description: Filter results to only return the coupon codes (`value` column)
           without the associated coupon data.
@@ -9104,9 +9029,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                id,created,campaignid,value,expirydate,startdate,attributes,applicationid,deleted,deleted_changelogid,accountid,referralid,recipientintegrationid,importid,batchid,reservation,limits,limitval,counter,discount_counter,discount_limitval
-                20191301,2022-04-26T11:02:38Z,3882,COUP1,2022-04-27T10:56:47Z,2022-04-26T10:56:47Z,"{""test"": ""premium""}",270,,0,1,,cust123,671,axghjfdy,,"[]",1,0,0,1.5
               schema:
                 format: csv
                 type: string
@@ -9139,7 +9061,7 @@ paths:
         required: true
         schema:
           type: integer
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -9199,9 +9121,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                id,created,campaignid,advocateprofileintegrationid,friendprofileintegrationid,startdate,expirydate,code,importid,attributes,batchid,counter,limitval
-                687,2021-09-10 09:21:06,3882,UGAV4628K,,,,3LFC-4BPC,,"{}",pimcxobg,0,9999
               schema:
                 format: csv
                 type: string
@@ -9244,7 +9163,7 @@ paths:
         required: true
         schema:
           type: integer
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -9277,10 +9196,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                created,name,applicationid,campaignid,rulesetid,ruleindex,sessionintegrationid,profileintegrationid,sessionid,profileid,eventid,event_type,total_revenue,props,couponid,store_id,store_integration_id
-                2021-06-02T21:14:16Z,rejectCoupon,270,0,0,0,newsession1,,9168,0,95797,talon_session_created,265.00,"{""value"": ""XMAS20"", ""rejectionReason"": ""CouponNotFound""}",,115,STORE-001
-                2021-09-01T13:04:04Z,setDiscountPerItem,270,3882,13599,0,test_flattening_2,integid_4,9707,4800,98806,talon_session_updated,405.00,"{""name"": ""10% off per item#1"", ""value"": 11.0, ""position"": 1}",,116,STORE-002
               schema:
                 format: csv
                 type: string
@@ -9369,9 +9284,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                id,firstsession,integrationid,applicationid,profileid,profileintegrationid,created,state,cartitems,discounts,total,attributes,closedat,cancelledat,referral,identifiers,additional_costs,updated,store_integration_id,coupons
-                12328,true,62791173fbf323ee5cfd96f3,270,6111,dxclwds,2022-05-09T13:05:31Z,open,"[{""sku"": ""B00004TKVY"", ""name"": ""Gravel bike - \""Aisle of Man\"""", ""price"": 1800, ""weight"": 6, ""category"": ""gravelbikes"", ""position"": 0, ""quantity"": 1, ""attributes"": {""color"": [""black,white""], ""material"": ""titanium""}, ""returnedQuantity"": 0, ""remainingQuantity"": 1}]","{}",1850.00,"{""ShippingCost"": 50, ""PaymentMethod"": ""creditcard"", ""ShippingMethod"": ""Standard""}",0001-01-01T00:00:00Z,0001-01-01T00:00:00Z,,"null","{""ShippingCost"": {""price"": 50}}",2022-05-09T13:13:28Z,"STORE-001","[""SORRY5QMUJRWA""]"
               schema:
                 format: csv
                 type: string
@@ -10337,7 +10249,7 @@ paths:
         name: withTotalResultSize
         schema:
           type: boolean
-      - description: Filter results by campaign.
+      - description: Filter results by campaign ID.
         in: query
         name: campaignId
         schema:
@@ -10563,11 +10475,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                store_integration_id
-                STORE-001
-                STORE-002
-                STORE-003
               schema:
                 format: csv
                 type: string
@@ -11012,10 +10919,6 @@ paths:
         "200":
           content:
             application/csv:
-              example: |
-                profileIntegrationID,title,target,progress,status,startDate,endDate,completionDate
-                user1231,CoffeeFree10Orders,10.00,5,inprogress,2023-12-10T11:42:25+01:00,2024-01-10T11:42:25+01:00,
-                user341,CoffeeFree10Orders,10.00,10,completed,2023-12-10T11:42:25+01:00,2024-01-10T11:42:25+01:00,2023-12-20T10:24:34+01:00
               schema:
                 format: csv
                 type: string
@@ -11169,6 +11072,7 @@ components:
           type: string
         modified:
           description: The time this entity was last modified.
+          example: 2021-09-25T10:34:12.956203Z
           format: date-time
           type: string
       required:
@@ -11513,6 +11417,7 @@ components:
           example: SUMMER-####-####
           maxLength: 100
           minLength: 3
+          pattern: ^[A-Za-z0-9_#-]*$
           type: string
       required:
       - couponPattern
@@ -11569,7 +11474,6 @@ components:
       - userId
       type: object
     LoginParams:
-      description: ""
       example:
         password: admin123456
         email: john.doe@example.com
@@ -11809,7 +11713,6 @@ components:
       - timezone
       type: object
     Application:
-      description: ""
       example:
         enableFlattenedCartItems: true
         created: 2020-06-10T09:05:27.993483Z
@@ -11899,10 +11802,11 @@ components:
             - "7"
             - "8"
             - "9"
-          id: 0
+          id: 139
           canUpgradeToAdvancedTiers: true
           created: 2020-06-10T09:05:27.993483Z
           sandbox: true
+          returnPolicy: only_pending
           subscribedApplications:
           - 132
           - 97
@@ -11980,10 +11884,11 @@ components:
             - "7"
             - "8"
             - "9"
-          id: 0
+          id: 139
           canUpgradeToAdvancedTiers: true
           created: 2020-06-10T09:05:27.993483Z
           sandbox: true
+          returnPolicy: only_pending
           subscribedApplications:
           - 132
           - 97
@@ -12173,7 +12078,6 @@ components:
       - name
       type: object
     CampaignGroup:
-      description: ""
       example:
         accountId: 3886
         created: 2020-06-10T09:05:27.993483Z
@@ -12246,7 +12150,6 @@ components:
       - name
       type: object
     UpdateCampaignGroup:
-      description: ""
       properties:
         name:
           description: The name of the campaign access group.
@@ -12281,7 +12184,6 @@ components:
       - name
       type: object
     NewCampaign:
-      description: ""
       properties:
         name:
           description: A user-facing name for this campaign.
@@ -12409,6 +12311,13 @@ components:
       type: object
     CampaignVersions:
       properties:
+        revisionFrontendState:
+          description: The campaign revision state displayed in the Campaign Manager.
+          enum:
+          - revised
+          - pending
+          example: revised
+          type: string
         activeRevisionId:
           description: |
             ID of the revision that was last activated on this campaign.
@@ -12801,21 +12710,14 @@ components:
       - tags
       type: object
     Campaign:
-      description: ""
       example:
-        callApiEffectCount: 0
-        createdLoyaltyPointsEffectCount: 2
-        discountCount: 288.0
-        description: Campaign for all summer 2021 promotions
         type: advanced
         templateId: 3
-        activeRevisionVersionId: 6
         customEffectCount: 0
         activeRevisionId: 6
         features:
         - coupons
         - referrals
-        currentRevisionVersionId: 6
         createdLoyaltyPointsCount: 9.0
         storesImported: true
         couponSettings:
@@ -12857,9 +12759,42 @@ components:
           - "7"
           - "8"
           - "9"
-        startTime: 2021-07-20T22:00:00Z
         id: 4
         state: enabled
+        reservecouponEffectCount: 9
+        updatedBy: Jane Doe
+        frontendState: running
+        created: 2020-06-10T09:05:27.993483Z
+        referralCreationCount: 8
+        stageRevision: false
+        couponRedemptionCount: 163
+        couponCreationCount: 16
+        version: 6
+        campaignGroups:
+        - 1
+        - 3
+        tags:
+        - summer
+        discountEffectCount: 343
+        budgets:
+        - limit: 1000.0
+          action: createCoupon
+          counter: 42.0
+        - limit: 1000.0
+          action: createCoupon
+          counter: 42.0
+        redeemedLoyaltyPointsCount: 8.0
+        name: Summer promotions
+        applicationId: 322
+        updated: 2000-01-23T04:56:07.000+00:00
+        callApiEffectCount: 0
+        createdLoyaltyPointsEffectCount: 2
+        discountCount: 288.0
+        revisionFrontendState: revised
+        description: Campaign for all summer 2021 promotions
+        activeRevisionVersionId: 6
+        currentRevisionVersionId: 6
+        startTime: 2021-07-20T22:00:00Z
         currentRevisionId: 6
         limits:
         - period: yearly
@@ -12873,39 +12808,15 @@ components:
           limit: 1000.0
           action: createCoupon
         activeRulesetId: 6
-        reservecouponEffectCount: 9
-        updatedBy: Jane Doe
-        frontendState: running
-        created: 2020-06-10T09:05:27.993483Z
-        referralCreationCount: 8
-        stageRevision: false
-        couponRedemptionCount: 163
         userId: 388
-        couponCreationCount: 16
-        version: 6
-        campaignGroups:
-        - 1
-        - 3
-        tags:
-        - summer
         awardedGiveawaysCount: 9
         redeemedLoyaltyPointsEffectCount: 9
         linkedStoreIds:
         - 1
         - 2
         - 3
-        discountEffectCount: 343
-        budgets:
-        - limit: 1000.0
-          action: createCoupon
-          counter: 42.0
-        - limit: 1000.0
-          action: createCoupon
-          counter: 42.0
         createdBy: John Doe
-        redeemedLoyaltyPointsCount: 8.0
         addFreeItemEffectCount: 0
-        name: Summer promotions
         referralSettings:
           couponPattern: SUMMER-####-####
           validCharacters:
@@ -12948,9 +12859,7 @@ components:
         attributes: '{}'
         lastActivity: 2022-11-10T23:00:00Z
         endTime: 2021-09-22T22:00:00Z
-        applicationId: 322
         referralRedemptionCount: 3
-        updated: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: Unique ID for this entity.
@@ -13203,13 +13112,14 @@ components:
           example: 3
           type: integer
         frontendState:
-          description: A campaign state described exactly as in the Campaign Manager.
+          description: The campaign state displayed in the Campaign Manager.
           enum:
           - expired
           - scheduled
           - running
           - disabled
           - archived
+          - staged
           example: running
           type: string
         storesImported:
@@ -13217,6 +13127,13 @@ components:
             file.
           example: true
           type: boolean
+        revisionFrontendState:
+          description: The campaign revision state displayed in the Campaign Manager.
+          enum:
+          - revised
+          - pending
+          example: revised
+          type: string
         activeRevisionId:
           description: |
             ID of the revision that was last activated on this campaign.
@@ -13265,7 +13182,6 @@ components:
       - userId
       type: object
     Revision:
-      description: ""
       properties:
         id:
           description: Unique ID for this entity. Not to be confused with the Integration
@@ -13308,7 +13224,6 @@ components:
           type: string
       type: object
     RevisionVersion:
-      description: ""
       properties:
         id:
           description: Unique ID for this entity. Not to be confused with the Integration
@@ -13623,13 +13538,14 @@ components:
           example: 3
           type: integer
         frontendState:
-          description: A campaign state described exactly as in the Campaign Manager.
+          description: The campaign state displayed in the Campaign Manager.
           enum:
           - expired
           - scheduled
           - running
           - disabled
           - archived
+          - staged
           example: running
           type: string
         storesImported:
@@ -13677,7 +13593,6 @@ components:
       - rules
       type: object
     Ruleset:
-      description: ""
       example:
         rbVersion: v2
         created: 2020-06-10T09:05:27.993483Z
@@ -13907,7 +13822,6 @@ components:
           description: A Talang expression that will be evaluated and its result attached
             to the name of the binding.
           items:
-            properties: {}
             type: object
           type: array
         valueType:
@@ -13990,7 +13904,6 @@ components:
           - and
           - - couponValid
           items:
-            properties: {}
             type: object
           minItems: 1
           type: array
@@ -14019,7 +13932,6 @@ components:
       - title
       type: object
     TemplateLimitConfig:
-      description: ""
       example:
         period: yearly
         entities:
@@ -14060,6 +13972,7 @@ components:
             - Referral
             - Profile
             - Identifier
+            - Store
             type: string
           type: array
       required:
@@ -14108,6 +14021,7 @@ components:
             - Referral
             - Profile
             - Identifier
+            - Store
             type: string
           type: array
       required:
@@ -14116,7 +14030,6 @@ components:
       - limit
       type: object
     CampaignSet:
-      description: ""
       properties:
         applicationId:
           description: The ID of the application that owns this entity.
@@ -14224,7 +14137,6 @@ components:
       - type
       type: object
     NewCampaignSet:
-      description: ""
       properties:
         applicationId:
           description: The ID of the application that owns this entity.
@@ -14287,7 +14199,6 @@ components:
       - parentId
       type: object
     UpdateCampaignEvaluationGroup:
-      description: ""
       properties:
         name:
           description: The name of the campaign evaluation group.
@@ -14332,7 +14243,6 @@ components:
       - parentId
       type: object
     CampaignEvaluationGroup:
-      description: ""
       properties:
         applicationId:
           description: The ID of the application that owns this entity.
@@ -14447,7 +14357,6 @@ components:
       - batchID
       type: object
     NewReferral:
-      description: ""
       example:
         expiryDate: 2021-11-10T23:00:00Z
         friendProfileIntegrationId: BZGGC2454PA
@@ -14514,7 +14423,6 @@ components:
           type: integer
       type: object
     Referral:
-      description: ""
       example:
         code: 27G47Y54VH9L
         created: 2020-06-10T09:05:27.993483Z
@@ -14655,7 +14563,6 @@ components:
           type: object
       type: object
     NewReferralsForMultipleAdvocates:
-      description: ""
       example:
         expiryDate: 2021-11-10T23:00:00Z
         advocateProfileIntegrationIds:
@@ -14786,7 +14693,6 @@ components:
       - usageLimit
       type: object
     InventoryReferral:
-      description: ""
       example:
         code: 27G47Y54VH9L
         created: 2020-06-10T09:05:27.993483Z
@@ -14990,7 +14896,6 @@ components:
       - applicationIds
       type: object
     NewCoupons:
-      description: ""
       example:
         recipientIntegrationId: URNGV8294NV
         uniquePrefix: ""
@@ -15125,7 +15030,6 @@ components:
       - usageLimit
       type: object
     NewCouponsForMultipleRecipients:
-      description: ""
       example:
         expiryDate: 2023-08-24T14:15:22Z
         couponPattern: SUMMER-#####
@@ -15261,7 +15165,6 @@ components:
       - usageLimit
       type: object
     UpdateCoupon:
-      description: ""
       example:
         expiryDate: 2023-08-24T14:15:22Z
         recipientIntegrationId: URNGV8294NV
@@ -15351,7 +15254,6 @@ components:
           type: boolean
       type: object
     UpdateCouponBatch:
-      description: ""
       example:
         expiryDate: 2023-08-24T14:15:22Z
         usageLimit: 100
@@ -15408,7 +15310,6 @@ components:
           type: string
       type: object
     Coupon:
-      description: ""
       example:
         recipientIntegrationId: URNGV8294NV
         implicitlyReserved: false
@@ -15585,7 +15486,6 @@ components:
       - value
       type: object
     IntegrationCoupon:
-      description: ""
       example:
         recipientIntegrationId: URNGV8294NV
         implicitlyReserved: false
@@ -15789,7 +15689,6 @@ components:
       - limit
       type: object
     InventoryCoupon:
-      description: ""
       example:
         recipientIntegrationId: URNGV8294NV
         implicitlyReserved: false
@@ -15988,7 +15887,6 @@ components:
       - value
       type: object
     CampaignAnalytics:
-      description: ""
       example:
         date: 2021-10-12T10:12:42Z
         couponRolledbackRedemptions: 2
@@ -16340,7 +16238,7 @@ components:
           example: 12
           type: integer
         url:
-          description: Target url of request
+          description: The target URL of the request.
           example: www.my-company.com/my-endpoint-name
           type: string
         request:
@@ -16418,6 +16316,14 @@ components:
           description: The name of the notification.
           example: My campaign notification
           type: string
+        webhookId:
+          description: ID of the webhook.
+          example: 101
+          type: integer
+        webhookName:
+          description: The name of the webhook.
+          example: My webhook
+          type: string
         request:
           $ref: '#/components/schemas/MessageLogRequest'
         response:
@@ -16429,11 +16335,16 @@ components:
           type: string
         entityType:
           description: |
-            The entity type the notification is related to.
+            The entity type the log is related to.
           enum:
           - application
           - loyalty_program
+          - webhook
           example: loyalty_program
+          type: string
+        url:
+          description: The target URL of the request.
+          example: www.my-company.com/my-endpoint-name
           type: string
         applicationId:
           description: Identifier of the Application.
@@ -16445,8 +16356,14 @@ components:
           example: 2
           minimum: 1
           type: integer
+        campaignId:
+          description: Identifier of the campaign.
+          example: 2
+          minimum: 1
+          type: integer
       required:
       - createdAt
+      - entityType
       - id
       - service
       type: object
@@ -16526,7 +16443,6 @@ components:
       - webhookId
       type: object
     User:
-      description: ""
       example:
         created: 2020-06-10T09:05:27.993483Z
         roles:
@@ -16647,7 +16563,6 @@ components:
       - state
       type: object
     DeactivateUserRequest:
-      description: ""
       example:
         email: john.doe@example.com
       properties:
@@ -16660,31 +16575,9 @@ components:
       - email
       type: object
     ActivateUserRequest:
-      description: ""
-      example:
-        email: john.doe@example.com
-      properties:
-        email:
-          description: The email address associated with the user profile.
-          example: john.doe@example.com
-          format: email
-          type: string
-      required:
-      - email
-      type: object
+      $ref: '#/components/schemas/DeactivateUserRequest'
     DeleteUserRequest:
-      description: ""
-      example:
-        email: john.doe@example.com
-      properties:
-        email:
-          description: The email address associated with the user profile.
-          example: john.doe@example.com
-          format: email
-          type: string
-      required:
-      - email
-      type: object
+      $ref: '#/components/schemas/DeactivateUserRequest'
     OktaEventTarget:
       description: Target of the specific Okta event.
       properties:
@@ -16781,6 +16674,8 @@ components:
           type: string
         name:
           $ref: '#/components/schemas/ScimBaseUser_name'
+      required:
+      - userName
       type: object
     ScimUser:
       description: Schema definition for users that have been provisioned using the
@@ -16813,6 +16708,7 @@ components:
           type: string
       required:
       - id
+      - userName
       type: object
     ScimResource:
       description: Resource definition for the SCIM provisioning protocol.
@@ -16981,6 +16877,8 @@ components:
           supported: true
         schemas:
         - urn:ietf:params:scim:schemas:core:2.0:ServiceProviderConfig
+        x-sort:
+          supported: false
       properties:
         bulk:
           $ref: '#/components/schemas/ScimServiceProviderConfigResponse_bulk'
@@ -17000,6 +16898,8 @@ components:
           items:
             type: string
           type: array
+        sort:
+          $ref: '#/components/schemas/ScimServiceProviderConfigResponse_sort'
       type: object
     ScimSchemasListResponse:
       description: List of resource schemas supported by the SCIM provisioning protocol.
@@ -17115,7 +17015,6 @@ components:
       - email
       type: object
     Change:
-      description: ""
       example:
         new:
           applicationId": 359
@@ -17317,7 +17216,7 @@ components:
       - points
       type: object
     LoyaltyProgram:
-      description: ""
+      description: A Loyalty Program
       example:
         cardBased: true
         tiers:
@@ -17387,10 +17286,11 @@ components:
           - "7"
           - "8"
           - "9"
-        id: 0
+        id: 139
         canUpgradeToAdvancedTiers: true
         created: 2020-06-10T09:05:27.993483Z
         sandbox: true
+        returnPolicy: only_pending
         subscribedApplications:
         - 132
         - 97
@@ -17402,7 +17302,8 @@ components:
         name: my_program
       properties:
         id:
-          description: The ID of loyalty program. Internal ID of this entity.
+          description: The ID of loyalty program.
+          example: 139
           type: integer
         created:
           description: The time this entity was created.
@@ -17526,6 +17427,15 @@ components:
           type: string
         cardCodeSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        returnPolicy:
+          description: |
+            The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+            - `only_pending`: Only pending points can be rolled back.
+            - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative.
+          enum:
+          - only_pending
+          - within_balance
+          type: string
         accountID:
           description: The ID of the Talon.One account that owns this program.
           example: 1
@@ -17612,8 +17522,13 @@ components:
       - timezone
       - title
       type: object
+    LoyaltyTiers:
+      description: A list of the loyalty program's tiers.
+      items:
+        $ref: '#/components/schemas/LoyaltyTier'
+      type: array
     LoyaltyTier:
-      description: ""
+      description: A tier in a loyalty program.
       properties:
         id:
           description: Internal ID of this entity.
@@ -17629,12 +17544,11 @@ components:
           example: 125
           type: integer
         name:
-          description: The name of the tier
+          description: The name of the tier.
           example: Gold
           type: string
         minPoints:
-          description: The minimum amount of points required to be eligible for the
-            tier.
+          description: The minimum amount of points required to enter the tier.
           example: 300.0
           exclusiveMaximum: false
           maximum: 999999999999.99
@@ -17651,12 +17565,11 @@ components:
       description: A tier in a loyalty program.
       properties:
         name:
-          description: The name of the tier
+          description: The name of the tier.
           example: Gold
           type: string
         minPoints:
-          description: The minimum amount of points required to be eligible for the
-            tier.
+          description: The minimum amount of points required to enter the tier.
           example: 300.0
           exclusiveMaximum: false
           maximum: 999999999999.99
@@ -17785,9 +17698,18 @@ components:
           type: string
         cardCodeSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        returnPolicy:
+          description: |
+            The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+            - `only_pending`: Only pending points can be rolled back.
+            - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative.
+          enum:
+          - only_pending
+          - within_balance
+          type: string
       type: object
     NewLoyaltyProgram:
-      description: ""
+      description: A new loyalty program
       properties:
         title:
           description: The display title for the Loyalty Program.
@@ -17906,6 +17828,15 @@ components:
           type: string
         cardCodeSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        returnPolicy:
+          description: |
+            The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+            - `only_pending`: Only pending points can be rolled back.
+            - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative.
+          enum:
+          - only_pending
+          - within_balance
+          type: string
         name:
           description: The internal name for the Loyalty Program. This is an immutable
             value.
@@ -17939,7 +17870,7 @@ components:
       - title
       type: object
     UpdateLoyaltyProgram:
-      description: ""
+      description: An updated loyalty program.
       properties:
         title:
           description: The display title for the Loyalty Program.
@@ -18058,12 +17989,47 @@ components:
           type: string
         cardCodeSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        returnPolicy:
+          description: |
+            The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+            - `only_pending`: Only pending points can be rolled back.
+            - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative.
+          enum:
+          - only_pending
+          - within_balance
+          type: string
         tiers:
           description: The tiers in this loyalty program.
           items:
             $ref: '#/components/schemas/NewLoyaltyTier'
           type: array
       type: object
+    UpdateLoyaltyProgramTier:
+      description: Update a tier in a specified loyalty program.
+      properties:
+        id:
+          description: The internal ID of the tier.
+          example: 6
+          type: integer
+        name:
+          description: The name of the tier.
+          example: Gold
+          type: string
+        minPoints:
+          description: The minimum amount of points required to enter the tier.
+          example: 300.0
+          exclusiveMaximum: false
+          maximum: 999999999999.99
+          minimum: 0
+          type: number
+      required:
+      - id
+      type: object
+    UpdateLoyaltyProgramTiers:
+      description: List of tiers that are updated by the request.
+      items:
+        $ref: '#/components/schemas/UpdateLoyaltyProgramTier'
+      type: array
     LoyaltyLedgerTransactions:
       description: List of loyalty ledger transactions.
       properties:
@@ -18163,7 +18129,7 @@ components:
       - type
       type: object
     LoyaltyCardBalances:
-      description: ""
+      description: List of customer profiles linked to the loyalty card.
       example:
         balance:
           activePoints: 286.0
@@ -18251,7 +18217,7 @@ components:
           type: number
       type: object
     LoyaltyBalanceWithTier:
-      description: ""
+      description: Point balance of a ledger in the Loyalty Program.
       example:
         projectedTier:
           projectedActivePoints: 198.0
@@ -18964,7 +18930,7 @@ components:
       - title
       type: object
     LedgerInfo:
-      description: ""
+      description: The balance in a Loyalty Program for some Customer.
       example:
         pendingBalance: 10.0
         currentBalance: 100.0
@@ -19156,6 +19122,7 @@ components:
         customerProfileIds:
         - R195412
         - G244519
+        cardIdentifier: summer-loyalty-card-0543
       properties:
         status:
           default: active
@@ -19173,9 +19140,15 @@ components:
           items:
             type: string
           type: array
+        cardIdentifier:
+          description: |
+            The alphanumeric identifier of the loyalty card.
+          example: summer-loyalty-card-0543
+          maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
+          type: string
       type: object
     LoyaltyCard:
-      description: ""
       example:
         ledger:
           pendingBalance: 10.0
@@ -19251,6 +19224,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         usersPerCardLimit:
           description: |
@@ -19281,12 +19255,14 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         newCardIdentifier:
           description: |
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         batchId:
           description: The ID of the batch in which the loyalty card was created.
@@ -19305,6 +19281,7 @@ components:
         The alphanumeric identifier of the loyalty card.
       example: summer-loyalty-card-0543
       maxLength: 108
+      pattern: ^[A-Za-z0-9_-]*$
       type: string
     CardLedgerTransactionLogEntry:
       description: Log entry for a given loyalty card transaction.
@@ -19336,6 +19313,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         applicationId:
           description: The ID of the Application that owns this entity.
@@ -19437,6 +19415,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         customerSessionId:
           description: ID of the customer session where the transaction occurred.
@@ -19826,6 +19805,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         subledgerId:
           description: ID of the subledger.
@@ -19882,6 +19862,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         blockReason:
           description: |
@@ -20037,11 +20018,10 @@ components:
           type: array
       type: object
     CustomerProfile:
-      description: ""
       example:
         accountId: 31
         closedSessions: 3
-        created: 2000-01-23T04:56:07.000+00:00
+        created: 2020-02-07T08:15:22Z
         sandbox: false
         integrationId: URNGV8294NV
         attributes:
@@ -20051,9 +20031,9 @@ components:
         lastActivity: 2020-02-08T14:15:20Z
         id: 6
         loyaltyMemberships:
-        - joined: 2000-01-23T04:56:07.000+00:00
+        - joined: 2012-03-20T14:15:22Z
           loyaltyProgramId: 323414846
-        - joined: 2000-01-23T04:56:07.000+00:00
+        - joined: 2012-03-20T14:15:22Z
           loyaltyProgramId: 323414846
         audienceMemberships:
         - name: Travel audience
@@ -20066,8 +20046,8 @@ components:
           example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         integrationId:
@@ -20277,7 +20257,7 @@ components:
         profile:
           accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -20287,9 +20267,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -20471,8 +20451,46 @@ components:
           type: array
       type: object
     LoyaltyCardBatch:
-      description: ""
       example:
+        cardCodeSettings:
+          couponPattern: SUMMER-####-####
+          validCharacters:
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+          - I
+          - J
+          - K
+          - L
+          - M
+          - "N"
+          - O
+          - P
+          - Q
+          - R
+          - S
+          - T
+          - U
+          - V
+          - W
+          - X
+          - "Y"
+          - Z
+          - "0"
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+          - "6"
+          - "7"
+          - "8"
+          - "9"
         numberOfCards: 5000
         batchId: hwernpjz
         status: active
@@ -20496,6 +20514,8 @@ components:
           - inactive
           example: active
           type: string
+        cardCodeSettings:
+          $ref: '#/components/schemas/CodeGeneratorSettings'
       required:
       - numberOfCards
       type: object
@@ -20517,7 +20537,6 @@ components:
       - numberOfCardsGenerated
       type: object
     NewCustomerSession:
-      description: ""
       properties:
         profileId:
           description: |
@@ -20599,7 +20618,7 @@ components:
         storeIntegrationId: STORE-001
         profileId: URNGV8294NV
         identifiers:
-        - 91.11.156.141
+        - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
         evaluableCampaignIds:
         - 10
         - 12
@@ -20765,8 +20784,9 @@ components:
             - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
             for your campaign.
             - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview).
+            - We recommend passing an anonymized (hashed) version of the identifier value.
           example:
-          - 91.11.156.141
+          - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           items:
             type: string
           maxItems: 5
@@ -20901,10 +20921,10 @@ components:
       - totalOrdersNoCoupon
       type: object
     CustomerSession:
-      description: ""
       properties:
         integrationId:
           description: The integration ID set by your integration layer.
+          example: URNGV8294NV
           format: string
           maxLength: 1000
           type: string
@@ -21018,13 +21038,13 @@ components:
       - updated
       type: object
     CustomerSessionV2:
-      description: ""
+      description: The representation of the customer session.
       example:
         couponCodes:
         - XMAS-20-2021
-        created: 2000-01-23T04:56:07.000+00:00
+        created: 2020-02-07T08:15:22Z
         identifiers:
-        - 91.11.156.141
+        - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
         integrationId: URNGV8294NV
         total: 119.99
         loyaltyCards:
@@ -21096,8 +21116,8 @@ components:
           example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         integrationId:
@@ -21224,8 +21244,9 @@ components:
             - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
             for your campaign.
             - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview).
+            - We recommend passing an anonymized (hashed) version of the identifier value.
           example:
-          - 91.11.156.141
+          - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           items:
             type: string
           maxItems: 5
@@ -21406,7 +21427,6 @@ components:
       - quantity
       - sku
       type: object
-      x-attributable: true
     NewApplicationCIF:
       properties:
         name:
@@ -21462,7 +21482,6 @@ components:
           type: string
       type: object
     ApplicationCIF:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -21538,12 +21557,10 @@ components:
                     - Category
                   - Kitchen
           items:
-            properties: {}
             type: object
           type: array
       type: object
     ApplicationCIFExpression:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -21580,7 +21597,6 @@ components:
                     - Category
                   - Kitchen
           items:
-            properties: {}
             type: object
           type: array
         applicationId:
@@ -21602,7 +21618,6 @@ components:
       - price
       type: object
     IntegrationEvent:
-      description: ""
       properties:
         profileId:
           description: |
@@ -21636,7 +21651,6 @@ components:
       - type
       type: object
     NewEvent:
-      description: ""
       properties:
         profileId:
           description: |
@@ -21676,7 +21690,6 @@ components:
       - type
       type: object
     Event:
-      description: ""
       example:
         effects:
         - '{}'
@@ -21819,7 +21832,7 @@ components:
         customerProfile:
           accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -21829,9 +21842,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -22128,19 +22141,13 @@ components:
           id: 6
           startDate: 2020-11-10T23:00:00Z
         triggeredCampaigns:
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -22182,9 +22189,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -22198,39 +22238,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -22273,22 +22289,14 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -22330,9 +22338,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -22346,39 +22387,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -22421,9 +22438,7 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
         coupons:
         - recipientIntegrationId: URNGV8294NV
           implicitlyReserved: false
@@ -22494,9 +22509,9 @@ components:
         customerSession:
           couponCodes:
           - XMAS-20-2021
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           identifiers:
-          - 91.11.156.141
+          - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           integrationId: URNGV8294NV
           total: 119.99
           loyaltyCards:
@@ -22768,19 +22783,13 @@ components:
           ruleName: Give 20% discount
           triggeredByCoupon: 4928
         triggeredCampaigns:
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -22822,9 +22831,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -22838,39 +22880,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -22913,22 +22931,14 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -22970,9 +22980,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -22986,39 +23029,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -23061,13 +23080,11 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
         customerProfile:
           accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -23077,9 +23094,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -23475,19 +23492,13 @@ components:
           ruleName: Give 20% discount
           triggeredByCoupon: 4928
         triggeredCampaigns:
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -23529,9 +23540,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -23545,39 +23589,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -23620,22 +23640,14 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -23677,9 +23689,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -23693,39 +23738,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -23768,13 +23789,11 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
         customerProfile:
           accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -23784,9 +23803,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -24198,7 +24217,7 @@ components:
         customerProfile:
           accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -24208,9 +24227,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -24255,9 +24274,9 @@ components:
         customerSession:
           couponCodes:
           - XMAS-20-2021
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           identifiers:
-          - 91.11.156.141
+          - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           integrationId: URNGV8294NV
           total: 119.99
           loyaltyCards:
@@ -24332,23 +24351,22 @@ components:
           type: array
       type: object
     ApplicationCustomer:
-      description: ""
       example:
-        accountId: 6
+        accountId: 31
         closedSessions: 3
-        created: 2000-01-23T04:56:07.000+00:00
+        created: 2020-02-07T08:15:22Z
         sandbox: false
-        integrationId: integrationId
+        integrationId: URNGV8294NV
         attributes:
           Language: english
           ShippingCountry: DE
         totalSales: 299.99
         lastActivity: 2020-02-08T14:15:20Z
-        id: 0
+        id: 6
         loyaltyMemberships:
-        - joined: 2000-01-23T04:56:07.000+00:00
+        - joined: 2012-03-20T14:15:22Z
           loyaltyProgramId: 323414846
-        - joined: 2000-01-23T04:56:07.000+00:00
+        - joined: 2012-03-20T14:15:22Z
           loyaltyProgramId: 323414846
         advocateIntegrationId: advocateIntegrationId
         audienceMemberships:
@@ -24358,16 +24376,17 @@ components:
           id: 2
       properties:
         id:
-          description: Internal ID of this entity. Internal ID of this entity.
+          description: Internal ID of this entity.
+          example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created. The time this entity was created. The time this entity was created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         integrationId:
-          description: The integration ID set by your integration layer. The integration
-            ID set by your integration layer.
+          description: The integration ID set by your integration layer.
+          example: URNGV8294NV
           format: string
           maxLength: 1000
           type: string
@@ -24379,8 +24398,9 @@ components:
           properties: {}
           type: object
         accountId:
-          description: The ID of the Talon.One account that owns this profile. The
-            ID of the Talon.One account that owns this profile.
+          description: The ID of the Talon.One account that owns this profile.
+          example: 31
+          title: Profile belongs to Account
           type: integer
         closedSessions:
           description: The total amount of closed sessions by a customer. A closed
@@ -24445,15 +24465,14 @@ components:
       - totalSales
       type: object
     AudienceCustomer:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
           example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         integrationId:
@@ -24552,7 +24571,6 @@ components:
       - totalSales
       type: object
     ApplicationReferee:
-      description: ""
       example:
         friendIntegrationId: friendIntegrationId
         code: code
@@ -24595,10 +24613,9 @@ components:
       - sessionId
       type: object
     ApplicationSession:
-      description: ""
       example:
         coupon: BKDB946
-        created: 2000-01-23T04:56:07.000+00:00
+        created: 2020-02-07T08:15:22Z
         totalDiscounts: 100.0
         integrationId: URNGV8294NV
         profileintegrationid: 382370BKDB946
@@ -24661,8 +24678,8 @@ components:
           example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         integrationId:
@@ -24756,7 +24773,6 @@ components:
       - totalDiscounts
       type: object
     ApplicationEvent:
-      description: ""
       example:
         effects:
         - rulesetId: 73
@@ -24896,7 +24912,7 @@ components:
       example:
         liveActiveCampaigns: 10
         expiredCoupons: 200
-        lastUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        lastUpdatedAt: 2022-12-12T12:12:12Z
         roles: 10
         activeCampaigns: 15
         activeCoupons: 650
@@ -24993,6 +25009,7 @@ components:
           type: integer
         lastUpdatedAt:
           description: The point in time when the analytics numbers were updated last.
+          example: 2022-12-12T12:12:12Z
           format: date-time
           type: string
       required:
@@ -25101,7 +25118,6 @@ components:
       - companyName
       type: object
     Account:
-      description: ""
       example:
         applicationCount: 5
         planExpires: 2000-01-23T04:56:07.000+00:00
@@ -25203,7 +25219,6 @@ components:
       - userCount
       type: object
     NewAccountSignUp:
-      description: ""
       properties:
         email:
           description: The email address associated with the user profile.
@@ -25223,7 +25238,6 @@ components:
       - password
       type: object
     NewUser:
-      description: ""
       properties:
         email:
           description: The email address associated with the user profile.
@@ -25358,7 +25372,6 @@ components:
       - resetToken
       type: object
     Environment:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -25490,7 +25503,6 @@ components:
       - type
       type: object
     TemplateArgDef:
-      description: ""
       properties:
         type:
           description: The type of value this argument expects.
@@ -25590,6 +25602,26 @@ components:
       - name
       - type
       type: object
+    CampaignTemplateCouponReservationSettings:
+      example:
+        reservationLimit: 45
+        isReservationMandatory: false
+      properties:
+        reservationLimit:
+          description: |
+            The number of reservations that can be made with this coupon code.
+          example: 45
+          maximum: 999999
+          minimum: 0
+          type: integer
+        isReservationMandatory:
+          default: false
+          description: An indication of whether the code can be redeemed only if it
+            has been reserved first.
+          example: false
+          title: Is reservation mandatory
+          type: boolean
+      type: object
     NewCampaignTemplate:
       properties:
         name:
@@ -25645,6 +25677,8 @@ components:
           type: array
         couponSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        couponReservationSettings:
+          $ref: '#/components/schemas/CampaignTemplateCouponReservationSettings'
         referralSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
         limits:
@@ -25750,6 +25784,8 @@ components:
           type: array
         couponSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        couponReservationSettings:
+          $ref: '#/components/schemas/CampaignTemplateCouponReservationSettings'
         referralSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
         limits:
@@ -25819,76 +25855,22 @@ components:
       - name
       type: object
     CampaignTemplate:
-      description: ""
       example:
-        activeRulesetId: 5
         instructions: Use this template for discount campaigns. Set the campaign properties
           according to the campaign goals, and don't forget to set an end date.
-        campaignAttributes: '{}'
-        applicationsIds:
-        - 0
-        - 0
-        campaignType: advanced
-        updatedBy: Jane Doe
         campaignCollections:
         - name: My collection
           description: My collection of SKUs
         - name: My collection
           description: My collection of SKUs
-        created: 2020-06-10T09:05:27.993483Z
         defaultCampaignGroupId: 42
         description: This is a template for a discount campaign.
-        userId: 388
-        tags:
-        - discount
-        accountId: 3886
         features:
         - coupons
         - coupons
-        validApplicationIds:
-        - 1
-        - 2
-        - 3
-        name: Discount campaign
-        referralSettings:
-          couponPattern: SUMMER-####-####
-          validCharacters:
-          - A
-          - B
-          - C
-          - D
-          - E
-          - F
-          - G
-          - H
-          - I
-          - J
-          - K
-          - L
-          - M
-          - "N"
-          - O
-          - P
-          - Q
-          - R
-          - S
-          - T
-          - U
-          - V
-          - W
-          - X
-          - "Y"
-          - Z
-          - "0"
-          - "1"
-          - "2"
-          - "3"
-          - "4"
-          - "5"
-          - "6"
-          - "7"
-          - "8"
-          - "9"
+        couponReservationSettings:
+          reservationLimit: 45
+          isReservationMandatory: false
         couponSettings:
           couponPattern: SUMMER-####-####
           validCharacters:
@@ -25940,7 +25922,6 @@ components:
         id: 6
         couponAttributes: '{}'
         state: draft
-        updated: 2022-08-24T14:15:22Z
         limits:
         - period: yearly
           entities:
@@ -25952,6 +25933,67 @@ components:
           - Coupon
           limit: 1000.0
           action: createCoupon
+        activeRulesetId: 5
+        campaignAttributes: '{}'
+        applicationsIds:
+        - 1
+        - 2
+        - 3
+        - 1
+        - 2
+        - 3
+        campaignType: advanced
+        updatedBy: Jane Doe
+        created: 2020-06-10T09:05:27.993483Z
+        userId: 388
+        tags:
+        - discount
+        accountId: 3886
+        validApplicationIds:
+        - 1
+        - 2
+        - 3
+        name: Discount campaign
+        referralSettings:
+          couponPattern: SUMMER-####-####
+          validCharacters:
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+          - I
+          - J
+          - K
+          - L
+          - M
+          - "N"
+          - O
+          - P
+          - Q
+          - R
+          - S
+          - T
+          - U
+          - V
+          - W
+          - X
+          - "Y"
+          - Z
+          - "0"
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+          - "6"
+          - "7"
+          - "8"
+          - "9"
+        updated: 2022-08-24T14:15:22Z
       properties:
         id:
           description: Internal ID of this entity.
@@ -26033,6 +26075,8 @@ components:
           type: array
         couponSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
+        couponReservationSettings:
+          $ref: '#/components/schemas/CampaignTemplateCouponReservationSettings'
         referralSettings:
           $ref: '#/components/schemas/CodeGeneratorSettings'
         limits:
@@ -26048,8 +26092,14 @@ components:
         applicationsIds:
           description: A list of IDs of the Applications that are subscribed to this
             campaign template.
+          example:
+          - 1
+          - 2
+          - 3
+          - 1
+          - 2
+          - 3
           items:
-            description: ""
             type: integer
           type: array
         campaignCollections:
@@ -26401,19 +26451,13 @@ components:
           templateId: 3
           userId: 388
         campaign:
-          callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
           type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -26455,9 +26499,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -26471,39 +26548,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -26546,9 +26599,7 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
       properties:
         campaign:
           $ref: '#/components/schemas/Campaign'
@@ -26584,7 +26635,6 @@ components:
           description: A Talang expression that contains variable bindings referring
             to args.
           items:
-            properties: {}
             type: object
           type: array
         args:
@@ -26603,7 +26653,6 @@ components:
       - title
       type: object
     TemplateDef:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -26638,7 +26687,6 @@ components:
           description: A Talang expression that contains variable bindings referring
             to args.
           items:
-            properties: {}
             type: object
           type: array
         args:
@@ -26667,7 +26715,6 @@ components:
       - title
       type: object
     NewAttribute:
-      description: ""
       example:
         editable: true
         subscribedApplicationsIds:
@@ -26817,7 +26864,6 @@ components:
       - type
       type: object
     Attribute:
-      description: ""
       example:
         created: 2020-06-10T09:05:27.993483Z
         editable: true
@@ -26990,7 +27036,6 @@ components:
       - type
       type: object
     NewAdditionalCost:
-      description: ""
       example:
         name: shippingFee
         subscribedApplicationsIds:
@@ -27044,7 +27089,6 @@ components:
       - title
       type: object
     AccountAdditionalCost:
-      description: ""
       example:
         accountId: 3886
         created: 2020-06-10T09:05:27.993483Z
@@ -27117,7 +27161,6 @@ components:
       - title
       type: object
     NewEventType:
-      description: ""
       properties:
         title:
           description: The human-friendly name for this event type.
@@ -27140,7 +27183,6 @@ components:
       - title
       type: object
     EventType:
-      description: ""
       example:
         created: 2020-06-10T09:05:27.993483Z
         name: surveyCompleted
@@ -27180,7 +27222,6 @@ components:
       - title
       type: object
     NewWebhook:
-      description: ""
       properties:
         applicationIds:
           description: The IDs of the Applications that are related to this entity.
@@ -27245,7 +27286,6 @@ components:
       - verb
       type: object
     Webhook:
-      description: ""
       example:
         headers:
         - '{"Authorization": "Basic bmF2ZWVua3VtYXIU="}'
@@ -27280,9 +27320,7 @@ components:
           type: string
         applicationIds:
           description: The IDs of the Applications that are related to this entity.
-            The IDs of the Applications that are related to this entity.
           items:
-            description: ""
             type: integer
           minItems: 1
           type: array
@@ -27346,7 +27384,6 @@ components:
       - verb
       type: object
     WebhookWithOutgoingIntegrationDetails:
-      description: ""
       example:
         headers:
         - '{"Authorization": "Basic bmF2ZWVua3VtYXIU="}'
@@ -27384,9 +27421,7 @@ components:
           type: string
         applicationIds:
           description: The IDs of the Applications that are related to this entity.
-            The IDs of the Applications that are related to this entity.
           items:
-            description: ""
             type: integer
           minItems: 1
           type: array
@@ -27494,7 +27529,6 @@ components:
           type: string
       type: object
     NewMultipleAudiencesItem:
-      description: ""
       properties:
         name:
           description: The human-friendly display name for this audience.
@@ -27511,7 +27545,6 @@ components:
       - name
       type: object
     MultipleAudiencesItem:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -27568,7 +27601,6 @@ components:
       - name
       type: object
     NewAudience:
-      description: ""
       example:
         lastUpdate: 2022-04-26T11:02:38Z
         name: Travel audience
@@ -27634,7 +27666,6 @@ components:
       - name
       type: object
     Audience:
-      description: ""
       example:
         accountId: 3886
         created: 2020-06-10T09:05:27.993483Z
@@ -27729,7 +27760,6 @@ components:
       - schemaVersion
       type: object
     Export:
-      description: ""
       example:
         filter: '{}'
         accountId: 3886
@@ -27780,7 +27810,6 @@ components:
       - userId
       type: object
     Import:
-      description: ""
       example:
         accountId: 3886
         amount: 10
@@ -27825,7 +27854,6 @@ components:
       - userId
       type: object
     FeaturesFeed:
-      description: ""
       properties:
         title:
           type: string
@@ -27833,7 +27861,6 @@ components:
           type: string
       type: object
     LibraryAttribute:
-      description: ""
       properties:
         entity:
           description: The name of the entity that can have this attribute. When creating
@@ -27892,7 +27919,6 @@ components:
       - type
       type: object
     TalangAttribute:
-      description: ""
       properties:
         entity:
           description: The name of the entity of the attribute.
@@ -27970,7 +27996,6 @@ components:
           type: array
       type: object
     Role:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -28030,7 +28055,6 @@ components:
       - name
       type: object
     NewRole:
-      description: ""
       properties:
         name:
           description: Name of the role.
@@ -28087,7 +28111,6 @@ components:
           type: array
       type: object
     RoleAssign:
-      description: ""
       properties:
         users:
           description: An array of user IDs.
@@ -28112,7 +28135,6 @@ components:
       - users
       type: object
     NewRoleV2:
-      description: ""
       properties:
         name:
           description: Name of the role.
@@ -28140,7 +28162,6 @@ components:
     UpdateRoleV2:
       $ref: '#/components/schemas/RoleV2Base'
     RoleV2:
-      description: ""
       example:
         accountId: 3886
         created: 2020-06-10T09:05:27.993483Z
@@ -28520,7 +28541,7 @@ components:
       - integrationIDs
       type: object
     LedgerEntry:
-      description: ""
+      description: Entry in the point ledger.
       example:
         expiryDate: 2022-04-26T11:02:38Z
         accountId: 0
@@ -28589,11 +28610,12 @@ components:
       type: object
     LoyaltyMembership:
       example:
-        joined: 2000-01-23T04:56:07.000+00:00
+        joined: 2012-03-20T14:15:22Z
         loyaltyProgramId: 323414846
       properties:
         joined:
           description: The moment in which the loyalty program was joined.
+          example: 2012-03-20T14:15:22Z
           format: date-time
           title: Loyalty program joined at
           type: string
@@ -28708,7 +28730,6 @@ components:
       - referralId
       type: object
     ApplicationAPIKey:
-      description: ""
       properties:
         title:
           description: Title of the API key.
@@ -28783,7 +28804,6 @@ components:
       - title
       type: object
     NewApplicationAPIKey:
-      description: ""
       properties:
         title:
           description: Title of the API key.
@@ -28953,7 +28973,6 @@ components:
       - name
       type: object
     ManagementKey:
-      description: ""
       properties:
         name:
           description: Name for management key.
@@ -29007,7 +29026,6 @@ components:
       - name
       type: object
     NewManagementKey:
-      description: ""
       properties:
         name:
           description: Name for management key.
@@ -29125,7 +29143,7 @@ components:
         $ref: '#/components/schemas/NotificationListItem'
       type: array
     SamlConnection:
-      description: ""
+      description: A SAML 2.0 connection.
       properties:
         assertionConsumerServiceURL:
           description: The location where the SAML assertion is sent with a HTTP POST.
@@ -29181,7 +29199,7 @@ components:
       - signOnURL
       type: object
     NewSamlConnection:
-      description: ""
+      description: A new SAML 2.0 connection.
       properties:
         x509certificate:
           description: X.509 Certificate.
@@ -29352,7 +29370,8 @@ components:
       - enforced
       type: object
     Effect:
-      description: ""
+      description: A generic effect that is fired by a triggered campaign. The props
+        property will contain information specific to the specific effect type.
       example:
         rulesetId: 73
         ruleIndex: 2
@@ -29861,6 +29880,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
         bundleIndex:
           description: The position of the bundle in a list of item bundles created
@@ -29909,6 +29929,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
       - name
@@ -30099,6 +30120,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
       - programId
@@ -30144,6 +30166,7 @@ components:
             The alphanumeric identifier of the loyalty card.
           example: summer-loyalty-card-0543
           maxLength: 108
+          pattern: ^[A-Za-z0-9_-]*$
           type: string
       required:
       - programId
@@ -30417,7 +30440,7 @@ components:
           storeIntegrationId: STORE-001
           profileId: URNGV8294NV
           identifiers:
-          - 91.11.156.141
+          - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           evaluableCampaignIds:
           - 10
           - 12
@@ -30540,7 +30563,9 @@ components:
       - return
       type: object
     CustomerProfileIntegrationRequestV2:
-      description: ""
+      description: The body of a V2 integration API request (customer profile update).
+        Next to the customer profile details, this contains an optional listing of
+        extra properties that should be returned in the response.
       example:
         evaluableCampaignIds:
         - 10
@@ -30663,7 +30688,9 @@ components:
           type: array
       type: object
     MultipleCustomerProfileIntegrationRequestItem:
-      description: ""
+      description: |
+        The body of a V2 integration API request (customer profile update).
+        Next to the customer profile details, this contains an optional listing of extra properties that should be returned in the response.
       example:
         integrationId: R195412
         attributes:
@@ -30695,7 +30722,7 @@ components:
         - customerProfile:
             accountId: 31
             closedSessions: 3
-            created: 2000-01-23T04:56:07.000+00:00
+            created: 2020-02-07T08:15:22Z
             sandbox: false
             integrationId: URNGV8294NV
             attributes:
@@ -30705,9 +30732,9 @@ components:
             lastActivity: 2020-02-08T14:15:20Z
             id: 6
             loyaltyMemberships:
-            - joined: 2000-01-23T04:56:07.000+00:00
+            - joined: 2012-03-20T14:15:22Z
               loyaltyProgramId: 323414846
-            - joined: 2000-01-23T04:56:07.000+00:00
+            - joined: 2012-03-20T14:15:22Z
               loyaltyProgramId: 323414846
             audienceMemberships:
             - name: Travel audience
@@ -30717,7 +30744,7 @@ components:
         - customerProfile:
             accountId: 31
             closedSessions: 3
-            created: 2000-01-23T04:56:07.000+00:00
+            created: 2020-02-07T08:15:22Z
             sandbox: false
             integrationId: URNGV8294NV
             attributes:
@@ -30727,9 +30754,9 @@ components:
             lastActivity: 2020-02-08T14:15:20Z
             id: 6
             loyaltyMemberships:
-            - joined: 2000-01-23T04:56:07.000+00:00
+            - joined: 2012-03-20T14:15:22Z
               loyaltyProgramId: 323414846
-            - joined: 2000-01-23T04:56:07.000+00:00
+            - joined: 2012-03-20T14:15:22Z
               loyaltyProgramId: 323414846
             audienceMemberships:
             - name: Travel audience
@@ -30798,6 +30825,9 @@ components:
         disabled:
           description: Number of disabled campaigns.
           type: integer
+        staged:
+          description: Number of staged campaigns.
+          type: integer
         scheduled:
           description: Number of scheduled campaigns.
           type: integer
@@ -30816,6 +30846,7 @@ components:
       - expired
       - running
       - scheduled
+      - staged
       type: object
     RuleFailureReason:
       description: Details about why a rule failed.
@@ -30894,7 +30925,6 @@ components:
       - rulesetID
       type: object
     Giveaway:
-      description: ""
       example:
         profileIntegrationId: R195412
         code: GIVEAWAY1
@@ -31048,7 +31078,6 @@ components:
       - sandbox
       type: object
     NewCustomEffect:
-      description: ""
       properties:
         applicationIds:
           description: The IDs of the Applications that are related to this entity.
@@ -31116,7 +31145,6 @@ components:
       - values
       type: object
     Picklist:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -31172,7 +31200,6 @@ components:
       - values
       type: object
     UpdatePicklist:
-      description: ""
       properties:
         type:
           description: The type of allowed values in the picklist. If the type `time`
@@ -31199,49 +31226,8 @@ components:
       - values
       type: object
     UpdateCustomEffect:
-      description: ""
-      properties:
-        applicationIds:
-          description: The IDs of the Applications that are related to this entity.
-          items:
-            type: integer
-          minItems: 1
-          type: array
-        isPerItem:
-          description: Indicates if this effect is per item or not.
-          type: boolean
-          x-fieldType: bool
-        name:
-          description: The name of this effect.
-          pattern: ^[A-Za-z](\w|\s)*$
-          type: string
-        title:
-          description: The title of this effect.
-          pattern: ^[^[:cntrl:]\s][^[:cntrl:]]*$
-          type: string
-        payload:
-          description: The JSON payload of this effect.
-          type: string
-        description:
-          description: The description of this effect.
-          type: string
-        enabled:
-          description: Determines if this effect is active.
-          type: boolean
-        params:
-          description: Array of template argument definitions.
-          items:
-            $ref: '#/components/schemas/TemplateArgDef'
-          type: array
-      required:
-      - applicationIds
-      - enabled
-      - name
-      - payload
-      - title
-      type: object
+      $ref: '#/components/schemas/NewCustomEffect'
     CustomEffect:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -31323,7 +31309,6 @@ components:
           type: string
       type: object
     NewCampaignCollection:
-      description: ""
       example:
         name: My collection
         description: My collection of SKUs
@@ -31342,7 +31327,6 @@ components:
       - name
       type: object
     CampaignCollectionWithoutPayload:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -31397,7 +31381,6 @@ components:
       - name
       type: object
     CampaignCollection:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -31484,7 +31467,6 @@ components:
           type: array
       type: object
     NewCollection:
-      description: ""
       example:
         subscribedApplicationsIds:
         - 1
@@ -31517,7 +31499,6 @@ components:
       - name
       type: object
     CollectionWithoutPayload:
-      description: ""
       example:
         accountId: 3886
         createdBy: 134
@@ -31597,7 +31578,6 @@ components:
       - name
       type: object
     Collection:
-      description: ""
       example:
         accountId: 3886
         createdBy: 134
@@ -31689,7 +31669,6 @@ components:
       - name
       type: object
     CollectionItem:
-      description: ""
       example:
         item: item
       properties:
@@ -31699,7 +31678,6 @@ components:
       - item
       type: object
     NewCouponCreationJob:
-      description: ""
       example:
         expiryDate: 2023-08-24T14:15:22Z
         usageLimit: 100
@@ -31798,7 +31776,6 @@ components:
       - usageLimit
       type: object
     CouponCreationJob:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -31969,7 +31946,7 @@ components:
           expiresAfter: 2000-01-23T04:56:07.000+00:00
           expiresBefore: 2000-01-23T04:56:07.000+00:00
           createdBefore: 2000-01-23T04:56:07.000+00:00
-          value: "false"
+          value: value
           startsBefore: 2000-01-23T04:56:07.000+00:00
       properties:
         filters:
@@ -32003,7 +31980,7 @@ components:
         expiresAfter: 2000-01-23T04:56:07.000+00:00
         expiresBefore: 2000-01-23T04:56:07.000+00:00
         createdBefore: 2000-01-23T04:56:07.000+00:00
-        value: "false"
+        value: value
         startsBefore: 2000-01-23T04:56:07.000+00:00
       properties:
         createdBefore:
@@ -32063,7 +32040,6 @@ components:
             the coupon code
           type: boolean
         value:
-          default: "false"
           description: Filter results by the coupon code
           type: string
         batchId:
@@ -32087,7 +32063,6 @@ components:
           type: string
       type: object
     CouponDeletionJob:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -32166,7 +32141,6 @@ components:
       - status
       type: object
     AsyncCouponDeletionJobResponse:
-      description: ""
       example:
         id: 6
       properties:
@@ -32179,7 +32153,6 @@ components:
       - id
       type: object
     LimitCounter:
-      description: ""
       properties:
         campaignId:
           description: The ID of the campaign that owns this entity.
@@ -32605,7 +32578,6 @@ components:
       - payload
       type: object
     NewBaseNotification:
-      description: ""
       example:
         webhook:
           headers:
@@ -32949,7 +32921,6 @@ components:
           type: array
       type: object
     BaseNotification:
-      description: ""
       example:
         webhook:
           headers:
@@ -33003,7 +32974,6 @@ components:
       - webhook
       type: object
     BaseNotificationWebhook:
-      description: ""
       example:
         headers:
         - 'content-type: application/json'
@@ -33382,7 +33352,6 @@ components:
       - title
       type: object
     OutgoingIntegrationTemplateWithConfigurationDetails:
-      description: ""
       properties:
         id:
           description: Unique ID for this entity.
@@ -33484,7 +33453,6 @@ components:
           type: array
       type: object
     Return:
-      description: ""
       example:
         returnedCartItems:
         - quantity: 1
@@ -33603,7 +33571,6 @@ components:
       - position
       type: object
     EventV2:
-      description: ""
       properties:
         profileId:
           description: |
@@ -33650,7 +33617,6 @@ components:
       - type
       type: object
     IntegrationEventV2Request:
-      description: ""
       example:
         storeIntegrationId: STORE-001
         profileId: URNGV8294NV
@@ -33760,7 +33726,6 @@ components:
           type: array
       type: object
     NewCatalog:
-      description: ""
       properties:
         name:
           description: The cart item catalog name.
@@ -33785,7 +33750,6 @@ components:
       - name
       type: object
     Catalog:
-      description: ""
       example:
         accountId: 3886
         createdBy: 6
@@ -34037,7 +34001,6 @@ components:
           type: array
       type: object
     CatalogItem:
-      description: ""
       example:
         product:
           name: sample_product
@@ -34110,7 +34073,6 @@ components:
       - name
       type: object
     ItemAttribute:
-      description: ""
       example:
         attributeid: 6
         name: name
@@ -34276,7 +34238,6 @@ components:
       - name
       type: object
     NewStore:
-      description: ""
       example:
         name: South US store
         description: This is the description of the store in south US.
@@ -34318,13 +34279,12 @@ components:
       - name
       type: object
     Store:
-      description: ""
       example:
         linkedCampaignIds:
         - 4
         - 6
         - 8
-        created: 2000-01-23T04:56:07.000+00:00
+        created: 2020-02-07T08:15:22Z
         name: South US store
         description: This is the description of the store in south US.
         integrationId: STORE-001
@@ -34340,8 +34300,8 @@ components:
           example: 6
           type: integer
         created:
-          description: The time this entity was created. The time this entity was
-            created.
+          description: The time this entity was created.
+          example: 2020-02-07T08:15:22Z
           format: date-time
           type: string
         name:
@@ -34399,8 +34359,45 @@ components:
       - name
       - updated
       type: object
+    NewCampaignStoreBudgetStoreLimit:
+      properties:
+        storeId:
+          description: |
+            The ID of the store.
+            You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.
+          example: 17
+          type: integer
+        limit:
+          description: The value to set for the limit.
+          example: 1000.0
+          type: number
+      required:
+      - limit
+      - storeId
+      type: object
+    NewCampaignStoreBudget:
+      properties:
+        action:
+          enum:
+          - setDiscount
+          type: string
+        storeLimits:
+          description: The set of budget limits for stores linked to the campaign.
+          items:
+            $ref: '#/components/schemas/NewCampaignStoreBudgetStoreLimit'
+          type: array
+        period:
+          enum:
+          - daily
+          - weekly
+          - monthly
+          - yearly
+          type: string
+      required:
+      - action
+      - storeLimits
+      type: object
     CampaignStoreBudget:
-      description: ""
       properties:
         id:
           description: Internal ID of this entity.
@@ -34430,6 +34427,68 @@ components:
       - limits
       - storeId
       type: object
+    ListCampaignStoreBudgetsStore:
+      properties:
+        id:
+          type: integer
+        integrationId:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - integrationId
+      - name
+      type: object
+    ListCampaignStoreBudgets:
+      properties:
+        store:
+          $ref: '#/components/schemas/ListCampaignStoreBudgetsStore'
+        limit:
+          type: integer
+        action:
+          type: string
+        period:
+          type: string
+      required:
+      - action
+      - limit
+      - store
+      type: object
+    SummaryCampaignStoreBudget:
+      properties:
+        action:
+          enum:
+          - redeemCoupon
+          - redeemReferral
+          - setDiscount
+          - setDiscountEffect
+          - createCoupon
+          - createReferral
+          - createLoyaltyPoints
+          - redeemLoyaltyPoints
+          - customEffect
+          - createLoyaltyPointsEffect
+          - redeemLoyaltyPointsEffect
+          - callApi
+          - awardGiveaway
+          - addFreeItemEffect
+          - reserveCoupon
+          type: string
+        period:
+          enum:
+          - overall
+          - daily
+          - weekly
+          - monthly
+          - yearly
+          type: string
+        storeCount:
+          type: integer
+      required:
+      - action
+      - storeCount
+      type: object
     BulkOperationOnCampaigns:
       properties:
         operation:
@@ -34438,6 +34497,7 @@ components:
           enum:
           - disable
           - delete
+          - activate_revision
           type: string
         campaignIds:
           description: The list of campaign IDs on which the operation will be performed.
@@ -34449,13 +34509,22 @@ components:
             type: integer
           maxItems: 50
           type: array
+        activateAt:
+          description: |
+            Timestamp when the revisions are finalized after the `activate_revision` operation. The current time is used when left blank.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
       required:
       - campaignIds
       - operation
       type: object
     CreateAchievement:
       example:
+        fixedStartDate: 2000-01-23T04:56:07.000+00:00
         period: 1Y
+        endDate: 2000-01-23T04:56:07.000+00:00
         name: Order50Discount
         periodEndOverride:
           month: 11
@@ -34464,8 +34533,10 @@ components:
           minute: 59
           second: 59
         description: 50% off for every 50th purchase in a year.
+        activationPolicy: fixed_schedule
         title: 50% off on 50th purchase.
         target: 50.0
+        recurrencePolicy: no_recurrence
       properties:
         name:
           description: |
@@ -34522,6 +34593,40 @@ components:
           type: string
         periodEndOverride:
           $ref: '#/components/schemas/TimePoint'
+        recurrencePolicy:
+          description: |
+            The policy that determines if and how the achievement recurs.
+            - `no_recurrence`: The achievement can be completed only once.
+            - `on_expiration`: The achievement resets after it expires and becomes available again.
+          enum:
+          - no_recurrence
+          - on_expiration
+          example: no_recurrence
+          type: string
+        activationPolicy:
+          description: |
+            The policy that determines how the achievement starts, ends, or resets.
+            - `user_action`: The achievement ends or resets relative to when the customer started the achievement.
+            - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
+          enum:
+          - user_action
+          - fixed_schedule
+          example: fixed_schedule
+          type: string
+        fixedStartDate:
+          description: |
+            The achievement's start date when `activationPolicy` is set to `fixed_schedule`.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
+        endDate:
+          description: |
+            The achievement's end date. If defined, customers cannot participate in the achievement after this date.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
       required:
       - description
       - name
@@ -34555,12 +34660,19 @@ components:
       - userId
       type: object
     Achievement:
-      description: ""
       example:
         period: 1Y
-        createdBy: John Doe
+        endDate: 2000-01-23T04:56:07.000+00:00
         created: 2020-06-10T09:05:27.993483Z
         campaignId: 1
+        description: 50% off for every 50th purchase in a year.
+        activationPolicy: fixed_schedule
+        title: 50% off on 50th purchase.
+        userId: 1234
+        hasProgress: true
+        target: 50.0
+        fixedStartDate: 2000-01-23T04:56:07.000+00:00
+        createdBy: John Doe
         name: Order50Discount
         periodEndOverride:
           month: 11
@@ -34568,12 +34680,8 @@ components:
           hour: 23
           minute: 59
           second: 59
-        description: 50% off for every 50th purchase in a year.
         id: 6
-        title: 50% off on 50th purchase.
-        userId: 1234
-        hasProgress: true
-        target: 50.0
+        recurrencePolicy: no_recurrence
       properties:
         id:
           description: Internal ID of this entity.
@@ -34639,6 +34747,40 @@ components:
           type: string
         periodEndOverride:
           $ref: '#/components/schemas/TimePoint'
+        recurrencePolicy:
+          description: |
+            The policy that determines if and how the achievement recurs.
+            - `no_recurrence`: The achievement can be completed only once.
+            - `on_expiration`: The achievement resets after it expires and becomes available again.
+          enum:
+          - no_recurrence
+          - on_expiration
+          example: no_recurrence
+          type: string
+        activationPolicy:
+          description: |
+            The policy that determines how the achievement starts, ends, or resets.
+            - `user_action`: The achievement ends or resets relative to when the customer started the achievement.
+            - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
+          enum:
+          - user_action
+          - fixed_schedule
+          example: fixed_schedule
+          type: string
+        fixedStartDate:
+          description: |
+            The achievement's start date when `activationPolicy` is set to `fixed_schedule`.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
+        endDate:
+          description: |
+            The achievement's end date. If defined, customers cannot participate in the achievement after this date.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
         campaignId:
           description: ID of the campaign, to which the achievement belongs to
           example: 1
@@ -34671,7 +34813,9 @@ components:
       type: object
     UpdateAchievement:
       example:
+        fixedStartDate: 2000-01-23T04:56:07.000+00:00
         period: 1Y
+        endDate: 2000-01-23T04:56:07.000+00:00
         name: Order50Discount
         periodEndOverride:
           month: 11
@@ -34680,8 +34824,10 @@ components:
           minute: 59
           second: 59
         description: 50% off for every 50th purchase in a year.
+        activationPolicy: fixed_schedule
         title: 50% off on 50th purchase.
         target: 50.0
+        recurrencePolicy: no_recurrence
       properties:
         name:
           description: |
@@ -34712,6 +34858,40 @@ components:
           type: string
         periodEndOverride:
           $ref: '#/components/schemas/TimePoint'
+        recurrencePolicy:
+          description: |
+            The policy that determines if and how the achievement recurs.
+            - `no_recurrence`: The achievement can be completed only once.
+            - `on_expiration`: The achievement resets after it expires and becomes available again.
+          enum:
+          - no_recurrence
+          - on_expiration
+          example: no_recurrence
+          type: string
+        activationPolicy:
+          description: |
+            The policy that determines how the achievement starts, ends, or resets.
+            - `user_action`: The achievement ends or resets relative to when the customer started the achievement.
+            - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule.
+          enum:
+          - user_action
+          - fixed_schedule
+          example: fixed_schedule
+          type: string
+        fixedStartDate:
+          description: |
+            The achievement's start date when `activationPolicy` is set to `fixed_schedule`.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
+        endDate:
+          description: |
+            The achievement's end date. If defined, customers cannot participate in the achievement after this date.
+
+            **Note:** It must be an RFC3339 timestamp string.
+          format: date-time
+          type: string
       type: object
     AchievementProgress:
       example:
@@ -34866,6 +35046,7 @@ components:
           - running
           - disabled
           - archived
+          - staged
           example: running
           type: string
         totalRevenue:
@@ -35049,7 +35230,7 @@ components:
         data:
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -35059,9 +35240,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -35070,7 +35251,7 @@ components:
             id: 2
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -35080,9 +35261,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -35340,10 +35521,11 @@ components:
               - "7"
               - "8"
               - "9"
-            id: 0
+            id: 139
             canUpgradeToAdvancedTiers: true
             created: 2020-06-10T09:05:27.993483Z
             sandbox: true
+            returnPolicy: only_pending
             subscribedApplications:
             - 132
             - 97
@@ -35421,10 +35603,11 @@ components:
               - "7"
               - "8"
               - "9"
-            id: 0
+            id: 139
             canUpgradeToAdvancedTiers: true
             created: 2020-06-10T09:05:27.993483Z
             sandbox: true
+            returnPolicy: only_pending
             subscribedApplications:
             - 132
             - 97
@@ -35541,10 +35724,11 @@ components:
               - "7"
               - "8"
               - "9"
-            id: 0
+            id: 139
             canUpgradeToAdvancedTiers: true
             created: 2020-06-10T09:05:27.993483Z
             sandbox: true
+            returnPolicy: only_pending
             subscribedApplications:
             - 132
             - 97
@@ -35622,10 +35806,11 @@ components:
               - "7"
               - "8"
               - "9"
-            id: 0
+            id: 139
             canUpgradeToAdvancedTiers: true
             created: 2020-06-10T09:05:27.993483Z
             sandbox: true
+            returnPolicy: only_pending
             subscribedApplications:
             - 132
             - 97
@@ -35669,19 +35854,13 @@ components:
     inline_response_200_6:
       example:
         data:
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -35723,9 +35902,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -35739,39 +35951,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -35814,22 +36002,14 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
-        - callApiEffectCount: 0
-          createdLoyaltyPointsEffectCount: 2
-          discountCount: 288.0
-          description: Campaign for all summer 2021 promotions
-          type: advanced
+        - type: advanced
           templateId: 3
-          activeRevisionVersionId: 6
           customEffectCount: 0
           activeRevisionId: 6
           features:
           - coupons
           - referrals
-          currentRevisionVersionId: 6
           createdLoyaltyPointsCount: 9.0
           storesImported: true
           couponSettings:
@@ -35871,9 +36051,42 @@ components:
             - "7"
             - "8"
             - "9"
-          startTime: 2021-07-20T22:00:00Z
           id: 4
           state: enabled
+          reservecouponEffectCount: 9
+          updatedBy: Jane Doe
+          frontendState: running
+          created: 2020-06-10T09:05:27.993483Z
+          referralCreationCount: 8
+          stageRevision: false
+          couponRedemptionCount: 163
+          couponCreationCount: 16
+          version: 6
+          campaignGroups:
+          - 1
+          - 3
+          tags:
+          - summer
+          discountEffectCount: 343
+          budgets:
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          - limit: 1000.0
+            action: createCoupon
+            counter: 42.0
+          redeemedLoyaltyPointsCount: 8.0
+          name: Summer promotions
+          applicationId: 322
+          updated: 2000-01-23T04:56:07.000+00:00
+          callApiEffectCount: 0
+          createdLoyaltyPointsEffectCount: 2
+          discountCount: 288.0
+          revisionFrontendState: revised
+          description: Campaign for all summer 2021 promotions
+          activeRevisionVersionId: 6
+          currentRevisionVersionId: 6
+          startTime: 2021-07-20T22:00:00Z
           currentRevisionId: 6
           limits:
           - period: yearly
@@ -35887,39 +36100,15 @@ components:
             limit: 1000.0
             action: createCoupon
           activeRulesetId: 6
-          reservecouponEffectCount: 9
-          updatedBy: Jane Doe
-          frontendState: running
-          created: 2020-06-10T09:05:27.993483Z
-          referralCreationCount: 8
-          stageRevision: false
-          couponRedemptionCount: 163
           userId: 388
-          couponCreationCount: 16
-          version: 6
-          campaignGroups:
-          - 1
-          - 3
-          tags:
-          - summer
           awardedGiveawaysCount: 9
           redeemedLoyaltyPointsEffectCount: 9
           linkedStoreIds:
           - 1
           - 2
           - 3
-          discountEffectCount: 343
-          budgets:
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
-          - limit: 1000.0
-            action: createCoupon
-            counter: 42.0
           createdBy: John Doe
-          redeemedLoyaltyPointsCount: 8.0
           addFreeItemEffectCount: 0
-          name: Summer promotions
           referralSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -35962,9 +36151,7 @@ components:
           attributes: '{}'
           lastActivity: 2022-11-10T23:00:00Z
           endTime: 2021-09-22T22:00:00Z
-          applicationId: 322
           referralRedemptionCount: 3
-          updated: 2000-01-23T04:56:07.000+00:00
         totalResultSize: 1
       properties:
         totalResultSize:
@@ -36519,75 +36706,22 @@ components:
     inline_response_200_12:
       example:
         data:
-        - activeRulesetId: 5
-          instructions: Use this template for discount campaigns. Set the campaign
+        - instructions: Use this template for discount campaigns. Set the campaign
             properties according to the campaign goals, and don't forget to set an
             end date.
-          campaignAttributes: '{}'
-          applicationsIds:
-          - 0
-          - 0
-          campaignType: advanced
-          updatedBy: Jane Doe
           campaignCollections:
           - name: My collection
             description: My collection of SKUs
           - name: My collection
             description: My collection of SKUs
-          created: 2020-06-10T09:05:27.993483Z
           defaultCampaignGroupId: 42
           description: This is a template for a discount campaign.
-          userId: 388
-          tags:
-          - discount
-          accountId: 3886
           features:
           - coupons
           - coupons
-          validApplicationIds:
-          - 1
-          - 2
-          - 3
-          name: Discount campaign
-          referralSettings:
-            couponPattern: SUMMER-####-####
-            validCharacters:
-            - A
-            - B
-            - C
-            - D
-            - E
-            - F
-            - G
-            - H
-            - I
-            - J
-            - K
-            - L
-            - M
-            - "N"
-            - O
-            - P
-            - Q
-            - R
-            - S
-            - T
-            - U
-            - V
-            - W
-            - X
-            - "Y"
-            - Z
-            - "0"
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          couponReservationSettings:
+            reservationLimit: 45
+            isReservationMandatory: false
           couponSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -36639,7 +36773,6 @@ components:
           id: 6
           couponAttributes: '{}'
           state: draft
-          updated: 2022-08-24T14:15:22Z
           limits:
           - period: yearly
             entities:
@@ -36651,31 +36784,22 @@ components:
             - Coupon
             limit: 1000.0
             action: createCoupon
-        - activeRulesetId: 5
-          instructions: Use this template for discount campaigns. Set the campaign
-            properties according to the campaign goals, and don't forget to set an
-            end date.
+          activeRulesetId: 5
           campaignAttributes: '{}'
           applicationsIds:
-          - 0
-          - 0
+          - 1
+          - 2
+          - 3
+          - 1
+          - 2
+          - 3
           campaignType: advanced
           updatedBy: Jane Doe
-          campaignCollections:
-          - name: My collection
-            description: My collection of SKUs
-          - name: My collection
-            description: My collection of SKUs
           created: 2020-06-10T09:05:27.993483Z
-          defaultCampaignGroupId: 42
-          description: This is a template for a discount campaign.
           userId: 388
           tags:
           - discount
           accountId: 3886
-          features:
-          - coupons
-          - coupons
           validApplicationIds:
           - 1
           - 2
@@ -36720,6 +36844,23 @@ components:
             - "7"
             - "8"
             - "9"
+          updated: 2022-08-24T14:15:22Z
+        - instructions: Use this template for discount campaigns. Set the campaign
+            properties according to the campaign goals, and don't forget to set an
+            end date.
+          campaignCollections:
+          - name: My collection
+            description: My collection of SKUs
+          - name: My collection
+            description: My collection of SKUs
+          defaultCampaignGroupId: 42
+          description: This is a template for a discount campaign.
+          features:
+          - coupons
+          - coupons
+          couponReservationSettings:
+            reservationLimit: 45
+            isReservationMandatory: false
           couponSettings:
             couponPattern: SUMMER-####-####
             validCharacters:
@@ -36771,7 +36912,6 @@ components:
           id: 6
           couponAttributes: '{}'
           state: draft
-          updated: 2022-08-24T14:15:22Z
           limits:
           - period: yearly
             entities:
@@ -36783,6 +36923,67 @@ components:
             - Coupon
             limit: 1000.0
             action: createCoupon
+          activeRulesetId: 5
+          campaignAttributes: '{}'
+          applicationsIds:
+          - 1
+          - 2
+          - 3
+          - 1
+          - 2
+          - 3
+          campaignType: advanced
+          updatedBy: Jane Doe
+          created: 2020-06-10T09:05:27.993483Z
+          userId: 388
+          tags:
+          - discount
+          accountId: 3886
+          validApplicationIds:
+          - 1
+          - 2
+          - 3
+          name: Discount campaign
+          referralSettings:
+            couponPattern: SUMMER-####-####
+            validCharacters:
+            - A
+            - B
+            - C
+            - D
+            - E
+            - F
+            - G
+            - H
+            - I
+            - J
+            - K
+            - L
+            - M
+            - "N"
+            - O
+            - P
+            - Q
+            - R
+            - S
+            - T
+            - U
+            - V
+            - W
+            - X
+            - "Y"
+            - Z
+            - "0"
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
+          updated: 2022-08-24T14:15:22Z
         hasMore: true
       properties:
         hasMore:
@@ -36866,10 +37067,11 @@ components:
             - "7"
             - "8"
             - "9"
-          id: 0
+          id: 139
           canUpgradeToAdvancedTiers: true
           created: 2020-06-10T09:05:27.993483Z
           sandbox: true
+          returnPolicy: only_pending
           subscribedApplications:
           - 132
           - 97
@@ -36947,10 +37149,11 @@ components:
             - "7"
             - "8"
             - "9"
-          id: 0
+          id: 139
           canUpgradeToAdvancedTiers: true
           created: 2020-06-10T09:05:27.993483Z
           sandbox: true
+          returnPolicy: only_pending
           subscribedApplications:
           - 132
           - 97
@@ -37381,21 +37584,21 @@ components:
     inline_response_200_22:
       example:
         data:
-        - accountId: 6
+        - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
-          integrationId: integrationId
+          integrationId: URNGV8294NV
           attributes:
             Language: english
             ShippingCountry: DE
           totalSales: 299.99
           lastActivity: 2020-02-08T14:15:20Z
-          id: 0
+          id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           advocateIntegrationId: advocateIntegrationId
           audienceMemberships:
@@ -37403,21 +37606,21 @@ components:
             id: 2
           - name: Travel audience
             id: 2
-        - accountId: 6
+        - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
-          integrationId: integrationId
+          integrationId: URNGV8294NV
           attributes:
             Language: english
             ShippingCountry: DE
           totalSales: 299.99
           lastActivity: 2020-02-08T14:15:20Z
-          id: 0
+          id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           advocateIntegrationId: advocateIntegrationId
           audienceMemberships:
@@ -37442,21 +37645,21 @@ components:
     inline_response_200_23:
       example:
         data:
-        - accountId: 6
+        - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
-          integrationId: integrationId
+          integrationId: URNGV8294NV
           attributes:
             Language: english
             ShippingCountry: DE
           totalSales: 299.99
           lastActivity: 2020-02-08T14:15:20Z
-          id: 0
+          id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           advocateIntegrationId: advocateIntegrationId
           audienceMemberships:
@@ -37464,21 +37667,21 @@ components:
             id: 2
           - name: Travel audience
             id: 2
-        - accountId: 6
+        - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
-          integrationId: integrationId
+          integrationId: URNGV8294NV
           attributes:
             Language: english
             ShippingCountry: DE
           totalSales: 299.99
           lastActivity: 2020-02-08T14:15:20Z
-          id: 0
+          id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           advocateIntegrationId: advocateIntegrationId
           audienceMemberships:
@@ -37504,7 +37707,7 @@ components:
         data:
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -37514,9 +37717,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -37525,7 +37728,7 @@ components:
             id: 2
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -37535,9 +37738,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -37562,7 +37765,7 @@ components:
         data:
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -37572,9 +37775,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -37583,7 +37786,7 @@ components:
             id: 2
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -37593,9 +37796,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -37657,7 +37860,7 @@ components:
       example:
         data:
         - coupon: BKDB946
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           totalDiscounts: 100.0
           integrationId: URNGV8294NV
           profileintegrationid: 382370BKDB946
@@ -37715,7 +37918,7 @@ components:
             category: shoes
             height: 0.8008281904610115
         - coupon: BKDB946
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           totalDiscounts: 100.0
           integrationId: URNGV8294NV
           profileintegrationid: 382370BKDB946
@@ -38002,7 +38205,7 @@ components:
         data:
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -38012,9 +38215,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -38023,7 +38226,7 @@ components:
             id: 2
         - accountId: 31
           closedSessions: 3
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           sandbox: false
           integrationId: URNGV8294NV
           attributes:
@@ -38033,9 +38236,9 @@ components:
           lastActivity: 2020-02-08T14:15:20Z
           id: 6
           loyaltyMemberships:
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
-          - joined: 2000-01-23T04:56:07.000+00:00
+          - joined: 2012-03-20T14:15:22Z
             loyaltyProgramId: 323414846
           audienceMemberships:
           - name: Travel audience
@@ -38625,7 +38828,7 @@ components:
           - 4
           - 6
           - 8
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           name: South US store
           description: This is the description of the store in south US.
           integrationId: STORE-001
@@ -38639,7 +38842,7 @@ components:
           - 4
           - 6
           - 8
-          created: 2000-01-23T04:56:07.000+00:00
+          created: 2020-02-07T08:15:22Z
           name: South US store
           description: This is the description of the store in south US.
           integrationId: STORE-001
@@ -38667,9 +38870,17 @@ components:
       example:
         data:
         - period: 1Y
-          createdBy: John Doe
+          endDate: 2000-01-23T04:56:07.000+00:00
           created: 2020-06-10T09:05:27.993483Z
           campaignId: 1
+          description: 50% off for every 50th purchase in a year.
+          activationPolicy: fixed_schedule
+          title: 50% off on 50th purchase.
+          userId: 1234
+          hasProgress: true
+          target: 50.0
+          fixedStartDate: 2000-01-23T04:56:07.000+00:00
+          createdBy: John Doe
           name: Order50Discount
           periodEndOverride:
             month: 11
@@ -38677,16 +38888,20 @@ components:
             hour: 23
             minute: 59
             second: 59
-          description: 50% off for every 50th purchase in a year.
           id: 6
-          title: 50% off on 50th purchase.
-          userId: 1234
-          hasProgress: true
-          target: 50.0
+          recurrencePolicy: no_recurrence
         - period: 1Y
-          createdBy: John Doe
+          endDate: 2000-01-23T04:56:07.000+00:00
           created: 2020-06-10T09:05:27.993483Z
           campaignId: 1
+          description: 50% off for every 50th purchase in a year.
+          activationPolicy: fixed_schedule
+          title: 50% off on 50th purchase.
+          userId: 1234
+          hasProgress: true
+          target: 50.0
+          fixedStartDate: 2000-01-23T04:56:07.000+00:00
+          createdBy: John Doe
           name: Order50Discount
           periodEndOverride:
             month: 11
@@ -38694,12 +38909,8 @@ components:
             hour: 23
             minute: 59
             second: 59
-          description: 50% off for every 50th purchase in a year.
           id: 6
-          title: 50% off on 50th purchase.
-          userId: 1234
-          hasProgress: true
-          target: 50.0
+          recurrencePolicy: no_recurrence
         hasMore: true
       properties:
         hasMore:
@@ -38799,6 +39010,14 @@ components:
           description: Indicates whether the service provider supports patch operations
             for modifying resources.
           type: boolean
+    ScimServiceProviderConfigResponse_sort:
+      description: Configuration settings related to sorting SCIM resources in query
+        responses.
+      properties:
+        supported:
+          description: Indicates whether the service provider supports sorting operations
+            for ordered query results.
+          type: boolean
     GenerateRuleTitle_rule:
       properties:
         effects:
@@ -38827,7 +39046,6 @@ components:
           - and
           - - couponValid
           items:
-            properties: {}
             type: object
           minItems: 1
           type: array

@@ -31,9 +31,8 @@ import one.talon.model.LoyaltyProgram;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Application
  */
-@ApiModel(description = "")
 
 public class Application {
   public static final String SERIALIZED_NAME_ID = "id";

@@ -2,13 +2,12 @@
 
 # Store
 
-
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Internal ID of this entity. | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. The time this entity was created. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **name** | **String** | The name of the store. | 
 **description** | **String** | The description of the store. | 
 **attributes** | [**Object**](.md) | The attributes of the store. |  [optional]

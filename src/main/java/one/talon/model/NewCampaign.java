@@ -30,9 +30,8 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * NewCampaign
  */
-@ApiModel(description = "")
 
 public class NewCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";

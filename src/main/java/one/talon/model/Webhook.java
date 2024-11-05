@@ -29,9 +29,8 @@ import one.talon.model.TemplateArgDef;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * Webhook
  */
-@ApiModel(description = "")
 
 public class Webhook {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -214,10 +213,10 @@ public class Webhook {
   }
 
    /**
-   * The IDs of the Applications that are related to this entity. The IDs of the Applications that are related to this entity.
+   * The IDs of the Applications that are related to this entity.
    * @return applicationIds
   **/
-  @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity. The IDs of the Applications that are related to this entity.")
+  @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
   public List<Integer> getApplicationIds() {
     return applicationIds;

@@ -104,8 +104,7 @@ public class ScimNewUser {
    * Unique identifier of the user. This is usually an email address.
    * @return userName
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "john.doe@example.com", value = "Unique identifier of the user. This is usually an email address.")
+  @ApiModelProperty(example = "john.doe@example.com", required = true, value = "Unique identifier of the user. This is usually an email address.")
 
   public String getUserName() {
     return userName;

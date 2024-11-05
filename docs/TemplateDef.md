@@ -2,7 +2,6 @@
 
 # TemplateDef
 
-
 ## Properties
 
 Name | Type | Description | Notes

@@ -30,9 +30,8 @@ import one.talon.model.LimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * UpdateCoupon
  */
-@ApiModel(description = "")
 
 public class UpdateCoupon {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";

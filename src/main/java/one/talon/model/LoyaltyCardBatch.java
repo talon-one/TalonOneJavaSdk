@@ -23,11 +23,11 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.CodeGeneratorSettings;
 
 /**
- * 
+ * LoyaltyCardBatch
  */
-@ApiModel(description = "")
 
 public class LoyaltyCardBatch {
   public static final String SERIALIZED_NAME_NUMBER_OF_CARDS = "numberOfCards";
@@ -88,6 +88,10 @@ public class LoyaltyCardBatch {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status = StatusEnum.ACTIVE;
+
+  public static final String SERIALIZED_NAME_CARD_CODE_SETTINGS = "cardCodeSettings";
+  @SerializedName(SERIALIZED_NAME_CARD_CODE_SETTINGS)
+  private CodeGeneratorSettings cardCodeSettings;
 
 
   public LoyaltyCardBatch numberOfCards(Integer numberOfCards) {
@@ -158,6 +162,29 @@ public class LoyaltyCardBatch {
   }
 
 
+  public LoyaltyCardBatch cardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
+    
+    this.cardCodeSettings = cardCodeSettings;
+    return this;
+  }
+
+   /**
+   * Get cardCodeSettings
+   * @return cardCodeSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CodeGeneratorSettings getCardCodeSettings() {
+    return cardCodeSettings;
+  }
+
+
+  public void setCardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
+    this.cardCodeSettings = cardCodeSettings;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -169,12 +196,13 @@ public class LoyaltyCardBatch {
     LoyaltyCardBatch loyaltyCardBatch = (LoyaltyCardBatch) o;
     return Objects.equals(this.numberOfCards, loyaltyCardBatch.numberOfCards) &&
         Objects.equals(this.batchId, loyaltyCardBatch.batchId) &&
-        Objects.equals(this.status, loyaltyCardBatch.status);
+        Objects.equals(this.status, loyaltyCardBatch.status) &&
+        Objects.equals(this.cardCodeSettings, loyaltyCardBatch.cardCodeSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numberOfCards, batchId, status);
+    return Objects.hash(numberOfCards, batchId, status, cardCodeSettings);
   }
 
 
@@ -185,6 +213,7 @@ public class LoyaltyCardBatch {
     sb.append("    numberOfCards: ").append(toIndentedString(numberOfCards)).append("\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    cardCodeSettings: ").append(toIndentedString(cardCodeSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

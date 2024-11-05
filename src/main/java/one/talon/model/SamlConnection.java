@@ -26,9 +26,9 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * 
+ * A SAML 2.0 connection.
  */
-@ApiModel(description = "")
+@ApiModel(description = "A SAML 2.0 connection.")
 
 public class SamlConnection {
   public static final String SERIALIZED_NAME_ASSERTION_CONSUMER_SERVICE_U_R_L = "assertionConsumerServiceURL";
