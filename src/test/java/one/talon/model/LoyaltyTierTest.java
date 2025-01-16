@@ -67,6 +67,22 @@ public class LoyaltyTierTest {
     }
 
     /**
+     * Test the property 'programName'
+     */
+    @Test
+    public void programNameTest() {
+        // TODO: test programName
+    }
+
+    /**
+     * Test the property 'programTitle'
+     */
+    @Test
+    public void programTitleTest() {
+        // TODO: test programTitle
+    }
+
+    /**
      * Test the property 'name'
      */
     @Test

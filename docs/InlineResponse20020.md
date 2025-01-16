@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
+**data** | [**List&lt;CampaignAnalytics&gt;**](CampaignAnalytics.md) |  | 
 
 
 

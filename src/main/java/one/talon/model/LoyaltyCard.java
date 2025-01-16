@@ -48,6 +48,14 @@ public class LoyaltyCard {
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
   private Integer programID;
 
+  public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
+  private String programName;
+
+  public static final String SERIALIZED_NAME_PROGRAM_TITLE = "programTitle";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_TITLE)
+  private String programTitle;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
@@ -156,6 +164,52 @@ public class LoyaltyCard {
 
   public void setProgramID(Integer programID) {
     this.programID = programID;
+  }
+
+
+  public LoyaltyCard programName(String programName) {
+    
+    this.programName = programName;
+    return this;
+  }
+
+   /**
+   * The integration name of the loyalty program that owns this entity.
+   * @return programName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Loyalty_program", value = "The integration name of the loyalty program that owns this entity.")
+
+  public String getProgramName() {
+    return programName;
+  }
+
+
+  public void setProgramName(String programName) {
+    this.programName = programName;
+  }
+
+
+  public LoyaltyCard programTitle(String programTitle) {
+    
+    this.programTitle = programTitle;
+    return this;
+  }
+
+   /**
+   * The Campaign Manager-displayed name of the loyalty program that owns this entity.
+   * @return programTitle
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Loyalty program", value = "The Campaign Manager-displayed name of the loyalty program that owns this entity.")
+
+  public String getProgramTitle() {
+    return programTitle;
+  }
+
+
+  public void setProgramTitle(String programTitle) {
+    this.programTitle = programTitle;
   }
 
 
@@ -438,6 +492,8 @@ public class LoyaltyCard {
     return Objects.equals(this.id, loyaltyCard.id) &&
         Objects.equals(this.created, loyaltyCard.created) &&
         Objects.equals(this.programID, loyaltyCard.programID) &&
+        Objects.equals(this.programName, loyaltyCard.programName) &&
+        Objects.equals(this.programTitle, loyaltyCard.programTitle) &&
         Objects.equals(this.status, loyaltyCard.status) &&
         Objects.equals(this.blockReason, loyaltyCard.blockReason) &&
         Objects.equals(this.identifier, loyaltyCard.identifier) &&
@@ -453,7 +509,7 @@ public class LoyaltyCard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programID, status, blockReason, identifier, usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier, batchId);
+    return Objects.hash(id, created, programID, programName, programTitle, status, blockReason, identifier, usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier, batchId);
   }
 
 
@@ -464,6 +520,8 @@ public class LoyaltyCard {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programID: ").append(toIndentedString(programID)).append("\n");
+    sb.append("    programName: ").append(toIndentedString(programName)).append("\n");
+    sb.append("    programTitle: ").append(toIndentedString(programTitle)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    blockReason: ").append(toIndentedString(blockReason)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");

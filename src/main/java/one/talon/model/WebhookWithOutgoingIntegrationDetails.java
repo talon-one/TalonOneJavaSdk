@@ -225,10 +225,10 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
    /**
-   * The IDs of the Applications that are related to this entity.
+   * The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;. 
    * @return applicationIds
   **/
-  @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
+  @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
   public List<Integer> getApplicationIds() {
     return applicationIds;

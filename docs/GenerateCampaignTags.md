@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignID** | **Integer** | ID of the campaign. | 
+**rulesetID** | **Integer** | ID of a ruleset. | 
 
 
 

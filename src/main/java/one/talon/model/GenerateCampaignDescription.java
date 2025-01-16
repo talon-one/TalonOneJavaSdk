@@ -29,34 +29,34 @@ import java.io.IOException;
  */
 
 public class GenerateCampaignDescription {
-  public static final String SERIALIZED_NAME_CAMPAIGN_I_D = "campaignID";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_I_D)
-  private Integer campaignID;
+  public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
+  @SerializedName(SERIALIZED_NAME_RULESET_I_D)
+  private Integer rulesetID;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
 
-  public GenerateCampaignDescription campaignID(Integer campaignID) {
+  public GenerateCampaignDescription rulesetID(Integer rulesetID) {
     
-    this.campaignID = campaignID;
+    this.rulesetID = rulesetID;
     return this;
   }
 
    /**
-   * ID of the campaign.
-   * @return campaignID
+   * ID of a ruleset.
+   * @return rulesetID
   **/
-  @ApiModelProperty(required = true, value = "ID of the campaign.")
+  @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getCampaignID() {
-    return campaignID;
+  public Integer getRulesetID() {
+    return rulesetID;
   }
 
 
-  public void setCampaignID(Integer campaignID) {
-    this.campaignID = campaignID;
+  public void setRulesetID(Integer rulesetID) {
+    this.rulesetID = rulesetID;
   }
 
 
@@ -91,13 +91,13 @@ public class GenerateCampaignDescription {
       return false;
     }
     GenerateCampaignDescription generateCampaignDescription = (GenerateCampaignDescription) o;
-    return Objects.equals(this.campaignID, generateCampaignDescription.campaignID) &&
+    return Objects.equals(this.rulesetID, generateCampaignDescription.rulesetID) &&
         Objects.equals(this.currency, generateCampaignDescription.currency);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignID, currency);
+    return Objects.hash(rulesetID, currency);
   }
 
 
@@ -105,7 +105,7 @@ public class GenerateCampaignDescription {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GenerateCampaignDescription {\n");
-    sb.append("    campaignID: ").append(toIndentedString(campaignID)).append("\n");
+    sb.append("    rulesetID: ").append(toIndentedString(rulesetID)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
     return sb.toString();

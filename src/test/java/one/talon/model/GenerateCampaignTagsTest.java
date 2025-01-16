@@ -41,11 +41,11 @@ public class GenerateCampaignTagsTest {
     }
 
     /**
-     * Test the property 'campaignID'
+     * Test the property 'rulesetID'
      */
     @Test
-    public void campaignIDTest() {
-        // TODO: test campaignID
+    public void rulesetIDTest() {
+        // TODO: test rulesetID
     }
 
 }

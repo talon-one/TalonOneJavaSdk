@@ -98,6 +98,10 @@ public class TemplateArgDef {
   @SerializedName(SERIALIZED_NAME_UI)
   private Object ui;
 
+  public static final String SERIALIZED_NAME_KEY = "key";
+  @SerializedName(SERIALIZED_NAME_KEY)
+  private String key;
+
   public static final String SERIALIZED_NAME_PICKLIST_I_D = "picklistID";
   @SerializedName(SERIALIZED_NAME_PICKLIST_I_D)
   private Integer picklistID;
@@ -196,6 +200,29 @@ public class TemplateArgDef {
   }
 
 
+  public TemplateArgDef key(String key) {
+    
+    this.key = key;
+    return this;
+  }
+
+   /**
+   * The identifier for the associated value within the JSON object.
+   * @return key
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The identifier for the associated value within the JSON object.")
+
+  public String getKey() {
+    return key;
+  }
+
+
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+
   public TemplateArgDef picklistID(Integer picklistID) {
     
     this.picklistID = picklistID;
@@ -255,13 +282,14 @@ public class TemplateArgDef {
         Objects.equals(this.description, templateArgDef.description) &&
         Objects.equals(this.title, templateArgDef.title) &&
         Objects.equals(this.ui, templateArgDef.ui) &&
+        Objects.equals(this.key, templateArgDef.key) &&
         Objects.equals(this.picklistID, templateArgDef.picklistID) &&
         Objects.equals(this.restrictedByPicklist, templateArgDef.restrictedByPicklist);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, description, title, ui, picklistID, restrictedByPicklist);
+    return Objects.hash(type, description, title, ui, key, picklistID, restrictedByPicklist);
   }
 
 
@@ -273,6 +301,7 @@ public class TemplateArgDef {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    ui: ").append(toIndentedString(ui)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    picklistID: ").append(toIndentedString(picklistID)).append("\n");
     sb.append("    restrictedByPicklist: ").append(toIndentedString(restrictedByPicklist)).append("\n");
     sb.append("}");

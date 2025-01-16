@@ -108,7 +108,9 @@ public class LimitConfig {
     
     IDENTIFIER("Identifier"),
     
-    STORE("Store");
+    STORE("Store"),
+    
+    SESSION("Session");
 
     private String value;
 

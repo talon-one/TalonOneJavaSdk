@@ -48,4 +48,20 @@ public class LoyaltyProgramEntityTest {
         // TODO: test programID
     }
 
+    /**
+     * Test the property 'programName'
+     */
+    @Test
+    public void programNameTest() {
+        // TODO: test programName
+    }
+
+    /**
+     * Test the property 'programTitle'
+     */
+    @Test
+    public void programTitleTest() {
+        // TODO: test programTitle
+    }
+
 }

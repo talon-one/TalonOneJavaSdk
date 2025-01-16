@@ -25,20 +25,47 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Attribute;
+import one.talon.model.CatalogItem;
 
 /**
  * InlineResponse20034
  */
 
 public class InlineResponse20034 {
+  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
+  @SerializedName(SERIALIZED_NAME_HAS_MORE)
+  private Boolean hasMore;
+
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
   private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Attribute> data = new ArrayList<Attribute>();
+  private List<CatalogItem> data = new ArrayList<CatalogItem>();
+
+
+  public InlineResponse20034 hasMore(Boolean hasMore) {
+    
+    this.hasMore = hasMore;
+    return this;
+  }
+
+   /**
+   * Get hasMore
+   * @return hasMore
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Boolean getHasMore() {
+    return hasMore;
+  }
+
+
+  public void setHasMore(Boolean hasMore) {
+    this.hasMore = hasMore;
+  }
 
 
   public InlineResponse20034 totalResultSize(Integer totalResultSize) {
@@ -51,7 +78,8 @@ public class InlineResponse20034 {
    * Get totalResultSize
    * @return totalResultSize
   **/
-  @ApiModelProperty(example = "1", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "")
 
   public Integer getTotalResultSize() {
     return totalResultSize;
@@ -63,13 +91,13 @@ public class InlineResponse20034 {
   }
 
 
-  public InlineResponse20034 data(List<Attribute> data) {
+  public InlineResponse20034 data(List<CatalogItem> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20034 addDataItem(Attribute dataItem) {
+  public InlineResponse20034 addDataItem(CatalogItem dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +108,12 @@ public class InlineResponse20034 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Attribute> getData() {
+  public List<CatalogItem> getData() {
     return data;
   }
 
 
-  public void setData(List<Attribute> data) {
+  public void setData(List<CatalogItem> data) {
     this.data = data;
   }
 
@@ -99,13 +127,14 @@ public class InlineResponse20034 {
       return false;
     }
     InlineResponse20034 inlineResponse20034 = (InlineResponse20034) o;
-    return Objects.equals(this.totalResultSize, inlineResponse20034.totalResultSize) &&
+    return Objects.equals(this.hasMore, inlineResponse20034.hasMore) &&
+        Objects.equals(this.totalResultSize, inlineResponse20034.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20034.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalResultSize, data);
+    return Objects.hash(hasMore, totalResultSize, data);
   }
 
 
@@ -113,6 +142,7 @@ public class InlineResponse20034 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20034 {\n");
+    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");

@@ -44,6 +44,14 @@ public class LoyaltyTier {
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
   private Integer programID;
 
+  public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
+  private String programName;
+
+  public static final String SERIALIZED_NAME_PROGRAM_TITLE = "programTitle";
+  @SerializedName(SERIALIZED_NAME_PROGRAM_TITLE)
+  private String programTitle;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -119,6 +127,52 @@ public class LoyaltyTier {
   }
 
 
+  public LoyaltyTier programName(String programName) {
+    
+    this.programName = programName;
+    return this;
+  }
+
+   /**
+   * The integration name of the loyalty program that owns this entity.
+   * @return programName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Loyalty_program", value = "The integration name of the loyalty program that owns this entity.")
+
+  public String getProgramName() {
+    return programName;
+  }
+
+
+  public void setProgramName(String programName) {
+    this.programName = programName;
+  }
+
+
+  public LoyaltyTier programTitle(String programTitle) {
+    
+    this.programTitle = programTitle;
+    return this;
+  }
+
+   /**
+   * The Campaign Manager-displayed name of the loyalty program that owns this entity.
+   * @return programTitle
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Loyalty program", value = "The Campaign Manager-displayed name of the loyalty program that owns this entity.")
+
+  public String getProgramTitle() {
+    return programTitle;
+  }
+
+
+  public void setProgramTitle(String programTitle) {
+    this.programTitle = programTitle;
+  }
+
+
   public LoyaltyTier name(String name) {
     
     this.name = name;
@@ -177,13 +231,15 @@ public class LoyaltyTier {
     return Objects.equals(this.id, loyaltyTier.id) &&
         Objects.equals(this.created, loyaltyTier.created) &&
         Objects.equals(this.programID, loyaltyTier.programID) &&
+        Objects.equals(this.programName, loyaltyTier.programName) &&
+        Objects.equals(this.programTitle, loyaltyTier.programTitle) &&
         Objects.equals(this.name, loyaltyTier.name) &&
         Objects.equals(this.minPoints, loyaltyTier.minPoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programID, name, minPoints);
+    return Objects.hash(id, created, programID, programName, programTitle, name, minPoints);
   }
 
 
@@ -194,6 +250,8 @@ public class LoyaltyTier {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    programID: ").append(toIndentedString(programID)).append("\n");
+    sb.append("    programName: ").append(toIndentedString(programName)).append("\n");
+    sb.append("    programTitle: ").append(toIndentedString(programTitle)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    minPoints: ").append(toIndentedString(minPoints)).append("\n");
     sb.append("}");

@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;AudienceAnalytics&gt;**](AudienceAnalytics.md) |  | 
+**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
 

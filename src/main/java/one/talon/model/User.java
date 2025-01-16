@@ -436,7 +436,7 @@ public class User {
    * @return applicationNotificationSubscriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Application notifications that the user is subscribed to.")
+  @ApiModelProperty(example = "{}", value = "Application notifications that the user is subscribed to.")
 
   public Object getApplicationNotificationSubscriptions() {
     return applicationNotificationSubscriptions;
@@ -528,7 +528,7 @@ public class User {
    * @return additionalAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Additional user attributes, created and used by external identity providers.")
+  @ApiModelProperty(example = "{}", value = "Additional user attributes, created and used by external identity providers.")
 
   public Object getAdditionalAttributes() {
     return additionalAttributes;

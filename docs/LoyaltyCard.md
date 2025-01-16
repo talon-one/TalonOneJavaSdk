@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **programID** | **Integer** | The ID of the loyalty program that owns this entity. | 
+**programName** | **String** | The integration name of the loyalty program that owns this entity. |  [optional]
+**programTitle** | **String** | The Campaign Manager-displayed name of the loyalty program that owns this entity. |  [optional]
 **status** | **String** | Status of the loyalty card. Can be &#x60;active&#x60; or &#x60;inactive&#x60;.  | 
 **blockReason** | **String** | Reason for transferring and blocking the loyalty card.  |  [optional]
 **identifier** | **String** | The alphanumeric identifier of the loyalty card.  | 

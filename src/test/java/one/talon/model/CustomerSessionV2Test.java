@@ -208,4 +208,12 @@ public class CustomerSessionV2Test {
         // TODO: test updated
     }
 
+    /**
+     * Test the property 'closurePrediction'
+     */
+    @Test
+    public void closurePredictionTest() {
+        // TODO: test closurePrediction
+    }
+
 }

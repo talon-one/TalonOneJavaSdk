@@ -25,51 +25,50 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationEvent;
 
 /**
  * InlineResponse20028
  */
 
 public class InlineResponse20028 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationEvent> data = new ArrayList<ApplicationEvent>();
+  private List<String> data = new ArrayList<String>();
 
 
-  public InlineResponse20028 hasMore(Boolean hasMore) {
+  public InlineResponse20028 totalResultSize(Integer totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Integer getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Integer totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse20028 data(List<ApplicationEvent> data) {
+  public InlineResponse20028 data(List<String> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20028 addDataItem(ApplicationEvent dataItem) {
+  public InlineResponse20028 addDataItem(String dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +79,12 @@ public class InlineResponse20028 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<ApplicationEvent> getData() {
+  public List<String> getData() {
     return data;
   }
 
 
-  public void setData(List<ApplicationEvent> data) {
+  public void setData(List<String> data) {
     this.data = data;
   }
 
@@ -99,13 +98,13 @@ public class InlineResponse20028 {
       return false;
     }
     InlineResponse20028 inlineResponse20028 = (InlineResponse20028) o;
-    return Objects.equals(this.hasMore, inlineResponse20028.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20028.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20028.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +112,7 @@ public class InlineResponse20028 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20028 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

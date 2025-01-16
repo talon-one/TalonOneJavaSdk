@@ -185,7 +185,7 @@ public class Change {
    * @return old
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Resource before the change occurred.")
+  @ApiModelProperty(example = "{}", value = "Resource before the change occurred.")
 
   public Object getOld() {
     return old;

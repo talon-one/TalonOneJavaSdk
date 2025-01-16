@@ -6,8 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
+**hasMore** | **Boolean** |  | 
 **data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
