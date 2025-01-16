@@ -73,6 +73,14 @@ public class TemplateArgDefTest {
     }
 
     /**
+     * Test the property 'key'
+     */
+    @Test
+    public void keyTest() {
+        // TODO: test key
+    }
+
+    /**
      * Test the property 'picklistID'
      */
     @Test

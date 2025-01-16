@@ -1231,14 +1231,21 @@ paths:
       description: |
         Create a coupon reservation for the specified customer profiles on the specified coupon.
         You can also create a reservation via the Campaign Manager using the
-        [Create coupon code reservation effect](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code).
+        [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.
+
+        **Note:**
 
         - If the **Reservation mandatory** option was selected when creating the specified coupon,
         the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it.
-        Otherwise, the endpoint creates a **soft** reservation, meaning the coupon will be associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it.
+        Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it.
         This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.
-         - If the **Coupon visibility** option was selected when creating the specified coupon,
+
+        - If the **Coupon visibility** option was selected when creating the specified coupon,
         the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.
+
+        - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
+        To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder
+        and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.
 
         To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint.
       operationId: createCouponReservation
@@ -2232,7 +2239,10 @@ paths:
       - management
       x-accepts: application/json
     put:
-      description: Update the given campaign.
+      description: |
+        Update the given campaign.
+
+        **Important:** You cannot use this endpoint to update campaigns if [campaign staging and revisions](https://docs.talon.one/docs/product/applications/managing-general-settings#campaign-staging-and-revisions) is enabled for your Application.
       operationId: updateCampaign
       parameters:
       - description: The ID of the Application. It is displayed in your Talon.One
@@ -2849,8 +2859,8 @@ paths:
       x-accepts: application/json
     put:
       description: |
-        Update all coupons, or a specific batch of coupons in the given campaign.
-        You can find the `batchId` in the **Coupons** view of your Application
+        Update all coupons or a specific batch of coupons in the given campaign.
+        You can find the `batchId` on the **Coupons** page of your campaign
         in the Campaign Manager, or you can use [List coupons](#operation/getCouponsWithoutTotalCount).
 
         <div class="redoc-section">
@@ -2858,7 +2868,8 @@ paths:
 
           <ul>
             <li>Only send sequential requests to this endpoint.</li>
-            <li>Requests to this endpoint timeout after 30 minutes. If you hit a timeout, reach out to our support team.</li>
+            <li>Requests to this endpoint time out after 30 minutes. If you hit a timeout, contact our support team.</li>
+            <li>With this <code>PUT</code> endpoint, if you do not explicitly set a value for the <code>startDate</code> and <code>expiryDate</code> properties in your request, it is automatically set to <code>null</code>.</li>
           </ul>
 
         </div>
@@ -3242,7 +3253,7 @@ paths:
         <div class="redoc-section">
           <p class="title">Important</p>
 
-          <p>With this <code>PUT</code> endpoint alone, if you do not explicitly set a value for the <code>startDate</code>, <code>expiryDate</code>, and <code>recipientIntegrationId</code> properties in your request, it is automatically set to <code>null</code>.</p>
+          <p>With this <code>PUT</code> endpoint, if you do not explicitly set a value for the <code>startDate</code>, <code>expiryDate</code>, and <code>recipientIntegrationId</code> properties in your request, it is automatically set to <code>null</code>.</p>
 
         </div>
       operationId: updateCoupon
@@ -3963,6 +3974,9 @@ paths:
         The CSV file contains the following columns:
 
         - `customerprofileid` (optional): For profile-based loyalty programs, the integration ID of the customer profile where the loyalty points are imported.
+
+          **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application
+          until a session or profile update is received for that profile.
         - `identifier` (optional): For card-based loyalty programs, the identifier of the loyalty card where the loyalty points are imported.
         - `amount`: The amount of points to award to the customer profile.
         - `startdate` (optional): The earliest date when the points can be redeemed. The points are `active` from this date until the expiration date.
@@ -4653,7 +4667,7 @@ paths:
 
         - `identifier` (required): The alphanumeric identifier of the loyalty card.
         - `state` (required): The state of the loyalty card. It can be `active` or `inactive`.
-        - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card.
+        - `customerprofileids` (optional): An array of strings representing the identifiers of the customer profiles linked to the loyalty card. The identifiers should be separated with a semicolon (;).
 
         **Note:** We recommend limiting your file size to 500MB.
 
@@ -6450,7 +6464,7 @@ paths:
         Display the health of the Application and show the last time the Application
         was used.
 
-        You can also display this information from the **Settings** of an Application, in the **Developer Settings** menu.
+        You can also find this information in the Campaign Manager. In your Application, click **Settings** > **Integration API Keys**.
         See the [docs](https://docs.talon.one/docs/dev/tutorials/monitoring-integration-status).
       operationId: getApplicationApiHealth
       parameters:
@@ -6568,93 +6582,6 @@ paths:
       tags:
       - management
       x-accepts: application/json
-  /v1/access_logs:
-    get:
-      description: |
-        Fetches the access logs for the entire account. Sensitive requests (logins) are _always_ filtered from the logs.
-      operationId: getAllAccessLogs
-      parameters:
-      - description: |
-          Only return results from after this timestamp.
-
-          **Note:**
-          - This must be an RFC3339 timestamp string.
-          - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
-        in: query
-        name: rangeStart
-        schema:
-          format: date-time
-          type: string
-      - description: |
-          Only return results from before this timestamp.
-
-          **Note:**
-          - This must be an RFC3339 timestamp string.
-          - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered.
-        in: query
-        name: rangeEnd
-        schema:
-          format: date-time
-          type: string
-      - description: Only return results where the request path matches the given
-          regular expression.
-        in: query
-        name: path
-        schema:
-          type: string
-      - description: Only return results where the request method matches the given
-          regular expression.
-        in: query
-        name: method
-        schema:
-          enum:
-          - get
-          - put
-          - post
-          - delete
-          - patch
-          type: string
-      - description: Filter results by HTTP status codes.
-        in: query
-        name: status
-        schema:
-          enum:
-          - success
-          - error
-          type: string
-      - description: The number of items in the response.
-        in: query
-        name: pageSize
-        schema:
-          default: 1000
-          maximum: 1000
-          minimum: 1
-          type: integer
-      - description: The number of items to skip when paging through large result
-          sets.
-        in: query
-        name: skip
-        schema:
-          type: integer
-      - description: |
-          The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.
-
-          **Note:** This parameter works only with numeric fields.
-        in: query
-        name: sort
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_20'
-          description: OK
-      summary: List access logs
-      tags:
-      - management
-      x-accepts: application/json
   /v1/applications/{applicationId}/campaigns/{campaignId}/analytics:
     get:
       description: Retrieve statistical data about the performance of the given campaign.
@@ -6714,7 +6641,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_21'
+                $ref: '#/components/schemas/inline_response_200_20'
           description: OK
       summary: Get analytics of campaigns
       tags:
@@ -6766,7 +6693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_22'
+                $ref: '#/components/schemas/inline_response_200_21'
           description: OK
       summary: List application's customers
       tags:
@@ -6822,7 +6749,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_23'
+                $ref: '#/components/schemas/inline_response_200_22'
           description: OK
       summary: List application customers matching the given attributes
       tags:
@@ -6870,7 +6797,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_24'
+                $ref: '#/components/schemas/inline_response_200_23'
           description: OK
       summary: List customer profiles matching the given attributes
       tags:
@@ -6943,7 +6870,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_25'
+                $ref: '#/components/schemas/inline_response_200_24'
           description: OK
       summary: List customer profiles
       tags:
@@ -7067,7 +6994,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_26'
+                $ref: '#/components/schemas/inline_response_200_25'
           description: OK
       summary: Get Activity Reports for Application Customers
       tags:
@@ -7286,7 +7213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_27'
+                $ref: '#/components/schemas/inline_response_200_26'
           description: OK
       summary: List Application sessions
       tags:
@@ -7427,7 +7354,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_28'
+                $ref: '#/components/schemas/inline_response_200_27'
           description: OK
       summary: List Applications events
       tags:
@@ -7475,7 +7402,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_29'
+                $ref: '#/components/schemas/inline_response_200_28'
           description: OK
       summary: List Applications event types
       tags:
@@ -7523,7 +7450,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_30'
+                $ref: '#/components/schemas/inline_response_200_29'
           description: OK
       summary: List audiences
       tags:
@@ -7555,7 +7482,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_31'
+                $ref: '#/components/schemas/inline_response_200_30'
           description: OK
       summary: List audience analytics
       tags:
@@ -7607,7 +7534,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_32'
+                $ref: '#/components/schemas/inline_response_200_31'
           description: OK
         "404":
           content:
@@ -7787,7 +7714,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_33'
+                $ref: '#/components/schemas/inline_response_200_32'
           description: OK
       summary: List friends referred by customer profile
       tags:
@@ -7831,7 +7758,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_34'
+                $ref: '#/components/schemas/inline_response_200_33'
           description: OK
       summary: List custom attributes
       tags:
@@ -8064,7 +7991,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_35'
+                $ref: '#/components/schemas/inline_response_200_34'
           description: OK
       summary: List items in a catalog
       tags:
@@ -8401,7 +8328,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_36'
+                $ref: '#/components/schemas/inline_response_200_35'
           description: OK
       summary: List additional costs
       tags:
@@ -8556,7 +8483,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_37'
+                $ref: '#/components/schemas/inline_response_200_36'
           description: OK
       summary: List webhooks
       tags:
@@ -8653,7 +8580,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_38'
+                $ref: '#/components/schemas/inline_response_200_37'
           description: OK
       summary: List webhook activation log entries
       tags:
@@ -8735,7 +8662,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_39'
+                $ref: '#/components/schemas/inline_response_200_38'
           description: OK
       summary: List webhook log entries
       tags:
@@ -8786,7 +8713,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_40'
+                $ref: '#/components/schemas/inline_response_200_39'
           description: OK
       summary: List event types
       tags:
@@ -9396,7 +9323,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_41'
+                $ref: '#/components/schemas/inline_response_200_40'
           description: OK
       summary: List users in account
       tags:
@@ -9864,7 +9791,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_42'
+                $ref: '#/components/schemas/inline_response_200_41'
           description: OK
       summary: Get audit logs for an account
       tags:
@@ -10126,7 +10053,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_43'
+                $ref: '#/components/schemas/inline_response_200_42'
           description: OK
       summary: Get exports
       tags:
@@ -10141,7 +10068,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_44'
+                $ref: '#/components/schemas/inline_response_200_43'
           description: OK
       summary: List roles
       tags:
@@ -10274,7 +10201,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_45'
+                $ref: '#/components/schemas/inline_response_200_44'
           description: OK
       summary: List stores
       tags:
@@ -10658,7 +10585,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_46'
+                $ref: '#/components/schemas/inline_response_200_45'
           description: OK
       summary: List achievements
       tags:
@@ -10995,7 +10922,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_47'
+                $ref: '#/components/schemas/inline_response_200_46'
           description: OK
         "400":
           content:
@@ -11190,6 +11117,16 @@ components:
           description: The ID of the loyalty program that owns this entity.
           example: 125
           type: integer
+        programName:
+          description: The integration name of the loyalty program that owns this
+            entity.
+          example: Loyalty_program
+          type: string
+        programTitle:
+          description: The Campaign Manager-displayed name of the loyalty program
+            that owns this entity.
+          example: Loyalty program
+          type: string
       required:
       - programID
       type: object
@@ -11745,12 +11682,12 @@ components:
             minPoints: 200
             id: 2
             created: 2021-06-10T09:04:59.355258Z
-            programId: 139
+            programID: 139
           - name: Bronze
             minPoints: 100
             id: 1
             created: 2021-06-10T09:04:39.355258Z
-            programId: 139
+            programID: 139
           canUpdateTiers: true
           usersPerCardLimit: 111
           tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -11827,12 +11764,12 @@ components:
             minPoints: 200
             id: 2
             created: 2021-06-10T09:04:59.355258Z
-            programId: 139
+            programID: 139
           - name: Bronze
             minPoints: 100
             id: 1
             created: 2021-06-10T09:04:39.355258Z
-            programId: 139
+            programID: 139
           canUpdateTiers: true
           usersPerCardLimit: 111
           tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -13382,6 +13319,30 @@ components:
             type: string
           type: array
       type: object
+    NewValueMap:
+      type: object
+    ValueMap:
+      properties:
+        id:
+          description: Unique ID for this entity. Not to be confused with the Integration
+            ID, which is set by your integration layer and used in most endpoints.
+          example: 6
+          type: integer
+        created:
+          example: 2021-07-20T22:00:00Z
+          format: date-time
+          type: string
+        createdBy:
+          description: The ID of the user who created the value map.
+          example: 216
+          type: integer
+        campaignId:
+          example: 244
+          type: integer
+      required:
+      - campaignId
+      - id
+      type: object
     CampaignBudget:
       example:
         limit: 1000.0
@@ -13973,6 +13934,7 @@ components:
             - Profile
             - Identifier
             - Store
+            - Session
             type: string
           type: array
       required:
@@ -14022,6 +13984,7 @@ components:
             - Profile
             - Identifier
             - Store
+            - Session
             type: string
           type: array
       required:
@@ -16449,7 +16412,7 @@ components:
         - 71
         isAdmin: false
         accountId: 3886
-        applicationNotificationSubscriptions: '{}'
+        applicationNotificationSubscriptions: {}
         inviteToken: Gy9b8w1irmQtEPo5RmbMmSPheL5h4
         name: John Doe
         modified: 2021-09-12T10:12:42Z
@@ -16462,7 +16425,7 @@ components:
         email: john.doe@example.com
         policy:
           Role: 127
-        additionalAttributes: '{}'
+        additionalAttributes: {}
       properties:
         id:
           description: Internal ID of this entity.
@@ -16529,6 +16492,7 @@ components:
           type: string
         applicationNotificationSubscriptions:
           description: Application notifications that the user is subscribed to.
+          example: {}
           properties: {}
           type: object
         lastSignedIn:
@@ -16549,6 +16513,7 @@ components:
         additionalAttributes:
           description: Additional user attributes, created and used by external identity
             providers.
+          example: {}
           properties: {}
           type: object
       required:
@@ -16764,7 +16729,7 @@ components:
         Resources:
         - active: true
           displayName: John Doe
-          id: 283
+          id: "283"
           meta:
             resourceType: User
             created: 2024-06-25T17:43:46+02:00
@@ -16822,7 +16787,7 @@ components:
         Operations:
         - op: replace
           path: active
-          value: false
+          value: test
         - op: add
           path: nickName
           value: johndoe
@@ -16950,8 +16915,8 @@ components:
       description: Parameters for inviting a new user.
       example:
         roles:
-        - 0
-        - 0
+        - 13
+        - 13
         name: John Doe
         isAdmin: false
         acl: acl
@@ -16973,6 +16938,7 @@ components:
         roles:
           description: A list of the IDs of the roles assigned to the user.
           items:
+            example: 13
             type: integer
           type: array
         acl:
@@ -17027,7 +16993,7 @@ components:
           - loyalty
           id: 6727
         created: 2020-06-10T09:05:27.993483Z
-        old: '{}'
+        old: {}
         id: 6
         applicationId: 359
         userId: 388
@@ -17057,6 +17023,7 @@ components:
           type: string
         old:
           description: Resource before the change occurred.
+          example: {}
           properties: {}
           type: object
         new:
@@ -17229,12 +17196,12 @@ components:
           minPoints: 200
           id: 2
           created: 2021-06-10T09:04:59.355258Z
-          programId: 139
+          programID: 139
         - name: Bronze
           minPoints: 100
           id: 1
           created: 2021-06-10T09:04:39.355258Z
-          programId: 139
+          programID: 139
         canUpdateTiers: true
         usersPerCardLimit: 111
         tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -17457,12 +17424,12 @@ components:
             minPoints: 200
             id: 2
             created: 2021-06-10T09:04:59.355258Z
-            programId: 139
+            programID: 139
           - name: Bronze
             minPoints: 100
             id: 1
             created: 2021-06-10T09:04:39.355258Z
-            programId: 139
+            programID: 139
           items:
             $ref: '#/components/schemas/LoyaltyTier'
           type: array
@@ -17543,6 +17510,16 @@ components:
           description: The ID of the loyalty program that owns this entity.
           example: 125
           type: integer
+        programName:
+          description: The integration name of the loyalty program that owns this
+            entity.
+          example: Loyalty_program
+          type: string
+        programTitle:
+          description: The Campaign Manager-displayed name of the loyalty program
+            that owns this entity.
+          example: Loyalty program
+          type: string
         name:
           description: The name of the tier.
           example: Gold
@@ -17550,7 +17527,6 @@ components:
         minPoints:
           description: The minimum amount of points required to enter the tier.
           example: 300.0
-          exclusiveMaximum: false
           maximum: 999999999999.99
           minimum: 0
           type: number
@@ -17571,7 +17547,6 @@ components:
         minPoints:
           description: The minimum amount of points required to enter the tier.
           example: 300.0
-          exclusiveMaximum: false
           maximum: 999999999999.99
           minimum: 0
           type: number
@@ -18018,7 +17993,6 @@ components:
         minPoints:
           description: The minimum amount of points required to enter the tier.
           example: 300.0
-          exclusiveMaximum: false
           maximum: 999999999999.99
           minimum: 0
           type: number
@@ -18475,10 +18449,11 @@ components:
             startDate: 2021-07-20T22:00:00Z
         subLedgers:
           mysubledger:
-            activePoints: 286
-            pendingPoints: 50
-            spentPoints: 150
-            expiredPoints: 25
+            total: 0
+            totalActivePoints: 286
+            totalPendingPoints: 50
+            totalSpentPoints: 150
+            totalExpiredPoints: 25
       properties:
         ledger:
           $ref: '#/components/schemas/LoyaltySubLedger'
@@ -18488,10 +18463,11 @@ components:
           description: A map containing a list of all loyalty subledger balances.
           example:
             mysubledger:
-              activePoints: 286
-              pendingPoints: 50
-              spentPoints: 150
-              expiredPoints: 25
+              total: 0
+              totalActivePoints: 286
+              totalPendingPoints: 50
+              totalSpentPoints: 150
+              totalExpiredPoints: 25
           type: object
       required:
       - ledger
@@ -18757,6 +18733,8 @@ components:
                 id: 11
                 startDate: 2000-01-23T04:56:07.000+00:00
           batchId: wdefpov
+          programTitle: Loyalty program
+          programName: Loyalty_program
           modified: 2021-09-12T10:12:42Z
           id: 6
           blockReason: Current card lost. Customer needs a new card.
@@ -18802,6 +18780,8 @@ components:
                 id: 11
                 startDate: 2000-01-23T04:56:07.000+00:00
           batchId: wdefpov
+          programTitle: Loyalty program
+          programName: Loyalty_program
           modified: 2021-09-12T10:12:42Z
           id: 6
           blockReason: Current card lost. Customer needs a new card.
@@ -18969,17 +18949,18 @@ components:
           title: Spent balance
           type: number
         tentativeCurrentBalance:
-          description: Sum of the tentative active points (including additions and
-            deductions) inside the currently open session. The `currentBalance` is
-            updated to this value when you close the session, and the effects are
-            applied.
+          description: |
+            The tentative points balance, reflecting the `currentBalance` and all point additions and deductions within the current open customer session. When the session is closed, the effects are applied and the `currentBalance` is updated to this value.
+
+            **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer.
           example: 100.0
           title: Tentative current balance
           type: number
         tentativePendingBalance:
-          description: Sum of pending points (including additions and deductions)
-            inside the currently open session. The `pendingBalance` is updated to
-            this value when you close the session, and the effects are applied.
+          description: |
+            The tentative points balance, reflecting the `pendingBalance` and all point additions with a future activation date within the current open customer session. When the session is closed, the effects are applied and the `pendingBalance` is updated to this value.
+
+            **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer.
           example: 20.0
           title: Tentative pending balance
           type: number
@@ -19189,6 +19170,8 @@ components:
               id: 11
               startDate: 2000-01-23T04:56:07.000+00:00
         batchId: wdefpov
+        programTitle: Loyalty program
+        programName: Loyalty_program
         modified: 2021-09-12T10:12:42Z
         id: 6
         blockReason: Current card lost. Customer needs a new card.
@@ -19209,6 +19192,16 @@ components:
           description: The ID of the loyalty program that owns this entity.
           example: 125
           type: integer
+        programName:
+          description: The integration name of the loyalty program that owns this
+            entity.
+          example: Loyalty_program
+          type: string
+        programTitle:
+          description: The Campaign Manager-displayed name of the loyalty program
+            that owns this entity.
+          example: Loyalty program
+          type: string
         status:
           description: |
             Status of the loyalty card. Can be `active` or `inactive`.
@@ -19947,17 +19940,18 @@ components:
           title: Spent balance
           type: number
         tentativeCurrentBalance:
-          description: Sum of the tentative active points (including additions and
-            deductions) inside the currently open session. The `currentBalance` is
-            updated to this value when you close the session, and the effects are
-            applied.
+          description: |
+            The tentative points balance, reflecting the `currentBalance` and all point additions and deductions within the current open customer session. When the session is closed, the effects are applied and the `currentBalance` is updated to this value.
+
+            **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer.
           example: 100.0
           title: Tentative current balance
           type: number
         tentativePendingBalance:
-          description: Sum of pending points (including additions and deductions)
-            inside the currently open session. The `pendingBalance` is updated to
-            this value when you close the session, and the effects are applied.
+          description: |
+            The tentative points balance, reflecting the `pendingBalance` and all point additions with a future activation date within the current open customer session. When the session is closed, the effects are applied and the `pendingBalance` is updated to this value.
+
+            **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer.
           example: 20.0
           title: Tentative pending balance
           type: number
@@ -20317,6 +20311,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -20362,6 +20358,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -20703,7 +20701,7 @@ components:
             **Important - for requests only**:
 
             - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it.
-            - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, provide `"couponCodes": null` or omit the parameter entirely.
+            - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely.
           example:
           - XMAS-20-2021
           items:
@@ -20718,7 +20716,7 @@ components:
             **Important - for requests only**:
 
             - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it.
-            - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, provide `"referralCode": null` or omit the parameter entirely.
+            - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely.
           example: NT2K54D9
           maxLength: 100
           title: Referral code entered in session
@@ -21046,6 +21044,7 @@ components:
         identifiers:
         - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
         integrationId: URNGV8294NV
+        closurePrediction: 0.283
         total: 119.99
         loyaltyCards:
         - loyalty-card-1
@@ -21163,7 +21162,7 @@ components:
             **Important - for requests only**:
 
             - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it.
-            - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, provide `"couponCodes": null` or omit the parameter entirely.
+            - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely.
           example:
           - XMAS-20-2021
           items:
@@ -21178,7 +21177,7 @@ components:
             **Important - for requests only**:
 
             - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it.
-            - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, provide `"referralCode": null` or omit the parameter entirely.
+            - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely.
           example: NT2K54D9
           maxLength: 100
           title: Referral code entered in session
@@ -21264,7 +21263,7 @@ components:
           type: object
         firstSession:
           description: Indicates whether this is the first session for the customer's
-            profile. Will always be true for anonymous sessions.
+            profile. It's always `true` for anonymous sessions.
           example: true
           title: First session ever?
           type: boolean
@@ -21291,6 +21290,12 @@ components:
           format: date-time
           title: Last activity on the session
           type: string
+        closurePrediction:
+          description: The likelihood of the customer session closing based on predictive
+            modeling, expressed as a decimal between `0` and `1`.
+          example: 0.283
+          title: Session Closure Probability
+          type: number
       required:
       - additionalCostTotal
       - applicationId
@@ -21892,6 +21897,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -21937,6 +21944,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -22513,6 +22522,7 @@ components:
           identifiers:
           - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           integrationId: URNGV8294NV
+          closurePrediction: 0.283
           total: 119.99
           loyaltyCards:
           - loyalty-card-1
@@ -23144,6 +23154,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -23189,6 +23201,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -23853,6 +23867,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -23898,6 +23914,8 @@ components:
                   id: 11
                   startDate: 2000-01-23T04:56:07.000+00:00
             batchId: wdefpov
+            programTitle: Loyalty program
+            programName: Loyalty_program
             modified: 2021-09-12T10:12:42Z
             id: 6
             blockReason: Current card lost. Customer needs a new card.
@@ -24278,6 +24296,7 @@ components:
           identifiers:
           - d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea
           integrationId: URNGV8294NV
+          closurePrediction: 0.283
           total: 119.99
           loyaltyCards:
           - loyalty-card-1
@@ -24346,6 +24365,10 @@ components:
         customerSession:
           $ref: '#/components/schemas/CustomerSessionV2'
         effects:
+          description: |
+            The returned effects.
+
+            **Note:** This endpoint returns only the effects that are valid after any rollback effects and their corresponding non-rollback effects are removed.
           items:
             $ref: '#/components/schemas/Effect'
           type: array
@@ -25528,6 +25551,9 @@ components:
             this argument.
           properties: {}
           type: object
+        key:
+          description: The identifier for the associated value within the JSON object.
+          type: string
         picklistID:
           description: ID of the picklist linked to a template.
           type: integer
@@ -27224,10 +27250,11 @@ components:
     NewWebhook:
       properties:
         applicationIds:
-          description: The IDs of the Applications that are related to this entity.
+          description: |
+            The IDs of the Applications in which this webhook is available.
+            An empty array means the webhook is available in `All Applications`.
           items:
             type: integer
-          minItems: 1
           type: array
         title:
           description: Name or title for this webhook.
@@ -27319,10 +27346,11 @@ components:
           format: date-time
           type: string
         applicationIds:
-          description: The IDs of the Applications that are related to this entity.
+          description: |
+            The IDs of the Applications in which this webhook is available.
+            An empty array means the webhook is available in `All Applications`.
           items:
             type: integer
-          minItems: 1
           type: array
         title:
           description: Name or title for this webhook.
@@ -27420,10 +27448,11 @@ components:
           format: date-time
           type: string
         applicationIds:
-          description: The IDs of the Applications that are related to this entity.
+          description: |
+            The IDs of the Applications in which this webhook is available.
+            An empty array means the webhook is available in `All Applications`.
           items:
             type: integer
-          minItems: 1
           type: array
         title:
           description: Name or title for this webhook.
@@ -30793,7 +30822,10 @@ components:
         action:
           description: |
             Defines the action to perform:
-            - `add`: Adds the customer profile to the audience. If the customer profile does not exist, it will be created.
+            - `add`: Adds the customer profile to the audience.
+
+              **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application
+              until a session or profile update is received for that profile.
             - `delete`: Removes the customer profile from the audience.
           enum:
           - add
@@ -31128,7 +31160,7 @@ components:
           - boolean
           - number
           - time
-          example: 2012-11-01T22:08:41+00:00
+          example: string
           type: string
         values:
           description: The list of allowed values provided by this picklist.
@@ -31163,7 +31195,7 @@ components:
           - boolean
           - number
           - time
-          example: 2012-11-01T22:08:41+00:00
+          example: string
           type: string
         values:
           description: The list of allowed values provided by this picklist.
@@ -31209,7 +31241,7 @@ components:
           - boolean
           - number
           - time
-          example: 2012-11-01T22:08:41+00:00
+          example: string
           type: string
         values:
           description: The list of allowed values provided by this picklist.
@@ -34065,7 +34097,7 @@ components:
         name: sample_product
       properties:
         name:
-          description: The name of the product.
+          description: The product the item belongs to.
           example: sample_product
           maxLength: 50
           type: string
@@ -35127,23 +35159,23 @@ components:
       type: object
     GenerateCampaignDescription:
       properties:
-        campaignID:
-          description: ID of the campaign.
+        rulesetID:
+          description: ID of a ruleset.
           type: integer
         currency:
           description: Currency for the campaign.
           type: string
       required:
-      - campaignID
       - currency
+      - rulesetID
       type: object
     GenerateCampaignTags:
       properties:
-        campaignID:
-          description: ID of the campaign.
+        rulesetID:
+          description: ID of a ruleset.
           type: integer
       required:
-      - campaignID
+      - rulesetID
       type: object
     GenerateRuleTitle:
       properties:
@@ -35181,6 +35213,137 @@ components:
           type: array
       required:
       - itemFilter
+      type: object
+    StrikethroughDebugResponse:
+      properties:
+        campaignsIDs:
+          description: The campaign IDs that got fetched for the evaluation process.
+          items:
+            type: integer
+          type: array
+        effects:
+          description: The strikethrough effects that are returned from the evaluation
+            process.
+          items:
+            $ref: '#/components/schemas/StrikethroughEffect'
+          type: array
+      type: object
+    ProductSearchMatch:
+      properties:
+        productId:
+          description: The ID of the product.
+          example: 1
+          type: integer
+        value:
+          description: The string matching the given value. Either a product name
+            or SKU.
+          example: MyProduct
+          type: string
+        productSkuId:
+          description: The ID of the SKU linked to a product. If empty, this is an
+            analytics-level product.
+          example: 1
+          type: integer
+      required:
+      - productId
+      - value
+      type: object
+    AnalyticsProduct:
+      properties:
+        id:
+          description: The ID of the analytics-level product.
+          example: 1
+          type: integer
+        isPreliminary:
+          description: Indicates whether the analytics-level product is connected
+            to a catalog and also has a product name.
+          example: false
+          type: boolean
+        name:
+          description: The name of the analytics-level product.
+          example: MyProduct
+          type: string
+        catalogId:
+          description: |
+            The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
+          example: 1
+          type: integer
+      required:
+      - id
+      - isPreliminary
+      - name
+      type: object
+    AnalyticsProductSKU:
+      properties:
+        id:
+          description: The ID of the SKU linked to the analytics-level product.
+          example: 1
+          type: integer
+        sku:
+          description: The SKU linked to the analytics-level product.
+          example: SKU-123
+          type: string
+        lastUpdated:
+          description: Values in UTC for the date the SKU linked to the analytics-level
+            product was last updated.
+          example: 2024-02-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - id
+      - lastUpdated
+      - sku
+      type: object
+    ProductUnitAnalytics:
+      properties:
+        startTime:
+          description: The start of the aggregation time frame in UTC.
+          example: 2024-02-01T00:00:00Z
+          format: date-time
+          type: string
+        endTime:
+          description: The end of the aggregation time frame in UTC.
+          format: date-time
+          type: string
+        purchasedUnits:
+          $ref: '#/components/schemas/AnalyticsDataPointWithTrend'
+        productId:
+          description: The ID of the analytics-level product.
+          example: 1
+          type: integer
+        productName:
+          description: The name of the analytics-level product.
+          example: MyProduct
+          type: string
+      required:
+      - endTime
+      - productId
+      - productName
+      - purchasedUnits
+      - startTime
+      type: object
+    ProductSkuUnitAnalytics:
+      properties:
+        startTime:
+          description: The start of the aggregation time frame in UTC.
+          example: 2024-02-01T00:00:00Z
+          format: date-time
+          type: string
+        endTime:
+          description: The end of the aggregation time frame in UTC.
+          format: date-time
+          type: string
+        purchasedUnits:
+          $ref: '#/components/schemas/AnalyticsDataPointWithTrend'
+        sku:
+          description: The SKU linked to the analytics-level product.
+          example: SKU-123
+          type: string
+      required:
+      - endTime
+      - purchasedUnits
+      - sku
+      - startTime
       type: object
     inline_response_201:
       example:
@@ -35464,12 +35627,12 @@ components:
               minPoints: 200
               id: 2
               created: 2021-06-10T09:04:59.355258Z
-              programId: 139
+              programID: 139
             - name: Bronze
               minPoints: 100
               id: 1
               created: 2021-06-10T09:04:39.355258Z
-              programId: 139
+              programID: 139
             canUpdateTiers: true
             usersPerCardLimit: 111
             tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -35546,12 +35709,12 @@ components:
               minPoints: 200
               id: 2
               created: 2021-06-10T09:04:59.355258Z
-              programId: 139
+              programID: 139
             - name: Bronze
               minPoints: 100
               id: 1
               created: 2021-06-10T09:04:39.355258Z
-              programId: 139
+              programID: 139
             canUpdateTiers: true
             usersPerCardLimit: 111
             tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -35667,12 +35830,12 @@ components:
               minPoints: 200
               id: 2
               created: 2021-06-10T09:04:59.355258Z
-              programId: 139
+              programID: 139
             - name: Bronze
               minPoints: 100
               id: 1
               created: 2021-06-10T09:04:39.355258Z
-              programId: 139
+              programID: 139
             canUpdateTiers: true
             usersPerCardLimit: 111
             tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -35749,12 +35912,12 @@ components:
               minPoints: 200
               id: 2
               created: 2021-06-10T09:04:59.355258Z
-              programId: 139
+              programID: 139
             - name: Bronze
               minPoints: 100
               id: 1
               created: 2021-06-10T09:04:39.355258Z
-              programId: 139
+              programID: 139
             canUpdateTiers: true
             usersPerCardLimit: 111
             tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -37010,12 +37173,12 @@ components:
             minPoints: 200
             id: 2
             created: 2021-06-10T09:04:59.355258Z
-            programId: 139
+            programID: 139
           - name: Bronze
             minPoints: 100
             id: 1
             created: 2021-06-10T09:04:39.355258Z
-            programId: 139
+            programID: 139
           canUpdateTiers: true
           usersPerCardLimit: 111
           tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -37092,12 +37255,12 @@ components:
             minPoints: 200
             id: 2
             created: 2021-06-10T09:04:59.355258Z
-            programId: 139
+            programID: 139
           - name: Bronze
             minPoints: 100
             id: 1
             created: 2021-06-10T09:04:39.355258Z
-            programId: 139
+            programID: 139
           canUpdateTiers: true
           usersPerCardLimit: 111
           tierCycleStartDate: 2021-09-12T10:12:42Z
@@ -37268,6 +37431,8 @@ components:
                 id: 11
                 startDate: 2000-01-23T04:56:07.000+00:00
           batchId: wdefpov
+          programTitle: Loyalty program
+          programName: Loyalty_program
           modified: 2021-09-12T10:12:42Z
           id: 6
           blockReason: Current card lost. Customer needs a new card.
@@ -37313,6 +37478,8 @@ components:
                 id: 11
                 startDate: 2000-01-23T04:56:07.000+00:00
           batchId: wdefpov
+          programTitle: Loyalty program
+          programName: Loyalty_program
           modified: 2021-09-12T10:12:42Z
           id: 6
           blockReason: Current card lost. Customer needs a new card.
@@ -37478,47 +37645,6 @@ components:
     inline_response_200_20:
       example:
         data:
-        - method: PUT
-          requestPayload: |-
-            {
-                "customerSession": {
-                    "profileId": "customer123",
-                    "state": "closed",
-            ...
-            }
-          responsePayload: '{"coupons":[],"createdCoupons":[],...}'
-          requestUri: /v2/customer_sessions/Session136667
-          time: 2023-01-16T16:00:00.700763Z
-          uuid: 606e7d34-2d36-4d53-ac71-d4442c325985
-          status: 200
-        - method: PUT
-          requestPayload: |-
-            {
-                "customerSession": {
-                    "profileId": "customer123",
-                    "state": "closed",
-            ...
-            }
-          responsePayload: '{"coupons":[],"createdCoupons":[],...}'
-          requestUri: /v2/customer_sessions/Session136667
-          time: 2023-01-16T16:00:00.700763Z
-          uuid: 606e7d34-2d36-4d53-ac71-d4442c325985
-          status: 200
-        totalResultSize: 1
-      properties:
-        totalResultSize:
-          example: 1
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/AccessLogEntry'
-          type: array
-      required:
-      - data
-      - totalResultSize
-    inline_response_200_21:
-      example:
-        data:
         - date: 2021-10-12T10:12:42Z
           couponRolledbackRedemptions: 2
           totalCouponRolledbackRedemptions: 4
@@ -37581,7 +37707,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_22:
+    inline_response_200_21:
       example:
         data:
         - accountId: 31
@@ -37642,7 +37768,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_23:
+    inline_response_200_22:
       example:
         data:
         - accountId: 31
@@ -37702,7 +37828,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_24:
+    inline_response_200_23:
       example:
         data:
         - accountId: 31
@@ -37760,7 +37886,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_25:
+    inline_response_200_24:
       example:
         data:
         - accountId: 31
@@ -37816,7 +37942,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_26:
+    inline_response_200_25:
       example:
         data:
         - couponUseAttempts: 1
@@ -37856,7 +37982,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_27:
+    inline_response_200_26:
       example:
         data:
         - coupon: BKDB946
@@ -37985,7 +38111,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_28:
+    inline_response_200_27:
       example:
         data:
         - effects:
@@ -38129,7 +38255,7 @@ components:
       required:
       - data
       - hasMore
-    inline_response_200_29:
+    inline_response_200_28:
       example:
         data:
         - data
@@ -38146,7 +38272,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_30:
+    inline_response_200_29:
       example:
         data:
         - accountId: 3886
@@ -38183,7 +38309,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_31:
+    inline_response_200_30:
       example:
         data:
         - membersCount: 1234
@@ -38200,7 +38326,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_32:
+    inline_response_200_31:
       example:
         data:
         - accountId: 31
@@ -38255,7 +38381,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_33:
+    inline_response_200_32:
       example:
         data:
         - friendIntegrationId: friendIntegrationId
@@ -38284,7 +38410,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_34:
+    inline_response_200_33:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -38357,7 +38483,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_35:
+    inline_response_200_34:
       example:
         data:
         - product:
@@ -38404,7 +38530,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_36:
+    inline_response_200_35:
       example:
         data:
         - accountId: 3886
@@ -38439,7 +38565,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_37:
+    inline_response_200_36:
       example:
         data:
         - headers:
@@ -38492,7 +38618,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_38:
+    inline_response_200_37:
       example:
         data:
         - webhookId: 1
@@ -38517,7 +38643,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_39:
+    inline_response_200_38:
       example:
         data:
         - requestTime: 2021-07-20T22:00:00Z
@@ -38558,7 +38684,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_40:
+    inline_response_200_39:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -38583,7 +38709,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_41:
+    inline_response_200_40:
       example:
         data:
         - created: 2020-06-10T09:05:27.993483Z
@@ -38591,7 +38717,7 @@ components:
           - 71
           isAdmin: false
           accountId: 3886
-          applicationNotificationSubscriptions: '{}'
+          applicationNotificationSubscriptions: {}
           inviteToken: Gy9b8w1irmQtEPo5RmbMmSPheL5h4
           name: John Doe
           modified: 2021-09-12T10:12:42Z
@@ -38604,13 +38730,13 @@ components:
           email: john.doe@example.com
           policy:
             Role: 127
-          additionalAttributes: '{}'
+          additionalAttributes: {}
         - created: 2020-06-10T09:05:27.993483Z
           roles:
           - 71
           isAdmin: false
           accountId: 3886
-          applicationNotificationSubscriptions: '{}'
+          applicationNotificationSubscriptions: {}
           inviteToken: Gy9b8w1irmQtEPo5RmbMmSPheL5h4
           name: John Doe
           modified: 2021-09-12T10:12:42Z
@@ -38623,7 +38749,7 @@ components:
           email: john.doe@example.com
           policy:
             Role: 127
-          additionalAttributes: '{}'
+          additionalAttributes: {}
         totalResultSize: 1
       properties:
         totalResultSize:
@@ -38636,7 +38762,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_42:
+    inline_response_200_41:
       example:
         data:
         - new:
@@ -38650,7 +38776,7 @@ components:
             - loyalty
             id: 6727
           created: 2020-06-10T09:05:27.993483Z
-          old: '{}'
+          old: {}
           id: 6
           applicationId: 359
           userId: 388
@@ -38667,7 +38793,7 @@ components:
             - loyalty
             id: 6727
           created: 2020-06-10T09:05:27.993483Z
-          old: '{}'
+          old: {}
           id: 6
           applicationId: 359
           userId: 388
@@ -38687,7 +38813,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_43:
+    inline_response_200_42:
       example:
         data:
         - filter: '{}'
@@ -38714,7 +38840,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_44:
+    inline_response_200_43:
       example:
         data:
         - accountId: 3886
@@ -38821,7 +38947,7 @@ components:
       required:
       - data
       - totalResultSize
-    inline_response_200_45:
+    inline_response_200_44:
       example:
         data:
         - linkedCampaignIds:
@@ -38866,7 +38992,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_46:
+    inline_response_200_45:
       example:
         data:
         - period: 1Y
@@ -38921,7 +39047,7 @@ components:
           type: array
       required:
       - data
-    inline_response_200_47:
+    inline_response_200_46:
       example:
         data:
         - endDate: 2000-01-23T04:56:07.000+00:00
@@ -39052,13 +39178,13 @@ components:
   securitySchemes:
     api_key_v1:
       description: |
-        To authenticate to use the Integration API, generate an API key in the Campaign Manager
-        then prefix it with `ApiKey-v1`.
+        To authenticate with the Integration API, generate an API key in the Campaign Manager
+        and prefix it with `ApiKey-v1`.
 
         To generate an API key:
 
-        1. Log into the Campaign Manager and open the Application of your choice, or create one.
-        1. Click **Settings** > **Developer settings**.
+        1. Sign in to the Campaign Manager and open the Application of your choice, or create one.
+        1. Click **Settings** > **Integration API Keys**.
         1. Click **Create API Key** and give it a name and an expiration date, then click **Create API Key**.
 
         You can now use the API key in the HTTP header, prefixing it with `ApiKey-v1`:
@@ -39101,7 +39227,7 @@ components:
 
         The key must be generated by an admin and given to the developer that requires it:
 
-        1. Log into the Campaign Manager and click **Account** > **Management API keys**.
+        1. Sign in to the Campaign Manager and click **Account** > **Tools** > **Management API Keys**.
         1. Click **Create Key** and give it a name.
         1. Set an expiration date.
         1. Choose the endpoints the key should give access to.

@@ -169,6 +169,10 @@ public class CustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private OffsetDateTime updated;
 
+  public static final String SERIALIZED_NAME_CLOSURE_PREDICTION = "closurePrediction";
+  @SerializedName(SERIALIZED_NAME_CLOSURE_PREDICTION)
+  private BigDecimal closurePrediction;
+
 
   public CustomerSessionV2 id(Integer id) {
     
@@ -349,11 +353,11 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty array discards any previous coupons. To avoid this, provide &#x60;\&quot;couponCodes\&quot;: null&#x60; or omit the parameter entirely. 
+   * Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely. 
    * @return couponCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, provide `\"couponCodes\": null` or omit the parameter entirely. ")
+  @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely. ")
 
   public List<String> getCouponCodes() {
     return couponCodes;
@@ -372,11 +376,11 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty value discards the previous referral code. To avoid this, provide &#x60;\&quot;referralCode\&quot;: null&#x60; or omit the parameter entirely. 
+   * Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely. 
    * @return referralCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, provide `\"referralCode\": null` or omit the parameter entirely. ")
+  @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely. ")
 
   public String getReferralCode() {
     return referralCode;
@@ -559,10 +563,10 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * Indicates whether this is the first session for the customer&#39;s profile. Will always be true for anonymous sessions.
+   * Indicates whether this is the first session for the customer&#39;s profile. It&#39;s always &#x60;true&#x60; for anonymous sessions.
    * @return firstSession
   **/
-  @ApiModelProperty(example = "true", required = true, value = "Indicates whether this is the first session for the customer's profile. Will always be true for anonymous sessions.")
+  @ApiModelProperty(example = "true", required = true, value = "Indicates whether this is the first session for the customer's profile. It's always `true` for anonymous sessions.")
 
   public Boolean getFirstSession() {
     return firstSession;
@@ -662,6 +666,29 @@ public class CustomerSessionV2 {
   }
 
 
+  public CustomerSessionV2 closurePrediction(BigDecimal closurePrediction) {
+    
+    this.closurePrediction = closurePrediction;
+    return this;
+  }
+
+   /**
+   * The likelihood of the customer session closing based on predictive modeling, expressed as a decimal between &#x60;0&#x60; and &#x60;1&#x60;.
+   * @return closurePrediction
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "0.283", value = "The likelihood of the customer session closing based on predictive modeling, expressed as a decimal between `0` and `1`.")
+
+  public BigDecimal getClosurePrediction() {
+    return closurePrediction;
+  }
+
+
+  public void setClosurePrediction(BigDecimal closurePrediction) {
+    this.closurePrediction = closurePrediction;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -690,12 +717,13 @@ public class CustomerSessionV2 {
         Objects.equals(this.total, customerSessionV2.total) &&
         Objects.equals(this.cartItemTotal, customerSessionV2.cartItemTotal) &&
         Objects.equals(this.additionalCostTotal, customerSessionV2.additionalCostTotal) &&
-        Objects.equals(this.updated, customerSessionV2.updated);
+        Objects.equals(this.updated, customerSessionV2.updated) &&
+        Objects.equals(this.closurePrediction, customerSessionV2.closurePrediction);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated, closurePrediction);
   }
 
 
@@ -723,6 +751,7 @@ public class CustomerSessionV2 {
     sb.append("    cartItemTotal: ").append(toIndentedString(cartItemTotal)).append("\n");
     sb.append("    additionalCostTotal: ").append(toIndentedString(additionalCostTotal)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    closurePrediction: ").append(toIndentedString(closurePrediction)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Audience;
+import one.talon.model.AudienceAnalytics;
 
 /**
  * InlineResponse20030
@@ -36,13 +36,9 @@ public class InlineResponse20030 {
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
   private Boolean hasMore;
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Audience> data = new ArrayList<Audience>();
+  private List<AudienceAnalytics> data = new ArrayList<AudienceAnalytics>();
 
 
   public InlineResponse20030 hasMore(Boolean hasMore) {
@@ -68,36 +64,13 @@ public class InlineResponse20030 {
   }
 
 
-  public InlineResponse20030 totalResultSize(Integer totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "")
-
-  public Integer getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
-  public InlineResponse20030 data(List<Audience> data) {
+  public InlineResponse20030 data(List<AudienceAnalytics> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20030 addDataItem(Audience dataItem) {
+  public InlineResponse20030 addDataItem(AudienceAnalytics dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,12 +81,12 @@ public class InlineResponse20030 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Audience> getData() {
+  public List<AudienceAnalytics> getData() {
     return data;
   }
 
 
-  public void setData(List<Audience> data) {
+  public void setData(List<AudienceAnalytics> data) {
     this.data = data;
   }
 
@@ -128,13 +101,12 @@ public class InlineResponse20030 {
     }
     InlineResponse20030 inlineResponse20030 = (InlineResponse20030) o;
     return Objects.equals(this.hasMore, inlineResponse20030.hasMore) &&
-        Objects.equals(this.totalResultSize, inlineResponse20030.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20030.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, totalResultSize, data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -143,7 +115,6 @@ public class InlineResponse20030 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20030 {\n");
     sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

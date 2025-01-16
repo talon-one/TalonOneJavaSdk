@@ -44,19 +44,19 @@ public class InlineResponse20022Test {
     }
 
     /**
-     * Test the property 'totalResultSize'
-     */
-    @Test
-    public void totalResultSizeTest() {
-        // TODO: test totalResultSize
-    }
-
-    /**
      * Test the property 'hasMore'
      */
     @Test
     public void hasMoreTest() {
         // TODO: test hasMore
+    }
+
+    /**
+     * Test the property 'totalResultSize'
+     */
+    @Test
+    public void totalResultSizeTest() {
+        // TODO: test totalResultSize
     }
 
     /**

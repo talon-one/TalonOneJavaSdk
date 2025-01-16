@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Store;
+import one.talon.model.Achievement;
 
 /**
  * InlineResponse20045
@@ -36,13 +36,9 @@ public class InlineResponse20045 {
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
   private Boolean hasMore;
 
-  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
-  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Store> data = new ArrayList<Store>();
+  private List<Achievement> data = new ArrayList<Achievement>();
 
 
   public InlineResponse20045 hasMore(Boolean hasMore) {
@@ -68,36 +64,13 @@ public class InlineResponse20045 {
   }
 
 
-  public InlineResponse20045 totalResultSize(Integer totalResultSize) {
-    
-    this.totalResultSize = totalResultSize;
-    return this;
-  }
-
-   /**
-   * Get totalResultSize
-   * @return totalResultSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "")
-
-  public Integer getTotalResultSize() {
-    return totalResultSize;
-  }
-
-
-  public void setTotalResultSize(Integer totalResultSize) {
-    this.totalResultSize = totalResultSize;
-  }
-
-
-  public InlineResponse20045 data(List<Store> data) {
+  public InlineResponse20045 data(List<Achievement> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20045 addDataItem(Store dataItem) {
+  public InlineResponse20045 addDataItem(Achievement dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -108,12 +81,12 @@ public class InlineResponse20045 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Store> getData() {
+  public List<Achievement> getData() {
     return data;
   }
 
 
-  public void setData(List<Store> data) {
+  public void setData(List<Achievement> data) {
     this.data = data;
   }
 
@@ -128,13 +101,12 @@ public class InlineResponse20045 {
     }
     InlineResponse20045 inlineResponse20045 = (InlineResponse20045) o;
     return Objects.equals(this.hasMore, inlineResponse20045.hasMore) &&
-        Objects.equals(this.totalResultSize, inlineResponse20045.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20045.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, totalResultSize, data);
+    return Objects.hash(hasMore, data);
   }
 
 
@@ -143,7 +115,6 @@ public class InlineResponse20045 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20045 {\n");
     sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
-    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

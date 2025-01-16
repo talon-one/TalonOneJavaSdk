@@ -160,10 +160,10 @@ public class LedgerInfo {
   }
 
    /**
-   * Sum of the tentative active points (including additions and deductions) inside the currently open session. The &#x60;currentBalance&#x60; is updated to this value when you close the session, and the effects are applied.
+   * The tentative points balance, reflecting the &#x60;currentBalance&#x60; and all point additions and deductions within the current open customer session. When the session is closed, the effects are applied and the &#x60;currentBalance&#x60; is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. 
    * @return tentativeCurrentBalance
   **/
-  @ApiModelProperty(example = "100.0", required = true, value = "Sum of the tentative active points (including additions and deductions) inside the currently open session. The `currentBalance` is updated to this value when you close the session, and the effects are applied.")
+  @ApiModelProperty(example = "100.0", required = true, value = "The tentative points balance, reflecting the `currentBalance` and all point additions and deductions within the current open customer session. When the session is closed, the effects are applied and the `currentBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
 
   public BigDecimal getTentativeCurrentBalance() {
     return tentativeCurrentBalance;
@@ -182,11 +182,11 @@ public class LedgerInfo {
   }
 
    /**
-   * Sum of pending points (including additions and deductions) inside the currently open session. The &#x60;pendingBalance&#x60; is updated to this value when you close the session, and the effects are applied.
+   * The tentative points balance, reflecting the &#x60;pendingBalance&#x60; and all point additions with a future activation date within the current open customer session. When the session is closed, the effects are applied and the &#x60;pendingBalance&#x60; is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. 
    * @return tentativePendingBalance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "20.0", value = "Sum of pending points (including additions and deductions) inside the currently open session. The `pendingBalance` is updated to this value when you close the session, and the effects are applied.")
+  @ApiModelProperty(example = "20.0", value = "The tentative points balance, reflecting the `pendingBalance` and all point additions with a future activation date within the current open customer session. When the session is closed, the effects are applied and the `pendingBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
 
   public BigDecimal getTentativePendingBalance() {
     return tentativePendingBalance;

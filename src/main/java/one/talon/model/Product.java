@@ -42,10 +42,10 @@ public class Product {
   }
 
    /**
-   * The name of the product.
+   * The product the item belongs to.
    * @return name
   **/
-  @ApiModelProperty(example = "sample_product", required = true, value = "The name of the product.")
+  @ApiModelProperty(example = "sample_product", required = true, value = "The product the item belongs to.")
 
   public String getName() {
     return name;

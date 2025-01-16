@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Achievement;
+import one.talon.model.AchievementProgress;
 
 /**
  * InlineResponse20046
@@ -38,7 +38,7 @@ public class InlineResponse20046 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Achievement> data = new ArrayList<Achievement>();
+  private List<AchievementProgress> data = new ArrayList<AchievementProgress>();
 
 
   public InlineResponse20046 hasMore(Boolean hasMore) {
@@ -51,8 +51,7 @@ public class InlineResponse20046 {
    * Get hasMore
    * @return hasMore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "true", required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -64,13 +63,13 @@ public class InlineResponse20046 {
   }
 
 
-  public InlineResponse20046 data(List<Achievement> data) {
+  public InlineResponse20046 data(List<AchievementProgress> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20046 addDataItem(Achievement dataItem) {
+  public InlineResponse20046 addDataItem(AchievementProgress dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -81,12 +80,12 @@ public class InlineResponse20046 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Achievement> getData() {
+  public List<AchievementProgress> getData() {
     return data;
   }
 
 
-  public void setData(List<Achievement> data) {
+  public void setData(List<AchievementProgress> data) {
     this.data = data;
   }
 

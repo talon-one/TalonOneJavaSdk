@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;Achievement&gt;**](Achievement.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;AchievementProgress&gt;**](AchievementProgress.md) |  | 
 
 
 

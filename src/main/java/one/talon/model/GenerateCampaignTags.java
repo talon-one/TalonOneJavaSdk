@@ -29,30 +29,30 @@ import java.io.IOException;
  */
 
 public class GenerateCampaignTags {
-  public static final String SERIALIZED_NAME_CAMPAIGN_I_D = "campaignID";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_I_D)
-  private Integer campaignID;
+  public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
+  @SerializedName(SERIALIZED_NAME_RULESET_I_D)
+  private Integer rulesetID;
 
 
-  public GenerateCampaignTags campaignID(Integer campaignID) {
+  public GenerateCampaignTags rulesetID(Integer rulesetID) {
     
-    this.campaignID = campaignID;
+    this.rulesetID = rulesetID;
     return this;
   }
 
    /**
-   * ID of the campaign.
-   * @return campaignID
+   * ID of a ruleset.
+   * @return rulesetID
   **/
-  @ApiModelProperty(required = true, value = "ID of the campaign.")
+  @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getCampaignID() {
-    return campaignID;
+  public Integer getRulesetID() {
+    return rulesetID;
   }
 
 
-  public void setCampaignID(Integer campaignID) {
-    this.campaignID = campaignID;
+  public void setRulesetID(Integer rulesetID) {
+    this.rulesetID = rulesetID;
   }
 
 
@@ -65,12 +65,12 @@ public class GenerateCampaignTags {
       return false;
     }
     GenerateCampaignTags generateCampaignTags = (GenerateCampaignTags) o;
-    return Objects.equals(this.campaignID, generateCampaignTags.campaignID);
+    return Objects.equals(this.rulesetID, generateCampaignTags.rulesetID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignID);
+    return Objects.hash(rulesetID);
   }
 
 
@@ -78,7 +78,7 @@ public class GenerateCampaignTags {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GenerateCampaignTags {\n");
-    sb.append("    campaignID: ").append(toIndentedString(campaignID)).append("\n");
+    sb.append("    rulesetID: ").append(toIndentedString(rulesetID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

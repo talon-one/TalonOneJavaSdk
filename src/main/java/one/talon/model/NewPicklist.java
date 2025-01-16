@@ -101,7 +101,7 @@ public class NewPicklist {
    * The type of allowed values in the picklist. If the type &#x60;time&#x60; is chosen, it must be an RFC3339 timestamp string.
    * @return type
   **/
-  @ApiModelProperty(example = "2012-11-01T22:08:41+00:00", required = true, value = "The type of allowed values in the picklist. If the type `time` is chosen, it must be an RFC3339 timestamp string.")
+  @ApiModelProperty(example = "string", required = true, value = "The type of allowed values in the picklist. If the type `time` is chosen, it must be an RFC3339 timestamp string.")
 
   public TypeEnum getType() {
     return type;

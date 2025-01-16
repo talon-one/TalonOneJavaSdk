@@ -789,7 +789,7 @@ public class LoyaltyProgram {
    * @return tiers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "[{name=Gold, minPoints=300, id=3, created=2021-06-10T09:05:27.993483Z, programID=139}, {name=Silver, minPoints=200, id=2, created=2021-06-10T09:04:59.355258Z, programId=139}, {name=Bronze, minPoints=100, id=1, created=2021-06-10T09:04:39.355258Z, programId=139}]", value = "The tiers in this loyalty program.")
+  @ApiModelProperty(example = "[{name=Gold, minPoints=300, id=3, created=2021-06-10T09:05:27.993483Z, programID=139}, {name=Silver, minPoints=200, id=2, created=2021-06-10T09:04:59.355258Z, programID=139}, {name=Bronze, minPoints=100, id=1, created=2021-06-10T09:04:39.355258Z, programID=139}]", value = "The tiers in this loyalty program.")
 
   public List<LoyaltyTier> getTiers() {
     return tiers;

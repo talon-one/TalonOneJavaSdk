@@ -7,7 +7,7 @@ The specific properties of the product this item belongs to, if available.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The name of the product. | 
+**name** | **String** | The product the item belongs to. | 
 
 
 
