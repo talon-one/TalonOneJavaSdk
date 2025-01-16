@@ -9,7 +9,7 @@ build: clean
 		--rm \
 		-v "$$(PWD)":/tmp/talon-client \
 		-w "/tmp/talon-client" \
-		maven:3.5.2-jdk-9-slim \
+		maven:latest\
 		/bin/bash -c "mvn clean install && \
 			cp ~/.m2/repository/one/talon/talon-one-client/$(VERSION)/_remote.repositories target"
 
