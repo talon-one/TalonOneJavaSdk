@@ -28717,6 +28717,7 @@ components:
           - CouponPartOfNotTriggeredCampaign
           - CouponReservationRequired
           - ProfileRequired
+          - CouponLimitReached
           example: CouponNotFound
           type: string
       required:
@@ -28751,6 +28752,7 @@ components:
           - ReferralRejectedByCondition
           - EffectCouldNotBeApplied
           - ReferralPartOfNotTriggeredCampaign
+          - ReferralCustomerAlreadyReferred
           example: ReferralNotFound
           type: string
       required:
