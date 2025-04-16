@@ -102,7 +102,7 @@ dependencies {
     compile "com.google.code.findbugs:jsr305:3.0.2"
     compile 'com.squareup.okhttp3:okhttp:3.14.7'
     compile 'com.squareup.okhttp3:logging-interceptor:3.14.7'
-    compile 'com.google.code.gson:gson:2.8.6'
+    compile 'com.google.code.gson:gson:2.13.0'
     compile 'io.gsonfire:gson-fire:1.8.4'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
     compile 'org.threeten:threetenbp:1.4.3'
