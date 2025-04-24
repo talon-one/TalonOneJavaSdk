@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.StrikethroughChangedItem;
 import one.talon.model.StrikethroughTrigger;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -42,6 +43,22 @@ public class StrikethroughLabelingNotificationTest {
     @Test
     public void testStrikethroughLabelingNotification() {
         // TODO: test StrikethroughLabelingNotification
+    }
+
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
+    }
+
+    /**
+     * Test the property 'validFrom'
+     */
+    @Test
+    public void validFromTest() {
+        // TODO: test validFrom
     }
 
     /**

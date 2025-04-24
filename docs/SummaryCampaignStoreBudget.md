@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **action** | [**ActionEnum**](#ActionEnum) |  | 
 **period** | [**PeriodEnum**](#PeriodEnum) |  |  [optional]
 **storeCount** | **Integer** |  | 
+**imported** | **Boolean** |  | 
 
 
 

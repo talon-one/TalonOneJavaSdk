@@ -7,7 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;ApplicationSession&gt;**](ApplicationSession.md) |  | 
+**totalResultSize** | **Integer** |  |  [optional]
+**data** | [**List&lt;CustomerProfile&gt;**](CustomerProfile.md) |  | 
 
 
 

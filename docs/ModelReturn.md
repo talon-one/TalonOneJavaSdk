@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**applicationId** | **Integer** | The ID of the application that owns this entity. | 
+**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 **accountId** | **Integer** | The ID of the account that owns this entity. | 
 **returnedCartItems** | [**List&lt;ReturnedCartItem&gt;**](ReturnedCartItem.md) | List of cart items to be returned. | 
 **eventId** | **Integer** | The event ID of that was generated for this return. | 

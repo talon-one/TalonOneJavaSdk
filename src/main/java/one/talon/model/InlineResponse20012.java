@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CampaignTemplate;
+import one.talon.model.Referral;
 
 /**
  * InlineResponse20012
@@ -38,7 +38,7 @@ public class InlineResponse20012 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CampaignTemplate> data = new ArrayList<CampaignTemplate>();
+  private List<Referral> data = new ArrayList<Referral>();
 
 
   public InlineResponse20012 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse20012 {
   }
 
 
-  public InlineResponse20012 data(List<CampaignTemplate> data) {
+  public InlineResponse20012 data(List<Referral> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20012 addDataItem(CampaignTemplate dataItem) {
+  public InlineResponse20012 addDataItem(Referral dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20012 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CampaignTemplate> getData() {
+  public List<Referral> getData() {
     return data;
   }
 
 
-  public void setData(List<CampaignTemplate> data) {
+  public void setData(List<Referral> data) {
     this.data = data;
   }
 

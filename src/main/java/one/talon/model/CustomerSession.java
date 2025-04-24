@@ -195,10 +195,10 @@ public class CustomerSession {
   }
 
    /**
-   * The ID of the application that owns this entity.
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;

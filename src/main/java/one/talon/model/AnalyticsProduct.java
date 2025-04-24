@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.AnalyticsDataPointWithTrend;
 
 /**
  * AnalyticsProduct
@@ -33,10 +34,6 @@ public class AnalyticsProduct {
   @SerializedName(SERIALIZED_NAME_ID)
   private Integer id;
 
-  public static final String SERIALIZED_NAME_IS_PRELIMINARY = "isPreliminary";
-  @SerializedName(SERIALIZED_NAME_IS_PRELIMINARY)
-  private Boolean isPreliminary;
-
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -44,6 +41,10 @@ public class AnalyticsProduct {
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalogId";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
   private Integer catalogId;
+
+  public static final String SERIALIZED_NAME_UNITS_SOLD = "unitsSold";
+  @SerializedName(SERIALIZED_NAME_UNITS_SOLD)
+  private AnalyticsDataPointWithTrend unitsSold;
 
 
   public AnalyticsProduct id(Integer id) {
@@ -53,10 +54,10 @@ public class AnalyticsProduct {
   }
 
    /**
-   * The ID of the analytics-level product.
+   * The ID of the product.
    * @return id
   **/
-  @ApiModelProperty(example = "1", required = true, value = "The ID of the analytics-level product.")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the product.")
 
   public Integer getId() {
     return id;
@@ -68,28 +69,6 @@ public class AnalyticsProduct {
   }
 
 
-  public AnalyticsProduct isPreliminary(Boolean isPreliminary) {
-    
-    this.isPreliminary = isPreliminary;
-    return this;
-  }
-
-   /**
-   * Indicates whether the analytics-level product is connected to a catalog and also has a product name.
-   * @return isPreliminary
-  **/
-  @ApiModelProperty(example = "false", required = true, value = "Indicates whether the analytics-level product is connected to a catalog and also has a product name.")
-
-  public Boolean getIsPreliminary() {
-    return isPreliminary;
-  }
-
-
-  public void setIsPreliminary(Boolean isPreliminary) {
-    this.isPreliminary = isPreliminary;
-  }
-
-
   public AnalyticsProduct name(String name) {
     
     this.name = name;
@@ -97,10 +76,10 @@ public class AnalyticsProduct {
   }
 
    /**
-   * The name of the analytics-level product.
+   * The name of the product.
    * @return name
   **/
-  @ApiModelProperty(example = "MyProduct", required = true, value = "The name of the analytics-level product.")
+  @ApiModelProperty(example = "MyProduct", required = true, value = "The name of the product.")
 
   public String getName() {
     return name;
@@ -122,8 +101,7 @@ public class AnalyticsProduct {
    * The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. 
    * @return catalogId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**. ")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**. ")
 
   public Integer getCatalogId() {
     return catalogId;
@@ -132,6 +110,29 @@ public class AnalyticsProduct {
 
   public void setCatalogId(Integer catalogId) {
     this.catalogId = catalogId;
+  }
+
+
+  public AnalyticsProduct unitsSold(AnalyticsDataPointWithTrend unitsSold) {
+    
+    this.unitsSold = unitsSold;
+    return this;
+  }
+
+   /**
+   * Get unitsSold
+   * @return unitsSold
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AnalyticsDataPointWithTrend getUnitsSold() {
+    return unitsSold;
+  }
+
+
+  public void setUnitsSold(AnalyticsDataPointWithTrend unitsSold) {
+    this.unitsSold = unitsSold;
   }
 
 
@@ -145,14 +146,14 @@ public class AnalyticsProduct {
     }
     AnalyticsProduct analyticsProduct = (AnalyticsProduct) o;
     return Objects.equals(this.id, analyticsProduct.id) &&
-        Objects.equals(this.isPreliminary, analyticsProduct.isPreliminary) &&
         Objects.equals(this.name, analyticsProduct.name) &&
-        Objects.equals(this.catalogId, analyticsProduct.catalogId);
+        Objects.equals(this.catalogId, analyticsProduct.catalogId) &&
+        Objects.equals(this.unitsSold, analyticsProduct.unitsSold);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, isPreliminary, name, catalogId);
+    return Objects.hash(id, name, catalogId, unitsSold);
   }
 
 
@@ -161,9 +162,9 @@ public class AnalyticsProduct {
     StringBuilder sb = new StringBuilder();
     sb.append("class AnalyticsProduct {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    isPreliminary: ").append(toIndentedString(isPreliminary)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+    sb.append("    unitsSold: ").append(toIndentedString(unitsSold)).append("\n");
     sb.append("}");
     return sb.toString();
   }

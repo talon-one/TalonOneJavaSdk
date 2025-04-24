@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Coupon;
+import one.talon.model.Campaign;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

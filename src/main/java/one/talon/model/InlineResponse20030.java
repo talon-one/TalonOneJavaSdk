@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AudienceAnalytics;
+import one.talon.model.ApplicationEvent;
 
 /**
  * InlineResponse20030
@@ -38,7 +38,7 @@ public class InlineResponse20030 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AudienceAnalytics> data = new ArrayList<AudienceAnalytics>();
+  private List<ApplicationEvent> data = new ArrayList<ApplicationEvent>();
 
 
   public InlineResponse20030 hasMore(Boolean hasMore) {
@@ -51,8 +51,7 @@ public class InlineResponse20030 {
    * Get hasMore
    * @return hasMore
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -64,13 +63,13 @@ public class InlineResponse20030 {
   }
 
 
-  public InlineResponse20030 data(List<AudienceAnalytics> data) {
+  public InlineResponse20030 data(List<ApplicationEvent> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20030 addDataItem(AudienceAnalytics dataItem) {
+  public InlineResponse20030 addDataItem(ApplicationEvent dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -81,12 +80,12 @@ public class InlineResponse20030 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AudienceAnalytics> getData() {
+  public List<ApplicationEvent> getData() {
     return data;
   }
 
 
-  public void setData(List<AudienceAnalytics> data) {
+  public void setData(List<ApplicationEvent> data) {
     this.data = data;
   }
 

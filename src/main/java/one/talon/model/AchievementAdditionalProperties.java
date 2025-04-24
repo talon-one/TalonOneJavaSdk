@@ -45,6 +45,61 @@ public class AchievementAdditionalProperties {
   @SerializedName(SERIALIZED_NAME_HAS_PROGRESS)
   private Boolean hasProgress;
 
+  /**
+   * The status of the achievement.
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    INPROGRESS("inprogress"),
+    
+    EXPIRED("expired"),
+    
+    NOT_STARTED("not_started"),
+    
+    COMPLETED("completed");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
 
   public AchievementAdditionalProperties campaignId(Integer campaignId) {
     
@@ -53,10 +108,10 @@ public class AchievementAdditionalProperties {
   }
 
    /**
-   * ID of the campaign, to which the achievement belongs to
+   * The ID of the campaign the achievement belongs to.
    * @return campaignId
   **/
-  @ApiModelProperty(example = "1", required = true, value = "ID of the campaign, to which the achievement belongs to")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -100,7 +155,8 @@ public class AchievementAdditionalProperties {
    * Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. 
    * @return createdBy
   **/
-  @ApiModelProperty(example = "John Doe", required = true, value = "Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "John Doe", value = "Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. ")
 
   public String getCreatedBy() {
     return createdBy;
@@ -135,6 +191,29 @@ public class AchievementAdditionalProperties {
   }
 
 
+  public AchievementAdditionalProperties status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the achievement.
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "inprogress", value = "The status of the achievement.")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -147,12 +226,13 @@ public class AchievementAdditionalProperties {
     return Objects.equals(this.campaignId, achievementAdditionalProperties.campaignId) &&
         Objects.equals(this.userId, achievementAdditionalProperties.userId) &&
         Objects.equals(this.createdBy, achievementAdditionalProperties.createdBy) &&
-        Objects.equals(this.hasProgress, achievementAdditionalProperties.hasProgress);
+        Objects.equals(this.hasProgress, achievementAdditionalProperties.hasProgress) &&
+        Objects.equals(this.status, achievementAdditionalProperties.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, userId, createdBy, hasProgress);
+    return Objects.hash(campaignId, userId, createdBy, hasProgress, status);
   }
 
 
@@ -164,6 +244,7 @@ public class AchievementAdditionalProperties {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    hasProgress: ").append(toIndentedString(hasProgress)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

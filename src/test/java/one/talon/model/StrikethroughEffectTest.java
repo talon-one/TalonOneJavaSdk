@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -86,6 +87,22 @@ public class StrikethroughEffectTest {
     @Test
     public void propsTest() {
         // TODO: test props
+    }
+
+    /**
+     * Test the property 'startTime'
+     */
+    @Test
+    public void startTimeTest() {
+        // TODO: test startTime
+    }
+
+    /**
+     * Test the property 'endTime'
+     */
+    @Test
+    public void endTimeTest() {
+        // TODO: test endTime
     }
 
 }

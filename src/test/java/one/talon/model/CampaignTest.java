@@ -384,6 +384,14 @@ public class CampaignTest {
     }
 
     /**
+     * Test the property 'valueMapsIds'
+     */
+    @Test
+    public void valueMapsIdsTest() {
+        // TODO: test valueMapsIds
+    }
+
+    /**
      * Test the property 'revisionFrontendState'
      */
     @Test

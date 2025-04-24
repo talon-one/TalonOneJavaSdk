@@ -109,6 +109,14 @@ public class NewManagementKeyTest {
     }
 
     /**
+     * Test the property 'disabled'
+     */
+    @Test
+    public void disabledTest() {
+        // TODO: test disabled
+    }
+
+    /**
      * Test the property 'key'
      */
     @Test

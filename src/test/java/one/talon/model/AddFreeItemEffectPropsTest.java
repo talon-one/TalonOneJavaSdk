@@ -56,4 +56,12 @@ public class AddFreeItemEffectPropsTest {
         // TODO: test name
     }
 
+    /**
+     * Test the property 'desiredQuantity'
+     */
+    @Test
+    public void desiredQuantityTest() {
+        // TODO: test desiredQuantity
+    }
+
 }

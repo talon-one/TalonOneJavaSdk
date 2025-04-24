@@ -22,7 +22,7 @@ NONE | &quot;none&quot;
 SEGMENT | &quot;segment&quot;
 BRAZE | &quot;braze&quot;
 MPARTICLE | &quot;mparticle&quot;
-SELLIGENT | &quot;selligent&quot;
+SHOPIFY | &quot;shopify&quot;
 ITERABLE | &quot;iterable&quot;
 CUSTOMER_ENGAGEMENT | &quot;customer_engagement&quot;
 CUSTOMER_DATA | &quot;customer_data&quot;

@@ -56,4 +56,12 @@ public class PendingPointsNotificationPolicyTest {
         // TODO: test batchingEnabled
     }
 
+    /**
+     * Test the property 'batchSize'
+     */
+    @Test
+    public void batchSizeTest() {
+        // TODO: test batchSize
+    }
+
 }

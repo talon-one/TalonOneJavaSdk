@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
-**data** | **List&lt;String&gt;** |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;CustomerActivityReport&gt;**](CustomerActivityReport.md) |  | 
 
 
 

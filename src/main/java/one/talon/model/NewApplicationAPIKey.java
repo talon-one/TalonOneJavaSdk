@@ -51,7 +51,7 @@ public class NewApplicationAPIKey {
     
     MPARTICLE("mparticle"),
     
-    SELLIGENT("selligent"),
+    SHOPIFY("shopify"),
     
     ITERABLE("iterable"),
     

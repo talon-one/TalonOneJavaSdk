@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
+**data** | [**List&lt;User&gt;**](User.md) |  | 
 
 
 

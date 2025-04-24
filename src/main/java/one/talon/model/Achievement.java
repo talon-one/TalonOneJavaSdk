@@ -190,6 +190,61 @@ public class Achievement {
   @SerializedName(SERIALIZED_NAME_HAS_PROGRESS)
   private Boolean hasProgress;
 
+  /**
+   * The status of the achievement.
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    INPROGRESS("inprogress"),
+    
+    EXPIRED("expired"),
+    
+    NOT_STARTED("not_started"),
+    
+    COMPLETED("completed");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
 
   public Achievement id(Integer id) {
     
@@ -333,7 +388,8 @@ public class Achievement {
    * The relative duration after which the achievement ends and resets for a particular customer profile.  **Note**: The &#x60;period&#x60; does not start when the achievement is created.  The period is a **positive real number** followed by one letter indicating the time unit.  Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can also round certain units down to the beginning of period and up to the end of period.: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. Example: &#x60;30D_D&#x60; - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. Example: &#x60;23W_U&#x60;  **Note**: You can either use the round down and round up option or set an absolute period. 
    * @return period
   **/
-  @ApiModelProperty(example = "1Y", required = true, value = "The relative duration after which the achievement ends and resets for a particular customer profile.  **Note**: The `period` does not start when the achievement is created.  The period is a **positive real number** followed by one letter indicating the time unit.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can also round certain units down to the beginning of period and up to the end of period.: - `_D` for rounding down days only. Signifies the start of the day. Example: `30D_D` - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. Example: `23W_U`  **Note**: You can either use the round down and round up option or set an absolute period. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1Y", value = "The relative duration after which the achievement ends and resets for a particular customer profile.  **Note**: The `period` does not start when the achievement is created.  The period is a **positive real number** followed by one letter indicating the time unit.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can also round certain units down to the beginning of period and up to the end of period.: - `_D` for rounding down days only. Signifies the start of the day. Example: `30D_D` - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. Example: `23W_U`  **Note**: You can either use the round down and round up option or set an absolute period. ")
 
   public String getPeriod() {
     return period;
@@ -467,10 +523,10 @@ public class Achievement {
   }
 
    /**
-   * ID of the campaign, to which the achievement belongs to
+   * The ID of the campaign the achievement belongs to.
    * @return campaignId
   **/
-  @ApiModelProperty(example = "1", required = true, value = "ID of the campaign, to which the achievement belongs to")
+  @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
   public Integer getCampaignId() {
     return campaignId;
@@ -514,7 +570,8 @@ public class Achievement {
    * Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. 
    * @return createdBy
   **/
-  @ApiModelProperty(example = "John Doe", required = true, value = "Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "John Doe", value = "Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. ")
 
   public String getCreatedBy() {
     return createdBy;
@@ -549,6 +606,29 @@ public class Achievement {
   }
 
 
+  public Achievement status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the achievement.
+   * @return status
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "inprogress", value = "The status of the achievement.")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -573,12 +653,13 @@ public class Achievement {
         Objects.equals(this.campaignId, achievement.campaignId) &&
         Objects.equals(this.userId, achievement.userId) &&
         Objects.equals(this.createdBy, achievement.createdBy) &&
-        Objects.equals(this.hasProgress, achievement.hasProgress);
+        Objects.equals(this.hasProgress, achievement.hasProgress) &&
+        Objects.equals(this.status, achievement.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, campaignId, userId, createdBy, hasProgress);
+    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, campaignId, userId, createdBy, hasProgress, status);
   }
 
 
@@ -602,6 +683,7 @@ public class Achievement {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    hasProgress: ").append(toIndentedString(hasProgress)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

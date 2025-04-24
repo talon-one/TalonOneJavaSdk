@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **updated** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the most recent update to the campaign template or any of its elements. |  [optional]
 **updatedBy** | **String** | Name of the user who last updated this campaign template, if available. |  [optional]
 **validApplicationIds** | **List&lt;Integer&gt;** | The IDs of the Applications that are related to this entity. | 
+**isUserFavorite** | **Boolean** | A flag indicating whether the user marked the template as a favorite. |  [optional]
 
 
 

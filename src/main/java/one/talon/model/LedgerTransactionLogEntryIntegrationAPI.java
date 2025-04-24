@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.model.LoyaltyLedgerEntryFlags;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -126,6 +127,10 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
   private String ruleName;
+
+  public static final String SERIALIZED_NAME_FLAGS = "flags";
+  @SerializedName(SERIALIZED_NAME_FLAGS)
+  private LoyaltyLedgerEntryFlags flags;
 
 
   public LedgerTransactionLogEntryIntegrationAPI created(OffsetDateTime created) {
@@ -395,6 +400,29 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   }
 
 
+  public LedgerTransactionLogEntryIntegrationAPI flags(LoyaltyLedgerEntryFlags flags) {
+    
+    this.flags = flags;
+    return this;
+  }
+
+   /**
+   * Get flags
+   * @return flags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LoyaltyLedgerEntryFlags getFlags() {
+    return flags;
+  }
+
+
+  public void setFlags(LoyaltyLedgerEntryFlags flags) {
+    this.flags = flags;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -415,12 +443,13 @@ public class LedgerTransactionLogEntryIntegrationAPI {
         Objects.equals(this.amount, ledgerTransactionLogEntryIntegrationAPI.amount) &&
         Objects.equals(this.id, ledgerTransactionLogEntryIntegrationAPI.id) &&
         Objects.equals(this.rulesetId, ledgerTransactionLogEntryIntegrationAPI.rulesetId) &&
-        Objects.equals(this.ruleName, ledgerTransactionLogEntryIntegrationAPI.ruleName);
+        Objects.equals(this.ruleName, ledgerTransactionLogEntryIntegrationAPI.ruleName) &&
+        Objects.equals(this.flags, ledgerTransactionLogEntryIntegrationAPI.flags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName);
+    return Objects.hash(created, programId, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName, flags);
   }
 
 
@@ -440,6 +469,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    rulesetId: ").append(toIndentedString(rulesetId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
+    sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

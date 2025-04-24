@@ -244,10 +244,10 @@ public class ApplicationSession {
   }
 
    /**
-   * The ID of the application that owns this entity.
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -432,10 +432,10 @@ public class ApplicationSession {
   }
 
    /**
-   * The total sum of the discounts applied to this session.
+   * The total sum of the discounts applied to this session.  **Note:** If more than one session is returned, this value is displayed as &#x60;0&#x60;. 
    * @return totalDiscounts
   **/
-  @ApiModelProperty(example = "100.0", required = true, value = "The total sum of the discounts applied to this session.")
+  @ApiModelProperty(example = "100.0", required = true, value = "The total sum of the discounts applied to this session.  **Note:** If more than one session is returned, this value is displayed as `0`. ")
 
   public BigDecimal getTotalDiscounts() {
     return totalDiscounts;

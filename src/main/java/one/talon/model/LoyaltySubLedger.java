@@ -55,6 +55,10 @@ public class LoyaltySubLedger {
   @SerializedName(SERIALIZED_NAME_TOTAL_EXPIRED_POINTS)
   private BigDecimal totalExpiredPoints;
 
+  public static final String SERIALIZED_NAME_TOTAL_NEGATIVE_POINTS = "totalNegativePoints";
+  @SerializedName(SERIALIZED_NAME_TOTAL_NEGATIVE_POINTS)
+  private BigDecimal totalNegativePoints;
+
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<LoyaltyLedgerEntry> transactions = null;
@@ -187,6 +191,28 @@ public class LoyaltySubLedger {
 
   public void setTotalExpiredPoints(BigDecimal totalExpiredPoints) {
     this.totalExpiredPoints = totalExpiredPoints;
+  }
+
+
+  public LoyaltySubLedger totalNegativePoints(BigDecimal totalNegativePoints) {
+    
+    this.totalNegativePoints = totalNegativePoints;
+    return this;
+  }
+
+   /**
+   * Total amount of negative points. This implies that &#x60;totalActivePoints&#x60; is &#x60;0&#x60;.
+   * @return totalNegativePoints
+  **/
+  @ApiModelProperty(required = true, value = "Total amount of negative points. This implies that `totalActivePoints` is `0`.")
+
+  public BigDecimal getTotalNegativePoints() {
+    return totalNegativePoints;
+  }
+
+
+  public void setTotalNegativePoints(BigDecimal totalNegativePoints) {
+    this.totalNegativePoints = totalNegativePoints;
   }
 
 
@@ -382,6 +408,7 @@ public class LoyaltySubLedger {
         Objects.equals(this.totalPendingPoints, loyaltySubLedger.totalPendingPoints) &&
         Objects.equals(this.totalSpentPoints, loyaltySubLedger.totalSpentPoints) &&
         Objects.equals(this.totalExpiredPoints, loyaltySubLedger.totalExpiredPoints) &&
+        Objects.equals(this.totalNegativePoints, loyaltySubLedger.totalNegativePoints) &&
         Objects.equals(this.transactions, loyaltySubLedger.transactions) &&
         Objects.equals(this.expiringPoints, loyaltySubLedger.expiringPoints) &&
         Objects.equals(this.activePoints, loyaltySubLedger.activePoints) &&
@@ -392,7 +419,7 @@ public class LoyaltySubLedger {
 
   @Override
   public int hashCode() {
-    return Objects.hash(total, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, transactions, expiringPoints, activePoints, pendingPoints, expiredPoints, currentTier);
+    return Objects.hash(total, totalActivePoints, totalPendingPoints, totalSpentPoints, totalExpiredPoints, totalNegativePoints, transactions, expiringPoints, activePoints, pendingPoints, expiredPoints, currentTier);
   }
 
 
@@ -405,6 +432,7 @@ public class LoyaltySubLedger {
     sb.append("    totalPendingPoints: ").append(toIndentedString(totalPendingPoints)).append("\n");
     sb.append("    totalSpentPoints: ").append(toIndentedString(totalSpentPoints)).append("\n");
     sb.append("    totalExpiredPoints: ").append(toIndentedString(totalExpiredPoints)).append("\n");
+    sb.append("    totalNegativePoints: ").append(toIndentedString(totalNegativePoints)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    expiringPoints: ").append(toIndentedString(expiringPoints)).append("\n");
     sb.append("    activePoints: ").append(toIndentedString(activePoints)).append("\n");

@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LoyaltyProgram;
+import one.talon.model.CampaignGroup;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

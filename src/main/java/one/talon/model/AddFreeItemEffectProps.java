@@ -38,6 +38,10 @@ public class AddFreeItemEffectProps {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_DESIRED_QUANTITY = "desiredQuantity";
+  @SerializedName(SERIALIZED_NAME_DESIRED_QUANTITY)
+  private Integer desiredQuantity;
+
 
   public AddFreeItemEffectProps sku(String sku) {
     
@@ -83,6 +87,29 @@ public class AddFreeItemEffectProps {
   }
 
 
+  public AddFreeItemEffectProps desiredQuantity(Integer desiredQuantity) {
+    
+    this.desiredQuantity = desiredQuantity;
+    return this;
+  }
+
+   /**
+   * The original quantity in case a partial reward was applied.
+   * @return desiredQuantity
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The original quantity in case a partial reward was applied.")
+
+  public Integer getDesiredQuantity() {
+    return desiredQuantity;
+  }
+
+
+  public void setDesiredQuantity(Integer desiredQuantity) {
+    this.desiredQuantity = desiredQuantity;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +120,13 @@ public class AddFreeItemEffectProps {
     }
     AddFreeItemEffectProps addFreeItemEffectProps = (AddFreeItemEffectProps) o;
     return Objects.equals(this.sku, addFreeItemEffectProps.sku) &&
-        Objects.equals(this.name, addFreeItemEffectProps.name);
+        Objects.equals(this.name, addFreeItemEffectProps.name) &&
+        Objects.equals(this.desiredQuantity, addFreeItemEffectProps.desiredQuantity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sku, name);
+    return Objects.hash(sku, name, desiredQuantity);
   }
 
 
@@ -108,6 +136,7 @@ public class AddFreeItemEffectProps {
     sb.append("class AddFreeItemEffectProps {\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    desiredQuantity: ").append(toIndentedString(desiredQuantity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

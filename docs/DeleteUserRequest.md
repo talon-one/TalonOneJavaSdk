@@ -2,7 +2,6 @@
 
 # DeleteUserRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes

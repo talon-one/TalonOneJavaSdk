@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;WebhookLogEntry&gt;**](WebhookLogEntry.md) |  | 
+**data** | [**List&lt;AccountAdditionalCost&gt;**](AccountAdditionalCost.md) |  | 
 
 
 

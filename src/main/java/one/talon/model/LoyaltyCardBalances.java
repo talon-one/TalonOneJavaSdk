@@ -91,7 +91,7 @@ public class LoyaltyCardBalances {
    * @return subledgerBalances
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"mysubledger\":{\"activePoints\":286,\"pendingPoints\":50,\"spentPoints\":150,\"expiredPoints\":25}}", value = "Map of the loyalty balances of the subledgers of a ledger.")
+  @ApiModelProperty(example = "{\"mysubledger\":{\"activePoints\":286,\"pendingPoints\":50,\"spentPoints\":150,\"expiredPoints\":25,\"negativePoints\":0}}", value = "Map of the loyalty balances of the subledgers of a ledger.")
 
   public Map<String, LoyaltyBalance> getSubledgerBalances() {
     return subledgerBalances;

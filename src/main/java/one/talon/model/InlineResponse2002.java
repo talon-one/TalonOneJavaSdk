@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LedgerTransactionLogEntryIntegrationAPI;
+import one.talon.model.AchievementProgress;
 
 /**
  * InlineResponse2002
  */
 
 public class InlineResponse2002 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<LedgerTransactionLogEntryIntegrationAPI> data = new ArrayList<LedgerTransactionLogEntryIntegrationAPI>();
+  private List<AchievementProgress> data = new ArrayList<AchievementProgress>();
 
 
-  public InlineResponse2002 hasMore(Boolean hasMore) {
+  public InlineResponse2002 totalResultSize(Integer totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Integer getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Integer totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse2002 data(List<LedgerTransactionLogEntryIntegrationAPI> data) {
+  public InlineResponse2002 data(List<AchievementProgress> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2002 addDataItem(LedgerTransactionLogEntryIntegrationAPI dataItem) {
+  public InlineResponse2002 addDataItem(AchievementProgress dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2002 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<LedgerTransactionLogEntryIntegrationAPI> getData() {
+  public List<AchievementProgress> getData() {
     return data;
   }
 
 
-  public void setData(List<LedgerTransactionLogEntryIntegrationAPI> data) {
+  public void setData(List<AchievementProgress> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse2002 {
       return false;
     }
     InlineResponse2002 inlineResponse2002 = (InlineResponse2002) o;
-    return Objects.equals(this.hasMore, inlineResponse2002.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse2002.totalResultSize) &&
         Objects.equals(this.data, inlineResponse2002.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse2002 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2002 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

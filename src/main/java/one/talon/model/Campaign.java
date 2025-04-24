@@ -265,7 +265,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_BUDGETS = "budgets";
   @SerializedName(SERIALIZED_NAME_BUDGETS)
-  private List<CampaignBudget> budgets = new ArrayList<CampaignBudget>();
+  private List<CampaignBudget> budgets = null;
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTION_COUNT = "couponRedemptionCount";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTION_COUNT)
@@ -410,6 +410,10 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_STORES_IMPORTED)
   private Boolean storesImported;
 
+  public static final String SERIALIZED_NAME_VALUE_MAPS_IDS = "valueMapsIds";
+  @SerializedName(SERIALIZED_NAME_VALUE_MAPS_IDS)
+  private List<Integer> valueMapsIds = null;
+
   /**
    * The campaign revision state displayed in the Campaign Manager.
    */
@@ -537,10 +541,10 @@ public class Campaign {
   }
 
    /**
-   * The ID of the application that owns this entity.
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -950,6 +954,9 @@ public class Campaign {
   }
 
   public Campaign addBudgetsItem(CampaignBudget budgetsItem) {
+    if (this.budgets == null) {
+      this.budgets = new ArrayList<CampaignBudget>();
+    }
     this.budgets.add(budgetsItem);
     return this;
   }
@@ -958,7 +965,8 @@ public class Campaign {
    * A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. 
    * @return budgets
   **/
-  @ApiModelProperty(required = true, value = "A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. ")
 
   public List<CampaignBudget> getBudgets() {
     return budgets;
@@ -1474,6 +1482,37 @@ public class Campaign {
   }
 
 
+  public Campaign valueMapsIds(List<Integer> valueMapsIds) {
+    
+    this.valueMapsIds = valueMapsIds;
+    return this;
+  }
+
+  public Campaign addValueMapsIdsItem(Integer valueMapsIdsItem) {
+    if (this.valueMapsIds == null) {
+      this.valueMapsIds = new ArrayList<Integer>();
+    }
+    this.valueMapsIds.add(valueMapsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of value map IDs for the campaign.
+   * @return valueMapsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[100, 215]", value = "A list of value map IDs for the campaign.")
+
+  public List<Integer> getValueMapsIds() {
+    return valueMapsIds;
+  }
+
+
+  public void setValueMapsIds(List<Integer> valueMapsIds) {
+    this.valueMapsIds = valueMapsIds;
+  }
+
+
   public Campaign revisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
     
     this.revisionFrontendState = revisionFrontendState;
@@ -1686,6 +1725,7 @@ public class Campaign {
         Objects.equals(this.templateId, campaign.templateId) &&
         Objects.equals(this.frontendState, campaign.frontendState) &&
         Objects.equals(this.storesImported, campaign.storesImported) &&
+        Objects.equals(this.valueMapsIds, campaign.valueMapsIds) &&
         Objects.equals(this.revisionFrontendState, campaign.revisionFrontendState) &&
         Objects.equals(this.activeRevisionId, campaign.activeRevisionId) &&
         Objects.equals(this.activeRevisionVersionId, campaign.activeRevisionVersionId) &&
@@ -1697,7 +1737,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
+    return Objects.hash(id, created, applicationId, userId, name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, type, linkedStoreIds, budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds, revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
   }
 
 
@@ -1747,6 +1787,7 @@ public class Campaign {
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
+    sb.append("    valueMapsIds: ").append(toIndentedString(valueMapsIds)).append("\n");
     sb.append("    revisionFrontendState: ").append(toIndentedString(revisionFrontendState)).append("\n");
     sb.append("    activeRevisionId: ").append(toIndentedString(activeRevisionId)).append("\n");
     sb.append("    activeRevisionVersionId: ").append(toIndentedString(activeRevisionVersionId)).append("\n");

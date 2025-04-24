@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgress;
+import one.talon.model.AchievementProgressWithDefinition;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;
@@ -59,7 +59,7 @@ public class CustomerInventory {
 
   public static final String SERIALIZED_NAME_ACHIEVEMENTS = "achievements";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENTS)
-  private List<AchievementProgress> achievements = null;
+  private List<AchievementProgressWithDefinition> achievements = null;
 
 
   public CustomerInventory profile(CustomerProfile profile) {
@@ -201,15 +201,15 @@ public class CustomerInventory {
   }
 
 
-  public CustomerInventory achievements(List<AchievementProgress> achievements) {
+  public CustomerInventory achievements(List<AchievementProgressWithDefinition> achievements) {
     
     this.achievements = achievements;
     return this;
   }
 
-  public CustomerInventory addAchievementsItem(AchievementProgress achievementsItem) {
+  public CustomerInventory addAchievementsItem(AchievementProgressWithDefinition achievementsItem) {
     if (this.achievements == null) {
-      this.achievements = new ArrayList<AchievementProgress>();
+      this.achievements = new ArrayList<AchievementProgressWithDefinition>();
     }
     this.achievements.add(achievementsItem);
     return this;
@@ -222,12 +222,12 @@ public class CustomerInventory {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<AchievementProgress> getAchievements() {
+  public List<AchievementProgressWithDefinition> getAchievements() {
     return achievements;
   }
 
 
-  public void setAchievements(List<AchievementProgress> achievements) {
+  public void setAchievements(List<AchievementProgressWithDefinition> achievements) {
     this.achievements = achievements;
   }
 

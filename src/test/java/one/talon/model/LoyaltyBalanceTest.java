@@ -73,4 +73,12 @@ public class LoyaltyBalanceTest {
         // TODO: test expiredPoints
     }
 
+    /**
+     * Test the property 'negativePoints'
+     */
+    @Test
+    public void negativePointsTest() {
+        // TODO: test negativePoints
+    }
+
 }

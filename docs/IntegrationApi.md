@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**deleteCouponReservation**](IntegrationApi.md#deleteCouponReservation) | **DELETE** /v1/coupon_reservations/{couponValue} | Delete coupon reservations
 [**deleteCustomerData**](IntegrationApi.md#deleteCustomerData) | **DELETE** /v1/customer_data/{integrationId} | Delete customer&#39;s personal data
 [**generateLoyaltyCard**](IntegrationApi.md#generateLoyaltyCard) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards | Generate loyalty card
+[**getCustomerAchievementHistory**](IntegrationApi.md#getCustomerAchievementHistory) | **GET** /v1/customer_profiles/{integrationId}/achievements/{achievementId} | List customer&#39;s achievement history
+[**getCustomerAchievements**](IntegrationApi.md#getCustomerAchievements) | **GET** /v1/customer_profiles/{integrationId}/achievements | List customer&#39;s available achievements
 [**getCustomerInventory**](IntegrationApi.md#getCustomerInventory) | **GET** /v1/customer_profiles/{integrationId}/inventory | List customer data
 [**getCustomerSession**](IntegrationApi.md#getCustomerSession) | **GET** /v2/customer_sessions/{customerSessionId} | Get customer session
 [**getLoyaltyBalances**](IntegrationApi.md#getLoyaltyBalances) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances | Get customer&#39;s loyalty balances
@@ -194,7 +196,7 @@ Name | Type | Description  | Notes
 
 Create referral code for an advocate
 
-Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
+Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
 
 ### Example
 
@@ -268,7 +270,7 @@ Name | Type | Description  | Notes
 
 Create referral codes for multiple advocates
 
-Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
+Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
 
 ### Example
 
@@ -294,7 +296,7 @@ public class Example {
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
         NewReferralsForMultipleAdvocates body = new NewReferralsForMultipleAdvocates(); // NewReferralsForMultipleAdvocates | body
-        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
             InlineResponse201 result = apiInstance.createReferralsForMultipleAdvocates(body, silent);
             System.out.println(result);
@@ -315,7 +317,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**NewReferralsForMultipleAdvocates**](NewReferralsForMultipleAdvocates.md)| body |
- **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
+ **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
 ### Return type cool
 
@@ -711,6 +713,180 @@ Name | Type | Description  | Notes
 | **401** | Unauthorized |  -  |
 
 
+## getCustomerAchievementHistory
+
+> InlineResponse2002 getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip)
+
+List customer&#39;s achievement history
+
+Retrieve all progress history of a given customer in the given achievement. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
+        Integer achievementId = 56; // Integer | The achievement identifier. 
+        List<String> progressStatus = Arrays.asList(); // List<String> | Filter by customer progress status in the achievement. 
+        OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain achievements created on or after the start date.
+        OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain achievements created before or on the end date.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        try {
+            InlineResponse2002 result = apiInstance.getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#getCustomerAchievementHistory");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
+ **achievementId** | **Integer**| The achievement identifier.  |
+ **progressStatus** | [**List&lt;String&gt;**](String.md)| Filter by customer progress status in the achievement.  | [optional] [enum: inprogress, completed, expired]
+ **startDate** | **OffsetDateTime**| Timestamp that filters the results to only contain achievements created on or after the start date. | [optional]
+ **endDate** | **OffsetDateTime**| Timestamp that filters the results to only contain achievements created before or on the end date. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+
+### Return type cool
+
+[**InlineResponse2002**](InlineResponse2002.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not found |  -  |
+
+
+## getCustomerAchievements
+
+> InlineResponse2001 getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip)
+
+List customer&#39;s available achievements
+
+Retrieve all the achievements available to a given customer and their progress in them. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.IntegrationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: api_key_v1
+        ApiKeyAuth api_key_v1 = (ApiKeyAuth) defaultClient.getAuthentication("api_key_v1");
+        api_key_v1.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_v1.setApiKeyPrefix("Token");
+
+        IntegrationApi apiInstance = new IntegrationApi(defaultClient);
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
+        List<String> campaignIds = Arrays.asList(); // List<String> | Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned. 
+        List<String> achievementIds = Arrays.asList(); // List<String> | Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned. 
+        List<String> achievementStatus = Arrays.asList(); // List<String> | Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned. 
+        List<String> currentProgressStatus = Arrays.asList(); // List<String> | Filter by customer progress status in the achievement. 
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        try {
+            InlineResponse2001 result = apiInstance.getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling IntegrationApi#getCustomerAchievements");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
+ **campaignIds** | [**List&lt;String&gt;**](String.md)| Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  | [optional]
+ **achievementIds** | [**List&lt;String&gt;**](String.md)| Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  | [optional]
+ **achievementStatus** | [**List&lt;String&gt;**](String.md)| Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  | [optional] [enum: active, scheduled]
+ **currentProgressStatus** | [**List&lt;String&gt;**](String.md)| Filter by customer progress status in the achievement.  | [optional] [enum: inprogress, completed, not_started]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+
+### Return type cool
+
+[**InlineResponse2001**](InlineResponse2001.md)
+
+### Authorization
+
+[api_key_v1](../README.md#api_key_v1)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not found |  -  |
+
+
 ## getCustomerInventory
 
 > CustomerInventory getCustomerInventory(integrationId, profile, referrals, coupons, loyalty, giveaways, achievements)
@@ -1039,7 +1215,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyCardPoints
 
-> InlineResponse2003 getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip)
+> InlineResponse2005 getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip)
 
 List card&#39;s unused loyalty points
 
@@ -1075,7 +1251,7 @@ public class Example {
         Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse2003 result = apiInstance.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
+            InlineResponse2005 result = apiInstance.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyCardPoints");
@@ -1102,7 +1278,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -1124,7 +1300,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyCardTransactions
 
-> InlineResponse2001 getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip)
+> InlineResponse2003 getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip)
 
 List card&#39;s transactions
 
@@ -1159,10 +1335,10 @@ public class Example {
         String loyaltyTransactionType = "loyaltyTransactionType_example"; // String | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file. 
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse2001 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+            InlineResponse2003 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyCardTransactions");
@@ -1186,12 +1362,12 @@ Name | Type | Description  | Notes
  **loyaltyTransactionType** | **String**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  | [optional] [enum: manual, session, import]
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -1213,7 +1389,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyProgramProfilePoints
 
-> InlineResponse2004 getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip)
+> InlineResponse2006 getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip)
 
 List customer&#39;s unused loyalty points
 
@@ -1249,7 +1425,7 @@ public class Example {
         Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse2004 result = apiInstance.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
+            InlineResponse2006 result = apiInstance.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyProgramProfilePoints");
@@ -1276,7 +1452,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 
@@ -1298,7 +1474,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyProgramProfileTransactions
 
-> InlineResponse2002 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip)
+> InlineResponse2004 getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip)
 
 List customer&#39;s loyalty transactions
 
@@ -1336,7 +1512,7 @@ public class Example {
         Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse2002 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+            InlineResponse2004 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#getLoyaltyProgramProfileTransactions");
@@ -1365,7 +1541,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -1770,7 +1946,7 @@ Name | Type | Description  | Notes
 
 ## trackEventV2
 
-> TrackEventV2Response trackEventV2(body, silent, dry)
+> TrackEventV2Response trackEventV2(body, silent, dry, forceCompleteEvaluation)
 
 Track event
 
@@ -1800,10 +1976,11 @@ public class Example {
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
         IntegrationEventV2Request body = new IntegrationEventV2Request(); // IntegrationEventV2Request | body
-        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         Boolean dry = true; // Boolean | Indicates whether to persist the changes. Changes are ignored when `dry=true`. 
+        Boolean forceCompleteEvaluation = false; // Boolean | Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires `dry=true`. 
         try {
-            TrackEventV2Response result = apiInstance.trackEventV2(body, silent, dry);
+            TrackEventV2Response result = apiInstance.trackEventV2(body, silent, dry, forceCompleteEvaluation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationApi#trackEventV2");
@@ -1822,8 +1999,9 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**IntegrationEventV2Request**](IntegrationEventV2Request.md)| body |
- **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
+ **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
  **dry** | **Boolean**| Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  | [optional]
+ **forceCompleteEvaluation** | **Boolean**| Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;.  | [optional] [default to false]
 
 ### Return type cool
 
@@ -2185,7 +2363,7 @@ public class Example {
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
         MultipleCustomerProfileIntegrationRequest body = new MultipleCustomerProfileIntegrationRequest(); // MultipleCustomerProfileIntegrationRequest | body
-        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
             MultipleCustomerProfileIntegrationResponseV2 result = apiInstance.updateCustomerProfilesV2(body, silent);
             System.out.println(result);
@@ -2206,7 +2384,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MultipleCustomerProfileIntegrationRequest**](MultipleCustomerProfileIntegrationRequest.md)| body |
- **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
+ **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
 ### Return type cool
 

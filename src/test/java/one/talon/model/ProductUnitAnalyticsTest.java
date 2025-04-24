@@ -21,8 +21,10 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.AnalyticsDataPointWithTrend;
-import org.threeten.bp.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.ProductUnitAnalyticsDataPoint;
+import one.talon.model.ProductUnitAnalyticsTotals;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,43 +45,19 @@ public class ProductUnitAnalyticsTest {
     }
 
     /**
-     * Test the property 'startTime'
+     * Test the property 'data'
      */
     @Test
-    public void startTimeTest() {
-        // TODO: test startTime
+    public void dataTest() {
+        // TODO: test data
     }
 
     /**
-     * Test the property 'endTime'
+     * Test the property 'totals'
      */
     @Test
-    public void endTimeTest() {
-        // TODO: test endTime
-    }
-
-    /**
-     * Test the property 'purchasedUnits'
-     */
-    @Test
-    public void purchasedUnitsTest() {
-        // TODO: test purchasedUnits
-    }
-
-    /**
-     * Test the property 'productId'
-     */
-    @Test
-    public void productIdTest() {
-        // TODO: test productId
-    }
-
-    /**
-     * Test the property 'productName'
-     */
-    @Test
-    public void productNameTest() {
-        // TODO: test productName
+    public void totalsTest() {
+        // TODO: test totals
     }
 
 }

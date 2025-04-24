@@ -76,6 +76,14 @@ public class LoyaltyBalanceWithTierTest {
     }
 
     /**
+     * Test the property 'negativePoints'
+     */
+    @Test
+    public void negativePointsTest() {
+        // TODO: test negativePoints
+    }
+
+    /**
      * Test the property 'currentTier'
      */
     @Test

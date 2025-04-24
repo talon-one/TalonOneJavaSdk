@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **ruleName** | **String** | The name of the rule that triggered this effect. | 
 **type** | **String** | The type of this effect. | 
 **props** | [**Object**](.md) |  | 
+**startTime** | [**OffsetDateTime**](OffsetDateTime.md) | The start of the time frame where the effect is active in UTC. |  [optional]
+**endTime** | [**OffsetDateTime**](OffsetDateTime.md) | The end of the time frame where the effect is active in UTC. |  [optional]
 
 
 

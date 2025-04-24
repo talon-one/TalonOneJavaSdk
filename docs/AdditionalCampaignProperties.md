@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**budgets** | [**List&lt;CampaignBudget&gt;**](CampaignBudget.md) | A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined.  | 
+**budgets** | [**List&lt;CampaignBudget&gt;**](CampaignBudget.md) | A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined.  |  [optional]
 **couponRedemptionCount** | **Integer** | This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign.  |  [optional]
 **referralRedemptionCount** | **Integer** | This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign.  |  [optional]
 **discountCount** | [**BigDecimal**](BigDecimal.md) | This property is **deprecated**. The count should be available under *budgets* property. Total amount of discounts redeemed in the campaign.  |  [optional]
@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **templateId** | **Integer** | The ID of the Campaign Template this Campaign was created from. |  [optional]
 **frontendState** | [**FrontendStateEnum**](#FrontendStateEnum) | The campaign state displayed in the Campaign Manager. | 
 **storesImported** | **Boolean** | Indicates whether the linked stores were imported via a CSV file. | 
+**valueMapsIds** | **List&lt;Integer&gt;** | A list of value map IDs for the campaign. |  [optional]
 
 
 

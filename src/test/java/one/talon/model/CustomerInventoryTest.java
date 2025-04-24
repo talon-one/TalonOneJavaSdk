@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgress;
+import one.talon.model.AchievementProgressWithDefinition;
 import one.talon.model.CustomerProfile;
 import one.talon.model.Giveaway;
 import one.talon.model.InventoryCoupon;

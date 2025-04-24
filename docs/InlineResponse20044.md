@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
 **totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;Store&gt;**](Store.md) |  | 
+**hasMore** | **Boolean** |  |  [optional]
+**data** | [**List&lt;Change&gt;**](Change.md) |  | 
 
 
 

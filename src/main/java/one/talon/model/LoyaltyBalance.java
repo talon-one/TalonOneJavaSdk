@@ -47,6 +47,10 @@ public class LoyaltyBalance {
   @SerializedName(SERIALIZED_NAME_EXPIRED_POINTS)
   private BigDecimal expiredPoints;
 
+  public static final String SERIALIZED_NAME_NEGATIVE_POINTS = "negativePoints";
+  @SerializedName(SERIALIZED_NAME_NEGATIVE_POINTS)
+  private BigDecimal negativePoints;
+
 
   public LoyaltyBalance activePoints(BigDecimal activePoints) {
     
@@ -140,6 +144,29 @@ public class LoyaltyBalance {
   }
 
 
+  public LoyaltyBalance negativePoints(BigDecimal negativePoints) {
+    
+    this.negativePoints = negativePoints;
+    return this;
+  }
+
+   /**
+   * Total amount of negative points. This implies that &#x60;activePoints&#x60; is &#x60;0&#x60;.
+   * @return negativePoints
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "286.0", value = "Total amount of negative points. This implies that `activePoints` is `0`.")
+
+  public BigDecimal getNegativePoints() {
+    return negativePoints;
+  }
+
+
+  public void setNegativePoints(BigDecimal negativePoints) {
+    this.negativePoints = negativePoints;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -152,12 +179,13 @@ public class LoyaltyBalance {
     return Objects.equals(this.activePoints, loyaltyBalance.activePoints) &&
         Objects.equals(this.pendingPoints, loyaltyBalance.pendingPoints) &&
         Objects.equals(this.spentPoints, loyaltyBalance.spentPoints) &&
-        Objects.equals(this.expiredPoints, loyaltyBalance.expiredPoints);
+        Objects.equals(this.expiredPoints, loyaltyBalance.expiredPoints) &&
+        Objects.equals(this.negativePoints, loyaltyBalance.negativePoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(activePoints, pendingPoints, spentPoints, expiredPoints);
+    return Objects.hash(activePoints, pendingPoints, spentPoints, expiredPoints, negativePoints);
   }
 
 
@@ -169,6 +197,7 @@ public class LoyaltyBalance {
     sb.append("    pendingPoints: ").append(toIndentedString(pendingPoints)).append("\n");
     sb.append("    spentPoints: ").append(toIndentedString(spentPoints)).append("\n");
     sb.append("    expiredPoints: ").append(toIndentedString(expiredPoints)).append("\n");
+    sb.append("    negativePoints: ").append(toIndentedString(negativePoints)).append("\n");
     sb.append("}");
     return sb.toString();
   }

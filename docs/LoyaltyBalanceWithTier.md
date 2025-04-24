@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **pendingPoints** | [**BigDecimal**](BigDecimal.md) | Total amount of points awarded to this customer but not available until their start date. |  [optional]
 **spentPoints** | [**BigDecimal**](BigDecimal.md) | Total amount of points already spent by this customer. |  [optional]
 **expiredPoints** | [**BigDecimal**](BigDecimal.md) | Total amount of points awarded but never redeemed. They cannot be used anymore. |  [optional]
+**negativePoints** | [**BigDecimal**](BigDecimal.md) | Total amount of negative points. This implies that &#x60;activePoints&#x60; is &#x60;0&#x60;. |  [optional]
 **currentTier** | [**Tier**](Tier.md) |  |  [optional]
 **projectedTier** | [**ProjectedTier**](ProjectedTier.md) |  |  [optional]
 **pointsToNextTier** | [**BigDecimal**](BigDecimal.md) | The number of points required to move up a tier. |  [optional]

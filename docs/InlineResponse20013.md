@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;LoyaltyProgram&gt;**](LoyaltyProgram.md) |  | 
+**data** | [**List&lt;CampaignGroup&gt;**](CampaignGroup.md) |  | 
 
 
 

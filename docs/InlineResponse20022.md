@@ -6,9 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**totalResultSize** | **Integer** |  |  [optional]
-**data** | [**List&lt;ApplicationCustomer&gt;**](ApplicationCustomer.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;AccessLogEntry&gt;**](AccessLogEntry.md) |  | 
 
 
 

@@ -40,6 +40,10 @@ public class LedgerInfo {
   @SerializedName(SERIALIZED_NAME_PENDING_BALANCE)
   private BigDecimal pendingBalance;
 
+  public static final String SERIALIZED_NAME_NEGATIVE_BALANCE = "negativeBalance";
+  @SerializedName(SERIALIZED_NAME_NEGATIVE_BALANCE)
+  private BigDecimal negativeBalance;
+
   public static final String SERIALIZED_NAME_EXPIRED_BALANCE = "expiredBalance";
   @SerializedName(SERIALIZED_NAME_EXPIRED_BALANCE)
   private BigDecimal expiredBalance;
@@ -55,6 +59,10 @@ public class LedgerInfo {
   public static final String SERIALIZED_NAME_TENTATIVE_PENDING_BALANCE = "tentativePendingBalance";
   @SerializedName(SERIALIZED_NAME_TENTATIVE_PENDING_BALANCE)
   private BigDecimal tentativePendingBalance;
+
+  public static final String SERIALIZED_NAME_TENTATIVE_NEGATIVE_BALANCE = "tentativeNegativeBalance";
+  @SerializedName(SERIALIZED_NAME_TENTATIVE_NEGATIVE_BALANCE)
+  private BigDecimal tentativeNegativeBalance;
 
   public static final String SERIALIZED_NAME_CURRENT_TIER = "currentTier";
   @SerializedName(SERIALIZED_NAME_CURRENT_TIER)
@@ -106,6 +114,28 @@ public class LedgerInfo {
 
   public void setPendingBalance(BigDecimal pendingBalance) {
     this.pendingBalance = pendingBalance;
+  }
+
+
+  public LedgerInfo negativeBalance(BigDecimal negativeBalance) {
+    
+    this.negativeBalance = negativeBalance;
+    return this;
+  }
+
+   /**
+   * Sum of negative points. This implies that &#x60;currentBalance&#x60; is &#x60;0&#x60;.
+   * @return negativeBalance
+  **/
+  @ApiModelProperty(example = "10.0", required = true, value = "Sum of negative points. This implies that `currentBalance` is `0`.")
+
+  public BigDecimal getNegativeBalance() {
+    return negativeBalance;
+  }
+
+
+  public void setNegativeBalance(BigDecimal negativeBalance) {
+    this.negativeBalance = negativeBalance;
   }
 
 
@@ -198,6 +228,28 @@ public class LedgerInfo {
   }
 
 
+  public LedgerInfo tentativeNegativeBalance(BigDecimal tentativeNegativeBalance) {
+    
+    this.tentativeNegativeBalance = tentativeNegativeBalance;
+    return this;
+  }
+
+   /**
+   * The tentative negative balance after all additions and deductions from the current customer session are applied to &#x60;negativeBalance&#x60;. When the session is closed, the tentative effects are applied and &#x60;negativeBalance&#x60; is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. 
+   * @return tentativeNegativeBalance
+  **/
+  @ApiModelProperty(example = "100.0", required = true, value = "The tentative negative balance after all additions and deductions from the current customer session are applied to `negativeBalance`. When the session is closed, the tentative effects are applied and `negativeBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
+
+  public BigDecimal getTentativeNegativeBalance() {
+    return tentativeNegativeBalance;
+  }
+
+
+  public void setTentativeNegativeBalance(BigDecimal tentativeNegativeBalance) {
+    this.tentativeNegativeBalance = tentativeNegativeBalance;
+  }
+
+
   public LedgerInfo currentTier(Tier currentTier) {
     
     this.currentTier = currentTier;
@@ -255,17 +307,19 @@ public class LedgerInfo {
     LedgerInfo ledgerInfo = (LedgerInfo) o;
     return Objects.equals(this.currentBalance, ledgerInfo.currentBalance) &&
         Objects.equals(this.pendingBalance, ledgerInfo.pendingBalance) &&
+        Objects.equals(this.negativeBalance, ledgerInfo.negativeBalance) &&
         Objects.equals(this.expiredBalance, ledgerInfo.expiredBalance) &&
         Objects.equals(this.spentBalance, ledgerInfo.spentBalance) &&
         Objects.equals(this.tentativeCurrentBalance, ledgerInfo.tentativeCurrentBalance) &&
         Objects.equals(this.tentativePendingBalance, ledgerInfo.tentativePendingBalance) &&
+        Objects.equals(this.tentativeNegativeBalance, ledgerInfo.tentativeNegativeBalance) &&
         Objects.equals(this.currentTier, ledgerInfo.currentTier) &&
         Objects.equals(this.pointsToNextTier, ledgerInfo.pointsToNextTier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentBalance, pendingBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance, currentTier, pointsToNextTier);
+    return Objects.hash(currentBalance, pendingBalance, negativeBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance, tentativeNegativeBalance, currentTier, pointsToNextTier);
   }
 
 
@@ -275,10 +329,12 @@ public class LedgerInfo {
     sb.append("class LedgerInfo {\n");
     sb.append("    currentBalance: ").append(toIndentedString(currentBalance)).append("\n");
     sb.append("    pendingBalance: ").append(toIndentedString(pendingBalance)).append("\n");
+    sb.append("    negativeBalance: ").append(toIndentedString(negativeBalance)).append("\n");
     sb.append("    expiredBalance: ").append(toIndentedString(expiredBalance)).append("\n");
     sb.append("    spentBalance: ").append(toIndentedString(spentBalance)).append("\n");
     sb.append("    tentativeCurrentBalance: ").append(toIndentedString(tentativeCurrentBalance)).append("\n");
     sb.append("    tentativePendingBalance: ").append(toIndentedString(tentativePendingBalance)).append("\n");
+    sb.append("    tentativeNegativeBalance: ").append(toIndentedString(tentativeNegativeBalance)).append("\n");
     sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");
     sb.append("    pointsToNextTier: ").append(toIndentedString(pointsToNextTier)).append("\n");
     sb.append("}");

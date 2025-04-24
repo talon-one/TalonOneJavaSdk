@@ -59,6 +59,14 @@ public class LedgerInfoTest {
     }
 
     /**
+     * Test the property 'negativeBalance'
+     */
+    @Test
+    public void negativeBalanceTest() {
+        // TODO: test negativeBalance
+    }
+
+    /**
      * Test the property 'expiredBalance'
      */
     @Test
@@ -88,6 +96,14 @@ public class LedgerInfoTest {
     @Test
     public void tentativePendingBalanceTest() {
         // TODO: test tentativePendingBalance
+    }
+
+    /**
+     * Test the property 'tentativeNegativeBalance'
+     */
+    @Test
+    public void tentativeNegativeBalanceTest() {
+        // TODO: test tentativeNegativeBalance
     }
 
     /**

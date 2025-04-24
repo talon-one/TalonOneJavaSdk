@@ -27,30 +27,11 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * AchievementProgress
+ * The current progress of the customer in the achievement.
  */
+@ApiModel(description = "The current progress of the customer in the achievement.")
 
 public class AchievementProgress {
-  public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
-  @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Integer achievementId;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
-
   /**
    * The status of the achievement.
    */
@@ -60,7 +41,9 @@ public class AchievementProgress {
     
     COMPLETED("completed"),
     
-    EXPIRED("expired");
+    EXPIRED("expired"),
+    
+    NOT_STARTED("not_started");
 
     private String value;
 
@@ -104,10 +87,6 @@ public class AchievementProgress {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_TARGET = "target";
-  @SerializedName(SERIALIZED_NAME_TARGET)
-  private BigDecimal target;
-
   public static final String SERIALIZED_NAME_PROGRESS = "progress";
   @SerializedName(SERIALIZED_NAME_PROGRESS)
   private BigDecimal progress;
@@ -123,116 +102,6 @@ public class AchievementProgress {
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
-
-
-  public AchievementProgress achievementId(Integer achievementId) {
-    
-    this.achievementId = achievementId;
-    return this;
-  }
-
-   /**
-   * The internal ID of the achievement.
-   * @return achievementId
-  **/
-  @ApiModelProperty(example = "3", required = true, value = "The internal ID of the achievement.")
-
-  public Integer getAchievementId() {
-    return achievementId;
-  }
-
-
-  public void setAchievementId(Integer achievementId) {
-    this.achievementId = achievementId;
-  }
-
-
-  public AchievementProgress name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The internal name of the achievement used in API requests. 
-   * @return name
-  **/
-  @ApiModelProperty(example = "FreeCoffee10Orders", required = true, value = "The internal name of the achievement used in API requests. ")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public AchievementProgress title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * The display name of the achievement in the Campaign Manager.
-   * @return title
-  **/
-  @ApiModelProperty(example = "50% off on 50th purchase.", required = true, value = "The display name of the achievement in the Campaign Manager.")
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  public AchievementProgress description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * The description of the achievement in the Campaign Manager.
-   * @return description
-  **/
-  @ApiModelProperty(example = "50% off for every 50th purchase in a year.", required = true, value = "The description of the achievement in the Campaign Manager.")
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public AchievementProgress campaignId(Integer campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * The ID of the campaign the achievement belongs to.
-   * @return campaignId
-  **/
-  @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign the achievement belongs to.")
-
-  public Integer getCampaignId() {
-    return campaignId;
-  }
-
-
-  public void setCampaignId(Integer campaignId) {
-    this.campaignId = campaignId;
-  }
 
 
   public AchievementProgress status(StatusEnum status) {
@@ -254,29 +123,6 @@ public class AchievementProgress {
 
   public void setStatus(StatusEnum status) {
     this.status = status;
-  }
-
-
-  public AchievementProgress target(BigDecimal target) {
-    
-    this.target = target;
-    return this;
-  }
-
-   /**
-   * The required number of actions or the transactional milestone to complete the achievement.
-   * @return target
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "10.0", value = "The required number of actions or the transactional milestone to complete the achievement.")
-
-  public BigDecimal getTarget() {
-    return target;
-  }
-
-
-  public void setTarget(BigDecimal target) {
-    this.target = target;
   }
 
 
@@ -312,7 +158,8 @@ public class AchievementProgress {
    * Timestamp at which the customer started the achievement.
    * @return startDate
   **/
-  @ApiModelProperty(required = true, value = "Timestamp at which the customer started the achievement.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp at which the customer started the achievement.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -357,7 +204,8 @@ public class AchievementProgress {
    * Timestamp at which point the achievement ends and resets for the customer.
    * @return endDate
   **/
-  @ApiModelProperty(required = true, value = "Timestamp at which point the achievement ends and resets for the customer.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Timestamp at which point the achievement ends and resets for the customer.")
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -378,13 +226,7 @@ public class AchievementProgress {
       return false;
     }
     AchievementProgress achievementProgress = (AchievementProgress) o;
-    return Objects.equals(this.achievementId, achievementProgress.achievementId) &&
-        Objects.equals(this.name, achievementProgress.name) &&
-        Objects.equals(this.title, achievementProgress.title) &&
-        Objects.equals(this.description, achievementProgress.description) &&
-        Objects.equals(this.campaignId, achievementProgress.campaignId) &&
-        Objects.equals(this.status, achievementProgress.status) &&
-        Objects.equals(this.target, achievementProgress.target) &&
+    return Objects.equals(this.status, achievementProgress.status) &&
         Objects.equals(this.progress, achievementProgress.progress) &&
         Objects.equals(this.startDate, achievementProgress.startDate) &&
         Objects.equals(this.completionDate, achievementProgress.completionDate) &&
@@ -393,7 +235,7 @@ public class AchievementProgress {
 
   @Override
   public int hashCode() {
-    return Objects.hash(achievementId, name, title, description, campaignId, status, target, progress, startDate, completionDate, endDate);
+    return Objects.hash(status, progress, startDate, completionDate, endDate);
   }
 
 
@@ -401,13 +243,7 @@ public class AchievementProgress {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AchievementProgress {\n");
-    sb.append("    achievementId: ").append(toIndentedString(achievementId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    completionDate: ").append(toIndentedString(completionDate)).append("\n");

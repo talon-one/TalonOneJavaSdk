@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AdditionalCampaignProperties {
   public static final String SERIALIZED_NAME_BUDGETS = "budgets";
   @SerializedName(SERIALIZED_NAME_BUDGETS)
-  private List<CampaignBudget> budgets = new ArrayList<CampaignBudget>();
+  private List<CampaignBudget> budgets = null;
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTION_COUNT = "couponRedemptionCount";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTION_COUNT)
@@ -181,6 +181,10 @@ public class AdditionalCampaignProperties {
   @SerializedName(SERIALIZED_NAME_STORES_IMPORTED)
   private Boolean storesImported;
 
+  public static final String SERIALIZED_NAME_VALUE_MAPS_IDS = "valueMapsIds";
+  @SerializedName(SERIALIZED_NAME_VALUE_MAPS_IDS)
+  private List<Integer> valueMapsIds = null;
+
 
   public AdditionalCampaignProperties budgets(List<CampaignBudget> budgets) {
     
@@ -189,6 +193,9 @@ public class AdditionalCampaignProperties {
   }
 
   public AdditionalCampaignProperties addBudgetsItem(CampaignBudget budgetsItem) {
+    if (this.budgets == null) {
+      this.budgets = new ArrayList<CampaignBudget>();
+    }
     this.budgets.add(budgetsItem);
     return this;
   }
@@ -197,7 +204,8 @@ public class AdditionalCampaignProperties {
    * A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. 
    * @return budgets
   **/
-  @ApiModelProperty(required = true, value = "A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. ")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A list of all the budgets that are defined by this campaign and their usage.  **Note:** Budgets that are not defined do not appear in this list and their usage is not counted until they are defined. ")
 
   public List<CampaignBudget> getBudgets() {
     return budgets;
@@ -713,6 +721,37 @@ public class AdditionalCampaignProperties {
   }
 
 
+  public AdditionalCampaignProperties valueMapsIds(List<Integer> valueMapsIds) {
+    
+    this.valueMapsIds = valueMapsIds;
+    return this;
+  }
+
+  public AdditionalCampaignProperties addValueMapsIdsItem(Integer valueMapsIdsItem) {
+    if (this.valueMapsIds == null) {
+      this.valueMapsIds = new ArrayList<Integer>();
+    }
+    this.valueMapsIds.add(valueMapsIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of value map IDs for the campaign.
+   * @return valueMapsIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[100, 215]", value = "A list of value map IDs for the campaign.")
+
+  public List<Integer> getValueMapsIds() {
+    return valueMapsIds;
+  }
+
+
+  public void setValueMapsIds(List<Integer> valueMapsIds) {
+    this.valueMapsIds = valueMapsIds;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -744,12 +783,13 @@ public class AdditionalCampaignProperties {
         Objects.equals(this.updatedBy, additionalCampaignProperties.updatedBy) &&
         Objects.equals(this.templateId, additionalCampaignProperties.templateId) &&
         Objects.equals(this.frontendState, additionalCampaignProperties.frontendState) &&
-        Objects.equals(this.storesImported, additionalCampaignProperties.storesImported);
+        Objects.equals(this.storesImported, additionalCampaignProperties.storesImported) &&
+        Objects.equals(this.valueMapsIds, additionalCampaignProperties.valueMapsIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported);
+    return Objects.hash(budgets, couponRedemptionCount, referralRedemptionCount, discountCount, discountEffectCount, couponCreationCount, customEffectCount, referralCreationCount, addFreeItemEffectCount, awardedGiveawaysCount, createdLoyaltyPointsCount, createdLoyaltyPointsEffectCount, redeemedLoyaltyPointsCount, redeemedLoyaltyPointsEffectCount, callApiEffectCount, reservecouponEffectCount, lastActivity, updated, createdBy, updatedBy, templateId, frontendState, storesImported, valueMapsIds);
   }
 
 
@@ -780,6 +820,7 @@ public class AdditionalCampaignProperties {
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    frontendState: ").append(toIndentedString(frontendState)).append("\n");
     sb.append("    storesImported: ").append(toIndentedString(storesImported)).append("\n");
+    sb.append("    valueMapsIds: ").append(toIndentedString(valueMapsIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
-**applicationId** | **Integer** | The ID of the application that owns this entity. | 
+**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 **profileId** | **String** | ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;.  | 
 **storeIntegrationId** | **String** | The integration ID of the store. You choose this ID when you create a store. |  [optional]
 **evaluableCampaignIds** | **List&lt;Integer&gt;** | When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them.  |  [optional]
@@ -27,7 +27,6 @@ Name | Type | Description | Notes
 **cartItemTotal** | [**BigDecimal**](BigDecimal.md) | The total value of cart items, before any discounts are applied. | 
 **additionalCostTotal** | [**BigDecimal**](BigDecimal.md) | The total value of additional costs, before any discounts are applied. | 
 **updated** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the most recent event received on this session. | 
-**closurePrediction** | [**BigDecimal**](BigDecimal.md) | The likelihood of the customer session closing based on predictive modeling, expressed as a decimal between &#x60;0&#x60; and &#x60;1&#x60;. |  [optional]
 
 
 

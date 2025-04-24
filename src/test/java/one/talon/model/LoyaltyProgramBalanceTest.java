@@ -58,6 +58,14 @@ public class LoyaltyProgramBalanceTest {
     }
 
     /**
+     * Test the property 'negativeBalance'
+     */
+    @Test
+    public void negativeBalanceTest() {
+        // TODO: test negativeBalance
+    }
+
+    /**
      * Test the property 'expiredBalance'
      */
     @Test
@@ -87,6 +95,14 @@ public class LoyaltyProgramBalanceTest {
     @Test
     public void tentativePendingBalanceTest() {
         // TODO: test tentativePendingBalance
+    }
+
+    /**
+     * Test the property 'tentativeNegativeBalance'
+     */
+    @Test
+    public void tentativeNegativeBalanceTest() {
+        // TODO: test tentativeNegativeBalance
     }
 
 }

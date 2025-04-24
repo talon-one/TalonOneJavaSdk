@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalResultSize** | **Integer** |  | 
-**data** | [**List&lt;Ruleset&gt;**](Ruleset.md) |  | 
+**data** | [**List&lt;Application&gt;**](Application.md) |  | 
 
 
 

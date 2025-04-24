@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CardLedgerPointsEntryIntegrationAPI;
+import one.talon.model.CardLedgerTransactionLogEntryIntegrationAPI;
 
 /**
  * InlineResponse2003
@@ -38,7 +38,7 @@ public class InlineResponse2003 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CardLedgerPointsEntryIntegrationAPI> data = new ArrayList<CardLedgerPointsEntryIntegrationAPI>();
+  private List<CardLedgerTransactionLogEntryIntegrationAPI> data = new ArrayList<CardLedgerTransactionLogEntryIntegrationAPI>();
 
 
   public InlineResponse2003 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse2003 {
   }
 
 
-  public InlineResponse2003 data(List<CardLedgerPointsEntryIntegrationAPI> data) {
+  public InlineResponse2003 data(List<CardLedgerTransactionLogEntryIntegrationAPI> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse2003 addDataItem(CardLedgerPointsEntryIntegrationAPI dataItem) {
+  public InlineResponse2003 addDataItem(CardLedgerTransactionLogEntryIntegrationAPI dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse2003 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CardLedgerPointsEntryIntegrationAPI> getData() {
+  public List<CardLedgerTransactionLogEntryIntegrationAPI> getData() {
     return data;
   }
 
 
-  public void setData(List<CardLedgerPointsEntryIntegrationAPI> data) {
+  public void setData(List<CardLedgerTransactionLogEntryIntegrationAPI> data) {
     this.data = data;
   }
 

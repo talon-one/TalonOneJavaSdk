@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The effect produced for the catalog item.
@@ -53,6 +54,14 @@ public class StrikethroughEffect {
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   private Object props;
+
+  public static final String SERIALIZED_NAME_START_TIME = "startTime";
+  @SerializedName(SERIALIZED_NAME_START_TIME)
+  private OffsetDateTime startTime;
+
+  public static final String SERIALIZED_NAME_END_TIME = "endTime";
+  @SerializedName(SERIALIZED_NAME_END_TIME)
+  private OffsetDateTime endTime;
 
 
   public StrikethroughEffect campaignId(Integer campaignId) {
@@ -187,6 +196,52 @@ public class StrikethroughEffect {
   }
 
 
+  public StrikethroughEffect startTime(OffsetDateTime startTime) {
+    
+    this.startTime = startTime;
+    return this;
+  }
+
+   /**
+   * The start of the time frame where the effect is active in UTC.
+   * @return startTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-07-20T22:00Z", value = "The start of the time frame where the effect is active in UTC.")
+
+  public OffsetDateTime getStartTime() {
+    return startTime;
+  }
+
+
+  public void setStartTime(OffsetDateTime startTime) {
+    this.startTime = startTime;
+  }
+
+
+  public StrikethroughEffect endTime(OffsetDateTime endTime) {
+    
+    this.endTime = endTime;
+    return this;
+  }
+
+   /**
+   * The end of the time frame where the effect is active in UTC.
+   * @return endTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-10-01T02:00Z", value = "The end of the time frame where the effect is active in UTC.")
+
+  public OffsetDateTime getEndTime() {
+    return endTime;
+  }
+
+
+  public void setEndTime(OffsetDateTime endTime) {
+    this.endTime = endTime;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -201,12 +256,14 @@ public class StrikethroughEffect {
         Objects.equals(this.ruleIndex, strikethroughEffect.ruleIndex) &&
         Objects.equals(this.ruleName, strikethroughEffect.ruleName) &&
         Objects.equals(this.type, strikethroughEffect.type) &&
-        Objects.equals(this.props, strikethroughEffect.props);
+        Objects.equals(this.props, strikethroughEffect.props) &&
+        Objects.equals(this.startTime, strikethroughEffect.startTime) &&
+        Objects.equals(this.endTime, strikethroughEffect.endTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, type, props);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, type, props, startTime, endTime);
   }
 
 
@@ -220,6 +277,8 @@ public class StrikethroughEffect {
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    props: ").append(toIndentedString(props)).append("\n");
+    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }

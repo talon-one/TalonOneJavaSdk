@@ -40,6 +40,10 @@ public class TierWillDowngradeNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
   private Boolean batchingEnabled = true;
 
+  public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
+  @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
+  private Integer batchSize;
+
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   private List<TierWillDowngradeNotificationTrigger> triggers = new ArrayList<TierWillDowngradeNotificationTrigger>();
@@ -90,6 +94,29 @@ public class TierWillDowngradeNotificationPolicy {
   }
 
 
+  public TierWillDowngradeNotificationPolicy batchSize(Integer batchSize) {
+    
+    this.batchSize = batchSize;
+    return this;
+  }
+
+   /**
+   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * @return batchSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
+
+  public Integer getBatchSize() {
+    return batchSize;
+  }
+
+
+  public void setBatchSize(Integer batchSize) {
+    this.batchSize = batchSize;
+  }
+
+
   public TierWillDowngradeNotificationPolicy triggers(List<TierWillDowngradeNotificationTrigger> triggers) {
     
     this.triggers = triggers;
@@ -128,12 +155,13 @@ public class TierWillDowngradeNotificationPolicy {
     TierWillDowngradeNotificationPolicy tierWillDowngradeNotificationPolicy = (TierWillDowngradeNotificationPolicy) o;
     return Objects.equals(this.name, tierWillDowngradeNotificationPolicy.name) &&
         Objects.equals(this.batchingEnabled, tierWillDowngradeNotificationPolicy.batchingEnabled) &&
+        Objects.equals(this.batchSize, tierWillDowngradeNotificationPolicy.batchSize) &&
         Objects.equals(this.triggers, tierWillDowngradeNotificationPolicy.triggers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, batchingEnabled, triggers);
+    return Objects.hash(name, batchingEnabled, batchSize, triggers);
   }
 
 
@@ -143,6 +171,7 @@ public class TierWillDowngradeNotificationPolicy {
     sb.append("class TierWillDowngradeNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
+    sb.append("    batchSize: ").append(toIndentedString(batchSize)).append("\n");
     sb.append("    triggers: ").append(toIndentedString(triggers)).append("\n");
     sb.append("}");
     return sb.toString();

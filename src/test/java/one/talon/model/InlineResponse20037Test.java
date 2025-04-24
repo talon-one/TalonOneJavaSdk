@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.WebhookActivationLogEntry;
+import one.talon.model.CatalogItem;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,6 +41,14 @@ public class InlineResponse20037Test {
     @Test
     public void testInlineResponse20037() {
         // TODO: test InlineResponse20037
+    }
+
+    /**
+     * Test the property 'hasMore'
+     */
+    @Test
+    public void hasMoreTest() {
+        // TODO: test hasMore
     }
 
     /**

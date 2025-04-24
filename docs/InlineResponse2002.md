@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;LedgerTransactionLogEntryIntegrationAPI&gt;**](LedgerTransactionLogEntryIntegrationAPI.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;AchievementProgress&gt;**](AchievementProgress.md) |  | 
 
 
 

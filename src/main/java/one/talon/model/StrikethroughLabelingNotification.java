@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import one.talon.model.StrikethroughChangedItem;
 import one.talon.model.StrikethroughTrigger;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The strikethrough labels notification for an application.
@@ -34,6 +35,59 @@ import one.talon.model.StrikethroughTrigger;
 @ApiModel(description = "The strikethrough labels notification for an application.")
 
 public class StrikethroughLabelingNotification {
+  /**
+   * The version of the strikethrough pricing notification.
+   */
+  @JsonAdapter(VersionEnum.Adapter.class)
+  public enum VersionEnum {
+    V2("v2");
+
+    private String value;
+
+    VersionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VersionEnum fromValue(String value) {
+      for (VersionEnum b : VersionEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<VersionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VersionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VersionEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VersionEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private VersionEnum version;
+
+  public static final String SERIALIZED_NAME_VALID_FROM = "validFrom";
+  @SerializedName(SERIALIZED_NAME_VALID_FROM)
+  private OffsetDateTime validFrom;
+
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
@@ -55,6 +109,52 @@ public class StrikethroughLabelingNotification {
   private List<StrikethroughChangedItem> changedItems = new ArrayList<StrikethroughChangedItem>();
 
 
+  public StrikethroughLabelingNotification version(VersionEnum version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * The version of the strikethrough pricing notification.
+   * @return version
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The version of the strikethrough pricing notification.")
+
+  public VersionEnum getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(VersionEnum version) {
+    this.version = version;
+  }
+
+
+  public StrikethroughLabelingNotification validFrom(OffsetDateTime validFrom) {
+    
+    this.validFrom = validFrom;
+    return this;
+  }
+
+   /**
+   * Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only. 
+   * @return validFrom
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only. ")
+
+  public OffsetDateTime getValidFrom() {
+    return validFrom;
+  }
+
+
+  public void setValidFrom(OffsetDateTime validFrom) {
+    this.validFrom = validFrom;
+  }
+
+
   public StrikethroughLabelingNotification applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
@@ -62,10 +162,10 @@ public class StrikethroughLabelingNotification {
   }
 
    /**
-   * The ID of the application that catalog items labels belongs to.
+   * The ID of the Application to which the catalog items labels belongs.
    * @return applicationId
   **/
-  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that catalog items labels belongs to.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application to which the catalog items labels belongs.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -179,7 +279,9 @@ public class StrikethroughLabelingNotification {
       return false;
     }
     StrikethroughLabelingNotification strikethroughLabelingNotification = (StrikethroughLabelingNotification) o;
-    return Objects.equals(this.applicationId, strikethroughLabelingNotification.applicationId) &&
+    return Objects.equals(this.version, strikethroughLabelingNotification.version) &&
+        Objects.equals(this.validFrom, strikethroughLabelingNotification.validFrom) &&
+        Objects.equals(this.applicationId, strikethroughLabelingNotification.applicationId) &&
         Objects.equals(this.currentBatch, strikethroughLabelingNotification.currentBatch) &&
         Objects.equals(this.totalBatches, strikethroughLabelingNotification.totalBatches) &&
         Objects.equals(this.trigger, strikethroughLabelingNotification.trigger) &&
@@ -188,7 +290,7 @@ public class StrikethroughLabelingNotification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, currentBatch, totalBatches, trigger, changedItems);
+    return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems);
   }
 
 
@@ -196,6 +298,8 @@ public class StrikethroughLabelingNotification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class StrikethroughLabelingNotification {\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    validFrom: ").append(toIndentedString(validFrom)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    currentBatch: ").append(toIndentedString(currentBatch)).append("\n");
     sb.append("    totalBatches: ").append(toIndentedString(totalBatches)).append("\n");

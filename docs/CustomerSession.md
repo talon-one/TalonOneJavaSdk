@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**applicationId** | **Integer** | The ID of the application that owns this entity. | 
+**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 **profileId** | **String** | ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;.  | 
 **coupon** | **String** | Any coupon code entered. | 
 **referral** | **String** | Any referral code entered. | 

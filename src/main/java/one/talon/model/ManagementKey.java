@@ -65,6 +65,10 @@ public class ManagementKey {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public static final String SERIALIZED_NAME_DISABLED = "disabled";
+  @SerializedName(SERIALIZED_NAME_DISABLED)
+  private Boolean disabled;
+
 
   public ManagementKey name(String name) {
     
@@ -256,6 +260,29 @@ public class ManagementKey {
   }
 
 
+  public ManagementKey disabled(Boolean disabled) {
+    
+    this.disabled = disabled;
+    return this;
+  }
+
+   /**
+   * The management key is disabled (this property is set to &#x60;true&#x60;) when the user who created the key is disabled or deleted.
+   * @return disabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "The management key is disabled (this property is set to `true`) when the user who created the key is disabled or deleted.")
+
+  public Boolean getDisabled() {
+    return disabled;
+  }
+
+
+  public void setDisabled(Boolean disabled) {
+    this.disabled = disabled;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -272,12 +299,13 @@ public class ManagementKey {
         Objects.equals(this.id, managementKey.id) &&
         Objects.equals(this.createdBy, managementKey.createdBy) &&
         Objects.equals(this.accountID, managementKey.accountID) &&
-        Objects.equals(this.created, managementKey.created);
+        Objects.equals(this.created, managementKey.created) &&
+        Objects.equals(this.disabled, managementKey.disabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created);
+    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created, disabled);
   }
 
 
@@ -293,6 +321,7 @@ public class ManagementKey {
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    accountID: ").append(toIndentedString(accountID)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }

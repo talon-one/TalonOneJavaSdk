@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;Achievement&gt;**](Achievement.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;Export&gt;**](Export.md) |  | 
 
 
 

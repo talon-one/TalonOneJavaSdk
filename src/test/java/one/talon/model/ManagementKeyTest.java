@@ -108,4 +108,12 @@ public class ManagementKeyTest {
         // TODO: test created
     }
 
+    /**
+     * Test the property 'disabled'
+     */
+    @Test
+    public void disabledTest() {
+        // TODO: test disabled
+    }
+
 }

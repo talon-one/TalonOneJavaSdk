@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.CollectionItem;
+import one.talon.model.LoyaltyCard;
 
 /**
  * InlineResponse20018
@@ -38,7 +38,7 @@ public class InlineResponse20018 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CollectionItem> data = new ArrayList<CollectionItem>();
+  private List<LoyaltyCard> data = new ArrayList<LoyaltyCard>();
 
 
   public InlineResponse20018 hasMore(Boolean hasMore) {
@@ -51,7 +51,7 @@ public class InlineResponse20018 {
    * Get hasMore
    * @return hasMore
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "true", required = true, value = "")
 
   public Boolean getHasMore() {
     return hasMore;
@@ -63,13 +63,13 @@ public class InlineResponse20018 {
   }
 
 
-  public InlineResponse20018 data(List<CollectionItem> data) {
+  public InlineResponse20018 data(List<LoyaltyCard> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20018 addDataItem(CollectionItem dataItem) {
+  public InlineResponse20018 addDataItem(LoyaltyCard dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20018 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<CollectionItem> getData() {
+  public List<LoyaltyCard> getData() {
     return data;
   }
 
 
-  public void setData(List<CollectionItem> data) {
+  public void setData(List<LoyaltyCard> data) {
     this.data = data;
   }
 

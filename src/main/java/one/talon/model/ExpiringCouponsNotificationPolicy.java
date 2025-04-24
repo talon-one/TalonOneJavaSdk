@@ -44,6 +44,10 @@ public class ExpiringCouponsNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
   private Boolean batchingEnabled = true;
 
+  public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
+  @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
+  private Integer batchSize;
+
 
   public ExpiringCouponsNotificationPolicy name(String name) {
     
@@ -117,6 +121,29 @@ public class ExpiringCouponsNotificationPolicy {
   }
 
 
+  public ExpiringCouponsNotificationPolicy batchSize(Integer batchSize) {
+    
+    this.batchSize = batchSize;
+    return this;
+  }
+
+   /**
+   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * @return batchSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
+
+  public Integer getBatchSize() {
+    return batchSize;
+  }
+
+
+  public void setBatchSize(Integer batchSize) {
+    this.batchSize = batchSize;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -128,12 +155,13 @@ public class ExpiringCouponsNotificationPolicy {
     ExpiringCouponsNotificationPolicy expiringCouponsNotificationPolicy = (ExpiringCouponsNotificationPolicy) o;
     return Objects.equals(this.name, expiringCouponsNotificationPolicy.name) &&
         Objects.equals(this.triggers, expiringCouponsNotificationPolicy.triggers) &&
-        Objects.equals(this.batchingEnabled, expiringCouponsNotificationPolicy.batchingEnabled);
+        Objects.equals(this.batchingEnabled, expiringCouponsNotificationPolicy.batchingEnabled) &&
+        Objects.equals(this.batchSize, expiringCouponsNotificationPolicy.batchSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, triggers, batchingEnabled);
+    return Objects.hash(name, triggers, batchingEnabled, batchSize);
   }
 
 
@@ -144,6 +172,7 @@ public class ExpiringCouponsNotificationPolicy {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    triggers: ").append(toIndentedString(triggers)).append("\n");
     sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
+    sb.append("    batchSize: ").append(toIndentedString(batchSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }

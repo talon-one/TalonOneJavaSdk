@@ -167,6 +167,10 @@ public class SummaryCampaignStoreBudget {
   @SerializedName(SERIALIZED_NAME_STORE_COUNT)
   private Integer storeCount;
 
+  public static final String SERIALIZED_NAME_IMPORTED = "imported";
+  @SerializedName(SERIALIZED_NAME_IMPORTED)
+  private Boolean imported;
+
 
   public SummaryCampaignStoreBudget action(ActionEnum action) {
     
@@ -235,6 +239,28 @@ public class SummaryCampaignStoreBudget {
   }
 
 
+  public SummaryCampaignStoreBudget imported(Boolean imported) {
+    
+    this.imported = imported;
+    return this;
+  }
+
+   /**
+   * Get imported
+   * @return imported
+  **/
+  @ApiModelProperty(required = true, value = "")
+
+  public Boolean getImported() {
+    return imported;
+  }
+
+
+  public void setImported(Boolean imported) {
+    this.imported = imported;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -246,12 +272,13 @@ public class SummaryCampaignStoreBudget {
     SummaryCampaignStoreBudget summaryCampaignStoreBudget = (SummaryCampaignStoreBudget) o;
     return Objects.equals(this.action, summaryCampaignStoreBudget.action) &&
         Objects.equals(this.period, summaryCampaignStoreBudget.period) &&
-        Objects.equals(this.storeCount, summaryCampaignStoreBudget.storeCount);
+        Objects.equals(this.storeCount, summaryCampaignStoreBudget.storeCount) &&
+        Objects.equals(this.imported, summaryCampaignStoreBudget.imported);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, period, storeCount);
+    return Objects.hash(action, period, storeCount, imported);
   }
 
 
@@ -262,6 +289,7 @@ public class SummaryCampaignStoreBudget {
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    storeCount: ").append(toIndentedString(storeCount)).append("\n");
+    sb.append("    imported: ").append(toIndentedString(imported)).append("\n");
     sb.append("}");
     return sb.toString();
   }

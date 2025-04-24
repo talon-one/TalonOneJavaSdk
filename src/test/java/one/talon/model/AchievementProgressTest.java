@@ -43,59 +43,11 @@ public class AchievementProgressTest {
     }
 
     /**
-     * Test the property 'achievementId'
-     */
-    @Test
-    public void achievementIdTest() {
-        // TODO: test achievementId
-    }
-
-    /**
-     * Test the property 'name'
-     */
-    @Test
-    public void nameTest() {
-        // TODO: test name
-    }
-
-    /**
-     * Test the property 'title'
-     */
-    @Test
-    public void titleTest() {
-        // TODO: test title
-    }
-
-    /**
-     * Test the property 'description'
-     */
-    @Test
-    public void descriptionTest() {
-        // TODO: test description
-    }
-
-    /**
-     * Test the property 'campaignId'
-     */
-    @Test
-    public void campaignIdTest() {
-        // TODO: test campaignId
-    }
-
-    /**
      * Test the property 'status'
      */
     @Test
     public void statusTest() {
         // TODO: test status
-    }
-
-    /**
-     * Test the property 'target'
-     */
-    @Test
-    public void targetTest() {
-        // TODO: test target
     }
 
     /**

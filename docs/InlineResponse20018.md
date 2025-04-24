@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CollectionItem&gt;**](CollectionItem.md) |  | 
+**data** | [**List&lt;LoyaltyCard&gt;**](LoyaltyCard.md) |  | 
 
 
 

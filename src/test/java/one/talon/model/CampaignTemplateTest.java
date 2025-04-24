@@ -248,4 +248,12 @@ public class CampaignTemplateTest {
         // TODO: test validApplicationIds
     }
 
+    /**
+     * Test the property 'isUserFavorite'
+     */
+    @Test
+    public void isUserFavoriteTest() {
+        // TODO: test isUserFavorite
+    }
+
 }

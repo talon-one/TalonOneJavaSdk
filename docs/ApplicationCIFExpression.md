@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **cartItemFilterId** | **Integer** | The ID of the Application cart item filter. |  [optional]
 **createdBy** | **Integer** | The ID of the user who created the Application cart item filter. |  [optional]
 **expression** | **List&lt;Object&gt;** | Arbitrary additional JSON data associated with the Application cart item filter. |  [optional]
-**applicationId** | **Integer** | The ID of the application that owns this entity. | 
+**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 
 
 

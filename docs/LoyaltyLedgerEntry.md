@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **subLedgerID** | **String** | This specifies if we are adding loyalty points to the main ledger or a subledger. | 
 **userID** | **Integer** | This is the ID of the user who created this entry, if the addition or subtraction was done manually. |  [optional]
 **archived** | **Boolean** | Indicates if the entry belongs to the archived session. |  [optional]
+**flags** | [**LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) |  |  [optional]
 
 
 

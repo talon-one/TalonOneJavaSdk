@@ -22,6 +22,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.model.LoyaltyLedgerEntryFlags;
 import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -184,6 +185,14 @@ public class LoyaltyProgramTransactionTest {
     @Test
     public void ruleNameTest() {
         // TODO: test ruleName
+    }
+
+    /**
+     * Test the property 'flags'
+     */
+    @Test
+    public void flagsTest() {
+        // TODO: test flags
     }
 
 }

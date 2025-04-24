@@ -171,4 +171,12 @@ public class AchievementTest {
         // TODO: test hasProgress
     }
 
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
 }

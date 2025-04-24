@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;LoyaltyProgramTransaction&gt;**](LoyaltyProgramTransaction.md) |  | 
+**data** | [**List&lt;CampaignTemplate&gt;**](CampaignTemplate.md) |  | 
 
 
 

@@ -169,10 +169,6 @@ public class CustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private OffsetDateTime updated;
 
-  public static final String SERIALIZED_NAME_CLOSURE_PREDICTION = "closurePrediction";
-  @SerializedName(SERIALIZED_NAME_CLOSURE_PREDICTION)
-  private BigDecimal closurePrediction;
-
 
   public CustomerSessionV2 id(Integer id) {
     
@@ -247,10 +243,10 @@ public class CustomerSessionV2 {
   }
 
    /**
-   * The ID of the application that owns this entity.
+   * The ID of the Application that owns this entity.
    * @return applicationId
   **/
-  @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
+  @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
   public Integer getApplicationId() {
     return applicationId;
@@ -666,29 +662,6 @@ public class CustomerSessionV2 {
   }
 
 
-  public CustomerSessionV2 closurePrediction(BigDecimal closurePrediction) {
-    
-    this.closurePrediction = closurePrediction;
-    return this;
-  }
-
-   /**
-   * The likelihood of the customer session closing based on predictive modeling, expressed as a decimal between &#x60;0&#x60; and &#x60;1&#x60;.
-   * @return closurePrediction
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "0.283", value = "The likelihood of the customer session closing based on predictive modeling, expressed as a decimal between `0` and `1`.")
-
-  public BigDecimal getClosurePrediction() {
-    return closurePrediction;
-  }
-
-
-  public void setClosurePrediction(BigDecimal closurePrediction) {
-    this.closurePrediction = closurePrediction;
-  }
-
-
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -717,13 +690,12 @@ public class CustomerSessionV2 {
         Objects.equals(this.total, customerSessionV2.total) &&
         Objects.equals(this.cartItemTotal, customerSessionV2.cartItemTotal) &&
         Objects.equals(this.additionalCostTotal, customerSessionV2.additionalCostTotal) &&
-        Objects.equals(this.updated, customerSessionV2.updated) &&
-        Objects.equals(this.closurePrediction, customerSessionV2.closurePrediction);
+        Objects.equals(this.updated, customerSessionV2.updated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated, closurePrediction);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
   }
 
 
@@ -751,7 +723,6 @@ public class CustomerSessionV2 {
     sb.append("    cartItemTotal: ").append(toIndentedString(cartItemTotal)).append("\n");
     sb.append("    additionalCostTotal: ").append(toIndentedString(additionalCostTotal)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
-    sb.append("    closurePrediction: ").append(toIndentedString(closurePrediction)).append("\n");
     sb.append("}");
     return sb.toString();
   }

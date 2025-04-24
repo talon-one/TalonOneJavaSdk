@@ -48,4 +48,12 @@ public class CatalogsStrikethroughNotificationPolicyTest {
         // TODO: test name
     }
 
+    /**
+     * Test the property 'aheadOfDaysTrigger'
+     */
+    @Test
+    public void aheadOfDaysTriggerTest() {
+        // TODO: test aheadOfDaysTrigger
+    }
+
 }

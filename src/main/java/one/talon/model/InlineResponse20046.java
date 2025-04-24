@@ -25,51 +25,51 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgress;
+import one.talon.model.RoleV2;
 
 /**
  * InlineResponse20046
  */
 
 public class InlineResponse20046 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
+  public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
+  @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AchievementProgress> data = new ArrayList<AchievementProgress>();
+  private List<RoleV2> data = new ArrayList<RoleV2>();
 
 
-  public InlineResponse20046 hasMore(Boolean hasMore) {
+  public InlineResponse20046 totalResultSize(Integer totalResultSize) {
     
-    this.hasMore = hasMore;
+    this.totalResultSize = totalResultSize;
     return this;
   }
 
    /**
-   * Get hasMore
-   * @return hasMore
+   * Get totalResultSize
+   * @return totalResultSize
   **/
-  @ApiModelProperty(example = "true", required = true, value = "")
+  @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Boolean getHasMore() {
-    return hasMore;
+  public Integer getTotalResultSize() {
+    return totalResultSize;
   }
 
 
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
+  public void setTotalResultSize(Integer totalResultSize) {
+    this.totalResultSize = totalResultSize;
   }
 
 
-  public InlineResponse20046 data(List<AchievementProgress> data) {
+  public InlineResponse20046 data(List<RoleV2> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20046 addDataItem(AchievementProgress dataItem) {
+  public InlineResponse20046 addDataItem(RoleV2 dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20046 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<AchievementProgress> getData() {
+  public List<RoleV2> getData() {
     return data;
   }
 
 
-  public void setData(List<AchievementProgress> data) {
+  public void setData(List<RoleV2> data) {
     this.data = data;
   }
 
@@ -99,13 +99,13 @@ public class InlineResponse20046 {
       return false;
     }
     InlineResponse20046 inlineResponse20046 = (InlineResponse20046) o;
-    return Objects.equals(this.hasMore, inlineResponse20046.hasMore) &&
+    return Objects.equals(this.totalResultSize, inlineResponse20046.totalResultSize) &&
         Objects.equals(this.data, inlineResponse20046.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(totalResultSize, data);
   }
 
 
@@ -113,7 +113,7 @@ public class InlineResponse20046 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20046 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
+    sb.append("    totalResultSize: ").append(toIndentedString(totalResultSize)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

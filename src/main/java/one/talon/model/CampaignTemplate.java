@@ -288,6 +288,10 @@ public class CampaignTemplate {
   @SerializedName(SERIALIZED_NAME_VALID_APPLICATION_IDS)
   private List<Integer> validApplicationIds = new ArrayList<Integer>();
 
+  public static final String SERIALIZED_NAME_IS_USER_FAVORITE = "isUserFavorite";
+  @SerializedName(SERIALIZED_NAME_IS_USER_FAVORITE)
+  private Boolean isUserFavorite = false;
+
 
   public CampaignTemplate id(Integer id) {
     
@@ -903,6 +907,29 @@ public class CampaignTemplate {
   }
 
 
+  public CampaignTemplate isUserFavorite(Boolean isUserFavorite) {
+    
+    this.isUserFavorite = isUserFavorite;
+    return this;
+  }
+
+   /**
+   * A flag indicating whether the user marked the template as a favorite.
+   * @return isUserFavorite
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "A flag indicating whether the user marked the template as a favorite.")
+
+  public Boolean getIsUserFavorite() {
+    return isUserFavorite;
+  }
+
+
+  public void setIsUserFavorite(Boolean isUserFavorite) {
+    this.isUserFavorite = isUserFavorite;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -936,12 +963,13 @@ public class CampaignTemplate {
         Objects.equals(this.campaignType, campaignTemplate.campaignType) &&
         Objects.equals(this.updated, campaignTemplate.updated) &&
         Objects.equals(this.updatedBy, campaignTemplate.updatedBy) &&
-        Objects.equals(this.validApplicationIds, campaignTemplate.validApplicationIds);
+        Objects.equals(this.validApplicationIds, campaignTemplate.validApplicationIds) &&
+        Objects.equals(this.isUserFavorite, campaignTemplate.isUserFavorite);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds);
+    return Objects.hash(id, created, accountId, userId, name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType, updated, updatedBy, validApplicationIds, isUserFavorite);
   }
 
 
@@ -974,6 +1002,7 @@ public class CampaignTemplate {
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    updatedBy: ").append(toIndentedString(updatedBy)).append("\n");
     sb.append("    validApplicationIds: ").append(toIndentedString(validApplicationIds)).append("\n");
+    sb.append("    isUserFavorite: ").append(toIndentedString(isUserFavorite)).append("\n");
     sb.append("}");
     return sb.toString();
   }

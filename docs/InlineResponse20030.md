@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  |  [optional]
-**data** | [**List&lt;AudienceAnalytics&gt;**](AudienceAnalytics.md) |  | 
+**hasMore** | **Boolean** |  | 
+**data** | [**List&lt;ApplicationEvent&gt;**](ApplicationEvent.md) |  | 
 
 
 

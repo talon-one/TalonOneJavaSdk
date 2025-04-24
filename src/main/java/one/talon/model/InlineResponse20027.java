@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.ApplicationEvent;
+import one.talon.model.CustomerProfile;
 
 /**
  * InlineResponse20027
@@ -38,7 +38,7 @@ public class InlineResponse20027 {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ApplicationEvent> data = new ArrayList<ApplicationEvent>();
+  private List<CustomerProfile> data = new ArrayList<CustomerProfile>();
 
 
   public InlineResponse20027 hasMore(Boolean hasMore) {
@@ -63,13 +63,13 @@ public class InlineResponse20027 {
   }
 
 
-  public InlineResponse20027 data(List<ApplicationEvent> data) {
+  public InlineResponse20027 data(List<CustomerProfile> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20027 addDataItem(ApplicationEvent dataItem) {
+  public InlineResponse20027 addDataItem(CustomerProfile dataItem) {
     this.data.add(dataItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class InlineResponse20027 {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<ApplicationEvent> getData() {
+  public List<CustomerProfile> getData() {
     return data;
   }
 
 
-  public void setData(List<ApplicationEvent> data) {
+  public void setData(List<CustomerProfile> data) {
     this.data = data;
   }
 

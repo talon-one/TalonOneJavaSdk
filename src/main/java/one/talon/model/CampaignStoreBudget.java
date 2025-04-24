@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.LimitConfig;
+import one.talon.model.CampaignStoreBudgetLimitConfig;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -51,7 +51,7 @@ public class CampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
-  private List<LimitConfig> limits = new ArrayList<LimitConfig>();
+  private List<CampaignStoreBudgetLimitConfig> limits = new ArrayList<CampaignStoreBudgetLimitConfig>();
 
 
   public CampaignStoreBudget id(Integer id) {
@@ -142,13 +142,13 @@ public class CampaignStoreBudget {
   }
 
 
-  public CampaignStoreBudget limits(List<LimitConfig> limits) {
+  public CampaignStoreBudget limits(List<CampaignStoreBudgetLimitConfig> limits) {
     
     this.limits = limits;
     return this;
   }
 
-  public CampaignStoreBudget addLimitsItem(LimitConfig limitsItem) {
+  public CampaignStoreBudget addLimitsItem(CampaignStoreBudgetLimitConfig limitsItem) {
     this.limits.add(limitsItem);
     return this;
   }
@@ -159,12 +159,12 @@ public class CampaignStoreBudget {
   **/
   @ApiModelProperty(required = true, value = "The set of budget limits for stores linked to the campaign.")
 
-  public List<LimitConfig> getLimits() {
+  public List<CampaignStoreBudgetLimitConfig> getLimits() {
     return limits;
   }
 
 
-  public void setLimits(List<LimitConfig> limits) {
+  public void setLimits(List<CampaignStoreBudgetLimitConfig> limits) {
     this.limits = limits;
   }
 

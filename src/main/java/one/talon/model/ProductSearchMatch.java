@@ -52,7 +52,8 @@ public class ProductSearchMatch {
    * The ID of the product.
    * @return productId
   **/
-  @ApiModelProperty(example = "1", required = true, value = "The ID of the product.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1", value = "The ID of the product.")
 
   public Integer getProductId() {
     return productId;
@@ -93,11 +94,11 @@ public class ProductSearchMatch {
   }
 
    /**
-   * The ID of the SKU linked to a product. If empty, this is an analytics-level product.
+   * The ID of the SKU linked to a product. If empty, this is an product.
    * @return productSkuId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The ID of the SKU linked to a product. If empty, this is an analytics-level product.")
+  @ApiModelProperty(example = "1", value = "The ID of the SKU linked to a product. If empty, this is an product.")
 
   public Integer getProductSkuId() {
     return productSkuId;

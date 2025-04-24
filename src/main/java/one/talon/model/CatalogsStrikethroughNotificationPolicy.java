@@ -33,6 +33,10 @@ public class CatalogsStrikethroughNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER = "aheadOfDaysTrigger";
+  @SerializedName(SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER)
+  private Integer aheadOfDaysTrigger;
+
 
   public CatalogsStrikethroughNotificationPolicy name(String name) {
     
@@ -56,6 +60,31 @@ public class CatalogsStrikethroughNotificationPolicy {
   }
 
 
+  public CatalogsStrikethroughNotificationPolicy aheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
+    
+    this.aheadOfDaysTrigger = aheadOfDaysTrigger;
+    return this;
+  }
+
+   /**
+   * The number of days in advance that strikethrough pricing updates should be sent.
+   * minimum: 1
+   * maximum: 30
+   * @return aheadOfDaysTrigger
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The number of days in advance that strikethrough pricing updates should be sent.")
+
+  public Integer getAheadOfDaysTrigger() {
+    return aheadOfDaysTrigger;
+  }
+
+
+  public void setAheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
+    this.aheadOfDaysTrigger = aheadOfDaysTrigger;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -65,12 +94,13 @@ public class CatalogsStrikethroughNotificationPolicy {
       return false;
     }
     CatalogsStrikethroughNotificationPolicy catalogsStrikethroughNotificationPolicy = (CatalogsStrikethroughNotificationPolicy) o;
-    return Objects.equals(this.name, catalogsStrikethroughNotificationPolicy.name);
+    return Objects.equals(this.name, catalogsStrikethroughNotificationPolicy.name) &&
+        Objects.equals(this.aheadOfDaysTrigger, catalogsStrikethroughNotificationPolicy.aheadOfDaysTrigger);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, aheadOfDaysTrigger);
   }
 
 
@@ -79,6 +109,7 @@ public class CatalogsStrikethroughNotificationPolicy {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogsStrikethroughNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    aheadOfDaysTrigger: ").append(toIndentedString(aheadOfDaysTrigger)).append("\n");
     sb.append("}");
     return sb.toString();
   }

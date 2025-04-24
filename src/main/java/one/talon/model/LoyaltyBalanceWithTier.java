@@ -49,6 +49,10 @@ public class LoyaltyBalanceWithTier {
   @SerializedName(SERIALIZED_NAME_EXPIRED_POINTS)
   private BigDecimal expiredPoints;
 
+  public static final String SERIALIZED_NAME_NEGATIVE_POINTS = "negativePoints";
+  @SerializedName(SERIALIZED_NAME_NEGATIVE_POINTS)
+  private BigDecimal negativePoints;
+
   public static final String SERIALIZED_NAME_CURRENT_TIER = "currentTier";
   @SerializedName(SERIALIZED_NAME_CURRENT_TIER)
   private Tier currentTier;
@@ -158,6 +162,29 @@ public class LoyaltyBalanceWithTier {
   }
 
 
+  public LoyaltyBalanceWithTier negativePoints(BigDecimal negativePoints) {
+    
+    this.negativePoints = negativePoints;
+    return this;
+  }
+
+   /**
+   * Total amount of negative points. This implies that &#x60;activePoints&#x60; is &#x60;0&#x60;.
+   * @return negativePoints
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "286.0", value = "Total amount of negative points. This implies that `activePoints` is `0`.")
+
+  public BigDecimal getNegativePoints() {
+    return negativePoints;
+  }
+
+
+  public void setNegativePoints(BigDecimal negativePoints) {
+    this.negativePoints = negativePoints;
+  }
+
+
   public LoyaltyBalanceWithTier currentTier(Tier currentTier) {
     
     this.currentTier = currentTier;
@@ -263,6 +290,7 @@ public class LoyaltyBalanceWithTier {
         Objects.equals(this.pendingPoints, loyaltyBalanceWithTier.pendingPoints) &&
         Objects.equals(this.spentPoints, loyaltyBalanceWithTier.spentPoints) &&
         Objects.equals(this.expiredPoints, loyaltyBalanceWithTier.expiredPoints) &&
+        Objects.equals(this.negativePoints, loyaltyBalanceWithTier.negativePoints) &&
         Objects.equals(this.currentTier, loyaltyBalanceWithTier.currentTier) &&
         Objects.equals(this.projectedTier, loyaltyBalanceWithTier.projectedTier) &&
         Objects.equals(this.pointsToNextTier, loyaltyBalanceWithTier.pointsToNextTier) &&
@@ -271,7 +299,7 @@ public class LoyaltyBalanceWithTier {
 
   @Override
   public int hashCode() {
-    return Objects.hash(activePoints, pendingPoints, spentPoints, expiredPoints, currentTier, projectedTier, pointsToNextTier, nextTierName);
+    return Objects.hash(activePoints, pendingPoints, spentPoints, expiredPoints, negativePoints, currentTier, projectedTier, pointsToNextTier, nextTierName);
   }
 
 
@@ -283,6 +311,7 @@ public class LoyaltyBalanceWithTier {
     sb.append("    pendingPoints: ").append(toIndentedString(pendingPoints)).append("\n");
     sb.append("    spentPoints: ").append(toIndentedString(spentPoints)).append("\n");
     sb.append("    expiredPoints: ").append(toIndentedString(expiredPoints)).append("\n");
+    sb.append("    negativePoints: ").append(toIndentedString(negativePoints)).append("\n");
     sb.append("    currentTier: ").append(toIndentedString(currentTier)).append("\n");
     sb.append("    projectedTier: ").append(toIndentedString(projectedTier)).append("\n");
     sb.append("    pointsToNextTier: ").append(toIndentedString(pointsToNextTier)).append("\n");

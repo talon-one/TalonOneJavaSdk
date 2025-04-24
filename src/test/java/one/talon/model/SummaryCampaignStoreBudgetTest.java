@@ -64,4 +64,12 @@ public class SummaryCampaignStoreBudgetTest {
         // TODO: test storeCount
     }
 
+    /**
+     * Test the property 'imported'
+     */
+    @Test
+    public void importedTest() {
+        // TODO: test imported
+    }
+
 }

@@ -86,6 +86,14 @@ public class LoyaltySubLedgerTest {
     }
 
     /**
+     * Test the property 'totalNegativePoints'
+     */
+    @Test
+    public void totalNegativePointsTest() {
+        // TODO: test totalNegativePoints
+    }
+
+    /**
      * Test the property 'transactions'
      */
     @Test

@@ -66,4 +66,20 @@ public class CouponsNotificationPolicyTest {
         // TODO: test batchingEnabled
     }
 
+    /**
+     * Test the property 'includeData'
+     */
+    @Test
+    public void includeDataTest() {
+        // TODO: test includeData
+    }
+
+    /**
+     * Test the property 'batchSize'
+     */
+    @Test
+    public void batchSizeTest() {
+        // TODO: test batchSize
+    }
+
 }

@@ -97,6 +97,7 @@ Method | HTTP request | Description
 [**getCustomerProfileAchievementProgress**](ManagementApi.md#getCustomerProfileAchievementProgress) | **GET** /v1/applications/{applicationId}/achievement_progress/{integrationId} | List customer achievements
 [**getCustomerProfiles**](ManagementApi.md#getCustomerProfiles) | **GET** /v1/customers/no_total | List customer profiles
 [**getCustomersByAttributes**](ManagementApi.md#getCustomersByAttributes) | **POST** /v1/customer_search/no_total | List customer profiles matching the given attributes
+[**getDashboardStatistics**](ManagementApi.md#getDashboardStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/dashboard | Get statistics for loyalty dashboard
 [**getEventTypes**](ManagementApi.md#getEventTypes) | **GET** /v1/event_types | List event types
 [**getExports**](ManagementApi.md#getExports) | **GET** /v1/exports | Get exports
 [**getLoyaltyCard**](ManagementApi.md#getLoyaltyCard) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId} | Get loyalty card
@@ -107,6 +108,7 @@ Method | HTTP request | Description
 [**getLoyaltyProgramTransactions**](ManagementApi.md#getLoyaltyProgramTransactions) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/transactions | List loyalty program transactions
 [**getLoyaltyPrograms**](ManagementApi.md#getLoyaltyPrograms) | **GET** /v1/loyalty_programs | List loyalty programs
 [**getLoyaltyStatistics**](ManagementApi.md#getLoyaltyStatistics) | **GET** /v1/loyalty_programs/{loyaltyProgramId}/statistics | Get loyalty program statistics
+[**getMessageLogs**](ManagementApi.md#getMessageLogs) | **GET** /v1/message_logs | List message log entries
 [**getReferralsWithoutTotalCount**](ManagementApi.md#getReferralsWithoutTotalCount) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/referrals/no_total | List referrals
 [**getRoleV2**](ManagementApi.md#getRoleV2) | **GET** /v2/roles/{roleId} | Get role
 [**getRuleset**](ManagementApi.md#getRuleset) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/rulesets/{rulesetId} | Get ruleset
@@ -137,11 +139,7 @@ Method | HTTP request | Description
 [**listCollections**](ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 [**listCollectionsInApplication**](ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
 [**listStores**](ManagementApi.md#listStores) | **GET** /v1/applications/{applicationId}/stores | List stores
-[**notificationActivation**](ManagementApi.md#notificationActivation) | **PUT** /v1/notifications/{notificationId}/activation | Activate or deactivate notification
 [**oktaEventHandlerChallenge**](ManagementApi.md#oktaEventHandlerChallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
-[**postAddedDeductedPointsNotification**](ManagementApi.md#postAddedDeductedPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/added_deducted_points | Create notification about added or deducted loyalty points
-[**postCatalogsStrikethroughNotification**](ManagementApi.md#postCatalogsStrikethroughNotification) | **POST** /v1/applications/{applicationId}/catalogs/notifications/strikethrough | Create strikethrough notification
-[**postPendingPointsNotification**](ManagementApi.md#postPendingPointsNotification) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/notifications/pending_points | Create notification about pending loyalty points
 [**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
 [**scimCreateUser**](ManagementApi.md#scimCreateUser) | **POST** /v1/provisioning/scim/Users | Create SCIM user
@@ -209,7 +207,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        DeactivateUserRequest body = new DeactivateUserRequest(); // DeactivateUserRequest | body
+        DeleteUserRequest body = new DeleteUserRequest(); // DeleteUserRequest | body
         try {
             apiInstance.activateUserByEmail(body);
         } catch (ApiException e) {
@@ -228,7 +226,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **DeactivateUserRequest**| body |
+ **body** | **DeleteUserRequest**| body |
 
 ### Return type cool
 
@@ -371,7 +369,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-        String integrationId = "integrationId_example"; // String | The identifier of the profile.
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         AddLoyaltyPoints body = new AddLoyaltyPoints(); // AddLoyaltyPoints | body
         try {
             apiInstance.addLoyaltyPoints(loyaltyProgramId, integrationId, body);
@@ -392,7 +390,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **integrationId** | **String**| The identifier of the profile. |
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **body** | [**AddLoyaltyPoints**](AddLoyaltyPoints.md)| body |
 
 ### Return type cool
@@ -419,7 +417,7 @@ null (empty response body)
 
 ## copyCampaignToApplications
 
-> InlineResponse2006 copyCampaignToApplications(applicationId, campaignId, body)
+> InlineResponse2008 copyCampaignToApplications(applicationId, campaignId, body)
 
 Copy the campaign into the specified Application
 
@@ -458,7 +456,7 @@ public class Example {
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         CampaignCopy body = new CampaignCopy(); // CampaignCopy | body
         try {
-            InlineResponse2006 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
+            InlineResponse2008 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#copyCampaignToApplications");
@@ -482,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -1068,7 +1066,7 @@ Name | Type | Description  | Notes
 
 ## createCoupons
 
-> InlineResponse2008 createCoupons(applicationId, campaignId, body, silent)
+> InlineResponse20010 createCoupons(applicationId, campaignId, body, silent)
 
 Create coupons
 
@@ -1106,9 +1104,9 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCoupons body = new NewCoupons(); // NewCoupons | body
-        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
-            InlineResponse2008 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
+            InlineResponse20010 result = apiInstance.createCoupons(applicationId, campaignId, body, silent);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#createCoupons");
@@ -1129,11 +1127,11 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCoupons**](NewCoupons.md)| body |
- **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
+ **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
 ### Return type cool
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1317,7 +1315,7 @@ Name | Type | Description  | Notes
 
 ## createCouponsForMultipleRecipients
 
-> InlineResponse2008 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
+> InlineResponse20010 createCouponsForMultipleRecipients(applicationId, campaignId, body, silent)
 
 Create coupons for multiple recipients
 
@@ -1355,9 +1353,9 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | body
-        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the perfomance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
+        String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
-            InlineResponse2008 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
+            InlineResponse20010 result = apiInstance.createCouponsForMultipleRecipients(applicationId, campaignId, body, silent);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#createCouponsForMultipleRecipients");
@@ -1378,11 +1376,11 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCouponsForMultipleRecipients**](NewCouponsForMultipleRecipients.md)| body |
- **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the perfomance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
+ **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
 ### Return type cool
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -1831,7 +1829,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        DeactivateUserRequest body = new DeactivateUserRequest(); // DeactivateUserRequest | body
+        DeleteUserRequest body = new DeleteUserRequest(); // DeleteUserRequest | body
         try {
             apiInstance.deactivateUserByEmail(body);
         } catch (ApiException e) {
@@ -1850,7 +1848,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**DeactivateUserRequest**](DeactivateUserRequest.md)| body |
+ **body** | **DeleteUserRequest**| body |
 
 ### Return type cool
 
@@ -2819,7 +2817,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        DeactivateUserRequest body = new DeactivateUserRequest(); // DeactivateUserRequest | body
+        DeleteUserRequest body = new DeleteUserRequest(); // DeleteUserRequest | body
         try {
             apiInstance.deleteUserByEmail(body);
         } catch (ApiException e) {
@@ -2838,7 +2836,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **DeactivateUserRequest**| body |
+ **body** | [**DeleteUserRequest**](DeleteUserRequest.md)| body |
 
 ### Return type cool
 
@@ -3466,7 +3464,7 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -3500,7 +3498,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -4213,7 +4211,7 @@ Name | Type | Description  | Notes
 
 Export customer&#39;s transaction logs
 
-Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. 
+Download a CSV file containing a customer&#39;s transaction logs in the loyalty program.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The generated file can contain the following columns:  - &#x60;customerprofileid&#x60;: The ID of the profile. - &#x60;customersessionid&#x60;: The ID of the customer session. - &#x60;rulesetid&#x60;: The ID of the rule set. - &#x60;rulename&#x60;: The name of the rule. - &#x60;programid&#x60;: The ID of the loyalty program. - &#x60;type&#x60;: The transaction type, such as &#x60;addition&#x60; or &#x60;subtraction&#x60;. - &#x60;name&#x60;: The reason for the transaction. - &#x60;subledgerid&#x60;: The ID of the subledger, when applicable. - &#x60;startdate&#x60;: The start date of the program. - &#x60;expirydate&#x60;: The expiration date of the program. - &#x60;id&#x60;: The ID of the transaction. - &#x60;created&#x60;: The timestamp of the creation of the loyalty program. - &#x60;amount&#x60;: The number of points in that transaction. - &#x60;archived&#x60;: Whether the session related to the transaction is archived. - &#x60;campaignid&#x60;: The ID of the campaign. - &#x60;flags&#x60;: The flags of the transaction, when applicable. The &#x60;createsNegativeBalance&#x60; flag indicates whether the transaction results in a negative balance. 
 
 ### Example
 
@@ -4247,7 +4245,7 @@ public class Example {
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-        String integrationId = "integrationId_example"; // String | The identifier of the profile.
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
         try {
             String result = apiInstance.exportLoyaltyLedger(rangeStart, rangeEnd, loyaltyProgramId, integrationId, dateFormat);
@@ -4271,7 +4269,7 @@ Name | Type | Description  | Notes
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **integrationId** | **String**| The identifier of the profile. |
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
 ### Return type cool
@@ -4470,7 +4468,7 @@ Name | Type | Description  | Notes
 
 ## getAccessLogsWithoutTotalCount
 
-> InlineResponse20019 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
+> InlineResponse20022 getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort)
 
 Get access logs for Application
 
@@ -4513,9 +4511,9 @@ public class Example {
         String status = "status_example"; // String | Filter results by HTTP status codes.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20019 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
+            InlineResponse20022 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAccessLogsWithoutTotalCount");
@@ -4541,11 +4539,11 @@ Name | Type | Description  | Notes
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 
@@ -4961,7 +4959,7 @@ Name | Type | Description  | Notes
 
 ## getAdditionalCosts
 
-> InlineResponse20035 getAdditionalCosts(pageSize, skip, sort)
+> InlineResponse20038 getAdditionalCosts(pageSize, skip, sort)
 
 List additional costs
 
@@ -4998,9 +4996,9 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20035 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
+            InlineResponse20038 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAdditionalCosts");
@@ -5020,11 +5018,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20035**](InlineResponse20035.md)
+[**InlineResponse20038**](InlineResponse20038.md)
 
 ### Authorization
 
@@ -5279,7 +5277,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationCustomerFriends
 
-> InlineResponse20032 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20035 getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize)
 
 List friends referred by customer profile
 
@@ -5318,10 +5316,10 @@ public class Example {
         String integrationId = "integrationId_example"; // String | The Integration ID of the Advocate's Profile.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
-            InlineResponse20032 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
+            InlineResponse20035 result = apiInstance.getApplicationCustomerFriends(applicationId, integrationId, pageSize, skip, sort, withTotalResultSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationCustomerFriends");
@@ -5343,12 +5341,12 @@ Name | Type | Description  | Notes
  **integrationId** | **String**| The Integration ID of the Advocate&#39;s Profile. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20032**](InlineResponse20032.md)
+[**InlineResponse20035**](InlineResponse20035.md)
 
 ### Authorization
 
@@ -5367,7 +5365,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationCustomers
 
-> InlineResponse20021 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
+> InlineResponse20024 getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize)
 
 List application&#39;s customers
 
@@ -5408,7 +5406,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
-            InlineResponse20021 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
+            InlineResponse20024 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationCustomers");
@@ -5434,7 +5432,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -5453,7 +5451,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationCustomersByAttributes
 
-> InlineResponse20022 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
+> InlineResponse20025 getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize)
 
 List application customers matching the given attributes
 
@@ -5494,7 +5492,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
-            InlineResponse20022 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
+            InlineResponse20025 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationCustomersByAttributes");
@@ -5520,7 +5518,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -5539,7 +5537,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationEventTypes
 
-> InlineResponse20028 getApplicationEventTypes(applicationId, pageSize, skip, sort)
+> InlineResponse20031 getApplicationEventTypes(applicationId, pageSize, skip, sort)
 
 List Applications event types
 
@@ -5577,9 +5575,9 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20028 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
+            InlineResponse20031 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationEventTypes");
@@ -5600,11 +5598,11 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20028**](InlineResponse20028.md)
+[**InlineResponse20031**](InlineResponse20031.md)
 
 ### Authorization
 
@@ -5623,7 +5621,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationEventsWithoutTotalCount
 
-> InlineResponse20027 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
+> InlineResponse20030 getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery)
 
 List Applications events
 
@@ -5661,7 +5659,7 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -5674,7 +5672,7 @@ public class Example {
         String ruleQuery = "ruleQuery_example"; // String | Rule name filter for events
         String campaignQuery = "campaignQuery_example"; // String | Campaign name filter for events
         try {
-            InlineResponse20027 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
+            InlineResponse20030 result = apiInstance.getApplicationEventsWithoutTotalCount(applicationId, pageSize, skip, sort, type, createdBefore, createdAfter, session, profile, customerName, customerEmail, couponCode, referralCode, ruleQuery, campaignQuery);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationEventsWithoutTotalCount");
@@ -5695,7 +5693,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -5710,7 +5708,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20027**](InlineResponse20027.md)
+[**InlineResponse20030**](InlineResponse20030.md)
 
 ### Authorization
 
@@ -5809,7 +5807,7 @@ Name | Type | Description  | Notes
 
 ## getApplicationSessions
 
-> InlineResponse20026 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId)
+> InlineResponse20029 getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId)
 
 List Application sessions
 
@@ -5847,7 +5845,7 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
         String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -5857,7 +5855,7 @@ public class Example {
         String integrationId = "integrationId_example"; // String | Filter by sessions with this integration ID. Must be exact match.
         String storeIntegrationId = "storeIntegrationId_example"; // String | The integration ID of the store. You choose this ID when you create a store.
         try {
-            InlineResponse20026 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId);
+            InlineResponse20029 result = apiInstance.getApplicationSessions(applicationId, pageSize, skip, sort, profile, state, createdBefore, createdAfter, coupon, referral, integrationId, storeIntegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplicationSessions");
@@ -5878,7 +5876,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, partially_returned, cancelled]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -5890,7 +5888,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20029**](InlineResponse20029.md)
 
 ### Authorization
 
@@ -5909,7 +5907,7 @@ Name | Type | Description  | Notes
 
 ## getApplications
 
-> InlineResponse2005 getApplications(pageSize, skip, sort)
+> InlineResponse2007 getApplications(pageSize, skip, sort)
 
 List Applications
 
@@ -5946,9 +5944,9 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse2005 result = apiInstance.getApplications(pageSize, skip, sort);
+            InlineResponse2007 result = apiInstance.getApplications(pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getApplications");
@@ -5968,11 +5966,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -6069,7 +6067,7 @@ Name | Type | Description  | Notes
 
 ## getAttributes
 
-> InlineResponse20033 getAttributes(pageSize, skip, sort, entity)
+> InlineResponse20036 getAttributes(pageSize, skip, sort, entity)
 
 List custom attributes
 
@@ -6106,10 +6104,10 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String entity = "entity_example"; // String | Returned attributes will be filtered by supplied entity.
         try {
-            InlineResponse20033 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
+            InlineResponse20036 result = apiInstance.getAttributes(pageSize, skip, sort, entity);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAttributes");
@@ -6129,12 +6127,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **entity** | **String**| Returned attributes will be filtered by supplied entity. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20033**](InlineResponse20033.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -6153,7 +6151,7 @@ Name | Type | Description  | Notes
 
 ## getAudienceMemberships
 
-> InlineResponse20031 getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery)
+> InlineResponse20034 getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery)
 
 List audience members
 
@@ -6191,10 +6189,10 @@ public class Example {
         Integer audienceId = 56; // Integer | The ID of the audience.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String profileQuery = "profileQuery_example"; // String | The filter to select a profile.
         try {
-            InlineResponse20031 result = apiInstance.getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery);
+            InlineResponse20034 result = apiInstance.getAudienceMemberships(audienceId, pageSize, skip, sort, profileQuery);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAudienceMemberships");
@@ -6215,12 +6213,12 @@ Name | Type | Description  | Notes
  **audienceId** | **Integer**| The ID of the audience. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **profileQuery** | **String**| The filter to select a profile. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20031**](InlineResponse20031.md)
+[**InlineResponse20034**](InlineResponse20034.md)
 
 ### Authorization
 
@@ -6240,7 +6238,7 @@ Name | Type | Description  | Notes
 
 ## getAudiences
 
-> InlineResponse20029 getAudiences(pageSize, skip, sort, withTotalResultSize)
+> InlineResponse20032 getAudiences(pageSize, skip, sort, withTotalResultSize)
 
 List audiences
 
@@ -6277,10 +6275,10 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
-            InlineResponse20029 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
+            InlineResponse20032 result = apiInstance.getAudiences(pageSize, skip, sort, withTotalResultSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAudiences");
@@ -6300,12 +6298,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20029**](InlineResponse20029.md)
+[**InlineResponse20032**](InlineResponse20032.md)
 
 ### Authorization
 
@@ -6324,7 +6322,7 @@ Name | Type | Description  | Notes
 
 ## getAudiencesAnalytics
 
-> InlineResponse20030 getAudiencesAnalytics(audienceIds, sort)
+> InlineResponse20033 getAudiencesAnalytics(audienceIds, sort)
 
 List audience analytics
 
@@ -6360,9 +6358,9 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String audienceIds = "audienceIds_example"; // String | The IDs of one or more audiences, separated by commas, by which to filter results.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20030 result = apiInstance.getAudiencesAnalytics(audienceIds, sort);
+            InlineResponse20033 result = apiInstance.getAudiencesAnalytics(audienceIds, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getAudiencesAnalytics");
@@ -6381,11 +6379,11 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **audienceIds** | **String**| The IDs of one or more audiences, separated by commas, by which to filter results. |
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20030**](InlineResponse20030.md)
+[**InlineResponse20033**](InlineResponse20033.md)
 
 ### Authorization
 
@@ -6484,7 +6482,7 @@ Name | Type | Description  | Notes
 
 ## getCampaignAnalytics
 
-> InlineResponse20020 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
+> InlineResponse20023 getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity)
 
 Get analytics of campaigns
 
@@ -6525,7 +6523,7 @@ public class Example {
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
         try {
-            InlineResponse20020 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
+            InlineResponse20023 result = apiInstance.getCampaignAnalytics(applicationId, campaignId, rangeStart, rangeEnd, granularity);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCampaignAnalytics");
@@ -6551,7 +6549,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 
@@ -6570,7 +6568,7 @@ Name | Type | Description  | Notes
 
 ## getCampaignByAttributes
 
-> InlineResponse2006 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
+> InlineResponse2008 getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState)
 
 List campaigns that match the given attributes
 
@@ -6609,10 +6607,10 @@ public class Example {
         CampaignSearch body = new CampaignSearch(); // CampaignSearch | body
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
         try {
-            InlineResponse2006 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
+            InlineResponse2008 result = apiInstance.getCampaignByAttributes(applicationId, body, pageSize, skip, sort, campaignState);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCampaignByAttributes");
@@ -6634,12 +6632,12 @@ Name | Type | Description  | Notes
  **body** | [**CampaignSearch**](CampaignSearch.md)| body |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
 
 ### Return type cool
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -6736,7 +6734,7 @@ Name | Type | Description  | Notes
 
 ## getCampaignGroups
 
-> InlineResponse20011 getCampaignGroups(pageSize, skip, sort)
+> InlineResponse20013 getCampaignGroups(pageSize, skip, sort)
 
 List campaign access groups
 
@@ -6773,9 +6771,9 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20011 result = apiInstance.getCampaignGroups(pageSize, skip, sort);
+            InlineResponse20013 result = apiInstance.getCampaignGroups(pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCampaignGroups");
@@ -6795,11 +6793,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20011**](InlineResponse20011.md)
+[**InlineResponse20013**](InlineResponse20013.md)
 
 ### Authorization
 
@@ -6818,7 +6816,7 @@ Name | Type | Description  | Notes
 
 ## getCampaignTemplates
 
-> InlineResponse20012 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
+> InlineResponse20014 getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId)
 
 List campaign templates
 
@@ -6855,13 +6853,13 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String state = "state_example"; // String | Filter results by the state of the campaign template.
         String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign template.
         String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values. 
         Integer userId = 56; // Integer | Filter results by user ID.
         try {
-            InlineResponse20012 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
+            InlineResponse20014 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCampaignTemplates");
@@ -6881,7 +6879,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **state** | **String**| Filter results by the state of the campaign template. | [optional] [enum: draft, enabled, disabled]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign template. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values.  | [optional]
@@ -6889,7 +6887,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20012**](InlineResponse20012.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 
@@ -6908,7 +6906,7 @@ Name | Type | Description  | Notes
 
 ## getCampaigns
 
-> InlineResponse2006 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId)
+> InlineResponse2008 getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId)
 
 List campaigns
 
@@ -6946,7 +6944,7 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
         String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
         String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
@@ -6956,7 +6954,7 @@ public class Example {
         Integer templateId = 56; // Integer | The ID of the campaign template this campaign was created from.
         Integer storeId = 56; // Integer | Filter results to campaigns linked to the specified store ID.
         try {
-            InlineResponse2006 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
+            InlineResponse2008 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCampaigns");
@@ -6977,7 +6975,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
@@ -6989,7 +6987,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -7009,7 +7007,7 @@ Name | Type | Description  | Notes
 
 ## getChanges
 
-> InlineResponse20041 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
+> InlineResponse20044 getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld)
 
 Get audit logs for an account
 
@@ -7046,7 +7044,7 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
         String entityPath = "entityPath_example"; // String | Filter results on a case insensitive matching of the url path of the entity
         Integer userId = 56; // Integer | Filter results by user ID.
@@ -7056,7 +7054,7 @@ public class Example {
         Integer managementKeyId = 56; // Integer | Filter results that match the given management key ID.
         Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
         try {
-            InlineResponse20041 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
+            InlineResponse20044 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getChanges");
@@ -7076,7 +7074,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **entityPath** | **String**| Filter results on a case insensitive matching of the url path of the entity | [optional]
  **userId** | **Integer**| Filter results by user ID. | [optional]
@@ -7088,7 +7086,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20041**](InlineResponse20041.md)
+[**InlineResponse20044**](InlineResponse20044.md)
 
 ### Authorization
 
@@ -7190,7 +7188,7 @@ Name | Type | Description  | Notes
 
 ## getCollectionItems
 
-> InlineResponse20018 getCollectionItems(collectionId, pageSize, skip)
+> InlineResponse20021 getCollectionItems(collectionId, pageSize, skip)
 
 Get collection items
 
@@ -7229,7 +7227,7 @@ public class Example {
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse20018 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
+            InlineResponse20021 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCollectionItems");
@@ -7253,7 +7251,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20018**](InlineResponse20018.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -7273,7 +7271,7 @@ Name | Type | Description  | Notes
 
 ## getCouponsWithoutTotalCount
 
-> InlineResponse2009 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly)
+> InlineResponse20011 getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly)
 
 List coupons
 
@@ -7312,7 +7310,7 @@ public class Example {
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -7329,7 +7327,7 @@ public class Example {
         OffsetDateTime startsAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon start date timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         Boolean valuesOnly = false; // Boolean | Filter results to only return the coupon codes (`value` column) without the associated coupon data.
         try {
-            InlineResponse2009 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly);
+            InlineResponse20011 result = apiInstance.getCouponsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, redeemed, referralId, recipientIntegrationId, batchId, exactMatch, expiresBefore, expiresAfter, startsBefore, startsAfter, valuesOnly);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCouponsWithoutTotalCount");
@@ -7351,7 +7349,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -7370,7 +7368,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -7477,7 +7475,7 @@ Name | Type | Description  | Notes
 
 ## getCustomerActivityReportsWithoutTotalCount
 
-> InlineResponse20025 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
+> InlineResponse20028 getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName)
 
 Get Activity Reports for Application Customers
 
@@ -7517,13 +7515,13 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String name = "name_example"; // String | Only return reports matching the customer name.
         String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
         String campaignName = "campaignName_example"; // String | Only return reports matching the campaign name.
         String advocateName = "advocateName_example"; // String | Only return reports matching the current customer referrer name.
         try {
-            InlineResponse20025 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
+            InlineResponse20028 result = apiInstance.getCustomerActivityReportsWithoutTotalCount(rangeStart, rangeEnd, applicationId, pageSize, skip, sort, name, integrationId, campaignName, advocateName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCustomerActivityReportsWithoutTotalCount");
@@ -7546,7 +7544,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **name** | **String**| Only return reports matching the customer name. | [optional]
  **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
  **campaignName** | **String**| Only return reports matching the campaign name. | [optional]
@@ -7554,7 +7552,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20028**](InlineResponse20028.md)
 
 ### Authorization
 
@@ -7612,7 +7610,7 @@ public class Example {
         Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             CustomerAnalytics result = apiInstance.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
             System.out.println(result);
@@ -7636,7 +7634,7 @@ Name | Type | Description  | Notes
  **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
@@ -7737,7 +7735,7 @@ Name | Type | Description  | Notes
 
 ## getCustomerProfileAchievementProgress
 
-> InlineResponse20046 getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title)
+> InlineResponse20049 getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title)
 
 List customer achievements
 
@@ -7773,13 +7771,13 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        String integrationId = "integrationId_example"; // String | The identifier of the profile.
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         String title = "title_example"; // String | Filter results by the `title` of an achievement.
         try {
-            InlineResponse20046 result = apiInstance.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
+            InlineResponse20049 result = apiInstance.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCustomerProfileAchievementProgress");
@@ -7798,7 +7796,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **integrationId** | **String**| The identifier of the profile. |
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. | [optional]
@@ -7806,7 +7804,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20046**](InlineResponse20046.md)
+[**InlineResponse20049**](InlineResponse20049.md)
 
 ### Authorization
 
@@ -7827,7 +7825,7 @@ Name | Type | Description  | Notes
 
 ## getCustomerProfiles
 
-> InlineResponse20024 getCustomerProfiles(pageSize, skip, sandbox)
+> InlineResponse20027 getCustomerProfiles(pageSize, skip, sandbox)
 
 List customer profiles
 
@@ -7866,7 +7864,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
         try {
-            InlineResponse20024 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
+            InlineResponse20027 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCustomerProfiles");
@@ -7890,7 +7888,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -7909,7 +7907,7 @@ Name | Type | Description  | Notes
 
 ## getCustomersByAttributes
 
-> InlineResponse20023 getCustomersByAttributes(body, pageSize, skip, sandbox)
+> InlineResponse20026 getCustomersByAttributes(body, pageSize, skip, sandbox)
 
 List customer profiles matching the given attributes
 
@@ -7949,7 +7947,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
         try {
-            InlineResponse20023 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
+            InlineResponse20026 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCustomersByAttributes");
@@ -7974,7 +7972,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -7991,9 +7989,93 @@ Name | Type | Description  | Notes
 | **200** | OK |  -  |
 
 
+## getDashboardStatistics
+
+> InlineResponse20016 getDashboardStatistics(loyaltyProgramId, rangeStart, rangeEnd, subledgerId)
+
+Get statistics for loyalty dashboard
+
+Retrieve the statistics displayed on the specified loyalty program&#39;s dashboard, such as the total active points, pending points, spent points, and expired points.  **Important:** The returned data does not include the current day. All statistics are updated daily at 11:59 PM in the loyalty program time zone. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+        OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
+        String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
+        try {
+            InlineResponse20016 result = apiInstance.getDashboardStatistics(loyaltyProgramId, rangeStart, rangeEnd, subledgerId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#getDashboardStatistics");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
+ **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
+
+### Return type cool
+
+[**InlineResponse20016**](InlineResponse20016.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
 ## getEventTypes
 
-> InlineResponse20039 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
+> InlineResponse20042 getEventTypes(name, includeOldVersions, pageSize, skip, sort)
 
 List event types
 
@@ -8032,9 +8114,9 @@ public class Example {
         Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20039 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
+            InlineResponse20042 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getEventTypes");
@@ -8056,11 +8138,11 @@ Name | Type | Description  | Notes
  **includeOldVersions** | **Boolean**| Include all versions of every event type. | [optional] [default to false]
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20039**](InlineResponse20039.md)
+[**InlineResponse20042**](InlineResponse20042.md)
 
 ### Authorization
 
@@ -8079,7 +8161,7 @@ Name | Type | Description  | Notes
 
 ## getExports
 
-> InlineResponse20042 getExports(pageSize, skip, applicationId, campaignId, entity)
+> InlineResponse20045 getExports(pageSize, skip, applicationId, campaignId, entity)
 
 Get exports
 
@@ -8120,7 +8202,7 @@ public class Example {
         Integer campaignId = 56; // Integer | Filter by the campaign ID on which the limit counters are used.
         String entity = "entity_example"; // String | The name of the entity type that was exported.
         try {
-            InlineResponse20042 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
+            InlineResponse20045 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getExports");
@@ -8146,7 +8228,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20042**](InlineResponse20042.md)
+[**InlineResponse20045**](InlineResponse20045.md)
 
 ### Authorization
 
@@ -8248,7 +8330,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyCardTransactionLogs
 
-> InlineResponse20016 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId)
+> InlineResponse20019 getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId)
 
 List card&#39;s transactions
 
@@ -8291,7 +8373,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
         try {
-            InlineResponse20016 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
+            InlineResponse20019 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getLoyaltyCardTransactionLogs");
@@ -8319,7 +8401,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -8340,7 +8422,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyCards
 
-> InlineResponse20015 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId)
+> InlineResponse20018 getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId)
 
 List loyalty cards
 
@@ -8378,12 +8460,12 @@ public class Example {
         Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String identifier = "identifier_example"; // String | The card code by which to filter loyalty cards in the response.
         Integer profileId = 56; // Integer | Filter results by customer profile ID.
         String batchId = "batchId_example"; // String | Filter results by loyalty card batch ID.
         try {
-            InlineResponse20015 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
+            InlineResponse20018 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getLoyaltyCards");
@@ -8404,14 +8486,14 @@ Name | Type | Description  | Notes
  **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **identifier** | **String**| The card code by which to filter loyalty cards in the response. | [optional]
  **profileId** | **Integer**| Filter results by customer profile ID. | [optional]
  **batchId** | **String**| Filter results by loyalty card batch ID. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20015**](InlineResponse20015.md)
+[**InlineResponse20018**](InlineResponse20018.md)
 
 ### Authorization
 
@@ -8468,7 +8550,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-        String integrationId = "integrationId_example"; // String | The identifier of the profile.
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         try {
             LoyaltyLedger result = apiInstance.getLoyaltyPoints(loyaltyProgramId, integrationId);
             System.out.println(result);
@@ -8489,7 +8571,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **integrationId** | **String**| The identifier of the profile. |
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
 
 ### Return type cool
 
@@ -8590,7 +8672,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyProgramTransactions
 
-> InlineResponse20014 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
+> InlineResponse20017 getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip)
 
 List loyalty program transactions
 
@@ -8633,7 +8715,7 @@ public class Example {
         Integer pageSize = 50; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
-            InlineResponse20014 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
+            InlineResponse20017 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getLoyaltyProgramTransactions");
@@ -8661,7 +8743,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20017**](InlineResponse20017.md)
 
 ### Authorization
 
@@ -8683,7 +8765,7 @@ Name | Type | Description  | Notes
 
 ## getLoyaltyPrograms
 
-> InlineResponse20013 getLoyaltyPrograms()
+> InlineResponse20015 getLoyaltyPrograms()
 
 List loyalty programs
 
@@ -8719,7 +8801,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         try {
-            InlineResponse20013 result = apiInstance.getLoyaltyPrograms();
+            InlineResponse20015 result = apiInstance.getLoyaltyPrograms();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getLoyaltyPrograms");
@@ -8738,7 +8820,7 @@ This endpoint does not need any parameter.
 
 ### Return type cool
 
-[**InlineResponse20013**](InlineResponse20013.md)
+[**InlineResponse20015**](InlineResponse20015.md)
 
 ### Authorization
 
@@ -8761,7 +8843,7 @@ This endpoint does not need any parameter.
 
 Get loyalty program statistics
 
-Retrieve the statistics of the specified loyalty program such as the total active points, pending points, spent points, and expired points.  **Important:** The returned data does not include the current day. All statistics are updated daily at 11:59 PM in the loyalty program time zone. 
+⚠️ Deprecation notice: Support for requests to this endpoint will end soon. To retrieve statistics for a loyalty program, use the [Get statistics for loyalty dashboard](/management-api#tag/Loyalty/operation/getDashboardStatistics) endpoint.  Retrieve the statistics of the specified loyalty program, such as the total active points, pending points, spent points, and expired points. 
 
 ### Example
 
@@ -8833,9 +8915,113 @@ Name | Type | Description  | Notes
 | **200** | OK |  -  |
 
 
+## getMessageLogs
+
+> MessageLogEntries getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs)
+
+List message log entries
+
+Retrieve all message log entries.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        String entityType = "entityType_example"; // String | The entity type the log is related to. 
+        String messageID = "messageID_example"; // String | Filter results by message ID.
+        String changeType = "changeType_example"; // String | Filter results by change type.
+        String notificationIDs = "notificationIDs_example"; // String | Filter results by notification ID (include up to 30 values, separated by a comma).
+        OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
+        OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
+        byte[] cursor = null; // byte[] | A specific unique value in the database. If this value is not given, the server fetches results starting with the first record. 
+        String period = "period_example"; // String | Filter results by time period. Choose between the available relative time frames. 
+        Boolean isSuccessful = true; // Boolean | Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to`true`, only log entries with `2xx` response codes are returned. When set to `false`, only log entries with `4xx` and `5xx` response codes are returned. 
+        BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
+        BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program.
+        Integer responseCode = 56; // Integer | Filter results by response status code.
+        String webhookIDs = "webhookIDs_example"; // String | Filter results by webhook ID (include up to 30 values, separated by a comma).
+        try {
+            MessageLogEntries result = apiInstance.getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#getMessageLogs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entityType** | **String**| The entity type the log is related to.  | [enum: application, loyalty_program, webhook]
+ **messageID** | **String**| Filter results by message ID. | [optional]
+ **changeType** | **String**| Filter results by change type. | [optional] [enum: CampaignEvaluationTreeChanged, CampaignNotification, CouponCreated, CouponUpdated, CouponDeleted, AsyncCouponsCreated, CouponsDeleted, CouponsUpdated, CouponCodeExpiring, StrikethroughPrice, LoyaltyPointsAdded, LoyaltyPointsDeducted, LoyaltyPointsExpiring, LoyaltyPointsPendingToActive, TierWillDowngrade, TierUpgrade, TierDowngrade, LoyaltyCardPointsAdded, LoyaltyCardPointsDeducted, LoyaltyCardPointsExpiring]
+ **notificationIDs** | **String**| Filter results by notification ID (include up to 30 values, separated by a comma). | [optional]
+ **createdBefore** | **OffsetDateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **createdAfter** | **OffsetDateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
+ **cursor** | **byte[]**| A specific unique value in the database. If this value is not given, the server fetches results starting with the first record.  | [optional]
+ **period** | **String**| Filter results by time period. Choose between the available relative time frames.  | [optional] [enum: 15m, 30m, 1h, 4h, 1d, 2d]
+ **isSuccessful** | **Boolean**| Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned.  | [optional]
+ **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
+ **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. | [optional]
+ **responseCode** | **Integer**| Filter results by response status code. | [optional]
+ **webhookIDs** | **String**| Filter results by webhook ID (include up to 30 values, separated by a comma). | [optional]
+
+### Return type cool
+
+[**MessageLogEntries**](MessageLogEntries.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
 ## getReferralsWithoutTotalCount
 
-> InlineResponse20010 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
+> InlineResponse20012 getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate)
 
 List referrals
 
@@ -8874,7 +9060,7 @@ public class Example {
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -8882,7 +9068,7 @@ public class Example {
         String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only referrals where `usageCounter < usageLimit` will be returned, \"false\" will return only referrals where `usageCounter >= usageLimit`. 
         String advocate = "advocate_example"; // String | Filter results by match with a profile ID specified in the referral's AdvocateProfileIntegrationId field.
         try {
-            InlineResponse20010 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
+            InlineResponse20012 result = apiInstance.getReferralsWithoutTotalCount(applicationId, campaignId, pageSize, skip, sort, code, createdBefore, createdAfter, valid, usable, advocate);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getReferralsWithoutTotalCount");
@@ -8904,7 +9090,7 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -8914,7 +9100,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20010**](InlineResponse20010.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 
@@ -9093,7 +9279,7 @@ Name | Type | Description  | Notes
 
 ## getRulesets
 
-> InlineResponse2007 getRulesets(applicationId, campaignId, pageSize, skip, sort)
+> InlineResponse2009 getRulesets(applicationId, campaignId, pageSize, skip, sort)
 
 List campaign rulesets
 
@@ -9132,9 +9318,9 @@ public class Example {
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse2007 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
+            InlineResponse2009 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getRulesets");
@@ -9156,11 +9342,11 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -9338,7 +9524,7 @@ Name | Type | Description  | Notes
 
 ## getUsers
 
-> InlineResponse20040 getUsers(pageSize, skip, sort)
+> InlineResponse20043 getUsers(pageSize, skip, sort)
 
 List users in account
 
@@ -9375,9 +9561,9 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
-            InlineResponse20040 result = apiInstance.getUsers(pageSize, skip, sort);
+            InlineResponse20043 result = apiInstance.getUsers(pageSize, skip, sort);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getUsers");
@@ -9397,11 +9583,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20040**](InlineResponse20040.md)
+[**InlineResponse20043**](InlineResponse20043.md)
 
 ### Authorization
 
@@ -9498,7 +9684,7 @@ Name | Type | Description  | Notes
 
 ## getWebhookActivationLogs
 
-> InlineResponse20037 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
+> InlineResponse20040 getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter)
 
 List webhook activation log entries
 
@@ -9535,7 +9721,7 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
         BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
@@ -9543,7 +9729,7 @@ public class Example {
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Only return events created after this date. You can use any time zone setting. Talon.One will convert to UTC internally.
         try {
-            InlineResponse20037 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
+            InlineResponse20040 result = apiInstance.getWebhookActivationLogs(pageSize, skip, sort, integrationRequestUuid, webhookId, applicationId, campaignId, createdBefore, createdAfter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getWebhookActivationLogs");
@@ -9563,7 +9749,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
  **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
@@ -9573,7 +9759,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20037**](InlineResponse20037.md)
+[**InlineResponse20040**](InlineResponse20040.md)
 
 ### Authorization
 
@@ -9592,7 +9778,7 @@ Name | Type | Description  | Notes
 
 ## getWebhookLogs
 
-> InlineResponse20038 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
+> InlineResponse20041 getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter)
 
 List webhook log entries
 
@@ -9629,7 +9815,7 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String status = "status_example"; // String | Filter results by HTTP status codes.
         BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
@@ -9638,7 +9824,7 @@ public class Example {
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
         try {
-            InlineResponse20038 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
+            InlineResponse20041 result = apiInstance.getWebhookLogs(pageSize, skip, sort, status, webhookId, applicationId, campaignId, requestUuid, createdBefore, createdAfter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getWebhookLogs");
@@ -9658,7 +9844,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
@@ -9669,7 +9855,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20038**](InlineResponse20038.md)
+[**InlineResponse20041**](InlineResponse20041.md)
 
 ### Authorization
 
@@ -9688,7 +9874,7 @@ Name | Type | Description  | Notes
 
 ## getWebhooks
 
-> InlineResponse20036 getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title)
+> InlineResponse20039 getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title)
 
 List webhooks
 
@@ -9724,7 +9910,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String applicationIds = "applicationIds_example"; // String | Checks if the given catalog or its attributes are referenced in the specified Application ID.  **Note**: If no Application ID is provided, we check for all connected Applications. 
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String creationType = "creationType_example"; // String | Filter results by creation type.
@@ -9732,7 +9918,7 @@ public class Example {
         Integer outgoingIntegrationsTypeId = 56; // Integer | Filter results by outgoing integration type ID.
         String title = "title_example"; // String | Filter results performing case-insensitive matching against the webhook title.
         try {
-            InlineResponse20036 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
+            InlineResponse20039 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getWebhooks");
@@ -9751,7 +9937,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIds** | **String**| Checks if the given catalog or its attributes are referenced in the specified Application ID.  **Note**: If no Application ID is provided, we check for all connected Applications.  | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **creationType** | **String**| Filter results by creation type. | [optional] [enum: templateWebhooks, webhooks]
@@ -9761,7 +9947,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20036**](InlineResponse20036.md)
+[**InlineResponse20039**](InlineResponse20039.md)
 
 ### Authorization
 
@@ -10766,7 +10952,7 @@ null (empty response body)
 
 ## listAccountCollections
 
-> InlineResponse20017 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20020 listAccountCollections(pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in account
 
@@ -10803,11 +10989,11 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
         try {
-            InlineResponse20017 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
+            InlineResponse20020 result = apiInstance.listAccountCollections(pageSize, skip, sort, withTotalResultSize, name);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listAccountCollections");
@@ -10827,13 +11013,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -10855,7 +11041,7 @@ Name | Type | Description  | Notes
 
 ## listAchievements
 
-> InlineResponse20045 listAchievements(applicationId, campaignId, pageSize, skip, title)
+> InlineResponse20048 listAchievements(applicationId, campaignId, pageSize, skip, title)
 
 List achievements
 
@@ -10896,7 +11082,7 @@ public class Example {
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String title = "title_example"; // String | Filter by the display name for the achievement in the campaign manager.  **Note**: If no `title` is provided, all the achievements from the campaign are returned. 
         try {
-            InlineResponse20045 result = apiInstance.listAchievements(applicationId, campaignId, pageSize, skip, title);
+            InlineResponse20048 result = apiInstance.listAchievements(applicationId, campaignId, pageSize, skip, title);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listAchievements");
@@ -10922,7 +11108,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20045**](InlineResponse20045.md)
+[**InlineResponse20048**](InlineResponse20048.md)
 
 ### Authorization
 
@@ -10941,7 +11127,7 @@ Name | Type | Description  | Notes
 
 ## listAllRolesV2
 
-> InlineResponse20043 listAllRolesV2()
+> InlineResponse20046 listAllRolesV2()
 
 List roles
 
@@ -10977,7 +11163,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         try {
-            InlineResponse20043 result = apiInstance.listAllRolesV2();
+            InlineResponse20046 result = apiInstance.listAllRolesV2();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listAllRolesV2");
@@ -10996,7 +11182,7 @@ This endpoint does not need any parameter.
 
 ### Return type cool
 
-[**InlineResponse20043**](InlineResponse20043.md)
+[**InlineResponse20046**](InlineResponse20046.md)
 
 ### Authorization
 
@@ -11015,7 +11201,7 @@ This endpoint does not need any parameter.
 
 ## listCatalogItems
 
-> InlineResponse20034 listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames)
+> InlineResponse20037 listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames)
 
 List items in a catalog
 
@@ -11057,7 +11243,7 @@ public class Example {
         List<String> sku = Arrays.asList(); // List<String> | Filter results by one or more SKUs. Must be exact match.
         List<String> productNames = Arrays.asList(); // List<String> | Filter results by one or more product names. Must be exact match.
         try {
-            InlineResponse20034 result = apiInstance.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames);
+            InlineResponse20037 result = apiInstance.listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listCatalogItems");
@@ -11084,7 +11270,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20034**](InlineResponse20034.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -11103,7 +11289,7 @@ Name | Type | Description  | Notes
 
 ## listCollections
 
-> InlineResponse20017 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20020 listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in campaign
 
@@ -11142,11 +11328,11 @@ public class Example {
         Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
         try {
-            InlineResponse20017 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
+            InlineResponse20020 result = apiInstance.listCollections(applicationId, campaignId, pageSize, skip, sort, withTotalResultSize, name);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listCollections");
@@ -11168,13 +11354,13 @@ Name | Type | Description  | Notes
  **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -11194,7 +11380,7 @@ Name | Type | Description  | Notes
 
 ## listCollectionsInApplication
 
-> InlineResponse20017 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
+> InlineResponse20020 listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name)
 
 List collections in Application
 
@@ -11232,11 +11418,11 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
         try {
-            InlineResponse20017 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
+            InlineResponse20020 result = apiInstance.listCollectionsInApplication(applicationId, pageSize, skip, sort, withTotalResultSize, name);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listCollectionsInApplication");
@@ -11257,13 +11443,13 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -11283,7 +11469,7 @@ Name | Type | Description  | Notes
 
 ## listStores
 
-> InlineResponse20044 listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query)
+> InlineResponse20047 listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query)
 
 List stores
 
@@ -11321,14 +11507,14 @@ public class Example {
         Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
         String name = "name_example"; // String | The name of the store.
         String integrationId = "integrationId_example"; // String | The integration ID of the store.
         String query = "query_example"; // String | Filter results by `name` or `integrationId`.
         try {
-            InlineResponse20044 result = apiInstance.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
+            InlineResponse20047 result = apiInstance.listStores(applicationId, pageSize, skip, sort, withTotalResultSize, campaignId, name, integrationId, query);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listStores");
@@ -11349,7 +11535,7 @@ Name | Type | Description  | Notes
  **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **name** | **String**| The name of the store. | [optional]
@@ -11358,7 +11544,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse20044**](InlineResponse20044.md)
+[**InlineResponse20047**](InlineResponse20047.md)
 
 ### Authorization
 
@@ -11373,85 +11559,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-
-
-## notificationActivation
-
-> notificationActivation(notificationId, body)
-
-Activate or deactivate notification
-
-Activate or deactivate the given notification. When &#x60;enabled&#x60; is false, updates will no longer be sent for the given notification. 
-
-### Example
-
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://yourbaseurl.talon.one");
-        
-        // Configure API key authorization: management_key
-        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-        management_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //management_key.setApiKeyPrefix("Token");
-
-        // Configure API key authorization: manager_auth
-        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-        manager_auth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //manager_auth.setApiKeyPrefix("Token");
-
-        ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Integer notificationId = 56; // Integer | The ID of the notification. Get it with the appropriate _List notifications_ endpoint.
-        NotificationActivation body = new NotificationActivation(); // NotificationActivation | body
-        try {
-            apiInstance.notificationActivation(notificationId, body);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ManagementApi#notificationActivation");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **notificationId** | **Integer**| The ID of the notification. Get it with the appropriate _List notifications_ endpoint. |
- **body** | [**NotificationActivation**](NotificationActivation.md)| body |
-
-### Return type cool
-
-null (empty response body)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
 
 
 ## oktaEventHandlerChallenge
@@ -11527,255 +11634,6 @@ null (empty response body)
 | **200** | OK |  -  |
 
 
-## postAddedDeductedPointsNotification
-
-> BaseNotification postAddedDeductedPointsNotification(loyaltyProgramId, body)
-
-Create notification about added or deducted loyalty points
-
-Create a notification about added or deducted loyalty points in a given profile-based loyalty program. A notification for added or deducted loyalty points is different from regular webhooks in that it is loyalty program-scoped and has a predefined payload.  For more information, see [Managing loyalty notifications](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-notifications). 
-
-### Example
-
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://yourbaseurl.talon.one");
-        
-        // Configure API key authorization: management_key
-        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-        management_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //management_key.setApiKeyPrefix("Token");
-
-        // Configure API key authorization: manager_auth
-        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-        manager_auth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //manager_auth.setApiKeyPrefix("Token");
-
-        ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-        NewBaseNotification body = new NewBaseNotification(); // NewBaseNotification | body
-        try {
-            BaseNotification result = apiInstance.postAddedDeductedPointsNotification(loyaltyProgramId, body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ManagementApi#postAddedDeductedPointsNotification");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **body** | [**NewBaseNotification**](NewBaseNotification.md)| body |
-
-### Return type cool
-
-[**BaseNotification**](BaseNotification.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad request |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not found |  -  |
-
-
-## postCatalogsStrikethroughNotification
-
-> BaseNotification postCatalogsStrikethroughNotification(applicationId, body)
-
-Create strikethrough notification
-
-Create a notification for the in the given Application. For more information, see [Managing notifications](https://docs.talon.one/docs/product/applications/outbound-notifications).  See the [payload](https://docs.talon.one/outbound-notifications) you will receive. 
-
-### Example
-
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://yourbaseurl.talon.one");
-        
-        // Configure API key authorization: management_key
-        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-        management_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //management_key.setApiKeyPrefix("Token");
-
-        // Configure API key authorization: manager_auth
-        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-        manager_auth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //manager_auth.setApiKeyPrefix("Token");
-
-        ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        NewBaseNotification body = new NewBaseNotification(); // NewBaseNotification | body
-        try {
-            BaseNotification result = apiInstance.postCatalogsStrikethroughNotification(applicationId, body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ManagementApi#postCatalogsStrikethroughNotification");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **body** | [**NewBaseNotification**](NewBaseNotification.md)| body |
-
-### Return type cool
-
-[**BaseNotification**](BaseNotification.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad request |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not found |  -  |
-
-
-## postPendingPointsNotification
-
-> BaseNotification postPendingPointsNotification(loyaltyProgramId, body)
-
-Create notification about pending loyalty points
-
-Create a notification about pending loyalty points for a given profile-based loyalty program. For more information, see [Managing loyalty notifications](https://docs.talon.one/docs/product/loyalty-programs/managing-loyalty-notifications). 
-
-### Example
-
-```java
-// Import classes:
-import one.talon.ApiClient;
-import one.talon.ApiException;
-import one.talon.Configuration;
-import one.talon.auth.*;
-import one.talon.models.*;
-import one.talon.api.ManagementApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://yourbaseurl.talon.one");
-        
-        // Configure API key authorization: management_key
-        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
-        management_key.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //management_key.setApiKeyPrefix("Token");
-
-        // Configure API key authorization: manager_auth
-        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
-        manager_auth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //manager_auth.setApiKeyPrefix("Token");
-
-        ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-        NewBaseNotification body = new NewBaseNotification(); // NewBaseNotification | body
-        try {
-            BaseNotification result = apiInstance.postPendingPointsNotification(loyaltyProgramId, body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ManagementApi#postPendingPointsNotification");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **body** | [**NewBaseNotification**](NewBaseNotification.md)| body |
-
-### Return type cool
-
-[**BaseNotification**](BaseNotification.md)
-
-### Authorization
-
-[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad request |  -  |
-| **401** | Unauthorized |  -  |
-| **404** | Not found |  -  |
-
-
 ## removeLoyaltyPoints
 
 > removeLoyaltyPoints(loyaltyProgramId, integrationId, body)
@@ -11814,7 +11672,7 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String loyaltyProgramId = "loyaltyProgramId_example"; // String | The identifier for the loyalty program.
-        String integrationId = "integrationId_example"; // String | The identifier of the profile.
+        String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         DeductLoyaltyPoints body = new DeductLoyaltyPoints(); // DeductLoyaltyPoints | body
         try {
             apiInstance.removeLoyaltyPoints(loyaltyProgramId, integrationId, body);
@@ -11835,7 +11693,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loyaltyProgramId** | **String**| The identifier for the loyalty program. |
- **integrationId** | **String**| The identifier of the profile. |
+ **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **body** | [**DeductLoyaltyPoints**](DeductLoyaltyPoints.md)| body |
 
 ### Return type cool
@@ -12629,7 +12487,7 @@ Name | Type | Description  | Notes
 
 ## searchCouponsAdvancedApplicationWideWithoutTotalCount
 
-> InlineResponse2009 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
+> InlineResponse20011 searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState)
 
 List coupons that match the given attributes (without total count)
 
@@ -12668,7 +12526,7 @@ public class Example {
         Object body = null; // Object | body
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -12680,7 +12538,7 @@ public class Example {
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
         String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
         try {
-            InlineResponse2009 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
+            InlineResponse20011 result = apiInstance.searchCouponsAdvancedApplicationWideWithoutTotalCount(applicationId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, batchId, exactMatch, campaignState);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedApplicationWideWithoutTotalCount");
@@ -12702,7 +12560,7 @@ Name | Type | Description  | Notes
  **body** | **Object**| body |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -12716,7 +12574,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -12735,7 +12593,7 @@ Name | Type | Description  | Notes
 
 ## searchCouponsAdvancedWithoutTotalCount
 
-> InlineResponse2009 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
+> InlineResponse20011 searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId)
 
 List coupons that match the given attributes in campaign (without total count)
 
@@ -12775,7 +12633,7 @@ public class Example {
         Object body = null; // Object | body
         Integer pageSize = 1000; // Integer | The number of items in the response.
         Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
-        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** This parameter works only with numeric fields. 
+        String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -12786,7 +12644,7 @@ public class Example {
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
         try {
-            InlineResponse2009 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
+            InlineResponse20011 result = apiInstance.searchCouponsAdvancedWithoutTotalCount(applicationId, campaignId, body, pageSize, skip, sort, value, createdBefore, createdAfter, valid, usable, referralId, recipientIntegrationId, exactMatch, batchId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#searchCouponsAdvancedWithoutTotalCount");
@@ -12809,7 +12667,7 @@ Name | Type | Description  | Notes
  **body** | **Object**| body |
  **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
  **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
- **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** This parameter works only with numeric fields.  | [optional]
+ **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -12822,7 +12680,7 @@ Name | Type | Description  | Notes
 
 ### Return type cool
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -13813,7 +13671,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **roleId** | **Integer**| The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.  |
- **body** | **RoleV2Base**| body |
+ **body** | [**RoleV2Base**](RoleV2Base.md)| body |
 
 ### Return type cool
 

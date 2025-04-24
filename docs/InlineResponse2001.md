@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;CardLedgerTransactionLogEntryIntegrationAPI&gt;**](CardLedgerTransactionLogEntryIntegrationAPI.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;AchievementStatusEntry&gt;**](AchievementStatusEntry.md) |  | 
 
 
 

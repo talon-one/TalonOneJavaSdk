@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;AchievementProgress&gt;**](AchievementProgress.md) |  | 
+**totalResultSize** | **Integer** |  | 
+**data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
 
 
 

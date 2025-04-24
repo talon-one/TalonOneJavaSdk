@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.model.LoyaltyLedgerEntryFlags;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -149,6 +150,10 @@ public class LoyaltyProgramTransaction {
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
   private String ruleName;
+
+  public static final String SERIALIZED_NAME_FLAGS = "flags";
+  @SerializedName(SERIALIZED_NAME_FLAGS)
+  private LoyaltyLedgerEntryFlags flags;
 
 
   public LoyaltyProgramTransaction id(Integer id) {
@@ -556,6 +561,29 @@ public class LoyaltyProgramTransaction {
   }
 
 
+  public LoyaltyProgramTransaction flags(LoyaltyLedgerEntryFlags flags) {
+    
+    this.flags = flags;
+    return this;
+  }
+
+   /**
+   * Get flags
+   * @return flags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LoyaltyLedgerEntryFlags getFlags() {
+    return flags;
+  }
+
+
+  public void setFlags(LoyaltyLedgerEntryFlags flags) {
+    this.flags = flags;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -582,12 +610,13 @@ public class LoyaltyProgramTransaction {
         Objects.equals(this.userId, loyaltyProgramTransaction.userId) &&
         Objects.equals(this.userEmail, loyaltyProgramTransaction.userEmail) &&
         Objects.equals(this.rulesetId, loyaltyProgramTransaction.rulesetId) &&
-        Objects.equals(this.ruleName, loyaltyProgramTransaction.ruleName);
+        Objects.equals(this.ruleName, loyaltyProgramTransaction.ruleName) &&
+        Objects.equals(this.flags, loyaltyProgramTransaction.flags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName);
+    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags);
   }
 
 
@@ -613,6 +642,7 @@ public class LoyaltyProgramTransaction {
     sb.append("    userEmail: ").append(toIndentedString(userEmail)).append("\n");
     sb.append("    rulesetId: ").append(toIndentedString(rulesetId)).append("\n");
     sb.append("    ruleName: ").append(toIndentedString(ruleName)).append("\n");
+    sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

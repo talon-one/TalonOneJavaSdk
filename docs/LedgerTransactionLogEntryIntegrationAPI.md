@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | ID of the loyalty ledger transaction. | 
 **rulesetId** | **Integer** | The ID of the ruleset containing the rule that triggered this effect. |  [optional]
 **ruleName** | **String** | The name of the rule that triggered this effect. |  [optional]
+**flags** | [**LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) |  |  [optional]
 
 
 

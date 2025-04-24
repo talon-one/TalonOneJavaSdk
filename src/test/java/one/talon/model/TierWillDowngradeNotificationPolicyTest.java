@@ -60,6 +60,14 @@ public class TierWillDowngradeNotificationPolicyTest {
     }
 
     /**
+     * Test the property 'batchSize'
+     */
+    @Test
+    public void batchSizeTest() {
+        // TODO: test batchSize
+    }
+
+    /**
      * Test the property 'triggers'
      */
     @Test

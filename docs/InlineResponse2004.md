@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasMore** | **Boolean** |  | 
-**data** | [**List&lt;LedgerPointsEntryIntegrationAPI&gt;**](LedgerPointsEntryIntegrationAPI.md) |  | 
+**data** | [**List&lt;LedgerTransactionLogEntryIntegrationAPI&gt;**](LedgerTransactionLogEntryIntegrationAPI.md) |  | 
 
 
 

@@ -23,142 +23,71 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.model.AnalyticsDataPointWithTrend;
-import org.threeten.bp.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import one.talon.model.ProductUnitAnalyticsDataPoint;
+import one.talon.model.ProductUnitAnalyticsTotals;
 
 /**
  * ProductUnitAnalytics
  */
 
 public class ProductUnitAnalytics {
-  public static final String SERIALIZED_NAME_START_TIME = "startTime";
-  @SerializedName(SERIALIZED_NAME_START_TIME)
-  private OffsetDateTime startTime;
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<ProductUnitAnalyticsDataPoint> data = new ArrayList<ProductUnitAnalyticsDataPoint>();
 
-  public static final String SERIALIZED_NAME_END_TIME = "endTime";
-  @SerializedName(SERIALIZED_NAME_END_TIME)
-  private OffsetDateTime endTime;
-
-  public static final String SERIALIZED_NAME_PURCHASED_UNITS = "purchasedUnits";
-  @SerializedName(SERIALIZED_NAME_PURCHASED_UNITS)
-  private AnalyticsDataPointWithTrend purchasedUnits;
-
-  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private Integer productId;
-
-  public static final String SERIALIZED_NAME_PRODUCT_NAME = "productName";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_NAME)
-  private String productName;
+  public static final String SERIALIZED_NAME_TOTALS = "totals";
+  @SerializedName(SERIALIZED_NAME_TOTALS)
+  private ProductUnitAnalyticsTotals totals;
 
 
-  public ProductUnitAnalytics startTime(OffsetDateTime startTime) {
+  public ProductUnitAnalytics data(List<ProductUnitAnalyticsDataPoint> data) {
     
-    this.startTime = startTime;
+    this.data = data;
+    return this;
+  }
+
+  public ProductUnitAnalytics addDataItem(ProductUnitAnalyticsDataPoint dataItem) {
+    this.data.add(dataItem);
     return this;
   }
 
    /**
-   * The start of the aggregation time frame in UTC.
-   * @return startTime
-  **/
-  @ApiModelProperty(example = "2024-02-01T00:00Z", required = true, value = "The start of the aggregation time frame in UTC.")
-
-  public OffsetDateTime getStartTime() {
-    return startTime;
-  }
-
-
-  public void setStartTime(OffsetDateTime startTime) {
-    this.startTime = startTime;
-  }
-
-
-  public ProductUnitAnalytics endTime(OffsetDateTime endTime) {
-    
-    this.endTime = endTime;
-    return this;
-  }
-
-   /**
-   * The end of the aggregation time frame in UTC.
-   * @return endTime
-  **/
-  @ApiModelProperty(required = true, value = "The end of the aggregation time frame in UTC.")
-
-  public OffsetDateTime getEndTime() {
-    return endTime;
-  }
-
-
-  public void setEndTime(OffsetDateTime endTime) {
-    this.endTime = endTime;
-  }
-
-
-  public ProductUnitAnalytics purchasedUnits(AnalyticsDataPointWithTrend purchasedUnits) {
-    
-    this.purchasedUnits = purchasedUnits;
-    return this;
-  }
-
-   /**
-   * Get purchasedUnits
-   * @return purchasedUnits
+   * Get data
+   * @return data
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public AnalyticsDataPointWithTrend getPurchasedUnits() {
-    return purchasedUnits;
+  public List<ProductUnitAnalyticsDataPoint> getData() {
+    return data;
   }
 
 
-  public void setPurchasedUnits(AnalyticsDataPointWithTrend purchasedUnits) {
-    this.purchasedUnits = purchasedUnits;
+  public void setData(List<ProductUnitAnalyticsDataPoint> data) {
+    this.data = data;
   }
 
 
-  public ProductUnitAnalytics productId(Integer productId) {
+  public ProductUnitAnalytics totals(ProductUnitAnalyticsTotals totals) {
     
-    this.productId = productId;
+    this.totals = totals;
     return this;
   }
 
    /**
-   * The ID of the analytics-level product.
-   * @return productId
+   * Get totals
+   * @return totals
   **/
-  @ApiModelProperty(example = "1", required = true, value = "The ID of the analytics-level product.")
+  @ApiModelProperty(required = true, value = "")
 
-  public Integer getProductId() {
-    return productId;
+  public ProductUnitAnalyticsTotals getTotals() {
+    return totals;
   }
 
 
-  public void setProductId(Integer productId) {
-    this.productId = productId;
-  }
-
-
-  public ProductUnitAnalytics productName(String productName) {
-    
-    this.productName = productName;
-    return this;
-  }
-
-   /**
-   * The name of the analytics-level product.
-   * @return productName
-  **/
-  @ApiModelProperty(example = "MyProduct", required = true, value = "The name of the analytics-level product.")
-
-  public String getProductName() {
-    return productName;
-  }
-
-
-  public void setProductName(String productName) {
-    this.productName = productName;
+  public void setTotals(ProductUnitAnalyticsTotals totals) {
+    this.totals = totals;
   }
 
 
@@ -171,16 +100,13 @@ public class ProductUnitAnalytics {
       return false;
     }
     ProductUnitAnalytics productUnitAnalytics = (ProductUnitAnalytics) o;
-    return Objects.equals(this.startTime, productUnitAnalytics.startTime) &&
-        Objects.equals(this.endTime, productUnitAnalytics.endTime) &&
-        Objects.equals(this.purchasedUnits, productUnitAnalytics.purchasedUnits) &&
-        Objects.equals(this.productId, productUnitAnalytics.productId) &&
-        Objects.equals(this.productName, productUnitAnalytics.productName);
+    return Objects.equals(this.data, productUnitAnalytics.data) &&
+        Objects.equals(this.totals, productUnitAnalytics.totals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTime, endTime, purchasedUnits, productId, productName);
+    return Objects.hash(data, totals);
   }
 
 
@@ -188,11 +114,8 @@ public class ProductUnitAnalytics {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductUnitAnalytics {\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
-    sb.append("    purchasedUnits: ").append(toIndentedString(purchasedUnits)).append("\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
-    sb.append("    productName: ").append(toIndentedString(productName)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import one.talon.model.AnalyticsDataPointWithTrend;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -49,14 +50,6 @@ public class AnalyticsProductTest {
     }
 
     /**
-     * Test the property 'isPreliminary'
-     */
-    @Test
-    public void isPreliminaryTest() {
-        // TODO: test isPreliminary
-    }
-
-    /**
      * Test the property 'name'
      */
     @Test
@@ -70,6 +63,14 @@ public class AnalyticsProductTest {
     @Test
     public void catalogIdTest() {
         // TODO: test catalogId
+    }
+
+    /**
+     * Test the property 'unitsSold'
+     */
+    @Test
+    public void unitsSoldTest() {
+        // TODO: test unitsSold
     }
 
 }

@@ -39,6 +39,10 @@ public class LoyaltyProgramBalance {
   @SerializedName(SERIALIZED_NAME_PENDING_BALANCE)
   private BigDecimal pendingBalance;
 
+  public static final String SERIALIZED_NAME_NEGATIVE_BALANCE = "negativeBalance";
+  @SerializedName(SERIALIZED_NAME_NEGATIVE_BALANCE)
+  private BigDecimal negativeBalance;
+
   public static final String SERIALIZED_NAME_EXPIRED_BALANCE = "expiredBalance";
   @SerializedName(SERIALIZED_NAME_EXPIRED_BALANCE)
   private BigDecimal expiredBalance;
@@ -54,6 +58,10 @@ public class LoyaltyProgramBalance {
   public static final String SERIALIZED_NAME_TENTATIVE_PENDING_BALANCE = "tentativePendingBalance";
   @SerializedName(SERIALIZED_NAME_TENTATIVE_PENDING_BALANCE)
   private BigDecimal tentativePendingBalance;
+
+  public static final String SERIALIZED_NAME_TENTATIVE_NEGATIVE_BALANCE = "tentativeNegativeBalance";
+  @SerializedName(SERIALIZED_NAME_TENTATIVE_NEGATIVE_BALANCE)
+  private BigDecimal tentativeNegativeBalance;
 
 
   public LoyaltyProgramBalance currentBalance(BigDecimal currentBalance) {
@@ -97,6 +105,28 @@ public class LoyaltyProgramBalance {
 
   public void setPendingBalance(BigDecimal pendingBalance) {
     this.pendingBalance = pendingBalance;
+  }
+
+
+  public LoyaltyProgramBalance negativeBalance(BigDecimal negativeBalance) {
+    
+    this.negativeBalance = negativeBalance;
+    return this;
+  }
+
+   /**
+   * Sum of negative points. This implies that &#x60;currentBalance&#x60; is &#x60;0&#x60;.
+   * @return negativeBalance
+  **/
+  @ApiModelProperty(example = "10.0", required = true, value = "Sum of negative points. This implies that `currentBalance` is `0`.")
+
+  public BigDecimal getNegativeBalance() {
+    return negativeBalance;
+  }
+
+
+  public void setNegativeBalance(BigDecimal negativeBalance) {
+    this.negativeBalance = negativeBalance;
   }
 
 
@@ -189,6 +219,28 @@ public class LoyaltyProgramBalance {
   }
 
 
+  public LoyaltyProgramBalance tentativeNegativeBalance(BigDecimal tentativeNegativeBalance) {
+    
+    this.tentativeNegativeBalance = tentativeNegativeBalance;
+    return this;
+  }
+
+   /**
+   * The tentative negative balance after all additions and deductions from the current customer session are applied to &#x60;negativeBalance&#x60;. When the session is closed, the tentative effects are applied and &#x60;negativeBalance&#x60; is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. 
+   * @return tentativeNegativeBalance
+  **/
+  @ApiModelProperty(example = "100.0", required = true, value = "The tentative negative balance after all additions and deductions from the current customer session are applied to `negativeBalance`. When the session is closed, the tentative effects are applied and `negativeBalance` is updated to this value.  **Note:** Tentative balances are specific to the current session and do not take into account other open sessions for the given customer. ")
+
+  public BigDecimal getTentativeNegativeBalance() {
+    return tentativeNegativeBalance;
+  }
+
+
+  public void setTentativeNegativeBalance(BigDecimal tentativeNegativeBalance) {
+    this.tentativeNegativeBalance = tentativeNegativeBalance;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -200,15 +252,17 @@ public class LoyaltyProgramBalance {
     LoyaltyProgramBalance loyaltyProgramBalance = (LoyaltyProgramBalance) o;
     return Objects.equals(this.currentBalance, loyaltyProgramBalance.currentBalance) &&
         Objects.equals(this.pendingBalance, loyaltyProgramBalance.pendingBalance) &&
+        Objects.equals(this.negativeBalance, loyaltyProgramBalance.negativeBalance) &&
         Objects.equals(this.expiredBalance, loyaltyProgramBalance.expiredBalance) &&
         Objects.equals(this.spentBalance, loyaltyProgramBalance.spentBalance) &&
         Objects.equals(this.tentativeCurrentBalance, loyaltyProgramBalance.tentativeCurrentBalance) &&
-        Objects.equals(this.tentativePendingBalance, loyaltyProgramBalance.tentativePendingBalance);
+        Objects.equals(this.tentativePendingBalance, loyaltyProgramBalance.tentativePendingBalance) &&
+        Objects.equals(this.tentativeNegativeBalance, loyaltyProgramBalance.tentativeNegativeBalance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentBalance, pendingBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance);
+    return Objects.hash(currentBalance, pendingBalance, negativeBalance, expiredBalance, spentBalance, tentativeCurrentBalance, tentativePendingBalance, tentativeNegativeBalance);
   }
 
 
@@ -218,10 +272,12 @@ public class LoyaltyProgramBalance {
     sb.append("class LoyaltyProgramBalance {\n");
     sb.append("    currentBalance: ").append(toIndentedString(currentBalance)).append("\n");
     sb.append("    pendingBalance: ").append(toIndentedString(pendingBalance)).append("\n");
+    sb.append("    negativeBalance: ").append(toIndentedString(negativeBalance)).append("\n");
     sb.append("    expiredBalance: ").append(toIndentedString(expiredBalance)).append("\n");
     sb.append("    spentBalance: ").append(toIndentedString(spentBalance)).append("\n");
     sb.append("    tentativeCurrentBalance: ").append(toIndentedString(tentativeCurrentBalance)).append("\n");
     sb.append("    tentativePendingBalance: ").append(toIndentedString(tentativePendingBalance)).append("\n");
+    sb.append("    tentativeNegativeBalance: ").append(toIndentedString(tentativeNegativeBalance)).append("\n");
     sb.append("}");
     return sb.toString();
   }

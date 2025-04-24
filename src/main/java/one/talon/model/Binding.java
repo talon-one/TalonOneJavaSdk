@@ -108,7 +108,7 @@ public class Binding {
    * A Talang expression that will be evaluated and its result attached to the name of the binding.
    * @return expression
   **/
-  @ApiModelProperty(required = true, value = "A Talang expression that will be evaluated and its result attached to the name of the binding.")
+  @ApiModelProperty(example = "[string1, string2]", required = true, value = "A Talang expression that will be evaluated and its result attached to the name of the binding.")
 
   public List<Object> getExpression() {
     return expression;

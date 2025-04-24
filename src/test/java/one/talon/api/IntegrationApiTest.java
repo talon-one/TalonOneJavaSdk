@@ -31,6 +31,8 @@ import one.talon.model.InlineResponse2001;
 import one.talon.model.InlineResponse2002;
 import one.talon.model.InlineResponse2003;
 import one.talon.model.InlineResponse2004;
+import one.talon.model.InlineResponse2005;
+import one.talon.model.InlineResponse2006;
 import one.talon.model.InlineResponse201;
 import one.talon.model.IntegrationCustomerSessionResponse;
 import one.talon.model.IntegrationEventV2Request;
@@ -104,7 +106,7 @@ public class IntegrationApiTest {
     /**
      * Create referral code for an advocate
      *
-     * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
+     * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -120,7 +122,7 @@ public class IntegrationApiTest {
     /**
      * Create referral codes for multiple advocates
      *
-     * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile. 
+     * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -212,6 +214,50 @@ public class IntegrationApiTest {
         Integer loyaltyProgramId = null;
         GenerateLoyaltyCard body = null;
         LoyaltyCard response = api.generateLoyaltyCard(loyaltyProgramId, body);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List customer&#39;s achievement history
+     *
+     * Retrieve all progress history of a given customer in the given achievement. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCustomerAchievementHistoryTest() throws ApiException {
+        String integrationId = null;
+        Integer achievementId = null;
+        List<String> progressStatus = null;
+        OffsetDateTime startDate = null;
+        OffsetDateTime endDate = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        InlineResponse2002 response = api.getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List customer&#39;s available achievements
+     *
+     * Retrieve all the achievements available to a given customer and their progress in them. 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCustomerAchievementsTest() throws ApiException {
+        String integrationId = null;
+        List<String> campaignIds = null;
+        List<String> achievementIds = null;
+        List<String> achievementStatus = null;
+        List<String> currentProgressStatus = null;
+        Integer pageSize = null;
+        Integer skip = null;
+        InlineResponse2001 response = api.getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
 
         // TODO: test validations
     }
@@ -310,7 +356,7 @@ public class IntegrationApiTest {
         List<String> subledgerId = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse2003 response = api.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
+        InlineResponse2005 response = api.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
     }
@@ -333,7 +379,7 @@ public class IntegrationApiTest {
         OffsetDateTime endDate = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse2001 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+        InlineResponse2003 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
     }
@@ -354,7 +400,7 @@ public class IntegrationApiTest {
         String subledgerId = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse2004 response = api.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
+        InlineResponse2006 response = api.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
     }
@@ -377,7 +423,7 @@ public class IntegrationApiTest {
         OffsetDateTime endDate = null;
         Integer pageSize = null;
         Integer skip = null;
-        InlineResponse2002 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+        InlineResponse2004 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
     }
@@ -480,7 +526,8 @@ public class IntegrationApiTest {
         IntegrationEventV2Request body = null;
         String silent = null;
         Boolean dry = null;
-        TrackEventV2Response response = api.trackEventV2(body, silent, dry);
+        Boolean forceCompleteEvaluation = null;
+        TrackEventV2Response response = api.trackEventV2(body, silent, dry, forceCompleteEvaluation);
 
         // TODO: test validations
     }

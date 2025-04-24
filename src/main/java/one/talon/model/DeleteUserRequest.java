@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * 
+ * DeleteUserRequest
  */
-@ApiModel(description = "")
 
 public class DeleteUserRequest {
   public static final String SERIALIZED_NAME_EMAIL = "email";

@@ -229,4 +229,12 @@ public class AdditionalCampaignPropertiesTest {
         // TODO: test storesImported
     }
 
+    /**
+     * Test the property 'valueMapsIds'
+     */
+    @Test
+    public void valueMapsIdsTest() {
+        // TODO: test valueMapsIds
+    }
+
 }

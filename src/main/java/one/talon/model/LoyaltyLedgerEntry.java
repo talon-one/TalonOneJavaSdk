@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import one.talon.model.LoyaltyLedgerEntryFlags;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -87,6 +88,10 @@ public class LoyaltyLedgerEntry {
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
   private Boolean archived;
+
+  public static final String SERIALIZED_NAME_FLAGS = "flags";
+  @SerializedName(SERIALIZED_NAME_FLAGS)
+  private LoyaltyLedgerEntryFlags flags;
 
 
   public LoyaltyLedgerEntry created(OffsetDateTime created) {
@@ -405,6 +410,29 @@ public class LoyaltyLedgerEntry {
   }
 
 
+  public LoyaltyLedgerEntry flags(LoyaltyLedgerEntryFlags flags) {
+    
+    this.flags = flags;
+    return this;
+  }
+
+   /**
+   * Get flags
+   * @return flags
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LoyaltyLedgerEntryFlags getFlags() {
+    return flags;
+  }
+
+
+  public void setFlags(LoyaltyLedgerEntryFlags flags) {
+    this.flags = flags;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -427,12 +455,13 @@ public class LoyaltyLedgerEntry {
         Objects.equals(this.name, loyaltyLedgerEntry.name) &&
         Objects.equals(this.subLedgerID, loyaltyLedgerEntry.subLedgerID) &&
         Objects.equals(this.userID, loyaltyLedgerEntry.userID) &&
-        Objects.equals(this.archived, loyaltyLedgerEntry.archived);
+        Objects.equals(this.archived, loyaltyLedgerEntry.archived) &&
+        Objects.equals(this.flags, loyaltyLedgerEntry.flags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID, archived);
+    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID, archived, flags);
   }
 
 
@@ -454,6 +483,7 @@ public class LoyaltyLedgerEntry {
     sb.append("    subLedgerID: ").append(toIndentedString(subLedgerID)).append("\n");
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("    archived: ").append(toIndentedString(archived)).append("\n");
+    sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

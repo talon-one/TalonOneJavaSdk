@@ -37,6 +37,10 @@ public class CampaignNotificationPolicy {
   @SerializedName(SERIALIZED_NAME_BATCHING_ENABLED)
   private Boolean batchingEnabled = true;
 
+  public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
+  @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
+  private Integer batchSize;
+
 
   public CampaignNotificationPolicy name(String name) {
     
@@ -83,6 +87,29 @@ public class CampaignNotificationPolicy {
   }
 
 
+  public CampaignNotificationPolicy batchSize(Integer batchSize) {
+    
+    this.batchSize = batchSize;
+    return this;
+  }
+
+   /**
+   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * @return batchSize
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "5", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
+
+  public Integer getBatchSize() {
+    return batchSize;
+  }
+
+
+  public void setBatchSize(Integer batchSize) {
+    this.batchSize = batchSize;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -93,12 +120,13 @@ public class CampaignNotificationPolicy {
     }
     CampaignNotificationPolicy campaignNotificationPolicy = (CampaignNotificationPolicy) o;
     return Objects.equals(this.name, campaignNotificationPolicy.name) &&
-        Objects.equals(this.batchingEnabled, campaignNotificationPolicy.batchingEnabled);
+        Objects.equals(this.batchingEnabled, campaignNotificationPolicy.batchingEnabled) &&
+        Objects.equals(this.batchSize, campaignNotificationPolicy.batchSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, batchingEnabled);
+    return Objects.hash(name, batchingEnabled, batchSize);
   }
 
 
@@ -108,6 +136,7 @@ public class CampaignNotificationPolicy {
     sb.append("class CampaignNotificationPolicy {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    batchingEnabled: ").append(toIndentedString(batchingEnabled)).append("\n");
+    sb.append("    batchSize: ").append(toIndentedString(batchSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
