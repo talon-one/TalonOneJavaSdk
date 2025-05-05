@@ -78,7 +78,7 @@ jobs:
 
             echo "maven install";
             mvn clean install;
-            export CLASSPATH=.:./src/main/java:./target/lib/gson-2.8.9.jar:./target/talon-one-client-10.1.0.jar:./target/lib/okio-1.17.2.jar:./target/lib/okhttp-3.14.7.jar:./target/lib/threetenbp-1.4.3.jar:./target/lib/gson-fire-1.8.4.jar;
+            export CLASSPATH=.:./src/main/java:./target/lib/gson-2.8.9.jar:./target/talon-one-client-11.0.0.jar:./target/lib/okio-1.17.2.jar:./target/lib/okhttp-3.14.7.jar:./target/lib/threetenbp-1.4.3.jar:./target/lib/gson-fire-1.8.4.jar;
             
             echo "java compile";
             javac -d . Example.java;
