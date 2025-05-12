@@ -105,7 +105,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.13.0'
     compile 'io.gsonfire:gson-fire:1.8.4'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
-    compile 'org.threeten:threetenbp:1.4.3'
+    compile 'org.threeten:threetenbp:1.7.1'
     testCompile 'junit:junit:4.13'
 }
 
