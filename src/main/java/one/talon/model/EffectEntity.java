@@ -56,7 +56,7 @@ public class EffectEntity {
 
   public static final String SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM = "triggeredForCatalogItem";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM)
-  private Integer triggeredForCatalogItem;
+  private Long triggeredForCatalogItem;
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
@@ -212,7 +212,7 @@ public class EffectEntity {
   }
 
 
-  public EffectEntity triggeredForCatalogItem(Integer triggeredForCatalogItem) {
+  public EffectEntity triggeredForCatalogItem(Long triggeredForCatalogItem) {
     
     this.triggeredForCatalogItem = triggeredForCatalogItem;
     return this;
@@ -225,12 +225,12 @@ public class EffectEntity {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "786", value = "The ID of the catalog item that was being evaluated when this effect was triggered.")
 
-  public Integer getTriggeredForCatalogItem() {
+  public Long getTriggeredForCatalogItem() {
     return triggeredForCatalogItem;
   }
 
 
-  public void setTriggeredForCatalogItem(Integer triggeredForCatalogItem) {
+  public void setTriggeredForCatalogItem(Long triggeredForCatalogItem) {
     this.triggeredForCatalogItem = triggeredForCatalogItem;
   }
 

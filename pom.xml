@@ -5,7 +5,7 @@
     <artifactId>talon-one-client</artifactId>
     <packaging>jar</packaging>
     <name>talon-one-client</name>
-    <version>11.0.0</version>
+    <version>11.0.1</version>
     <url>https://github.com/talon-one/maven-artefacts</url>
     <description>Talon.One unified JAVA SDK. It allows for programmatic access to the integration and management API with their respective authentication strategies</description>
     <scm>
@@ -182,21 +182,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>net.nicoulaj.maven.plugins</groupId>
-                <artifactId>checksum-maven-plugin</artifactId>
-                <version>1.10</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>artifacts</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- put your configurations here -->
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -280,7 +265,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <java.version>21</java.version>
+        <java.version>1.7</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <gson-fire-version>1.8.4</gson-fire-version>

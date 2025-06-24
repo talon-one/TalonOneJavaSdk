@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class TemplateDef {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -78,7 +78,7 @@ public class TemplateDef {
   private String name;
 
 
-  public TemplateDef id(Integer id) {
+  public TemplateDef id(Long id) {
     
     this.id = id;
     return this;
@@ -90,12 +90,12 @@ public class TemplateDef {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

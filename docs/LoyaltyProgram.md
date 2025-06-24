@@ -7,7 +7,7 @@ A Loyalty Program
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | The ID of loyalty program. | 
+**id** | **Long** | The ID of loyalty program. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **title** | **String** | The display title for the Loyalty Program. | 
 **description** | **String** | Description of our Loyalty Program. | 

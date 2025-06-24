@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **ruleName** | **String** | The name of the rule that triggered this effect. | 
 **effectType** | **String** | The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects). | 
 **triggeredByCoupon** | **Integer** | The ID of the coupon that was being evaluated when this effect was triggered. |  [optional]
-**triggeredForCatalogItem** | **Integer** | The ID of the catalog item that was being evaluated when this effect was triggered. |  [optional]
+**triggeredForCatalogItem** | **Long** | The ID of the catalog item that was being evaluated when this effect was triggered. |  [optional]
 **conditionIndex** | **Integer** | The index of the condition that was triggered. |  [optional]
 **evaluationGroupID** | **Integer** | The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). |  [optional]
 **evaluationGroupMode** | **String** | The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation). |  [optional]

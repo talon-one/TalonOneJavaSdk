@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **storeIntegrationId** | **String** | The integration ID of the store. You choose this ID when you create a store. |  [optional]

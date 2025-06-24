@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Ruleset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -79,7 +79,7 @@ public class Ruleset {
   private OffsetDateTime activatedAt;
 
 
-  public Ruleset id(Integer id) {
+  public Ruleset id(Long id) {
     
     this.id = id;
     return this;
@@ -91,12 +91,12 @@ public class Ruleset {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
