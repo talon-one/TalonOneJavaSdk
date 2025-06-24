@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **cartItemFilterId** | **Integer** | The ID of the Application cart item filter. |  [optional]
 **createdBy** | **Integer** | The ID of the user who created the Application cart item filter. |  [optional]

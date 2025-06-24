@@ -7,7 +7,7 @@ A tier in a loyalty program.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **programID** | **Integer** | The ID of the loyalty program that owns this entity. | 
 **programName** | **String** | The integration name of the loyalty program that owns this entity. |  [optional]

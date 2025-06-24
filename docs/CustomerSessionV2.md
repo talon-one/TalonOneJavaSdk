@@ -7,7 +7,7 @@ The representation of the customer session.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **applicationId** | **Integer** | The ID of the Application that owns this entity. | 

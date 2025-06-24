@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 **profileId** | **Integer** | The globally unique Talon.One ID of the customer that created this entity. |  [optional]

@@ -11238,6 +11238,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -11301,6 +11302,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -11363,6 +11365,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -11442,6 +11445,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -11587,6 +11591,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -11792,6 +11797,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -12281,6 +12287,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -12508,6 +12515,7 @@ components:
           description: The ID of the catalog item that was being evaluated when this
             effect was triggered.
           example: 786
+          format: int64
           type: integer
         conditionIndex:
           description: The index of the condition that was triggered.
@@ -13502,6 +13510,7 @@ components:
           description: The ID of the catalog item that was being evaluated when this
             effect was triggered.
           example: 786
+          format: int64
           type: integer
         conditionIndex:
           description: The index of the condition that was triggered.
@@ -13882,6 +13891,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -14013,6 +14023,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -14217,6 +14228,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -14585,6 +14597,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -15017,6 +15030,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -15120,6 +15134,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -15361,6 +15376,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -15538,6 +15554,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -16721,6 +16738,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -16835,6 +16853,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -18968,6 +18987,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -19285,6 +19305,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -19602,6 +19623,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -20158,6 +20180,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -20284,6 +20307,7 @@ components:
         id:
           description: The ID of loyalty program.
           example: 139
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -20713,6 +20737,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -20888,6 +20913,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -22857,6 +22883,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -25068,6 +25095,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -25539,6 +25567,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -26149,6 +26178,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -27014,6 +27044,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -27104,6 +27135,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -27545,6 +27577,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -27998,6 +28031,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -28080,6 +28114,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -28908,6 +28943,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -29921,6 +29957,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -30103,6 +30140,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -30203,6 +30241,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -30517,6 +30556,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31004,6 +31044,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31303,6 +31344,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31479,6 +31521,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31556,6 +31599,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31794,6 +31838,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -31912,6 +31957,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32113,6 +32159,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32206,6 +32253,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32254,6 +32302,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32512,6 +32561,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32605,6 +32655,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -32849,6 +32900,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -33281,6 +33333,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -33344,6 +33397,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -33970,6 +34024,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -34200,6 +34255,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -34470,6 +34526,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -34937,6 +34994,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -35533,6 +35591,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.
@@ -35679,6 +35738,7 @@ components:
         id:
           description: Internal ID of this entity.
           example: 6
+          format: int64
           type: integer
         created:
           description: The time this entity was created.

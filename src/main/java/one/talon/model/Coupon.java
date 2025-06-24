@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Coupon {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -123,7 +123,7 @@ public class Coupon {
   private Boolean implicitlyReserved;
 
 
-  public Coupon id(Integer id) {
+  public Coupon id(Long id) {
     
     this.id = id;
     return this;
@@ -135,12 +135,12 @@ public class Coupon {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

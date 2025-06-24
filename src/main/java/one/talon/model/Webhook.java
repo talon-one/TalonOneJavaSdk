@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Webhook {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -135,7 +135,7 @@ public class Webhook {
   private Boolean enabled;
 
 
-  public Webhook id(Integer id) {
+  public Webhook id(Long id) {
     
     this.id = id;
     return this;
@@ -147,12 +147,12 @@ public class Webhook {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
