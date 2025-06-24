@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
+**applicationId** | **Long** | The ID of the Application that owns this entity. | 
 **slots** | [**List&lt;SlotDef&gt;**](SlotDef.md) | The slots defined for this application. | 
 **functions** | [**List&lt;FunctionDef&gt;**](FunctionDef.md) | The functions defined for this application. | 
 **templates** | [**List&lt;TemplateDef&gt;**](TemplateDef.md) | The templates defined for this application. | 

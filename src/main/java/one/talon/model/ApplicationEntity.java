@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,30 +30,28 @@ import java.io.IOException;
 public class ApplicationEntity {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
+  public ApplicationEntity applicationId(Long applicationId) {
 
-  public ApplicationEntity applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,7 +69,6 @@ public class ApplicationEntity {
   public int hashCode() {
     return Objects.hash(applicationId);
   }
-
 
   @Override
   public String toString() {
@@ -95,4 +91,3 @@ public class ApplicationEntity {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -46,33 +45,31 @@ public class CardExpiringPointsNotificationPolicy {
 
   public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
   @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
-  private Integer batchSize;
-
+  private Long batchSize;
 
   public CardExpiringPointsNotificationPolicy name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Notification name.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Notification to Google", required = true, value = "Notification name.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CardExpiringPointsNotificationPolicy triggers(List<CardExpiringPointsNotificationTrigger> triggers) {
-    
+
     this.triggers = triggers;
     return this;
   }
@@ -82,32 +79,32 @@ public class CardExpiringPointsNotificationPolicy {
     return this;
   }
 
-   /**
+  /**
    * Get triggers
+   * 
    * @return triggers
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<CardExpiringPointsNotificationTrigger> getTriggers() {
     return triggers;
   }
 
-
   public void setTriggers(List<CardExpiringPointsNotificationTrigger> triggers) {
     this.triggers = triggers;
   }
 
-
   public CardExpiringPointsNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
-    
+
     this.batchingEnabled = batchingEnabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether batching is activated.
+   * 
    * @return batchingEnabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether batching is activated.")
 
@@ -115,34 +112,32 @@ public class CardExpiringPointsNotificationPolicy {
     return batchingEnabled;
   }
 
-
   public void setBatchingEnabled(Boolean batchingEnabled) {
     this.batchingEnabled = batchingEnabled;
   }
 
+  public CardExpiringPointsNotificationPolicy batchSize(Long batchSize) {
 
-  public CardExpiringPointsNotificationPolicy batchSize(Integer batchSize) {
-    
     this.batchSize = batchSize;
     return this;
   }
 
-   /**
-   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+  /**
+   * The required size of each batch of data. This value applies only when
+   * &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * 
    * @return batchSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
 
-  public Integer getBatchSize() {
+  public Long getBatchSize() {
     return batchSize;
   }
 
-
-  public void setBatchSize(Integer batchSize) {
+  public void setBatchSize(Long batchSize) {
     this.batchSize = batchSize;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -163,7 +158,6 @@ public class CardExpiringPointsNotificationPolicy {
   public int hashCode() {
     return Objects.hash(name, triggers, batchingEnabled, batchSize);
   }
-
 
   @Override
   public String toString() {
@@ -189,4 +183,3 @@ public class CardExpiringPointsNotificationPolicy {
   }
 
 }
-

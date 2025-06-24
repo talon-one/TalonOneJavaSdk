@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,52 +34,49 @@ public class NotificationTest {
 
   public static final String SERIALIZED_NAME_HTTP_STATUS = "httpStatus";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS)
-  private Integer httpStatus;
-
+  private Long httpStatus;
 
   public NotificationTest httpResponse(String httpResponse) {
-    
+
     this.httpResponse = httpResponse;
     return this;
   }
 
-   /**
+  /**
    * The returned http response.
+   * 
    * @return httpResponse
-  **/
+   **/
   @ApiModelProperty(example = "HTTP/1.1 200 OK Content-Type: application/json Content-Length: 256  {   \"message\": \"Hello, world!\",   \"status\": \"success\" } ", required = true, value = "The returned http response.")
 
   public String getHttpResponse() {
     return httpResponse;
   }
 
-
   public void setHttpResponse(String httpResponse) {
     this.httpResponse = httpResponse;
   }
 
+  public NotificationTest httpStatus(Long httpStatus) {
 
-  public NotificationTest httpStatus(Integer httpStatus) {
-    
     this.httpStatus = httpStatus;
     return this;
   }
 
-   /**
+  /**
    * The returned http status code.
+   * 
    * @return httpStatus
-  **/
+   **/
   @ApiModelProperty(example = "200", required = true, value = "The returned http status code.")
 
-  public Integer getHttpStatus() {
+  public Long getHttpStatus() {
     return httpStatus;
   }
 
-
-  public void setHttpStatus(Integer httpStatus) {
+  public void setHttpStatus(Long httpStatus) {
     this.httpStatus = httpStatus;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,7 +95,6 @@ public class NotificationTest {
   public int hashCode() {
     return Objects.hash(httpResponse, httpStatus);
   }
-
 
   @Override
   public String toString() {
@@ -123,4 +118,3 @@ public class NotificationTest {
   }
 
 }
-

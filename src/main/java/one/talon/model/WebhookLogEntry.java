@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,11 +40,11 @@ public class WebhookLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Integer webhookId;
+  private Long webhookId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -61,7 +60,7 @@ public class WebhookLogEntry {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
+  private Long status;
 
   public static final String SERIALIZED_NAME_REQUEST_TIME = "requestTime";
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
@@ -71,150 +70,144 @@ public class WebhookLogEntry {
   @SerializedName(SERIALIZED_NAME_RESPONSE_TIME)
   private OffsetDateTime responseTime;
 
-
   public WebhookLogEntry id(String id) {
-    
+
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * UUID reference of the webhook request.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "UUID reference of the webhook request.")
 
   public String getId() {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
-
   public WebhookLogEntry integrationRequestUuid(String integrationRequestUuid) {
-    
+
     this.integrationRequestUuid = integrationRequestUuid;
     return this;
   }
 
-   /**
+  /**
    * UUID reference of the integration request linked to this webhook request.
+   * 
    * @return integrationRequestUuid
-  **/
+   **/
   @ApiModelProperty(example = "472075793", required = true, value = "UUID reference of the integration request linked to this webhook request.")
 
   public String getIntegrationRequestUuid() {
     return integrationRequestUuid;
   }
 
-
   public void setIntegrationRequestUuid(String integrationRequestUuid) {
     this.integrationRequestUuid = integrationRequestUuid;
   }
 
+  public WebhookLogEntry webhookId(Long webhookId) {
 
-  public WebhookLogEntry webhookId(Integer webhookId) {
-    
     this.webhookId = webhookId;
     return this;
   }
 
-   /**
+  /**
    * ID of the webhook that triggered the request.
+   * 
    * @return webhookId
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "ID of the webhook that triggered the request.")
 
-  public Integer getWebhookId() {
+  public Long getWebhookId() {
     return webhookId;
   }
 
-
-  public void setWebhookId(Integer webhookId) {
+  public void setWebhookId(Long webhookId) {
     this.webhookId = webhookId;
   }
 
+  public WebhookLogEntry applicationId(Long applicationId) {
 
-  public WebhookLogEntry applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * ID of the application that triggered the webhook.
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "12", value = "ID of the application that triggered the webhook.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public WebhookLogEntry url(String url) {
-    
+
     this.url = url;
     return this;
   }
 
-   /**
+  /**
    * The target URL of the request.
+   * 
    * @return url
-  **/
+   **/
   @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "The target URL of the request.")
 
   public String getUrl() {
     return url;
   }
 
-
   public void setUrl(String url) {
     this.url = url;
   }
 
-
   public WebhookLogEntry request(String request) {
-    
+
     this.request = request;
     return this;
   }
 
-   /**
+  /**
    * Request message
+   * 
    * @return request
-  **/
+   **/
   @ApiModelProperty(example = "{   mydata: \"somevalue\" } ", required = true, value = "Request message")
 
   public String getRequest() {
     return request;
   }
 
-
   public void setRequest(String request) {
     this.request = request;
   }
 
-
   public WebhookLogEntry response(String response) {
-    
+
     this.response = response;
     return this;
   }
 
-   /**
+  /**
    * Response message
+   * 
    * @return response
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "", value = "Response message")
 
@@ -222,67 +215,64 @@ public class WebhookLogEntry {
     return response;
   }
 
-
   public void setResponse(String response) {
     this.response = response;
   }
 
+  public WebhookLogEntry status(Long status) {
 
-  public WebhookLogEntry status(Integer status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * HTTP status code of response.
+   * 
    * @return status
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "204", value = "HTTP status code of response.")
 
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
-
-  public void setStatus(Integer status) {
+  public void setStatus(Long status) {
     this.status = status;
   }
 
-
   public WebhookLogEntry requestTime(OffsetDateTime requestTime) {
-    
+
     this.requestTime = requestTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of request
+   * 
    * @return requestTime
-  **/
+   **/
   @ApiModelProperty(example = "2021-07-20T22:00Z", required = true, value = "Timestamp of request")
 
   public OffsetDateTime getRequestTime() {
     return requestTime;
   }
 
-
   public void setRequestTime(OffsetDateTime requestTime) {
     this.requestTime = requestTime;
   }
 
-
   public WebhookLogEntry responseTime(OffsetDateTime responseTime) {
-    
+
     this.responseTime = responseTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of response
+   * 
    * @return responseTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00:50Z", value = "Timestamp of response")
 
@@ -290,11 +280,9 @@ public class WebhookLogEntry {
     return responseTime;
   }
 
-
   public void setResponseTime(OffsetDateTime responseTime) {
     this.responseTime = responseTime;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -319,9 +307,9 @@ public class WebhookLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, integrationRequestUuid, webhookId, applicationId, url, request, response, status, requestTime, responseTime);
+    return Objects.hash(id, integrationRequestUuid, webhookId, applicationId, url, request, response, status,
+        requestTime, responseTime);
   }
-
 
   @Override
   public String toString() {
@@ -353,4 +341,3 @@ public class WebhookLogEntry {
   }
 
 }
-

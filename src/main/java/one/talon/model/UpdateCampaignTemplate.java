@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -57,14 +56,15 @@ public class UpdateCampaignTemplate {
   private Object couponAttributes;
 
   /**
-   * Only campaign templates in &#39;available&#39; state may be used to create campaigns.
+   * Only campaign templates in &#39;available&#39; state may be used to create
+   * campaigns.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     DRAFT("draft"),
-    
+
     ENABLED("enabled"),
-    
+
     DISABLED("disabled");
 
     private String value;
@@ -99,7 +99,7 @@ public class UpdateCampaignTemplate {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -111,7 +111,7 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Integer activeRulesetId;
+  private Long activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -123,15 +123,15 @@ public class UpdateCampaignTemplate {
   @JsonAdapter(FeaturesEnum.Adapter.class)
   public enum FeaturesEnum {
     COUPONS("coupons"),
-    
+
     REFERRALS("referrals"),
-    
+
     LOYALTY("loyalty"),
-    
+
     GIVEAWAYS("giveaways"),
-    
+
     STRIKETHROUGH("strikethrough"),
-    
+
     ACHIEVEMENTS("achievements");
 
     private String value;
@@ -166,7 +166,7 @@ public class UpdateCampaignTemplate {
 
       @Override
       public FeaturesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return FeaturesEnum.fromValue(value);
       }
     }
@@ -198,7 +198,7 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_APPLICATIONS_IDS = "applicationsIds";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS_IDS)
-  private List<Integer> applicationsIds = new ArrayList<Integer>();
+  private List<Long> applicationsIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_COLLECTIONS = "campaignCollections";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_COLLECTIONS)
@@ -206,15 +206,17 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID = "defaultCampaignGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID)
-  private Integer defaultCampaignGroupId;
+  private Long defaultCampaignGroupId;
 
   /**
-   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   * The campaign type. Possible type values: - &#x60;cartItem&#x60;: Type of
+   * campaign that can apply effects only to cart items. - &#x60;advanced&#x60;:
+   * Type of campaign that can apply effects to customer sessions and cart items.
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
   public enum CampaignTypeEnum {
     CARTITEM("cartItem"),
-    
+
     ADVANCED("advanced");
 
     private String value;
@@ -249,7 +251,7 @@ public class UpdateCampaignTemplate {
 
       @Override
       public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return CampaignTypeEnum.fromValue(value);
       }
     }
@@ -259,83 +261,84 @@ public class UpdateCampaignTemplate {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
   private CampaignTypeEnum campaignType = CampaignTypeEnum.ADVANCED;
 
-
   public UpdateCampaignTemplate name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The campaign template name.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Discount campaign", required = true, value = "The campaign template name.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateCampaignTemplate description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Customer-facing text that explains the objective of the template.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "This is a template for a discount campaign.", required = true, value = "Customer-facing text that explains the objective of the template.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateCampaignTemplate instructions(String instructions) {
-    
+
     this.instructions = instructions;
     return this;
   }
 
-   /**
-   * Customer-facing text that explains how to use the template. For example, you can use this property to explain the available attributes of this template, and how they can be modified when a user uses this template to create a new campaign.
+  /**
+   * Customer-facing text that explains how to use the template. For example, you
+   * can use this property to explain the available attributes of this template,
+   * and how they can be modified when a user uses this template to create a new
+   * campaign.
+   * 
    * @return instructions
-  **/
+   **/
   @ApiModelProperty(example = "Use this template for discount campaigns. Set the campaign properties according to the campaign goals, and don't forget to set an end date.", required = true, value = "Customer-facing text that explains how to use the template. For example, you can use this property to explain the available attributes of this template, and how they can be modified when a user uses this template to create a new campaign.")
 
   public String getInstructions() {
     return instructions;
   }
 
-
   public void setInstructions(String instructions) {
     this.instructions = instructions;
   }
 
-
   public UpdateCampaignTemplate campaignAttributes(Object campaignAttributes) {
-    
+
     this.campaignAttributes = campaignAttributes;
     return this;
   }
 
-   /**
-   * The campaign attributes that campaigns created from this template will have by default.
+  /**
+   * The campaign attributes that campaigns created from this template will have
+   * by default.
+   * 
    * @return campaignAttributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The campaign attributes that campaigns created from this template will have by default.")
 
@@ -343,22 +346,22 @@ public class UpdateCampaignTemplate {
     return campaignAttributes;
   }
 
-
   public void setCampaignAttributes(Object campaignAttributes) {
     this.campaignAttributes = campaignAttributes;
   }
 
-
   public UpdateCampaignTemplate couponAttributes(Object couponAttributes) {
-    
+
     this.couponAttributes = couponAttributes;
     return this;
   }
 
-   /**
-   * The campaign attributes that coupons created from this template will have by default.
+  /**
+   * The campaign attributes that coupons created from this template will have by
+   * default.
+   * 
    * @return couponAttributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The campaign attributes that coupons created from this template will have by default.")
 
@@ -366,59 +369,56 @@ public class UpdateCampaignTemplate {
     return couponAttributes;
   }
 
-
   public void setCouponAttributes(Object couponAttributes) {
     this.couponAttributes = couponAttributes;
   }
 
-
   public UpdateCampaignTemplate state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * Only campaign templates in &#39;available&#39; state may be used to create campaigns.
+  /**
+   * Only campaign templates in &#39;available&#39; state may be used to create
+   * campaigns.
+   * 
    * @return state
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Only campaign templates in 'available' state may be used to create campaigns.")
 
   public StateEnum getState() {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
+  public UpdateCampaignTemplate activeRulesetId(Long activeRulesetId) {
 
-  public UpdateCampaignTemplate activeRulesetId(Integer activeRulesetId) {
-    
     this.activeRulesetId = activeRulesetId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the ruleset this campaign template will use.
+   * 
    * @return activeRulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Integer getActiveRulesetId() {
+  public Long getActiveRulesetId() {
     return activeRulesetId;
   }
 
-
-  public void setActiveRulesetId(Integer activeRulesetId) {
+  public void setActiveRulesetId(Long activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
-
   public UpdateCampaignTemplate tags(List<String> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -431,10 +431,11 @@ public class UpdateCampaignTemplate {
     return this;
   }
 
-   /**
+  /**
    * A list of tags for the campaign template.
+   * 
    * @return tags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[discount]", value = "A list of tags for the campaign template.")
 
@@ -442,14 +443,12 @@ public class UpdateCampaignTemplate {
     return tags;
   }
 
-
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
-
   public UpdateCampaignTemplate features(List<FeaturesEnum> features) {
-    
+
     this.features = features;
     return this;
   }
@@ -462,10 +461,11 @@ public class UpdateCampaignTemplate {
     return this;
   }
 
-   /**
+  /**
    * A list of features for the campaign template.
+   * 
    * @return features
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of features for the campaign template.")
 
@@ -473,22 +473,21 @@ public class UpdateCampaignTemplate {
     return features;
   }
 
-
   public void setFeatures(List<FeaturesEnum> features) {
     this.features = features;
   }
 
-
   public UpdateCampaignTemplate couponSettings(CodeGeneratorSettings couponSettings) {
-    
+
     this.couponSettings = couponSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponSettings
+   * 
    * @return couponSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -496,22 +495,22 @@ public class UpdateCampaignTemplate {
     return couponSettings;
   }
 
-
   public void setCouponSettings(CodeGeneratorSettings couponSettings) {
     this.couponSettings = couponSettings;
   }
 
+  public UpdateCampaignTemplate couponReservationSettings(
+      CampaignTemplateCouponReservationSettings couponReservationSettings) {
 
-  public UpdateCampaignTemplate couponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
-    
     this.couponReservationSettings = couponReservationSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponReservationSettings
+   * 
    * @return couponReservationSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -519,22 +518,21 @@ public class UpdateCampaignTemplate {
     return couponReservationSettings;
   }
 
-
   public void setCouponReservationSettings(CampaignTemplateCouponReservationSettings couponReservationSettings) {
     this.couponReservationSettings = couponReservationSettings;
   }
 
-
   public UpdateCampaignTemplate referralSettings(CodeGeneratorSettings referralSettings) {
-    
+
     this.referralSettings = referralSettings;
     return this;
   }
 
-   /**
+  /**
    * Get referralSettings
+   * 
    * @return referralSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -542,14 +540,12 @@ public class UpdateCampaignTemplate {
     return referralSettings;
   }
 
-
   public void setReferralSettings(CodeGeneratorSettings referralSettings) {
     this.referralSettings = referralSettings;
   }
 
-
   public UpdateCampaignTemplate limits(List<TemplateLimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -562,10 +558,11 @@ public class UpdateCampaignTemplate {
     return this;
   }
 
-   /**
+  /**
    * The set of limits that operate for this campaign template.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of limits that operate for this campaign template.")
 
@@ -573,14 +570,12 @@ public class UpdateCampaignTemplate {
     return limits;
   }
 
-
   public void setLimits(List<TemplateLimitConfig> limits) {
     this.limits = limits;
   }
 
-
   public UpdateCampaignTemplate templateParams(List<CampaignTemplateParams> templateParams) {
-    
+
     this.templateParams = templateParams;
     return this;
   }
@@ -593,10 +588,11 @@ public class UpdateCampaignTemplate {
     return this;
   }
 
-   /**
+  /**
    * Fields which can be used to replace values in a rule.
+   * 
    * @return templateParams
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Fields which can be used to replace values in a rule.")
 
@@ -604,41 +600,39 @@ public class UpdateCampaignTemplate {
     return templateParams;
   }
 
-
   public void setTemplateParams(List<CampaignTemplateParams> templateParams) {
     this.templateParams = templateParams;
   }
 
+  public UpdateCampaignTemplate applicationsIds(List<Long> applicationsIds) {
 
-  public UpdateCampaignTemplate applicationsIds(List<Integer> applicationsIds) {
-    
     this.applicationsIds = applicationsIds;
     return this;
   }
 
-  public UpdateCampaignTemplate addApplicationsIdsItem(Integer applicationsIdsItem) {
+  public UpdateCampaignTemplate addApplicationsIdsItem(Long applicationsIdsItem) {
     this.applicationsIds.add(applicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of IDs of the Applications that are subscribed to this campaign template.
+  /**
+   * A list of IDs of the Applications that are subscribed to this campaign
+   * template.
+   * 
    * @return applicationsIds
-  **/
+   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "A list of IDs of the Applications that are subscribed to this campaign template.")
 
-  public List<Integer> getApplicationsIds() {
+  public List<Long> getApplicationsIds() {
     return applicationsIds;
   }
 
-
-  public void setApplicationsIds(List<Integer> applicationsIds) {
+  public void setApplicationsIds(List<Long> applicationsIds) {
     this.applicationsIds = applicationsIds;
   }
 
-
   public UpdateCampaignTemplate campaignCollections(List<CampaignTemplateCollection> campaignCollections) {
-    
+
     this.campaignCollections = campaignCollections;
     return this;
   }
@@ -651,10 +645,11 @@ public class UpdateCampaignTemplate {
     return this;
   }
 
-   /**
+  /**
    * The campaign collections from the blueprint campaign for the template.
+   * 
    * @return campaignCollections
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The campaign collections from the blueprint campaign for the template.")
 
@@ -662,45 +657,45 @@ public class UpdateCampaignTemplate {
     return campaignCollections;
   }
 
-
   public void setCampaignCollections(List<CampaignTemplateCollection> campaignCollections) {
     this.campaignCollections = campaignCollections;
   }
 
+  public UpdateCampaignTemplate defaultCampaignGroupId(Long defaultCampaignGroupId) {
 
-  public UpdateCampaignTemplate defaultCampaignGroupId(Integer defaultCampaignGroupId) {
-    
     this.defaultCampaignGroupId = defaultCampaignGroupId;
     return this;
   }
 
-   /**
+  /**
    * The default campaign group ID.
+   * 
    * @return defaultCampaignGroupId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "The default campaign group ID.")
 
-  public Integer getDefaultCampaignGroupId() {
+  public Long getDefaultCampaignGroupId() {
     return defaultCampaignGroupId;
   }
 
-
-  public void setDefaultCampaignGroupId(Integer defaultCampaignGroupId) {
+  public void setDefaultCampaignGroupId(Long defaultCampaignGroupId) {
     this.defaultCampaignGroupId = defaultCampaignGroupId;
   }
 
-
   public UpdateCampaignTemplate campaignType(CampaignTypeEnum campaignType) {
-    
+
     this.campaignType = campaignType;
     return this;
   }
 
-   /**
-   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+  /**
+   * The campaign type. Possible type values: - &#x60;cartItem&#x60;: Type of
+   * campaign that can apply effects only to cart items. - &#x60;advanced&#x60;:
+   * Type of campaign that can apply effects to customer sessions and cart items.
+   * 
    * @return campaignType
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "advanced", value = "The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items. ")
 
@@ -708,11 +703,9 @@ public class UpdateCampaignTemplate {
     return campaignType;
   }
 
-
   public void setCampaignType(CampaignTypeEnum campaignType) {
     this.campaignType = campaignType;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -745,9 +738,10 @@ public class UpdateCampaignTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId, tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams, applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType);
+    return Objects.hash(name, description, instructions, campaignAttributes, couponAttributes, state, activeRulesetId,
+        tags, features, couponSettings, couponReservationSettings, referralSettings, limits, templateParams,
+        applicationsIds, campaignCollections, defaultCampaignGroupId, campaignType);
   }
-
 
   @Override
   public String toString() {
@@ -787,4 +781,3 @@ public class UpdateCampaignTemplate {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CatalogItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,11 +52,11 @@ public class CatalogItem {
 
   public static final String SERIALIZED_NAME_CATALOGID = "catalogid";
   @SerializedName(SERIALIZED_NAME_CATALOGID)
-  private Integer catalogid;
+  private Long catalogid;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -67,83 +66,80 @@ public class CatalogItem {
   @SerializedName(SERIALIZED_NAME_PRODUCT)
   private Product product;
 
+  public CatalogItem id(Long id) {
 
-  public CatalogItem id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CatalogItem created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public CatalogItem sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * The stock keeping unit of the item.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU1241028", required = true, value = "The stock keeping unit of the item.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
-
   public CatalogItem price(BigDecimal price) {
-    
+
     this.price = price;
     return this;
   }
 
-   /**
+  /**
    * Price of the item.
+   * 
    * @return price
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "99.99", value = "Price of the item.")
 
@@ -151,59 +147,55 @@ public class CatalogItem {
     return price;
   }
 
-
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
 
+  public CatalogItem catalogid(Long catalogid) {
 
-  public CatalogItem catalogid(Integer catalogid) {
-    
     this.catalogid = catalogid;
     return this;
   }
 
-   /**
+  /**
    * The ID of the catalog the item belongs to.
+   * 
    * @return catalogid
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "The ID of the catalog the item belongs to.")
 
-  public Integer getCatalogid() {
+  public Long getCatalogid() {
     return catalogid;
   }
 
-
-  public void setCatalogid(Integer catalogid) {
+  public void setCatalogid(Long catalogid) {
     this.catalogid = catalogid;
   }
 
+  public CatalogItem version(Long version) {
 
-  public CatalogItem version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * The version of the catalog item.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "The version of the catalog item.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public CatalogItem attributes(List<ItemAttribute> attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
@@ -216,10 +208,11 @@ public class CatalogItem {
     return this;
   }
 
-   /**
+  /**
    * Get attributes
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -227,22 +220,21 @@ public class CatalogItem {
     return attributes;
   }
 
-
   public void setAttributes(List<ItemAttribute> attributes) {
     this.attributes = attributes;
   }
 
-
   public CatalogItem product(Product product) {
-    
+
     this.product = product;
     return this;
   }
 
-   /**
+  /**
    * Get product
+   * 
    * @return product
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -250,11 +242,9 @@ public class CatalogItem {
     return product;
   }
 
-
   public void setProduct(Product product) {
     this.product = product;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -279,7 +269,6 @@ public class CatalogItem {
   public int hashCode() {
     return Objects.hash(id, created, sku, price, catalogid, version, attributes, product);
   }
-
 
   @Override
   public String toString() {
@@ -309,4 +298,3 @@ public class CatalogItem {
   }
 
 }
-

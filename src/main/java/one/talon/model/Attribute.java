@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Attribute {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,31 +41,34 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   /**
-   * The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60; of the custom attributes for that type.
+   * The name of the entity that can have this attribute. When creating or
+   * updating the entities of a given type, you can include an
+   * &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60;
+   * of the custom attributes for that type.
    */
   @JsonAdapter(EntityEnum.Adapter.class)
   public enum EntityEnum {
     APPLICATION("Application"),
-    
+
     CAMPAIGN("Campaign"),
-    
+
     CUSTOMERPROFILE("CustomerProfile"),
-    
+
     CUSTOMERSESSION("CustomerSession"),
-    
+
     CARTITEM("CartItem"),
-    
+
     COUPON("Coupon"),
-    
+
     EVENT("Event"),
-    
+
     GIVEAWAY("Giveaway"),
-    
+
     REFERRAL("Referral"),
-    
+
     STORE("Store");
 
     private String value;
@@ -101,7 +103,7 @@ public class Attribute {
 
       @Override
       public EntityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EntityEnum.fromValue(value);
       }
     }
@@ -124,26 +126,28 @@ public class Attribute {
   private String title;
 
   /**
-   * The data type of the attribute, a &#x60;time&#x60; attribute must be sent as a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp format.
+   * The data type of the attribute, a &#x60;time&#x60; attribute must be sent as
+   * a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+   * timestamp format.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     STRING("string"),
-    
+
     NUMBER("number"),
-    
+
     BOOLEAN("boolean"),
-    
+
     TIME("time"),
-    
+
     _LIST_STRING_("(list string)"),
-    
+
     _LIST_NUMBER_("(list number)"),
-    
+
     _LIST_TIME_("(list time)"),
-    
+
     LOCATION("location"),
-    
+
     _LIST_LOCATION_("(list location)");
 
     private String value;
@@ -178,7 +182,7 @@ public class Attribute {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -210,11 +214,11 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS = "subscribedCatalogsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS)
-  private List<Integer> subscribedCatalogsIds = null;
+  private List<Long> subscribedCatalogsIds = null;
 
   /**
    * Gets or Sets allowedSubscriptions
@@ -222,7 +226,7 @@ public class Attribute {
   @JsonAdapter(AllowedSubscriptionsEnum.Adapter.class)
   public enum AllowedSubscriptionsEnum {
     APPLICATION("application"),
-    
+
     CATALOG("catalog");
 
     private String value;
@@ -257,7 +261,7 @@ public class Attribute {
 
       @Override
       public AllowedSubscriptionsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return AllowedSubscriptionsEnum.fromValue(value);
       }
     }
@@ -269,107 +273,106 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_EVENT_TYPE_ID = "eventTypeId";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE_ID)
-  private Integer eventTypeId;
+  private Long eventTypeId;
 
+  public Attribute id(Long id) {
 
-  public Attribute id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Attribute created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Attribute accountId(Long accountId) {
 
-  public Attribute accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public Attribute entity(EntityEnum entity) {
-    
+
     this.entity = entity;
     return this;
   }
 
-   /**
-   * The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60; of the custom attributes for that type.
+  /**
+   * The name of the entity that can have this attribute. When creating or
+   * updating the entities of a given type, you can include an
+   * &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60;
+   * of the custom attributes for that type.
+   * 
    * @return entity
-  **/
+   **/
   @ApiModelProperty(example = "Event", required = true, value = "The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an `attributes` object with keys corresponding to the `name` of the custom attributes for that type.")
 
   public EntityEnum getEntity() {
     return entity;
   }
 
-
   public void setEntity(EntityEnum entity) {
     this.entity = entity;
   }
 
-
   public Attribute eventType(String eventType) {
-    
+
     this.eventType = eventType;
     return this;
   }
 
-   /**
+  /**
    * Get eventType
+   * 
    * @return eventType
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "pageViewed", value = "")
 
@@ -377,102 +380,103 @@ public class Attribute {
     return eventType;
   }
 
-
   public void setEventType(String eventType) {
     this.eventType = eventType;
   }
 
-
   public Attribute name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The attribute name that will be used in API requests and Talang. E.g. if &#x60;name &#x3D;&#x3D; \&quot;region\&quot;&#x60; then you would set the region attribute by including an &#x60;attributes.region&#x60; property in your request payload.
+  /**
+   * The attribute name that will be used in API requests and Talang. E.g. if
+   * &#x60;name &#x3D;&#x3D; \&quot;region\&quot;&#x60; then you would set the
+   * region attribute by including an &#x60;attributes.region&#x60; property in
+   * your request payload.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "pageViewed", required = true, value = "The attribute name that will be used in API requests and Talang. E.g. if `name == \"region\"` then you would set the region attribute by including an `attributes.region` property in your request payload.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Attribute title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
-   * The human-readable name for the attribute that will be shown in the Campaign Manager. Like &#x60;name&#x60;, the combination of entity and title must also be unique.
+  /**
+   * The human-readable name for the attribute that will be shown in the Campaign
+   * Manager. Like &#x60;name&#x60;, the combination of entity and title must also
+   * be unique.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Page view event", required = true, value = "The human-readable name for the attribute that will be shown in the Campaign Manager. Like `name`, the combination of entity and title must also be unique.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public Attribute type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The data type of the attribute, a &#x60;time&#x60; attribute must be sent as a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp format.
+  /**
+   * The data type of the attribute, a &#x60;time&#x60; attribute must be sent as
+   * a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+   * timestamp format.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "string", required = true, value = "The data type of the attribute, a `time` attribute must be sent as a string that conforms to the [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp format.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public Attribute description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of this attribute.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "Event triggered when a customer displays a page.", required = true, value = "A description of this attribute.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public Attribute suggestions(List<String> suggestions) {
-    
+
     this.suggestions = suggestions;
     return this;
   }
@@ -482,32 +486,33 @@ public class Attribute {
     return this;
   }
 
-   /**
+  /**
    * A list of suggestions for the attribute.
+   * 
    * @return suggestions
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A list of suggestions for the attribute.")
 
   public List<String> getSuggestions() {
     return suggestions;
   }
 
-
   public void setSuggestions(List<String> suggestions) {
     this.suggestions = suggestions;
   }
 
-
   public Attribute hasAllowedList(Boolean hasAllowedList) {
-    
+
     this.hasAllowedList = hasAllowedList;
     return this;
   }
 
-   /**
-   * Whether or not this attribute has an allowed list of values associated with it.
+  /**
+   * Whether or not this attribute has an allowed list of values associated with
+   * it.
+   * 
    * @return hasAllowedList
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Whether or not this attribute has an allowed list of values associated with it.")
 
@@ -515,22 +520,23 @@ public class Attribute {
     return hasAllowedList;
   }
 
-
   public void setHasAllowedList(Boolean hasAllowedList) {
     this.hasAllowedList = hasAllowedList;
   }
 
-
   public Attribute restrictedBySuggestions(Boolean restrictedBySuggestions) {
-    
+
     this.restrictedBySuggestions = restrictedBySuggestions;
     return this;
   }
 
-   /**
-   * Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property). 
+  /**
+   * Whether or not this attribute&#39;s value is restricted by suggestions
+   * (&#x60;suggestions&#x60; property) or by an allowed list of value
+   * (&#x60;hasAllowedList&#x60; property).
+   * 
    * @return restrictedBySuggestions
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Whether or not this attribute's value is restricted by suggestions (`suggestions` property) or by an allowed list of value (`hasAllowedList` property). ")
 
@@ -538,98 +544,93 @@ public class Attribute {
     return restrictedBySuggestions;
   }
 
-
   public void setRestrictedBySuggestions(Boolean restrictedBySuggestions) {
     this.restrictedBySuggestions = restrictedBySuggestions;
   }
 
-
   public Attribute editable(Boolean editable) {
-    
+
     this.editable = editable;
     return this;
   }
 
-   /**
+  /**
    * Whether or not this attribute can be edited.
+   * 
    * @return editable
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Whether or not this attribute can be edited.")
 
   public Boolean getEditable() {
     return editable;
   }
 
-
   public void setEditable(Boolean editable) {
     this.editable = editable;
   }
 
+  public Attribute subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public Attribute subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public Attribute addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public Attribute addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the applications where this attribute is available.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 4, 9]", value = "A list of the IDs of the applications where this attribute is available.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
+  public Attribute subscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
 
-  public Attribute subscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
-    
     this.subscribedCatalogsIds = subscribedCatalogsIds;
     return this;
   }
 
-  public Attribute addSubscribedCatalogsIdsItem(Integer subscribedCatalogsIdsItem) {
+  public Attribute addSubscribedCatalogsIdsItem(Long subscribedCatalogsIdsItem) {
     if (this.subscribedCatalogsIds == null) {
-      this.subscribedCatalogsIds = new ArrayList<Integer>();
+      this.subscribedCatalogsIds = new ArrayList<Long>();
     }
     this.subscribedCatalogsIds.add(subscribedCatalogsIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the catalogs where this attribute is available.
+   * 
    * @return subscribedCatalogsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 5]", value = "A list of the IDs of the catalogs where this attribute is available.")
 
-  public List<Integer> getSubscribedCatalogsIds() {
+  public List<Long> getSubscribedCatalogsIds() {
     return subscribedCatalogsIds;
   }
 
-
-  public void setSubscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
+  public void setSubscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
     this.subscribedCatalogsIds = subscribedCatalogsIds;
   }
 
-
   public Attribute allowedSubscriptions(List<AllowedSubscriptionsEnum> allowedSubscriptions) {
-    
+
     this.allowedSubscriptions = allowedSubscriptions;
     return this;
   }
@@ -642,10 +643,12 @@ public class Attribute {
     return this;
   }
 
-   /**
-   * A list of allowed subscription types for this attribute.  **Note:** This only applies to attributes associated with the &#x60;CartItem&#x60; entity. 
+  /**
+   * A list of allowed subscription types for this attribute. **Note:** This only
+   * applies to attributes associated with the &#x60;CartItem&#x60; entity.
+   * 
    * @return allowedSubscriptions
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[application, catalog]", value = "A list of allowed subscription types for this attribute.  **Note:** This only applies to attributes associated with the `CartItem` entity. ")
 
@@ -653,34 +656,31 @@ public class Attribute {
     return allowedSubscriptions;
   }
 
-
   public void setAllowedSubscriptions(List<AllowedSubscriptionsEnum> allowedSubscriptions) {
     this.allowedSubscriptions = allowedSubscriptions;
   }
 
+  public Attribute eventTypeId(Long eventTypeId) {
 
-  public Attribute eventTypeId(Integer eventTypeId) {
-    
     this.eventTypeId = eventTypeId;
     return this;
   }
 
-   /**
+  /**
    * Get eventTypeId
+   * 
    * @return eventTypeId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "22", value = "")
 
-  public Integer getEventTypeId() {
+  public Long getEventTypeId() {
     return eventTypeId;
   }
 
-
-  public void setEventTypeId(Integer eventTypeId) {
+  public void setEventTypeId(Long eventTypeId) {
     this.eventTypeId = eventTypeId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -712,9 +712,10 @@ public class Attribute {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions, hasAllowedList, restrictedBySuggestions, editable, subscribedApplicationsIds, subscribedCatalogsIds, allowedSubscriptions, eventTypeId);
+    return Objects.hash(id, created, accountId, entity, eventType, name, title, type, description, suggestions,
+        hasAllowedList, restrictedBySuggestions, editable, subscribedApplicationsIds, subscribedCatalogsIds,
+        allowedSubscriptions, eventTypeId);
   }
-
 
   @Override
   public String toString() {
@@ -753,4 +754,3 @@ public class Attribute {
   }
 
 }
-

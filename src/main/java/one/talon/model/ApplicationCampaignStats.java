@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,160 +31,153 @@ import java.io.IOException;
 public class ApplicationCampaignStats {
   public static final String SERIALIZED_NAME_DISABLED = "disabled";
   @SerializedName(SERIALIZED_NAME_DISABLED)
-  private Integer disabled;
+  private Long disabled;
 
   public static final String SERIALIZED_NAME_STAGED = "staged";
   @SerializedName(SERIALIZED_NAME_STAGED)
-  private Integer staged;
+  private Long staged;
 
   public static final String SERIALIZED_NAME_SCHEDULED = "scheduled";
   @SerializedName(SERIALIZED_NAME_SCHEDULED)
-  private Integer scheduled;
+  private Long scheduled;
 
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
-  private Integer running;
+  private Long running;
 
   public static final String SERIALIZED_NAME_EXPIRED = "expired";
   @SerializedName(SERIALIZED_NAME_EXPIRED)
-  private Integer expired;
+  private Long expired;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
-  private Integer archived;
+  private Long archived;
 
+  public ApplicationCampaignStats disabled(Long disabled) {
 
-  public ApplicationCampaignStats disabled(Integer disabled) {
-    
     this.disabled = disabled;
     return this;
   }
 
-   /**
+  /**
    * Number of disabled campaigns.
+   * 
    * @return disabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of disabled campaigns.")
 
-  public Integer getDisabled() {
+  public Long getDisabled() {
     return disabled;
   }
 
-
-  public void setDisabled(Integer disabled) {
+  public void setDisabled(Long disabled) {
     this.disabled = disabled;
   }
 
+  public ApplicationCampaignStats staged(Long staged) {
 
-  public ApplicationCampaignStats staged(Integer staged) {
-    
     this.staged = staged;
     return this;
   }
 
-   /**
+  /**
    * Number of staged campaigns.
+   * 
    * @return staged
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of staged campaigns.")
 
-  public Integer getStaged() {
+  public Long getStaged() {
     return staged;
   }
 
-
-  public void setStaged(Integer staged) {
+  public void setStaged(Long staged) {
     this.staged = staged;
   }
 
+  public ApplicationCampaignStats scheduled(Long scheduled) {
 
-  public ApplicationCampaignStats scheduled(Integer scheduled) {
-    
     this.scheduled = scheduled;
     return this;
   }
 
-   /**
+  /**
    * Number of scheduled campaigns.
+   * 
    * @return scheduled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of scheduled campaigns.")
 
-  public Integer getScheduled() {
+  public Long getScheduled() {
     return scheduled;
   }
 
-
-  public void setScheduled(Integer scheduled) {
+  public void setScheduled(Long scheduled) {
     this.scheduled = scheduled;
   }
 
+  public ApplicationCampaignStats running(Long running) {
 
-  public ApplicationCampaignStats running(Integer running) {
-    
     this.running = running;
     return this;
   }
 
-   /**
+  /**
    * Number of running campaigns.
+   * 
    * @return running
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of running campaigns.")
 
-  public Integer getRunning() {
+  public Long getRunning() {
     return running;
   }
 
-
-  public void setRunning(Integer running) {
+  public void setRunning(Long running) {
     this.running = running;
   }
 
+  public ApplicationCampaignStats expired(Long expired) {
 
-  public ApplicationCampaignStats expired(Integer expired) {
-    
     this.expired = expired;
     return this;
   }
 
-   /**
+  /**
    * Number of expired campaigns.
+   * 
    * @return expired
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of expired campaigns.")
 
-  public Integer getExpired() {
+  public Long getExpired() {
     return expired;
   }
 
-
-  public void setExpired(Integer expired) {
+  public void setExpired(Long expired) {
     this.expired = expired;
   }
 
+  public ApplicationCampaignStats archived(Long archived) {
 
-  public ApplicationCampaignStats archived(Integer archived) {
-    
     this.archived = archived;
     return this;
   }
 
-   /**
+  /**
    * Number of archived campaigns.
+   * 
    * @return archived
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of archived campaigns.")
 
-  public Integer getArchived() {
+  public Long getArchived() {
     return archived;
   }
 
-
-  public void setArchived(Integer archived) {
+  public void setArchived(Long archived) {
     this.archived = archived;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -208,7 +200,6 @@ public class ApplicationCampaignStats {
   public int hashCode() {
     return Objects.hash(disabled, staged, scheduled, running, expired, archived);
   }
-
 
   @Override
   public String toString() {
@@ -236,4 +227,3 @@ public class ApplicationCampaignStats {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Tier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -47,12 +46,16 @@ public class Tier {
   private OffsetDateTime expiryDate;
 
   /**
-   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
+   * The policy that defines how customer tiers are downgraded in the loyalty
+   * program after tier reevaluation. - &#x60;one_down&#x60;: If the customer
+   * doesn&#39;t have enough points to stay in the current tier, they are
+   * downgraded by one tier. - &#x60;balance_based&#x60;: The customer&#39;s tier
+   * is reevaluated based on the amount of active points they have at the moment.
    */
   @JsonAdapter(DowngradePolicyEnum.Adapter.class)
   public enum DowngradePolicyEnum {
     ONE_DOWN("one_down"),
-    
+
     BALANCE_BASED("balance_based");
 
     private String value;
@@ -87,7 +90,7 @@ public class Tier {
 
       @Override
       public DowngradePolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return DowngradePolicyEnum.fromValue(value);
       }
     }
@@ -97,61 +100,60 @@ public class Tier {
   @SerializedName(SERIALIZED_NAME_DOWNGRADE_POLICY)
   private DowngradePolicyEnum downgradePolicy;
 
+  public Tier id(Long id) {
 
-  public Tier id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the tier.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "11", required = true, value = "The internal ID of the tier.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Tier name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the tier.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "bronze", required = true, value = "The name of the tier.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Tier startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
-   * Date and time when the customer moved to this tier. This value uses the loyalty program&#39;s time zone setting.
+  /**
+   * Date and time when the customer moved to this tier. This value uses the
+   * loyalty program&#39;s time zone setting.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date and time when the customer moved to this tier. This value uses the loyalty program's time zone setting.")
 
@@ -159,22 +161,22 @@ public class Tier {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public Tier expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Date when tier level expires in the RFC3339 format (in the Loyalty Program&#39;s timezone).
+  /**
+   * Date when tier level expires in the RFC3339 format (in the Loyalty
+   * Program&#39;s timezone).
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date when tier level expires in the RFC3339 format (in the Loyalty Program's timezone).")
 
@@ -182,22 +184,25 @@ public class Tier {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public Tier downgradePolicy(DowngradePolicyEnum downgradePolicy) {
-    
+
     this.downgradePolicy = downgradePolicy;
     return this;
   }
 
-   /**
-   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
+  /**
+   * The policy that defines how customer tiers are downgraded in the loyalty
+   * program after tier reevaluation. - &#x60;one_down&#x60;: If the customer
+   * doesn&#39;t have enough points to stay in the current tier, they are
+   * downgraded by one tier. - &#x60;balance_based&#x60;: The customer&#39;s tier
+   * is reevaluated based on the amount of active points they have at the moment.
+   * 
    * @return downgradePolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - `one_down`: If the customer doesn't have enough points to stay in the current tier, they are downgraded by one tier.  - `balance_based`: The customer's tier is reevaluated based on the amount of active points they have at the moment. ")
 
@@ -205,11 +210,9 @@ public class Tier {
     return downgradePolicy;
   }
 
-
   public void setDowngradePolicy(DowngradePolicyEnum downgradePolicy) {
     this.downgradePolicy = downgradePolicy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -231,7 +234,6 @@ public class Tier {
   public int hashCode() {
     return Objects.hash(id, name, startDate, expiryDate, downgradePolicy);
   }
-
 
   @Override
   public String toString() {
@@ -258,4 +260,3 @@ public class Tier {
   }
 
 }
-

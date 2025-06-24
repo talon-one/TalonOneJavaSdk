@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ValueMap {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,45 +39,45 @@ public class ValueMap {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
+  public ValueMap id(Long id) {
 
-  public ValueMap id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
-   * Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.
+  /**
+   * Unique ID for this entity. Not to be confused with the Integration ID, which
+   * is set by your integration layer and used in most endpoints.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ValueMap created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Get created
+   * 
    * @return created
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "")
 
@@ -86,56 +85,52 @@ public class ValueMap {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public ValueMap createdBy(Long createdBy) {
 
-  public ValueMap createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who created the value map.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the value map.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public ValueMap campaignId(Long campaignId) {
 
-  public ValueMap campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * Get campaignId
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "244", required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -156,7 +151,6 @@ public class ValueMap {
   public int hashCode() {
     return Objects.hash(id, created, createdBy, campaignId);
   }
-
 
   @Override
   public String toString() {
@@ -182,4 +176,3 @@ public class ValueMap {
   }
 
 }
-

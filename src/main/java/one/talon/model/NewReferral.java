@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -40,11 +39,11 @@ public class NewReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID = "advocateProfileIntegrationId";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID)
@@ -58,17 +57,17 @@ public class NewReferral {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-
   public NewReferral startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the referral code becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
@@ -76,22 +75,22 @@ public class NewReferral {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public NewReferral expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Expiration date of the referral code. Referral never expires if this is omitted.
+  /**
+   * Expiration date of the referral code. Referral never expires if this is
+   * omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted.")
 
@@ -99,91 +98,88 @@ public class NewReferral {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
+  public NewReferral usageLimit(Long usageLimit) {
 
-  public NewReferral usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply. 
+  /**
+   * The number of times a referral code can be used. &#x60;0&#x60; means no limit
+   * but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
+  public NewReferral campaignId(Long campaignId) {
 
-  public NewReferral campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign from which the referral received the referral code.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "78", required = true, value = "ID of the campaign from which the referral received the referral code.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public NewReferral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
-    
+
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The Integration ID of the Advocate&#39;s Profile.
+   * 
    * @return advocateProfileIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The Integration ID of the Advocate's Profile.")
 
   public String getAdvocateProfileIntegrationId() {
     return advocateProfileIntegrationId;
   }
 
-
   public void setAdvocateProfileIntegrationId(String advocateProfileIntegrationId) {
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
   }
 
-
   public NewReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
-    
+
     this.friendProfileIntegrationId = friendProfileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * An optional Integration ID of the Friend&#39;s Profile.
+   * 
    * @return friendProfileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "BZGGC2454PA", value = "An optional Integration ID of the Friend's Profile.")
 
@@ -191,22 +187,21 @@ public class NewReferral {
     return friendProfileIntegrationId;
   }
 
-
   public void setFriendProfileIntegrationId(String friendProfileIntegrationId) {
     this.friendProfileIntegrationId = friendProfileIntegrationId;
   }
 
-
   public NewReferral attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"channel\":\"web\"}", value = "Arbitrary properties associated with this item.")
 
@@ -214,11 +209,9 @@ public class NewReferral {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -240,9 +233,9 @@ public class NewReferral {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, expiryDate, usageLimit, campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, attributes);
+    return Objects.hash(startDate, expiryDate, usageLimit, campaignId, advocateProfileIntegrationId,
+        friendProfileIntegrationId, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -271,4 +264,3 @@ public class NewReferral {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ public class CampaignVersions {
   @JsonAdapter(RevisionFrontendStateEnum.Adapter.class)
   public enum RevisionFrontendStateEnum {
     REVISED("revised"),
-    
+
     PENDING("pending");
 
     private String value;
@@ -70,7 +69,7 @@ public class CampaignVersions {
 
       @Override
       public RevisionFrontendStateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return RevisionFrontendStateEnum.fromValue(value);
       }
     }
@@ -82,39 +81,39 @@ public class CampaignVersions {
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
-  private Integer activeRevisionId;
+  private Long activeRevisionId;
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID = "activeRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID)
-  private Integer activeRevisionVersionId;
+  private Long activeRevisionVersionId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_ID = "currentRevisionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_ID)
-  private Integer currentRevisionId;
+  private Long currentRevisionId;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID = "currentRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID)
-  private Integer currentRevisionVersionId;
+  private Long currentRevisionVersionId;
 
   public static final String SERIALIZED_NAME_STAGE_REVISION = "stageRevision";
   @SerializedName(SERIALIZED_NAME_STAGE_REVISION)
   private Boolean stageRevision = false;
 
-
   public CampaignVersions revisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
-    
+
     this.revisionFrontendState = revisionFrontendState;
     return this;
   }
 
-   /**
+  /**
    * The campaign revision state displayed in the Campaign Manager.
+   * 
    * @return revisionFrontendState
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "revised", value = "The campaign revision state displayed in the Campaign Manager.")
 
@@ -122,137 +121,133 @@ public class CampaignVersions {
     return revisionFrontendState;
   }
 
-
   public void setRevisionFrontendState(RevisionFrontendStateEnum revisionFrontendState) {
     this.revisionFrontendState = revisionFrontendState;
   }
 
+  public CampaignVersions activeRevisionId(Long activeRevisionId) {
 
-  public CampaignVersions activeRevisionId(Integer activeRevisionId) {
-    
     this.activeRevisionId = activeRevisionId;
     return this;
   }
 
-   /**
-   * ID of the revision that was last activated on this campaign. 
+  /**
+   * ID of the revision that was last activated on this campaign.
+   * 
    * @return activeRevisionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision that was last activated on this campaign. ")
 
-  public Integer getActiveRevisionId() {
+  public Long getActiveRevisionId() {
     return activeRevisionId;
   }
 
-
-  public void setActiveRevisionId(Integer activeRevisionId) {
+  public void setActiveRevisionId(Long activeRevisionId) {
     this.activeRevisionId = activeRevisionId;
   }
 
+  public CampaignVersions activeRevisionVersionId(Long activeRevisionVersionId) {
 
-  public CampaignVersions activeRevisionVersionId(Integer activeRevisionVersionId) {
-    
     this.activeRevisionVersionId = activeRevisionVersionId;
     return this;
   }
 
-   /**
-   * ID of the revision version that is active on the campaign. 
+  /**
+   * ID of the revision version that is active on the campaign.
+   * 
    * @return activeRevisionVersionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision version that is active on the campaign. ")
 
-  public Integer getActiveRevisionVersionId() {
+  public Long getActiveRevisionVersionId() {
     return activeRevisionVersionId;
   }
 
-
-  public void setActiveRevisionVersionId(Integer activeRevisionVersionId) {
+  public void setActiveRevisionVersionId(Long activeRevisionVersionId) {
     this.activeRevisionVersionId = activeRevisionVersionId;
   }
 
+  public CampaignVersions version(Long version) {
 
-  public CampaignVersions version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
-   * Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. 
+  /**
+   * Incrementing number representing how many revisions have been activated on
+   * this campaign, starts from 0 for a new campaign.
+   * 
    * @return version
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
+  public CampaignVersions currentRevisionId(Long currentRevisionId) {
 
-  public CampaignVersions currentRevisionId(Integer currentRevisionId) {
-    
     this.currentRevisionId = currentRevisionId;
     return this;
   }
 
-   /**
-   * ID of the revision currently being modified for the campaign. 
+  /**
+   * ID of the revision currently being modified for the campaign.
+   * 
    * @return currentRevisionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision currently being modified for the campaign. ")
 
-  public Integer getCurrentRevisionId() {
+  public Long getCurrentRevisionId() {
     return currentRevisionId;
   }
 
-
-  public void setCurrentRevisionId(Integer currentRevisionId) {
+  public void setCurrentRevisionId(Long currentRevisionId) {
     this.currentRevisionId = currentRevisionId;
   }
 
+  public CampaignVersions currentRevisionVersionId(Long currentRevisionVersionId) {
 
-  public CampaignVersions currentRevisionVersionId(Integer currentRevisionVersionId) {
-    
     this.currentRevisionVersionId = currentRevisionVersionId;
     return this;
   }
 
-   /**
-   * ID of the latest version applied on the current revision. 
+  /**
+   * ID of the latest version applied on the current revision.
+   * 
    * @return currentRevisionVersionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the latest version applied on the current revision. ")
 
-  public Integer getCurrentRevisionVersionId() {
+  public Long getCurrentRevisionVersionId() {
     return currentRevisionVersionId;
   }
 
-
-  public void setCurrentRevisionVersionId(Integer currentRevisionVersionId) {
+  public void setCurrentRevisionVersionId(Long currentRevisionVersionId) {
     this.currentRevisionVersionId = currentRevisionVersionId;
   }
 
-
   public CampaignVersions stageRevision(Boolean stageRevision) {
-    
+
     this.stageRevision = stageRevision;
     return this;
   }
 
-   /**
-   * Flag for determining whether we use current revision when sending requests with staging API key. 
+  /**
+   * Flag for determining whether we use current revision when sending requests
+   * with staging API key.
+   * 
    * @return stageRevision
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Flag for determining whether we use current revision when sending requests with staging API key. ")
 
@@ -260,11 +255,9 @@ public class CampaignVersions {
     return stageRevision;
   }
 
-
   public void setStageRevision(Boolean stageRevision) {
     this.stageRevision = stageRevision;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -286,9 +279,9 @@ public class CampaignVersions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId, currentRevisionVersionId, stageRevision);
+    return Objects.hash(revisionFrontendState, activeRevisionId, activeRevisionVersionId, version, currentRevisionId,
+        currentRevisionVersionId, stageRevision);
   }
-
 
   @Override
   public String toString() {
@@ -317,4 +310,3 @@ public class CampaignVersions {
   }
 
 }
-

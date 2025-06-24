@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,27 +33,28 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgramTransaction {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
   /**
-   * Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. 
+   * Type of transaction. Possible values: - &#x60;addition&#x60;: Signifies added
+   * points. - &#x60;subtraction&#x60;: Signifies deducted points.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     ADDITION("addition"),
-    
+
     SUBTRACTION("subtraction");
 
     private String value;
@@ -89,7 +89,7 @@ public class LoyaltyProgramTransaction {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -133,11 +133,11 @@ public class LoyaltyProgramTransaction {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_USER_EMAIL = "userEmail";
   @SerializedName(SERIALIZED_NAME_USER_EMAIL)
@@ -145,7 +145,7 @@ public class LoyaltyProgramTransaction {
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -155,216 +155,211 @@ public class LoyaltyProgramTransaction {
   @SerializedName(SERIALIZED_NAME_FLAGS)
   private LoyaltyLedgerEntryFlags flags;
 
+  public LoyaltyProgramTransaction id(Long id) {
 
-  public LoyaltyProgramTransaction id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty ledger transaction.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger transaction.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public LoyaltyProgramTransaction programId(Long programId) {
 
-  public LoyaltyProgramTransaction programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty program.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
+  public LoyaltyProgramTransaction campaignId(Long campaignId) {
 
-  public LoyaltyProgramTransaction campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign.
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "324", value = "ID of the campaign.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public LoyaltyProgramTransaction created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Date and time the loyalty transaction occurred.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Date and time the loyalty transaction occurred.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public LoyaltyProgramTransaction type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. 
+  /**
+   * Type of transaction. Possible values: - &#x60;addition&#x60;: Signifies added
+   * points. - &#x60;subtraction&#x60;: Signifies deducted points.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "addition", required = true, value = "Type of transaction. Possible values:   - `addition`: Signifies added points.   - `subtraction`: Signifies deducted points. ")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public LoyaltyProgramTransaction amount(BigDecimal amount) {
-    
+
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * Amount of loyalty points added or deducted in the transaction.
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(example = "10.25", required = true, value = "Amount of loyalty points added or deducted in the transaction.")
 
   public BigDecimal getAmount() {
     return amount;
   }
 
-
   public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
 
-
   public LoyaltyProgramTransaction name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name or reason for the loyalty ledger transaction.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Reward 50 points for each $500 purchase", required = true, value = "Name or reason for the loyalty ledger transaction.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public LoyaltyProgramTransaction startDate(String startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
-   * When points become active. Possible values:   - &#x60;immediate&#x60;: Points are immediately active.   - a timestamp value: Points become active at a given date and time. 
+  /**
+   * When points become active. Possible values: - &#x60;immediate&#x60;: Points
+   * are immediately active. - a timestamp value: Points become active at a given
+   * date and time.
+   * 
    * @return startDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points become active. Possible values:   - `immediate`: Points are immediately active.   - a timestamp value: Points become active at a given date and time. ")
 
   public String getStartDate() {
     return startDate;
   }
 
-
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-
   public LoyaltyProgramTransaction expiryDate(String expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * When points expire. Possible values:   - &#x60;unlimited&#x60;: Points have no expiration date.   - a timestamp value: Points expire at a given date and time. 
+  /**
+   * When points expire. Possible values: - &#x60;unlimited&#x60;: Points have no
+   * expiration date. - a timestamp value: Points expire at a given date and time.
+   * 
    * @return expiryDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points expire. Possible values:   - `unlimited`: Points have no expiration date.   - a timestamp value: Points expire at a given date and time. ")
 
   public String getExpiryDate() {
     return expiryDate;
   }
 
-
   public void setExpiryDate(String expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public LoyaltyProgramTransaction customerProfileId(String customerProfileId) {
-    
+
     this.customerProfileId = customerProfileId;
     return this;
   }
 
-   /**
+  /**
    * Customer profile integration ID used in the loyalty program.
+   * 
    * @return customerProfileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "kda0fajs0-fad9f-fd9dfsa9-fd9dasjf9", value = "Customer profile integration ID used in the loyalty program.")
 
@@ -372,22 +367,21 @@ public class LoyaltyProgramTransaction {
     return customerProfileId;
   }
 
-
   public void setCustomerProfileId(String customerProfileId) {
     this.customerProfileId = customerProfileId;
   }
 
-
   public LoyaltyProgramTransaction cardIdentifier(String cardIdentifier) {
-    
+
     this.cardIdentifier = cardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return cardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -395,44 +389,42 @@ public class LoyaltyProgramTransaction {
     return cardIdentifier;
   }
 
-
   public void setCardIdentifier(String cardIdentifier) {
     this.cardIdentifier = cardIdentifier;
   }
 
-
   public LoyaltyProgramTransaction subledgerId(String subledgerId) {
-    
+
     this.subledgerId = subledgerId;
     return this;
   }
 
-   /**
+  /**
    * ID of the subledger.
+   * 
    * @return subledgerId
-  **/
+   **/
   @ApiModelProperty(example = "sub-123", required = true, value = "ID of the subledger.")
 
   public String getSubledgerId() {
     return subledgerId;
   }
 
-
   public void setSubledgerId(String subledgerId) {
     this.subledgerId = subledgerId;
   }
 
-
   public LoyaltyProgramTransaction customerSessionId(String customerSessionId) {
-    
+
     this.customerSessionId = customerSessionId;
     return this;
   }
 
-   /**
+  /**
    * ID of the customer session where the transaction occurred.
+   * 
    * @return customerSessionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "05c2da0d-48fa-4aa1-b629-898f58f1584d", value = "ID of the customer session where the transaction occurred.")
 
@@ -440,68 +432,67 @@ public class LoyaltyProgramTransaction {
     return customerSessionId;
   }
 
-
   public void setCustomerSessionId(String customerSessionId) {
     this.customerSessionId = customerSessionId;
   }
 
+  public LoyaltyProgramTransaction importId(Long importId) {
 
-  public LoyaltyProgramTransaction importId(Integer importId) {
-    
     this.importId = importId;
     return this;
   }
 
-   /**
+  /**
    * ID of the import where the transaction occurred.
+   * 
    * @return importId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "ID of the import where the transaction occurred.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
-
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
+  public LoyaltyProgramTransaction userId(Long userId) {
 
-  public LoyaltyProgramTransaction userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
-   * ID of the user who manually added or deducted points. Applies only to manual transactions.
+  /**
+   * ID of the user who manually added or deducted points. Applies only to manual
+   * transactions.
+   * 
    * @return userId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "ID of the user who manually added or deducted points. Applies only to manual transactions.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public LoyaltyProgramTransaction userEmail(String userEmail) {
-    
+
     this.userEmail = userEmail;
     return this;
   }
 
-   /**
-   * The email of the Campaign Manager account that manually added or deducted points. Applies only to manual transactions.
+  /**
+   * The email of the Campaign Manager account that manually added or deducted
+   * points. Applies only to manual transactions.
+   * 
    * @return userEmail
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "john.doe@example.com", value = "The email of the Campaign Manager account that manually added or deducted points. Applies only to manual transactions.")
 
@@ -509,45 +500,45 @@ public class LoyaltyProgramTransaction {
     return userEmail;
   }
 
-
   public void setUserEmail(String userEmail) {
     this.userEmail = userEmail;
   }
 
+  public LoyaltyProgramTransaction rulesetId(Long rulesetId) {
 
-  public LoyaltyProgramTransaction rulesetId(Integer rulesetId) {
-    
     this.rulesetId = rulesetId;
     return this;
   }
 
-   /**
-   * ID of the ruleset containing the rule that triggered the effect. Applies only for transactions that resulted from a customer session.
+  /**
+   * ID of the ruleset containing the rule that triggered the effect. Applies only
+   * for transactions that resulted from a customer session.
+   * 
    * @return rulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "ID of the ruleset containing the rule that triggered the effect. Applies only for transactions that resulted from a customer session.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
-
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 
-
   public LoyaltyProgramTransaction ruleName(String ruleName) {
-    
+
     this.ruleName = ruleName;
     return this;
   }
 
-   /**
-   * Name of the rule that triggered the effect. Applies only for transactions that resulted from a customer session.
+  /**
+   * Name of the rule that triggered the effect. Applies only for transactions
+   * that resulted from a customer session.
+   * 
    * @return ruleName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10 points for every $100 spent", value = "Name of the rule that triggered the effect. Applies only for transactions that resulted from a customer session.")
 
@@ -555,22 +546,21 @@ public class LoyaltyProgramTransaction {
     return ruleName;
   }
 
-
   public void setRuleName(String ruleName) {
     this.ruleName = ruleName;
   }
 
-
   public LoyaltyProgramTransaction flags(LoyaltyLedgerEntryFlags flags) {
-    
+
     this.flags = flags;
     return this;
   }
 
-   /**
+  /**
    * Get flags
+   * 
    * @return flags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -578,11 +568,9 @@ public class LoyaltyProgramTransaction {
     return flags;
   }
 
-
   public void setFlags(LoyaltyLedgerEntryFlags flags) {
     this.flags = flags;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -616,9 +604,10 @@ public class LoyaltyProgramTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate, customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId, ruleName, flags);
+    return Objects.hash(id, programId, campaignId, created, type, amount, name, startDate, expiryDate,
+        customerProfileId, cardIdentifier, subledgerId, customerSessionId, importId, userId, userEmail, rulesetId,
+        ruleName, flags);
   }
-
 
   @Override
   public String toString() {
@@ -659,4 +648,3 @@ public class LoyaltyProgramTransaction {
   }
 
 }
-

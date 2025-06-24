@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class LoyaltyProgramEntity {
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -41,39 +40,38 @@ public class LoyaltyProgramEntity {
   @SerializedName(SERIALIZED_NAME_PROGRAM_TITLE)
   private String programTitle;
 
+  public LoyaltyProgramEntity programID(Long programID) {
 
-  public LoyaltyProgramEntity programID(Integer programID) {
-    
     this.programID = programID;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program that owns this entity.
+   * 
    * @return programID
-  **/
+   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
-
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
-
   public LoyaltyProgramEntity programName(String programName) {
-    
+
     this.programName = programName;
     return this;
   }
 
-   /**
+  /**
    * The integration name of the loyalty program that owns this entity.
+   * 
    * @return programName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty_program", value = "The integration name of the loyalty program that owns this entity.")
 
@@ -81,22 +79,22 @@ public class LoyaltyProgramEntity {
     return programName;
   }
 
-
   public void setProgramName(String programName) {
     this.programName = programName;
   }
 
-
   public LoyaltyProgramEntity programTitle(String programTitle) {
-    
+
     this.programTitle = programTitle;
     return this;
   }
 
-   /**
-   * The Campaign Manager-displayed name of the loyalty program that owns this entity.
+  /**
+   * The Campaign Manager-displayed name of the loyalty program that owns this
+   * entity.
+   * 
    * @return programTitle
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty program", value = "The Campaign Manager-displayed name of the loyalty program that owns this entity.")
 
@@ -104,11 +102,9 @@ public class LoyaltyProgramEntity {
     return programTitle;
   }
 
-
   public void setProgramTitle(String programTitle) {
     this.programTitle = programTitle;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,7 +124,6 @@ public class LoyaltyProgramEntity {
   public int hashCode() {
     return Objects.hash(programID, programName, programTitle);
   }
-
 
   @Override
   public String toString() {
@@ -153,4 +148,3 @@ public class LoyaltyProgramEntity {
   }
 
 }
-

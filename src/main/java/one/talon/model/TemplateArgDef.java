@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,13 +34,13 @@ public class TemplateArgDef {
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     STRING("string"),
-    
+
     BOOLEAN("boolean"),
-    
+
     NUMBER("number"),
-    
+
     TIME("time"),
-    
+
     _LIST_STRING_("(list string)");
 
     private String value;
@@ -76,7 +75,7 @@ public class TemplateArgDef {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -104,45 +103,45 @@ public class TemplateArgDef {
 
   public static final String SERIALIZED_NAME_PICKLIST_I_D = "picklistID";
   @SerializedName(SERIALIZED_NAME_PICKLIST_I_D)
-  private Integer picklistID;
+  private Long picklistID;
 
   public static final String SERIALIZED_NAME_RESTRICTED_BY_PICKLIST = "restrictedByPicklist";
   @SerializedName(SERIALIZED_NAME_RESTRICTED_BY_PICKLIST)
   private Boolean restrictedByPicklist;
 
-
   public TemplateArgDef type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * The type of value this argument expects.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The type of value this argument expects.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public TemplateArgDef description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
-   * A campaigner-friendly description of the argument, this will also be shown in the rule editor.
+  /**
+   * A campaigner-friendly description of the argument, this will also be shown in
+   * the rule editor.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A campaigner-friendly description of the argument, this will also be shown in the rule editor.")
 
@@ -150,66 +149,64 @@ public class TemplateArgDef {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public TemplateArgDef title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
-   * A campaigner friendly name for the argument, this will be shown in the rule editor.
+  /**
+   * A campaigner friendly name for the argument, this will be shown in the rule
+   * editor.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A campaigner friendly name for the argument, this will be shown in the rule editor.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public TemplateArgDef ui(Object ui) {
-    
+
     this.ui = ui;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary metadata that may be used to render an input for this argument.
+   * 
    * @return ui
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Arbitrary metadata that may be used to render an input for this argument.")
 
   public Object getUi() {
     return ui;
   }
 
-
   public void setUi(Object ui) {
     this.ui = ui;
   }
 
-
   public TemplateArgDef key(String key) {
-    
+
     this.key = key;
     return this;
   }
 
-   /**
+  /**
    * The identifier for the associated value within the JSON object.
+   * 
    * @return key
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The identifier for the associated value within the JSON object.")
 
@@ -217,45 +214,44 @@ public class TemplateArgDef {
     return key;
   }
 
-
   public void setKey(String key) {
     this.key = key;
   }
 
+  public TemplateArgDef picklistID(Long picklistID) {
 
-  public TemplateArgDef picklistID(Integer picklistID) {
-    
     this.picklistID = picklistID;
     return this;
   }
 
-   /**
+  /**
    * ID of the picklist linked to a template.
+   * 
    * @return picklistID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "ID of the picklist linked to a template.")
 
-  public Integer getPicklistID() {
+  public Long getPicklistID() {
     return picklistID;
   }
 
-
-  public void setPicklistID(Integer picklistID) {
+  public void setPicklistID(Long picklistID) {
     this.picklistID = picklistID;
   }
 
-
   public TemplateArgDef restrictedByPicklist(Boolean restrictedByPicklist) {
-    
+
     this.restrictedByPicklist = restrictedByPicklist;
     return this;
   }
 
-   /**
-   * Whether or not this attribute&#39;s value is restricted by picklist (&#x60;picklist&#x60; property)
+  /**
+   * Whether or not this attribute&#39;s value is restricted by picklist
+   * (&#x60;picklist&#x60; property)
+   * 
    * @return restrictedByPicklist
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Whether or not this attribute's value is restricted by picklist (`picklist` property)")
 
@@ -263,11 +259,9 @@ public class TemplateArgDef {
     return restrictedByPicklist;
   }
 
-
   public void setRestrictedByPicklist(Boolean restrictedByPicklist) {
     this.restrictedByPicklist = restrictedByPicklist;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -291,7 +285,6 @@ public class TemplateArgDef {
   public int hashCode() {
     return Objects.hash(type, description, title, ui, key, picklistID, restrictedByPicklist);
   }
-
 
   @Override
   public String toString() {
@@ -320,4 +313,3 @@ public class TemplateArgDef {
   }
 
 }
-

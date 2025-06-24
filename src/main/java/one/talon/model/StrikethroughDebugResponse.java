@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,46 +33,44 @@ import one.talon.model.StrikethroughEffect;
 public class StrikethroughDebugResponse {
   public static final String SERIALIZED_NAME_CAMPAIGNS_I_DS = "campaignsIDs";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_I_DS)
-  private List<Integer> campaignsIDs = null;
+  private List<Long> campaignsIDs = null;
 
   public static final String SERIALIZED_NAME_EFFECTS = "effects";
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<StrikethroughEffect> effects = null;
 
+  public StrikethroughDebugResponse campaignsIDs(List<Long> campaignsIDs) {
 
-  public StrikethroughDebugResponse campaignsIDs(List<Integer> campaignsIDs) {
-    
     this.campaignsIDs = campaignsIDs;
     return this;
   }
 
-  public StrikethroughDebugResponse addCampaignsIDsItem(Integer campaignsIDsItem) {
+  public StrikethroughDebugResponse addCampaignsIDsItem(Long campaignsIDsItem) {
     if (this.campaignsIDs == null) {
-      this.campaignsIDs = new ArrayList<Integer>();
+      this.campaignsIDs = new ArrayList<Long>();
     }
     this.campaignsIDs.add(campaignsIDsItem);
     return this;
   }
 
-   /**
+  /**
    * The campaign IDs that got fetched for the evaluation process.
+   * 
    * @return campaignsIDs
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The campaign IDs that got fetched for the evaluation process.")
 
-  public List<Integer> getCampaignsIDs() {
+  public List<Long> getCampaignsIDs() {
     return campaignsIDs;
   }
 
-
-  public void setCampaignsIDs(List<Integer> campaignsIDs) {
+  public void setCampaignsIDs(List<Long> campaignsIDs) {
     this.campaignsIDs = campaignsIDs;
   }
 
-
   public StrikethroughDebugResponse effects(List<StrikethroughEffect> effects) {
-    
+
     this.effects = effects;
     return this;
   }
@@ -86,10 +83,11 @@ public class StrikethroughDebugResponse {
     return this;
   }
 
-   /**
+  /**
    * The strikethrough effects that are returned from the evaluation process.
+   * 
    * @return effects
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The strikethrough effects that are returned from the evaluation process.")
 
@@ -97,11 +95,9 @@ public class StrikethroughDebugResponse {
     return effects;
   }
 
-
   public void setEffects(List<StrikethroughEffect> effects) {
     this.effects = effects;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,7 +116,6 @@ public class StrikethroughDebugResponse {
   public int hashCode() {
     return Objects.hash(campaignsIDs, effects);
   }
-
 
   @Override
   public String toString() {
@@ -144,4 +139,3 @@ public class StrikethroughDebugResponse {
   }
 
 }
-

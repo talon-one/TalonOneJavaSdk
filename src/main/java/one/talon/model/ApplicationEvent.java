@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationEvent {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,15 +43,15 @@ public class ApplicationEvent {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Integer storeId;
+  private Long storeId;
 
   public static final String SERIALIZED_NAME_STORE_INTEGRATION_ID = "storeIntegrationId";
   @SerializedName(SERIALIZED_NAME_STORE_INTEGRATION_ID)
@@ -60,7 +59,7 @@ public class ApplicationEvent {
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Integer sessionId;
+  private Long sessionId;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -78,129 +77,124 @@ public class ApplicationEvent {
   @SerializedName(SERIALIZED_NAME_RULE_FAILURE_REASONS)
   private List<RuleFailureReason> ruleFailureReasons = null;
 
+  public ApplicationEvent id(Long id) {
 
-  public ApplicationEvent id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ApplicationEvent created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public ApplicationEvent applicationId(Long applicationId) {
 
-  public ApplicationEvent applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public ApplicationEvent profileId(Long profileId) {
 
-  public ApplicationEvent profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The globally unique Talon.One ID of the customer that created this entity.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 
+  public ApplicationEvent storeId(Long storeId) {
 
-  public ApplicationEvent storeId(Integer storeId) {
-    
     this.storeId = storeId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the store.
+   * 
    * @return storeId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the store.")
 
-  public Integer getStoreId() {
+  public Long getStoreId() {
     return storeId;
   }
 
-
-  public void setStoreId(Integer storeId) {
+  public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
 
-
   public ApplicationEvent storeIntegrationId(String storeIntegrationId) {
-    
+
     this.storeIntegrationId = storeIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the store. You choose this ID when you create a store.
+   * 
    * @return storeIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
 
@@ -208,81 +202,76 @@ public class ApplicationEvent {
     return storeIntegrationId;
   }
 
-
   public void setStoreIntegrationId(String storeIntegrationId) {
     this.storeIntegrationId = storeIntegrationId;
   }
 
+  public ApplicationEvent sessionId(Long sessionId) {
 
-  public ApplicationEvent sessionId(Integer sessionId) {
-    
     this.sessionId = sessionId;
     return this;
   }
 
-   /**
+  /**
    * The globally unique Talon.One ID of the session that contains this event.
+   * 
    * @return sessionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The globally unique Talon.One ID of the session that contains this event.")
 
-  public Integer getSessionId() {
+  public Long getSessionId() {
     return sessionId;
   }
 
-
-  public void setSessionId(Integer sessionId) {
+  public void setSessionId(Long sessionId) {
     this.sessionId = sessionId;
   }
 
-
   public ApplicationEvent type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * A string representing the event. Must not be a reserved event name.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A string representing the event. Must not be a reserved event name.")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public ApplicationEvent attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Additional JSON serialized data associated with the event.
+   * 
    * @return attributes
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Additional JSON serialized data associated with the event.")
 
   public Object getAttributes() {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public ApplicationEvent effects(List<Effect> effects) {
-    
+
     this.effects = effects;
     return this;
   }
@@ -292,24 +281,23 @@ public class ApplicationEvent {
     return this;
   }
 
-   /**
+  /**
    * An array containing the effects that were applied as a result of this event.
+   * 
    * @return effects
-  **/
+   **/
   @ApiModelProperty(required = true, value = "An array containing the effects that were applied as a result of this event.")
 
   public List<Effect> getEffects() {
     return effects;
   }
 
-
   public void setEffects(List<Effect> effects) {
     this.effects = effects;
   }
 
-
   public ApplicationEvent ruleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
-    
+
     this.ruleFailureReasons = ruleFailureReasons;
     return this;
   }
@@ -322,10 +310,12 @@ public class ApplicationEvent {
     return this;
   }
 
-   /**
-   * An array containing the rule failure reasons which happened during this event.
+  /**
+   * An array containing the rule failure reasons which happened during this
+   * event.
+   * 
    * @return ruleFailureReasons
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "An array containing the rule failure reasons which happened during this event.")
 
@@ -333,11 +323,9 @@ public class ApplicationEvent {
     return ruleFailureReasons;
   }
 
-
   public void setRuleFailureReasons(List<RuleFailureReason> ruleFailureReasons) {
     this.ruleFailureReasons = ruleFailureReasons;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -363,9 +351,9 @@ public class ApplicationEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, profileId, storeId, storeIntegrationId, sessionId, type, attributes, effects, ruleFailureReasons);
+    return Objects.hash(id, created, applicationId, profileId, storeId, storeIntegrationId, sessionId, type, attributes,
+        effects, ruleFailureReasons);
   }
-
 
   @Override
   public String toString() {
@@ -398,4 +386,3 @@ public class ApplicationEvent {
   }
 
 }
-

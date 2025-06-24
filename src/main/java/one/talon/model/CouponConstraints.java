@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CouponConstraints {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -41,7 +40,7 @@ public class CouponConstraints {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -51,44 +50,45 @@ public class CouponConstraints {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
+  public CouponConstraints usageLimit(Long usageLimit) {
 
-  public CouponConstraints usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
+  /**
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means
+   * unlimited redemptions but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100", value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public CouponConstraints discountLimit(BigDecimal discountLimit) {
-    
+
     this.discountLimit = discountLimit;
     return this;
   }
 
-   /**
-   * The total discount value that the code can give. Typically used to represent a gift card value. 
+  /**
+   * The total discount value that the code can give. Typically used to represent
+   * a gift card value.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return discountLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "30.0", value = "The total discount value that the code can give. Typically used to represent a gift card value. ")
 
@@ -96,47 +96,45 @@ public class CouponConstraints {
     return discountLimit;
   }
 
-
   public void setDiscountLimit(BigDecimal discountLimit) {
     this.discountLimit = discountLimit;
   }
 
+  public CouponConstraints reservationLimit(Long reservationLimit) {
 
-  public CouponConstraints reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public CouponConstraints startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the coupon becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-01-24T14:15:22Z", value = "Timestamp at which point the coupon becomes valid.")
 
@@ -144,22 +142,21 @@ public class CouponConstraints {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public CouponConstraints expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Expiration date of the coupon. Coupon never expires if this is omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
@@ -167,11 +164,9 @@ public class CouponConstraints {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -193,7 +188,6 @@ public class CouponConstraints {
   public int hashCode() {
     return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate);
   }
-
 
   @Override
   public String toString() {
@@ -220,4 +214,3 @@ public class CouponConstraints {
   }
 
 }
-

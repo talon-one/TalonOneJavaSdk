@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class SamlLoginEndpoint {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -41,72 +40,68 @@ public class SamlLoginEndpoint {
   @SerializedName(SERIALIZED_NAME_LOGIN_U_R_L)
   private String loginURL;
 
+  public SamlLoginEndpoint id(Long id) {
 
-  public SamlLoginEndpoint id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the SAML login endpoint.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "ID of the SAML login endpoint.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public SamlLoginEndpoint name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * ID of the SAML service.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the SAML service.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public SamlLoginEndpoint loginURL(String loginURL) {
-    
+
     this.loginURL = loginURL;
     return this;
   }
 
-   /**
+  /**
    * The single sign-on URL.
+   * 
    * @return loginURL
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The single sign-on URL.")
 
   public String getLoginURL() {
     return loginURL;
   }
 
-
   public void setLoginURL(String loginURL) {
     this.loginURL = loginURL;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,7 +121,6 @@ public class SamlLoginEndpoint {
   public int hashCode() {
     return Objects.hash(id, name, loginURL);
   }
-
 
   @Override
   public String toString() {
@@ -151,4 +145,3 @@ public class SamlLoginEndpoint {
   }
 
 }
-

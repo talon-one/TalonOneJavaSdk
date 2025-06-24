@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Change {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,11 +39,11 @@ public class Change {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -60,130 +59,125 @@ public class Change {
 
   public static final String SERIALIZED_NAME_MANAGEMENT_KEY_ID = "managementKeyId";
   @SerializedName(SERIALIZED_NAME_MANAGEMENT_KEY_ID)
-  private Integer managementKeyId;
+  private Long managementKeyId;
 
+  public Change id(Long id) {
 
-  public Change id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Change created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Change userId(Long userId) {
 
-  public Change userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user associated with this entity.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
+  public Change applicationId(Long applicationId) {
 
-  public Change applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * ID of application associated with change.
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "359", value = "ID of application associated with change.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public Change entity(String entity) {
-    
+
     this.entity = entity;
     return this;
   }
 
-   /**
+  /**
    * API endpoint on which the change was initiated.
+   * 
    * @return entity
-  **/
+   **/
   @ApiModelProperty(example = "/v1/applications/359/campaigns/6727", required = true, value = "API endpoint on which the change was initiated.")
 
   public String getEntity() {
     return entity;
   }
 
-
   public void setEntity(String entity) {
     this.entity = entity;
   }
 
-
   public Change old(Object old) {
-    
+
     this.old = old;
     return this;
   }
 
-   /**
+  /**
    * Resource before the change occurred.
+   * 
    * @return old
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{}", value = "Resource before the change occurred.")
 
@@ -191,22 +185,21 @@ public class Change {
     return old;
   }
 
-
   public void setOld(Object old) {
     this.old = old;
   }
 
-
   public Change _new(Object _new) {
-    
+
     this._new = _new;
     return this;
   }
 
-   /**
+  /**
    * Resource after the change occurred.
+   * 
    * @return _new
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"applicationId\\\"\":359,\"attributes\\\"\":{},\"campaignGroups\\\"\":[],\"created\\\"\":\"2022-07-08T13:04:02.972762328Z\",\"description\\\"\":\"\",\"features\\\"\":[\"referrals\",\"loyalty\"],\"id\":6727}", value = "Resource after the change occurred.")
 
@@ -214,34 +207,31 @@ public class Change {
     return _new;
   }
 
-
   public void setNew(Object _new) {
     this._new = _new;
   }
 
+  public Change managementKeyId(Long managementKeyId) {
 
-  public Change managementKeyId(Integer managementKeyId) {
-    
     this.managementKeyId = managementKeyId;
     return this;
   }
 
-   /**
+  /**
    * ID of management key used to perform changes.
+   * 
    * @return managementKeyId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "ID of management key used to perform changes.")
 
-  public Integer getManagementKeyId() {
+  public Long getManagementKeyId() {
     return managementKeyId;
   }
 
-
-  public void setManagementKeyId(Integer managementKeyId) {
+  public void setManagementKeyId(Long managementKeyId) {
     this.managementKeyId = managementKeyId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -266,7 +256,6 @@ public class Change {
   public int hashCode() {
     return Objects.hash(id, created, userId, applicationId, entity, old, _new, managementKeyId);
   }
-
 
   @Override
   public String toString() {
@@ -296,4 +285,3 @@ public class Change {
   }
 
 }
-

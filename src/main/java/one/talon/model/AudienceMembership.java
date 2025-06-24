@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,56 +30,53 @@ import java.io.IOException;
 public class AudienceMembership {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public AudienceMembership id(Long id) {
 
-  public AudienceMembership id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of the audience belonging to this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the audience belonging to this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AudienceMembership name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The Name of the audience belonging to this entity.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Travel audience", required = true, value = "The Name of the audience belonging to this entity.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,7 +95,6 @@ public class AudienceMembership {
   public int hashCode() {
     return Objects.hash(id, name);
   }
-
 
   @Override
   public String toString() {
@@ -123,4 +118,3 @@ public class AudienceMembership {
   }
 
 }
-

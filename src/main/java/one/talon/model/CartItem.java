@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -48,15 +47,15 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_RETURNED_QUANTITY = "returnedQuantity";
   @SerializedName(SERIALIZED_NAME_RETURNED_QUANTITY)
-  private Integer returnedQuantity;
+  private Long returnedQuantity;
 
   public static final String SERIALIZED_NAME_REMAINING_QUANTITY = "remainingQuantity";
   @SerializedName(SERIALIZED_NAME_REMAINING_QUANTITY)
-  private Integer remainingQuantity;
+  private Long remainingQuantity;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -92,8 +91,8 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  /*allow Serializing null for this field */
-    @JsonNullable
+  /* allow Serializing null for this field */
+  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COSTS = "additionalCosts";
@@ -102,19 +101,19 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_CATALOG_ITEM_I_D = "catalogItemID";
   @SerializedName(SERIALIZED_NAME_CATALOG_ITEM_I_D)
-  private Integer catalogItemID;
-
+  private Long catalogItemID;
 
   public CartItem name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of item.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Air Glide", value = "Name of item.")
 
@@ -122,113 +121,118 @@ public class CartItem {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CartItem sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * Stock keeping unit of item.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU1241028", required = true, value = "Stock keeping unit of item.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
+  public CartItem quantity(Long quantity) {
 
-  public CartItem quantity(Integer quantity) {
-    
     this.quantity = quantity;
     return this;
   }
 
-   /**
-   * Number of units of this item. Due to [cart item flattening](https://docs.talon.one/docs/product/rules/understanding-cart-item-flattening), if you provide a quantity greater than 1, the item will be split in as many items as the provided quantity. This will impact the number of **per-item** effects triggered from your campaigns. 
+  /**
+   * Number of units of this item. Due to [cart item
+   * flattening](https://docs.talon.one/docs/product/rules/understanding-cart-item-flattening),
+   * if you provide a quantity greater than 1, the item will be split in as many
+   * items as the provided quantity. This will impact the number of **per-item**
+   * effects triggered from your campaigns.
    * minimum: 1
+   * 
    * @return quantity
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "Number of units of this item. Due to [cart item flattening](https://docs.talon.one/docs/product/rules/understanding-cart-item-flattening), if you provide a quantity greater than 1, the item will be split in as many items as the provided quantity. This will impact the number of **per-item** effects triggered from your campaigns. ")
 
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-
-  public void setQuantity(Integer quantity) {
+  public void setQuantity(Long quantity) {
     this.quantity = quantity;
   }
 
+  public CartItem returnedQuantity(Long returnedQuantity) {
 
-  public CartItem returnedQuantity(Integer returnedQuantity) {
-    
     this.returnedQuantity = returnedQuantity;
     return this;
   }
 
-   /**
-   * Number of returned items, calculated internally based on returns of this item.
+  /**
+   * Number of returned items, calculated internally based on returns of this
+   * item.
+   * 
    * @return returnedQuantity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Number of returned items, calculated internally based on returns of this item.")
 
-  public Integer getReturnedQuantity() {
+  public Long getReturnedQuantity() {
     return returnedQuantity;
   }
 
-
-  public void setReturnedQuantity(Integer returnedQuantity) {
+  public void setReturnedQuantity(Long returnedQuantity) {
     this.returnedQuantity = returnedQuantity;
   }
 
+  public CartItem remainingQuantity(Long remainingQuantity) {
 
-  public CartItem remainingQuantity(Integer remainingQuantity) {
-    
     this.remainingQuantity = remainingQuantity;
     return this;
   }
 
-   /**
-   * Remaining quantity of the item, calculated internally based on returns of this item.
+  /**
+   * Remaining quantity of the item, calculated internally based on returns of
+   * this item.
+   * 
    * @return remainingQuantity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Remaining quantity of the item, calculated internally based on returns of this item.")
 
-  public Integer getRemainingQuantity() {
+  public Long getRemainingQuantity() {
     return remainingQuantity;
   }
 
-
-  public void setRemainingQuantity(Integer remainingQuantity) {
+  public void setRemainingQuantity(Long remainingQuantity) {
     this.remainingQuantity = remainingQuantity;
   }
 
-
   public CartItem price(BigDecimal price) {
-    
+
     this.price = price;
     return this;
   }
 
-   /**
-   * Price of the item in the currency defined by your Application. This field is required if this item is not part of a [catalog](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs). If it is part of a catalog, setting a price here overrides the price from the catalog. 
+  /**
+   * Price of the item in the currency defined by your Application. This field is
+   * required if this item is not part of a
+   * [catalog](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).
+   * If it is part of a catalog, setting a price here overrides the price from the
+   * catalog.
+   * 
    * @return price
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "99.99", value = "Price of the item in the currency defined by your Application. This field is required if this item is not part of a [catalog](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs). If it is part of a catalog, setting a price here overrides the price from the catalog. ")
 
@@ -236,22 +240,21 @@ public class CartItem {
     return price;
   }
 
-
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
 
-
   public CartItem category(String category) {
-    
+
     this.category = category;
     return this;
   }
 
-   /**
+  /**
    * Type, group or model of the item.
+   * 
    * @return category
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "shoes", value = "Type, group or model of the item.")
 
@@ -259,22 +262,21 @@ public class CartItem {
     return category;
   }
 
-
   public void setCategory(String category) {
     this.category = category;
   }
 
-
   public CartItem product(Product product) {
-    
+
     this.product = product;
     return this;
   }
 
-   /**
+  /**
    * Get product
+   * 
    * @return product
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -282,22 +284,21 @@ public class CartItem {
     return product;
   }
 
-
   public void setProduct(Product product) {
     this.product = product;
   }
 
-
   public CartItem weight(BigDecimal weight) {
-    
+
     this.weight = weight;
     return this;
   }
 
-   /**
+  /**
    * Weight of item in grams.
+   * 
    * @return weight
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1130.0", value = "Weight of item in grams.")
 
@@ -305,22 +306,21 @@ public class CartItem {
     return weight;
   }
 
-
   public void setWeight(BigDecimal weight) {
     this.weight = weight;
   }
 
-
   public CartItem height(BigDecimal height) {
-    
+
     this.height = height;
     return this;
   }
 
-   /**
+  /**
    * Height of item in mm.
+   * 
    * @return height
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Height of item in mm.")
 
@@ -328,22 +328,21 @@ public class CartItem {
     return height;
   }
 
-
   public void setHeight(BigDecimal height) {
     this.height = height;
   }
 
-
   public CartItem width(BigDecimal width) {
-    
+
     this.width = width;
     return this;
   }
 
-   /**
+  /**
    * Width of item in mm.
+   * 
    * @return width
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Width of item in mm.")
 
@@ -351,22 +350,21 @@ public class CartItem {
     return width;
   }
 
-
   public void setWidth(BigDecimal width) {
     this.width = width;
   }
 
-
   public CartItem length(BigDecimal length) {
-    
+
     this.length = length;
     return this;
   }
 
-   /**
+  /**
    * Length of item in mm.
+   * 
    * @return length
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Length of item in mm.")
 
@@ -374,22 +372,21 @@ public class CartItem {
     return length;
   }
 
-
   public void setLength(BigDecimal length) {
     this.length = length;
   }
 
-
   public CartItem position(BigDecimal position) {
-    
+
     this.position = position;
     return this;
   }
 
-   /**
+  /**
    * Position of the Cart Item in the Cart (calculated internally).
+   * 
    * @return position
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Position of the Cart Item in the Cart (calculated internally).")
 
@@ -397,22 +394,26 @@ public class CartItem {
     return position;
   }
 
-
   public void setPosition(BigDecimal position) {
     this.position = position;
   }
 
-
   public CartItem attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
-   * Use this property to set a value for the attributes of your choice. [Attributes](https://docs.talon.one/docs/dev/concepts/attributes) represent any information to attach to this cart item.  Custom _cart item_ attributes must be created in the Campaign Manager before you set them with this property.  **Note:** Any previously defined attributes that you do not include in the array will be removed. 
+  /**
+   * Use this property to set a value for the attributes of your choice.
+   * [Attributes](https://docs.talon.one/docs/dev/concepts/attributes) represent
+   * any information to attach to this cart item. Custom _cart item_ attributes
+   * must be created in the Campaign Manager before you set them with this
+   * property. **Note:** Any previously defined attributes that you do not include
+   * in the array will be removed.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"image\":\"11.jpeg\",\"material\":\"leather\"}", value = "Use this property to set a value for the attributes of your choice. [Attributes](https://docs.talon.one/docs/dev/concepts/attributes) represent any information to attach to this cart item.  Custom _cart item_ attributes must be created in the Campaign Manager before you set them with this property.  **Note:** Any previously defined attributes that you do not include in the array will be removed. ")
 
@@ -420,14 +421,12 @@ public class CartItem {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public CartItem additionalCosts(Map<String, AdditionalCost> additionalCosts) {
-    
+
     this.additionalCosts = additionalCosts;
     return this;
   }
@@ -440,10 +439,14 @@ public class CartItem {
     return this;
   }
 
-   /**
-   * Use this property to set a value for the additional costs of this item, such as a shipping cost. They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). 
+  /**
+   * Use this property to set a value for the additional costs of this item, such
+   * as a shipping cost. They must be created in the Campaign Manager before you
+   * set them with this property. See [Managing additional
+   * costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs).
+   * 
    * @return additionalCosts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"shipping\":{\"price\":9}}", value = "Use this property to set a value for the additional costs of this item, such as a shipping cost. They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). ")
 
@@ -451,34 +454,32 @@ public class CartItem {
     return additionalCosts;
   }
 
-
   public void setAdditionalCosts(Map<String, AdditionalCost> additionalCosts) {
     this.additionalCosts = additionalCosts;
   }
 
+  public CartItem catalogItemID(Long catalogItemID) {
 
-  public CartItem catalogItemID(Integer catalogItemID) {
-    
     this.catalogItemID = catalogItemID;
     return this;
   }
 
-   /**
-   * The [catalog item ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).
+  /**
+   * The [catalog item
+   * ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).
+   * 
    * @return catalogItemID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The [catalog item ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).")
 
-  public Integer getCatalogItemID() {
+  public Long getCatalogItemID() {
     return catalogItemID;
   }
 
-
-  public void setCatalogItemID(Integer catalogItemID) {
+  public void setCatalogItemID(Long catalogItemID) {
     this.catalogItemID = catalogItemID;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -509,9 +510,9 @@ public class CartItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, product, weight, height, width, length, position, attributes, additionalCosts, catalogItemID);
+    return Objects.hash(name, sku, quantity, returnedQuantity, remainingQuantity, price, category, product, weight,
+        height, width, length, position, attributes, additionalCosts, catalogItemID);
   }
-
 
   @Override
   public String toString() {
@@ -549,4 +550,3 @@ public class CartItem {
   }
 
 }
-

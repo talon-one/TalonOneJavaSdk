@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AudienceCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,11 +52,11 @@ public class AudienceCustomer {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_CLOSED_SESSIONS = "closedSessions";
   @SerializedName(SERIALIZED_NAME_CLOSED_SESSIONS)
-  private Integer closedSessions;
+  private Long closedSessions;
 
   public static final String SERIALIZED_NAME_TOTAL_SALES = "totalSales";
   @SerializedName(SERIALIZED_NAME_TOTAL_SALES)
@@ -81,169 +80,164 @@ public class AudienceCustomer {
 
   public static final String SERIALIZED_NAME_CONNECTED_APPLICATIONS_IDS = "connectedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_CONNECTED_APPLICATIONS_IDS)
-  private List<Integer> connectedApplicationsIds = null;
+  private List<Long> connectedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_CONNECTED_AUDIENCES = "connectedAudiences";
   @SerializedName(SERIALIZED_NAME_CONNECTED_AUDIENCES)
-  private List<Integer> connectedAudiences = null;
+  private List<Long> connectedAudiences = null;
 
+  public AudienceCustomer id(Long id) {
 
-  public AudienceCustomer id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AudienceCustomer created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public AudienceCustomer integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID set by your integration layer.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public AudienceCustomer attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", required = true, value = "Arbitrary properties associated with this item.")
 
   public Object getAttributes() {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
+  public AudienceCustomer accountId(Long accountId) {
 
-  public AudienceCustomer accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Talon.One account that owns this profile.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public AudienceCustomer closedSessions(Long closedSessions) {
 
-  public AudienceCustomer closedSessions(Integer closedSessions) {
-    
     this.closedSessions = closedSessions;
     return this;
   }
 
-   /**
-   * The total amount of closed sessions by a customer. A closed session is a successful purchase.
+  /**
+   * The total amount of closed sessions by a customer. A closed session is a
+   * successful purchase.
+   * 
    * @return closedSessions
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
 
-  public Integer getClosedSessions() {
+  public Long getClosedSessions() {
     return closedSessions;
   }
 
-
-  public void setClosedSessions(Integer closedSessions) {
+  public void setClosedSessions(Long closedSessions) {
     this.closedSessions = closedSessions;
   }
 
-
   public AudienceCustomer totalSales(BigDecimal totalSales) {
-    
+
     this.totalSales = totalSales;
     return this;
   }
 
-   /**
-   * The total amount of money spent by the customer **before** discounts are applied.  The total sales amount excludes the following: - Cancelled or reopened sessions. - Returned items. 
+  /**
+   * The total amount of money spent by the customer **before** discounts are
+   * applied. The total sales amount excludes the following: - Cancelled or
+   * reopened sessions. - Returned items.
+   * 
    * @return totalSales
-  **/
+   **/
   @ApiModelProperty(example = "299.99", required = true, value = "The total amount of money spent by the customer **before** discounts are applied.  The total sales amount excludes the following: - Cancelled or reopened sessions. - Returned items. ")
 
   public BigDecimal getTotalSales() {
     return totalSales;
   }
 
-
   public void setTotalSales(BigDecimal totalSales) {
     this.totalSales = totalSales;
   }
 
-
   public AudienceCustomer loyaltyMemberships(List<LoyaltyMembership> loyaltyMemberships) {
-    
+
     this.loyaltyMemberships = loyaltyMemberships;
     return this;
   }
@@ -256,10 +250,11 @@ public class AudienceCustomer {
     return this;
   }
 
-   /**
-   * **DEPRECATED** A list of loyalty programs joined by the customer. 
+  /**
+   * **DEPRECATED** A list of loyalty programs joined by the customer.
+   * 
    * @return loyaltyMemberships
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "**DEPRECATED** A list of loyalty programs joined by the customer. ")
 
@@ -267,14 +262,12 @@ public class AudienceCustomer {
     return loyaltyMemberships;
   }
 
-
   public void setLoyaltyMemberships(List<LoyaltyMembership> loyaltyMemberships) {
     this.loyaltyMemberships = loyaltyMemberships;
   }
 
-
   public AudienceCustomer audienceMemberships(List<AudienceMembership> audienceMemberships) {
-    
+
     this.audienceMemberships = audienceMemberships;
     return this;
   }
@@ -287,10 +280,11 @@ public class AudienceCustomer {
     return this;
   }
 
-   /**
+  /**
    * The audiences the customer belongs to.
+   * 
    * @return audienceMemberships
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The audiences the customer belongs to.")
 
@@ -298,44 +292,49 @@ public class AudienceCustomer {
     return audienceMemberships;
   }
 
-
   public void setAudienceMemberships(List<AudienceMembership> audienceMemberships) {
     this.audienceMemberships = audienceMemberships;
   }
 
-
   public AudienceCustomer lastActivity(OffsetDateTime lastActivity) {
-    
+
     this.lastActivity = lastActivity;
     return this;
   }
 
-   /**
-   * Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the Rule Engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api#operation/createCouponReservation) for a customer doesn&#39;t impact this field. 
+  /**
+   * Timestamp of the most recent event received from this customer. This field is
+   * updated on calls that trigger the Rule Engine and that are not [dry
+   * requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).
+   * For example, [reserving a
+   * coupon](https://docs.talon.one/integration-api#operation/createCouponReservation)
+   * for a customer doesn&#39;t impact this field.
+   * 
    * @return lastActivity
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-08T14:15:20Z", required = true, value = "Timestamp of the most recent event received from this customer. This field is updated on calls that trigger the Rule Engine and that are not [dry requests](https://docs.talon.one/docs/dev/integration-api/dry-requests/#overlay).  For example, [reserving a coupon](https://docs.talon.one/integration-api#operation/createCouponReservation) for a customer doesn't impact this field. ")
 
   public OffsetDateTime getLastActivity() {
     return lastActivity;
   }
 
-
   public void setLastActivity(OffsetDateTime lastActivity) {
     this.lastActivity = lastActivity;
   }
 
-
   public AudienceCustomer sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
-   * An indicator of whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). 
+  /**
+   * An indicator of whether the customer is part of a sandbox or live
+   * Application. See the
+   * [docs](https://docs.talon.one/docs/product/applications/overview#application-environments).
+   * 
    * @return sandbox
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indicator of whether the customer is part of a sandbox or live Application. See the [docs](https://docs.talon.one/docs/product/applications/overview#application-environments). ")
 
@@ -343,73 +342,71 @@ public class AudienceCustomer {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
 
+  public AudienceCustomer connectedApplicationsIds(List<Long> connectedApplicationsIds) {
 
-  public AudienceCustomer connectedApplicationsIds(List<Integer> connectedApplicationsIds) {
-    
     this.connectedApplicationsIds = connectedApplicationsIds;
     return this;
   }
 
-  public AudienceCustomer addConnectedApplicationsIdsItem(Integer connectedApplicationsIdsItem) {
+  public AudienceCustomer addConnectedApplicationsIdsItem(Long connectedApplicationsIdsItem) {
     if (this.connectedApplicationsIds == null) {
-      this.connectedApplicationsIds = new ArrayList<Integer>();
+      this.connectedApplicationsIds = new ArrayList<Long>();
     }
     this.connectedApplicationsIds.add(connectedApplicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the Applications that are connected to this customer profile.
+  /**
+   * A list of the IDs of the Applications that are connected to this customer
+   * profile.
+   * 
    * @return connectedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the Applications that are connected to this customer profile.")
 
-  public List<Integer> getConnectedApplicationsIds() {
+  public List<Long> getConnectedApplicationsIds() {
     return connectedApplicationsIds;
   }
 
-
-  public void setConnectedApplicationsIds(List<Integer> connectedApplicationsIds) {
+  public void setConnectedApplicationsIds(List<Long> connectedApplicationsIds) {
     this.connectedApplicationsIds = connectedApplicationsIds;
   }
 
+  public AudienceCustomer connectedAudiences(List<Long> connectedAudiences) {
 
-  public AudienceCustomer connectedAudiences(List<Integer> connectedAudiences) {
-    
     this.connectedAudiences = connectedAudiences;
     return this;
   }
 
-  public AudienceCustomer addConnectedAudiencesItem(Integer connectedAudiencesItem) {
+  public AudienceCustomer addConnectedAudiencesItem(Long connectedAudiencesItem) {
     if (this.connectedAudiences == null) {
-      this.connectedAudiences = new ArrayList<Integer>();
+      this.connectedAudiences = new ArrayList<Long>();
     }
     this.connectedAudiences.add(connectedAudiencesItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the audiences that are connected to this customer profile.
+  /**
+   * A list of the IDs of the audiences that are connected to this customer
+   * profile.
+   * 
    * @return connectedAudiences
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the audiences that are connected to this customer profile.")
 
-  public List<Integer> getConnectedAudiences() {
+  public List<Long> getConnectedAudiences() {
     return connectedAudiences;
   }
 
-
-  public void setConnectedAudiences(List<Integer> connectedAudiences) {
+  public void setConnectedAudiences(List<Long> connectedAudiences) {
     this.connectedAudiences = connectedAudiences;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -437,9 +434,9 @@ public class AudienceCustomer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales, loyaltyMemberships, audienceMemberships, lastActivity, sandbox, connectedApplicationsIds, connectedAudiences);
+    return Objects.hash(id, created, integrationId, attributes, accountId, closedSessions, totalSales,
+        loyaltyMemberships, audienceMemberships, lastActivity, sandbox, connectedApplicationsIds, connectedAudiences);
   }
-
 
   @Override
   public String toString() {
@@ -474,4 +471,3 @@ public class AudienceCustomer {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,15 +31,15 @@ import one.talon.model.CampaignSetBranchNode;
 public class CampaignSet {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
@@ -50,106 +49,102 @@ public class CampaignSet {
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
   private String updatedBy;
 
+  public CampaignSet applicationId(Long applicationId) {
 
-  public CampaignSet applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public CampaignSet id(Long id) {
 
-  public CampaignSet id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public CampaignSet version(Long version) {
 
-  public CampaignSet version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Version of the campaign set.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "Version of the campaign set.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public CampaignSet set(CampaignSetBranchNode set) {
-    
+
     this.set = set;
     return this;
   }
 
-   /**
+  /**
    * Get set
+   * 
    * @return set
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CampaignSetBranchNode getSet() {
     return set;
   }
 
-
   public void setSet(CampaignSetBranchNode set) {
     this.set = set;
   }
 
-
   public CampaignSet updatedBy(String updatedBy) {
-    
+
     this.updatedBy = updatedBy;
     return this;
   }
 
-   /**
+  /**
    * Name of the user who last updated this campaign set, if available.
+   * 
    * @return updatedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Jane Doe", value = "Name of the user who last updated this campaign set, if available.")
 
@@ -157,11 +152,9 @@ public class CampaignSet {
     return updatedBy;
   }
 
-
   public void setUpdatedBy(String updatedBy) {
     this.updatedBy = updatedBy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -183,7 +176,6 @@ public class CampaignSet {
   public int hashCode() {
     return Objects.hash(applicationId, id, version, set, updatedBy);
   }
-
 
   @Override
   public String toString() {
@@ -210,4 +202,3 @@ public class CampaignSet {
   }
 
 }
-

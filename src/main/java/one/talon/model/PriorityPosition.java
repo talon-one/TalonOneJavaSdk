@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,9 +35,9 @@ public class PriorityPosition {
   @JsonAdapter(SetEnum.Adapter.class)
   public enum SetEnum {
     UNIVERSAL("universal"),
-    
+
     STACKABLE("stackable"),
-    
+
     EXCLUSIVE("exclusive");
 
     private String value;
@@ -73,7 +72,7 @@ public class PriorityPosition {
 
       @Override
       public SetEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return SetEnum.fromValue(value);
       }
     }
@@ -85,52 +84,49 @@ public class PriorityPosition {
 
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
-  private Integer position;
-
+  private Long position;
 
   public PriorityPosition set(SetEnum set) {
-    
+
     this.set = set;
     return this;
   }
 
-   /**
+  /**
    * The name of the priority set where the campaign is located.
+   * 
    * @return set
-  **/
+   **/
   @ApiModelProperty(example = "universal", required = true, value = "The name of the priority set where the campaign is located.")
 
   public SetEnum getSet() {
     return set;
   }
 
-
   public void setSet(SetEnum set) {
     this.set = set;
   }
 
+  public PriorityPosition position(Long position) {
 
-  public PriorityPosition position(Integer position) {
-    
     this.position = position;
     return this;
   }
 
-   /**
+  /**
    * The position of the campaign in the priority order starting from 1.
+   * 
    * @return position
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The position of the campaign in the priority order starting from 1.")
 
-  public Integer getPosition() {
+  public Long getPosition() {
     return position;
   }
 
-
-  public void setPosition(Integer position) {
+  public void setPosition(Long position) {
     this.position = position;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -149,7 +145,6 @@ public class PriorityPosition {
   public int hashCode() {
     return Objects.hash(set, position);
   }
-
 
   @Override
   public String toString() {
@@ -173,4 +168,3 @@ public class PriorityPosition {
   }
 
 }
-

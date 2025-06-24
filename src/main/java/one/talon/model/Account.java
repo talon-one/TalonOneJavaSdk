@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Account {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -56,7 +55,7 @@ public class Account {
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     ACTIVE("active"),
-    
+
     DEACTIVATED("deactivated");
 
     private String value;
@@ -91,7 +90,7 @@ public class Account {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -115,205 +114,198 @@ public class Account {
 
   public static final String SERIALIZED_NAME_APPLICATION_LIMIT = "applicationLimit";
   @SerializedName(SERIALIZED_NAME_APPLICATION_LIMIT)
-  private Integer applicationLimit;
+  private Long applicationLimit;
 
   public static final String SERIALIZED_NAME_USER_LIMIT = "userLimit";
   @SerializedName(SERIALIZED_NAME_USER_LIMIT)
-  private Integer userLimit;
+  private Long userLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_LIMIT = "campaignLimit";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_LIMIT)
-  private Integer campaignLimit;
+  private Long campaignLimit;
 
   public static final String SERIALIZED_NAME_API_LIMIT = "apiLimit";
   @SerializedName(SERIALIZED_NAME_API_LIMIT)
-  private Integer apiLimit;
+  private Long apiLimit;
 
   public static final String SERIALIZED_NAME_APPLICATION_COUNT = "applicationCount";
   @SerializedName(SERIALIZED_NAME_APPLICATION_COUNT)
-  private Integer applicationCount;
+  private Long applicationCount;
 
   public static final String SERIALIZED_NAME_USER_COUNT = "userCount";
   @SerializedName(SERIALIZED_NAME_USER_COUNT)
-  private Integer userCount;
+  private Long userCount;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_ACTIVE_COUNT = "campaignsActiveCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_ACTIVE_COUNT)
-  private Integer campaignsActiveCount;
+  private Long campaignsActiveCount;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_INACTIVE_COUNT = "campaignsInactiveCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_INACTIVE_COUNT)
-  private Integer campaignsInactiveCount;
+  private Long campaignsInactiveCount;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public Account id(Long id) {
 
-  public Account id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Account created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Account modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
-
   public Account companyName(String companyName) {
-    
+
     this.companyName = companyName;
     return this;
   }
 
-   /**
+  /**
    * Get companyName
+   * 
    * @return companyName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public String getCompanyName() {
     return companyName;
   }
 
-
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
   }
 
-
   public Account domainName(String domainName) {
-    
+
     this.domainName = domainName;
     return this;
   }
 
-   /**
+  /**
    * Subdomain Name for yourcompany.talon.one.
+   * 
    * @return domainName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Subdomain Name for yourcompany.talon.one.")
 
   public String getDomainName() {
     return domainName;
   }
 
-
   public void setDomainName(String domainName) {
     this.domainName = domainName;
   }
 
-
   public Account state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
+  /**
    * State of the account (active, deactivated).
+   * 
    * @return state
-  **/
+   **/
   @ApiModelProperty(required = true, value = "State of the account (active, deactivated).")
 
   public StateEnum getState() {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
-
   public Account billingEmail(String billingEmail) {
-    
+
     this.billingEmail = billingEmail;
     return this;
   }
 
-   /**
+  /**
    * The billing email address associated with your company account.
+   * 
    * @return billingEmail
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The billing email address associated with your company account.")
 
   public String getBillingEmail() {
     return billingEmail;
   }
 
-
   public void setBillingEmail(String billingEmail) {
     this.billingEmail = billingEmail;
   }
 
-
   public Account planName(String planName) {
-    
+
     this.planName = planName;
     return this;
   }
 
-   /**
+  /**
    * The name of your booked plan.
+   * 
    * @return planName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of your booked plan.")
 
@@ -321,22 +313,21 @@ public class Account {
     return planName;
   }
 
-
   public void setPlanName(String planName) {
     this.planName = planName;
   }
 
-
   public Account planExpires(OffsetDateTime planExpires) {
-    
+
     this.planExpires = planExpires;
     return this;
   }
 
-   /**
+  /**
    * The point in time at which your current plan expires.
+   * 
    * @return planExpires
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The point in time at which your current plan expires.")
 
@@ -344,202 +335,194 @@ public class Account {
     return planExpires;
   }
 
-
   public void setPlanExpires(OffsetDateTime planExpires) {
     this.planExpires = planExpires;
   }
 
+  public Account applicationLimit(Long applicationLimit) {
 
-  public Account applicationLimit(Integer applicationLimit) {
-    
     this.applicationLimit = applicationLimit;
     return this;
   }
 
-   /**
+  /**
    * The maximum number of Applications covered by your plan.
+   * 
    * @return applicationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Applications covered by your plan.")
 
-  public Integer getApplicationLimit() {
+  public Long getApplicationLimit() {
     return applicationLimit;
   }
 
-
-  public void setApplicationLimit(Integer applicationLimit) {
+  public void setApplicationLimit(Long applicationLimit) {
     this.applicationLimit = applicationLimit;
   }
 
+  public Account userLimit(Long userLimit) {
 
-  public Account userLimit(Integer userLimit) {
-    
     this.userLimit = userLimit;
     return this;
   }
 
-   /**
+  /**
    * The maximum number of Campaign Manager Users covered by your plan.
+   * 
    * @return userLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Campaign Manager Users covered by your plan.")
 
-  public Integer getUserLimit() {
+  public Long getUserLimit() {
     return userLimit;
   }
 
-
-  public void setUserLimit(Integer userLimit) {
+  public void setUserLimit(Long userLimit) {
     this.userLimit = userLimit;
   }
 
+  public Account campaignLimit(Long campaignLimit) {
 
-  public Account campaignLimit(Integer campaignLimit) {
-    
     this.campaignLimit = campaignLimit;
     return this;
   }
 
-   /**
+  /**
    * The maximum number of Campaigns covered by your plan.
+   * 
    * @return campaignLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Campaigns covered by your plan.")
 
-  public Integer getCampaignLimit() {
+  public Long getCampaignLimit() {
     return campaignLimit;
   }
 
-
-  public void setCampaignLimit(Integer campaignLimit) {
+  public void setCampaignLimit(Long campaignLimit) {
     this.campaignLimit = campaignLimit;
   }
 
+  public Account apiLimit(Long apiLimit) {
 
-  public Account apiLimit(Integer apiLimit) {
-    
     this.apiLimit = apiLimit;
     return this;
   }
 
-   /**
-   * The maximum number of Integration API calls covered by your plan per billing period.
+  /**
+   * The maximum number of Integration API calls covered by your plan per billing
+   * period.
+   * 
    * @return apiLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Integration API calls covered by your plan per billing period.")
 
-  public Integer getApiLimit() {
+  public Long getApiLimit() {
     return apiLimit;
   }
 
-
-  public void setApiLimit(Integer apiLimit) {
+  public void setApiLimit(Long apiLimit) {
     this.apiLimit = apiLimit;
   }
 
+  public Account applicationCount(Long applicationCount) {
 
-  public Account applicationCount(Integer applicationCount) {
-    
     this.applicationCount = applicationCount;
     return this;
   }
 
-   /**
+  /**
    * The current number of Applications in your account.
+   * 
    * @return applicationCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current number of Applications in your account.")
 
-  public Integer getApplicationCount() {
+  public Long getApplicationCount() {
     return applicationCount;
   }
 
-
-  public void setApplicationCount(Integer applicationCount) {
+  public void setApplicationCount(Long applicationCount) {
     this.applicationCount = applicationCount;
   }
 
+  public Account userCount(Long userCount) {
 
-  public Account userCount(Integer userCount) {
-    
     this.userCount = userCount;
     return this;
   }
 
-   /**
+  /**
    * The current number of Campaign Manager Users in your account.
+   * 
    * @return userCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current number of Campaign Manager Users in your account.")
 
-  public Integer getUserCount() {
+  public Long getUserCount() {
     return userCount;
   }
 
-
-  public void setUserCount(Integer userCount) {
+  public void setUserCount(Long userCount) {
     this.userCount = userCount;
   }
 
+  public Account campaignsActiveCount(Long campaignsActiveCount) {
 
-  public Account campaignsActiveCount(Integer campaignsActiveCount) {
-    
     this.campaignsActiveCount = campaignsActiveCount;
     return this;
   }
 
-   /**
+  /**
    * The current number of active Campaigns in your account.
+   * 
    * @return campaignsActiveCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current number of active Campaigns in your account.")
 
-  public Integer getCampaignsActiveCount() {
+  public Long getCampaignsActiveCount() {
     return campaignsActiveCount;
   }
 
-
-  public void setCampaignsActiveCount(Integer campaignsActiveCount) {
+  public void setCampaignsActiveCount(Long campaignsActiveCount) {
     this.campaignsActiveCount = campaignsActiveCount;
   }
 
+  public Account campaignsInactiveCount(Long campaignsInactiveCount) {
 
-  public Account campaignsInactiveCount(Integer campaignsInactiveCount) {
-    
     this.campaignsInactiveCount = campaignsInactiveCount;
     return this;
   }
 
-   /**
+  /**
    * The current number of inactive Campaigns in your account.
+   * 
    * @return campaignsInactiveCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current number of inactive Campaigns in your account.")
 
-  public Integer getCampaignsInactiveCount() {
+  public Long getCampaignsInactiveCount() {
     return campaignsInactiveCount;
   }
 
-
-  public void setCampaignsInactiveCount(Integer campaignsInactiveCount) {
+  public void setCampaignsInactiveCount(Long campaignsInactiveCount) {
     this.campaignsInactiveCount = campaignsInactiveCount;
   }
 
-
   public Account attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this campaign.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign.")
 
@@ -547,11 +530,9 @@ public class Account {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -584,9 +565,10 @@ public class Account {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, companyName, domainName, state, billingEmail, planName, planExpires, applicationLimit, userLimit, campaignLimit, apiLimit, applicationCount, userCount, campaignsActiveCount, campaignsInactiveCount, attributes);
+    return Objects.hash(id, created, modified, companyName, domainName, state, billingEmail, planName, planExpires,
+        applicationLimit, userLimit, campaignLimit, apiLimit, applicationCount, userCount, campaignsActiveCount,
+        campaignsInactiveCount, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -626,4 +608,3 @@ public class Account {
   }
 
 }
-

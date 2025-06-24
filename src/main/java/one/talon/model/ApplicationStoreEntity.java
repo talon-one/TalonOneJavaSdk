@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,31 +30,29 @@ import java.io.IOException;
 public class ApplicationStoreEntity {
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Integer storeId;
+  private Long storeId;
 
+  public ApplicationStoreEntity storeId(Long storeId) {
 
-  public ApplicationStoreEntity storeId(Integer storeId) {
-    
     this.storeId = storeId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the store.
+   * 
    * @return storeId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the store.")
 
-  public Integer getStoreId() {
+  public Long getStoreId() {
     return storeId;
   }
 
-
-  public void setStoreId(Integer storeId) {
+  public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -73,7 +70,6 @@ public class ApplicationStoreEntity {
   public int hashCode() {
     return Objects.hash(storeId);
   }
-
 
   @Override
   public String toString() {
@@ -96,4 +92,3 @@ public class ApplicationStoreEntity {
   }
 
 }
-

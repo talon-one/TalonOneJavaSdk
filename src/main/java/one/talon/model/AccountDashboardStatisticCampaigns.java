@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,82 +30,78 @@ import java.io.IOException;
 public class AccountDashboardStatisticCampaigns {
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
-  private Integer live;
+  private Long live;
 
   public static final String SERIALIZED_NAME_ENDING_SOON = "endingSoon";
   @SerializedName(SERIALIZED_NAME_ENDING_SOON)
-  private Integer endingSoon;
+  private Long endingSoon;
 
   public static final String SERIALIZED_NAME_LOW_ON_BUDGET = "lowOnBudget";
   @SerializedName(SERIALIZED_NAME_LOW_ON_BUDGET)
-  private Integer lowOnBudget;
+  private Long lowOnBudget;
 
+  public AccountDashboardStatisticCampaigns live(Long live) {
 
-  public AccountDashboardStatisticCampaigns live(Integer live) {
-    
     this.live = live;
     return this;
   }
 
-   /**
+  /**
    * Number of campaigns that are active and live (across all Applications).
+   * 
    * @return live
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of campaigns that are active and live (across all Applications).")
 
-  public Integer getLive() {
+  public Long getLive() {
     return live;
   }
 
-
-  public void setLive(Integer live) {
+  public void setLive(Long live) {
     this.live = live;
   }
 
+  public AccountDashboardStatisticCampaigns endingSoon(Long endingSoon) {
 
-  public AccountDashboardStatisticCampaigns endingSoon(Integer endingSoon) {
-    
     this.endingSoon = endingSoon;
     return this;
   }
 
-   /**
+  /**
    * Campaigns scheduled to expire sometime in the next 7 days.
+   * 
    * @return endingSoon
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Campaigns scheduled to expire sometime in the next 7 days.")
 
-  public Integer getEndingSoon() {
+  public Long getEndingSoon() {
     return endingSoon;
   }
 
-
-  public void setEndingSoon(Integer endingSoon) {
+  public void setEndingSoon(Long endingSoon) {
     this.endingSoon = endingSoon;
   }
 
+  public AccountDashboardStatisticCampaigns lowOnBudget(Long lowOnBudget) {
 
-  public AccountDashboardStatisticCampaigns lowOnBudget(Integer lowOnBudget) {
-    
     this.lowOnBudget = lowOnBudget;
     return this;
   }
 
-   /**
+  /**
    * Campaigns with less than 10% of budget left.
+   * 
    * @return lowOnBudget
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Campaigns with less than 10% of budget left.")
 
-  public Integer getLowOnBudget() {
+  public Long getLowOnBudget() {
     return lowOnBudget;
   }
 
-
-  public void setLowOnBudget(Integer lowOnBudget) {
+  public void setLowOnBudget(Long lowOnBudget) {
     this.lowOnBudget = lowOnBudget;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,7 +121,6 @@ public class AccountDashboardStatisticCampaigns {
   public int hashCode() {
     return Objects.hash(live, endingSoon, lowOnBudget);
   }
-
 
   @Override
   public String toString() {
@@ -151,4 +145,3 @@ public class AccountDashboardStatisticCampaigns {
   }
 
 }
-

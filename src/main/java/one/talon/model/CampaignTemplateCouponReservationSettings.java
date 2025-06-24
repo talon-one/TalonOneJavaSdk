@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,48 +30,48 @@ import java.io.IOException;
 public class CampaignTemplateCouponReservationSettings {
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_IS_RESERVATION_MANDATORY = "isReservationMandatory";
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
   private Boolean isReservationMandatory = false;
 
+  public CampaignTemplateCouponReservationSettings reservationLimit(Long reservationLimit) {
 
-  public CampaignTemplateCouponReservationSettings reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public CampaignTemplateCouponReservationSettings isReservationMandatory(Boolean isReservationMandatory) {
-    
+
     this.isReservationMandatory = isReservationMandatory;
     return this;
   }
 
-   /**
-   * An indication of whether the code can be redeemed only if it has been reserved first.
+  /**
+   * An indication of whether the code can be redeemed only if it has been
+   * reserved first.
+   * 
    * @return isReservationMandatory
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
 
@@ -80,11 +79,9 @@ public class CampaignTemplateCouponReservationSettings {
     return isReservationMandatory;
   }
 
-
   public void setIsReservationMandatory(Boolean isReservationMandatory) {
     this.isReservationMandatory = isReservationMandatory;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -103,7 +100,6 @@ public class CampaignTemplateCouponReservationSettings {
   public int hashCode() {
     return Objects.hash(reservationLimit, isReservationMandatory);
   }
-
 
   @Override
   public String toString() {
@@ -127,4 +123,3 @@ public class CampaignTemplateCouponReservationSettings {
   }
 
 }
-

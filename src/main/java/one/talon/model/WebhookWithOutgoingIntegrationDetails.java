@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class WebhookWithOutgoingIntegrationDetails {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -47,7 +46,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -63,13 +62,13 @@ public class WebhookWithOutgoingIntegrationDetails {
   @JsonAdapter(VerbEnum.Adapter.class)
   public enum VerbEnum {
     POST("POST"),
-    
+
     PUT("PUT"),
-    
+
     GET("GET"),
-    
+
     DELETE("DELETE"),
-    
+
     PATCH("PATCH");
 
     private String value;
@@ -104,7 +103,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
       @Override
       public VerbEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return VerbEnum.fromValue(value);
       }
     }
@@ -136,142 +135,138 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID = "outgoingIntegrationTemplateId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID)
-  private Integer outgoingIntegrationTemplateId;
+  private Long outgoingIntegrationTemplateId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID = "outgoingIntegrationTypeId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID)
-  private Integer outgoingIntegrationTypeId;
+  private Long outgoingIntegrationTypeId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME = "outgoingIntegrationTypeName";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME)
   private String outgoingIntegrationTypeName;
 
+  public WebhookWithOutgoingIntegrationDetails id(Long id) {
 
-  public WebhookWithOutgoingIntegrationDetails id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
+  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Long> applicationIds) {
 
-  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Integer applicationIdsItem) {
+  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
-   * The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;. 
+  /**
+   * The IDs of the Applications in which this webhook is available. An empty
+   * array means the webhook is available in &#x60;All Applications&#x60;.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Name or title for this webhook.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Send message", required = true, value = "Name or title for this webhook.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the webhook.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "A webhook to send a coupon to the user.", value = "A description of the webhook.")
 
@@ -279,58 +274,54 @@ public class WebhookWithOutgoingIntegrationDetails {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails verb(VerbEnum verb) {
-    
+
     this.verb = verb;
     return this;
   }
 
-   /**
+  /**
    * API method for this webhook.
+   * 
    * @return verb
-  **/
+   **/
   @ApiModelProperty(example = "POST", required = true, value = "API method for this webhook.")
 
   public VerbEnum getVerb() {
     return verb;
   }
 
-
   public void setVerb(VerbEnum verb) {
     this.verb = verb;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails url(String url) {
-    
+
     this.url = url;
     return this;
   }
 
-   /**
+  /**
    * API URL (supports templating using parameters) for this webhook.
+   * 
    * @return url
-  **/
+   **/
   @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "API URL (supports templating using parameters) for this webhook.")
 
   public String getUrl() {
     return url;
   }
 
-
   public void setUrl(String url) {
     this.url = url;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails headers(List<String> headers) {
-    
+
     this.headers = headers;
     return this;
   }
@@ -340,32 +331,32 @@ public class WebhookWithOutgoingIntegrationDetails {
     return this;
   }
 
-   /**
+  /**
    * List of API HTTP headers for this webhook.
+   * 
    * @return headers
-  **/
+   **/
   @ApiModelProperty(example = "[{\"Authorization\": \"Basic bmF2ZWVua3VtYXIU=\"}, {\"Content-Type\": \"application/json\"}]", required = true, value = "List of API HTTP headers for this webhook.")
 
   public List<String> getHeaders() {
     return headers;
   }
 
-
   public void setHeaders(List<String> headers) {
     this.headers = headers;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * API payload (supports templating using parameters) for this webhook.
+   * 
    * @return payload
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{  \"message\": \"${message}\" }", value = "API payload (supports templating using parameters) for this webhook.")
 
@@ -373,14 +364,12 @@ public class WebhookWithOutgoingIntegrationDetails {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails params(List<TemplateArgDef> params) {
-    
+
     this.params = params;
     return this;
   }
@@ -390,100 +379,97 @@ public class WebhookWithOutgoingIntegrationDetails {
     return this;
   }
 
-   /**
+  /**
    * Array of template argument definitions.
+   * 
    * @return params
-  **/
+   **/
   @ApiModelProperty(example = "[]", required = true, value = "Array of template argument definitions.")
 
   public List<TemplateArgDef> getParams() {
     return params;
   }
 
-
   public void setParams(List<TemplateArgDef> params) {
     this.params = params;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Enables or disables webhook from showing in the Rule Builder.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Enables or disables webhook from showing in the Rule Builder.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
-    
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
     return this;
   }
 
-   /**
+  /**
    * Identifier of the outgoing integration template.
+   * 
    * @return outgoingIntegrationTemplateId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration template.")
 
-  public Integer getOutgoingIntegrationTemplateId() {
+  public Long getOutgoingIntegrationTemplateId() {
     return outgoingIntegrationTemplateId;
   }
 
-
-  public void setOutgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
+  public void setOutgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
   }
 
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
-    
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
     return this;
   }
 
-   /**
+  /**
    * Identifier of the outgoing integration type.
+   * 
    * @return outgoingIntegrationTypeId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration type.")
 
-  public Integer getOutgoingIntegrationTypeId() {
+  public Long getOutgoingIntegrationTypeId() {
     return outgoingIntegrationTypeId;
   }
 
-
-  public void setOutgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
+  public void setOutgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
   }
 
-
   public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeName(String outgoingIntegrationTypeName) {
-    
+
     this.outgoingIntegrationTypeName = outgoingIntegrationTypeName;
     return this;
   }
 
-   /**
+  /**
    * Name of the outgoing integration.
+   * 
    * @return outgoingIntegrationTypeName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Braze", value = "Name of the outgoing integration.")
 
@@ -491,11 +477,9 @@ public class WebhookWithOutgoingIntegrationDetails {
     return outgoingIntegrationTypeName;
   }
 
-
   public void setOutgoingIntegrationTypeName(String outgoingIntegrationTypeName) {
     this.outgoingIntegrationTypeName = outgoingIntegrationTypeName;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -518,16 +502,20 @@ public class WebhookWithOutgoingIntegrationDetails {
         Objects.equals(this.payload, webhookWithOutgoingIntegrationDetails.payload) &&
         Objects.equals(this.params, webhookWithOutgoingIntegrationDetails.params) &&
         Objects.equals(this.enabled, webhookWithOutgoingIntegrationDetails.enabled) &&
-        Objects.equals(this.outgoingIntegrationTemplateId, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTemplateId) &&
-        Objects.equals(this.outgoingIntegrationTypeId, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeId) &&
-        Objects.equals(this.outgoingIntegrationTypeName, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeName);
+        Objects.equals(this.outgoingIntegrationTemplateId,
+            webhookWithOutgoingIntegrationDetails.outgoingIntegrationTemplateId)
+        &&
+        Objects.equals(this.outgoingIntegrationTypeId, webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeId)
+        &&
+        Objects.equals(this.outgoingIntegrationTypeName,
+            webhookWithOutgoingIntegrationDetails.outgoingIntegrationTypeName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params, enabled, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
+    return Objects.hash(id, created, modified, applicationIds, title, description, verb, url, headers, payload, params,
+        enabled, outgoingIntegrationTemplateId, outgoingIntegrationTypeId, outgoingIntegrationTypeName);
   }
-
 
   @Override
   public String toString() {
@@ -545,7 +533,8 @@ public class WebhookWithOutgoingIntegrationDetails {
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    outgoingIntegrationTemplateId: ").append(toIndentedString(outgoingIntegrationTemplateId)).append("\n");
+    sb.append("    outgoingIntegrationTemplateId: ").append(toIndentedString(outgoingIntegrationTemplateId))
+        .append("\n");
     sb.append("    outgoingIntegrationTypeId: ").append(toIndentedString(outgoingIntegrationTypeId)).append("\n");
     sb.append("    outgoingIntegrationTypeName: ").append(toIndentedString(outgoingIntegrationTypeName)).append("\n");
     sb.append("}");
@@ -564,4 +553,3 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 }
-

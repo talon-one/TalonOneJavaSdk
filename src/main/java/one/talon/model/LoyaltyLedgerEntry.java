@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -39,7 +38,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_CUSTOMER_PROFILE_I_D = "customerProfileID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE_I_D)
@@ -47,7 +46,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_CARD_I_D = "cardID";
   @SerializedName(SERIALIZED_NAME_CARD_I_D)
-  private Integer cardID;
+  private Long cardID;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_I_D = "customerSessionID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_I_D)
@@ -55,7 +54,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_EVENT_I_D = "eventID";
   @SerializedName(SERIALIZED_NAME_EVENT_I_D)
-  private Integer eventID;
+  private Long eventID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -83,7 +82,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
-  private Integer userID;
+  private Long userID;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
@@ -93,61 +92,59 @@ public class LoyaltyLedgerEntry {
   @SerializedName(SERIALIZED_NAME_FLAGS)
   private LoyaltyLedgerEntryFlags flags;
 
-
   public LoyaltyLedgerEntry created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Get created
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2021-07-20T22:00Z", required = true, value = "")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public LoyaltyLedgerEntry programID(Long programID) {
 
-  public LoyaltyLedgerEntry programID(Integer programID) {
-    
     this.programID = programID;
     return this;
   }
 
-   /**
+  /**
    * Get programID
+   * 
    * @return programID
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
-
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
-
   public LoyaltyLedgerEntry customerProfileID(String customerProfileID) {
-    
+
     this.customerProfileID = customerProfileID;
     return this;
   }
 
-   /**
+  /**
    * Get customerProfileID
+   * 
    * @return customerProfileID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "")
 
@@ -155,45 +152,43 @@ public class LoyaltyLedgerEntry {
     return customerProfileID;
   }
 
-
   public void setCustomerProfileID(String customerProfileID) {
     this.customerProfileID = customerProfileID;
   }
 
+  public LoyaltyLedgerEntry cardID(Long cardID) {
 
-  public LoyaltyLedgerEntry cardID(Integer cardID) {
-    
     this.cardID = cardID;
     return this;
   }
 
-   /**
+  /**
    * Get cardID
+   * 
    * @return cardID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "241", value = "")
 
-  public Integer getCardID() {
+  public Long getCardID() {
     return cardID;
   }
 
-
-  public void setCardID(Integer cardID) {
+  public void setCardID(Long cardID) {
     this.cardID = cardID;
   }
 
-
   public LoyaltyLedgerEntry customerSessionID(String customerSessionID) {
-    
+
     this.customerSessionID = customerSessionID;
     return this;
   }
 
-   /**
+  /**
    * Get customerSessionID
+   * 
    * @return customerSessionID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "t2gy5s-47274", value = "")
 
@@ -201,89 +196,87 @@ public class LoyaltyLedgerEntry {
     return customerSessionID;
   }
 
-
   public void setCustomerSessionID(String customerSessionID) {
     this.customerSessionID = customerSessionID;
   }
 
+  public LoyaltyLedgerEntry eventID(Long eventID) {
 
-  public LoyaltyLedgerEntry eventID(Integer eventID) {
-    
     this.eventID = eventID;
     return this;
   }
 
-   /**
+  /**
    * Get eventID
+   * 
    * @return eventID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "")
 
-  public Integer getEventID() {
+  public Long getEventID() {
     return eventID;
   }
 
-
-  public void setEventID(Integer eventID) {
+  public void setEventID(Long eventID) {
     this.eventID = eventID;
   }
 
-
   public LoyaltyLedgerEntry type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The type of the ledger transaction. Possible values are: - &#x60;addition&#x60; - &#x60;subtraction&#x60; - &#x60;expire&#x60; - &#x60;expiring&#x60; (for expiring points ledgers) 
+  /**
+   * The type of the ledger transaction. Possible values are: -
+   * &#x60;addition&#x60; - &#x60;subtraction&#x60; - &#x60;expire&#x60; -
+   * &#x60;expiring&#x60; (for expiring points ledgers)
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "addition", required = true, value = "The type of the ledger transaction. Possible values are: - `addition` - `subtraction` - `expire` - `expiring` (for expiring points ledgers) ")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public LoyaltyLedgerEntry amount(BigDecimal amount) {
-    
+
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * Get amount
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(example = "100.0", required = true, value = "")
 
   public BigDecimal getAmount() {
     return amount;
   }
 
-
   public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
 
-
   public LoyaltyLedgerEntry startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Get startDate
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "")
 
@@ -291,22 +284,21 @@ public class LoyaltyLedgerEntry {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public LoyaltyLedgerEntry expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Get expiryDate
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2022-07-20T22:00Z", value = "")
 
@@ -314,89 +306,88 @@ public class LoyaltyLedgerEntry {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public LoyaltyLedgerEntry name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * A name referencing the condition or effect that added this entry, or the specific name provided in an API call.
+  /**
+   * A name referencing the condition or effect that added this entry, or the
+   * specific name provided in an API call.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Add points on purchase", required = true, value = "A name referencing the condition or effect that added this entry, or the specific name provided in an API call.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public LoyaltyLedgerEntry subLedgerID(String subLedgerID) {
-    
+
     this.subLedgerID = subLedgerID;
     return this;
   }
 
-   /**
-   * This specifies if we are adding loyalty points to the main ledger or a subledger.
+  /**
+   * This specifies if we are adding loyalty points to the main ledger or a
+   * subledger.
+   * 
    * @return subLedgerID
-  **/
+   **/
   @ApiModelProperty(example = "mysubledger", required = true, value = "This specifies if we are adding loyalty points to the main ledger or a subledger.")
 
   public String getSubLedgerID() {
     return subLedgerID;
   }
 
-
   public void setSubLedgerID(String subLedgerID) {
     this.subLedgerID = subLedgerID;
   }
 
+  public LoyaltyLedgerEntry userID(Long userID) {
 
-  public LoyaltyLedgerEntry userID(Integer userID) {
-    
     this.userID = userID;
     return this;
   }
 
-   /**
-   * This is the ID of the user who created this entry, if the addition or subtraction was done manually.
+  /**
+   * This is the ID of the user who created this entry, if the addition or
+   * subtraction was done manually.
+   * 
    * @return userID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "499", value = "This is the ID of the user who created this entry, if the addition or subtraction was done manually.")
 
-  public Integer getUserID() {
+  public Long getUserID() {
     return userID;
   }
 
-
-  public void setUserID(Integer userID) {
+  public void setUserID(Long userID) {
     this.userID = userID;
   }
 
-
   public LoyaltyLedgerEntry archived(Boolean archived) {
-    
+
     this.archived = archived;
     return this;
   }
 
-   /**
+  /**
    * Indicates if the entry belongs to the archived session.
+   * 
    * @return archived
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates if the entry belongs to the archived session.")
 
@@ -404,22 +395,21 @@ public class LoyaltyLedgerEntry {
     return archived;
   }
 
-
   public void setArchived(Boolean archived) {
     this.archived = archived;
   }
 
-
   public LoyaltyLedgerEntry flags(LoyaltyLedgerEntryFlags flags) {
-    
+
     this.flags = flags;
     return this;
   }
 
-   /**
+  /**
    * Get flags
+   * 
    * @return flags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -427,11 +417,9 @@ public class LoyaltyLedgerEntry {
     return flags;
   }
 
-
   public void setFlags(LoyaltyLedgerEntryFlags flags) {
     this.flags = flags;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -461,9 +449,9 @@ public class LoyaltyLedgerEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount, startDate, expiryDate, name, subLedgerID, userID, archived, flags);
+    return Objects.hash(created, programID, customerProfileID, cardID, customerSessionID, eventID, type, amount,
+        startDate, expiryDate, name, subLedgerID, userID, archived, flags);
   }
-
 
   @Override
   public String toString() {
@@ -500,4 +488,3 @@ public class LoyaltyLedgerEntry {
   }
 
 }
-

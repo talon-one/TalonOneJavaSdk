@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class BaseSamlConnection {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -61,127 +60,122 @@ public class BaseSamlConnection {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_U_R_I)
   private String audienceURI;
 
+  public BaseSamlConnection accountId(Long accountId) {
 
-  public BaseSamlConnection accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public BaseSamlConnection name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * ID of the SAML service.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the SAML service.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public BaseSamlConnection enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Determines if this SAML connection active.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Determines if this SAML connection active.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public BaseSamlConnection issuer(String issuer) {
-    
+
     this.issuer = issuer;
     return this;
   }
 
-   /**
+  /**
    * Identity Provider Entity ID.
+   * 
    * @return issuer
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Identity Provider Entity ID.")
 
   public String getIssuer() {
     return issuer;
   }
 
-
   public void setIssuer(String issuer) {
     this.issuer = issuer;
   }
 
-
   public BaseSamlConnection signOnURL(String signOnURL) {
-    
+
     this.signOnURL = signOnURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-On URL.
+   * 
    * @return signOnURL
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Single Sign-On URL.")
 
   public String getSignOnURL() {
     return signOnURL;
   }
 
-
   public void setSignOnURL(String signOnURL) {
     this.signOnURL = signOnURL;
   }
 
-
   public BaseSamlConnection signOutURL(String signOutURL) {
-    
+
     this.signOutURL = signOutURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-Out URL.
+   * 
    * @return signOutURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Single Sign-Out URL.")
 
@@ -189,22 +183,21 @@ public class BaseSamlConnection {
     return signOutURL;
   }
 
-
   public void setSignOutURL(String signOutURL) {
     this.signOutURL = signOutURL;
   }
 
-
   public BaseSamlConnection metadataURL(String metadataURL) {
-    
+
     this.metadataURL = metadataURL;
     return this;
   }
 
-   /**
+  /**
    * Metadata URL.
+   * 
    * @return metadataURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Metadata URL.")
 
@@ -212,22 +205,23 @@ public class BaseSamlConnection {
     return metadataURL;
   }
 
-
   public void setMetadataURL(String metadataURL) {
     this.metadataURL = metadataURL;
   }
 
-
   public BaseSamlConnection audienceURI(String audienceURI) {
-    
+
     this.audienceURI = audienceURI;
     return this;
   }
 
-   /**
-   * The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
+  /**
+   * The application-defined unique identifier that is the intended audience of
+   * the SAML assertion. This is most often the SP Entity ID of your application.
+   * When not specified, the ACS URL will be used.
+   * 
    * @return audienceURI
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
 
@@ -235,11 +229,9 @@ public class BaseSamlConnection {
     return audienceURI;
   }
 
-
   public void setAudienceURI(String audienceURI) {
     this.audienceURI = audienceURI;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -264,7 +256,6 @@ public class BaseSamlConnection {
   public int hashCode() {
     return Objects.hash(accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI);
   }
-
 
   @Override
   public String toString() {
@@ -294,4 +285,3 @@ public class BaseSamlConnection {
   }
 
 }
-

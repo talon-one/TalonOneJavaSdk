@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,7 +37,7 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -58,19 +57,20 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Integer evaluationGroupId;
-
+  private Long evaluationGroupId;
 
   public CampaignCopy name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * Name of the copied campaign (Defaults to \&quot;Copy of original campaign name\&quot;).
+  /**
+   * Name of the copied campaign (Defaults to \&quot;Copy of original campaign
+   * name\&quot;).
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Copy of Summer promotions", value = "Name of the copied campaign (Defaults to \"Copy of original campaign name\").")
 
@@ -78,49 +78,47 @@ public class CampaignCopy {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public CampaignCopy applicationIds(List<Long> applicationIds) {
 
-  public CampaignCopy applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public CampaignCopy addApplicationIdsItem(Integer applicationIdsItem) {
+  public CampaignCopy addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
+  /**
    * Application IDs of the applications to which a campaign should be copied to.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "Application IDs of the applications to which a campaign should be copied to.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
-
   public CampaignCopy description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A detailed description of the campaign.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Campaign for all summer 2021 promotions", value = "A detailed description of the campaign.")
 
@@ -128,22 +126,21 @@ public class CampaignCopy {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public CampaignCopy startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become active.
+   * 
    * @return startTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-06-01T09:00:27.993483Z", value = "Timestamp when the campaign will become active.")
 
@@ -151,22 +148,21 @@ public class CampaignCopy {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public CampaignCopy endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become inactive.
+   * 
    * @return endTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-09-10T01:00:00.993483Z", value = "Timestamp when the campaign will become inactive.")
 
@@ -174,14 +170,12 @@ public class CampaignCopy {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
-
   public CampaignCopy tags(List<String> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -194,10 +188,11 @@ public class CampaignCopy {
     return this;
   }
 
-   /**
+  /**
    * A list of tags for the campaign.
+   * 
    * @return tags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[Summer, Shoes]", value = "A list of tags for the campaign.")
 
@@ -205,34 +200,31 @@ public class CampaignCopy {
     return tags;
   }
 
-
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
+  public CampaignCopy evaluationGroupId(Long evaluationGroupId) {
 
-  public CampaignCopy evaluationGroupId(Integer evaluationGroupId) {
-    
     this.evaluationGroupId = evaluationGroupId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign evaluation group the campaign belongs to.
+   * 
    * @return evaluationGroupId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
 
-  public Integer getEvaluationGroupId() {
+  public Long getEvaluationGroupId() {
     return evaluationGroupId;
   }
 
-
-  public void setEvaluationGroupId(Integer evaluationGroupId) {
+  public void setEvaluationGroupId(Long evaluationGroupId) {
     this.evaluationGroupId = evaluationGroupId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -256,7 +248,6 @@ public class CampaignCopy {
   public int hashCode() {
     return Objects.hash(name, applicationIds, description, startTime, endTime, tags, evaluationGroupId);
   }
-
 
   @Override
   public String toString() {
@@ -285,4 +276,3 @@ public class CampaignCopy {
   }
 
 }
-

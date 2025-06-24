@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -47,14 +46,18 @@ public class CouponDeletionFilters {
   private OffsetDateTime startsBefore;
 
   /**
-   * - &#x60;expired&#x60;: Matches coupons in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches coupons in which the start date is null or in the past and the expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches coupons in which the start date is set and in the future. 
+   * - &#x60;expired&#x60;: Matches coupons in which the expiration date is set
+   * and in the past. - &#x60;validNow&#x60;: Matches coupons in which the start
+   * date is null or in the past and the expiration date is null or in the future.
+   * - &#x60;validFuture&#x60;: Matches coupons in which the start date is set and
+   * in the future.
    */
   @JsonAdapter(ValidEnum.Adapter.class)
   public enum ValidEnum {
     EXPIRED("expired"),
-    
+
     VALIDNOW("validNow"),
-    
+
     VALIDFUTURE("validFuture");
 
     private String value;
@@ -89,7 +92,7 @@ public class CouponDeletionFilters {
 
       @Override
       public ValidEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ValidEnum.fromValue(value);
       }
     }
@@ -125,7 +128,7 @@ public class CouponDeletionFilters {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   public static final String SERIALIZED_NAME_EXPIRES_AFTER = "expiresAfter";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AFTER)
@@ -135,17 +138,19 @@ public class CouponDeletionFilters {
   @SerializedName(SERIALIZED_NAME_EXPIRES_BEFORE)
   private OffsetDateTime expiresBefore;
 
-
   public CouponDeletionFilters createdBefore(OffsetDateTime createdBefore) {
-    
+
     this.createdBefore = createdBefore;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return createdBefore
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -153,22 +158,23 @@ public class CouponDeletionFilters {
     return createdBefore;
   }
 
-
   public void setCreatedBefore(OffsetDateTime createdBefore) {
     this.createdBefore = createdBefore;
   }
 
-
   public CouponDeletionFilters createdAfter(OffsetDateTime createdAfter) {
-    
+
     this.createdAfter = createdAfter;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return createdAfter
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -176,22 +182,23 @@ public class CouponDeletionFilters {
     return createdAfter;
   }
 
-
   public void setCreatedAfter(OffsetDateTime createdAfter) {
     this.createdAfter = createdAfter;
   }
 
-
   public CouponDeletionFilters startsAfter(OffsetDateTime startsAfter) {
-    
+
     this.startsAfter = startsAfter;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return startsAfter
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -199,22 +206,23 @@ public class CouponDeletionFilters {
     return startsAfter;
   }
 
-
   public void setStartsAfter(OffsetDateTime startsAfter) {
     this.startsAfter = startsAfter;
   }
 
-
   public CouponDeletionFilters startsBefore(OffsetDateTime startsBefore) {
-    
+
     this.startsBefore = startsBefore;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return startsBefore
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -222,22 +230,25 @@ public class CouponDeletionFilters {
     return startsBefore;
   }
 
-
   public void setStartsBefore(OffsetDateTime startsBefore) {
     this.startsBefore = startsBefore;
   }
 
-
   public CouponDeletionFilters valid(ValidEnum valid) {
-    
+
     this.valid = valid;
     return this;
   }
 
-   /**
-   * - &#x60;expired&#x60;: Matches coupons in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches coupons in which the start date is null or in the past and the expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches coupons in which the start date is set and in the future. 
+  /**
+   * - &#x60;expired&#x60;: Matches coupons in which the expiration date is set
+   * and in the past. - &#x60;validNow&#x60;: Matches coupons in which the start
+   * date is null or in the past and the expiration date is null or in the future.
+   * - &#x60;validFuture&#x60;: Matches coupons in which the start date is set and
+   * in the future.
+   * 
    * @return valid
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "- `expired`: Matches coupons in which the expiration date is set and in the past. - `validNow`: Matches coupons in which the start date is null or in the past and the expiration date is null or in the future. - `validFuture`: Matches coupons in which the start date is set and in the future. ")
 
@@ -245,22 +256,24 @@ public class CouponDeletionFilters {
     return valid;
   }
 
-
   public void setValid(ValidEnum valid) {
     this.valid = valid;
   }
 
-
   public CouponDeletionFilters usable(Boolean usable) {
-    
+
     this.usable = usable;
     return this;
   }
 
-   /**
-   * - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter. 
+  /**
+   * - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt;
+   * usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where
+   * &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned. - This field
+   * cannot be used in conjunction with the &#x60;usable&#x60; query parameter.
+   * 
    * @return usable
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "- `true`: only coupons where `usageCounter < usageLimit` will be returned. - `false`: only coupons where `usageCounter >= usageLimit` will be returned. - This field cannot be used in conjunction with the `usable` query parameter. ")
 
@@ -268,22 +281,24 @@ public class CouponDeletionFilters {
     return usable;
   }
 
-
   public void setUsable(Boolean usable) {
     this.usable = usable;
   }
 
-
   public CouponDeletionFilters redeemed(Boolean redeemed) {
-    
+
     this.redeemed = redeemed;
     return this;
   }
 
-   /**
-   * - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned.  **Note:** This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter. 
+  /**
+   * - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will
+   * be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter
+   * &#x3D; 0&#x60; will be returned. **Note:** This field cannot be used in
+   * conjunction with the &#x60;usable&#x60; query parameter.
+   * 
    * @return redeemed
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "- `true`: only coupons where `usageCounter > 0` will be returned. - `false`: only coupons where `usageCounter = 0` will be returned.  **Note:** This field cannot be used in conjunction with the `usable` query parameter. ")
 
@@ -291,22 +306,22 @@ public class CouponDeletionFilters {
     return redeemed;
   }
 
-
   public void setRedeemed(Boolean redeemed) {
     this.redeemed = redeemed;
   }
 
-
   public CouponDeletionFilters recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
-   * Filter results by match with a profile id specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field. 
+  /**
+   * Filter results by match with a profile id specified in the coupon&#39;s
+   * &#x60;RecipientIntegrationId&#x60; field.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results by match with a profile id specified in the coupon's `RecipientIntegrationId` field. ")
 
@@ -314,22 +329,21 @@ public class CouponDeletionFilters {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
-
   public CouponDeletionFilters exactMatch(Boolean exactMatch) {
-    
+
     this.exactMatch = exactMatch;
     return this;
   }
 
-   /**
+  /**
    * Filter results to an exact case-insensitive matching against the coupon code
+   * 
    * @return exactMatch
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results to an exact case-insensitive matching against the coupon code")
 
@@ -337,22 +351,21 @@ public class CouponDeletionFilters {
     return exactMatch;
   }
 
-
   public void setExactMatch(Boolean exactMatch) {
     this.exactMatch = exactMatch;
   }
 
-
   public CouponDeletionFilters value(String value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * Filter results by the coupon code
+   * 
    * @return value
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results by the coupon code")
 
@@ -360,22 +373,21 @@ public class CouponDeletionFilters {
     return value;
   }
 
-
   public void setValue(String value) {
     this.value = value;
   }
 
-
   public CouponDeletionFilters batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * Filter results by batches of coupons
+   * 
    * @return batchId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results by batches of coupons")
 
@@ -383,45 +395,46 @@ public class CouponDeletionFilters {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
 
+  public CouponDeletionFilters referralId(Long referralId) {
 
-  public CouponDeletionFilters referralId(Integer referralId) {
-    
     this.referralId = referralId;
     return this;
   }
 
-   /**
-   * Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+  /**
+   * Filter the results by matching them with the ID of a referral. This filter
+   * shows the coupons created by redeeming a referral code.
+   * 
    * @return referralId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
-
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 
-
   public CouponDeletionFilters expiresAfter(OffsetDateTime expiresAfter) {
-    
+
     this.expiresAfter = expiresAfter;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return expiresAfter
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -429,22 +442,23 @@ public class CouponDeletionFilters {
     return expiresAfter;
   }
 
-
   public void setExpiresAfter(OffsetDateTime expiresAfter) {
     this.expiresAfter = expiresAfter;
   }
 
-
   public CouponDeletionFilters expiresBefore(OffsetDateTime expiresBefore) {
-    
+
     this.expiresBefore = expiresBefore;
     return this;
   }
 
-   /**
-   * Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
+  /**
+   * Filter results comparing the parameter value, expected to be an RFC3339
+   * timestamp string, to the coupon creation timestamp. You can use any time zone
+   * setting. Talon.One will convert to UTC internally.
+   * 
    * @return expiresBefore
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.")
 
@@ -452,11 +466,9 @@ public class CouponDeletionFilters {
     return expiresBefore;
   }
 
-
   public void setExpiresBefore(OffsetDateTime expiresBefore) {
     this.expiresBefore = expiresBefore;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -485,9 +497,9 @@ public class CouponDeletionFilters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBefore, createdAfter, startsAfter, startsBefore, valid, usable, redeemed, recipientIntegrationId, exactMatch, value, batchId, referralId, expiresAfter, expiresBefore);
+    return Objects.hash(createdBefore, createdAfter, startsAfter, startsBefore, valid, usable, redeemed,
+        recipientIntegrationId, exactMatch, value, batchId, referralId, expiresAfter, expiresBefore);
   }
-
 
   @Override
   public String toString() {
@@ -523,4 +535,3 @@ public class CouponDeletionFilters {
   }
 
 }
-

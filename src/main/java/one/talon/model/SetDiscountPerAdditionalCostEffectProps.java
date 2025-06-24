@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscountPerAdditionalCost\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set per additional cost discount\&quot; effect. This is a discount that should be applied on a specific additional cost.
+ * The properties specific to the \&quot;setDiscountPerAdditionalCost\&quot;
+ * effect. This gets triggered whenever a validated rule contained a \&quot;set
+ * per additional cost discount\&quot; effect. This is a discount that should be
+ * applied on a specific additional cost.
  */
 @ApiModel(description = "The properties specific to the \"setDiscountPerAdditionalCost\" effect. This gets triggered whenever a validated rule contained a \"set per additional cost discount\" effect. This is a discount that should be applied on a specific additional cost.")
 
@@ -37,7 +39,7 @@ public class SetDiscountPerAdditionalCostEffectProps {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
-  private Integer additionalCostId;
+  private Long additionalCostId;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST = "additionalCost";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST)
@@ -51,105 +53,101 @@ public class SetDiscountPerAdditionalCostEffectProps {
   @SerializedName(SERIALIZED_NAME_DESIRED_VALUE)
   private BigDecimal desiredValue;
 
-
   public SetDiscountPerAdditionalCostEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name / description of this discount
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name / description of this discount")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public SetDiscountPerAdditionalCostEffectProps additionalCostId(Long additionalCostId) {
 
-  public SetDiscountPerAdditionalCostEffectProps additionalCostId(Integer additionalCostId) {
-    
     this.additionalCostId = additionalCostId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the additional cost.
+   * 
    * @return additionalCostId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the additional cost.")
 
-  public Integer getAdditionalCostId() {
+  public Long getAdditionalCostId() {
     return additionalCostId;
   }
 
-
-  public void setAdditionalCostId(Integer additionalCostId) {
+  public void setAdditionalCostId(Long additionalCostId) {
     this.additionalCostId = additionalCostId;
   }
 
-
   public SetDiscountPerAdditionalCostEffectProps additionalCost(String additionalCost) {
-    
+
     this.additionalCost = additionalCost;
     return this;
   }
 
-   /**
+  /**
    * The name of the additional cost.
+   * 
    * @return additionalCost
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the additional cost.")
 
   public String getAdditionalCost() {
     return additionalCost;
   }
 
-
   public void setAdditionalCost(String additionalCost) {
     this.additionalCost = additionalCost;
   }
 
-
   public SetDiscountPerAdditionalCostEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The total monetary value of the discount.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public SetDiscountPerAdditionalCostEffectProps desiredValue(BigDecimal desiredValue) {
-    
+
     this.desiredValue = desiredValue;
     return this;
   }
 
-   /**
+  /**
    * The original value of the discount.
+   * 
    * @return desiredValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original value of the discount.")
 
@@ -157,11 +155,9 @@ public class SetDiscountPerAdditionalCostEffectProps {
     return desiredValue;
   }
 
-
   public void setDesiredValue(BigDecimal desiredValue) {
     this.desiredValue = desiredValue;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -183,7 +179,6 @@ public class SetDiscountPerAdditionalCostEffectProps {
   public int hashCode() {
     return Objects.hash(name, additionalCostId, additionalCost, value, desiredValue);
   }
-
 
   @Override
   public String toString() {
@@ -210,4 +205,3 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
 }
-

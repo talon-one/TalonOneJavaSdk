@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -47,19 +46,19 @@ public class ManagementKey {
 
   public static final String SERIALIZED_NAME_ALLOWED_APPLICATION_IDS = "allowedApplicationIds";
   @SerializedName(SERIALIZED_NAME_ALLOWED_APPLICATION_IDS)
-  private List<Integer> allowedApplicationIds = null;
+  private List<Long> allowedApplicationIds = null;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Integer accountID;
+  private Long accountID;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -69,53 +68,50 @@ public class ManagementKey {
   @SerializedName(SERIALIZED_NAME_DISABLED)
   private Boolean disabled;
 
-
   public ManagementKey name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name for management key.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My generated key", required = true, value = "Name for management key.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public ManagementKey expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * The date the management key expires.
+   * 
    * @return expiryDate
-  **/
+   **/
   @ApiModelProperty(example = "2023-08-24T14:00Z", required = true, value = "The date the management key expires.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public ManagementKey endpoints(List<Endpoint> endpoints) {
-    
+
     this.endpoints = endpoints;
     return this;
   }
@@ -125,151 +121,149 @@ public class ManagementKey {
     return this;
   }
 
-   /**
+  /**
    * The list of endpoints that can be accessed with the key
+   * 
    * @return endpoints
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The list of endpoints that can be accessed with the key")
 
   public List<Endpoint> getEndpoints() {
     return endpoints;
   }
 
-
   public void setEndpoints(List<Endpoint> endpoints) {
     this.endpoints = endpoints;
   }
 
+  public ManagementKey allowedApplicationIds(List<Long> allowedApplicationIds) {
 
-  public ManagementKey allowedApplicationIds(List<Integer> allowedApplicationIds) {
-    
     this.allowedApplicationIds = allowedApplicationIds;
     return this;
   }
 
-  public ManagementKey addAllowedApplicationIdsItem(Integer allowedApplicationIdsItem) {
+  public ManagementKey addAllowedApplicationIdsItem(Long allowedApplicationIdsItem) {
     if (this.allowedApplicationIds == null) {
-      this.allowedApplicationIds = new ArrayList<Integer>();
+      this.allowedApplicationIds = new ArrayList<Long>();
     }
     this.allowedApplicationIds.add(allowedApplicationIdsItem);
     return this;
   }
 
-   /**
-   * A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. 
+  /**
+   * A list of Application IDs that you can access with the management key. An
+   * empty or missing list means the management key can be used for all
+   * Applications in the account.
+   * 
    * @return allowedApplicationIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. ")
 
-  public List<Integer> getAllowedApplicationIds() {
+  public List<Long> getAllowedApplicationIds() {
     return allowedApplicationIds;
   }
 
-
-  public void setAllowedApplicationIds(List<Integer> allowedApplicationIds) {
+  public void setAllowedApplicationIds(List<Long> allowedApplicationIds) {
     this.allowedApplicationIds = allowedApplicationIds;
   }
 
+  public ManagementKey id(Long id) {
 
-  public ManagementKey id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the management key.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "34", required = true, value = "ID of the management key.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public ManagementKey createdBy(Long createdBy) {
 
-  public ManagementKey createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created it.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "280", required = true, value = "ID of the user who created it.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public ManagementKey accountID(Long accountID) {
 
-  public ManagementKey accountID(Integer accountID) {
-    
     this.accountID = accountID;
     return this;
   }
 
-   /**
+  /**
    * ID of account the key is used for.
+   * 
    * @return accountID
-  **/
+   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for.")
 
-  public Integer getAccountID() {
+  public Long getAccountID() {
     return accountID;
   }
 
-
-  public void setAccountID(Integer accountID) {
+  public void setAccountID(Long accountID) {
     this.accountID = accountID;
   }
 
-
   public ManagementKey created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The date the management key was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2022-03-02T16:46:17.758585Z", required = true, value = "The date the management key was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public ManagementKey disabled(Boolean disabled) {
-    
+
     this.disabled = disabled;
     return this;
   }
 
-   /**
-   * The management key is disabled (this property is set to &#x60;true&#x60;) when the user who created the key is disabled or deleted.
+  /**
+   * The management key is disabled (this property is set to &#x60;true&#x60;)
+   * when the user who created the key is disabled or deleted.
+   * 
    * @return disabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "The management key is disabled (this property is set to `true`) when the user who created the key is disabled or deleted.")
 
@@ -277,11 +271,9 @@ public class ManagementKey {
     return disabled;
   }
 
-
   public void setDisabled(Boolean disabled) {
     this.disabled = disabled;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -305,9 +297,9 @@ public class ManagementKey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created, disabled);
+    return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds, id, createdBy, accountID, created,
+        disabled);
   }
-
 
   @Override
   public String toString() {
@@ -338,4 +330,3 @@ public class ManagementKey {
   }
 
 }
-

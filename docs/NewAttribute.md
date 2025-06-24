@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **hasAllowedList** | **Boolean** | Whether or not this attribute has an allowed list of values associated with it. |  [optional]
 **restrictedBySuggestions** | **Boolean** | Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property).  |  [optional]
 **editable** | **Boolean** | Whether or not this attribute can be edited. | 
-**subscribedApplicationsIds** | **List&lt;Integer&gt;** | A list of the IDs of the applications where this attribute is available. |  [optional]
-**subscribedCatalogsIds** | **List&lt;Integer&gt;** | A list of the IDs of the catalogs where this attribute is available. |  [optional]
+**subscribedApplicationsIds** | **List&lt;Long&gt;** | A list of the IDs of the applications where this attribute is available. |  [optional]
+**subscribedCatalogsIds** | **List&lt;Long&gt;** | A list of the IDs of the catalogs where this attribute is available. |  [optional]
 **allowedSubscriptions** | [**List&lt;AllowedSubscriptionsEnum&gt;**](#List&lt;AllowedSubscriptionsEnum&gt;) | A list of allowed subscription types for this attribute.  **Note:** This only applies to attributes associated with the &#x60;CartItem&#x60; entity.  |  [optional]
 
 

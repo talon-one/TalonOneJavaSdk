@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp at which point the referral code becomes valid. |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Expiration date of the referral code. Referral never expires if this is omitted. |  [optional]
-**usageLimit** | **Integer** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  | 
-**campaignId** | **Integer** | The ID of the campaign from which the referral received the referral code. | 
+**usageLimit** | **Long** | The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply.  | 
+**campaignId** | **Long** | The ID of the campaign from which the referral received the referral code. | 
 **advocateProfileIntegrationIds** | **List&lt;String&gt;** | An array containing all the respective advocate profiles. | 
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this referral code. |  [optional]
 **validCharacters** | **List&lt;String&gt;** | List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular expression.  |  [optional]

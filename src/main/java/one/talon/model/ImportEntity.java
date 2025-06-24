@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,31 +30,29 @@ import java.io.IOException;
 public class ImportEntity {
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
+  public ImportEntity importId(Long importId) {
 
-  public ImportEntity importId(Integer importId) {
-    
     this.importId = importId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Import which created this referral.
+   * 
    * @return importId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this referral.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
-
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -73,7 +70,6 @@ public class ImportEntity {
   public int hashCode() {
     return Objects.hash(importId);
   }
-
 
   @Override
   public String toString() {
@@ -96,4 +92,3 @@ public class ImportEntity {
   }
 
 }
-

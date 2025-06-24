@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,11 +32,11 @@ import java.util.List;
 public class OutgoingIntegrationTemplate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_INTEGRATION_TYPE = "integrationType";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_TYPE)
-  private Integer integrationType;
+  private Long integrationType;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -57,13 +56,13 @@ public class OutgoingIntegrationTemplate {
   @JsonAdapter(MethodEnum.Adapter.class)
   public enum MethodEnum {
     POST("POST"),
-    
+
     PUT("PUT"),
-    
+
     GET("GET"),
-    
+
     DELETE("DELETE"),
-    
+
     PATCH("PATCH");
 
     private String value;
@@ -98,7 +97,7 @@ public class OutgoingIntegrationTemplate {
 
       @Override
       public MethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return MethodEnum.fromValue(value);
       }
     }
@@ -116,163 +115,156 @@ public class OutgoingIntegrationTemplate {
   @SerializedName(SERIALIZED_NAME_HEADERS)
   private List<String> headers = new ArrayList<String>();
 
+  public OutgoingIntegrationTemplate id(Long id) {
 
-  public OutgoingIntegrationTemplate id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID for this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public OutgoingIntegrationTemplate integrationType(Long integrationType) {
 
-  public OutgoingIntegrationTemplate integrationType(Integer integrationType) {
-    
     this.integrationType = integrationType;
     return this;
   }
 
-   /**
+  /**
    * Unique ID of outgoing integration type.
+   * 
    * @return integrationType
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "Unique ID of outgoing integration type.")
 
-  public Integer getIntegrationType() {
+  public Long getIntegrationType() {
     return integrationType;
   }
 
-
-  public void setIntegrationType(Integer integrationType) {
+  public void setIntegrationType(Long integrationType) {
     this.integrationType = integrationType;
   }
 
-
   public OutgoingIntegrationTemplate title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The title of the integration template.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Email coupon codes", required = true, value = "The title of the integration template.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public OutgoingIntegrationTemplate description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of the specific outgoing integration template.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "This template sends a coupon code to the specified audience by email.", required = true, value = "The description of the specific outgoing integration template.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public OutgoingIntegrationTemplate payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
-   * The API payload (supports templating using parameters) for this integration template.
+  /**
+   * The API payload (supports templating using parameters) for this integration
+   * template.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(example = "{  \"message\": \"${message}\" }", required = true, value = "The API payload (supports templating using parameters) for this integration template.")
 
   public String getPayload() {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public OutgoingIntegrationTemplate method(MethodEnum method) {
-    
+
     this.method = method;
     return this;
   }
 
-   /**
+  /**
    * API method for this webhook.
+   * 
    * @return method
-  **/
+   **/
   @ApiModelProperty(example = "POST", required = true, value = "API method for this webhook.")
 
   public MethodEnum getMethod() {
     return method;
   }
 
-
   public void setMethod(MethodEnum method) {
     this.method = method;
   }
 
-
   public OutgoingIntegrationTemplate relativeUrl(String relativeUrl) {
-    
+
     this.relativeUrl = relativeUrl;
     return this;
   }
 
-   /**
+  /**
    * The relative URL corresponding to each integration template.
+   * 
    * @return relativeUrl
-  **/
+   **/
   @ApiModelProperty(example = "/campaigns/trigger/send", required = true, value = "The relative URL corresponding to each integration template.")
 
   public String getRelativeUrl() {
     return relativeUrl;
   }
 
-
   public void setRelativeUrl(String relativeUrl) {
     this.relativeUrl = relativeUrl;
   }
 
-
   public OutgoingIntegrationTemplate headers(List<String> headers) {
-    
+
     this.headers = headers;
     return this;
   }
@@ -282,21 +274,20 @@ public class OutgoingIntegrationTemplate {
     return this;
   }
 
-   /**
+  /**
    * The list of HTTP headers for this integration template.
+   * 
    * @return headers
-  **/
+   **/
   @ApiModelProperty(example = "[{\"Content-Type\": \"application/json\"}]", required = true, value = "The list of HTTP headers for this integration template.")
 
   public List<String> getHeaders() {
     return headers;
   }
 
-
   public void setHeaders(List<String> headers) {
     this.headers = headers;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -321,7 +312,6 @@ public class OutgoingIntegrationTemplate {
   public int hashCode() {
     return Objects.hash(id, integrationType, title, description, payload, method, relativeUrl, headers);
   }
-
 
   @Override
   public String toString() {
@@ -351,4 +341,3 @@ public class OutgoingIntegrationTemplate {
   }
 
 }
-

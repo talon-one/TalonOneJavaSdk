@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class UpdateCoupon {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -44,7 +43,7 @@ public class UpdateCoupon {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -74,44 +73,45 @@ public class UpdateCoupon {
   @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
   private Boolean implicitlyReserved;
 
+  public UpdateCoupon usageLimit(Long usageLimit) {
 
-  public UpdateCoupon usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
+  /**
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means
+   * unlimited redemptions but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100", value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public UpdateCoupon discountLimit(BigDecimal discountLimit) {
-    
+
     this.discountLimit = discountLimit;
     return this;
   }
 
-   /**
-   * The total discount value that the code can give. Typically used to represent a gift card value. 
+  /**
+   * The total discount value that the code can give. Typically used to represent
+   * a gift card value.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return discountLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "30.0", value = "The total discount value that the code can give. Typically used to represent a gift card value. ")
 
@@ -119,47 +119,45 @@ public class UpdateCoupon {
     return discountLimit;
   }
 
-
   public void setDiscountLimit(BigDecimal discountLimit) {
     this.discountLimit = discountLimit;
   }
 
+  public UpdateCoupon reservationLimit(Long reservationLimit) {
 
-  public UpdateCoupon reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public UpdateCoupon startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the coupon becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-01-24T14:15:22Z", value = "Timestamp at which point the coupon becomes valid.")
 
@@ -167,22 +165,21 @@ public class UpdateCoupon {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public UpdateCoupon expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Expiration date of the coupon. Coupon never expires if this is omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
@@ -190,14 +187,12 @@ public class UpdateCoupon {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public UpdateCoupon limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -210,10 +205,14 @@ public class UpdateCoupon {
     return this;
   }
 
-   /**
-   * Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. 
+  /**
+   * Limits configuration for a coupon. These limits will override the limits set
+   * from the campaign. **Note:** Only usable when creating a single coupon which
+   * is not tied to a specific recipient. Only per-profile limits are allowed to
+   * be configured.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. ")
 
@@ -221,22 +220,21 @@ public class UpdateCoupon {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
-
   public UpdateCoupon recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID for this coupon&#39;s beneficiary&#39;s profile.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "The integration ID for this coupon's beneficiary's profile.")
 
@@ -244,22 +242,21 @@ public class UpdateCoupon {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
-
   public UpdateCoupon attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
@@ -267,22 +264,22 @@ public class UpdateCoupon {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public UpdateCoupon isReservationMandatory(Boolean isReservationMandatory) {
-    
+
     this.isReservationMandatory = isReservationMandatory;
     return this;
   }
 
-   /**
-   * An indication of whether the code can be redeemed only if it has been reserved first.
+  /**
+   * An indication of whether the code can be redeemed only if it has been
+   * reserved first.
+   * 
    * @return isReservationMandatory
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
 
@@ -290,22 +287,21 @@ public class UpdateCoupon {
     return isReservationMandatory;
   }
 
-
   public void setIsReservationMandatory(Boolean isReservationMandatory) {
     this.isReservationMandatory = isReservationMandatory;
   }
 
-
   public UpdateCoupon implicitlyReserved(Boolean implicitlyReserved) {
-    
+
     this.implicitlyReserved = implicitlyReserved;
     return this;
   }
 
-   /**
+  /**
    * An indication of whether the coupon is implicitly reserved for all customers.
+   * 
    * @return implicitlyReserved
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indication of whether the coupon is implicitly reserved for all customers.")
 
@@ -313,11 +309,9 @@ public class UpdateCoupon {
     return implicitlyReserved;
   }
 
-
   public void setImplicitlyReserved(Boolean implicitlyReserved) {
     this.implicitlyReserved = implicitlyReserved;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -342,9 +336,9 @@ public class UpdateCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, recipientIntegrationId, attributes, isReservationMandatory, implicitlyReserved);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits,
+        recipientIntegrationId, attributes, isReservationMandatory, implicitlyReserved);
   }
-
 
   @Override
   public String toString() {
@@ -376,4 +370,3 @@ public class UpdateCoupon {
   }
 
 }
-

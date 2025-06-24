@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -46,23 +45,23 @@ public class NewInvitation {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Integer> roles = null;
+  private List<Long> roles = null;
 
   public static final String SERIALIZED_NAME_ACL = "acl";
   @SerializedName(SERIALIZED_NAME_ACL)
   private String acl;
 
-
   public NewInvitation name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the user.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "John Doe", value = "Name of the user.")
 
@@ -70,44 +69,42 @@ public class NewInvitation {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewInvitation email(String email) {
-    
+
     this.email = email;
     return this;
   }
 
-   /**
+  /**
    * Email address of the user.
+   * 
    * @return email
-  **/
+   **/
   @ApiModelProperty(example = "john.doe@example.com", required = true, value = "Email address of the user.")
 
   public String getEmail() {
     return email;
   }
 
-
   public void setEmail(String email) {
     this.email = email;
   }
 
-
   public NewInvitation isAdmin(Boolean isAdmin) {
-    
+
     this.isAdmin = isAdmin;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the user is an &#x60;admin&#x60;.
+   * 
    * @return isAdmin
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates whether the user is an `admin`.")
 
@@ -115,53 +112,51 @@ public class NewInvitation {
     return isAdmin;
   }
 
-
   public void setIsAdmin(Boolean isAdmin) {
     this.isAdmin = isAdmin;
   }
 
+  public NewInvitation roles(List<Long> roles) {
 
-  public NewInvitation roles(List<Integer> roles) {
-    
     this.roles = roles;
     return this;
   }
 
-  public NewInvitation addRolesItem(Integer rolesItem) {
+  public NewInvitation addRolesItem(Long rolesItem) {
     if (this.roles == null) {
-      this.roles = new ArrayList<Integer>();
+      this.roles = new ArrayList<Long>();
     }
     this.roles.add(rolesItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the roles assigned to the user.
+   * 
    * @return roles
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of the IDs of the roles assigned to the user.")
 
-  public List<Integer> getRoles() {
+  public List<Long> getRoles() {
     return roles;
   }
 
-
-  public void setRoles(List<Integer> roles) {
+  public void setRoles(List<Long> roles) {
     this.roles = roles;
   }
 
-
   public NewInvitation acl(String acl) {
-    
+
     this.acl = acl;
     return this;
   }
 
-   /**
+  /**
    * Indicates the access level of the user.
+   * 
    * @return acl
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates the access level of the user.")
 
@@ -169,11 +164,9 @@ public class NewInvitation {
     return acl;
   }
 
-
   public void setAcl(String acl) {
     this.acl = acl;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -195,7 +188,6 @@ public class NewInvitation {
   public int hashCode() {
     return Objects.hash(name, email, isAdmin, roles, acl);
   }
-
 
   @Override
   public String toString() {
@@ -222,4 +214,3 @@ public class NewInvitation {
   }
 
 }
-

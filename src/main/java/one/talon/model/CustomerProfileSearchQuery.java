@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,19 +40,20 @@ public class CustomerProfileSearchQuery {
 
   public static final String SERIALIZED_NAME_PROFILE_I_DS = "profileIDs";
   @SerializedName(SERIALIZED_NAME_PROFILE_I_DS)
-  private List<Integer> profileIDs = null;
-
+  private List<Long> profileIDs = null;
 
   public CustomerProfileSearchQuery attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
-   * Properties to match against a customer profile. All provided attributes will be exactly matched against profile attributes.
+  /**
+   * Properties to match against a customer profile. All provided attributes will
+   * be exactly matched against profile attributes.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Properties to match against a customer profile. All provided attributes will be exactly matched against profile attributes.")
 
@@ -61,14 +61,12 @@ public class CustomerProfileSearchQuery {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public CustomerProfileSearchQuery integrationIDs(List<String> integrationIDs) {
-    
+
     this.integrationIDs = integrationIDs;
     return this;
   }
@@ -81,10 +79,11 @@ public class CustomerProfileSearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get integrationIDs
+   * 
    * @return integrationIDs
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -92,42 +91,39 @@ public class CustomerProfileSearchQuery {
     return integrationIDs;
   }
 
-
   public void setIntegrationIDs(List<String> integrationIDs) {
     this.integrationIDs = integrationIDs;
   }
 
+  public CustomerProfileSearchQuery profileIDs(List<Long> profileIDs) {
 
-  public CustomerProfileSearchQuery profileIDs(List<Integer> profileIDs) {
-    
     this.profileIDs = profileIDs;
     return this;
   }
 
-  public CustomerProfileSearchQuery addProfileIDsItem(Integer profileIDsItem) {
+  public CustomerProfileSearchQuery addProfileIDsItem(Long profileIDsItem) {
     if (this.profileIDs == null) {
-      this.profileIDs = new ArrayList<Integer>();
+      this.profileIDs = new ArrayList<Long>();
     }
     this.profileIDs.add(profileIDsItem);
     return this;
   }
 
-   /**
+  /**
    * Get profileIDs
+   * 
    * @return profileIDs
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Integer> getProfileIDs() {
+  public List<Long> getProfileIDs() {
     return profileIDs;
   }
 
-
-  public void setProfileIDs(List<Integer> profileIDs) {
+  public void setProfileIDs(List<Long> profileIDs) {
     this.profileIDs = profileIDs;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -147,7 +143,6 @@ public class CustomerProfileSearchQuery {
   public int hashCode() {
     return Objects.hash(attributes, integrationIDs, profileIDs);
   }
-
 
   @Override
   public String toString() {
@@ -172,4 +167,3 @@ public class CustomerProfileSearchQuery {
   }
 
 }
-

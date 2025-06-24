@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -39,28 +38,29 @@ public class CreateApplicationAPIKey {
   private OffsetDateTime expires;
 
   /**
-   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a
+   * generic API key to be used from your own integration layer.
    */
   @JsonAdapter(PlatformEnum.Adapter.class)
   public enum PlatformEnum {
     NONE("none"),
-    
+
     SEGMENT("segment"),
-    
+
     BRAZE("braze"),
-    
+
     MPARTICLE("mparticle"),
-    
+
     SHOPIFY("shopify"),
-    
+
     ITERABLE("iterable"),
-    
+
     CUSTOMER_ENGAGEMENT("customer_engagement"),
-    
+
     CUSTOMER_DATA("customer_data"),
-    
+
     SALESFORCE("salesforce"),
-    
+
     EMARSYS("emarsys");
 
     private String value;
@@ -95,7 +95,7 @@ public class CreateApplicationAPIKey {
 
       @Override
       public PlatformEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PlatformEnum.fromValue(value);
       }
     }
@@ -106,7 +106,16 @@ public class CreateApplicationAPIKey {
   private PlatformEnum platform;
 
   /**
-   * The API key type. Can be empty or &#x60;staging&#x60;.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter &#x60;runRuleEngine&#x60; must be &#x60;true&#x60;. 
+   * The API key type. Can be empty or &#x60;staging&#x60;. Staging API keys can
+   * only be used for dry requests with the [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+   * endpoint, [Update customer
+   * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2)
+   * endpoint, and [Track
+   * event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2)
+   * endpoint. When using the _Update customer profile_ endpoint with a staging
+   * API key, the query parameter &#x60;runRuleEngine&#x60; must be
+   * &#x60;true&#x60;.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -144,7 +153,7 @@ public class CreateApplicationAPIKey {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -156,63 +165,62 @@ public class CreateApplicationAPIKey {
 
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Integer timeOffset;
-
+  private Long timeOffset;
 
   public CreateApplicationAPIKey title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Title of the API key.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "My generated key", required = true, value = "Title of the API key.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public CreateApplicationAPIKey expires(OffsetDateTime expires) {
-    
+
     this.expires = expires;
     return this;
   }
 
-   /**
+  /**
    * The date the API key expires.
+   * 
    * @return expires
-  **/
+   **/
   @ApiModelProperty(example = "2023-08-24T14:00Z", required = true, value = "The date the API key expires.")
 
   public OffsetDateTime getExpires() {
     return expires;
   }
 
-
   public void setExpires(OffsetDateTime expires) {
     this.expires = expires;
   }
 
-
   public CreateApplicationAPIKey platform(PlatformEnum platform) {
-    
+
     this.platform = platform;
     return this;
   }
 
-   /**
-   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
+  /**
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a
+   * generic API key to be used from your own integration layer.
+   * 
    * @return platform
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "none", value = "The third-party platform the API key is valid for. Use `none` for a generic API key to be used from your own integration layer. ")
 
@@ -220,22 +228,30 @@ public class CreateApplicationAPIKey {
     return platform;
   }
 
-
   public void setPlatform(PlatformEnum platform) {
     this.platform = platform;
   }
 
-
   public CreateApplicationAPIKey type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The API key type. Can be empty or &#x60;staging&#x60;.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter &#x60;runRuleEngine&#x60; must be &#x60;true&#x60;. 
+  /**
+   * The API key type. Can be empty or &#x60;staging&#x60;. Staging API keys can
+   * only be used for dry requests with the [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+   * endpoint, [Update customer
+   * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2)
+   * endpoint, and [Track
+   * event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2)
+   * endpoint. When using the _Update customer profile_ endpoint with a staging
+   * API key, the query parameter &#x60;runRuleEngine&#x60; must be
+   * &#x60;true&#x60;.
+   * 
    * @return type
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "staging", value = "The API key type. Can be empty or `staging`.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter `runRuleEngine` must be `true`. ")
 
@@ -243,34 +259,33 @@ public class CreateApplicationAPIKey {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
+  public CreateApplicationAPIKey timeOffset(Long timeOffset) {
 
-  public CreateApplicationAPIKey timeOffset(Integer timeOffset) {
-    
     this.timeOffset = timeOffset;
     return this;
   }
 
-   /**
-   * A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. 
+  /**
+   * A time offset in nanoseconds associated with the API key. When making a
+   * request using the API key, rule evaluation is based on a date that is
+   * calculated by adding the offset to the current date.
+   * 
    * @return timeOffset
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100000", value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Integer getTimeOffset() {
+  public Long getTimeOffset() {
     return timeOffset;
   }
 
-
-  public void setTimeOffset(Integer timeOffset) {
+  public void setTimeOffset(Long timeOffset) {
     this.timeOffset = timeOffset;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -292,7 +307,6 @@ public class CreateApplicationAPIKey {
   public int hashCode() {
     return Objects.hash(title, expires, platform, type, timeOffset);
   }
-
 
   @Override
   public String toString() {
@@ -319,4 +333,3 @@ public class CreateApplicationAPIKey {
   }
 
 }
-

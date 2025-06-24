@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CustomEffect {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,7 +42,7 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -51,7 +50,7 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_IS_PER_ITEM = "isPerItem";
   @SerializedName(SERIALIZED_NAME_IS_PER_ITEM)
@@ -83,138 +82,133 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
+  public CustomEffect id(Long id) {
 
-  public CustomEffect id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CustomEffect created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CustomEffect accountId(Long accountId) {
 
-  public CustomEffect accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public CustomEffect modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
+  public CustomEffect applicationIds(List<Long> applicationIds) {
 
-  public CustomEffect applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public CustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
+  public CustomEffect addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
+  /**
    * The IDs of the Applications that are related to this entity.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
-
   public CustomEffect isPerItem(Boolean isPerItem) {
-    
+
     this.isPerItem = isPerItem;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this effect is per item or not.
+   * 
    * @return isPerItem
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates if this effect is per item or not.")
 
@@ -222,88 +216,84 @@ public class CustomEffect {
     return isPerItem;
   }
 
-
   public void setIsPerItem(Boolean isPerItem) {
     this.isPerItem = isPerItem;
   }
 
-
   public CustomEffect name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this effect.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of this effect.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CustomEffect title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The title of this effect.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The title of this effect.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public CustomEffect payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * The JSON payload of this effect.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The JSON payload of this effect.")
 
   public String getPayload() {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public CustomEffect description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of this effect.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The description of this effect.")
 
@@ -311,36 +301,33 @@ public class CustomEffect {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public CustomEffect enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Determines if this effect is active.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Determines if this effect is active.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public CustomEffect params(List<TemplateArgDef> params) {
-    
+
     this.params = params;
     return this;
   }
@@ -353,10 +340,11 @@ public class CustomEffect {
     return this;
   }
 
-   /**
+  /**
    * Array of template argument definitions.
+   * 
    * @return params
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Array of template argument definitions.")
 
@@ -364,56 +352,52 @@ public class CustomEffect {
     return params;
   }
 
-
   public void setParams(List<TemplateArgDef> params) {
     this.params = params;
   }
 
+  public CustomEffect modifiedBy(Long modifiedBy) {
 
-  public CustomEffect modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who last updated this effect if available.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "ID of the user who last updated this effect if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
+  public CustomEffect createdBy(Long createdBy) {
 
-  public CustomEffect createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created this effect.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "216", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -442,9 +426,9 @@ public class CustomEffect {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, modified, applicationIds, isPerItem, name, title, payload, description, enabled, params, modifiedBy, createdBy);
+    return Objects.hash(id, created, accountId, modified, applicationIds, isPerItem, name, title, payload, description,
+        enabled, params, modifiedBy, createdBy);
   }
-
 
   @Override
   public String toString() {
@@ -480,4 +464,3 @@ public class CustomEffect {
   }
 
 }
-

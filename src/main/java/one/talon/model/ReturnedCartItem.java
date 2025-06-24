@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,57 +30,55 @@ import java.io.IOException;
 public class ReturnedCartItem {
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
-  private Integer position;
+  private Long position;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
+  private Long quantity;
 
+  public ReturnedCartItem position(Long position) {
 
-  public ReturnedCartItem position(Integer position) {
-    
     this.position = position;
     return this;
   }
 
-   /**
-   * The index of the cart item in the provided customer session&#39;s &#x60;cartItems&#x60; property.
+  /**
+   * The index of the cart item in the provided customer session&#39;s
+   * &#x60;cartItems&#x60; property.
+   * 
    * @return position
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The index of the cart item in the provided customer session's `cartItems` property.")
 
-  public Integer getPosition() {
+  public Long getPosition() {
     return position;
   }
 
-
-  public void setPosition(Integer position) {
+  public void setPosition(Long position) {
     this.position = position;
   }
 
+  public ReturnedCartItem quantity(Long quantity) {
 
-  public ReturnedCartItem quantity(Integer quantity) {
-    
     this.quantity = quantity;
     return this;
   }
 
-   /**
-   * Number of cart items to return. 
+  /**
+   * Number of cart items to return.
+   * 
    * @return quantity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Number of cart items to return. ")
 
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-
-  public void setQuantity(Integer quantity) {
+  public void setQuantity(Long quantity) {
     this.quantity = quantity;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,7 +97,6 @@ public class ReturnedCartItem {
   public int hashCode() {
     return Objects.hash(position, quantity);
   }
-
 
   @Override
   public String toString() {
@@ -124,4 +120,3 @@ public class ReturnedCartItem {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -39,28 +38,29 @@ public class NewApplicationAPIKey {
   private OffsetDateTime expires;
 
   /**
-   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a
+   * generic API key to be used from your own integration layer.
    */
   @JsonAdapter(PlatformEnum.Adapter.class)
   public enum PlatformEnum {
     NONE("none"),
-    
+
     SEGMENT("segment"),
-    
+
     BRAZE("braze"),
-    
+
     MPARTICLE("mparticle"),
-    
+
     SHOPIFY("shopify"),
-    
+
     ITERABLE("iterable"),
-    
+
     CUSTOMER_ENGAGEMENT("customer_engagement"),
-    
+
     CUSTOMER_DATA("customer_data"),
-    
+
     SALESFORCE("salesforce"),
-    
+
     EMARSYS("emarsys");
 
     private String value;
@@ -95,7 +95,7 @@ public class NewApplicationAPIKey {
 
       @Override
       public PlatformEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PlatformEnum.fromValue(value);
       }
     }
@@ -106,7 +106,16 @@ public class NewApplicationAPIKey {
   private PlatformEnum platform;
 
   /**
-   * The API key type. Can be empty or &#x60;staging&#x60;.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter &#x60;runRuleEngine&#x60; must be &#x60;true&#x60;. 
+   * The API key type. Can be empty or &#x60;staging&#x60;. Staging API keys can
+   * only be used for dry requests with the [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+   * endpoint, [Update customer
+   * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2)
+   * endpoint, and [Track
+   * event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2)
+   * endpoint. When using the _Update customer profile_ endpoint with a staging
+   * API key, the query parameter &#x60;runRuleEngine&#x60; must be
+   * &#x60;true&#x60;.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -144,7 +153,7 @@ public class NewApplicationAPIKey {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -156,23 +165,23 @@ public class NewApplicationAPIKey {
 
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Integer timeOffset;
+  private Long timeOffset;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Integer accountID;
+  private Long accountID;
 
   public static final String SERIALIZED_NAME_APPLICATION_I_D = "applicationID";
   @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
-  private Integer applicationID;
+  private Long applicationID;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -182,61 +191,60 @@ public class NewApplicationAPIKey {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
-
   public NewApplicationAPIKey title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Title of the API key.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "My generated key", required = true, value = "Title of the API key.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public NewApplicationAPIKey expires(OffsetDateTime expires) {
-    
+
     this.expires = expires;
     return this;
   }
 
-   /**
+  /**
    * The date the API key expires.
+   * 
    * @return expires
-  **/
+   **/
   @ApiModelProperty(example = "2023-08-24T14:00Z", required = true, value = "The date the API key expires.")
 
   public OffsetDateTime getExpires() {
     return expires;
   }
 
-
   public void setExpires(OffsetDateTime expires) {
     this.expires = expires;
   }
 
-
   public NewApplicationAPIKey platform(PlatformEnum platform) {
-    
+
     this.platform = platform;
     return this;
   }
 
-   /**
-   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a generic API key to be used from your own integration layer. 
+  /**
+   * The third-party platform the API key is valid for. Use &#x60;none&#x60; for a
+   * generic API key to be used from your own integration layer.
+   * 
    * @return platform
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "none", value = "The third-party platform the API key is valid for. Use `none` for a generic API key to be used from your own integration layer. ")
 
@@ -244,22 +252,30 @@ public class NewApplicationAPIKey {
     return platform;
   }
 
-
   public void setPlatform(PlatformEnum platform) {
     this.platform = platform;
   }
 
-
   public NewApplicationAPIKey type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The API key type. Can be empty or &#x60;staging&#x60;.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter &#x60;runRuleEngine&#x60; must be &#x60;true&#x60;. 
+  /**
+   * The API key type. Can be empty or &#x60;staging&#x60;. Staging API keys can
+   * only be used for dry requests with the [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+   * endpoint, [Update customer
+   * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2)
+   * endpoint, and [Track
+   * event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2)
+   * endpoint. When using the _Update customer profile_ endpoint with a staging
+   * API key, the query parameter &#x60;runRuleEngine&#x60; must be
+   * &#x60;true&#x60;.
+   * 
    * @return type
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "staging", value = "The API key type. Can be empty or `staging`.  Staging API keys can only be used for dry requests with the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint, [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint, and [Track event](https://docs.talon.one/integration-api#tag/Events/operation/trackEventV2) endpoint.  When using the _Update customer profile_ endpoint with a staging API key, the query parameter `runRuleEngine` must be `true`. ")
 
@@ -267,166 +283,159 @@ public class NewApplicationAPIKey {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
+  public NewApplicationAPIKey timeOffset(Long timeOffset) {
 
-  public NewApplicationAPIKey timeOffset(Integer timeOffset) {
-    
     this.timeOffset = timeOffset;
     return this;
   }
 
-   /**
-   * A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. 
+  /**
+   * A time offset in nanoseconds associated with the API key. When making a
+   * request using the API key, rule evaluation is based on a date that is
+   * calculated by adding the offset to the current date.
+   * 
    * @return timeOffset
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100000", value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Integer getTimeOffset() {
+  public Long getTimeOffset() {
     return timeOffset;
   }
 
-
-  public void setTimeOffset(Integer timeOffset) {
+  public void setTimeOffset(Long timeOffset) {
     this.timeOffset = timeOffset;
   }
 
+  public NewApplicationAPIKey id(Long id) {
 
-  public NewApplicationAPIKey id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the API Key.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "34", required = true, value = "ID of the API Key.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public NewApplicationAPIKey createdBy(Long createdBy) {
 
-  public NewApplicationAPIKey createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of user who created.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "280", required = true, value = "ID of user who created.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public NewApplicationAPIKey accountID(Long accountID) {
 
-  public NewApplicationAPIKey accountID(Integer accountID) {
-    
     this.accountID = accountID;
     return this;
   }
 
-   /**
+  /**
    * ID of account the key is used for.
+   * 
    * @return accountID
-  **/
+   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for.")
 
-  public Integer getAccountID() {
+  public Long getAccountID() {
     return accountID;
   }
 
-
-  public void setAccountID(Integer accountID) {
+  public void setAccountID(Long accountID) {
     this.accountID = accountID;
   }
 
+  public NewApplicationAPIKey applicationID(Long applicationID) {
 
-  public NewApplicationAPIKey applicationID(Integer applicationID) {
-    
     this.applicationID = applicationID;
     return this;
   }
 
-   /**
+  /**
    * ID of application the key is used for.
+   * 
    * @return applicationID
-  **/
+   **/
   @ApiModelProperty(example = "54", required = true, value = "ID of application the key is used for.")
 
-  public Integer getApplicationID() {
+  public Long getApplicationID() {
     return applicationID;
   }
 
-
-  public void setApplicationID(Integer applicationID) {
+  public void setApplicationID(Long applicationID) {
     this.applicationID = applicationID;
   }
 
-
   public NewApplicationAPIKey created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The date the API key was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2022-03-02T16:46:17.758585Z", required = true, value = "The date the API key was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public NewApplicationAPIKey key(String key) {
-    
+
     this.key = key;
     return this;
   }
 
-   /**
+  /**
    * The API key.
+   * 
    * @return key
-  **/
+   **/
   @ApiModelProperty(example = "f45f90d21dcd9bac965c45e547e9754a3196891d09948e35adbcbedc4e9e4b01", required = true, value = "The API key.")
 
   public String getKey() {
     return key;
   }
 
-
   public void setKey(String key) {
     this.key = key;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -452,9 +461,9 @@ public class NewApplicationAPIKey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, expires, platform, type, timeOffset, id, createdBy, accountID, applicationID, created, key);
+    return Objects.hash(title, expires, platform, type, timeOffset, id, createdBy, accountID, applicationID, created,
+        key);
   }
-
 
   @Override
   public String toString() {
@@ -487,4 +496,3 @@ public class NewApplicationAPIKey {
   }
 
 }
-

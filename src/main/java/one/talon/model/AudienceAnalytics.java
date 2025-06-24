@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,58 +31,55 @@ import java.io.IOException;
 public class AudienceAnalytics {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Integer audienceId;
+  private Long audienceId;
 
   public static final String SERIALIZED_NAME_MEMBERS_COUNT = "membersCount";
   @SerializedName(SERIALIZED_NAME_MEMBERS_COUNT)
-  private Integer membersCount;
+  private Long membersCount;
 
+  public AudienceAnalytics audienceId(Long audienceId) {
 
-  public AudienceAnalytics audienceId(Integer audienceId) {
-    
     this.audienceId = audienceId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the audience.
+   * 
    * @return audienceId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the audience.")
 
-  public Integer getAudienceId() {
+  public Long getAudienceId() {
     return audienceId;
   }
 
-
-  public void setAudienceId(Integer audienceId) {
+  public void setAudienceId(Long audienceId) {
     this.audienceId = audienceId;
   }
 
+  public AudienceAnalytics membersCount(Long membersCount) {
 
-  public AudienceAnalytics membersCount(Integer membersCount) {
-    
     this.membersCount = membersCount;
     return this;
   }
 
-   /**
+  /**
    * The member count of the audience.
+   * 
    * @return membersCount
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1234", value = "The member count of the audience.")
 
-  public Integer getMembersCount() {
+  public Long getMembersCount() {
     return membersCount;
   }
 
-
-  public void setMembersCount(Integer membersCount) {
+  public void setMembersCount(Long membersCount) {
     this.membersCount = membersCount;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,7 +98,6 @@ public class AudienceAnalytics {
   public int hashCode() {
     return Objects.hash(audienceId, membersCount);
   }
-
 
   @Override
   public String toString() {
@@ -126,4 +121,3 @@ public class AudienceAnalytics {
   }
 
 }
-

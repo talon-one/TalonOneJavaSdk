@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,14 +24,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;removeFromAudience\&quot; effect. This gets triggered whenever a validated rule contains a \&quot;removeFromAudience\&quot; effect.
+ * The properties specific to the \&quot;removeFromAudience\&quot; effect. This
+ * gets triggered whenever a validated rule contains a
+ * \&quot;removeFromAudience\&quot; effect.
  */
 @ApiModel(description = "The properties specific to the \"removeFromAudience\" effect. This gets triggered whenever a validated rule contains a \"removeFromAudience\" effect.")
 
 public class RemoveFromAudienceEffectProps {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Integer audienceId;
+  private Long audienceId;
 
   public static final String SERIALIZED_NAME_AUDIENCE_NAME = "audienceName";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_NAME)
@@ -44,42 +45,41 @@ public class RemoveFromAudienceEffectProps {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
+  public RemoveFromAudienceEffectProps audienceId(Long audienceId) {
 
-  public RemoveFromAudienceEffectProps audienceId(Integer audienceId) {
-    
     this.audienceId = audienceId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the audience.
+   * 
    * @return audienceId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10", value = "The internal ID of the audience.")
 
-  public Integer getAudienceId() {
+  public Long getAudienceId() {
     return audienceId;
   }
 
-
-  public void setAudienceId(Integer audienceId) {
+  public void setAudienceId(Long audienceId) {
     this.audienceId = audienceId;
   }
 
-
   public RemoveFromAudienceEffectProps audienceName(String audienceName) {
-    
+
     this.audienceName = audienceName;
     return this;
   }
 
-   /**
+  /**
    * The name of the audience.
+   * 
    * @return audienceName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My audience", value = "The name of the audience.")
 
@@ -87,22 +87,21 @@ public class RemoveFromAudienceEffectProps {
     return audienceName;
   }
 
-
   public void setAudienceName(String audienceName) {
     this.audienceName = audienceName;
   }
 
-
   public RemoveFromAudienceEffectProps profileIntegrationId(String profileIntegrationId) {
-    
+
     this.profileIntegrationId = profileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the customer profile in the third-party integration platform.
+   * 
    * @return profileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "The ID of the customer profile in the third-party integration platform.")
 
@@ -110,34 +109,31 @@ public class RemoveFromAudienceEffectProps {
     return profileIntegrationId;
   }
 
-
   public void setProfileIntegrationId(String profileIntegrationId) {
     this.profileIntegrationId = profileIntegrationId;
   }
 
+  public RemoveFromAudienceEffectProps profileId(Long profileId) {
 
-  public RemoveFromAudienceEffectProps profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the customer profile.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "150", value = "The internal ID of the customer profile.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -158,7 +154,6 @@ public class RemoveFromAudienceEffectProps {
   public int hashCode() {
     return Objects.hash(audienceId, audienceName, profileIntegrationId, profileId);
   }
-
 
   @Override
   public String toString() {
@@ -184,4 +179,3 @@ public class RemoveFromAudienceEffectProps {
   }
 
 }
-

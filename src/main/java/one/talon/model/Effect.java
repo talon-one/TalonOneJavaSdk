@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,22 +24,23 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A generic effect that is fired by a triggered campaign. The props property will contain information specific to the specific effect type.
+ * A generic effect that is fired by a triggered campaign. The props property
+ * will contain information specific to the specific effect type.
  */
 @ApiModel(description = "A generic effect that is fired by a triggered campaign. The props property will contain information specific to the specific effect type.")
 
 public class Effect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
-  private Integer ruleIndex;
+  private Long ruleIndex;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -52,19 +52,19 @@ public class Effect {
 
   public static final String SERIALIZED_NAME_TRIGGERED_BY_COUPON = "triggeredByCoupon";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_BY_COUPON)
-  private Integer triggeredByCoupon;
+  private Long triggeredByCoupon;
 
   public static final String SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM = "triggeredForCatalogItem";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM)
-  private Integer triggeredForCatalogItem;
+  private Long triggeredForCatalogItem;
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
-  private Integer conditionIndex;
+  private Long conditionIndex;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
-  private Integer evaluationGroupID;
+  private Long evaluationGroupID;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
@@ -72,229 +72,226 @@ public class Effect {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_ID = "campaignRevisionId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_ID)
-  private Integer campaignRevisionId;
+  private Long campaignRevisionId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID = "campaignRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID)
-  private Integer campaignRevisionVersionId;
+  private Long campaignRevisionVersionId;
 
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   private Object props;
 
+  public Effect campaignId(Long campaignId) {
 
-  public Effect campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that triggered this effect.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "244", required = true, value = "The ID of the campaign that triggered this effect.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public Effect rulesetId(Long rulesetId) {
 
-  public Effect rulesetId(Integer rulesetId) {
-    
     this.rulesetId = rulesetId;
     return this;
   }
 
-   /**
-   * The ID of the ruleset that was active in the campaign when this effect was triggered.
+  /**
+   * The ID of the ruleset that was active in the campaign when this effect was
+   * triggered.
+   * 
    * @return rulesetId
-  **/
+   **/
   @ApiModelProperty(example = "73", required = true, value = "The ID of the ruleset that was active in the campaign when this effect was triggered.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
-
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 
+  public Effect ruleIndex(Long ruleIndex) {
 
-  public Effect ruleIndex(Integer ruleIndex) {
-    
     this.ruleIndex = ruleIndex;
     return this;
   }
 
-   /**
+  /**
    * The position of the rule that triggered this effect within the ruleset.
+   * 
    * @return ruleIndex
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The position of the rule that triggered this effect within the ruleset.")
 
-  public Integer getRuleIndex() {
+  public Long getRuleIndex() {
     return ruleIndex;
   }
 
-
-  public void setRuleIndex(Integer ruleIndex) {
+  public void setRuleIndex(Long ruleIndex) {
     this.ruleIndex = ruleIndex;
   }
 
-
   public Effect ruleName(String ruleName) {
-    
+
     this.ruleName = ruleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the rule that triggered this effect.
+   * 
    * @return ruleName
-  **/
+   **/
   @ApiModelProperty(example = "Give 20% discount", required = true, value = "The name of the rule that triggered this effect.")
 
   public String getRuleName() {
     return ruleName;
   }
 
-
   public void setRuleName(String ruleName) {
     this.ruleName = ruleName;
   }
 
-
   public Effect effectType(String effectType) {
-    
+
     this.effectType = effectType;
     return this;
   }
 
-   /**
-   * The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+  /**
+   * The type of effect that was triggered. See [API
+   * effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+   * 
    * @return effectType
-  **/
+   **/
   @ApiModelProperty(example = "rejectCoupon", required = true, value = "The type of effect that was triggered. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).")
 
   public String getEffectType() {
     return effectType;
   }
 
-
   public void setEffectType(String effectType) {
     this.effectType = effectType;
   }
 
+  public Effect triggeredByCoupon(Long triggeredByCoupon) {
 
-  public Effect triggeredByCoupon(Integer triggeredByCoupon) {
-    
     this.triggeredByCoupon = triggeredByCoupon;
     return this;
   }
 
-   /**
+  /**
    * The ID of the coupon that was being evaluated when this effect was triggered.
+   * 
    * @return triggeredByCoupon
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4928", value = "The ID of the coupon that was being evaluated when this effect was triggered.")
 
-  public Integer getTriggeredByCoupon() {
+  public Long getTriggeredByCoupon() {
     return triggeredByCoupon;
   }
 
-
-  public void setTriggeredByCoupon(Integer triggeredByCoupon) {
+  public void setTriggeredByCoupon(Long triggeredByCoupon) {
     this.triggeredByCoupon = triggeredByCoupon;
   }
 
+  public Effect triggeredForCatalogItem(Long triggeredForCatalogItem) {
 
-  public Effect triggeredForCatalogItem(Integer triggeredForCatalogItem) {
-    
     this.triggeredForCatalogItem = triggeredForCatalogItem;
     return this;
   }
 
-   /**
-   * The ID of the catalog item that was being evaluated when this effect was triggered.
+  /**
+   * The ID of the catalog item that was being evaluated when this effect was
+   * triggered.
+   * 
    * @return triggeredForCatalogItem
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "786", value = "The ID of the catalog item that was being evaluated when this effect was triggered.")
 
-  public Integer getTriggeredForCatalogItem() {
+  public Long getTriggeredForCatalogItem() {
     return triggeredForCatalogItem;
   }
 
-
-  public void setTriggeredForCatalogItem(Integer triggeredForCatalogItem) {
+  public void setTriggeredForCatalogItem(Long triggeredForCatalogItem) {
     this.triggeredForCatalogItem = triggeredForCatalogItem;
   }
 
+  public Effect conditionIndex(Long conditionIndex) {
 
-  public Effect conditionIndex(Integer conditionIndex) {
-    
     this.conditionIndex = conditionIndex;
     return this;
   }
 
-   /**
+  /**
    * The index of the condition that was triggered.
+   * 
    * @return conditionIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "786", value = "The index of the condition that was triggered.")
 
-  public Integer getConditionIndex() {
+  public Long getConditionIndex() {
     return conditionIndex;
   }
 
-
-  public void setConditionIndex(Integer conditionIndex) {
+  public void setConditionIndex(Long conditionIndex) {
     this.conditionIndex = conditionIndex;
   }
 
+  public Effect evaluationGroupID(Long evaluationGroupID) {
 
-  public Effect evaluationGroupID(Integer evaluationGroupID) {
-    
     this.evaluationGroupID = evaluationGroupID;
     return this;
   }
 
-   /**
-   * The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+  /**
+   * The ID of the evaluation group. For more information, see [Managing campaign
+   * evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * 
    * @return evaluationGroupID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
 
-  public Integer getEvaluationGroupID() {
+  public Long getEvaluationGroupID() {
     return evaluationGroupID;
   }
 
-
-  public void setEvaluationGroupID(Integer evaluationGroupID) {
+  public void setEvaluationGroupID(Long evaluationGroupID) {
     this.evaluationGroupID = evaluationGroupID;
   }
 
-
   public Effect evaluationGroupMode(String evaluationGroupMode) {
-    
+
     this.evaluationGroupMode = evaluationGroupMode;
     return this;
   }
 
-   /**
-   * The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+  /**
+   * The evaluation mode of the evaluation group. For more information, see
+   * [Managing campaign
+   * evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).
+   * 
    * @return evaluationGroupMode
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "stackable", value = "The evaluation mode of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
 
@@ -302,79 +299,76 @@ public class Effect {
     return evaluationGroupMode;
   }
 
-
   public void setEvaluationGroupMode(String evaluationGroupMode) {
     this.evaluationGroupMode = evaluationGroupMode;
   }
 
+  public Effect campaignRevisionId(Long campaignRevisionId) {
 
-  public Effect campaignRevisionId(Integer campaignRevisionId) {
-    
     this.campaignRevisionId = campaignRevisionId;
     return this;
   }
 
-   /**
+  /**
    * The revision ID of the campaign that was used when triggering the effect.
+   * 
    * @return campaignRevisionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The revision ID of the campaign that was used when triggering the effect.")
 
-  public Integer getCampaignRevisionId() {
+  public Long getCampaignRevisionId() {
     return campaignRevisionId;
   }
 
-
-  public void setCampaignRevisionId(Integer campaignRevisionId) {
+  public void setCampaignRevisionId(Long campaignRevisionId) {
     this.campaignRevisionId = campaignRevisionId;
   }
 
+  public Effect campaignRevisionVersionId(Long campaignRevisionVersionId) {
 
-  public Effect campaignRevisionVersionId(Integer campaignRevisionVersionId) {
-    
     this.campaignRevisionVersionId = campaignRevisionVersionId;
     return this;
   }
 
-   /**
-   * The revision version ID of the campaign that was used when triggering the effect.
+  /**
+   * The revision version ID of the campaign that was used when triggering the
+   * effect.
+   * 
    * @return campaignRevisionVersionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The revision version ID of the campaign that was used when triggering the effect.")
 
-  public Integer getCampaignRevisionVersionId() {
+  public Long getCampaignRevisionVersionId() {
     return campaignRevisionVersionId;
   }
 
-
-  public void setCampaignRevisionVersionId(Integer campaignRevisionVersionId) {
+  public void setCampaignRevisionVersionId(Long campaignRevisionVersionId) {
     this.campaignRevisionVersionId = campaignRevisionVersionId;
   }
 
-
   public Effect props(Object props) {
-    
+
     this.props = props;
     return this;
   }
 
-   /**
-   * The properties of the effect. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+  /**
+   * The properties of the effect. See [API
+   * effects](https://docs.talon.one/docs/dev/integration-api/api-effects).
+   * 
    * @return props
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The properties of the effect. See [API effects](https://docs.talon.one/docs/dev/integration-api/api-effects).")
 
   public Object getProps() {
     return props;
   }
 
-
   public void setProps(Object props) {
     this.props = props;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -402,9 +396,10 @@ public class Effect {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon, triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId, campaignRevisionVersionId, props);
+    return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, effectType, triggeredByCoupon,
+        triggeredForCatalogItem, conditionIndex, evaluationGroupID, evaluationGroupMode, campaignRevisionId,
+        campaignRevisionVersionId, props);
   }
-
 
   @Override
   public String toString() {
@@ -439,4 +434,3 @@ public class Effect {
   }
 
 }
-

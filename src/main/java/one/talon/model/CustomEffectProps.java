@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import java.math.BigDecimal;
 public class CustomEffectProps {
   public static final String SERIALIZED_NAME_EFFECT_ID = "effectId";
   @SerializedName(SERIALIZED_NAME_EFFECT_ID)
-  private Integer effectId;
+  private Long effectId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -49,7 +48,7 @@ public class CustomEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Integer bundleIndex;
+  private Long bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
@@ -59,61 +58,60 @@ public class CustomEffectProps {
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private Object payload;
 
+  public CustomEffectProps effectId(Long effectId) {
 
-  public CustomEffectProps effectId(Integer effectId) {
-    
     this.effectId = effectId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the custom effect that was triggered.
+   * 
    * @return effectId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the custom effect that was triggered.")
 
-  public Integer getEffectId() {
+  public Long getEffectId() {
     return effectId;
   }
 
-
-  public void setEffectId(Integer effectId) {
+  public void setEffectId(Long effectId) {
     this.effectId = effectId;
   }
 
-
   public CustomEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The type of the custom effect.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "my_custom_effect", required = true, value = "The type of the custom effect.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CustomEffectProps cartItemPosition(BigDecimal cartItemPosition) {
-    
+
     this.cartItemPosition = cartItemPosition;
     return this;
   }
 
-   /**
-   * The index of the item in the cart item list to which the custom effect is applied.
+  /**
+   * The index of the item in the cart item list to which the custom effect is
+   * applied.
+   * 
    * @return cartItemPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1.0", value = "The index of the item in the cart item list to which the custom effect is applied.")
 
@@ -121,22 +119,22 @@ public class CustomEffectProps {
     return cartItemPosition;
   }
 
-
   public void setCartItemPosition(BigDecimal cartItemPosition) {
     this.cartItemPosition = cartItemPosition;
   }
 
-
   public CustomEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
-    
+
     this.cartItemSubPosition = cartItemSubPosition;
     return this;
   }
 
-   /**
-   * For cart items with quantity &gt; 1, the sub position indicates to which item unit the custom effect is applied. 
+  /**
+   * For cart items with quantity &gt; 1, the sub position indicates to which item
+   * unit the custom effect is applied.
+   * 
    * @return cartItemSubPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2.0", value = "For cart items with quantity > 1, the sub position indicates to which item unit the custom effect is applied. ")
 
@@ -144,45 +142,44 @@ public class CustomEffectProps {
     return cartItemSubPosition;
   }
 
-
   public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
     this.cartItemSubPosition = cartItemSubPosition;
   }
 
+  public CustomEffectProps bundleIndex(Long bundleIndex) {
 
-  public CustomEffectProps bundleIndex(Integer bundleIndex) {
-    
     this.bundleIndex = bundleIndex;
     return this;
   }
 
-   /**
-   * The position of the bundle in a list of item bundles created from the same bundle definition.
+  /**
+   * The position of the bundle in a list of item bundles created from the same
+   * bundle definition.
+   * 
    * @return bundleIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Integer getBundleIndex() {
+  public Long getBundleIndex() {
     return bundleIndex;
   }
 
-
-  public void setBundleIndex(Integer bundleIndex) {
+  public void setBundleIndex(Long bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 
-
   public CustomEffectProps bundleName(String bundleName) {
-    
+
     this.bundleName = bundleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the bundle definition.
+   * 
    * @return bundleName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "my_bundle", value = "The name of the bundle definition.")
 
@@ -190,33 +187,30 @@ public class CustomEffectProps {
     return bundleName;
   }
 
-
   public void setBundleName(String bundleName) {
     this.bundleName = bundleName;
   }
 
-
   public CustomEffectProps payload(Object payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * The JSON payload of the custom effect.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The JSON payload of the custom effect.")
 
   public Object getPayload() {
     return payload;
   }
 
-
   public void setPayload(Object payload) {
     this.payload = payload;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -240,7 +234,6 @@ public class CustomEffectProps {
   public int hashCode() {
     return Objects.hash(effectId, name, cartItemPosition, cartItemSubPosition, bundleIndex, bundleName, payload);
   }
-
 
   @Override
   public String toString() {
@@ -269,4 +262,3 @@ public class CustomEffectProps {
   }
 
 }
-

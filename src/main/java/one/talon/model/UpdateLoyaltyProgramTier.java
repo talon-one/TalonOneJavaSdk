@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import java.math.BigDecimal;
 public class UpdateLoyaltyProgramTier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -43,39 +42,38 @@ public class UpdateLoyaltyProgramTier {
   @SerializedName(SERIALIZED_NAME_MIN_POINTS)
   private BigDecimal minPoints;
 
+  public UpdateLoyaltyProgramTier id(Long id) {
 
-  public UpdateLoyaltyProgramTier id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the tier.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "The internal ID of the tier.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public UpdateLoyaltyProgramTier name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the tier.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Gold", value = "The name of the tier.")
 
@@ -83,24 +81,23 @@ public class UpdateLoyaltyProgramTier {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateLoyaltyProgramTier minPoints(BigDecimal minPoints) {
-    
+
     this.minPoints = minPoints;
     return this;
   }
 
-   /**
+  /**
    * The minimum amount of points required to enter the tier.
    * minimum: 0
    * maximum: 999999999999.99
+   * 
    * @return minPoints
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "300.0", value = "The minimum amount of points required to enter the tier.")
 
@@ -108,11 +105,9 @@ public class UpdateLoyaltyProgramTier {
     return minPoints;
   }
 
-
   public void setMinPoints(BigDecimal minPoints) {
     this.minPoints = minPoints;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -132,7 +127,6 @@ public class UpdateLoyaltyProgramTier {
   public int hashCode() {
     return Objects.hash(id, name, minPoints);
   }
-
 
   @Override
   public String toString() {
@@ -157,4 +151,3 @@ public class UpdateLoyaltyProgramTier {
   }
 
 }
-

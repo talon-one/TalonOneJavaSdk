@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class NewCouponsForMultipleRecipients {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -43,7 +42,7 @@ public class NewCouponsForMultipleRecipients {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -69,43 +68,44 @@ public class NewCouponsForMultipleRecipients {
   @SerializedName(SERIALIZED_NAME_COUPON_PATTERN)
   private String couponPattern;
 
+  public NewCouponsForMultipleRecipients usageLimit(Long usageLimit) {
 
-  public NewCouponsForMultipleRecipients usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
+  /**
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means
+   * unlimited redemptions but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public NewCouponsForMultipleRecipients discountLimit(BigDecimal discountLimit) {
-    
+
     this.discountLimit = discountLimit;
     return this;
   }
 
-   /**
-   * The total discount value that the code can give. Typically used to represent a gift card value. 
+  /**
+   * The total discount value that the code can give. Typically used to represent
+   * a gift card value.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return discountLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "30.0", value = "The total discount value that the code can give. Typically used to represent a gift card value. ")
 
@@ -113,47 +113,45 @@ public class NewCouponsForMultipleRecipients {
     return discountLimit;
   }
 
-
   public void setDiscountLimit(BigDecimal discountLimit) {
     this.discountLimit = discountLimit;
   }
 
+  public NewCouponsForMultipleRecipients reservationLimit(Long reservationLimit) {
 
-  public NewCouponsForMultipleRecipients reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public NewCouponsForMultipleRecipients startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the coupon becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-01-24T14:15:22Z", value = "Timestamp at which point the coupon becomes valid.")
 
@@ -161,22 +159,21 @@ public class NewCouponsForMultipleRecipients {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public NewCouponsForMultipleRecipients expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Expiration date of the coupon. Coupon never expires if this is omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
@@ -184,22 +181,21 @@ public class NewCouponsForMultipleRecipients {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public NewCouponsForMultipleRecipients attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"venueId\":12}", value = "Arbitrary properties associated with this item.")
 
@@ -207,14 +203,12 @@ public class NewCouponsForMultipleRecipients {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public NewCouponsForMultipleRecipients recipientsIntegrationIds(List<String> recipientsIntegrationIds) {
-    
+
     this.recipientsIntegrationIds = recipientsIntegrationIds;
     return this;
   }
@@ -224,24 +218,23 @@ public class NewCouponsForMultipleRecipients {
     return this;
   }
 
-   /**
+  /**
    * The integration IDs for recipients.
+   * 
    * @return recipientsIntegrationIds
-  **/
+   **/
   @ApiModelProperty(example = "[URNGV8294NV, BZGGC2454PA]", required = true, value = "The integration IDs for recipients.")
 
   public List<String> getRecipientsIntegrationIds() {
     return recipientsIntegrationIds;
   }
 
-
   public void setRecipientsIntegrationIds(List<String> recipientsIntegrationIds) {
     this.recipientsIntegrationIds = recipientsIntegrationIds;
   }
 
-
   public NewCouponsForMultipleRecipients validCharacters(List<String> validCharacters) {
-    
+
     this.validCharacters = validCharacters;
     return this;
   }
@@ -254,10 +247,13 @@ public class NewCouponsForMultipleRecipients {
     return this;
   }
 
-   /**
-   * List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular expression. 
+  /**
+   * List of characters used to generate the random parts of a code. By default,
+   * the list of characters is equivalent to the &#x60;[A-Z, 0-9]&#x60; regular
+   * expression.
+   * 
    * @return validCharacters
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]", value = "List of characters used to generate the random parts of a code. By default, the list of characters is equivalent to the `[A-Z, 0-9]` regular expression. ")
 
@@ -265,22 +261,23 @@ public class NewCouponsForMultipleRecipients {
     return validCharacters;
   }
 
-
   public void setValidCharacters(List<String> validCharacters) {
     this.validCharacters = validCharacters;
   }
 
-
   public NewCouponsForMultipleRecipients couponPattern(String couponPattern) {
-    
+
     this.couponPattern = couponPattern;
     return this;
   }
 
-   /**
-   * The pattern used to generate coupon codes. The character &#x60;#&#x60; is a placeholder and is replaced by a random character from the &#x60;validCharacters&#x60; set. 
+  /**
+   * The pattern used to generate coupon codes. The character &#x60;#&#x60; is a
+   * placeholder and is replaced by a random character from the
+   * &#x60;validCharacters&#x60; set.
+   * 
    * @return couponPattern
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "SUMMER-#####", value = "The pattern used to generate coupon codes. The character `#` is a placeholder and is replaced by a random character from the `validCharacters` set. ")
 
@@ -288,11 +285,9 @@ public class NewCouponsForMultipleRecipients {
     return couponPattern;
   }
 
-
   public void setCouponPattern(String couponPattern) {
     this.couponPattern = couponPattern;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -316,9 +311,9 @@ public class NewCouponsForMultipleRecipients {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, attributes, recipientsIntegrationIds, validCharacters, couponPattern);
+    return Objects.hash(usageLimit, discountLimit, reservationLimit, startDate, expiryDate, attributes,
+        recipientsIntegrationIds, validCharacters, couponPattern);
   }
-
 
   @Override
   public String toString() {
@@ -349,4 +344,3 @@ public class NewCouponsForMultipleRecipients {
   }
 
 }
-

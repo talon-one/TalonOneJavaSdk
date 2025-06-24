@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,19 +35,19 @@ public class LoyaltyMembership {
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
-
+  private Long loyaltyProgramId;
 
   public LoyaltyMembership joined(OffsetDateTime joined) {
-    
+
     this.joined = joined;
     return this;
   }
 
-   /**
+  /**
    * The moment in which the loyalty program was joined.
+   * 
    * @return joined
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2012-03-20T14:15:22Z", value = "The moment in which the loyalty program was joined.")
 
@@ -56,33 +55,30 @@ public class LoyaltyMembership {
     return joined;
   }
 
-
   public void setJoined(OffsetDateTime joined) {
     this.joined = joined;
   }
 
+  public LoyaltyMembership loyaltyProgramId(Long loyaltyProgramId) {
 
-  public LoyaltyMembership loyaltyProgramId(Integer loyaltyProgramId) {
-    
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program belonging to this entity.
+   * 
    * @return loyaltyProgramId
-  **/
+   **/
   @ApiModelProperty(example = "323414846", required = true, value = "The ID of the loyalty program belonging to this entity.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
-
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -101,7 +97,6 @@ public class LoyaltyMembership {
   public int hashCode() {
     return Objects.hash(joined, loyaltyProgramId);
   }
-
 
   @Override
   public String toString() {
@@ -125,4 +120,3 @@ public class LoyaltyMembership {
   }
 
 }
-

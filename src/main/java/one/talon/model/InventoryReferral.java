@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class InventoryReferral {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -50,11 +49,11 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID = "advocateProfileIntegrationId";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID)
@@ -70,7 +69,7 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -78,7 +77,7 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
-  private Integer usageCounter;
+  private Long usageCounter;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -88,61 +87,59 @@ public class InventoryReferral {
   @SerializedName(SERIALIZED_NAME_REFERRED_CUSTOMERS)
   private List<String> referredCustomers = new ArrayList<String>();
 
+  public InventoryReferral id(Long id) {
 
-  public InventoryReferral id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public InventoryReferral created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public InventoryReferral startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the referral code becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
@@ -150,22 +147,22 @@ public class InventoryReferral {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public InventoryReferral expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Expiration date of the referral code. Referral never expires if this is omitted.
+  /**
+   * Expiration date of the referral code. Referral never expires if this is
+   * omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted.")
 
@@ -173,90 +170,87 @@ public class InventoryReferral {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
+  public InventoryReferral usageLimit(Long usageLimit) {
 
-  public InventoryReferral usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times a referral code can be used. &#x60;0&#x60; means no limit but any campaign usage limits will still apply. 
+  /**
+   * The number of times a referral code can be used. &#x60;0&#x60; means no limit
+   * but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
+  public InventoryReferral campaignId(Long campaignId) {
 
-  public InventoryReferral campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign from which the referral received the referral code.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "78", required = true, value = "ID of the campaign from which the referral received the referral code.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public InventoryReferral advocateProfileIntegrationId(String advocateProfileIntegrationId) {
-    
+
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The Integration ID of the Advocate&#39;s Profile.
+   * 
    * @return advocateProfileIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The Integration ID of the Advocate's Profile.")
 
   public String getAdvocateProfileIntegrationId() {
     return advocateProfileIntegrationId;
   }
 
-
   public void setAdvocateProfileIntegrationId(String advocateProfileIntegrationId) {
     this.advocateProfileIntegrationId = advocateProfileIntegrationId;
   }
 
-
   public InventoryReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
-    
+
     this.friendProfileIntegrationId = friendProfileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * An optional Integration ID of the Friend&#39;s Profile.
+   * 
    * @return friendProfileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "BZGGC2454PA", value = "An optional Integration ID of the Friend's Profile.")
 
@@ -264,22 +258,21 @@ public class InventoryReferral {
     return friendProfileIntegrationId;
   }
 
-
   public void setFriendProfileIntegrationId(String friendProfileIntegrationId) {
     this.friendProfileIntegrationId = friendProfileIntegrationId;
   }
 
-
   public InventoryReferral attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"channel\":\"web\"}", value = "Arbitrary properties associated with this item.")
 
@@ -287,89 +280,85 @@ public class InventoryReferral {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
+  public InventoryReferral importId(Long importId) {
 
-  public InventoryReferral importId(Integer importId) {
-    
     this.importId = importId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Import which created this referral.
+   * 
    * @return importId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this referral.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
-
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
-
   public InventoryReferral code(String code) {
-    
+
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * The referral code.
+   * 
    * @return code
-  **/
+   **/
   @ApiModelProperty(example = "27G47Y54VH9L", required = true, value = "The referral code.")
 
   public String getCode() {
     return code;
   }
 
-
   public void setCode(String code) {
     this.code = code;
   }
 
+  public InventoryReferral usageCounter(Long usageCounter) {
 
-  public InventoryReferral usageCounter(Integer usageCounter) {
-    
     this.usageCounter = usageCounter;
     return this;
   }
 
-   /**
+  /**
    * The number of times this referral code has been successfully used.
+   * 
    * @return usageCounter
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The number of times this referral code has been successfully used.")
 
-  public Integer getUsageCounter() {
+  public Long getUsageCounter() {
     return usageCounter;
   }
 
-
-  public void setUsageCounter(Integer usageCounter) {
+  public void setUsageCounter(Long usageCounter) {
     this.usageCounter = usageCounter;
   }
 
-
   public InventoryReferral batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the batch the referrals belong to.
+   * 
    * @return batchId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "tqyrgahe", value = "The ID of the batch the referrals belong to.")
 
@@ -377,14 +366,12 @@ public class InventoryReferral {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
 
-
   public InventoryReferral referredCustomers(List<String> referredCustomers) {
-    
+
     this.referredCustomers = referredCustomers;
     return this;
   }
@@ -394,21 +381,20 @@ public class InventoryReferral {
     return this;
   }
 
-   /**
+  /**
    * An array of referred customers.
+   * 
    * @return referredCustomers
-  **/
+   **/
   @ApiModelProperty(required = true, value = "An array of referred customers.")
 
   public List<String> getReferredCustomers() {
     return referredCustomers;
   }
 
-
   public void setReferredCustomers(List<String> referredCustomers) {
     this.referredCustomers = referredCustomers;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -437,9 +423,9 @@ public class InventoryReferral {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, startDate, expiryDate, usageLimit, campaignId, advocateProfileIntegrationId, friendProfileIntegrationId, attributes, importId, code, usageCounter, batchId, referredCustomers);
+    return Objects.hash(id, created, startDate, expiryDate, usageLimit, campaignId, advocateProfileIntegrationId,
+        friendProfileIntegrationId, attributes, importId, code, usageCounter, batchId, referredCustomers);
   }
-
 
   @Override
   public String toString() {
@@ -475,4 +461,3 @@ public class InventoryReferral {
   }
 
 }
-

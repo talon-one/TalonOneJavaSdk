@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class BaseNotificationWebhook {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -56,97 +55,92 @@ public class BaseNotificationWebhook {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled = true;
 
+  public BaseNotificationWebhook id(Long id) {
 
-  public BaseNotificationWebhook id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public BaseNotificationWebhook created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public BaseNotificationWebhook modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
-
   public BaseNotificationWebhook url(String url) {
-    
+
     this.url = url;
     return this;
   }
 
-   /**
+  /**
    * API URL for the given webhook-based notification.
+   * 
    * @return url
-  **/
+   **/
   @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "API URL for the given webhook-based notification.")
 
   public String getUrl() {
     return url;
   }
 
-
   public void setUrl(String url) {
     this.url = url;
   }
 
-
   public BaseNotificationWebhook headers(List<String> headers) {
-    
+
     this.headers = headers;
     return this;
   }
@@ -156,32 +150,32 @@ public class BaseNotificationWebhook {
     return this;
   }
 
-   /**
+  /**
    * List of API HTTP headers for the given webhook-based notification.
+   * 
    * @return headers
-  **/
+   **/
   @ApiModelProperty(required = true, value = "List of API HTTP headers for the given webhook-based notification.")
 
   public List<String> getHeaders() {
     return headers;
   }
 
-
   public void setHeaders(List<String> headers) {
     this.headers = headers;
   }
 
-
   public BaseNotificationWebhook enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the notification is activated.
+   * 
    * @return enabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether the notification is activated.")
 
@@ -189,11 +183,9 @@ public class BaseNotificationWebhook {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -216,7 +208,6 @@ public class BaseNotificationWebhook {
   public int hashCode() {
     return Objects.hash(id, created, modified, url, headers, enabled);
   }
-
 
   @Override
   public String toString() {
@@ -244,4 +235,3 @@ public class BaseNotificationWebhook {
   }
 
 }
-

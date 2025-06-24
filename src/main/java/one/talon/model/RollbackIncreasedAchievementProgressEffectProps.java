@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,14 +25,18 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;rollbackIncreasedAchievementProgress\&quot; effect. This gets triggered whenever a closed session where the &#x60;increaseAchievementProgress&#x60; effect was triggered is cancelled. This is applicable only when the customer has not completed the achievement.
+ * The properties specific to the
+ * \&quot;rollbackIncreasedAchievementProgress\&quot; effect. This gets
+ * triggered whenever a closed session where the
+ * &#x60;increaseAchievementProgress&#x60; effect was triggered is cancelled.
+ * This is applicable only when the customer has not completed the achievement.
  */
 @ApiModel(description = "The properties specific to the \"rollbackIncreasedAchievementProgress\" effect. This gets triggered whenever a closed session where the `increaseAchievementProgress` effect was triggered is cancelled. This is applicable only when the customer has not completed the achievement.")
 
 public class RollbackIncreasedAchievementProgressEffectProps {
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Integer achievementId;
+  private Long achievementId;
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_NAME = "achievementName";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_NAME)
@@ -41,7 +44,7 @@ public class RollbackIncreasedAchievementProgressEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRESS_TRACKER_ID = "progressTrackerId";
   @SerializedName(SERIALIZED_NAME_PROGRESS_TRACKER_ID)
-  private Integer progressTrackerId;
+  private Long progressTrackerId;
 
   public static final String SERIALIZED_NAME_DECREASE_PROGRESS_BY = "decreaseProgressBy";
   @SerializedName(SERIALIZED_NAME_DECREASE_PROGRESS_BY)
@@ -55,138 +58,132 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   @SerializedName(SERIALIZED_NAME_TARGET)
   private BigDecimal target;
 
+  public RollbackIncreasedAchievementProgressEffectProps achievementId(Long achievementId) {
 
-  public RollbackIncreasedAchievementProgressEffectProps achievementId(Integer achievementId) {
-    
     this.achievementId = achievementId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the achievement.
+   * 
    * @return achievementId
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The internal ID of the achievement.")
 
-  public Integer getAchievementId() {
+  public Long getAchievementId() {
     return achievementId;
   }
 
-
-  public void setAchievementId(Integer achievementId) {
+  public void setAchievementId(Long achievementId) {
     this.achievementId = achievementId;
   }
 
-
   public RollbackIncreasedAchievementProgressEffectProps achievementName(String achievementName) {
-    
+
     this.achievementName = achievementName;
     return this;
   }
 
-   /**
+  /**
    * The name of the achievement.
+   * 
    * @return achievementName
-  **/
+   **/
   @ApiModelProperty(example = "FreeCoffee10Orders", required = true, value = "The name of the achievement.")
 
   public String getAchievementName() {
     return achievementName;
   }
 
-
   public void setAchievementName(String achievementName) {
     this.achievementName = achievementName;
   }
 
+  public RollbackIncreasedAchievementProgressEffectProps progressTrackerId(Long progressTrackerId) {
 
-  public RollbackIncreasedAchievementProgressEffectProps progressTrackerId(Integer progressTrackerId) {
-    
     this.progressTrackerId = progressTrackerId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the achievement progress tracker.
+   * 
    * @return progressTrackerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The internal ID of the achievement progress tracker.")
 
-  public Integer getProgressTrackerId() {
+  public Long getProgressTrackerId() {
     return progressTrackerId;
   }
 
-
-  public void setProgressTrackerId(Integer progressTrackerId) {
+  public void setProgressTrackerId(Long progressTrackerId) {
     this.progressTrackerId = progressTrackerId;
   }
 
-
   public RollbackIncreasedAchievementProgressEffectProps decreaseProgressBy(BigDecimal decreaseProgressBy) {
-    
+
     this.decreaseProgressBy = decreaseProgressBy;
     return this;
   }
 
-   /**
-   * The value by which the customer&#39;s current progress in the achievement is decreased.
+  /**
+   * The value by which the customer&#39;s current progress in the achievement is
+   * decreased.
+   * 
    * @return decreaseProgressBy
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The value by which the customer's current progress in the achievement is decreased.")
 
   public BigDecimal getDecreaseProgressBy() {
     return decreaseProgressBy;
   }
 
-
   public void setDecreaseProgressBy(BigDecimal decreaseProgressBy) {
     this.decreaseProgressBy = decreaseProgressBy;
   }
 
-
   public RollbackIncreasedAchievementProgressEffectProps currentProgress(BigDecimal currentProgress) {
-    
+
     this.currentProgress = currentProgress;
     return this;
   }
 
-   /**
+  /**
    * The current progress of the customer in the achievement.
+   * 
    * @return currentProgress
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current progress of the customer in the achievement.")
 
   public BigDecimal getCurrentProgress() {
     return currentProgress;
   }
 
-
   public void setCurrentProgress(BigDecimal currentProgress) {
     this.currentProgress = currentProgress;
   }
 
-
   public RollbackIncreasedAchievementProgressEffectProps target(BigDecimal target) {
-    
+
     this.target = target;
     return this;
   }
 
-   /**
+  /**
    * The target value to complete the achievement.
+   * 
    * @return target
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The target value to complete the achievement.")
 
   public BigDecimal getTarget() {
     return target;
   }
 
-
   public void setTarget(BigDecimal target) {
     this.target = target;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -209,7 +206,6 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   public int hashCode() {
     return Objects.hash(achievementId, achievementName, progressTrackerId, decreaseProgressBy, currentProgress, target);
   }
-
 
   @Override
   public String toString() {
@@ -237,4 +233,3 @@ public class RollbackIncreasedAchievementProgressEffectProps {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,19 +40,19 @@ public class UpdateCatalog {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
-
+  private List<Long> subscribedApplicationsIds = null;
 
   public UpdateCatalog description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of this cart item catalog.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "seafood catalog", value = "A description of this cart item catalog.")
 
@@ -61,22 +60,21 @@ public class UpdateCatalog {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateCatalog name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of this cart item catalog.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "seafood", value = "Name of this cart item catalog.")
 
@@ -84,42 +82,39 @@ public class UpdateCatalog {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public UpdateCatalog subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public UpdateCatalog subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public UpdateCatalog addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public UpdateCatalog addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the applications that are subscribed to this catalog.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the applications that are subscribed to this catalog.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -139,7 +134,6 @@ public class UpdateCatalog {
   public int hashCode() {
     return Objects.hash(description, name, subscribedApplicationsIds);
   }
-
 
   @Override
   public String toString() {
@@ -164,4 +158,3 @@ public class UpdateCatalog {
   }
 
 }
-

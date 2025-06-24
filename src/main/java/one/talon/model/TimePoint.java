@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,176 +24,176 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The absolute duration after which the achievement ends and resets for a particular customer profile.  **Note**: The duration follows the time zone of the Application this achievement belongs to. 
+ * The absolute duration after which the achievement ends and resets for a
+ * particular customer profile. **Note**: The duration follows the time zone of
+ * the Application this achievement belongs to.
  */
 @ApiModel(description = "The absolute duration after which the achievement ends and resets for a particular customer profile.  **Note**: The duration follows the time zone of the Application this achievement belongs to. ")
 
 public class TimePoint {
   public static final String SERIALIZED_NAME_MONTH = "month";
   @SerializedName(SERIALIZED_NAME_MONTH)
-  private Integer month;
+  private Long month;
 
   public static final String SERIALIZED_NAME_DAY_OF_MONTH = "dayOfMonth";
   @SerializedName(SERIALIZED_NAME_DAY_OF_MONTH)
-  private Integer dayOfMonth;
+  private Long dayOfMonth;
 
   public static final String SERIALIZED_NAME_DAY_OF_WEEK = "dayOfWeek";
   @SerializedName(SERIALIZED_NAME_DAY_OF_WEEK)
-  private Integer dayOfWeek;
+  private Long dayOfWeek;
 
   public static final String SERIALIZED_NAME_HOUR = "hour";
   @SerializedName(SERIALIZED_NAME_HOUR)
-  private Integer hour;
+  private Long hour;
 
   public static final String SERIALIZED_NAME_MINUTE = "minute";
   @SerializedName(SERIALIZED_NAME_MINUTE)
-  private Integer minute;
+  private Long minute;
 
   public static final String SERIALIZED_NAME_SECOND = "second";
   @SerializedName(SERIALIZED_NAME_SECOND)
-  private Integer second;
+  private Long second;
 
+  public TimePoint month(Long month) {
 
-  public TimePoint month(Integer month) {
-    
     this.month = month;
     return this;
   }
 
-   /**
-   * The achievement ends and resets in this month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60;. 
+  /**
+   * The achievement ends and resets in this month. **Note**: Only applicable if
+   * the period is set to &#x60;Y&#x60;.
    * minimum: 1
    * maximum: 12
+   * 
    * @return month
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "The achievement ends and resets in this month.  **Note**: Only applicable if the period is set to `Y`. ")
 
-  public Integer getMonth() {
+  public Long getMonth() {
     return month;
   }
 
-
-  public void setMonth(Integer month) {
+  public void setMonth(Long month) {
     this.month = month;
   }
 
+  public TimePoint dayOfMonth(Long dayOfMonth) {
 
-  public TimePoint dayOfMonth(Integer dayOfMonth) {
-    
     this.dayOfMonth = dayOfMonth;
     return this;
   }
 
-   /**
-   * The achievement ends and resets on this day of the month.  **Note**: Only applicable if the period is set to &#x60;Y&#x60; or &#x60;M&#x60;. 
+  /**
+   * The achievement ends and resets on this day of the month. **Note**: Only
+   * applicable if the period is set to &#x60;Y&#x60; or &#x60;M&#x60;.
    * minimum: 1
    * maximum: 31
+   * 
    * @return dayOfMonth
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "23", value = "The achievement ends and resets on this day of the month.  **Note**: Only applicable if the period is set to `Y` or `M`. ")
 
-  public Integer getDayOfMonth() {
+  public Long getDayOfMonth() {
     return dayOfMonth;
   }
 
-
-  public void setDayOfMonth(Integer dayOfMonth) {
+  public void setDayOfMonth(Long dayOfMonth) {
     this.dayOfMonth = dayOfMonth;
   }
 
+  public TimePoint dayOfWeek(Long dayOfWeek) {
 
-  public TimePoint dayOfWeek(Integer dayOfWeek) {
-    
     this.dayOfWeek = dayOfWeek;
     return this;
   }
 
-   /**
-   * The achievement ends and resets on this day of the week. &#x60;1&#x60; represents &#x60;Monday&#x60; and &#x60;7&#x60; represents &#x60;Sunday&#x60;.  **Note**: Only applicable if the period is set to &#x60;W&#x60;. 
+  /**
+   * The achievement ends and resets on this day of the week. &#x60;1&#x60;
+   * represents &#x60;Monday&#x60; and &#x60;7&#x60; represents
+   * &#x60;Sunday&#x60;. **Note**: Only applicable if the period is set to
+   * &#x60;W&#x60;.
    * minimum: 1
    * maximum: 7
+   * 
    * @return dayOfWeek
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement ends and resets on this day of the week. `1` represents `Monday` and `7` represents `Sunday`.  **Note**: Only applicable if the period is set to `W`. ")
 
-  public Integer getDayOfWeek() {
+  public Long getDayOfWeek() {
     return dayOfWeek;
   }
 
-
-  public void setDayOfWeek(Integer dayOfWeek) {
+  public void setDayOfWeek(Long dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
   }
 
+  public TimePoint hour(Long hour) {
 
-  public TimePoint hour(Integer hour) {
-    
     this.hour = hour;
     return this;
   }
 
-   /**
+  /**
    * The achievement ends and resets at this hour.
+   * 
    * @return hour
-  **/
+   **/
   @ApiModelProperty(example = "23", required = true, value = "The achievement ends and resets at this hour.")
 
-  public Integer getHour() {
+  public Long getHour() {
     return hour;
   }
 
-
-  public void setHour(Integer hour) {
+  public void setHour(Long hour) {
     this.hour = hour;
   }
 
+  public TimePoint minute(Long minute) {
 
-  public TimePoint minute(Integer minute) {
-    
     this.minute = minute;
     return this;
   }
 
-   /**
+  /**
    * The achievement ends and resets at this minute.
+   * 
    * @return minute
-  **/
+   **/
   @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this minute.")
 
-  public Integer getMinute() {
+  public Long getMinute() {
     return minute;
   }
 
-
-  public void setMinute(Integer minute) {
+  public void setMinute(Long minute) {
     this.minute = minute;
   }
 
+  public TimePoint second(Long second) {
 
-  public TimePoint second(Integer second) {
-    
     this.second = second;
     return this;
   }
 
-   /**
+  /**
    * The achievement ends and resets at this second.
+   * 
    * @return second
-  **/
+   **/
   @ApiModelProperty(example = "59", required = true, value = "The achievement ends and resets at this second.")
 
-  public Integer getSecond() {
+  public Long getSecond() {
     return second;
   }
 
-
-  public void setSecond(Integer second) {
+  public void setSecond(Long second) {
     this.second = second;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -217,7 +216,6 @@ public class TimePoint {
   public int hashCode() {
     return Objects.hash(month, dayOfMonth, dayOfWeek, hour, minute, second);
   }
-
 
   @Override
   public String toString() {
@@ -245,4 +243,3 @@ public class TimePoint {
   }
 
 }
-

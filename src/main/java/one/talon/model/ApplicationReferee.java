@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationReferee {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
@@ -54,138 +53,131 @@ public class ApplicationReferee {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public ApplicationReferee applicationId(Long applicationId) {
 
-  public ApplicationReferee applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public ApplicationReferee sessionId(String sessionId) {
-    
+
     this.sessionId = sessionId;
     return this;
   }
 
-   /**
+  /**
    * Integration ID of the session in which the customer redeemed the referral.
+   * 
    * @return sessionId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Integration ID of the session in which the customer redeemed the referral.")
 
   public String getSessionId() {
     return sessionId;
   }
 
-
   public void setSessionId(String sessionId) {
     this.sessionId = sessionId;
   }
 
-
   public ApplicationReferee advocateIntegrationId(String advocateIntegrationId) {
-    
+
     this.advocateIntegrationId = advocateIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * Integration ID of the Advocate&#39;s Profile.
+   * 
    * @return advocateIntegrationId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Integration ID of the Advocate's Profile.")
 
   public String getAdvocateIntegrationId() {
     return advocateIntegrationId;
   }
 
-
   public void setAdvocateIntegrationId(String advocateIntegrationId) {
     this.advocateIntegrationId = advocateIntegrationId;
   }
 
-
   public ApplicationReferee friendIntegrationId(String friendIntegrationId) {
-    
+
     this.friendIntegrationId = friendIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * Integration ID of the Friend&#39;s Profile.
+   * 
    * @return friendIntegrationId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Integration ID of the Friend's Profile.")
 
   public String getFriendIntegrationId() {
     return friendIntegrationId;
   }
 
-
   public void setFriendIntegrationId(String friendIntegrationId) {
     this.friendIntegrationId = friendIntegrationId;
   }
 
-
   public ApplicationReferee code(String code) {
-    
+
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * Advocate&#39;s referral code.
+   * 
    * @return code
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Advocate's referral code.")
 
   public String getCode() {
     return code;
   }
 
-
   public void setCode(String code) {
     this.code = code;
   }
 
-
   public ApplicationReferee created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the moment the customer redeemed the referral.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Timestamp of the moment the customer redeemed the referral.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -208,7 +200,6 @@ public class ApplicationReferee {
   public int hashCode() {
     return Objects.hash(applicationId, sessionId, advocateIntegrationId, friendIntegrationId, code, created);
   }
-
 
   @Override
   public String toString() {
@@ -236,4 +227,3 @@ public class ApplicationReferee {
   }
 
 }
-

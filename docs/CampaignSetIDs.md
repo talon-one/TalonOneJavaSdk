@@ -7,7 +7,7 @@ Campaign IDs for each priority.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **Integer** | ID of the campaign |  [optional]
+**campaignId** | **Long** | ID of the campaign |  [optional]
 
 
 

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,30 +30,28 @@ import java.io.IOException;
 public class ManagerConfig {
   public static final String SERIALIZED_NAME_SCHEMA_VERSION = "schemaVersion";
   @SerializedName(SERIALIZED_NAME_SCHEMA_VERSION)
-  private Integer schemaVersion;
+  private Long schemaVersion;
 
+  public ManagerConfig schemaVersion(Long schemaVersion) {
 
-  public ManagerConfig schemaVersion(Integer schemaVersion) {
-    
     this.schemaVersion = schemaVersion;
     return this;
   }
 
-   /**
+  /**
    * Get schemaVersion
+   * 
    * @return schemaVersion
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getSchemaVersion() {
+  public Long getSchemaVersion() {
     return schemaVersion;
   }
 
-
-  public void setSchemaVersion(Integer schemaVersion) {
+  public void setSchemaVersion(Long schemaVersion) {
     this.schemaVersion = schemaVersion;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,7 +69,6 @@ public class ManagerConfig {
   public int hashCode() {
     return Objects.hash(schemaVersion);
   }
-
 
   @Override
   public String toString() {
@@ -95,4 +91,3 @@ public class ManagerConfig {
   }
 
 }
-

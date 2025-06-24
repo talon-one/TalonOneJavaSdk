@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **description** | **String** | A description of the attribute. |  [optional]
 **visible** | **Boolean** | Indicates whether the attribute is visible in the UI or not. | 
 **kind** | [**KindEnum**](#KindEnum) | Indicate the kind of the attribute. | 
-**campaignsCount** | **Integer** | The number of campaigns that refer to the attribute. | 
+**campaignsCount** | **Long** | The number of campaigns that refer to the attribute. | 
 **exampleValue** | **List&lt;String&gt;** | Examples of values that can be assigned to the attribute. |  [optional]
 
 

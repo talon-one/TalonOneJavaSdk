@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ public class AccessLogEntry {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
+  private Long status;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -59,160 +58,152 @@ public class AccessLogEntry {
   @SerializedName(SERIALIZED_NAME_RESPONSE_PAYLOAD)
   private String responsePayload;
 
-
   public AccessLogEntry uuid(String uuid) {
-    
+
     this.uuid = uuid;
     return this;
   }
 
-   /**
+  /**
    * UUID reference of request.
+   * 
    * @return uuid
-  **/
+   **/
   @ApiModelProperty(example = "606e7d34-2d36-4d53-ac71-d4442c325985", required = true, value = "UUID reference of request.")
 
   public String getUuid() {
     return uuid;
   }
 
-
   public void setUuid(String uuid) {
     this.uuid = uuid;
   }
 
+  public AccessLogEntry status(Long status) {
 
-  public AccessLogEntry status(Integer status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * HTTP status code of response.
+   * 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "200", required = true, value = "HTTP status code of response.")
 
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
-
-  public void setStatus(Integer status) {
+  public void setStatus(Long status) {
     this.status = status;
   }
 
-
   public AccessLogEntry method(String method) {
-    
+
     this.method = method;
     return this;
   }
 
-   /**
+  /**
    * HTTP method of request.
+   * 
    * @return method
-  **/
+   **/
   @ApiModelProperty(example = "PUT", required = true, value = "HTTP method of request.")
 
   public String getMethod() {
     return method;
   }
 
-
   public void setMethod(String method) {
     this.method = method;
   }
 
-
   public AccessLogEntry requestUri(String requestUri) {
-    
+
     this.requestUri = requestUri;
     return this;
   }
 
-   /**
+  /**
    * target URI of request
+   * 
    * @return requestUri
-  **/
+   **/
   @ApiModelProperty(example = "/v2/customer_sessions/Session136667", required = true, value = "target URI of request")
 
   public String getRequestUri() {
     return requestUri;
   }
 
-
   public void setRequestUri(String requestUri) {
     this.requestUri = requestUri;
   }
 
-
   public AccessLogEntry time(OffsetDateTime time) {
-    
+
     this.time = time;
     return this;
   }
 
-   /**
+  /**
    * timestamp of request
+   * 
    * @return time
-  **/
+   **/
   @ApiModelProperty(example = "2023-01-16T16:00:00.700763Z", required = true, value = "timestamp of request")
 
   public OffsetDateTime getTime() {
     return time;
   }
 
-
   public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 
-
   public AccessLogEntry requestPayload(String requestPayload) {
-    
+
     this.requestPayload = requestPayload;
     return this;
   }
 
-   /**
+  /**
    * payload of request
+   * 
    * @return requestPayload
-  **/
+   **/
   @ApiModelProperty(example = "{     \"customerSession\": {         \"profileId\": \"customer123\",         \"state\": \"closed\", ... }", required = true, value = "payload of request")
 
   public String getRequestPayload() {
     return requestPayload;
   }
 
-
   public void setRequestPayload(String requestPayload) {
     this.requestPayload = requestPayload;
   }
 
-
   public AccessLogEntry responsePayload(String responsePayload) {
-    
+
     this.responsePayload = responsePayload;
     return this;
   }
 
-   /**
+  /**
    * payload of response
+   * 
    * @return responsePayload
-  **/
+   **/
   @ApiModelProperty(example = "{\"coupons\":[],\"createdCoupons\":[],...}", required = true, value = "payload of response")
 
   public String getResponsePayload() {
     return responsePayload;
   }
 
-
   public void setResponsePayload(String responsePayload) {
     this.responsePayload = responsePayload;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -236,7 +227,6 @@ public class AccessLogEntry {
   public int hashCode() {
     return Objects.hash(uuid, status, method, requestUri, time, requestPayload, responsePayload);
   }
-
 
   @Override
   public String toString() {
@@ -265,4 +255,3 @@ public class AccessLogEntry {
   }
 
 }
-

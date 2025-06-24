@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,7 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;addFreeItem\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add free item\&quot; effect.
+ * The properties specific to the \&quot;addFreeItem\&quot; effect. This gets
+ * triggered whenever a validated rule contained an \&quot;add free item\&quot;
+ * effect.
  */
 @ApiModel(description = "The properties specific to the \"addFreeItem\" effect. This gets triggered whenever a validated rule contained an \"add free item\" effect.")
 
@@ -40,75 +41,71 @@ public class AddFreeItemEffectProps {
 
   public static final String SERIALIZED_NAME_DESIRED_QUANTITY = "desiredQuantity";
   @SerializedName(SERIALIZED_NAME_DESIRED_QUANTITY)
-  private Integer desiredQuantity;
-
+  private Long desiredQuantity;
 
   public AddFreeItemEffectProps sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * SKU of the item that needs to be added.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU1241028", required = true, value = "SKU of the item that needs to be added.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
-
   public AddFreeItemEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name / description of the effect
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name / description of the effect")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public AddFreeItemEffectProps desiredQuantity(Long desiredQuantity) {
 
-  public AddFreeItemEffectProps desiredQuantity(Integer desiredQuantity) {
-    
     this.desiredQuantity = desiredQuantity;
     return this;
   }
 
-   /**
+  /**
    * The original quantity in case a partial reward was applied.
+   * 
    * @return desiredQuantity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original quantity in case a partial reward was applied.")
 
-  public Integer getDesiredQuantity() {
+  public Long getDesiredQuantity() {
     return desiredQuantity;
   }
 
-
-  public void setDesiredQuantity(Integer desiredQuantity) {
+  public void setDesiredQuantity(Long desiredQuantity) {
     this.desiredQuantity = desiredQuantity;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,7 +125,6 @@ public class AddFreeItemEffectProps {
   public int hashCode() {
     return Objects.hash(sku, name, desiredQuantity);
   }
-
 
   @Override
   public String toString() {
@@ -153,4 +149,3 @@ public class AddFreeItemEffectProps {
   }
 
 }
-

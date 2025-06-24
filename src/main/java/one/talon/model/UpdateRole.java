@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -45,19 +44,19 @@ public class UpdateRole {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = null;
-
+  private List<Long> members = null;
 
   public UpdateRole name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the role.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Campaign Manager", value = "Name of the role.")
 
@@ -65,22 +64,21 @@ public class UpdateRole {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateRole description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of the role.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Manages the campaigns", value = "Description of the role.")
 
@@ -88,22 +86,22 @@ public class UpdateRole {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateRole acl(String acl) {
-    
+
     this.acl = acl;
     return this;
   }
 
-   /**
-   * The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level.
+  /**
+   * The &#x60;Access Control List&#x60; json defining the role of the user. This
+   * represents the access control on the user level.
+   * 
    * @return acl
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "", value = "The `Access Control List` json defining the role of the user. This represents the access control on the user level.")
 
@@ -111,42 +109,39 @@ public class UpdateRole {
     return acl;
   }
 
-
   public void setAcl(String acl) {
     this.acl = acl;
   }
 
+  public UpdateRole members(List<Long> members) {
 
-  public UpdateRole members(List<Integer> members) {
-    
     this.members = members;
     return this;
   }
 
-  public UpdateRole addMembersItem(Integer membersItem) {
+  public UpdateRole addMembersItem(Long membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Integer>();
+      this.members = new ArrayList<Long>();
     }
     this.members.add(membersItem);
     return this;
   }
 
-   /**
+  /**
    * An array of user identifiers.
+   * 
    * @return members
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[48, 562, 475, 18]", value = "An array of user identifiers.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
-
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -167,7 +162,6 @@ public class UpdateRole {
   public int hashCode() {
     return Objects.hash(name, description, acl, members);
   }
-
 
   @Override
   public String toString() {
@@ -193,4 +187,3 @@ public class UpdateRole {
   }
 
 }
-

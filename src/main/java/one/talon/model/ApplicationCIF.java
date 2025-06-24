@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationCIF {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -48,15 +47,15 @@ public class ApplicationCIF {
 
   public static final String SERIALIZED_NAME_ACTIVE_EXPRESSION_ID = "activeExpressionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_EXPRESSION_ID)
-  private Integer activeExpressionId;
+  private Long activeExpressionId;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -64,85 +63,82 @@ public class ApplicationCIF {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
+  public ApplicationCIF id(Long id) {
 
-  public ApplicationCIF id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ApplicationCIF created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public ApplicationCIF name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the Application cart item filter used in API requests.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Filter items by product", required = true, value = "The name of the Application cart item filter used in API requests.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public ApplicationCIF description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the Application cart item filter.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "This filter allows filtering by shoes", value = "A short description of the Application cart item filter.")
 
@@ -150,91 +146,87 @@ public class ApplicationCIF {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public ApplicationCIF activeExpressionId(Long activeExpressionId) {
 
-  public ApplicationCIF activeExpressionId(Integer activeExpressionId) {
-    
     this.activeExpressionId = activeExpressionId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the expression that the Application cart item filter uses.
+   * 
    * @return activeExpressionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the expression that the Application cart item filter uses.")
 
-  public Integer getActiveExpressionId() {
+  public Long getActiveExpressionId() {
     return activeExpressionId;
   }
 
-
-  public void setActiveExpressionId(Integer activeExpressionId) {
+  public void setActiveExpressionId(Long activeExpressionId) {
     this.activeExpressionId = activeExpressionId;
   }
 
+  public ApplicationCIF modifiedBy(Long modifiedBy) {
 
-  public ApplicationCIF modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who last updated the Application cart item filter.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "The ID of the user who last updated the Application cart item filter.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
+  public ApplicationCIF createdBy(Long createdBy) {
 
-  public ApplicationCIF createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who created the Application cart item filter.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
-
   public ApplicationCIF modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent update to the Application cart item filter.
+   * 
    * @return modified
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp of the most recent update to the Application cart item filter.")
 
@@ -242,33 +234,30 @@ public class ApplicationCIF {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
+  public ApplicationCIF applicationId(Long applicationId) {
 
-  public ApplicationCIF applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -292,9 +281,9 @@ public class ApplicationCIF {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, description, activeExpressionId, modifiedBy, createdBy, modified, applicationId);
+    return Objects.hash(id, created, name, description, activeExpressionId, modifiedBy, createdBy, modified,
+        applicationId);
   }
-
 
   @Override
   public String toString() {
@@ -325,4 +314,3 @@ public class ApplicationCIF {
   }
 
 }
-

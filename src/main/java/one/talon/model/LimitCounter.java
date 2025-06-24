@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,19 +31,19 @@ import java.math.BigDecimal;
 public class LimitCounter {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
@@ -52,7 +51,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -60,7 +59,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_COUPON_ID = "couponId";
   @SerializedName(SERIALIZED_NAME_COUPON_ID)
-  private Integer couponId;
+  private Long couponId;
 
   public static final String SERIALIZED_NAME_COUPON_VALUE = "couponValue";
   @SerializedName(SERIALIZED_NAME_COUPON_VALUE)
@@ -68,7 +67,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   public static final String SERIALIZED_NAME_REFERRAL_VALUE = "referralValue";
   @SerializedName(SERIALIZED_NAME_REFERRAL_VALUE)
@@ -90,150 +89,144 @@ public class LimitCounter {
   @SerializedName(SERIALIZED_NAME_COUNTER)
   private BigDecimal counter;
 
+  public LimitCounter campaignId(Long campaignId) {
 
-  public LimitCounter campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public LimitCounter applicationId(Long applicationId) {
 
-  public LimitCounter applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public LimitCounter accountId(Long accountId) {
 
-  public LimitCounter accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public LimitCounter id(Long id) {
 
-  public LimitCounter id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID for this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public LimitCounter action(String action) {
-    
+
     this.action = action;
     return this;
   }
 
-   /**
+  /**
    * The limitable action of the limit counter.
+   * 
    * @return action
-  **/
+   **/
   @ApiModelProperty(example = "setDiscount", required = true, value = "The limitable action of the limit counter.")
 
   public String getAction() {
     return action;
   }
 
-
   public void setAction(String action) {
     this.action = action;
   }
 
+  public LimitCounter profileId(Long profileId) {
 
-  public LimitCounter profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The profile ID for which this limit counter is used.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "335", value = "The profile ID for which this limit counter is used.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 
-
   public LimitCounter profileIntegrationId(String profileIntegrationId) {
-    
+
     this.profileIntegrationId = profileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The profile integration ID for which this limit counter is used.
+   * 
    * @return profileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "The profile integration ID for which this limit counter is used.")
 
@@ -241,45 +234,43 @@ public class LimitCounter {
     return profileIntegrationId;
   }
 
-
   public void setProfileIntegrationId(String profileIntegrationId) {
     this.profileIntegrationId = profileIntegrationId;
   }
 
+  public LimitCounter couponId(Long couponId) {
 
-  public LimitCounter couponId(Integer couponId) {
-    
     this.couponId = couponId;
     return this;
   }
 
-   /**
+  /**
    * The internal coupon ID for which this limit counter is used.
+   * 
    * @return couponId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "34", value = "The internal coupon ID for which this limit counter is used.")
 
-  public Integer getCouponId() {
+  public Long getCouponId() {
     return couponId;
   }
 
-
-  public void setCouponId(Integer couponId) {
+  public void setCouponId(Long couponId) {
     this.couponId = couponId;
   }
 
-
   public LimitCounter couponValue(String couponValue) {
-    
+
     this.couponValue = couponValue;
     return this;
   }
 
-   /**
+  /**
    * The coupon value for which this limit counter is used.
+   * 
    * @return couponValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "XMAS-20-2021", value = "The coupon value for which this limit counter is used.")
 
@@ -287,45 +278,43 @@ public class LimitCounter {
     return couponValue;
   }
 
-
   public void setCouponValue(String couponValue) {
     this.couponValue = couponValue;
   }
 
+  public LimitCounter referralId(Long referralId) {
 
-  public LimitCounter referralId(Integer referralId) {
-    
     this.referralId = referralId;
     return this;
   }
 
-   /**
+  /**
    * The referral ID for which this limit counter is used.
+   * 
    * @return referralId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The referral ID for which this limit counter is used.")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
-
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 
-
   public LimitCounter referralValue(String referralValue) {
-    
+
     this.referralValue = referralValue;
     return this;
   }
 
-   /**
+  /**
    * The referral value for which this limit counter is used.
+   * 
    * @return referralValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "", value = "The referral value for which this limit counter is used.")
 
@@ -333,22 +322,21 @@ public class LimitCounter {
     return referralValue;
   }
 
-
   public void setReferralValue(String referralValue) {
     this.referralValue = referralValue;
   }
 
-
   public LimitCounter identifier(String identifier) {
-    
+
     this.identifier = identifier;
     return this;
   }
 
-   /**
+  /**
    * The arbitrary identifier for which this limit counter is used.
+   * 
    * @return identifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "91.11.156.141", value = "The arbitrary identifier for which this limit counter is used.")
 
@@ -356,22 +344,21 @@ public class LimitCounter {
     return identifier;
   }
 
-
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
   }
 
-
   public LimitCounter period(String period) {
-    
+
     this.period = period;
     return this;
   }
 
-   /**
+  /**
    * The time period for which this limit counter is used.
+   * 
    * @return period
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Y2021M8", value = "The time period for which this limit counter is used.")
 
@@ -379,55 +366,51 @@ public class LimitCounter {
     return period;
   }
 
-
   public void setPeriod(String period) {
     this.period = period;
   }
 
-
   public LimitCounter limit(BigDecimal limit) {
-    
+
     this.limit = limit;
     return this;
   }
 
-   /**
+  /**
    * The highest possible value for this limit counter.
+   * 
    * @return limit
-  **/
+   **/
   @ApiModelProperty(example = "10.0", required = true, value = "The highest possible value for this limit counter.")
 
   public BigDecimal getLimit() {
     return limit;
   }
 
-
   public void setLimit(BigDecimal limit) {
     this.limit = limit;
   }
 
-
   public LimitCounter counter(BigDecimal counter) {
-    
+
     this.counter = counter;
     return this;
   }
 
-   /**
+  /**
    * The current value for this limit counter.
+   * 
    * @return counter
-  **/
+   **/
   @ApiModelProperty(example = "5.0", required = true, value = "The current value for this limit counter.")
 
   public BigDecimal getCounter() {
     return counter;
   }
 
-
   public void setCounter(BigDecimal counter) {
     this.counter = counter;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -457,9 +440,9 @@ public class LimitCounter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignId, applicationId, accountId, id, action, profileId, profileIntegrationId, couponId, couponValue, referralId, referralValue, identifier, period, limit, counter);
+    return Objects.hash(campaignId, applicationId, accountId, id, action, profileId, profileIntegrationId, couponId,
+        couponValue, referralId, referralValue, identifier, period, limit, counter);
   }
-
 
   @Override
   public String toString() {
@@ -496,4 +479,3 @@ public class LimitCounter {
   }
 
 }
-

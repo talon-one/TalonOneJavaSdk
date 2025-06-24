@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,11 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;setDiscountPerAdditionalCostPerItem\&quot; effect. This gets triggered whenever a validated rule contained a \&quot;set discount per additional cost per item\&quot; effect. This is a discount that should be applied on a specific additional cost in a specific item.
+ * The properties specific to the
+ * \&quot;setDiscountPerAdditionalCostPerItem\&quot; effect. This gets triggered
+ * whenever a validated rule contained a \&quot;set discount per additional cost
+ * per item\&quot; effect. This is a discount that should be applied on a
+ * specific additional cost in a specific item.
  */
 @ApiModel(description = "The properties specific to the \"setDiscountPerAdditionalCostPerItem\" effect. This gets triggered whenever a validated rule contained a \"set discount per additional cost per item\" effect. This is a discount that should be applied on a specific additional cost in a specific item.")
 
@@ -37,7 +40,7 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
-  private Integer additionalCostId;
+  private Long additionalCostId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -59,105 +62,103 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   @SerializedName(SERIALIZED_NAME_DESIRED_VALUE)
   private BigDecimal desiredValue;
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name / description of this discount
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name / description of this discount")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public SetDiscountPerAdditionalCostPerItemEffectProps additionalCostId(Long additionalCostId) {
 
-  public SetDiscountPerAdditionalCostPerItemEffectProps additionalCostId(Integer additionalCostId) {
-    
     this.additionalCostId = additionalCostId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the additional cost.
+   * 
    * @return additionalCostId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the additional cost.")
 
-  public Integer getAdditionalCostId() {
+  public Long getAdditionalCostId() {
     return additionalCostId;
   }
 
-
-  public void setAdditionalCostId(Integer additionalCostId) {
+  public void setAdditionalCostId(Long additionalCostId) {
     this.additionalCostId = additionalCostId;
   }
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The total monetary value of the discount.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps position(BigDecimal position) {
-    
+
     this.position = position;
     return this;
   }
 
-   /**
-   * The index of the item in the cart item list containing the additional cost to be discounted.
+  /**
+   * The index of the item in the cart item list containing the additional cost to
+   * be discounted.
+   * 
    * @return position
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The index of the item in the cart item list containing the additional cost to be discounted.")
 
   public BigDecimal getPosition() {
     return position;
   }
 
-
   public void setPosition(BigDecimal position) {
     this.position = position;
   }
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps subPosition(BigDecimal subPosition) {
-    
+
     this.subPosition = subPosition;
     return this;
   }
 
-   /**
-   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates which item the discount applies to. 
+  /**
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates
+   * which item the discount applies to.
+   * 
    * @return subPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates which item the discount applies to. ")
 
@@ -165,44 +166,45 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
     return subPosition;
   }
 
-
   public void setSubPosition(BigDecimal subPosition) {
     this.subPosition = subPosition;
   }
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps additionalCost(String additionalCost) {
-    
+
     this.additionalCost = additionalCost;
     return this;
   }
 
-   /**
+  /**
    * The name of the additional cost.
+   * 
    * @return additionalCost
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the additional cost.")
 
   public String getAdditionalCost() {
     return additionalCost;
   }
 
-
   public void setAdditionalCost(String additionalCost) {
     this.additionalCost = additionalCost;
   }
 
-
   public SetDiscountPerAdditionalCostPerItemEffectProps desiredValue(BigDecimal desiredValue) {
-    
+
     this.desiredValue = desiredValue;
     return this;
   }
 
-   /**
-   * Only with [partial discounts enabled](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#partial-discounts). Represents the monetary value of the discount to be applied to additional discount without considering budget limitations. 
+  /**
+   * Only with [partial discounts
+   * enabled](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#partial-discounts).
+   * Represents the monetary value of the discount to be applied to additional
+   * discount without considering budget limitations.
+   * 
    * @return desiredValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Only with [partial discounts enabled](https://docs.talon.one/docs/product/campaigns/campaign-evaluation/#partial-discounts). Represents the monetary value of the discount to be applied to additional discount without considering budget limitations. ")
 
@@ -210,11 +212,9 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
     return desiredValue;
   }
 
-
   public void setDesiredValue(BigDecimal desiredValue) {
     this.desiredValue = desiredValue;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -238,7 +238,6 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   public int hashCode() {
     return Objects.hash(name, additionalCostId, value, position, subPosition, additionalCost, desiredValue);
   }
-
 
   @Override
   public String toString() {
@@ -267,4 +266,3 @@ public class SetDiscountPerAdditionalCostPerItemEffectProps {
   }
 
 }
-

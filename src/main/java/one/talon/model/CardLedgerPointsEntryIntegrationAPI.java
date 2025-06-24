@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CardLedgerPointsEntryIntegrationAPI {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +41,7 @@ public class CardLedgerPointsEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CUSTOMER_PROFILE_I_D = "customerProfileID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE_I_D)
@@ -72,83 +71,80 @@ public class CardLedgerPointsEntryIntegrationAPI {
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private BigDecimal amount;
 
+  public CardLedgerPointsEntryIntegrationAPI id(Long id) {
 
-  public CardLedgerPointsEntryIntegrationAPI id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the transaction that adds loyalty points.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the transaction that adds loyalty points.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Date and time the loyalty card points were added.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Date and time the loyalty card points were added.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CardLedgerPointsEntryIntegrationAPI programId(Long programId) {
 
-  public CardLedgerPointsEntryIntegrationAPI programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty program.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI customerProfileID(String customerProfileID) {
-    
+
     this.customerProfileID = customerProfileID;
     return this;
   }
 
-   /**
+  /**
    * Integration ID of the customer profile linked to the card.
+   * 
    * @return customerProfileID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "Integration ID of the customer profile linked to the card.")
 
@@ -156,22 +152,21 @@ public class CardLedgerPointsEntryIntegrationAPI {
     return customerProfileID;
   }
 
-
   public void setCustomerProfileID(String customerProfileID) {
     this.customerProfileID = customerProfileID;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI customerSessionId(String customerSessionId) {
-    
+
     this.customerSessionId = customerSessionId;
     return this;
   }
 
-   /**
+  /**
    * ID of the customer session where points were added.
+   * 
    * @return customerSessionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "05c2da0d-48fa-4aa1-b629-898f58f1584d", value = "ID of the customer session where points were added.")
 
@@ -179,121 +174,118 @@ public class CardLedgerPointsEntryIntegrationAPI {
     return customerSessionId;
   }
 
-
   public void setCustomerSessionId(String customerSessionId) {
     this.customerSessionId = customerSessionId;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name or reason of the transaction that adds loyalty points.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Reward 10% points of a purchase's current total", required = true, value = "Name or reason of the transaction that adds loyalty points.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI startDate(String startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
-   * When points become active. Possible values:   - &#x60;immediate&#x60;: Points are active immediately.   - &#x60;timestamp value&#x60;: Points become active at a given date and time. 
+  /**
+   * When points become active. Possible values: - &#x60;immediate&#x60;: Points
+   * are active immediately. - &#x60;timestamp value&#x60;: Points become active
+   * at a given date and time.
+   * 
    * @return startDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points become active. Possible values:   - `immediate`: Points are active immediately.   - `timestamp value`: Points become active at a given date and time. ")
 
   public String getStartDate() {
     return startDate;
   }
 
-
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI expiryDate(String expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Date when points expire. Possible values are:   - &#x60;unlimited&#x60;: Points have no expiration date.   - &#x60;timestamp value&#x60;: Points expire on the given date and time. 
+  /**
+   * Date when points expire. Possible values are: - &#x60;unlimited&#x60;: Points
+   * have no expiration date. - &#x60;timestamp value&#x60;: Points expire on the
+   * given date and time.
+   * 
    * @return expiryDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-08-02T15:04:05Z07:00", required = true, value = "Date when points expire. Possible values are:   - `unlimited`: Points have no expiration date.   - `timestamp value`: Points expire on the given date and time. ")
 
   public String getExpiryDate() {
     return expiryDate;
   }
 
-
   public void setExpiryDate(String expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI subledgerId(String subledgerId) {
-    
+
     this.subledgerId = subledgerId;
     return this;
   }
 
-   /**
+  /**
    * ID of the subledger.
+   * 
    * @return subledgerId
-  **/
+   **/
   @ApiModelProperty(example = "sub-123", required = true, value = "ID of the subledger.")
 
   public String getSubledgerId() {
     return subledgerId;
   }
 
-
   public void setSubledgerId(String subledgerId) {
     this.subledgerId = subledgerId;
   }
 
-
   public CardLedgerPointsEntryIntegrationAPI amount(BigDecimal amount) {
-    
+
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * Amount of loyalty points added in the transaction.
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(example = "10.25", required = true, value = "Amount of loyalty points added in the transaction.")
 
   public BigDecimal getAmount() {
     return amount;
   }
 
-
   public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -318,9 +310,9 @@ public class CardLedgerPointsEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programId, customerProfileID, customerSessionId, name, startDate, expiryDate, subledgerId, amount);
+    return Objects.hash(id, created, programId, customerProfileID, customerSessionId, name, startDate, expiryDate,
+        subledgerId, amount);
   }
-
 
   @Override
   public String toString() {
@@ -352,4 +344,3 @@ public class CardLedgerPointsEntryIntegrationAPI {
   }
 
 }
-

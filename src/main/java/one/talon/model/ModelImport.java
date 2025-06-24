@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ModelImport {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,11 +39,11 @@ public class ModelImport {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -52,141 +51,134 @@ public class ModelImport {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Integer amount;
+  private Long amount;
 
+  public ModelImport id(Long id) {
 
-  public ModelImport id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ModelImport created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public ModelImport accountId(Long accountId) {
 
-  public ModelImport accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public ModelImport userId(Long userId) {
 
-  public ModelImport userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user associated with this entity.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public ModelImport entity(String entity) {
-    
+
     this.entity = entity;
     return this;
   }
 
-   /**
-   * The name of the entity that was imported. 
+  /**
+   * The name of the entity that was imported.
+   * 
    * @return entity
-  **/
+   **/
   @ApiModelProperty(example = "AttributeAllowedList", required = true, value = "The name of the entity that was imported. ")
 
   public String getEntity() {
     return entity;
   }
 
-
   public void setEntity(String entity) {
     this.entity = entity;
   }
 
+  public ModelImport amount(Long amount) {
 
-  public ModelImport amount(Integer amount) {
-    
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * The number of values that were imported.
    * minimum: 0
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of values that were imported.")
 
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
-
-  public void setAmount(Integer amount) {
+  public void setAmount(Long amount) {
     this.amount = amount;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -209,7 +201,6 @@ public class ModelImport {
   public int hashCode() {
     return Objects.hash(id, created, accountId, userId, entity, amount);
   }
-
 
   @Override
   public String toString() {
@@ -237,4 +228,3 @@ public class ModelImport {
   }
 
 }
-

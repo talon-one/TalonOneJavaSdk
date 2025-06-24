@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import one.talon.model.Change;
 public class InlineResponse20044 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
@@ -44,40 +43,39 @@ public class InlineResponse20044 {
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Change> data = new ArrayList<Change>();
 
+  public InlineResponse20044 totalResultSize(Long totalResultSize) {
 
-  public InlineResponse20044 totalResultSize(Integer totalResultSize) {
-    
     this.totalResultSize = totalResultSize;
     return this;
   }
 
-   /**
+  /**
    * Get totalResultSize
+   * 
    * @return totalResultSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "")
 
-  public Integer getTotalResultSize() {
+  public Long getTotalResultSize() {
     return totalResultSize;
   }
 
-
-  public void setTotalResultSize(Integer totalResultSize) {
+  public void setTotalResultSize(Long totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 
-
   public InlineResponse20044 hasMore(Boolean hasMore) {
-    
+
     this.hasMore = hasMore;
     return this;
   }
 
-   /**
+  /**
    * Get hasMore
+   * 
    * @return hasMore
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -85,14 +83,12 @@ public class InlineResponse20044 {
     return hasMore;
   }
 
-
   public void setHasMore(Boolean hasMore) {
     this.hasMore = hasMore;
   }
 
-
   public InlineResponse20044 data(List<Change> data) {
-    
+
     this.data = data;
     return this;
   }
@@ -102,21 +98,20 @@ public class InlineResponse20044 {
     return this;
   }
 
-   /**
+  /**
    * Get data
+   * 
    * @return data
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<Change> getData() {
     return data;
   }
 
-
   public void setData(List<Change> data) {
     this.data = data;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -136,7 +131,6 @@ public class InlineResponse20044 {
   public int hashCode() {
     return Objects.hash(totalResultSize, hasMore, data);
   }
-
 
   @Override
   public String toString() {
@@ -161,4 +155,3 @@ public class InlineResponse20044 {
   }
 
 }
-

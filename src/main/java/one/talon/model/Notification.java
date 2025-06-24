@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class Notification {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -41,72 +40,68 @@ public class Notification {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public Notification id(Long id) {
 
-  public Notification id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * id of the notification.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "id of the notification.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Notification name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * name of the notification.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "name of the notification.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Notification description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * description of the notification.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(required = true, value = "description of the notification.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,7 +121,6 @@ public class Notification {
   public int hashCode() {
     return Objects.hash(id, name, description);
   }
-
 
   @Override
   public String toString() {
@@ -151,4 +145,3 @@ public class Notification {
   }
 
 }
-

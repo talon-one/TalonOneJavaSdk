@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,45 +40,44 @@ public class UpdateCampaignGroup {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Integer> campaignIds = null;
-
+  private List<Long> campaignIds = null;
 
   public UpdateCampaignGroup name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the campaign access group.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Europe access group", required = true, value = "The name of the campaign access group.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateCampaignGroup description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A longer description of the campaign access group.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "A group that gives access to all the campaigns for the Europe market.", value = "A longer description of the campaign access group.")
 
@@ -87,73 +85,70 @@ public class UpdateCampaignGroup {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public UpdateCampaignGroup subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public UpdateCampaignGroup subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public UpdateCampaignGroup addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public UpdateCampaignGroup addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of IDs of the Applications that this campaign access group is enabled for.
+  /**
+   * A list of IDs of the Applications that this campaign access group is enabled
+   * for.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of IDs of the Applications that this campaign access group is enabled for.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
+  public UpdateCampaignGroup campaignIds(List<Long> campaignIds) {
 
-  public UpdateCampaignGroup campaignIds(List<Integer> campaignIds) {
-    
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public UpdateCampaignGroup addCampaignIdsItem(Integer campaignIdsItem) {
+  public UpdateCampaignGroup addCampaignIdsItem(Long campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<Integer>();
+      this.campaignIds = new ArrayList<Long>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of IDs of the campaigns that are part of the campaign access group.
+   * 
    * @return campaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are part of the campaign access group.")
 
-  public List<Integer> getCampaignIds() {
+  public List<Long> getCampaignIds() {
     return campaignIds;
   }
 
-
-  public void setCampaignIds(List<Integer> campaignIds) {
+  public void setCampaignIds(List<Long> campaignIds) {
     this.campaignIds = campaignIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -174,7 +169,6 @@ public class UpdateCampaignGroup {
   public int hashCode() {
     return Objects.hash(name, description, subscribedApplicationsIds, campaignIds);
   }
-
 
   @Override
   public String toString() {
@@ -200,4 +194,3 @@ public class UpdateCampaignGroup {
   }
 
 }
-

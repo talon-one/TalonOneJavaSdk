@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -30,12 +29,16 @@ import java.io.IOException;
 
 public class CustomerProfileAudienceRequestItem {
   /**
-   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile
+   * to the audience. **Note**: If the customer profile does not exist, it will be
+   * created. The profile will not be visible in any Application until a session
+   * or profile update is received for that profile. - &#x60;delete&#x60;: Removes
+   * the customer profile from the audience.
    */
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
     ADD("add"),
-    
+
     DELETE("delete");
 
     private String value;
@@ -70,7 +73,7 @@ public class CustomerProfileAudienceRequestItem {
 
       @Override
       public ActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ActionEnum.fromValue(value);
       }
     }
@@ -86,74 +89,75 @@ public class CustomerProfileAudienceRequestItem {
 
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Integer audienceId;
-
+  private Long audienceId;
 
   public CustomerProfileAudienceRequestItem action(ActionEnum action) {
-    
+
     this.action = action;
     return this;
   }
 
-   /**
-   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile to the audience.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - &#x60;delete&#x60;: Removes the customer profile from the audience. 
+  /**
+   * Defines the action to perform: - &#x60;add&#x60;: Adds the customer profile
+   * to the audience. **Note**: If the customer profile does not exist, it will be
+   * created. The profile will not be visible in any Application until a session
+   * or profile update is received for that profile. - &#x60;delete&#x60;: Removes
+   * the customer profile from the audience.
+   * 
    * @return action
-  **/
+   **/
   @ApiModelProperty(example = "add", required = true, value = "Defines the action to perform: - `add`: Adds the customer profile to the audience.    **Note**: If the customer profile does not exist, it will be created. The profile will not be visible in any Application   until a session or profile update is received for that profile. - `delete`: Removes the customer profile from the audience. ")
 
   public ActionEnum getAction() {
     return action;
   }
 
-
   public void setAction(ActionEnum action) {
     this.action = action;
   }
 
-
   public CustomerProfileAudienceRequestItem profileIntegrationId(String profileIntegrationId) {
-    
+
     this.profileIntegrationId = profileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of this customer profile in the third-party integration.
+   * 
    * @return profileIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "R195412", required = true, value = "The ID of this customer profile in the third-party integration.")
 
   public String getProfileIntegrationId() {
     return profileIntegrationId;
   }
 
-
   public void setProfileIntegrationId(String profileIntegrationId) {
     this.profileIntegrationId = profileIntegrationId;
   }
 
+  public CustomerProfileAudienceRequestItem audienceId(Long audienceId) {
 
-  public CustomerProfileAudienceRequestItem audienceId(Integer audienceId) {
-    
     this.audienceId = audienceId;
     return this;
   }
 
-   /**
-   * The ID of the audience. You get it via the &#x60;id&#x60; property when [creating an audience](#operation/createAudienceV2).
+  /**
+   * The ID of the audience. You get it via the &#x60;id&#x60; property when
+   * [creating an audience](#operation/createAudienceV2).
+   * 
    * @return audienceId
-  **/
+   **/
   @ApiModelProperty(example = "748", required = true, value = "The ID of the audience. You get it via the `id` property when [creating an audience](#operation/createAudienceV2).")
 
-  public Integer getAudienceId() {
+  public Long getAudienceId() {
     return audienceId;
   }
 
-
-  public void setAudienceId(Integer audienceId) {
+  public void setAudienceId(Long audienceId) {
     this.audienceId = audienceId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -173,7 +177,6 @@ public class CustomerProfileAudienceRequestItem {
   public int hashCode() {
     return Objects.hash(action, profileIntegrationId, audienceId);
   }
-
 
   @Override
   public String toString() {
@@ -198,4 +201,3 @@ public class CustomerProfileAudienceRequestItem {
   }
 
 }
-

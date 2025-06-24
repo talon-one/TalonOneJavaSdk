@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -50,14 +49,15 @@ public class UpdateApplication {
   private String currency;
 
   /**
-   * The case sensitivity behavior to check coupon codes in the campaigns of this Application.
+   * The case sensitivity behavior to check coupon codes in the campaigns of this
+   * Application.
    */
   @JsonAdapter(CaseSensitivityEnum.Adapter.class)
   public enum CaseSensitivityEnum {
     SENSITIVE("sensitive"),
-    
+
     INSENSITIVE_UPPERCASE("insensitive-uppercase"),
-    
+
     INSENSITIVE_LOWERCASE("insensitive-lowercase");
 
     private String value;
@@ -92,7 +92,7 @@ public class UpdateApplication {
 
       @Override
       public CaseSensitivityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return CaseSensitivityEnum.fromValue(value);
       }
     }
@@ -111,14 +111,15 @@ public class UpdateApplication {
   private List<LimitConfig> limits = null;
 
   /**
-   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect. 
+   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was
+   * provided with the effect.
    */
   @JsonAdapter(DefaultDiscountScopeEnum.Adapter.class)
   public enum DefaultDiscountScopeEnum {
     SESSIONTOTAL("sessionTotal"),
-    
+
     CARTITEMS("cartItems"),
-    
+
     ADDITIONALCOSTS("additionalCosts");
 
     private String value;
@@ -153,7 +154,7 @@ public class UpdateApplication {
 
       @Override
       public DefaultDiscountScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return DefaultDiscountScopeEnum.fromValue(value);
       }
     }
@@ -184,14 +185,15 @@ public class UpdateApplication {
   private Boolean enablePartialDiscounts;
 
   /**
-   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect. 
+   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no
+   * scope was provided with the effect.
    */
   @JsonAdapter(DefaultDiscountAdditionalCostPerItemScopeEnum.Adapter.class)
   public enum DefaultDiscountAdditionalCostPerItemScopeEnum {
     PRICE("price"),
-    
+
     ITEMTOTAL("itemTotal"),
-    
+
     ADDITIONALCOSTS("additionalCosts");
 
     private String value;
@@ -220,13 +222,14 @@ public class UpdateApplication {
 
     public static class Adapter extends TypeAdapter<DefaultDiscountAdditionalCostPerItemScopeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final DefaultDiscountAdditionalCostPerItemScopeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final DefaultDiscountAdditionalCostPerItemScopeEnum enumeration)
+          throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
       public DefaultDiscountAdditionalCostPerItemScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return DefaultDiscountAdditionalCostPerItemScopeEnum.fromValue(value);
       }
     }
@@ -238,49 +241,48 @@ public class UpdateApplication {
 
   public static final String SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID = "defaultEvaluationGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID)
-  private Integer defaultEvaluationGroupId;
+  private Long defaultEvaluationGroupId;
 
   public static final String SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID = "defaultCartItemFilterId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID)
-  private Integer defaultCartItemFilterId;
+  private Long defaultCartItemFilterId;
 
   public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
   @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
   private Boolean enableCampaignStateManagement;
 
-
   public UpdateApplication name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this application.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My Application", required = true, value = "The name of this application.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateApplication description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A longer description of the application.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "A test Application", value = "A longer description of the application.")
 
@@ -288,66 +290,64 @@ public class UpdateApplication {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateApplication timezone(String timezone) {
-    
+
     this.timezone = timezone;
     return this;
   }
 
-   /**
+  /**
    * A string containing an IANA timezone descriptor.
+   * 
    * @return timezone
-  **/
+   **/
   @ApiModelProperty(example = "Europe/Berlin", required = true, value = "A string containing an IANA timezone descriptor.")
 
   public String getTimezone() {
     return timezone;
   }
 
-
   public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
 
-
   public UpdateApplication currency(String currency) {
-    
+
     this.currency = currency;
     return this;
   }
 
-   /**
+  /**
    * The default currency for new customer sessions.
+   * 
    * @return currency
-  **/
+   **/
   @ApiModelProperty(example = "EUR", required = true, value = "The default currency for new customer sessions.")
 
   public String getCurrency() {
     return currency;
   }
 
-
   public void setCurrency(String currency) {
     this.currency = currency;
   }
 
-
   public UpdateApplication caseSensitivity(CaseSensitivityEnum caseSensitivity) {
-    
+
     this.caseSensitivity = caseSensitivity;
     return this;
   }
 
-   /**
-   * The case sensitivity behavior to check coupon codes in the campaigns of this Application.
+  /**
+   * The case sensitivity behavior to check coupon codes in the campaigns of this
+   * Application.
+   * 
    * @return caseSensitivity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "sensitive", value = "The case sensitivity behavior to check coupon codes in the campaigns of this Application.")
 
@@ -355,22 +355,21 @@ public class UpdateApplication {
     return caseSensitivity;
   }
 
-
   public void setCaseSensitivity(CaseSensitivityEnum caseSensitivity) {
     this.caseSensitivity = caseSensitivity;
   }
 
-
   public UpdateApplication attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this campaign.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign.")
 
@@ -378,14 +377,12 @@ public class UpdateApplication {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public UpdateApplication limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -398,10 +395,11 @@ public class UpdateApplication {
     return this;
   }
 
-   /**
+  /**
    * Default limits for campaigns created in this application.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Default limits for campaigns created in this application.")
 
@@ -409,22 +407,22 @@ public class UpdateApplication {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
-
   public UpdateApplication defaultDiscountScope(DefaultDiscountScopeEnum defaultDiscountScope) {
-    
+
     this.defaultDiscountScope = defaultDiscountScope;
     return this;
   }
 
-   /**
-   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was provided with the effect. 
+  /**
+   * The default scope to apply &#x60;setDiscount&#x60; effects on if no scope was
+   * provided with the effect.
+   * 
    * @return defaultDiscountScope
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "sessionTotal", value = "The default scope to apply `setDiscount` effects on if no scope was provided with the effect. ")
 
@@ -432,22 +430,21 @@ public class UpdateApplication {
     return defaultDiscountScope;
   }
 
-
   public void setDefaultDiscountScope(DefaultDiscountScopeEnum defaultDiscountScope) {
     this.defaultDiscountScope = defaultDiscountScope;
   }
 
-
   public UpdateApplication enableCascadingDiscounts(Boolean enableCascadingDiscounts) {
-    
+
     this.enableCascadingDiscounts = enableCascadingDiscounts;
     return this;
   }
 
-   /**
+  /**
    * Indicates if discounts should cascade for this Application.
+   * 
    * @return enableCascadingDiscounts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates if discounts should cascade for this Application.")
 
@@ -455,22 +452,22 @@ public class UpdateApplication {
     return enableCascadingDiscounts;
   }
 
-
   public void setEnableCascadingDiscounts(Boolean enableCascadingDiscounts) {
     this.enableCascadingDiscounts = enableCascadingDiscounts;
   }
 
-
   public UpdateApplication enableFlattenedCartItems(Boolean enableFlattenedCartItems) {
-    
+
     this.enableFlattenedCartItems = enableFlattenedCartItems;
     return this;
   }
 
-   /**
-   * Indicates if cart items of quantity larger than one should be separated into different items of quantity one. 
+  /**
+   * Indicates if cart items of quantity larger than one should be separated into
+   * different items of quantity one.
+   * 
    * @return enableFlattenedCartItems
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates if cart items of quantity larger than one should be separated into different items of quantity one. ")
 
@@ -478,22 +475,21 @@ public class UpdateApplication {
     return enableFlattenedCartItems;
   }
 
-
   public void setEnableFlattenedCartItems(Boolean enableFlattenedCartItems) {
     this.enableFlattenedCartItems = enableFlattenedCartItems;
   }
 
-
   public UpdateApplication attributesSettings(AttributesSettings attributesSettings) {
-    
+
     this.attributesSettings = attributesSettings;
     return this;
   }
 
-   /**
+  /**
    * Get attributesSettings
+   * 
    * @return attributesSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -501,22 +497,21 @@ public class UpdateApplication {
     return attributesSettings;
   }
 
-
   public void setAttributesSettings(AttributesSettings attributesSettings) {
     this.attributesSettings = attributesSettings;
   }
 
-
   public UpdateApplication sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this is a live or sandbox Application.
+   * 
    * @return sandbox
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates if this is a live or sandbox Application.")
 
@@ -524,22 +519,21 @@ public class UpdateApplication {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
 
-
   public UpdateApplication enablePartialDiscounts(Boolean enablePartialDiscounts) {
-    
+
     this.enablePartialDiscounts = enablePartialDiscounts;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this Application supports partial discounts.
+   * 
    * @return enablePartialDiscounts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates if this Application supports partial discounts.")
 
@@ -547,22 +541,23 @@ public class UpdateApplication {
     return enablePartialDiscounts;
   }
 
-
   public void setEnablePartialDiscounts(Boolean enablePartialDiscounts) {
     this.enablePartialDiscounts = enablePartialDiscounts;
   }
 
+  public UpdateApplication defaultDiscountAdditionalCostPerItemScope(
+      DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
 
-  public UpdateApplication defaultDiscountAdditionalCostPerItemScope(DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
-    
     this.defaultDiscountAdditionalCostPerItemScope = defaultDiscountAdditionalCostPerItemScope;
     return this;
   }
 
-   /**
-   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no scope was provided with the effect. 
+  /**
+   * The default scope to apply &#x60;setDiscountPerItem&#x60; effects on if no
+   * scope was provided with the effect.
+   * 
    * @return defaultDiscountAdditionalCostPerItemScope
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "price", value = "The default scope to apply `setDiscountPerItem` effects on if no scope was provided with the effect. ")
 
@@ -570,68 +565,69 @@ public class UpdateApplication {
     return defaultDiscountAdditionalCostPerItemScope;
   }
 
-
-  public void setDefaultDiscountAdditionalCostPerItemScope(DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
+  public void setDefaultDiscountAdditionalCostPerItemScope(
+      DefaultDiscountAdditionalCostPerItemScopeEnum defaultDiscountAdditionalCostPerItemScope) {
     this.defaultDiscountAdditionalCostPerItemScope = defaultDiscountAdditionalCostPerItemScope;
   }
 
+  public UpdateApplication defaultEvaluationGroupId(Long defaultEvaluationGroupId) {
 
-  public UpdateApplication defaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
-    
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
     return this;
   }
 
-   /**
-   * The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.
+  /**
+   * The ID of the default campaign evaluation group to which new campaigns will
+   * be added unless a different group is selected when creating the campaign.
+   * 
    * @return defaultEvaluationGroupId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.")
 
-  public Integer getDefaultEvaluationGroupId() {
+  public Long getDefaultEvaluationGroupId() {
     return defaultEvaluationGroupId;
   }
 
-
-  public void setDefaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+  public void setDefaultEvaluationGroupId(Long defaultEvaluationGroupId) {
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
   }
 
+  public UpdateApplication defaultCartItemFilterId(Long defaultCartItemFilterId) {
 
-  public UpdateApplication defaultCartItemFilterId(Integer defaultCartItemFilterId) {
-    
     this.defaultCartItemFilterId = defaultCartItemFilterId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the default Cart-Item-Filter for this application.
+   * 
    * @return defaultCartItemFilterId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default Cart-Item-Filter for this application.")
 
-  public Integer getDefaultCartItemFilterId() {
+  public Long getDefaultCartItemFilterId() {
     return defaultCartItemFilterId;
   }
 
-
-  public void setDefaultCartItemFilterId(Integer defaultCartItemFilterId) {
+  public void setDefaultCartItemFilterId(Long defaultCartItemFilterId) {
     this.defaultCartItemFilterId = defaultCartItemFilterId;
   }
 
-
   public UpdateApplication enableCampaignStateManagement(Boolean enableCampaignStateManagement) {
-    
+
     this.enableCampaignStateManagement = enableCampaignStateManagement;
     return this;
   }
 
-   /**
-   * Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. 
+  /**
+   * Indicates whether the campaign staging and revisions feature is enabled for
+   * the Application. **Important:** After this feature is enabled, it cannot be
+   * disabled.
+   * 
    * @return enableCampaignStateManagement
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates whether the campaign staging and revisions feature is enabled for the Application.  **Important:** After this feature is enabled, it cannot be disabled. ")
 
@@ -639,11 +635,9 @@ public class UpdateApplication {
     return enableCampaignStateManagement;
   }
 
-
   public void setEnableCampaignStateManagement(Boolean enableCampaignStateManagement) {
     this.enableCampaignStateManagement = enableCampaignStateManagement;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -667,7 +661,9 @@ public class UpdateApplication {
         Objects.equals(this.attributesSettings, updateApplication.attributesSettings) &&
         Objects.equals(this.sandbox, updateApplication.sandbox) &&
         Objects.equals(this.enablePartialDiscounts, updateApplication.enablePartialDiscounts) &&
-        Objects.equals(this.defaultDiscountAdditionalCostPerItemScope, updateApplication.defaultDiscountAdditionalCostPerItemScope) &&
+        Objects.equals(this.defaultDiscountAdditionalCostPerItemScope,
+            updateApplication.defaultDiscountAdditionalCostPerItemScope)
+        &&
         Objects.equals(this.defaultEvaluationGroupId, updateApplication.defaultEvaluationGroupId) &&
         Objects.equals(this.defaultCartItemFilterId, updateApplication.defaultCartItemFilterId) &&
         Objects.equals(this.enableCampaignStateManagement, updateApplication.enableCampaignStateManagement);
@@ -675,9 +671,11 @@ public class UpdateApplication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits, defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox, enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId, defaultCartItemFilterId, enableCampaignStateManagement);
+    return Objects.hash(name, description, timezone, currency, caseSensitivity, attributes, limits,
+        defaultDiscountScope, enableCascadingDiscounts, enableFlattenedCartItems, attributesSettings, sandbox,
+        enablePartialDiscounts, defaultDiscountAdditionalCostPerItemScope, defaultEvaluationGroupId,
+        defaultCartItemFilterId, enableCampaignStateManagement);
   }
-
 
   @Override
   public String toString() {
@@ -696,10 +694,12 @@ public class UpdateApplication {
     sb.append("    attributesSettings: ").append(toIndentedString(attributesSettings)).append("\n");
     sb.append("    sandbox: ").append(toIndentedString(sandbox)).append("\n");
     sb.append("    enablePartialDiscounts: ").append(toIndentedString(enablePartialDiscounts)).append("\n");
-    sb.append("    defaultDiscountAdditionalCostPerItemScope: ").append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
+    sb.append("    defaultDiscountAdditionalCostPerItemScope: ")
+        .append(toIndentedString(defaultDiscountAdditionalCostPerItemScope)).append("\n");
     sb.append("    defaultEvaluationGroupId: ").append(toIndentedString(defaultEvaluationGroupId)).append("\n");
     sb.append("    defaultCartItemFilterId: ").append(toIndentedString(defaultCartItemFilterId)).append("\n");
-    sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement)).append("\n");
+    sb.append("    enableCampaignStateManagement: ").append(toIndentedString(enableCampaignStateManagement))
+        .append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -716,4 +716,3 @@ public class UpdateApplication {
   }
 
 }
-

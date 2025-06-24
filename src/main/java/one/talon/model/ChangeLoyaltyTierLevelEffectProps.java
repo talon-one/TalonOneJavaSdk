@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,9 @@ import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;changeLoyaltyTierLevel\&quot; effect. This is triggered whenever the user&#39;s loyalty tier is upgraded due to a validated rule that contained an \&quot;addLoyaltyPoints\&quot; effect. 
+ * The properties specific to the \&quot;changeLoyaltyTierLevel\&quot; effect.
+ * This is triggered whenever the user&#39;s loyalty tier is upgraded due to a
+ * validated rule that contained an \&quot;addLoyaltyPoints\&quot; effect.
  */
 @ApiModel(description = "The properties specific to the \"changeLoyaltyTierLevel\" effect. This is triggered whenever the user's loyalty tier is upgraded due to a validated rule that contained an \"addLoyaltyPoints\" effect. ")
 
@@ -37,7 +38,7 @@ public class ChangeLoyaltyTierLevelEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -55,83 +56,81 @@ public class ChangeLoyaltyTierLevelEffectProps {
   @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
   private OffsetDateTime expiryDate;
 
-
   public ChangeLoyaltyTierLevelEffectProps ruleTitle(String ruleTitle) {
-    
+
     this.ruleTitle = ruleTitle;
     return this;
   }
 
-   /**
+  /**
    * The title of the rule that triggered the tier upgrade.
+   * 
    * @return ruleTitle
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The title of the rule that triggered the tier upgrade.")
 
   public String getRuleTitle() {
     return ruleTitle;
   }
 
-
   public void setRuleTitle(String ruleTitle) {
     this.ruleTitle = ruleTitle;
   }
 
+  public ChangeLoyaltyTierLevelEffectProps programId(Long programId) {
 
-  public ChangeLoyaltyTierLevelEffectProps programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program where these points were added.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public ChangeLoyaltyTierLevelEffectProps subLedgerId(String subLedgerId) {
-    
+
     this.subLedgerId = subLedgerId;
     return this;
   }
 
-   /**
-   * The ID of the subledger within the loyalty program where these points were added.
+  /**
+   * The ID of the subledger within the loyalty program where these points were
+   * added.
+   * 
    * @return subLedgerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
 
   public String getSubLedgerId() {
     return subLedgerId;
   }
 
-
   public void setSubLedgerId(String subLedgerId) {
     this.subLedgerId = subLedgerId;
   }
 
-
   public ChangeLoyaltyTierLevelEffectProps previousTierName(String previousTierName) {
-    
+
     this.previousTierName = previousTierName;
     return this;
   }
 
-   /**
+  /**
    * The name of the tier from which the user was upgraded.
+   * 
    * @return previousTierName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the tier from which the user was upgraded.")
 
@@ -139,44 +138,42 @@ public class ChangeLoyaltyTierLevelEffectProps {
     return previousTierName;
   }
 
-
   public void setPreviousTierName(String previousTierName) {
     this.previousTierName = previousTierName;
   }
 
-
   public ChangeLoyaltyTierLevelEffectProps newTierName(String newTierName) {
-    
+
     this.newTierName = newTierName;
     return this;
   }
 
-   /**
+  /**
    * The name of the tier to which the user has been upgraded.
+   * 
    * @return newTierName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the tier to which the user has been upgraded.")
 
   public String getNewTierName() {
     return newTierName;
   }
 
-
   public void setNewTierName(String newTierName) {
     this.newTierName = newTierName;
   }
 
-
   public ChangeLoyaltyTierLevelEffectProps expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * The expiration date of the new tier.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The expiration date of the new tier.")
 
@@ -184,11 +181,9 @@ public class ChangeLoyaltyTierLevelEffectProps {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -211,7 +206,6 @@ public class ChangeLoyaltyTierLevelEffectProps {
   public int hashCode() {
     return Objects.hash(ruleTitle, programId, subLedgerId, previousTierName, newTierName, expiryDate);
   }
-
 
   @Override
   public String toString() {
@@ -239,4 +233,3 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
 }
-

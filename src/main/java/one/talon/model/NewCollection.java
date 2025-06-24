@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,23 +36,23 @@ public class NewCollection {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-
   public NewCollection description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the purpose of this collection.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My collection of SKUs", value = "A short description of the purpose of this collection.")
 
@@ -61,64 +60,60 @@ public class NewCollection {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public NewCollection subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public NewCollection subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public NewCollection addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public NewCollection addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the Applications where this collection is enabled.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the Applications where this collection is enabled.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
-
   public NewCollection name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this collection.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My collection", required = true, value = "The name of this collection.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -138,7 +133,6 @@ public class NewCollection {
   public int hashCode() {
     return Objects.hash(description, subscribedApplicationsIds, name);
   }
-
 
   @Override
   public String toString() {
@@ -163,4 +157,3 @@ public class NewCollection {
   }
 
 }
-

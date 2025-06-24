@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class EventType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -50,105 +49,102 @@ public class EventType {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public EventType id(Long id) {
 
-  public EventType id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public EventType created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public EventType title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The human-friendly name for this event type.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Survey Completed", required = true, value = "The human-friendly name for this event type.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public EventType name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The integration name for this event type. This will be used in URLs and cannot be changed after an event type has been created.
+  /**
+   * The integration name for this event type. This will be used in URLs and
+   * cannot be changed after an event type has been created.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "surveyCompleted", required = true, value = "The integration name for this event type. This will be used in URLs and cannot be changed after an event type has been created.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public EventType description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
-   * A description of what the event represents. 
+  /**
+   * A description of what the event represents.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "The survey was submitted by the customer.", value = "A description of what the event represents. ")
 
@@ -156,11 +152,9 @@ public class EventType {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -182,7 +176,6 @@ public class EventType {
   public int hashCode() {
     return Objects.hash(id, created, title, name, description);
   }
-
 
   @Override
   public String toString() {
@@ -209,4 +202,3 @@ public class EventType {
   }
 
 }
-

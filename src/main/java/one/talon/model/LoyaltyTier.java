@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyTier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +41,7 @@ public class LoyaltyTier {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -60,83 +59,80 @@ public class LoyaltyTier {
   @SerializedName(SERIALIZED_NAME_MIN_POINTS)
   private BigDecimal minPoints;
 
+  public LoyaltyTier id(Long id) {
 
-  public LoyaltyTier id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public LoyaltyTier created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public LoyaltyTier programID(Long programID) {
 
-  public LoyaltyTier programID(Integer programID) {
-    
     this.programID = programID;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program that owns this entity.
+   * 
    * @return programID
-  **/
+   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
-
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
-
   public LoyaltyTier programName(String programName) {
-    
+
     this.programName = programName;
     return this;
   }
 
-   /**
+  /**
    * The integration name of the loyalty program that owns this entity.
+   * 
    * @return programName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty_program", value = "The integration name of the loyalty program that owns this entity.")
 
@@ -144,22 +140,22 @@ public class LoyaltyTier {
     return programName;
   }
 
-
   public void setProgramName(String programName) {
     this.programName = programName;
   }
 
-
   public LoyaltyTier programTitle(String programTitle) {
-    
+
     this.programTitle = programTitle;
     return this;
   }
 
-   /**
-   * The Campaign Manager-displayed name of the loyalty program that owns this entity.
+  /**
+   * The Campaign Manager-displayed name of the loyalty program that owns this
+   * entity.
+   * 
    * @return programTitle
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty program", value = "The Campaign Manager-displayed name of the loyalty program that owns this entity.")
 
@@ -167,57 +163,53 @@ public class LoyaltyTier {
     return programTitle;
   }
 
-
   public void setProgramTitle(String programTitle) {
     this.programTitle = programTitle;
   }
 
-
   public LoyaltyTier name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the tier.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Gold", required = true, value = "The name of the tier.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public LoyaltyTier minPoints(BigDecimal minPoints) {
-    
+
     this.minPoints = minPoints;
     return this;
   }
 
-   /**
+  /**
    * The minimum amount of points required to enter the tier.
    * minimum: 0
    * maximum: 999999999999.99
+   * 
    * @return minPoints
-  **/
+   **/
   @ApiModelProperty(example = "300.0", required = true, value = "The minimum amount of points required to enter the tier.")
 
   public BigDecimal getMinPoints() {
     return minPoints;
   }
 
-
   public void setMinPoints(BigDecimal minPoints) {
     this.minPoints = minPoints;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,7 +233,6 @@ public class LoyaltyTier {
   public int hashCode() {
     return Objects.hash(id, created, programID, programName, programTitle, name, minPoints);
   }
-
 
   @Override
   public String toString() {
@@ -270,4 +261,3 @@ public class LoyaltyTier {
   }
 
 }
-

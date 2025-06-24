@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import java.io.IOException;
 public class StrikethroughCustomEffectPerItemProps {
   public static final String SERIALIZED_NAME_EFFECT_ID = "effectId";
   @SerializedName(SERIALIZED_NAME_EFFECT_ID)
-  private Integer effectId;
+  private Long effectId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -42,72 +41,68 @@ public class StrikethroughCustomEffectPerItemProps {
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private Object payload;
 
+  public StrikethroughCustomEffectPerItemProps effectId(Long effectId) {
 
-  public StrikethroughCustomEffectPerItemProps effectId(Integer effectId) {
-    
     this.effectId = effectId;
     return this;
   }
 
-   /**
+  /**
    * ID of the effect.
+   * 
    * @return effectId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the effect.")
 
-  public Integer getEffectId() {
+  public Long getEffectId() {
     return effectId;
   }
 
-
-  public void setEffectId(Integer effectId) {
+  public void setEffectId(Long effectId) {
     this.effectId = effectId;
   }
 
-
   public StrikethroughCustomEffectPerItemProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The type of the custom effect.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "my_custom_effect", required = true, value = "The type of the custom effect.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public StrikethroughCustomEffectPerItemProps payload(Object payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * The JSON payload of the custom effect.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The JSON payload of the custom effect.")
 
   public Object getPayload() {
     return payload;
   }
 
-
   public void setPayload(Object payload) {
     this.payload = payload;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,7 +122,6 @@ public class StrikethroughCustomEffectPerItemProps {
   public int hashCode() {
     return Objects.hash(effectId, name, payload);
   }
-
 
   @Override
   public String toString() {
@@ -152,4 +146,3 @@ public class StrikethroughCustomEffectPerItemProps {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -44,7 +43,7 @@ public class BaseNotification {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   /**
    * The notification type.
@@ -52,27 +51,27 @@ public class BaseNotification {
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     CAMPAIGN("campaign"),
-    
+
     LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
-    
+
     CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
-    
+
     COUPON("coupon"),
-    
+
     EXPIRING_COUPONS("expiring_coupons"),
-    
+
     EXPIRING_POINTS("expiring_points"),
-    
+
     CARD_EXPIRING_POINTS("card_expiring_points"),
-    
+
     PENDING_TO_ACTIVE_POINTS("pending_to_active_points"),
-    
+
     STRIKETHROUGH_PRICING("strikethrough_pricing"),
-    
+
     TIER_DOWNGRADE("tier_downgrade"),
-    
+
     TIER_UPGRADE("tier_upgrade"),
-    
+
     TIER_WILL_DOWNGRADE("tier_will_downgrade");
 
     private String value;
@@ -107,7 +106,7 @@ public class BaseNotification {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -117,39 +116,38 @@ public class BaseNotification {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-
   public BaseNotification policy(Object policy) {
-    
+
     this.policy = policy;
     return this;
   }
 
-   /**
+  /**
    * Indicates which notification properties to apply.
+   * 
    * @return policy
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Indicates which notification properties to apply.")
 
   public Object getPolicy() {
     return policy;
   }
 
-
   public void setPolicy(Object policy) {
     this.policy = policy;
   }
 
-
   public BaseNotification enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the notification is activated.
+   * 
    * @return enabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates whether the notification is activated.")
 
@@ -157,78 +155,73 @@ public class BaseNotification {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public BaseNotification webhook(BaseNotificationWebhook webhook) {
-    
+
     this.webhook = webhook;
     return this;
   }
 
-   /**
+  /**
    * Get webhook
+   * 
    * @return webhook
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public BaseNotificationWebhook getWebhook() {
     return webhook;
   }
 
-
   public void setWebhook(BaseNotificationWebhook webhook) {
     this.webhook = webhook;
   }
 
+  public BaseNotification id(Long id) {
 
-  public BaseNotification id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID for this entity.
    * minimum: 1
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public BaseNotification type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * The notification type.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "loyalty_added_deducted_points", required = true, value = "The notification type.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -250,7 +243,6 @@ public class BaseNotification {
   public int hashCode() {
     return Objects.hash(policy, enabled, webhook, id, type);
   }
-
 
   @Override
   public String toString() {
@@ -277,4 +269,3 @@ public class BaseNotification {
   }
 
 }
-

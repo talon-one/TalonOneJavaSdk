@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,41 +36,41 @@ public class TalangAttribute {
   @JsonAdapter(EntityEnum.Adapter.class)
   public enum EntityEnum {
     ADVOCATEPROFILE("AdvocateProfile"),
-    
+
     ACCOUNT("Account"),
-    
+
     APPLICATION("Application"),
-    
+
     AWARDEDGIVEAWAY("AwardedGiveaway"),
-    
+
     BUNDLE("Bundle"),
-    
+
     CAMPAIGN("Campaign"),
-    
+
     CARTITEM("CartItem"),
-    
+
     COUPON("Coupon"),
-    
+
     CUSTOMERPROFILE("CustomerProfile"),
-    
+
     CUSTOMERSESSION("CustomerSession"),
-    
+
     EVENT("Event"),
-    
+
     ITEM("Item"),
-    
+
     LOYALTY("Loyalty"),
-    
+
     PROFILE("Profile"),
-    
+
     GIVEAWAY("Giveaway"),
-    
+
     REFERRAL("Referral"),
-    
+
     SESSION("Session"),
-    
+
     STORE("Store"),
-    
+
     ACHIEVEMENTS("Achievements");
 
     private String value;
@@ -106,7 +105,7 @@ public class TalangAttribute {
 
       @Override
       public EntityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EntityEnum.fromValue(value);
       }
     }
@@ -142,7 +141,7 @@ public class TalangAttribute {
   @JsonAdapter(KindEnum.Adapter.class)
   public enum KindEnum {
     BUILT_IN("built-in"),
-    
+
     CUSTOM("custom");
 
     private String value;
@@ -177,7 +176,7 @@ public class TalangAttribute {
 
       @Override
       public KindEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return KindEnum.fromValue(value);
       }
     }
@@ -189,23 +188,23 @@ public class TalangAttribute {
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_COUNT = "campaignsCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_COUNT)
-  private Integer campaignsCount;
+  private Long campaignsCount;
 
   public static final String SERIALIZED_NAME_EXAMPLE_VALUE = "exampleValue";
   @SerializedName(SERIALIZED_NAME_EXAMPLE_VALUE)
   private List<String> exampleValue = null;
 
-
   public TalangAttribute entity(EntityEnum entity) {
-    
+
     this.entity = entity;
     return this;
   }
 
-   /**
+  /**
    * The name of the entity of the attribute.
+   * 
    * @return entity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the entity of the attribute.")
 
@@ -213,44 +212,46 @@ public class TalangAttribute {
     return entity;
   }
 
-
   public void setEntity(EntityEnum entity) {
     this.entity = entity;
   }
 
-
   public TalangAttribute name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The attribute name that will be used in API requests and Talang. E.g. if &#x60;name &#x3D;&#x3D; \&quot;region\&quot;&#x60; then you would set the region attribute by including an &#x60;attributes.region&#x60; property in your request payload. 
+  /**
+   * The attribute name that will be used in API requests and Talang. E.g. if
+   * &#x60;name &#x3D;&#x3D; \&quot;region\&quot;&#x60; then you would set the
+   * region attribute by including an &#x60;attributes.region&#x60; property in
+   * your request payload.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The attribute name that will be used in API requests and Talang. E.g. if `name == \"region\"` then you would set the region attribute by including an `attributes.region` property in your request payload. ")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public TalangAttribute title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
-   * The name of the attribute that is displayed to the user in the Campaign Manager.
+  /**
+   * The name of the attribute that is displayed to the user in the Campaign
+   * Manager.
+   * 
    * @return title
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the attribute that is displayed to the user in the Campaign Manager.")
 
@@ -258,44 +259,42 @@ public class TalangAttribute {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public TalangAttribute type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * The talang type of the attribute.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The talang type of the attribute.")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public TalangAttribute description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the attribute.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A description of the attribute.")
 
@@ -303,80 +302,75 @@ public class TalangAttribute {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public TalangAttribute visible(Boolean visible) {
-    
+
     this.visible = visible;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the attribute is visible in the UI or not.
+   * 
    * @return visible
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Indicates whether the attribute is visible in the UI or not.")
 
   public Boolean getVisible() {
     return visible;
   }
 
-
   public void setVisible(Boolean visible) {
     this.visible = visible;
   }
 
-
   public TalangAttribute kind(KindEnum kind) {
-    
+
     this.kind = kind;
     return this;
   }
 
-   /**
+  /**
    * Indicate the kind of the attribute.
+   * 
    * @return kind
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Indicate the kind of the attribute.")
 
   public KindEnum getKind() {
     return kind;
   }
 
-
   public void setKind(KindEnum kind) {
     this.kind = kind;
   }
 
+  public TalangAttribute campaignsCount(Long campaignsCount) {
 
-  public TalangAttribute campaignsCount(Integer campaignsCount) {
-    
     this.campaignsCount = campaignsCount;
     return this;
   }
 
-   /**
+  /**
    * The number of campaigns that refer to the attribute.
+   * 
    * @return campaignsCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The number of campaigns that refer to the attribute.")
 
-  public Integer getCampaignsCount() {
+  public Long getCampaignsCount() {
     return campaignsCount;
   }
 
-
-  public void setCampaignsCount(Integer campaignsCount) {
+  public void setCampaignsCount(Long campaignsCount) {
     this.campaignsCount = campaignsCount;
   }
 
-
   public TalangAttribute exampleValue(List<String> exampleValue) {
-    
+
     this.exampleValue = exampleValue;
     return this;
   }
@@ -389,10 +383,11 @@ public class TalangAttribute {
     return this;
   }
 
-   /**
+  /**
    * Examples of values that can be assigned to the attribute.
+   * 
    * @return exampleValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Examples of values that can be assigned to the attribute.")
 
@@ -400,11 +395,9 @@ public class TalangAttribute {
     return exampleValue;
   }
 
-
   public void setExampleValue(List<String> exampleValue) {
     this.exampleValue = exampleValue;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -430,7 +423,6 @@ public class TalangAttribute {
   public int hashCode() {
     return Objects.hash(entity, name, title, type, description, visible, kind, campaignsCount, exampleValue);
   }
-
 
   @Override
   public String toString() {
@@ -461,4 +453,3 @@ public class TalangAttribute {
   }
 
 }
-

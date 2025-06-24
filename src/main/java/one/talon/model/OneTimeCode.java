@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,11 +30,11 @@ import java.io.IOException;
 public class OneTimeCode {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -45,83 +44,82 @@ public class OneTimeCode {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public OneTimeCode userId(Long userId) {
 
-  public OneTimeCode userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "109", required = true, value = "The ID of the user.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
+  public OneTimeCode accountId(Long accountId) {
 
-  public OneTimeCode accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the account.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public OneTimeCode token(String token) {
-    
+
     this.token = token;
     return this;
   }
 
-   /**
-   * The two-factor authentication token created during sign-in. This token is used to ensure that the correct user is trying to sign in with a given one-time security code.
+  /**
+   * The two-factor authentication token created during sign-in. This token is
+   * used to ensure that the correct user is trying to sign in with a given
+   * one-time security code.
+   * 
    * @return token
-  **/
+   **/
   @ApiModelProperty(example = "dy_Fa_lQ4iDAnqldJFvV", required = true, value = "The two-factor authentication token created during sign-in. This token is used to ensure that the correct user is trying to sign in with a given one-time security code.")
 
   public String getToken() {
     return token;
   }
 
-
   public void setToken(String token) {
     this.token = token;
   }
 
-
   public OneTimeCode code(String code) {
-    
+
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * The one-time security code used for signing in.
+   * 
    * @return code
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "552917", value = "The one-time security code used for signing in.")
 
@@ -129,11 +127,9 @@ public class OneTimeCode {
     return code;
   }
 
-
   public void setCode(String code) {
     this.code = code;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -154,7 +150,6 @@ public class OneTimeCode {
   public int hashCode() {
     return Objects.hash(userId, accountId, token, code);
   }
-
 
   @Override
   public String toString() {
@@ -180,4 +175,3 @@ public class OneTimeCode {
   }
 
 }
-

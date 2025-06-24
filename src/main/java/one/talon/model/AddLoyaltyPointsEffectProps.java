@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -27,7 +26,10 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;addLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;add loyalty\&quot; effect. These points are automatically stored and managed inside Talon.One. 
+ * The properties specific to the \&quot;addLoyaltyPoints\&quot; effect. This
+ * gets triggered whenever a validated rule contained an \&quot;add
+ * loyalty\&quot; effect. These points are automatically stored and managed
+ * inside Talon.One.
  */
 @ApiModel(description = "The properties specific to the \"addLoyaltyPoints\" effect. This gets triggered whenever a validated rule contained an \"add loyalty\" effect. These points are automatically stored and managed inside Talon.One. ")
 
@@ -38,7 +40,7 @@ public class AddLoyaltyPointsEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -82,111 +84,108 @@ public class AddLoyaltyPointsEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Integer bundleIndex;
+  private Long bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
   private String bundleName;
 
-
   public AddLoyaltyPointsEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name / description of this loyalty point addition.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name / description of this loyalty point addition.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public AddLoyaltyPointsEffectProps programId(Long programId) {
 
-  public AddLoyaltyPointsEffectProps programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program where these points were added.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public AddLoyaltyPointsEffectProps subLedgerId(String subLedgerId) {
-    
+
     this.subLedgerId = subLedgerId;
     return this;
   }
 
-   /**
-   * The ID of the subledger within the loyalty program where these points were added.
+  /**
+   * The ID of the subledger within the loyalty program where these points were
+   * added.
+   * 
    * @return subLedgerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
 
   public String getSubLedgerId() {
     return subLedgerId;
   }
 
-
   public void setSubLedgerId(String subLedgerId) {
     this.subLedgerId = subLedgerId;
   }
 
-
   public AddLoyaltyPointsEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The amount of points that were added.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The amount of points that were added.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public AddLoyaltyPointsEffectProps desiredValue(BigDecimal desiredValue) {
-    
+
     this.desiredValue = desiredValue;
     return this;
   }
 
-   /**
+  /**
    * The original amount of loyalty points to be awarded.
+   * 
    * @return desiredValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original amount of loyalty points to be awarded.")
 
@@ -194,44 +193,42 @@ public class AddLoyaltyPointsEffectProps {
     return desiredValue;
   }
 
-
   public void setDesiredValue(BigDecimal desiredValue) {
     this.desiredValue = desiredValue;
   }
 
-
   public AddLoyaltyPointsEffectProps recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The user for whom these points were added.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The user for whom these points were added.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
-
   public AddLoyaltyPointsEffectProps startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Date after which points will be valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date after which points will be valid.")
 
@@ -239,22 +236,21 @@ public class AddLoyaltyPointsEffectProps {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public AddLoyaltyPointsEffectProps expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Date after which points will expire.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date after which points will expire.")
 
@@ -262,44 +258,43 @@ public class AddLoyaltyPointsEffectProps {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public AddLoyaltyPointsEffectProps transactionUUID(String transactionUUID) {
-    
+
     this.transactionUUID = transactionUUID;
     return this;
   }
 
-   /**
+  /**
    * The identifier of this addition in the loyalty ledger.
+   * 
    * @return transactionUUID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The identifier of this addition in the loyalty ledger.")
 
   public String getTransactionUUID() {
     return transactionUUID;
   }
 
-
   public void setTransactionUUID(String transactionUUID) {
     this.transactionUUID = transactionUUID;
   }
 
-
   public AddLoyaltyPointsEffectProps cartItemPosition(BigDecimal cartItemPosition) {
-    
+
     this.cartItemPosition = cartItemPosition;
     return this;
   }
 
-   /**
-   * The index of the item in the cart items list on which the loyal points addition should be applied.
+  /**
+   * The index of the item in the cart items list on which the loyal points
+   * addition should be applied.
+   * 
    * @return cartItemPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the item in the cart items list on which the loyal points addition should be applied.")
 
@@ -307,22 +302,22 @@ public class AddLoyaltyPointsEffectProps {
     return cartItemPosition;
   }
 
-
   public void setCartItemPosition(BigDecimal cartItemPosition) {
     this.cartItemPosition = cartItemPosition;
   }
 
-
   public AddLoyaltyPointsEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
-    
+
     this.cartItemSubPosition = cartItemSubPosition;
     return this;
   }
 
-   /**
-   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates to which item the loyalty points addition is applied. 
+  /**
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates
+   * to which item the loyalty points addition is applied.
+   * 
    * @return cartItemSubPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates to which item the loyalty points addition is applied. ")
 
@@ -330,22 +325,21 @@ public class AddLoyaltyPointsEffectProps {
     return cartItemSubPosition;
   }
 
-
   public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
     this.cartItemSubPosition = cartItemSubPosition;
   }
 
-
   public AddLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
-    
+
     this.cardIdentifier = cardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return cardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -353,45 +347,44 @@ public class AddLoyaltyPointsEffectProps {
     return cardIdentifier;
   }
 
-
   public void setCardIdentifier(String cardIdentifier) {
     this.cardIdentifier = cardIdentifier;
   }
 
+  public AddLoyaltyPointsEffectProps bundleIndex(Long bundleIndex) {
 
-  public AddLoyaltyPointsEffectProps bundleIndex(Integer bundleIndex) {
-    
     this.bundleIndex = bundleIndex;
     return this;
   }
 
-   /**
-   * The position of the bundle in a list of item bundles created from the same bundle definition.
+  /**
+   * The position of the bundle in a list of item bundles created from the same
+   * bundle definition.
+   * 
    * @return bundleIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Integer getBundleIndex() {
+  public Long getBundleIndex() {
     return bundleIndex;
   }
 
-
-  public void setBundleIndex(Integer bundleIndex) {
+  public void setBundleIndex(Long bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 
-
   public AddLoyaltyPointsEffectProps bundleName(String bundleName) {
-    
+
     this.bundleName = bundleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the bundle definition.
+   * 
    * @return bundleName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the bundle definition.")
 
@@ -399,11 +392,9 @@ public class AddLoyaltyPointsEffectProps {
     return bundleName;
   }
 
-
   public void setBundleName(String bundleName) {
     this.bundleName = bundleName;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -432,9 +423,9 @@ public class AddLoyaltyPointsEffectProps {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, programId, subLedgerId, value, desiredValue, recipientIntegrationId, startDate, expiryDate, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier, bundleIndex, bundleName);
+    return Objects.hash(name, programId, subLedgerId, value, desiredValue, recipientIntegrationId, startDate,
+        expiryDate, transactionUUID, cartItemPosition, cartItemSubPosition, cardIdentifier, bundleIndex, bundleName);
   }
-
 
   @Override
   public String toString() {
@@ -470,4 +461,3 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 }
-

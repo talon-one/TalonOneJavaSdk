@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;rollbackDiscount\&quot; effect. This gets triggered whenever previously closed session is now cancelled or partially returned and a setDiscount effect was cancelled on our internal discount limit counters.
+ * The properties specific to the \&quot;rollbackDiscount\&quot; effect. This
+ * gets triggered whenever previously closed session is now cancelled or
+ * partially returned and a setDiscount effect was cancelled on our internal
+ * discount limit counters.
  */
 @ApiModel(description = "The properties specific to the \"rollbackDiscount\" effect. This gets triggered whenever previously closed session is now cancelled or partially returned and a setDiscount effect was cancelled on our internal discount limit counters.")
 
@@ -49,7 +51,7 @@ public class RollbackDiscountEffectProps {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
-  private Integer additionalCostId;
+  private Long additionalCostId;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST = "additionalCost";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST)
@@ -59,61 +61,60 @@ public class RollbackDiscountEffectProps {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
 
-
   public RollbackDiscountEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the \&quot;setDiscount\&quot; effect that was rolled back.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the \"setDiscount\" effect that was rolled back.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public RollbackDiscountEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The value of the discount that was rolled back.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The value of the discount that was rolled back.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public RollbackDiscountEffectProps cartItemPosition(BigDecimal cartItemPosition) {
-    
+
     this.cartItemPosition = cartItemPosition;
     return this;
   }
 
-   /**
-   * The index of the item in the cart items for which the discount was rolled back.
+  /**
+   * The index of the item in the cart items for which the discount was rolled
+   * back.
+   * 
    * @return cartItemPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the item in the cart items for which the discount was rolled back.")
 
@@ -121,22 +122,22 @@ public class RollbackDiscountEffectProps {
     return cartItemPosition;
   }
 
-
   public void setCartItemPosition(BigDecimal cartItemPosition) {
     this.cartItemPosition = cartItemPosition;
   }
 
-
   public RollbackDiscountEffectProps cartItemSubPosition(BigDecimal cartItemSubPosition) {
-    
+
     this.cartItemSubPosition = cartItemSubPosition;
     return this;
   }
 
-   /**
-   * For cart items with &#x60;quantity&#x60; &gt; 1, the subposition returns the index of the item unit in its line item. 
+  /**
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the subposition returns the
+   * index of the item unit in its line item.
+   * 
    * @return cartItemSubPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "For cart items with `quantity` > 1, the subposition returns the index of the item unit in its line item. ")
 
@@ -144,45 +145,43 @@ public class RollbackDiscountEffectProps {
     return cartItemSubPosition;
   }
 
-
   public void setCartItemSubPosition(BigDecimal cartItemSubPosition) {
     this.cartItemSubPosition = cartItemSubPosition;
   }
 
+  public RollbackDiscountEffectProps additionalCostId(Long additionalCostId) {
 
-  public RollbackDiscountEffectProps additionalCostId(Integer additionalCostId) {
-    
     this.additionalCostId = additionalCostId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the additional cost that was rolled back.
+   * 
    * @return additionalCostId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the additional cost that was rolled back.")
 
-  public Integer getAdditionalCostId() {
+  public Long getAdditionalCostId() {
     return additionalCostId;
   }
 
-
-  public void setAdditionalCostId(Integer additionalCostId) {
+  public void setAdditionalCostId(Long additionalCostId) {
     this.additionalCostId = additionalCostId;
   }
 
-
   public RollbackDiscountEffectProps additionalCost(String additionalCost) {
-    
+
     this.additionalCost = additionalCost;
     return this;
   }
 
-   /**
+  /**
    * The name of the additional cost that was rolled back.
+   * 
    * @return additionalCost
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the additional cost that was rolled back.")
 
@@ -190,22 +189,24 @@ public class RollbackDiscountEffectProps {
     return additionalCost;
   }
 
-
   public void setAdditionalCost(String additionalCost) {
     this.additionalCost = additionalCost;
   }
 
-
   public RollbackDiscountEffectProps scope(String scope) {
-    
+
     this.scope = scope;
     return this;
   }
 
-   /**
-   * The scope of the rolled back discount - For a discount per session, it can be one of &#x60;cartItems&#x60;, &#x60;additionalCosts&#x60; or &#x60;sessionTotal&#x60; - For a discount per item, it can be one of &#x60;price&#x60;, &#x60;additionalCosts&#x60; or &#x60;itemTotal&#x60; 
+  /**
+   * The scope of the rolled back discount - For a discount per session, it can be
+   * one of &#x60;cartItems&#x60;, &#x60;additionalCosts&#x60; or
+   * &#x60;sessionTotal&#x60; - For a discount per item, it can be one of
+   * &#x60;price&#x60;, &#x60;additionalCosts&#x60; or &#x60;itemTotal&#x60;
+   * 
    * @return scope
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The scope of the rolled back discount - For a discount per session, it can be one of `cartItems`, `additionalCosts` or `sessionTotal` - For a discount per item, it can be one of `price`, `additionalCosts` or `itemTotal` ")
 
@@ -213,11 +214,9 @@ public class RollbackDiscountEffectProps {
     return scope;
   }
 
-
   public void setScope(String scope) {
     this.scope = scope;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,7 +240,6 @@ public class RollbackDiscountEffectProps {
   public int hashCode() {
     return Objects.hash(name, value, cartItemPosition, cartItemSubPosition, additionalCostId, additionalCost, scope);
   }
-
 
   @Override
   public String toString() {
@@ -270,4 +268,3 @@ public class RollbackDiscountEffectProps {
   }
 
 }
-

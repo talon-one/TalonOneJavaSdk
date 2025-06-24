@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class GiveawaysPool {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,7 +42,7 @@ public class GiveawaysPool {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -55,7 +54,7 @@ public class GiveawaysPool {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
@@ -67,111 +66,107 @@ public class GiveawaysPool {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
+  public GiveawaysPool id(Long id) {
 
-  public GiveawaysPool id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public GiveawaysPool created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public GiveawaysPool accountId(Long accountId) {
 
-  public GiveawaysPool accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public GiveawaysPool name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this giveaways pool.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaways pool.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public GiveawaysPool description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of this giveaways pool.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Generic pool", value = "The description of this giveaways pool.")
 
@@ -179,75 +174,74 @@ public class GiveawaysPool {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public GiveawaysPool subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public GiveawaysPool subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public GiveawaysPool addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public GiveawaysPool addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the applications that this giveaways pool is enabled for.
+  /**
+   * A list of the IDs of the applications that this giveaways pool is enabled
+   * for.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the applications that this giveaways pool is enabled for.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
-
   public GiveawaysPool sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
-   * Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.
+  /**
+   * Indicates if this program is a live or sandbox program. Programs of a given
+   * type can only be connected to Applications of the same type.
+   * 
    * @return sandbox
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.")
 
   public Boolean getSandbox() {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
 
-
   public GiveawaysPool modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent update to the giveaways pool.
+   * 
    * @return modified
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp of the most recent update to the giveaways pool.")
 
@@ -255,56 +249,52 @@ public class GiveawaysPool {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
+  public GiveawaysPool createdBy(Long createdBy) {
 
-  public GiveawaysPool createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created this giveaways pool.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the user who created this giveaways pool.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public GiveawaysPool modifiedBy(Long modifiedBy) {
 
-  public GiveawaysPool modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who last updated this giveaways pool if available.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "ID of the user who last updated this giveaways pool if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -329,9 +319,9 @@ public class GiveawaysPool {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, name, description, subscribedApplicationsIds, sandbox, modified, createdBy, modifiedBy);
+    return Objects.hash(id, created, accountId, name, description, subscribedApplicationsIds, sandbox, modified,
+        createdBy, modifiedBy);
   }
-
 
   @Override
   public String toString() {
@@ -363,4 +353,3 @@ public class GiveawaysPool {
   }
 
 }
-

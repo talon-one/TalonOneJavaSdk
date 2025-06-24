@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,56 +31,54 @@ import java.math.BigDecimal;
 public class NewCampaignStoreBudgetStoreLimit {
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Integer storeId;
+  private Long storeId;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private BigDecimal limit;
 
+  public NewCampaignStoreBudgetStoreLimit storeId(Long storeId) {
 
-  public NewCampaignStoreBudgetStoreLimit storeId(Integer storeId) {
-    
     this.storeId = storeId;
     return this;
   }
 
-   /**
-   * The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
+  /**
+   * The ID of the store. You can get this ID with the [List
+   * stores](#tag/Stores/operation/listStores) endpoint.
+   * 
    * @return storeId
-  **/
+   **/
   @ApiModelProperty(example = "17", required = true, value = "The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. ")
 
-  public Integer getStoreId() {
+  public Long getStoreId() {
     return storeId;
   }
 
-
-  public void setStoreId(Integer storeId) {
+  public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
 
-
   public NewCampaignStoreBudgetStoreLimit limit(BigDecimal limit) {
-    
+
     this.limit = limit;
     return this;
   }
 
-   /**
+  /**
    * The value to set for the limit.
+   * 
    * @return limit
-  **/
+   **/
   @ApiModelProperty(example = "1000.0", required = true, value = "The value to set for the limit.")
 
   public BigDecimal getLimit() {
     return limit;
   }
 
-
   public void setLimit(BigDecimal limit) {
     this.limit = limit;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,7 +97,6 @@ public class NewCampaignStoreBudgetStoreLimit {
   public int hashCode() {
     return Objects.hash(storeId, limit);
   }
-
 
   @Override
   public String toString() {
@@ -124,4 +120,3 @@ public class NewCampaignStoreBudgetStoreLimit {
   }
 
 }
-

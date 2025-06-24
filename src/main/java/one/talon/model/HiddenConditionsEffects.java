@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -42,15 +41,14 @@ public class HiddenConditionsEffects {
 
   public static final String SERIALIZED_NAME_CUSTOM_EFFECTS = "customEffects";
   @SerializedName(SERIALIZED_NAME_CUSTOM_EFFECTS)
-  private List<Integer> customEffects = null;
+  private List<Long> customEffects = null;
 
   public static final String SERIALIZED_NAME_WEBHOOKS = "webhooks";
   @SerializedName(SERIALIZED_NAME_WEBHOOKS)
-  private List<Integer> webhooks = null;
-
+  private List<Long> webhooks = null;
 
   public HiddenConditionsEffects builtInEffects(List<String> builtInEffects) {
-    
+
     this.builtInEffects = builtInEffects;
     return this;
   }
@@ -63,10 +61,11 @@ public class HiddenConditionsEffects {
     return this;
   }
 
-   /**
+  /**
    * List of hidden built-in effects.
+   * 
    * @return builtInEffects
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[addFreeItem, createNotification]", value = "List of hidden built-in effects.")
 
@@ -74,14 +73,12 @@ public class HiddenConditionsEffects {
     return builtInEffects;
   }
 
-
   public void setBuiltInEffects(List<String> builtInEffects) {
     this.builtInEffects = builtInEffects;
   }
 
-
   public HiddenConditionsEffects conditions(List<String> conditions) {
-    
+
     this.conditions = conditions;
     return this;
   }
@@ -94,10 +91,11 @@ public class HiddenConditionsEffects {
     return this;
   }
 
-   /**
+  /**
    * List of hidden conditions.
+   * 
    * @return conditions
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[checkAttributeValue, couponCodeIsValid]", value = "List of hidden conditions.")
 
@@ -105,73 +103,69 @@ public class HiddenConditionsEffects {
     return conditions;
   }
 
-
   public void setConditions(List<String> conditions) {
     this.conditions = conditions;
   }
 
+  public HiddenConditionsEffects customEffects(List<Long> customEffects) {
 
-  public HiddenConditionsEffects customEffects(List<Integer> customEffects) {
-    
     this.customEffects = customEffects;
     return this;
   }
 
-  public HiddenConditionsEffects addCustomEffectsItem(Integer customEffectsItem) {
+  public HiddenConditionsEffects addCustomEffectsItem(Long customEffectsItem) {
     if (this.customEffects == null) {
-      this.customEffects = new ArrayList<Integer>();
+      this.customEffects = new ArrayList<Long>();
     }
     this.customEffects.add(customEffectsItem);
     return this;
   }
 
-   /**
+  /**
    * List of the IDs of hidden custom effects.
+   * 
    * @return customEffects
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2]", value = "List of the IDs of hidden custom effects.")
 
-  public List<Integer> getCustomEffects() {
+  public List<Long> getCustomEffects() {
     return customEffects;
   }
 
-
-  public void setCustomEffects(List<Integer> customEffects) {
+  public void setCustomEffects(List<Long> customEffects) {
     this.customEffects = customEffects;
   }
 
+  public HiddenConditionsEffects webhooks(List<Long> webhooks) {
 
-  public HiddenConditionsEffects webhooks(List<Integer> webhooks) {
-    
     this.webhooks = webhooks;
     return this;
   }
 
-  public HiddenConditionsEffects addWebhooksItem(Integer webhooksItem) {
+  public HiddenConditionsEffects addWebhooksItem(Long webhooksItem) {
     if (this.webhooks == null) {
-      this.webhooks = new ArrayList<Integer>();
+      this.webhooks = new ArrayList<Long>();
     }
     this.webhooks.add(webhooksItem);
     return this;
   }
 
-   /**
+  /**
    * List of the IDs of hidden webhooks.
+   * 
    * @return webhooks
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 4]", value = "List of the IDs of hidden webhooks.")
 
-  public List<Integer> getWebhooks() {
+  public List<Long> getWebhooks() {
     return webhooks;
   }
 
-
-  public void setWebhooks(List<Integer> webhooks) {
+  public void setWebhooks(List<Long> webhooks) {
     this.webhooks = webhooks;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -192,7 +186,6 @@ public class HiddenConditionsEffects {
   public int hashCode() {
     return Objects.hash(builtInEffects, conditions, customEffects, webhooks);
   }
-
 
   @Override
   public String toString() {
@@ -218,4 +211,3 @@ public class HiddenConditionsEffects {
   }
 
 }
-

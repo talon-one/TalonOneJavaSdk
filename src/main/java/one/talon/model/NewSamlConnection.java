@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ public class NewSamlConnection {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -66,149 +65,143 @@ public class NewSamlConnection {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_U_R_I)
   private String audienceURI;
 
-
   public NewSamlConnection x509certificate(String x509certificate) {
-    
+
     this.x509certificate = x509certificate;
     return this;
   }
 
-   /**
+  /**
    * X.509 Certificate.
+   * 
    * @return x509certificate
-  **/
+   **/
   @ApiModelProperty(required = true, value = "X.509 Certificate.")
 
   public String getX509certificate() {
     return x509certificate;
   }
 
-
   public void setX509certificate(String x509certificate) {
     this.x509certificate = x509certificate;
   }
 
+  public NewSamlConnection accountId(Long accountId) {
 
-  public NewSamlConnection accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public NewSamlConnection name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * ID of the SAML service.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the SAML service.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewSamlConnection enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Determines if this SAML connection active.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Determines if this SAML connection active.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public NewSamlConnection issuer(String issuer) {
-    
+
     this.issuer = issuer;
     return this;
   }
 
-   /**
+  /**
    * Identity Provider Entity ID.
+   * 
    * @return issuer
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Identity Provider Entity ID.")
 
   public String getIssuer() {
     return issuer;
   }
 
-
   public void setIssuer(String issuer) {
     this.issuer = issuer;
   }
 
-
   public NewSamlConnection signOnURL(String signOnURL) {
-    
+
     this.signOnURL = signOnURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-On URL.
+   * 
    * @return signOnURL
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Single Sign-On URL.")
 
   public String getSignOnURL() {
     return signOnURL;
   }
 
-
   public void setSignOnURL(String signOnURL) {
     this.signOnURL = signOnURL;
   }
 
-
   public NewSamlConnection signOutURL(String signOutURL) {
-    
+
     this.signOutURL = signOutURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-Out URL.
+   * 
    * @return signOutURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Single Sign-Out URL.")
 
@@ -216,22 +209,21 @@ public class NewSamlConnection {
     return signOutURL;
   }
 
-
   public void setSignOutURL(String signOutURL) {
     this.signOutURL = signOutURL;
   }
 
-
   public NewSamlConnection metadataURL(String metadataURL) {
-    
+
     this.metadataURL = metadataURL;
     return this;
   }
 
-   /**
+  /**
    * Metadata URL.
+   * 
    * @return metadataURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Metadata URL.")
 
@@ -239,22 +231,23 @@ public class NewSamlConnection {
     return metadataURL;
   }
 
-
   public void setMetadataURL(String metadataURL) {
     this.metadataURL = metadataURL;
   }
 
-
   public NewSamlConnection audienceURI(String audienceURI) {
-    
+
     this.audienceURI = audienceURI;
     return this;
   }
 
-   /**
-   * The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
+  /**
+   * The application-defined unique identifier that is the intended audience of
+   * the SAML assertion. This is most often the SP Entity ID of your application.
+   * When not specified, the ACS URL will be used.
+   * 
    * @return audienceURI
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
 
@@ -262,11 +255,9 @@ public class NewSamlConnection {
     return audienceURI;
   }
 
-
   public void setAudienceURI(String audienceURI) {
     this.audienceURI = audienceURI;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -290,9 +281,9 @@ public class NewSamlConnection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(x509certificate, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI);
+    return Objects.hash(x509certificate, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL,
+        audienceURI);
   }
-
 
   @Override
   public String toString() {
@@ -323,4 +314,3 @@ public class NewSamlConnection {
   }
 
 }
-

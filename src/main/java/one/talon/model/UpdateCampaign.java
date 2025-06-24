@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -55,14 +54,14 @@ public class UpdateCampaign {
   private Object attributes;
 
   /**
-   * A disabled or archived campaign is not evaluated for rules or coupons. 
+   * A disabled or archived campaign is not evaluated for rules or coupons.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     ENABLED("enabled"),
-    
+
     DISABLED("disabled"),
-    
+
     ARCHIVED("archived");
 
     private String value;
@@ -97,7 +96,7 @@ public class UpdateCampaign {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -109,7 +108,7 @@ public class UpdateCampaign {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Integer activeRulesetId;
+  private Long activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -121,15 +120,15 @@ public class UpdateCampaign {
   @JsonAdapter(FeaturesEnum.Adapter.class)
   public enum FeaturesEnum {
     COUPONS("coupons"),
-    
+
     REFERRALS("referrals"),
-    
+
     LOYALTY("loyalty"),
-    
+
     GIVEAWAYS("giveaways"),
-    
+
     STRIKETHROUGH("strikethrough"),
-    
+
     ACHIEVEMENTS("achievements");
 
     private String value;
@@ -164,7 +163,7 @@ public class UpdateCampaign {
 
       @Override
       public FeaturesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return FeaturesEnum.fromValue(value);
       }
     }
@@ -188,19 +187,21 @@ public class UpdateCampaign {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
-  private List<Integer> campaignGroups = null;
+  private List<Long> campaignGroups = null;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Integer evaluationGroupId;
+  private Long evaluationGroupId;
 
   /**
-   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+   * The campaign type. Possible type values: - &#x60;cartItem&#x60;: Type of
+   * campaign that can apply effects only to cart items. - &#x60;advanced&#x60;:
+   * Type of campaign that can apply effects to customer sessions and cart items.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     CARTITEM("cartItem"),
-    
+
     ADVANCED("advanced");
 
     private String value;
@@ -235,7 +236,7 @@ public class UpdateCampaign {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -247,41 +248,40 @@ public class UpdateCampaign {
 
   public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
-  private List<Integer> linkedStoreIds = null;
-
+  private List<Long> linkedStoreIds = null;
 
   public UpdateCampaign name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * A user-facing name for this campaign.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Summer promotions", required = true, value = "A user-facing name for this campaign.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateCampaign description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A detailed description of the campaign.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Campaign for all summer 2021 promotions", value = "A detailed description of the campaign.")
 
@@ -289,22 +289,21 @@ public class UpdateCampaign {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public UpdateCampaign startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become active.
+   * 
    * @return startTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp when the campaign will become active.")
 
@@ -312,22 +311,21 @@ public class UpdateCampaign {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public UpdateCampaign endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become inactive.
+   * 
    * @return endTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-10-01T02:00Z", value = "Timestamp when the campaign will become inactive.")
 
@@ -335,22 +333,21 @@ public class UpdateCampaign {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
-
   public UpdateCampaign attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this campaign.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"myattribute\":20}", value = "Arbitrary properties associated with this campaign.")
 
@@ -358,22 +355,21 @@ public class UpdateCampaign {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public UpdateCampaign state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * A disabled or archived campaign is not evaluated for rules or coupons. 
+  /**
+   * A disabled or archived campaign is not evaluated for rules or coupons.
+   * 
    * @return state
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "disabled", value = "A disabled or archived campaign is not evaluated for rules or coupons. ")
 
@@ -381,37 +377,35 @@ public class UpdateCampaign {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
+  public UpdateCampaign activeRulesetId(Long activeRulesetId) {
 
-  public UpdateCampaign activeRulesetId(Integer activeRulesetId) {
-    
     this.activeRulesetId = activeRulesetId;
     return this;
   }
 
-   /**
-   * [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. 
+  /**
+   * [ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets)
+   * this campaign applies on customer session evaluation.
+   * 
    * @return activeRulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
-  public Integer getActiveRulesetId() {
+  public Long getActiveRulesetId() {
     return activeRulesetId;
   }
 
-
-  public void setActiveRulesetId(Integer activeRulesetId) {
+  public void setActiveRulesetId(Long activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
-
   public UpdateCampaign tags(List<String> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -421,24 +415,23 @@ public class UpdateCampaign {
     return this;
   }
 
-   /**
+  /**
    * A list of tags for the campaign.
+   * 
    * @return tags
-  **/
+   **/
   @ApiModelProperty(example = "[Summer, Shoes]", required = true, value = "A list of tags for the campaign.")
 
   public List<String> getTags() {
     return tags;
   }
 
-
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
-
   public UpdateCampaign features(List<FeaturesEnum> features) {
-    
+
     this.features = features;
     return this;
   }
@@ -448,32 +441,32 @@ public class UpdateCampaign {
     return this;
   }
 
-   /**
+  /**
    * A list of features for the campaign.
+   * 
    * @return features
-  **/
+   **/
   @ApiModelProperty(example = "[coupons, loyalty]", required = true, value = "A list of features for the campaign.")
 
   public List<FeaturesEnum> getFeatures() {
     return features;
   }
 
-
   public void setFeatures(List<FeaturesEnum> features) {
     this.features = features;
   }
 
-
   public UpdateCampaign couponSettings(CodeGeneratorSettings couponSettings) {
-    
+
     this.couponSettings = couponSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponSettings
+   * 
    * @return couponSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -481,22 +474,21 @@ public class UpdateCampaign {
     return couponSettings;
   }
 
-
   public void setCouponSettings(CodeGeneratorSettings couponSettings) {
     this.couponSettings = couponSettings;
   }
 
-
   public UpdateCampaign referralSettings(CodeGeneratorSettings referralSettings) {
-    
+
     this.referralSettings = referralSettings;
     return this;
   }
 
-   /**
+  /**
    * Get referralSettings
+   * 
    * @return referralSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -504,14 +496,12 @@ public class UpdateCampaign {
     return referralSettings;
   }
 
-
   public void setReferralSettings(CodeGeneratorSettings referralSettings) {
     this.referralSettings = referralSettings;
   }
 
-
   public UpdateCampaign limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -521,86 +511,88 @@ public class UpdateCampaign {
     return this;
   }
 
-   /**
+  /**
    * The set of limits that will operate for this campaign.
+   * 
    * @return limits
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The set of limits that will operate for this campaign.")
 
   public List<LimitConfig> getLimits() {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
+  public UpdateCampaign campaignGroups(List<Long> campaignGroups) {
 
-  public UpdateCampaign campaignGroups(List<Integer> campaignGroups) {
-    
     this.campaignGroups = campaignGroups;
     return this;
   }
 
-  public UpdateCampaign addCampaignGroupsItem(Integer campaignGroupsItem) {
+  public UpdateCampaign addCampaignGroupsItem(Long campaignGroupsItem) {
     if (this.campaignGroups == null) {
-      this.campaignGroups = new ArrayList<Integer>();
+      this.campaignGroups = new ArrayList<Long>();
     }
     this.campaignGroups.add(campaignGroupsItem);
     return this;
   }
 
-   /**
-   * The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. 
+  /**
+   * The IDs of the [campaign
+   * groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups)
+   * this campaign belongs to.
+   * 
    * @return campaignGroups
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. ")
 
-  public List<Integer> getCampaignGroups() {
+  public List<Long> getCampaignGroups() {
     return campaignGroups;
   }
 
-
-  public void setCampaignGroups(List<Integer> campaignGroups) {
+  public void setCampaignGroups(List<Long> campaignGroups) {
     this.campaignGroups = campaignGroups;
   }
 
+  public UpdateCampaign evaluationGroupId(Long evaluationGroupId) {
 
-  public UpdateCampaign evaluationGroupId(Integer evaluationGroupId) {
-    
     this.evaluationGroupId = evaluationGroupId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign evaluation group the campaign belongs to.
+   * 
    * @return evaluationGroupId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
 
-  public Integer getEvaluationGroupId() {
+  public Long getEvaluationGroupId() {
     return evaluationGroupId;
   }
 
-
-  public void setEvaluationGroupId(Integer evaluationGroupId) {
+  public void setEvaluationGroupId(Long evaluationGroupId) {
     this.evaluationGroupId = evaluationGroupId;
   }
 
-
   public UpdateCampaign type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
+  /**
+   * The campaign type. Possible type values: - &#x60;cartItem&#x60;: Type of
+   * campaign that can apply effects only to cart items. - &#x60;advanced&#x60;:
+   * Type of campaign that can apply effects to customer sessions and cart items.
+   * 
    * @return type
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "advanced", value = "The campaign type. Possible type values:   - `cartItem`: Type of campaign that can apply effects only to cart items.   - `advanced`: Type of campaign that can apply effects to customer sessions and cart items. ")
 
@@ -608,42 +600,46 @@ public class UpdateCampaign {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
+  public UpdateCampaign linkedStoreIds(List<Long> linkedStoreIds) {
 
-  public UpdateCampaign linkedStoreIds(List<Integer> linkedStoreIds) {
-    
     this.linkedStoreIds = linkedStoreIds;
     return this;
   }
 
-  public UpdateCampaign addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
+  public UpdateCampaign addLinkedStoreIdsItem(Long linkedStoreIdsItem) {
     if (this.linkedStoreIds == null) {
-      this.linkedStoreIds = new ArrayList<Integer>();
+      this.linkedStoreIds = new ArrayList<Long>();
     }
     this.linkedStoreIds.add(linkedStoreIdsItem);
     return this;
   }
 
-   /**
-   * A list of store IDs that you want to link to the campaign.  **Note:** - Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. 
+  /**
+   * A list of store IDs that you want to link to the campaign. **Note:** -
+   * Campaigns with linked store IDs will only be evaluated when there is a
+   * [customer session
+   * update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+   * that references a linked store. - If you linked stores to the campaign by
+   * uploading a CSV file, you cannot use this property and it should be empty. -
+   * Use of this property is limited to 50 stores. To link more than 50 stores,
+   * upload them via a CSV file.
+   * 
    * @return linkedStoreIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that you want to link to the campaign.  **Note:** - Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. - If you linked stores to the campaign by uploading a CSV file, you cannot use this property and it should be empty. - Use of this property is limited to 50 stores. To link more than 50 stores, upload them via a CSV file. ")
 
-  public List<Integer> getLinkedStoreIds() {
+  public List<Long> getLinkedStoreIds() {
     return linkedStoreIds;
   }
 
-
-  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
+  public void setLinkedStoreIds(List<Long> linkedStoreIds) {
     this.linkedStoreIds = linkedStoreIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -674,9 +670,9 @@ public class UpdateCampaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features, couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds);
+    return Objects.hash(name, description, startTime, endTime, attributes, state, activeRulesetId, tags, features,
+        couponSettings, referralSettings, limits, campaignGroups, evaluationGroupId, type, linkedStoreIds);
   }
-
 
   @Override
   public String toString() {
@@ -714,4 +710,3 @@ public class UpdateCampaign {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,31 +30,29 @@ import java.io.IOException;
 public class ApplicationCustomerEntity {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
+  public ApplicationCustomerEntity profileId(Long profileId) {
 
-  public ApplicationCustomerEntity profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The globally unique Talon.One ID of the customer that created this entity.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -73,7 +70,6 @@ public class ApplicationCustomerEntity {
   public int hashCode() {
     return Objects.hash(profileId);
   }
-
 
   @Override
   public String toString() {
@@ -96,4 +92,3 @@ public class ApplicationCustomerEntity {
   }
 
 }
-

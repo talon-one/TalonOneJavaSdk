@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,14 +24,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;awardGiveaway\&quot; effect. This effect contains information on the giveaway item, and which profile it was awarded to.
+ * The properties specific to the \&quot;awardGiveaway\&quot; effect. This
+ * effect contains information on the giveaway item, and which profile it was
+ * awarded to.
  */
 @ApiModel(description = "The properties specific to the \"awardGiveaway\" effect. This effect contains information on the giveaway item, and which profile it was awarded to.")
 
 public class AwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Integer poolId;
+  private Long poolId;
 
   public static final String SERIALIZED_NAME_POOL_NAME = "poolName";
   @SerializedName(SERIALIZED_NAME_POOL_NAME)
@@ -44,122 +45,116 @@ public class AwardGiveawayEffectProps {
 
   public static final String SERIALIZED_NAME_GIVEAWAY_ID = "giveawayId";
   @SerializedName(SERIALIZED_NAME_GIVEAWAY_ID)
-  private Integer giveawayId;
+  private Long giveawayId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public AwardGiveawayEffectProps poolId(Long poolId) {
 
-  public AwardGiveawayEffectProps poolId(Integer poolId) {
-    
     this.poolId = poolId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the giveaways pool the code was taken from.
+   * 
    * @return poolId
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code was taken from.")
 
-  public Integer getPoolId() {
+  public Long getPoolId() {
     return poolId;
   }
 
-
-  public void setPoolId(Integer poolId) {
+  public void setPoolId(Long poolId) {
     this.poolId = poolId;
   }
 
-
   public AwardGiveawayEffectProps poolName(String poolName) {
-    
+
     this.poolName = poolName;
     return this;
   }
 
-   /**
+  /**
    * The name of the giveaways pool the code was taken from.
+   * 
    * @return poolName
-  **/
+   **/
   @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaways pool the code was taken from.")
 
   public String getPoolName() {
     return poolName;
   }
 
-
   public void setPoolName(String poolName) {
     this.poolName = poolName;
   }
 
-
   public AwardGiveawayEffectProps recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the profile that was awarded the giveaway.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the profile that was awarded the giveaway.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
+  public AwardGiveawayEffectProps giveawayId(Long giveawayId) {
 
-  public AwardGiveawayEffectProps giveawayId(Integer giveawayId) {
-    
     this.giveawayId = giveawayId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID for the giveaway that was awarded.
+   * 
    * @return giveawayId
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "The internal ID for the giveaway that was awarded.")
 
-  public Integer getGiveawayId() {
+  public Long getGiveawayId() {
     return giveawayId;
   }
 
-
-  public void setGiveawayId(Integer giveawayId) {
+  public void setGiveawayId(Long giveawayId) {
     this.giveawayId = giveawayId;
   }
 
-
   public AwardGiveawayEffectProps code(String code) {
-    
+
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * The giveaway code that was awarded.
+   * 
    * @return code
-  **/
+   **/
   @ApiModelProperty(example = "57638t-67439hty", required = true, value = "The giveaway code that was awarded.")
 
   public String getCode() {
     return code;
   }
 
-
   public void setCode(String code) {
     this.code = code;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -181,7 +176,6 @@ public class AwardGiveawayEffectProps {
   public int hashCode() {
     return Objects.hash(poolId, poolName, recipientIntegrationId, giveawayId, code);
   }
-
 
   @Override
   public String toString() {
@@ -208,4 +202,3 @@ public class AwardGiveawayEffectProps {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,11 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the &#x60;setDiscountPerItem&#x60; effect, triggered whenever a validated rule contained a \&quot;set per item discount\&quot; effect. This is a discount that will be applied either on a specific item, on a specific item + additional cost or on all additional costs per item. This depends on the chosen scope. 
+ * The properties specific to the &#x60;setDiscountPerItem&#x60; effect,
+ * triggered whenever a validated rule contained a \&quot;set per item
+ * discount\&quot; effect. This is a discount that will be applied either on a
+ * specific item, on a specific item + additional cost or on all additional
+ * costs per item. This depends on the chosen scope.
  */
 @ApiModel(description = "The properties specific to the `setDiscountPerItem` effect, triggered whenever a validated rule contained a \"set per item discount\" effect. This is a discount that will be applied either on a specific item, on a specific item + additional cost or on all additional costs per item. This depends on the chosen scope. ")
 
@@ -65,7 +68,7 @@ public class SetDiscountPerItemEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Integer bundleIndex;
+  private Long bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
@@ -79,83 +82,84 @@ public class SetDiscountPerItemEffectProps {
   @SerializedName(SERIALIZED_NAME_TARGETED_ITEM_SUB_POSITION)
   private BigDecimal targetedItemSubPosition;
 
-
   public SetDiscountPerItemEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The name of the discount. Contains a hashtag character indicating the index of the position of the item the discount applies to. It is identical to the value of the &#x60;position&#x60; property. 
+  /**
+   * The name of the discount. Contains a hashtag character indicating the index
+   * of the position of the item the discount applies to. It is identical to the
+   * value of the &#x60;position&#x60; property.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the discount. Contains a hashtag character indicating the index of the position of the item the discount applies to. It is identical to the value of the `position` property. ")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public SetDiscountPerItemEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The total monetary value of the discount.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The total monetary value of the discount.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public SetDiscountPerItemEffectProps position(BigDecimal position) {
-    
+
     this.position = position;
     return this;
   }
 
-   /**
-   * The index of the item in the cart items list on which this discount should be applied.
+  /**
+   * The index of the item in the cart items list on which this discount should be
+   * applied.
+   * 
    * @return position
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The index of the item in the cart items list on which this discount should be applied.")
 
   public BigDecimal getPosition() {
     return position;
   }
 
-
   public void setPosition(BigDecimal position) {
     this.position = position;
   }
 
-
   public SetDiscountPerItemEffectProps subPosition(BigDecimal subPosition) {
-    
+
     this.subPosition = subPosition;
     return this;
   }
 
-   /**
-   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates which item the discount applies to. 
+  /**
+   * For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates
+   * which item the discount applies to.
+   * 
    * @return subPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "For cart items with `quantity` > 1, the sub position indicates which item the discount applies to. ")
 
@@ -163,22 +167,21 @@ public class SetDiscountPerItemEffectProps {
     return subPosition;
   }
 
-
   public void setSubPosition(BigDecimal subPosition) {
     this.subPosition = subPosition;
   }
 
-
   public SetDiscountPerItemEffectProps desiredValue(BigDecimal desiredValue) {
-    
+
     this.desiredValue = desiredValue;
     return this;
   }
 
-   /**
+  /**
    * The original value of the discount.
+   * 
    * @return desiredValue
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original value of the discount.")
 
@@ -186,22 +189,24 @@ public class SetDiscountPerItemEffectProps {
     return desiredValue;
   }
 
-
   public void setDesiredValue(BigDecimal desiredValue) {
     this.desiredValue = desiredValue;
   }
 
-
   public SetDiscountPerItemEffectProps scope(String scope) {
-    
+
     this.scope = scope;
     return this;
   }
 
-   /**
-   * The scope of the discount: - &#x60;additionalCosts&#x60;: The discount applies to all the additional costs of the item. - &#x60;itemTotal&#x60;: The discount applies to the price of the item + the additional costs of the item. - &#x60;price&#x60;: The discount applies to the price of the item. 
+  /**
+   * The scope of the discount: - &#x60;additionalCosts&#x60;: The discount
+   * applies to all the additional costs of the item. - &#x60;itemTotal&#x60;: The
+   * discount applies to the price of the item + the additional costs of the item.
+   * - &#x60;price&#x60;: The discount applies to the price of the item.
+   * 
    * @return scope
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The scope of the discount: - `additionalCosts`: The discount applies to all the additional costs of the item. - `itemTotal`: The discount applies to the price of the item + the additional costs of the item. - `price`: The discount applies to the price of the item. ")
 
@@ -209,22 +214,21 @@ public class SetDiscountPerItemEffectProps {
     return scope;
   }
 
-
   public void setScope(String scope) {
     this.scope = scope;
   }
 
-
   public SetDiscountPerItemEffectProps totalDiscount(BigDecimal totalDiscount) {
-    
+
     this.totalDiscount = totalDiscount;
     return this;
   }
 
-   /**
+  /**
    * The total discount given if this effect is a result of a prorated discount.
+   * 
    * @return totalDiscount
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The total discount given if this effect is a result of a prorated discount.")
 
@@ -232,22 +236,22 @@ public class SetDiscountPerItemEffectProps {
     return totalDiscount;
   }
 
-
   public void setTotalDiscount(BigDecimal totalDiscount) {
     this.totalDiscount = totalDiscount;
   }
 
-
   public SetDiscountPerItemEffectProps desiredTotalDiscount(BigDecimal desiredTotalDiscount) {
-    
+
     this.desiredTotalDiscount = desiredTotalDiscount;
     return this;
   }
 
-   /**
-   * The original total discount to give if this effect is a result of a prorated discount.
+  /**
+   * The original total discount to give if this effect is a result of a prorated
+   * discount.
+   * 
    * @return desiredTotalDiscount
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original total discount to give if this effect is a result of a prorated discount.")
 
@@ -255,45 +259,44 @@ public class SetDiscountPerItemEffectProps {
     return desiredTotalDiscount;
   }
 
-
   public void setDesiredTotalDiscount(BigDecimal desiredTotalDiscount) {
     this.desiredTotalDiscount = desiredTotalDiscount;
   }
 
+  public SetDiscountPerItemEffectProps bundleIndex(Long bundleIndex) {
 
-  public SetDiscountPerItemEffectProps bundleIndex(Integer bundleIndex) {
-    
     this.bundleIndex = bundleIndex;
     return this;
   }
 
-   /**
-   * The position of the bundle in a list of item bundles created from the same bundle definition.
+  /**
+   * The position of the bundle in a list of item bundles created from the same
+   * bundle definition.
+   * 
    * @return bundleIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Integer getBundleIndex() {
+  public Long getBundleIndex() {
     return bundleIndex;
   }
 
-
-  public void setBundleIndex(Integer bundleIndex) {
+  public void setBundleIndex(Long bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 
-
   public SetDiscountPerItemEffectProps bundleName(String bundleName) {
-    
+
     this.bundleName = bundleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the bundle definition.
+   * 
    * @return bundleName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the bundle definition.")
 
@@ -301,22 +304,21 @@ public class SetDiscountPerItemEffectProps {
     return bundleName;
   }
 
-
   public void setBundleName(String bundleName) {
     this.bundleName = bundleName;
   }
 
-
   public SetDiscountPerItemEffectProps targetedItemPosition(BigDecimal targetedItemPosition) {
-    
+
     this.targetedItemPosition = targetedItemPosition;
     return this;
   }
 
-   /**
+  /**
    * The index of the targeted bundle item on which the applied discount is based.
+   * 
    * @return targetedItemPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the targeted bundle item on which the applied discount is based.")
 
@@ -324,22 +326,22 @@ public class SetDiscountPerItemEffectProps {
     return targetedItemPosition;
   }
 
-
   public void setTargetedItemPosition(BigDecimal targetedItemPosition) {
     this.targetedItemPosition = targetedItemPosition;
   }
 
-
   public SetDiscountPerItemEffectProps targetedItemSubPosition(BigDecimal targetedItemSubPosition) {
-    
+
     this.targetedItemSubPosition = targetedItemSubPosition;
     return this;
   }
 
-   /**
-   * The sub-position of the targeted bundle item on which the applied discount is based. 
+  /**
+   * The sub-position of the targeted bundle item on which the applied discount is
+   * based.
+   * 
    * @return targetedItemSubPosition
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The sub-position of the targeted bundle item on which the applied discount is based. ")
 
@@ -347,11 +349,9 @@ public class SetDiscountPerItemEffectProps {
     return targetedItemSubPosition;
   }
 
-
   public void setTargetedItemSubPosition(BigDecimal targetedItemSubPosition) {
     this.targetedItemSubPosition = targetedItemSubPosition;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -378,9 +378,9 @@ public class SetDiscountPerItemEffectProps {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount, bundleIndex, bundleName, targetedItemPosition, targetedItemSubPosition);
+    return Objects.hash(name, value, position, subPosition, desiredValue, scope, totalDiscount, desiredTotalDiscount,
+        bundleIndex, bundleName, targetedItemPosition, targetedItemSubPosition);
   }
-
 
   @Override
   public String toString() {
@@ -414,4 +414,3 @@ public class SetDiscountPerItemEffectProps {
   }
 
 }
-

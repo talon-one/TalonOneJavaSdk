@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,14 +24,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;awardGiveaway\&quot; effect when the session is not closed yet. This effect replaces \&quot;awardGiveaway\&quot; only when updating a session with any state other than \&quot;closed\&quot;. This is to ensure no giveaway codes are leaked when they are still not guaranteed to be awarded.
+ * The properties specific to the \&quot;awardGiveaway\&quot; effect when the
+ * session is not closed yet. This effect replaces \&quot;awardGiveaway\&quot;
+ * only when updating a session with any state other than \&quot;closed\&quot;.
+ * This is to ensure no giveaway codes are leaked when they are still not
+ * guaranteed to be awarded.
  */
 @ApiModel(description = "The properties specific to the \"awardGiveaway\" effect when the session is not closed yet. This effect replaces \"awardGiveaway\" only when updating a session with any state other than \"closed\". This is to ensure no giveaway codes are leaked when they are still not guaranteed to be awarded.")
 
 public class WillAwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Integer poolId;
+  private Long poolId;
 
   public static final String SERIALIZED_NAME_POOL_NAME = "poolName";
   @SerializedName(SERIALIZED_NAME_POOL_NAME)
@@ -42,72 +45,68 @@ public class WillAwardGiveawayEffectProps {
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
   private String recipientIntegrationId;
 
+  public WillAwardGiveawayEffectProps poolId(Long poolId) {
 
-  public WillAwardGiveawayEffectProps poolId(Integer poolId) {
-    
     this.poolId = poolId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the giveaways pool the code will be taken from.
+   * 
    * @return poolId
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code will be taken from.")
 
-  public Integer getPoolId() {
+  public Long getPoolId() {
     return poolId;
   }
 
-
-  public void setPoolId(Integer poolId) {
+  public void setPoolId(Long poolId) {
     this.poolId = poolId;
   }
 
-
   public WillAwardGiveawayEffectProps poolName(String poolName) {
-    
+
     this.poolName = poolName;
     return this;
   }
 
-   /**
+  /**
    * The name of the giveaways pool the code will be taken from.
+   * 
    * @return poolName
-  **/
+   **/
   @ApiModelProperty(example = "My pool", required = true, value = "The name of the giveaways pool the code will be taken from.")
 
   public String getPoolName() {
     return poolName;
   }
 
-
   public void setPoolName(String poolName) {
     this.poolName = poolName;
   }
 
-
   public WillAwardGiveawayEffectProps recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the profile that will be awarded the giveaway.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID of the profile that will be awarded the giveaway.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,7 +126,6 @@ public class WillAwardGiveawayEffectProps {
   public int hashCode() {
     return Objects.hash(poolId, poolName, recipientIntegrationId);
   }
-
 
   @Override
   public String toString() {
@@ -152,4 +150,3 @@ public class WillAwardGiveawayEffectProps {
   }
 
 }
-

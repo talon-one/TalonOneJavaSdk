@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -45,43 +44,42 @@ public class DeductLoyaltyPoints {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
-
+  private Long applicationId;
 
   public DeductLoyaltyPoints points(BigDecimal points) {
-    
+
     this.points = points;
     return this;
   }
 
-   /**
+  /**
    * Amount of loyalty points.
    * minimum: 0
    * maximum: 999999999999.99
+   * 
    * @return points
-  **/
+   **/
   @ApiModelProperty(example = "300.0", required = true, value = "Amount of loyalty points.")
 
   public BigDecimal getPoints() {
     return points;
   }
 
-
   public void setPoints(BigDecimal points) {
     this.points = points;
   }
 
-
   public DeductLoyaltyPoints name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name / reason for the point deduction.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Penalty", value = "Name / reason for the point deduction.")
 
@@ -89,22 +87,21 @@ public class DeductLoyaltyPoints {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public DeductLoyaltyPoints subledgerId(String subledgerId) {
-    
+
     this.subledgerId = subledgerId;
     return this;
   }
 
-   /**
+  /**
    * ID of the subledger the points are deducted from.
+   * 
    * @return subledgerId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "sub-123", value = "ID of the subledger the points are deducted from.")
 
@@ -112,34 +109,31 @@ public class DeductLoyaltyPoints {
     return subledgerId;
   }
 
-
   public void setSubledgerId(String subledgerId) {
     this.subledgerId = subledgerId;
   }
 
+  public DeductLoyaltyPoints applicationId(Long applicationId) {
 
-  public DeductLoyaltyPoints applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * ID of the Application that is connected to the loyalty program.
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "ID of the Application that is connected to the loyalty program.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -160,7 +154,6 @@ public class DeductLoyaltyPoints {
   public int hashCode() {
     return Objects.hash(points, name, subledgerId, applicationId);
   }
-
 
   @Override
   public String toString() {
@@ -186,4 +179,3 @@ public class DeductLoyaltyPoints {
   }
 
 }
-

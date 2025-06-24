@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,7 +25,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;deductLoyaltyPoints\&quot; effect. This gets triggered whenever a validated rule contained a condition to only trigger when the given number of loyalty points could be deduced. These points are automatically stored and managed inside Talon.One.
+ * The properties specific to the \&quot;deductLoyaltyPoints\&quot; effect. This
+ * gets triggered whenever a validated rule contained a condition to only
+ * trigger when the given number of loyalty points could be deduced. These
+ * points are automatically stored and managed inside Talon.One.
  */
 @ApiModel(description = "The properties specific to the \"deductLoyaltyPoints\" effect. This gets triggered whenever a validated rule contained a condition to only trigger when the given number of loyalty points could be deduced. These points are automatically stored and managed inside Talon.One.")
 
@@ -37,7 +39,7 @@ public class DeductLoyaltyPointsEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -59,149 +61,146 @@ public class DeductLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
   private String cardIdentifier;
 
-
   public DeductLoyaltyPointsEffectProps ruleTitle(String ruleTitle) {
-    
+
     this.ruleTitle = ruleTitle;
     return this;
   }
 
-   /**
+  /**
    * The title of the rule that contained triggered this points deduction.
+   * 
    * @return ruleTitle
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The title of the rule that contained triggered this points deduction.")
 
   public String getRuleTitle() {
     return ruleTitle;
   }
 
-
   public void setRuleTitle(String ruleTitle) {
     this.ruleTitle = ruleTitle;
   }
 
+  public DeductLoyaltyPointsEffectProps programId(Long programId) {
 
-  public DeductLoyaltyPointsEffectProps programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program where these points were added.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public DeductLoyaltyPointsEffectProps subLedgerId(String subLedgerId) {
-    
+
     this.subLedgerId = subLedgerId;
     return this;
   }
 
-   /**
-   * The ID of the subledger within the loyalty program where these points were added.
+  /**
+   * The ID of the subledger within the loyalty program where these points were
+   * added.
+   * 
    * @return subLedgerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were added.")
 
   public String getSubLedgerId() {
     return subLedgerId;
   }
 
-
   public void setSubLedgerId(String subLedgerId) {
     this.subLedgerId = subLedgerId;
   }
 
-
   public DeductLoyaltyPointsEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The amount of points that were deducted.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The amount of points that were deducted.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public DeductLoyaltyPointsEffectProps transactionUUID(String transactionUUID) {
-    
+
     this.transactionUUID = transactionUUID;
     return this;
   }
 
-   /**
+  /**
    * The identifier of this deduction in the loyalty ledger.
+   * 
    * @return transactionUUID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The identifier of this deduction in the loyalty ledger.")
 
   public String getTransactionUUID() {
     return transactionUUID;
   }
 
-
   public void setTransactionUUID(String transactionUUID) {
     this.transactionUUID = transactionUUID;
   }
 
-
   public DeductLoyaltyPointsEffectProps name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The name property gets one of the following two values. It can be the loyalty program name or it can represent a reason for the respective deduction of loyalty points. The latter is an optional value defined in a deduction rule. 
+  /**
+   * The name property gets one of the following two values. It can be the loyalty
+   * program name or it can represent a reason for the respective deduction of
+   * loyalty points. The latter is an optional value defined in a deduction rule.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name property gets one of the following two values. It can be the loyalty program name or it can represent a reason for the respective deduction of loyalty points. The latter is an optional value defined in a deduction rule. ")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public DeductLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
-    
+
     this.cardIdentifier = cardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return cardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -209,11 +208,9 @@ public class DeductLoyaltyPointsEffectProps {
     return cardIdentifier;
   }
 
-
   public void setCardIdentifier(String cardIdentifier) {
     this.cardIdentifier = cardIdentifier;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -237,7 +234,6 @@ public class DeductLoyaltyPointsEffectProps {
   public int hashCode() {
     return Objects.hash(ruleTitle, programId, subLedgerId, value, transactionUUID, name, cardIdentifier);
   }
-
 
   @Override
   public String toString() {
@@ -266,4 +262,3 @@ public class DeductLoyaltyPointsEffectProps {
   }
 
 }
-

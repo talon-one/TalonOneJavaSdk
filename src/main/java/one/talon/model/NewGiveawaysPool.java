@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,45 +40,44 @@ public class NewGiveawaysPool {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
 
-
   public NewGiveawaysPool name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this giveaways pool.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My giveaway pool", required = true, value = "The name of this giveaways pool.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewGiveawaysPool description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of this giveaways pool.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Generic pool", value = "The description of this giveaways pool.")
 
@@ -87,64 +85,62 @@ public class NewGiveawaysPool {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public NewGiveawaysPool subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public NewGiveawaysPool subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public NewGiveawaysPool addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public NewGiveawaysPool addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the applications that this giveaways pool is enabled for.
+  /**
+   * A list of the IDs of the applications that this giveaways pool is enabled
+   * for.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the applications that this giveaways pool is enabled for.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
-
   public NewGiveawaysPool sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
-   * Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.
+  /**
+   * Indicates if this program is a live or sandbox program. Programs of a given
+   * type can only be connected to Applications of the same type.
+   * 
    * @return sandbox
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.")
 
   public Boolean getSandbox() {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -165,7 +161,6 @@ public class NewGiveawaysPool {
   public int hashCode() {
     return Objects.hash(name, description, subscribedApplicationsIds, sandbox);
   }
-
 
   @Override
   public String toString() {
@@ -191,4 +186,3 @@ public class NewGiveawaysPool {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ public class SamlConnection {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -69,155 +68,149 @@ public class SamlConnection {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
-
   public SamlConnection assertionConsumerServiceURL(String assertionConsumerServiceURL) {
-    
+
     this.assertionConsumerServiceURL = assertionConsumerServiceURL;
     return this;
   }
 
-   /**
+  /**
    * The location where the SAML assertion is sent with a HTTP POST.
+   * 
    * @return assertionConsumerServiceURL
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The location where the SAML assertion is sent with a HTTP POST.")
 
   public String getAssertionConsumerServiceURL() {
     return assertionConsumerServiceURL;
   }
 
-
   public void setAssertionConsumerServiceURL(String assertionConsumerServiceURL) {
     this.assertionConsumerServiceURL = assertionConsumerServiceURL;
   }
 
+  public SamlConnection accountId(Long accountId) {
 
-  public SamlConnection accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public SamlConnection name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * ID of the SAML service.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the SAML service.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public SamlConnection enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Determines if this SAML connection active.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Determines if this SAML connection active.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public SamlConnection issuer(String issuer) {
-    
+
     this.issuer = issuer;
     return this;
   }
 
-   /**
+  /**
    * Identity Provider Entity ID.
+   * 
    * @return issuer
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Identity Provider Entity ID.")
 
   public String getIssuer() {
     return issuer;
   }
 
-
   public void setIssuer(String issuer) {
     this.issuer = issuer;
   }
 
-
   public SamlConnection signOnURL(String signOnURL) {
-    
+
     this.signOnURL = signOnURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-On URL.
+   * 
    * @return signOnURL
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Single Sign-On URL.")
 
   public String getSignOnURL() {
     return signOnURL;
   }
 
-
   public void setSignOnURL(String signOnURL) {
     this.signOnURL = signOnURL;
   }
 
-
   public SamlConnection signOutURL(String signOutURL) {
-    
+
     this.signOutURL = signOutURL;
     return this;
   }
 
-   /**
+  /**
    * Single Sign-Out URL.
+   * 
    * @return signOutURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Single Sign-Out URL.")
 
@@ -225,22 +218,21 @@ public class SamlConnection {
     return signOutURL;
   }
 
-
   public void setSignOutURL(String signOutURL) {
     this.signOutURL = signOutURL;
   }
 
-
   public SamlConnection metadataURL(String metadataURL) {
-    
+
     this.metadataURL = metadataURL;
     return this;
   }
 
-   /**
+  /**
    * Metadata URL.
+   * 
    * @return metadataURL
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Metadata URL.")
 
@@ -248,77 +240,74 @@ public class SamlConnection {
     return metadataURL;
   }
 
-
   public void setMetadataURL(String metadataURL) {
     this.metadataURL = metadataURL;
   }
 
-
   public SamlConnection audienceURI(String audienceURI) {
-    
+
     this.audienceURI = audienceURI;
     return this;
   }
 
-   /**
-   * The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. 
+  /**
+   * The application-defined unique identifier that is the intended audience of
+   * the SAML assertion. This is most often the SP Entity ID of your application.
+   * When not specified, the ACS URL will be used.
+   * 
    * @return audienceURI
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The application-defined unique identifier that is the intended audience of the SAML assertion. This is most often the SP Entity ID of your application. When not specified, the ACS URL will be used. ")
 
   public String getAudienceURI() {
     return audienceURI;
   }
 
-
   public void setAudienceURI(String audienceURI) {
     this.audienceURI = audienceURI;
   }
 
+  public SamlConnection id(Long id) {
 
-  public SamlConnection id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public SamlConnection created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -344,9 +333,9 @@ public class SamlConnection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionConsumerServiceURL, accountId, name, enabled, issuer, signOnURL, signOutURL, metadataURL, audienceURI, id, created);
+    return Objects.hash(assertionConsumerServiceURL, accountId, name, enabled, issuer, signOnURL, signOutURL,
+        metadataURL, audienceURI, id, created);
   }
-
 
   @Override
   public String toString() {
@@ -379,4 +368,3 @@ public class SamlConnection {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,30 +30,28 @@ import java.io.IOException;
 public class GenerateCampaignTags {
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
-  private Integer rulesetID;
+  private Long rulesetID;
 
+  public GenerateCampaignTags rulesetID(Long rulesetID) {
 
-  public GenerateCampaignTags rulesetID(Integer rulesetID) {
-    
     this.rulesetID = rulesetID;
     return this;
   }
 
-   /**
+  /**
    * ID of a ruleset.
+   * 
    * @return rulesetID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getRulesetID() {
+  public Long getRulesetID() {
     return rulesetID;
   }
 
-
-  public void setRulesetID(Integer rulesetID) {
+  public void setRulesetID(Long rulesetID) {
     this.rulesetID = rulesetID;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,7 +69,6 @@ public class GenerateCampaignTags {
   public int hashCode() {
     return Objects.hash(rulesetID);
   }
-
 
   @Override
   public String toString() {
@@ -95,4 +91,3 @@ public class GenerateCampaignTags {
   }
 
 }
-

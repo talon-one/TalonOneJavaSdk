@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,11 +40,11 @@ public class CouponsNotificationPolicy {
   @JsonAdapter(ScopesEnum.Adapter.class)
   public enum ScopesEnum {
     ALL("all"),
-    
+
     CAMPAIGN_MANAGER("campaign_manager"),
-    
+
     MANAGEMENT_API("management_api"),
-    
+
     RULE_ENGINE("rule_engine");
 
     private String value;
@@ -80,7 +79,7 @@ public class CouponsNotificationPolicy {
 
       @Override
       public ScopesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ScopesEnum.fromValue(value);
       }
     }
@@ -100,33 +99,31 @@ public class CouponsNotificationPolicy {
 
   public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
   @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
-  private Integer batchSize;
-
+  private Long batchSize;
 
   public CouponsNotificationPolicy name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Notification name.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Christmas Sale", required = true, value = "Notification name.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CouponsNotificationPolicy scopes(List<ScopesEnum> scopes) {
-    
+
     this.scopes = scopes;
     return this;
   }
@@ -136,32 +133,32 @@ public class CouponsNotificationPolicy {
     return this;
   }
 
-   /**
+  /**
    * Get scopes
+   * 
    * @return scopes
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<ScopesEnum> getScopes() {
     return scopes;
   }
 
-
   public void setScopes(List<ScopesEnum> scopes) {
     this.scopes = scopes;
   }
 
-
   public CouponsNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
-    
+
     this.batchingEnabled = batchingEnabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether batching is activated.
+   * 
    * @return batchingEnabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether batching is activated.")
 
@@ -169,22 +166,22 @@ public class CouponsNotificationPolicy {
     return batchingEnabled;
   }
 
-
   public void setBatchingEnabled(Boolean batchingEnabled) {
     this.batchingEnabled = batchingEnabled;
   }
 
-
   public CouponsNotificationPolicy includeData(Boolean includeData) {
-    
+
     this.includeData = includeData;
     return this;
   }
 
-   /**
-   * Indicates whether to include all generated coupons. If &#x60;false&#x60;, only the &#x60;batchId&#x60; of the generated coupons is included.
+  /**
+   * Indicates whether to include all generated coupons. If &#x60;false&#x60;,
+   * only the &#x60;batchId&#x60; of the generated coupons is included.
+   * 
    * @return includeData
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether to include all generated coupons. If `false`, only the `batchId` of the generated coupons is included.")
 
@@ -192,34 +189,32 @@ public class CouponsNotificationPolicy {
     return includeData;
   }
 
-
   public void setIncludeData(Boolean includeData) {
     this.includeData = includeData;
   }
 
+  public CouponsNotificationPolicy batchSize(Long batchSize) {
 
-  public CouponsNotificationPolicy batchSize(Integer batchSize) {
-    
     this.batchSize = batchSize;
     return this;
   }
 
-   /**
-   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+  /**
+   * The required size of each batch of data. This value applies only when
+   * &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * 
    * @return batchSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
 
-  public Integer getBatchSize() {
+  public Long getBatchSize() {
     return batchSize;
   }
 
-
-  public void setBatchSize(Integer batchSize) {
+  public void setBatchSize(Long batchSize) {
     this.batchSize = batchSize;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,7 +236,6 @@ public class CouponsNotificationPolicy {
   public int hashCode() {
     return Objects.hash(name, scopes, batchingEnabled, includeData, batchSize);
   }
-
 
   @Override
   public String toString() {
@@ -268,4 +262,3 @@ public class CouponsNotificationPolicy {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class NotificationListItem {
   public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notificationId";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
-  private Integer notificationId;
+  private Long notificationId;
 
   public static final String SERIALIZED_NAME_NOTIFICATION_NAME = "notificationName";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_NAME)
@@ -39,100 +38,96 @@ public class NotificationListItem {
 
   public static final String SERIALIZED_NAME_ENTITY_ID = "entityId";
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
-  private Integer entityId;
+  private Long entityId;
 
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
+  public NotificationListItem notificationId(Long notificationId) {
 
-  public NotificationListItem notificationId(Integer notificationId) {
-    
     this.notificationId = notificationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the notification.
+   * 
    * @return notificationId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the notification.")
 
-  public Integer getNotificationId() {
+  public Long getNotificationId() {
     return notificationId;
   }
 
-
-  public void setNotificationId(Integer notificationId) {
+  public void setNotificationId(Long notificationId) {
     this.notificationId = notificationId;
   }
 
-
   public NotificationListItem notificationName(String notificationName) {
-    
+
     this.notificationName = notificationName;
     return this;
   }
 
-   /**
+  /**
    * The name of the notification.
+   * 
    * @return notificationName
-  **/
+   **/
   @ApiModelProperty(example = "My campaign notification", required = true, value = "The name of the notification.")
 
   public String getNotificationName() {
     return notificationName;
   }
 
-
   public void setNotificationName(String notificationName) {
     this.notificationName = notificationName;
   }
 
+  public NotificationListItem entityId(Long entityId) {
 
-  public NotificationListItem entityId(Integer entityId) {
-    
     this.entityId = entityId;
     return this;
   }
 
-   /**
-   * The ID of the entity to which this notification belongs. For example, in case of a loyalty notification, this value is the ID of the loyalty program. 
+  /**
+   * The ID of the entity to which this notification belongs. For example, in case
+   * of a loyalty notification, this value is the ID of the loyalty program.
+   * 
    * @return entityId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the entity to which this notification belongs. For example, in case of a loyalty notification, this value is the ID of the loyalty program. ")
 
-  public Integer getEntityId() {
+  public Long getEntityId() {
     return entityId;
   }
 
-
-  public void setEntityId(Integer entityId) {
+  public void setEntityId(Long entityId) {
     this.entityId = entityId;
   }
 
-
   public NotificationListItem enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the notification is activated.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Indicates whether the notification is activated.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -153,7 +148,6 @@ public class NotificationListItem {
   public int hashCode() {
     return Objects.hash(notificationId, notificationName, entityId, enabled);
   }
-
 
   @Override
   public String toString() {
@@ -179,4 +173,3 @@ public class NotificationListItem {
   }
 
 }
-

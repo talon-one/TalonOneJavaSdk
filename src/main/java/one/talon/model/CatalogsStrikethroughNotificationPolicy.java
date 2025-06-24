@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,55 +34,53 @@ public class CatalogsStrikethroughNotificationPolicy {
 
   public static final String SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER = "aheadOfDaysTrigger";
   @SerializedName(SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER)
-  private Integer aheadOfDaysTrigger;
-
+  private Long aheadOfDaysTrigger;
 
   public CatalogsStrikethroughNotificationPolicy name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Notification name.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Christmas Sale", required = true, value = "Notification name.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public CatalogsStrikethroughNotificationPolicy aheadOfDaysTrigger(Long aheadOfDaysTrigger) {
 
-  public CatalogsStrikethroughNotificationPolicy aheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
-    
     this.aheadOfDaysTrigger = aheadOfDaysTrigger;
     return this;
   }
 
-   /**
-   * The number of days in advance that strikethrough pricing updates should be sent.
+  /**
+   * The number of days in advance that strikethrough pricing updates should be
+   * sent.
    * minimum: 1
    * maximum: 30
+   * 
    * @return aheadOfDaysTrigger
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The number of days in advance that strikethrough pricing updates should be sent.")
 
-  public Integer getAheadOfDaysTrigger() {
+  public Long getAheadOfDaysTrigger() {
     return aheadOfDaysTrigger;
   }
 
-
-  public void setAheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
+  public void setAheadOfDaysTrigger(Long aheadOfDaysTrigger) {
     this.aheadOfDaysTrigger = aheadOfDaysTrigger;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,7 +99,6 @@ public class CatalogsStrikethroughNotificationPolicy {
   public int hashCode() {
     return Objects.hash(name, aheadOfDaysTrigger);
   }
-
 
   @Override
   public String toString() {
@@ -126,4 +122,3 @@ public class CatalogsStrikethroughNotificationPolicy {
   }
 
 }
-

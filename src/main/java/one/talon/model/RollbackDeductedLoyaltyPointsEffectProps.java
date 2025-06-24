@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -27,14 +26,16 @@ import java.math.BigDecimal;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * The properties specific to the \&quot;rollbackDeductedLoyaltyPoints\&quot; effect. This effect is triggered whenever a previously closed session is cancelled and a deductLoyaltyPoints effect was revoked.
+ * The properties specific to the \&quot;rollbackDeductedLoyaltyPoints\&quot;
+ * effect. This effect is triggered whenever a previously closed session is
+ * cancelled and a deductLoyaltyPoints effect was revoked.
  */
 @ApiModel(description = "The properties specific to the \"rollbackDeductedLoyaltyPoints\" effect. This effect is triggered whenever a previously closed session is cancelled and a deductLoyaltyPoints effect was revoked.")
 
 public class RollbackDeductedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -64,105 +65,102 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
   private String cardIdentifier;
 
+  public RollbackDeductedLoyaltyPointsEffectProps programId(Long programId) {
 
-  public RollbackDeductedLoyaltyPointsEffectProps programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program where these points were reimbursed.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were reimbursed.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps subLedgerId(String subLedgerId) {
-    
+
     this.subLedgerId = subLedgerId;
     return this;
   }
 
-   /**
-   * The ID of the subledger within the loyalty program where these points were reimbursed.
+  /**
+   * The ID of the subledger within the loyalty program where these points were
+   * reimbursed.
+   * 
    * @return subLedgerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the subledger within the loyalty program where these points were reimbursed.")
 
   public String getSubLedgerId() {
     return subLedgerId;
   }
 
-
   public void setSubLedgerId(String subLedgerId) {
     this.subLedgerId = subLedgerId;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The amount of reimbursed points that were added.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The amount of reimbursed points that were added.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The user for whom these points were reimbursed.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The user for whom these points were reimbursed.")
 
   public String getRecipientIntegrationId() {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Date after which the reimbursed points will be valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date after which the reimbursed points will be valid.")
 
@@ -170,22 +168,21 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Date after which the reimbursed points will expire.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Date after which the reimbursed points will expire.")
 
@@ -193,44 +190,43 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps transactionUUID(String transactionUUID) {
-    
+
     this.transactionUUID = transactionUUID;
     return this;
   }
 
-   /**
-   * The identifier of &#39;addition&#39; entries added to the ledger as the &#x60;deductLoyaltyPoints&#x60; effect is rolled back.
+  /**
+   * The identifier of &#39;addition&#39; entries added to the ledger as the
+   * &#x60;deductLoyaltyPoints&#x60; effect is rolled back.
+   * 
    * @return transactionUUID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The identifier of 'addition' entries added to the ledger as the `deductLoyaltyPoints` effect is rolled back.")
 
   public String getTransactionUUID() {
     return transactionUUID;
   }
 
-
   public void setTransactionUUID(String transactionUUID) {
     this.transactionUUID = transactionUUID;
   }
 
-
   public RollbackDeductedLoyaltyPointsEffectProps cardIdentifier(String cardIdentifier) {
-    
+
     this.cardIdentifier = cardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return cardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -238,11 +234,9 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
     return cardIdentifier;
   }
 
-
   public void setCardIdentifier(String cardIdentifier) {
     this.cardIdentifier = cardIdentifier;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -265,9 +259,9 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
 
   @Override
   public int hashCode() {
-    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID, cardIdentifier);
+    return Objects.hash(programId, subLedgerId, value, recipientIntegrationId, startDate, expiryDate, transactionUUID,
+        cardIdentifier);
   }
-
 
   @Override
   public String toString() {
@@ -297,4 +291,3 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   }
 
 }
-

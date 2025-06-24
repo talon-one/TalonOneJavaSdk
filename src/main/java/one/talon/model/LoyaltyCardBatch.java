@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import one.talon.model.CodeGeneratorSettings;
 public class LoyaltyCardBatch {
   public static final String SERIALIZED_NAME_NUMBER_OF_CARDS = "numberOfCards";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_CARDS)
-  private Integer numberOfCards;
+  private Long numberOfCards;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -44,7 +43,7 @@ public class LoyaltyCardBatch {
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     ACTIVE("active"),
-    
+
     INACTIVE("inactive");
 
     private String value;
@@ -79,7 +78,7 @@ public class LoyaltyCardBatch {
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
     }
@@ -93,39 +92,38 @@ public class LoyaltyCardBatch {
   @SerializedName(SERIALIZED_NAME_CARD_CODE_SETTINGS)
   private CodeGeneratorSettings cardCodeSettings;
 
+  public LoyaltyCardBatch numberOfCards(Long numberOfCards) {
 
-  public LoyaltyCardBatch numberOfCards(Integer numberOfCards) {
-    
     this.numberOfCards = numberOfCards;
     return this;
   }
 
-   /**
+  /**
    * Number of loyalty cards in the batch.
+   * 
    * @return numberOfCards
-  **/
+   **/
   @ApiModelProperty(example = "5000", required = true, value = "Number of loyalty cards in the batch.")
 
-  public Integer getNumberOfCards() {
+  public Long getNumberOfCards() {
     return numberOfCards;
   }
 
-
-  public void setNumberOfCards(Integer numberOfCards) {
+  public void setNumberOfCards(Long numberOfCards) {
     this.numberOfCards = numberOfCards;
   }
 
-
   public LoyaltyCardBatch batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty card batch.
+   * 
    * @return batchId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "hwernpjz", value = "ID of the loyalty card batch.")
 
@@ -133,22 +131,21 @@ public class LoyaltyCardBatch {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
 
-
   public LoyaltyCardBatch status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Status of the loyalty cards in the batch.
+   * 
    * @return status
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "active", value = "Status of the loyalty cards in the batch.")
 
@@ -156,22 +153,21 @@ public class LoyaltyCardBatch {
     return status;
   }
 
-
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
-
   public LoyaltyCardBatch cardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
-    
+
     this.cardCodeSettings = cardCodeSettings;
     return this;
   }
 
-   /**
+  /**
    * Get cardCodeSettings
+   * 
    * @return cardCodeSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -179,11 +175,9 @@ public class LoyaltyCardBatch {
     return cardCodeSettings;
   }
 
-
   public void setCardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
     this.cardCodeSettings = cardCodeSettings;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -204,7 +198,6 @@ public class LoyaltyCardBatch {
   public int hashCode() {
     return Objects.hash(numberOfCards, batchId, status, cardCodeSettings);
   }
-
 
   @Override
   public String toString() {
@@ -230,4 +223,3 @@ public class LoyaltyCardBatch {
   }
 
 }
-

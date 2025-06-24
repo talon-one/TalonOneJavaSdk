@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AccountAdditionalCost {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +41,7 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -58,17 +57,20 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   /**
-   * The type of additional cost. Possible value: - &#x60;session&#x60;: Additional cost will be added per session. - &#x60;item&#x60;: Additional cost will be added per item. - &#x60;both&#x60;: Additional cost will be added per item and session. 
+   * The type of additional cost. Possible value: - &#x60;session&#x60;:
+   * Additional cost will be added per session. - &#x60;item&#x60;: Additional
+   * cost will be added per item. - &#x60;both&#x60;: Additional cost will be
+   * added per item and session.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     SESSION("session"),
-    
+
     ITEM("item"),
-    
+
     BOTH("both");
 
     private String value;
@@ -103,7 +105,7 @@ public class AccountAdditionalCost {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -113,180 +115,179 @@ public class AccountAdditionalCost {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type = TypeEnum.SESSION;
 
+  public AccountAdditionalCost id(Long id) {
 
-  public AccountAdditionalCost id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AccountAdditionalCost created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public AccountAdditionalCost accountId(Long accountId) {
 
-  public AccountAdditionalCost accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public AccountAdditionalCost name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The internal name used in API requests.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "shippingFee", required = true, value = "The internal name used in API requests.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public AccountAdditionalCost title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
-   * The human-readable name for the additional cost that will be shown in the Campaign Manager. Like &#x60;name&#x60;, the combination of entity and title must also be unique.
+  /**
+   * The human-readable name for the additional cost that will be shown in the
+   * Campaign Manager. Like &#x60;name&#x60;, the combination of entity and title
+   * must also be unique.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Shipping fee", required = true, value = "The human-readable name for the additional cost that will be shown in the Campaign Manager. Like `name`, the combination of entity and title must also be unique.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public AccountAdditionalCost description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of this additional cost.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "A shipping fee", required = true, value = "A description of this additional cost.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public AccountAdditionalCost subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public AccountAdditionalCost subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the applications that are subscribed to this additional cost.
+  /**
+   * A list of the IDs of the applications that are subscribed to this additional
+   * cost.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the applications that are subscribed to this additional cost.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
-
   public AccountAdditionalCost type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The type of additional cost. Possible value: - &#x60;session&#x60;: Additional cost will be added per session. - &#x60;item&#x60;: Additional cost will be added per item. - &#x60;both&#x60;: Additional cost will be added per item and session. 
+  /**
+   * The type of additional cost. Possible value: - &#x60;session&#x60;:
+   * Additional cost will be added per session. - &#x60;item&#x60;: Additional
+   * cost will be added per item. - &#x60;both&#x60;: Additional cost will be
+   * added per item and session.
+   * 
    * @return type
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "session", value = "The type of additional cost. Possible value: - `session`: Additional cost will be added per session. - `item`: Additional cost will be added per item. - `both`: Additional cost will be added per item and session. ")
 
@@ -294,11 +295,9 @@ public class AccountAdditionalCost {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -323,7 +322,6 @@ public class AccountAdditionalCost {
   public int hashCode() {
     return Objects.hash(id, created, accountId, name, title, description, subscribedApplicationsIds, type);
   }
-
 
   @Override
   public String toString() {
@@ -353,4 +351,3 @@ public class AccountAdditionalCost {
   }
 
 }
-

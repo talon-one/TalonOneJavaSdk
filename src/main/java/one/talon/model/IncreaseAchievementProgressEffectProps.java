@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -26,14 +25,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * The properties specific to the \&quot;increaseAchievementProgress\&quot; effect. This gets triggered whenever a validated rule contained an \&quot;increase customer progress\&quot; effect.
+ * The properties specific to the \&quot;increaseAchievementProgress\&quot;
+ * effect. This gets triggered whenever a validated rule contained an
+ * \&quot;increase customer progress\&quot; effect.
  */
 @ApiModel(description = "The properties specific to the \"increaseAchievementProgress\" effect. This gets triggered whenever a validated rule contained an \"increase customer progress\" effect.")
 
 public class IncreaseAchievementProgressEffectProps {
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Integer achievementId;
+  private Long achievementId;
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_NAME = "achievementName";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_NAME)
@@ -41,7 +42,7 @@ public class IncreaseAchievementProgressEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRESS_TRACKER_ID = "progressTrackerId";
   @SerializedName(SERIALIZED_NAME_PROGRESS_TRACKER_ID)
-  private Integer progressTrackerId;
+  private Long progressTrackerId;
 
   public static final String SERIALIZED_NAME_DELTA = "delta";
   @SerializedName(SERIALIZED_NAME_DELTA)
@@ -59,161 +60,155 @@ public class IncreaseAchievementProgressEffectProps {
   @SerializedName(SERIALIZED_NAME_IS_JUST_COMPLETED)
   private Boolean isJustCompleted;
 
+  public IncreaseAchievementProgressEffectProps achievementId(Long achievementId) {
 
-  public IncreaseAchievementProgressEffectProps achievementId(Integer achievementId) {
-    
     this.achievementId = achievementId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the achievement.
+   * 
    * @return achievementId
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The internal ID of the achievement.")
 
-  public Integer getAchievementId() {
+  public Long getAchievementId() {
     return achievementId;
   }
 
-
-  public void setAchievementId(Integer achievementId) {
+  public void setAchievementId(Long achievementId) {
     this.achievementId = achievementId;
   }
 
-
   public IncreaseAchievementProgressEffectProps achievementName(String achievementName) {
-    
+
     this.achievementName = achievementName;
     return this;
   }
 
-   /**
+  /**
    * The name of the achievement.
+   * 
    * @return achievementName
-  **/
+   **/
   @ApiModelProperty(example = "FreeCoffee10Orders", required = true, value = "The name of the achievement.")
 
   public String getAchievementName() {
     return achievementName;
   }
 
-
   public void setAchievementName(String achievementName) {
     this.achievementName = achievementName;
   }
 
+  public IncreaseAchievementProgressEffectProps progressTrackerId(Long progressTrackerId) {
 
-  public IncreaseAchievementProgressEffectProps progressTrackerId(Integer progressTrackerId) {
-    
     this.progressTrackerId = progressTrackerId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the achievement progress tracker.
+   * 
    * @return progressTrackerId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The internal ID of the achievement progress tracker.")
 
-  public Integer getProgressTrackerId() {
+  public Long getProgressTrackerId() {
     return progressTrackerId;
   }
 
-
-  public void setProgressTrackerId(Integer progressTrackerId) {
+  public void setProgressTrackerId(Long progressTrackerId) {
     this.progressTrackerId = progressTrackerId;
   }
 
-
   public IncreaseAchievementProgressEffectProps delta(BigDecimal delta) {
-    
+
     this.delta = delta;
     return this;
   }
 
-   /**
-   * The value by which the customer&#39;s current progress in the achievement is increased.
+  /**
+   * The value by which the customer&#39;s current progress in the achievement is
+   * increased.
+   * 
    * @return delta
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The value by which the customer's current progress in the achievement is increased.")
 
   public BigDecimal getDelta() {
     return delta;
   }
 
-
   public void setDelta(BigDecimal delta) {
     this.delta = delta;
   }
 
-
   public IncreaseAchievementProgressEffectProps value(BigDecimal value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The current progress of the customer in the achievement.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The current progress of the customer in the achievement.")
 
   public BigDecimal getValue() {
     return value;
   }
 
-
   public void setValue(BigDecimal value) {
     this.value = value;
   }
 
-
   public IncreaseAchievementProgressEffectProps target(BigDecimal target) {
-    
+
     this.target = target;
     return this;
   }
 
-   /**
+  /**
    * The target value to complete the achievement.
+   * 
    * @return target
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The target value to complete the achievement.")
 
   public BigDecimal getTarget() {
     return target;
   }
 
-
   public void setTarget(BigDecimal target) {
     this.target = target;
   }
 
-
   public IncreaseAchievementProgressEffectProps isJustCompleted(Boolean isJustCompleted) {
-    
+
     this.isJustCompleted = isJustCompleted;
     return this;
   }
 
-   /**
-   * Indicates if the customer has completed the achievement in the current session.
+  /**
+   * Indicates if the customer has completed the achievement in the current
+   * session.
+   * 
    * @return isJustCompleted
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Indicates if the customer has completed the achievement in the current session.")
 
   public Boolean getIsJustCompleted() {
     return isJustCompleted;
   }
 
-
   public void setIsJustCompleted(Boolean isJustCompleted) {
     this.isJustCompleted = isJustCompleted;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -237,7 +232,6 @@ public class IncreaseAchievementProgressEffectProps {
   public int hashCode() {
     return Objects.hash(achievementId, achievementName, progressTrackerId, delta, value, target, isJustCompleted);
   }
-
 
   @Override
   public String toString() {
@@ -266,4 +260,3 @@ public class IncreaseAchievementProgressEffectProps {
   }
 
 }
-

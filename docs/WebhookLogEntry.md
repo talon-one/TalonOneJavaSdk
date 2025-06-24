@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | UUID reference of the webhook request. | 
 **integrationRequestUuid** | **String** | UUID reference of the integration request linked to this webhook request. | 
-**webhookId** | **Integer** | ID of the webhook that triggered the request. | 
-**applicationId** | **Integer** | ID of the application that triggered the webhook. |  [optional]
+**webhookId** | **Long** | ID of the webhook that triggered the request. | 
+**applicationId** | **Long** | ID of the application that triggered the webhook. |  [optional]
 **url** | **String** | The target URL of the request. | 
 **request** | **String** | Request message | 
 **response** | **String** | Response message |  [optional]
-**status** | **Integer** | HTTP status code of response. |  [optional]
+**status** | **Long** | HTTP status code of response. |  [optional]
 **requestTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of request | 
 **responseTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of response |  [optional]
 

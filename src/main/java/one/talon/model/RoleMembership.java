@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,56 +30,53 @@ import java.io.IOException;
 public class RoleMembership {
   public static final String SERIALIZED_NAME_ROLE_I_D = "RoleID";
   @SerializedName(SERIALIZED_NAME_ROLE_I_D)
-  private Integer roleID;
+  private Long roleID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "UserID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
-  private Integer userID;
+  private Long userID;
 
+  public RoleMembership roleID(Long roleID) {
 
-  public RoleMembership roleID(Integer roleID) {
-    
     this.roleID = roleID;
     return this;
   }
 
-   /**
+  /**
    * ID of role.
+   * 
    * @return roleID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of role.")
 
-  public Integer getRoleID() {
+  public Long getRoleID() {
     return roleID;
   }
 
-
-  public void setRoleID(Integer roleID) {
+  public void setRoleID(Long roleID) {
     this.roleID = roleID;
   }
 
+  public RoleMembership userID(Long userID) {
 
-  public RoleMembership userID(Integer userID) {
-    
     this.userID = userID;
     return this;
   }
 
-   /**
+  /**
    * ID of User.
+   * 
    * @return userID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of User.")
 
-  public Integer getUserID() {
+  public Long getUserID() {
     return userID;
   }
 
-
-  public void setUserID(Integer userID) {
+  public void setUserID(Long userID) {
     this.userID = userID;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,7 +95,6 @@ public class RoleMembership {
   public int hashCode() {
     return Objects.hash(roleID, userID);
   }
-
 
   @Override
   public String toString() {
@@ -123,4 +118,3 @@ public class RoleMembership {
   }
 
 }
-

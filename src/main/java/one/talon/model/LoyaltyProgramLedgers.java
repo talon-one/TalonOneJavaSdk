@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgramLedgers {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -59,83 +58,81 @@ public class LoyaltyProgramLedgers {
   @SerializedName(SERIALIZED_NAME_SUB_LEDGERS)
   private Map<String, LedgerInfo> subLedgers = null;
 
+  public LoyaltyProgramLedgers id(Long id) {
 
-  public LoyaltyProgramLedgers id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of loyalty program.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "The internal ID of loyalty program.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public LoyaltyProgramLedgers title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Visible name of loyalty program.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "My loyalty program", required = true, value = "Visible name of loyalty program.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public LoyaltyProgramLedgers name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Internal name of loyalty program.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "program1", required = true, value = "Internal name of loyalty program.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public LoyaltyProgramLedgers joinDate(OffsetDateTime joinDate) {
-    
+
     this.joinDate = joinDate;
     return this;
   }
 
-   /**
-   * The date on which the customer joined the loyalty program in RFC3339.  **Note**: This is in the loyalty program&#39;s time zone. 
+  /**
+   * The date on which the customer joined the loyalty program in RFC3339.
+   * **Note**: This is in the loyalty program&#39;s time zone.
+   * 
    * @return joinDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The date on which the customer joined the loyalty program in RFC3339.  **Note**: This is in the loyalty program's time zone. ")
 
@@ -143,36 +140,33 @@ public class LoyaltyProgramLedgers {
     return joinDate;
   }
 
-
   public void setJoinDate(OffsetDateTime joinDate) {
     this.joinDate = joinDate;
   }
 
-
   public LoyaltyProgramLedgers ledger(LedgerInfo ledger) {
-    
+
     this.ledger = ledger;
     return this;
   }
 
-   /**
+  /**
    * Get ledger
+   * 
    * @return ledger
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public LedgerInfo getLedger() {
     return ledger;
   }
 
-
   public void setLedger(LedgerInfo ledger) {
     this.ledger = ledger;
   }
 
-
   public LoyaltyProgramLedgers subLedgers(Map<String, LedgerInfo> subLedgers) {
-    
+
     this.subLedgers = subLedgers;
     return this;
   }
@@ -185,10 +179,11 @@ public class LoyaltyProgramLedgers {
     return this;
   }
 
-   /**
+  /**
    * A map containing information about each loyalty subledger.
+   * 
    * @return subLedgers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A map containing information about each loyalty subledger.")
 
@@ -196,11 +191,9 @@ public class LoyaltyProgramLedgers {
     return subLedgers;
   }
 
-
   public void setSubLedgers(Map<String, LedgerInfo> subLedgers) {
     this.subLedgers = subLedgers;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -223,7 +216,6 @@ public class LoyaltyProgramLedgers {
   public int hashCode() {
     return Objects.hash(id, title, name, joinDate, ledger, subLedgers);
   }
-
 
   @Override
   public String toString() {
@@ -251,4 +243,3 @@ public class LoyaltyProgramLedgers {
   }
 
 }
-

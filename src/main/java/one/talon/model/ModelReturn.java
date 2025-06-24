@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ModelReturn {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,11 +42,11 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_RETURNED_CART_ITEMS = "returnedCartItems";
   @SerializedName(SERIALIZED_NAME_RETURNED_CART_ITEMS)
@@ -55,11 +54,11 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
   @SerializedName(SERIALIZED_NAME_EVENT_ID)
-  private Integer eventId;
+  private Long eventId;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Integer sessionId;
+  private Long sessionId;
 
   public static final String SERIALIZED_NAME_SESSION_INTEGRATION_ID = "sessionIntegrationId";
   @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_ID)
@@ -67,7 +66,7 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -75,99 +74,94 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
+  public ModelReturn id(Long id) {
 
-  public ModelReturn id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ModelReturn created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public ModelReturn applicationId(Long applicationId) {
 
-  public ModelReturn applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public ModelReturn accountId(Long accountId) {
 
-  public ModelReturn accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public ModelReturn returnedCartItems(List<ReturnedCartItem> returnedCartItems) {
-    
+
     this.returnedCartItems = returnedCartItems;
     return this;
   }
@@ -177,121 +171,117 @@ public class ModelReturn {
     return this;
   }
 
-   /**
+  /**
    * List of cart items to be returned.
+   * 
    * @return returnedCartItems
-  **/
+   **/
   @ApiModelProperty(required = true, value = "List of cart items to be returned.")
 
   public List<ReturnedCartItem> getReturnedCartItems() {
     return returnedCartItems;
   }
 
-
   public void setReturnedCartItems(List<ReturnedCartItem> returnedCartItems) {
     this.returnedCartItems = returnedCartItems;
   }
 
+  public ModelReturn eventId(Long eventId) {
 
-  public ModelReturn eventId(Integer eventId) {
-    
     this.eventId = eventId;
     return this;
   }
 
-   /**
+  /**
    * The event ID of that was generated for this return.
+   * 
    * @return eventId
-  **/
+   **/
   @ApiModelProperty(example = "123", required = true, value = "The event ID of that was generated for this return.")
 
-  public Integer getEventId() {
+  public Long getEventId() {
     return eventId;
   }
 
-
-  public void setEventId(Integer eventId) {
+  public void setEventId(Long eventId) {
     this.eventId = eventId;
   }
 
+  public ModelReturn sessionId(Long sessionId) {
 
-  public ModelReturn sessionId(Integer sessionId) {
-    
     this.sessionId = sessionId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the session this return was requested on.
+   * 
    * @return sessionId
-  **/
+   **/
   @ApiModelProperty(example = "123", required = true, value = "The internal ID of the session this return was requested on.")
 
-  public Integer getSessionId() {
+  public Long getSessionId() {
     return sessionId;
   }
 
-
-  public void setSessionId(Integer sessionId) {
+  public void setSessionId(Long sessionId) {
     this.sessionId = sessionId;
   }
 
-
   public ModelReturn sessionIntegrationId(String sessionIntegrationId) {
-    
+
     this.sessionIntegrationId = sessionIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the session this return was requested on.
+   * 
    * @return sessionIntegrationId
-  **/
+   **/
   @ApiModelProperty(example = "0c0e0207-eb30-4e06-a56c-2b7c8a64953c", required = true, value = "The integration ID of the session this return was requested on.")
 
   public String getSessionIntegrationId() {
     return sessionIntegrationId;
   }
 
-
   public void setSessionIntegrationId(String sessionIntegrationId) {
     this.sessionIntegrationId = sessionIntegrationId;
   }
 
+  public ModelReturn profileId(Long profileId) {
 
-  public ModelReturn profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the profile this return was requested on.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "123", value = "The internal ID of the profile this return was requested on.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 
-
   public ModelReturn profileIntegrationId(String profileIntegrationId) {
-    
+
     this.profileIntegrationId = profileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the profile this return was requested on.
+   * 
    * @return profileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0c0e0207-eb30-4e06-a56c-2b7c8a64953c", value = "The integration ID of the profile this return was requested on.")
 
@@ -299,34 +289,31 @@ public class ModelReturn {
     return profileIntegrationId;
   }
 
-
   public void setProfileIntegrationId(String profileIntegrationId) {
     this.profileIntegrationId = profileIntegrationId;
   }
 
+  public ModelReturn createdBy(Long createdBy) {
 
-  public ModelReturn createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who requested this return.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "123", value = "ID of the user who requested this return.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -352,9 +339,9 @@ public class ModelReturn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, accountId, returnedCartItems, eventId, sessionId, sessionIntegrationId, profileId, profileIntegrationId, createdBy);
+    return Objects.hash(id, created, applicationId, accountId, returnedCartItems, eventId, sessionId,
+        sessionIntegrationId, profileId, profileIntegrationId, createdBy);
   }
-
 
   @Override
   public String toString() {
@@ -387,4 +374,3 @@ public class ModelReturn {
   }
 
 }
-

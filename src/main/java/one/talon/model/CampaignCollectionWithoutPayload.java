@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignCollectionWithoutPayload {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,7 +39,7 @@ public class CampaignCollectionWithoutPayload {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -56,119 +55,115 @@ public class CampaignCollectionWithoutPayload {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
+  public CampaignCollectionWithoutPayload id(Long id) {
 
-  public CampaignCollectionWithoutPayload id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CampaignCollectionWithoutPayload created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CampaignCollectionWithoutPayload accountId(Long accountId) {
 
-  public CampaignCollectionWithoutPayload accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public CampaignCollectionWithoutPayload modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
-
   public CampaignCollectionWithoutPayload description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the purpose of this collection.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My collection of SKUs", value = "A short description of the purpose of this collection.")
 
@@ -176,124 +171,117 @@ public class CampaignCollectionWithoutPayload {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public CampaignCollectionWithoutPayload name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this collection.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My collection", required = true, value = "The name of this collection.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public CampaignCollectionWithoutPayload modifiedBy(Long modifiedBy) {
 
-  public CampaignCollectionWithoutPayload modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who last updated this effect if available.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "48", value = "ID of the user who last updated this effect if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
+  public CampaignCollectionWithoutPayload createdBy(Long createdBy) {
 
-  public CampaignCollectionWithoutPayload createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created this effect.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "134", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public CampaignCollectionWithoutPayload applicationId(Long applicationId) {
 
-  public CampaignCollectionWithoutPayload applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public CampaignCollectionWithoutPayload campaignId(Long campaignId) {
 
-  public CampaignCollectionWithoutPayload campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "7", value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -318,9 +306,9 @@ public class CampaignCollectionWithoutPayload {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, accountId, modified, description, name, modifiedBy, createdBy, applicationId, campaignId);
+    return Objects.hash(id, created, accountId, modified, description, name, modifiedBy, createdBy, applicationId,
+        campaignId);
   }
-
 
   @Override
   public String toString() {
@@ -352,4 +340,3 @@ public class CampaignCollectionWithoutPayload {
   }
 
 }
-

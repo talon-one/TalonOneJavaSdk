@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AchievementStatusEntry {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -66,12 +65,15 @@ public class AchievementStatusEntry {
   private TimePoint periodEndOverride;
 
   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. -
+   * &#x60;no_recurrence&#x60;: The achievement can be completed only once. -
+   * &#x60;on_expiration&#x60;: The achievement resets after it expires and
+   * becomes available again.
    */
   @JsonAdapter(RecurrencePolicyEnum.Adapter.class)
   public enum RecurrencePolicyEnum {
     NO_RECURRENCE("no_recurrence"),
-    
+
     ON_EXPIRATION("on_expiration");
 
     private String value;
@@ -106,7 +108,7 @@ public class AchievementStatusEntry {
 
       @Override
       public RecurrencePolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return RecurrencePolicyEnum.fromValue(value);
       }
     }
@@ -117,12 +119,16 @@ public class AchievementStatusEntry {
   private RecurrencePolicyEnum recurrencePolicy;
 
   /**
-   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+   * The policy that determines how the achievement starts, ends, or resets. -
+   * &#x60;user_action&#x60;: The achievement ends or resets relative to when the
+   * customer started the achievement. - &#x60;fixed_schedule&#x60;: The
+   * achievement starts, ends, or resets for all customers following a fixed
+   * schedule.
    */
   @JsonAdapter(ActivationPolicyEnum.Adapter.class)
   public enum ActivationPolicyEnum {
     USER_ACTION("user_action"),
-    
+
     FIXED_SCHEDULE("fixed_schedule");
 
     private String value;
@@ -157,7 +163,7 @@ public class AchievementStatusEntry {
 
       @Override
       public ActivationPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ActivationPolicyEnum.fromValue(value);
       }
     }
@@ -177,7 +183,7 @@ public class AchievementStatusEntry {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   /**
    * The status of the achievement.
@@ -185,7 +191,7 @@ public class AchievementStatusEntry {
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     ACTIVE("active"),
-    
+
     SCHEDULED("scheduled");
 
     private String value;
@@ -220,7 +226,7 @@ public class AchievementStatusEntry {
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
     }
@@ -234,149 +240,159 @@ public class AchievementStatusEntry {
   @SerializedName(SERIALIZED_NAME_CURRENT_PROGRESS)
   private AchievementProgress currentProgress;
 
+  public AchievementStatusEntry id(Long id) {
 
-  public AchievementStatusEntry id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AchievementStatusEntry created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public AchievementStatusEntry name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created. 
+  /**
+   * The internal name of the achievement used in API requests. **Note**: The name
+   * should start with a letter. This cannot be changed after the achievement has
+   * been created.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Order50Discount", required = true, value = "The internal name of the achievement used in API requests.  **Note**: The name should start with a letter. This cannot be changed after the achievement has been created. ")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public AchievementStatusEntry title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The display name for the achievement in the Campaign Manager.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "50% off on 50th purchase.", required = true, value = "The display name for the achievement in the Campaign Manager.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public AchievementStatusEntry description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the achievement.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "50% off for every 50th purchase in a year.", required = true, value = "A description of the achievement.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public AchievementStatusEntry target(BigDecimal target) {
-    
+
     this.target = target;
     return this;
   }
 
-   /**
-   * The required number of actions or the transactional milestone to complete the achievement.
+  /**
+   * The required number of actions or the transactional milestone to complete the
+   * achievement.
+   * 
    * @return target
-  **/
+   **/
   @ApiModelProperty(example = "50.0", required = true, value = "The required number of actions or the transactional milestone to complete the achievement.")
 
   public BigDecimal getTarget() {
     return target;
   }
 
-
   public void setTarget(BigDecimal target) {
     this.target = target;
   }
 
-
   public AchievementStatusEntry period(String period) {
-    
+
     this.period = period;
     return this;
   }
 
-   /**
-   * The relative duration after which the achievement ends and resets for a particular customer profile.  **Note**: The &#x60;period&#x60; does not start when the achievement is created.  The period is a **positive real number** followed by one letter indicating the time unit.  Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can also round certain units down to the beginning of period and up to the end of period.: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. Example: &#x60;30D_D&#x60; - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. Example: &#x60;23W_U&#x60;  **Note**: You can either use the round down and round up option or set an absolute period. 
+  /**
+   * The relative duration after which the achievement ends and resets for a
+   * particular customer profile. **Note**: The &#x60;period&#x60; does not start
+   * when the achievement is created. The period is a **positive real number**
+   * followed by one letter indicating the time unit. Examples: &#x60;30s&#x60;,
+   * &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;,
+   * &#x60;10M&#x60;, &#x60;15Y&#x60;. Available units: - &#x60;s&#x60;: seconds -
+   * &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days -
+   * &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years You can
+   * also round certain units down to the beginning of period and up to the end of
+   * period.: - &#x60;_D&#x60; for rounding down days only. Signifies the start of
+   * the day. Example: &#x60;30D_D&#x60; - &#x60;_U&#x60; for rounding up days,
+   * weeks, months and years. Signifies the end of the day, week, month or year.
+   * Example: &#x60;23W_U&#x60; **Note**: You can either use the round down and
+   * round up option or set an absolute period.
+   * 
    * @return period
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1Y", value = "The relative duration after which the achievement ends and resets for a particular customer profile.  **Note**: The `period` does not start when the achievement is created.  The period is a **positive real number** followed by one letter indicating the time unit.  Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can also round certain units down to the beginning of period and up to the end of period.: - `_D` for rounding down days only. Signifies the start of the day. Example: `30D_D` - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. Example: `23W_U`  **Note**: You can either use the round down and round up option or set an absolute period. ")
 
@@ -384,22 +400,21 @@ public class AchievementStatusEntry {
     return period;
   }
 
-
   public void setPeriod(String period) {
     this.period = period;
   }
 
-
   public AchievementStatusEntry periodEndOverride(TimePoint periodEndOverride) {
-    
+
     this.periodEndOverride = periodEndOverride;
     return this;
   }
 
-   /**
+  /**
    * Get periodEndOverride
+   * 
    * @return periodEndOverride
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -407,22 +422,24 @@ public class AchievementStatusEntry {
     return periodEndOverride;
   }
 
-
   public void setPeriodEndOverride(TimePoint periodEndOverride) {
     this.periodEndOverride = periodEndOverride;
   }
 
-
   public AchievementStatusEntry recurrencePolicy(RecurrencePolicyEnum recurrencePolicy) {
-    
+
     this.recurrencePolicy = recurrencePolicy;
     return this;
   }
 
-   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+  /**
+   * The policy that determines if and how the achievement recurs. -
+   * &#x60;no_recurrence&#x60;: The achievement can be completed only once. -
+   * &#x60;on_expiration&#x60;: The achievement resets after it expires and
+   * becomes available again.
+   * 
    * @return recurrencePolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
 
@@ -430,22 +447,25 @@ public class AchievementStatusEntry {
     return recurrencePolicy;
   }
 
-
   public void setRecurrencePolicy(RecurrencePolicyEnum recurrencePolicy) {
     this.recurrencePolicy = recurrencePolicy;
   }
 
-
   public AchievementStatusEntry activationPolicy(ActivationPolicyEnum activationPolicy) {
-    
+
     this.activationPolicy = activationPolicy;
     return this;
   }
 
-   /**
-   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+  /**
+   * The policy that determines how the achievement starts, ends, or resets. -
+   * &#x60;user_action&#x60;: The achievement ends or resets relative to when the
+   * customer started the achievement. - &#x60;fixed_schedule&#x60;: The
+   * achievement starts, ends, or resets for all customers following a fixed
+   * schedule.
+   * 
    * @return activationPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "fixed_schedule", value = "The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule. ")
 
@@ -453,22 +473,22 @@ public class AchievementStatusEntry {
     return activationPolicy;
   }
 
-
   public void setActivationPolicy(ActivationPolicyEnum activationPolicy) {
     this.activationPolicy = activationPolicy;
   }
 
-
   public AchievementStatusEntry fixedStartDate(OffsetDateTime fixedStartDate) {
-    
+
     this.fixedStartDate = fixedStartDate;
     return this;
   }
 
-   /**
-   * The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to &#x60;fixed_schedule&#x60;.  **Note:** It must be an RFC3339 timestamp string. 
+  /**
+   * The achievement&#39;s start date when &#x60;activationPolicy&#x60; is set to
+   * &#x60;fixed_schedule&#x60;. **Note:** It must be an RFC3339 timestamp string.
+   * 
    * @return fixedStartDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement's start date when `activationPolicy` is set to `fixed_schedule`.  **Note:** It must be an RFC3339 timestamp string. ")
 
@@ -476,22 +496,23 @@ public class AchievementStatusEntry {
     return fixedStartDate;
   }
 
-
   public void setFixedStartDate(OffsetDateTime fixedStartDate) {
     this.fixedStartDate = fixedStartDate;
   }
 
-
   public AchievementStatusEntry endDate(OffsetDateTime endDate) {
-    
+
     this.endDate = endDate;
     return this;
   }
 
-   /**
-   * The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string. 
+  /**
+   * The achievement&#39;s end date. If defined, customers cannot participate in
+   * the achievement after this date. **Note:** It must be an RFC3339 timestamp
+   * string.
+   * 
    * @return endDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement's end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It must be an RFC3339 timestamp string. ")
 
@@ -499,45 +520,43 @@ public class AchievementStatusEntry {
     return endDate;
   }
 
-
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
   }
 
+  public AchievementStatusEntry campaignId(Long campaignId) {
 
-  public AchievementStatusEntry campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign the achievement belongs to.
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public AchievementStatusEntry status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * The status of the achievement.
+   * 
    * @return status
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "active", value = "The status of the achievement.")
 
@@ -545,22 +564,21 @@ public class AchievementStatusEntry {
     return status;
   }
 
-
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
-
   public AchievementStatusEntry currentProgress(AchievementProgress currentProgress) {
-    
+
     this.currentProgress = currentProgress;
     return this;
   }
 
-   /**
+  /**
    * Get currentProgress
+   * 
    * @return currentProgress
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -568,11 +586,9 @@ public class AchievementStatusEntry {
     return currentProgress;
   }
 
-
   public void setCurrentProgress(AchievementProgress currentProgress) {
     this.currentProgress = currentProgress;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -602,9 +618,9 @@ public class AchievementStatusEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy, activationPolicy, fixedStartDate, endDate, campaignId, status, currentProgress);
+    return Objects.hash(id, created, name, title, description, target, period, periodEndOverride, recurrencePolicy,
+        activationPolicy, fixedStartDate, endDate, campaignId, status, currentProgress);
   }
-
 
   @Override
   public String toString() {
@@ -641,4 +657,3 @@ public class AchievementStatusEntry {
   }
 
 }
-

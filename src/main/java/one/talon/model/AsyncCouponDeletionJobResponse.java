@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,30 +30,29 @@ import java.io.IOException;
 public class AsyncCouponDeletionJobResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
+  public AsyncCouponDeletionJobResponse id(Long id) {
 
-  public AsyncCouponDeletionJobResponse id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
-   * Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.
+  /**
+   * Unique ID for this entity. Not to be confused with the Integration ID, which
+   * is set by your integration layer and used in most endpoints.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,7 +70,6 @@ public class AsyncCouponDeletionJobResponse {
   public int hashCode() {
     return Objects.hash(id);
   }
-
 
   @Override
   public String toString() {
@@ -95,4 +92,3 @@ public class AsyncCouponDeletionJobResponse {
   }
 
 }
-

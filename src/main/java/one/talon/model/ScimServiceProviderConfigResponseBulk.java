@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,80 +24,81 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Configuration related to bulk operations, which allow multiple SCIM requests to be processed in a single HTTP request.
+ * Configuration related to bulk operations, which allow multiple SCIM requests
+ * to be processed in a single HTTP request.
  */
 @ApiModel(description = "Configuration related to bulk operations, which allow multiple SCIM requests to be processed in a single HTTP request.")
 
 public class ScimServiceProviderConfigResponseBulk {
   public static final String SERIALIZED_NAME_MAX_OPERATIONS = "maxOperations";
   @SerializedName(SERIALIZED_NAME_MAX_OPERATIONS)
-  private Integer maxOperations;
+  private Long maxOperations;
 
   public static final String SERIALIZED_NAME_MAX_PAYLOAD_SIZE = "maxPayloadSize";
   @SerializedName(SERIALIZED_NAME_MAX_PAYLOAD_SIZE)
-  private Integer maxPayloadSize;
+  private Long maxPayloadSize;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
   private Boolean supported;
 
+  public ScimServiceProviderConfigResponseBulk maxOperations(Long maxOperations) {
 
-  public ScimServiceProviderConfigResponseBulk maxOperations(Integer maxOperations) {
-    
     this.maxOperations = maxOperations;
     return this;
   }
 
-   /**
-   * The maximum number of individual operations that can be included in a single bulk request.
+  /**
+   * The maximum number of individual operations that can be included in a single
+   * bulk request.
+   * 
    * @return maxOperations
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of individual operations that can be included in a single bulk request.")
 
-  public Integer getMaxOperations() {
+  public Long getMaxOperations() {
     return maxOperations;
   }
 
-
-  public void setMaxOperations(Integer maxOperations) {
+  public void setMaxOperations(Long maxOperations) {
     this.maxOperations = maxOperations;
   }
 
+  public ScimServiceProviderConfigResponseBulk maxPayloadSize(Long maxPayloadSize) {
 
-  public ScimServiceProviderConfigResponseBulk maxPayloadSize(Integer maxPayloadSize) {
-    
     this.maxPayloadSize = maxPayloadSize;
     return this;
   }
 
-   /**
-   * The maximum size, in bytes, of the entire payload for a bulk operation request.
+  /**
+   * The maximum size, in bytes, of the entire payload for a bulk operation
+   * request.
+   * 
    * @return maxPayloadSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum size, in bytes, of the entire payload for a bulk operation request.")
 
-  public Integer getMaxPayloadSize() {
+  public Long getMaxPayloadSize() {
     return maxPayloadSize;
   }
 
-
-  public void setMaxPayloadSize(Integer maxPayloadSize) {
+  public void setMaxPayloadSize(Long maxPayloadSize) {
     this.maxPayloadSize = maxPayloadSize;
   }
 
-
   public ScimServiceProviderConfigResponseBulk supported(Boolean supported) {
-    
+
     this.supported = supported;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the SCIM service provider supports bulk operations.
+   * 
    * @return supported
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates whether the SCIM service provider supports bulk operations.")
 
@@ -106,11 +106,9 @@ public class ScimServiceProviderConfigResponseBulk {
     return supported;
   }
 
-
   public void setSupported(Boolean supported) {
     this.supported = supported;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -130,7 +128,6 @@ public class ScimServiceProviderConfigResponseBulk {
   public int hashCode() {
     return Objects.hash(maxOperations, maxPayloadSize, supported);
   }
-
 
   @Override
   public String toString() {
@@ -155,4 +152,3 @@ public class ScimServiceProviderConfigResponseBulk {
   }
 
 }
-

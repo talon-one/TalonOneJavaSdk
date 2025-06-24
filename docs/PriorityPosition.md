@@ -8,7 +8,7 @@ The campaign priority.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **set** | [**SetEnum**](#SetEnum) | The name of the priority set where the campaign is located. | 
-**position** | **Integer** | The position of the campaign in the priority order starting from 1. | 
+**position** | **Long** | The position of the campaign in the priority order starting from 1. | 
 
 
 

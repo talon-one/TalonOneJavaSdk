@@ -7,8 +7,8 @@ Holds a reference to the campaign, the referral and the reason for which that re
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **Integer** |  | 
-**referralId** | **Integer** |  | 
+**campaignId** | **Long** |  | 
+**referralId** | **Long** |  | 
 **reason** | [**ReasonEnum**](#ReasonEnum) |  | 
 
 

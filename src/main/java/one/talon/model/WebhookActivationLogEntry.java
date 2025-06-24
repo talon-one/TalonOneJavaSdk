@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,130 +36,125 @@ public class WebhookActivationLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Integer webhookId;
+  private Long webhookId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
-
   public WebhookActivationLogEntry integrationRequestUuid(String integrationRequestUuid) {
-    
+
     this.integrationRequestUuid = integrationRequestUuid;
     return this;
   }
 
-   /**
-   * UUID reference of the integration request that triggered the effect with the webhook.
+  /**
+   * UUID reference of the integration request that triggered the effect with the
+   * webhook.
+   * 
    * @return integrationRequestUuid
-  **/
+   **/
   @ApiModelProperty(example = "6d3699cf-95bd-444a-b62f-80d6e8391dc9", required = true, value = "UUID reference of the integration request that triggered the effect with the webhook.")
 
   public String getIntegrationRequestUuid() {
     return integrationRequestUuid;
   }
 
-
   public void setIntegrationRequestUuid(String integrationRequestUuid) {
     this.integrationRequestUuid = integrationRequestUuid;
   }
 
+  public WebhookActivationLogEntry webhookId(Long webhookId) {
 
-  public WebhookActivationLogEntry webhookId(Integer webhookId) {
-    
     this.webhookId = webhookId;
     return this;
   }
 
-   /**
+  /**
    * ID of the webhook that triggered the request.
+   * 
    * @return webhookId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the webhook that triggered the request.")
 
-  public Integer getWebhookId() {
+  public Long getWebhookId() {
     return webhookId;
   }
 
-
-  public void setWebhookId(Integer webhookId) {
+  public void setWebhookId(Long webhookId) {
     this.webhookId = webhookId;
   }
 
+  public WebhookActivationLogEntry applicationId(Long applicationId) {
 
-  public WebhookActivationLogEntry applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * ID of the application that triggered the webhook.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of the application that triggered the webhook.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public WebhookActivationLogEntry campaignId(Long campaignId) {
 
-  public WebhookActivationLogEntry campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign that triggered the webhook.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "86", required = true, value = "ID of the campaign that triggered the webhook.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public WebhookActivationLogEntry created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of request
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2023-03-21T13:55:08.571144Z", required = true, value = "Timestamp of request")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -182,7 +176,6 @@ public class WebhookActivationLogEntry {
   public int hashCode() {
     return Objects.hash(integrationRequestUuid, webhookId, applicationId, campaignId, created);
   }
-
 
   @Override
   public String toString() {
@@ -209,4 +202,3 @@ public class WebhookActivationLogEntry {
   }
 
 }
-

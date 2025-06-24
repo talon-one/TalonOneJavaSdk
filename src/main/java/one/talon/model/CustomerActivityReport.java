@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -46,7 +45,7 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
-  private Integer customerId;
+  private Long customerId;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -54,15 +53,15 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTIONS = "couponRedemptions";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTIONS)
-  private Integer couponRedemptions;
+  private Long couponRedemptions;
 
   public static final String SERIALIZED_NAME_COUPON_USE_ATTEMPTS = "couponUseAttempts";
   @SerializedName(SERIALIZED_NAME_COUPON_USE_ATTEMPTS)
-  private Integer couponUseAttempts;
+  private Long couponUseAttempts;
 
   public static final String SERIALIZED_NAME_COUPON_FAILED_ATTEMPTS = "couponFailedAttempts";
   @SerializedName(SERIALIZED_NAME_COUPON_FAILED_ATTEMPTS)
-  private Integer couponFailedAttempts;
+  private Long couponFailedAttempts;
 
   public static final String SERIALIZED_NAME_ACCRUED_DISCOUNTS = "accruedDiscounts";
   @SerializedName(SERIALIZED_NAME_ACCRUED_DISCOUNTS)
@@ -74,115 +73,111 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_TOTAL_ORDERS = "totalOrders";
   @SerializedName(SERIALIZED_NAME_TOTAL_ORDERS)
-  private Integer totalOrders;
+  private Long totalOrders;
 
   public static final String SERIALIZED_NAME_TOTAL_ORDERS_NO_COUPON = "totalOrdersNoCoupon";
   @SerializedName(SERIALIZED_NAME_TOTAL_ORDERS_NO_COUPON)
-  private Integer totalOrdersNoCoupon;
+  private Long totalOrdersNoCoupon;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
   private String campaignName;
 
-
   public CustomerActivityReport integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID set by your integration layer.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public CustomerActivityReport created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public CustomerActivityReport name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name for this customer profile.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name for this customer profile.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public CustomerActivityReport customerId(Long customerId) {
 
-  public CustomerActivityReport customerId(Integer customerId) {
-    
     this.customerId = customerId;
     return this;
   }
 
-   /**
+  /**
    * The internal Talon.One ID of the customer.
+   * 
    * @return customerId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The internal Talon.One ID of the customer.")
 
-  public Integer getCustomerId() {
+  public Long getCustomerId() {
     return customerId;
   }
 
-
-  public void setCustomerId(Integer customerId) {
+  public void setCustomerId(Long customerId) {
     this.customerId = customerId;
   }
 
-
   public CustomerActivityReport lastActivity(OffsetDateTime lastActivity) {
-    
+
     this.lastActivity = lastActivity;
     return this;
   }
 
-   /**
+  /**
    * The last activity of the customer.
+   * 
    * @return lastActivity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The last activity of the customer.")
 
@@ -190,187 +185,177 @@ public class CustomerActivityReport {
     return lastActivity;
   }
 
-
   public void setLastActivity(OffsetDateTime lastActivity) {
     this.lastActivity = lastActivity;
   }
 
+  public CustomerActivityReport couponRedemptions(Long couponRedemptions) {
 
-  public CustomerActivityReport couponRedemptions(Integer couponRedemptions) {
-    
     this.couponRedemptions = couponRedemptions;
     return this;
   }
 
-   /**
+  /**
    * Number of coupon redemptions in all customer campaigns.
+   * 
    * @return couponRedemptions
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions in all customer campaigns.")
 
-  public Integer getCouponRedemptions() {
+  public Long getCouponRedemptions() {
     return couponRedemptions;
   }
 
-
-  public void setCouponRedemptions(Integer couponRedemptions) {
+  public void setCouponRedemptions(Long couponRedemptions) {
     this.couponRedemptions = couponRedemptions;
   }
 
+  public CustomerActivityReport couponUseAttempts(Long couponUseAttempts) {
 
-  public CustomerActivityReport couponUseAttempts(Integer couponUseAttempts) {
-    
     this.couponUseAttempts = couponUseAttempts;
     return this;
   }
 
-   /**
+  /**
    * Number of coupon use attempts in all customer campaigns.
+   * 
    * @return couponUseAttempts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of coupon use attempts in all customer campaigns.")
 
-  public Integer getCouponUseAttempts() {
+  public Long getCouponUseAttempts() {
     return couponUseAttempts;
   }
 
-
-  public void setCouponUseAttempts(Integer couponUseAttempts) {
+  public void setCouponUseAttempts(Long couponUseAttempts) {
     this.couponUseAttempts = couponUseAttempts;
   }
 
+  public CustomerActivityReport couponFailedAttempts(Long couponFailedAttempts) {
 
-  public CustomerActivityReport couponFailedAttempts(Integer couponFailedAttempts) {
-    
     this.couponFailedAttempts = couponFailedAttempts;
     return this;
   }
 
-   /**
+  /**
    * Number of failed coupon use attempts in all customer campaigns.
+   * 
    * @return couponFailedAttempts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of failed coupon use attempts in all customer campaigns.")
 
-  public Integer getCouponFailedAttempts() {
+  public Long getCouponFailedAttempts() {
     return couponFailedAttempts;
   }
 
-
-  public void setCouponFailedAttempts(Integer couponFailedAttempts) {
+  public void setCouponFailedAttempts(Long couponFailedAttempts) {
     this.couponFailedAttempts = couponFailedAttempts;
   }
 
-
   public CustomerActivityReport accruedDiscounts(BigDecimal accruedDiscounts) {
-    
+
     this.accruedDiscounts = accruedDiscounts;
     return this;
   }
 
-   /**
+  /**
    * Number of accrued discounts in all customer campaigns.
+   * 
    * @return accruedDiscounts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of accrued discounts in all customer campaigns.")
 
   public BigDecimal getAccruedDiscounts() {
     return accruedDiscounts;
   }
 
-
   public void setAccruedDiscounts(BigDecimal accruedDiscounts) {
     this.accruedDiscounts = accruedDiscounts;
   }
 
-
   public CustomerActivityReport accruedRevenue(BigDecimal accruedRevenue) {
-    
+
     this.accruedRevenue = accruedRevenue;
     return this;
   }
 
-   /**
+  /**
    * Amount of accrued revenue in all customer campaigns.
+   * 
    * @return accruedRevenue
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Amount of accrued revenue in all customer campaigns.")
 
   public BigDecimal getAccruedRevenue() {
     return accruedRevenue;
   }
 
-
   public void setAccruedRevenue(BigDecimal accruedRevenue) {
     this.accruedRevenue = accruedRevenue;
   }
 
+  public CustomerActivityReport totalOrders(Long totalOrders) {
 
-  public CustomerActivityReport totalOrders(Integer totalOrders) {
-    
     this.totalOrders = totalOrders;
     return this;
   }
 
-   /**
+  /**
    * Number of orders in all customer campaigns.
+   * 
    * @return totalOrders
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of orders in all customer campaigns.")
 
-  public Integer getTotalOrders() {
+  public Long getTotalOrders() {
     return totalOrders;
   }
 
-
-  public void setTotalOrders(Integer totalOrders) {
+  public void setTotalOrders(Long totalOrders) {
     this.totalOrders = totalOrders;
   }
 
+  public CustomerActivityReport totalOrdersNoCoupon(Long totalOrdersNoCoupon) {
 
-  public CustomerActivityReport totalOrdersNoCoupon(Integer totalOrdersNoCoupon) {
-    
     this.totalOrdersNoCoupon = totalOrdersNoCoupon;
     return this;
   }
 
-   /**
+  /**
    * Number of orders without coupon used in all customer campaigns.
+   * 
    * @return totalOrdersNoCoupon
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Number of orders without coupon used in all customer campaigns.")
 
-  public Integer getTotalOrdersNoCoupon() {
+  public Long getTotalOrdersNoCoupon() {
     return totalOrdersNoCoupon;
   }
 
-
-  public void setTotalOrdersNoCoupon(Integer totalOrdersNoCoupon) {
+  public void setTotalOrdersNoCoupon(Long totalOrdersNoCoupon) {
     this.totalOrdersNoCoupon = totalOrdersNoCoupon;
   }
 
-
   public CustomerActivityReport campaignName(String campaignName) {
-    
+
     this.campaignName = campaignName;
     return this;
   }
 
-   /**
+  /**
    * The name of the campaign this customer belongs to.
+   * 
    * @return campaignName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the campaign this customer belongs to.")
 
   public String getCampaignName() {
     return campaignName;
   }
 
-
   public void setCampaignName(String campaignName) {
     this.campaignName = campaignName;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -398,9 +383,9 @@ public class CustomerActivityReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrationId, created, name, customerId, lastActivity, couponRedemptions, couponUseAttempts, couponFailedAttempts, accruedDiscounts, accruedRevenue, totalOrders, totalOrdersNoCoupon, campaignName);
+    return Objects.hash(integrationId, created, name, customerId, lastActivity, couponRedemptions, couponUseAttempts,
+        couponFailedAttempts, accruedDiscounts, accruedRevenue, totalOrders, totalOrdersNoCoupon, campaignName);
   }
-
 
   @Override
   public String toString() {
@@ -435,4 +420,3 @@ public class CustomerActivityReport {
   }
 
 }
-

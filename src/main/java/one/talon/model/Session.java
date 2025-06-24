@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Session {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -42,72 +41,68 @@ public class Session {
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
+  public Session userId(Long userId) {
 
-  public Session userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user of this session.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "109", required = true, value = "The ID of the user of this session.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public Session token(String token) {
-    
+
     this.token = token;
     return this;
   }
 
-   /**
+  /**
    * The token to use as a bearer token to query Management API endpoints.
+   * 
    * @return token
-  **/
+   **/
   @ApiModelProperty(example = "dy_Fa_lQ4iDAnqldJFvVEmnsN8xDTxej19l0LZDBJhQ", required = true, value = "The token to use as a bearer token to query Management API endpoints.")
 
   public String getToken() {
     return token;
   }
 
-
   public void setToken(String token) {
     this.token = token;
   }
 
-
   public Session created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Unix timestamp indicating when the session was first created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2021-07-20T22:00Z", required = true, value = "Unix timestamp indicating when the session was first created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,7 +122,6 @@ public class Session {
   public int hashCode() {
     return Objects.hash(userId, token, created);
   }
-
 
   @Override
   public String toString() {
@@ -152,4 +146,3 @@ public class Session {
   }
 
 }
-

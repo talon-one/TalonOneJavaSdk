@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,19 +40,19 @@ public class MessageLogResponse {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
-
+  private Long status;
 
   public MessageLogResponse createdAt(OffsetDateTime createdAt) {
-    
+
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the response was received.
+   * 
    * @return createdAt
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00:50Z", value = "Timestamp when the response was received.")
 
@@ -61,22 +60,21 @@ public class MessageLogResponse {
     return createdAt;
   }
 
-
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-
   public MessageLogResponse response(byte[] response) {
-    
+
     this.response = response;
     return this;
   }
 
-   /**
+  /**
    * Raw response data.
+   * 
    * @return response
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "UmVzcG9uc2UgY29udGVudA==", value = "Raw response data.")
 
@@ -84,34 +82,31 @@ public class MessageLogResponse {
     return response;
   }
 
-
   public void setResponse(byte[] response) {
     this.response = response;
   }
 
+  public MessageLogResponse status(Long status) {
 
-  public MessageLogResponse status(Integer status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * HTTP status code of the response.
+   * 
    * @return status
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "200", value = "HTTP status code of the response.")
 
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
-
-  public void setStatus(Integer status) {
+  public void setStatus(Long status) {
     this.status = status;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -131,7 +126,6 @@ public class MessageLogResponse {
   public int hashCode() {
     return Objects.hash(createdAt, Arrays.hashCode(response), status);
   }
-
 
   @Override
   public String toString() {
@@ -156,4 +150,3 @@ public class MessageLogResponse {
   }
 
 }
-

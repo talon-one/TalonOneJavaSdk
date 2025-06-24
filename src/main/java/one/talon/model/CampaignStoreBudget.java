@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignStoreBudget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,107 +42,102 @@ public class CampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Integer storeId;
+  private Long storeId;
 
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<CampaignStoreBudgetLimitConfig> limits = new ArrayList<CampaignStoreBudgetLimitConfig>();
 
+  public CampaignStoreBudget id(Long id) {
 
-  public CampaignStoreBudget id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CampaignStoreBudget created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CampaignStoreBudget campaignId(Long campaignId) {
 
-  public CampaignStoreBudget campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public CampaignStoreBudget storeId(Long storeId) {
 
-  public CampaignStoreBudget storeId(Integer storeId) {
-    
     this.storeId = storeId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the store.
+   * 
    * @return storeId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The ID of the store.")
 
-  public Integer getStoreId() {
+  public Long getStoreId() {
     return storeId;
   }
 
-
-  public void setStoreId(Integer storeId) {
+  public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
 
-
   public CampaignStoreBudget limits(List<CampaignStoreBudgetLimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -153,21 +147,20 @@ public class CampaignStoreBudget {
     return this;
   }
 
-   /**
+  /**
    * The set of budget limits for stores linked to the campaign.
+   * 
    * @return limits
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The set of budget limits for stores linked to the campaign.")
 
   public List<CampaignStoreBudgetLimitConfig> getLimits() {
     return limits;
   }
 
-
   public void setLimits(List<CampaignStoreBudgetLimitConfig> limits) {
     this.limits = limits;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -189,7 +182,6 @@ public class CampaignStoreBudget {
   public int hashCode() {
     return Objects.hash(id, created, campaignId, storeId, limits);
   }
-
 
   @Override
   public String toString() {
@@ -216,4 +208,3 @@ public class CampaignStoreBudget {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class OutgoingIntegrationType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -49,61 +48,59 @@ public class OutgoingIntegrationType {
   @SerializedName(SERIALIZED_NAME_DOCUMENTATION_LINK)
   private String documentationLink;
 
+  public OutgoingIntegrationType id(Long id) {
 
-  public OutgoingIntegrationType id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID for this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public OutgoingIntegrationType name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the outgoing integration.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Braze", required = true, value = "Name of the outgoing integration.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public OutgoingIntegrationType description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of the outgoing integration.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Braze is a customer data platform", value = "Description of the outgoing integration.")
 
@@ -111,22 +108,21 @@ public class OutgoingIntegrationType {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public OutgoingIntegrationType category(String category) {
-    
+
     this.category = category;
     return this;
   }
 
-   /**
+  /**
    * Category of the outgoing integration.
+   * 
    * @return category
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "customer engagement platform", value = "Category of the outgoing integration.")
 
@@ -134,22 +130,21 @@ public class OutgoingIntegrationType {
     return category;
   }
 
-
   public void setCategory(String category) {
     this.category = category;
   }
 
-
   public OutgoingIntegrationType documentationLink(String documentationLink) {
-    
+
     this.documentationLink = documentationLink;
     return this;
   }
 
-   /**
+  /**
    * Http link to the outgoing integration&#39;s documentation.
+   * 
    * @return documentationLink
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "https://docs.talon.one/docs/dev/technology-partners/braze", value = "Http link to the outgoing integration's documentation.")
 
@@ -157,11 +152,9 @@ public class OutgoingIntegrationType {
     return documentationLink;
   }
 
-
   public void setDocumentationLink(String documentationLink) {
     this.documentationLink = documentationLink;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -183,7 +176,6 @@ public class OutgoingIntegrationType {
   public int hashCode() {
     return Objects.hash(id, name, description, category, documentationLink);
   }
-
 
   @Override
   public String toString() {
@@ -210,4 +202,3 @@ public class OutgoingIntegrationType {
   }
 
 }
-

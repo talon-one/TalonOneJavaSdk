@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,15 +32,15 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughEffect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
-  private Integer ruleIndex;
+  private Long ruleIndex;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -63,149 +62,143 @@ public class StrikethroughEffect {
   @SerializedName(SERIALIZED_NAME_END_TIME)
   private OffsetDateTime endTime;
 
+  public StrikethroughEffect campaignId(Long campaignId) {
 
-  public StrikethroughEffect campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that effect belongs to.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign that effect belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public StrikethroughEffect rulesetId(Long rulesetId) {
 
-  public StrikethroughEffect rulesetId(Integer rulesetId) {
-    
     this.rulesetId = rulesetId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the ruleset containing the rule that triggered this effect.
+   * 
    * @return rulesetId
-  **/
+   **/
   @ApiModelProperty(example = "11", required = true, value = "The ID of the ruleset containing the rule that triggered this effect.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
-
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 
+  public StrikethroughEffect ruleIndex(Long ruleIndex) {
 
-  public StrikethroughEffect ruleIndex(Integer ruleIndex) {
-    
     this.ruleIndex = ruleIndex;
     return this;
   }
 
-   /**
+  /**
    * The position of the rule that triggered this effect within the ruleset.
+   * 
    * @return ruleIndex
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The position of the rule that triggered this effect within the ruleset.")
 
-  public Integer getRuleIndex() {
+  public Long getRuleIndex() {
     return ruleIndex;
   }
 
-
-  public void setRuleIndex(Integer ruleIndex) {
+  public void setRuleIndex(Long ruleIndex) {
     this.ruleIndex = ruleIndex;
   }
 
-
   public StrikethroughEffect ruleName(String ruleName) {
-    
+
     this.ruleName = ruleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the rule that triggered this effect.
+   * 
    * @return ruleName
-  **/
+   **/
   @ApiModelProperty(example = "Add 2 points", required = true, value = "The name of the rule that triggered this effect.")
 
   public String getRuleName() {
     return ruleName;
   }
 
-
   public void setRuleName(String ruleName) {
     this.ruleName = ruleName;
   }
 
-
   public StrikethroughEffect type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * The type of this effect.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "setDiscountPerItem", required = true, value = "The type of this effect.")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public StrikethroughEffect props(Object props) {
-    
+
     this.props = props;
     return this;
   }
 
-   /**
+  /**
    * Get props
+   * 
    * @return props
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public Object getProps() {
     return props;
   }
 
-
   public void setProps(Object props) {
     this.props = props;
   }
 
-
   public StrikethroughEffect startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * The start of the time frame where the effect is active in UTC.
+   * 
    * @return startTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "The start of the time frame where the effect is active in UTC.")
 
@@ -213,22 +206,21 @@ public class StrikethroughEffect {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public StrikethroughEffect endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * The end of the time frame where the effect is active in UTC.
+   * 
    * @return endTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-10-01T02:00Z", value = "The end of the time frame where the effect is active in UTC.")
 
@@ -236,11 +228,9 @@ public class StrikethroughEffect {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -265,7 +255,6 @@ public class StrikethroughEffect {
   public int hashCode() {
     return Objects.hash(campaignId, rulesetId, ruleIndex, ruleName, type, props, startTime, endTime);
   }
-
 
   @Override
   public String toString() {
@@ -295,4 +284,3 @@ public class StrikethroughEffect {
   }
 
 }
-

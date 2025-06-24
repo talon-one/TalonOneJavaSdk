@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,37 +33,35 @@ import one.talon.model.MultipleAudiencesItem;
 public class MultipleAudiences {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_AUDIENCES = "audiences";
   @SerializedName(SERIALIZED_NAME_AUDIENCES)
   private List<MultipleAudiencesItem> audiences = new ArrayList<MultipleAudiencesItem>();
 
+  public MultipleAudiences accountId(Long accountId) {
 
-  public MultipleAudiences accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public MultipleAudiences audiences(List<MultipleAudiencesItem> audiences) {
-    
+
     this.audiences = audiences;
     return this;
   }
@@ -74,21 +71,20 @@ public class MultipleAudiences {
     return this;
   }
 
-   /**
+  /**
    * Get audiences
+   * 
    * @return audiences
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<MultipleAudiencesItem> getAudiences() {
     return audiences;
   }
 
-
   public void setAudiences(List<MultipleAudiencesItem> audiences) {
     this.audiences = audiences;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -107,7 +103,6 @@ public class MultipleAudiences {
   public int hashCode() {
     return Objects.hash(accountId, audiences);
   }
-
 
   @Override
   public String toString() {
@@ -131,4 +126,3 @@ public class MultipleAudiences {
   }
 
 }
-

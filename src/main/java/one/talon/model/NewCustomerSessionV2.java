@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -49,7 +48,7 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_COUPON_CODES = "couponCodes";
   @SerializedName(SERIALIZED_NAME_COUPON_CODES)
@@ -64,16 +63,29 @@ public class NewCustomerSessionV2 {
   private List<String> loyaltyCards = null;
 
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. Either: - &#x60;closed&#x60; → &#x60;cancelled&#x60;
+   * (**only** via [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2))
+   * or - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via
+   * [Return cart
+   * items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))
+   * - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession))
+   * 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60; For more
+   * information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     OPEN("open"),
-    
+
     CLOSED("closed"),
-    
+
     PARTIALLY_RETURNED("partially_returned"),
-    
+
     CANCELLED("cancelled");
 
     private String value;
@@ -108,7 +120,7 @@ public class NewCustomerSessionV2 {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -132,21 +144,23 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
+  /* allow Serializing null for this field */
+  @JsonNullable
   private Object attributes;
 
-
   public NewCustomerSessionV2 profileId(String profileId) {
-    
+
     this.profileId = profileId;
     return this;
   }
 
-   /**
-   * ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;. 
+  /**
+   * ID of the customer profile set by your integration layer. **Note:** If the
+   * customer does not yet have a known &#x60;profileId&#x60;, we recommend you
+   * use a guest &#x60;profileId&#x60;.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. ")
 
@@ -154,22 +168,21 @@ public class NewCustomerSessionV2 {
     return profileId;
   }
 
-
   public void setProfileId(String profileId) {
     this.profileId = profileId;
   }
 
-
   public NewCustomerSessionV2 storeIntegrationId(String storeIntegrationId) {
-    
+
     this.storeIntegrationId = storeIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the store. You choose this ID when you create a store.
+   * 
    * @return storeIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
 
@@ -177,45 +190,45 @@ public class NewCustomerSessionV2 {
     return storeIntegrationId;
   }
 
-
   public void setStoreIntegrationId(String storeIntegrationId) {
     this.storeIntegrationId = storeIntegrationId;
   }
 
+  public NewCustomerSessionV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
 
-  public NewCustomerSessionV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
-    
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public NewCustomerSessionV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public NewCustomerSessionV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
   }
 
-   /**
-   * When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
+  /**
+   * When using the &#x60;dry&#x60; query parameter, use this property to list the
+   * campaign to be evaluated by the Rule Engine. These campaigns will be
+   * evaluated, even if they are disabled, allowing you to test specific campaigns
+   * before activating them.
+   * 
    * @return evaluableCampaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
-
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 
-
   public NewCustomerSessionV2 couponCodes(List<String> couponCodes) {
-    
+
     this.couponCodes = couponCodes;
     return this;
   }
@@ -228,10 +241,17 @@ public class NewCustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty array discards any previous coupons. To avoid this, provide &#x60;\&quot;couponCodes\&quot;: null&#x60; or omit the parameter entirely. 
+  /**
+   * Any coupon codes entered. **Important - for requests only**: - If you [create
+   * a coupon
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign, ensure the session contains a coupon code by the time you
+   * close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty
+   * array discards any previous coupons. To avoid this, provide
+   * &#x60;\&quot;couponCodes\&quot;: null&#x60; or omit the parameter entirely.
+   * 
    * @return couponCodes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, provide `\"couponCodes\": null` or omit the parameter entirely. ")
 
@@ -239,22 +259,27 @@ public class NewCustomerSessionV2 {
     return couponCodes;
   }
 
-
   public void setCouponCodes(List<String> couponCodes) {
     this.couponCodes = couponCodes;
   }
 
-
   public NewCustomerSessionV2 referralCode(String referralCode) {
-    
+
     this.referralCode = referralCode;
     return this;
   }
 
-   /**
-   * Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty value discards the previous referral code. To avoid this, provide &#x60;\&quot;referralCode\&quot;: null&#x60; or omit the parameter entirely. 
+  /**
+   * Any referral code entered. **Important - for requests only**: - If you
+   * [create a referral
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign, ensure the session contains a referral code by the time
+   * you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an
+   * empty value discards the previous referral code. To avoid this, provide
+   * &#x60;\&quot;referralCode\&quot;: null&#x60; or omit the parameter entirely.
+   * 
    * @return referralCode
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, provide `\"referralCode\": null` or omit the parameter entirely. ")
 
@@ -262,14 +287,12 @@ public class NewCustomerSessionV2 {
     return referralCode;
   }
 
-
   public void setReferralCode(String referralCode) {
     this.referralCode = referralCode;
   }
 
-
   public NewCustomerSessionV2 loyaltyCards(List<String> loyaltyCards) {
-    
+
     this.loyaltyCards = loyaltyCards;
     return this;
   }
@@ -282,10 +305,11 @@ public class NewCustomerSessionV2 {
     return this;
   }
 
-   /**
+  /**
    * Identifier of a loyalty card.
+   * 
    * @return loyaltyCards
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifier of a loyalty card.")
 
@@ -293,22 +317,34 @@ public class NewCustomerSessionV2 {
     return loyaltyCards;
   }
 
-
   public void setLoyaltyCards(List<String> loyaltyCards) {
     this.loyaltyCards = loyaltyCards;
   }
 
-
   public NewCustomerSessionV2 state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+  /**
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. Either: - &#x60;closed&#x60; → &#x60;cancelled&#x60;
+   * (**only** via [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2))
+   * or - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via
+   * [Return cart
+   * items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))
+   * - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession))
+   * 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60; For more
+   * information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+   * 
    * @return state
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "open", value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. Either:    - `closed` → `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` → `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` → `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
@@ -316,14 +352,12 @@ public class NewCustomerSessionV2 {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
-
   public NewCustomerSessionV2 cartItems(List<CartItem> cartItems) {
-    
+
     this.cartItems = cartItems;
     return this;
   }
@@ -336,10 +370,13 @@ public class NewCustomerSessionV2 {
     return this;
   }
 
-   /**
-   * The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item&#39;s &#x60;quantity&#x60; **does not exceed 10.000** per request. 
+  /**
+   * The items to add to this session. **Do not exceed 1000 items** and ensure the
+   * sum of all cart item&#39;s &#x60;quantity&#x60; **does not exceed 10.000**
+   * per request.
+   * 
    * @return cartItems
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item's `quantity` **does not exceed 10.000** per request. ")
 
@@ -347,14 +384,12 @@ public class NewCustomerSessionV2 {
     return cartItems;
   }
 
-
   public void setCartItems(List<CartItem> cartItems) {
     this.cartItems = cartItems;
   }
 
-
   public NewCustomerSessionV2 additionalCosts(Map<String, AdditionalCost> additionalCosts) {
-    
+
     this.additionalCosts = additionalCosts;
     return this;
   }
@@ -367,10 +402,14 @@ public class NewCustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Use this property to set a value for the additional costs of this session, such as a shipping cost.  They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). 
+  /**
+   * Use this property to set a value for the additional costs of this session,
+   * such as a shipping cost. They must be created in the Campaign Manager before
+   * you set them with this property. See [Managing additional
+   * costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs).
+   * 
    * @return additionalCosts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"shipping\":{\"price\":9}}", value = "Use this property to set a value for the additional costs of this session, such as a shipping cost.  They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). ")
 
@@ -378,14 +417,12 @@ public class NewCustomerSessionV2 {
     return additionalCosts;
   }
 
-
   public void setAdditionalCosts(Map<String, AdditionalCost> additionalCosts) {
     this.additionalCosts = additionalCosts;
   }
 
-
   public NewCustomerSessionV2 identifiers(List<String> identifiers) {
-    
+
     this.identifiers = identifiers;
     return this;
   }
@@ -398,10 +435,20 @@ public class NewCustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). 
+  /**
+   * Session custom identifiers that you can set limits on or use inside your
+   * rules. For example, you can use IP addresses as identifiers to potentially
+   * identify devices and limit discounts abuse in case of customers creating
+   * multiple accounts. See the
+   * [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).
+   * **Important**: Ensure the session contains an identifier by the time you
+   * close it if: - You [create a unique identifier
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign. - Your campaign has
+   * [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview).
+   * 
    * @return identifiers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[91.11.156.141]", value = "Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). ")
 
@@ -409,22 +456,28 @@ public class NewCustomerSessionV2 {
     return identifiers;
   }
 
-
   public void setIdentifiers(List<String> identifiers) {
     this.identifiers = identifiers;
   }
 
-
   public NewCustomerSessionV2 attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
-   * Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property. 
+  /**
+   * Use this property to set a value for the attributes of your choice.
+   * Attributes represent any information to attach to your session, like the
+   * shipping city. You can use [built-in
+   * attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes)
+   * or [custom
+   * ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes).
+   * Custom attributes must be created in the Campaign Manager before you set them
+   * with this property.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"ShippingCity\":\"Berlin\"}", value = "Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property. ")
 
@@ -432,11 +485,9 @@ public class NewCustomerSessionV2 {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -462,9 +513,9 @@ public class NewCustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes);
+    return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards,
+        state, cartItems, additionalCosts, identifiers, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -497,4 +548,3 @@ public class NewCustomerSessionV2 {
   }
 
 }
-

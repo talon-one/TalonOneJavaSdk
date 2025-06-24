@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -45,7 +44,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Environment {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,7 +52,7 @@ public class Environment {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_SLOTS = "slots";
   @SerializedName(SERIALIZED_NAME_SLOTS)
@@ -103,75 +102,71 @@ public class Environment {
   @SerializedName(SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTERS)
   private List<ApplicationCIF> applicationCartItemFilters = null;
 
+  public Environment id(Long id) {
 
-  public Environment id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Environment created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Environment applicationId(Long applicationId) {
 
-  public Environment applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public Environment slots(List<SlotDef> slots) {
-    
+
     this.slots = slots;
     return this;
   }
@@ -181,24 +176,23 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The slots defined for this application.
+   * 
    * @return slots
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The slots defined for this application.")
 
   public List<SlotDef> getSlots() {
     return slots;
   }
 
-
   public void setSlots(List<SlotDef> slots) {
     this.slots = slots;
   }
 
-
   public Environment functions(List<FunctionDef> functions) {
-    
+
     this.functions = functions;
     return this;
   }
@@ -208,24 +202,23 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The functions defined for this application.
+   * 
    * @return functions
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The functions defined for this application.")
 
   public List<FunctionDef> getFunctions() {
     return functions;
   }
 
-
   public void setFunctions(List<FunctionDef> functions) {
     this.functions = functions;
   }
 
-
   public Environment templates(List<TemplateDef> templates) {
-    
+
     this.templates = templates;
     return this;
   }
@@ -235,46 +228,44 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The templates defined for this application.
+   * 
    * @return templates
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The templates defined for this application.")
 
   public List<TemplateDef> getTemplates() {
     return templates;
   }
 
-
   public void setTemplates(List<TemplateDef> templates) {
     this.templates = templates;
   }
 
-
   public Environment variables(String variables) {
-    
+
     this.variables = variables;
     return this;
   }
 
-   /**
+  /**
    * A stringified version of the environment&#39;s Talang variables scope.
+   * 
    * @return variables
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A stringified version of the environment's Talang variables scope.")
 
   public String getVariables() {
     return variables;
   }
 
-
   public void setVariables(String variables) {
     this.variables = variables;
   }
 
-
   public Environment giveawaysPools(List<GiveawaysPool> giveawaysPools) {
-    
+
     this.giveawaysPools = giveawaysPools;
     return this;
   }
@@ -287,10 +278,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The giveaways pools that the application is subscribed to.
+   * 
    * @return giveawaysPools
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The giveaways pools that the application is subscribed to.")
 
@@ -298,14 +290,12 @@ public class Environment {
     return giveawaysPools;
   }
 
-
   public void setGiveawaysPools(List<GiveawaysPool> giveawaysPools) {
     this.giveawaysPools = giveawaysPools;
   }
 
-
   public Environment loyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
-    
+
     this.loyaltyPrograms = loyaltyPrograms;
     return this;
   }
@@ -318,10 +308,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The loyalty programs that the application is subscribed to.
+   * 
    * @return loyaltyPrograms
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The loyalty programs that the application is subscribed to.")
 
@@ -329,14 +320,12 @@ public class Environment {
     return loyaltyPrograms;
   }
 
-
   public void setLoyaltyPrograms(List<LoyaltyProgram> loyaltyPrograms) {
     this.loyaltyPrograms = loyaltyPrograms;
   }
 
-
   public Environment achievements(List<Achievement> achievements) {
-    
+
     this.achievements = achievements;
     return this;
   }
@@ -349,10 +338,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The achievements, linked to the campaigns, belonging to the application.
+   * 
    * @return achievements
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievements, linked to the campaigns, belonging to the application.")
 
@@ -360,14 +350,12 @@ public class Environment {
     return achievements;
   }
 
-
   public void setAchievements(List<Achievement> achievements) {
     this.achievements = achievements;
   }
 
-
   public Environment attributes(List<Attribute> attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
@@ -380,10 +368,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The attributes that the application is subscribed to.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The attributes that the application is subscribed to.")
 
@@ -391,14 +380,12 @@ public class Environment {
     return attributes;
   }
 
-
   public void setAttributes(List<Attribute> attributes) {
     this.attributes = attributes;
   }
 
-
   public Environment additionalCosts(List<AccountAdditionalCost> additionalCosts) {
-    
+
     this.additionalCosts = additionalCosts;
     return this;
   }
@@ -411,10 +398,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The additional costs that the application is subscribed to.
+   * 
    * @return additionalCosts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The additional costs that the application is subscribed to.")
 
@@ -422,14 +410,12 @@ public class Environment {
     return additionalCosts;
   }
 
-
   public void setAdditionalCosts(List<AccountAdditionalCost> additionalCosts) {
     this.additionalCosts = additionalCosts;
   }
 
-
   public Environment audiences(List<Audience> audiences) {
-    
+
     this.audiences = audiences;
     return this;
   }
@@ -442,10 +428,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The audiences contained in the account which the application belongs to.
+   * 
    * @return audiences
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The audiences contained in the account which the application belongs to.")
 
@@ -453,14 +440,12 @@ public class Environment {
     return audiences;
   }
 
-
   public void setAudiences(List<Audience> audiences) {
     this.audiences = audiences;
   }
 
-
   public Environment collections(List<Collection> collections) {
-    
+
     this.collections = collections;
     return this;
   }
@@ -473,10 +458,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The account-level collections that the application is subscribed to.
+   * 
    * @return collections
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The account-level collections that the application is subscribed to.")
 
@@ -484,14 +470,12 @@ public class Environment {
     return collections;
   }
 
-
   public void setCollections(List<Collection> collections) {
     this.collections = collections;
   }
 
-
   public Environment applicationCartItemFilters(List<ApplicationCIF> applicationCartItemFilters) {
-    
+
     this.applicationCartItemFilters = applicationCartItemFilters;
     return this;
   }
@@ -504,10 +488,11 @@ public class Environment {
     return this;
   }
 
-   /**
+  /**
    * The cart item filters belonging to the Application.
+   * 
    * @return applicationCartItemFilters
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The cart item filters belonging to the Application.")
 
@@ -515,11 +500,9 @@ public class Environment {
     return applicationCartItemFilters;
   }
 
-
   public void setApplicationCartItemFilters(List<ApplicationCIF> applicationCartItemFilters) {
     this.applicationCartItemFilters = applicationCartItemFilters;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -549,9 +532,9 @@ public class Environment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools,
+        loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters);
   }
-
 
   @Override
   public String toString() {
@@ -588,4 +571,3 @@ public class Environment {
   }
 
 }
-

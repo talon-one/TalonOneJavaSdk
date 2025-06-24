@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp when the campaign will become inactive. |  [optional]
 **attributes** | [**Object**](.md) | Arbitrary properties associated with this campaign. |  [optional]
 **description** | **String** | A detailed description of the campaign. |  [optional]
-**activeRulesetId** | **Integer** | The ID of the ruleset this campaign template will use. |  [optional]
+**activeRulesetId** | **Long** | The ID of the ruleset this campaign template will use. |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign template. |  [optional]
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **referralSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]

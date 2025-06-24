@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -40,7 +39,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CustomerSessionV2 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -52,7 +51,7 @@ public class CustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -64,7 +63,7 @@ public class CustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_COUPON_CODES = "couponCodes";
   @SerializedName(SERIALIZED_NAME_COUPON_CODES)
@@ -79,16 +78,29 @@ public class CustomerSessionV2 {
   private List<String> loyaltyCards = null;
 
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. Either: - &#x60;closed&#x60; → &#x60;cancelled&#x60;
+   * (**only** via [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2))
+   * or - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via
+   * [Return cart
+   * items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))
+   * - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession))
+   * 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60; For more
+   * information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     OPEN("open"),
-    
+
     CLOSED("closed"),
-    
+
     PARTIALLY_RETURNED("partially_returned"),
-    
+
     CANCELLED("cancelled");
 
     private String value;
@@ -123,7 +135,7 @@ public class CustomerSessionV2 {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -169,127 +181,124 @@ public class CustomerSessionV2 {
   @SerializedName(SERIALIZED_NAME_UPDATED)
   private OffsetDateTime updated;
 
+  public CustomerSessionV2 id(Long id) {
 
-  public CustomerSessionV2 id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CustomerSessionV2 created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public CustomerSessionV2 integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID set by your integration layer.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
+  public CustomerSessionV2 applicationId(Long applicationId) {
 
-  public CustomerSessionV2 applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public CustomerSessionV2 profileId(String profileId) {
-    
+
     this.profileId = profileId;
     return this;
   }
 
-   /**
-   * ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;. 
+  /**
+   * ID of the customer profile set by your integration layer. **Note:** If the
+   * customer does not yet have a known &#x60;profileId&#x60;, we recommend you
+   * use a guest &#x60;profileId&#x60;.
+   * 
    * @return profileId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. ")
 
   public String getProfileId() {
     return profileId;
   }
 
-
   public void setProfileId(String profileId) {
     this.profileId = profileId;
   }
 
-
   public CustomerSessionV2 storeIntegrationId(String storeIntegrationId) {
-    
+
     this.storeIntegrationId = storeIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the store. You choose this ID when you create a store.
+   * 
    * @return storeIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
 
@@ -297,45 +306,45 @@ public class CustomerSessionV2 {
     return storeIntegrationId;
   }
 
-
   public void setStoreIntegrationId(String storeIntegrationId) {
     this.storeIntegrationId = storeIntegrationId;
   }
 
+  public CustomerSessionV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
 
-  public CustomerSessionV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
-    
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public CustomerSessionV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public CustomerSessionV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
   }
 
-   /**
-   * When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
+  /**
+   * When using the &#x60;dry&#x60; query parameter, use this property to list the
+   * campaign to be evaluated by the Rule Engine. These campaigns will be
+   * evaluated, even if they are disabled, allowing you to test specific campaigns
+   * before activating them.
+   * 
    * @return evaluableCampaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
-
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 
-
   public CustomerSessionV2 couponCodes(List<String> couponCodes) {
-    
+
     this.couponCodes = couponCodes;
     return this;
   }
@@ -348,10 +357,17 @@ public class CustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely. 
+  /**
+   * Any coupon codes entered. **Important - for requests only**: - If you [create
+   * a coupon
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign, ensure the session contains a coupon code by the time you
+   * close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty
+   * array discards any previous coupons. To avoid this, omit the parameter
+   * entirely.
+   * 
    * @return couponCodes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[XMAS-20-2021]", value = "Any coupon codes entered.  **Important - for requests only**:  - If you [create a coupon budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a coupon code by the time you close it. - In requests where `dry=false`, providing an empty array discards any previous coupons. To avoid this, omit the parameter entirely. ")
 
@@ -359,22 +375,27 @@ public class CustomerSessionV2 {
     return couponCodes;
   }
 
-
   public void setCouponCodes(List<String> couponCodes) {
     this.couponCodes = couponCodes;
   }
 
-
   public CustomerSessionV2 referralCode(String referralCode) {
-    
+
     this.referralCode = referralCode;
     return this;
   }
 
-   /**
-   * Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely. 
+  /**
+   * Any referral code entered. **Important - for requests only**: - If you
+   * [create a referral
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign, ensure the session contains a referral code by the time
+   * you close it. - In requests where &#x60;dry&#x3D;false&#x60;, providing an
+   * empty value discards the previous referral code. To avoid this, omit the
+   * parameter entirely.
+   * 
    * @return referralCode
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "NT2K54D9", value = "Any referral code entered.  **Important - for requests only**:  - If you [create a referral budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign, ensure the session contains a referral code by the time you close it. - In requests where `dry=false`, providing an empty value discards the previous referral code. To avoid this, omit the parameter entirely. ")
 
@@ -382,14 +403,12 @@ public class CustomerSessionV2 {
     return referralCode;
   }
 
-
   public void setReferralCode(String referralCode) {
     this.referralCode = referralCode;
   }
 
-
   public CustomerSessionV2 loyaltyCards(List<String> loyaltyCards) {
-    
+
     this.loyaltyCards = loyaltyCards;
     return this;
   }
@@ -402,10 +421,11 @@ public class CustomerSessionV2 {
     return this;
   }
 
-   /**
+  /**
    * Identifier of a loyalty card.
+   * 
    * @return loyaltyCards
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[loyalty-card-1]", value = "Identifier of a loyalty card.")
 
@@ -413,36 +433,46 @@ public class CustomerSessionV2 {
     return loyaltyCards;
   }
 
-
   public void setLoyaltyCards(List<String> loyaltyCards) {
     this.loyaltyCards = loyaltyCards;
   }
 
-
   public CustomerSessionV2 state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. Either:    - &#x60;closed&#x60; → &#x60;cancelled&#x60; (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+  /**
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. Either: - &#x60;closed&#x60; → &#x60;cancelled&#x60;
+   * (**only** via [Update customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2))
+   * or - &#x60;closed&#x60; → &#x60;partially_returned&#x60; (**only** via
+   * [Return cart
+   * items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))
+   * - &#x60;closed&#x60; → &#x60;open&#x60; (**only** via [Reopen customer
+   * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession))
+   * 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60; For more
+   * information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+   * 
    * @return state
-  **/
+   **/
   @ApiModelProperty(example = "open", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. Either:    - `closed` → `cancelled` (**only** via [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)) or    - `closed` → `partially_returned` (**only** via [Return cart items](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/returnCartItems))    - `closed` → `open` (**only** via [Reopen customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/reopenCustomerSession)) 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
   public StateEnum getState() {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
-
   public CustomerSessionV2 cartItems(List<CartItem> cartItems) {
-    
+
     this.cartItems = cartItems;
     return this;
   }
@@ -452,24 +482,25 @@ public class CustomerSessionV2 {
     return this;
   }
 
-   /**
-   * The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item&#39;s &#x60;quantity&#x60; **does not exceed 10.000** per request. 
+  /**
+   * The items to add to this session. **Do not exceed 1000 items** and ensure the
+   * sum of all cart item&#39;s &#x60;quantity&#x60; **does not exceed 10.000**
+   * per request.
+   * 
    * @return cartItems
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The items to add to this session. **Do not exceed 1000 items** and ensure the sum of all cart item's `quantity` **does not exceed 10.000** per request. ")
 
   public List<CartItem> getCartItems() {
     return cartItems;
   }
 
-
   public void setCartItems(List<CartItem> cartItems) {
     this.cartItems = cartItems;
   }
 
-
   public CustomerSessionV2 additionalCosts(Map<String, AdditionalCost> additionalCosts) {
-    
+
     this.additionalCosts = additionalCosts;
     return this;
   }
@@ -482,10 +513,14 @@ public class CustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Use this property to set a value for the additional costs of this session, such as a shipping cost.  They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). 
+  /**
+   * Use this property to set a value for the additional costs of this session,
+   * such as a shipping cost. They must be created in the Campaign Manager before
+   * you set them with this property. See [Managing additional
+   * costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs).
+   * 
    * @return additionalCosts
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"shipping\":{\"price\":9}}", value = "Use this property to set a value for the additional costs of this session, such as a shipping cost.  They must be created in the Campaign Manager before you set them with this property. See [Managing additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs). ")
 
@@ -493,14 +528,12 @@ public class CustomerSessionV2 {
     return additionalCosts;
   }
 
-
   public void setAdditionalCosts(Map<String, AdditionalCost> additionalCosts) {
     this.additionalCosts = additionalCosts;
   }
 
-
   public CustomerSessionV2 identifiers(List<String> identifiers) {
-    
+
     this.identifiers = identifiers;
     return this;
   }
@@ -513,10 +546,22 @@ public class CustomerSessionV2 {
     return this;
   }
 
-   /**
-   * Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). - We recommend passing an anonymized (hashed) version of the identifier value. 
+  /**
+   * Session custom identifiers that you can set limits on or use inside your
+   * rules. For example, you can use IP addresses as identifiers to potentially
+   * identify devices and limit discounts abuse in case of customers creating
+   * multiple accounts. See the
+   * [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).
+   * **Important**: Ensure the session contains an identifier by the time you
+   * close it if: - You [create a unique identifier
+   * budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types)
+   * for your campaign. - Your campaign has
+   * [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview).
+   * - We recommend passing an anonymized (hashed) version of the identifier
+   * value.
+   * 
    * @return identifiers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[d41306257915f83fe01e54092ae470f631161ea16fcf4415842eed41470386ea]", value = "Session custom identifiers that you can set limits on or use inside your rules.  For example, you can use IP addresses as identifiers to potentially identify devices and limit discounts abuse in case of customers creating multiple accounts. See the [tutorial](https://docs.talon.one/docs/dev/tutorials/using-identifiers).  **Important**: Ensure the session contains an identifier by the time you close it if: - You [create a unique identifier budget](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets/#budget-types) for your campaign. - Your campaign has [coupons](https://docs.talon.one/docs/product/campaigns/coupons/coupon-page-overview). - We recommend passing an anonymized (hashed) version of the identifier value. ")
 
@@ -524,143 +569,144 @@ public class CustomerSessionV2 {
     return identifiers;
   }
 
-
   public void setIdentifiers(List<String> identifiers) {
     this.identifiers = identifiers;
   }
 
-
   public CustomerSessionV2 attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
-   * Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property. 
+  /**
+   * Use this property to set a value for the attributes of your choice.
+   * Attributes represent any information to attach to your session, like the
+   * shipping city. You can use [built-in
+   * attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes)
+   * or [custom
+   * ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes).
+   * Custom attributes must be created in the Campaign Manager before you set them
+   * with this property.
+   * 
    * @return attributes
-  **/
+   **/
   @ApiModelProperty(example = "{\"ShippingCity\":\"Berlin\"}", required = true, value = "Use this property to set a value for the attributes of your choice. Attributes represent any information to attach to your session, like the shipping city.  You can use [built-in attributes](https://docs.talon.one/docs/dev/concepts/attributes#built-in-attributes) or [custom ones](https://docs.talon.one/docs/dev/concepts/attributes#custom-attributes). Custom attributes must be created in the Campaign Manager before you set them with this property. ")
 
   public Object getAttributes() {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public CustomerSessionV2 firstSession(Boolean firstSession) {
-    
+
     this.firstSession = firstSession;
     return this;
   }
 
-   /**
-   * Indicates whether this is the first session for the customer&#39;s profile. It&#39;s always &#x60;true&#x60; for anonymous sessions.
+  /**
+   * Indicates whether this is the first session for the customer&#39;s profile.
+   * It&#39;s always &#x60;true&#x60; for anonymous sessions.
+   * 
    * @return firstSession
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Indicates whether this is the first session for the customer's profile. It's always `true` for anonymous sessions.")
 
   public Boolean getFirstSession() {
     return firstSession;
   }
 
-
   public void setFirstSession(Boolean firstSession) {
     this.firstSession = firstSession;
   }
 
-
   public CustomerSessionV2 total(BigDecimal total) {
-    
+
     this.total = total;
     return this;
   }
 
-   /**
-   * The total value of cart items and additional costs in the session, before any discounts are applied.
+  /**
+   * The total value of cart items and additional costs in the session, before any
+   * discounts are applied.
+   * 
    * @return total
-  **/
+   **/
   @ApiModelProperty(example = "119.99", required = true, value = "The total value of cart items and additional costs in the session, before any discounts are applied.")
 
   public BigDecimal getTotal() {
     return total;
   }
 
-
   public void setTotal(BigDecimal total) {
     this.total = total;
   }
 
-
   public CustomerSessionV2 cartItemTotal(BigDecimal cartItemTotal) {
-    
+
     this.cartItemTotal = cartItemTotal;
     return this;
   }
 
-   /**
+  /**
    * The total value of cart items, before any discounts are applied.
+   * 
    * @return cartItemTotal
-  **/
+   **/
   @ApiModelProperty(example = "99.99", required = true, value = "The total value of cart items, before any discounts are applied.")
 
   public BigDecimal getCartItemTotal() {
     return cartItemTotal;
   }
 
-
   public void setCartItemTotal(BigDecimal cartItemTotal) {
     this.cartItemTotal = cartItemTotal;
   }
 
-
   public CustomerSessionV2 additionalCostTotal(BigDecimal additionalCostTotal) {
-    
+
     this.additionalCostTotal = additionalCostTotal;
     return this;
   }
 
-   /**
+  /**
    * The total value of additional costs, before any discounts are applied.
+   * 
    * @return additionalCostTotal
-  **/
+   **/
   @ApiModelProperty(example = "20.0", required = true, value = "The total value of additional costs, before any discounts are applied.")
 
   public BigDecimal getAdditionalCostTotal() {
     return additionalCostTotal;
   }
 
-
   public void setAdditionalCostTotal(BigDecimal additionalCostTotal) {
     this.additionalCostTotal = additionalCostTotal;
   }
 
-
   public CustomerSessionV2 updated(OffsetDateTime updated) {
-    
+
     this.updated = updated;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent event received on this session.
+   * 
    * @return updated
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-08T14:15:22Z", required = true, value = "Timestamp of the most recent event received on this session.")
 
   public OffsetDateTime getUpdated() {
     return updated;
   }
 
-
   public void setUpdated(OffsetDateTime updated) {
     this.updated = updated;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -695,9 +741,10 @@ public class CustomerSessionV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds, couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes, firstSession, total, cartItemTotal, additionalCostTotal, updated);
+    return Objects.hash(id, created, integrationId, applicationId, profileId, storeIntegrationId, evaluableCampaignIds,
+        couponCodes, referralCode, loyaltyCards, state, cartItems, additionalCosts, identifiers, attributes,
+        firstSession, total, cartItemTotal, additionalCostTotal, updated);
   }
-
 
   @Override
   public String toString() {
@@ -739,4 +786,3 @@ public class CustomerSessionV2 {
   }
 
 }
-

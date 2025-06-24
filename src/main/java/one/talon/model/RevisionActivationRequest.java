@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,50 +33,51 @@ import org.threeten.bp.OffsetDateTime;
 public class RevisionActivationRequest {
   public static final String SERIALIZED_NAME_USER_IDS = "userIds";
   @SerializedName(SERIALIZED_NAME_USER_IDS)
-  private List<Integer> userIds = new ArrayList<Integer>();
+  private List<Long> userIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
   private OffsetDateTime activateAt;
 
+  public RevisionActivationRequest userIds(List<Long> userIds) {
 
-  public RevisionActivationRequest userIds(List<Integer> userIds) {
-    
     this.userIds = userIds;
     return this;
   }
 
-  public RevisionActivationRequest addUserIdsItem(Integer userIdsItem) {
+  public RevisionActivationRequest addUserIdsItem(Long userIdsItem) {
     this.userIds.add(userIdsItem);
     return this;
   }
 
-   /**
+  /**
    * The list of IDs of the users who will receive the activation request.
+   * 
    * @return userIds
-  **/
+   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The list of IDs of the users who will receive the activation request.")
 
-  public List<Integer> getUserIds() {
+  public List<Long> getUserIds() {
     return userIds;
   }
 
-
-  public void setUserIds(List<Integer> userIds) {
+  public void setUserIds(List<Long> userIds) {
     this.userIds = userIds;
   }
 
-
   public RevisionActivationRequest activateAt(OffsetDateTime activateAt) {
-    
+
     this.activateAt = activateAt;
     return this;
   }
 
-   /**
-   * Time when the revisions are finalized after the &#x60;activate_revision&#x60; operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. 
+  /**
+   * Time when the revisions are finalized after the &#x60;activate_revision&#x60;
+   * operation. The current time is used when left blank. **Note:** It must be an
+   * RFC3339 timestamp string.
+   * 
    * @return activateAt
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Time when the revisions are finalized after the `activate_revision` operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. ")
 
@@ -85,11 +85,9 @@ public class RevisionActivationRequest {
     return activateAt;
   }
 
-
   public void setActivateAt(OffsetDateTime activateAt) {
     this.activateAt = activateAt;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -108,7 +106,6 @@ public class RevisionActivationRequest {
   public int hashCode() {
     return Objects.hash(userIds, activateAt);
   }
-
 
   @Override
   public String toString() {
@@ -132,4 +129,3 @@ public class RevisionActivationRequest {
   }
 
 }
-

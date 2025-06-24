@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Coupon {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +43,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -52,7 +51,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -60,7 +59,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -76,7 +75,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
-  private Integer usageCounter;
+  private Long usageCounter;
 
   public static final String SERIALIZED_NAME_DISCOUNT_COUNTER = "discountCounter";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNTER)
@@ -96,7 +95,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
@@ -104,7 +103,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_RESERVATION = "reservation";
   @SerializedName(SERIALIZED_NAME_RESERVATION)
@@ -122,131 +121,128 @@ public class Coupon {
   @SerializedName(SERIALIZED_NAME_IMPLICITLY_RESERVED)
   private Boolean implicitlyReserved;
 
+  public Coupon id(Long id) {
 
-  public Coupon id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Coupon created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Coupon campaignId(Long campaignId) {
 
-  public Coupon campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public Coupon value(String value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The coupon code.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(example = "XMAS-20-2021", required = true, value = "The coupon code.")
 
   public String getValue() {
     return value;
   }
 
-
   public void setValue(String value) {
     this.value = value;
   }
 
+  public Coupon usageLimit(Long usageLimit) {
 
-  public Coupon usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
+  /**
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means
+   * unlimited redemptions but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public Coupon discountLimit(BigDecimal discountLimit) {
-    
+
     this.discountLimit = discountLimit;
     return this;
   }
 
-   /**
-   * The total discount value that the code can give. Typically used to represent a gift card value. 
+  /**
+   * The total discount value that the code can give. Typically used to represent
+   * a gift card value.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return discountLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "30.0", value = "The total discount value that the code can give. Typically used to represent a gift card value. ")
 
@@ -254,47 +250,45 @@ public class Coupon {
     return discountLimit;
   }
 
-
   public void setDiscountLimit(BigDecimal discountLimit) {
     this.discountLimit = discountLimit;
   }
 
+  public Coupon reservationLimit(Long reservationLimit) {
 
-  public Coupon reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public Coupon startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the coupon becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-01-24T14:15:22Z", value = "Timestamp at which point the coupon becomes valid.")
 
@@ -302,22 +296,21 @@ public class Coupon {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public Coupon expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Expiration date of the coupon. Coupon never expires if this is omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
@@ -325,14 +318,12 @@ public class Coupon {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public Coupon limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -345,10 +336,14 @@ public class Coupon {
     return this;
   }
 
-   /**
-   * Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. 
+  /**
+   * Limits configuration for a coupon. These limits will override the limits set
+   * from the campaign. **Note:** Only usable when creating a single coupon which
+   * is not tied to a specific recipient. Only per-profile limits are allowed to
+   * be configured.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Limits configuration for a coupon. These limits will override the limits set from the campaign.  **Note:** Only usable when creating a single coupon which is not tied to a specific recipient. Only per-profile limits are allowed to be configured. ")
 
@@ -356,44 +351,43 @@ public class Coupon {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
+  public Coupon usageCounter(Long usageCounter) {
 
-  public Coupon usageCounter(Integer usageCounter) {
-    
     this.usageCounter = usageCounter;
     return this;
   }
 
-   /**
+  /**
    * The number of times the coupon has been successfully redeemed.
+   * 
    * @return usageCounter
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times the coupon has been successfully redeemed.")
 
-  public Integer getUsageCounter() {
+  public Long getUsageCounter() {
     return usageCounter;
   }
 
-
-  public void setUsageCounter(Integer usageCounter) {
+  public void setUsageCounter(Long usageCounter) {
     this.usageCounter = usageCounter;
   }
 
-
   public Coupon discountCounter(BigDecimal discountCounter) {
-    
+
     this.discountCounter = discountCounter;
     return this;
   }
 
-   /**
-   * The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon.
+  /**
+   * The amount of discounts given on rules redeeming this coupon. Only usable if
+   * a coupon discount budget was set for this coupon.
+   * 
    * @return discountCounter
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10.0", value = "The amount of discounts given on rules redeeming this coupon. Only usable if a coupon discount budget was set for this coupon.")
 
@@ -401,22 +395,21 @@ public class Coupon {
     return discountCounter;
   }
 
-
   public void setDiscountCounter(BigDecimal discountCounter) {
     this.discountCounter = discountCounter;
   }
 
-
   public Coupon discountRemainder(BigDecimal discountRemainder) {
-    
+
     this.discountRemainder = discountRemainder;
     return this;
   }
 
-   /**
+  /**
    * The remaining discount this coupon can give.
+   * 
    * @return discountRemainder
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5.0", value = "The remaining discount this coupon can give.")
 
@@ -424,22 +417,21 @@ public class Coupon {
     return discountRemainder;
   }
 
-
   public void setDiscountRemainder(BigDecimal discountRemainder) {
     this.discountRemainder = discountRemainder;
   }
 
-
   public Coupon reservationCounter(BigDecimal reservationCounter) {
-    
+
     this.reservationCounter = reservationCounter;
     return this;
   }
 
-   /**
+  /**
    * The number of times this coupon has been reserved.
+   * 
    * @return reservationCounter
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1.0", value = "The number of times this coupon has been reserved.")
 
@@ -447,22 +439,21 @@ public class Coupon {
     return reservationCounter;
   }
 
-
   public void setReservationCounter(BigDecimal reservationCounter) {
     this.reservationCounter = reservationCounter;
   }
 
-
   public Coupon attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Custom attributes associated with this coupon.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Custom attributes associated with this coupon.")
 
@@ -470,45 +461,44 @@ public class Coupon {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
+  public Coupon referralId(Long referralId) {
 
-  public Coupon referralId(Integer referralId) {
-    
     this.referralId = referralId;
     return this;
   }
 
-   /**
-   * The integration ID of the referring customer (if any) for whom this coupon was created as an effect.
+  /**
+   * The integration ID of the referring customer (if any) for whom this coupon
+   * was created as an effect.
+   * 
    * @return referralId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "326632952", value = "The integration ID of the referring customer (if any) for whom this coupon was created as an effect.")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
-
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 
-
   public Coupon recipientIntegrationId(String recipientIntegrationId) {
-    
+
     this.recipientIntegrationId = recipientIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The Integration ID of the customer that is allowed to redeem this coupon.
+   * 
    * @return recipientIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "The Integration ID of the customer that is allowed to redeem this coupon.")
 
@@ -516,45 +506,45 @@ public class Coupon {
     return recipientIntegrationId;
   }
 
-
   public void setRecipientIntegrationId(String recipientIntegrationId) {
     this.recipientIntegrationId = recipientIntegrationId;
   }
 
+  public Coupon importId(Long importId) {
 
-  public Coupon importId(Integer importId) {
-    
     this.importId = importId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Import which created this coupon.
+   * 
    * @return importId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this coupon.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
-
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
-
   public Coupon reservation(Boolean reservation) {
-    
+
     this.reservation = reservation;
     return this;
   }
 
-   /**
-   * Defines the reservation type: - &#x60;true&#x60;: The coupon can be reserved for multiple customers. - &#x60;false&#x60;: The coupon can be reserved only for one customer. It is a personal code. 
+  /**
+   * Defines the reservation type: - &#x60;true&#x60;: The coupon can be reserved
+   * for multiple customers. - &#x60;false&#x60;: The coupon can be reserved only
+   * for one customer. It is a personal code.
+   * 
    * @return reservation
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Defines the reservation type: - `true`: The coupon can be reserved for multiple customers. - `false`: The coupon can be reserved only for one customer. It is a personal code. ")
 
@@ -562,22 +552,21 @@ public class Coupon {
     return reservation;
   }
 
-
   public void setReservation(Boolean reservation) {
     this.reservation = reservation;
   }
 
-
   public Coupon batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * The id of the batch the coupon belongs to.
+   * 
    * @return batchId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "32535-43255", value = "The id of the batch the coupon belongs to.")
 
@@ -585,22 +574,22 @@ public class Coupon {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
 
-
   public Coupon isReservationMandatory(Boolean isReservationMandatory) {
-    
+
     this.isReservationMandatory = isReservationMandatory;
     return this;
   }
 
-   /**
-   * An indication of whether the code can be redeemed only if it has been reserved first.
+  /**
+   * An indication of whether the code can be redeemed only if it has been
+   * reserved first.
+   * 
    * @return isReservationMandatory
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indication of whether the code can be redeemed only if it has been reserved first.")
 
@@ -608,22 +597,21 @@ public class Coupon {
     return isReservationMandatory;
   }
 
-
   public void setIsReservationMandatory(Boolean isReservationMandatory) {
     this.isReservationMandatory = isReservationMandatory;
   }
 
-
   public Coupon implicitlyReserved(Boolean implicitlyReserved) {
-    
+
     this.implicitlyReserved = implicitlyReserved;
     return this;
   }
 
-   /**
+  /**
    * An indication of whether the coupon is implicitly reserved for all customers.
+   * 
    * @return implicitlyReserved
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "An indication of whether the coupon is implicitly reserved for all customers.")
 
@@ -631,11 +619,9 @@ public class Coupon {
     return implicitlyReserved;
   }
 
-
   public void setImplicitlyReserved(Boolean implicitlyReserved) {
     this.implicitlyReserved = implicitlyReserved;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -672,9 +658,10 @@ public class Coupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, limits, usageCounter, discountCounter, discountRemainder, reservationCounter, attributes, referralId, recipientIntegrationId, importId, reservation, batchId, isReservationMandatory, implicitlyReserved);
+    return Objects.hash(id, created, campaignId, value, usageLimit, discountLimit, reservationLimit, startDate,
+        expiryDate, limits, usageCounter, discountCounter, discountRemainder, reservationCounter, attributes,
+        referralId, recipientIntegrationId, importId, reservation, batchId, isReservationMandatory, implicitlyReserved);
   }
-
 
   @Override
   public String toString() {
@@ -718,4 +705,3 @@ public class Coupon {
   }
 
 }
-

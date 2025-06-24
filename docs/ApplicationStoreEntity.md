@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**storeId** | **Integer** | The ID of the store. |  [optional]
+**storeId** | **Long** | The ID of the store. |  [optional]
 
 
 

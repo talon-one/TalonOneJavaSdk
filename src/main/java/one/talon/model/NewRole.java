@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -45,41 +44,40 @@ public class NewRole {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = new ArrayList<Integer>();
-
+  private List<Long> members = new ArrayList<Long>();
 
   public NewRole name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the role.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Campaign Manager", required = true, value = "Name of the role.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewRole description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of the role.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Manages the campaigns", value = "Description of the role.")
 
@@ -87,60 +85,57 @@ public class NewRole {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public NewRole acl(String acl) {
-    
+
     this.acl = acl;
     return this;
   }
 
-   /**
-   * The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level.
+  /**
+   * The &#x60;Access Control List&#x60; json defining the role of the user. This
+   * represents the access control on the user level.
+   * 
    * @return acl
-  **/
+   **/
   @ApiModelProperty(example = "", required = true, value = "The `Access Control List` json defining the role of the user. This represents the access control on the user level.")
 
   public String getAcl() {
     return acl;
   }
 
-
   public void setAcl(String acl) {
     this.acl = acl;
   }
 
+  public NewRole members(List<Long> members) {
 
-  public NewRole members(List<Integer> members) {
-    
     this.members = members;
     return this;
   }
 
-  public NewRole addMembersItem(Integer membersItem) {
+  public NewRole addMembersItem(Long membersItem) {
     this.members.add(membersItem);
     return this;
   }
 
-   /**
+  /**
    * An array of user identifiers.
+   * 
    * @return members
-  **/
+   **/
   @ApiModelProperty(example = "[48, 562, 475, 18]", required = true, value = "An array of user identifiers.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
-
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -161,7 +156,6 @@ public class NewRole {
   public int hashCode() {
     return Objects.hash(name, description, acl, members);
   }
-
 
   @Override
   public String toString() {
@@ -187,4 +181,3 @@ public class NewRole {
   }
 
 }
-

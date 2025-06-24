@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -40,53 +39,52 @@ public class NewApplicationCIF {
 
   public static final String SERIALIZED_NAME_ACTIVE_EXPRESSION_ID = "activeExpressionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_EXPRESSION_ID)
-  private Integer activeExpressionId;
+  private Long activeExpressionId;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
   private OffsetDateTime modified;
 
-
   public NewApplicationCIF name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the Application cart item filter used in API requests.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Filter items by product", required = true, value = "The name of the Application cart item filter used in API requests.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewApplicationCIF description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the Application cart item filter.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "This filter allows filtering by shoes", value = "A short description of the Application cart item filter.")
 
@@ -94,91 +92,87 @@ public class NewApplicationCIF {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public NewApplicationCIF activeExpressionId(Long activeExpressionId) {
 
-  public NewApplicationCIF activeExpressionId(Integer activeExpressionId) {
-    
     this.activeExpressionId = activeExpressionId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the expression that the Application cart item filter uses.
+   * 
    * @return activeExpressionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the expression that the Application cart item filter uses.")
 
-  public Integer getActiveExpressionId() {
+  public Long getActiveExpressionId() {
     return activeExpressionId;
   }
 
-
-  public void setActiveExpressionId(Integer activeExpressionId) {
+  public void setActiveExpressionId(Long activeExpressionId) {
     this.activeExpressionId = activeExpressionId;
   }
 
+  public NewApplicationCIF modifiedBy(Long modifiedBy) {
 
-  public NewApplicationCIF modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who last updated the Application cart item filter.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "The ID of the user who last updated the Application cart item filter.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
+  public NewApplicationCIF createdBy(Long createdBy) {
 
-  public NewApplicationCIF createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who created the Application cart item filter.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
-
   public NewApplicationCIF modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent update to the Application cart item filter.
+   * 
    * @return modified
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp of the most recent update to the Application cart item filter.")
 
@@ -186,11 +180,9 @@ public class NewApplicationCIF {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -213,7 +205,6 @@ public class NewApplicationCIF {
   public int hashCode() {
     return Objects.hash(name, description, activeExpressionId, modifiedBy, createdBy, modified);
   }
-
 
   @Override
   public String toString() {
@@ -241,4 +232,3 @@ public class NewApplicationCIF {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -28,7 +27,8 @@ import java.util.List;
 import one.talon.model.ScimUser;
 
 /**
- * List of users that have been provisioned using the SCIM protocol with an identity provider, for example, Microsoft Entra ID.
+ * List of users that have been provisioned using the SCIM protocol with an
+ * identity provider, for example, Microsoft Entra ID.
  */
 @ApiModel(description = "List of users that have been provisioned using the SCIM protocol with an identity provider, for example, Microsoft Entra ID.")
 
@@ -43,11 +43,10 @@ public class ScimUsersListResponse {
 
   public static final String SERIALIZED_NAME_TOTAL_RESULTS = "totalResults";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULTS)
-  private Integer totalResults;
-
+  private Long totalResults;
 
   public ScimUsersListResponse resources(List<ScimUser> resources) {
-    
+
     this.resources = resources;
     return this;
   }
@@ -57,24 +56,23 @@ public class ScimUsersListResponse {
     return this;
   }
 
-   /**
+  /**
    * Get resources
+   * 
    * @return resources
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<ScimUser> getResources() {
     return resources;
   }
 
-
   public void setResources(List<ScimUser> resources) {
     this.resources = resources;
   }
 
-
   public ScimUsersListResponse schemas(List<String> schemas) {
-    
+
     this.schemas = schemas;
     return this;
   }
@@ -87,10 +85,11 @@ public class ScimUsersListResponse {
     return this;
   }
 
-   /**
+  /**
    * SCIM schema for the given resource.
+   * 
    * @return schemas
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SCIM schema for the given resource.")
 
@@ -98,34 +97,31 @@ public class ScimUsersListResponse {
     return schemas;
   }
 
-
   public void setSchemas(List<String> schemas) {
     this.schemas = schemas;
   }
 
+  public ScimUsersListResponse totalResults(Long totalResults) {
 
-  public ScimUsersListResponse totalResults(Integer totalResults) {
-    
     this.totalResults = totalResults;
     return this;
   }
 
-   /**
+  /**
    * Number of total results in the response.
+   * 
    * @return totalResults
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Number of total results in the response.")
 
-  public Integer getTotalResults() {
+  public Long getTotalResults() {
     return totalResults;
   }
 
-
-  public void setTotalResults(Integer totalResults) {
+  public void setTotalResults(Long totalResults) {
     this.totalResults = totalResults;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -145,7 +141,6 @@ public class ScimUsersListResponse {
   public int hashCode() {
     return Objects.hash(resources, schemas, totalResults);
   }
-
 
   @Override
   public String toString() {
@@ -170,4 +165,3 @@ public class ScimUsersListResponse {
   }
 
 }
-

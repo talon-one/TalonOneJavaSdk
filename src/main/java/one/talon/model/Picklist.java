@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,23 +33,24 @@ import org.threeten.bp.OffsetDateTime;
 public class Picklist {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
   /**
-   * The type of allowed values in the picklist. If the type &#x60;time&#x60; is chosen, it must be an RFC3339 timestamp string.
+   * The type of allowed values in the picklist. If the type &#x60;time&#x60; is
+   * chosen, it must be an RFC3339 timestamp string.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     STRING("string"),
-    
+
     BOOLEAN("boolean"),
-    
+
     NUMBER("number"),
-    
+
     TIME("time");
 
     private String value;
@@ -85,7 +85,7 @@ public class Picklist {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -101,89 +101,86 @@ public class Picklist {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)
   private Boolean imported;
 
+  public Picklist id(Long id) {
 
-  public Picklist id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Picklist created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Picklist type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * The type of allowed values in the picklist. If the type &#x60;time&#x60; is chosen, it must be an RFC3339 timestamp string.
+  /**
+   * The type of allowed values in the picklist. If the type &#x60;time&#x60; is
+   * chosen, it must be an RFC3339 timestamp string.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "string", required = true, value = "The type of allowed values in the picklist. If the type `time` is chosen, it must be an RFC3339 timestamp string.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public Picklist values(List<String> values) {
-    
+
     this.values = values;
     return this;
   }
@@ -193,100 +190,97 @@ public class Picklist {
     return this;
   }
 
-   /**
+  /**
    * The list of allowed values provided by this picklist.
+   * 
    * @return values
-  **/
+   **/
   @ApiModelProperty(example = "[Jeans, Shirt, Coat]", required = true, value = "The list of allowed values provided by this picklist.")
 
   public List<String> getValues() {
     return values;
   }
 
-
   public void setValues(List<String> values) {
     this.values = values;
   }
 
+  public Picklist modifiedBy(Long modifiedBy) {
 
-  public Picklist modifiedBy(Integer modifiedBy) {
-    
     this.modifiedBy = modifiedBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who last updated this effect if available.
+   * 
    * @return modifiedBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "124", value = "ID of the user who last updated this effect if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
-
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
+  public Picklist createdBy(Long createdBy) {
 
-  public Picklist createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created this effect.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "134", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public Picklist accountId(Long accountId) {
 
-  public Picklist accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3886", value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
-
   public Picklist imported(Boolean imported) {
-    
+
     this.imported = imported;
     return this;
   }
 
-   /**
+  /**
    * Imported flag shows that a picklist is imported by a CSV file or not
+   * 
    * @return imported
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Imported flag shows that a picklist is imported by a CSV file or not")
 
@@ -294,11 +288,9 @@ public class Picklist {
     return imported;
   }
 
-
   public void setImported(Boolean imported) {
     this.imported = imported;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -323,7 +315,6 @@ public class Picklist {
   public int hashCode() {
     return Objects.hash(id, created, type, values, modifiedBy, createdBy, accountId, imported);
   }
-
 
   @Override
   public String toString() {
@@ -353,4 +344,3 @@ public class Picklist {
   }
 
 }
-

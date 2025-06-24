@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,7 +40,7 @@ public class EventV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -51,17 +50,19 @@ public class EventV2 {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-
   public EventV2 profileId(String profileId) {
-    
+
     this.profileId = profileId;
     return this;
   }
 
-   /**
-   * ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;. 
+  /**
+   * ID of the customer profile set by your integration layer. **Note:** If the
+   * customer does not yet have a known &#x60;profileId&#x60;, we recommend you
+   * use a guest &#x60;profileId&#x60;.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "URNGV8294NV", value = "ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known `profileId`, we recommend you use a guest `profileId`. ")
 
@@ -69,22 +70,21 @@ public class EventV2 {
     return profileId;
   }
 
-
   public void setProfileId(String profileId) {
     this.profileId = profileId;
   }
 
-
   public EventV2 storeIntegrationId(String storeIntegrationId) {
-    
+
     this.storeIntegrationId = storeIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the store. You choose this ID when you create a store.
+   * 
    * @return storeIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
 
@@ -92,75 +92,81 @@ public class EventV2 {
     return storeIntegrationId;
   }
 
-
   public void setStoreIntegrationId(String storeIntegrationId) {
     this.storeIntegrationId = storeIntegrationId;
   }
 
+  public EventV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
 
-  public EventV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
-    
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public EventV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public EventV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
   }
 
-   /**
-   * When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
+  /**
+   * When using the &#x60;dry&#x60; query parameter, use this property to list the
+   * campaign to be evaluated by the Rule Engine. These campaigns will be
+   * evaluated, even if they are disabled, allowing you to test specific campaigns
+   * before activating them.
+   * 
    * @return evaluableCampaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
-
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 
-
   public EventV2 type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type &#x60;event&#x60; in the Campaign Manager. 
+  /**
+   * A string representing the event name. Must not be a reserved event name. You
+   * create this value when you [create an
+   * attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event)
+   * of type &#x60;event&#x60; in the Campaign Manager.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "pageViewed", required = true, value = "A string representing the event name. Must not be a reserved event name. You create this value when you [create an attribute](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) of type `event` in the Campaign Manager. ")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public EventV2 attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
-   * Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
+  /**
+   * Arbitrary additional JSON properties associated with the event. They must be
+   * created in the Campaign Manager before setting them with this property. See
+   * [creating custom
+   * attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"myAttribute\":\"myValue\"}", value = "Arbitrary additional JSON properties associated with the event. They must be created in the Campaign Manager before setting them with this property. See [creating custom attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes#creating-a-custom-attribute).")
 
@@ -168,11 +174,9 @@ public class EventV2 {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -194,7 +198,6 @@ public class EventV2 {
   public int hashCode() {
     return Objects.hash(profileId, storeIntegrationId, evaluableCampaignIds, type, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -221,4 +224,3 @@ public class EventV2 {
   }
 
 }
-

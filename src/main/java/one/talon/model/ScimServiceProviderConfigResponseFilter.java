@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,53 +24,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Configuration settings related to filtering SCIM resources based on specific criteria.
+ * Configuration settings related to filtering SCIM resources based on specific
+ * criteria.
  */
 @ApiModel(description = "Configuration settings related to filtering SCIM resources based on specific criteria.")
 
 public class ScimServiceProviderConfigResponseFilter {
   public static final String SERIALIZED_NAME_MAX_RESULTS = "maxResults";
   @SerializedName(SERIALIZED_NAME_MAX_RESULTS)
-  private Integer maxResults;
+  private Long maxResults;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
   private Boolean supported;
 
+  public ScimServiceProviderConfigResponseFilter maxResults(Long maxResults) {
 
-  public ScimServiceProviderConfigResponseFilter maxResults(Integer maxResults) {
-    
     this.maxResults = maxResults;
     return this;
   }
 
-   /**
-   * The maximum number of resources that can be returned in a single filtered query response.
+  /**
+   * The maximum number of resources that can be returned in a single filtered
+   * query response.
+   * 
    * @return maxResults
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of resources that can be returned in a single filtered query response.")
 
-  public Integer getMaxResults() {
+  public Long getMaxResults() {
     return maxResults;
   }
 
-
-  public void setMaxResults(Integer maxResults) {
+  public void setMaxResults(Long maxResults) {
     this.maxResults = maxResults;
   }
 
-
   public ScimServiceProviderConfigResponseFilter supported(Boolean supported) {
-    
+
     this.supported = supported;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the SCIM service provider supports filtering operations.
+   * 
    * @return supported
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates whether the SCIM service provider supports filtering operations.")
 
@@ -79,11 +79,9 @@ public class ScimServiceProviderConfigResponseFilter {
     return supported;
   }
 
-
   public void setSupported(Boolean supported) {
     this.supported = supported;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,7 +100,6 @@ public class ScimServiceProviderConfigResponseFilter {
   public int hashCode() {
     return Objects.hash(maxResults, supported);
   }
-
 
   @Override
   public String toString() {
@@ -126,4 +123,3 @@ public class ScimServiceProviderConfigResponseFilter {
   }
 
 }
-

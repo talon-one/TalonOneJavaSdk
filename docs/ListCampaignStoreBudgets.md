@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **store** | [**ListCampaignStoreBudgetsStore**](ListCampaignStoreBudgetsStore.md) |  | 
-**limit** | **Integer** |  | 
+**limit** | **Long** |  | 
 **action** | **String** |  | 
 **period** | **String** |  |  [optional]
 

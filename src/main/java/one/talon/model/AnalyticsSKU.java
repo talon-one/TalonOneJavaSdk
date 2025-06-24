@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AnalyticsSKU {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -47,61 +46,59 @@ public class AnalyticsSKU {
   @SerializedName(SERIALIZED_NAME_UNITS_SOLD)
   private AnalyticsDataPointWithTrend unitsSold;
 
+  public AnalyticsSKU id(Long id) {
 
-  public AnalyticsSKU id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of the SKU linked to the application.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the SKU linked to the application.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AnalyticsSKU sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * The SKU linked to the application.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU-123", required = true, value = "The SKU linked to the application.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
-
   public AnalyticsSKU lastUpdated(OffsetDateTime lastUpdated) {
-    
+
     this.lastUpdated = lastUpdated;
     return this;
   }
 
-   /**
+  /**
    * Values in UTC for the date the SKU linked to the product was last updated.
+   * 
    * @return lastUpdated
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2024-02-01T00:00Z", value = "Values in UTC for the date the SKU linked to the product was last updated.")
 
@@ -109,22 +106,21 @@ public class AnalyticsSKU {
     return lastUpdated;
   }
 
-
   public void setLastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
 
-
   public AnalyticsSKU unitsSold(AnalyticsDataPointWithTrend unitsSold) {
-    
+
     this.unitsSold = unitsSold;
     return this;
   }
 
-   /**
+  /**
    * Get unitsSold
+   * 
    * @return unitsSold
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -132,11 +128,9 @@ public class AnalyticsSKU {
     return unitsSold;
   }
 
-
   public void setUnitsSold(AnalyticsDataPointWithTrend unitsSold) {
     this.unitsSold = unitsSold;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -157,7 +151,6 @@ public class AnalyticsSKU {
   public int hashCode() {
     return Objects.hash(id, sku, lastUpdated, unitsSold);
   }
-
 
   @Override
   public String toString() {
@@ -183,4 +176,3 @@ public class AnalyticsSKU {
   }
 
 }
-

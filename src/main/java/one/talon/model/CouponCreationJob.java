@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CouponCreationJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,19 +43,19 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -64,7 +63,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -76,7 +75,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_NUMBER_OF_COUPONS = "numberOfCoupons";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
-  private Integer numberOfCoupons;
+  private Long numberOfCoupons;
 
   public static final String SERIALIZED_NAME_COUPON_SETTINGS = "couponSettings";
   @SerializedName(SERIALIZED_NAME_COUPON_SETTINGS)
@@ -96,11 +95,11 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CREATED_AMOUNT = "createdAmount";
   @SerializedName(SERIALIZED_NAME_CREATED_AMOUNT)
-  private Integer createdAmount;
+  private Long createdAmount;
 
   public static final String SERIALIZED_NAME_FAIL_COUNT = "failCount";
   @SerializedName(SERIALIZED_NAME_FAIL_COUNT)
-  private Integer failCount;
+  private Long failCount;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -108,7 +107,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_COMMUNICATED = "communicated";
   @SerializedName(SERIALIZED_NAME_COMMUNICATED)
@@ -116,159 +115,155 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CHUNK_EXECUTION_COUNT = "chunkExecutionCount";
   @SerializedName(SERIALIZED_NAME_CHUNK_EXECUTION_COUNT)
-  private Integer chunkExecutionCount;
+  private Long chunkExecutionCount;
 
   public static final String SERIALIZED_NAME_CHUNK_SIZE = "chunkSize";
   @SerializedName(SERIALIZED_NAME_CHUNK_SIZE)
-  private Integer chunkSize;
+  private Long chunkSize;
 
+  public CouponCreationJob id(Long id) {
 
-  public CouponCreationJob id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CouponCreationJob created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CouponCreationJob campaignId(Long campaignId) {
 
-  public CouponCreationJob campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public CouponCreationJob applicationId(Long applicationId) {
 
-  public CouponCreationJob applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public CouponCreationJob accountId(Long accountId) {
 
-  public CouponCreationJob accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public CouponCreationJob usageLimit(Long usageLimit) {
 
-  public CouponCreationJob usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means unlimited redemptions but any campaign usage limits will still apply. 
+  /**
+   * The number of times the coupon code can be redeemed. &#x60;0&#x60; means
+   * unlimited redemptions but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public CouponCreationJob discountLimit(BigDecimal discountLimit) {
-    
+
     this.discountLimit = discountLimit;
     return this;
   }
 
-   /**
-   * The total discount value that the code can give. Typically used to represent a gift card value. 
+  /**
+   * The total discount value that the code can give. Typically used to represent
+   * a gift card value.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return discountLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "30.0", value = "The total discount value that the code can give. Typically used to represent a gift card value. ")
 
@@ -276,47 +271,45 @@ public class CouponCreationJob {
     return discountLimit;
   }
 
-
   public void setDiscountLimit(BigDecimal discountLimit) {
     this.discountLimit = discountLimit;
   }
 
+  public CouponCreationJob reservationLimit(Long reservationLimit) {
 
-  public CouponCreationJob reservationLimit(Integer reservationLimit) {
-    
     this.reservationLimit = reservationLimit;
     return this;
   }
 
-   /**
-   * The number of reservations that can be made with this coupon code. 
+  /**
+   * The number of reservations that can be made with this coupon code.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return reservationLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
-
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
-
   public CouponCreationJob startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the coupon becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-01-24T14:15:22Z", value = "Timestamp at which point the coupon becomes valid.")
 
@@ -324,22 +317,21 @@ public class CouponCreationJob {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public CouponCreationJob expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * Expiration date of the coupon. Coupon never expires if this is omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2023-08-24T14:15:22Z", value = "Expiration date of the coupon. Coupon never expires if this is omitted.")
 
@@ -347,46 +339,44 @@ public class CouponCreationJob {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
+  public CouponCreationJob numberOfCoupons(Long numberOfCoupons) {
 
-  public CouponCreationJob numberOfCoupons(Integer numberOfCoupons) {
-    
     this.numberOfCoupons = numberOfCoupons;
     return this;
   }
 
-   /**
+  /**
    * The number of new coupon codes to generate for the campaign.
    * minimum: 1
    * maximum: 5000000
+   * 
    * @return numberOfCoupons
-  **/
+   **/
   @ApiModelProperty(example = "200000", required = true, value = "The number of new coupon codes to generate for the campaign.")
 
-  public Integer getNumberOfCoupons() {
+  public Long getNumberOfCoupons() {
     return numberOfCoupons;
   }
 
-
-  public void setNumberOfCoupons(Integer numberOfCoupons) {
+  public void setNumberOfCoupons(Long numberOfCoupons) {
     this.numberOfCoupons = numberOfCoupons;
   }
 
-
   public CouponCreationJob couponSettings(CodeGeneratorSettings couponSettings) {
-    
+
     this.couponSettings = couponSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponSettings
+   * 
    * @return couponSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -394,124 +384,119 @@ public class CouponCreationJob {
     return couponSettings;
   }
 
-
   public void setCouponSettings(CodeGeneratorSettings couponSettings) {
     this.couponSettings = couponSettings;
   }
 
-
   public CouponCreationJob attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with coupons.
+   * 
    * @return attributes
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Arbitrary properties associated with coupons.")
 
   public Object getAttributes() {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public CouponCreationJob batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * The batch ID coupons created by this job will bear.
+   * 
    * @return batchId
-  **/
+   **/
   @ApiModelProperty(example = "tqyrgahe", required = true, value = "The batch ID coupons created by this job will bear.")
 
   public String getBatchId() {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
 
-
   public CouponCreationJob status(String status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
-   * The current status of this request. Possible values: - &#x60;pending verification&#x60; - &#x60;pending&#x60; - &#x60;completed&#x60; - &#x60;failed&#x60; - &#x60;coupon pattern full&#x60; 
+  /**
+   * The current status of this request. Possible values: - &#x60;pending
+   * verification&#x60; - &#x60;pending&#x60; - &#x60;completed&#x60; -
+   * &#x60;failed&#x60; - &#x60;coupon pattern full&#x60;
+   * 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "pending", required = true, value = "The current status of this request. Possible values: - `pending verification` - `pending` - `completed` - `failed` - `coupon pattern full` ")
 
   public String getStatus() {
     return status;
   }
 
-
   public void setStatus(String status) {
     this.status = status;
   }
 
+  public CouponCreationJob createdAmount(Long createdAmount) {
 
-  public CouponCreationJob createdAmount(Integer createdAmount) {
-    
     this.createdAmount = createdAmount;
     return this;
   }
 
-   /**
+  /**
    * The number of coupon codes that were already created for this request.
+   * 
    * @return createdAmount
-  **/
+   **/
   @ApiModelProperty(example = "1000000", required = true, value = "The number of coupon codes that were already created for this request.")
 
-  public Integer getCreatedAmount() {
+  public Long getCreatedAmount() {
     return createdAmount;
   }
 
-
-  public void setCreatedAmount(Integer createdAmount) {
+  public void setCreatedAmount(Long createdAmount) {
     this.createdAmount = createdAmount;
   }
 
+  public CouponCreationJob failCount(Long failCount) {
 
-  public CouponCreationJob failCount(Integer failCount) {
-    
     this.failCount = failCount;
     return this;
   }
 
-   /**
+  /**
    * The number of times this job failed.
+   * 
    * @return failCount
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times this job failed.")
 
-  public Integer getFailCount() {
+  public Long getFailCount() {
     return failCount;
   }
 
-
-  public void setFailCount(Integer failCount) {
+  public void setFailCount(Long failCount) {
     this.failCount = failCount;
   }
 
-
   public CouponCreationJob errors(List<String> errors) {
-    
+
     this.errors = errors;
     return this;
   }
@@ -521,110 +506,108 @@ public class CouponCreationJob {
     return this;
   }
 
-   /**
+  /**
    * An array of individual problems encountered during the request.
+   * 
    * @return errors
-  **/
+   **/
   @ApiModelProperty(example = "[Connection to database was reset, failed to generate enough unique codes, attribute 'PizzaLover' not found on entity 'Coupons']", required = true, value = "An array of individual problems encountered during the request.")
 
   public List<String> getErrors() {
     return errors;
   }
 
-
   public void setErrors(List<String> errors) {
     this.errors = errors;
   }
 
+  public CouponCreationJob createdBy(Long createdBy) {
 
-  public CouponCreationJob createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * ID of the user who created this effect.
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
-
   public CouponCreationJob communicated(Boolean communicated) {
-    
+
     this.communicated = communicated;
     return this;
   }
 
-   /**
-   * Whether or not the user that created this job was notified of its final state.
+  /**
+   * Whether or not the user that created this job was notified of its final
+   * state.
+   * 
    * @return communicated
-  **/
+   **/
   @ApiModelProperty(example = "false", required = true, value = "Whether or not the user that created this job was notified of its final state.")
 
   public Boolean getCommunicated() {
     return communicated;
   }
 
-
   public void setCommunicated(Boolean communicated) {
     this.communicated = communicated;
   }
 
+  public CouponCreationJob chunkExecutionCount(Long chunkExecutionCount) {
 
-  public CouponCreationJob chunkExecutionCount(Integer chunkExecutionCount) {
-    
     this.chunkExecutionCount = chunkExecutionCount;
     return this;
   }
 
-   /**
-   * The number of times an attempt to create a chunk of coupons was made during the processing of the job.
+  /**
+   * The number of times an attempt to create a chunk of coupons was made during
+   * the processing of the job.
+   * 
    * @return chunkExecutionCount
-  **/
+   **/
   @ApiModelProperty(example = "0", required = true, value = "The number of times an attempt to create a chunk of coupons was made during the processing of the job.")
 
-  public Integer getChunkExecutionCount() {
+  public Long getChunkExecutionCount() {
     return chunkExecutionCount;
   }
 
-
-  public void setChunkExecutionCount(Integer chunkExecutionCount) {
+  public void setChunkExecutionCount(Long chunkExecutionCount) {
     this.chunkExecutionCount = chunkExecutionCount;
   }
 
+  public CouponCreationJob chunkSize(Long chunkSize) {
 
-  public CouponCreationJob chunkSize(Integer chunkSize) {
-    
     this.chunkSize = chunkSize;
     return this;
   }
 
-   /**
-   * The number of coupons that will be created in a single transactions. Coupons will be created in chunks until arriving at the requested amount.
+  /**
+   * The number of coupons that will be created in a single transactions. Coupons
+   * will be created in chunks until arriving at the requested amount.
+   * 
    * @return chunkSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "20000", value = "The number of coupons that will be created in a single transactions. Coupons will be created in chunks until arriving at the requested amount.")
 
-  public Integer getChunkSize() {
+  public Long getChunkSize() {
     return chunkSize;
   }
 
-
-  public void setChunkSize(Integer chunkSize) {
+  public void setChunkSize(Long chunkSize) {
     this.chunkSize = chunkSize;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -661,9 +644,10 @@ public class CouponCreationJob {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, campaignId, applicationId, accountId, usageLimit, discountLimit, reservationLimit, startDate, expiryDate, numberOfCoupons, couponSettings, attributes, batchId, status, createdAmount, failCount, errors, createdBy, communicated, chunkExecutionCount, chunkSize);
+    return Objects.hash(id, created, campaignId, applicationId, accountId, usageLimit, discountLimit, reservationLimit,
+        startDate, expiryDate, numberOfCoupons, couponSettings, attributes, batchId, status, createdAmount, failCount,
+        errors, createdBy, communicated, chunkExecutionCount, chunkSize);
   }
-
 
   @Override
   public String toString() {
@@ -707,4 +691,3 @@ public class CouponCreationJob {
   }
 
 }
-

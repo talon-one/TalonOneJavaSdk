@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,11 +37,10 @@ public class CatalogSyncRequest {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
-
+  private Long version;
 
   public CatalogSyncRequest actions(List<CatalogAction> actions) {
-    
+
     this.actions = actions;
     return this;
   }
@@ -52,45 +50,43 @@ public class CatalogSyncRequest {
     return this;
   }
 
-   /**
+  /**
    * Get actions
+   * 
    * @return actions
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<CatalogAction> getActions() {
     return actions;
   }
 
-
   public void setActions(List<CatalogAction> actions) {
     this.actions = actions;
   }
 
+  public CatalogSyncRequest version(Long version) {
 
-  public CatalogSyncRequest version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * The version number of the catalog to apply the actions on.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "244", value = "The version number of the catalog to apply the actions on.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -109,7 +105,6 @@ public class CatalogSyncRequest {
   public int hashCode() {
     return Objects.hash(actions, version);
   }
-
 
   @Override
   public String toString() {
@@ -133,4 +128,3 @@ public class CatalogSyncRequest {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,18 +24,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Holds a reference to the campaign, the coupon and the reason for which that coupon was rejected. Should only be present when there is a &#39;rejectCoupon&#39; effect.
+ * Holds a reference to the campaign, the coupon and the reason for which that
+ * coupon was rejected. Should only be present when there is a
+ * &#39;rejectCoupon&#39; effect.
  */
 @ApiModel(description = "Holds a reference to the campaign, the coupon and the reason for which that coupon was rejected. Should only be present when there is a 'rejectCoupon' effect.")
 
 public class CouponRejectionReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_COUPON_ID = "couponId";
   @SerializedName(SERIALIZED_NAME_COUPON_ID)
-  private Integer couponId;
+  private Long couponId;
 
   /**
    * Gets or Sets reason
@@ -44,27 +45,27 @@ public class CouponRejectionReason {
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
     COUPONNOTFOUND("CouponNotFound"),
-    
+
     COUPONPARTOFNOTRUNNINGCAMPAIGN("CouponPartOfNotRunningCampaign"),
-    
+
     CAMPAIGNLIMITREACHED("CampaignLimitReached"),
-    
+
     PROFILELIMITREACHED("ProfileLimitReached"),
-    
+
     COUPONRECIPIENTDOESNOTMATCH("CouponRecipientDoesNotMatch"),
-    
+
     COUPONEXPIRED("CouponExpired"),
-    
+
     COUPONSTARTDATEINFUTURE("CouponStartDateInFuture"),
-    
+
     COUPONREJECTEDBYCONDITION("CouponRejectedByCondition"),
-    
+
     EFFECTCOULDNOTBEAPPLIED("EffectCouldNotBeApplied"),
-    
+
     COUPONPARTOFNOTTRIGGEREDCAMPAIGN("CouponPartOfNotTriggeredCampaign"),
-    
+
     COUPONRESERVATIONREQUIRED("CouponReservationRequired"),
-    
+
     PROFILEREQUIRED("ProfileRequired");
 
     private String value;
@@ -99,7 +100,7 @@ public class CouponRejectionReason {
 
       @Override
       public ReasonEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ReasonEnum.fromValue(value);
       }
     }
@@ -109,72 +110,68 @@ public class CouponRejectionReason {
   @SerializedName(SERIALIZED_NAME_REASON)
   private ReasonEnum reason;
 
+  public CouponRejectionReason campaignId(Long campaignId) {
 
-  public CouponRejectionReason campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * Get campaignId
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "244", required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public CouponRejectionReason couponId(Long couponId) {
 
-  public CouponRejectionReason couponId(Integer couponId) {
-    
     this.couponId = couponId;
     return this;
   }
 
-   /**
+  /**
    * Get couponId
+   * 
    * @return couponId
-  **/
+   **/
   @ApiModelProperty(example = "4928", required = true, value = "")
 
-  public Integer getCouponId() {
+  public Long getCouponId() {
     return couponId;
   }
 
-
-  public void setCouponId(Integer couponId) {
+  public void setCouponId(Long couponId) {
     this.couponId = couponId;
   }
 
-
   public CouponRejectionReason reason(ReasonEnum reason) {
-    
+
     this.reason = reason;
     return this;
   }
 
-   /**
+  /**
    * Get reason
+   * 
    * @return reason
-  **/
+   **/
   @ApiModelProperty(example = "CouponNotFound", required = true, value = "")
 
   public ReasonEnum getReason() {
     return reason;
   }
 
-
   public void setReason(ReasonEnum reason) {
     this.reason = reason;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -194,7 +191,6 @@ public class CouponRejectionReason {
   public int hashCode() {
     return Objects.hash(campaignId, couponId, reason);
   }
-
 
   @Override
   public String toString() {
@@ -219,4 +215,3 @@ public class CouponRejectionReason {
   }
 
 }
-

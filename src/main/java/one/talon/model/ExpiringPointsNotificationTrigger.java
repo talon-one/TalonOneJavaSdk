@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,15 +30,16 @@ import java.io.IOException;
 public class ExpiringPointsNotificationTrigger {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Integer amount;
+  private Long amount;
 
   /**
-   * Notification period indicated by a letter; \&quot;w\&quot; means week, \&quot;d\&quot; means day.
+   * Notification period indicated by a letter; \&quot;w\&quot; means week,
+   * \&quot;d\&quot; means day.
    */
   @JsonAdapter(PeriodEnum.Adapter.class)
   public enum PeriodEnum {
     W("w"),
-    
+
     D("d");
 
     private String value;
@@ -74,7 +74,7 @@ public class ExpiringPointsNotificationTrigger {
 
       @Override
       public PeriodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PeriodEnum.fromValue(value);
       }
     }
@@ -84,51 +84,49 @@ public class ExpiringPointsNotificationTrigger {
   @SerializedName(SERIALIZED_NAME_PERIOD)
   private PeriodEnum period;
 
+  public ExpiringPointsNotificationTrigger amount(Long amount) {
 
-  public ExpiringPointsNotificationTrigger amount(Integer amount) {
-    
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * The amount of period.
    * minimum: 1
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The amount of period.")
 
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
-
-  public void setAmount(Integer amount) {
+  public void setAmount(Long amount) {
     this.amount = amount;
   }
 
-
   public ExpiringPointsNotificationTrigger period(PeriodEnum period) {
-    
+
     this.period = period;
     return this;
   }
 
-   /**
-   * Notification period indicated by a letter; \&quot;w\&quot; means week, \&quot;d\&quot; means day.
+  /**
+   * Notification period indicated by a letter; \&quot;w\&quot; means week,
+   * \&quot;d\&quot; means day.
+   * 
    * @return period
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Notification period indicated by a letter; \"w\" means week, \"d\" means day.")
 
   public PeriodEnum getPeriod() {
     return period;
   }
 
-
   public void setPeriod(PeriodEnum period) {
     this.period = period;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -147,7 +145,6 @@ public class ExpiringPointsNotificationTrigger {
   public int hashCode() {
     return Objects.hash(amount, period);
   }
-
 
   @Override
   public String toString() {
@@ -171,4 +168,3 @@ public class ExpiringPointsNotificationTrigger {
   }
 
 }
-

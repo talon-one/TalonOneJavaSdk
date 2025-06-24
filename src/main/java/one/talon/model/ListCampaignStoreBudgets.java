@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ public class ListCampaignStoreBudgets {
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
@@ -46,83 +45,80 @@ public class ListCampaignStoreBudgets {
   @SerializedName(SERIALIZED_NAME_PERIOD)
   private String period;
 
-
   public ListCampaignStoreBudgets store(ListCampaignStoreBudgetsStore store) {
-    
+
     this.store = store;
     return this;
   }
 
-   /**
+  /**
    * Get store
+   * 
    * @return store
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public ListCampaignStoreBudgetsStore getStore() {
     return store;
   }
 
-
   public void setStore(ListCampaignStoreBudgetsStore store) {
     this.store = store;
   }
 
+  public ListCampaignStoreBudgets limit(Long limit) {
 
-  public ListCampaignStoreBudgets limit(Integer limit) {
-    
     this.limit = limit;
     return this;
   }
 
-   /**
+  /**
    * Get limit
+   * 
    * @return limit
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-
-  public void setLimit(Integer limit) {
+  public void setLimit(Long limit) {
     this.limit = limit;
   }
 
-
   public ListCampaignStoreBudgets action(String action) {
-    
+
     this.action = action;
     return this;
   }
 
-   /**
+  /**
    * Get action
+   * 
    * @return action
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public String getAction() {
     return action;
   }
 
-
   public void setAction(String action) {
     this.action = action;
   }
 
-
   public ListCampaignStoreBudgets period(String period) {
-    
+
     this.period = period;
     return this;
   }
 
-   /**
+  /**
    * Get period
+   * 
    * @return period
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -130,11 +126,9 @@ public class ListCampaignStoreBudgets {
     return period;
   }
 
-
   public void setPeriod(String period) {
     this.period = period;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -155,7 +149,6 @@ public class ListCampaignStoreBudgets {
   public int hashCode() {
     return Objects.hash(store, limit, action, period);
   }
-
 
   @Override
   public String toString() {
@@ -181,4 +174,3 @@ public class ListCampaignStoreBudgets {
   }
 
 }
-

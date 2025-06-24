@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,31 +31,29 @@ import java.io.IOException;
 public class CampaignSetIDs {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
+  public CampaignSetIDs campaignId(Long campaignId) {
 
-  public CampaignSetIDs campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "ID of the campaign")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -74,7 +71,6 @@ public class CampaignSetIDs {
   public int hashCode() {
     return Objects.hash(campaignId);
   }
-
 
   @Override
   public String toString() {
@@ -97,4 +93,3 @@ public class CampaignSetIDs {
   }
 
 }
-

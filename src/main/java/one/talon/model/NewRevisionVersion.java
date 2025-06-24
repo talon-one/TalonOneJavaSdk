@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -56,7 +55,7 @@ public class NewRevisionVersion {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Integer activeRulesetId;
+  private Long activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -80,15 +79,15 @@ public class NewRevisionVersion {
   @JsonAdapter(FeaturesEnum.Adapter.class)
   public enum FeaturesEnum {
     COUPONS("coupons"),
-    
+
     REFERRALS("referrals"),
-    
+
     LOYALTY("loyalty"),
-    
+
     GIVEAWAYS("giveaways"),
-    
+
     STRIKETHROUGH("strikethrough"),
-    
+
     ACHIEVEMENTS("achievements");
 
     private String value;
@@ -123,7 +122,7 @@ public class NewRevisionVersion {
 
       @Override
       public FeaturesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return FeaturesEnum.fromValue(value);
       }
     }
@@ -133,17 +132,17 @@ public class NewRevisionVersion {
   @SerializedName(SERIALIZED_NAME_FEATURES)
   private List<FeaturesEnum> features = null;
 
-
   public NewRevisionVersion name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * A user-facing name for this campaign.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Summer promotions", value = "A user-facing name for this campaign.")
 
@@ -151,22 +150,21 @@ public class NewRevisionVersion {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewRevisionVersion startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become active.
+   * 
    * @return startTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp when the campaign will become active.")
 
@@ -174,22 +172,21 @@ public class NewRevisionVersion {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public NewRevisionVersion endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become inactive.
+   * 
    * @return endTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp when the campaign will become inactive.")
 
@@ -197,22 +194,21 @@ public class NewRevisionVersion {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
-
   public NewRevisionVersion attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this campaign.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign.")
 
@@ -220,22 +216,21 @@ public class NewRevisionVersion {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public NewRevisionVersion description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A detailed description of the campaign.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Campaign for all summer 2021 promotions", value = "A detailed description of the campaign.")
 
@@ -243,37 +238,34 @@ public class NewRevisionVersion {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public NewRevisionVersion activeRulesetId(Long activeRulesetId) {
 
-  public NewRevisionVersion activeRulesetId(Integer activeRulesetId) {
-    
     this.activeRulesetId = activeRulesetId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the ruleset this campaign template will use.
+   * 
    * @return activeRulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Integer getActiveRulesetId() {
+  public Long getActiveRulesetId() {
     return activeRulesetId;
   }
 
-
-  public void setActiveRulesetId(Integer activeRulesetId) {
+  public void setActiveRulesetId(Long activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
-
   public NewRevisionVersion tags(List<String> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -286,10 +278,11 @@ public class NewRevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * A list of tags for the campaign template.
+   * 
    * @return tags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of tags for the campaign template.")
 
@@ -297,22 +290,21 @@ public class NewRevisionVersion {
     return tags;
   }
 
-
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
-
   public NewRevisionVersion couponSettings(CodeGeneratorSettings couponSettings) {
-    
+
     this.couponSettings = couponSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponSettings
+   * 
    * @return couponSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -320,22 +312,21 @@ public class NewRevisionVersion {
     return couponSettings;
   }
 
-
   public void setCouponSettings(CodeGeneratorSettings couponSettings) {
     this.couponSettings = couponSettings;
   }
 
-
   public NewRevisionVersion referralSettings(CodeGeneratorSettings referralSettings) {
-    
+
     this.referralSettings = referralSettings;
     return this;
   }
 
-   /**
+  /**
    * Get referralSettings
+   * 
    * @return referralSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -343,14 +334,12 @@ public class NewRevisionVersion {
     return referralSettings;
   }
 
-
   public void setReferralSettings(CodeGeneratorSettings referralSettings) {
     this.referralSettings = referralSettings;
   }
 
-
   public NewRevisionVersion limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -363,10 +352,11 @@ public class NewRevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * The set of limits that will operate for this campaign version.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of limits that will operate for this campaign version.")
 
@@ -374,14 +364,12 @@ public class NewRevisionVersion {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
-
   public NewRevisionVersion features(List<FeaturesEnum> features) {
-    
+
     this.features = features;
     return this;
   }
@@ -394,10 +382,11 @@ public class NewRevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * A list of features for the campaign template.
+   * 
    * @return features
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of features for the campaign template.")
 
@@ -405,11 +394,9 @@ public class NewRevisionVersion {
     return features;
   }
 
-
   public void setFeatures(List<FeaturesEnum> features) {
     this.features = features;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -435,9 +422,9 @@ public class NewRevisionVersion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, features);
+    return Objects.hash(name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings,
+        referralSettings, limits, features);
   }
-
 
   @Override
   public String toString() {
@@ -470,4 +457,3 @@ public class NewRevisionVersion {
   }
 
 }
-

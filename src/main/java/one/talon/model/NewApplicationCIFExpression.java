@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,65 +32,62 @@ import java.util.List;
 public class NewApplicationCIFExpression {
   public static final String SERIALIZED_NAME_CART_ITEM_FILTER_ID = "cartItemFilterId";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_FILTER_ID)
-  private Integer cartItemFilterId;
+  private Long cartItemFilterId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_EXPRESSION = "expression";
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
   private List<Object> expression = null;
 
+  public NewApplicationCIFExpression cartItemFilterId(Long cartItemFilterId) {
 
-  public NewApplicationCIFExpression cartItemFilterId(Integer cartItemFilterId) {
-    
     this.cartItemFilterId = cartItemFilterId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application cart item filter.
+   * 
    * @return cartItemFilterId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the Application cart item filter.")
 
-  public Integer getCartItemFilterId() {
+  public Long getCartItemFilterId() {
     return cartItemFilterId;
   }
 
-
-  public void setCartItemFilterId(Integer cartItemFilterId) {
+  public void setCartItemFilterId(Long cartItemFilterId) {
     this.cartItemFilterId = cartItemFilterId;
   }
 
+  public NewApplicationCIFExpression createdBy(Long createdBy) {
 
-  public NewApplicationCIFExpression createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user who created the Application cart item filter.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
-
   public NewApplicationCIFExpression expression(List<Object> expression) {
-    
+
     this.expression = expression;
     return this;
   }
@@ -104,10 +100,12 @@ public class NewApplicationCIFExpression {
     return this;
   }
 
-   /**
-   * Arbitrary additional JSON data associated with the Application cart item filter.
+  /**
+   * Arbitrary additional JSON data associated with the Application cart item
+   * filter.
+   * 
    * @return expression
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{expr=[filter, [., Session, CartItems], [[Item], [catch, false, [=, [., Item, Category], Kitchen]]]]}", value = "Arbitrary additional JSON data associated with the Application cart item filter.")
 
@@ -115,11 +113,9 @@ public class NewApplicationCIFExpression {
     return expression;
   }
 
-
   public void setExpression(List<Object> expression) {
     this.expression = expression;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -139,7 +135,6 @@ public class NewApplicationCIFExpression {
   public int hashCode() {
     return Objects.hash(cartItemFilterId, createdBy, expression);
   }
-
 
   @Override
   public String toString() {
@@ -164,4 +159,3 @@ public class NewApplicationCIFExpression {
   }
 
 }
-

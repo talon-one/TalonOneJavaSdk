@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,19 +35,19 @@ import org.threeten.bp.OffsetDateTime;
 public class RevisionVersion {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -56,15 +55,15 @@ public class RevisionVersion {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_REVISION_ID = "revisionId";
   @SerializedName(SERIALIZED_NAME_REVISION_ID)
-  private Integer revisionId;
+  private Long revisionId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -88,7 +87,7 @@ public class RevisionVersion {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Integer activeRulesetId;
+  private Long activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -112,15 +111,15 @@ public class RevisionVersion {
   @JsonAdapter(FeaturesEnum.Adapter.class)
   public enum FeaturesEnum {
     COUPONS("coupons"),
-    
+
     REFERRALS("referrals"),
-    
+
     LOYALTY("loyalty"),
-    
+
     GIVEAWAYS("giveaways"),
-    
+
     STRIKETHROUGH("strikethrough"),
-    
+
     ACHIEVEMENTS("achievements");
 
     private String value;
@@ -155,7 +154,7 @@ public class RevisionVersion {
 
       @Override
       public FeaturesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return FeaturesEnum.fromValue(value);
       }
     }
@@ -165,193 +164,186 @@ public class RevisionVersion {
   @SerializedName(SERIALIZED_NAME_FEATURES)
   private List<FeaturesEnum> features = null;
 
+  public RevisionVersion id(Long id) {
 
-  public RevisionVersion id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
-   * Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.
+  /**
+   * Unique ID for this entity. Not to be confused with the Integration ID, which
+   * is set by your integration layer and used in most endpoints.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public RevisionVersion accountId(Long accountId) {
 
-  public RevisionVersion accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * Get accountId
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public RevisionVersion applicationId(Long applicationId) {
 
-  public RevisionVersion applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * Get applicationId
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public RevisionVersion campaignId(Long campaignId) {
 
-  public RevisionVersion campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * Get campaignId
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public RevisionVersion created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Get created
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public RevisionVersion createdBy(Long createdBy) {
 
-  public RevisionVersion createdBy(Integer createdBy) {
-    
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
+  /**
    * Get createdBy
+   * 
    * @return createdBy
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
-
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
+  public RevisionVersion revisionId(Long revisionId) {
 
-  public RevisionVersion revisionId(Integer revisionId) {
-    
     this.revisionId = revisionId;
     return this;
   }
 
-   /**
+  /**
    * Get revisionId
+   * 
    * @return revisionId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getRevisionId() {
+  public Long getRevisionId() {
     return revisionId;
   }
 
-
-  public void setRevisionId(Integer revisionId) {
+  public void setRevisionId(Long revisionId) {
     this.revisionId = revisionId;
   }
 
+  public RevisionVersion version(Long version) {
 
-  public RevisionVersion version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Get version
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public RevisionVersion name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * A user-facing name for this campaign.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Summer promotions", value = "A user-facing name for this campaign.")
 
@@ -359,22 +351,21 @@ public class RevisionVersion {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public RevisionVersion startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become active.
+   * 
    * @return startTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp when the campaign will become active.")
 
@@ -382,22 +373,21 @@ public class RevisionVersion {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public RevisionVersion endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the campaign will become inactive.
+   * 
    * @return endTime
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-09-22T22:00Z", value = "Timestamp when the campaign will become inactive.")
 
@@ -405,22 +395,21 @@ public class RevisionVersion {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
-
   public RevisionVersion attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this campaign.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this campaign.")
 
@@ -428,22 +417,21 @@ public class RevisionVersion {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public RevisionVersion description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A detailed description of the campaign.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Campaign for all summer 2021 promotions", value = "A detailed description of the campaign.")
 
@@ -451,37 +439,34 @@ public class RevisionVersion {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public RevisionVersion activeRulesetId(Long activeRulesetId) {
 
-  public RevisionVersion activeRulesetId(Integer activeRulesetId) {
-    
     this.activeRulesetId = activeRulesetId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the ruleset this campaign template will use.
+   * 
    * @return activeRulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Integer getActiveRulesetId() {
+  public Long getActiveRulesetId() {
     return activeRulesetId;
   }
 
-
-  public void setActiveRulesetId(Integer activeRulesetId) {
+  public void setActiveRulesetId(Long activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
-
   public RevisionVersion tags(List<String> tags) {
-    
+
     this.tags = tags;
     return this;
   }
@@ -494,10 +479,11 @@ public class RevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * A list of tags for the campaign template.
+   * 
    * @return tags
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of tags for the campaign template.")
 
@@ -505,22 +491,21 @@ public class RevisionVersion {
     return tags;
   }
 
-
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
 
-
   public RevisionVersion couponSettings(CodeGeneratorSettings couponSettings) {
-    
+
     this.couponSettings = couponSettings;
     return this;
   }
 
-   /**
+  /**
    * Get couponSettings
+   * 
    * @return couponSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -528,22 +513,21 @@ public class RevisionVersion {
     return couponSettings;
   }
 
-
   public void setCouponSettings(CodeGeneratorSettings couponSettings) {
     this.couponSettings = couponSettings;
   }
 
-
   public RevisionVersion referralSettings(CodeGeneratorSettings referralSettings) {
-    
+
     this.referralSettings = referralSettings;
     return this;
   }
 
-   /**
+  /**
    * Get referralSettings
+   * 
    * @return referralSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -551,14 +535,12 @@ public class RevisionVersion {
     return referralSettings;
   }
 
-
   public void setReferralSettings(CodeGeneratorSettings referralSettings) {
     this.referralSettings = referralSettings;
   }
 
-
   public RevisionVersion limits(List<LimitConfig> limits) {
-    
+
     this.limits = limits;
     return this;
   }
@@ -571,10 +553,11 @@ public class RevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * The set of limits that will operate for this campaign version.
+   * 
    * @return limits
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of limits that will operate for this campaign version.")
 
@@ -582,14 +565,12 @@ public class RevisionVersion {
     return limits;
   }
 
-
   public void setLimits(List<LimitConfig> limits) {
     this.limits = limits;
   }
 
-
   public RevisionVersion features(List<FeaturesEnum> features) {
-    
+
     this.features = features;
     return this;
   }
@@ -602,10 +583,11 @@ public class RevisionVersion {
     return this;
   }
 
-   /**
+  /**
    * A list of features for the campaign template.
+   * 
    * @return features
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of features for the campaign template.")
 
@@ -613,11 +595,9 @@ public class RevisionVersion {
     return features;
   }
 
-
   public void setFeatures(List<FeaturesEnum> features) {
     this.features = features;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -651,9 +631,10 @@ public class RevisionVersion {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountId, applicationId, campaignId, created, createdBy, revisionId, version, name, startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits, features);
+    return Objects.hash(id, accountId, applicationId, campaignId, created, createdBy, revisionId, version, name,
+        startTime, endTime, attributes, description, activeRulesetId, tags, couponSettings, referralSettings, limits,
+        features);
   }
-
 
   @Override
   public String toString() {
@@ -694,4 +675,3 @@ public class RevisionVersion {
   }
 
 }
-

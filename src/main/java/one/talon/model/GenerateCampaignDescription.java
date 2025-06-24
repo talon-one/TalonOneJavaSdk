@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,56 +30,53 @@ import java.io.IOException;
 public class GenerateCampaignDescription {
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
-  private Integer rulesetID;
+  private Long rulesetID;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public GenerateCampaignDescription rulesetID(Long rulesetID) {
 
-  public GenerateCampaignDescription rulesetID(Integer rulesetID) {
-    
     this.rulesetID = rulesetID;
     return this;
   }
 
-   /**
+  /**
    * ID of a ruleset.
+   * 
    * @return rulesetID
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getRulesetID() {
+  public Long getRulesetID() {
     return rulesetID;
   }
 
-
-  public void setRulesetID(Integer rulesetID) {
+  public void setRulesetID(Long rulesetID) {
     this.rulesetID = rulesetID;
   }
 
-
   public GenerateCampaignDescription currency(String currency) {
-    
+
     this.currency = currency;
     return this;
   }
 
-   /**
+  /**
    * Currency for the campaign.
+   * 
    * @return currency
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Currency for the campaign.")
 
   public String getCurrency() {
     return currency;
   }
 
-
   public void setCurrency(String currency) {
     this.currency = currency;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,7 +95,6 @@ public class GenerateCampaignDescription {
   public int hashCode() {
     return Objects.hash(rulesetID, currency);
   }
-
 
   @Override
   public String toString() {
@@ -123,4 +118,3 @@ public class GenerateCampaignDescription {
   }
 
 }
-

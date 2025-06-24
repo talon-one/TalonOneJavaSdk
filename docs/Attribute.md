@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**accountId** | **Integer** | The ID of the account that owns this entity. | 
+**accountId** | **Long** | The ID of the account that owns this entity. | 
 **entity** | [**EntityEnum**](#EntityEnum) | The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60; of the custom attributes for that type. | 
 **eventType** | **String** |  |  [optional]
 **name** | **String** | The attribute name that will be used in API requests and Talang. E.g. if &#x60;name &#x3D;&#x3D; \&quot;region\&quot;&#x60; then you would set the region attribute by including an &#x60;attributes.region&#x60; property in your request payload. | 
@@ -19,10 +19,10 @@ Name | Type | Description | Notes
 **hasAllowedList** | **Boolean** | Whether or not this attribute has an allowed list of values associated with it. |  [optional]
 **restrictedBySuggestions** | **Boolean** | Whether or not this attribute&#39;s value is restricted by suggestions (&#x60;suggestions&#x60; property) or by an allowed list of value (&#x60;hasAllowedList&#x60; property).  |  [optional]
 **editable** | **Boolean** | Whether or not this attribute can be edited. | 
-**subscribedApplicationsIds** | **List&lt;Integer&gt;** | A list of the IDs of the applications where this attribute is available. |  [optional]
-**subscribedCatalogsIds** | **List&lt;Integer&gt;** | A list of the IDs of the catalogs where this attribute is available. |  [optional]
+**subscribedApplicationsIds** | **List&lt;Long&gt;** | A list of the IDs of the applications where this attribute is available. |  [optional]
+**subscribedCatalogsIds** | **List&lt;Long&gt;** | A list of the IDs of the catalogs where this attribute is available. |  [optional]
 **allowedSubscriptions** | [**List&lt;AllowedSubscriptionsEnum&gt;**](#List&lt;AllowedSubscriptionsEnum&gt;) | A list of allowed subscription types for this attribute.  **Note:** This only applies to attributes associated with the &#x60;CartItem&#x60; entity.  |  [optional]
-**eventTypeId** | **Integer** |  |  [optional]
+**eventTypeId** | **Long** |  |  [optional]
 
 
 

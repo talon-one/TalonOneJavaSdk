@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -46,63 +45,61 @@ public class NewRoleV2 {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = null;
-
+  private List<Long> members = null;
 
   public NewRoleV2 name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the role.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Campaign and campaign access group manager", required = true, value = "Name of the role.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewRoleV2 description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of the role.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "Allows you to create and edit campaigns for specific Applications, delete specific campaign access groups, and view loyalty programs.", required = true, value = "Description of the role.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public NewRoleV2 permissions(RoleV2Permissions permissions) {
-    
+
     this.permissions = permissions;
     return this;
   }
 
-   /**
+  /**
    * Get permissions
+   * 
    * @return permissions
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -110,42 +107,39 @@ public class NewRoleV2 {
     return permissions;
   }
 
-
   public void setPermissions(RoleV2Permissions permissions) {
     this.permissions = permissions;
   }
 
+  public NewRoleV2 members(List<Long> members) {
 
-  public NewRoleV2 members(List<Integer> members) {
-    
     this.members = members;
     return this;
   }
 
-  public NewRoleV2 addMembersItem(Integer membersItem) {
+  public NewRoleV2 addMembersItem(Long membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Integer>();
+      this.members = new ArrayList<Long>();
     }
     this.members.add(membersItem);
     return this;
   }
 
-   /**
+  /**
    * A list of user IDs the role is assigned to.
+   * 
    * @return members
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "A list of user IDs the role is assigned to.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
-
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -166,7 +160,6 @@ public class NewRoleV2 {
   public int hashCode() {
     return Objects.hash(name, description, permissions, members);
   }
-
 
   @Override
   public String toString() {
@@ -192,4 +185,3 @@ public class NewRoleV2 {
   }
 
 }
-

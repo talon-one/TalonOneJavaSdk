@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -62,43 +61,42 @@ public class AddLoyaltyPoints {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
-
+  private Long applicationId;
 
   public AddLoyaltyPoints points(BigDecimal points) {
-    
+
     this.points = points;
     return this;
   }
 
-   /**
+  /**
    * Amount of loyalty points.
    * minimum: 0
    * maximum: 999999999999.99
+   * 
    * @return points
-  **/
+   **/
   @ApiModelProperty(example = "300.0", required = true, value = "Amount of loyalty points.")
 
   public BigDecimal getPoints() {
     return points;
   }
 
-
   public void setPoints(BigDecimal points) {
     this.points = points;
   }
 
-
   public AddLoyaltyPoints name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name / reason for the point addition.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Compensation", value = "Name / reason for the point addition.")
 
@@ -106,22 +104,30 @@ public class AddLoyaltyPoints {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public AddLoyaltyPoints validityDuration(String validityDuration) {
-    
+
     this.validityDuration = validityDuration;
     return this;
   }
 
-   /**
-   * The time format is either: - &#x60;immediate&#x60; or, - an **integer** followed by one letter indicating the time unit.  Examples: &#x60;immediate&#x60;, &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  If passed, &#x60;validUntil&#x60; should be omitted. 
+  /**
+   * The time format is either: - &#x60;immediate&#x60; or, - an **integer**
+   * followed by one letter indicating the time unit. Examples:
+   * &#x60;immediate&#x60;, &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;,
+   * &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;. Available
+   * units: - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;:
+   * hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months -
+   * &#x60;Y&#x60;: years You can round certain units up or down: - &#x60;_D&#x60;
+   * for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60;
+   * for rounding up days, weeks, months and years. Signifies the end of the day,
+   * week, month or year. If passed, &#x60;validUntil&#x60; should be omitted.
+   * 
    * @return validityDuration
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5D", value = "The time format is either: - `immediate` or, - an **integer** followed by one letter indicating the time unit.  Examples: `immediate`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year.  If passed, `validUntil` should be omitted. ")
 
@@ -129,22 +135,22 @@ public class AddLoyaltyPoints {
     return validityDuration;
   }
 
-
   public void setValidityDuration(String validityDuration) {
     this.validityDuration = validityDuration;
   }
 
-
   public AddLoyaltyPoints validUntil(OffsetDateTime validUntil) {
-    
+
     this.validUntil = validUntil;
     return this;
   }
 
-   /**
-   * Date and time when points should expire. The value should be provided in RFC 3339 format. If passed, &#x60;validityDuration&#x60; should be omitted. 
+  /**
+   * Date and time when points should expire. The value should be provided in RFC
+   * 3339 format. If passed, &#x60;validityDuration&#x60; should be omitted.
+   * 
    * @return validUntil
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Date and time when points should expire. The value should be provided in RFC 3339 format. If passed, `validityDuration` should be omitted. ")
 
@@ -152,22 +158,30 @@ public class AddLoyaltyPoints {
     return validUntil;
   }
 
-
   public void setValidUntil(OffsetDateTime validUntil) {
     this.validUntil = validUntil;
   }
 
-
   public AddLoyaltyPoints pendingDuration(String pendingDuration) {
-    
+
     this.pendingDuration = pendingDuration;
     return this;
   }
 
-   /**
-   * The amount of time before the points are considered valid.  The time format is either: - &#x60;immediate&#x60; or, - an **integer** followed by one letter indicating the time unit.  Examples: &#x60;immediate&#x60;, &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. 
+  /**
+   * The amount of time before the points are considered valid. The time format is
+   * either: - &#x60;immediate&#x60; or, - an **integer** followed by one letter
+   * indicating the time unit. Examples: &#x60;immediate&#x60;, &#x60;30s&#x60;,
+   * &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;,
+   * &#x60;10M&#x60;, &#x60;15Y&#x60;. Available units: - &#x60;s&#x60;: seconds -
+   * &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days -
+   * &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years You can
+   * round certain units up or down: - &#x60;_D&#x60; for rounding down days only.
+   * Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks,
+   * months and years. Signifies the end of the day, week, month or year.
+   * 
    * @return pendingDuration
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "12h", value = "The amount of time before the points are considered valid.  The time format is either: - `immediate` or, - an **integer** followed by one letter indicating the time unit.  Examples: `immediate`, `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. ")
 
@@ -175,22 +189,23 @@ public class AddLoyaltyPoints {
     return pendingDuration;
   }
 
-
   public void setPendingDuration(String pendingDuration) {
     this.pendingDuration = pendingDuration;
   }
 
-
   public AddLoyaltyPoints pendingUntil(OffsetDateTime pendingUntil) {
-    
+
     this.pendingUntil = pendingUntil;
     return this;
   }
 
-   /**
-   * Date and time after the points are considered valid. The value should be provided in RFC 3339 format. If passed, &#x60;pendingDuration&#x60; should be omitted. 
+  /**
+   * Date and time after the points are considered valid. The value should be
+   * provided in RFC 3339 format. If passed, &#x60;pendingDuration&#x60; should be
+   * omitted.
+   * 
    * @return pendingUntil
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Date and time after the points are considered valid. The value should be provided in RFC 3339 format. If passed, `pendingDuration` should be omitted. ")
 
@@ -198,22 +213,22 @@ public class AddLoyaltyPoints {
     return pendingUntil;
   }
 
-
   public void setPendingUntil(OffsetDateTime pendingUntil) {
     this.pendingUntil = pendingUntil;
   }
 
-
   public AddLoyaltyPoints subledgerId(String subledgerId) {
-    
+
     this.subledgerId = subledgerId;
     return this;
   }
 
-   /**
-   * ID of the subledger the points are added to. If there is no existing subledger with this ID, the subledger is created automatically.
+  /**
+   * ID of the subledger the points are added to. If there is no existing
+   * subledger with this ID, the subledger is created automatically.
+   * 
    * @return subledgerId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "sub-123", value = "ID of the subledger the points are added to. If there is no existing subledger with this ID, the subledger is created automatically.")
 
@@ -221,34 +236,32 @@ public class AddLoyaltyPoints {
     return subledgerId;
   }
 
-
   public void setSubledgerId(String subledgerId) {
     this.subledgerId = subledgerId;
   }
 
+  public AddLoyaltyPoints applicationId(Long applicationId) {
 
-  public AddLoyaltyPoints applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
-   * ID of the Application that is connected to the loyalty program. It is displayed in your Talon.One deployment URL.
+  /**
+   * ID of the Application that is connected to the loyalty program. It is
+   * displayed in your Talon.One deployment URL.
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "ID of the Application that is connected to the loyalty program. It is displayed in your Talon.One deployment URL.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -271,9 +284,9 @@ public class AddLoyaltyPoints {
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, name, validityDuration, validUntil, pendingDuration, pendingUntil, subledgerId, applicationId);
+    return Objects.hash(points, name, validityDuration, validUntil, pendingDuration, pendingUntil, subledgerId,
+        applicationId);
   }
-
 
   @Override
   public String toString() {
@@ -303,4 +316,3 @@ public class AddLoyaltyPoints {
   }
 
 }
-

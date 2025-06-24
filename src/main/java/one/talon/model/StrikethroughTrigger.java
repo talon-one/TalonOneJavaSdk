@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughTrigger {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -45,122 +44,117 @@ public class StrikethroughTrigger {
 
   public static final String SERIALIZED_NAME_TOTAL_AFFECTED_ITEMS = "totalAffectedItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_AFFECTED_ITEMS)
-  private Integer totalAffectedItems;
+  private Long totalAffectedItems;
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
   private Object payload;
 
+  public StrikethroughTrigger id(Long id) {
 
-  public StrikethroughTrigger id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of the event that triggered the strikethrough labeling.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the event that triggered the strikethrough labeling.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public StrikethroughTrigger type(String type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * The type of event that triggered the strikethrough labeling.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "CATALOG_SYNC", required = true, value = "The type of event that triggered the strikethrough labeling.")
 
   public String getType() {
     return type;
   }
 
-
   public void setType(String type) {
     this.type = type;
   }
 
-
   public StrikethroughTrigger triggeredAt(OffsetDateTime triggeredAt) {
-    
+
     this.triggeredAt = triggeredAt;
     return this;
   }
 
-   /**
+  /**
    * The creation time of the event that triggered the strikethrough labeling.
+   * 
    * @return triggeredAt
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The creation time of the event that triggered the strikethrough labeling.")
 
   public OffsetDateTime getTriggeredAt() {
     return triggeredAt;
   }
 
-
   public void setTriggeredAt(OffsetDateTime triggeredAt) {
     this.triggeredAt = triggeredAt;
   }
 
+  public StrikethroughTrigger totalAffectedItems(Long totalAffectedItems) {
 
-  public StrikethroughTrigger totalAffectedItems(Integer totalAffectedItems) {
-    
     this.totalAffectedItems = totalAffectedItems;
     return this;
   }
 
-   /**
-   * The total number of items affected by the event that triggered the strikethrough labeling.
+  /**
+   * The total number of items affected by the event that triggered the
+   * strikethrough labeling.
+   * 
    * @return totalAffectedItems
-  **/
+   **/
   @ApiModelProperty(example = "1500", required = true, value = "The total number of items affected by the event that triggered the strikethrough labeling.")
 
-  public Integer getTotalAffectedItems() {
+  public Long getTotalAffectedItems() {
     return totalAffectedItems;
   }
 
-
-  public void setTotalAffectedItems(Integer totalAffectedItems) {
+  public void setTotalAffectedItems(Long totalAffectedItems) {
     this.totalAffectedItems = totalAffectedItems;
   }
 
-
   public StrikethroughTrigger payload(Object payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * The arbitrary properties associated with this trigger type.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(example = "{\"catalogId\":2,\"catalogVersion\":100}", required = true, value = "The arbitrary properties associated with this trigger type.")
 
   public Object getPayload() {
     return payload;
   }
 
-
   public void setPayload(Object payload) {
     this.payload = payload;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -182,7 +176,6 @@ public class StrikethroughTrigger {
   public int hashCode() {
     return Objects.hash(id, type, triggeredAt, totalAffectedItems, payload);
   }
-
 
   @Override
   public String toString() {
@@ -209,4 +202,3 @@ public class StrikethroughTrigger {
   }
 
 }
-

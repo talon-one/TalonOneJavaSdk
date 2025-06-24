@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,14 +32,14 @@ import org.threeten.bp.OffsetDateTime;
 
 public class BulkOperationOnCampaigns {
   /**
-   * The operation to perform on the specified campaign IDs. 
+   * The operation to perform on the specified campaign IDs.
    */
   @JsonAdapter(OperationEnum.Adapter.class)
   public enum OperationEnum {
     DISABLE("disable"),
-    
+
     DELETE("delete"),
-    
+
     ACTIVATE_REVISION("activate_revision");
 
     private String value;
@@ -75,7 +74,7 @@ public class BulkOperationOnCampaigns {
 
       @Override
       public OperationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return OperationEnum.fromValue(value);
       }
     }
@@ -87,72 +86,72 @@ public class BulkOperationOnCampaigns {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Integer> campaignIds = new ArrayList<Integer>();
+  private List<Long> campaignIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
   private OffsetDateTime activateAt;
 
-
   public BulkOperationOnCampaigns operation(OperationEnum operation) {
-    
+
     this.operation = operation;
     return this;
   }
 
-   /**
-   * The operation to perform on the specified campaign IDs. 
+  /**
+   * The operation to perform on the specified campaign IDs.
+   * 
    * @return operation
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The operation to perform on the specified campaign IDs. ")
 
   public OperationEnum getOperation() {
     return operation;
   }
 
-
   public void setOperation(OperationEnum operation) {
     this.operation = operation;
   }
 
+  public BulkOperationOnCampaigns campaignIds(List<Long> campaignIds) {
 
-  public BulkOperationOnCampaigns campaignIds(List<Integer> campaignIds) {
-    
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public BulkOperationOnCampaigns addCampaignIdsItem(Integer campaignIdsItem) {
+  public BulkOperationOnCampaigns addCampaignIdsItem(Long campaignIdsItem) {
     this.campaignIds.add(campaignIdsItem);
     return this;
   }
 
-   /**
+  /**
    * The list of campaign IDs on which the operation will be performed.
+   * 
    * @return campaignIds
-  **/
+   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The list of campaign IDs on which the operation will be performed.")
 
-  public List<Integer> getCampaignIds() {
+  public List<Long> getCampaignIds() {
     return campaignIds;
   }
 
-
-  public void setCampaignIds(List<Integer> campaignIds) {
+  public void setCampaignIds(List<Long> campaignIds) {
     this.campaignIds = campaignIds;
   }
 
-
   public BulkOperationOnCampaigns activateAt(OffsetDateTime activateAt) {
-    
+
     this.activateAt = activateAt;
     return this;
   }
 
-   /**
-   * Timestamp when the revisions are finalized after the &#x60;activate_revision&#x60; operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. 
+  /**
+   * Timestamp when the revisions are finalized after the
+   * &#x60;activate_revision&#x60; operation. The current time is used when left
+   * blank. **Note:** It must be an RFC3339 timestamp string.
+   * 
    * @return activateAt
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp when the revisions are finalized after the `activate_revision` operation. The current time is used when left blank.  **Note:** It must be an RFC3339 timestamp string. ")
 
@@ -160,11 +159,9 @@ public class BulkOperationOnCampaigns {
     return activateAt;
   }
 
-
   public void setActivateAt(OffsetDateTime activateAt) {
     this.activateAt = activateAt;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -184,7 +181,6 @@ public class BulkOperationOnCampaigns {
   public int hashCode() {
     return Objects.hash(operation, campaignIds, activateAt);
   }
-
 
   @Override
   public String toString() {
@@ -209,4 +205,3 @@ public class BulkOperationOnCampaigns {
   }
 
 }
-

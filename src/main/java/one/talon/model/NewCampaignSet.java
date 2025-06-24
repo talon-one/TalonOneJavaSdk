@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,83 +31,79 @@ import one.talon.model.CampaignSetBranchNode;
 public class NewCampaignSet {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
   private CampaignSetBranchNode set;
 
+  public NewCampaignSet applicationId(Long applicationId) {
 
-  public NewCampaignSet applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public NewCampaignSet version(Long version) {
 
-  public NewCampaignSet version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Version of the campaign set.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "Version of the campaign set.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public NewCampaignSet set(CampaignSetBranchNode set) {
-    
+
     this.set = set;
     return this;
   }
 
-   /**
+  /**
    * Get set
+   * 
    * @return set
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CampaignSetBranchNode getSet() {
     return set;
   }
 
-
   public void setSet(CampaignSetBranchNode set) {
     this.set = set;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,7 +123,6 @@ public class NewCampaignSet {
   public int hashCode() {
     return Objects.hash(applicationId, version, set);
   }
-
 
   @Override
   public String toString() {
@@ -153,4 +147,3 @@ public class NewCampaignSet {
   }
 
 }
-

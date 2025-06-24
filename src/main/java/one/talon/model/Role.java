@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Role {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,11 +45,11 @@ public class Role {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUP_I_D = "campaignGroupID";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUP_I_D)
-  private Integer campaignGroupID;
+  private Long campaignGroupID;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -62,156 +61,152 @@ public class Role {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = null;
+  private List<Long> members = null;
 
   public static final String SERIALIZED_NAME_ACL = "acl";
   @SerializedName(SERIALIZED_NAME_ACL)
   private Object acl;
 
+  public Role id(Long id) {
 
-  public Role id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Role created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Role modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was last modified.
+   * 
    * @return modified
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", required = true, value = "The time this entity was last modified.")
 
   public OffsetDateTime getModified() {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
+  public Role accountId(Long accountId) {
 
-  public Role accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public Role campaignGroupID(Long campaignGroupID) {
 
-  public Role campaignGroupID(Integer campaignGroupID) {
-    
     this.campaignGroupID = campaignGroupID;
     return this;
   }
 
-   /**
-   * The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this role was created for. 
+  /**
+   * The ID of the [Campaign
+   * Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups)
+   * this role was created for.
+   * 
    * @return campaignGroupID
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this role was created for. ")
 
-  public Integer getCampaignGroupID() {
+  public Long getCampaignGroupID() {
     return campaignGroupID;
   }
 
-
-  public void setCampaignGroupID(Integer campaignGroupID) {
+  public void setCampaignGroupID(Long campaignGroupID) {
     this.campaignGroupID = campaignGroupID;
   }
 
-
   public Role name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the role.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Campaign Reviewer", required = true, value = "Name of the role.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Role description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of the role.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Reviews the campaigns", value = "Description of the role.")
 
@@ -219,64 +214,61 @@ public class Role {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public Role members(List<Long> members) {
 
-  public Role members(List<Integer> members) {
-    
     this.members = members;
     return this;
   }
 
-  public Role addMembersItem(Integer membersItem) {
+  public Role addMembersItem(Long membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Integer>();
+      this.members = new ArrayList<Long>();
     }
     this.members.add(membersItem);
     return this;
   }
 
-   /**
+  /**
    * A list of user identifiers assigned to this role.
+   * 
    * @return members
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[48, 562, 475, 18]", value = "A list of user identifiers assigned to this role.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
-
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
 
-
   public Role acl(Object acl) {
-    
+
     this.acl = acl;
     return this;
   }
 
-   /**
-   * The &#x60;Access Control List&#x60; json defining the role of the user. This represents the access control on the user level.
+  /**
+   * The &#x60;Access Control List&#x60; json defining the role of the user. This
+   * represents the access control on the user level.
+   * 
    * @return acl
-  **/
+   **/
   @ApiModelProperty(example = "{\"Role\":127}", required = true, value = "The `Access Control List` json defining the role of the user. This represents the access control on the user level.")
 
   public Object getAcl() {
     return acl;
   }
 
-
   public void setAcl(Object acl) {
     this.acl = acl;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -302,7 +294,6 @@ public class Role {
   public int hashCode() {
     return Objects.hash(id, created, modified, accountId, campaignGroupID, name, description, members, acl);
   }
-
 
   @Override
   public String toString() {
@@ -333,4 +324,3 @@ public class Role {
   }
 
 }
-

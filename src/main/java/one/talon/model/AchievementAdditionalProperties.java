@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,11 +30,11 @@ import java.io.IOException;
 public class AchievementAdditionalProperties {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
@@ -51,11 +50,11 @@ public class AchievementAdditionalProperties {
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     INPROGRESS("inprogress"),
-    
+
     EXPIRED("expired"),
-    
+
     NOT_STARTED("not_started"),
-    
+
     COMPLETED("completed");
 
     private String value;
@@ -90,7 +89,7 @@ public class AchievementAdditionalProperties {
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
     }
@@ -100,61 +99,60 @@ public class AchievementAdditionalProperties {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public AchievementAdditionalProperties campaignId(Long campaignId) {
 
-  public AchievementAdditionalProperties campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign the achievement belongs to.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public AchievementAdditionalProperties userId(Long userId) {
 
-  public AchievementAdditionalProperties userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * ID of the user that created this achievement.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "1234", required = true, value = "ID of the user that created this achievement.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public AchievementAdditionalProperties createdBy(String createdBy) {
-    
+
     this.createdBy = createdBy;
     return this;
   }
 
-   /**
-   * Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. 
+  /**
+   * Name of the user that created the achievement. **Note**: This is not
+   * available if the user has been deleted.
+   * 
    * @return createdBy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "John Doe", value = "Name of the user that created the achievement.  **Note**: This is not available if the user has been deleted. ")
 
@@ -162,22 +160,21 @@ public class AchievementAdditionalProperties {
     return createdBy;
   }
 
-
   public void setCreatedBy(String createdBy) {
     this.createdBy = createdBy;
   }
 
-
   public AchievementAdditionalProperties hasProgress(Boolean hasProgress) {
-    
+
     this.hasProgress = hasProgress;
     return this;
   }
 
-   /**
+  /**
    * Indicates if a customer has made progress in the achievement.
+   * 
    * @return hasProgress
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates if a customer has made progress in the achievement.")
 
@@ -185,22 +182,21 @@ public class AchievementAdditionalProperties {
     return hasProgress;
   }
 
-
   public void setHasProgress(Boolean hasProgress) {
     this.hasProgress = hasProgress;
   }
 
-
   public AchievementAdditionalProperties status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * The status of the achievement.
+   * 
    * @return status
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "inprogress", value = "The status of the achievement.")
 
@@ -208,11 +204,9 @@ public class AchievementAdditionalProperties {
     return status;
   }
 
-
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -234,7 +228,6 @@ public class AchievementAdditionalProperties {
   public int hashCode() {
     return Objects.hash(campaignId, userId, createdBy, hasProgress, status);
   }
-
 
   @Override
   public String toString() {
@@ -261,4 +254,3 @@ public class AchievementAdditionalProperties {
   }
 
 }
-

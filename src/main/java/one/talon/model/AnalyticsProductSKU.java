@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AnalyticsProductSKU {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -42,72 +41,69 @@ public class AnalyticsProductSKU {
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED)
   private OffsetDateTime lastUpdated;
 
+  public AnalyticsProductSKU id(Long id) {
 
-  public AnalyticsProductSKU id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of the SKU linked to the analytics-level product.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the SKU linked to the analytics-level product.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public AnalyticsProductSKU sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * The SKU linked to the analytics-level product.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU-123", required = true, value = "The SKU linked to the analytics-level product.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
-
   public AnalyticsProductSKU lastUpdated(OffsetDateTime lastUpdated) {
-    
+
     this.lastUpdated = lastUpdated;
     return this;
   }
 
-   /**
-   * Values in UTC for the date the SKU linked to the analytics-level product was last updated.
+  /**
+   * Values in UTC for the date the SKU linked to the analytics-level product was
+   * last updated.
+   * 
    * @return lastUpdated
-  **/
+   **/
   @ApiModelProperty(example = "2024-02-01T00:00Z", required = true, value = "Values in UTC for the date the SKU linked to the analytics-level product was last updated.")
 
   public OffsetDateTime getLastUpdated() {
     return lastUpdated;
   }
 
-
   public void setLastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,7 +123,6 @@ public class AnalyticsProductSKU {
   public int hashCode() {
     return Objects.hash(id, sku, lastUpdated);
   }
-
 
   @Override
   public String toString() {
@@ -152,4 +147,3 @@ public class AnalyticsProductSKU {
   }
 
 }
-

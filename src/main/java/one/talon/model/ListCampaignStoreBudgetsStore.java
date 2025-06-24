@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class ListCampaignStoreBudgetsStore {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
@@ -41,72 +40,68 @@ public class ListCampaignStoreBudgetsStore {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public ListCampaignStoreBudgetsStore id(Long id) {
 
-  public ListCampaignStoreBudgetsStore id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ListCampaignStoreBudgetsStore integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * Get integrationId
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public ListCampaignStoreBudgetsStore name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Get name
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,7 +121,6 @@ public class ListCampaignStoreBudgetsStore {
   public int hashCode() {
     return Objects.hash(id, integrationId, name);
   }
-
 
   @Override
   public String toString() {
@@ -151,4 +145,3 @@ public class ListCampaignStoreBudgetsStore {
   }
 
 }
-

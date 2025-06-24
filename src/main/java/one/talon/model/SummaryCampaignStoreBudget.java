@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,33 +34,33 @@ public class SummaryCampaignStoreBudget {
   @JsonAdapter(ActionEnum.Adapter.class)
   public enum ActionEnum {
     REDEEMCOUPON("redeemCoupon"),
-    
+
     REDEEMREFERRAL("redeemReferral"),
-    
+
     SETDISCOUNT("setDiscount"),
-    
+
     SETDISCOUNTEFFECT("setDiscountEffect"),
-    
+
     CREATECOUPON("createCoupon"),
-    
+
     CREATEREFERRAL("createReferral"),
-    
+
     CREATELOYALTYPOINTS("createLoyaltyPoints"),
-    
+
     REDEEMLOYALTYPOINTS("redeemLoyaltyPoints"),
-    
+
     CUSTOMEFFECT("customEffect"),
-    
+
     CREATELOYALTYPOINTSEFFECT("createLoyaltyPointsEffect"),
-    
+
     REDEEMLOYALTYPOINTSEFFECT("redeemLoyaltyPointsEffect"),
-    
+
     CALLAPI("callApi"),
-    
+
     AWARDGIVEAWAY("awardGiveaway"),
-    
+
     ADDFREEITEMEFFECT("addFreeItemEffect"),
-    
+
     RESERVECOUPON("reserveCoupon");
 
     private String value;
@@ -96,7 +95,7 @@ public class SummaryCampaignStoreBudget {
 
       @Override
       public ActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ActionEnum.fromValue(value);
       }
     }
@@ -112,13 +111,13 @@ public class SummaryCampaignStoreBudget {
   @JsonAdapter(PeriodEnum.Adapter.class)
   public enum PeriodEnum {
     OVERALL("overall"),
-    
+
     DAILY("daily"),
-    
+
     WEEKLY("weekly"),
-    
+
     MONTHLY("monthly"),
-    
+
     YEARLY("yearly");
 
     private String value;
@@ -153,7 +152,7 @@ public class SummaryCampaignStoreBudget {
 
       @Override
       public PeriodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PeriodEnum.fromValue(value);
       }
     }
@@ -165,45 +164,44 @@ public class SummaryCampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_STORE_COUNT = "storeCount";
   @SerializedName(SERIALIZED_NAME_STORE_COUNT)
-  private Integer storeCount;
+  private Long storeCount;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)
   private Boolean imported;
 
-
   public SummaryCampaignStoreBudget action(ActionEnum action) {
-    
+
     this.action = action;
     return this;
   }
 
-   /**
+  /**
    * Get action
+   * 
    * @return action
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public ActionEnum getAction() {
     return action;
   }
 
-
   public void setAction(ActionEnum action) {
     this.action = action;
   }
 
-
   public SummaryCampaignStoreBudget period(PeriodEnum period) {
-    
+
     this.period = period;
     return this;
   }
 
-   /**
+  /**
    * Get period
+   * 
    * @return period
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -211,55 +209,51 @@ public class SummaryCampaignStoreBudget {
     return period;
   }
 
-
   public void setPeriod(PeriodEnum period) {
     this.period = period;
   }
 
+  public SummaryCampaignStoreBudget storeCount(Long storeCount) {
 
-  public SummaryCampaignStoreBudget storeCount(Integer storeCount) {
-    
     this.storeCount = storeCount;
     return this;
   }
 
-   /**
+  /**
    * Get storeCount
+   * 
    * @return storeCount
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getStoreCount() {
+  public Long getStoreCount() {
     return storeCount;
   }
 
-
-  public void setStoreCount(Integer storeCount) {
+  public void setStoreCount(Long storeCount) {
     this.storeCount = storeCount;
   }
 
-
   public SummaryCampaignStoreBudget imported(Boolean imported) {
-    
+
     this.imported = imported;
     return this;
   }
 
-   /**
+  /**
    * Get imported
+   * 
    * @return imported
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public Boolean getImported() {
     return imported;
   }
 
-
   public void setImported(Boolean imported) {
     this.imported = imported;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -280,7 +274,6 @@ public class SummaryCampaignStoreBudget {
   public int hashCode() {
     return Objects.hash(action, period, storeCount, imported);
   }
-
 
   @Override
   public String toString() {
@@ -306,4 +299,3 @@ public class SummaryCampaignStoreBudget {
   }
 
 }
-

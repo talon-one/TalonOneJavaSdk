@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,12 +35,14 @@ public class UpdateUser {
   private String name;
 
   /**
-   * The state of the user.   - &#x60;deactivated&#x60;: The user has been deactivated.   - &#x60;active&#x60;: The user is active.  **Note**: Only &#x60;admin&#x60; users can update the state of another user. 
+   * The state of the user. - &#x60;deactivated&#x60;: The user has been
+   * deactivated. - &#x60;active&#x60;: The user is active. **Note**: Only
+   * &#x60;admin&#x60; users can update the state of another user.
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     DEACTIVATED("deactivated"),
-    
+
     ACTIVE("active");
 
     private String value;
@@ -76,7 +77,7 @@ public class UpdateUser {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -96,23 +97,23 @@ public class UpdateUser {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Integer> roles = null;
+  private List<Long> roles = null;
 
   public static final String SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS = "applicationNotificationSubscriptions";
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
   private Object applicationNotificationSubscriptions;
 
-
   public UpdateUser name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the user.
+   * 
    * @return name
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "John Doe", value = "Name of the user.")
 
@@ -120,22 +121,23 @@ public class UpdateUser {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public UpdateUser state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * The state of the user.   - &#x60;deactivated&#x60;: The user has been deactivated.   - &#x60;active&#x60;: The user is active.  **Note**: Only &#x60;admin&#x60; users can update the state of another user. 
+  /**
+   * The state of the user. - &#x60;deactivated&#x60;: The user has been
+   * deactivated. - &#x60;active&#x60;: The user is active. **Note**: Only
+   * &#x60;admin&#x60; users can update the state of another user.
+   * 
    * @return state
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "deactivated", value = "The state of the user.   - `deactivated`: The user has been deactivated.   - `active`: The user is active.  **Note**: Only `admin` users can update the state of another user. ")
 
@@ -143,22 +145,21 @@ public class UpdateUser {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
-
   public UpdateUser isAdmin(Boolean isAdmin) {
-    
+
     this.isAdmin = isAdmin;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether the user is an &#x60;admin&#x60;.
+   * 
    * @return isAdmin
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates whether the user is an `admin`.")
 
@@ -166,22 +167,21 @@ public class UpdateUser {
     return isAdmin;
   }
 
-
   public void setIsAdmin(Boolean isAdmin) {
     this.isAdmin = isAdmin;
   }
 
-
   public UpdateUser policy(String policy) {
-    
+
     this.policy = policy;
     return this;
   }
 
-   /**
+  /**
    * Indicates the access level of the user.
+   * 
    * @return policy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "", value = "Indicates the access level of the user.")
 
@@ -189,53 +189,53 @@ public class UpdateUser {
     return policy;
   }
 
-
   public void setPolicy(String policy) {
     this.policy = policy;
   }
 
+  public UpdateUser roles(List<Long> roles) {
 
-  public UpdateUser roles(List<Integer> roles) {
-    
     this.roles = roles;
     return this;
   }
 
-  public UpdateUser addRolesItem(Integer rolesItem) {
+  public UpdateUser addRolesItem(Long rolesItem) {
     if (this.roles == null) {
-      this.roles = new ArrayList<Integer>();
+      this.roles = new ArrayList<Long>();
     }
     this.roles.add(rolesItem);
     return this;
   }
 
-   /**
-   * A list of the IDs of the roles assigned to the user.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
+  /**
+   * A list of the IDs of the roles assigned to the user. **Note**: To find the ID
+   * of a role, use the [List
+   * roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.
+   * 
    * @return roles
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "A list of the IDs of the roles assigned to the user.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. ")
 
-  public List<Integer> getRoles() {
+  public List<Long> getRoles() {
     return roles;
   }
 
-
-  public void setRoles(List<Integer> roles) {
+  public void setRoles(List<Long> roles) {
     this.roles = roles;
   }
 
-
   public UpdateUser applicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
-    
+
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
     return this;
   }
 
-   /**
+  /**
    * Application notifications that the user is subscribed to.
+   * 
    * @return applicationNotificationSubscriptions
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Application notifications that the user is subscribed to.")
 
@@ -243,11 +243,9 @@ public class UpdateUser {
     return applicationNotificationSubscriptions;
   }
 
-
   public void setApplicationNotificationSubscriptions(Object applicationNotificationSubscriptions) {
     this.applicationNotificationSubscriptions = applicationNotificationSubscriptions;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -271,7 +269,6 @@ public class UpdateUser {
     return Objects.hash(name, state, isAdmin, policy, roles, applicationNotificationSubscriptions);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -281,7 +278,8 @@ public class UpdateUser {
     sb.append("    isAdmin: ").append(toIndentedString(isAdmin)).append("\n");
     sb.append("    policy: ").append(toIndentedString(policy)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
-    sb.append("    applicationNotificationSubscriptions: ").append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
+    sb.append("    applicationNotificationSubscriptions: ")
+        .append(toIndentedString(applicationNotificationSubscriptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -298,4 +296,3 @@ public class UpdateUser {
   }
 
 }
-

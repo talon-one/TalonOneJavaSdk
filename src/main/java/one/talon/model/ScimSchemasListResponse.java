@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -43,11 +42,10 @@ public class ScimSchemasListResponse {
 
   public static final String SERIALIZED_NAME_TOTAL_RESULTS = "totalResults";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULTS)
-  private Integer totalResults;
-
+  private Long totalResults;
 
   public ScimSchemasListResponse resources(List<ScimSchemaResource> resources) {
-    
+
     this.resources = resources;
     return this;
   }
@@ -57,24 +55,23 @@ public class ScimSchemasListResponse {
     return this;
   }
 
-   /**
+  /**
    * Get resources
+   * 
    * @return resources
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<ScimSchemaResource> getResources() {
     return resources;
   }
 
-
   public void setResources(List<ScimSchemaResource> resources) {
     this.resources = resources;
   }
 
-
   public ScimSchemasListResponse schemas(List<String> schemas) {
-    
+
     this.schemas = schemas;
     return this;
   }
@@ -87,10 +84,11 @@ public class ScimSchemasListResponse {
     return this;
   }
 
-   /**
+  /**
    * SCIM schema for the given resource.
+   * 
    * @return schemas
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SCIM schema for the given resource.")
 
@@ -98,34 +96,31 @@ public class ScimSchemasListResponse {
     return schemas;
   }
 
-
   public void setSchemas(List<String> schemas) {
     this.schemas = schemas;
   }
 
+  public ScimSchemasListResponse totalResults(Long totalResults) {
 
-  public ScimSchemasListResponse totalResults(Integer totalResults) {
-    
     this.totalResults = totalResults;
     return this;
   }
 
-   /**
+  /**
    * Number of total results in the response.
+   * 
    * @return totalResults
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Number of total results in the response.")
 
-  public Integer getTotalResults() {
+  public Long getTotalResults() {
     return totalResults;
   }
 
-
-  public void setTotalResults(Integer totalResults) {
+  public void setTotalResults(Long totalResults) {
     this.totalResults = totalResults;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -145,7 +140,6 @@ public class ScimSchemasListResponse {
   public int hashCode() {
     return Objects.hash(resources, schemas, totalResults);
   }
-
 
   @Override
   public String toString() {
@@ -170,4 +164,3 @@ public class ScimSchemasListResponse {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import one.talon.model.CampaignSet;
 public class CampaignEvaluationTreeChangedNotification {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_OLD_EVALUATION_TREE = "oldEvaluationTree";
   @SerializedName(SERIALIZED_NAME_OLD_EVALUATION_TREE)
@@ -43,39 +42,38 @@ public class CampaignEvaluationTreeChangedNotification {
   @SerializedName(SERIALIZED_NAME_EVALUATION_TREE)
   private CampaignSet evaluationTree;
 
+  public CampaignEvaluationTreeChangedNotification applicationId(Long applicationId) {
 
-  public CampaignEvaluationTreeChangedNotification applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application whose campaign evaluation tree changed.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "78", required = true, value = "The ID of the Application whose campaign evaluation tree changed.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public CampaignEvaluationTreeChangedNotification oldEvaluationTree(CampaignSet oldEvaluationTree) {
-    
+
     this.oldEvaluationTree = oldEvaluationTree;
     return this;
   }
 
-   /**
+  /**
    * Get oldEvaluationTree
+   * 
    * @return oldEvaluationTree
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -83,33 +81,30 @@ public class CampaignEvaluationTreeChangedNotification {
     return oldEvaluationTree;
   }
 
-
   public void setOldEvaluationTree(CampaignSet oldEvaluationTree) {
     this.oldEvaluationTree = oldEvaluationTree;
   }
 
-
   public CampaignEvaluationTreeChangedNotification evaluationTree(CampaignSet evaluationTree) {
-    
+
     this.evaluationTree = evaluationTree;
     return this;
   }
 
-   /**
+  /**
    * Get evaluationTree
+   * 
    * @return evaluationTree
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CampaignSet getEvaluationTree() {
     return evaluationTree;
   }
 
-
   public void setEvaluationTree(CampaignSet evaluationTree) {
     this.evaluationTree = evaluationTree;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -129,7 +124,6 @@ public class CampaignEvaluationTreeChangedNotification {
   public int hashCode() {
     return Objects.hash(applicationId, oldEvaluationTree, evaluationTree);
   }
-
 
   @Override
   public String toString() {
@@ -154,4 +148,3 @@ public class CampaignEvaluationTreeChangedNotification {
   }
 
 }
-

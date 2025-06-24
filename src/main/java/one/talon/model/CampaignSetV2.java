@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignSetV2 {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,127 +41,121 @@ public class CampaignSetV2 {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
   private CampaignPrioritiesV2 set;
 
+  public CampaignSetV2 id(Long id) {
 
-  public CampaignSetV2 id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public CampaignSetV2 created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CampaignSetV2 applicationId(Long applicationId) {
 
-  public CampaignSetV2 applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public CampaignSetV2 version(Long version) {
 
-  public CampaignSetV2 version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Version of the campaign set.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "Version of the campaign set.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public CampaignSetV2 set(CampaignPrioritiesV2 set) {
-    
+
     this.set = set;
     return this;
   }
 
-   /**
+  /**
    * Get set
+   * 
    * @return set
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CampaignPrioritiesV2 getSet() {
     return set;
   }
 
-
   public void setSet(CampaignPrioritiesV2 set) {
     this.set = set;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -184,7 +177,6 @@ public class CampaignSetV2 {
   public int hashCode() {
     return Objects.hash(id, created, applicationId, version, set);
   }
-
 
   @Override
   public String toString() {
@@ -211,4 +203,3 @@ public class CampaignSetV2 {
   }
 
 }
-

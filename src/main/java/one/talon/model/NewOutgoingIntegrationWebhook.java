@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -41,41 +40,40 @@ public class NewOutgoingIntegrationWebhook {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
-
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public NewOutgoingIntegrationWebhook title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Webhook title.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Send email to customer via Braze", required = true, value = "Webhook title.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public NewOutgoingIntegrationWebhook description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the webhook.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "A webhook to send a coupon to the user.", value = "A description of the webhook.")
 
@@ -83,38 +81,35 @@ public class NewOutgoingIntegrationWebhook {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public NewOutgoingIntegrationWebhook applicationIds(List<Long> applicationIds) {
 
-  public NewOutgoingIntegrationWebhook applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewOutgoingIntegrationWebhook addApplicationIdsItem(Integer applicationIdsItem) {
+  public NewOutgoingIntegrationWebhook addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
+  /**
    * IDs of the Applications to which a webhook must be linked.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "IDs of the Applications to which a webhook must be linked.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -134,7 +129,6 @@ public class NewOutgoingIntegrationWebhook {
   public int hashCode() {
     return Objects.hash(title, description, applicationIds);
   }
-
 
   @Override
   public String toString() {
@@ -159,4 +153,3 @@ public class NewOutgoingIntegrationWebhook {
   }
 
 }
-

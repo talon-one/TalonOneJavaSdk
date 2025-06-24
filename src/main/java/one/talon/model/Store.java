@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Store {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -58,7 +57,7 @@ public class Store {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
@@ -66,107 +65,103 @@ public class Store {
 
   public static final String SERIALIZED_NAME_LINKED_CAMPAIGN_IDS = "linkedCampaignIds";
   @SerializedName(SERIALIZED_NAME_LINKED_CAMPAIGN_IDS)
-  private List<Integer> linkedCampaignIds = null;
+  private List<Long> linkedCampaignIds = null;
 
+  public Store id(Long id) {
 
-  public Store id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Store created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Store name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the store.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "South US store", required = true, value = "The name of the store.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Store description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of the store.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "This is the description of the store in south US.", required = true, value = "The description of the store.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public Store attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * The attributes of the store.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"country\":\"USA\",\"code\":1234}", value = "The attributes of the store.")
 
@@ -174,108 +169,104 @@ public class Store {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public Store integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
-   * The integration ID of the store. You choose this ID when you create a store.  **Note**: You cannot edit the &#x60;integrationId&#x60; after the store has been created. 
+  /**
+   * The integration ID of the store. You choose this ID when you create a store.
+   * **Note**: You cannot edit the &#x60;integrationId&#x60; after the store has
+   * been created.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "STORE-001", required = true, value = "The integration ID of the store. You choose this ID when you create a store.  **Note**: You cannot edit the `integrationId` after the store has been created. ")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
+  public Store applicationId(Long applicationId) {
 
-  public Store applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public Store updated(OffsetDateTime updated) {
-    
+
     this.updated = updated;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent update on this entity.
+   * 
    * @return updated
-  **/
+   **/
   @ApiModelProperty(example = "2021-09-23T10:12:42Z", required = true, value = "Timestamp of the most recent update on this entity.")
 
   public OffsetDateTime getUpdated() {
     return updated;
   }
 
-
   public void setUpdated(OffsetDateTime updated) {
     this.updated = updated;
   }
 
+  public Store linkedCampaignIds(List<Long> linkedCampaignIds) {
 
-  public Store linkedCampaignIds(List<Integer> linkedCampaignIds) {
-    
     this.linkedCampaignIds = linkedCampaignIds;
     return this;
   }
 
-  public Store addLinkedCampaignIdsItem(Integer linkedCampaignIdsItem) {
+  public Store addLinkedCampaignIdsItem(Long linkedCampaignIdsItem) {
     if (this.linkedCampaignIds == null) {
-      this.linkedCampaignIds = new ArrayList<Integer>();
+      this.linkedCampaignIds = new ArrayList<Long>();
     }
     this.linkedCampaignIds.add(linkedCampaignIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of IDs of the campaigns that are linked with current store.
+   * 
    * @return linkedCampaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are linked with current store.")
 
-  public List<Integer> getLinkedCampaignIds() {
+  public List<Long> getLinkedCampaignIds() {
     return linkedCampaignIds;
   }
 
-
-  public void setLinkedCampaignIds(List<Integer> linkedCampaignIds) {
+  public void setLinkedCampaignIds(List<Long> linkedCampaignIds) {
     this.linkedCampaignIds = linkedCampaignIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -299,9 +290,9 @@ public class Store {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, name, description, attributes, integrationId, applicationId, updated, linkedCampaignIds);
+    return Objects.hash(id, created, name, description, attributes, integrationId, applicationId, updated,
+        linkedCampaignIds);
   }
-
 
   @Override
   public String toString() {
@@ -332,4 +323,3 @@ public class Store {
   }
 
 }
-

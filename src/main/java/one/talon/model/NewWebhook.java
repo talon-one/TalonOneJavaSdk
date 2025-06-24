@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import one.talon.model.TemplateArgDef;
 public class NewWebhook {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -50,13 +49,13 @@ public class NewWebhook {
   @JsonAdapter(VerbEnum.Adapter.class)
   public enum VerbEnum {
     POST("POST"),
-    
+
     PUT("PUT"),
-    
+
     GET("GET"),
-    
+
     DELETE("DELETE"),
-    
+
     PATCH("PATCH");
 
     private String value;
@@ -91,7 +90,7 @@ public class NewWebhook {
 
       @Override
       public VerbEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return VerbEnum.fromValue(value);
       }
     }
@@ -121,66 +120,65 @@ public class NewWebhook {
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
+  public NewWebhook applicationIds(List<Long> applicationIds) {
 
-  public NewWebhook applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewWebhook addApplicationIdsItem(Integer applicationIdsItem) {
+  public NewWebhook addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
-   * The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;. 
+  /**
+   * The IDs of the Applications in which this webhook is available. An empty
+   * array means the webhook is available in &#x60;All Applications&#x60;.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
-
   public NewWebhook title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Name or title for this webhook.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Send message", required = true, value = "Name or title for this webhook.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public NewWebhook description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the webhook.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "A webhook to send a coupon to the user.", value = "A description of the webhook.")
 
@@ -188,58 +186,54 @@ public class NewWebhook {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public NewWebhook verb(VerbEnum verb) {
-    
+
     this.verb = verb;
     return this;
   }
 
-   /**
+  /**
    * API method for this webhook.
+   * 
    * @return verb
-  **/
+   **/
   @ApiModelProperty(example = "POST", required = true, value = "API method for this webhook.")
 
   public VerbEnum getVerb() {
     return verb;
   }
 
-
   public void setVerb(VerbEnum verb) {
     this.verb = verb;
   }
 
-
   public NewWebhook url(String url) {
-    
+
     this.url = url;
     return this;
   }
 
-   /**
+  /**
    * API URL (supports templating using parameters) for this webhook.
+   * 
    * @return url
-  **/
+   **/
   @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", required = true, value = "API URL (supports templating using parameters) for this webhook.")
 
   public String getUrl() {
     return url;
   }
 
-
   public void setUrl(String url) {
     this.url = url;
   }
 
-
   public NewWebhook headers(List<String> headers) {
-    
+
     this.headers = headers;
     return this;
   }
@@ -249,32 +243,32 @@ public class NewWebhook {
     return this;
   }
 
-   /**
+  /**
    * List of API HTTP headers for this webhook.
+   * 
    * @return headers
-  **/
+   **/
   @ApiModelProperty(example = "[{\"Authorization\": \"Basic bmF2ZWVua3VtYXIU=\"}, {\"Content-Type\": \"application/json\"}]", required = true, value = "List of API HTTP headers for this webhook.")
 
   public List<String> getHeaders() {
     return headers;
   }
 
-
   public void setHeaders(List<String> headers) {
     this.headers = headers;
   }
 
-
   public NewWebhook payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * API payload (supports templating using parameters) for this webhook.
+   * 
    * @return payload
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{  \"message\": \"${message}\" }", value = "API payload (supports templating using parameters) for this webhook.")
 
@@ -282,14 +276,12 @@ public class NewWebhook {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public NewWebhook params(List<TemplateArgDef> params) {
-    
+
     this.params = params;
     return this;
   }
@@ -299,43 +291,41 @@ public class NewWebhook {
     return this;
   }
 
-   /**
+  /**
    * Array of template argument definitions.
+   * 
    * @return params
-  **/
+   **/
   @ApiModelProperty(example = "[]", required = true, value = "Array of template argument definitions.")
 
   public List<TemplateArgDef> getParams() {
     return params;
   }
 
-
   public void setParams(List<TemplateArgDef> params) {
     this.params = params;
   }
 
-
   public NewWebhook enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Enables or disables webhook from showing in the Rule Builder.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Enables or disables webhook from showing in the Rule Builder.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -361,7 +351,6 @@ public class NewWebhook {
   public int hashCode() {
     return Objects.hash(applicationIds, title, description, verb, url, headers, payload, params, enabled);
   }
-
 
   @Override
   public String toString() {
@@ -392,4 +381,3 @@ public class NewWebhook {
   }
 
 }
-

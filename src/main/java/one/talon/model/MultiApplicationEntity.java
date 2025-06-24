@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,35 +32,33 @@ import java.util.List;
 public class MultiApplicationEntity {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
+  public MultiApplicationEntity applicationIds(List<Long> applicationIds) {
 
-  public MultiApplicationEntity applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public MultiApplicationEntity addApplicationIdsItem(Integer applicationIdsItem) {
+  public MultiApplicationEntity addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
+  /**
    * The IDs of the Applications that are related to this entity.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -79,7 +76,6 @@ public class MultiApplicationEntity {
   public int hashCode() {
     return Objects.hash(applicationIds);
   }
-
 
   @Override
   public String toString() {
@@ -102,4 +98,3 @@ public class MultiApplicationEntity {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -68,7 +67,7 @@ public class CampaignSetLeafNode {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -80,52 +79,49 @@ public class CampaignSetLeafNode {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
-
+  private Long campaignId;
 
   public CampaignSetLeafNode type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Indicates the node type.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Indicates the node type.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
+  public CampaignSetLeafNode campaignId(Long campaignId) {
 
-  public CampaignSetLeafNode campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * ID of the campaign
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "ID of the campaign")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -144,7 +140,6 @@ public class CampaignSetLeafNode {
   public int hashCode() {
     return Objects.hash(type, campaignId);
   }
-
 
   @Override
   public String toString() {
@@ -168,4 +163,3 @@ public class CampaignSetLeafNode {
   }
 
 }
-

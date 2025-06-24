@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -33,7 +32,7 @@ import one.talon.model.CampaignSet;
 public class CampaignPrioritiesChangedNotification {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_OLD_PRIORITIES = "oldPriorities";
   @SerializedName(SERIALIZED_NAME_OLD_PRIORITIES)
@@ -43,39 +42,38 @@ public class CampaignPrioritiesChangedNotification {
   @SerializedName(SERIALIZED_NAME_PRIORITIES)
   private CampaignSet priorities;
 
+  public CampaignPrioritiesChangedNotification applicationId(Long applicationId) {
 
-  public CampaignPrioritiesChangedNotification applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application whose campaigns&#39; priorities changed.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "78", required = true, value = "The ID of the Application whose campaigns' priorities changed.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public CampaignPrioritiesChangedNotification oldPriorities(CampaignSet oldPriorities) {
-    
+
     this.oldPriorities = oldPriorities;
     return this;
   }
 
-   /**
+  /**
    * Get oldPriorities
+   * 
    * @return oldPriorities
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -83,33 +81,30 @@ public class CampaignPrioritiesChangedNotification {
     return oldPriorities;
   }
 
-
   public void setOldPriorities(CampaignSet oldPriorities) {
     this.oldPriorities = oldPriorities;
   }
 
-
   public CampaignPrioritiesChangedNotification priorities(CampaignSet priorities) {
-    
+
     this.priorities = priorities;
     return this;
   }
 
-   /**
+  /**
    * Get priorities
+   * 
    * @return priorities
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CampaignSet getPriorities() {
     return priorities;
   }
 
-
   public void setPriorities(CampaignSet priorities) {
     this.priorities = priorities;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -129,7 +124,6 @@ public class CampaignPrioritiesChangedNotification {
   public int hashCode() {
     return Objects.hash(applicationId, oldPriorities, priorities);
   }
-
 
   @Override
   public String toString() {
@@ -154,4 +148,3 @@ public class CampaignPrioritiesChangedNotification {
   }
 
 }
-

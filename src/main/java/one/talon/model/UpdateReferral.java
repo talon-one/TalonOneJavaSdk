@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -44,23 +43,23 @@ public class UpdateReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
-
   public UpdateReferral friendProfileIntegrationId(String friendProfileIntegrationId) {
-    
+
     this.friendProfileIntegrationId = friendProfileIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * An optional Integration ID of the Friend&#39;s Profile.
+   * 
    * @return friendProfileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "BZGGC2454PA", value = "An optional Integration ID of the Friend's Profile.")
 
@@ -68,22 +67,21 @@ public class UpdateReferral {
     return friendProfileIntegrationId;
   }
 
-
   public void setFriendProfileIntegrationId(String friendProfileIntegrationId) {
     this.friendProfileIntegrationId = friendProfileIntegrationId;
   }
 
-
   public UpdateReferral startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the referral code becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
@@ -91,22 +89,22 @@ public class UpdateReferral {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public UpdateReferral expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Expiration date of the referral code. Referral never expires if this is omitted.
+  /**
+   * Expiration date of the referral code. Referral never expires if this is
+   * omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted.")
 
@@ -114,47 +112,46 @@ public class UpdateReferral {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
+  public UpdateReferral usageLimit(Long usageLimit) {
 
-  public UpdateReferral usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+  /**
+   * The number of times a referral code can be used. This can be set to 0 for no
+   * limit, but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
-
   public UpdateReferral attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
@@ -162,11 +159,9 @@ public class UpdateReferral {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -188,7 +183,6 @@ public class UpdateReferral {
   public int hashCode() {
     return Objects.hash(friendProfileIntegrationId, startDate, expiryDate, usageLimit, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -215,4 +209,3 @@ public class UpdateReferral {
   }
 
 }
-

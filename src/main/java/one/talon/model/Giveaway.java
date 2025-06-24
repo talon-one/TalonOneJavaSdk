@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Giveaway {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +43,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Integer poolId;
+  private Long poolId;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -64,7 +63,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -72,107 +71,103 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
+  public Giveaway id(Long id) {
 
-  public Giveaway id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Giveaway created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Giveaway code(String code) {
-    
+
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * The code value of this giveaway.
+   * 
    * @return code
-  **/
+   **/
   @ApiModelProperty(example = "GIVEAWAY1", required = true, value = "The code value of this giveaway.")
 
   public String getCode() {
     return code;
   }
 
-
   public void setCode(String code) {
     this.code = code;
   }
 
+  public Giveaway poolId(Long poolId) {
 
-  public Giveaway poolId(Integer poolId) {
-    
     this.poolId = poolId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the pool to return giveaway codes from.
+   * 
    * @return poolId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the pool to return giveaway codes from.")
 
-  public Integer getPoolId() {
+  public Long getPoolId() {
     return poolId;
   }
 
-
-  public void setPoolId(Integer poolId) {
+  public void setPoolId(Long poolId) {
     this.poolId = poolId;
   }
 
-
   public Giveaway startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the giveaway becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp at which point the giveaway becomes valid.")
 
@@ -180,22 +175,21 @@ public class Giveaway {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public Giveaway endDate(OffsetDateTime endDate) {
-    
+
     this.endDate = endDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the giveaway becomes invalid.
+   * 
    * @return endDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp at which point the giveaway becomes invalid.")
 
@@ -203,22 +197,21 @@ public class Giveaway {
     return endDate;
   }
 
-
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
   }
 
-
   public Giveaway attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this giveaway.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this giveaway.")
 
@@ -226,22 +219,21 @@ public class Giveaway {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public Giveaway used(Boolean used) {
-    
+
     this.used = used;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether this giveaway code was given before.
+   * 
    * @return used
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether this giveaway code was given before.")
 
@@ -249,45 +241,44 @@ public class Giveaway {
     return used;
   }
 
-
   public void setUsed(Boolean used) {
     this.used = used;
   }
 
+  public Giveaway importId(Long importId) {
 
-  public Giveaway importId(Integer importId) {
-    
     this.importId = importId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Import which created this giveaway.
+   * 
    * @return importId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this giveaway.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
-
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
-
   public Giveaway profileIntegrationId(String profileIntegrationId) {
-    
+
     this.profileIntegrationId = profileIntegrationId;
     return this;
   }
 
-   /**
-   * The third-party integration ID of the customer profile that was awarded the giveaway, if the giveaway was awarded.
+  /**
+   * The third-party integration ID of the customer profile that was awarded the
+   * giveaway, if the giveaway was awarded.
+   * 
    * @return profileIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "R195412", value = "The third-party integration ID of the customer profile that was awarded the giveaway, if the giveaway was awarded.")
 
@@ -295,34 +286,32 @@ public class Giveaway {
     return profileIntegrationId;
   }
 
-
   public void setProfileIntegrationId(String profileIntegrationId) {
     this.profileIntegrationId = profileIntegrationId;
   }
 
+  public Giveaway profileId(Long profileId) {
 
-  public Giveaway profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
-   * The internal ID of the customer profile that was awarded the giveaway, if the giveaway was awarded and an internal ID exists.
+  /**
+   * The internal ID of the customer profile that was awarded the giveaway, if the
+   * giveaway was awarded and an internal ID exists.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The internal ID of the customer profile that was awarded the giveaway, if the giveaway was awarded and an internal ID exists.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -348,9 +337,9 @@ public class Giveaway {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, code, poolId, startDate, endDate, attributes, used, importId, profileIntegrationId, profileId);
+    return Objects.hash(id, created, code, poolId, startDate, endDate, attributes, used, importId, profileIntegrationId,
+        profileId);
   }
-
 
   @Override
   public String toString() {
@@ -383,4 +372,3 @@ public class Giveaway {
   }
 
 }
-

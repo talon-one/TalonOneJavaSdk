@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -42,45 +41,44 @@ public class TierWillDowngradeNotificationPolicy {
 
   public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
   @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
-  private Integer batchSize;
+  private Long batchSize;
 
   public static final String SERIALIZED_NAME_TRIGGERS = "triggers";
   @SerializedName(SERIALIZED_NAME_TRIGGERS)
   private List<TierWillDowngradeNotificationTrigger> triggers = new ArrayList<TierWillDowngradeNotificationTrigger>();
 
-
   public TierWillDowngradeNotificationPolicy name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the notification.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Notification to Google", required = true, value = "The name of the notification.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public TierWillDowngradeNotificationPolicy batchingEnabled(Boolean batchingEnabled) {
-    
+
     this.batchingEnabled = batchingEnabled;
     return this;
   }
 
-   /**
+  /**
    * Indicates whether batching is activated.
+   * 
    * @return batchingEnabled
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Indicates whether batching is activated.")
 
@@ -88,37 +86,35 @@ public class TierWillDowngradeNotificationPolicy {
     return batchingEnabled;
   }
 
-
   public void setBatchingEnabled(Boolean batchingEnabled) {
     this.batchingEnabled = batchingEnabled;
   }
 
+  public TierWillDowngradeNotificationPolicy batchSize(Long batchSize) {
 
-  public TierWillDowngradeNotificationPolicy batchSize(Integer batchSize) {
-    
     this.batchSize = batchSize;
     return this;
   }
 
-   /**
-   * The required size of each batch of data. This value applies only when &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+  /**
+   * The required size of each batch of data. This value applies only when
+   * &#x60;batchingEnabled&#x60; is &#x60;true&#x60;.
+   * 
    * @return batchSize
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
 
-  public Integer getBatchSize() {
+  public Long getBatchSize() {
     return batchSize;
   }
 
-
-  public void setBatchSize(Integer batchSize) {
+  public void setBatchSize(Long batchSize) {
     this.batchSize = batchSize;
   }
 
-
   public TierWillDowngradeNotificationPolicy triggers(List<TierWillDowngradeNotificationTrigger> triggers) {
-    
+
     this.triggers = triggers;
     return this;
   }
@@ -128,21 +124,20 @@ public class TierWillDowngradeNotificationPolicy {
     return this;
   }
 
-   /**
+  /**
    * Get triggers
+   * 
    * @return triggers
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<TierWillDowngradeNotificationTrigger> getTriggers() {
     return triggers;
   }
 
-
   public void setTriggers(List<TierWillDowngradeNotificationTrigger> triggers) {
     this.triggers = triggers;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -163,7 +158,6 @@ public class TierWillDowngradeNotificationPolicy {
   public int hashCode() {
     return Objects.hash(name, batchingEnabled, batchSize, triggers);
   }
-
 
   @Override
   public String toString() {
@@ -189,4 +183,3 @@ public class TierWillDowngradeNotificationPolicy {
   }
 
 }
-

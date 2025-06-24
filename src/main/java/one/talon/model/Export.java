@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Export {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,11 +39,11 @@ public class Export {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   /**
    * The name of the entity that was exported.
@@ -52,17 +51,17 @@ public class Export {
   @JsonAdapter(EntityEnum.Adapter.class)
   public enum EntityEnum {
     COUPON("Coupon"),
-    
+
     REFERRAL("Referral"),
-    
+
     EFFECT("Effect"),
-    
+
     CUSTOMERSESSION("CustomerSession"),
-    
+
     LOYALTYLEDGER("LoyaltyLedger"),
-    
+
     LOYALTYLEDGERLOG("LoyaltyLedgerLog"),
-    
+
     COLLECTION("Collection");
 
     private String value;
@@ -97,7 +96,7 @@ public class Export {
 
       @Override
       public EntityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EntityEnum.fromValue(value);
       }
     }
@@ -111,138 +110,131 @@ public class Export {
   @SerializedName(SERIALIZED_NAME_FILTER)
   private Object filter;
 
+  public Export id(Long id) {
 
-  public Export id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Export created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Export accountId(Long accountId) {
 
-  public Export accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public Export userId(Long userId) {
 
-  public Export userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user associated with this entity.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public Export entity(EntityEnum entity) {
-    
+
     this.entity = entity;
     return this;
   }
 
-   /**
+  /**
    * The name of the entity that was exported.
+   * 
    * @return entity
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the entity that was exported.")
 
   public EntityEnum getEntity() {
     return entity;
   }
 
-
   public void setEntity(EntityEnum entity) {
     this.entity = entity;
   }
 
-
   public Export filter(Object filter) {
-    
+
     this.filter = filter;
     return this;
   }
 
-   /**
+  /**
    * Map of keys and values that were used to filter the exported rows.
+   * 
    * @return filter
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Map of keys and values that were used to filter the exported rows.")
 
   public Object getFilter() {
     return filter;
   }
 
-
   public void setFilter(Object filter) {
     this.filter = filter;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -265,7 +257,6 @@ public class Export {
   public int hashCode() {
     return Objects.hash(id, created, accountId, userId, entity, filter);
   }
-
 
   @Override
   public String toString() {
@@ -293,4 +284,3 @@ public class Export {
   }
 
 }
-

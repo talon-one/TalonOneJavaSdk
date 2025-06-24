@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -42,19 +41,19 @@ public class ErrorResponseWithStatus {
 
   public static final String SERIALIZED_NAME_STATUS_CODE = "StatusCode";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  private Integer statusCode;
-
+  private Long statusCode;
 
   public ErrorResponseWithStatus message(String message) {
-    
+
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * Get message
+   * 
    * @return message
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -62,14 +61,12 @@ public class ErrorResponseWithStatus {
     return message;
   }
 
-
   public void setMessage(String message) {
     this.message = message;
   }
 
-
   public ErrorResponseWithStatus errors(List<APIError> errors) {
-    
+
     this.errors = errors;
     return this;
   }
@@ -82,10 +79,11 @@ public class ErrorResponseWithStatus {
     return this;
   }
 
-   /**
+  /**
    * An array of individual problems encountered during the request.
+   * 
    * @return errors
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "An array of individual problems encountered during the request.")
 
@@ -93,34 +91,31 @@ public class ErrorResponseWithStatus {
     return errors;
   }
 
-
   public void setErrors(List<APIError> errors) {
     this.errors = errors;
   }
 
+  public ErrorResponseWithStatus statusCode(Long statusCode) {
 
-  public ErrorResponseWithStatus statusCode(Integer statusCode) {
-    
     this.statusCode = statusCode;
     return this;
   }
 
-   /**
+  /**
    * The error code
+   * 
    * @return statusCode
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The error code")
 
-  public Integer getStatusCode() {
+  public Long getStatusCode() {
     return statusCode;
   }
 
-
-  public void setStatusCode(Integer statusCode) {
+  public void setStatusCode(Long statusCode) {
     this.statusCode = statusCode;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -140,7 +135,6 @@ public class ErrorResponseWithStatus {
   public int hashCode() {
     return Objects.hash(message, errors, statusCode);
   }
-
 
   @Override
   public String toString() {
@@ -165,4 +159,3 @@ public class ErrorResponseWithStatus {
   }
 
 }
-

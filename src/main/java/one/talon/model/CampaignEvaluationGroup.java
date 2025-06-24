@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class CampaignEvaluationGroup {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -39,7 +38,7 @@ public class CampaignEvaluationGroup {
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parentId";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
-  private Integer parentId;
+  private Long parentId;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -51,11 +50,11 @@ public class CampaignEvaluationGroup {
   @JsonAdapter(EvaluationModeEnum.Adapter.class)
   public enum EvaluationModeEnum {
     STACKABLE("stackable"),
-    
+
     LISTORDER("listOrder"),
-    
+
     LOWESTDISCOUNT("lowestDiscount"),
-    
+
     HIGHESTDISCOUNT("highestDiscount");
 
     private String value;
@@ -90,7 +89,7 @@ public class CampaignEvaluationGroup {
 
       @Override
       public EvaluationModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EvaluationModeEnum.fromValue(value);
       }
     }
@@ -106,7 +105,7 @@ public class CampaignEvaluationGroup {
   @JsonAdapter(EvaluationScopeEnum.Adapter.class)
   public enum EvaluationScopeEnum {
     CARTITEM("cartItem"),
-    
+
     SESSION("session");
 
     private String value;
@@ -141,7 +140,7 @@ public class CampaignEvaluationGroup {
 
       @Override
       public EvaluationScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EvaluationScopeEnum.fromValue(value);
       }
     }
@@ -157,86 +156,83 @@ public class CampaignEvaluationGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
+  public CampaignEvaluationGroup applicationId(Long applicationId) {
 
-  public CampaignEvaluationGroup applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public CampaignEvaluationGroup name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the campaign evaluation group.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Summer campaigns", required = true, value = "The name of the campaign evaluation group.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
+  public CampaignEvaluationGroup parentId(Long parentId) {
 
-  public CampaignEvaluationGroup parentId(Integer parentId) {
-    
     this.parentId = parentId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the parent group that contains the campaign evaluation group.
    * minimum: 1
+   * 
    * @return parentId
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the parent group that contains the campaign evaluation group.")
 
-  public Integer getParentId() {
+  public Long getParentId() {
     return parentId;
   }
 
-
-  public void setParentId(Integer parentId) {
+  public void setParentId(Long parentId) {
     this.parentId = parentId;
   }
 
-
   public CampaignEvaluationGroup description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the campaign evaluation group.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "This campaign evaluation group contains all campaigns that are running in the summer.", value = "A description of the campaign evaluation group.")
 
@@ -244,99 +240,95 @@ public class CampaignEvaluationGroup {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public CampaignEvaluationGroup evaluationMode(EvaluationModeEnum evaluationMode) {
-    
+
     this.evaluationMode = evaluationMode;
     return this;
   }
 
-   /**
+  /**
    * The mode by which campaigns in the campaign evaluation group are evaluated.
+   * 
    * @return evaluationMode
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The mode by which campaigns in the campaign evaluation group are evaluated.")
 
   public EvaluationModeEnum getEvaluationMode() {
     return evaluationMode;
   }
 
-
   public void setEvaluationMode(EvaluationModeEnum evaluationMode) {
     this.evaluationMode = evaluationMode;
   }
 
-
   public CampaignEvaluationGroup evaluationScope(EvaluationScopeEnum evaluationScope) {
-    
+
     this.evaluationScope = evaluationScope;
     return this;
   }
 
-   /**
+  /**
    * The evaluation scope of the campaign evaluation group.
+   * 
    * @return evaluationScope
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The evaluation scope of the campaign evaluation group.")
 
   public EvaluationScopeEnum getEvaluationScope() {
     return evaluationScope;
   }
 
-
   public void setEvaluationScope(EvaluationScopeEnum evaluationScope) {
     this.evaluationScope = evaluationScope;
   }
 
-
   public CampaignEvaluationGroup locked(Boolean locked) {
-    
+
     this.locked = locked;
     return this;
   }
 
-   /**
-   * An indicator of whether the campaign evaluation group is locked for modification.
+  /**
+   * An indicator of whether the campaign evaluation group is locked for
+   * modification.
+   * 
    * @return locked
-  **/
+   **/
   @ApiModelProperty(example = "false", required = true, value = "An indicator of whether the campaign evaluation group is locked for modification.")
 
   public Boolean getLocked() {
     return locked;
   }
 
-
   public void setLocked(Boolean locked) {
     this.locked = locked;
   }
 
+  public CampaignEvaluationGroup id(Long id) {
 
-  public CampaignEvaluationGroup id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
-   * Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.
+  /**
+   * Unique ID for this entity. Not to be confused with the Integration ID, which
+   * is set by your integration layer and used in most endpoints.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -361,7 +353,6 @@ public class CampaignEvaluationGroup {
   public int hashCode() {
     return Objects.hash(applicationId, name, parentId, description, evaluationMode, evaluationScope, locked, id);
   }
-
 
   @Override
   public String toString() {
@@ -391,4 +382,3 @@ public class CampaignEvaluationGroup {
   }
 
 }
-

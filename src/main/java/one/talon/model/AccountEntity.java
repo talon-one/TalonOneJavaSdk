@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,30 +30,28 @@ import java.io.IOException;
 public class AccountEntity {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
+  public AccountEntity accountId(Long accountId) {
 
-  public AccountEntity accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,7 +69,6 @@ public class AccountEntity {
   public int hashCode() {
     return Objects.hash(accountId);
   }
-
 
   @Override
   public String toString() {
@@ -95,4 +91,3 @@ public class AccountEntity {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
 public class MultipleAudiencesItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -47,14 +46,14 @@ public class MultipleAudiencesItem {
   private String integrationId;
 
   /**
-   * Indicates whether the audience is new, updated or unmodified by the request. 
+   * Indicates whether the audience is new, updated or unmodified by the request.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     UNMODIFIED("unmodified"),
-    
+
     UPDATED("updated"),
-    
+
     NEW("new");
 
     private String value;
@@ -89,7 +88,7 @@ public class MultipleAudiencesItem {
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
     }
@@ -99,116 +98,110 @@ public class MultipleAudiencesItem {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
+  public MultipleAudiencesItem id(Long id) {
 
-  public MultipleAudiencesItem id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public MultipleAudiencesItem created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public MultipleAudiencesItem name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The human-friendly display name for this audience.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Travel audience", required = true, value = "The human-friendly display name for this audience.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public MultipleAudiencesItem integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of this audience in the third-party integration.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "382370BKDB946", required = true, value = "The ID of this audience in the third-party integration.")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public MultipleAudiencesItem status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
-   * Indicates whether the audience is new, updated or unmodified by the request. 
+  /**
+   * Indicates whether the audience is new, updated or unmodified by the request.
+   * 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "new", required = true, value = "Indicates whether the audience is new, updated or unmodified by the request. ")
 
   public StatusEnum getStatus() {
     return status;
   }
 
-
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -230,7 +223,6 @@ public class MultipleAudiencesItem {
   public int hashCode() {
     return Objects.hash(id, created, name, integrationId, status);
   }
-
 
   @Override
   public String toString() {
@@ -257,4 +249,3 @@ public class MultipleAudiencesItem {
   }
 
 }
-

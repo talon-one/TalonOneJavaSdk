@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,11 +36,11 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughChangedItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalogId";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
-  private Integer catalogId;
+  private Long catalogId;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -49,7 +48,7 @@ public class StrikethroughChangedItem {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -63,142 +62,135 @@ public class StrikethroughChangedItem {
   @SerializedName(SERIALIZED_NAME_EFFECTS)
   private List<StrikethroughEffect> effects = null;
 
+  public StrikethroughChangedItem id(Long id) {
 
-  public StrikethroughChangedItem id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of the event that triggered the strikethrough labeling.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the event that triggered the strikethrough labeling.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public StrikethroughChangedItem catalogId(Long catalogId) {
 
-  public StrikethroughChangedItem catalogId(Integer catalogId) {
-    
     this.catalogId = catalogId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the catalog that the changed item belongs to.
+   * 
    * @return catalogId
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The ID of the catalog that the changed item belongs to.")
 
-  public Integer getCatalogId() {
+  public Long getCatalogId() {
     return catalogId;
   }
 
-
-  public void setCatalogId(Integer catalogId) {
+  public void setCatalogId(Long catalogId) {
     this.catalogId = catalogId;
   }
 
-
   public StrikethroughChangedItem sku(String sku) {
-    
+
     this.sku = sku;
     return this;
   }
 
-   /**
+  /**
    * The unique SKU of the changed item.
+   * 
    * @return sku
-  **/
+   **/
   @ApiModelProperty(example = "SKU1241028", required = true, value = "The unique SKU of the changed item.")
 
   public String getSku() {
     return sku;
   }
 
-
   public void setSku(String sku) {
     this.sku = sku;
   }
 
+  public StrikethroughChangedItem version(Long version) {
 
-  public StrikethroughChangedItem version(Integer version) {
-    
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * The version of the changed item.
    * minimum: 1
+   * 
    * @return version
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "The version of the changed item.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
-
   public StrikethroughChangedItem price(BigDecimal price) {
-    
+
     this.price = price;
     return this;
   }
 
-   /**
+  /**
    * The price of the changed item.
+   * 
    * @return price
-  **/
+   **/
   @ApiModelProperty(example = "99.99", required = true, value = "The price of the changed item.")
 
   public BigDecimal getPrice() {
     return price;
   }
 
-
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
 
-
   public StrikethroughChangedItem evaluatedAt(OffsetDateTime evaluatedAt) {
-    
+
     this.evaluatedAt = evaluatedAt;
     return this;
   }
 
-   /**
+  /**
    * The evaluation time of the changed item.
+   * 
    * @return evaluatedAt
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The evaluation time of the changed item.")
 
   public OffsetDateTime getEvaluatedAt() {
     return evaluatedAt;
   }
 
-
   public void setEvaluatedAt(OffsetDateTime evaluatedAt) {
     this.evaluatedAt = evaluatedAt;
   }
 
-
   public StrikethroughChangedItem effects(List<StrikethroughEffect> effects) {
-    
+
     this.effects = effects;
     return this;
   }
@@ -211,10 +203,11 @@ public class StrikethroughChangedItem {
     return this;
   }
 
-   /**
+  /**
    * Get effects
+   * 
    * @return effects
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -222,11 +215,9 @@ public class StrikethroughChangedItem {
     return effects;
   }
 
-
   public void setEffects(List<StrikethroughEffect> effects) {
     this.effects = effects;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -250,7 +241,6 @@ public class StrikethroughChangedItem {
   public int hashCode() {
     return Objects.hash(id, catalogId, sku, version, price, evaluatedAt, effects);
   }
-
 
   @Override
   public String toString() {
@@ -279,4 +269,3 @@ public class StrikethroughChangedItem {
   }
 
 }
-

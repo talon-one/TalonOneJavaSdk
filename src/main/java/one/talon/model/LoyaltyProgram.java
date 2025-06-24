@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgram {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,7 +52,7 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
-  private List<Integer> subscribedApplications = new ArrayList<Integer>();
+  private List<Long> subscribedApplications = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_DEFAULT_VALIDITY = "defaultValidity";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALIDITY)
@@ -69,21 +68,27 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
   @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
-  private Integer usersPerCardLimit;
+  private Long usersPerCardLimit;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   private Boolean sandbox;
 
   /**
-   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+   * The policy that defines when the customer joins the loyalty program. -
+   * &#x60;not_join&#x60;: The customer does not join the loyalty program but can
+   * still earn and spend loyalty points. **Note**: The customer does not have a
+   * program join date. - &#x60;points_activated&#x60;: The customer joins the
+   * loyalty program only when their earned loyalty points become active for the
+   * first time. - &#x60;points_earned&#x60;: The customer joins the loyalty
+   * program when they earn loyalty points for the first time.
    */
   @JsonAdapter(ProgramJoinPolicyEnum.Adapter.class)
   public enum ProgramJoinPolicyEnum {
     NOT_JOIN("not_join"),
-    
+
     POINTS_ACTIVATED("points_activated"),
-    
+
     POINTS_EARNED("points_earned");
 
     private String value;
@@ -118,7 +123,7 @@ public class LoyaltyProgram {
 
       @Override
       public ProgramJoinPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ProgramJoinPolicyEnum.fromValue(value);
       }
     }
@@ -129,16 +134,24 @@ public class LoyaltyProgram {
   private ProgramJoinPolicyEnum programJoinPolicy;
 
   /**
-   * The policy that defines how tier expiration, used to reevaluate the customer&#39;s current tier, is determined.  - &#x60;tier_start_date&#x60;: The tier expiration is relative to when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration is relative to when the customer joined the loyalty program.  - &#x60;customer_attribute&#x60;: The tier expiration is determined by a custom customer attribute.  - &#x60;absolute_expiration&#x60;: The tier is reevaluated at the start of each tier cycle. For this policy, it is required to provide a &#x60;tierCycleStartDate&#x60;. 
+   * The policy that defines how tier expiration, used to reevaluate the
+   * customer&#39;s current tier, is determined. - &#x60;tier_start_date&#x60;:
+   * The tier expiration is relative to when the customer joined the current tier.
+   * - &#x60;program_join_date&#x60;: The tier expiration is relative to when the
+   * customer joined the loyalty program. - &#x60;customer_attribute&#x60;: The
+   * tier expiration is determined by a custom customer attribute. -
+   * &#x60;absolute_expiration&#x60;: The tier is reevaluated at the start of each
+   * tier cycle. For this policy, it is required to provide a
+   * &#x60;tierCycleStartDate&#x60;.
    */
   @JsonAdapter(TiersExpirationPolicyEnum.Adapter.class)
   public enum TiersExpirationPolicyEnum {
     TIER_START_DATE("tier_start_date"),
-    
+
     PROGRAM_JOIN_DATE("program_join_date"),
-    
+
     CUSTOMER_ATTRIBUTE("customer_attribute"),
-    
+
     ABSOLUTE_EXPIRATION("absolute_expiration");
 
     private String value;
@@ -173,7 +186,7 @@ public class LoyaltyProgram {
 
       @Override
       public TiersExpirationPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TiersExpirationPolicyEnum.fromValue(value);
       }
     }
@@ -192,12 +205,16 @@ public class LoyaltyProgram {
   private String tiersExpireIn;
 
   /**
-   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
+   * The policy that defines how customer tiers are downgraded in the loyalty
+   * program after tier reevaluation. - &#x60;one_down&#x60;: If the customer
+   * doesn&#39;t have enough points to stay in the current tier, they are
+   * downgraded by one tier. - &#x60;balance_based&#x60;: The customer&#39;s tier
+   * is reevaluated based on the amount of active points they have at the moment.
    */
   @JsonAdapter(TiersDowngradePolicyEnum.Adapter.class)
   public enum TiersDowngradePolicyEnum {
     ONE_DOWN("one_down"),
-    
+
     BALANCE_BASED("balance_based");
 
     private String value;
@@ -232,7 +249,7 @@ public class LoyaltyProgram {
 
       @Override
       public TiersDowngradePolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TiersDowngradePolicyEnum.fromValue(value);
       }
     }
@@ -247,14 +264,21 @@ public class LoyaltyProgram {
   private CodeGeneratorSettings cardCodeSettings;
 
   /**
-   * The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - &#x60;only_pending&#x60;: Only pending points can be rolled back. - &#x60;within_balance&#x60;: Available active points can be rolled back if there aren&#39;t enough pending points. The active balance of the customer cannot be negative. - &#x60;unlimited&#x60;: Allows negative balance without any limit. 
+   * The policy that defines the rollback of points in case of a partially
+   * returned, cancelled, or reopened [customer
+   * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+   * - &#x60;only_pending&#x60;: Only pending points can be rolled back. -
+   * &#x60;within_balance&#x60;: Available active points can be rolled back if
+   * there aren&#39;t enough pending points. The active balance of the customer
+   * cannot be negative. - &#x60;unlimited&#x60;: Allows negative balance without
+   * any limit.
    */
   @JsonAdapter(ReturnPolicyEnum.Adapter.class)
   public enum ReturnPolicyEnum {
     ONLY_PENDING("only_pending"),
-    
+
     WITHIN_BALANCE("within_balance"),
-    
+
     UNLIMITED("unlimited");
 
     private String value;
@@ -289,7 +313,7 @@ public class LoyaltyProgram {
 
       @Override
       public ReturnPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ReturnPolicyEnum.fromValue(value);
       }
     }
@@ -301,7 +325,7 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Integer accountID;
+  private Long accountID;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -339,244 +363,260 @@ public class LoyaltyProgram {
   @SerializedName(SERIALIZED_NAME_CAN_UPDATE_SUBLEDGERS)
   private Boolean canUpdateSubledgers = false;
 
+  public LoyaltyProgram id(Long id) {
 
-  public LoyaltyProgram id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The ID of loyalty program.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "139", required = true, value = "The ID of loyalty program.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public LoyaltyProgram created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public LoyaltyProgram title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The display title for the Loyalty Program.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Point collection", required = true, value = "The display title for the Loyalty Program.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public LoyaltyProgram description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description of our Loyalty Program.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "Customers collect 10 points per 1$ spent", required = true, value = "Description of our Loyalty Program.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public LoyaltyProgram subscribedApplications(List<Long> subscribedApplications) {
 
-  public LoyaltyProgram subscribedApplications(List<Integer> subscribedApplications) {
-    
     this.subscribedApplications = subscribedApplications;
     return this;
   }
 
-  public LoyaltyProgram addSubscribedApplicationsItem(Integer subscribedApplicationsItem) {
+  public LoyaltyProgram addSubscribedApplicationsItem(Long subscribedApplicationsItem) {
     this.subscribedApplications.add(subscribedApplicationsItem);
     return this;
   }
 
-   /**
-   * A list containing the IDs of all applications that are subscribed to this Loyalty Program.
+  /**
+   * A list containing the IDs of all applications that are subscribed to this
+   * Loyalty Program.
+   * 
    * @return subscribedApplications
-  **/
+   **/
   @ApiModelProperty(example = "[132, 97]", required = true, value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
 
-  public List<Integer> getSubscribedApplications() {
+  public List<Long> getSubscribedApplications() {
     return subscribedApplications;
   }
 
-
-  public void setSubscribedApplications(List<Integer> subscribedApplications) {
+  public void setSubscribedApplications(List<Long> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
   }
 
-
   public LoyaltyProgram defaultValidity(String defaultValidity) {
-    
+
     this.defaultValidity = defaultValidity;
     return this;
   }
 
-   /**
-   * The default duration after which new loyalty points should expire. Can be &#39;unlimited&#39; or a specific time. The time format is a number followed by one letter indicating the time unit, like &#39;30s&#39;, &#39;40m&#39;, &#39;1h&#39;, &#39;5D&#39;, &#39;7W&#39;, or 10M&#39;. These rounding suffixes are also supported: - &#39;_D&#39; for rounding down. Can be used as a suffix after &#39;D&#39;, and signifies the start of the day. - &#39;_U&#39; for rounding up. Can be used as a suffix after &#39;D&#39;, &#39;W&#39;, and &#39;M&#39;, and signifies the end of the day, week, and month. 
+  /**
+   * The default duration after which new loyalty points should expire. Can be
+   * &#39;unlimited&#39; or a specific time. The time format is a number followed
+   * by one letter indicating the time unit, like &#39;30s&#39;, &#39;40m&#39;,
+   * &#39;1h&#39;, &#39;5D&#39;, &#39;7W&#39;, or 10M&#39;. These rounding
+   * suffixes are also supported: - &#39;_D&#39; for rounding down. Can be used as
+   * a suffix after &#39;D&#39;, and signifies the start of the day. -
+   * &#39;_U&#39; for rounding up. Can be used as a suffix after &#39;D&#39;,
+   * &#39;W&#39;, and &#39;M&#39;, and signifies the end of the day, week, and
+   * month.
+   * 
    * @return defaultValidity
-  **/
+   **/
   @ApiModelProperty(example = "2W_U", required = true, value = "The default duration after which new loyalty points should expire. Can be 'unlimited' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month. ")
 
   public String getDefaultValidity() {
     return defaultValidity;
   }
 
-
   public void setDefaultValidity(String defaultValidity) {
     this.defaultValidity = defaultValidity;
   }
 
-
   public LoyaltyProgram defaultPending(String defaultPending) {
-    
+
     this.defaultPending = defaultPending;
     return this;
   }
 
-   /**
-   * The default duration of the pending time after which points should be valid. Can be &#39;immediate&#39; or a specific time. The time format is a number followed by one letter indicating the time unit, like &#39;30s&#39;, &#39;40m&#39;, &#39;1h&#39;, &#39;5D&#39;, &#39;7W&#39;, or 10M&#39;. These rounding suffixes are also supported: - &#39;_D&#39; for rounding down. Can be used as a suffix after &#39;D&#39;, and signifies the start of the day. - &#39;_U&#39; for rounding up. Can be used as a suffix after &#39;D&#39;, &#39;W&#39;, and &#39;M&#39;, and signifies the end of the day, week, and month. 
+  /**
+   * The default duration of the pending time after which points should be valid.
+   * Can be &#39;immediate&#39; or a specific time. The time format is a number
+   * followed by one letter indicating the time unit, like &#39;30s&#39;,
+   * &#39;40m&#39;, &#39;1h&#39;, &#39;5D&#39;, &#39;7W&#39;, or 10M&#39;. These
+   * rounding suffixes are also supported: - &#39;_D&#39; for rounding down. Can
+   * be used as a suffix after &#39;D&#39;, and signifies the start of the day. -
+   * &#39;_U&#39; for rounding up. Can be used as a suffix after &#39;D&#39;,
+   * &#39;W&#39;, and &#39;M&#39;, and signifies the end of the day, week, and
+   * month.
+   * 
    * @return defaultPending
-  **/
+   **/
   @ApiModelProperty(example = "immediate", required = true, value = "The default duration of the pending time after which points should be valid. Can be 'immediate' or a specific time. The time format is a number followed by one letter indicating the time unit, like '30s', '40m', '1h', '5D', '7W', or 10M'. These rounding suffixes are also supported: - '_D' for rounding down. Can be used as a suffix after 'D', and signifies the start of the day. - '_U' for rounding up. Can be used as a suffix after 'D', 'W', and 'M', and signifies the end of the day, week, and month. ")
 
   public String getDefaultPending() {
     return defaultPending;
   }
 
-
   public void setDefaultPending(String defaultPending) {
     this.defaultPending = defaultPending;
   }
 
-
   public LoyaltyProgram allowSubledger(Boolean allowSubledger) {
-    
+
     this.allowSubledger = allowSubledger;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this program supports subledgers inside the program.
+   * 
    * @return allowSubledger
-  **/
+   **/
   @ApiModelProperty(example = "false", required = true, value = "Indicates if this program supports subledgers inside the program.")
 
   public Boolean getAllowSubledger() {
     return allowSubledger;
   }
 
-
   public void setAllowSubledger(Boolean allowSubledger) {
     this.allowSubledger = allowSubledger;
   }
 
+  public LoyaltyProgram usersPerCardLimit(Long usersPerCardLimit) {
 
-  public LoyaltyProgram usersPerCardLimit(Integer usersPerCardLimit) {
-    
     this.usersPerCardLimit = usersPerCardLimit;
     return this;
   }
 
-   /**
-   * The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when &#x60;cardBased&#x60; is &#x60;true&#x60;. 
+  /**
+   * The max amount of user profiles with whom a card can be shared. This can be
+   * set to 0 for no limit. This property is only used when &#x60;cardBased&#x60;
+   * is &#x60;true&#x60;.
    * minimum: 0
+   * 
    * @return usersPerCardLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "111", value = "The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when `cardBased` is `true`. ")
 
-  public Integer getUsersPerCardLimit() {
+  public Long getUsersPerCardLimit() {
     return usersPerCardLimit;
   }
 
-
-  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
+  public void setUsersPerCardLimit(Long usersPerCardLimit) {
     this.usersPerCardLimit = usersPerCardLimit;
   }
 
-
   public LoyaltyProgram sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
-   * Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.
+  /**
+   * Indicates if this program is a live or sandbox program. Programs of a given
+   * type can only be connected to Applications of the same type.
+   * 
    * @return sandbox
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Indicates if this program is a live or sandbox program. Programs of a given type can only be connected to Applications of the same type.")
 
   public Boolean getSandbox() {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
 
-
   public LoyaltyProgram programJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
-    
+
     this.programJoinPolicy = programJoinPolicy;
     return this;
   }
 
-   /**
-   * The policy that defines when the customer joins the loyalty program.   - &#x60;not_join&#x60;: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - &#x60;points_activated&#x60;: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - &#x60;points_earned&#x60;: The customer joins the loyalty program when they earn loyalty points for the first time. 
+  /**
+   * The policy that defines when the customer joins the loyalty program. -
+   * &#x60;not_join&#x60;: The customer does not join the loyalty program but can
+   * still earn and spend loyalty points. **Note**: The customer does not have a
+   * program join date. - &#x60;points_activated&#x60;: The customer joins the
+   * loyalty program only when their earned loyalty points become active for the
+   * first time. - &#x60;points_earned&#x60;: The customer joins the loyalty
+   * program when they earn loyalty points for the first time.
+   * 
    * @return programJoinPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The policy that defines when the customer joins the loyalty program.   - `not_join`: The customer does not join the loyalty program but can still earn and spend loyalty points.       **Note**: The customer does not have a program join date.   - `points_activated`: The customer joins the loyalty program only when their earned loyalty points become active for the first time.   - `points_earned`: The customer joins the loyalty program when they earn loyalty points for the first time. ")
 
@@ -584,22 +624,29 @@ public class LoyaltyProgram {
     return programJoinPolicy;
   }
 
-
   public void setProgramJoinPolicy(ProgramJoinPolicyEnum programJoinPolicy) {
     this.programJoinPolicy = programJoinPolicy;
   }
 
-
   public LoyaltyProgram tiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
-    
+
     this.tiersExpirationPolicy = tiersExpirationPolicy;
     return this;
   }
 
-   /**
-   * The policy that defines how tier expiration, used to reevaluate the customer&#39;s current tier, is determined.  - &#x60;tier_start_date&#x60;: The tier expiration is relative to when the customer joined the current tier.  - &#x60;program_join_date&#x60;: The tier expiration is relative to when the customer joined the loyalty program.  - &#x60;customer_attribute&#x60;: The tier expiration is determined by a custom customer attribute.  - &#x60;absolute_expiration&#x60;: The tier is reevaluated at the start of each tier cycle. For this policy, it is required to provide a &#x60;tierCycleStartDate&#x60;. 
+  /**
+   * The policy that defines how tier expiration, used to reevaluate the
+   * customer&#39;s current tier, is determined. - &#x60;tier_start_date&#x60;:
+   * The tier expiration is relative to when the customer joined the current tier.
+   * - &#x60;program_join_date&#x60;: The tier expiration is relative to when the
+   * customer joined the loyalty program. - &#x60;customer_attribute&#x60;: The
+   * tier expiration is determined by a custom customer attribute. -
+   * &#x60;absolute_expiration&#x60;: The tier is reevaluated at the start of each
+   * tier cycle. For this policy, it is required to provide a
+   * &#x60;tierCycleStartDate&#x60;.
+   * 
    * @return tiersExpirationPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The policy that defines how tier expiration, used to reevaluate the customer's current tier, is determined.  - `tier_start_date`: The tier expiration is relative to when the customer joined the current tier.  - `program_join_date`: The tier expiration is relative to when the customer joined the loyalty program.  - `customer_attribute`: The tier expiration is determined by a custom customer attribute.  - `absolute_expiration`: The tier is reevaluated at the start of each tier cycle. For this policy, it is required to provide a `tierCycleStartDate`. ")
 
@@ -607,22 +654,23 @@ public class LoyaltyProgram {
     return tiersExpirationPolicy;
   }
 
-
   public void setTiersExpirationPolicy(TiersExpirationPolicyEnum tiersExpirationPolicy) {
     this.tiersExpirationPolicy = tiersExpirationPolicy;
   }
 
-
   public LoyaltyProgram tierCycleStartDate(OffsetDateTime tierCycleStartDate) {
-    
+
     this.tierCycleStartDate = tierCycleStartDate;
     return this;
   }
 
-   /**
-   * Timestamp at which the tier cycle starts for all customers in the loyalty program.  **Note**: This is only required when the tier expiration policy is set to &#x60;absolute_expiration&#x60;. 
+  /**
+   * Timestamp at which the tier cycle starts for all customers in the loyalty
+   * program. **Note**: This is only required when the tier expiration policy is
+   * set to &#x60;absolute_expiration&#x60;.
+   * 
    * @return tierCycleStartDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "Timestamp at which the tier cycle starts for all customers in the loyalty program.  **Note**: This is only required when the tier expiration policy is set to `absolute_expiration`. ")
 
@@ -630,22 +678,30 @@ public class LoyaltyProgram {
     return tierCycleStartDate;
   }
 
-
   public void setTierCycleStartDate(OffsetDateTime tierCycleStartDate) {
     this.tierCycleStartDate = tierCycleStartDate;
   }
 
-
   public LoyaltyProgram tiersExpireIn(String tiersExpireIn) {
-    
+
     this.tiersExpireIn = tiersExpireIn;
     return this;
   }
 
-   /**
-   * The amount of time after which the tier expires and is reevaluated.  The time format is an **integer** followed by one letter indicating the time unit. Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;, &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;.  Available units:  - &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours - &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months - &#x60;Y&#x60;: years  You can round certain units up or down: - &#x60;_D&#x60; for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60; for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. 
+  /**
+   * The amount of time after which the tier expires and is reevaluated. The time
+   * format is an **integer** followed by one letter indicating the time unit.
+   * Examples: &#x60;30s&#x60;, &#x60;40m&#x60;, &#x60;1h&#x60;, &#x60;5D&#x60;,
+   * &#x60;7W&#x60;, &#x60;10M&#x60;, &#x60;15Y&#x60;. Available units: -
+   * &#x60;s&#x60;: seconds - &#x60;m&#x60;: minutes - &#x60;h&#x60;: hours -
+   * &#x60;D&#x60;: days - &#x60;W&#x60;: weeks - &#x60;M&#x60;: months -
+   * &#x60;Y&#x60;: years You can round certain units up or down: - &#x60;_D&#x60;
+   * for rounding down days only. Signifies the start of the day. - &#x60;_U&#x60;
+   * for rounding up days, weeks, months and years. Signifies the end of the day,
+   * week, month or year.
+   * 
    * @return tiersExpireIn
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "27W_U", value = "The amount of time after which the tier expires and is reevaluated.  The time format is an **integer** followed by one letter indicating the time unit. Examples: `30s`, `40m`, `1h`, `5D`, `7W`, `10M`, `15Y`.  Available units:  - `s`: seconds - `m`: minutes - `h`: hours - `D`: days - `W`: weeks - `M`: months - `Y`: years  You can round certain units up or down: - `_D` for rounding down days only. Signifies the start of the day. - `_U` for rounding up days, weeks, months and years. Signifies the end of the day, week, month or year. ")
 
@@ -653,22 +709,25 @@ public class LoyaltyProgram {
     return tiersExpireIn;
   }
 
-
   public void setTiersExpireIn(String tiersExpireIn) {
     this.tiersExpireIn = tiersExpireIn;
   }
 
-
   public LoyaltyProgram tiersDowngradePolicy(TiersDowngradePolicyEnum tiersDowngradePolicy) {
-    
+
     this.tiersDowngradePolicy = tiersDowngradePolicy;
     return this;
   }
 
-   /**
-   * The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - &#x60;one_down&#x60;: If the customer doesn&#39;t have enough points to stay in the current tier, they are downgraded by one tier.  - &#x60;balance_based&#x60;: The customer&#39;s tier is reevaluated based on the amount of active points they have at the moment. 
+  /**
+   * The policy that defines how customer tiers are downgraded in the loyalty
+   * program after tier reevaluation. - &#x60;one_down&#x60;: If the customer
+   * doesn&#39;t have enough points to stay in the current tier, they are
+   * downgraded by one tier. - &#x60;balance_based&#x60;: The customer&#39;s tier
+   * is reevaluated based on the amount of active points they have at the moment.
+   * 
    * @return tiersDowngradePolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The policy that defines how customer tiers are downgraded in the loyalty program after tier reevaluation.  - `one_down`: If the customer doesn't have enough points to stay in the current tier, they are downgraded by one tier.  - `balance_based`: The customer's tier is reevaluated based on the amount of active points they have at the moment. ")
 
@@ -676,22 +735,21 @@ public class LoyaltyProgram {
     return tiersDowngradePolicy;
   }
 
-
   public void setTiersDowngradePolicy(TiersDowngradePolicyEnum tiersDowngradePolicy) {
     this.tiersDowngradePolicy = tiersDowngradePolicy;
   }
 
-
   public LoyaltyProgram cardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
-    
+
     this.cardCodeSettings = cardCodeSettings;
     return this;
   }
 
-   /**
+  /**
    * Get cardCodeSettings
+   * 
    * @return cardCodeSettings
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -699,22 +757,28 @@ public class LoyaltyProgram {
     return cardCodeSettings;
   }
 
-
   public void setCardCodeSettings(CodeGeneratorSettings cardCodeSettings) {
     this.cardCodeSettings = cardCodeSettings;
   }
 
-
   public LoyaltyProgram returnPolicy(ReturnPolicyEnum returnPolicy) {
-    
+
     this.returnPolicy = returnPolicy;
     return this;
   }
 
-   /**
-   * The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - &#x60;only_pending&#x60;: Only pending points can be rolled back. - &#x60;within_balance&#x60;: Available active points can be rolled back if there aren&#39;t enough pending points. The active balance of the customer cannot be negative. - &#x60;unlimited&#x60;: Allows negative balance without any limit. 
+  /**
+   * The policy that defines the rollback of points in case of a partially
+   * returned, cancelled, or reopened [customer
+   * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+   * - &#x60;only_pending&#x60;: Only pending points can be rolled back. -
+   * &#x60;within_balance&#x60;: Available active points can be rolled back if
+   * there aren&#39;t enough pending points. The active balance of the customer
+   * cannot be negative. - &#x60;unlimited&#x60;: Allows negative balance without
+   * any limit.
+   * 
    * @return returnPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The policy that defines the rollback of points in case of a partially returned, cancelled, or reopened [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). - `only_pending`: Only pending points can be rolled back. - `within_balance`: Available active points can be rolled back if there aren't enough pending points. The active balance of the customer cannot be negative. - `unlimited`: Allows negative balance without any limit. ")
 
@@ -722,58 +786,54 @@ public class LoyaltyProgram {
     return returnPolicy;
   }
 
-
   public void setReturnPolicy(ReturnPolicyEnum returnPolicy) {
     this.returnPolicy = returnPolicy;
   }
 
+  public LoyaltyProgram accountID(Long accountID) {
 
-  public LoyaltyProgram accountID(Integer accountID) {
-    
     this.accountID = accountID;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Talon.One account that owns this program.
+   * 
    * @return accountID
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the Talon.One account that owns this program.")
 
-  public Integer getAccountID() {
+  public Long getAccountID() {
     return accountID;
   }
 
-
-  public void setAccountID(Integer accountID) {
+  public void setAccountID(Long accountID) {
     this.accountID = accountID;
   }
 
-
   public LoyaltyProgram name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The internal name for the Loyalty Program. This is an immutable value.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "my_program", required = true, value = "The internal name for the Loyalty Program. This is an immutable value.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public LoyaltyProgram tiers(List<LoyaltyTier> tiers) {
-    
+
     this.tiers = tiers;
     return this;
   }
@@ -786,10 +846,11 @@ public class LoyaltyProgram {
     return this;
   }
 
-   /**
+  /**
    * The tiers in this loyalty program.
+   * 
    * @return tiers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[{name=Gold, minPoints=300, id=3, created=2021-06-10T09:05:27.993483Z, programID=139}, {name=Silver, minPoints=200, id=2, created=2021-06-10T09:04:59.355258Z, programID=139}, {name=Bronze, minPoints=100, id=1, created=2021-06-10T09:04:39.355258Z, programID=139}]", value = "The tiers in this loyalty program.")
 
@@ -797,66 +858,64 @@ public class LoyaltyProgram {
     return tiers;
   }
 
-
   public void setTiers(List<LoyaltyTier> tiers) {
     this.tiers = tiers;
   }
 
-
   public LoyaltyProgram timezone(String timezone) {
-    
+
     this.timezone = timezone;
     return this;
   }
 
-   /**
+  /**
    * A string containing an IANA timezone descriptor.
+   * 
    * @return timezone
-  **/
+   **/
   @ApiModelProperty(example = "Europe/Berlin", required = true, value = "A string containing an IANA timezone descriptor.")
 
   public String getTimezone() {
     return timezone;
   }
 
-
   public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
 
-
   public LoyaltyProgram cardBased(Boolean cardBased) {
-    
+
     this.cardBased = cardBased;
     return this;
   }
 
-   /**
-   * Defines the type of loyalty program: - &#x60;true&#x60;: the program is a card-based. - &#x60;false&#x60;: the program is profile-based. 
+  /**
+   * Defines the type of loyalty program: - &#x60;true&#x60;: the program is a
+   * card-based. - &#x60;false&#x60;: the program is profile-based.
+   * 
    * @return cardBased
-  **/
+   **/
   @ApiModelProperty(example = "true", required = true, value = "Defines the type of loyalty program: - `true`: the program is a card-based. - `false`: the program is profile-based. ")
 
   public Boolean getCardBased() {
     return cardBased;
   }
 
-
   public void setCardBased(Boolean cardBased) {
     this.cardBased = cardBased;
   }
 
-
   public LoyaltyProgram canUpdateTiers(Boolean canUpdateTiers) {
-    
+
     this.canUpdateTiers = canUpdateTiers;
     return this;
   }
 
-   /**
-   * &#x60;True&#x60; if the tier definitions can be updated. 
+  /**
+   * &#x60;True&#x60; if the tier definitions can be updated.
+   * 
    * @return canUpdateTiers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "`True` if the tier definitions can be updated. ")
 
@@ -864,22 +923,21 @@ public class LoyaltyProgram {
     return canUpdateTiers;
   }
 
-
   public void setCanUpdateTiers(Boolean canUpdateTiers) {
     this.canUpdateTiers = canUpdateTiers;
   }
 
-
   public LoyaltyProgram canUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
-    
+
     this.canUpdateJoinPolicy = canUpdateJoinPolicy;
     return this;
   }
 
-   /**
-   * &#x60;True&#x60; if the program join policy can be updated. 
+  /**
+   * &#x60;True&#x60; if the program join policy can be updated.
+   * 
    * @return canUpdateJoinPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "`True` if the program join policy can be updated. ")
 
@@ -887,22 +945,21 @@ public class LoyaltyProgram {
     return canUpdateJoinPolicy;
   }
 
-
   public void setCanUpdateJoinPolicy(Boolean canUpdateJoinPolicy) {
     this.canUpdateJoinPolicy = canUpdateJoinPolicy;
   }
 
-
   public LoyaltyProgram canUpdateTierExpirationPolicy(Boolean canUpdateTierExpirationPolicy) {
-    
+
     this.canUpdateTierExpirationPolicy = canUpdateTierExpirationPolicy;
     return this;
   }
 
-   /**
-   * &#x60;True&#x60; if the tier expiration policy can be updated. 
+  /**
+   * &#x60;True&#x60; if the tier expiration policy can be updated.
+   * 
    * @return canUpdateTierExpirationPolicy
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "`True` if the tier expiration policy can be updated. ")
 
@@ -910,22 +967,22 @@ public class LoyaltyProgram {
     return canUpdateTierExpirationPolicy;
   }
 
-
   public void setCanUpdateTierExpirationPolicy(Boolean canUpdateTierExpirationPolicy) {
     this.canUpdateTierExpirationPolicy = canUpdateTierExpirationPolicy;
   }
 
-
   public LoyaltyProgram canUpgradeToAdvancedTiers(Boolean canUpgradeToAdvancedTiers) {
-    
+
     this.canUpgradeToAdvancedTiers = canUpgradeToAdvancedTiers;
     return this;
   }
 
-   /**
-   * &#x60;True&#x60; if the program can be upgraded to use the &#x60;tiersExpireIn&#x60; and &#x60;tiersDowngradePolicy&#x60; properties. 
+  /**
+   * &#x60;True&#x60; if the program can be upgraded to use the
+   * &#x60;tiersExpireIn&#x60; and &#x60;tiersDowngradePolicy&#x60; properties.
+   * 
    * @return canUpgradeToAdvancedTiers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "`True` if the program can be upgraded to use the `tiersExpireIn` and `tiersDowngradePolicy` properties. ")
 
@@ -933,22 +990,22 @@ public class LoyaltyProgram {
     return canUpgradeToAdvancedTiers;
   }
 
-
   public void setCanUpgradeToAdvancedTiers(Boolean canUpgradeToAdvancedTiers) {
     this.canUpgradeToAdvancedTiers = canUpgradeToAdvancedTiers;
   }
 
-
   public LoyaltyProgram canUpdateSubledgers(Boolean canUpdateSubledgers) {
-    
+
     this.canUpdateSubledgers = canUpdateSubledgers;
     return this;
   }
 
-   /**
-   * &#x60;True&#x60; if the &#x60;allowSubledger&#x60; property can be updated in the loyalty program. 
+  /**
+   * &#x60;True&#x60; if the &#x60;allowSubledger&#x60; property can be updated in
+   * the loyalty program.
+   * 
    * @return canUpdateSubledgers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "`True` if the `allowSubledger` property can be updated in the loyalty program. ")
 
@@ -956,11 +1013,9 @@ public class LoyaltyProgram {
     return canUpdateSubledgers;
   }
 
-
   public void setCanUpdateSubledgers(Boolean canUpdateSubledgers) {
     this.canUpdateSubledgers = canUpdateSubledgers;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1002,9 +1057,12 @@ public class LoyaltyProgram {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending, allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate, tiersExpireIn, tiersDowngradePolicy, cardCodeSettings, returnPolicy, accountID, name, tiers, timezone, cardBased, canUpdateTiers, canUpdateJoinPolicy, canUpdateTierExpirationPolicy, canUpgradeToAdvancedTiers, canUpdateSubledgers);
+    return Objects.hash(id, created, title, description, subscribedApplications, defaultValidity, defaultPending,
+        allowSubledger, usersPerCardLimit, sandbox, programJoinPolicy, tiersExpirationPolicy, tierCycleStartDate,
+        tiersExpireIn, tiersDowngradePolicy, cardCodeSettings, returnPolicy, accountID, name, tiers, timezone,
+        cardBased, canUpdateTiers, canUpdateJoinPolicy, canUpdateTierExpirationPolicy, canUpgradeToAdvancedTiers,
+        canUpdateSubledgers);
   }
-
 
   @Override
   public String toString() {
@@ -1034,7 +1092,8 @@ public class LoyaltyProgram {
     sb.append("    cardBased: ").append(toIndentedString(cardBased)).append("\n");
     sb.append("    canUpdateTiers: ").append(toIndentedString(canUpdateTiers)).append("\n");
     sb.append("    canUpdateJoinPolicy: ").append(toIndentedString(canUpdateJoinPolicy)).append("\n");
-    sb.append("    canUpdateTierExpirationPolicy: ").append(toIndentedString(canUpdateTierExpirationPolicy)).append("\n");
+    sb.append("    canUpdateTierExpirationPolicy: ").append(toIndentedString(canUpdateTierExpirationPolicy))
+        .append("\n");
     sb.append("    canUpgradeToAdvancedTiers: ").append(toIndentedString(canUpgradeToAdvancedTiers)).append("\n");
     sb.append("    canUpdateSubledgers: ").append(toIndentedString(canUpdateSubledgers)).append("\n");
     sb.append("}");
@@ -1053,4 +1112,3 @@ public class LoyaltyProgram {
   }
 
 }
-

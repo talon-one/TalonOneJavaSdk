@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -48,19 +47,19 @@ public class UpdateReferralBatch {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
-
+  private Long usageLimit;
 
   public UpdateReferralBatch attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
@@ -68,44 +67,42 @@ public class UpdateReferralBatch {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
-
   public UpdateReferralBatch batchID(String batchID) {
-    
+
     this.batchID = batchID;
     return this;
   }
 
-   /**
+  /**
    * The id of the batch the referral belongs to.
+   * 
    * @return batchID
-  **/
+   **/
   @ApiModelProperty(example = "32535-43255", required = true, value = "The id of the batch the referral belongs to.")
 
   public String getBatchID() {
     return batchID;
   }
 
-
   public void setBatchID(String batchID) {
     this.batchID = batchID;
   }
 
-
   public UpdateReferralBatch startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the referral code becomes valid.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2020-11-10T23:00Z", value = "Timestamp at which point the referral code becomes valid.")
 
@@ -113,22 +110,22 @@ public class UpdateReferralBatch {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public UpdateReferralBatch expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Expiration date of the referral code. Referral never expires if this is omitted.
+  /**
+   * Expiration date of the referral code. Referral never expires if this is
+   * omitted.
+   * 
    * @return expiryDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-11-10T23:00Z", value = "Expiration date of the referral code. Referral never expires if this is omitted.")
 
@@ -136,36 +133,34 @@ public class UpdateReferralBatch {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
+  public UpdateReferralBatch usageLimit(Long usageLimit) {
 
-  public UpdateReferralBatch usageLimit(Integer usageLimit) {
-    
     this.usageLimit = usageLimit;
     return this;
   }
 
-   /**
-   * The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. 
+  /**
+   * The number of times a referral code can be used. This can be set to 0 for no
+   * limit, but any campaign usage limits will still apply.
    * minimum: 0
    * maximum: 999999
+   * 
    * @return usageLimit
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
-
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -187,7 +182,6 @@ public class UpdateReferralBatch {
   public int hashCode() {
     return Objects.hash(attributes, batchID, startDate, expiryDate, usageLimit);
   }
-
 
   @Override
   public String toString() {
@@ -214,4 +208,3 @@ public class UpdateReferralBatch {
   }
 
 }
-

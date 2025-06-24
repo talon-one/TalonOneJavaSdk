@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -32,11 +31,11 @@ import org.threeten.bp.OffsetDateTime;
 public class Audience {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -70,105 +69,101 @@ public class Audience {
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
   private OffsetDateTime lastUpdate;
 
+  public Audience accountId(Long accountId) {
 
-  public Audience accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account that owns this entity.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public Audience id(Long id) {
 
-  public Audience id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Audience created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public Audience name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The human-friendly display name for this audience.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Travel audience", required = true, value = "The human-friendly display name for this audience.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public Audience sandbox(Boolean sandbox) {
-    
+
     this.sandbox = sandbox;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this is a live or sandbox Application.
+   * 
    * @return sandbox
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates if this is a live or sandbox Application.")
 
@@ -176,22 +171,21 @@ public class Audience {
     return sandbox;
   }
 
-
   public void setSandbox(Boolean sandbox) {
     this.sandbox = sandbox;
   }
 
-
   public Audience description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A description of the audience.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Travel audience 18-27", value = "A description of the audience.")
 
@@ -199,22 +193,26 @@ public class Audience {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public Audience integration(String integration) {
-    
+
     this.integration = integration;
     return this;
   }
 
-   /**
-   * The Talon.One-supported [3rd-party platform](https://docs.talon.one/docs/dev/technology-partners/overview) that this audience was created in.  For example, &#x60;mParticle&#x60;, &#x60;Segment&#x60;, &#x60;Shopify&#x60;, &#x60;Braze&#x60;, or &#x60;Iterable&#x60;.  **Note:** If you do not integrate with any of these platforms, do not use this property. 
+  /**
+   * The Talon.One-supported [3rd-party
+   * platform](https://docs.talon.one/docs/dev/technology-partners/overview) that
+   * this audience was created in. For example, &#x60;mParticle&#x60;,
+   * &#x60;Segment&#x60;, &#x60;Shopify&#x60;, &#x60;Braze&#x60;, or
+   * &#x60;Iterable&#x60;. **Note:** If you do not integrate with any of these
+   * platforms, do not use this property.
+   * 
    * @return integration
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "mparticle", value = "The Talon.One-supported [3rd-party platform](https://docs.talon.one/docs/dev/technology-partners/overview) that this audience was created in.  For example, `mParticle`, `Segment`, `Shopify`, `Braze`, or `Iterable`.  **Note:** If you do not integrate with any of these platforms, do not use this property. ")
 
@@ -222,22 +220,23 @@ public class Audience {
     return integration;
   }
 
-
   public void setIntegration(String integration) {
     this.integration = integration;
   }
 
-
   public Audience integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
-   * The ID of this audience in the third-party integration.  **Note:** To create an audience that doesn&#39;t come from a 3rd party platform, do not use this property. 
+  /**
+   * The ID of this audience in the third-party integration. **Note:** To create
+   * an audience that doesn&#39;t come from a 3rd party platform, do not use this
+   * property.
+   * 
    * @return integrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "382370BKDB946", value = "The ID of this audience in the third-party integration.  **Note:** To create an audience that doesn't come from a 3rd party platform, do not use this property. ")
 
@@ -245,22 +244,21 @@ public class Audience {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public Audience createdIn3rdParty(Boolean createdIn3rdParty) {
-    
+
     this.createdIn3rdParty = createdIn3rdParty;
     return this;
   }
 
-   /**
+  /**
    * Determines if this audience is a 3rd party audience or not.
+   * 
    * @return createdIn3rdParty
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "false", value = "Determines if this audience is a 3rd party audience or not.")
 
@@ -268,22 +266,21 @@ public class Audience {
     return createdIn3rdParty;
   }
 
-
   public void setCreatedIn3rdParty(Boolean createdIn3rdParty) {
     this.createdIn3rdParty = createdIn3rdParty;
   }
 
-
   public Audience lastUpdate(OffsetDateTime lastUpdate) {
-    
+
     this.lastUpdate = lastUpdate;
     return this;
   }
 
-   /**
+  /**
    * The last time that the audience memberships changed.
+   * 
    * @return lastUpdate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2022-04-26T11:02:38Z", value = "The last time that the audience memberships changed.")
 
@@ -291,11 +288,9 @@ public class Audience {
     return lastUpdate;
   }
 
-
   public void setLastUpdate(OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -320,9 +315,9 @@ public class Audience {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, id, created, name, sandbox, description, integration, integrationId, createdIn3rdParty, lastUpdate);
+    return Objects.hash(accountId, id, created, name, sandbox, description, integration, integrationId,
+        createdIn3rdParty, lastUpdate);
   }
-
 
   @Override
   public String toString() {
@@ -354,4 +349,3 @@ public class Audience {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,57 +37,54 @@ public class NewAppWideCouponDeletionJob {
 
   public static final String SERIALIZED_NAME_CAMPAIGNIDS = "campaignids";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNIDS)
-  private List<Integer> campaignids = new ArrayList<Integer>();
-
+  private List<Long> campaignids = new ArrayList<Long>();
 
   public NewAppWideCouponDeletionJob filters(CouponDeletionFilters filters) {
-    
+
     this.filters = filters;
     return this;
   }
 
-   /**
+  /**
    * Get filters
+   * 
    * @return filters
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public CouponDeletionFilters getFilters() {
     return filters;
   }
 
-
   public void setFilters(CouponDeletionFilters filters) {
     this.filters = filters;
   }
 
+  public NewAppWideCouponDeletionJob campaignids(List<Long> campaignids) {
 
-  public NewAppWideCouponDeletionJob campaignids(List<Integer> campaignids) {
-    
     this.campaignids = campaignids;
     return this;
   }
 
-  public NewAppWideCouponDeletionJob addCampaignidsItem(Integer campaignidsItem) {
+  public NewAppWideCouponDeletionJob addCampaignidsItem(Long campaignidsItem) {
     this.campaignids.add(campaignidsItem);
     return this;
   }
 
-   /**
+  /**
    * Get campaignids
+   * 
    * @return campaignids
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Integer> getCampaignids() {
+  public List<Long> getCampaignids() {
     return campaignids;
   }
 
-
-  public void setCampaignids(List<Integer> campaignids) {
+  public void setCampaignids(List<Long> campaignids) {
     this.campaignids = campaignids;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -107,7 +103,6 @@ public class NewAppWideCouponDeletionJob {
   public int hashCode() {
     return Objects.hash(filters, campaignids);
   }
-
 
   @Override
   public String toString() {
@@ -131,4 +126,3 @@ public class NewAppWideCouponDeletionJob {
   }
 
 }
-

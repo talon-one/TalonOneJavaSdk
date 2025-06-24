@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -37,19 +36,19 @@ public class UpdateCollection {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
-
+  private List<Long> subscribedApplicationsIds = null;
 
   public UpdateCollection description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the purpose of this collection.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My collection of SKUs", value = "A short description of the purpose of this collection.")
 
@@ -57,42 +56,39 @@ public class UpdateCollection {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public UpdateCollection subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
 
-  public UpdateCollection subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
-    
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public UpdateCollection addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public UpdateCollection addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
   }
 
-   /**
+  /**
    * A list of the IDs of the Applications where this collection is enabled.
+   * 
    * @return subscribedApplicationsIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the Applications where this collection is enabled.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
-
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -111,7 +107,6 @@ public class UpdateCollection {
   public int hashCode() {
     return Objects.hash(description, subscribedApplicationsIds);
   }
-
 
   @Override
   public String toString() {
@@ -135,4 +130,3 @@ public class UpdateCollection {
   }
 
 }
-

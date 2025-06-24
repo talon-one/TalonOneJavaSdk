@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,7 +33,7 @@ import one.talon.model.TemplateArgDef;
 public class NewCustomEffect {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_IS_PER_ITEM = "isPerItem";
   @SerializedName(SERIALIZED_NAME_IS_PER_ITEM)
@@ -64,44 +63,43 @@ public class NewCustomEffect {
   @SerializedName(SERIALIZED_NAME_PARAMS)
   private List<TemplateArgDef> params = null;
 
+  public NewCustomEffect applicationIds(List<Long> applicationIds) {
 
-  public NewCustomEffect applicationIds(List<Integer> applicationIds) {
-    
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewCustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
+  public NewCustomEffect addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
-   /**
+  /**
    * The IDs of the Applications that are related to this entity.
+   * 
    * @return applicationIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
-
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
-
   public NewCustomEffect isPerItem(Boolean isPerItem) {
-    
+
     this.isPerItem = isPerItem;
     return this;
   }
 
-   /**
+  /**
    * Indicates if this effect is per item or not.
+   * 
    * @return isPerItem
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Indicates if this effect is per item or not.")
 
@@ -109,88 +107,84 @@ public class NewCustomEffect {
     return isPerItem;
   }
 
-
   public void setIsPerItem(Boolean isPerItem) {
     this.isPerItem = isPerItem;
   }
 
-
   public NewCustomEffect name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of this effect.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of this effect.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public NewCustomEffect title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The title of this effect.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The title of this effect.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public NewCustomEffect payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * The JSON payload of this effect.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The JSON payload of this effect.")
 
   public String getPayload() {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public NewCustomEffect description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of this effect.
+   * 
    * @return description
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The description of this effect.")
 
@@ -198,36 +192,33 @@ public class NewCustomEffect {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public NewCustomEffect enabled(Boolean enabled) {
-    
+
     this.enabled = enabled;
     return this;
   }
 
-   /**
+  /**
    * Determines if this effect is active.
+   * 
    * @return enabled
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Determines if this effect is active.")
 
   public Boolean getEnabled() {
     return enabled;
   }
 
-
   public void setEnabled(Boolean enabled) {
     this.enabled = enabled;
   }
 
-
   public NewCustomEffect params(List<TemplateArgDef> params) {
-    
+
     this.params = params;
     return this;
   }
@@ -240,10 +231,11 @@ public class NewCustomEffect {
     return this;
   }
 
-   /**
+  /**
    * Array of template argument definitions.
+   * 
    * @return params
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Array of template argument definitions.")
 
@@ -251,11 +243,9 @@ public class NewCustomEffect {
     return params;
   }
 
-
   public void setParams(List<TemplateArgDef> params) {
     this.params = params;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -280,7 +270,6 @@ public class NewCustomEffect {
   public int hashCode() {
     return Objects.hash(applicationIds, isPerItem, name, title, payload, description, enabled, params);
   }
-
 
   @Override
   public String toString() {
@@ -310,4 +299,3 @@ public class NewCustomEffect {
   }
 
 }
-

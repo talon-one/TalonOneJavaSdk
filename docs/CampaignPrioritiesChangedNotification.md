@@ -7,7 +7,7 @@ Notification about an Application whose campaigns' priorities changed.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**applicationId** | **Integer** | The ID of the Application whose campaigns&#39; priorities changed. | 
+**applicationId** | **Long** | The ID of the Application whose campaigns&#39; priorities changed. | 
 **oldPriorities** | [**CampaignSet**](CampaignSet.md) |  |  [optional]
 **priorities** | [**CampaignSet**](CampaignSet.md) |  | 
 

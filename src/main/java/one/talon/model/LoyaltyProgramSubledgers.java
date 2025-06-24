@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,37 +33,35 @@ import java.util.List;
 public class LoyaltyProgramSubledgers {
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
+  private Long loyaltyProgramId;
 
   public static final String SERIALIZED_NAME_SUBLEDGER_IDS = "subledgerIds";
   @SerializedName(SERIALIZED_NAME_SUBLEDGER_IDS)
   private List<String> subledgerIds = new ArrayList<String>();
 
+  public LoyaltyProgramSubledgers loyaltyProgramId(Long loyaltyProgramId) {
 
-  public LoyaltyProgramSubledgers loyaltyProgramId(Integer loyaltyProgramId) {
-    
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the loyalty program.
+   * 
    * @return loyaltyProgramId
-  **/
+   **/
   @ApiModelProperty(example = "5", required = true, value = "The internal ID of the loyalty program.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
-
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
 
-
   public LoyaltyProgramSubledgers subledgerIds(List<String> subledgerIds) {
-    
+
     this.subledgerIds = subledgerIds;
     return this;
   }
@@ -74,21 +71,20 @@ public class LoyaltyProgramSubledgers {
     return this;
   }
 
-   /**
+  /**
    * The list of subledger IDs.
+   * 
    * @return subledgerIds
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The list of subledger IDs.")
 
   public List<String> getSubledgerIds() {
     return subledgerIds;
   }
 
-
   public void setSubledgerIds(List<String> subledgerIds) {
     this.subledgerIds = subledgerIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -107,7 +103,6 @@ public class LoyaltyProgramSubledgers {
   public int hashCode() {
     return Objects.hash(loyaltyProgramId, subledgerIds);
   }
-
 
   @Override
   public String toString() {
@@ -131,4 +126,3 @@ public class LoyaltyProgramSubledgers {
   }
 
 }
-

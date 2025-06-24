@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -39,15 +38,15 @@ public class CampaignTemplateParams {
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     STRING("string"),
-    
+
     NUMBER("number"),
-    
+
     BOOLEAN("boolean"),
-    
+
     PERCENT("percent"),
-    
+
     _LIST_STRING_("(list string)"),
-    
+
     TIME("time");
 
     private String value;
@@ -82,7 +81,7 @@ public class CampaignTemplateParams {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -98,97 +97,93 @@ public class CampaignTemplateParams {
 
   public static final String SERIALIZED_NAME_ATTRIBUTE_ID = "attributeId";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_ID)
-  private Integer attributeId;
-
+  private Long attributeId;
 
   public CampaignTemplateParams name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name of the campaign template parameter.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "discount_value", required = true, value = "Name of the campaign template parameter.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CampaignTemplateParams type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Defines the type of parameter value.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "number", required = true, value = "Defines the type of parameter value.")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public CampaignTemplateParams description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
-   * Explains the meaning of this template parameter and the placeholder value that will define it. It is used on campaign creation from this template.
+  /**
+   * Explains the meaning of this template parameter and the placeholder value
+   * that will define it. It is used on campaign creation from this template.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "This is a template parameter of type `number`.", required = true, value = "Explains the meaning of this template parameter and the placeholder value that will define it. It is used on campaign creation from this template.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public CampaignTemplateParams attributeId(Long attributeId) {
 
-  public CampaignTemplateParams attributeId(Integer attributeId) {
-    
     this.attributeId = attributeId;
     return this;
   }
 
-   /**
+  /**
    * ID of the corresponding attribute.
+   * 
    * @return attributeId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "ID of the corresponding attribute.")
 
-  public Integer getAttributeId() {
+  public Long getAttributeId() {
     return attributeId;
   }
 
-
-  public void setAttributeId(Integer attributeId) {
+  public void setAttributeId(Long attributeId) {
     this.attributeId = attributeId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -209,7 +204,6 @@ public class CampaignTemplateParams {
   public int hashCode() {
     return Objects.hash(name, type, description, attributeId);
   }
-
 
   @Override
   public String toString() {
@@ -235,4 +229,3 @@ public class CampaignTemplateParams {
   }
 
 }
-

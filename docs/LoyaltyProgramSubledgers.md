@@ -7,7 +7,7 @@ The list of all the subledgers that the loyalty program has.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loyaltyProgramId** | **Integer** | The internal ID of the loyalty program. | 
+**loyaltyProgramId** | **Long** | The internal ID of the loyalty program. | 
 **subledgerIds** | **List&lt;String&gt;** | The list of subledger IDs. | 
 
 

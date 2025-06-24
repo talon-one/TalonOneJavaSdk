@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,7 +37,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
@@ -49,12 +48,13 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   private String customerSessionId;
 
   /**
-   * Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. 
+   * Type of transaction. Possible values: - &#x60;addition&#x60;: Signifies added
+   * points. - &#x60;subtraction&#x60;: Signifies deducted points.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     ADDITION("addition"),
-    
+
     SUBTRACTION("subtraction");
 
     private String value;
@@ -89,7 +89,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -121,93 +121,90 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
   private String ruleName;
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * Date and time the loyalty card transaction occurred.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Date and time the loyalty card transaction occurred.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public CardLedgerTransactionLogEntryIntegrationAPI programId(Long programId) {
 
-  public CardLedgerTransactionLogEntryIntegrationAPI programId(Integer programId) {
-    
     this.programId = programId;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty program.
+   * 
    * @return programId
-  **/
+   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
-
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI cardIdentifier(String cardIdentifier) {
-    
+
     this.cardIdentifier = cardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return cardIdentifier
-  **/
+   **/
   @ApiModelProperty(example = "summer-loyalty-card-0543", required = true, value = "The alphanumeric identifier of the loyalty card. ")
 
   public String getCardIdentifier() {
     return cardIdentifier;
   }
 
-
   public void setCardIdentifier(String cardIdentifier) {
     this.cardIdentifier = cardIdentifier;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI customerSessionId(String customerSessionId) {
-    
+
     this.customerSessionId = customerSessionId;
     return this;
   }
 
-   /**
+  /**
    * ID of the customer session where the transaction occurred.
+   * 
    * @return customerSessionId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "05c2da0d-48fa-4aa1-b629-898f58f1584d", value = "ID of the customer session where the transaction occurred.")
 
@@ -215,199 +212,195 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
     return customerSessionId;
   }
 
-
   public void setCustomerSessionId(String customerSessionId) {
     this.customerSessionId = customerSessionId;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI type(TypeEnum type) {
-    
+
     this.type = type;
     return this;
   }
 
-   /**
-   * Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points. 
+  /**
+   * Type of transaction. Possible values: - &#x60;addition&#x60;: Signifies added
+   * points. - &#x60;subtraction&#x60;: Signifies deducted points.
+   * 
    * @return type
-  **/
+   **/
   @ApiModelProperty(example = "addition", required = true, value = "Type of transaction. Possible values:   - `addition`: Signifies added points.   - `subtraction`: Signifies deducted points. ")
 
   public TypeEnum getType() {
     return type;
   }
 
-
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name or reason of the loyalty ledger transaction.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "Reward 10% points of a purchase's current total", required = true, value = "Name or reason of the loyalty ledger transaction.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI startDate(String startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
-   * When points become active. Possible values:   - &#x60;immediate&#x60;: Points are active immediately.   - a timestamp value: Points become active at a given date and time. 
+  /**
+   * When points become active. Possible values: - &#x60;immediate&#x60;: Points
+   * are active immediately. - a timestamp value: Points become active at a given
+   * date and time.
+   * 
    * @return startDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-01-02T15:04:05Z07:00", required = true, value = "When points become active. Possible values:   - `immediate`: Points are active immediately.   - a timestamp value: Points become active at a given date and time. ")
 
   public String getStartDate() {
     return startDate;
   }
 
-
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI expiryDate(String expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
-   * Date when points expire. Possible values are:   - &#x60;unlimited&#x60;: Points have no expiration date.   - &#x60;timestamp value&#x60;: Points expire on the given date. 
+  /**
+   * Date when points expire. Possible values are: - &#x60;unlimited&#x60;: Points
+   * have no expiration date. - &#x60;timestamp value&#x60;: Points expire on the
+   * given date.
+   * 
    * @return expiryDate
-  **/
+   **/
   @ApiModelProperty(example = "2022-08-02T15:04:05Z07:00", required = true, value = "Date when points expire. Possible values are:   - `unlimited`: Points have no expiration date.   - `timestamp value`: Points expire on the given date. ")
 
   public String getExpiryDate() {
     return expiryDate;
   }
 
-
   public void setExpiryDate(String expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI subledgerId(String subledgerId) {
-    
+
     this.subledgerId = subledgerId;
     return this;
   }
 
-   /**
+  /**
    * ID of the subledger.
+   * 
    * @return subledgerId
-  **/
+   **/
   @ApiModelProperty(example = "sub-123", required = true, value = "ID of the subledger.")
 
   public String getSubledgerId() {
     return subledgerId;
   }
 
-
   public void setSubledgerId(String subledgerId) {
     this.subledgerId = subledgerId;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI amount(BigDecimal amount) {
-    
+
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * Amount of loyalty points added or deducted in the transaction.
+   * 
    * @return amount
-  **/
+   **/
   @ApiModelProperty(example = "10.25", required = true, value = "Amount of loyalty points added or deducted in the transaction.")
 
   public BigDecimal getAmount() {
     return amount;
   }
 
-
   public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
 
+  public CardLedgerTransactionLogEntryIntegrationAPI id(Long id) {
 
-  public CardLedgerTransactionLogEntryIntegrationAPI id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty ledger transaction.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger transaction.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public CardLedgerTransactionLogEntryIntegrationAPI rulesetId(Long rulesetId) {
 
-  public CardLedgerTransactionLogEntryIntegrationAPI rulesetId(Integer rulesetId) {
-    
     this.rulesetId = rulesetId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the ruleset containing the rule that triggered this effect.
+   * 
    * @return rulesetId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "The ID of the ruleset containing the rule that triggered this effect.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
-
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 
-
   public CardLedgerTransactionLogEntryIntegrationAPI ruleName(String ruleName) {
-    
+
     this.ruleName = ruleName;
     return this;
   }
 
-   /**
+  /**
    * The name of the rule that triggered this effect.
+   * 
    * @return ruleName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Add 2 points", value = "The name of the rule that triggered this effect.")
 
@@ -415,11 +408,9 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
     return ruleName;
   }
 
-
   public void setRuleName(String ruleName) {
     this.ruleName = ruleName;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -447,9 +438,9 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, programId, cardIdentifier, customerSessionId, type, name, startDate, expiryDate, subledgerId, amount, id, rulesetId, ruleName);
+    return Objects.hash(created, programId, cardIdentifier, customerSessionId, type, name, startDate, expiryDate,
+        subledgerId, amount, id, rulesetId, ruleName);
   }
-
 
   @Override
   public String toString() {
@@ -484,4 +475,3 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   }
 
 }
-

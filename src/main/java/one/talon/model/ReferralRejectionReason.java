@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,18 +24,20 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Holds a reference to the campaign, the referral and the reason for which that referral was rejected. Should only be present when there is a &#39;rejectReferral&#39; effect.
+ * Holds a reference to the campaign, the referral and the reason for which that
+ * referral was rejected. Should only be present when there is a
+ * &#39;rejectReferral&#39; effect.
  */
 @ApiModel(description = "Holds a reference to the campaign, the referral and the reason for which that referral was rejected. Should only be present when there is a 'rejectReferral' effect.")
 
 public class ReferralRejectionReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   /**
    * Gets or Sets reason
@@ -44,27 +45,27 @@ public class ReferralRejectionReason {
   @JsonAdapter(ReasonEnum.Adapter.class)
   public enum ReasonEnum {
     REFERRALNOTFOUND("ReferralNotFound"),
-    
+
     REFERRALRECIPIENTIDSAMEASADVOCATE("ReferralRecipientIdSameAsAdvocate"),
-    
+
     REFERRALPARTOFNOTRUNNINGCAMPAIGN("ReferralPartOfNotRunningCampaign"),
-    
+
     REFERRALLIMITREACHED("ReferralLimitReached"),
-    
+
     CAMPAIGNLIMITREACHED("CampaignLimitReached"),
-    
+
     PROFILELIMITREACHED("ProfileLimitReached"),
-    
+
     REFERRALRECIPIENTDOESNOTMATCH("ReferralRecipientDoesNotMatch"),
-    
+
     REFERRALEXPIRED("ReferralExpired"),
-    
+
     REFERRALSTARTDATEINFUTURE("ReferralStartDateInFuture"),
-    
+
     REFERRALREJECTEDBYCONDITION("ReferralRejectedByCondition"),
-    
+
     EFFECTCOULDNOTBEAPPLIED("EffectCouldNotBeApplied"),
-    
+
     REFERRALPARTOFNOTTRIGGEREDCAMPAIGN("ReferralPartOfNotTriggeredCampaign");
 
     private String value;
@@ -99,7 +100,7 @@ public class ReferralRejectionReason {
 
       @Override
       public ReasonEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ReasonEnum.fromValue(value);
       }
     }
@@ -109,72 +110,68 @@ public class ReferralRejectionReason {
   @SerializedName(SERIALIZED_NAME_REASON)
   private ReasonEnum reason;
 
+  public ReferralRejectionReason campaignId(Long campaignId) {
 
-  public ReferralRejectionReason campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * Get campaignId
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public ReferralRejectionReason referralId(Long referralId) {
 
-  public ReferralRejectionReason referralId(Integer referralId) {
-    
     this.referralId = referralId;
     return this;
   }
 
-   /**
+  /**
    * Get referralId
+   * 
    * @return referralId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
-
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 
-
   public ReferralRejectionReason reason(ReasonEnum reason) {
-    
+
     this.reason = reason;
     return this;
   }
 
-   /**
+  /**
    * Get reason
+   * 
    * @return reason
-  **/
+   **/
   @ApiModelProperty(example = "ReferralNotFound", required = true, value = "")
 
   public ReasonEnum getReason() {
     return reason;
   }
 
-
   public void setReason(ReasonEnum reason) {
     this.reason = reason;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -194,7 +191,6 @@ public class ReferralRejectionReason {
   public int hashCode() {
     return Objects.hash(campaignId, referralId, reason);
   }
-
 
   @Override
   public String toString() {
@@ -219,4 +215,3 @@ public class ReferralRejectionReason {
   }
 
 }
-

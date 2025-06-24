@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,7 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * The properties specific to the \&quot;rejectReferral\&quot; effect. This gets triggered whenever the referral code was rejected. See rejectionReason for more info on why.
+ * The properties specific to the \&quot;rejectReferral\&quot; effect. This gets
+ * triggered whenever the referral code was rejected. See rejectionReason for
+ * more info on why.
  */
 @ApiModel(description = "The properties specific to the \"rejectReferral\" effect. This gets triggered whenever the referral code was rejected. See rejectionReason for more info on why.")
 
@@ -40,11 +41,11 @@ public class RejectReferralEffectProps {
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
-  private Integer conditionIndex;
+  private Long conditionIndex;
 
   public static final String SERIALIZED_NAME_EFFECT_INDEX = "effectIndex";
   @SerializedName(SERIALIZED_NAME_EFFECT_INDEX)
-  private Integer effectIndex;
+  private Long effectIndex;
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
@@ -54,107 +55,103 @@ public class RejectReferralEffectProps {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_EXCLUSION_REASON)
   private String campaignExclusionReason;
 
-
   public RejectReferralEffectProps value(String value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The referral code that was rejected.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The referral code that was rejected.")
 
   public String getValue() {
     return value;
   }
 
-
   public void setValue(String value) {
     this.value = value;
   }
 
-
   public RejectReferralEffectProps rejectionReason(String rejectionReason) {
-    
+
     this.rejectionReason = rejectionReason;
     return this;
   }
 
-   /**
+  /**
    * The reason why this referral code was rejected.
+   * 
    * @return rejectionReason
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The reason why this referral code was rejected.")
 
   public String getRejectionReason() {
     return rejectionReason;
   }
 
-
   public void setRejectionReason(String rejectionReason) {
     this.rejectionReason = rejectionReason;
   }
 
+  public RejectReferralEffectProps conditionIndex(Long conditionIndex) {
 
-  public RejectReferralEffectProps conditionIndex(Integer conditionIndex) {
-    
     this.conditionIndex = conditionIndex;
     return this;
   }
 
-   /**
+  /**
    * The index of the condition that caused the rejection of the referral.
+   * 
    * @return conditionIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the condition that caused the rejection of the referral.")
 
-  public Integer getConditionIndex() {
+  public Long getConditionIndex() {
     return conditionIndex;
   }
 
-
-  public void setConditionIndex(Integer conditionIndex) {
+  public void setConditionIndex(Long conditionIndex) {
     this.conditionIndex = conditionIndex;
   }
 
+  public RejectReferralEffectProps effectIndex(Long effectIndex) {
 
-  public RejectReferralEffectProps effectIndex(Integer effectIndex) {
-    
     this.effectIndex = effectIndex;
     return this;
   }
 
-   /**
+  /**
    * The index of the effect that caused the rejection of the referral.
+   * 
    * @return effectIndex
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the effect that caused the rejection of the referral.")
 
-  public Integer getEffectIndex() {
+  public Long getEffectIndex() {
     return effectIndex;
   }
 
-
-  public void setEffectIndex(Integer effectIndex) {
+  public void setEffectIndex(Long effectIndex) {
     this.effectIndex = effectIndex;
   }
 
-
   public RejectReferralEffectProps details(String details) {
-    
+
     this.details = details;
     return this;
   }
 
-   /**
+  /**
    * More details about the failure.
+   * 
    * @return details
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "More details about the failure.")
 
@@ -162,22 +159,21 @@ public class RejectReferralEffectProps {
     return details;
   }
 
-
   public void setDetails(String details) {
     this.details = details;
   }
 
-
   public RejectReferralEffectProps campaignExclusionReason(String campaignExclusionReason) {
-    
+
     this.campaignExclusionReason = campaignExclusionReason;
     return this;
   }
 
-   /**
+  /**
    * The reason why the campaign was not applied.
+   * 
    * @return campaignExclusionReason
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "CampaignGaveLowerDiscount", value = "The reason why the campaign was not applied.")
 
@@ -185,11 +181,9 @@ public class RejectReferralEffectProps {
     return campaignExclusionReason;
   }
 
-
   public void setCampaignExclusionReason(String campaignExclusionReason) {
     this.campaignExclusionReason = campaignExclusionReason;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -212,7 +206,6 @@ public class RejectReferralEffectProps {
   public int hashCode() {
     return Objects.hash(value, rejectionReason, conditionIndex, effectIndex, details, campaignExclusionReason);
   }
-
 
   @Override
   public String toString() {
@@ -240,4 +233,3 @@ public class RejectReferralEffectProps {
   }
 
 }
-

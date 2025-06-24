@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class ProductSearchMatch {
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private Integer productId;
+  private Long productId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -39,76 +38,72 @@ public class ProductSearchMatch {
 
   public static final String SERIALIZED_NAME_PRODUCT_SKU_ID = "productSkuId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_SKU_ID)
-  private Integer productSkuId;
+  private Long productSkuId;
 
+  public ProductSearchMatch productId(Long productId) {
 
-  public ProductSearchMatch productId(Integer productId) {
-    
     this.productId = productId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the product.
+   * 
    * @return productId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the product.")
 
-  public Integer getProductId() {
+  public Long getProductId() {
     return productId;
   }
 
-
-  public void setProductId(Integer productId) {
+  public void setProductId(Long productId) {
     this.productId = productId;
   }
 
-
   public ProductSearchMatch value(String value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The string matching the given value. Either a product name or SKU.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(example = "MyProduct", required = true, value = "The string matching the given value. Either a product name or SKU.")
 
   public String getValue() {
     return value;
   }
 
-
   public void setValue(String value) {
     this.value = value;
   }
 
+  public ProductSearchMatch productSkuId(Long productSkuId) {
 
-  public ProductSearchMatch productSkuId(Integer productSkuId) {
-    
     this.productSkuId = productSkuId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the SKU linked to a product. If empty, this is an product.
+   * 
    * @return productSkuId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the SKU linked to a product. If empty, this is an product.")
 
-  public Integer getProductSkuId() {
+  public Long getProductSkuId() {
     return productSkuId;
   }
 
-
-  public void setProductSkuId(Integer productSkuId) {
+  public void setProductSkuId(Long productSkuId) {
     this.productSkuId = productSkuId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -128,7 +123,6 @@ public class ProductSearchMatch {
   public int hashCode() {
     return Objects.hash(productId, value, productSkuId);
   }
-
 
   @Override
   public String toString() {
@@ -153,4 +147,3 @@ public class ProductSearchMatch {
   }
 
 }
-

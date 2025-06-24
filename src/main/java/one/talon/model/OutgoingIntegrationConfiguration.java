@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,108 +30,103 @@ import java.io.IOException;
 public class OutgoingIntegrationConfiguration {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_TYPE_ID = "typeId";
   @SerializedName(SERIALIZED_NAME_TYPE_ID)
-  private Integer typeId;
+  private Long typeId;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
 
+  public OutgoingIntegrationConfiguration id(Long id) {
 
-  public OutgoingIntegrationConfiguration id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique ID for this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public OutgoingIntegrationConfiguration accountId(Long accountId) {
 
-  public OutgoingIntegrationConfiguration accountId(Integer accountId) {
-    
     this.accountId = accountId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the account to which this configuration belongs.
+   * 
    * @return accountId
-  **/
+   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account to which this configuration belongs.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
-
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
+  public OutgoingIntegrationConfiguration typeId(Long typeId) {
 
-  public OutgoingIntegrationConfiguration typeId(Integer typeId) {
-    
     this.typeId = typeId;
     return this;
   }
 
-   /**
+  /**
    * The outgoing integration type ID.
+   * 
    * @return typeId
-  **/
+   **/
   @ApiModelProperty(example = "12", required = true, value = "The outgoing integration type ID.")
 
-  public Integer getTypeId() {
+  public Long getTypeId() {
     return typeId;
   }
 
-
-  public void setTypeId(Integer typeId) {
+  public void setTypeId(Long typeId) {
     this.typeId = typeId;
   }
 
-
   public OutgoingIntegrationConfiguration policy(Object policy) {
-    
+
     this.policy = policy;
     return this;
   }
 
-   /**
+  /**
    * The outgoing integration policy specific to each integration type.
+   * 
    * @return policy
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The outgoing integration policy specific to each integration type.")
 
   public Object getPolicy() {
     return policy;
   }
 
-
   public void setPolicy(Object policy) {
     this.policy = policy;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -153,7 +147,6 @@ public class OutgoingIntegrationConfiguration {
   public int hashCode() {
     return Objects.hash(id, accountId, typeId, policy);
   }
-
 
   @Override
   public String toString() {
@@ -179,4 +172,3 @@ public class OutgoingIntegrationConfiguration {
   }
 
 }
-

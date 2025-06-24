@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,56 +30,53 @@ import java.io.IOException;
 public class LoyaltyCardBatchResponse {
   public static final String SERIALIZED_NAME_NUMBER_OF_CARDS_GENERATED = "numberOfCardsGenerated";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_CARDS_GENERATED)
-  private Integer numberOfCardsGenerated;
+  private Long numberOfCardsGenerated;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private String batchId;
 
+  public LoyaltyCardBatchResponse numberOfCardsGenerated(Long numberOfCardsGenerated) {
 
-  public LoyaltyCardBatchResponse numberOfCardsGenerated(Integer numberOfCardsGenerated) {
-    
     this.numberOfCardsGenerated = numberOfCardsGenerated;
     return this;
   }
 
-   /**
+  /**
    * Number of loyalty cards in the batch.
+   * 
    * @return numberOfCardsGenerated
-  **/
+   **/
   @ApiModelProperty(example = "5000", required = true, value = "Number of loyalty cards in the batch.")
 
-  public Integer getNumberOfCardsGenerated() {
+  public Long getNumberOfCardsGenerated() {
     return numberOfCardsGenerated;
   }
 
-
-  public void setNumberOfCardsGenerated(Integer numberOfCardsGenerated) {
+  public void setNumberOfCardsGenerated(Long numberOfCardsGenerated) {
     this.numberOfCardsGenerated = numberOfCardsGenerated;
   }
 
-
   public LoyaltyCardBatchResponse batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * ID of the loyalty card batch.
+   * 
    * @return batchId
-  **/
+   **/
   @ApiModelProperty(example = "hwernpjz", required = true, value = "ID of the loyalty card batch.")
 
   public String getBatchId() {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,7 +95,6 @@ public class LoyaltyCardBatchResponse {
   public int hashCode() {
     return Objects.hash(numberOfCardsGenerated, batchId);
   }
-
 
   @Override
   public String toString() {
@@ -123,4 +118,3 @@ public class LoyaltyCardBatchResponse {
   }
 
 }
-

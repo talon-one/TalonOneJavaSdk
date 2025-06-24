@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -74,7 +73,7 @@ public class StrikethroughLabelingNotification {
 
       @Override
       public VersionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return VersionEnum.fromValue(value);
       }
     }
@@ -90,15 +89,15 @@ public class StrikethroughLabelingNotification {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CURRENT_BATCH = "currentBatch";
   @SerializedName(SERIALIZED_NAME_CURRENT_BATCH)
-  private Integer currentBatch;
+  private Long currentBatch;
 
   public static final String SERIALIZED_NAME_TOTAL_BATCHES = "totalBatches";
   @SerializedName(SERIALIZED_NAME_TOTAL_BATCHES)
-  private Integer totalBatches;
+  private Long totalBatches;
 
   public static final String SERIALIZED_NAME_TRIGGER = "trigger";
   @SerializedName(SERIALIZED_NAME_TRIGGER)
@@ -108,17 +107,17 @@ public class StrikethroughLabelingNotification {
   @SerializedName(SERIALIZED_NAME_CHANGED_ITEMS)
   private List<StrikethroughChangedItem> changedItems = new ArrayList<StrikethroughChangedItem>();
 
-
   public StrikethroughLabelingNotification version(VersionEnum version) {
-    
+
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * The version of the strikethrough pricing notification.
+   * 
    * @return version
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The version of the strikethrough pricing notification.")
 
@@ -126,22 +125,22 @@ public class StrikethroughLabelingNotification {
     return version;
   }
 
-
   public void setVersion(VersionEnum version) {
     this.version = version;
   }
 
-
   public StrikethroughLabelingNotification validFrom(OffsetDateTime validFrom) {
-    
+
     this.validFrom = validFrom;
     return this;
   }
 
-   /**
-   * Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only. 
+  /**
+   * Timestamp at which the strikethrough pricing update becomes valid. Set for
+   * **scheduled** strikethrough pricing updates (version: v2) only.
+   * 
    * @return validFrom
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-07-20T22:00Z", value = "Timestamp at which the strikethrough pricing update becomes valid. Set for **scheduled** strikethrough pricing updates (version: v2) only. ")
 
@@ -149,102 +148,97 @@ public class StrikethroughLabelingNotification {
     return validFrom;
   }
 
-
   public void setValidFrom(OffsetDateTime validFrom) {
     this.validFrom = validFrom;
   }
 
+  public StrikethroughLabelingNotification applicationId(Long applicationId) {
 
-  public StrikethroughLabelingNotification applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application to which the catalog items labels belongs.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application to which the catalog items labels belongs.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public StrikethroughLabelingNotification currentBatch(Long currentBatch) {
 
-  public StrikethroughLabelingNotification currentBatch(Integer currentBatch) {
-    
     this.currentBatch = currentBatch;
     return this;
   }
 
-   /**
-   * The batch number of the notification. Notifications might be sent in different batches.
+  /**
+   * The batch number of the notification. Notifications might be sent in
+   * different batches.
+   * 
    * @return currentBatch
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The batch number of the notification. Notifications might be sent in different batches.")
 
-  public Integer getCurrentBatch() {
+  public Long getCurrentBatch() {
     return currentBatch;
   }
 
-
-  public void setCurrentBatch(Integer currentBatch) {
+  public void setCurrentBatch(Long currentBatch) {
     this.currentBatch = currentBatch;
   }
 
+  public StrikethroughLabelingNotification totalBatches(Long totalBatches) {
 
-  public StrikethroughLabelingNotification totalBatches(Integer totalBatches) {
-    
     this.totalBatches = totalBatches;
     return this;
   }
 
-   /**
+  /**
    * The total number of batches for the notification.
+   * 
    * @return totalBatches
-  **/
+   **/
   @ApiModelProperty(example = "10", required = true, value = "The total number of batches for the notification.")
 
-  public Integer getTotalBatches() {
+  public Long getTotalBatches() {
     return totalBatches;
   }
 
-
-  public void setTotalBatches(Integer totalBatches) {
+  public void setTotalBatches(Long totalBatches) {
     this.totalBatches = totalBatches;
   }
 
-
   public StrikethroughLabelingNotification trigger(StrikethroughTrigger trigger) {
-    
+
     this.trigger = trigger;
     return this;
   }
 
-   /**
+  /**
    * Get trigger
+   * 
    * @return trigger
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public StrikethroughTrigger getTrigger() {
     return trigger;
   }
 
-
   public void setTrigger(StrikethroughTrigger trigger) {
     this.trigger = trigger;
   }
 
-
   public StrikethroughLabelingNotification changedItems(List<StrikethroughChangedItem> changedItems) {
-    
+
     this.changedItems = changedItems;
     return this;
   }
@@ -254,21 +248,20 @@ public class StrikethroughLabelingNotification {
     return this;
   }
 
-   /**
+  /**
    * Get changedItems
+   * 
    * @return changedItems
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<StrikethroughChangedItem> getChangedItems() {
     return changedItems;
   }
 
-
   public void setChangedItems(List<StrikethroughChangedItem> changedItems) {
     this.changedItems = changedItems;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -292,7 +285,6 @@ public class StrikethroughLabelingNotification {
   public int hashCode() {
     return Objects.hash(version, validFrom, applicationId, currentBatch, totalBatches, trigger, changedItems);
   }
-
 
   @Override
   public String toString() {
@@ -321,4 +313,3 @@ public class StrikethroughLabelingNotification {
   }
 
 }
-

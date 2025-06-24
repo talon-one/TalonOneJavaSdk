@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -47,55 +46,52 @@ public class CreateManagementKey {
 
   public static final String SERIALIZED_NAME_ALLOWED_APPLICATION_IDS = "allowedApplicationIds";
   @SerializedName(SERIALIZED_NAME_ALLOWED_APPLICATION_IDS)
-  private List<Integer> allowedApplicationIds = null;
-
+  private List<Long> allowedApplicationIds = null;
 
   public CreateManagementKey name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name for management key.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "My generated key", required = true, value = "Name for management key.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public CreateManagementKey expiryDate(OffsetDateTime expiryDate) {
-    
+
     this.expiryDate = expiryDate;
     return this;
   }
 
-   /**
+  /**
    * The date the management key expires.
+   * 
    * @return expiryDate
-  **/
+   **/
   @ApiModelProperty(example = "2023-08-24T14:00Z", required = true, value = "The date the management key expires.")
 
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
   }
 
-
   public void setExpiryDate(OffsetDateTime expiryDate) {
     this.expiryDate = expiryDate;
   }
 
-
   public CreateManagementKey endpoints(List<Endpoint> endpoints) {
-    
+
     this.endpoints = endpoints;
     return this;
   }
@@ -105,52 +101,52 @@ public class CreateManagementKey {
     return this;
   }
 
-   /**
+  /**
    * The list of endpoints that can be accessed with the key
+   * 
    * @return endpoints
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The list of endpoints that can be accessed with the key")
 
   public List<Endpoint> getEndpoints() {
     return endpoints;
   }
 
-
   public void setEndpoints(List<Endpoint> endpoints) {
     this.endpoints = endpoints;
   }
 
+  public CreateManagementKey allowedApplicationIds(List<Long> allowedApplicationIds) {
 
-  public CreateManagementKey allowedApplicationIds(List<Integer> allowedApplicationIds) {
-    
     this.allowedApplicationIds = allowedApplicationIds;
     return this;
   }
 
-  public CreateManagementKey addAllowedApplicationIdsItem(Integer allowedApplicationIdsItem) {
+  public CreateManagementKey addAllowedApplicationIdsItem(Long allowedApplicationIdsItem) {
     if (this.allowedApplicationIds == null) {
-      this.allowedApplicationIds = new ArrayList<Integer>();
+      this.allowedApplicationIds = new ArrayList<Long>();
     }
     this.allowedApplicationIds.add(allowedApplicationIdsItem);
     return this;
   }
 
-   /**
-   * A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. 
+  /**
+   * A list of Application IDs that you can access with the management key. An
+   * empty or missing list means the management key can be used for all
+   * Applications in the account.
+   * 
    * @return allowedApplicationIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. ")
 
-  public List<Integer> getAllowedApplicationIds() {
+  public List<Long> getAllowedApplicationIds() {
     return allowedApplicationIds;
   }
 
-
-  public void setAllowedApplicationIds(List<Integer> allowedApplicationIds) {
+  public void setAllowedApplicationIds(List<Long> allowedApplicationIds) {
     this.allowedApplicationIds = allowedApplicationIds;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -171,7 +167,6 @@ public class CreateManagementKey {
   public int hashCode() {
     return Objects.hash(name, expiryDate, endpoints, allowedApplicationIds);
   }
-
 
   @Override
   public String toString() {
@@ -197,4 +192,3 @@ public class CreateManagementKey {
   }
 
 }
-

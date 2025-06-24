@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,13 +37,13 @@ import one.talon.custom.NullableAdapterFactory;
 public class CustomerProfileIntegrationRequestV2 {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
+  /* allow Serializing null for this field */
+  @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_AUDIENCES_CHANGES = "audiencesChanges";
   @SerializedName(SERIALIZED_NAME_AUDIENCES_CHANGES)
@@ -56,15 +55,15 @@ public class CustomerProfileIntegrationRequestV2 {
   @JsonAdapter(ResponseContentEnum.Adapter.class)
   public enum ResponseContentEnum {
     CUSTOMERPROFILE("customerProfile"),
-    
+
     TRIGGEREDCAMPAIGNS("triggeredCampaigns"),
-    
+
     LOYALTY("loyalty"),
-    
+
     EVENT("event"),
-    
+
     AWARDEDGIVEAWAYS("awardedGiveaways"),
-    
+
     RULEFAILUREREASONS("ruleFailureReasons");
 
     private String value;
@@ -99,7 +98,7 @@ public class CustomerProfileIntegrationRequestV2 {
 
       @Override
       public ResponseContentEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ResponseContentEnum.fromValue(value);
       }
     }
@@ -109,17 +108,17 @@ public class CustomerProfileIntegrationRequestV2 {
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTENT)
   private List<ResponseContentEnum> responseContent = null;
 
-
   public CustomerProfileIntegrationRequestV2 attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "{\"Language\":\"english\",\"ShippingCountry\":\"DE\"}", value = "Arbitrary properties associated with this item.")
 
@@ -127,53 +126,54 @@ public class CustomerProfileIntegrationRequestV2 {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
 
+  public CustomerProfileIntegrationRequestV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
 
-  public CustomerProfileIntegrationRequestV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
-    
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public CustomerProfileIntegrationRequestV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public CustomerProfileIntegrationRequestV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
   }
 
-   /**
-   * When using the &#x60;dry&#x60; query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. 
+  /**
+   * When using the &#x60;dry&#x60; query parameter, use this property to list the
+   * campaign to be evaluated by the Rule Engine. These campaigns will be
+   * evaluated, even if they are disabled, allowing you to test specific campaigns
+   * before activating them.
+   * 
    * @return evaluableCampaignIds
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
-
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 
-
   public CustomerProfileIntegrationRequestV2 audiencesChanges(ProfileAudiencesChanges audiencesChanges) {
-    
+
     this.audiencesChanges = audiencesChanges;
     return this;
   }
 
-   /**
+  /**
    * Get audiencesChanges
+   * 
    * @return audiencesChanges
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -181,14 +181,12 @@ public class CustomerProfileIntegrationRequestV2 {
     return audiencesChanges;
   }
 
-
   public void setAudiencesChanges(ProfileAudiencesChanges audiencesChanges) {
     this.audiencesChanges = audiencesChanges;
   }
 
-
   public CustomerProfileIntegrationRequestV2 responseContent(List<ResponseContentEnum> responseContent) {
-    
+
     this.responseContent = responseContent;
     return this;
   }
@@ -201,10 +199,13 @@ public class CustomerProfileIntegrationRequestV2 {
     return this;
   }
 
-   /**
-   * Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer profile_ request instead of sending extra requests to other endpoints. 
+  /**
+   * Extends the response with the chosen data entities. Use this property to get
+   * as much data as you need in one _Update customer profile_ request instead of
+   * sending extra requests to other endpoints.
+   * 
    * @return responseContent
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[triggeredCampaigns, customerProfile]", value = "Extends the response with the chosen data entities. Use this property to get as much data as you need in one _Update customer profile_ request instead of sending extra requests to other endpoints. ")
 
@@ -212,11 +213,9 @@ public class CustomerProfileIntegrationRequestV2 {
     return responseContent;
   }
 
-
   public void setResponseContent(List<ResponseContentEnum> responseContent) {
     this.responseContent = responseContent;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -237,7 +236,6 @@ public class CustomerProfileIntegrationRequestV2 {
   public int hashCode() {
     return Objects.hash(attributes, evaluableCampaignIds, audiencesChanges, responseContent);
   }
-
 
   @Override
   public String toString() {
@@ -263,4 +261,3 @@ public class CustomerProfileIntegrationRequestV2 {
   }
 
 }
-

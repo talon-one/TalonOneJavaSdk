@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -47,7 +46,7 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notificationId";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
-  private Integer notificationId;
+  private Long notificationId;
 
   public static final String SERIALIZED_NAME_NOTIFICATION_NAME = "notificationName";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_NAME)
@@ -55,7 +54,7 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Integer webhookId;
+  private Long webhookId;
 
   public static final String SERIALIZED_NAME_WEBHOOK_NAME = "webhookName";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_NAME)
@@ -74,14 +73,14 @@ public class MessageLogEntry {
   private OffsetDateTime createdAt;
 
   /**
-   * The entity type the log is related to. 
+   * The entity type the log is related to.
    */
   @JsonAdapter(EntityTypeEnum.Adapter.class)
   public enum EntityTypeEnum {
     APPLICATION("application"),
-    
+
     LOYALTY_PROGRAM("loyalty_program"),
-    
+
     WEBHOOK("webhook");
 
     private String value;
@@ -116,7 +115,7 @@ public class MessageLogEntry {
 
       @Override
       public EntityTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return EntityTypeEnum.fromValue(value);
       }
     }
@@ -132,71 +131,69 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
+  private Long loyaltyProgramId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
-
+  private Long campaignId;
 
   public MessageLogEntry id(String id) {
-    
+
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique identifier of the message.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426614174000", required = true, value = "Unique identifier of the message.")
 
   public String getId() {
     return id;
   }
 
-
   public void setId(String id) {
     this.id = id;
   }
 
-
   public MessageLogEntry service(String service) {
-    
+
     this.service = service;
     return this;
   }
 
-   /**
+  /**
    * Name of the service that generated the log entry.
+   * 
    * @return service
-  **/
+   **/
   @ApiModelProperty(example = "NotificationService", required = true, value = "Name of the service that generated the log entry.")
 
   public String getService() {
     return service;
   }
 
-
   public void setService(String service) {
     this.service = service;
   }
 
-
   public MessageLogEntry changeType(String changeType) {
-    
+
     this.changeType = changeType;
     return this;
   }
 
-   /**
+  /**
    * Type of change that triggered the notification.
+   * 
    * @return changeType
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Update", value = "Type of change that triggered the notification.")
 
@@ -204,45 +201,43 @@ public class MessageLogEntry {
     return changeType;
   }
 
-
   public void setChangeType(String changeType) {
     this.changeType = changeType;
   }
 
+  public MessageLogEntry notificationId(Long notificationId) {
 
-  public MessageLogEntry notificationId(Integer notificationId) {
-    
     this.notificationId = notificationId;
     return this;
   }
 
-   /**
+  /**
    * ID of the notification.
+   * 
    * @return notificationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "101", value = "ID of the notification.")
 
-  public Integer getNotificationId() {
+  public Long getNotificationId() {
     return notificationId;
   }
 
-
-  public void setNotificationId(Integer notificationId) {
+  public void setNotificationId(Long notificationId) {
     this.notificationId = notificationId;
   }
 
-
   public MessageLogEntry notificationName(String notificationName) {
-    
+
     this.notificationName = notificationName;
     return this;
   }
 
-   /**
+  /**
    * The name of the notification.
+   * 
    * @return notificationName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My campaign notification", value = "The name of the notification.")
 
@@ -250,45 +245,43 @@ public class MessageLogEntry {
     return notificationName;
   }
 
-
   public void setNotificationName(String notificationName) {
     this.notificationName = notificationName;
   }
 
+  public MessageLogEntry webhookId(Long webhookId) {
 
-  public MessageLogEntry webhookId(Integer webhookId) {
-    
     this.webhookId = webhookId;
     return this;
   }
 
-   /**
+  /**
    * ID of the webhook.
+   * 
    * @return webhookId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "101", value = "ID of the webhook.")
 
-  public Integer getWebhookId() {
+  public Long getWebhookId() {
     return webhookId;
   }
 
-
-  public void setWebhookId(Integer webhookId) {
+  public void setWebhookId(Long webhookId) {
     this.webhookId = webhookId;
   }
 
-
   public MessageLogEntry webhookName(String webhookName) {
-    
+
     this.webhookName = webhookName;
     return this;
   }
 
-   /**
+  /**
    * The name of the webhook.
+   * 
    * @return webhookName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "My webhook", value = "The name of the webhook.")
 
@@ -296,22 +289,21 @@ public class MessageLogEntry {
     return webhookName;
   }
 
-
   public void setWebhookName(String webhookName) {
     this.webhookName = webhookName;
   }
 
-
   public MessageLogEntry request(MessageLogRequest request) {
-    
+
     this.request = request;
     return this;
   }
 
-   /**
+  /**
    * Get request
+   * 
    * @return request
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -319,22 +311,21 @@ public class MessageLogEntry {
     return request;
   }
 
-
   public void setRequest(MessageLogRequest request) {
     this.request = request;
   }
 
-
   public MessageLogEntry response(MessageLogResponse response) {
-    
+
     this.response = response;
     return this;
   }
 
-   /**
+  /**
    * Get response
+   * 
    * @return response
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -342,66 +333,63 @@ public class MessageLogEntry {
     return response;
   }
 
-
   public void setResponse(MessageLogResponse response) {
     this.response = response;
   }
 
-
   public MessageLogEntry createdAt(OffsetDateTime createdAt) {
-    
+
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Timestamp when the log entry was created.
+   * 
    * @return createdAt
-  **/
+   **/
   @ApiModelProperty(example = "2021-07-20T22:00Z", required = true, value = "Timestamp when the log entry was created.")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
-
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-
   public MessageLogEntry entityType(EntityTypeEnum entityType) {
-    
+
     this.entityType = entityType;
     return this;
   }
 
-   /**
-   * The entity type the log is related to. 
+  /**
+   * The entity type the log is related to.
+   * 
    * @return entityType
-  **/
+   **/
   @ApiModelProperty(example = "loyalty_program", required = true, value = "The entity type the log is related to. ")
 
   public EntityTypeEnum getEntityType() {
     return entityType;
   }
 
-
   public void setEntityType(EntityTypeEnum entityType) {
     this.entityType = entityType;
   }
 
-
   public MessageLogEntry url(String url) {
-    
+
     this.url = url;
     return this;
   }
 
-   /**
+  /**
    * The target URL of the request.
+   * 
    * @return url
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "www.my-company.com/my-endpoint-name", value = "The target URL of the request.")
 
@@ -409,83 +397,78 @@ public class MessageLogEntry {
     return url;
   }
 
-
   public void setUrl(String url) {
     this.url = url;
   }
 
+  public MessageLogEntry applicationId(Long applicationId) {
 
-  public MessageLogEntry applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * Identifier of the Application.
    * minimum: 1
+   * 
    * @return applicationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "Identifier of the Application.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public MessageLogEntry loyaltyProgramId(Long loyaltyProgramId) {
 
-  public MessageLogEntry loyaltyProgramId(Integer loyaltyProgramId) {
-    
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
   }
 
-   /**
+  /**
    * Identifier of the loyalty program.
    * minimum: 1
+   * 
    * @return loyaltyProgramId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "Identifier of the loyalty program.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
-
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
 
+  public MessageLogEntry campaignId(Long campaignId) {
 
-  public MessageLogEntry campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * Identifier of the campaign.
    * minimum: 1
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "Identifier of the campaign.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -515,9 +498,9 @@ public class MessageLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, service, changeType, notificationId, notificationName, webhookId, webhookName, request, response, createdAt, entityType, url, applicationId, loyaltyProgramId, campaignId);
+    return Objects.hash(id, service, changeType, notificationId, notificationName, webhookId, webhookName, request,
+        response, createdAt, entityType, url, applicationId, loyaltyProgramId, campaignId);
   }
-
 
   @Override
   public String toString() {
@@ -554,4 +537,3 @@ public class MessageLogEntry {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,11 +30,11 @@ import java.io.IOException;
 public class OutgoingIntegrationWebhookTemplate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_INTEGRATION_TYPE = "integrationType";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_TYPE)
-  private Integer integrationType;
+  private Long integrationType;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -55,13 +54,13 @@ public class OutgoingIntegrationWebhookTemplate {
   @JsonAdapter(MethodEnum.Adapter.class)
   public enum MethodEnum {
     POST("POST"),
-    
+
     PUT("PUT"),
-    
+
     GET("GET"),
-    
+
     DELETE("DELETE"),
-    
+
     PATCH("PATCH");
 
     private String value;
@@ -96,7 +95,7 @@ public class OutgoingIntegrationWebhookTemplate {
 
       @Override
       public MethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return MethodEnum.fromValue(value);
       }
     }
@@ -106,138 +105,131 @@ public class OutgoingIntegrationWebhookTemplate {
   @SerializedName(SERIALIZED_NAME_METHOD)
   private MethodEnum method;
 
+  public OutgoingIntegrationWebhookTemplate id(Long id) {
 
-  public OutgoingIntegrationWebhookTemplate id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Unique Id for this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique Id for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
+  public OutgoingIntegrationWebhookTemplate integrationType(Long integrationType) {
 
-  public OutgoingIntegrationWebhookTemplate integrationType(Integer integrationType) {
-    
     this.integrationType = integrationType;
     return this;
   }
 
-   /**
+  /**
    * Unique Id of outgoing integration type.
+   * 
    * @return integrationType
-  **/
+   **/
   @ApiModelProperty(example = "2", required = true, value = "Unique Id of outgoing integration type.")
 
-  public Integer getIntegrationType() {
+  public Long getIntegrationType() {
     return integrationType;
   }
 
-
-  public void setIntegrationType(Integer integrationType) {
+  public void setIntegrationType(Long integrationType) {
     this.integrationType = integrationType;
   }
 
-
   public OutgoingIntegrationWebhookTemplate title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * Title of the webhook template.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "Send email via braze", required = true, value = "Title of the webhook template.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public OutgoingIntegrationWebhookTemplate description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * General description for the specific outgoing integration webhook template.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "Waiting for docs team", required = true, value = "General description for the specific outgoing integration webhook template.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public OutgoingIntegrationWebhookTemplate payload(String payload) {
-    
+
     this.payload = payload;
     return this;
   }
 
-   /**
+  /**
    * API payload (supports templating using parameters) for this webhook template.
+   * 
    * @return payload
-  **/
+   **/
   @ApiModelProperty(example = "{  \"message\": \"${message}\" }", required = true, value = "API payload (supports templating using parameters) for this webhook template.")
 
   public String getPayload() {
     return payload;
   }
 
-
   public void setPayload(String payload) {
     this.payload = payload;
   }
 
-
   public OutgoingIntegrationWebhookTemplate method(MethodEnum method) {
-    
+
     this.method = method;
     return this;
   }
 
-   /**
+  /**
    * API method for this webhook.
+   * 
    * @return method
-  **/
+   **/
   @ApiModelProperty(example = "POST", required = true, value = "API method for this webhook.")
 
   public MethodEnum getMethod() {
     return method;
   }
 
-
   public void setMethod(MethodEnum method) {
     this.method = method;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -260,7 +252,6 @@ public class OutgoingIntegrationWebhookTemplate {
   public int hashCode() {
     return Objects.hash(id, integrationType, title, description, payload, method);
   }
-
 
   @Override
   public String toString() {
@@ -288,4 +279,3 @@ public class OutgoingIntegrationWebhookTemplate {
   }
 
 }
-

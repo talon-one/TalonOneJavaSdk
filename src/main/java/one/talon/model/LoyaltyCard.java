@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyCard {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,7 +45,7 @@ public class LoyaltyCard {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -70,7 +69,7 @@ public class LoyaltyCard {
 
   public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
   @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
-  private Integer usersPerCardLimit;
+  private Long usersPerCardLimit;
 
   public static final String SERIALIZED_NAME_PROFILES = "profiles";
   @SerializedName(SERIALIZED_NAME_PROFILES)
@@ -100,83 +99,80 @@ public class LoyaltyCard {
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private String batchId;
 
+  public LoyaltyCard id(Long id) {
 
-  public LoyaltyCard id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public LoyaltyCard created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public LoyaltyCard programID(Long programID) {
 
-  public LoyaltyCard programID(Integer programID) {
-    
     this.programID = programID;
     return this;
   }
 
-   /**
+  /**
    * The ID of the loyalty program that owns this entity.
+   * 
    * @return programID
-  **/
+   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
-
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
-
   public LoyaltyCard programName(String programName) {
-    
+
     this.programName = programName;
     return this;
   }
 
-   /**
+  /**
    * The integration name of the loyalty program that owns this entity.
+   * 
    * @return programName
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty_program", value = "The integration name of the loyalty program that owns this entity.")
 
@@ -184,22 +180,22 @@ public class LoyaltyCard {
     return programName;
   }
 
-
   public void setProgramName(String programName) {
     this.programName = programName;
   }
 
-
   public LoyaltyCard programTitle(String programTitle) {
-    
+
     this.programTitle = programTitle;
     return this;
   }
 
-   /**
-   * The Campaign Manager-displayed name of the loyalty program that owns this entity.
+  /**
+   * The Campaign Manager-displayed name of the loyalty program that owns this
+   * entity.
+   * 
    * @return programTitle
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Loyalty program", value = "The Campaign Manager-displayed name of the loyalty program that owns this entity.")
 
@@ -207,44 +203,43 @@ public class LoyaltyCard {
     return programTitle;
   }
 
-
   public void setProgramTitle(String programTitle) {
     this.programTitle = programTitle;
   }
 
-
   public LoyaltyCard status(String status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
-   * Status of the loyalty card. Can be &#x60;active&#x60; or &#x60;inactive&#x60;. 
+  /**
+   * Status of the loyalty card. Can be &#x60;active&#x60; or
+   * &#x60;inactive&#x60;.
+   * 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "active", required = true, value = "Status of the loyalty card. Can be `active` or `inactive`. ")
 
   public String getStatus() {
     return status;
   }
 
-
   public void setStatus(String status) {
     this.status = status;
   }
 
-
   public LoyaltyCard blockReason(String blockReason) {
-    
+
     this.blockReason = blockReason;
     return this;
   }
 
-   /**
-   * Reason for transferring and blocking the loyalty card. 
+  /**
+   * Reason for transferring and blocking the loyalty card.
+   * 
    * @return blockReason
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "Current card lost. Customer needs a new card.", value = "Reason for transferring and blocking the loyalty card. ")
 
@@ -252,59 +247,56 @@ public class LoyaltyCard {
     return blockReason;
   }
 
-
   public void setBlockReason(String blockReason) {
     this.blockReason = blockReason;
   }
 
-
   public LoyaltyCard identifier(String identifier) {
-    
+
     this.identifier = identifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return identifier
-  **/
+   **/
   @ApiModelProperty(example = "summer-loyalty-card-0543", required = true, value = "The alphanumeric identifier of the loyalty card. ")
 
   public String getIdentifier() {
     return identifier;
   }
 
-
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
   }
 
+  public LoyaltyCard usersPerCardLimit(Long usersPerCardLimit) {
 
-  public LoyaltyCard usersPerCardLimit(Integer usersPerCardLimit) {
-    
     this.usersPerCardLimit = usersPerCardLimit;
     return this;
   }
 
-   /**
-   * The max amount of customer profiles that can be linked to the card. 0 means unlimited. 
+  /**
+   * The max amount of customer profiles that can be linked to the card. 0 means
+   * unlimited.
    * minimum: 0
+   * 
    * @return usersPerCardLimit
-  **/
+   **/
   @ApiModelProperty(example = "111", required = true, value = "The max amount of customer profiles that can be linked to the card. 0 means unlimited. ")
 
-  public Integer getUsersPerCardLimit() {
+  public Long getUsersPerCardLimit() {
     return usersPerCardLimit;
   }
 
-
-  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
+  public void setUsersPerCardLimit(Long usersPerCardLimit) {
     this.usersPerCardLimit = usersPerCardLimit;
   }
 
-
   public LoyaltyCard profiles(List<LoyaltyCardProfileRegistration> profiles) {
-    
+
     this.profiles = profiles;
     return this;
   }
@@ -317,10 +309,11 @@ public class LoyaltyCard {
     return this;
   }
 
-   /**
+  /**
    * Integration IDs of the customers profiles linked to the card.
+   * 
    * @return profiles
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Integration IDs of the customers profiles linked to the card.")
 
@@ -328,22 +321,21 @@ public class LoyaltyCard {
     return profiles;
   }
 
-
   public void setProfiles(List<LoyaltyCardProfileRegistration> profiles) {
     this.profiles = profiles;
   }
 
-
   public LoyaltyCard ledger(LedgerInfo ledger) {
-    
+
     this.ledger = ledger;
     return this;
   }
 
-   /**
+  /**
    * Get ledger
+   * 
    * @return ledger
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
@@ -351,14 +343,12 @@ public class LoyaltyCard {
     return ledger;
   }
 
-
   public void setLedger(LedgerInfo ledger) {
     this.ledger = ledger;
   }
 
-
   public LoyaltyCard subledgers(Map<String, LedgerInfo> subledgers) {
-    
+
     this.subledgers = subledgers;
     return this;
   }
@@ -371,10 +361,11 @@ public class LoyaltyCard {
     return this;
   }
 
-   /**
+  /**
    * Displays point balances of the card in the subledgers of the loyalty program.
+   * 
    * @return subledgers
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Displays point balances of the card in the subledgers of the loyalty program.")
 
@@ -382,22 +373,21 @@ public class LoyaltyCard {
     return subledgers;
   }
 
-
   public void setSubledgers(Map<String, LedgerInfo> subledgers) {
     this.subledgers = subledgers;
   }
 
-
   public LoyaltyCard modified(OffsetDateTime modified) {
-    
+
     this.modified = modified;
     return this;
   }
 
-   /**
+  /**
    * Timestamp of the most recent update of the loyalty card.
+   * 
    * @return modified
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2021-09-12T10:12:42Z", value = "Timestamp of the most recent update of the loyalty card.")
 
@@ -405,22 +395,21 @@ public class LoyaltyCard {
     return modified;
   }
 
-
   public void setModified(OffsetDateTime modified) {
     this.modified = modified;
   }
 
-
   public LoyaltyCard oldCardIdentifier(String oldCardIdentifier) {
-    
+
     this.oldCardIdentifier = oldCardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return oldCardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -428,22 +417,21 @@ public class LoyaltyCard {
     return oldCardIdentifier;
   }
 
-
   public void setOldCardIdentifier(String oldCardIdentifier) {
     this.oldCardIdentifier = oldCardIdentifier;
   }
 
-
   public LoyaltyCard newCardIdentifier(String newCardIdentifier) {
-    
+
     this.newCardIdentifier = newCardIdentifier;
     return this;
   }
 
-   /**
-   * The alphanumeric identifier of the loyalty card. 
+  /**
+   * The alphanumeric identifier of the loyalty card.
+   * 
    * @return newCardIdentifier
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "summer-loyalty-card-0543", value = "The alphanumeric identifier of the loyalty card. ")
 
@@ -451,22 +439,21 @@ public class LoyaltyCard {
     return newCardIdentifier;
   }
 
-
   public void setNewCardIdentifier(String newCardIdentifier) {
     this.newCardIdentifier = newCardIdentifier;
   }
 
-
   public LoyaltyCard batchId(String batchId) {
-    
+
     this.batchId = batchId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the batch in which the loyalty card was created.
+   * 
    * @return batchId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "wdefpov", value = "The ID of the batch in which the loyalty card was created.")
 
@@ -474,11 +461,9 @@ public class LoyaltyCard {
     return batchId;
   }
 
-
   public void setBatchId(String batchId) {
     this.batchId = batchId;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -509,9 +494,9 @@ public class LoyaltyCard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, programID, programName, programTitle, status, blockReason, identifier, usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier, batchId);
+    return Objects.hash(id, created, programID, programName, programTitle, status, blockReason, identifier,
+        usersPerCardLimit, profiles, ledger, subledgers, modified, oldCardIdentifier, newCardIdentifier, batchId);
   }
-
 
   @Override
   public String toString() {
@@ -549,4 +534,3 @@ public class LoyaltyCard {
   }
 
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.api;
 
 import one.talon.ApiCallback;
@@ -25,7 +24,6 @@ import one.talon.ProgressResponseBody;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-
 
 import one.talon.model.Audience;
 import one.talon.model.Catalog;
@@ -94,18 +92,40 @@ public class IntegrationApi {
 
     /**
      * Build call for createAudienceV2
-     * @param body body (required)
+     * 
+     * @param body      body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict. An Audience with this ID already exists
+     *                        for this integration.</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call createAudienceV2Call(NewAudience body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
@@ -119,7 +139,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -127,23 +147,25 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAudienceV2ValidateBeforeCall(NewAudience body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call createAudienceV2ValidateBeforeCall(NewAudience body, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createAudienceV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = createAudienceV2Call(body, _callback);
         return localVarCall;
@@ -152,18 +174,55 @@ public class IntegrationApi {
 
     /**
      * Create audience
-     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  **Note:** Audiences can also be created from scratch via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/creating-audiences).  To create an audience from an existing audience from a [technology partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;, &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     * Create an audience. The audience can be created directly from scratch or can
+     * come from third party platforms. **Note:** Audiences can also be created from
+     * scratch via the Campaign Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/creating-audiences). To
+     * create an audience from an existing audience from a [technology
+     * partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1.
+     * Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;,
+     * &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in a third-party
+     * platform. To create an audience from an existing audience in another
+     * platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party
+     * platform. To create an audience from scratch: 1. Only set the
+     * &#x60;name&#x60; property. Once you create your first audience,
+     * audience-specific rule conditions are enabled in the Rule Builder.
+     * 
      * @param body body (required)
      * @return Audience
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict. An Audience with this ID already exists
+     *                        for this integration.</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Audience createAudienceV2(NewAudience body) throws ApiException {
         ApiResponse<Audience> localVarResp = createAudienceV2WithHttpInfo(body);
@@ -172,70 +231,170 @@ public class IntegrationApi {
 
     /**
      * Create audience
-     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  **Note:** Audiences can also be created from scratch via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/creating-audiences).  To create an audience from an existing audience from a [technology partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;, &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
+     * Create an audience. The audience can be created directly from scratch or can
+     * come from third party platforms. **Note:** Audiences can also be created from
+     * scratch via the Campaign Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/creating-audiences). To
+     * create an audience from an existing audience from a [technology
+     * partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1.
+     * Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;,
+     * &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in a third-party
+     * platform. To create an audience from an existing audience in another
+     * platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party
+     * platform. To create an audience from scratch: 1. Only set the
+     * &#x60;name&#x60; property. Once you create your first audience,
+     * audience-specific rule conditions are enabled in the Rule Builder.
+     * 
      * @param body body (required)
      * @return ApiResponse&lt;Audience&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict. An Audience with this ID already exists
+     *                        for this integration.</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Audience> createAudienceV2WithHttpInfo(NewAudience body) throws ApiException {
         okhttp3.Call localVarCall = createAudienceV2ValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        Type localVarReturnType = new TypeToken<Audience>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create audience (asynchronously)
-     * Create an audience. The audience can be created directly from scratch or can come from third party platforms.  **Note:** Audiences can also be created from scratch via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/creating-audiences).  To create an audience from an existing audience from a [technology partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1. Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;, &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set &#x60;integrationId&#x60; to the ID of this audience in a third-party platform.  To create an audience from an existing audience in another platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party platform.  To create an audience from scratch: 1. Only set the &#x60;name&#x60; property.  Once you create your first audience, audience-specific rule conditions are enabled in the Rule Builder. 
-     * @param body body (required)
+     * Create an audience. The audience can be created directly from scratch or can
+     * come from third party platforms. **Note:** Audiences can also be created from
+     * scratch via the Campaign Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/creating-audiences). To
+     * create an audience from an existing audience from a [technology
+     * partner](https://docs.talon.one/docs/dev/technology-partners/overview): 1.
+     * Set the &#x60;integration&#x60; property to &#x60;mparticle&#x60;,
+     * &#x60;segment&#x60; etc., depending on a third-party platform. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in a third-party
+     * platform. To create an audience from an existing audience in another
+     * platform: 1. Do not use the &#x60;integration&#x60; property. 1. Set
+     * &#x60;integrationId&#x60; to the ID of this audience in the 3rd-party
+     * platform. To create an audience from scratch: 1. Only set the
+     * &#x60;name&#x60; property. Once you create your first audience,
+     * audience-specific rule conditions are enabled in the Rule Builder.
+     * 
+     * @param body      body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Conflict. An Audience with this ID already exists for this integration. </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict. An Audience with this ID already exists
+     *                        for this integration.</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createAudienceV2Async(NewAudience body, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call createAudienceV2Async(NewAudience body, final ApiCallback<Audience> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = createAudienceV2ValidateBeforeCall(body, _callback);
-        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        Type localVarReturnType = new TypeToken<Audience>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for createCouponReservation
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * @param body        body (required)
+     * @param _callback   Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createCouponReservationCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createCouponReservationCall(String couponValue, CouponReservations body,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/coupon_reservations/{couponValue}"
-            .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
+                .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -243,7 +402,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -251,28 +410,31 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCouponReservationValidateBeforeCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call createCouponReservationValidateBeforeCall(String couponValue, CouponReservations body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'couponValue' is set
         if (couponValue == null) {
-            throw new ApiException("Missing the required parameter 'couponValue' when calling createCouponReservation(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'couponValue' when calling createCouponReservation(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createCouponReservation(Async)");
         }
-        
 
         okhttp3.Call localVarCall = createCouponReservationCall(couponValue, body, _callback);
         return localVarCall;
@@ -281,19 +443,68 @@ public class IntegrationApi {
 
     /**
      * Create coupon reservation
-     * Create a coupon reservation for the specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.  **Note:**  - If the **Reservation mandatory** option was selected when creating the specified coupon, the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it. Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it. This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.  - If the **Coupon visibility** option was selected when creating the specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons). To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
+     * Create a coupon reservation for the specified customer profiles on the
+     * specified coupon. You can also create a reservation via the Campaign Manager
+     * using the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect. **Note:** - If the **Reservation mandatory** option was selected when
+     * creating the specified coupon, the endpoint creates a **hard** reservation,
+     * meaning only users who have this coupon code reserved can redeem it.
+     * Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is
+     * associated with the specified customer profiles (they show up when using the
+     * [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint), but any user can redeem it. This can be useful, for example, to
+     * display a _coupon wallet_ for customers when they visit your store. - If the
+     * **Coupon visibility** option was selected when creating the specified coupon,
+     * the coupon code is implicitly soft-reserved for all customers, and the code
+     * will be returned for all customer profiles in the [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint. - This endpoint overrides the coupon reservation limit set when
+     * [the coupon is
+     * created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
+     * To ensure that coupons cannot be reserved after the reservation limit is
+     * reached, use the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect in the Rule Builder and the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint. To delete a reservation, use the [Delete
+     * reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation)
+     * endpoint.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
+     * @param body        body (required)
      * @return Coupon
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Coupon createCouponReservation(String couponValue, CouponReservations body) throws ApiException {
         ApiResponse<Coupon> localVarResp = createCouponReservationWithHttpInfo(couponValue, body);
@@ -302,63 +513,183 @@ public class IntegrationApi {
 
     /**
      * Create coupon reservation
-     * Create a coupon reservation for the specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.  **Note:**  - If the **Reservation mandatory** option was selected when creating the specified coupon, the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it. Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it. This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.  - If the **Coupon visibility** option was selected when creating the specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons). To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
+     * Create a coupon reservation for the specified customer profiles on the
+     * specified coupon. You can also create a reservation via the Campaign Manager
+     * using the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect. **Note:** - If the **Reservation mandatory** option was selected when
+     * creating the specified coupon, the endpoint creates a **hard** reservation,
+     * meaning only users who have this coupon code reserved can redeem it.
+     * Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is
+     * associated with the specified customer profiles (they show up when using the
+     * [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint), but any user can redeem it. This can be useful, for example, to
+     * display a _coupon wallet_ for customers when they visit your store. - If the
+     * **Coupon visibility** option was selected when creating the specified coupon,
+     * the coupon code is implicitly soft-reserved for all customers, and the code
+     * will be returned for all customer profiles in the [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint. - This endpoint overrides the coupon reservation limit set when
+     * [the coupon is
+     * created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
+     * To ensure that coupons cannot be reserved after the reservation limit is
+     * reached, use the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect in the Rule Builder and the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint. To delete a reservation, use the [Delete
+     * reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation)
+     * endpoint.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
+     * @param body        body (required)
      * @return ApiResponse&lt;Coupon&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Coupon> createCouponReservationWithHttpInfo(String couponValue, CouponReservations body) throws ApiException {
+    public ApiResponse<Coupon> createCouponReservationWithHttpInfo(String couponValue, CouponReservations body)
+            throws ApiException {
         okhttp3.Call localVarCall = createCouponReservationValidateBeforeCall(couponValue, body, null);
-        Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
+        Type localVarReturnType = new TypeToken<Coupon>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create coupon reservation (asynchronously)
-     * Create a coupon reservation for the specified customer profiles on the specified coupon. You can also create a reservation via the Campaign Manager using the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect.  **Note:**  - If the **Reservation mandatory** option was selected when creating the specified coupon, the endpoint creates a **hard** reservation, meaning only users who have this coupon code reserved can redeem it. Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is associated with the specified customer profiles (they show up when using the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint), but any user can redeem it. This can be useful, for example, to display a _coupon wallet_ for customers when they visit your store.  - If the **Coupon visibility** option was selected when creating the specified coupon, the coupon code is implicitly soft-reserved for all customers, and the code will be returned for all customer profiles in the [List customer data](https://docs.talon.one/integration-api#operation/getCustomerInventory) endpoint.  - This endpoint overrides the coupon reservation limit set when [the coupon is created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons). To ensure that coupons cannot be reserved after the reservation limit is reached, use the [Create coupon code reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code) effect in the Rule Builder and the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint.  To delete a reservation, use the [Delete reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation) endpoint. 
+     * Create a coupon reservation for the specified customer profiles on the
+     * specified coupon. You can also create a reservation via the Campaign Manager
+     * using the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect. **Note:** - If the **Reservation mandatory** option was selected when
+     * creating the specified coupon, the endpoint creates a **hard** reservation,
+     * meaning only users who have this coupon code reserved can redeem it.
+     * Otherwise, the endpoint creates a **soft** reservation, meaning the coupon is
+     * associated with the specified customer profiles (they show up when using the
+     * [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint), but any user can redeem it. This can be useful, for example, to
+     * display a _coupon wallet_ for customers when they visit your store. - If the
+     * **Coupon visibility** option was selected when creating the specified coupon,
+     * the coupon code is implicitly soft-reserved for all customers, and the code
+     * will be returned for all customer profiles in the [List customer
+     * data](https://docs.talon.one/integration-api#operation/getCustomerInventory)
+     * endpoint. - This endpoint overrides the coupon reservation limit set when
+     * [the coupon is
+     * created](https://docs.talon.one/docs/product/campaigns/coupons/creating-coupons).
+     * To ensure that coupons cannot be reserved after the reservation limit is
+     * reached, use the [Create coupon code
+     * reservation](https://docs.talon.one/docs/product/rules/effects/using-effects#reserving-a-coupon-code)
+     * effect in the Rule Builder and the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint. To delete a reservation, use the [Delete
+     * reservation](https://docs.talon.one/integration-api#tag/Coupons/operation/deleteCouponReservation)
+     * endpoint.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param body        body (required)
+     * @param _callback   The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createCouponReservationAsync(String couponValue, CouponReservations body, final ApiCallback<Coupon> _callback) throws ApiException {
+    public okhttp3.Call createCouponReservationAsync(String couponValue, CouponReservations body,
+            final ApiCallback<Coupon> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCouponReservationValidateBeforeCall(couponValue, body, _callback);
-        Type localVarReturnType = new TypeToken<Coupon>(){}.getType();
+        Type localVarReturnType = new TypeToken<Coupon>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for createReferral
-     * @param body body (required)
+     * 
+     * @param body      body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call createReferralCall(NewReferral body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
@@ -372,7 +703,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -380,23 +711,25 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createReferralValidateBeforeCall(NewReferral body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call createReferralValidateBeforeCall(NewReferral body, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling createReferral(Async)");
         }
-        
 
         okhttp3.Call localVarCall = createReferralCall(body, _callback);
         return localVarCall;
@@ -405,17 +738,41 @@ public class IntegrationApi {
 
     /**
      * Create referral code for an advocate
-     * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
+     * Creates a referral code for an advocate. The code will be valid for the
+     * referral campaign for which is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and will be associated with the profile
+     * specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the
+     * advocate&#39;s profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
      * @param body body (required)
      * @return Referral
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Referral createReferral(NewReferral body) throws ApiException {
         ApiResponse<Referral> localVarResp = createReferralWithHttpInfo(body);
@@ -424,63 +781,141 @@ public class IntegrationApi {
 
     /**
      * Create referral code for an advocate
-     * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
+     * Creates a referral code for an advocate. The code will be valid for the
+     * referral campaign for which is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and will be associated with the profile
+     * specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the
+     * advocate&#39;s profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
      * @param body body (required)
      * @return ApiResponse&lt;Referral&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Referral> createReferralWithHttpInfo(NewReferral body) throws ApiException {
         okhttp3.Call localVarCall = createReferralValidateBeforeCall(body, null);
-        Type localVarReturnType = new TypeToken<Referral>(){}.getType();
+        Type localVarReturnType = new TypeToken<Referral>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create referral code for an advocate (asynchronously)
-     * Creates a referral code for an advocate. The code will be valid for the referral campaign for which is created, indicated in the &#x60;campaignId&#x60; parameter, and will be associated with the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
-     * @param body body (required)
+     * Creates a referral code for an advocate. The code will be valid for the
+     * referral campaign for which is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and will be associated with the profile
+     * specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the
+     * advocate&#39;s profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
+     * @param body      body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createReferralAsync(NewReferral body, final ApiCallback<Referral> _callback) throws ApiException {
+    public okhttp3.Call createReferralAsync(NewReferral body, final ApiCallback<Referral> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = createReferralValidateBeforeCall(body, _callback);
-        Type localVarReturnType = new TypeToken<Referral>(){}.getType();
+        Type localVarReturnType = new TypeToken<Referral>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for createReferralsForMultipleAdvocates
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * 
+     * @param body      body (required)
+     * @param silent    Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *                  &#x60;yes&#x60;: Increases the performance of the API call
+     *                  by returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *                  response that contains the updated customer profiles.
+     *                  (optional, default to &quot;yes&quot;)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createReferralsForMultipleAdvocatesCall(NewReferralsForMultipleAdvocates body, String silent, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createReferralsForMultipleAdvocatesCall(NewReferralsForMultipleAdvocates body, String silent,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -496,7 +931,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -504,23 +939,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createReferralsForMultipleAdvocatesValidateBeforeCall(NewReferralsForMultipleAdvocates body, String silent, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call createReferralsForMultipleAdvocatesValidateBeforeCall(NewReferralsForMultipleAdvocates body,
+            String silent, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createReferralsForMultipleAdvocates(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling createReferralsForMultipleAdvocates(Async)");
         }
-        
 
         okhttp3.Call localVarCall = createReferralsForMultipleAdvocatesCall(body, silent, _callback);
         return localVarCall;
@@ -529,91 +967,214 @@ public class IntegrationApi {
 
     /**
      * Create referral codes for multiple advocates
-     * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Creates unique referral codes for multiple advocates. The code will be valid
+     * for the referral campaign for which it is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and one referral code will be associated
+     * with one advocate using the profile specified in the
+     * &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s
+     * profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
+     * @param body   body (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *               &#x60;yes&#x60;: Increases the performance of the API call by
+     *               returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *               response that contains the updated customer profiles.
+     *               (optional, default to &quot;yes&quot;)
      * @return InlineResponse201
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse201 createReferralsForMultipleAdvocates(NewReferralsForMultipleAdvocates body, String silent) throws ApiException {
+    public InlineResponse201 createReferralsForMultipleAdvocates(NewReferralsForMultipleAdvocates body, String silent)
+            throws ApiException {
         ApiResponse<InlineResponse201> localVarResp = createReferralsForMultipleAdvocatesWithHttpInfo(body, silent);
         return localVarResp.getData();
     }
 
     /**
      * Create referral codes for multiple advocates
-     * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Creates unique referral codes for multiple advocates. The code will be valid
+     * for the referral campaign for which it is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and one referral code will be associated
+     * with one advocate using the profile specified in the
+     * &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s
+     * profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
+     * @param body   body (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *               &#x60;yes&#x60;: Increases the performance of the API call by
+     *               returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *               response that contains the updated customer profiles.
+     *               (optional, default to &quot;yes&quot;)
      * @return ApiResponse&lt;InlineResponse201&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse201> createReferralsForMultipleAdvocatesWithHttpInfo(NewReferralsForMultipleAdvocates body, String silent) throws ApiException {
+    public ApiResponse<InlineResponse201> createReferralsForMultipleAdvocatesWithHttpInfo(
+            NewReferralsForMultipleAdvocates body, String silent) throws ApiException {
         okhttp3.Call localVarCall = createReferralsForMultipleAdvocatesValidateBeforeCall(body, silent, null);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse201>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Create referral codes for multiple advocates (asynchronously)
-     * Creates unique referral codes for multiple advocates. The code will be valid for the referral campaign for which it is created, indicated in the &#x60;campaignId&#x60; parameter, and one referral code will be associated with one advocate using the profile specified in the &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s profile.  **Note:** Any [referral limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits) set are ignored when you use this endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Creates unique referral codes for multiple advocates. The code will be valid
+     * for the referral campaign for which it is created, indicated in the
+     * &#x60;campaignId&#x60; parameter, and one referral code will be associated
+     * with one advocate using the profile specified in the
+     * &#x60;advocateProfileIntegrationId&#x60; parameter as the advocate&#39;s
+     * profile. **Note:** Any [referral
+     * limits](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-budgets#referral-limits)
+     * set are ignored when you use this endpoint.
+     * 
+     * @param body      body (required)
+     * @param silent    Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *                  &#x60;yes&#x60;: Increases the performance of the API call
+     *                  by returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *                  response that contains the updated customer profiles.
+     *                  (optional, default to &quot;yes&quot;)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call createReferralsForMultipleAdvocatesAsync(NewReferralsForMultipleAdvocates body, String silent, final ApiCallback<InlineResponse201> _callback) throws ApiException {
+    public okhttp3.Call createReferralsForMultipleAdvocatesAsync(NewReferralsForMultipleAdvocates body, String silent,
+            final ApiCallback<InlineResponse201> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createReferralsForMultipleAdvocatesValidateBeforeCall(body, silent, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse201>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for deleteAudienceMembershipsV2
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param _callback Callback for upload/download progress
+     * @param _callback  Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteAudienceMembershipsV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceMembershipsV2Call(Long audienceId, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v2/audiences/{audienceId}/memberships"
-            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+                .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -621,7 +1182,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -629,23 +1190,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAudienceMembershipsV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call deleteAudienceMembershipsV2ValidateBeforeCall(Long audienceId, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
-            throw new ApiException("Missing the required parameter 'audienceId' when calling deleteAudienceMembershipsV2(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'audienceId' when calling deleteAudienceMembershipsV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = deleteAudienceMembershipsV2Call(audienceId, _callback);
         return localVarCall;
@@ -654,82 +1218,159 @@ public class IntegrationApi {
 
     /**
      * Delete audience memberships
-     * Remove all members from this audience. 
+     * Remove all members from this audience.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public void deleteAudienceMembershipsV2(Integer audienceId) throws ApiException {
+    public void deleteAudienceMembershipsV2(Long audienceId) throws ApiException {
         deleteAudienceMembershipsV2WithHttpInfo(audienceId);
     }
 
     /**
      * Delete audience memberships
-     * Remove all members from this audience. 
+     * Remove all members from this audience.
+     * 
      * @param audienceId The ID of the audience. (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Void> deleteAudienceMembershipsV2WithHttpInfo(Integer audienceId) throws ApiException {
+    public ApiResponse<Void> deleteAudienceMembershipsV2WithHttpInfo(Long audienceId) throws ApiException {
         okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Delete audience memberships (asynchronously)
-     * Remove all members from this audience. 
+     * Remove all members from this audience.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param _callback  The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteAudienceMembershipsV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceMembershipsV2Async(Long audienceId, final ApiCallback<Void> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for deleteAudienceV2
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param _callback Callback for upload/download progress
+     * @param _callback  Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteAudienceV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceV2Call(Long audienceId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v2/audiences/{audienceId}"
-            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+                .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -737,7 +1378,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -745,23 +1386,25 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAudienceV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call deleteAudienceV2ValidateBeforeCall(Long audienceId, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling deleteAudienceV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = deleteAudienceV2Call(audienceId, _callback);
         return localVarCall;
@@ -770,86 +1413,187 @@ public class IntegrationApi {
 
     /**
      * Delete audience
-     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience.  **Note:** Audiences can also be deleted via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience). 
+     * Delete an audience created by a third-party integration. **Warning:** This
+     * endpoint also removes any associations recorded between a customer profile
+     * and this audience. **Note:** Audiences can also be deleted via the Campaign
+     * Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience).
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public void deleteAudienceV2(Integer audienceId) throws ApiException {
+    public void deleteAudienceV2(Long audienceId) throws ApiException {
         deleteAudienceV2WithHttpInfo(audienceId);
     }
 
     /**
      * Delete audience
-     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience.  **Note:** Audiences can also be deleted via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience). 
+     * Delete an audience created by a third-party integration. **Warning:** This
+     * endpoint also removes any associations recorded between a customer profile
+     * and this audience. **Note:** Audiences can also be deleted via the Campaign
+     * Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience).
+     * 
      * @param audienceId The ID of the audience. (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Void> deleteAudienceV2WithHttpInfo(Integer audienceId) throws ApiException {
+    public ApiResponse<Void> deleteAudienceV2WithHttpInfo(Long audienceId) throws ApiException {
         okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Delete audience (asynchronously)
-     * Delete an audience created by a third-party integration.  **Warning:** This endpoint also removes any associations recorded between a customer profile and this audience.  **Note:** Audiences can also be deleted via the Campaign Manager. See the [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience). 
+     * Delete an audience created by a third-party integration. **Warning:** This
+     * endpoint also removes any associations recorded between a customer profile
+     * and this audience. **Note:** Audiences can also be deleted via the Campaign
+     * Manager. See the
+     * [docs](https://docs.talon.one/docs/product/audiences/managing-audiences#deleting-an-audience).
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param _callback  The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteAudienceV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceV2Async(Long audienceId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for deleteCouponReservation
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * @param body        body (required)
+     * @param _callback   Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteCouponReservationCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCouponReservationCall(String couponValue, CouponReservations body,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/coupon_reservations/{couponValue}"
-            .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
+                .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -857,7 +1601,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -865,28 +1609,31 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCouponReservationValidateBeforeCall(String couponValue, CouponReservations body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call deleteCouponReservationValidateBeforeCall(String couponValue, CouponReservations body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'couponValue' is set
         if (couponValue == null) {
-            throw new ApiException("Missing the required parameter 'couponValue' when calling deleteCouponReservation(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'couponValue' when calling deleteCouponReservation(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling deleteCouponReservation(Async)");
         }
-        
 
         okhttp3.Call localVarCall = deleteCouponReservationCall(couponValue, body, _callback);
         return localVarCall;
@@ -895,18 +1642,41 @@ public class IntegrationApi {
 
     /**
      * Delete coupon reservations
-     * Remove all the coupon reservations from the provided customer profile integration IDs and the provided coupon code. 
+     * Remove all the coupon reservations from the provided customer profile
+     * integration IDs and the provided coupon code.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @param body        body (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void deleteCouponReservation(String couponValue, CouponReservations body) throws ApiException {
         deleteCouponReservationWithHttpInfo(couponValue, body);
@@ -914,68 +1684,142 @@ public class IntegrationApi {
 
     /**
      * Delete coupon reservations
-     * Remove all the coupon reservations from the provided customer profile integration IDs and the provided coupon code. 
+     * Remove all the coupon reservations from the provided customer profile
+     * integration IDs and the provided coupon code.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
+     * @param body        body (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Void> deleteCouponReservationWithHttpInfo(String couponValue, CouponReservations body) throws ApiException {
+    public ApiResponse<Void> deleteCouponReservationWithHttpInfo(String couponValue, CouponReservations body)
+            throws ApiException {
         okhttp3.Call localVarCall = deleteCouponReservationValidateBeforeCall(couponValue, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Delete coupon reservations (asynchronously)
-     * Remove all the coupon reservations from the provided customer profile integration IDs and the provided coupon code. 
+     * Remove all the coupon reservations from the provided customer profile
+     * integration IDs and the provided coupon code.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param body        body (required)
+     * @param _callback   The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteCouponReservationAsync(String couponValue, CouponReservations body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCouponReservationAsync(String couponValue, CouponReservations body,
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCouponReservationValidateBeforeCall(couponValue, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for deleteCustomerData
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param _callback     Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call deleteCustomerDataCall(String integrationId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/customer_data/{integrationId}"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -983,7 +1827,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -991,23 +1835,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCustomerDataValidateBeforeCall(String integrationId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call deleteCustomerDataValidateBeforeCall(String integrationId, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling deleteCustomerData(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling deleteCustomerData(Async)");
         }
-        
 
         okhttp3.Call localVarCall = deleteCustomerDataCall(integrationId, _callback);
         return localVarCall;
@@ -1016,16 +1863,50 @@ public class IntegrationApi {
 
     /**
      * Delete customer&#39;s personal data
-     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** - Customer data is deleted from all Applications in the [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)   that the API key belongs to. For example, if you use this endpoint with an API key that belongs to a sandbox Application,   customer data will be deleted from all sandbox Applications. This is because customer data is shared   between Applications from the same environment. - To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * Delete all attributes on the customer profile and on entities that reference
+     * this customer profile. **Important:** - Customer data is deleted from all
+     * Applications in the
+     * [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)
+     * that the API key belongs to. For example, if you use this endpoint with an
+     * API key that belongs to a sandbox Application, customer data will be deleted
+     * from all sandbox Applications. This is because customer data is shared
+     * between Applications from the same environment. - To preserve performance, we
+     * recommend avoiding deleting customer data during peak-traffic hours.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void deleteCustomerData(String integrationId) throws ApiException {
         deleteCustomerDataWithHttpInfo(integrationId);
@@ -1033,17 +1914,51 @@ public class IntegrationApi {
 
     /**
      * Delete customer&#39;s personal data
-     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** - Customer data is deleted from all Applications in the [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)   that the API key belongs to. For example, if you use this endpoint with an API key that belongs to a sandbox Application,   customer data will be deleted from all sandbox Applications. This is because customer data is shared   between Applications from the same environment. - To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
+     * Delete all attributes on the customer profile and on entities that reference
+     * this customer profile. **Important:** - Customer data is deleted from all
+     * Applications in the
+     * [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)
+     * that the API key belongs to. For example, if you use this endpoint with an
+     * API key that belongs to a sandbox Application, customer data will be deleted
+     * from all sandbox Applications. This is because customer data is shared
+     * between Applications from the same environment. - To preserve performance, we
+     * recommend avoiding deleting customer data during peak-traffic hours.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Void> deleteCustomerDataWithHttpInfo(String integrationId) throws ApiException {
         okhttp3.Call localVarCall = deleteCustomerDataValidateBeforeCall(integrationId, null);
@@ -1052,46 +1967,105 @@ public class IntegrationApi {
 
     /**
      * Delete customer&#39;s personal data (asynchronously)
-     * Delete all attributes on the customer profile and on entities that reference this customer profile.  **Important:** - Customer data is deleted from all Applications in the [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)   that the API key belongs to. For example, if you use this endpoint with an API key that belongs to a sandbox Application,   customer data will be deleted from all sandbox Applications. This is because customer data is shared   between Applications from the same environment. - To preserve performance, we recommend avoiding deleting customer data during peak-traffic hours. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * Delete all attributes on the customer profile and on entities that reference
+     * this customer profile. **Important:** - Customer data is deleted from all
+     * Applications in the
+     * [environment](https://docs.talon.one/docs/product/applications/overview#application-environments)
+     * that the API key belongs to. For example, if you use this endpoint with an
+     * API key that belongs to a sandbox Application, customer data will be deleted
+     * from all sandbox Applications. This is because customer data is shared
+     * between Applications from the same environment. - To preserve performance, we
+     * recommend avoiding deleting customer data during peak-traffic hours.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param _callback     The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call deleteCustomerDataAsync(String integrationId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCustomerDataAsync(String integrationId, final ApiCallback<Void> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = deleteCustomerDataValidateBeforeCall(integrationId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for generateLoyaltyCard
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param body             body (required)
+     * @param _callback        Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call generateLoyaltyCardCall(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateLoyaltyCardCall(Long loyaltyProgramId, GenerateLoyaltyCard body,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1099,7 +2073,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1107,28 +2081,31 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateLoyaltyCardValidateBeforeCall(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call generateLoyaltyCardValidateBeforeCall(Long loyaltyProgramId, GenerateLoyaltyCard body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling generateLoyaltyCard(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling generateLoyaltyCard(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling generateLoyaltyCard(Async)");
         }
-        
 
         okhttp3.Call localVarCall = generateLoyaltyCardCall(loyaltyProgramId, body, _callback);
         return localVarCall;
@@ -1137,101 +2114,236 @@ public class IntegrationApi {
 
     /**
      * Generate loyalty card
-     * Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param body body (required)
+     * Generate a loyalty card in a specified [card-based loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).
+     * To link the card to one or more customer profiles, use the
+     * &#x60;customerProfileIds&#x60; parameter in the request body. **Note:** - The
+     * number of customer profiles linked to the loyalty card cannot exceed the
+     * loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the
+     * program&#39;s limit, use the [Get loyalty
+     * program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram)
+     * endpoint. - If the loyalty program has a defined code format, it will be used
+     * for the loyalty card identifier.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param body             body (required)
      * @return LoyaltyCard
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public LoyaltyCard generateLoyaltyCard(Integer loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
+    public LoyaltyCard generateLoyaltyCard(Long loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
         ApiResponse<LoyaltyCard> localVarResp = generateLoyaltyCardWithHttpInfo(loyaltyProgramId, body);
         return localVarResp.getData();
     }
 
     /**
      * Generate loyalty card
-     * Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param body body (required)
+     * Generate a loyalty card in a specified [card-based loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).
+     * To link the card to one or more customer profiles, use the
+     * &#x60;customerProfileIds&#x60; parameter in the request body. **Note:** - The
+     * number of customer profiles linked to the loyalty card cannot exceed the
+     * loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the
+     * program&#39;s limit, use the [Get loyalty
+     * program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram)
+     * endpoint. - If the loyalty program has a defined code format, it will be used
+     * for the loyalty card identifier.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param body             body (required)
      * @return ApiResponse&lt;LoyaltyCard&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<LoyaltyCard> generateLoyaltyCardWithHttpInfo(Integer loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
+    public ApiResponse<LoyaltyCard> generateLoyaltyCardWithHttpInfo(Long loyaltyProgramId, GenerateLoyaltyCard body)
+            throws ApiException {
         okhttp3.Call localVarCall = generateLoyaltyCardValidateBeforeCall(loyaltyProgramId, body, null);
-        Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoyaltyCard>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Generate loyalty card (asynchronously)
-     * Generate a loyalty card in a specified [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).  To link the card to one or more customer profiles, use the &#x60;customerProfileIds&#x60; parameter in the request body.  **Note:** - The number of customer profiles linked to the loyalty card cannot exceed the loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the program&#39;s limit, use the [Get loyalty program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram) endpoint. - If the loyalty program has a defined code format, it will be used for the loyalty card identifier. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * Generate a loyalty card in a specified [card-based loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview).
+     * To link the card to one or more customer profiles, use the
+     * &#x60;customerProfileIds&#x60; parameter in the request body. **Note:** - The
+     * number of customer profiles linked to the loyalty card cannot exceed the
+     * loyalty program&#39;s &#x60;usersPerCardLimit&#x60;. To find the
+     * program&#39;s limit, use the [Get loyalty
+     * program](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgram)
+     * endpoint. - If the loyalty program has a defined code format, it will be used
+     * for the loyalty card identifier.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param body             body (required)
+     * @param _callback        The callback to be executed when the API call
+     *                         finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call generateLoyaltyCardAsync(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
+    public okhttp3.Call generateLoyaltyCardAsync(Long loyaltyProgramId, GenerateLoyaltyCard body,
+            final ApiCallback<LoyaltyCard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateLoyaltyCardValidateBeforeCall(loyaltyProgramId, body, _callback);
-        Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoyaltyCard>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getCustomerAchievementHistory
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param achievementId The achievement identifier.  (required)
-     * @param progressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
-     * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param integrationId  The integration identifier for this customer profile.
+     *                       Must be: - Unique within the deployment. - Stable for
+     *                       the customer. Do not use an ID that the customer can
+     *                       update themselves. For example, you can use a database
+     *                       ID. Once set, you cannot update this identifier.
+     *                       (required)
+     * @param achievementId  The achievement identifier. (required)
+     * @param progressStatus Filter by customer progress status in the achievement.
+     *                       (optional)
+     * @param startDate      Timestamp that filters the results to only contain
+     *                       achievements created on or after the start date.
+     *                       (optional)
+     * @param endDate        Timestamp that filters the results to only contain
+     *                       achievements created before or on the end date.
+     *                       (optional)
+     * @param pageSize       The number of items in the response. (optional, default
+     *                       to 1000)
+     * @param skip           The number of items to skip when paging through large
+     *                       result sets. (optional)
+     * @param _callback      Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerAchievementHistoryCall(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementHistoryCall(String integrationId, Long achievementId,
+            List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/customer_profiles/{integrationId}/achievements/{achievementId}"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()))
-            .replaceAll("\\{" + "achievementId" + "\\}", localVarApiClient.escapeString(achievementId.toString()));
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()))
+                .replaceAll("\\{" + "achievementId" + "\\}", localVarApiClient.escapeString(achievementId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (progressStatus != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "progressStatus", progressStatus));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("csv", "progressStatus", progressStatus));
         }
 
         if (startDate != null) {
@@ -1254,7 +2366,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1262,143 +2374,304 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerAchievementHistoryValidateBeforeCall(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getCustomerAchievementHistoryValidateBeforeCall(String integrationId, Long achievementId,
+            List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getCustomerAchievementHistory(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getCustomerAchievementHistory(Async)");
         }
-        
+
         // verify the required parameter 'achievementId' is set
         if (achievementId == null) {
-            throw new ApiException("Missing the required parameter 'achievementId' when calling getCustomerAchievementHistory(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'achievementId' when calling getCustomerAchievementHistory(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCustomerAchievementHistoryCall(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getCustomerAchievementHistoryCall(integrationId, achievementId, progressStatus,
+                startDate, endDate, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List customer&#39;s achievement history
-     * Retrieve all progress history of a given customer in the given achievement. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param achievementId The achievement identifier.  (required)
-     * @param progressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
-     * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve all progress history of a given customer in the given achievement.
+     * 
+     * @param integrationId  The integration identifier for this customer profile.
+     *                       Must be: - Unique within the deployment. - Stable for
+     *                       the customer. Do not use an ID that the customer can
+     *                       update themselves. For example, you can use a database
+     *                       ID. Once set, you cannot update this identifier.
+     *                       (required)
+     * @param achievementId  The achievement identifier. (required)
+     * @param progressStatus Filter by customer progress status in the achievement.
+     *                       (optional)
+     * @param startDate      Timestamp that filters the results to only contain
+     *                       achievements created on or after the start date.
+     *                       (optional)
+     * @param endDate        Timestamp that filters the results to only contain
+     *                       achievements created before or on the end date.
+     *                       (optional)
+     * @param pageSize       The number of items in the response. (optional, default
+     *                       to 1000)
+     * @param skip           The number of items to skip when paging through large
+     *                       result sets. (optional)
      * @return InlineResponse2002
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2002 getCustomerAchievementHistory(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2002> localVarResp = getCustomerAchievementHistoryWithHttpInfo(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
+    public InlineResponse2002 getCustomerAchievementHistory(String integrationId, Long achievementId,
+            List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip)
+            throws ApiException {
+        ApiResponse<InlineResponse2002> localVarResp = getCustomerAchievementHistoryWithHttpInfo(integrationId,
+                achievementId, progressStatus, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
      * List customer&#39;s achievement history
-     * Retrieve all progress history of a given customer in the given achievement. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param achievementId The achievement identifier.  (required)
-     * @param progressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
-     * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve all progress history of a given customer in the given achievement.
+     * 
+     * @param integrationId  The integration identifier for this customer profile.
+     *                       Must be: - Unique within the deployment. - Stable for
+     *                       the customer. Do not use an ID that the customer can
+     *                       update themselves. For example, you can use a database
+     *                       ID. Once set, you cannot update this identifier.
+     *                       (required)
+     * @param achievementId  The achievement identifier. (required)
+     * @param progressStatus Filter by customer progress status in the achievement.
+     *                       (optional)
+     * @param startDate      Timestamp that filters the results to only contain
+     *                       achievements created on or after the start date.
+     *                       (optional)
+     * @param endDate        Timestamp that filters the results to only contain
+     *                       achievements created before or on the end date.
+     *                       (optional)
+     * @param pageSize       The number of items in the response. (optional, default
+     *                       to 1000)
+     * @param skip           The number of items to skip when paging through large
+     *                       result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2002> getCustomerAchievementHistoryWithHttpInfo(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+    public ApiResponse<InlineResponse2002> getCustomerAchievementHistoryWithHttpInfo(String integrationId,
+            Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId,
+                progressStatus, startDate, endDate, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2002>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customer&#39;s achievement history (asynchronously)
-     * Retrieve all progress history of a given customer in the given achievement. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param achievementId The achievement identifier.  (required)
-     * @param progressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
-     * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve all progress history of a given customer in the given achievement.
+     * 
+     * @param integrationId  The integration identifier for this customer profile.
+     *                       Must be: - Unique within the deployment. - Stable for
+     *                       the customer. Do not use an ID that the customer can
+     *                       update themselves. For example, you can use a database
+     *                       ID. Once set, you cannot update this identifier.
+     *                       (required)
+     * @param achievementId  The achievement identifier. (required)
+     * @param progressStatus Filter by customer progress status in the achievement.
+     *                       (optional)
+     * @param startDate      Timestamp that filters the results to only contain
+     *                       achievements created on or after the start date.
+     *                       (optional)
+     * @param endDate        Timestamp that filters the results to only contain
+     *                       achievements created before or on the end date.
+     *                       (optional)
+     * @param pageSize       The number of items in the response. (optional, default
+     *                       to 1000)
+     * @param skip           The number of items to skip when paging through large
+     *                       result sets. (optional)
+     * @param _callback      The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerAchievementHistoryAsync(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementHistoryAsync(String integrationId, Long achievementId,
+            List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip,
+            final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId,
+                progressStatus, startDate, endDate, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2002>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getCustomerAchievements
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  (optional)
-     * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
-     * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
-     * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param integrationId         The integration identifier for this customer
+     *                              profile. Must be: - Unique within the
+     *                              deployment. - Stable for the customer. Do not
+     *                              use an ID that the customer can update
+     *                              themselves. For example, you can use a database
+     *                              ID. Once set, you cannot update this identifier.
+     *                              (required)
+     * @param campaignIds           Filter by one or more Campaign IDs, separated by
+     *                              a comma. **Note:** If no campaigns are
+     *                              specified, data for all the campaigns in the
+     *                              Application is returned. (optional)
+     * @param achievementIds        Filter by one or more Achievement IDs, separated
+     *                              by a comma. **Note:** If no achievements are
+     *                              specified, data for all the achievements in the
+     *                              Application is returned. (optional)
+     * @param achievementStatus     Filter by status of the achievement. **Note:**
+     *                              If the achievement status is not specified, only
+     *                              data for all active achievements in the
+     *                              Application is returned. (optional)
+     * @param currentProgressStatus Filter by customer progress status in the
+     *                              achievement. (optional)
+     * @param pageSize              The number of items in the response. (optional,
+     *                              default to 1000)
+     * @param skip                  The number of items to skip when paging through
+     *                              large result sets. (optional)
+     * @param _callback             Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerAchievementsCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementsCall(String integrationId, List<String> campaignIds,
+            List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus,
+            Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/customer_profiles/{integrationId}/achievements"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1407,15 +2680,18 @@ public class IntegrationApi {
         }
 
         if (achievementIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "achievementIds", achievementIds));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("csv", "achievementIds", achievementIds));
         }
 
         if (achievementStatus != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "achievementStatus", achievementStatus));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("csv", "achievementStatus", achievementStatus));
         }
 
         if (currentProgressStatus != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "currentProgressStatus", currentProgressStatus));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("csv", "currentProgressStatus", currentProgressStatus));
         }
 
         if (pageSize != null) {
@@ -1430,7 +2706,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1438,137 +2714,311 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerAchievementsValidateBeforeCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getCustomerAchievementsValidateBeforeCall(String integrationId, List<String> campaignIds,
+            List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus,
+            Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getCustomerAchievements(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getCustomerAchievements(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCustomerAchievementsCall(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getCustomerAchievementsCall(integrationId, campaignIds, achievementIds,
+                achievementStatus, currentProgressStatus, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List customer&#39;s available achievements
-     * Retrieve all the achievements available to a given customer and their progress in them. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  (optional)
-     * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
-     * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
-     * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve all the achievements available to a given customer and their
+     * progress in them.
+     * 
+     * @param integrationId         The integration identifier for this customer
+     *                              profile. Must be: - Unique within the
+     *                              deployment. - Stable for the customer. Do not
+     *                              use an ID that the customer can update
+     *                              themselves. For example, you can use a database
+     *                              ID. Once set, you cannot update this identifier.
+     *                              (required)
+     * @param campaignIds           Filter by one or more Campaign IDs, separated by
+     *                              a comma. **Note:** If no campaigns are
+     *                              specified, data for all the campaigns in the
+     *                              Application is returned. (optional)
+     * @param achievementIds        Filter by one or more Achievement IDs, separated
+     *                              by a comma. **Note:** If no achievements are
+     *                              specified, data for all the achievements in the
+     *                              Application is returned. (optional)
+     * @param achievementStatus     Filter by status of the achievement. **Note:**
+     *                              If the achievement status is not specified, only
+     *                              data for all active achievements in the
+     *                              Application is returned. (optional)
+     * @param currentProgressStatus Filter by customer progress status in the
+     *                              achievement. (optional)
+     * @param pageSize              The number of items in the response. (optional,
+     *                              default to 1000)
+     * @param skip                  The number of items to skip when paging through
+     *                              large result sets. (optional)
      * @return InlineResponse2001
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2001 getCustomerAchievements(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2001> localVarResp = getCustomerAchievementsWithHttpInfo(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
+    public InlineResponse2001 getCustomerAchievements(String integrationId, List<String> campaignIds,
+            List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus,
+            Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2001> localVarResp = getCustomerAchievementsWithHttpInfo(integrationId, campaignIds,
+                achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
      * List customer&#39;s available achievements
-     * Retrieve all the achievements available to a given customer and their progress in them. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  (optional)
-     * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
-     * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
-     * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve all the achievements available to a given customer and their
+     * progress in them.
+     * 
+     * @param integrationId         The integration identifier for this customer
+     *                              profile. Must be: - Unique within the
+     *                              deployment. - Stable for the customer. Do not
+     *                              use an ID that the customer can update
+     *                              themselves. For example, you can use a database
+     *                              ID. Once set, you cannot update this identifier.
+     *                              (required)
+     * @param campaignIds           Filter by one or more Campaign IDs, separated by
+     *                              a comma. **Note:** If no campaigns are
+     *                              specified, data for all the campaigns in the
+     *                              Application is returned. (optional)
+     * @param achievementIds        Filter by one or more Achievement IDs, separated
+     *                              by a comma. **Note:** If no achievements are
+     *                              specified, data for all the achievements in the
+     *                              Application is returned. (optional)
+     * @param achievementStatus     Filter by status of the achievement. **Note:**
+     *                              If the achievement status is not specified, only
+     *                              data for all active achievements in the
+     *                              Application is returned. (optional)
+     * @param currentProgressStatus Filter by customer progress status in the
+     *                              achievement. (optional)
+     * @param pageSize              The number of items in the response. (optional,
+     *                              default to 1000)
+     * @param skip                  The number of items to skip when paging through
+     *                              large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2001&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2001> getCustomerAchievementsWithHttpInfo(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+    public ApiResponse<InlineResponse2001> getCustomerAchievementsWithHttpInfo(String integrationId,
+            List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus,
+            List<String> currentProgressStatus, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds,
+                achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customer&#39;s available achievements (asynchronously)
-     * Retrieve all the achievements available to a given customer and their progress in them. 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param campaignIds Filter by one or more Campaign IDs, separated by a comma.  **Note:** If no campaigns are specified, data for all the campaigns in the Application is returned.  (optional)
-     * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
-     * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
-     * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve all the achievements available to a given customer and their
+     * progress in them.
+     * 
+     * @param integrationId         The integration identifier for this customer
+     *                              profile. Must be: - Unique within the
+     *                              deployment. - Stable for the customer. Do not
+     *                              use an ID that the customer can update
+     *                              themselves. For example, you can use a database
+     *                              ID. Once set, you cannot update this identifier.
+     *                              (required)
+     * @param campaignIds           Filter by one or more Campaign IDs, separated by
+     *                              a comma. **Note:** If no campaigns are
+     *                              specified, data for all the campaigns in the
+     *                              Application is returned. (optional)
+     * @param achievementIds        Filter by one or more Achievement IDs, separated
+     *                              by a comma. **Note:** If no achievements are
+     *                              specified, data for all the achievements in the
+     *                              Application is returned. (optional)
+     * @param achievementStatus     Filter by status of the achievement. **Note:**
+     *                              If the achievement status is not specified, only
+     *                              data for all active achievements in the
+     *                              Application is returned. (optional)
+     * @param currentProgressStatus Filter by customer progress status in the
+     *                              achievement. (optional)
+     * @param pageSize              The number of items in the response. (optional,
+     *                              default to 1000)
+     * @param skip                  The number of items to skip when paging through
+     *                              large result sets. (optional)
+     * @param _callback             The callback to be executed when the API call
+     *                              finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerAchievementsAsync(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementsAsync(String integrationId, List<String> campaignIds,
+            List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus,
+            Long pageSize, Long skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
+        okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds,
+                achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2001>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getCustomerInventory
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
-     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
-     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
-     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
-     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param profile       Set to &#x60;true&#x60; to include customer profile
+     *                      information in the response. (optional)
+     * @param referrals     Set to &#x60;true&#x60; to include referral information
+     *                      in the response. (optional)
+     * @param coupons       Set to &#x60;true&#x60; to include coupon information in
+     *                      the response. (optional)
+     * @param loyalty       Set to &#x60;true&#x60; to include loyalty information
+     *                      in the response. (optional)
+     * @param giveaways     Set to &#x60;true&#x60; to include giveaways information
+     *                      in the response. (optional)
+     * @param achievements  Set to &#x60;true&#x60; to include achievement
+     *                      information in the response. (optional)
+     * @param _callback     Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryCall(String integrationId, Boolean profile, Boolean referrals,
+            Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/customer_profiles/{integrationId}/inventory"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1600,7 +3050,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1608,128 +3058,274 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getCustomerInventoryValidateBeforeCall(String integrationId, Boolean profile,
+            Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getCustomerInventory(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getCustomerInventory(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, loyalty, giveaways, achievements, _callback);
+        okhttp3.Call localVarCall = getCustomerInventoryCall(integrationId, profile, referrals, coupons, loyalty,
+                giveaways, achievements, _callback);
         return localVarCall;
 
     }
 
     /**
      * List customer data
-     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points, loyalty cards and reserved coupons. Reserved coupons also include redeemed coupons. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
-     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
-     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
-     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
-     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
+     * Return the customer inventory regarding entities referencing this customer
+     * profile&#39;s &#x60;integrationId&#x60;. Typical entities returned are:
+     * customer profile information, referral codes, loyalty points, loyalty cards
+     * and reserved coupons. Reserved coupons also include redeemed coupons.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param profile       Set to &#x60;true&#x60; to include customer profile
+     *                      information in the response. (optional)
+     * @param referrals     Set to &#x60;true&#x60; to include referral information
+     *                      in the response. (optional)
+     * @param coupons       Set to &#x60;true&#x60; to include coupon information in
+     *                      the response. (optional)
+     * @param loyalty       Set to &#x60;true&#x60; to include loyalty information
+     *                      in the response. (optional)
+     * @param giveaways     Set to &#x60;true&#x60; to include giveaways information
+     *                      in the response. (optional)
+     * @param achievements  Set to &#x60;true&#x60; to include achievement
+     *                      information in the response. (optional)
      * @return CustomerInventory
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements) throws ApiException {
-        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile, referrals, coupons, loyalty, giveaways, achievements);
+    public CustomerInventory getCustomerInventory(String integrationId, Boolean profile, Boolean referrals,
+            Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements) throws ApiException {
+        ApiResponse<CustomerInventory> localVarResp = getCustomerInventoryWithHttpInfo(integrationId, profile,
+                referrals, coupons, loyalty, giveaways, achievements);
         return localVarResp.getData();
     }
 
     /**
      * List customer data
-     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points, loyalty cards and reserved coupons. Reserved coupons also include redeemed coupons. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
-     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
-     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
-     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
-     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
+     * Return the customer inventory regarding entities referencing this customer
+     * profile&#39;s &#x60;integrationId&#x60;. Typical entities returned are:
+     * customer profile information, referral codes, loyalty points, loyalty cards
+     * and reserved coupons. Reserved coupons also include redeemed coupons.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param profile       Set to &#x60;true&#x60; to include customer profile
+     *                      information in the response. (optional)
+     * @param referrals     Set to &#x60;true&#x60; to include referral information
+     *                      in the response. (optional)
+     * @param coupons       Set to &#x60;true&#x60; to include coupon information in
+     *                      the response. (optional)
+     * @param loyalty       Set to &#x60;true&#x60; to include loyalty information
+     *                      in the response. (optional)
+     * @param giveaways     Set to &#x60;true&#x60; to include giveaways information
+     *                      in the response. (optional)
+     * @param achievements  Set to &#x60;true&#x60; to include achievement
+     *                      information in the response. (optional)
      * @return ApiResponse&lt;CustomerInventory&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements) throws ApiException {
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, achievements, null);
-        Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
+    public ApiResponse<CustomerInventory> getCustomerInventoryWithHttpInfo(String integrationId, Boolean profile,
+            Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements)
+            throws ApiException {
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons,
+                loyalty, giveaways, achievements, null);
+        Type localVarReturnType = new TypeToken<CustomerInventory>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customer data (asynchronously)
-     * Return the customer inventory regarding entities referencing this customer profile&#39;s &#x60;integrationId&#x60;.  Typical entities returned are: customer profile information, referral codes, loyalty points, loyalty cards and reserved coupons. Reserved coupons also include redeemed coupons. 
-     * @param integrationId The integration ID of the customer profile. You can get the &#x60;integrationId&#x60; of a profile using: - A customer session integration ID with the [Update customer session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2) endpoint. - The Management API with the [List application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  (required)
-     * @param profile Set to &#x60;true&#x60; to include customer profile information in the response. (optional)
-     * @param referrals Set to &#x60;true&#x60; to include referral information in the response. (optional)
-     * @param coupons Set to &#x60;true&#x60; to include coupon information in the response. (optional)
-     * @param loyalty Set to &#x60;true&#x60; to include loyalty information in the response. (optional)
-     * @param giveaways Set to &#x60;true&#x60; to include giveaways information in the response. (optional)
-     * @param achievements Set to &#x60;true&#x60; to include achievement information in the response. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Return the customer inventory regarding entities referencing this customer
+     * profile&#39;s &#x60;integrationId&#x60;. Typical entities returned are:
+     * customer profile information, referral codes, loyalty points, loyalty cards
+     * and reserved coupons. Reserved coupons also include redeemed coupons.
+     * 
+     * @param integrationId The integration ID of the customer profile. You can get
+     *                      the &#x60;integrationId&#x60; of a profile using: - A
+     *                      customer session integration ID with the [Update
+     *                      customer
+     *                      session](https://docs.talon.one/integration-api#operation/updateCustomerSessionV2)
+     *                      endpoint. - The Management API with the [List
+     *                      application&#39;s
+     *                      customers](https://docs.talon.one/management-api#operation/getApplicationCustomers)
+     *                      endpoint. (required)
+     * @param profile       Set to &#x60;true&#x60; to include customer profile
+     *                      information in the response. (optional)
+     * @param referrals     Set to &#x60;true&#x60; to include referral information
+     *                      in the response. (optional)
+     * @param coupons       Set to &#x60;true&#x60; to include coupon information in
+     *                      the response. (optional)
+     * @param loyalty       Set to &#x60;true&#x60; to include loyalty information
+     *                      in the response. (optional)
+     * @param giveaways     Set to &#x60;true&#x60; to include giveaways information
+     *                      in the response. (optional)
+     * @param achievements  Set to &#x60;true&#x60; to include achievement
+     *                      information in the response. (optional)
+     * @param _callback     The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals, Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements, final ApiCallback<CustomerInventory> _callback) throws ApiException {
+    public okhttp3.Call getCustomerInventoryAsync(String integrationId, Boolean profile, Boolean referrals,
+            Boolean coupons, Boolean loyalty, Boolean giveaways, Boolean achievements,
+            final ApiCallback<CustomerInventory> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons, loyalty, giveaways, achievements, _callback);
-        Type localVarReturnType = new TypeToken<CustomerInventory>(){}.getType();
+        okhttp3.Call localVarCall = getCustomerInventoryValidateBeforeCall(integrationId, profile, referrals, coupons,
+                loyalty, giveaways, achievements, _callback);
+        Type localVarReturnType = new TypeToken<CustomerInventory>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getCustomerSession
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param _callback         Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerSessionCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerSessionCall(String customerSessionId, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v2/customer_sessions/{customerSessionId}"
-            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+                .replaceAll("\\{" + "customerSessionId" + "\\}",
+                        localVarApiClient.escapeString(customerSessionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1737,7 +3333,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1745,23 +3341,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerSessionValidateBeforeCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getCustomerSessionValidateBeforeCall(String customerSessionId, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'customerSessionId' is set
         if (customerSessionId == null) {
-            throw new ApiException("Missing the required parameter 'customerSessionId' when calling getCustomerSession(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'customerSessionId' when calling getCustomerSession(Async)");
         }
-        
 
         okhttp3.Call localVarCall = getCustomerSessionCall(customerSessionId, _callback);
         return localVarCall;
@@ -1770,92 +3369,238 @@ public class IntegrationApi {
 
     /**
      * Get customer session
-     * Get the details of the given customer session.  You can get the same data via other endpoints that also apply changes, which can help you save requests and increase performance. See:  - [Update customer session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
+     * Get the details of the given customer session. You can get the same data via
+     * other endpoints that also apply changes, which can help you save requests and
+     * increase performance. See: - [Update customer
+     * session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update
+     * customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2)
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
      * @return IntegrationCustomerSessionResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public IntegrationCustomerSessionResponse getCustomerSession(String customerSessionId) throws ApiException {
-        ApiResponse<IntegrationCustomerSessionResponse> localVarResp = getCustomerSessionWithHttpInfo(customerSessionId);
+        ApiResponse<IntegrationCustomerSessionResponse> localVarResp = getCustomerSessionWithHttpInfo(
+                customerSessionId);
         return localVarResp.getData();
     }
 
     /**
      * Get customer session
-     * Get the details of the given customer session.  You can get the same data via other endpoints that also apply changes, which can help you save requests and increase performance. See:  - [Update customer session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
+     * Get the details of the given customer session. You can get the same data via
+     * other endpoints that also apply changes, which can help you save requests and
+     * increase performance. See: - [Update customer
+     * session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update
+     * customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2)
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
      * @return ApiResponse&lt;IntegrationCustomerSessionResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<IntegrationCustomerSessionResponse> getCustomerSessionWithHttpInfo(String customerSessionId) throws ApiException {
+    public ApiResponse<IntegrationCustomerSessionResponse> getCustomerSessionWithHttpInfo(String customerSessionId)
+            throws ApiException {
         okhttp3.Call localVarCall = getCustomerSessionValidateBeforeCall(customerSessionId, null);
-        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get customer session (asynchronously)
-     * Get the details of the given customer session.  You can get the same data via other endpoints that also apply changes, which can help you save requests and increase performance. See:  - [Update customer session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * Get the details of the given customer session. You can get the same data via
+     * other endpoints that also apply changes, which can help you save requests and
+     * increase performance. See: - [Update customer
+     * session](#tag/Customer-sessions/operation/updateCustomerSessionV2) - [Update
+     * customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2)
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param _callback         The callback to be executed when the API call
+     *                          finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getCustomerSessionAsync(String customerSessionId, final ApiCallback<IntegrationCustomerSessionResponse> _callback) throws ApiException {
+    public okhttp3.Call getCustomerSessionAsync(String customerSessionId,
+            final ApiCallback<IntegrationCustomerSessionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomerSessionValidateBeforeCall(customerSessionId, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationCustomerSessionResponse>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyBalances
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
-     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId     Identifier of the profile-based loyalty program.
+     *                             You can get the ID with the [List loyalty
+     *                             programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                             endpoint. (required)
+     * @param integrationId        The integration identifier for this customer
+     *                             profile. Must be: - Unique within the deployment.
+     *                             - Stable for the customer. Do not use an ID that
+     *                             the customer can update themselves. For example,
+     *                             you can use a database ID. Once set, you cannot
+     *                             update this identifier. (required)
+     * @param endDate              Used to return expired, active, and pending
+     *                             loyalty balances before this timestamp. You can
+     *                             enter any past, present, or future timestamp
+     *                             value. **Note:** - It must be an RFC3339
+     *                             timestamp string. - You can include a time
+     *                             component in your string, for example,
+     *                             &#x60;T23:59:59&#x60; to specify the end of the
+     *                             day. The time zone setting considered is
+     *                             &#x60;UTC&#x60;. If you do not include a time
+     *                             component, a default time value of
+     *                             &#x60;T00:00:00&#x60; (midnight) in
+     *                             &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId          The ID of the subledger by which we filter the
+     *                             data. (optional)
+     * @param includeTiers         Indicates whether tier information is included in
+     *                             the response. When set to &#x60;true&#x60;, the
+     *                             response includes information about the current
+     *                             tier and the number of points required to move to
+     *                             next tier. (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected
+     *                             tier information is included in the response.
+     *                             When set to &#x60;true&#x60;, the response
+     *                             includes information about the customer&#39;s
+     *                             active points and the name of the projected tier.
+     *                             **Note** We recommend filtering by
+     *                             &#x60;subledgerId&#x60; for better performance.
+     *                             (optional, default to false)
+     * @param _callback            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyBalancesCall(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyBalancesCall(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate,
+            String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/balances"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1879,7 +3624,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1887,138 +3632,386 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyBalancesValidateBeforeCall(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyBalancesValidateBeforeCall(Long loyaltyProgramId, String integrationId,
+            OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyBalances(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyBalances(Async)");
         }
-        
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getLoyaltyBalances(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getLoyaltyBalances(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyBalancesCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, _callback);
+        okhttp3.Call localVarCall = getLoyaltyBalancesCall(loyaltyProgramId, integrationId, endDate, subledgerId,
+                includeTiers, includeProjectedTier, _callback);
         return localVarCall;
 
     }
 
     /**
      * Get customer&#39;s loyalty balances
-     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
-     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * Retrieve loyalty ledger balances for the given Integration ID in the
+     * specified loyalty program. You can filter balances by date and subledger ID,
+     * and include tier-related information in the response. **Note**: If no
+     * filtering options are applied, you retrieve all loyalty balances on the
+     * current date for the given integration ID. Loyalty balances are calculated
+     * when Talon.One receives your request using the points stored in our database,
+     * so retrieving a large number of balances at once can impact performance. For
+     * more information, see: - [Managing card-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)
+     * - [Managing profile-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
+     * 
+     * @param loyaltyProgramId     Identifier of the profile-based loyalty program.
+     *                             You can get the ID with the [List loyalty
+     *                             programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                             endpoint. (required)
+     * @param integrationId        The integration identifier for this customer
+     *                             profile. Must be: - Unique within the deployment.
+     *                             - Stable for the customer. Do not use an ID that
+     *                             the customer can update themselves. For example,
+     *                             you can use a database ID. Once set, you cannot
+     *                             update this identifier. (required)
+     * @param endDate              Used to return expired, active, and pending
+     *                             loyalty balances before this timestamp. You can
+     *                             enter any past, present, or future timestamp
+     *                             value. **Note:** - It must be an RFC3339
+     *                             timestamp string. - You can include a time
+     *                             component in your string, for example,
+     *                             &#x60;T23:59:59&#x60; to specify the end of the
+     *                             day. The time zone setting considered is
+     *                             &#x60;UTC&#x60;. If you do not include a time
+     *                             component, a default time value of
+     *                             &#x60;T00:00:00&#x60; (midnight) in
+     *                             &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId          The ID of the subledger by which we filter the
+     *                             data. (optional)
+     * @param includeTiers         Indicates whether tier information is included in
+     *                             the response. When set to &#x60;true&#x60;, the
+     *                             response includes information about the current
+     *                             tier and the number of points required to move to
+     *                             next tier. (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected
+     *                             tier information is included in the response.
+     *                             When set to &#x60;true&#x60;, the response
+     *                             includes information about the customer&#39;s
+     *                             active points and the name of the projected tier.
+     *                             **Note** We recommend filtering by
+     *                             &#x60;subledgerId&#x60; for better performance.
+     *                             (optional, default to false)
      * @return LoyaltyBalancesWithTiers
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public LoyaltyBalancesWithTiers getLoyaltyBalances(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
-        ApiResponse<LoyaltyBalancesWithTiers> localVarResp = getLoyaltyBalancesWithHttpInfo(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier);
+    public LoyaltyBalancesWithTiers getLoyaltyBalances(Long loyaltyProgramId, String integrationId,
+            OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier)
+            throws ApiException {
+        ApiResponse<LoyaltyBalancesWithTiers> localVarResp = getLoyaltyBalancesWithHttpInfo(loyaltyProgramId,
+                integrationId, endDate, subledgerId, includeTiers, includeProjectedTier);
         return localVarResp.getData();
     }
 
     /**
      * Get customer&#39;s loyalty balances
-     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
-     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
+     * Retrieve loyalty ledger balances for the given Integration ID in the
+     * specified loyalty program. You can filter balances by date and subledger ID,
+     * and include tier-related information in the response. **Note**: If no
+     * filtering options are applied, you retrieve all loyalty balances on the
+     * current date for the given integration ID. Loyalty balances are calculated
+     * when Talon.One receives your request using the points stored in our database,
+     * so retrieving a large number of balances at once can impact performance. For
+     * more information, see: - [Managing card-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)
+     * - [Managing profile-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
+     * 
+     * @param loyaltyProgramId     Identifier of the profile-based loyalty program.
+     *                             You can get the ID with the [List loyalty
+     *                             programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                             endpoint. (required)
+     * @param integrationId        The integration identifier for this customer
+     *                             profile. Must be: - Unique within the deployment.
+     *                             - Stable for the customer. Do not use an ID that
+     *                             the customer can update themselves. For example,
+     *                             you can use a database ID. Once set, you cannot
+     *                             update this identifier. (required)
+     * @param endDate              Used to return expired, active, and pending
+     *                             loyalty balances before this timestamp. You can
+     *                             enter any past, present, or future timestamp
+     *                             value. **Note:** - It must be an RFC3339
+     *                             timestamp string. - You can include a time
+     *                             component in your string, for example,
+     *                             &#x60;T23:59:59&#x60; to specify the end of the
+     *                             day. The time zone setting considered is
+     *                             &#x60;UTC&#x60;. If you do not include a time
+     *                             component, a default time value of
+     *                             &#x60;T00:00:00&#x60; (midnight) in
+     *                             &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId          The ID of the subledger by which we filter the
+     *                             data. (optional)
+     * @param includeTiers         Indicates whether tier information is included in
+     *                             the response. When set to &#x60;true&#x60;, the
+     *                             response includes information about the current
+     *                             tier and the number of points required to move to
+     *                             next tier. (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected
+     *                             tier information is included in the response.
+     *                             When set to &#x60;true&#x60;, the response
+     *                             includes information about the customer&#39;s
+     *                             active points and the name of the projected tier.
+     *                             **Note** We recommend filtering by
+     *                             &#x60;subledgerId&#x60; for better performance.
+     *                             (optional, default to false)
      * @return ApiResponse&lt;LoyaltyBalancesWithTiers&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<LoyaltyBalancesWithTiers> getLoyaltyBalancesWithHttpInfo(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, null);
-        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
+    public ApiResponse<LoyaltyBalancesWithTiers> getLoyaltyBalancesWithHttpInfo(Long loyaltyProgramId,
+            String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers,
+            Boolean includeProjectedTier) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate,
+                subledgerId, includeTiers, includeProjectedTier, null);
+        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get customer&#39;s loyalty balances (asynchronously)
-     * Retrieve loyalty ledger balances for the given Integration ID in the specified loyalty program. You can filter balances by date and subledger ID, and include tier-related information in the response.  **Note**: If no filtering options are applied, you retrieve all loyalty balances on the current date for the given integration ID.  Loyalty balances are calculated when Talon.One receives your request using the points stored in our database, so retrieving a large number of balances at once can impact performance.  For more information, see: - [Managing card-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards) - [Managing profile-based loyalty program data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data) 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param includeTiers Indicates whether tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the current tier and the number of points required to move to next tier.  (optional, default to false)
-     * @param includeProjectedTier Indicates whether the customer&#39;s projected tier information is included in the response.  When set to &#x60;true&#x60;, the response includes information about the customer&#39;s active points and the name of the projected tier.  **Note** We recommend filtering by &#x60;subledgerId&#x60; for better performance.  (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve loyalty ledger balances for the given Integration ID in the
+     * specified loyalty program. You can filter balances by date and subledger ID,
+     * and include tier-related information in the response. **Note**: If no
+     * filtering options are applied, you retrieve all loyalty balances on the
+     * current date for the given integration ID. Loyalty balances are calculated
+     * when Talon.One receives your request using the points stored in our database,
+     * so retrieving a large number of balances at once can impact performance. For
+     * more information, see: - [Managing card-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards)
+     * - [Managing profile-based loyalty program
+     * data](https://docs.talon.one/docs/product/loyalty-programs/profile-based/managing-pb-lp-data)
+     * 
+     * @param loyaltyProgramId     Identifier of the profile-based loyalty program.
+     *                             You can get the ID with the [List loyalty
+     *                             programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                             endpoint. (required)
+     * @param integrationId        The integration identifier for this customer
+     *                             profile. Must be: - Unique within the deployment.
+     *                             - Stable for the customer. Do not use an ID that
+     *                             the customer can update themselves. For example,
+     *                             you can use a database ID. Once set, you cannot
+     *                             update this identifier. (required)
+     * @param endDate              Used to return expired, active, and pending
+     *                             loyalty balances before this timestamp. You can
+     *                             enter any past, present, or future timestamp
+     *                             value. **Note:** - It must be an RFC3339
+     *                             timestamp string. - You can include a time
+     *                             component in your string, for example,
+     *                             &#x60;T23:59:59&#x60; to specify the end of the
+     *                             day. The time zone setting considered is
+     *                             &#x60;UTC&#x60;. If you do not include a time
+     *                             component, a default time value of
+     *                             &#x60;T00:00:00&#x60; (midnight) in
+     *                             &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId          The ID of the subledger by which we filter the
+     *                             data. (optional)
+     * @param includeTiers         Indicates whether tier information is included in
+     *                             the response. When set to &#x60;true&#x60;, the
+     *                             response includes information about the current
+     *                             tier and the number of points required to move to
+     *                             next tier. (optional, default to false)
+     * @param includeProjectedTier Indicates whether the customer&#39;s projected
+     *                             tier information is included in the response.
+     *                             When set to &#x60;true&#x60;, the response
+     *                             includes information about the customer&#39;s
+     *                             active points and the name of the projected tier.
+     *                             **Note** We recommend filtering by
+     *                             &#x60;subledgerId&#x60; for better performance.
+     *                             (optional, default to false)
+     * @param _callback            The callback to be executed when the API call
+     *                             finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyBalancesAsync(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback<LoyaltyBalancesWithTiers> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyBalancesAsync(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate,
+            String subledgerId, Boolean includeTiers, Boolean includeProjectedTier,
+            final ApiCallback<LoyaltyBalancesWithTiers> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, _callback);
-        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate,
+                subledgerId, includeTiers, includeProjectedTier, _callback);
+        Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyCardBalances
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param endDate          Used to return expired, active, and pending loyalty
+     *                         balances before this timestamp. You can enter any
+     *                         past, present, or future timestamp value. **Note:** -
+     *                         It must be an RFC3339 timestamp string. - You can
+     *                         include a time component in your string, for example,
+     *                         &#x60;T23:59:59&#x60; to specify the end of the day.
+     *                         The time zone setting considered is &#x60;UTC&#x60;.
+     *                         If you do not include a time component, a default
+     *                         time value of &#x60;T00:00:00&#x60; (midnight) in
+     *                         &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param _callback        Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesCall(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate,
+            List<String> subledgerId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/balances"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2027,14 +4020,15 @@ public class IntegrationApi {
         }
 
         if (subledgerId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2042,134 +4036,306 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId,
+            OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardBalances(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardBalances(Async)");
         }
-        
+
         // verify the required parameter 'loyaltyCardId' is set
         if (loyaltyCardId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardBalances(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardBalances(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId,
+                _callback);
         return localVarCall;
 
     }
 
     /**
      * Get card&#39;s point balances
-     * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
+     * Retrieve loyalty balances for the given loyalty card in the specified loyalty
+     * program with filtering options applied. If no filtering options are applied,
+     * all loyalty balances for the given loyalty card are returned.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param endDate          Used to return expired, active, and pending loyalty
+     *                         balances before this timestamp. You can enter any
+     *                         past, present, or future timestamp value. **Note:** -
+     *                         It must be an RFC3339 timestamp string. - You can
+     *                         include a time component in your string, for example,
+     *                         &#x60;T23:59:59&#x60; to specify the end of the day.
+     *                         The time zone setting considered is &#x60;UTC&#x60;.
+     *                         If you do not include a time component, a default
+     *                         time value of &#x60;T00:00:00&#x60; (midnight) in
+     *                         &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
      * @return LoyaltyCardBalances
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public LoyaltyCardBalances getLoyaltyCardBalances(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
-        ApiResponse<LoyaltyCardBalances> localVarResp = getLoyaltyCardBalancesWithHttpInfo(loyaltyProgramId, loyaltyCardId, endDate, subledgerId);
+    public LoyaltyCardBalances getLoyaltyCardBalances(Long loyaltyProgramId, String loyaltyCardId,
+            OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
+        ApiResponse<LoyaltyCardBalances> localVarResp = getLoyaltyCardBalancesWithHttpInfo(loyaltyProgramId,
+                loyaltyCardId, endDate, subledgerId);
         return localVarResp.getData();
     }
 
     /**
      * Get card&#39;s point balances
-     * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
+     * Retrieve loyalty balances for the given loyalty card in the specified loyalty
+     * program with filtering options applied. If no filtering options are applied,
+     * all loyalty balances for the given loyalty card are returned.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param endDate          Used to return expired, active, and pending loyalty
+     *                         balances before this timestamp. You can enter any
+     *                         past, present, or future timestamp value. **Note:** -
+     *                         It must be an RFC3339 timestamp string. - You can
+     *                         include a time component in your string, for example,
+     *                         &#x60;T23:59:59&#x60; to specify the end of the day.
+     *                         The time zone setting considered is &#x60;UTC&#x60;.
+     *                         If you do not include a time component, a default
+     *                         time value of &#x60;T00:00:00&#x60; (midnight) in
+     *                         &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
      * @return ApiResponse&lt;LoyaltyCardBalances&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<LoyaltyCardBalances> getLoyaltyCardBalancesWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId, null);
-        Type localVarReturnType = new TypeToken<LoyaltyCardBalances>(){}.getType();
+    public ApiResponse<LoyaltyCardBalances> getLoyaltyCardBalancesWithHttpInfo(Long loyaltyProgramId,
+            String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate,
+                subledgerId, null);
+        Type localVarReturnType = new TypeToken<LoyaltyCardBalances>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get card&#39;s point balances (asynchronously)
-     * Retrieve loyalty balances for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, all loyalty balances for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param endDate Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve loyalty balances for the given loyalty card in the specified loyalty
+     * program with filtering options applied. If no filtering options are applied,
+     * all loyalty balances for the given loyalty card are returned.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param endDate          Used to return expired, active, and pending loyalty
+     *                         balances before this timestamp. You can enter any
+     *                         past, present, or future timestamp value. **Note:** -
+     *                         It must be an RFC3339 timestamp string. - You can
+     *                         include a time component in your string, for example,
+     *                         &#x60;T23:59:59&#x60; to specify the end of the day.
+     *                         The time zone setting considered is &#x60;UTC&#x60;.
+     *                         If you do not include a time component, a default
+     *                         time value of &#x60;T00:00:00&#x60; (midnight) in
+     *                         &#x60;UTC&#x60; is considered. (optional)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param _callback        The callback to be executed when the API call
+     *                         finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesAsync(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback<LoyaltyCardBalances> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesAsync(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate,
+            List<String> subledgerId, final ApiCallback<LoyaltyCardBalances> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId, _callback);
-        Type localVarReturnType = new TypeToken<LoyaltyCardBalances>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate,
+                subledgerId, _callback);
+        Type localVarReturnType = new TypeToken<LoyaltyCardBalances>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyCardPoints
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
+     * @param _callback        Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardPointsCall(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardPointsCall(Long loyaltyProgramId, String loyaltyCardId, String status,
+            List<String> subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/points"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2178,7 +4344,8 @@ public class IntegrationApi {
         }
 
         if (subledgerId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
         }
 
         if (pageSize != null) {
@@ -2193,7 +4360,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2201,151 +4368,344 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardPointsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyCardPointsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId,
+            String status, List<String> subledgerId, Long pageSize, Long skip, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardPoints(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardPoints(Async)");
         }
-        
+
         // verify the required parameter 'loyaltyCardId' is set
         if (loyaltyCardId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardPoints(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardPoints(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyCardPointsCall(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardPointsCall(loyaltyProgramId, loyaltyCardId, status, subledgerId,
+                pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List card&#39;s unused loyalty points
-     * Get paginated results of loyalty points for a given loyalty card identifier in a card-based loyalty program. This endpoint returns only the balances of unused points on a loyalty card.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Get paginated results of loyalty points for a given loyalty card identifier
+     * in a card-based loyalty program. This endpoint returns only the balances of
+     * unused points on a loyalty card. You can filter points by status: -
+     * &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;:
+     * Points with a start date in the future. - &#x60;expired&#x60;: Points with an
+     * expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
      * @return InlineResponse2005
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2005 getLoyaltyCardPoints(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2005> localVarResp = getLoyaltyCardPointsWithHttpInfo(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
+    public InlineResponse2005 getLoyaltyCardPoints(Long loyaltyProgramId, String loyaltyCardId, String status,
+            List<String> subledgerId, Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2005> localVarResp = getLoyaltyCardPointsWithHttpInfo(loyaltyProgramId, loyaltyCardId,
+                status, subledgerId, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
      * List card&#39;s unused loyalty points
-     * Get paginated results of loyalty points for a given loyalty card identifier in a card-based loyalty program. This endpoint returns only the balances of unused points on a loyalty card.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Get paginated results of loyalty points for a given loyalty card identifier
+     * in a card-based loyalty program. This endpoint returns only the balances of
+     * unused points on a loyalty card. You can filter points by status: -
+     * &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;:
+     * Points with a start date in the future. - &#x60;expired&#x60;: Points with an
+     * expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2005&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2005> getLoyaltyCardPointsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+    public ApiResponse<InlineResponse2005> getLoyaltyCardPointsWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId,
+            String status, List<String> subledgerId, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status,
+                subledgerId, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2005>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List card&#39;s unused loyalty points (asynchronously)
-     * Get paginated results of loyalty points for a given loyalty card identifier in a card-based loyalty program. This endpoint returns only the balances of unused points on a loyalty card.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Get paginated results of loyalty points for a given loyalty card identifier
+     * in a card-based loyalty program. This endpoint returns only the balances of
+     * unused points on a loyalty card. You can filter points by status: -
+     * &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;:
+     * Points with a start date in the future. - &#x60;expired&#x60;: Points with an
+     * expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      Filter results by one or more subledger IDs. Must be
+     *                         exact match. (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
+     * @param _callback        The callback to be executed when the API call
+     *                         finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardPointsAsync(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardPointsAsync(Long loyaltyProgramId, String loyaltyCardId, String status,
+            List<String> subledgerId, Long pageSize, Long skip, final ApiCallback<InlineResponse2005> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status,
+                subledgerId, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2005>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyCardTransactions
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId       Identifier of the card-based loyalty program
+     *                               containing the loyalty card. You can get the ID
+     *                               with the [List loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param loyaltyCardId          Identifier of the loyalty card. You can get the
+     *                               identifier with the [List loyalty
+     *                               cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                               endpoint. (required)
+     * @param subledgerId            Filter results by one or more subledger IDs.
+     *                               Must be exact match. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
+     * @param _callback              Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsCall(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsCall(Long loyaltyProgramId, String loyaltyCardId,
+            List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transactions"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (subledgerId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
+            localVarCollectionQueryParams
+                    .addAll(localVarApiClient.parameterToPairs("multi", "subledgerId", subledgerId));
         }
 
         if (loyaltyTransactionType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("loyaltyTransactionType", loyaltyTransactionType));
+            localVarQueryParams
+                    .addAll(localVarApiClient.parameterToPair("loyaltyTransactionType", loyaltyTransactionType));
         }
 
         if (startDate != null) {
@@ -2368,7 +4728,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2376,146 +4736,383 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId,
+            List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardTransactions(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyCardTransactions(Async)");
         }
-        
+
         // verify the required parameter 'loyaltyCardId' is set
         if (loyaltyCardId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardTransactions(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyCardId' when calling getLoyaltyCardTransactions(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsCall(loyaltyProgramId, loyaltyCardId, subledgerId,
+                loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List card&#39;s transactions
-     * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve loyalty transaction logs for the given loyalty card in the specified
+     * loyalty program with filtering options applied. If no filtering options are
+     * applied, the last 50 loyalty transactions for the given loyalty card are
+     * returned.
+     * 
+     * @param loyaltyProgramId       Identifier of the card-based loyalty program
+     *                               containing the loyalty card. You can get the ID
+     *                               with the [List loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param loyaltyCardId          Identifier of the loyalty card. You can get the
+     *                               identifier with the [List loyalty
+     *                               cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                               endpoint. (required)
+     * @param subledgerId            Filter results by one or more subledger IDs.
+     *                               Must be exact match. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
      * @return InlineResponse2003
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2003 getLoyaltyCardTransactions(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2003> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+    public InlineResponse2003 getLoyaltyCardTransactions(Long loyaltyProgramId, String loyaltyCardId,
+            List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2003> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId,
+                loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
      * List card&#39;s transactions
-     * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve loyalty transaction logs for the given loyalty card in the specified
+     * loyalty program with filtering options applied. If no filtering options are
+     * applied, the last 50 loyalty transactions for the given loyalty card are
+     * returned.
+     * 
+     * @param loyaltyProgramId       Identifier of the card-based loyalty program
+     *                               containing the loyalty card. You can get the ID
+     *                               with the [List loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param loyaltyCardId          Identifier of the loyalty card. You can get the
+     *                               identifier with the [List loyalty
+     *                               cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                               endpoint. (required)
+     * @param subledgerId            Filter results by one or more subledger IDs.
+     *                               Must be exact match. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2003&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Long loyaltyProgramId,
+            String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate,
+            OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId,
+                subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2003>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List card&#39;s transactions (asynchronously)
-     * Retrieve loyalty transaction logs for the given loyalty card in the specified loyalty program with filtering options applied. If no filtering options are applied, the last 50 loyalty transactions for the given loyalty card are returned. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve loyalty transaction logs for the given loyalty card in the specified
+     * loyalty program with filtering options applied. If no filtering options are
+     * applied, the last 50 loyalty transactions for the given loyalty card are
+     * returned.
+     * 
+     * @param loyaltyProgramId       Identifier of the card-based loyalty program
+     *                               containing the loyalty card. You can get the ID
+     *                               with the [List loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param loyaltyCardId          Identifier of the loyalty card. You can get the
+     *                               identifier with the [List loyalty
+     *                               cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                               endpoint. (required)
+     * @param subledgerId            Filter results by one or more subledger IDs.
+     *                               Must be exact match. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
+     * @param _callback              The callback to be executed when the API call
+     *                               finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsAsync(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsAsync(Long loyaltyProgramId, String loyaltyCardId,
+            List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId,
+                subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2003>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyProgramProfilePoints
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You
+     *                         can get the ID with the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param integrationId    The integration identifier for this customer profile.
+     *                         Must be: - Unique within the deployment. - Stable for
+     *                         the customer. Do not use an ID that the customer can
+     *                         update themselves. For example, you can use a
+     *                         database ID. Once set, you cannot update this
+     *                         identifier. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      The ID of the subledger by which we filter the data.
+     *                         (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
+     * @param _callback        Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfilePointsCall(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfilePointsCall(Long loyaltyProgramId, String integrationId, String status,
+            String subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/points"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2539,7 +5136,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2547,142 +5144,339 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramProfilePointsValidateBeforeCall(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyProgramProfilePointsValidateBeforeCall(Long loyaltyProgramId, String integrationId,
+            String status, String subledgerId, Long pageSize, Long skip, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyProgramProfilePoints(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyProgramProfilePoints(Async)");
         }
-        
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getLoyaltyProgramProfilePoints(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getLoyaltyProgramProfilePoints(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsCall(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsCall(loyaltyProgramId, integrationId, status,
+                subledgerId, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List customer&#39;s unused loyalty points
-     * Get paginated results of loyalty points for a given Integration ID in the specified profile-based loyalty program. This endpoint returns only the balances of unused points linked to a customer profile.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Get paginated results of loyalty points for a given Integration ID in the
+     * specified profile-based loyalty program. This endpoint returns only the
+     * balances of unused points linked to a customer profile. You can filter points
+     * by status: - &#x60;active&#x60;: Points ready to be redeemed. -
+     * &#x60;pending&#x60;: Points with a start date in the future. -
+     * &#x60;expired&#x60;: Points with an expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You
+     *                         can get the ID with the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param integrationId    The integration identifier for this customer profile.
+     *                         Must be: - Unique within the deployment. - Stable for
+     *                         the customer. Do not use an ID that the customer can
+     *                         update themselves. For example, you can use a
+     *                         database ID. Once set, you cannot update this
+     *                         identifier. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      The ID of the subledger by which we filter the data.
+     *                         (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
      * @return InlineResponse2006
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2006 getLoyaltyProgramProfilePoints(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2006> localVarResp = getLoyaltyProgramProfilePointsWithHttpInfo(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
+    public InlineResponse2006 getLoyaltyProgramProfilePoints(Long loyaltyProgramId, String integrationId, String status,
+            String subledgerId, Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2006> localVarResp = getLoyaltyProgramProfilePointsWithHttpInfo(loyaltyProgramId,
+                integrationId, status, subledgerId, pageSize, skip);
         return localVarResp.getData();
     }
 
     /**
      * List customer&#39;s unused loyalty points
-     * Get paginated results of loyalty points for a given Integration ID in the specified profile-based loyalty program. This endpoint returns only the balances of unused points linked to a customer profile.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Get paginated results of loyalty points for a given Integration ID in the
+     * specified profile-based loyalty program. This endpoint returns only the
+     * balances of unused points linked to a customer profile. You can filter points
+     * by status: - &#x60;active&#x60;: Points ready to be redeemed. -
+     * &#x60;pending&#x60;: Points with a start date in the future. -
+     * &#x60;expired&#x60;: Points with an expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You
+     *                         can get the ID with the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param integrationId    The integration identifier for this customer profile.
+     *                         Must be: - Unique within the deployment. - Stable for
+     *                         the customer. Do not use an ID that the customer can
+     *                         update themselves. For example, you can use a
+     *                         database ID. Once set, you cannot update this
+     *                         identifier. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      The ID of the subledger by which we filter the data.
+     *                         (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2006&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2006> getLoyaltyProgramProfilePointsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+    public ApiResponse<InlineResponse2006> getLoyaltyProgramProfilePointsWithHttpInfo(Long loyaltyProgramId,
+            String integrationId, String status, String subledgerId, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId,
+                status, subledgerId, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2006>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customer&#39;s unused loyalty points (asynchronously)
-     * Get paginated results of loyalty points for a given Integration ID in the specified profile-based loyalty program. This endpoint returns only the balances of unused points linked to a customer profile.  You can filter points by status: - &#x60;active&#x60;: Points ready to be redeemed. - &#x60;pending&#x60;: Points with a start date in the future. - &#x60;expired&#x60;: Points with an expiration date in the past. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param status Filter points based on their status. (optional, default to active)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Get paginated results of loyalty points for a given Integration ID in the
+     * specified profile-based loyalty program. This endpoint returns only the
+     * balances of unused points linked to a customer profile. You can filter points
+     * by status: - &#x60;active&#x60;: Points ready to be redeemed. -
+     * &#x60;pending&#x60;: Points with a start date in the future. -
+     * &#x60;expired&#x60;: Points with an expiration date in the past.
+     * 
+     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You
+     *                         can get the ID with the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param integrationId    The integration identifier for this customer profile.
+     *                         Must be: - Unique within the deployment. - Stable for
+     *                         the customer. Do not use an ID that the customer can
+     *                         update themselves. For example, you can use a
+     *                         database ID. Once set, you cannot update this
+     *                         identifier. (required)
+     * @param status           Filter points based on their status. (optional,
+     *                         default to active)
+     * @param subledgerId      The ID of the subledger by which we filter the data.
+     *                         (optional)
+     * @param pageSize         The number of items in the response. (optional,
+     *                         default to 50)
+     * @param skip             The number of items to skip when paging through large
+     *                         result sets. (optional)
+     * @param _callback        The callback to be executed when the API call
+     *                         finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfilePointsAsync(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfilePointsAsync(Long loyaltyProgramId, String integrationId, String status,
+            String subledgerId, Long pageSize, Long skip, final ApiCallback<InlineResponse2006> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId,
+                status, subledgerId, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2006>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getLoyaltyProgramProfileTransactions
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId       Identifier of the profile-based loyalty
+     *                               program. You can get the ID with the [List
+     *                               loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param integrationId          The integration identifier for this customer
+     *                               profile. Must be: - Unique within the
+     *                               deployment. - Stable for the customer. Do not
+     *                               use an ID that the customer can update
+     *                               themselves. For example, you can use a database
+     *                               ID. Once set, you cannot update this
+     *                               identifier. (required)
+     * @param subledgerId            The ID of the subledger by which we filter the
+     *                               data. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
+     * @param _callback              Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Long loyaltyProgramId, String integrationId,
+            String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/transactions"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2691,7 +5485,8 @@ public class IntegrationApi {
         }
 
         if (loyaltyTransactionType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("loyaltyTransactionType", loyaltyTransactionType));
+            localVarQueryParams
+                    .addAll(localVarApiClient.parameterToPair("loyaltyTransactionType", loyaltyTransactionType));
         }
 
         if (startDate != null) {
@@ -2714,7 +5509,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2722,140 +5517,382 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Long loyaltyProgramId,
+            String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate,
+            OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyProgramProfileTransactions(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling getLoyaltyProgramProfileTransactions(Async)");
         }
-        
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getLoyaltyProgramProfileTransactions(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling getLoyaltyProgramProfileTransactions(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsCall(loyaltyProgramId, integrationId,
+                subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         return localVarCall;
 
     }
 
     /**
      * List customer&#39;s loyalty transactions
-     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve paginated results of loyalty transaction logs for the given
+     * Integration ID in the specified loyalty program. You can filter transactions
+     * by date. If no filters are applied, the last 50 loyalty transactions for the
+     * given integration ID are returned. **Note:** To retrieve all loyalty program
+     * transaction logs in a given loyalty program, use the [List loyalty program
+     * transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions)
+     * endpoint.
+     * 
+     * @param loyaltyProgramId       Identifier of the profile-based loyalty
+     *                               program. You can get the ID with the [List
+     *                               loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param integrationId          The integration identifier for this customer
+     *                               profile. Must be: - Unique within the
+     *                               deployment. - Stable for the customer. Do not
+     *                               use an ID that the customer can update
+     *                               themselves. For example, you can use a database
+     *                               ID. Once set, you cannot update this
+     *                               identifier. (required)
+     * @param subledgerId            The ID of the subledger by which we filter the
+     *                               data. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
      * @return InlineResponse2004
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
+    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Long loyaltyProgramId, String integrationId,
+            String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip) throws ApiException {
+        ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(
+                loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize,
+                skip);
         return localVarResp.getData();
     }
 
     /**
      * List customer&#39;s loyalty transactions
-     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
+     * Retrieve paginated results of loyalty transaction logs for the given
+     * Integration ID in the specified loyalty program. You can filter transactions
+     * by date. If no filters are applied, the last 50 loyalty transactions for the
+     * given integration ID are returned. **Note:** To retrieve all loyalty program
+     * transaction logs in a given loyalty program, use the [List loyalty program
+     * transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions)
+     * endpoint.
+     * 
+     * @param loyaltyProgramId       Identifier of the profile-based loyalty
+     *                               program. You can get the ID with the [List
+     *                               loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param integrationId          The integration identifier for this customer
+     *                               profile. Must be: - Unique within the
+     *                               deployment. - Stable for the customer. Do not
+     *                               use an ID that the customer can update
+     *                               themselves. For example, you can use a database
+     *                               ID. Once set, you cannot update this
+     *                               identifier. (required)
+     * @param subledgerId            The ID of the subledger by which we filter the
+     *                               data. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2004&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Long loyaltyProgramId,
+            String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate,
+            OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId,
+                integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customer&#39;s loyalty transactions (asynchronously)
-     * Retrieve paginated results of loyalty transaction logs for the given Integration ID in the specified loyalty program.  You can filter transactions by date. If no filters are applied, the last 50 loyalty transactions for the given integration ID are returned.  **Note:** To retrieve all loyalty program transaction logs in a given loyalty program, use the [List loyalty program transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions) endpoint. 
-     * @param loyaltyProgramId Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
-     * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50)
-     * @param skip The number of items to skip when paging through large result sets. (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Retrieve paginated results of loyalty transaction logs for the given
+     * Integration ID in the specified loyalty program. You can filter transactions
+     * by date. If no filters are applied, the last 50 loyalty transactions for the
+     * given integration ID are returned. **Note:** To retrieve all loyalty program
+     * transaction logs in a given loyalty program, use the [List loyalty program
+     * transactions](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyProgramTransactions)
+     * endpoint.
+     * 
+     * @param loyaltyProgramId       Identifier of the profile-based loyalty
+     *                               program. You can get the ID with the [List
+     *                               loyalty
+     *                               programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                               endpoint. (required)
+     * @param integrationId          The integration identifier for this customer
+     *                               profile. Must be: - Unique within the
+     *                               deployment. - Stable for the customer. Do not
+     *                               use an ID that the customer can update
+     *                               themselves. For example, you can use a database
+     *                               ID. Once set, you cannot update this
+     *                               identifier. (required)
+     * @param subledgerId            The ID of the subledger by which we filter the
+     *                               data. (optional)
+     * @param loyaltyTransactionType Filter results by loyalty transaction type: -
+     *                               &#x60;manual&#x60;: Loyalty transaction that
+     *                               was done manually. - &#x60;session&#x60;:
+     *                               Loyalty transaction that resulted from a
+     *                               customer session. - &#x60;import&#x60;: Loyalty
+     *                               transaction that was imported from a CSV file.
+     *                               (optional)
+     * @param startDate              Date and time from which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param endDate                Date and time by which results are returned.
+     *                               Results are filtered by transaction creation
+     *                               date. **Note:** - It must be an RFC3339
+     *                               timestamp string. - You can include a time
+     *                               component in your string, for example,
+     *                               &#x60;T23:59:59&#x60; to specify the end of the
+     *                               day. The time zone setting considered is
+     *                               &#x60;UTC&#x60;. If you do not include a time
+     *                               component, a default time value of
+     *                               &#x60;T00:00:00&#x60; (midnight) in
+     *                               &#x60;UTC&#x60; is considered. (optional)
+     * @param pageSize               The number of items in the response. (optional,
+     *                               default to 50)
+     * @param skip                   The number of items to skip when paging through
+     *                               large result sets. (optional)
+     * @param _callback              The callback to be executed when the API call
+     *                               finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Long loyaltyProgramId, String integrationId,
+            String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate,
+            Long pageSize, Long skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId,
+                integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse2004>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for getReservedCustomers
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param _callback Callback for upload/download progress
+     * @param _callback   Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getReservedCustomersCall(String couponValue, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/coupon_reservations/customerprofiles/{couponValue}"
-            .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
+                .replaceAll("\\{" + "couponValue" + "\\}", localVarApiClient.escapeString(couponValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2863,7 +5900,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2871,23 +5908,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReservedCustomersValidateBeforeCall(String couponValue, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call getReservedCustomersValidateBeforeCall(String couponValue, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'couponValue' is set
         if (couponValue == null) {
-            throw new ApiException("Missing the required parameter 'couponValue' when calling getReservedCustomers(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'couponValue' when calling getReservedCustomers(Async)");
         }
-        
 
         okhttp3.Call localVarCall = getReservedCustomersCall(couponValue, _callback);
         return localVarCall;
@@ -2896,18 +5936,41 @@ public class IntegrationApi {
 
     /**
      * List customers that have this coupon reserved
-     * Return all customers that have this coupon marked as reserved. This includes hard and soft reservations. 
+     * Return all customers that have this coupon marked as reserved. This includes
+     * hard and soft reservations.
+     * 
      * @param couponValue The code of the coupon. (required)
      * @return InlineResponse200
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public InlineResponse200 getReservedCustomers(String couponValue) throws ApiException {
         ApiResponse<InlineResponse200> localVarResp = getReservedCustomersWithHttpInfo(couponValue);
@@ -2916,72 +5979,152 @@ public class IntegrationApi {
 
     /**
      * List customers that have this coupon reserved
-     * Return all customers that have this coupon marked as reserved. This includes hard and soft reservations. 
+     * Return all customers that have this coupon marked as reserved. This includes
+     * hard and soft reservations.
+     * 
      * @param couponValue The code of the coupon. (required)
      * @return ApiResponse&lt;InlineResponse200&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<InlineResponse200> getReservedCustomersWithHttpInfo(String couponValue) throws ApiException {
         okhttp3.Call localVarCall = getReservedCustomersValidateBeforeCall(couponValue, null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse200>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List customers that have this coupon reserved (asynchronously)
-     * Return all customers that have this coupon marked as reserved. This includes hard and soft reservations. 
+     * Return all customers that have this coupon marked as reserved. This includes
+     * hard and soft reservations.
+     * 
      * @param couponValue The code of the coupon. (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param _callback   The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call getReservedCustomersAsync(String couponValue, final ApiCallback<InlineResponse200> _callback) throws ApiException {
+    public okhttp3.Call getReservedCustomersAsync(String couponValue, final ApiCallback<InlineResponse200> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = getReservedCustomersValidateBeforeCall(couponValue, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse200>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for linkLoyaltyCardToProfile
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param body             body (required)
+     * @param _callback        Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileCall(Long loyaltyProgramId, String loyaltyCardId,
+            LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/link_profile"
-            .replaceAll("\\{" + "loyaltyProgramId" + "\\}", localVarApiClient.escapeString(loyaltyProgramId.toString()))
-            .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
+                .replaceAll("\\{" + "loyaltyProgramId" + "\\}",
+                        localVarApiClient.escapeString(loyaltyProgramId.toString()))
+                .replaceAll("\\{" + "loyaltyCardId" + "\\}", localVarApiClient.escapeString(loyaltyCardId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2989,7 +6132,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2997,33 +6140,38 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId,
+            LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyProgramId' when calling linkLoyaltyCardToProfile(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyProgramId' when calling linkLoyaltyCardToProfile(Async)");
         }
-        
+
         // verify the required parameter 'loyaltyCardId' is set
         if (loyaltyCardId == null) {
-            throw new ApiException("Missing the required parameter 'loyaltyCardId' when calling linkLoyaltyCardToProfile(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'loyaltyCardId' when calling linkLoyaltyCardToProfile(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling linkLoyaltyCardToProfile(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling linkLoyaltyCardToProfile(Async)");
         }
-        
 
         okhttp3.Call localVarCall = linkLoyaltyCardToProfileCall(loyaltyProgramId, loyaltyCardId, body, _callback);
         return localVarCall;
@@ -3032,94 +6180,255 @@ public class IntegrationApi {
 
     /**
      * Link customer profile to card
-     * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs) allows. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param body body (required)
+     * [Loyalty
+     * cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview)
+     * allow customers to collect and spend loyalty points within a [card-based
+     * loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types).
+     * They are useful to gamify loyalty programs and can be used with or without
+     * customer profiles linked to them. Link a customer profile to a given loyalty
+     * card for the card to be set as **Registered**. This affects how it can be
+     * used. See the
+     * [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).
+     * **Note:** You can link as many customer profiles to a given loyalty card as
+     * the [**card user
+     * limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs)
+     * allows.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param body             body (required)
      * @return LoyaltyCard
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public LoyaltyCard linkLoyaltyCardToProfile(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
-        ApiResponse<LoyaltyCard> localVarResp = linkLoyaltyCardToProfileWithHttpInfo(loyaltyProgramId, loyaltyCardId, body);
+    public LoyaltyCard linkLoyaltyCardToProfile(Long loyaltyProgramId, String loyaltyCardId,
+            LoyaltyCardRegistration body) throws ApiException {
+        ApiResponse<LoyaltyCard> localVarResp = linkLoyaltyCardToProfileWithHttpInfo(loyaltyProgramId, loyaltyCardId,
+                body);
         return localVarResp.getData();
     }
 
     /**
      * Link customer profile to card
-     * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs) allows. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param body body (required)
+     * [Loyalty
+     * cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview)
+     * allow customers to collect and spend loyalty points within a [card-based
+     * loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types).
+     * They are useful to gamify loyalty programs and can be used with or without
+     * customer profiles linked to them. Link a customer profile to a given loyalty
+     * card for the card to be set as **Registered**. This affects how it can be
+     * used. See the
+     * [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).
+     * **Note:** You can link as many customer profiles to a given loyalty card as
+     * the [**card user
+     * limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs)
+     * allows.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param body             body (required)
      * @return ApiResponse&lt;LoyaltyCard&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
-        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, null);
-        Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
+    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId,
+            LoyaltyCardRegistration body) throws ApiException {
+        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body,
+                null);
+        Type localVarReturnType = new TypeToken<LoyaltyCard>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Link customer profile to card (asynchronously)
-     * [Loyalty cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview) allow customers to collect and spend loyalty points within a [card-based loyalty program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types). They are useful to gamify loyalty programs and can be used with or without customer profiles linked to them.  Link a customer profile to a given loyalty card for the card to be set as **Registered**. This affects how it can be used. See the [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).  **Note:** You can link as many customer profiles to a given loyalty card as the [**card user limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs) allows. 
-     * @param loyaltyProgramId Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  (required)
-     * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * [Loyalty
+     * cards](https://docs.talon.one/docs/product/loyalty-programs/card-based/card-based-overview)
+     * allow customers to collect and spend loyalty points within a [card-based
+     * loyalty
+     * program](https://docs.talon.one/docs/product/loyalty-programs/overview#loyalty-program-types).
+     * They are useful to gamify loyalty programs and can be used with or without
+     * customer profiles linked to them. Link a customer profile to a given loyalty
+     * card for the card to be set as **Registered**. This affects how it can be
+     * used. See the
+     * [docs](https://docs.talon.one/docs/product/loyalty-programs/card-based/managing-loyalty-cards#linking-customer-profiles-to-a-loyalty-card).
+     * **Note:** You can link as many customer profiles to a given loyalty card as
+     * the [**card user
+     * limit**](https://docs.talon.one/docs/product/loyalty-programs/card-based/creating-cb-programs)
+     * allows.
+     * 
+     * @param loyaltyProgramId Identifier of the card-based loyalty program
+     *                         containing the loyalty card. You can get the ID with
+     *                         the [List loyalty
+     *                         programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms)
+     *                         endpoint. (required)
+     * @param loyaltyCardId    Identifier of the loyalty card. You can get the
+     *                         identifier with the [List loyalty
+     *                         cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards)
+     *                         endpoint. (required)
+     * @param body             body (required)
+     * @param _callback        The callback to be executed when the API call
+     *                         finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileAsync(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileAsync(Long loyaltyProgramId, String loyaltyCardId,
+            LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, _callback);
-        Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
+        okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body,
+                _callback);
+        Type localVarReturnType = new TypeToken<LoyaltyCard>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for reopenCustomerSession
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param _callback         Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call reopenCustomerSessionCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reopenCustomerSessionCall(String customerSessionId, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v2/customer_sessions/{customerSessionId}/reopen"
-            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+                .replaceAll("\\{" + "customerSessionId" + "\\}",
+                        localVarApiClient.escapeString(customerSessionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3127,7 +6436,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3135,23 +6444,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reopenCustomerSessionValidateBeforeCall(String customerSessionId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call reopenCustomerSessionValidateBeforeCall(String customerSessionId, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'customerSessionId' is set
         if (customerSessionId == null) {
-            throw new ApiException("Missing the required parameter 'customerSessionId' when calling reopenCustomerSession(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'customerSessionId' when calling reopenCustomerSession(Async)");
         }
-        
 
         okhttp3.Call localVarCall = reopenCustomerSessionCall(customerSessionId, _callback);
         return localVarCall;
@@ -3160,17 +6472,66 @@ public class IntegrationApi {
 
     /**
      * Reopen customer session
-     * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Modified budgets and triggered effects when the session was closed are rolled back except for the list below.  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets are left the way they were once the session was originally closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt; loyalty points&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt; &lt;p&gt;To see an example of roll back, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt; &lt;/details&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
+     * Reopen a closed [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * For example, if a session has been completed but still needs to be edited,
+     * you can reopen it with this endpoint. A reopen session is treated like a
+     * standard open session. When reopening a session: - The
+     * &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the
+     * **Events** view in the Campaign Manager. - The session state is updated to
+     * &#x60;open&#x60;. - Modified budgets and triggered effects when the session
+     * was closed are rolled back except for the list below. &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session
+     * reopening&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt;The following
+     * effects and budgets are left the way they were once the session was
+     * originally closed:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add free item
+     * effect&lt;/li&gt; &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt;
+     * loyalty points&lt;/li&gt; &lt;li&gt;Award giveaway&lt;/li&gt;
+     * &lt;li&gt;Coupon and referral creation&lt;/li&gt; &lt;li&gt;Coupon
+     * reservation&lt;/li&gt; &lt;li&gt;Custom effect&lt;/li&gt; &lt;li&gt;Update
+     * attribute value&lt;/li&gt; &lt;li&gt;Update cart item attribute
+     * value&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;p&gt;To see an example of roll
+     * back, see the &lt;a
+     * href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling
+     * a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt;
+     * &lt;/details&gt; **Note:** If your order workflow requires you to create a
+     * new session instead of reopening a session, use the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint to cancel a closed session and create a new one.
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
      * @return ReopenSessionResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ReopenSessionResponse reopenCustomerSession(String customerSessionId) throws ApiException {
         ApiResponse<ReopenSessionResponse> localVarResp = reopenCustomerSessionWithHttpInfo(customerSessionId);
@@ -3179,68 +6540,199 @@ public class IntegrationApi {
 
     /**
      * Reopen customer session
-     * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Modified budgets and triggered effects when the session was closed are rolled back except for the list below.  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets are left the way they were once the session was originally closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt; loyalty points&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt; &lt;p&gt;To see an example of roll back, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt; &lt;/details&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
+     * Reopen a closed [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * For example, if a session has been completed but still needs to be edited,
+     * you can reopen it with this endpoint. A reopen session is treated like a
+     * standard open session. When reopening a session: - The
+     * &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the
+     * **Events** view in the Campaign Manager. - The session state is updated to
+     * &#x60;open&#x60;. - Modified budgets and triggered effects when the session
+     * was closed are rolled back except for the list below. &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session
+     * reopening&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt;The following
+     * effects and budgets are left the way they were once the session was
+     * originally closed:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add free item
+     * effect&lt;/li&gt; &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt;
+     * loyalty points&lt;/li&gt; &lt;li&gt;Award giveaway&lt;/li&gt;
+     * &lt;li&gt;Coupon and referral creation&lt;/li&gt; &lt;li&gt;Coupon
+     * reservation&lt;/li&gt; &lt;li&gt;Custom effect&lt;/li&gt; &lt;li&gt;Update
+     * attribute value&lt;/li&gt; &lt;li&gt;Update cart item attribute
+     * value&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;p&gt;To see an example of roll
+     * back, see the &lt;a
+     * href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling
+     * a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt;
+     * &lt;/details&gt; **Note:** If your order workflow requires you to create a
+     * new session instead of reopening a session, use the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint to cancel a closed session and create a new one.
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
      * @return ApiResponse&lt;ReopenSessionResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<ReopenSessionResponse> reopenCustomerSessionWithHttpInfo(String customerSessionId) throws ApiException {
+    public ApiResponse<ReopenSessionResponse> reopenCustomerSessionWithHttpInfo(String customerSessionId)
+            throws ApiException {
         okhttp3.Call localVarCall = reopenCustomerSessionValidateBeforeCall(customerSessionId, null);
-        Type localVarReturnType = new TypeToken<ReopenSessionResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReopenSessionResponse>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reopen customer session (asynchronously)
-     * Reopen a closed [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). For example, if a session has been completed but still needs to be edited, you can reopen it with this endpoint. A reopen session is treated like a standard open session.  When reopening a session: - The &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the **Events** view in the Campaign Manager. - The session state is updated to &#x60;open&#x60;. - Modified budgets and triggered effects when the session was closed are rolled back except for the list below.  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session reopening&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;     &lt;p&gt;The following effects and budgets are left the way they were once the session was originally closed:&lt;/p&gt;     &lt;ul&gt;       &lt;li&gt;Add free item effect&lt;/li&gt;       &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt; loyalty points&lt;/li&gt;       &lt;li&gt;Award giveaway&lt;/li&gt;       &lt;li&gt;Coupon and referral creation&lt;/li&gt;       &lt;li&gt;Coupon reservation&lt;/li&gt;       &lt;li&gt;Custom effect&lt;/li&gt;       &lt;li&gt;Update attribute value&lt;/li&gt;       &lt;li&gt;Update cart item attribute value&lt;/li&gt;     &lt;/ul&gt;   &lt;/div&gt; &lt;p&gt;To see an example of roll back, see the &lt;a href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt; &lt;/details&gt;  **Note:** If your order workflow requires you to create a new session instead of reopening a session, use the [Update customer session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) endpoint to cancel a closed session and create a new one. 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * Reopen a closed [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * For example, if a session has been completed but still needs to be edited,
+     * you can reopen it with this endpoint. A reopen session is treated like a
+     * standard open session. When reopening a session: - The
+     * &#x60;talon_session_reopened&#x60; event is triggered. You can see it in the
+     * **Events** view in the Campaign Manager. - The session state is updated to
+     * &#x60;open&#x60;. - Modified budgets and triggered effects when the session
+     * was closed are rolled back except for the list below. &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Effects and budgets unimpacted by a session
+     * reopening&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt;The following
+     * effects and budgets are left the way they were once the session was
+     * originally closed:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Add free item
+     * effect&lt;/li&gt; &lt;li&gt;Any &lt;strong&gt;non-pending&lt;/strong&gt;
+     * loyalty points&lt;/li&gt; &lt;li&gt;Award giveaway&lt;/li&gt;
+     * &lt;li&gt;Coupon and referral creation&lt;/li&gt; &lt;li&gt;Coupon
+     * reservation&lt;/li&gt; &lt;li&gt;Custom effect&lt;/li&gt; &lt;li&gt;Update
+     * attribute value&lt;/li&gt; &lt;li&gt;Update cart item attribute
+     * value&lt;/li&gt; &lt;/ul&gt; &lt;/div&gt; &lt;p&gt;To see an example of roll
+     * back, see the &lt;a
+     * href&#x3D;\&quot;https://docs.talon.one/docs/dev/tutorials/rolling-back-effects\&quot;&gt;Cancelling
+     * a session with campaign budgets tutorial&lt;/a&gt;.&lt;/p&gt;
+     * &lt;/details&gt; **Note:** If your order workflow requires you to create a
+     * new session instead of reopening a session, use the [Update customer
+     * session](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2)
+     * endpoint to cancel a closed session and create a new one.
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param _callback         The callback to be executed when the API call
+     *                          finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call reopenCustomerSessionAsync(String customerSessionId, final ApiCallback<ReopenSessionResponse> _callback) throws ApiException {
+    public okhttp3.Call reopenCustomerSessionAsync(String customerSessionId,
+            final ApiCallback<ReopenSessionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reopenCustomerSessionValidateBeforeCall(customerSessionId, _callback);
-        Type localVarReturnType = new TypeToken<ReopenSessionResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReopenSessionResponse>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for returnCartItems
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;.
+     *                          (optional)
+     * @param _callback         Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call returnCartItemsCall(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call returnCartItemsCall(String customerSessionId, ReturnIntegrationRequest body, Boolean dry,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/customer_sessions/{customerSessionId}/returns"
-            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+                .replaceAll("\\{" + "customerSessionId" + "\\}",
+                        localVarApiClient.escapeString(customerSessionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3252,7 +6744,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3260,28 +6752,31 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call returnCartItemsValidateBeforeCall(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call returnCartItemsValidateBeforeCall(String customerSessionId, ReturnIntegrationRequest body,
+            Boolean dry, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'customerSessionId' is set
         if (customerSessionId == null) {
-            throw new ApiException("Missing the required parameter 'customerSessionId' when calling returnCartItems(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'customerSessionId' when calling returnCartItems(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling returnCartItems(Async)");
         }
-        
 
         okhttp3.Call localVarCall = returnCartItemsCall(customerSessionId, body, dry, _callback);
         return localVarCall;
@@ -3290,93 +6785,223 @@ public class IntegrationApi {
 
     /**
      * Return cart items
-     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially_returned&#x60;.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
+     * Create a new return request for the specified cart items. This endpoint
+     * automatically changes the session state from &#x60;closed&#x60; to
+     * &#x60;partially_returned&#x60;. **Note:** This will roll back any effects
+     * associated with these cart items. For more information, see [our
+     * documentation on session
+     * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states)
+     * and [this
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;.
+     *                          (optional)
      * @return IntegrationStateV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public IntegrationStateV2 returnCartItems(String customerSessionId, ReturnIntegrationRequest body, Boolean dry) throws ApiException {
+    public IntegrationStateV2 returnCartItems(String customerSessionId, ReturnIntegrationRequest body, Boolean dry)
+            throws ApiException {
         ApiResponse<IntegrationStateV2> localVarResp = returnCartItemsWithHttpInfo(customerSessionId, body, dry);
         return localVarResp.getData();
     }
 
     /**
      * Return cart items
-     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially_returned&#x60;.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
+     * Create a new return request for the specified cart items. This endpoint
+     * automatically changes the session state from &#x60;closed&#x60; to
+     * &#x60;partially_returned&#x60;. **Note:** This will roll back any effects
+     * associated with these cart items. For more information, see [our
+     * documentation on session
+     * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states)
+     * and [this
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;.
+     *                          (optional)
      * @return ApiResponse&lt;IntegrationStateV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<IntegrationStateV2> returnCartItemsWithHttpInfo(String customerSessionId, ReturnIntegrationRequest body, Boolean dry) throws ApiException {
+    public ApiResponse<IntegrationStateV2> returnCartItemsWithHttpInfo(String customerSessionId,
+            ReturnIntegrationRequest body, Boolean dry) throws ApiException {
         okhttp3.Call localVarCall = returnCartItemsValidateBeforeCall(customerSessionId, body, dry, null);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Return cart items (asynchronously)
-     * Create a new return request for the specified cart items.  This endpoint automatically changes the session state from &#x60;closed&#x60; to &#x60;partially_returned&#x60;.  **Note:** This will roll back any effects associated with these cart items. For more information, see [our documentation on session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) and [this tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Create a new return request for the specified cart items. This endpoint
+     * automatically changes the session state from &#x60;closed&#x60; to
+     * &#x60;partially_returned&#x60;. **Note:** This will roll back any effects
+     * associated with these cart items. For more information, see [our
+     * documentation on session
+     * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states)
+     * and [this
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/partially-returning-a-session).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;.
+     *                          (optional)
+     * @param _callback         The callback to be executed when the API call
+     *                          finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call returnCartItemsAsync(String customerSessionId, ReturnIntegrationRequest body, Boolean dry, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
+    public okhttp3.Call returnCartItemsAsync(String customerSessionId, ReturnIntegrationRequest body, Boolean dry,
+            final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = returnCartItemsValidateBeforeCall(customerSessionId, body, dry, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for syncCatalog
-     * @param catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
-     * @param body body (required)
+     * 
+     * @param catalogId The ID of the catalog. You can find the ID in the Campaign
+     *                  Manager in **Account** &gt; **Tools** &gt; **Cart item
+     *                  catalogs**. (required)
+     * @param body      body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call syncCatalogCall(Integer catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call syncCatalogCall(Long catalogId, CatalogSyncRequest body, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v1/catalogs/{catalogId}/sync"
-            .replaceAll("\\{" + "catalogId" + "\\}", localVarApiClient.escapeString(catalogId.toString()));
+                .replaceAll("\\{" + "catalogId" + "\\}", localVarApiClient.escapeString(catalogId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3384,7 +7009,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3392,28 +7017,30 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call syncCatalogValidateBeforeCall(Integer catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call syncCatalogValidateBeforeCall(Long catalogId, CatalogSyncRequest body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'catalogId' is set
         if (catalogId == null) {
             throw new ApiException("Missing the required parameter 'catalogId' when calling syncCatalog(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling syncCatalog(Async)");
         }
-        
 
         okhttp3.Call localVarCall = syncCatalogCall(catalogId, body, _callback);
         return localVarCall;
@@ -3422,90 +7049,473 @@ public class IntegrationApi {
 
     /**
      * Sync cart item catalog
-     * Perform the following actions for a given cart item catalog:  - Add an item to the catalog. - Add multiple items to the catalog. - Update the attributes of an item in the catalog. - Update the attributes of multiple items in the catalog. - Remove an item from the catalog. - Remove multiple items from the catalog.  You can either add, update, or delete up to 1000 cart items in a single request. Each item synced to a catalog must have a unique &#x60;SKU&#x60;.  **Important**: You can perform only one type of action in a single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a single request returns an error message with a &#x60;400&#x60; status code.  For more information, read [managing cart item catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).  ### Filtering cart items  Use [cart item attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes) to filter items and select the ones you want to edit or delete when editing or deleting more than one item at a time.  The &#x60;filters&#x60; array contains an object with the following properties:  - &#x60;attr&#x60;: A [cart item attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)   connected to the catalog. It is applied to all items in the catalog. - &#x60;op&#x60;: The filtering operator indicating the relationship between the value of each   cart item in the catalog and the value of the &#x60;value&#x60; property for the attribute selected   in &#x60;attr&#x60;.    The value of &#x60;op&#x60; can be one of the following:    - &#x60;EQ&#x60;: Equal to &#x60;value&#x60;   - &#x60;LT&#x60;: Less than &#x60;value&#x60;   - &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60;   - &#x60;GT&#x60;: Greater than &#x60;value&#x60;   - &#x60;GE&#x60;: Greater than or equal to &#x60;value&#x60;   - &#x60;IN&#x60;: One of the comma-separated values that &#x60;value&#x60; is set to.    **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;, &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only.  - &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.  ### Payload examples  Synchronization actions are sent as &#x60;PUT&#x60; requests. See the structure for each action:  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding an item to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding multiple items to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241027\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       },       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;age\&quot;: 11,             \&quot;origin\&quot;: \&quot;germany\&quot;           },           \&quot;createIfNotExists\&quot;: false,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;PATCH\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;red\&quot;           },           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;PATCH_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing an item from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;         },         \&quot;type\&quot;: \&quot;REMOVE\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing multiple items from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;   &lt;p&gt;   Let&#39;s imagine that we have a shoe store and we have decided to stop selling   shoes larger than size 45. We can remove from the catalog all the shoes of sizes above 45   with a single action:&lt;/p&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;size\&quot;,               \&quot;op\&quot;: \&quot;GT\&quot;,               \&quot;value\&quot;: \&quot;45\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt; 
-     * @param catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
-     * @param body body (required)
+     * Perform the following actions for a given cart item catalog: - Add an item to
+     * the catalog. - Add multiple items to the catalog. - Update the attributes of
+     * an item in the catalog. - Update the attributes of multiple items in the
+     * catalog. - Remove an item from the catalog. - Remove multiple items from the
+     * catalog. You can either add, update, or delete up to 1000 cart items in a
+     * single request. Each item synced to a catalog must have a unique
+     * &#x60;SKU&#x60;. **Important**: You can perform only one type of action in a
+     * single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a
+     * single request returns an error message with a &#x60;400&#x60; status code.
+     * For more information, read [managing cart item
+     * catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).
+     * ### Filtering cart items Use [cart item
+     * attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * to filter items and select the ones you want to edit or delete when editing
+     * or deleting more than one item at a time. The &#x60;filters&#x60; array
+     * contains an object with the following properties: - &#x60;attr&#x60;: A [cart
+     * item
+     * attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * connected to the catalog. It is applied to all items in the catalog. -
+     * &#x60;op&#x60;: The filtering operator indicating the relationship between
+     * the value of each cart item in the catalog and the value of the
+     * &#x60;value&#x60; property for the attribute selected in &#x60;attr&#x60;.
+     * The value of &#x60;op&#x60; can be one of the following: - &#x60;EQ&#x60;:
+     * Equal to &#x60;value&#x60; - &#x60;LT&#x60;: Less than &#x60;value&#x60; -
+     * &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60; - &#x60;GT&#x60;:
+     * Greater than &#x60;value&#x60; - &#x60;GE&#x60;: Greater than or equal to
+     * &#x60;value&#x60; - &#x60;IN&#x60;: One of the comma-separated values that
+     * &#x60;value&#x60; is set to. **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;,
+     * &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only. -
+     * &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.
+     * ### Payload examples Synchronization actions are sent as &#x60;PUT&#x60;
+     * requests. See the structure for each action: &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Adding an item to the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;Navy blue\&quot;, \&quot;type\&quot;:
+     * \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;: true,
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Adding multiple
+     * items to the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241027\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; }, { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Updating the
+     * attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;
+     * &lt;div&gt; &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ {
+     * \&quot;payload\&quot;: { \&quot;attributes\&quot;: { \&quot;age\&quot;: 11,
+     * \&quot;origin\&quot;: \&quot;germany\&quot; },
+     * \&quot;createIfNotExists\&quot;: false, \&quot;sku\&quot;:
+     * \&quot;SKU1241028\&quot;, \&quot;product\&quot;: { \&quot;name\&quot;:
+     * \&quot;sneakers\&quot; } }, \&quot;type\&quot;: \&quot;PATCH\&quot; } ] }
+     * &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;red\&quot; }, \&quot;filters\&quot;: [ {
+     * \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;: \&quot;EQ\&quot;,
+     * \&quot;value\&quot;: \&quot;blue\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;PATCH_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing an
+     * item from the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot; }, \&quot;type\&quot;:
+     * \&quot;REMOVE\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt;
+     * &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing multiple items from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;:
+     * \&quot;EQ\&quot;, \&quot;value\&quot;: \&quot;blue\&quot; } ] },
+     * \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60;
+     * &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt; Let&#39;s
+     * imagine that we have a shoe store and we have decided to stop selling shoes
+     * larger than size 45. We can remove from the catalog all the shoes of sizes
+     * above 45 with a single action:&lt;/p&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;size\&quot;, \&quot;op\&quot;: \&quot;GT\&quot;,
+     * \&quot;value\&quot;: \&quot;45\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt;
+     * 
+     * @param catalogId The ID of the catalog. You can find the ID in the Campaign
+     *                  Manager in **Account** &gt; **Tools** &gt; **Cart item
+     *                  catalogs**. (required)
+     * @param body      body (required)
      * @return Catalog
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public Catalog syncCatalog(Integer catalogId, CatalogSyncRequest body) throws ApiException {
+    public Catalog syncCatalog(Long catalogId, CatalogSyncRequest body) throws ApiException {
         ApiResponse<Catalog> localVarResp = syncCatalogWithHttpInfo(catalogId, body);
         return localVarResp.getData();
     }
 
     /**
      * Sync cart item catalog
-     * Perform the following actions for a given cart item catalog:  - Add an item to the catalog. - Add multiple items to the catalog. - Update the attributes of an item in the catalog. - Update the attributes of multiple items in the catalog. - Remove an item from the catalog. - Remove multiple items from the catalog.  You can either add, update, or delete up to 1000 cart items in a single request. Each item synced to a catalog must have a unique &#x60;SKU&#x60;.  **Important**: You can perform only one type of action in a single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a single request returns an error message with a &#x60;400&#x60; status code.  For more information, read [managing cart item catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).  ### Filtering cart items  Use [cart item attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes) to filter items and select the ones you want to edit or delete when editing or deleting more than one item at a time.  The &#x60;filters&#x60; array contains an object with the following properties:  - &#x60;attr&#x60;: A [cart item attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)   connected to the catalog. It is applied to all items in the catalog. - &#x60;op&#x60;: The filtering operator indicating the relationship between the value of each   cart item in the catalog and the value of the &#x60;value&#x60; property for the attribute selected   in &#x60;attr&#x60;.    The value of &#x60;op&#x60; can be one of the following:    - &#x60;EQ&#x60;: Equal to &#x60;value&#x60;   - &#x60;LT&#x60;: Less than &#x60;value&#x60;   - &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60;   - &#x60;GT&#x60;: Greater than &#x60;value&#x60;   - &#x60;GE&#x60;: Greater than or equal to &#x60;value&#x60;   - &#x60;IN&#x60;: One of the comma-separated values that &#x60;value&#x60; is set to.    **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;, &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only.  - &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.  ### Payload examples  Synchronization actions are sent as &#x60;PUT&#x60; requests. See the structure for each action:  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding an item to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding multiple items to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241027\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       },       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;age\&quot;: 11,             \&quot;origin\&quot;: \&quot;germany\&quot;           },           \&quot;createIfNotExists\&quot;: false,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;PATCH\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;red\&quot;           },           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;PATCH_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing an item from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;         },         \&quot;type\&quot;: \&quot;REMOVE\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing multiple items from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;   &lt;p&gt;   Let&#39;s imagine that we have a shoe store and we have decided to stop selling   shoes larger than size 45. We can remove from the catalog all the shoes of sizes above 45   with a single action:&lt;/p&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;size\&quot;,               \&quot;op\&quot;: \&quot;GT\&quot;,               \&quot;value\&quot;: \&quot;45\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt; 
-     * @param catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
-     * @param body body (required)
+     * Perform the following actions for a given cart item catalog: - Add an item to
+     * the catalog. - Add multiple items to the catalog. - Update the attributes of
+     * an item in the catalog. - Update the attributes of multiple items in the
+     * catalog. - Remove an item from the catalog. - Remove multiple items from the
+     * catalog. You can either add, update, or delete up to 1000 cart items in a
+     * single request. Each item synced to a catalog must have a unique
+     * &#x60;SKU&#x60;. **Important**: You can perform only one type of action in a
+     * single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a
+     * single request returns an error message with a &#x60;400&#x60; status code.
+     * For more information, read [managing cart item
+     * catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).
+     * ### Filtering cart items Use [cart item
+     * attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * to filter items and select the ones you want to edit or delete when editing
+     * or deleting more than one item at a time. The &#x60;filters&#x60; array
+     * contains an object with the following properties: - &#x60;attr&#x60;: A [cart
+     * item
+     * attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * connected to the catalog. It is applied to all items in the catalog. -
+     * &#x60;op&#x60;: The filtering operator indicating the relationship between
+     * the value of each cart item in the catalog and the value of the
+     * &#x60;value&#x60; property for the attribute selected in &#x60;attr&#x60;.
+     * The value of &#x60;op&#x60; can be one of the following: - &#x60;EQ&#x60;:
+     * Equal to &#x60;value&#x60; - &#x60;LT&#x60;: Less than &#x60;value&#x60; -
+     * &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60; - &#x60;GT&#x60;:
+     * Greater than &#x60;value&#x60; - &#x60;GE&#x60;: Greater than or equal to
+     * &#x60;value&#x60; - &#x60;IN&#x60;: One of the comma-separated values that
+     * &#x60;value&#x60; is set to. **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;,
+     * &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only. -
+     * &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.
+     * ### Payload examples Synchronization actions are sent as &#x60;PUT&#x60;
+     * requests. See the structure for each action: &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Adding an item to the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;Navy blue\&quot;, \&quot;type\&quot;:
+     * \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;: true,
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Adding multiple
+     * items to the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241027\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; }, { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Updating the
+     * attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;
+     * &lt;div&gt; &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ {
+     * \&quot;payload\&quot;: { \&quot;attributes\&quot;: { \&quot;age\&quot;: 11,
+     * \&quot;origin\&quot;: \&quot;germany\&quot; },
+     * \&quot;createIfNotExists\&quot;: false, \&quot;sku\&quot;:
+     * \&quot;SKU1241028\&quot;, \&quot;product\&quot;: { \&quot;name\&quot;:
+     * \&quot;sneakers\&quot; } }, \&quot;type\&quot;: \&quot;PATCH\&quot; } ] }
+     * &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;red\&quot; }, \&quot;filters\&quot;: [ {
+     * \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;: \&quot;EQ\&quot;,
+     * \&quot;value\&quot;: \&quot;blue\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;PATCH_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing an
+     * item from the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot; }, \&quot;type\&quot;:
+     * \&quot;REMOVE\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt;
+     * &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing multiple items from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;:
+     * \&quot;EQ\&quot;, \&quot;value\&quot;: \&quot;blue\&quot; } ] },
+     * \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60;
+     * &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt; Let&#39;s
+     * imagine that we have a shoe store and we have decided to stop selling shoes
+     * larger than size 45. We can remove from the catalog all the shoes of sizes
+     * above 45 with a single action:&lt;/p&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;size\&quot;, \&quot;op\&quot;: \&quot;GT\&quot;,
+     * \&quot;value\&quot;: \&quot;45\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt;
+     * 
+     * @param catalogId The ID of the catalog. You can find the ID in the Campaign
+     *                  Manager in **Account** &gt; **Tools** &gt; **Cart item
+     *                  catalogs**. (required)
+     * @param body      body (required)
      * @return ApiResponse&lt;Catalog&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Catalog> syncCatalogWithHttpInfo(Integer catalogId, CatalogSyncRequest body) throws ApiException {
+    public ApiResponse<Catalog> syncCatalogWithHttpInfo(Long catalogId, CatalogSyncRequest body) throws ApiException {
         okhttp3.Call localVarCall = syncCatalogValidateBeforeCall(catalogId, body, null);
-        Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
+        Type localVarReturnType = new TypeToken<Catalog>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sync cart item catalog (asynchronously)
-     * Perform the following actions for a given cart item catalog:  - Add an item to the catalog. - Add multiple items to the catalog. - Update the attributes of an item in the catalog. - Update the attributes of multiple items in the catalog. - Remove an item from the catalog. - Remove multiple items from the catalog.  You can either add, update, or delete up to 1000 cart items in a single request. Each item synced to a catalog must have a unique &#x60;SKU&#x60;.  **Important**: You can perform only one type of action in a single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a single request returns an error message with a &#x60;400&#x60; status code.  For more information, read [managing cart item catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).  ### Filtering cart items  Use [cart item attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes) to filter items and select the ones you want to edit or delete when editing or deleting more than one item at a time.  The &#x60;filters&#x60; array contains an object with the following properties:  - &#x60;attr&#x60;: A [cart item attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)   connected to the catalog. It is applied to all items in the catalog. - &#x60;op&#x60;: The filtering operator indicating the relationship between the value of each   cart item in the catalog and the value of the &#x60;value&#x60; property for the attribute selected   in &#x60;attr&#x60;.    The value of &#x60;op&#x60; can be one of the following:    - &#x60;EQ&#x60;: Equal to &#x60;value&#x60;   - &#x60;LT&#x60;: Less than &#x60;value&#x60;   - &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60;   - &#x60;GT&#x60;: Greater than &#x60;value&#x60;   - &#x60;GE&#x60;: Greater than or equal to &#x60;value&#x60;   - &#x60;IN&#x60;: One of the comma-separated values that &#x60;value&#x60; is set to.    **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;, &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only.  - &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.  ### Payload examples  Synchronization actions are sent as &#x60;PUT&#x60; requests. See the structure for each action:  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding an item to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Adding multiple items to the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241027\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       },       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;Navy blue\&quot;,             \&quot;type\&quot;: \&quot;shoes\&quot;           },           \&quot;replaceIfExists\&quot;: true,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;price\&quot;: 100,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;ADD\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;age\&quot;: 11,             \&quot;origin\&quot;: \&quot;germany\&quot;           },           \&quot;createIfNotExists\&quot;: false,           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;,           \&quot;product\&quot;: {             \&quot;name\&quot;: \&quot;sneakers\&quot;           }         },         \&quot;type\&quot;: \&quot;PATCH\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;attributes\&quot;: {             \&quot;color\&quot;: \&quot;red\&quot;           },           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;PATCH_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing an item from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;sku\&quot;: \&quot;SKU1241028\&quot;         },         \&quot;type\&quot;: \&quot;REMOVE\&quot;       }     ]   }   &#x60;&#x60;&#x60;    &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing multiple items from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;color\&quot;,               \&quot;op\&quot;: \&quot;EQ\&quot;,               \&quot;value\&quot;: \&quot;blue\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt;  &lt;details&gt;   &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the catalog&lt;/strong&gt;&lt;/summary&gt;   &lt;div&gt;   &lt;p&gt;   Let&#39;s imagine that we have a shoe store and we have decided to stop selling   shoes larger than size 45. We can remove from the catalog all the shoes of sizes above 45   with a single action:&lt;/p&gt;    &#x60;&#x60;&#x60;json   {     \&quot;actions\&quot;: [       {         \&quot;payload\&quot;: {           \&quot;filters\&quot;: [             {               \&quot;attr\&quot;: \&quot;size\&quot;,               \&quot;op\&quot;: \&quot;GT\&quot;,               \&quot;value\&quot;: \&quot;45\&quot;             }           ]         },         \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot;       }     ]   }   &#x60;&#x60;&#x60;   &lt;/div&gt; &lt;/details&gt; 
-     * @param catalogId The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. (required)
-     * @param body body (required)
+     * Perform the following actions for a given cart item catalog: - Add an item to
+     * the catalog. - Add multiple items to the catalog. - Update the attributes of
+     * an item in the catalog. - Update the attributes of multiple items in the
+     * catalog. - Remove an item from the catalog. - Remove multiple items from the
+     * catalog. You can either add, update, or delete up to 1000 cart items in a
+     * single request. Each item synced to a catalog must have a unique
+     * &#x60;SKU&#x60;. **Important**: You can perform only one type of action in a
+     * single sync request. Syncing items with duplicate &#x60;SKU&#x60; values in a
+     * single request returns an error message with a &#x60;400&#x60; status code.
+     * For more information, read [managing cart item
+     * catalogs](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs).
+     * ### Filtering cart items Use [cart item
+     * attributes](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * to filter items and select the ones you want to edit or delete when editing
+     * or deleting more than one item at a time. The &#x60;filters&#x60; array
+     * contains an object with the following properties: - &#x60;attr&#x60;: A [cart
+     * item
+     * attribute](https://docs.talon.one/docs/product/account/dev-tools/managing-attributes)
+     * connected to the catalog. It is applied to all items in the catalog. -
+     * &#x60;op&#x60;: The filtering operator indicating the relationship between
+     * the value of each cart item in the catalog and the value of the
+     * &#x60;value&#x60; property for the attribute selected in &#x60;attr&#x60;.
+     * The value of &#x60;op&#x60; can be one of the following: - &#x60;EQ&#x60;:
+     * Equal to &#x60;value&#x60; - &#x60;LT&#x60;: Less than &#x60;value&#x60; -
+     * &#x60;LE&#x60;: Less than or equal to &#x60;value&#x60; - &#x60;GT&#x60;:
+     * Greater than &#x60;value&#x60; - &#x60;GE&#x60;: Greater than or equal to
+     * &#x60;value&#x60; - &#x60;IN&#x60;: One of the comma-separated values that
+     * &#x60;value&#x60; is set to. **Note:** &#x60;GE&#x60;, &#x60;LE&#x60;,
+     * &#x60;GT&#x60;, &#x60;LT&#x60; are for numeric values only. -
+     * &#x60;value&#x60;: The value of the attribute selected in &#x60;attr&#x60;.
+     * ### Payload examples Synchronization actions are sent as &#x60;PUT&#x60;
+     * requests. See the structure for each action: &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Adding an item to the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;Navy blue\&quot;, \&quot;type\&quot;:
+     * \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;: true,
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Adding multiple
+     * items to the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241027\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; }, { \&quot;payload\&quot;: {
+     * \&quot;attributes\&quot;: { \&quot;color\&quot;: \&quot;Navy blue\&quot;,
+     * \&quot;type\&quot;: \&quot;shoes\&quot; }, \&quot;replaceIfExists\&quot;:
+     * true, \&quot;sku\&quot;: \&quot;SKU1241028\&quot;, \&quot;price\&quot;: 100,
+     * \&quot;product\&quot;: { \&quot;name\&quot;: \&quot;sneakers\&quot; } },
+     * \&quot;type\&quot;: \&quot;ADD\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Updating the
+     * attributes of an item in the catalog&lt;/strong&gt;&lt;/summary&gt;
+     * &lt;div&gt; &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ {
+     * \&quot;payload\&quot;: { \&quot;attributes\&quot;: { \&quot;age\&quot;: 11,
+     * \&quot;origin\&quot;: \&quot;germany\&quot; },
+     * \&quot;createIfNotExists\&quot;: false, \&quot;sku\&quot;:
+     * \&quot;SKU1241028\&quot;, \&quot;product\&quot;: { \&quot;name\&quot;:
+     * \&quot;sneakers\&quot; } }, \&quot;type\&quot;: \&quot;PATCH\&quot; } ] }
+     * &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Updating the attributes of multiple items in the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;attributes\&quot;:
+     * { \&quot;color\&quot;: \&quot;red\&quot; }, \&quot;filters\&quot;: [ {
+     * \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;: \&quot;EQ\&quot;,
+     * \&quot;value\&quot;: \&quot;blue\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;PATCH_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt; &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing an
+     * item from the catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt;
+     * &#x60;&#x60;&#x60;json { \&quot;actions\&quot;: [ { \&quot;payload\&quot;: {
+     * \&quot;sku\&quot;: \&quot;SKU1241028\&quot; }, \&quot;type\&quot;:
+     * \&quot;REMOVE\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt; &lt;/details&gt;
+     * &lt;details&gt; &lt;summary&gt;&lt;strong&gt;Removing multiple items from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;color\&quot;, \&quot;op\&quot;:
+     * \&quot;EQ\&quot;, \&quot;value\&quot;: \&quot;blue\&quot; } ] },
+     * \&quot;type\&quot;: \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60;
+     * &lt;/div&gt; &lt;/details&gt; &lt;details&gt;
+     * &lt;summary&gt;&lt;strong&gt;Removing shoes of sizes above 45 from the
+     * catalog&lt;/strong&gt;&lt;/summary&gt; &lt;div&gt; &lt;p&gt; Let&#39;s
+     * imagine that we have a shoe store and we have decided to stop selling shoes
+     * larger than size 45. We can remove from the catalog all the shoes of sizes
+     * above 45 with a single action:&lt;/p&gt; &#x60;&#x60;&#x60;json {
+     * \&quot;actions\&quot;: [ { \&quot;payload\&quot;: { \&quot;filters\&quot;: [
+     * { \&quot;attr\&quot;: \&quot;size\&quot;, \&quot;op\&quot;: \&quot;GT\&quot;,
+     * \&quot;value\&quot;: \&quot;45\&quot; } ] }, \&quot;type\&quot;:
+     * \&quot;REMOVE_MANY\&quot; } ] } &#x60;&#x60;&#x60; &lt;/div&gt;
+     * &lt;/details&gt;
+     * 
+     * @param catalogId The ID of the catalog. You can find the ID in the Campaign
+     *                  Manager in **Account** &gt; **Tools** &gt; **Cart item
+     *                  catalogs**. (required)
+     * @param body      body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call syncCatalogAsync(Integer catalogId, CatalogSyncRequest body, final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call syncCatalogAsync(Long catalogId, CatalogSyncRequest body, final ApiCallback<Catalog> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = syncCatalogValidateBeforeCall(catalogId, body, _callback);
-        Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
+        Type localVarReturnType = new TypeToken<Catalog>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for trackEventV2
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;.  (optional, default to false)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param body                    body (required)
+     * @param silent                  Possible values: &#x60;yes&#x60; or
+     *                                &#x60;no&#x60;. - &#x60;yes&#x60;: Increases
+     *                                the performance of the API call by returning a
+     *                                204 response. - &#x60;no&#x60;: Returns a 200
+     *                                response that contains the updated customer
+     *                                profiles. (optional, default to
+     *                                &quot;yes&quot;)
+     * @param dry                     Indicates whether to persist the changes.
+     *                                Changes are ignored when
+     *                                &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns
+     *                                regardless of the [campaign evaluation
+     *                                mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode).
+     *                                Requires &#x60;dry&#x3D;true&#x60;. (optional,
+     *                                default to false)
+     * @param _callback               Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call trackEventV2Call(IntegrationEventV2Request body, String silent, Boolean dry, Boolean forceCompleteEvaluation, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call trackEventV2Call(IntegrationEventV2Request body, String silent, Boolean dry,
+            Boolean forceCompleteEvaluation, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3522,14 +7532,15 @@ public class IntegrationApi {
         }
 
         if (forceCompleteEvaluation != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("forceCompleteEvaluation", forceCompleteEvaluation));
+            localVarQueryParams
+                    .addAll(localVarApiClient.parameterToPair("forceCompleteEvaluation", forceCompleteEvaluation));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3537,23 +7548,25 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call trackEventV2ValidateBeforeCall(IntegrationEventV2Request body, String silent, Boolean dry, Boolean forceCompleteEvaluation, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call trackEventV2ValidateBeforeCall(IntegrationEventV2Request body, String silent, Boolean dry,
+            Boolean forceCompleteEvaluation, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling trackEventV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = trackEventV2Call(body, silent, dry, forceCompleteEvaluation, _callback);
         return localVarCall;
@@ -3562,98 +7575,296 @@ public class IntegrationApi {
 
     /**
      * Track event
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;.  (optional, default to false)
+     * Triggers a custom event. To use this endpoint: 1. Define a [custom
+     * event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event)
+     * in the Campaign Manager. 1. Update or create a rule to check for this event.
+     * 1. Trigger the event with this endpoint. After you have successfully sent an
+     * event to Talon.One, you can list the received events in the **Events** view
+     * in the Campaign Manager. Talon.One also offers a set of [built-in
+     * events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you
+     * do not create a custom event when you can use a built-in event. For example,
+     * use this endpoint to trigger an event when a customer shares a link to a
+     * product. See the
+     * [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt; 1.
+     * &#x60;profileId&#x60; is required even though the schema does not say it. 1.
+     * If the customer profile ID is new, a new profile is automatically created but
+     * the &#x60;customer_profile_created&#x60; [built-in event
+     * ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not**
+     * triggered. 1. We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param body                    body (required)
+     * @param silent                  Possible values: &#x60;yes&#x60; or
+     *                                &#x60;no&#x60;. - &#x60;yes&#x60;: Increases
+     *                                the performance of the API call by returning a
+     *                                204 response. - &#x60;no&#x60;: Returns a 200
+     *                                response that contains the updated customer
+     *                                profiles. (optional, default to
+     *                                &quot;yes&quot;)
+     * @param dry                     Indicates whether to persist the changes.
+     *                                Changes are ignored when
+     *                                &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns
+     *                                regardless of the [campaign evaluation
+     *                                mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode).
+     *                                Requires &#x60;dry&#x3D;true&#x60;. (optional,
+     *                                default to false)
      * @return TrackEventV2Response
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public TrackEventV2Response trackEventV2(IntegrationEventV2Request body, String silent, Boolean dry, Boolean forceCompleteEvaluation) throws ApiException {
-        ApiResponse<TrackEventV2Response> localVarResp = trackEventV2WithHttpInfo(body, silent, dry, forceCompleteEvaluation);
+    public TrackEventV2Response trackEventV2(IntegrationEventV2Request body, String silent, Boolean dry,
+            Boolean forceCompleteEvaluation) throws ApiException {
+        ApiResponse<TrackEventV2Response> localVarResp = trackEventV2WithHttpInfo(body, silent, dry,
+                forceCompleteEvaluation);
         return localVarResp.getData();
     }
 
     /**
      * Track event
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;.  (optional, default to false)
+     * Triggers a custom event. To use this endpoint: 1. Define a [custom
+     * event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event)
+     * in the Campaign Manager. 1. Update or create a rule to check for this event.
+     * 1. Trigger the event with this endpoint. After you have successfully sent an
+     * event to Talon.One, you can list the received events in the **Events** view
+     * in the Campaign Manager. Talon.One also offers a set of [built-in
+     * events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you
+     * do not create a custom event when you can use a built-in event. For example,
+     * use this endpoint to trigger an event when a customer shares a link to a
+     * product. See the
+     * [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt; 1.
+     * &#x60;profileId&#x60; is required even though the schema does not say it. 1.
+     * If the customer profile ID is new, a new profile is automatically created but
+     * the &#x60;customer_profile_created&#x60; [built-in event
+     * ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not**
+     * triggered. 1. We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param body                    body (required)
+     * @param silent                  Possible values: &#x60;yes&#x60; or
+     *                                &#x60;no&#x60;. - &#x60;yes&#x60;: Increases
+     *                                the performance of the API call by returning a
+     *                                204 response. - &#x60;no&#x60;: Returns a 200
+     *                                response that contains the updated customer
+     *                                profiles. (optional, default to
+     *                                &quot;yes&quot;)
+     * @param dry                     Indicates whether to persist the changes.
+     *                                Changes are ignored when
+     *                                &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns
+     *                                regardless of the [campaign evaluation
+     *                                mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode).
+     *                                Requires &#x60;dry&#x3D;true&#x60;. (optional,
+     *                                default to false)
      * @return ApiResponse&lt;TrackEventV2Response&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<TrackEventV2Response> trackEventV2WithHttpInfo(IntegrationEventV2Request body, String silent, Boolean dry, Boolean forceCompleteEvaluation) throws ApiException {
+    public ApiResponse<TrackEventV2Response> trackEventV2WithHttpInfo(IntegrationEventV2Request body, String silent,
+            Boolean dry, Boolean forceCompleteEvaluation) throws ApiException {
         okhttp3.Call localVarCall = trackEventV2ValidateBeforeCall(body, silent, dry, forceCompleteEvaluation, null);
-        Type localVarReturnType = new TypeToken<TrackEventV2Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrackEventV2Response>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Track event (asynchronously)
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
-     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns regardless of the [campaign evaluation mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode). Requires &#x60;dry&#x3D;true&#x60;.  (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
+     * Triggers a custom event. To use this endpoint: 1. Define a [custom
+     * event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event)
+     * in the Campaign Manager. 1. Update or create a rule to check for this event.
+     * 1. Trigger the event with this endpoint. After you have successfully sent an
+     * event to Talon.One, you can list the received events in the **Events** view
+     * in the Campaign Manager. Talon.One also offers a set of [built-in
+     * events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you
+     * do not create a custom event when you can use a built-in event. For example,
+     * use this endpoint to trigger an event when a customer shares a link to a
+     * product. See the
+     * [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt; 1.
+     * &#x60;profileId&#x60; is required even though the schema does not say it. 1.
+     * If the customer profile ID is new, a new profile is automatically created but
+     * the &#x60;customer_profile_created&#x60; [built-in event
+     * ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not**
+     * triggered. 1. We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param body                    body (required)
+     * @param silent                  Possible values: &#x60;yes&#x60; or
+     *                                &#x60;no&#x60;. - &#x60;yes&#x60;: Increases
+     *                                the performance of the API call by returning a
+     *                                204 response. - &#x60;no&#x60;: Returns a 200
+     *                                response that contains the updated customer
+     *                                profiles. (optional, default to
+     *                                &quot;yes&quot;)
+     * @param dry                     Indicates whether to persist the changes.
+     *                                Changes are ignored when
+     *                                &#x60;dry&#x3D;true&#x60;. (optional)
+     * @param forceCompleteEvaluation Forces evaluation for all matching campaigns
+     *                                regardless of the [campaign evaluation
+     *                                mode](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation#setting-campaign-evaluation-mode).
+     *                                Requires &#x60;dry&#x3D;true&#x60;. (optional,
+     *                                default to false)
+     * @param _callback               The callback to be executed when the API call
+     *                                finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call trackEventV2Async(IntegrationEventV2Request body, String silent, Boolean dry, Boolean forceCompleteEvaluation, final ApiCallback<TrackEventV2Response> _callback) throws ApiException {
+    public okhttp3.Call trackEventV2Async(IntegrationEventV2Request body, String silent, Boolean dry,
+            Boolean forceCompleteEvaluation, final ApiCallback<TrackEventV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = trackEventV2ValidateBeforeCall(body, silent, dry, forceCompleteEvaluation, _callback);
-        Type localVarReturnType = new TypeToken<TrackEventV2Response>(){}.getType();
+        okhttp3.Call localVarCall = trackEventV2ValidateBeforeCall(body, silent, dry, forceCompleteEvaluation,
+                _callback);
+        Type localVarReturnType = new TypeToken<TrackEventV2Response>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateAudienceCustomersAttributes
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * @param body       body (required)
+     * @param _callback  Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateAudienceCustomersAttributesCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAudienceCustomersAttributesCall(Long audienceId, Object body, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/audience_customers/{audienceId}/attributes"
-            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+                .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3661,7 +7872,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3669,28 +7880,32 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAudienceCustomersAttributesValidateBeforeCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateAudienceCustomersAttributesValidateBeforeCall(Long audienceId, Object body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
-            throw new ApiException("Missing the required parameter 'audienceId' when calling updateAudienceCustomersAttributes(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'audienceId' when calling updateAudienceCustomersAttributes(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateAudienceCustomersAttributes(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling updateAudienceCustomersAttributes(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateAudienceCustomersAttributesCall(audienceId, body, _callback);
         return localVarCall;
@@ -3699,85 +7914,163 @@ public class IntegrationApi {
 
     /**
      * Update profile attributes for all customers in audience
-     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * Update the specified profile attributes to the provided values for all
+     * customers in the specified audience.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @param body       body (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public void updateAudienceCustomersAttributes(Integer audienceId, Object body) throws ApiException {
+    public void updateAudienceCustomersAttributes(Long audienceId, Object body) throws ApiException {
         updateAudienceCustomersAttributesWithHttpInfo(audienceId, body);
     }
 
     /**
      * Update profile attributes for all customers in audience
-     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * Update the specified profile attributes to the provided values for all
+     * customers in the specified audience.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
+     * @param body       body (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Void> updateAudienceCustomersAttributesWithHttpInfo(Integer audienceId, Object body) throws ApiException {
+    public ApiResponse<Void> updateAudienceCustomersAttributesWithHttpInfo(Long audienceId, Object body)
+            throws ApiException {
         okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Update profile attributes for all customers in audience (asynchronously)
-     * Update the specified profile attributes to the provided values for all customers in the specified audience. 
+     * Update the specified profile attributes to the provided values for all
+     * customers in the specified audience.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param body       body (required)
+     * @param _callback  The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateAudienceCustomersAttributesAsync(Integer audienceId, Object body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateAudienceCustomersAttributesAsync(Long audienceId, Object body,
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateAudienceV2
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
-     * @param _callback Callback for upload/download progress
+     * @param body       body (required)
+     * @param _callback  Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateAudienceV2Call(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAudienceV2Call(Long audienceId, UpdateAudience body, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/audiences/{audienceId}"
-            .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+                .replaceAll("\\{" + "audienceId" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3785,7 +8078,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3793,28 +8086,30 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAudienceV2ValidateBeforeCall(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateAudienceV2ValidateBeforeCall(Long audienceId, UpdateAudience body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling updateAudienceV2(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateAudienceV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateAudienceV2Call(audienceId, body, _callback);
         return localVarCall;
@@ -3823,84 +8118,174 @@ public class IntegrationApi {
 
     /**
      * Update audience name
-     * Update the name of the given audience created by a third-party integration. Sending a request to this endpoint does **not** trigger the Rule Engine.  To update the audience&#39;s members, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
+     * Update the name of the given audience created by a third-party integration.
+     * Sending a request to this endpoint does **not** trigger the Rule Engine. To
+     * update the audience&#39;s members, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
+     * @param body       body (required)
      * @return Audience
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public Audience updateAudienceV2(Integer audienceId, UpdateAudience body) throws ApiException {
+    public Audience updateAudienceV2(Long audienceId, UpdateAudience body) throws ApiException {
         ApiResponse<Audience> localVarResp = updateAudienceV2WithHttpInfo(audienceId, body);
         return localVarResp.getData();
     }
 
     /**
      * Update audience name
-     * Update the name of the given audience created by a third-party integration. Sending a request to this endpoint does **not** trigger the Rule Engine.  To update the audience&#39;s members, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
+     * Update the name of the given audience created by a third-party integration.
+     * Sending a request to this endpoint does **not** trigger the Rule Engine. To
+     * update the audience&#39;s members, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
+     * @param body       body (required)
      * @return ApiResponse&lt;Audience&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Audience> updateAudienceV2WithHttpInfo(Integer audienceId, UpdateAudience body) throws ApiException {
+    public ApiResponse<Audience> updateAudienceV2WithHttpInfo(Long audienceId, UpdateAudience body)
+            throws ApiException {
         okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, null);
-        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        Type localVarReturnType = new TypeToken<Audience>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update audience name (asynchronously)
-     * Update the name of the given audience created by a third-party integration. Sending a request to this endpoint does **not** trigger the Rule Engine.  To update the audience&#39;s members, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
+     * Update the name of the given audience created by a third-party integration.
+     * Sending a request to this endpoint does **not** trigger the Rule Engine. To
+     * update the audience&#39;s members, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
      * @param audienceId The ID of the audience. (required)
-     * @param body body (required)
-     * @param _callback The callback to be executed when the API call finishes
+     * @param body       body (required)
+     * @param _callback  The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateAudienceV2Async(Integer audienceId, UpdateAudience body, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call updateAudienceV2Async(Long audienceId, UpdateAudience body,
+            final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, _callback);
-        Type localVarReturnType = new TypeToken<Audience>(){}.getType();
+        Type localVarReturnType = new TypeToken<Audience>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateCustomerProfileAudiences
-     * @param body body (required)
+     * 
+     * @param body      body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfileAudiencesCall(CustomerProfileAudienceRequest body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileAudiencesCall(CustomerProfileAudienceRequest body,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3912,7 +8297,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3920,23 +8305,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerProfileAudiencesValidateBeforeCall(CustomerProfileAudienceRequest body, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateCustomerProfileAudiencesValidateBeforeCall(CustomerProfileAudienceRequest body,
+            final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfileAudiences(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling updateCustomerProfileAudiences(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateCustomerProfileAudiencesCall(body, _callback);
         return localVarCall;
@@ -3945,17 +8333,43 @@ public class IntegrationApi {
 
     /**
      * Update multiple customer profiles&#39; audiences
-     * Add customer profiles to or remove them from an audience.  The endpoint supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per request.  **Note:** You can also do this using the [Update audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience) effect. 
+     * Add customer profiles to or remove them from an audience. The endpoint
+     * supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per
+     * request. **Note:** You can also do this using the [Update
+     * audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience)
+     * effect.
+     * 
      * @param body body (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void updateCustomerProfileAudiences(CustomerProfileAudienceRequest body) throws ApiException {
         updateCustomerProfileAudiencesWithHttpInfo(body);
@@ -3963,70 +8377,168 @@ public class IntegrationApi {
 
     /**
      * Update multiple customer profiles&#39; audiences
-     * Add customer profiles to or remove them from an audience.  The endpoint supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per request.  **Note:** You can also do this using the [Update audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience) effect. 
+     * Add customer profiles to or remove them from an audience. The endpoint
+     * supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per
+     * request. **Note:** You can also do this using the [Update
+     * audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience)
+     * effect.
+     * 
      * @param body body (required)
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<Void> updateCustomerProfileAudiencesWithHttpInfo(CustomerProfileAudienceRequest body) throws ApiException {
+    public ApiResponse<Void> updateCustomerProfileAudiencesWithHttpInfo(CustomerProfileAudienceRequest body)
+            throws ApiException {
         okhttp3.Call localVarCall = updateCustomerProfileAudiencesValidateBeforeCall(body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Update multiple customer profiles&#39; audiences (asynchronously)
-     * Add customer profiles to or remove them from an audience.  The endpoint supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per request.  **Note:** You can also do this using the [Update audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience) effect. 
-     * @param body body (required)
+     * Add customer profiles to or remove them from an audience. The endpoint
+     * supports 1000 audience actions (&#x60;add&#x60; or &#x60;remove&#x60;) per
+     * request. **Note:** You can also do this using the [Update
+     * audience](https://docs.talon.one/docs/product/rules/effects/using-effects#updating-an-audience)
+     * effect.
+     * 
+     * @param body      body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfileAudiencesAsync(CustomerProfileAudienceRequest body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileAudiencesAsync(CustomerProfileAudienceRequest body,
+            final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateCustomerProfileAudiencesValidateBeforeCall(body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateCustomerProfileV2
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param body body (required)
-     * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
-     * @param dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param integrationId The integration identifier for this customer profile.
+     *                      Must be: - Unique within the deployment. - Stable for
+     *                      the customer. Do not use an ID that the customer can
+     *                      update themselves. For example, you can use a database
+     *                      ID. Once set, you cannot update this identifier.
+     *                      (required)
+     * @param body          body (required)
+     * @param runRuleEngine Indicates whether to run the Rule Engine. If
+     *                      &#x60;true&#x60;, the response includes: - The effects
+     *                      generated by the triggered campaigns are returned in the
+     *                      &#x60;effects&#x60; property. - The created coupons and
+     *                      referral objects. If &#x60;false&#x60;: - The rules are
+     *                      not executed and the &#x60;effects&#x60; property is
+     *                      always empty. - The response time improves. - You cannot
+     *                      use &#x60;responseContent&#x60; in the body. (optional,
+     *                      default to false)
+     * @param dry           (Only works when &#x60;runRuleEngine&#x3D;true&#x60;)
+     *                      Indicates whether to persist the changes. Changes are
+     *                      ignored when &#x60;dry&#x3D;true&#x60;. When set to
+     *                      &#x60;true&#x60;, you can use the
+     *                      &#x60;evaluableCampaignIds&#x60; body property to select
+     *                      specific campaigns to run. (optional)
+     * @param _callback     Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfileV2Call(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileV2Call(String integrationId, CustomerProfileIntegrationRequestV2 body,
+            Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/customer_profiles/{integrationId}"
-            .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
+                .replaceAll("\\{" + "integrationId" + "\\}", localVarApiClient.escapeString(integrationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4042,7 +8554,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4050,28 +8562,32 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerProfileV2ValidateBeforeCall(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateCustomerProfileV2ValidateBeforeCall(String integrationId,
+            CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback _callback)
+            throws ApiException {
+
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling updateCustomerProfileV2(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'integrationId' when calling updateCustomerProfileV2(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfileV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateCustomerProfileV2Call(integrationId, body, runRuleEngine, dry, _callback);
         return localVarCall;
@@ -4080,93 +8596,293 @@ public class IntegrationApi {
 
     /**
      * Update customer profile
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param body body (required)
-     * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
-     * @param dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  (optional)
+     * Update or create a [Customer
+     * Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles).
+     * This endpoint triggers the Rule Builder. You can use this endpoint to: - Set
+     * attributes on the given customer profile. Ensure you create the attributes in
+     * the Campaign Manager, first. - Modify the audience the customer profile is a
+     * member of. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer profile returns a response with the requested integration state. -
+     * You can use the &#x60;responseContent&#x60; property to save yourself extra
+     * API calls. For example, you can get the customer profile details directly
+     * without extra requests. - We recommend sending requests sequentially. See
+     * [Managing parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param integrationId The integration identifier for this customer profile.
+     *                      Must be: - Unique within the deployment. - Stable for
+     *                      the customer. Do not use an ID that the customer can
+     *                      update themselves. For example, you can use a database
+     *                      ID. Once set, you cannot update this identifier.
+     *                      (required)
+     * @param body          body (required)
+     * @param runRuleEngine Indicates whether to run the Rule Engine. If
+     *                      &#x60;true&#x60;, the response includes: - The effects
+     *                      generated by the triggered campaigns are returned in the
+     *                      &#x60;effects&#x60; property. - The created coupons and
+     *                      referral objects. If &#x60;false&#x60;: - The rules are
+     *                      not executed and the &#x60;effects&#x60; property is
+     *                      always empty. - The response time improves. - You cannot
+     *                      use &#x60;responseContent&#x60; in the body. (optional,
+     *                      default to false)
+     * @param dry           (Only works when &#x60;runRuleEngine&#x3D;true&#x60;)
+     *                      Indicates whether to persist the changes. Changes are
+     *                      ignored when &#x60;dry&#x3D;true&#x60;. When set to
+     *                      &#x60;true&#x60;, you can use the
+     *                      &#x60;evaluableCampaignIds&#x60; body property to select
+     *                      specific campaigns to run. (optional)
      * @return CustomerProfileIntegrationResponseV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public CustomerProfileIntegrationResponseV2 updateCustomerProfileV2(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
-        ApiResponse<CustomerProfileIntegrationResponseV2> localVarResp = updateCustomerProfileV2WithHttpInfo(integrationId, body, runRuleEngine, dry);
+    public CustomerProfileIntegrationResponseV2 updateCustomerProfileV2(String integrationId,
+            CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
+        ApiResponse<CustomerProfileIntegrationResponseV2> localVarResp = updateCustomerProfileV2WithHttpInfo(
+                integrationId, body, runRuleEngine, dry);
         return localVarResp.getData();
     }
 
     /**
      * Update customer profile
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param body body (required)
-     * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
-     * @param dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  (optional)
+     * Update or create a [Customer
+     * Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles).
+     * This endpoint triggers the Rule Builder. You can use this endpoint to: - Set
+     * attributes on the given customer profile. Ensure you create the attributes in
+     * the Campaign Manager, first. - Modify the audience the customer profile is a
+     * member of. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer profile returns a response with the requested integration state. -
+     * You can use the &#x60;responseContent&#x60; property to save yourself extra
+     * API calls. For example, you can get the customer profile details directly
+     * without extra requests. - We recommend sending requests sequentially. See
+     * [Managing parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param integrationId The integration identifier for this customer profile.
+     *                      Must be: - Unique within the deployment. - Stable for
+     *                      the customer. Do not use an ID that the customer can
+     *                      update themselves. For example, you can use a database
+     *                      ID. Once set, you cannot update this identifier.
+     *                      (required)
+     * @param body          body (required)
+     * @param runRuleEngine Indicates whether to run the Rule Engine. If
+     *                      &#x60;true&#x60;, the response includes: - The effects
+     *                      generated by the triggered campaigns are returned in the
+     *                      &#x60;effects&#x60; property. - The created coupons and
+     *                      referral objects. If &#x60;false&#x60;: - The rules are
+     *                      not executed and the &#x60;effects&#x60; property is
+     *                      always empty. - The response time improves. - You cannot
+     *                      use &#x60;responseContent&#x60; in the body. (optional,
+     *                      default to false)
+     * @param dry           (Only works when &#x60;runRuleEngine&#x3D;true&#x60;)
+     *                      Indicates whether to persist the changes. Changes are
+     *                      ignored when &#x60;dry&#x3D;true&#x60;. When set to
+     *                      &#x60;true&#x60;, you can use the
+     *                      &#x60;evaluableCampaignIds&#x60; body property to select
+     *                      specific campaigns to run. (optional)
      * @return ApiResponse&lt;CustomerProfileIntegrationResponseV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<CustomerProfileIntegrationResponseV2> updateCustomerProfileV2WithHttpInfo(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry, null);
-        Type localVarReturnType = new TypeToken<CustomerProfileIntegrationResponseV2>(){}.getType();
+    public ApiResponse<CustomerProfileIntegrationResponseV2> updateCustomerProfileV2WithHttpInfo(String integrationId,
+            CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry,
+                null);
+        Type localVarReturnType = new TypeToken<CustomerProfileIntegrationResponseV2>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update customer profile (asynchronously)
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
-     * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
-     * @param body body (required)
-     * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
-     * @param dry (Only works when &#x60;runRuleEngine&#x3D;true&#x60;) Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;, you can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Update or create a [Customer
+     * Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles).
+     * This endpoint triggers the Rule Builder. You can use this endpoint to: - Set
+     * attributes on the given customer profile. Ensure you create the attributes in
+     * the Campaign Manager, first. - Modify the audience the customer profile is a
+     * member of. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer profile returns a response with the requested integration state. -
+     * You can use the &#x60;responseContent&#x60; property to save yourself extra
+     * API calls. For example, you can get the customer profile details directly
+     * without extra requests. - We recommend sending requests sequentially. See
+     * [Managing parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt;
+     * 
+     * @param integrationId The integration identifier for this customer profile.
+     *                      Must be: - Unique within the deployment. - Stable for
+     *                      the customer. Do not use an ID that the customer can
+     *                      update themselves. For example, you can use a database
+     *                      ID. Once set, you cannot update this identifier.
+     *                      (required)
+     * @param body          body (required)
+     * @param runRuleEngine Indicates whether to run the Rule Engine. If
+     *                      &#x60;true&#x60;, the response includes: - The effects
+     *                      generated by the triggered campaigns are returned in the
+     *                      &#x60;effects&#x60; property. - The created coupons and
+     *                      referral objects. If &#x60;false&#x60;: - The rules are
+     *                      not executed and the &#x60;effects&#x60; property is
+     *                      always empty. - The response time improves. - You cannot
+     *                      use &#x60;responseContent&#x60; in the body. (optional,
+     *                      default to false)
+     * @param dry           (Only works when &#x60;runRuleEngine&#x3D;true&#x60;)
+     *                      Indicates whether to persist the changes. Changes are
+     *                      ignored when &#x60;dry&#x3D;true&#x60;. When set to
+     *                      &#x60;true&#x60;, you can use the
+     *                      &#x60;evaluableCampaignIds&#x60; body property to select
+     *                      specific campaigns to run. (optional)
+     * @param _callback     The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfileV2Async(String integrationId, CustomerProfileIntegrationRequestV2 body, Boolean runRuleEngine, Boolean dry, final ApiCallback<CustomerProfileIntegrationResponseV2> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfileV2Async(String integrationId, CustomerProfileIntegrationRequestV2 body,
+            Boolean runRuleEngine, Boolean dry, final ApiCallback<CustomerProfileIntegrationResponseV2> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry, _callback);
-        Type localVarReturnType = new TypeToken<CustomerProfileIntegrationResponseV2>(){}.getType();
+        okhttp3.Call localVarCall = updateCustomerProfileV2ValidateBeforeCall(integrationId, body, runRuleEngine, dry,
+                _callback);
+        Type localVarReturnType = new TypeToken<CustomerProfileIntegrationResponseV2>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateCustomerProfilesV2
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * 
+     * @param body      body (required)
+     * @param silent    Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *                  &#x60;yes&#x60;: Increases the performance of the API call
+     *                  by returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *                  response that contains the updated customer profiles.
+     *                  (optional, default to &quot;yes&quot;)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfilesV2Call(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfilesV2Call(MultipleCustomerProfileIntegrationRequest body, String silent,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -4182,7 +8898,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4190,23 +8906,26 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerProfilesV2ValidateBeforeCall(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateCustomerProfilesV2ValidateBeforeCall(MultipleCustomerProfileIntegrationRequest body,
+            String silent, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateCustomerProfilesV2(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling updateCustomerProfilesV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateCustomerProfilesV2Call(body, silent, _callback);
         return localVarCall;
@@ -4215,92 +8934,244 @@ public class IntegrationApi {
 
     /**
      * Update multiple customer profiles
-     * Update (or create) up to 1000 [customer profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).  **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule Engine for customer profile updates, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Update (or create) up to 1000 [customer
+     * profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles)
+     * in 1 request. The &#x60;integrationId&#x60; must be any identifier that
+     * remains stable for the customer. Do not use an ID that the customer can
+     * update themselves. For example, you can use a database ID. A customer profile
+     * [can be linked to one or more
+     * sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).
+     * **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule
+     * Engine for customer profile updates, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
+     * @param body   body (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *               &#x60;yes&#x60;: Increases the performance of the API call by
+     *               returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *               response that contains the updated customer profiles.
+     *               (optional, default to &quot;yes&quot;)
      * @return MultipleCustomerProfileIntegrationResponseV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
-        ApiResponse<MultipleCustomerProfileIntegrationResponseV2> localVarResp = updateCustomerProfilesV2WithHttpInfo(body, silent);
+    public MultipleCustomerProfileIntegrationResponseV2 updateCustomerProfilesV2(
+            MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
+        ApiResponse<MultipleCustomerProfileIntegrationResponseV2> localVarResp = updateCustomerProfilesV2WithHttpInfo(
+                body, silent);
         return localVarResp.getData();
     }
 
     /**
      * Update multiple customer profiles
-     * Update (or create) up to 1000 [customer profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).  **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule Engine for customer profile updates, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Update (or create) up to 1000 [customer
+     * profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles)
+     * in 1 request. The &#x60;integrationId&#x60; must be any identifier that
+     * remains stable for the customer. Do not use an ID that the customer can
+     * update themselves. For example, you can use a database ID. A customer profile
+     * [can be linked to one or more
+     * sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).
+     * **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule
+     * Engine for customer profile updates, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
+     * @param body   body (required)
+     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *               &#x60;yes&#x60;: Increases the performance of the API call by
+     *               returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *               response that contains the updated customer profiles.
+     *               (optional, default to &quot;yes&quot;)
      * @return ApiResponse&lt;MultipleCustomerProfileIntegrationResponseV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<MultipleCustomerProfileIntegrationResponseV2> updateCustomerProfilesV2WithHttpInfo(MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
+    public ApiResponse<MultipleCustomerProfileIntegrationResponseV2> updateCustomerProfilesV2WithHttpInfo(
+            MultipleCustomerProfileIntegrationRequest body, String silent) throws ApiException {
         okhttp3.Call localVarCall = updateCustomerProfilesV2ValidateBeforeCall(body, silent, null);
-        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update multiple customer profiles (asynchronously)
-     * Update (or create) up to 1000 [customer profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles) in 1 request.  The &#x60;integrationId&#x60; must be any identifier that remains stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  A customer profile [can be linked to one or more sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).  **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule Engine for customer profile updates, use the [Update customer profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint. 
-     * @param body body (required)
-     * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
+     * Update (or create) up to 1000 [customer
+     * profiles](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles)
+     * in 1 request. The &#x60;integrationId&#x60; must be any identifier that
+     * remains stable for the customer. Do not use an ID that the customer can
+     * update themselves. For example, you can use a database ID. A customer profile
+     * [can be linked to one or more
+     * sessions](https://docs.talon.one/integration-api#tag/Customer-sessions).
+     * **Note:** This endpoint does not trigger the Rule Engine. To trigger the Rule
+     * Engine for customer profile updates, use the [Update customer
+     * profile](#tag/Customer-profiles/operation/updateCustomerProfileV2) endpoint.
+     * 
+     * @param body      body (required)
+     * @param silent    Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. -
+     *                  &#x60;yes&#x60;: Increases the performance of the API call
+     *                  by returning a 204 response. - &#x60;no&#x60;: Returns a 200
+     *                  response that contains the updated customer profiles.
+     *                  (optional, default to &quot;yes&quot;)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerProfilesV2Async(MultipleCustomerProfileIntegrationRequest body, String silent, final ApiCallback<MultipleCustomerProfileIntegrationResponseV2> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerProfilesV2Async(MultipleCustomerProfileIntegrationRequest body, String silent,
+            final ApiCallback<MultipleCustomerProfileIntegrationResponseV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateCustomerProfilesV2ValidateBeforeCall(body, silent, _callback);
-        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<MultipleCustomerProfileIntegrationResponseV2>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
     /**
      * Build call for updateCustomerSessionV2
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
-     * @param now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  **Note:**  - It must be an RFC3339 timestamp string. - It can **only** be a date in the future. - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;.  (optional)
-     * @param _callback Callback for upload/download progress
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;. When set
+     *                          to &#x60;true&#x60;: - The endpoint considers
+     *                          **only** the payload that you pass when **closing**
+     *                          the session. When you do not use the &#x60;dry&#x60;
+     *                          parameter, the endpoint behaves as a typical PUT
+     *                          endpoint. Each update builds upon the previous ones.
+     *                          - You can use the &#x60;evaluableCampaignIds&#x60;
+     *                          body property to select specific campaigns to run.
+     *                          [See the
+     *                          docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).
+     *                          (optional)
+     * @param now               A timestamp value of a future date that acts as a
+     *                          current date when included in the query. Use this
+     *                          parameter, for example, to test campaigns that would
+     *                          be evaluated for this customer session in the future
+     *                          (say, [scheduled
+     *                          campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).
+     *                          **Note:** - It must be an RFC3339 timestamp string.
+     *                          - It can **only** be a date in the future. - It can
+     *                          **only** be used if the &#x60;dry&#x60; parameter in
+     *                          the query is set to &#x60;true&#x60;. (optional)
+     * @param _callback         Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerSessionV2Call(String customerSessionId, IntegrationRequest body, Boolean dry, OffsetDateTime now, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateCustomerSessionV2Call(String customerSessionId, IntegrationRequest body, Boolean dry,
+            OffsetDateTime now, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/v2/customer_sessions/{customerSessionId}"
-            .replaceAll("\\{" + "customerSessionId" + "\\}", localVarApiClient.escapeString(customerSessionId.toString()));
+                .replaceAll("\\{" + "customerSessionId" + "\\}",
+                        localVarApiClient.escapeString(customerSessionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4316,7 +9187,7 @@ public class IntegrationApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4324,28 +9195,31 @@ public class IntegrationApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "api_key_v1" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomerSessionV2ValidateBeforeCall(String customerSessionId, IntegrationRequest body, Boolean dry, OffsetDateTime now, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call updateCustomerSessionV2ValidateBeforeCall(String customerSessionId, IntegrationRequest body,
+            Boolean dry, OffsetDateTime now, final ApiCallback _callback) throws ApiException {
+
         // verify the required parameter 'customerSessionId' is set
         if (customerSessionId == null) {
-            throw new ApiException("Missing the required parameter 'customerSessionId' when calling updateCustomerSessionV2(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'customerSessionId' when calling updateCustomerSessionV2(Async)");
         }
-        
+
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling updateCustomerSessionV2(Async)");
         }
-        
 
         okhttp3.Call localVarCall = updateCustomerSessionV2Call(customerSessionId, body, dry, now, _callback);
         return localVarCall;
@@ -4354,74 +9228,334 @@ public class IntegrationApi {
 
     /**
      * Update customer session
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
-     * @param now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  **Note:**  - It must be an RFC3339 timestamp string. - It can **only** be a date in the future. - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;.  (optional)
+     * Update or create a [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * The endpoint responds with the potential promotion rule
+     * [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that
+     * match the current cart. For example, use this endpoint to share the contents
+     * of a customer&#39;s cart with Talon.One. **Note:** The currency for the
+     * session and the cart items in the session is the currency set for the
+     * Application that owns this session. ### Session management To use this
+     * endpoint, start by learning about [customer
+     * sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions)
+     * and their states and refer to the &#x60;state&#x60; parameter documentation
+     * the request body schema docs below. ### Sessions and customer profiles - To
+     * link a session to a customer profile, set the &#x60;profileId&#x60; parameter
+     * in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. -
+     * While you can create an anonymous session with
+     * &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID
+     * instead. - A profile can be linked to simultaneous sessions in different
+     * Applications. Either: - Use unique session integration IDs or, - Use the same
+     * session integration ID across all of the Applications. **Note:** If the
+     * specified profile does not exist, an empty profile is **created
+     * automatically**. You can update it with [Update customer
+     * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer session returns a response with the new integration state. Use the
+     * &#x60;responseContent&#x60; property to save yourself extra API calls. For
+     * example, you can get the customer profile details directly without extra
+     * requests. - We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt; For more information, see: - The introductory video in [Getting
+     * started](https://docs.talon.one/docs/dev/getting-started/overview). - The
+     * [integration
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;. When set
+     *                          to &#x60;true&#x60;: - The endpoint considers
+     *                          **only** the payload that you pass when **closing**
+     *                          the session. When you do not use the &#x60;dry&#x60;
+     *                          parameter, the endpoint behaves as a typical PUT
+     *                          endpoint. Each update builds upon the previous ones.
+     *                          - You can use the &#x60;evaluableCampaignIds&#x60;
+     *                          body property to select specific campaigns to run.
+     *                          [See the
+     *                          docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).
+     *                          (optional)
+     * @param now               A timestamp value of a future date that acts as a
+     *                          current date when included in the query. Use this
+     *                          parameter, for example, to test campaigns that would
+     *                          be evaluated for this customer session in the future
+     *                          (say, [scheduled
+     *                          campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).
+     *                          **Note:** - It must be an RFC3339 timestamp string.
+     *                          - It can **only** be a date in the future. - It can
+     *                          **only** be used if the &#x60;dry&#x60; parameter in
+     *                          the query is set to &#x60;true&#x60;. (optional)
      * @return IntegrationStateV2
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public IntegrationStateV2 updateCustomerSessionV2(String customerSessionId, IntegrationRequest body, Boolean dry, OffsetDateTime now) throws ApiException {
-        ApiResponse<IntegrationStateV2> localVarResp = updateCustomerSessionV2WithHttpInfo(customerSessionId, body, dry, now);
+    public IntegrationStateV2 updateCustomerSessionV2(String customerSessionId, IntegrationRequest body, Boolean dry,
+            OffsetDateTime now) throws ApiException {
+        ApiResponse<IntegrationStateV2> localVarResp = updateCustomerSessionV2WithHttpInfo(customerSessionId, body, dry,
+                now);
         return localVarResp.getData();
     }
 
     /**
      * Update customer session
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
-     * @param now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  **Note:**  - It must be an RFC3339 timestamp string. - It can **only** be a date in the future. - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;.  (optional)
+     * Update or create a [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * The endpoint responds with the potential promotion rule
+     * [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that
+     * match the current cart. For example, use this endpoint to share the contents
+     * of a customer&#39;s cart with Talon.One. **Note:** The currency for the
+     * session and the cart items in the session is the currency set for the
+     * Application that owns this session. ### Session management To use this
+     * endpoint, start by learning about [customer
+     * sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions)
+     * and their states and refer to the &#x60;state&#x60; parameter documentation
+     * the request body schema docs below. ### Sessions and customer profiles - To
+     * link a session to a customer profile, set the &#x60;profileId&#x60; parameter
+     * in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. -
+     * While you can create an anonymous session with
+     * &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID
+     * instead. - A profile can be linked to simultaneous sessions in different
+     * Applications. Either: - Use unique session integration IDs or, - Use the same
+     * session integration ID across all of the Applications. **Note:** If the
+     * specified profile does not exist, an empty profile is **created
+     * automatically**. You can update it with [Update customer
+     * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer session returns a response with the new integration state. Use the
+     * &#x60;responseContent&#x60; property to save yourself extra API calls. For
+     * example, you can get the customer profile details directly without extra
+     * requests. - We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt; For more information, see: - The introductory video in [Getting
+     * started](https://docs.talon.one/docs/dev/getting-started/overview). - The
+     * [integration
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;. When set
+     *                          to &#x60;true&#x60;: - The endpoint considers
+     *                          **only** the payload that you pass when **closing**
+     *                          the session. When you do not use the &#x60;dry&#x60;
+     *                          parameter, the endpoint behaves as a typical PUT
+     *                          endpoint. Each update builds upon the previous ones.
+     *                          - You can use the &#x60;evaluableCampaignIds&#x60;
+     *                          body property to select specific campaigns to run.
+     *                          [See the
+     *                          docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).
+     *                          (optional)
+     * @param now               A timestamp value of a future date that acts as a
+     *                          current date when included in the query. Use this
+     *                          parameter, for example, to test campaigns that would
+     *                          be evaluated for this customer session in the future
+     *                          (say, [scheduled
+     *                          campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).
+     *                          **Note:** - It must be an RFC3339 timestamp string.
+     *                          - It can **only** be a date in the future. - It can
+     *                          **only** be used if the &#x60;dry&#x60; parameter in
+     *                          the query is set to &#x60;true&#x60;. (optional)
      * @return ApiResponse&lt;IntegrationStateV2&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public ApiResponse<IntegrationStateV2> updateCustomerSessionV2WithHttpInfo(String customerSessionId, IntegrationRequest body, Boolean dry, OffsetDateTime now) throws ApiException {
+    public ApiResponse<IntegrationStateV2> updateCustomerSessionV2WithHttpInfo(String customerSessionId,
+            IntegrationRequest body, Boolean dry, OffsetDateTime now) throws ApiException {
         okhttp3.Call localVarCall = updateCustomerSessionV2ValidateBeforeCall(customerSessionId, body, dry, now, null);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>() {
+        }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Update customer session (asynchronously)
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
-     * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
-     * @param body body (required)
-     * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
-     * @param now A timestamp value of a future date that acts as a current date when included in the query.  Use this parameter, for example, to test campaigns that would be evaluated for this customer session in the future (say, [scheduled campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).  **Note:**  - It must be an RFC3339 timestamp string. - It can **only** be a date in the future. - It can **only** be used if the &#x60;dry&#x60; parameter in the query is set to &#x60;true&#x60;.  (optional)
-     * @param _callback The callback to be executed when the API call finishes
+     * Update or create a [customer
+     * session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+     * The endpoint responds with the potential promotion rule
+     * [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that
+     * match the current cart. For example, use this endpoint to share the contents
+     * of a customer&#39;s cart with Talon.One. **Note:** The currency for the
+     * session and the cart items in the session is the currency set for the
+     * Application that owns this session. ### Session management To use this
+     * endpoint, start by learning about [customer
+     * sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions)
+     * and their states and refer to the &#x60;state&#x60; parameter documentation
+     * the request body schema docs below. ### Sessions and customer profiles - To
+     * link a session to a customer profile, set the &#x60;profileId&#x60; parameter
+     * in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. -
+     * While you can create an anonymous session with
+     * &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID
+     * instead. - A profile can be linked to simultaneous sessions in different
+     * Applications. Either: - Use unique session integration IDs or, - Use the same
+     * session integration ID across all of the Applications. **Note:** If the
+     * specified profile does not exist, an empty profile is **created
+     * automatically**. You can update it with [Update customer
+     * profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).
+     * &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt; &lt;p
+     * class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt; - Updating a
+     * customer session returns a response with the new integration state. Use the
+     * &#x60;responseContent&#x60; property to save yourself extra API calls. For
+     * example, you can get the customer profile details directly without extra
+     * requests. - We recommend sending requests sequentially. See [Managing
+     * parallel
+     * requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).
+     * &lt;/div&gt; For more information, see: - The introductory video in [Getting
+     * started](https://docs.talon.one/docs/dev/getting-started/overview). - The
+     * [integration
+     * tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one).
+     * 
+     * @param customerSessionId The &#x60;integration ID&#x60; of the customer
+     *                          session. You set this ID when you create a customer
+     *                          session. You can see existing customer session
+     *                          integration IDs in the Campaign Manager&#39;s
+     *                          **Sessions** menu, or via the [List Application
+     *                          session](https://docs.talon.one/management-api#operation/getApplicationSessions)
+     *                          endpoint. (required)
+     * @param body              body (required)
+     * @param dry               Indicates whether to persist the changes. Changes
+     *                          are ignored when &#x60;dry&#x3D;true&#x60;. When set
+     *                          to &#x60;true&#x60;: - The endpoint considers
+     *                          **only** the payload that you pass when **closing**
+     *                          the session. When you do not use the &#x60;dry&#x60;
+     *                          parameter, the endpoint behaves as a typical PUT
+     *                          endpoint. Each update builds upon the previous ones.
+     *                          - You can use the &#x60;evaluableCampaignIds&#x60;
+     *                          body property to select specific campaigns to run.
+     *                          [See the
+     *                          docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).
+     *                          (optional)
+     * @param now               A timestamp value of a future date that acts as a
+     *                          current date when included in the query. Use this
+     *                          parameter, for example, to test campaigns that would
+     *                          be evaluated for this customer session in the future
+     *                          (say, [scheduled
+     *                          campaigns](https://docs.talon.one/docs/product/campaigns/settings/managing-campaign-schedule)).
+     *                          **Note:** - It must be an RFC3339 timestamp string.
+     *                          - It can **only** be a date in the future. - It can
+     *                          **only** be used if the &#x60;dry&#x60; parameter in
+     *                          the query is set to &#x60;true&#x60;. (optional)
+     * @param _callback         The callback to be executed when the API call
+     *                          finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized - Invalid API key </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Too many requests or limit reached - Avoid parallel requests. See the [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests). </td><td>  -  </td></tr>
-     </table>
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Unauthorized - Invalid API key</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Too many requests or limit reached - Avoid
+     *                        parallel requests. See the
+     *                        [docs](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one#managing-parallel-requests).
+     *                        </td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
-    public okhttp3.Call updateCustomerSessionV2Async(String customerSessionId, IntegrationRequest body, Boolean dry, OffsetDateTime now, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
+    public okhttp3.Call updateCustomerSessionV2Async(String customerSessionId, IntegrationRequest body, Boolean dry,
+            OffsetDateTime now, final ApiCallback<IntegrationStateV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomerSessionV2ValidateBeforeCall(customerSessionId, body, dry, now, _callback);
-        Type localVarReturnType = new TypeToken<IntegrationStateV2>(){}.getType();
+        okhttp3.Call localVarCall = updateCustomerSessionV2ValidateBeforeCall(customerSessionId, body, dry, now,
+                _callback);
+        Type localVarReturnType = new TypeToken<IntegrationStateV2>() {
+        }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -31,7 +30,7 @@ import java.io.IOException;
 public class ItemAttribute {
   public static final String SERIALIZED_NAME_ATTRIBUTEID = "attributeid";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTEID)
-  private Integer attributeid;
+  private Long attributeid;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -41,72 +40,68 @@ public class ItemAttribute {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Object value;
 
+  public ItemAttribute attributeid(Long attributeid) {
 
-  public ItemAttribute attributeid(Integer attributeid) {
-    
     this.attributeid = attributeid;
     return this;
   }
 
-   /**
+  /**
    * The ID of the attribute of the item.
+   * 
    * @return attributeid
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "The ID of the attribute of the item.")
 
-  public Integer getAttributeid() {
+  public Long getAttributeid() {
     return attributeid;
   }
 
-
-  public void setAttributeid(Integer attributeid) {
+  public void setAttributeid(Long attributeid) {
     this.attributeid = attributeid;
   }
 
-
   public ItemAttribute name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The name of the attribute.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The name of the attribute.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public ItemAttribute value(Object value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The value of the attribute.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The value of the attribute.")
 
   public Object getValue() {
     return value;
   }
 
-
   public void setValue(Object value) {
     this.value = value;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,7 +121,6 @@ public class ItemAttribute {
   public int hashCode() {
     return Objects.hash(attributeid, name, value);
   }
-
 
   @Override
   public String toString() {
@@ -151,4 +145,3 @@ public class ItemAttribute {
   }
 
 }
-

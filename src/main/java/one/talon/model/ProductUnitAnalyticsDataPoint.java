@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -45,122 +44,116 @@ public class ProductUnitAnalyticsDataPoint {
 
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private Integer productId;
+  private Long productId;
 
   public static final String SERIALIZED_NAME_PRODUCT_NAME = "productName";
   @SerializedName(SERIALIZED_NAME_PRODUCT_NAME)
   private String productName;
 
-
   public ProductUnitAnalyticsDataPoint startTime(OffsetDateTime startTime) {
-    
+
     this.startTime = startTime;
     return this;
   }
 
-   /**
+  /**
    * The start of the aggregation time frame in UTC.
+   * 
    * @return startTime
-  **/
+   **/
   @ApiModelProperty(example = "2024-02-01T00:00Z", required = true, value = "The start of the aggregation time frame in UTC.")
 
   public OffsetDateTime getStartTime() {
     return startTime;
   }
 
-
   public void setStartTime(OffsetDateTime startTime) {
     this.startTime = startTime;
   }
 
-
   public ProductUnitAnalyticsDataPoint endTime(OffsetDateTime endTime) {
-    
+
     this.endTime = endTime;
     return this;
   }
 
-   /**
+  /**
    * The end of the aggregation time frame in UTC.
+   * 
    * @return endTime
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The end of the aggregation time frame in UTC.")
 
   public OffsetDateTime getEndTime() {
     return endTime;
   }
 
-
   public void setEndTime(OffsetDateTime endTime) {
     this.endTime = endTime;
   }
 
-
   public ProductUnitAnalyticsDataPoint unitsSold(AnalyticsDataPointWithTrend unitsSold) {
-    
+
     this.unitsSold = unitsSold;
     return this;
   }
 
-   /**
+  /**
    * Get unitsSold
+   * 
    * @return unitsSold
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public AnalyticsDataPointWithTrend getUnitsSold() {
     return unitsSold;
   }
 
-
   public void setUnitsSold(AnalyticsDataPointWithTrend unitsSold) {
     this.unitsSold = unitsSold;
   }
 
+  public ProductUnitAnalyticsDataPoint productId(Long productId) {
 
-  public ProductUnitAnalyticsDataPoint productId(Integer productId) {
-    
     this.productId = productId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the product.
+   * 
    * @return productId
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the product.")
 
-  public Integer getProductId() {
+  public Long getProductId() {
     return productId;
   }
 
-
-  public void setProductId(Integer productId) {
+  public void setProductId(Long productId) {
     this.productId = productId;
   }
 
-
   public ProductUnitAnalyticsDataPoint productName(String productName) {
-    
+
     this.productName = productName;
     return this;
   }
 
-   /**
+  /**
    * The name of the product.
+   * 
    * @return productName
-  **/
+   **/
   @ApiModelProperty(example = "MyProduct", required = true, value = "The name of the product.")
 
   public String getProductName() {
     return productName;
   }
 
-
   public void setProductName(String productName) {
     this.productName = productName;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -182,7 +175,6 @@ public class ProductUnitAnalyticsDataPoint {
   public int hashCode() {
     return Objects.hash(startTime, endTime, unitsSold, productId, productName);
   }
-
 
   @Override
   public String toString() {
@@ -209,4 +201,3 @@ public class ProductUnitAnalyticsDataPoint {
   }
 
 }
-

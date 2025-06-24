@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,11 +37,11 @@ public class AchievementProgressWithDefinition {
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
     INPROGRESS("inprogress"),
-    
+
     COMPLETED("completed"),
-    
+
     EXPIRED("expired"),
-    
+
     NOT_STARTED("not_started");
 
     private String value;
@@ -77,7 +76,7 @@ public class AchievementProgressWithDefinition {
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StatusEnum.fromValue(value);
       }
     }
@@ -105,7 +104,7 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Integer achievementId;
+  private Long achievementId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -121,19 +120,22 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
   private BigDecimal target;
 
   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. -
+   * &#x60;no_recurrence&#x60;: The achievement can be completed only once. -
+   * &#x60;on_expiration&#x60;: The achievement resets after it expires and
+   * becomes available again.
    */
   @JsonAdapter(AchievementRecurrencePolicyEnum.Adapter.class)
   public enum AchievementRecurrencePolicyEnum {
     NO_RECURRENCE("no_recurrence"),
-    
+
     ON_EXPIRATION("on_expiration");
 
     private String value;
@@ -162,13 +164,14 @@ public class AchievementProgressWithDefinition {
 
     public static class Adapter extends TypeAdapter<AchievementRecurrencePolicyEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final AchievementRecurrencePolicyEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final AchievementRecurrencePolicyEnum enumeration)
+          throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
       public AchievementRecurrencePolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return AchievementRecurrencePolicyEnum.fromValue(value);
       }
     }
@@ -179,12 +182,16 @@ public class AchievementProgressWithDefinition {
   private AchievementRecurrencePolicyEnum achievementRecurrencePolicy;
 
   /**
-   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+   * The policy that determines how the achievement starts, ends, or resets. -
+   * &#x60;user_action&#x60;: The achievement ends or resets relative to when the
+   * customer started the achievement. - &#x60;fixed_schedule&#x60;: The
+   * achievement starts, ends, or resets for all customers following a fixed
+   * schedule.
    */
   @JsonAdapter(AchievementActivationPolicyEnum.Adapter.class)
   public enum AchievementActivationPolicyEnum {
     USER_ACTION("user_action"),
-    
+
     FIXED_SCHEDULE("fixed_schedule");
 
     private String value;
@@ -213,13 +220,14 @@ public class AchievementProgressWithDefinition {
 
     public static class Adapter extends TypeAdapter<AchievementActivationPolicyEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final AchievementActivationPolicyEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final AchievementActivationPolicyEnum enumeration)
+          throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
       public AchievementActivationPolicyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return AchievementActivationPolicyEnum.fromValue(value);
       }
     }
@@ -237,61 +245,59 @@ public class AchievementProgressWithDefinition {
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_END_DATE)
   private OffsetDateTime achievementEndDate;
 
-
   public AchievementProgressWithDefinition status(StatusEnum status) {
-    
+
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * The status of the achievement.
+   * 
    * @return status
-  **/
+   **/
   @ApiModelProperty(example = "completed", required = true, value = "The status of the achievement.")
 
   public StatusEnum getStatus() {
     return status;
   }
 
-
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
-
   public AchievementProgressWithDefinition progress(BigDecimal progress) {
-    
+
     this.progress = progress;
     return this;
   }
 
-   /**
+  /**
    * The current progress of the customer in the achievement.
+   * 
    * @return progress
-  **/
+   **/
   @ApiModelProperty(example = "10.0", required = true, value = "The current progress of the customer in the achievement.")
 
   public BigDecimal getProgress() {
     return progress;
   }
 
-
   public void setProgress(BigDecimal progress) {
     this.progress = progress;
   }
 
-
   public AchievementProgressWithDefinition startDate(OffsetDateTime startDate) {
-    
+
     this.startDate = startDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which the customer started the achievement.
+   * 
    * @return startDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp at which the customer started the achievement.")
 
@@ -299,22 +305,21 @@ public class AchievementProgressWithDefinition {
     return startDate;
   }
 
-
   public void setStartDate(OffsetDateTime startDate) {
     this.startDate = startDate;
   }
 
-
   public AchievementProgressWithDefinition completionDate(OffsetDateTime completionDate) {
-    
+
     this.completionDate = completionDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the customer completed the achievement.
+   * 
    * @return completionDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp at which point the customer completed the achievement.")
 
@@ -322,22 +327,21 @@ public class AchievementProgressWithDefinition {
     return completionDate;
   }
 
-
   public void setCompletionDate(OffsetDateTime completionDate) {
     this.completionDate = completionDate;
   }
 
-
   public AchievementProgressWithDefinition endDate(OffsetDateTime endDate) {
-    
+
     this.endDate = endDate;
     return this;
   }
 
-   /**
+  /**
    * Timestamp at which point the achievement ends and resets for the customer.
+   * 
    * @return endDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp at which point the achievement ends and resets for the customer.")
 
@@ -345,132 +349,127 @@ public class AchievementProgressWithDefinition {
     return endDate;
   }
 
-
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
   }
 
+  public AchievementProgressWithDefinition achievementId(Long achievementId) {
 
-  public AchievementProgressWithDefinition achievementId(Integer achievementId) {
-    
     this.achievementId = achievementId;
     return this;
   }
 
-   /**
+  /**
    * The internal ID of the achievement.
+   * 
    * @return achievementId
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "The internal ID of the achievement.")
 
-  public Integer getAchievementId() {
+  public Long getAchievementId() {
     return achievementId;
   }
 
-
-  public void setAchievementId(Integer achievementId) {
+  public void setAchievementId(Long achievementId) {
     this.achievementId = achievementId;
   }
 
-
   public AchievementProgressWithDefinition name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
-   * The internal name of the achievement used in API requests. 
+  /**
+   * The internal name of the achievement used in API requests.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(example = "FreeCoffee10Orders", required = true, value = "The internal name of the achievement used in API requests. ")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
 
-
   public AchievementProgressWithDefinition title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
+  /**
    * The display name of the achievement in the Campaign Manager.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(example = "50% off on 50th purchase.", required = true, value = "The display name of the achievement in the Campaign Manager.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public AchievementProgressWithDefinition description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * The description of the achievement in the Campaign Manager.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(example = "50% off for every 50th purchase in a year.", required = true, value = "The description of the achievement in the Campaign Manager.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
+  public AchievementProgressWithDefinition campaignId(Long campaignId) {
 
-  public AchievementProgressWithDefinition campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign the achievement belongs to.
+   * 
    * @return campaignId
-  **/
+   **/
   @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
-
   public AchievementProgressWithDefinition target(BigDecimal target) {
-    
+
     this.target = target;
     return this;
   }
 
-   /**
-   * The required number of actions or the transactional milestone to complete the achievement.
+  /**
+   * The required number of actions or the transactional milestone to complete the
+   * achievement.
+   * 
    * @return target
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10.0", value = "The required number of actions or the transactional milestone to complete the achievement.")
 
@@ -478,66 +477,74 @@ public class AchievementProgressWithDefinition {
     return target;
   }
 
-
   public void setTarget(BigDecimal target) {
     this.target = target;
   }
 
+  public AchievementProgressWithDefinition achievementRecurrencePolicy(
+      AchievementRecurrencePolicyEnum achievementRecurrencePolicy) {
 
-  public AchievementProgressWithDefinition achievementRecurrencePolicy(AchievementRecurrencePolicyEnum achievementRecurrencePolicy) {
-    
     this.achievementRecurrencePolicy = achievementRecurrencePolicy;
     return this;
   }
 
-   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+  /**
+   * The policy that determines if and how the achievement recurs. -
+   * &#x60;no_recurrence&#x60;: The achievement can be completed only once. -
+   * &#x60;on_expiration&#x60;: The achievement resets after it expires and
+   * becomes available again.
+   * 
    * @return achievementRecurrencePolicy
-  **/
+   **/
   @ApiModelProperty(example = "no_recurrence", required = true, value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
 
   public AchievementRecurrencePolicyEnum getAchievementRecurrencePolicy() {
     return achievementRecurrencePolicy;
   }
 
-
   public void setAchievementRecurrencePolicy(AchievementRecurrencePolicyEnum achievementRecurrencePolicy) {
     this.achievementRecurrencePolicy = achievementRecurrencePolicy;
   }
 
+  public AchievementProgressWithDefinition achievementActivationPolicy(
+      AchievementActivationPolicyEnum achievementActivationPolicy) {
 
-  public AchievementProgressWithDefinition achievementActivationPolicy(AchievementActivationPolicyEnum achievementActivationPolicy) {
-    
     this.achievementActivationPolicy = achievementActivationPolicy;
     return this;
   }
 
-   /**
-   * The policy that determines how the achievement starts, ends, or resets. - &#x60;user_action&#x60;: The achievement ends or resets relative to when the customer started the achievement. - &#x60;fixed_schedule&#x60;: The achievement starts, ends, or resets for all customers following a fixed schedule. 
+  /**
+   * The policy that determines how the achievement starts, ends, or resets. -
+   * &#x60;user_action&#x60;: The achievement ends or resets relative to when the
+   * customer started the achievement. - &#x60;fixed_schedule&#x60;: The
+   * achievement starts, ends, or resets for all customers following a fixed
+   * schedule.
+   * 
    * @return achievementActivationPolicy
-  **/
+   **/
   @ApiModelProperty(example = "fixed_schedule", required = true, value = "The policy that determines how the achievement starts, ends, or resets. - `user_action`: The achievement ends or resets relative to when the customer started the achievement. - `fixed_schedule`: The achievement starts, ends, or resets for all customers following a fixed schedule. ")
 
   public AchievementActivationPolicyEnum getAchievementActivationPolicy() {
     return achievementActivationPolicy;
   }
 
-
   public void setAchievementActivationPolicy(AchievementActivationPolicyEnum achievementActivationPolicy) {
     this.achievementActivationPolicy = achievementActivationPolicy;
   }
 
-
   public AchievementProgressWithDefinition achievementFixedStartDate(OffsetDateTime achievementFixedStartDate) {
-    
+
     this.achievementFixedStartDate = achievementFixedStartDate;
     return this;
   }
 
-   /**
-   * The achievement&#39;s start date when &#x60;achievementActivationPolicy&#x60; is equal to &#x60;fixed_schedule&#x60;.  **Note:** It is an RFC3339 timestamp string. 
+  /**
+   * The achievement&#39;s start date when &#x60;achievementActivationPolicy&#x60;
+   * is equal to &#x60;fixed_schedule&#x60;. **Note:** It is an RFC3339 timestamp
+   * string.
+   * 
    * @return achievementFixedStartDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement's start date when `achievementActivationPolicy` is equal to `fixed_schedule`.  **Note:** It is an RFC3339 timestamp string. ")
 
@@ -545,22 +552,22 @@ public class AchievementProgressWithDefinition {
     return achievementFixedStartDate;
   }
 
-
   public void setAchievementFixedStartDate(OffsetDateTime achievementFixedStartDate) {
     this.achievementFixedStartDate = achievementFixedStartDate;
   }
 
-
   public AchievementProgressWithDefinition achievementEndDate(OffsetDateTime achievementEndDate) {
-    
+
     this.achievementEndDate = achievementEndDate;
     return this;
   }
 
-   /**
-   * The achievement&#39;s end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It is an RFC3339 timestamp string. 
+  /**
+   * The achievement&#39;s end date. If defined, customers cannot participate in
+   * the achievement after this date. **Note:** It is an RFC3339 timestamp string.
+   * 
    * @return achievementEndDate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The achievement's end date. If defined, customers cannot participate in the achievement after this date.  **Note:** It is an RFC3339 timestamp string. ")
 
@@ -568,11 +575,9 @@ public class AchievementProgressWithDefinition {
     return achievementEndDate;
   }
 
-
   public void setAchievementEndDate(OffsetDateTime achievementEndDate) {
     this.achievementEndDate = achievementEndDate;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -594,17 +599,20 @@ public class AchievementProgressWithDefinition {
         Objects.equals(this.description, achievementProgressWithDefinition.description) &&
         Objects.equals(this.campaignId, achievementProgressWithDefinition.campaignId) &&
         Objects.equals(this.target, achievementProgressWithDefinition.target) &&
-        Objects.equals(this.achievementRecurrencePolicy, achievementProgressWithDefinition.achievementRecurrencePolicy) &&
-        Objects.equals(this.achievementActivationPolicy, achievementProgressWithDefinition.achievementActivationPolicy) &&
+        Objects.equals(this.achievementRecurrencePolicy, achievementProgressWithDefinition.achievementRecurrencePolicy)
+        &&
+        Objects.equals(this.achievementActivationPolicy, achievementProgressWithDefinition.achievementActivationPolicy)
+        &&
         Objects.equals(this.achievementFixedStartDate, achievementProgressWithDefinition.achievementFixedStartDate) &&
         Objects.equals(this.achievementEndDate, achievementProgressWithDefinition.achievementEndDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description, campaignId, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate, achievementEndDate);
+    return Objects.hash(status, progress, startDate, completionDate, endDate, achievementId, name, title, description,
+        campaignId, target, achievementRecurrencePolicy, achievementActivationPolicy, achievementFixedStartDate,
+        achievementEndDate);
   }
-
 
   @Override
   public String toString() {
@@ -641,4 +649,3 @@ public class AchievementProgressWithDefinition {
   }
 
 }
-

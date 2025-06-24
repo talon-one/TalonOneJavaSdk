@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -25,63 +24,63 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * This effect is **deprecated**. The properties specific to the \&quot;redeemReferral\&quot; effect. This gets triggered whenever the referral code is valid, and a rule was triggered that contains a \&quot;redeem referral\&quot; effect. 
+ * This effect is **deprecated**. The properties specific to the
+ * \&quot;redeemReferral\&quot; effect. This gets triggered whenever the
+ * referral code is valid, and a rule was triggered that contains a
+ * \&quot;redeem referral\&quot; effect.
  */
 @ApiModel(description = "This effect is **deprecated**. The properties specific to the \"redeemReferral\" effect. This gets triggered whenever the referral code is valid, and a rule was triggered that contains a \"redeem referral\" effect. ")
 
 public class RedeemReferralEffectProps {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
+  public RedeemReferralEffectProps id(Long id) {
 
-  public RedeemReferralEffectProps id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The id of the referral code that was redeemed.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The id of the referral code that was redeemed.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public RedeemReferralEffectProps value(String value) {
-    
+
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * The referral code that was redeemed.
+   * 
    * @return value
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The referral code that was redeemed.")
 
   public String getValue() {
     return value;
   }
 
-
   public void setValue(String value) {
     this.value = value;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,7 +99,6 @@ public class RedeemReferralEffectProps {
   public int hashCode() {
     return Objects.hash(id, value);
   }
-
 
   @Override
   public String toString() {
@@ -124,4 +122,3 @@ public class RedeemReferralEffectProps {
   }
 
 }
-

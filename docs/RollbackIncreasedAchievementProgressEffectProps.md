@@ -7,9 +7,9 @@ The properties specific to the \"rollbackIncreasedAchievementProgress\" effect. 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**achievementId** | **Integer** | The internal ID of the achievement. | 
+**achievementId** | **Long** | The internal ID of the achievement. | 
 **achievementName** | **String** | The name of the achievement. | 
-**progressTrackerId** | **Integer** | The internal ID of the achievement progress tracker. | 
+**progressTrackerId** | **Long** | The internal ID of the achievement progress tracker. | 
 **decreaseProgressBy** | [**BigDecimal**](BigDecimal.md) | The value by which the customer&#39;s current progress in the achievement is decreased. | 
 **currentProgress** | [**BigDecimal**](BigDecimal.md) | The current progress of the customer in the achievement. | 
 **target** | [**BigDecimal**](BigDecimal.md) | The target value to complete the achievement. | 

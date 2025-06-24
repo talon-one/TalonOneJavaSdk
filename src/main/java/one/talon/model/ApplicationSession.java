@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -38,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationSession {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -54,11 +53,11 @@ public class ApplicationSession {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_PROFILEINTEGRATIONID = "profileintegrationid";
   @SerializedName(SERIALIZED_NAME_PROFILEINTEGRATIONID)
@@ -73,16 +72,22 @@ public class ApplicationSession {
   private String referral;
 
   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or
+   * &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; →
+   * &#x60;cancelled&#x60; For more information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
    */
   @JsonAdapter(StateEnum.Adapter.class)
   public enum StateEnum {
     OPEN("open"),
-    
+
     CLOSED("closed"),
-    
+
     PARTIALLY_RETURNED("partially_returned"),
-    
+
     CANCELLED("cancelled");
 
     private String value;
@@ -117,7 +122,7 @@ public class ApplicationSession {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -147,83 +152,80 @@ public class ApplicationSession {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
+  public ApplicationSession id(Long id) {
 
-  public ApplicationSession id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public ApplicationSession created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-02-07T08:15:22Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-
   public ApplicationSession integrationId(String integrationId) {
-    
+
     this.integrationId = integrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID set by your integration layer.
+   * 
    * @return integrationId
-  **/
+   **/
   @ApiModelProperty(example = "URNGV8294NV", required = true, value = "The integration ID set by your integration layer.")
 
   public String getIntegrationId() {
     return integrationId;
   }
 
-
   public void setIntegrationId(String integrationId) {
     this.integrationId = integrationId;
   }
 
-
   public ApplicationSession storeIntegrationId(String storeIntegrationId) {
-    
+
     this.storeIntegrationId = storeIntegrationId;
     return this;
   }
 
-   /**
+  /**
    * The integration ID of the store. You choose this ID when you create a store.
+   * 
    * @return storeIntegrationId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "STORE-001", value = "The integration ID of the store. You choose this ID when you create a store.")
 
@@ -231,67 +233,64 @@ public class ApplicationSession {
     return storeIntegrationId;
   }
 
-
   public void setStoreIntegrationId(String storeIntegrationId) {
     this.storeIntegrationId = storeIntegrationId;
   }
 
+  public ApplicationSession applicationId(Long applicationId) {
 
-  public ApplicationSession applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
+  public ApplicationSession profileId(Long profileId) {
 
-  public ApplicationSession profileId(Integer profileId) {
-    
     this.profileId = profileId;
     return this;
   }
 
-   /**
+  /**
    * The globally unique Talon.One ID of the customer that created this entity.
+   * 
    * @return profileId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
-
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 
-
   public ApplicationSession profileintegrationid(String profileintegrationid) {
-    
+
     this.profileintegrationid = profileintegrationid;
     return this;
   }
 
-   /**
+  /**
    * Integration ID of the customer for the session.
+   * 
    * @return profileintegrationid
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "382370BKDB946", value = "Integration ID of the customer for the session.")
 
@@ -299,80 +298,81 @@ public class ApplicationSession {
     return profileintegrationid;
   }
 
-
   public void setProfileintegrationid(String profileintegrationid) {
     this.profileintegrationid = profileintegrationid;
   }
 
-
   public ApplicationSession coupon(String coupon) {
-    
+
     this.coupon = coupon;
     return this;
   }
 
-   /**
+  /**
    * Any coupon code entered.
+   * 
    * @return coupon
-  **/
+   **/
   @ApiModelProperty(example = "BKDB946", required = true, value = "Any coupon code entered.")
 
   public String getCoupon() {
     return coupon;
   }
 
-
   public void setCoupon(String coupon) {
     this.coupon = coupon;
   }
 
-
   public ApplicationSession referral(String referral) {
-    
+
     this.referral = referral;
     return this;
   }
 
-   /**
+  /**
    * Any referral code entered.
+   * 
    * @return referral
-  **/
+   **/
   @ApiModelProperty(example = "BKDB946", required = true, value = "Any referral code entered.")
 
   public String getReferral() {
     return referral;
   }
 
-
   public void setReferral(String referral) {
     this.referral = referral;
   }
 
-
   public ApplicationSession state(StateEnum state) {
-    
+
     this.state = state;
     return this;
   }
 
-   /**
-   * Indicates the current state of the session. Sessions can be created as &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are:  1. &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; → &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; → &#x60;cancelled&#x60;  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). 
+  /**
+   * Indicates the current state of the session. Sessions can be created as
+   * &#x60;open&#x60; or &#x60;closed&#x60;. The state transitions are: 1.
+   * &#x60;open&#x60; → &#x60;closed&#x60; 2. &#x60;open&#x60; →
+   * &#x60;cancelled&#x60; 3. &#x60;closed&#x60; → &#x60;cancelled&#x60; or
+   * &#x60;partially_returned&#x60; 4. &#x60;partially_returned&#x60; →
+   * &#x60;cancelled&#x60; For more information, see [Customer session
+   * states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions).
+   * 
    * @return state
-  **/
+   **/
   @ApiModelProperty(example = "closed", required = true, value = "Indicates the current state of the session. Sessions can be created as `open` or `closed`. The state transitions are:  1. `open` → `closed` 2. `open` → `cancelled` 3. `closed` → `cancelled` or `partially_returned` 4. `partially_returned` → `cancelled`  For more information, see [Customer session states](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). ")
 
   public StateEnum getState() {
     return state;
   }
 
-
   public void setState(StateEnum state) {
     this.state = state;
   }
 
-
   public ApplicationSession cartItems(List<CartItem> cartItems) {
-    
+
     this.cartItems = cartItems;
     return this;
   }
@@ -382,24 +382,23 @@ public class ApplicationSession {
     return this;
   }
 
-   /**
+  /**
    * Serialized JSON representation.
+   * 
    * @return cartItems
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Serialized JSON representation.")
 
   public List<CartItem> getCartItems() {
     return cartItems;
   }
 
-
   public void setCartItems(List<CartItem> cartItems) {
     this.cartItems = cartItems;
   }
 
-
   public ApplicationSession discounts(Map<String, BigDecimal> discounts) {
-    
+
     this.discounts = discounts;
     return this;
   }
@@ -409,76 +408,77 @@ public class ApplicationSession {
     return this;
   }
 
-   /**
-   * **API V1 only.** A map of labeled discount values, in the same currency as the session.  If you are using the V2 endpoints, refer to the &#x60;totalDiscounts&#x60; property instead. 
+  /**
+   * **API V1 only.** A map of labeled discount values, in the same currency as
+   * the session. If you are using the V2 endpoints, refer to the
+   * &#x60;totalDiscounts&#x60; property instead.
+   * 
    * @return discounts
-  **/
+   **/
   @ApiModelProperty(required = true, value = "**API V1 only.** A map of labeled discount values, in the same currency as the session.  If you are using the V2 endpoints, refer to the `totalDiscounts` property instead. ")
 
   public Map<String, BigDecimal> getDiscounts() {
     return discounts;
   }
 
-
   public void setDiscounts(Map<String, BigDecimal> discounts) {
     this.discounts = discounts;
   }
 
-
   public ApplicationSession totalDiscounts(BigDecimal totalDiscounts) {
-    
+
     this.totalDiscounts = totalDiscounts;
     return this;
   }
 
-   /**
-   * The total sum of the discounts applied to this session.  **Note:** If more than one session is returned, this value is displayed as &#x60;0&#x60;. 
+  /**
+   * The total sum of the discounts applied to this session. **Note:** If more
+   * than one session is returned, this value is displayed as &#x60;0&#x60;.
+   * 
    * @return totalDiscounts
-  **/
+   **/
   @ApiModelProperty(example = "100.0", required = true, value = "The total sum of the discounts applied to this session.  **Note:** If more than one session is returned, this value is displayed as `0`. ")
 
   public BigDecimal getTotalDiscounts() {
     return totalDiscounts;
   }
 
-
   public void setTotalDiscounts(BigDecimal totalDiscounts) {
     this.totalDiscounts = totalDiscounts;
   }
 
-
   public ApplicationSession total(BigDecimal total) {
-    
+
     this.total = total;
     return this;
   }
 
-   /**
+  /**
    * The total sum of the session before any discounts applied.
+   * 
    * @return total
-  **/
+   **/
   @ApiModelProperty(example = "200.0", required = true, value = "The total sum of the session before any discounts applied.")
 
   public BigDecimal getTotal() {
     return total;
   }
 
-
   public void setTotal(BigDecimal total) {
     this.total = total;
   }
 
-
   public ApplicationSession attributes(Object attributes) {
-    
+
     this.attributes = attributes;
     return this;
   }
 
-   /**
+  /**
    * Arbitrary properties associated with this item.
+   * 
    * @return attributes
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Arbitrary properties associated with this item.")
 
@@ -486,11 +486,9 @@ public class ApplicationSession {
     return attributes;
   }
 
-
   public void setAttributes(Object attributes) {
     this.attributes = attributes;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -520,9 +518,9 @@ public class ApplicationSession {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, integrationId, storeIntegrationId, applicationId, profileId, profileintegrationid, coupon, referral, state, cartItems, discounts, totalDiscounts, total, attributes);
+    return Objects.hash(id, created, integrationId, storeIntegrationId, applicationId, profileId, profileintegrationid,
+        coupon, referral, state, cartItems, discounts, totalDiscounts, total, attributes);
   }
-
 
   @Override
   public String toString() {
@@ -559,4 +557,3 @@ public class ApplicationSession {
   }
 
 }
-

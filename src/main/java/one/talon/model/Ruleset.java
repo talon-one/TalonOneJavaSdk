@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -36,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Ruleset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +43,7 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
@@ -68,85 +67,81 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Integer templateId;
+  private Long templateId;
 
   public static final String SERIALIZED_NAME_ACTIVATED_AT = "activatedAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_AT)
   private OffsetDateTime activatedAt;
 
+  public Ruleset id(Long id) {
 
-  public Ruleset id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public Ruleset created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public Ruleset userId(Long userId) {
 
-  public Ruleset userId(Integer userId) {
-    
     this.userId = userId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the user associated with this entity.
+   * 
    * @return userId
-  **/
+   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-
   public Ruleset rules(List<Rule> rules) {
-    
+
     this.rules = rules;
     return this;
   }
@@ -156,24 +151,23 @@ public class Ruleset {
     return this;
   }
 
-   /**
+  /**
    * Set of rules to apply.
+   * 
    * @return rules
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Set of rules to apply.")
 
   public List<Rule> getRules() {
     return rules;
   }
 
-
   public void setRules(List<Rule> rules) {
     this.rules = rules;
   }
 
-
   public Ruleset strikethroughRules(List<Rule> strikethroughRules) {
-    
+
     this.strikethroughRules = strikethroughRules;
     return this;
   }
@@ -186,10 +180,11 @@ public class Ruleset {
     return this;
   }
 
-   /**
+  /**
    * Set of rules to apply for strikethrough.
+   * 
    * @return strikethroughRules
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Set of rules to apply for strikethrough.")
 
@@ -197,14 +192,12 @@ public class Ruleset {
     return strikethroughRules;
   }
 
-
   public void setStrikethroughRules(List<Rule> strikethroughRules) {
     this.strikethroughRules = strikethroughRules;
   }
 
-
   public Ruleset bindings(List<Binding> bindings) {
-    
+
     this.bindings = bindings;
     return this;
   }
@@ -214,32 +207,35 @@ public class Ruleset {
     return this;
   }
 
-   /**
-   * An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.
+  /**
+   * An array that provides objects with variable names (name) and talang
+   * expressions to whose result they are bound (expression) during rule
+   * evaluation. The order of the evaluation is decided by the position in the
+   * array.
+   * 
    * @return bindings
-  **/
+   **/
   @ApiModelProperty(example = "[]", required = true, value = "An array that provides objects with variable names (name) and talang expressions to whose result they are bound (expression) during rule evaluation. The order of the evaluation is decided by the position in the array.")
 
   public List<Binding> getBindings() {
     return bindings;
   }
 
-
   public void setBindings(List<Binding> bindings) {
     this.bindings = bindings;
   }
 
-
   public Ruleset rbVersion(String rbVersion) {
-    
+
     this.rbVersion = rbVersion;
     return this;
   }
 
-   /**
+  /**
    * The version of the rulebuilder used to create this ruleset.
+   * 
    * @return rbVersion
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "v2", value = "The version of the rulebuilder used to create this ruleset.")
 
@@ -247,22 +243,22 @@ public class Ruleset {
     return rbVersion;
   }
 
-
   public void setRbVersion(String rbVersion) {
     this.rbVersion = rbVersion;
   }
 
-
   public Ruleset activate(Boolean activate) {
-    
+
     this.activate = activate;
     return this;
   }
 
-   /**
-   * Indicates whether this created ruleset should be activated for the campaign that owns it.
+  /**
+   * Indicates whether this created ruleset should be activated for the campaign
+   * that owns it.
+   * 
    * @return activate
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "true", value = "Indicates whether this created ruleset should be activated for the campaign that owns it.")
 
@@ -270,68 +266,65 @@ public class Ruleset {
     return activate;
   }
 
-
   public void setActivate(Boolean activate) {
     this.activate = activate;
   }
 
+  public Ruleset campaignId(Long campaignId) {
 
-  public Ruleset campaignId(Integer campaignId) {
-    
     this.campaignId = campaignId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign that owns this entity.
+   * 
    * @return campaignId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "320", value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
-
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
+  public Ruleset templateId(Long templateId) {
 
-  public Ruleset templateId(Integer templateId) {
-    
     this.templateId = templateId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the campaign template that owns this entity.
+   * 
    * @return templateId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the campaign template that owns this entity.")
 
-  public Integer getTemplateId() {
+  public Long getTemplateId() {
     return templateId;
   }
 
-
-  public void setTemplateId(Integer templateId) {
+  public void setTemplateId(Long templateId) {
     this.templateId = templateId;
   }
 
-
   public Ruleset activatedAt(OffsetDateTime activatedAt) {
-    
+
     this.activatedAt = activatedAt;
     return this;
   }
 
-   /**
+  /**
    * Timestamp indicating when this Ruleset was activated.
+   * 
    * @return activatedAt
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Timestamp indicating when this Ruleset was activated.")
 
@@ -339,11 +332,9 @@ public class Ruleset {
     return activatedAt;
   }
 
-
   public void setActivatedAt(OffsetDateTime activatedAt) {
     this.activatedAt = activatedAt;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -369,9 +360,9 @@ public class Ruleset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, userId, rules, strikethroughRules, bindings, rbVersion, activate, campaignId, templateId, activatedAt);
+    return Objects.hash(id, created, userId, rules, strikethroughRules, bindings, rbVersion, activate, campaignId,
+        templateId, activatedAt);
   }
-
 
   @Override
   public String toString() {
@@ -404,4 +395,3 @@ public class Ruleset {
   }
 
 }
-

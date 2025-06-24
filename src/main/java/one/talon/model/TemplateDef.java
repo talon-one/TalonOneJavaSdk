@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -35,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class TemplateDef {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,7 +42,7 @@ public class TemplateDef {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -77,163 +76,156 @@ public class TemplateDef {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public TemplateDef id(Long id) {
 
-  public TemplateDef id(Integer id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Internal ID of this entity.
+   * 
    * @return id
-  **/
+   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-
   public TemplateDef created(OffsetDateTime created) {
-    
+
     this.created = created;
     return this;
   }
 
-   /**
+  /**
    * The time this entity was created.
+   * 
    * @return created
-  **/
+   **/
   @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
 
   public OffsetDateTime getCreated() {
     return created;
   }
 
-
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+  public TemplateDef applicationId(Long applicationId) {
 
-  public TemplateDef applicationId(Integer applicationId) {
-    
     this.applicationId = applicationId;
     return this;
   }
 
-   /**
+  /**
    * The ID of the Application that owns this entity.
+   * 
    * @return applicationId
-  **/
+   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
-
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
-
   public TemplateDef title(String title) {
-    
+
     this.title = title;
     return this;
   }
 
-   /**
-   * Campaigner-friendly name for the template that will be shown in the rule editor.
+  /**
+   * Campaigner-friendly name for the template that will be shown in the rule
+   * editor.
+   * 
    * @return title
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Campaigner-friendly name for the template that will be shown in the rule editor.")
 
   public String getTitle() {
     return title;
   }
 
-
   public void setTitle(String title) {
     this.title = title;
   }
 
-
   public TemplateDef description(String description) {
-    
+
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short description of the template that will be shown in the rule editor.
+   * 
    * @return description
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A short description of the template that will be shown in the rule editor.")
 
   public String getDescription() {
     return description;
   }
 
-
   public void setDescription(String description) {
     this.description = description;
   }
 
-
   public TemplateDef help(String help) {
-    
+
     this.help = help;
     return this;
   }
 
-   /**
+  /**
    * Extended help text for the template.
+   * 
    * @return help
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Extended help text for the template.")
 
   public String getHelp() {
     return help;
   }
 
-
   public void setHelp(String help) {
     this.help = help;
   }
 
-
   public TemplateDef category(String category) {
-    
+
     this.category = category;
     return this;
   }
 
-   /**
+  /**
    * Used for grouping templates in the rule editor sidebar.
+   * 
    * @return category
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Used for grouping templates in the rule editor sidebar.")
 
   public String getCategory() {
     return category;
   }
 
-
   public void setCategory(String category) {
     this.category = category;
   }
 
-
   public TemplateDef expr(List<Object> expr) {
-    
+
     this.expr = expr;
     return this;
   }
@@ -243,24 +235,23 @@ public class TemplateDef {
     return this;
   }
 
-   /**
+  /**
    * A Talang expression that contains variable bindings referring to args.
+   * 
    * @return expr
-  **/
+   **/
   @ApiModelProperty(required = true, value = "A Talang expression that contains variable bindings referring to args.")
 
   public List<Object> getExpr() {
     return expr;
   }
 
-
   public void setExpr(List<Object> expr) {
     this.expr = expr;
   }
 
-
   public TemplateDef args(List<TemplateArgDef> args) {
-    
+
     this.args = args;
     return this;
   }
@@ -270,32 +261,32 @@ public class TemplateDef {
     return this;
   }
 
-   /**
+  /**
    * An array of argument definitions.
+   * 
    * @return args
-  **/
+   **/
   @ApiModelProperty(required = true, value = "An array of argument definitions.")
 
   public List<TemplateArgDef> getArgs() {
     return args;
   }
 
-
   public void setArgs(List<TemplateArgDef> args) {
     this.args = args;
   }
 
-
   public TemplateDef expose(Boolean expose) {
-    
+
     this.expose = expose;
     return this;
   }
 
-   /**
+  /**
    * A flag to control exposure in Rule Builder.
+   * 
    * @return expose
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A flag to control exposure in Rule Builder.")
 
@@ -303,33 +294,30 @@ public class TemplateDef {
     return expose;
   }
 
-
   public void setExpose(Boolean expose) {
     this.expose = expose;
   }
 
-
   public TemplateDef name(String name) {
-    
+
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * The template name used in Talang.
+   * 
    * @return name
-  **/
+   **/
   @ApiModelProperty(required = true, value = "The template name used in Talang.")
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -357,7 +345,6 @@ public class TemplateDef {
   public int hashCode() {
     return Objects.hash(id, created, applicationId, title, description, help, category, expr, args, expose, name);
   }
-
 
   @Override
   public String toString() {
@@ -390,4 +377,3 @@ public class TemplateDef {
   }
 
 }
-

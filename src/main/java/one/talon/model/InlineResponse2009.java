@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package one.talon.model;
 
 import java.util.Objects;
@@ -34,37 +33,35 @@ import one.talon.model.Ruleset;
 public class InlineResponse2009 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<Ruleset> data = new ArrayList<Ruleset>();
 
+  public InlineResponse2009 totalResultSize(Long totalResultSize) {
 
-  public InlineResponse2009 totalResultSize(Integer totalResultSize) {
-    
     this.totalResultSize = totalResultSize;
     return this;
   }
 
-   /**
+  /**
    * Get totalResultSize
+   * 
    * @return totalResultSize
-  **/
+   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Integer getTotalResultSize() {
+  public Long getTotalResultSize() {
     return totalResultSize;
   }
 
-
-  public void setTotalResultSize(Integer totalResultSize) {
+  public void setTotalResultSize(Long totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 
-
   public InlineResponse2009 data(List<Ruleset> data) {
-    
+
     this.data = data;
     return this;
   }
@@ -74,21 +71,20 @@ public class InlineResponse2009 {
     return this;
   }
 
-   /**
+  /**
    * Get data
+   * 
    * @return data
-  **/
+   **/
   @ApiModelProperty(required = true, value = "")
 
   public List<Ruleset> getData() {
     return data;
   }
 
-
   public void setData(List<Ruleset> data) {
     this.data = data;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -107,7 +103,6 @@ public class InlineResponse2009 {
   public int hashCode() {
     return Objects.hash(totalResultSize, data);
   }
-
 
   @Override
   public String toString() {
@@ -131,4 +126,3 @@ public class InlineResponse2009 {
   }
 
 }
-
