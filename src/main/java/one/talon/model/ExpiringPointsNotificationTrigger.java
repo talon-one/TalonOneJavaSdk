@@ -31,7 +31,7 @@ import java.io.IOException;
 public class ExpiringPointsNotificationTrigger {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Integer amount;
+  private Long amount;
 
   /**
    * Notification period indicated by a letter; \&quot;w\&quot; means week, \&quot;d\&quot; means day.
@@ -85,7 +85,7 @@ public class ExpiringPointsNotificationTrigger {
   private PeriodEnum period;
 
 
-  public ExpiringPointsNotificationTrigger amount(Integer amount) {
+  public ExpiringPointsNotificationTrigger amount(Long amount) {
     
     this.amount = amount;
     return this;
@@ -98,12 +98,12 @@ public class ExpiringPointsNotificationTrigger {
   **/
   @ApiModelProperty(required = true, value = "The amount of period.")
 
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
 
-  public void setAmount(Integer amount) {
+  public void setAmount(Long amount) {
     this.amount = amount;
   }
 

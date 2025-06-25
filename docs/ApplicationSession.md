@@ -6,12 +6,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **integrationId** | **String** | The integration ID set by your integration layer. | 
 **storeIntegrationId** | **String** | The integration ID of the store. You choose this ID when you create a store. |  [optional]
-**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
-**profileId** | **Integer** | The globally unique Talon.One ID of the customer that created this entity. |  [optional]
+**applicationId** | **Long** | The ID of the Application that owns this entity. | 
+**profileId** | **Long** | The globally unique Talon.One ID of the customer that created this entity. |  [optional]
 **profileintegrationid** | **String** | Integration ID of the customer for the session. |  [optional]
 **coupon** | **String** | Any coupon code entered. | 
 **referral** | **String** | Any referral code entered. | 

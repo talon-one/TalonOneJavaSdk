@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
+**totalResultSize** | **Long** |  | 
 **data** | [**List&lt;LoyaltyDashboardData&gt;**](LoyaltyDashboardData.md) |  | 
 
 

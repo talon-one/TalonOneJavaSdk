@@ -41,11 +41,11 @@ public class WebhookLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Integer webhookId;
+  private Long webhookId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -61,7 +61,7 @@ public class WebhookLogEntry {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
+  private Long status;
 
   public static final String SERIALIZED_NAME_REQUEST_TIME = "requestTime";
   @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
@@ -116,7 +116,7 @@ public class WebhookLogEntry {
   }
 
 
-  public WebhookLogEntry webhookId(Integer webhookId) {
+  public WebhookLogEntry webhookId(Long webhookId) {
     
     this.webhookId = webhookId;
     return this;
@@ -128,17 +128,17 @@ public class WebhookLogEntry {
   **/
   @ApiModelProperty(example = "5", required = true, value = "ID of the webhook that triggered the request.")
 
-  public Integer getWebhookId() {
+  public Long getWebhookId() {
     return webhookId;
   }
 
 
-  public void setWebhookId(Integer webhookId) {
+  public void setWebhookId(Long webhookId) {
     this.webhookId = webhookId;
   }
 
 
-  public WebhookLogEntry applicationId(Integer applicationId) {
+  public WebhookLogEntry applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -151,12 +151,12 @@ public class WebhookLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "12", value = "ID of the application that triggered the webhook.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -228,7 +228,7 @@ public class WebhookLogEntry {
   }
 
 
-  public WebhookLogEntry status(Integer status) {
+  public WebhookLogEntry status(Long status) {
     
     this.status = status;
     return this;
@@ -241,12 +241,12 @@ public class WebhookLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "204", value = "HTTP status code of response.")
 
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
 
-  public void setStatus(Integer status) {
+  public void setStatus(Long status) {
     this.status = status;
   }
 

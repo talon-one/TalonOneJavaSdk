@@ -33,20 +33,20 @@ import java.util.List;
 public class ProfileAudiencesChanges {
   public static final String SERIALIZED_NAME_ADDS = "adds";
   @SerializedName(SERIALIZED_NAME_ADDS)
-  private List<Integer> adds = new ArrayList<Integer>();
+  private List<Long> adds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_DELETES = "deletes";
   @SerializedName(SERIALIZED_NAME_DELETES)
-  private List<Integer> deletes = new ArrayList<Integer>();
+  private List<Long> deletes = new ArrayList<Long>();
 
 
-  public ProfileAudiencesChanges adds(List<Integer> adds) {
+  public ProfileAudiencesChanges adds(List<Long> adds) {
     
     this.adds = adds;
     return this;
   }
 
-  public ProfileAudiencesChanges addAddsItem(Integer addsItem) {
+  public ProfileAudiencesChanges addAddsItem(Long addsItem) {
     this.adds.add(addsItem);
     return this;
   }
@@ -57,23 +57,23 @@ public class ProfileAudiencesChanges {
   **/
   @ApiModelProperty(example = "[2, 4]", required = true, value = "The IDs of the audiences for the customer to join.")
 
-  public List<Integer> getAdds() {
+  public List<Long> getAdds() {
     return adds;
   }
 
 
-  public void setAdds(List<Integer> adds) {
+  public void setAdds(List<Long> adds) {
     this.adds = adds;
   }
 
 
-  public ProfileAudiencesChanges deletes(List<Integer> deletes) {
+  public ProfileAudiencesChanges deletes(List<Long> deletes) {
     
     this.deletes = deletes;
     return this;
   }
 
-  public ProfileAudiencesChanges addDeletesItem(Integer deletesItem) {
+  public ProfileAudiencesChanges addDeletesItem(Long deletesItem) {
     this.deletes.add(deletesItem);
     return this;
   }
@@ -84,12 +84,12 @@ public class ProfileAudiencesChanges {
   **/
   @ApiModelProperty(example = "[7]", required = true, value = "The IDs of the audiences for the customer to leave.")
 
-  public List<Integer> getDeletes() {
+  public List<Long> getDeletes() {
     return deletes;
   }
 
 
-  public void setDeletes(List<Integer> deletes) {
+  public void setDeletes(List<Long> deletes) {
     this.deletes = deletes;
   }
 

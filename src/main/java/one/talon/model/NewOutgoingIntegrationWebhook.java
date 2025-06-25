@@ -41,7 +41,7 @@ public class NewOutgoingIntegrationWebhook {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
 
   public NewOutgoingIntegrationWebhook title(String title) {
@@ -89,13 +89,13 @@ public class NewOutgoingIntegrationWebhook {
   }
 
 
-  public NewOutgoingIntegrationWebhook applicationIds(List<Integer> applicationIds) {
+  public NewOutgoingIntegrationWebhook applicationIds(List<Long> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewOutgoingIntegrationWebhook addApplicationIdsItem(Integer applicationIdsItem) {
+  public NewOutgoingIntegrationWebhook addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -106,12 +106,12 @@ public class NewOutgoingIntegrationWebhook {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "IDs of the Applications to which a webhook must be linked.")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 

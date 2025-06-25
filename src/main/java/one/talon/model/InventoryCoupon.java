@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class InventoryCoupon {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +44,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -52,7 +52,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -60,7 +60,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -76,7 +76,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
-  private Integer usageCounter;
+  private Long usageCounter;
 
   public static final String SERIALIZED_NAME_DISCOUNT_COUNTER = "discountCounter";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNTER)
@@ -96,7 +96,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
@@ -104,7 +104,7 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_RESERVATION = "reservation";
   @SerializedName(SERIALIZED_NAME_RESERVATION)
@@ -124,14 +124,14 @@ public class InventoryCoupon {
 
   public static final String SERIALIZED_NAME_PROFILE_REDEMPTION_COUNT = "profileRedemptionCount";
   @SerializedName(SERIALIZED_NAME_PROFILE_REDEMPTION_COUNT)
-  private Integer profileRedemptionCount;
+  private Long profileRedemptionCount;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
 
 
-  public InventoryCoupon id(Integer id) {
+  public InventoryCoupon id(Long id) {
     
     this.id = id;
     return this;
@@ -143,12 +143,12 @@ public class InventoryCoupon {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -175,7 +175,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon campaignId(Integer campaignId) {
+  public InventoryCoupon campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -187,12 +187,12 @@ public class InventoryCoupon {
   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -219,7 +219,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon usageLimit(Integer usageLimit) {
+  public InventoryCoupon usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -233,12 +233,12 @@ public class InventoryCoupon {
   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -268,7 +268,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon reservationLimit(Integer reservationLimit) {
+  public InventoryCoupon reservationLimit(Long reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -283,12 +283,12 @@ public class InventoryCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
@@ -370,7 +370,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon usageCounter(Integer usageCounter) {
+  public InventoryCoupon usageCounter(Long usageCounter) {
     
     this.usageCounter = usageCounter;
     return this;
@@ -382,12 +382,12 @@ public class InventoryCoupon {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times the coupon has been successfully redeemed.")
 
-  public Integer getUsageCounter() {
+  public Long getUsageCounter() {
     return usageCounter;
   }
 
 
-  public void setUsageCounter(Integer usageCounter) {
+  public void setUsageCounter(Long usageCounter) {
     this.usageCounter = usageCounter;
   }
 
@@ -484,7 +484,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon referralId(Integer referralId) {
+  public InventoryCoupon referralId(Long referralId) {
     
     this.referralId = referralId;
     return this;
@@ -497,12 +497,12 @@ public class InventoryCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "326632952", value = "The integration ID of the referring customer (if any) for whom this coupon was created as an effect.")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
 
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 
@@ -530,7 +530,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon importId(Integer importId) {
+  public InventoryCoupon importId(Long importId) {
     
     this.importId = importId;
     return this;
@@ -543,12 +543,12 @@ public class InventoryCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this coupon.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
@@ -645,7 +645,7 @@ public class InventoryCoupon {
   }
 
 
-  public InventoryCoupon profileRedemptionCount(Integer profileRedemptionCount) {
+  public InventoryCoupon profileRedemptionCount(Long profileRedemptionCount) {
     
     this.profileRedemptionCount = profileRedemptionCount;
     return this;
@@ -657,12 +657,12 @@ public class InventoryCoupon {
   **/
   @ApiModelProperty(example = "5", required = true, value = "The number of times the coupon was redeemed by the profile.")
 
-  public Integer getProfileRedemptionCount() {
+  public Long getProfileRedemptionCount() {
     return profileRedemptionCount;
   }
 
 
-  public void setProfileRedemptionCount(Integer profileRedemptionCount) {
+  public void setProfileRedemptionCount(Long profileRedemptionCount) {
     this.profileRedemptionCount = profileRedemptionCount;
   }
 

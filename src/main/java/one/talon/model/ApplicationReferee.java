@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationReferee {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
@@ -55,7 +55,7 @@ public class ApplicationReferee {
   private OffsetDateTime created;
 
 
-  public ApplicationReferee applicationId(Integer applicationId) {
+  public ApplicationReferee applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -67,12 +67,12 @@ public class ApplicationReferee {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

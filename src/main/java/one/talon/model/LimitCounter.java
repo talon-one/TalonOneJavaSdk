@@ -32,19 +32,19 @@ import java.math.BigDecimal;
 public class LimitCounter {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
@@ -52,7 +52,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -60,7 +60,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_COUPON_ID = "couponId";
   @SerializedName(SERIALIZED_NAME_COUPON_ID)
-  private Integer couponId;
+  private Long couponId;
 
   public static final String SERIALIZED_NAME_COUPON_VALUE = "couponValue";
   @SerializedName(SERIALIZED_NAME_COUPON_VALUE)
@@ -68,7 +68,7 @@ public class LimitCounter {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   public static final String SERIALIZED_NAME_REFERRAL_VALUE = "referralValue";
   @SerializedName(SERIALIZED_NAME_REFERRAL_VALUE)
@@ -91,7 +91,7 @@ public class LimitCounter {
   private BigDecimal counter;
 
 
-  public LimitCounter campaignId(Integer campaignId) {
+  public LimitCounter campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -103,17 +103,17 @@ public class LimitCounter {
   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public LimitCounter applicationId(Integer applicationId) {
+  public LimitCounter applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -125,17 +125,17 @@ public class LimitCounter {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public LimitCounter accountId(Integer accountId) {
+  public LimitCounter accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -147,17 +147,17 @@ public class LimitCounter {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public LimitCounter id(Integer id) {
+  public LimitCounter id(Long id) {
     
     this.id = id;
     return this;
@@ -169,12 +169,12 @@ public class LimitCounter {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -201,7 +201,7 @@ public class LimitCounter {
   }
 
 
-  public LimitCounter profileId(Integer profileId) {
+  public LimitCounter profileId(Long profileId) {
     
     this.profileId = profileId;
     return this;
@@ -214,12 +214,12 @@ public class LimitCounter {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "335", value = "The profile ID for which this limit counter is used.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 
@@ -247,7 +247,7 @@ public class LimitCounter {
   }
 
 
-  public LimitCounter couponId(Integer couponId) {
+  public LimitCounter couponId(Long couponId) {
     
     this.couponId = couponId;
     return this;
@@ -260,12 +260,12 @@ public class LimitCounter {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "34", value = "The internal coupon ID for which this limit counter is used.")
 
-  public Integer getCouponId() {
+  public Long getCouponId() {
     return couponId;
   }
 
 
-  public void setCouponId(Integer couponId) {
+  public void setCouponId(Long couponId) {
     this.couponId = couponId;
   }
 
@@ -293,7 +293,7 @@ public class LimitCounter {
   }
 
 
-  public LimitCounter referralId(Integer referralId) {
+  public LimitCounter referralId(Long referralId) {
     
     this.referralId = referralId;
     return this;
@@ -306,12 +306,12 @@ public class LimitCounter {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The referral ID for which this limit counter is used.")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
 
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 

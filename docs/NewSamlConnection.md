@@ -8,7 +8,7 @@ A new SAML 2.0 connection.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **x509certificate** | **String** | X.509 Certificate. | 
-**accountId** | **Integer** | The ID of the account that owns this entity. | 
+**accountId** | **Long** | The ID of the account that owns this entity. | 
 **name** | **String** | ID of the SAML service. | 
 **enabled** | **Boolean** | Determines if this SAML connection active. | 
 **issuer** | **String** | Identity Provider Entity ID. | 

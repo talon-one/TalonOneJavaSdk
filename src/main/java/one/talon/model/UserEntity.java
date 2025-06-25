@@ -31,10 +31,10 @@ import java.io.IOException;
 public class UserEntity {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
 
-  public UserEntity userId(Integer userId) {
+  public UserEntity userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -46,12 +46,12 @@ public class UserEntity {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 

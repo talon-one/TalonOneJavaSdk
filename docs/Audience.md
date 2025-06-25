@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accountId** | **Integer** | The ID of the account that owns this entity. | 
-**id** | **Integer** | Internal ID of this entity. | 
+**accountId** | **Long** | The ID of the account that owns this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **name** | **String** | The human-friendly display name for this audience. | 
 **sandbox** | **Boolean** | Indicates if this is a live or sandbox Application. |  [optional]

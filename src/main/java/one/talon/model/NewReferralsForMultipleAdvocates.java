@@ -26,14 +26,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.threeten.bp.OffsetDateTime;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
- * 
+ * NewReferralsForMultipleAdvocates
  */
-@ApiModel(description = "")
-@JsonAdapter(NullableAdapterFactory.class)
 
 public class NewReferralsForMultipleAdvocates {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
@@ -46,11 +42,11 @@ public class NewReferralsForMultipleAdvocates {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_IDS = "advocateProfileIntegrationIds";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_IDS)
@@ -58,8 +54,6 @@ public class NewReferralsForMultipleAdvocates {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_VALID_CHARACTERS = "validCharacters";
@@ -117,7 +111,7 @@ public class NewReferralsForMultipleAdvocates {
   }
 
 
-  public NewReferralsForMultipleAdvocates usageLimit(Integer usageLimit) {
+  public NewReferralsForMultipleAdvocates usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -131,17 +125,17 @@ public class NewReferralsForMultipleAdvocates {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
 
-  public NewReferralsForMultipleAdvocates campaignId(Integer campaignId) {
+  public NewReferralsForMultipleAdvocates campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -153,12 +147,12 @@ public class NewReferralsForMultipleAdvocates {
   **/
   @ApiModelProperty(example = "45", required = true, value = "The ID of the campaign from which the referral received the referral code.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

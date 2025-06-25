@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Picklist {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -101,22 +101,22 @@ public class Picklist {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)
   private Boolean imported;
 
 
-  public Picklist id(Integer id) {
+  public Picklist id(Long id) {
     
     this.id = id;
     return this;
@@ -128,12 +128,12 @@ public class Picklist {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -209,7 +209,7 @@ public class Picklist {
   }
 
 
-  public Picklist modifiedBy(Integer modifiedBy) {
+  public Picklist modifiedBy(Long modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -222,17 +222,17 @@ public class Picklist {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "124", value = "ID of the user who last updated this effect if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
 
-  public Picklist createdBy(Integer createdBy) {
+  public Picklist createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -244,17 +244,17 @@ public class Picklist {
   **/
   @ApiModelProperty(example = "134", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public Picklist accountId(Integer accountId) {
+  public Picklist accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -267,12 +267,12 @@ public class Picklist {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3886", value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 

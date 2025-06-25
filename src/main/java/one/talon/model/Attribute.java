@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Attribute {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +42,7 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   /**
    * The name of the entity that can have this attribute. When creating or updating the entities of a given type, you can include an &#x60;attributes&#x60; object with keys corresponding to the &#x60;name&#x60; of the custom attributes for that type.
@@ -210,11 +210,11 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS = "subscribedCatalogsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS)
-  private List<Integer> subscribedCatalogsIds = null;
+  private List<Long> subscribedCatalogsIds = null;
 
   /**
    * Gets or Sets allowedSubscriptions
@@ -269,10 +269,10 @@ public class Attribute {
 
   public static final String SERIALIZED_NAME_EVENT_TYPE_ID = "eventTypeId";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE_ID)
-  private Integer eventTypeId;
+  private Long eventTypeId;
 
 
-  public Attribute id(Integer id) {
+  public Attribute id(Long id) {
     
     this.id = id;
     return this;
@@ -284,12 +284,12 @@ public class Attribute {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -316,7 +316,7 @@ public class Attribute {
   }
 
 
-  public Attribute accountId(Integer accountId) {
+  public Attribute accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -328,12 +328,12 @@ public class Attribute {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
@@ -566,15 +566,15 @@ public class Attribute {
   }
 
 
-  public Attribute subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public Attribute subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public Attribute addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public Attribute addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -587,25 +587,25 @@ public class Attribute {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 4, 9]", value = "A list of the IDs of the applications where this attribute is available.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
 
-  public Attribute subscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
+  public Attribute subscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
     
     this.subscribedCatalogsIds = subscribedCatalogsIds;
     return this;
   }
 
-  public Attribute addSubscribedCatalogsIdsItem(Integer subscribedCatalogsIdsItem) {
+  public Attribute addSubscribedCatalogsIdsItem(Long subscribedCatalogsIdsItem) {
     if (this.subscribedCatalogsIds == null) {
-      this.subscribedCatalogsIds = new ArrayList<Integer>();
+      this.subscribedCatalogsIds = new ArrayList<Long>();
     }
     this.subscribedCatalogsIds.add(subscribedCatalogsIdsItem);
     return this;
@@ -618,12 +618,12 @@ public class Attribute {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 5]", value = "A list of the IDs of the catalogs where this attribute is available.")
 
-  public List<Integer> getSubscribedCatalogsIds() {
+  public List<Long> getSubscribedCatalogsIds() {
     return subscribedCatalogsIds;
   }
 
 
-  public void setSubscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
+  public void setSubscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
     this.subscribedCatalogsIds = subscribedCatalogsIds;
   }
 
@@ -659,7 +659,7 @@ public class Attribute {
   }
 
 
-  public Attribute eventTypeId(Integer eventTypeId) {
+  public Attribute eventTypeId(Long eventTypeId) {
     
     this.eventTypeId = eventTypeId;
     return this;
@@ -672,12 +672,12 @@ public class Attribute {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "22", value = "")
 
-  public Integer getEventTypeId() {
+  public Long getEventTypeId() {
     return eventTypeId;
   }
 
 
-  public void setEventTypeId(Integer eventTypeId) {
+  public void setEventTypeId(Long eventTypeId) {
     this.eventTypeId = eventTypeId;
   }
 

@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class UpdateCoupon {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -44,7 +44,7 @@ public class UpdateCoupon {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -75,7 +75,7 @@ public class UpdateCoupon {
   private Boolean implicitlyReserved;
 
 
-  public UpdateCoupon usageLimit(Integer usageLimit) {
+  public UpdateCoupon usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -90,12 +90,12 @@ public class UpdateCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100", value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -125,7 +125,7 @@ public class UpdateCoupon {
   }
 
 
-  public UpdateCoupon reservationLimit(Integer reservationLimit) {
+  public UpdateCoupon reservationLimit(Long reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -140,12 +140,12 @@ public class UpdateCoupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 

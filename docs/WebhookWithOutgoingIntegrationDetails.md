@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** | Internal ID of this entity. | 
+**id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
-**applicationIds** | **List&lt;Integer&gt;** | The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;.  | 
+**applicationIds** | **List&lt;Long&gt;** | The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;.  | 
 **title** | **String** | Name or title for this webhook. | 
 **description** | **String** | A description of the webhook. |  [optional]
 **verb** | [**VerbEnum**](#VerbEnum) | API method for this webhook. | 
@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **payload** | **String** | API payload (supports templating using parameters) for this webhook. |  [optional]
 **params** | [**List&lt;TemplateArgDef&gt;**](TemplateArgDef.md) | Array of template argument definitions. | 
 **enabled** | **Boolean** | Enables or disables webhook from showing in the Rule Builder. | 
-**outgoingIntegrationTemplateId** | **Integer** | Identifier of the outgoing integration template. |  [optional]
-**outgoingIntegrationTypeId** | **Integer** | Identifier of the outgoing integration type. |  [optional]
+**outgoingIntegrationTemplateId** | **Long** | Identifier of the outgoing integration template. |  [optional]
+**outgoingIntegrationTypeId** | **Long** | Identifier of the outgoing integration type. |  [optional]
 **outgoingIntegrationTypeName** | **String** | Name of the outgoing integration. |  [optional]
 
 

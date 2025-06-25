@@ -38,7 +38,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyCard {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,7 +46,7 @@ public class LoyaltyCard {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -70,7 +70,7 @@ public class LoyaltyCard {
 
   public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
   @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
-  private Integer usersPerCardLimit;
+  private Long usersPerCardLimit;
 
   public static final String SERIALIZED_NAME_PROFILES = "profiles";
   @SerializedName(SERIALIZED_NAME_PROFILES)
@@ -101,7 +101,7 @@ public class LoyaltyCard {
   private String batchId;
 
 
-  public LoyaltyCard id(Integer id) {
+  public LoyaltyCard id(Long id) {
     
     this.id = id;
     return this;
@@ -113,12 +113,12 @@ public class LoyaltyCard {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -145,7 +145,7 @@ public class LoyaltyCard {
   }
 
 
-  public LoyaltyCard programID(Integer programID) {
+  public LoyaltyCard programID(Long programID) {
     
     this.programID = programID;
     return this;
@@ -157,12 +157,12 @@ public class LoyaltyCard {
   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
 
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
@@ -280,7 +280,7 @@ public class LoyaltyCard {
   }
 
 
-  public LoyaltyCard usersPerCardLimit(Integer usersPerCardLimit) {
+  public LoyaltyCard usersPerCardLimit(Long usersPerCardLimit) {
     
     this.usersPerCardLimit = usersPerCardLimit;
     return this;
@@ -293,12 +293,12 @@ public class LoyaltyCard {
   **/
   @ApiModelProperty(example = "111", required = true, value = "The max amount of customer profiles that can be linked to the card. 0 means unlimited. ")
 
-  public Integer getUsersPerCardLimit() {
+  public Long getUsersPerCardLimit() {
     return usersPerCardLimit;
   }
 
 
-  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
+  public void setUsersPerCardLimit(Long usersPerCardLimit) {
     this.usersPerCardLimit = usersPerCardLimit;
   }
 

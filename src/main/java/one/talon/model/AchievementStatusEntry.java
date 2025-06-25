@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AchievementStatusEntry {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -177,7 +177,7 @@ public class AchievementStatusEntry {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   /**
    * The status of the achievement.
@@ -235,7 +235,7 @@ public class AchievementStatusEntry {
   private AchievementProgress currentProgress;
 
 
-  public AchievementStatusEntry id(Integer id) {
+  public AchievementStatusEntry id(Long id) {
     
     this.id = id;
     return this;
@@ -247,12 +247,12 @@ public class AchievementStatusEntry {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -505,7 +505,7 @@ public class AchievementStatusEntry {
   }
 
 
-  public AchievementStatusEntry campaignId(Integer campaignId) {
+  public AchievementStatusEntry campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -518,12 +518,12 @@ public class AchievementStatusEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

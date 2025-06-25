@@ -31,10 +31,10 @@ import java.io.IOException;
 public class ApplicationSessionEntity {
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Integer sessionId;
+  private Long sessionId;
 
 
-  public ApplicationSessionEntity sessionId(Integer sessionId) {
+  public ApplicationSessionEntity sessionId(Long sessionId) {
     
     this.sessionId = sessionId;
     return this;
@@ -46,12 +46,12 @@ public class ApplicationSessionEntity {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The globally unique Talon.One ID of the session where this entity was created.")
 
-  public Integer getSessionId() {
+  public Long getSessionId() {
     return sessionId;
   }
 
 
-  public void setSessionId(Integer sessionId) {
+  public void setSessionId(Long sessionId) {
     this.sessionId = sessionId;
   }
 

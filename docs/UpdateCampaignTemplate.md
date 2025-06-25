@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **campaignAttributes** | [**Object**](.md) | The campaign attributes that campaigns created from this template will have by default. |  [optional]
 **couponAttributes** | [**Object**](.md) | The campaign attributes that coupons created from this template will have by default. |  [optional]
 **state** | [**StateEnum**](#StateEnum) | Only campaign templates in &#39;available&#39; state may be used to create campaigns. | 
-**activeRulesetId** | **Integer** | The ID of the ruleset this campaign template will use. |  [optional]
+**activeRulesetId** | **Long** | The ID of the ruleset this campaign template will use. |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags for the campaign template. |  [optional]
 **features** | [**List&lt;FeaturesEnum&gt;**](#List&lt;FeaturesEnum&gt;) | A list of features for the campaign template. |  [optional]
 **couponSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
@@ -20,9 +20,9 @@ Name | Type | Description | Notes
 **referralSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]
 **limits** | [**List&lt;TemplateLimitConfig&gt;**](TemplateLimitConfig.md) | The set of limits that operate for this campaign template. |  [optional]
 **templateParams** | [**List&lt;CampaignTemplateParams&gt;**](CampaignTemplateParams.md) | Fields which can be used to replace values in a rule. |  [optional]
-**applicationsIds** | **List&lt;Integer&gt;** | A list of IDs of the Applications that are subscribed to this campaign template. | 
+**applicationsIds** | **List&lt;Long&gt;** | A list of IDs of the Applications that are subscribed to this campaign template. | 
 **campaignCollections** | [**List&lt;CampaignTemplateCollection&gt;**](CampaignTemplateCollection.md) | The campaign collections from the blueprint campaign for the template. |  [optional]
-**defaultCampaignGroupId** | **Integer** | The default campaign group ID. |  [optional]
+**defaultCampaignGroupId** | **Long** | The default campaign group ID. |  [optional]
 **campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items.  |  [optional]
 
 

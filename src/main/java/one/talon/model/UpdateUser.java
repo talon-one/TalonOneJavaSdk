@@ -96,7 +96,7 @@ public class UpdateUser {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Integer> roles = null;
+  private List<Long> roles = null;
 
   public static final String SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS = "applicationNotificationSubscriptions";
   @SerializedName(SERIALIZED_NAME_APPLICATION_NOTIFICATION_SUBSCRIPTIONS)
@@ -195,15 +195,15 @@ public class UpdateUser {
   }
 
 
-  public UpdateUser roles(List<Integer> roles) {
+  public UpdateUser roles(List<Long> roles) {
     
     this.roles = roles;
     return this;
   }
 
-  public UpdateUser addRolesItem(Integer rolesItem) {
+  public UpdateUser addRolesItem(Long rolesItem) {
     if (this.roles == null) {
-      this.roles = new ArrayList<Integer>();
+      this.roles = new ArrayList<Long>();
     }
     this.roles.add(rolesItem);
     return this;
@@ -216,12 +216,12 @@ public class UpdateUser {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "A list of the IDs of the roles assigned to the user.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. ")
 
-  public List<Integer> getRoles() {
+  public List<Long> getRoles() {
     return roles;
   }
 
 
-  public void setRoles(List<Integer> roles) {
+  public void setRoles(List<Long> roles) {
     this.roles = roles;
   }
 

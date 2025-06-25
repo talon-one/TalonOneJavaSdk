@@ -31,7 +31,7 @@ import java.io.IOException;
 public class CampaignEvaluationGroup {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -39,7 +39,7 @@ public class CampaignEvaluationGroup {
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parentId";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
-  private Integer parentId;
+  private Long parentId;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -157,10 +157,10 @@ public class CampaignEvaluationGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
 
-  public CampaignEvaluationGroup applicationId(Integer applicationId) {
+  public CampaignEvaluationGroup applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -172,12 +172,12 @@ public class CampaignEvaluationGroup {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -204,7 +204,7 @@ public class CampaignEvaluationGroup {
   }
 
 
-  public CampaignEvaluationGroup parentId(Integer parentId) {
+  public CampaignEvaluationGroup parentId(Long parentId) {
     
     this.parentId = parentId;
     return this;
@@ -217,12 +217,12 @@ public class CampaignEvaluationGroup {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the parent group that contains the campaign evaluation group.")
 
-  public Integer getParentId() {
+  public Long getParentId() {
     return parentId;
   }
 
 
-  public void setParentId(Integer parentId) {
+  public void setParentId(Long parentId) {
     this.parentId = parentId;
   }
 
@@ -316,7 +316,7 @@ public class CampaignEvaluationGroup {
   }
 
 
-  public CampaignEvaluationGroup id(Integer id) {
+  public CampaignEvaluationGroup id(Long id) {
     
     this.id = id;
     return this;
@@ -328,12 +328,12 @@ public class CampaignEvaluationGroup {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

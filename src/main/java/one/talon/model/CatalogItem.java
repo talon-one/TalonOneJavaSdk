@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CatalogItem {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,11 +53,11 @@ public class CatalogItem {
 
   public static final String SERIALIZED_NAME_CATALOGID = "catalogid";
   @SerializedName(SERIALIZED_NAME_CATALOGID)
-  private Integer catalogid;
+  private Long catalogid;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -68,7 +68,7 @@ public class CatalogItem {
   private Product product;
 
 
-  public CatalogItem id(Integer id) {
+  public CatalogItem id(Long id) {
     
     this.id = id;
     return this;
@@ -80,12 +80,12 @@ public class CatalogItem {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -157,7 +157,7 @@ public class CatalogItem {
   }
 
 
-  public CatalogItem catalogid(Integer catalogid) {
+  public CatalogItem catalogid(Long catalogid) {
     
     this.catalogid = catalogid;
     return this;
@@ -169,17 +169,17 @@ public class CatalogItem {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The ID of the catalog the item belongs to.")
 
-  public Integer getCatalogid() {
+  public Long getCatalogid() {
     return catalogid;
   }
 
 
-  public void setCatalogid(Integer catalogid) {
+  public void setCatalogid(Long catalogid) {
     this.catalogid = catalogid;
   }
 
 
-  public CatalogItem version(Integer version) {
+  public CatalogItem version(Long version) {
     
     this.version = version;
     return this;
@@ -192,12 +192,12 @@ public class CatalogItem {
   **/
   @ApiModelProperty(example = "5", required = true, value = "The version of the catalog item.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
 
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 

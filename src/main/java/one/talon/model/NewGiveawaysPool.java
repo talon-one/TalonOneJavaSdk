@@ -41,7 +41,7 @@ public class NewGiveawaysPool {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
@@ -93,15 +93,15 @@ public class NewGiveawaysPool {
   }
 
 
-  public NewGiveawaysPool subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public NewGiveawaysPool subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public NewGiveawaysPool addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public NewGiveawaysPool addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -114,12 +114,12 @@ public class NewGiveawaysPool {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 4]", value = "A list of the IDs of the applications that this giveaways pool is enabled for.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 

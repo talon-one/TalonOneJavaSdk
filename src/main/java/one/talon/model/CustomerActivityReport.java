@@ -46,7 +46,7 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
-  private Integer customerId;
+  private Long customerId;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -54,15 +54,15 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTIONS = "couponRedemptions";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTIONS)
-  private Integer couponRedemptions;
+  private Long couponRedemptions;
 
   public static final String SERIALIZED_NAME_COUPON_USE_ATTEMPTS = "couponUseAttempts";
   @SerializedName(SERIALIZED_NAME_COUPON_USE_ATTEMPTS)
-  private Integer couponUseAttempts;
+  private Long couponUseAttempts;
 
   public static final String SERIALIZED_NAME_COUPON_FAILED_ATTEMPTS = "couponFailedAttempts";
   @SerializedName(SERIALIZED_NAME_COUPON_FAILED_ATTEMPTS)
-  private Integer couponFailedAttempts;
+  private Long couponFailedAttempts;
 
   public static final String SERIALIZED_NAME_ACCRUED_DISCOUNTS = "accruedDiscounts";
   @SerializedName(SERIALIZED_NAME_ACCRUED_DISCOUNTS)
@@ -74,11 +74,11 @@ public class CustomerActivityReport {
 
   public static final String SERIALIZED_NAME_TOTAL_ORDERS = "totalOrders";
   @SerializedName(SERIALIZED_NAME_TOTAL_ORDERS)
-  private Integer totalOrders;
+  private Long totalOrders;
 
   public static final String SERIALIZED_NAME_TOTAL_ORDERS_NO_COUPON = "totalOrdersNoCoupon";
   @SerializedName(SERIALIZED_NAME_TOTAL_ORDERS_NO_COUPON)
-  private Integer totalOrdersNoCoupon;
+  private Long totalOrdersNoCoupon;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
@@ -151,7 +151,7 @@ public class CustomerActivityReport {
   }
 
 
-  public CustomerActivityReport customerId(Integer customerId) {
+  public CustomerActivityReport customerId(Long customerId) {
     
     this.customerId = customerId;
     return this;
@@ -163,12 +163,12 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "The internal Talon.One ID of the customer.")
 
-  public Integer getCustomerId() {
+  public Long getCustomerId() {
     return customerId;
   }
 
 
-  public void setCustomerId(Integer customerId) {
+  public void setCustomerId(Long customerId) {
     this.customerId = customerId;
   }
 
@@ -196,7 +196,7 @@ public class CustomerActivityReport {
   }
 
 
-  public CustomerActivityReport couponRedemptions(Integer couponRedemptions) {
+  public CustomerActivityReport couponRedemptions(Long couponRedemptions) {
     
     this.couponRedemptions = couponRedemptions;
     return this;
@@ -208,17 +208,17 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions in all customer campaigns.")
 
-  public Integer getCouponRedemptions() {
+  public Long getCouponRedemptions() {
     return couponRedemptions;
   }
 
 
-  public void setCouponRedemptions(Integer couponRedemptions) {
+  public void setCouponRedemptions(Long couponRedemptions) {
     this.couponRedemptions = couponRedemptions;
   }
 
 
-  public CustomerActivityReport couponUseAttempts(Integer couponUseAttempts) {
+  public CustomerActivityReport couponUseAttempts(Long couponUseAttempts) {
     
     this.couponUseAttempts = couponUseAttempts;
     return this;
@@ -230,17 +230,17 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon use attempts in all customer campaigns.")
 
-  public Integer getCouponUseAttempts() {
+  public Long getCouponUseAttempts() {
     return couponUseAttempts;
   }
 
 
-  public void setCouponUseAttempts(Integer couponUseAttempts) {
+  public void setCouponUseAttempts(Long couponUseAttempts) {
     this.couponUseAttempts = couponUseAttempts;
   }
 
 
-  public CustomerActivityReport couponFailedAttempts(Integer couponFailedAttempts) {
+  public CustomerActivityReport couponFailedAttempts(Long couponFailedAttempts) {
     
     this.couponFailedAttempts = couponFailedAttempts;
     return this;
@@ -252,12 +252,12 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "Number of failed coupon use attempts in all customer campaigns.")
 
-  public Integer getCouponFailedAttempts() {
+  public Long getCouponFailedAttempts() {
     return couponFailedAttempts;
   }
 
 
-  public void setCouponFailedAttempts(Integer couponFailedAttempts) {
+  public void setCouponFailedAttempts(Long couponFailedAttempts) {
     this.couponFailedAttempts = couponFailedAttempts;
   }
 
@@ -306,7 +306,7 @@ public class CustomerActivityReport {
   }
 
 
-  public CustomerActivityReport totalOrders(Integer totalOrders) {
+  public CustomerActivityReport totalOrders(Long totalOrders) {
     
     this.totalOrders = totalOrders;
     return this;
@@ -318,17 +318,17 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "Number of orders in all customer campaigns.")
 
-  public Integer getTotalOrders() {
+  public Long getTotalOrders() {
     return totalOrders;
   }
 
 
-  public void setTotalOrders(Integer totalOrders) {
+  public void setTotalOrders(Long totalOrders) {
     this.totalOrders = totalOrders;
   }
 
 
-  public CustomerActivityReport totalOrdersNoCoupon(Integer totalOrdersNoCoupon) {
+  public CustomerActivityReport totalOrdersNoCoupon(Long totalOrdersNoCoupon) {
     
     this.totalOrdersNoCoupon = totalOrdersNoCoupon;
     return this;
@@ -340,12 +340,12 @@ public class CustomerActivityReport {
   **/
   @ApiModelProperty(required = true, value = "Number of orders without coupon used in all customer campaigns.")
 
-  public Integer getTotalOrdersNoCoupon() {
+  public Long getTotalOrdersNoCoupon() {
     return totalOrdersNoCoupon;
   }
 
 
-  public void setTotalOrdersNoCoupon(Integer totalOrdersNoCoupon) {
+  public void setTotalOrdersNoCoupon(Long totalOrdersNoCoupon) {
     this.totalOrdersNoCoupon = totalOrdersNoCoupon;
   }
 

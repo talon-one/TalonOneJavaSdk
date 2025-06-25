@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -50,7 +50,7 @@ public class User {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -123,7 +123,7 @@ public class User {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Integer> roles = null;
+  private List<Long> roles = null;
 
   public static final String SERIALIZED_NAME_AUTH_METHOD = "authMethod";
   @SerializedName(SERIALIZED_NAME_AUTH_METHOD)
@@ -150,7 +150,7 @@ public class User {
   private Object additionalAttributes;
 
 
-  public User id(Integer id) {
+  public User id(Long id) {
     
     this.id = id;
     return this;
@@ -162,12 +162,12 @@ public class User {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -238,7 +238,7 @@ public class User {
   }
 
 
-  public User accountId(Integer accountId) {
+  public User accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -250,12 +250,12 @@ public class User {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
@@ -371,15 +371,15 @@ public class User {
   }
 
 
-  public User roles(List<Integer> roles) {
+  public User roles(List<Long> roles) {
     
     this.roles = roles;
     return this;
   }
 
-  public User addRolesItem(Integer rolesItem) {
+  public User addRolesItem(Long rolesItem) {
     if (this.roles == null) {
-      this.roles = new ArrayList<Integer>();
+      this.roles = new ArrayList<Long>();
     }
     this.roles.add(rolesItem);
     return this;
@@ -392,12 +392,12 @@ public class User {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[71]", value = "A list of the IDs of the roles assigned to the user.")
 
-  public List<Integer> getRoles() {
+  public List<Long> getRoles() {
     return roles;
   }
 
 
-  public void setRoles(List<Integer> roles) {
+  public void setRoles(List<Long> roles) {
     this.roles = roles;
   }
 

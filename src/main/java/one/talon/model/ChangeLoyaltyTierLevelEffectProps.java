@@ -37,7 +37,7 @@ public class ChangeLoyaltyTierLevelEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -78,7 +78,7 @@ public class ChangeLoyaltyTierLevelEffectProps {
   }
 
 
-  public ChangeLoyaltyTierLevelEffectProps programId(Integer programId) {
+  public ChangeLoyaltyTierLevelEffectProps programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -90,12 +90,12 @@ public class ChangeLoyaltyTierLevelEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 

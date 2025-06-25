@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Role {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,11 +46,11 @@ public class Role {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUP_I_D = "campaignGroupID";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUP_I_D)
-  private Integer campaignGroupID;
+  private Long campaignGroupID;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -62,14 +62,14 @@ public class Role {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = null;
+  private List<Long> members = null;
 
   public static final String SERIALIZED_NAME_ACL = "acl";
   @SerializedName(SERIALIZED_NAME_ACL)
   private Object acl;
 
 
-  public Role id(Integer id) {
+  public Role id(Long id) {
     
     this.id = id;
     return this;
@@ -81,12 +81,12 @@ public class Role {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -135,7 +135,7 @@ public class Role {
   }
 
 
-  public Role accountId(Integer accountId) {
+  public Role accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -147,17 +147,17 @@ public class Role {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public Role campaignGroupID(Integer campaignGroupID) {
+  public Role campaignGroupID(Long campaignGroupID) {
     
     this.campaignGroupID = campaignGroupID;
     return this;
@@ -170,12 +170,12 @@ public class Role {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the [Campaign Group](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this role was created for. ")
 
-  public Integer getCampaignGroupID() {
+  public Long getCampaignGroupID() {
     return campaignGroupID;
   }
 
 
-  public void setCampaignGroupID(Integer campaignGroupID) {
+  public void setCampaignGroupID(Long campaignGroupID) {
     this.campaignGroupID = campaignGroupID;
   }
 
@@ -225,15 +225,15 @@ public class Role {
   }
 
 
-  public Role members(List<Integer> members) {
+  public Role members(List<Long> members) {
     
     this.members = members;
     return this;
   }
 
-  public Role addMembersItem(Integer membersItem) {
+  public Role addMembersItem(Long membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Integer>();
+      this.members = new ArrayList<Long>();
     }
     this.members.add(membersItem);
     return this;
@@ -246,12 +246,12 @@ public class Role {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[48, 562, 475, 18]", value = "A list of user identifiers assigned to this role.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
 
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
 

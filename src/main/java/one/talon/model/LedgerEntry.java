@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LedgerEntry {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -45,19 +45,19 @@ public class LedgerEntry {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
+  private Long loyaltyProgramId;
 
   public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
   @SerializedName(SERIALIZED_NAME_EVENT_ID)
-  private Integer eventId;
+  private Long eventId;
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Integer amount;
+  private Long amount;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -69,10 +69,10 @@ public class LedgerEntry {
 
   public static final String SERIALIZED_NAME_REFERENCE_ID = "referenceId";
   @SerializedName(SERIALIZED_NAME_REFERENCE_ID)
-  private Integer referenceId;
+  private Long referenceId;
 
 
-  public LedgerEntry id(Integer id) {
+  public LedgerEntry id(Long id) {
     
     this.id = id;
     return this;
@@ -84,12 +84,12 @@ public class LedgerEntry {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -138,7 +138,7 @@ public class LedgerEntry {
   }
 
 
-  public LedgerEntry accountId(Integer accountId) {
+  public LedgerEntry accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -150,17 +150,17 @@ public class LedgerEntry {
   **/
   @ApiModelProperty(required = true, value = "The ID of the Talon.One account that owns this profile.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public LedgerEntry loyaltyProgramId(Integer loyaltyProgramId) {
+  public LedgerEntry loyaltyProgramId(Long loyaltyProgramId) {
     
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
@@ -172,17 +172,17 @@ public class LedgerEntry {
   **/
   @ApiModelProperty(example = "323414846", required = true, value = "ID of the ledger.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
 
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
 
 
-  public LedgerEntry eventId(Integer eventId) {
+  public LedgerEntry eventId(Long eventId) {
     
     this.eventId = eventId;
     return this;
@@ -194,17 +194,17 @@ public class LedgerEntry {
   **/
   @ApiModelProperty(example = "3", required = true, value = "ID of the related event.")
 
-  public Integer getEventId() {
+  public Long getEventId() {
     return eventId;
   }
 
 
-  public void setEventId(Integer eventId) {
+  public void setEventId(Long eventId) {
     this.eventId = eventId;
   }
 
 
-  public LedgerEntry amount(Integer amount) {
+  public LedgerEntry amount(Long amount) {
     
     this.amount = amount;
     return this;
@@ -216,12 +216,12 @@ public class LedgerEntry {
   **/
   @ApiModelProperty(example = "100", required = true, value = "Amount of loyalty points.")
 
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
 
-  public void setAmount(Integer amount) {
+  public void setAmount(Long amount) {
     this.amount = amount;
   }
 
@@ -270,7 +270,7 @@ public class LedgerEntry {
   }
 
 
-  public LedgerEntry referenceId(Integer referenceId) {
+  public LedgerEntry referenceId(Long referenceId) {
     
     this.referenceId = referenceId;
     return this;
@@ -283,12 +283,12 @@ public class LedgerEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the balancing ledgerEntry.")
 
-  public Integer getReferenceId() {
+  public Long getReferenceId() {
     return referenceId;
   }
 
 
-  public void setReferenceId(Integer referenceId) {
+  public void setReferenceId(Long referenceId) {
     this.referenceId = referenceId;
   }
 

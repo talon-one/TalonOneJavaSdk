@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the set. | 
 **operator** | [**OperatorEnum**](#OperatorEnum) | An indicator of how the set operates on its elements. | 
 **elements** | [**List&lt;CampaignSetNode&gt;**](CampaignSetNode.md) | Child elements of this set. | 
-**groupId** | **Integer** | The ID of the campaign set. | 
+**groupId** | **Long** | The ID of the campaign set. | 
 **locked** | **Boolean** | An indicator of whether the campaign set is locked for modification. | 
 **description** | **String** | A description of the campaign set. |  [optional]
 **evaluationMode** | [**EvaluationModeEnum**](#EvaluationModeEnum) | The mode by which campaigns in the campaign evaluation group are evaluated. | 

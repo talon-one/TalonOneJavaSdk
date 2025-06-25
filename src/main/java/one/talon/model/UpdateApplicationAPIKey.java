@@ -31,10 +31,10 @@ import java.io.IOException;
 public class UpdateApplicationAPIKey {
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Integer timeOffset;
+  private Long timeOffset;
 
 
-  public UpdateApplicationAPIKey timeOffset(Integer timeOffset) {
+  public UpdateApplicationAPIKey timeOffset(Long timeOffset) {
     
     this.timeOffset = timeOffset;
     return this;
@@ -46,12 +46,12 @@ public class UpdateApplicationAPIKey {
   **/
   @ApiModelProperty(example = "100000", required = true, value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Integer getTimeOffset() {
+  public Long getTimeOffset() {
     return timeOffset;
   }
 
 
-  public void setTimeOffset(Integer timeOffset) {
+  public void setTimeOffset(Long timeOffset) {
     this.timeOffset = timeOffset;
   }
 

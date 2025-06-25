@@ -31,14 +31,14 @@ import java.io.IOException;
 public class GenerateCampaignDescription {
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
-  private Integer rulesetID;
+  private Long rulesetID;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
 
-  public GenerateCampaignDescription rulesetID(Integer rulesetID) {
+  public GenerateCampaignDescription rulesetID(Long rulesetID) {
     
     this.rulesetID = rulesetID;
     return this;
@@ -50,12 +50,12 @@ public class GenerateCampaignDescription {
   **/
   @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getRulesetID() {
+  public Long getRulesetID() {
     return rulesetID;
   }
 
 
-  public void setRulesetID(Integer rulesetID) {
+  public void setRulesetID(Long rulesetID) {
     this.rulesetID = rulesetID;
   }
 

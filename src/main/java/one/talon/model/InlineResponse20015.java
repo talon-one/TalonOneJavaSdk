@@ -34,14 +34,14 @@ import one.talon.model.LoyaltyProgram;
 public class InlineResponse20015 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<LoyaltyProgram> data = new ArrayList<LoyaltyProgram>();
 
 
-  public InlineResponse20015 totalResultSize(Integer totalResultSize) {
+  public InlineResponse20015 totalResultSize(Long totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -53,12 +53,12 @@ public class InlineResponse20015 {
   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Integer getTotalResultSize() {
+  public Long getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Integer totalResultSize) {
+  public void setTotalResultSize(Long totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

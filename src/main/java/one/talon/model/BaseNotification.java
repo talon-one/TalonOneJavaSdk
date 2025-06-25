@@ -44,7 +44,7 @@ public class BaseNotification {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   /**
    * The notification type.
@@ -185,7 +185,7 @@ public class BaseNotification {
   }
 
 
-  public BaseNotification id(Integer id) {
+  public BaseNotification id(Long id) {
     
     this.id = id;
     return this;
@@ -198,12 +198,12 @@ public class BaseNotification {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

@@ -105,7 +105,7 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_ACHIEVEMENT_ID = "achievementId";
   @SerializedName(SERIALIZED_NAME_ACHIEVEMENT_ID)
-  private Integer achievementId;
+  private Long achievementId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -121,7 +121,7 @@ public class AchievementProgressWithDefinition {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
@@ -351,7 +351,7 @@ public class AchievementProgressWithDefinition {
   }
 
 
-  public AchievementProgressWithDefinition achievementId(Integer achievementId) {
+  public AchievementProgressWithDefinition achievementId(Long achievementId) {
     
     this.achievementId = achievementId;
     return this;
@@ -363,12 +363,12 @@ public class AchievementProgressWithDefinition {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The internal ID of the achievement.")
 
-  public Integer getAchievementId() {
+  public Long getAchievementId() {
     return achievementId;
   }
 
 
-  public void setAchievementId(Integer achievementId) {
+  public void setAchievementId(Long achievementId) {
     this.achievementId = achievementId;
   }
 
@@ -439,7 +439,7 @@ public class AchievementProgressWithDefinition {
   }
 
 
-  public AchievementProgressWithDefinition campaignId(Integer campaignId) {
+  public AchievementProgressWithDefinition campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -451,12 +451,12 @@ public class AchievementProgressWithDefinition {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

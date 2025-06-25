@@ -38,7 +38,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationSession {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -54,11 +54,11 @@ public class ApplicationSession {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
   public static final String SERIALIZED_NAME_PROFILEINTEGRATIONID = "profileintegrationid";
   @SerializedName(SERIALIZED_NAME_PROFILEINTEGRATIONID)
@@ -148,7 +148,7 @@ public class ApplicationSession {
   private Object attributes;
 
 
-  public ApplicationSession id(Integer id) {
+  public ApplicationSession id(Long id) {
     
     this.id = id;
     return this;
@@ -160,12 +160,12 @@ public class ApplicationSession {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -237,7 +237,7 @@ public class ApplicationSession {
   }
 
 
-  public ApplicationSession applicationId(Integer applicationId) {
+  public ApplicationSession applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -249,17 +249,17 @@ public class ApplicationSession {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public ApplicationSession profileId(Integer profileId) {
+  public ApplicationSession profileId(Long profileId) {
     
     this.profileId = profileId;
     return this;
@@ -272,12 +272,12 @@ public class ApplicationSession {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 

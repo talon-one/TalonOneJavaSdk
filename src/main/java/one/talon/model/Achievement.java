@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Achievement {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -176,11 +176,11 @@ public class Achievement {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
@@ -246,7 +246,7 @@ public class Achievement {
   private StatusEnum status;
 
 
-  public Achievement id(Integer id) {
+  public Achievement id(Long id) {
     
     this.id = id;
     return this;
@@ -258,12 +258,12 @@ public class Achievement {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -516,7 +516,7 @@ public class Achievement {
   }
 
 
-  public Achievement campaignId(Integer campaignId) {
+  public Achievement campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -528,17 +528,17 @@ public class Achievement {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public Achievement userId(Integer userId) {
+  public Achievement userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -550,12 +550,12 @@ public class Achievement {
   **/
   @ApiModelProperty(example = "1234", required = true, value = "ID of the user that created this achievement.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 

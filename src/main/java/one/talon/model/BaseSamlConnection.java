@@ -31,7 +31,7 @@ import java.io.IOException;
 public class BaseSamlConnection {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -62,7 +62,7 @@ public class BaseSamlConnection {
   private String audienceURI;
 
 
-  public BaseSamlConnection accountId(Integer accountId) {
+  public BaseSamlConnection accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -74,12 +74,12 @@ public class BaseSamlConnection {
   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 

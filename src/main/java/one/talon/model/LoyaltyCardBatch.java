@@ -32,7 +32,7 @@ import one.talon.model.CodeGeneratorSettings;
 public class LoyaltyCardBatch {
   public static final String SERIALIZED_NAME_NUMBER_OF_CARDS = "numberOfCards";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_CARDS)
-  private Integer numberOfCards;
+  private Long numberOfCards;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -94,7 +94,7 @@ public class LoyaltyCardBatch {
   private CodeGeneratorSettings cardCodeSettings;
 
 
-  public LoyaltyCardBatch numberOfCards(Integer numberOfCards) {
+  public LoyaltyCardBatch numberOfCards(Long numberOfCards) {
     
     this.numberOfCards = numberOfCards;
     return this;
@@ -106,12 +106,12 @@ public class LoyaltyCardBatch {
   **/
   @ApiModelProperty(example = "5000", required = true, value = "Number of loyalty cards in the batch.")
 
-  public Integer getNumberOfCards() {
+  public Long getNumberOfCards() {
     return numberOfCards;
   }
 
 
-  public void setNumberOfCards(Integer numberOfCards) {
+  public void setNumberOfCards(Long numberOfCards) {
     this.numberOfCards = numberOfCards;
   }
 

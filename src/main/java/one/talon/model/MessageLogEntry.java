@@ -47,7 +47,7 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notificationId";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
-  private Integer notificationId;
+  private Long notificationId;
 
   public static final String SERIALIZED_NAME_NOTIFICATION_NAME = "notificationName";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_NAME)
@@ -55,7 +55,7 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Integer webhookId;
+  private Long webhookId;
 
   public static final String SERIALIZED_NAME_WEBHOOK_NAME = "webhookName";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_NAME)
@@ -132,15 +132,15 @@ public class MessageLogEntry {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
+  private Long loyaltyProgramId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
 
   public MessageLogEntry id(String id) {
@@ -210,7 +210,7 @@ public class MessageLogEntry {
   }
 
 
-  public MessageLogEntry notificationId(Integer notificationId) {
+  public MessageLogEntry notificationId(Long notificationId) {
     
     this.notificationId = notificationId;
     return this;
@@ -223,12 +223,12 @@ public class MessageLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "101", value = "ID of the notification.")
 
-  public Integer getNotificationId() {
+  public Long getNotificationId() {
     return notificationId;
   }
 
 
-  public void setNotificationId(Integer notificationId) {
+  public void setNotificationId(Long notificationId) {
     this.notificationId = notificationId;
   }
 
@@ -256,7 +256,7 @@ public class MessageLogEntry {
   }
 
 
-  public MessageLogEntry webhookId(Integer webhookId) {
+  public MessageLogEntry webhookId(Long webhookId) {
     
     this.webhookId = webhookId;
     return this;
@@ -269,12 +269,12 @@ public class MessageLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "101", value = "ID of the webhook.")
 
-  public Integer getWebhookId() {
+  public Long getWebhookId() {
     return webhookId;
   }
 
 
-  public void setWebhookId(Integer webhookId) {
+  public void setWebhookId(Long webhookId) {
     this.webhookId = webhookId;
   }
 
@@ -415,7 +415,7 @@ public class MessageLogEntry {
   }
 
 
-  public MessageLogEntry applicationId(Integer applicationId) {
+  public MessageLogEntry applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -429,17 +429,17 @@ public class MessageLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "Identifier of the Application.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public MessageLogEntry loyaltyProgramId(Integer loyaltyProgramId) {
+  public MessageLogEntry loyaltyProgramId(Long loyaltyProgramId) {
     
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
@@ -453,17 +453,17 @@ public class MessageLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "Identifier of the loyalty program.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
 
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
 
 
-  public MessageLogEntry campaignId(Integer campaignId) {
+  public MessageLogEntry campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -477,12 +477,12 @@ public class MessageLogEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "Identifier of the campaign.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

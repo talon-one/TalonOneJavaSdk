@@ -24,7 +24,7 @@ public class Example {
         CartItem cartItem = new CartItem();
         cartItem.setName("Hawaiian Pizza");
         cartItem.setSku("pizza-x");
-        cartItem.setQuantity(1);
+        cartItem.setQuantity(1L);
         cartItem.setPrice(new java.math.BigDecimal("5.5"));
 
         // Creating a customer session of V2
@@ -35,12 +35,12 @@ public class Example {
 
         // Initiating integration request wrapping the customer session update
         IntegrationRequest request = new IntegrationRequest()
-            .customerSession(customerSession)
-            // Optional parameter of requested information to be present on the response related to the customer session update
-            .responseContent(Arrays.asList(
-                IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
-                IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE
-            ));
+                .customerSession(customerSession)
+                // Optional parameter of requested information to be present on the response
+                // related to the customer session update
+                .responseContent(Arrays.asList(
+                        IntegrationRequest.ResponseContentEnum.CUSTOMERSESSION,
+                        IntegrationRequest.ResponseContentEnum.CUSTOMERPROFILE));
 
         // Flag to communicate whether the request is a "dry run"
         Boolean dryRun = false;
@@ -49,14 +49,15 @@ public class Example {
         IntegrationStateV2 is = iApi.updateCustomerSessionV2("deetdoot", request, dryRun, null);
         System.out.println(is.toString());
 
-        // Parsing the returned effects list, please consult https://developers.talon.one/Integration-API/handling-effects-v2 for the full list of effects and their corresponding properties
+        // Parsing the returned effects list, please consult
+        // https://developers.talon.one/Integration-API/handling-effects-v2 for the full
+        // list of effects and their corresponding properties
         for (Effect eff : is.getEffects()) {
             if (eff.getEffectType().equals("addLoyaltyPoints")) {
                 // Typecasting according to the specific effect type
                 AddLoyaltyPointsEffectProps props = gson.fromJson(
-                    gson.toJson(eff.getProps()),
-                    AddLoyaltyPointsEffectProps.class
-                );
+                        gson.toJson(eff.getProps()),
+                        AddLoyaltyPointsEffectProps.class);
                 // Access the specific effect's properties
                 System.out.println(props.getName());
                 System.out.println(props.getProgramId());
@@ -65,9 +66,8 @@ public class Example {
             if (eff.getEffectType().equals("acceptCoupon")) {
                 // Typecasting according to the specific effect type
                 AcceptCouponEffectProps props = gson.fromJson(
-                    gson.toJson(eff.getProps()),
-                    AcceptCouponEffectProps.class
-                );
+                        gson.toJson(eff.getProps()),
+                        AcceptCouponEffectProps.class);
                 // work with AcceptCouponEffectProps' properties
                 // ...
             }

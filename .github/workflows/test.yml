@@ -34,6 +34,9 @@ jobs:
         - name: Install dependencies
           run: |
             sudo apt-get install jq curl
+        - name: Set Release version env variable
+          run: |
+            echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
         - name: Run example
           run: |
             echo "running example";
@@ -78,7 +81,7 @@ jobs:
 
             echo "maven install";
             mvn clean install;
-            export CLASSPATH=.:./src/main/java:./target/lib/gson-2.8.9.jar:./target/talon-one-client-11.0.0.jar:./target/lib/okio-1.17.2.jar:./target/lib/okhttp-3.14.7.jar:./target/lib/threetenbp-1.4.3.jar:./target/lib/gson-fire-1.8.4.jar;
+            export CLASSPATH=.:./src/main/java:./target/lib/gson-2.8.9.jar:./target/talon-one-client-${{ env.RELEASE_VERSION }}.jar:./target/lib/okio-1.17.2.jar:./target/lib/okhttp-3.14.7.jar:./target/lib/threetenbp-1.4.3.jar:./target/lib/gson-fire-1.8.4.jar;
             
             echo "java compile";
             javac -d . Example.java;

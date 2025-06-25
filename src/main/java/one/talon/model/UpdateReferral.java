@@ -44,7 +44,7 @@ public class UpdateReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
@@ -120,7 +120,7 @@ public class UpdateReferral {
   }
 
 
-  public UpdateReferral usageLimit(Integer usageLimit) {
+  public UpdateReferral usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -135,12 +135,12 @@ public class UpdateReferral {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. This can be set to 0 for no limit, but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 

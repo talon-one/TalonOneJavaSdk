@@ -33,20 +33,20 @@ import java.util.List;
 public class GetIntegrationCouponRequest {
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Integer> campaignIds = new ArrayList<Integer>();
+  private List<Long> campaignIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  private Integer limit;
+  private Long limit = 10l;
 
 
-  public GetIntegrationCouponRequest campaignIds(List<Integer> campaignIds) {
+  public GetIntegrationCouponRequest campaignIds(List<Long> campaignIds) {
     
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public GetIntegrationCouponRequest addCampaignIdsItem(Integer campaignIdsItem) {
+  public GetIntegrationCouponRequest addCampaignIdsItem(Long campaignIdsItem) {
     this.campaignIds.add(campaignIdsItem);
     return this;
   }
@@ -57,17 +57,17 @@ public class GetIntegrationCouponRequest {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "A list of IDs of the campaigns to get coupons from.")
 
-  public List<Integer> getCampaignIds() {
+  public List<Long> getCampaignIds() {
     return campaignIds;
   }
 
 
-  public void setCampaignIds(List<Integer> campaignIds) {
+  public void setCampaignIds(List<Long> campaignIds) {
     this.campaignIds = campaignIds;
   }
 
 
-  public GetIntegrationCouponRequest limit(Integer limit) {
+  public GetIntegrationCouponRequest limit(Long limit) {
     
     this.limit = limit;
     return this;
@@ -81,12 +81,12 @@ public class GetIntegrationCouponRequest {
   **/
   @ApiModelProperty(required = true, value = "The maximum number of coupons included in the response.")
 
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
 
-  public void setLimit(Integer limit) {
+  public void setLimit(Long limit) {
     this.limit = limit;
   }
 

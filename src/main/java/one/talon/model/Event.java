@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Event {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +44,7 @@ public class Event {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -79,7 +79,7 @@ public class Event {
   private Meta meta;
 
 
-  public Event id(Integer id) {
+  public Event id(Long id) {
     
     this.id = id;
     return this;
@@ -91,12 +91,12 @@ public class Event {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -123,7 +123,7 @@ public class Event {
   }
 
 
-  public Event applicationId(Integer applicationId) {
+  public Event applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -135,12 +135,12 @@ public class Event {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

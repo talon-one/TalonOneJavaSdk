@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Application {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -49,7 +49,7 @@ public class Application {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -256,11 +256,11 @@ public class Application {
 
   public static final String SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID = "defaultEvaluationGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID)
-  private Integer defaultEvaluationGroupId;
+  private Long defaultEvaluationGroupId;
 
   public static final String SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID = "defaultCartItemFilterId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID)
-  private Integer defaultCartItemFilterId;
+  private Long defaultCartItemFilterId;
 
   public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
   @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
@@ -271,7 +271,7 @@ public class Application {
   private List<LoyaltyProgram> loyaltyPrograms = new ArrayList<LoyaltyProgram>();
 
 
-  public Application id(Integer id) {
+  public Application id(Long id) {
     
     this.id = id;
     return this;
@@ -283,12 +283,12 @@ public class Application {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -337,7 +337,7 @@ public class Application {
   }
 
 
-  public Application accountId(Integer accountId) {
+  public Application accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -349,12 +349,12 @@ public class Application {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
@@ -686,7 +686,7 @@ public class Application {
   }
 
 
-  public Application defaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+  public Application defaultEvaluationGroupId(Long defaultEvaluationGroupId) {
     
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
     return this;
@@ -699,17 +699,17 @@ public class Application {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.")
 
-  public Integer getDefaultEvaluationGroupId() {
+  public Long getDefaultEvaluationGroupId() {
     return defaultEvaluationGroupId;
   }
 
 
-  public void setDefaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+  public void setDefaultEvaluationGroupId(Long defaultEvaluationGroupId) {
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
   }
 
 
-  public Application defaultCartItemFilterId(Integer defaultCartItemFilterId) {
+  public Application defaultCartItemFilterId(Long defaultCartItemFilterId) {
     
     this.defaultCartItemFilterId = defaultCartItemFilterId;
     return this;
@@ -722,12 +722,12 @@ public class Application {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default Cart-Item-Filter for this application.")
 
-  public Integer getDefaultCartItemFilterId() {
+  public Long getDefaultCartItemFilterId() {
     return defaultCartItemFilterId;
   }
 
 
-  public void setDefaultCartItemFilterId(Integer defaultCartItemFilterId) {
+  public void setDefaultCartItemFilterId(Long defaultCartItemFilterId) {
     this.defaultCartItemFilterId = defaultCartItemFilterId;
   }
 

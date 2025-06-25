@@ -33,18 +33,18 @@ import java.util.List;
 public class CampaignGroupEntity {
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
-  private List<Integer> campaignGroups = null;
+  private List<Long> campaignGroups = null;
 
 
-  public CampaignGroupEntity campaignGroups(List<Integer> campaignGroups) {
+  public CampaignGroupEntity campaignGroups(List<Long> campaignGroups) {
     
     this.campaignGroups = campaignGroups;
     return this;
   }
 
-  public CampaignGroupEntity addCampaignGroupsItem(Integer campaignGroupsItem) {
+  public CampaignGroupEntity addCampaignGroupsItem(Long campaignGroupsItem) {
     if (this.campaignGroups == null) {
-      this.campaignGroups = new ArrayList<Integer>();
+      this.campaignGroups = new ArrayList<Long>();
     }
     this.campaignGroups.add(campaignGroupsItem);
     return this;
@@ -57,12 +57,12 @@ public class CampaignGroupEntity {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The IDs of the campaign groups that own this entity.")
 
-  public List<Integer> getCampaignGroups() {
+  public List<Long> getCampaignGroups() {
     return campaignGroups;
   }
 
 
-  public void setCampaignGroups(List<Integer> campaignGroups) {
+  public void setCampaignGroups(List<Long> campaignGroups) {
     this.campaignGroups = campaignGroups;
   }
 

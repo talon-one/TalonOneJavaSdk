@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Account {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -115,42 +115,42 @@ public class Account {
 
   public static final String SERIALIZED_NAME_APPLICATION_LIMIT = "applicationLimit";
   @SerializedName(SERIALIZED_NAME_APPLICATION_LIMIT)
-  private Integer applicationLimit;
+  private Long applicationLimit;
 
   public static final String SERIALIZED_NAME_USER_LIMIT = "userLimit";
   @SerializedName(SERIALIZED_NAME_USER_LIMIT)
-  private Integer userLimit;
+  private Long userLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_LIMIT = "campaignLimit";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_LIMIT)
-  private Integer campaignLimit;
+  private Long campaignLimit;
 
   public static final String SERIALIZED_NAME_API_LIMIT = "apiLimit";
   @SerializedName(SERIALIZED_NAME_API_LIMIT)
-  private Integer apiLimit;
+  private Long apiLimit;
 
   public static final String SERIALIZED_NAME_APPLICATION_COUNT = "applicationCount";
   @SerializedName(SERIALIZED_NAME_APPLICATION_COUNT)
-  private Integer applicationCount;
+  private Long applicationCount;
 
   public static final String SERIALIZED_NAME_USER_COUNT = "userCount";
   @SerializedName(SERIALIZED_NAME_USER_COUNT)
-  private Integer userCount;
+  private Long userCount;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_ACTIVE_COUNT = "campaignsActiveCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_ACTIVE_COUNT)
-  private Integer campaignsActiveCount;
+  private Long campaignsActiveCount;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS_INACTIVE_COUNT = "campaignsInactiveCount";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS_INACTIVE_COUNT)
-  private Integer campaignsInactiveCount;
+  private Long campaignsInactiveCount;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Object attributes;
 
 
-  public Account id(Integer id) {
+  public Account id(Long id) {
     
     this.id = id;
     return this;
@@ -162,12 +162,12 @@ public class Account {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -350,7 +350,7 @@ public class Account {
   }
 
 
-  public Account applicationLimit(Integer applicationLimit) {
+  public Account applicationLimit(Long applicationLimit) {
     
     this.applicationLimit = applicationLimit;
     return this;
@@ -363,17 +363,17 @@ public class Account {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Applications covered by your plan.")
 
-  public Integer getApplicationLimit() {
+  public Long getApplicationLimit() {
     return applicationLimit;
   }
 
 
-  public void setApplicationLimit(Integer applicationLimit) {
+  public void setApplicationLimit(Long applicationLimit) {
     this.applicationLimit = applicationLimit;
   }
 
 
-  public Account userLimit(Integer userLimit) {
+  public Account userLimit(Long userLimit) {
     
     this.userLimit = userLimit;
     return this;
@@ -386,17 +386,17 @@ public class Account {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Campaign Manager Users covered by your plan.")
 
-  public Integer getUserLimit() {
+  public Long getUserLimit() {
     return userLimit;
   }
 
 
-  public void setUserLimit(Integer userLimit) {
+  public void setUserLimit(Long userLimit) {
     this.userLimit = userLimit;
   }
 
 
-  public Account campaignLimit(Integer campaignLimit) {
+  public Account campaignLimit(Long campaignLimit) {
     
     this.campaignLimit = campaignLimit;
     return this;
@@ -409,17 +409,17 @@ public class Account {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Campaigns covered by your plan.")
 
-  public Integer getCampaignLimit() {
+  public Long getCampaignLimit() {
     return campaignLimit;
   }
 
 
-  public void setCampaignLimit(Integer campaignLimit) {
+  public void setCampaignLimit(Long campaignLimit) {
     this.campaignLimit = campaignLimit;
   }
 
 
-  public Account apiLimit(Integer apiLimit) {
+  public Account apiLimit(Long apiLimit) {
     
     this.apiLimit = apiLimit;
     return this;
@@ -432,17 +432,17 @@ public class Account {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of Integration API calls covered by your plan per billing period.")
 
-  public Integer getApiLimit() {
+  public Long getApiLimit() {
     return apiLimit;
   }
 
 
-  public void setApiLimit(Integer apiLimit) {
+  public void setApiLimit(Long apiLimit) {
     this.apiLimit = apiLimit;
   }
 
 
-  public Account applicationCount(Integer applicationCount) {
+  public Account applicationCount(Long applicationCount) {
     
     this.applicationCount = applicationCount;
     return this;
@@ -454,17 +454,17 @@ public class Account {
   **/
   @ApiModelProperty(required = true, value = "The current number of Applications in your account.")
 
-  public Integer getApplicationCount() {
+  public Long getApplicationCount() {
     return applicationCount;
   }
 
 
-  public void setApplicationCount(Integer applicationCount) {
+  public void setApplicationCount(Long applicationCount) {
     this.applicationCount = applicationCount;
   }
 
 
-  public Account userCount(Integer userCount) {
+  public Account userCount(Long userCount) {
     
     this.userCount = userCount;
     return this;
@@ -476,17 +476,17 @@ public class Account {
   **/
   @ApiModelProperty(required = true, value = "The current number of Campaign Manager Users in your account.")
 
-  public Integer getUserCount() {
+  public Long getUserCount() {
     return userCount;
   }
 
 
-  public void setUserCount(Integer userCount) {
+  public void setUserCount(Long userCount) {
     this.userCount = userCount;
   }
 
 
-  public Account campaignsActiveCount(Integer campaignsActiveCount) {
+  public Account campaignsActiveCount(Long campaignsActiveCount) {
     
     this.campaignsActiveCount = campaignsActiveCount;
     return this;
@@ -498,17 +498,17 @@ public class Account {
   **/
   @ApiModelProperty(required = true, value = "The current number of active Campaigns in your account.")
 
-  public Integer getCampaignsActiveCount() {
+  public Long getCampaignsActiveCount() {
     return campaignsActiveCount;
   }
 
 
-  public void setCampaignsActiveCount(Integer campaignsActiveCount) {
+  public void setCampaignsActiveCount(Long campaignsActiveCount) {
     this.campaignsActiveCount = campaignsActiveCount;
   }
 
 
-  public Account campaignsInactiveCount(Integer campaignsInactiveCount) {
+  public Account campaignsInactiveCount(Long campaignsInactiveCount) {
     
     this.campaignsInactiveCount = campaignsInactiveCount;
     return this;
@@ -520,12 +520,12 @@ public class Account {
   **/
   @ApiModelProperty(required = true, value = "The current number of inactive Campaigns in your account.")
 
-  public Integer getCampaignsInactiveCount() {
+  public Long getCampaignsInactiveCount() {
     return campaignsInactiveCount;
   }
 
 
-  public void setCampaignsInactiveCount(Integer campaignsInactiveCount) {
+  public void setCampaignsInactiveCount(Long campaignsInactiveCount) {
     this.campaignsInactiveCount = campaignsInactiveCount;
   }
 

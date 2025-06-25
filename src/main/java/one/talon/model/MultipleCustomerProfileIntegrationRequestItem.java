@@ -23,20 +23,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
- * 
+ * The body of a V2 integration API request (customer profile update). Next to the customer profile details, this contains an optional listing of extra properties that should be returned in the response. 
  */
-@ApiModel(description = "")
-@JsonAdapter(NullableAdapterFactory.class)
+@ApiModel(description = "The body of a V2 integration API request (customer profile update). Next to the customer profile details, this contains an optional listing of extra properties that should be returned in the response. ")
 
 public class MultipleCustomerProfileIntegrationRequestItem {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
   private Object attributes;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";

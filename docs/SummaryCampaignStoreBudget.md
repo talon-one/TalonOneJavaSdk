@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | [**ActionEnum**](#ActionEnum) |  | 
 **period** | [**PeriodEnum**](#PeriodEnum) |  |  [optional]
-**storeCount** | **Integer** |  | 
+**storeCount** | **Long** |  | 
 **imported** | **Boolean** |  | 
 
 

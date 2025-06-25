@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LedgerPointsEntryIntegrationAPI {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +42,7 @@ public class LedgerPointsEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_ID = "customerSessionId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_ID)
@@ -69,7 +69,7 @@ public class LedgerPointsEntryIntegrationAPI {
   private BigDecimal amount;
 
 
-  public LedgerPointsEntryIntegrationAPI id(Integer id) {
+  public LedgerPointsEntryIntegrationAPI id(Long id) {
     
     this.id = id;
     return this;
@@ -81,12 +81,12 @@ public class LedgerPointsEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the transaction that adds loyalty points.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -113,7 +113,7 @@ public class LedgerPointsEntryIntegrationAPI {
   }
 
 
-  public LedgerPointsEntryIntegrationAPI programId(Integer programId) {
+  public LedgerPointsEntryIntegrationAPI programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -125,12 +125,12 @@ public class LedgerPointsEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 

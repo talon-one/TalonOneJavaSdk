@@ -31,10 +31,10 @@ import java.io.IOException;
 public class GenerateCampaignTags {
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
-  private Integer rulesetID;
+  private Long rulesetID;
 
 
-  public GenerateCampaignTags rulesetID(Integer rulesetID) {
+  public GenerateCampaignTags rulesetID(Long rulesetID) {
     
     this.rulesetID = rulesetID;
     return this;
@@ -46,12 +46,12 @@ public class GenerateCampaignTags {
   **/
   @ApiModelProperty(required = true, value = "ID of a ruleset.")
 
-  public Integer getRulesetID() {
+  public Long getRulesetID() {
     return rulesetID;
   }
 
 
-  public void setRulesetID(Integer rulesetID) {
+  public void setRulesetID(Long rulesetID) {
     this.rulesetID = rulesetID;
   }
 

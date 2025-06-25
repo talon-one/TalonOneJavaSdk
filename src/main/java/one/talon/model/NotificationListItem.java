@@ -31,7 +31,7 @@ import java.io.IOException;
 public class NotificationListItem {
   public static final String SERIALIZED_NAME_NOTIFICATION_ID = "notificationId";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_ID)
-  private Integer notificationId;
+  private Long notificationId;
 
   public static final String SERIALIZED_NAME_NOTIFICATION_NAME = "notificationName";
   @SerializedName(SERIALIZED_NAME_NOTIFICATION_NAME)
@@ -39,14 +39,14 @@ public class NotificationListItem {
 
   public static final String SERIALIZED_NAME_ENTITY_ID = "entityId";
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
-  private Integer entityId;
+  private Long entityId;
 
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
   private Boolean enabled;
 
 
-  public NotificationListItem notificationId(Integer notificationId) {
+  public NotificationListItem notificationId(Long notificationId) {
     
     this.notificationId = notificationId;
     return this;
@@ -58,12 +58,12 @@ public class NotificationListItem {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the notification.")
 
-  public Integer getNotificationId() {
+  public Long getNotificationId() {
     return notificationId;
   }
 
 
-  public void setNotificationId(Integer notificationId) {
+  public void setNotificationId(Long notificationId) {
     this.notificationId = notificationId;
   }
 
@@ -90,7 +90,7 @@ public class NotificationListItem {
   }
 
 
-  public NotificationListItem entityId(Integer entityId) {
+  public NotificationListItem entityId(Long entityId) {
     
     this.entityId = entityId;
     return this;
@@ -102,12 +102,12 @@ public class NotificationListItem {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the entity to which this notification belongs. For example, in case of a loyalty notification, this value is the ID of the loyalty program. ")
 
-  public Integer getEntityId() {
+  public Long getEntityId() {
     return entityId;
   }
 
 
-  public void setEntityId(Integer entityId) {
+  public void setEntityId(Long entityId) {
     this.entityId = entityId;
   }
 

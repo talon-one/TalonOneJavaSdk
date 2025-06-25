@@ -238,11 +238,11 @@ public class UpdateApplication {
 
   public static final String SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID = "defaultEvaluationGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_EVALUATION_GROUP_ID)
-  private Integer defaultEvaluationGroupId;
+  private Long defaultEvaluationGroupId;
 
   public static final String SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID = "defaultCartItemFilterId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CART_ITEM_FILTER_ID)
-  private Integer defaultCartItemFilterId;
+  private Long defaultCartItemFilterId;
 
   public static final String SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT = "enableCampaignStateManagement";
   @SerializedName(SERIALIZED_NAME_ENABLE_CAMPAIGN_STATE_MANAGEMENT)
@@ -576,7 +576,7 @@ public class UpdateApplication {
   }
 
 
-  public UpdateApplication defaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+  public UpdateApplication defaultEvaluationGroupId(Long defaultEvaluationGroupId) {
     
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
     return this;
@@ -589,17 +589,17 @@ public class UpdateApplication {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default campaign evaluation group to which new campaigns will be added unless a different group is selected when creating the campaign.")
 
-  public Integer getDefaultEvaluationGroupId() {
+  public Long getDefaultEvaluationGroupId() {
     return defaultEvaluationGroupId;
   }
 
 
-  public void setDefaultEvaluationGroupId(Integer defaultEvaluationGroupId) {
+  public void setDefaultEvaluationGroupId(Long defaultEvaluationGroupId) {
     this.defaultEvaluationGroupId = defaultEvaluationGroupId;
   }
 
 
-  public UpdateApplication defaultCartItemFilterId(Integer defaultCartItemFilterId) {
+  public UpdateApplication defaultCartItemFilterId(Long defaultCartItemFilterId) {
     
     this.defaultCartItemFilterId = defaultCartItemFilterId;
     return this;
@@ -612,12 +612,12 @@ public class UpdateApplication {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the default Cart-Item-Filter for this application.")
 
-  public Integer getDefaultCartItemFilterId() {
+  public Long getDefaultCartItemFilterId() {
     return defaultCartItemFilterId;
   }
 
 
-  public void setDefaultCartItemFilterId(Integer defaultCartItemFilterId) {
+  public void setDefaultCartItemFilterId(Long defaultCartItemFilterId) {
     this.defaultCartItemFilterId = defaultCartItemFilterId;
   }
 

@@ -38,7 +38,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Campaign {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -46,11 +46,11 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -127,7 +127,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Integer activeRulesetId;
+  private Long activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -206,7 +206,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
-  private List<Integer> campaignGroups = null;
+  private List<Long> campaignGroups = null;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -261,7 +261,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
-  private List<Integer> linkedStoreIds = null;
+  private List<Long> linkedStoreIds = null;
 
   public static final String SERIALIZED_NAME_BUDGETS = "budgets";
   @SerializedName(SERIALIZED_NAME_BUDGETS)
@@ -269,11 +269,11 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTION_COUNT = "couponRedemptionCount";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTION_COUNT)
-  private Integer couponRedemptionCount;
+  private Long couponRedemptionCount;
 
   public static final String SERIALIZED_NAME_REFERRAL_REDEMPTION_COUNT = "referralRedemptionCount";
   @SerializedName(SERIALIZED_NAME_REFERRAL_REDEMPTION_COUNT)
-  private Integer referralRedemptionCount;
+  private Long referralRedemptionCount;
 
   public static final String SERIALIZED_NAME_DISCOUNT_COUNT = "discountCount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNT)
@@ -281,27 +281,27 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT = "discountEffectCount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_EFFECT_COUNT)
-  private Integer discountEffectCount;
+  private Long discountEffectCount;
 
   public static final String SERIALIZED_NAME_COUPON_CREATION_COUNT = "couponCreationCount";
   @SerializedName(SERIALIZED_NAME_COUPON_CREATION_COUNT)
-  private Integer couponCreationCount;
+  private Long couponCreationCount;
 
   public static final String SERIALIZED_NAME_CUSTOM_EFFECT_COUNT = "customEffectCount";
   @SerializedName(SERIALIZED_NAME_CUSTOM_EFFECT_COUNT)
-  private Integer customEffectCount;
+  private Long customEffectCount;
 
   public static final String SERIALIZED_NAME_REFERRAL_CREATION_COUNT = "referralCreationCount";
   @SerializedName(SERIALIZED_NAME_REFERRAL_CREATION_COUNT)
-  private Integer referralCreationCount;
+  private Long referralCreationCount;
 
   public static final String SERIALIZED_NAME_ADD_FREE_ITEM_EFFECT_COUNT = "addFreeItemEffectCount";
   @SerializedName(SERIALIZED_NAME_ADD_FREE_ITEM_EFFECT_COUNT)
-  private Integer addFreeItemEffectCount;
+  private Long addFreeItemEffectCount;
 
   public static final String SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT = "awardedGiveawaysCount";
   @SerializedName(SERIALIZED_NAME_AWARDED_GIVEAWAYS_COUNT)
-  private Integer awardedGiveawaysCount;
+  private Long awardedGiveawaysCount;
 
   public static final String SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT = "createdLoyaltyPointsCount";
   @SerializedName(SERIALIZED_NAME_CREATED_LOYALTY_POINTS_COUNT)
@@ -309,7 +309,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_CREATED_LOYALTY_POINTS_EFFECT_COUNT = "createdLoyaltyPointsEffectCount";
   @SerializedName(SERIALIZED_NAME_CREATED_LOYALTY_POINTS_EFFECT_COUNT)
-  private Integer createdLoyaltyPointsEffectCount;
+  private Long createdLoyaltyPointsEffectCount;
 
   public static final String SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_COUNT = "redeemedLoyaltyPointsCount";
   @SerializedName(SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_COUNT)
@@ -317,15 +317,15 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_EFFECT_COUNT = "redeemedLoyaltyPointsEffectCount";
   @SerializedName(SERIALIZED_NAME_REDEEMED_LOYALTY_POINTS_EFFECT_COUNT)
-  private Integer redeemedLoyaltyPointsEffectCount;
+  private Long redeemedLoyaltyPointsEffectCount;
 
   public static final String SERIALIZED_NAME_CALL_API_EFFECT_COUNT = "callApiEffectCount";
   @SerializedName(SERIALIZED_NAME_CALL_API_EFFECT_COUNT)
-  private Integer callApiEffectCount;
+  private Long callApiEffectCount;
 
   public static final String SERIALIZED_NAME_RESERVECOUPON_EFFECT_COUNT = "reservecouponEffectCount";
   @SerializedName(SERIALIZED_NAME_RESERVECOUPON_EFFECT_COUNT)
-  private Integer reservecouponEffectCount;
+  private Long reservecouponEffectCount;
 
   public static final String SERIALIZED_NAME_LAST_ACTIVITY = "lastActivity";
   @SerializedName(SERIALIZED_NAME_LAST_ACTIVITY)
@@ -345,7 +345,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Integer templateId;
+  private Long templateId;
 
   /**
    * The campaign state displayed in the Campaign Manager.
@@ -412,7 +412,7 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_VALUE_MAPS_IDS = "valueMapsIds";
   @SerializedName(SERIALIZED_NAME_VALUE_MAPS_IDS)
-  private List<Integer> valueMapsIds = null;
+  private List<Long> valueMapsIds = null;
 
   /**
    * The campaign revision state displayed in the Campaign Manager.
@@ -467,30 +467,30 @@ public class Campaign {
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
-  private Integer activeRevisionId;
+  private Long activeRevisionId;
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID = "activeRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID)
-  private Integer activeRevisionVersionId;
+  private Long activeRevisionVersionId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_ID = "currentRevisionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_ID)
-  private Integer currentRevisionId;
+  private Long currentRevisionId;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID = "currentRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID)
-  private Integer currentRevisionVersionId;
+  private Long currentRevisionVersionId;
 
   public static final String SERIALIZED_NAME_STAGE_REVISION = "stageRevision";
   @SerializedName(SERIALIZED_NAME_STAGE_REVISION)
   private Boolean stageRevision = false;
 
 
-  public Campaign id(Integer id) {
+  public Campaign id(Long id) {
     
     this.id = id;
     return this;
@@ -502,12 +502,12 @@ public class Campaign {
   **/
   @ApiModelProperty(example = "4", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -534,7 +534,7 @@ public class Campaign {
   }
 
 
-  public Campaign applicationId(Integer applicationId) {
+  public Campaign applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -546,17 +546,17 @@ public class Campaign {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public Campaign userId(Integer userId) {
+  public Campaign userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -568,12 +568,12 @@ public class Campaign {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
@@ -713,7 +713,7 @@ public class Campaign {
   }
 
 
-  public Campaign activeRulesetId(Integer activeRulesetId) {
+  public Campaign activeRulesetId(Long activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -726,12 +726,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "[ID of Ruleset](https://docs.talon.one/management-api#operation/getRulesets) this campaign applies on customer session evaluation. ")
 
-  public Integer getActiveRulesetId() {
+  public Long getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Integer activeRulesetId) {
+  public void setActiveRulesetId(Long activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
@@ -863,15 +863,15 @@ public class Campaign {
   }
 
 
-  public Campaign campaignGroups(List<Integer> campaignGroups) {
+  public Campaign campaignGroups(List<Long> campaignGroups) {
     
     this.campaignGroups = campaignGroups;
     return this;
   }
 
-  public Campaign addCampaignGroupsItem(Integer campaignGroupsItem) {
+  public Campaign addCampaignGroupsItem(Long campaignGroupsItem) {
     if (this.campaignGroups == null) {
-      this.campaignGroups = new ArrayList<Integer>();
+      this.campaignGroups = new ArrayList<Long>();
     }
     this.campaignGroups.add(campaignGroupsItem);
     return this;
@@ -884,12 +884,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/managing-campaign-groups) this campaign belongs to. ")
 
-  public List<Integer> getCampaignGroups() {
+  public List<Long> getCampaignGroups() {
     return campaignGroups;
   }
 
 
-  public void setCampaignGroups(List<Integer> campaignGroups) {
+  public void setCampaignGroups(List<Long> campaignGroups) {
     this.campaignGroups = campaignGroups;
   }
 
@@ -916,15 +916,15 @@ public class Campaign {
   }
 
 
-  public Campaign linkedStoreIds(List<Integer> linkedStoreIds) {
+  public Campaign linkedStoreIds(List<Long> linkedStoreIds) {
     
     this.linkedStoreIds = linkedStoreIds;
     return this;
   }
 
-  public Campaign addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
+  public Campaign addLinkedStoreIdsItem(Long linkedStoreIdsItem) {
     if (this.linkedStoreIds == null) {
-      this.linkedStoreIds = new ArrayList<Integer>();
+      this.linkedStoreIds = new ArrayList<Long>();
     }
     this.linkedStoreIds.add(linkedStoreIdsItem);
     return this;
@@ -937,12 +937,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that you want to link to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
 
-  public List<Integer> getLinkedStoreIds() {
+  public List<Long> getLinkedStoreIds() {
     return linkedStoreIds;
   }
 
 
-  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
+  public void setLinkedStoreIds(List<Long> linkedStoreIds) {
     this.linkedStoreIds = linkedStoreIds;
   }
 
@@ -978,7 +978,7 @@ public class Campaign {
   }
 
 
-  public Campaign couponRedemptionCount(Integer couponRedemptionCount) {
+  public Campaign couponRedemptionCount(Long couponRedemptionCount) {
     
     this.couponRedemptionCount = couponRedemptionCount;
     return this;
@@ -991,17 +991,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "163", value = "This property is **deprecated**. The count should be available under *budgets* property. Number of coupons redeemed in the campaign. ")
 
-  public Integer getCouponRedemptionCount() {
+  public Long getCouponRedemptionCount() {
     return couponRedemptionCount;
   }
 
 
-  public void setCouponRedemptionCount(Integer couponRedemptionCount) {
+  public void setCouponRedemptionCount(Long couponRedemptionCount) {
     this.couponRedemptionCount = couponRedemptionCount;
   }
 
 
-  public Campaign referralRedemptionCount(Integer referralRedemptionCount) {
+  public Campaign referralRedemptionCount(Long referralRedemptionCount) {
     
     this.referralRedemptionCount = referralRedemptionCount;
     return this;
@@ -1014,12 +1014,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "This property is **deprecated**. The count should be available under *budgets* property. Number of referral codes redeemed in the campaign. ")
 
-  public Integer getReferralRedemptionCount() {
+  public Long getReferralRedemptionCount() {
     return referralRedemptionCount;
   }
 
 
-  public void setReferralRedemptionCount(Integer referralRedemptionCount) {
+  public void setReferralRedemptionCount(Long referralRedemptionCount) {
     this.referralRedemptionCount = referralRedemptionCount;
   }
 
@@ -1047,7 +1047,7 @@ public class Campaign {
   }
 
 
-  public Campaign discountEffectCount(Integer discountEffectCount) {
+  public Campaign discountEffectCount(Long discountEffectCount) {
     
     this.discountEffectCount = discountEffectCount;
     return this;
@@ -1060,17 +1060,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "343", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of times discounts were redeemed in this campaign. ")
 
-  public Integer getDiscountEffectCount() {
+  public Long getDiscountEffectCount() {
     return discountEffectCount;
   }
 
 
-  public void setDiscountEffectCount(Integer discountEffectCount) {
+  public void setDiscountEffectCount(Long discountEffectCount) {
     this.discountEffectCount = discountEffectCount;
   }
 
 
-  public Campaign couponCreationCount(Integer couponCreationCount) {
+  public Campaign couponCreationCount(Long couponCreationCount) {
     
     this.couponCreationCount = couponCreationCount;
     return this;
@@ -1083,17 +1083,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "16", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of coupons created by rules in this campaign. ")
 
-  public Integer getCouponCreationCount() {
+  public Long getCouponCreationCount() {
     return couponCreationCount;
   }
 
 
-  public void setCouponCreationCount(Integer couponCreationCount) {
+  public void setCouponCreationCount(Long couponCreationCount) {
     this.couponCreationCount = couponCreationCount;
   }
 
 
-  public Campaign customEffectCount(Integer customEffectCount) {
+  public Campaign customEffectCount(Long customEffectCount) {
     
     this.customEffectCount = customEffectCount;
     return this;
@@ -1106,17 +1106,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of custom effects triggered by rules in this campaign. ")
 
-  public Integer getCustomEffectCount() {
+  public Long getCustomEffectCount() {
     return customEffectCount;
   }
 
 
-  public void setCustomEffectCount(Integer customEffectCount) {
+  public void setCustomEffectCount(Long customEffectCount) {
     this.customEffectCount = customEffectCount;
   }
 
 
-  public Campaign referralCreationCount(Integer referralCreationCount) {
+  public Campaign referralCreationCount(Long referralCreationCount) {
     
     this.referralCreationCount = referralCreationCount;
     return this;
@@ -1129,17 +1129,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "8", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of referrals created by rules in this campaign. ")
 
-  public Integer getReferralCreationCount() {
+  public Long getReferralCreationCount() {
     return referralCreationCount;
   }
 
 
-  public void setReferralCreationCount(Integer referralCreationCount) {
+  public void setReferralCreationCount(Long referralCreationCount) {
     this.referralCreationCount = referralCreationCount;
   }
 
 
-  public Campaign addFreeItemEffectCount(Integer addFreeItemEffectCount) {
+  public Campaign addFreeItemEffectCount(Long addFreeItemEffectCount) {
     
     this.addFreeItemEffectCount = addFreeItemEffectCount;
     return this;
@@ -1152,17 +1152,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of times the [add free item effect](https://docs.talon.one/docs/dev/integration-api/api-effects#addfreeitem) can be triggered in this campaign. ")
 
-  public Integer getAddFreeItemEffectCount() {
+  public Long getAddFreeItemEffectCount() {
     return addFreeItemEffectCount;
   }
 
 
-  public void setAddFreeItemEffectCount(Integer addFreeItemEffectCount) {
+  public void setAddFreeItemEffectCount(Long addFreeItemEffectCount) {
     this.addFreeItemEffectCount = addFreeItemEffectCount;
   }
 
 
-  public Campaign awardedGiveawaysCount(Integer awardedGiveawaysCount) {
+  public Campaign awardedGiveawaysCount(Long awardedGiveawaysCount) {
     
     this.awardedGiveawaysCount = awardedGiveawaysCount;
     return this;
@@ -1175,12 +1175,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of giveaways awarded by rules in this campaign. ")
 
-  public Integer getAwardedGiveawaysCount() {
+  public Long getAwardedGiveawaysCount() {
     return awardedGiveawaysCount;
   }
 
 
-  public void setAwardedGiveawaysCount(Integer awardedGiveawaysCount) {
+  public void setAwardedGiveawaysCount(Long awardedGiveawaysCount) {
     this.awardedGiveawaysCount = awardedGiveawaysCount;
   }
 
@@ -1208,7 +1208,7 @@ public class Campaign {
   }
 
 
-  public Campaign createdLoyaltyPointsEffectCount(Integer createdLoyaltyPointsEffectCount) {
+  public Campaign createdLoyaltyPointsEffectCount(Long createdLoyaltyPointsEffectCount) {
     
     this.createdLoyaltyPointsEffectCount = createdLoyaltyPointsEffectCount;
     return this;
@@ -1221,12 +1221,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point creation effects triggered by rules in this campaign. ")
 
-  public Integer getCreatedLoyaltyPointsEffectCount() {
+  public Long getCreatedLoyaltyPointsEffectCount() {
     return createdLoyaltyPointsEffectCount;
   }
 
 
-  public void setCreatedLoyaltyPointsEffectCount(Integer createdLoyaltyPointsEffectCount) {
+  public void setCreatedLoyaltyPointsEffectCount(Long createdLoyaltyPointsEffectCount) {
     this.createdLoyaltyPointsEffectCount = createdLoyaltyPointsEffectCount;
   }
 
@@ -1254,7 +1254,7 @@ public class Campaign {
   }
 
 
-  public Campaign redeemedLoyaltyPointsEffectCount(Integer redeemedLoyaltyPointsEffectCount) {
+  public Campaign redeemedLoyaltyPointsEffectCount(Long redeemedLoyaltyPointsEffectCount) {
     
     this.redeemedLoyaltyPointsEffectCount = redeemedLoyaltyPointsEffectCount;
     return this;
@@ -1267,17 +1267,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of loyalty point redemption effects triggered by rules in this campaign. ")
 
-  public Integer getRedeemedLoyaltyPointsEffectCount() {
+  public Long getRedeemedLoyaltyPointsEffectCount() {
     return redeemedLoyaltyPointsEffectCount;
   }
 
 
-  public void setRedeemedLoyaltyPointsEffectCount(Integer redeemedLoyaltyPointsEffectCount) {
+  public void setRedeemedLoyaltyPointsEffectCount(Long redeemedLoyaltyPointsEffectCount) {
     this.redeemedLoyaltyPointsEffectCount = redeemedLoyaltyPointsEffectCount;
   }
 
 
-  public Campaign callApiEffectCount(Integer callApiEffectCount) {
+  public Campaign callApiEffectCount(Long callApiEffectCount) {
     
     this.callApiEffectCount = callApiEffectCount;
     return this;
@@ -1290,17 +1290,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "0", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of webhooks triggered by rules in this campaign. ")
 
-  public Integer getCallApiEffectCount() {
+  public Long getCallApiEffectCount() {
     return callApiEffectCount;
   }
 
 
-  public void setCallApiEffectCount(Integer callApiEffectCount) {
+  public void setCallApiEffectCount(Long callApiEffectCount) {
     this.callApiEffectCount = callApiEffectCount;
   }
 
 
-  public Campaign reservecouponEffectCount(Integer reservecouponEffectCount) {
+  public Campaign reservecouponEffectCount(Long reservecouponEffectCount) {
     
     this.reservecouponEffectCount = reservecouponEffectCount;
     return this;
@@ -1313,12 +1313,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "9", value = "This property is **deprecated**. The count should be available under *budgets* property. Total number of reserve coupon effects triggered by rules in this campaign. ")
 
-  public Integer getReservecouponEffectCount() {
+  public Long getReservecouponEffectCount() {
     return reservecouponEffectCount;
   }
 
 
-  public void setReservecouponEffectCount(Integer reservecouponEffectCount) {
+  public void setReservecouponEffectCount(Long reservecouponEffectCount) {
     this.reservecouponEffectCount = reservecouponEffectCount;
   }
 
@@ -1415,7 +1415,7 @@ public class Campaign {
   }
 
 
-  public Campaign templateId(Integer templateId) {
+  public Campaign templateId(Long templateId) {
     
     this.templateId = templateId;
     return this;
@@ -1428,12 +1428,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the Campaign Template this Campaign was created from.")
 
-  public Integer getTemplateId() {
+  public Long getTemplateId() {
     return templateId;
   }
 
 
-  public void setTemplateId(Integer templateId) {
+  public void setTemplateId(Long templateId) {
     this.templateId = templateId;
   }
 
@@ -1482,15 +1482,15 @@ public class Campaign {
   }
 
 
-  public Campaign valueMapsIds(List<Integer> valueMapsIds) {
+  public Campaign valueMapsIds(List<Long> valueMapsIds) {
     
     this.valueMapsIds = valueMapsIds;
     return this;
   }
 
-  public Campaign addValueMapsIdsItem(Integer valueMapsIdsItem) {
+  public Campaign addValueMapsIdsItem(Long valueMapsIdsItem) {
     if (this.valueMapsIds == null) {
-      this.valueMapsIds = new ArrayList<Integer>();
+      this.valueMapsIds = new ArrayList<Long>();
     }
     this.valueMapsIds.add(valueMapsIdsItem);
     return this;
@@ -1503,12 +1503,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[100, 215]", value = "A list of value map IDs for the campaign.")
 
-  public List<Integer> getValueMapsIds() {
+  public List<Long> getValueMapsIds() {
     return valueMapsIds;
   }
 
 
-  public void setValueMapsIds(List<Integer> valueMapsIds) {
+  public void setValueMapsIds(List<Long> valueMapsIds) {
     this.valueMapsIds = valueMapsIds;
   }
 
@@ -1536,7 +1536,7 @@ public class Campaign {
   }
 
 
-  public Campaign activeRevisionId(Integer activeRevisionId) {
+  public Campaign activeRevisionId(Long activeRevisionId) {
     
     this.activeRevisionId = activeRevisionId;
     return this;
@@ -1549,17 +1549,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision that was last activated on this campaign. ")
 
-  public Integer getActiveRevisionId() {
+  public Long getActiveRevisionId() {
     return activeRevisionId;
   }
 
 
-  public void setActiveRevisionId(Integer activeRevisionId) {
+  public void setActiveRevisionId(Long activeRevisionId) {
     this.activeRevisionId = activeRevisionId;
   }
 
 
-  public Campaign activeRevisionVersionId(Integer activeRevisionVersionId) {
+  public Campaign activeRevisionVersionId(Long activeRevisionVersionId) {
     
     this.activeRevisionVersionId = activeRevisionVersionId;
     return this;
@@ -1572,17 +1572,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision version that is active on the campaign. ")
 
-  public Integer getActiveRevisionVersionId() {
+  public Long getActiveRevisionVersionId() {
     return activeRevisionVersionId;
   }
 
 
-  public void setActiveRevisionVersionId(Integer activeRevisionVersionId) {
+  public void setActiveRevisionVersionId(Long activeRevisionVersionId) {
     this.activeRevisionVersionId = activeRevisionVersionId;
   }
 
 
-  public Campaign version(Integer version) {
+  public Campaign version(Long version) {
     
     this.version = version;
     return this;
@@ -1595,17 +1595,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
 
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 
 
-  public Campaign currentRevisionId(Integer currentRevisionId) {
+  public Campaign currentRevisionId(Long currentRevisionId) {
     
     this.currentRevisionId = currentRevisionId;
     return this;
@@ -1618,17 +1618,17 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision currently being modified for the campaign. ")
 
-  public Integer getCurrentRevisionId() {
+  public Long getCurrentRevisionId() {
     return currentRevisionId;
   }
 
 
-  public void setCurrentRevisionId(Integer currentRevisionId) {
+  public void setCurrentRevisionId(Long currentRevisionId) {
     this.currentRevisionId = currentRevisionId;
   }
 
 
-  public Campaign currentRevisionVersionId(Integer currentRevisionVersionId) {
+  public Campaign currentRevisionVersionId(Long currentRevisionVersionId) {
     
     this.currentRevisionVersionId = currentRevisionVersionId;
     return this;
@@ -1641,12 +1641,12 @@ public class Campaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the latest version applied on the current revision. ")
 
-  public Integer getCurrentRevisionVersionId() {
+  public Long getCurrentRevisionVersionId() {
     return currentRevisionVersionId;
   }
 
 
-  public void setCurrentRevisionVersionId(Integer currentRevisionVersionId) {
+  public void setCurrentRevisionVersionId(Long currentRevisionVersionId) {
     this.currentRevisionVersionId = currentRevisionVersionId;
   }
 

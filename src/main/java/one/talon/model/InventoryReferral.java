@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class InventoryReferral {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -50,11 +50,11 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID = "advocateProfileIntegrationId";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID)
@@ -70,7 +70,7 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -78,7 +78,7 @@ public class InventoryReferral {
 
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
-  private Integer usageCounter;
+  private Long usageCounter;
 
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
@@ -89,7 +89,7 @@ public class InventoryReferral {
   private List<String> referredCustomers = new ArrayList<String>();
 
 
-  public InventoryReferral id(Integer id) {
+  public InventoryReferral id(Long id) {
     
     this.id = id;
     return this;
@@ -101,12 +101,12 @@ public class InventoryReferral {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -179,7 +179,7 @@ public class InventoryReferral {
   }
 
 
-  public InventoryReferral usageLimit(Integer usageLimit) {
+  public InventoryReferral usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -193,17 +193,17 @@ public class InventoryReferral {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
 
-  public InventoryReferral campaignId(Integer campaignId) {
+  public InventoryReferral campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -215,12 +215,12 @@ public class InventoryReferral {
   **/
   @ApiModelProperty(example = "78", required = true, value = "ID of the campaign from which the referral received the referral code.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -293,7 +293,7 @@ public class InventoryReferral {
   }
 
 
-  public InventoryReferral importId(Integer importId) {
+  public InventoryReferral importId(Long importId) {
     
     this.importId = importId;
     return this;
@@ -306,12 +306,12 @@ public class InventoryReferral {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this referral.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
@@ -338,7 +338,7 @@ public class InventoryReferral {
   }
 
 
-  public InventoryReferral usageCounter(Integer usageCounter) {
+  public InventoryReferral usageCounter(Long usageCounter) {
     
     this.usageCounter = usageCounter;
     return this;
@@ -350,12 +350,12 @@ public class InventoryReferral {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The number of times this referral code has been successfully used.")
 
-  public Integer getUsageCounter() {
+  public Long getUsageCounter() {
     return usageCounter;
   }
 
 
-  public void setUsageCounter(Integer usageCounter) {
+  public void setUsageCounter(Long usageCounter) {
     this.usageCounter = usageCounter;
   }
 

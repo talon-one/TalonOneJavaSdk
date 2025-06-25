@@ -165,7 +165,7 @@ public class SummaryCampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_STORE_COUNT = "storeCount";
   @SerializedName(SERIALIZED_NAME_STORE_COUNT)
-  private Integer storeCount;
+  private Long storeCount;
 
   public static final String SERIALIZED_NAME_IMPORTED = "imported";
   @SerializedName(SERIALIZED_NAME_IMPORTED)
@@ -217,7 +217,7 @@ public class SummaryCampaignStoreBudget {
   }
 
 
-  public SummaryCampaignStoreBudget storeCount(Integer storeCount) {
+  public SummaryCampaignStoreBudget storeCount(Long storeCount) {
     
     this.storeCount = storeCount;
     return this;
@@ -229,12 +229,12 @@ public class SummaryCampaignStoreBudget {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getStoreCount() {
+  public Long getStoreCount() {
     return storeCount;
   }
 
 
-  public void setStoreCount(Integer storeCount) {
+  public void setStoreCount(Long storeCount) {
     this.storeCount = storeCount;
   }
 

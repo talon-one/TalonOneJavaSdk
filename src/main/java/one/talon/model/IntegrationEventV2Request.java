@@ -25,14 +25,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.custom.JsonNullable;
-import one.talon.custom.NullableAdapterFactory;
 
 /**
- * 
+ * IntegrationEventV2Request
  */
-@ApiModel(description = "")
-@JsonAdapter(NullableAdapterFactory.class)
 
 public class IntegrationEventV2Request {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
@@ -45,7 +41,7 @@ public class IntegrationEventV2Request {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -53,8 +49,6 @@ public class IntegrationEventV2Request {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    /*allow Serializing null for this field */
-      @JsonNullable
   private Object attributes;
 
   /**
@@ -163,15 +157,15 @@ public class IntegrationEventV2Request {
   }
 
 
-  public IntegrationEventV2Request evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public IntegrationEventV2Request evaluableCampaignIds(List<Long> evaluableCampaignIds) {
     
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public IntegrationEventV2Request addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public IntegrationEventV2Request addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
@@ -184,12 +178,12 @@ public class IntegrationEventV2Request {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
 
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 

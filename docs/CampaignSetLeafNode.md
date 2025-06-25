@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**TypeEnum**](#TypeEnum) | Indicates the node type. | 
-**campaignId** | **Integer** | ID of the campaign | 
+**campaignId** | **Long** | ID of the campaign | 
 
 
 

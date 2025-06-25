@@ -87,7 +87,7 @@ public class BulkOperationOnCampaigns {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Integer> campaignIds = new ArrayList<Integer>();
+  private List<Long> campaignIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
@@ -116,13 +116,13 @@ public class BulkOperationOnCampaigns {
   }
 
 
-  public BulkOperationOnCampaigns campaignIds(List<Integer> campaignIds) {
+  public BulkOperationOnCampaigns campaignIds(List<Long> campaignIds) {
     
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public BulkOperationOnCampaigns addCampaignIdsItem(Integer campaignIdsItem) {
+  public BulkOperationOnCampaigns addCampaignIdsItem(Long campaignIdsItem) {
     this.campaignIds.add(campaignIdsItem);
     return this;
   }
@@ -133,12 +133,12 @@ public class BulkOperationOnCampaigns {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The list of campaign IDs on which the operation will be performed.")
 
-  public List<Integer> getCampaignIds() {
+  public List<Long> getCampaignIds() {
     return campaignIds;
   }
 
 
-  public void setCampaignIds(List<Integer> campaignIds) {
+  public void setCampaignIds(List<Long> campaignIds) {
     this.campaignIds = campaignIds;
   }
 

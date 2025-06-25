@@ -41,7 +41,7 @@ public class MessageLogResponse {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
+  private Long status;
 
 
   public MessageLogResponse createdAt(OffsetDateTime createdAt) {
@@ -90,7 +90,7 @@ public class MessageLogResponse {
   }
 
 
-  public MessageLogResponse status(Integer status) {
+  public MessageLogResponse status(Long status) {
     
     this.status = status;
     return this;
@@ -103,12 +103,12 @@ public class MessageLogResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "200", value = "HTTP status code of the response.")
 
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
 
-  public void setStatus(Integer status) {
+  public void setStatus(Long status) {
     this.status = status;
   }
 

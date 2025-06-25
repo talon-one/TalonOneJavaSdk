@@ -32,11 +32,11 @@ import org.threeten.bp.OffsetDateTime;
 public class Audience {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -71,7 +71,7 @@ public class Audience {
   private OffsetDateTime lastUpdate;
 
 
-  public Audience accountId(Integer accountId) {
+  public Audience accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -83,17 +83,17 @@ public class Audience {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public Audience id(Integer id) {
+  public Audience id(Long id) {
     
     this.id = id;
     return this;
@@ -105,12 +105,12 @@ public class Audience {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

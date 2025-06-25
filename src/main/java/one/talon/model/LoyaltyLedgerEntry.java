@@ -39,7 +39,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_CUSTOMER_PROFILE_I_D = "customerProfileID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_PROFILE_I_D)
@@ -47,7 +47,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_CARD_I_D = "cardID";
   @SerializedName(SERIALIZED_NAME_CARD_I_D)
-  private Integer cardID;
+  private Long cardID;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_I_D = "customerSessionID";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_I_D)
@@ -55,7 +55,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_EVENT_I_D = "eventID";
   @SerializedName(SERIALIZED_NAME_EVENT_I_D)
-  private Integer eventID;
+  private Long eventID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -83,7 +83,7 @@ public class LoyaltyLedgerEntry {
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
-  private Integer userID;
+  private Long userID;
 
   public static final String SERIALIZED_NAME_ARCHIVED = "archived";
   @SerializedName(SERIALIZED_NAME_ARCHIVED)
@@ -116,7 +116,7 @@ public class LoyaltyLedgerEntry {
   }
 
 
-  public LoyaltyLedgerEntry programID(Integer programID) {
+  public LoyaltyLedgerEntry programID(Long programID) {
     
     this.programID = programID;
     return this;
@@ -128,12 +128,12 @@ public class LoyaltyLedgerEntry {
   **/
   @ApiModelProperty(example = "5", required = true, value = "")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
 
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 
@@ -161,7 +161,7 @@ public class LoyaltyLedgerEntry {
   }
 
 
-  public LoyaltyLedgerEntry cardID(Integer cardID) {
+  public LoyaltyLedgerEntry cardID(Long cardID) {
     
     this.cardID = cardID;
     return this;
@@ -174,12 +174,12 @@ public class LoyaltyLedgerEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "241", value = "")
 
-  public Integer getCardID() {
+  public Long getCardID() {
     return cardID;
   }
 
 
-  public void setCardID(Integer cardID) {
+  public void setCardID(Long cardID) {
     this.cardID = cardID;
   }
 
@@ -207,7 +207,7 @@ public class LoyaltyLedgerEntry {
   }
 
 
-  public LoyaltyLedgerEntry eventID(Integer eventID) {
+  public LoyaltyLedgerEntry eventID(Long eventID) {
     
     this.eventID = eventID;
     return this;
@@ -220,12 +220,12 @@ public class LoyaltyLedgerEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "")
 
-  public Integer getEventID() {
+  public Long getEventID() {
     return eventID;
   }
 
 
-  public void setEventID(Integer eventID) {
+  public void setEventID(Long eventID) {
     this.eventID = eventID;
   }
 
@@ -364,7 +364,7 @@ public class LoyaltyLedgerEntry {
   }
 
 
-  public LoyaltyLedgerEntry userID(Integer userID) {
+  public LoyaltyLedgerEntry userID(Long userID) {
     
     this.userID = userID;
     return this;
@@ -377,12 +377,12 @@ public class LoyaltyLedgerEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "499", value = "This is the ID of the user who created this entry, if the addition or subtraction was done manually.")
 
-  public Integer getUserID() {
+  public Long getUserID() {
     return userID;
   }
 
 
-  public void setUserID(Integer userID) {
+  public void setUserID(Long userID) {
     this.userID = userID;
   }
 
