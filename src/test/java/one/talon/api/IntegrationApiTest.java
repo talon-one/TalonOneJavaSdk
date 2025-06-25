@@ -146,7 +146,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void deleteAudienceMembershipsV2Test() throws ApiException {
-        Integer audienceId = null;
+        Long audienceId = null;
         api.deleteAudienceMembershipsV2(audienceId);
 
         // TODO: test validations
@@ -162,7 +162,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void deleteAudienceV2Test() throws ApiException {
-        Integer audienceId = null;
+        Long audienceId = null;
         api.deleteAudienceV2(audienceId);
 
         // TODO: test validations
@@ -211,7 +211,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void generateLoyaltyCardTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         GenerateLoyaltyCard body = null;
         LoyaltyCard response = api.generateLoyaltyCard(loyaltyProgramId, body);
 
@@ -229,12 +229,12 @@ public class IntegrationApiTest {
     @Test
     public void getCustomerAchievementHistoryTest() throws ApiException {
         String integrationId = null;
-        Integer achievementId = null;
+        Long achievementId = null;
         List<String> progressStatus = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2002 response = api.getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -255,8 +255,8 @@ public class IntegrationApiTest {
         List<String> achievementIds = null;
         List<String> achievementStatus = null;
         List<String> currentProgressStatus = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2001 response = api.getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
 
         // TODO: test validations
@@ -310,7 +310,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyBalancesTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String integrationId = null;
         OffsetDateTime endDate = null;
         String subledgerId = null;
@@ -331,7 +331,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardBalancesTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String loyaltyCardId = null;
         OffsetDateTime endDate = null;
         List<String> subledgerId = null;
@@ -350,12 +350,12 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardPointsTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String loyaltyCardId = null;
         String status = null;
         List<String> subledgerId = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2005 response = api.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
@@ -371,14 +371,14 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardTransactionsTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String loyaltyCardId = null;
         List<String> subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2003 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -394,12 +394,12 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyProgramProfilePointsTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String integrationId = null;
         String status = null;
         String subledgerId = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2006 response = api.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
@@ -415,14 +415,14 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyProgramProfileTransactionsTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String integrationId = null;
         String subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Integer pageSize = null;
-        Integer skip = null;
+        Long pageSize = null;
+        Long skip = null;
         InlineResponse2004 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -454,7 +454,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void linkLoyaltyCardToProfileTest() throws ApiException {
-        Integer loyaltyProgramId = null;
+        Long loyaltyProgramId = null;
         String loyaltyCardId = null;
         LoyaltyCardRegistration body = null;
         LoyaltyCard response = api.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardId, body);
@@ -506,7 +506,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void syncCatalogTest() throws ApiException {
-        Integer catalogId = null;
+        Long catalogId = null;
         CatalogSyncRequest body = null;
         Catalog response = api.syncCatalog(catalogId, body);
 
@@ -542,7 +542,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateAudienceCustomersAttributesTest() throws ApiException {
-        Integer audienceId = null;
+        Long audienceId = null;
         Object body = null;
         api.updateAudienceCustomersAttributes(audienceId, body);
 
@@ -559,7 +559,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateAudienceV2Test() throws ApiException {
-        Integer audienceId = null;
+        Long audienceId = null;
         UpdateAudience body = null;
         Audience response = api.updateAudienceV2(audienceId, body);
 

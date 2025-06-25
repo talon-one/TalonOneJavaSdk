@@ -44,7 +44,7 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
@@ -68,11 +68,11 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Integer templateId;
+  private Long templateId;
 
   public static final String SERIALIZED_NAME_ACTIVATED_AT = "activatedAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_AT)
@@ -123,7 +123,7 @@ public class Ruleset {
   }
 
 
-  public Ruleset userId(Integer userId) {
+  public Ruleset userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -135,12 +135,12 @@ public class Ruleset {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
@@ -276,7 +276,7 @@ public class Ruleset {
   }
 
 
-  public Ruleset campaignId(Integer campaignId) {
+  public Ruleset campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -289,17 +289,17 @@ public class Ruleset {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "320", value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public Ruleset templateId(Integer templateId) {
+  public Ruleset templateId(Long templateId) {
     
     this.templateId = templateId;
     return this;
@@ -312,12 +312,12 @@ public class Ruleset {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the campaign template that owns this entity.")
 
-  public Integer getTemplateId() {
+  public Long getTemplateId() {
     return templateId;
   }
 
 
-  public void setTemplateId(Integer templateId) {
+  public void setTemplateId(Long templateId) {
     this.templateId = templateId;
   }
 

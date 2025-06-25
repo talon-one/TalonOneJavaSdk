@@ -98,7 +98,7 @@ public class CampaignTemplateParams {
 
   public static final String SERIALIZED_NAME_ATTRIBUTE_ID = "attributeId";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_ID)
-  private Integer attributeId;
+  private Long attributeId;
 
 
   public CampaignTemplateParams name(String name) {
@@ -167,7 +167,7 @@ public class CampaignTemplateParams {
   }
 
 
-  public CampaignTemplateParams attributeId(Integer attributeId) {
+  public CampaignTemplateParams attributeId(Long attributeId) {
     
     this.attributeId = attributeId;
     return this;
@@ -180,12 +180,12 @@ public class CampaignTemplateParams {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "ID of the corresponding attribute.")
 
-  public Integer getAttributeId() {
+  public Long getAttributeId() {
     return attributeId;
   }
 
 
-  public void setAttributeId(Integer attributeId) {
+  public void setAttributeId(Long attributeId) {
     this.attributeId = attributeId;
   }
 

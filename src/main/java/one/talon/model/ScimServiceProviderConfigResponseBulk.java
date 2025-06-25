@@ -32,18 +32,18 @@ import java.io.IOException;
 public class ScimServiceProviderConfigResponseBulk {
   public static final String SERIALIZED_NAME_MAX_OPERATIONS = "maxOperations";
   @SerializedName(SERIALIZED_NAME_MAX_OPERATIONS)
-  private Integer maxOperations;
+  private Long maxOperations;
 
   public static final String SERIALIZED_NAME_MAX_PAYLOAD_SIZE = "maxPayloadSize";
   @SerializedName(SERIALIZED_NAME_MAX_PAYLOAD_SIZE)
-  private Integer maxPayloadSize;
+  private Long maxPayloadSize;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
   private Boolean supported;
 
 
-  public ScimServiceProviderConfigResponseBulk maxOperations(Integer maxOperations) {
+  public ScimServiceProviderConfigResponseBulk maxOperations(Long maxOperations) {
     
     this.maxOperations = maxOperations;
     return this;
@@ -56,17 +56,17 @@ public class ScimServiceProviderConfigResponseBulk {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum number of individual operations that can be included in a single bulk request.")
 
-  public Integer getMaxOperations() {
+  public Long getMaxOperations() {
     return maxOperations;
   }
 
 
-  public void setMaxOperations(Integer maxOperations) {
+  public void setMaxOperations(Long maxOperations) {
     this.maxOperations = maxOperations;
   }
 
 
-  public ScimServiceProviderConfigResponseBulk maxPayloadSize(Integer maxPayloadSize) {
+  public ScimServiceProviderConfigResponseBulk maxPayloadSize(Long maxPayloadSize) {
     
     this.maxPayloadSize = maxPayloadSize;
     return this;
@@ -79,12 +79,12 @@ public class ScimServiceProviderConfigResponseBulk {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The maximum size, in bytes, of the entire payload for a bulk operation request.")
 
-  public Integer getMaxPayloadSize() {
+  public Long getMaxPayloadSize() {
     return maxPayloadSize;
   }
 
 
-  public void setMaxPayloadSize(Integer maxPayloadSize) {
+  public void setMaxPayloadSize(Long maxPayloadSize) {
     this.maxPayloadSize = maxPayloadSize;
   }
 

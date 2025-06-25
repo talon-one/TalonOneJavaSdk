@@ -40,11 +40,11 @@ public class ModelImport {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -52,7 +52,7 @@ public class ModelImport {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Integer amount;
+  private Long amount;
 
 
   public ModelImport id(Long id) {
@@ -99,7 +99,7 @@ public class ModelImport {
   }
 
 
-  public ModelImport accountId(Integer accountId) {
+  public ModelImport accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -111,17 +111,17 @@ public class ModelImport {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public ModelImport userId(Integer userId) {
+  public ModelImport userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -133,12 +133,12 @@ public class ModelImport {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
@@ -165,7 +165,7 @@ public class ModelImport {
   }
 
 
-  public ModelImport amount(Integer amount) {
+  public ModelImport amount(Long amount) {
     
     this.amount = amount;
     return this;
@@ -178,12 +178,12 @@ public class ModelImport {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of values that were imported.")
 
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
 
-  public void setAmount(Integer amount) {
+  public void setAmount(Long amount) {
     this.amount = amount;
   }
 

@@ -31,10 +31,10 @@ import java.io.IOException;
 public class IdentifiableEntity {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
 
-  public IdentifiableEntity id(Integer id) {
+  public IdentifiableEntity id(Long id) {
     
     this.id = id;
     return this;
@@ -46,12 +46,12 @@ public class IdentifiableEntity {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

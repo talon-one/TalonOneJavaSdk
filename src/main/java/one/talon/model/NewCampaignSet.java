@@ -32,18 +32,18 @@ import one.talon.model.CampaignSetBranchNode;
 public class NewCampaignSet {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
   private CampaignSetBranchNode set;
 
 
-  public NewCampaignSet applicationId(Integer applicationId) {
+  public NewCampaignSet applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -55,17 +55,17 @@ public class NewCampaignSet {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public NewCampaignSet version(Integer version) {
+  public NewCampaignSet version(Long version) {
     
     this.version = version;
     return this;
@@ -78,12 +78,12 @@ public class NewCampaignSet {
   **/
   @ApiModelProperty(example = "2", required = true, value = "Version of the campaign set.")
 
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
 
-  public void setVersion(Integer version) {
+  public void setVersion(Long version) {
     this.version = version;
   }
 

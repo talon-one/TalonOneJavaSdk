@@ -32,7 +32,7 @@ import java.io.IOException;
 public class AwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Integer poolId;
+  private Long poolId;
 
   public static final String SERIALIZED_NAME_POOL_NAME = "poolName";
   @SerializedName(SERIALIZED_NAME_POOL_NAME)
@@ -44,14 +44,14 @@ public class AwardGiveawayEffectProps {
 
   public static final String SERIALIZED_NAME_GIVEAWAY_ID = "giveawayId";
   @SerializedName(SERIALIZED_NAME_GIVEAWAY_ID)
-  private Integer giveawayId;
+  private Long giveawayId;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
 
-  public AwardGiveawayEffectProps poolId(Integer poolId) {
+  public AwardGiveawayEffectProps poolId(Long poolId) {
     
     this.poolId = poolId;
     return this;
@@ -63,12 +63,12 @@ public class AwardGiveawayEffectProps {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code was taken from.")
 
-  public Integer getPoolId() {
+  public Long getPoolId() {
     return poolId;
   }
 
 
-  public void setPoolId(Integer poolId) {
+  public void setPoolId(Long poolId) {
     this.poolId = poolId;
   }
 
@@ -117,7 +117,7 @@ public class AwardGiveawayEffectProps {
   }
 
 
-  public AwardGiveawayEffectProps giveawayId(Integer giveawayId) {
+  public AwardGiveawayEffectProps giveawayId(Long giveawayId) {
     
     this.giveawayId = giveawayId;
     return this;
@@ -129,12 +129,12 @@ public class AwardGiveawayEffectProps {
   **/
   @ApiModelProperty(example = "5", required = true, value = "The internal ID for the giveaway that was awarded.")
 
-  public Integer getGiveawayId() {
+  public Long getGiveawayId() {
     return giveawayId;
   }
 
 
-  public void setGiveawayId(Integer giveawayId) {
+  public void setGiveawayId(Long giveawayId) {
     this.giveawayId = giveawayId;
   }
 

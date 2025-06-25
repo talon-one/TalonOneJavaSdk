@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **builtInEffects** | **List&lt;String&gt;** | List of hidden built-in effects. |  [optional]
 **conditions** | **List&lt;String&gt;** | List of hidden conditions. |  [optional]
-**customEffects** | **List&lt;Integer&gt;** | List of the IDs of hidden custom effects. |  [optional]
-**webhooks** | **List&lt;Integer&gt;** | List of the IDs of hidden webhooks. |  [optional]
+**customEffects** | **List&lt;Long&gt;** | List of the IDs of hidden custom effects. |  [optional]
+**webhooks** | **List&lt;Long&gt;** | List of the IDs of hidden webhooks. |  [optional]
 
 
 

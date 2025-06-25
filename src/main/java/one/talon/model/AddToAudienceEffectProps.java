@@ -32,7 +32,7 @@ import java.io.IOException;
 public class AddToAudienceEffectProps {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Integer audienceId;
+  private Long audienceId;
 
   public static final String SERIALIZED_NAME_AUDIENCE_NAME = "audienceName";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_NAME)
@@ -44,10 +44,10 @@ public class AddToAudienceEffectProps {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
 
-  public AddToAudienceEffectProps audienceId(Integer audienceId) {
+  public AddToAudienceEffectProps audienceId(Long audienceId) {
     
     this.audienceId = audienceId;
     return this;
@@ -60,12 +60,12 @@ public class AddToAudienceEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "10", value = "The internal ID of the audience.")
 
-  public Integer getAudienceId() {
+  public Long getAudienceId() {
     return audienceId;
   }
 
 
-  public void setAudienceId(Integer audienceId) {
+  public void setAudienceId(Long audienceId) {
     this.audienceId = audienceId;
   }
 
@@ -116,7 +116,7 @@ public class AddToAudienceEffectProps {
   }
 
 
-  public AddToAudienceEffectProps profileId(Integer profileId) {
+  public AddToAudienceEffectProps profileId(Long profileId) {
     
     this.profileId = profileId;
     return this;
@@ -129,12 +129,12 @@ public class AddToAudienceEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "150", value = "The internal ID of the customer profile.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 

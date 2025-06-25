@@ -34,7 +34,7 @@ import one.talon.model.ApplicationCustomer;
 public class InlineResponse20024 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
@@ -45,7 +45,7 @@ public class InlineResponse20024 {
   private List<ApplicationCustomer> data = new ArrayList<ApplicationCustomer>();
 
 
-  public InlineResponse20024 totalResultSize(Integer totalResultSize) {
+  public InlineResponse20024 totalResultSize(Long totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -58,12 +58,12 @@ public class InlineResponse20024 {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "")
 
-  public Integer getTotalResultSize() {
+  public Long getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Integer totalResultSize) {
+  public void setTotalResultSize(Long totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

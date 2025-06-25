@@ -42,7 +42,7 @@ public class LoyaltyTier {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Integer programID;
+  private Long programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -105,7 +105,7 @@ public class LoyaltyTier {
   }
 
 
-  public LoyaltyTier programID(Integer programID) {
+  public LoyaltyTier programID(Long programID) {
     
     this.programID = programID;
     return this;
@@ -117,12 +117,12 @@ public class LoyaltyTier {
   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Integer getProgramID() {
+  public Long getProgramID() {
     return programID;
   }
 
 
-  public void setProgramID(Integer programID) {
+  public void setProgramID(Long programID) {
     this.programID = programID;
   }
 

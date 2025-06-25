@@ -43,7 +43,7 @@ public class ScimUsersListResponse {
 
   public static final String SERIALIZED_NAME_TOTAL_RESULTS = "totalResults";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULTS)
-  private Integer totalResults;
+  private Long totalResults;
 
 
   public ScimUsersListResponse resources(List<ScimUser> resources) {
@@ -104,7 +104,7 @@ public class ScimUsersListResponse {
   }
 
 
-  public ScimUsersListResponse totalResults(Integer totalResults) {
+  public ScimUsersListResponse totalResults(Long totalResults) {
     
     this.totalResults = totalResults;
     return this;
@@ -117,12 +117,12 @@ public class ScimUsersListResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Number of total results in the response.")
 
-  public Integer getTotalResults() {
+  public Long getTotalResults() {
     return totalResults;
   }
 
 
-  public void setTotalResults(Integer totalResults) {
+  public void setTotalResults(Long totalResults) {
     this.totalResults = totalResults;
   }
 

@@ -43,11 +43,11 @@ public class CampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Integer storeId;
+  private Long storeId;
 
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
@@ -98,7 +98,7 @@ public class CampaignStoreBudget {
   }
 
 
-  public CampaignStoreBudget campaignId(Integer campaignId) {
+  public CampaignStoreBudget campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -110,17 +110,17 @@ public class CampaignStoreBudget {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public CampaignStoreBudget storeId(Integer storeId) {
+  public CampaignStoreBudget storeId(Long storeId) {
     
     this.storeId = storeId;
     return this;
@@ -132,12 +132,12 @@ public class CampaignStoreBudget {
   **/
   @ApiModelProperty(required = true, value = "The ID of the store.")
 
-  public Integer getStoreId() {
+  public Long getStoreId() {
     return storeId;
   }
 
 
-  public void setStoreId(Integer storeId) {
+  public void setStoreId(Long storeId) {
     this.storeId = storeId;
   }
 

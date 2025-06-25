@@ -372,7 +372,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer audienceId = 56; // Integer | The ID of the audience.
+        Long audienceId = 56L; // Long | The ID of the audience.
         try {
             apiInstance.deleteAudienceMembershipsV2(audienceId);
         } catch (ApiException e) {
@@ -391,7 +391,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Integer**| The ID of the audience. |
+ **audienceId** | **Long**| The ID of the audience. |
 
 ### Return type cool
 
@@ -445,7 +445,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer audienceId = 56; // Integer | The ID of the audience.
+        Long audienceId = 56L; // Long | The ID of the audience.
         try {
             apiInstance.deleteAudienceV2(audienceId);
         } catch (ApiException e) {
@@ -464,7 +464,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Integer**| The ID of the audience. |
+ **audienceId** | **Long**| The ID of the audience. |
 
 ### Return type cool
 
@@ -668,7 +668,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         GenerateLoyaltyCard body = new GenerateLoyaltyCard(); // GenerateLoyaltyCard | body
         try {
             LoyaltyCard result = apiInstance.generateLoyaltyCard(loyaltyProgramId, body);
@@ -689,7 +689,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **body** | [**GenerateLoyaltyCard**](GenerateLoyaltyCard.md)| body |
 
 ### Return type cool
@@ -745,12 +745,12 @@ public class Example {
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
         String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
-        Integer achievementId = 56; // Integer | The achievement identifier. 
+        Long achievementId = 56L; // Long | The achievement identifier. 
         List<String> progressStatus = Arrays.asList(); // List<String> | Filter by customer progress status in the achievement. 
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain achievements created on or after the start date.
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain achievements created before or on the end date.
-        Integer pageSize = 1000; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 1000lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2002 result = apiInstance.getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
             System.out.println(result);
@@ -771,12 +771,12 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
- **achievementId** | **Integer**| The achievement identifier.  |
+ **achievementId** | **Long**| The achievement identifier.  |
  **progressStatus** | [**List&lt;String&gt;**](String.md)| Filter by customer progress status in the achievement.  | [optional] [enum: inprogress, completed, expired]
  **startDate** | **OffsetDateTime**| Timestamp that filters the results to only contain achievements created on or after the start date. | [optional]
  **endDate** | **OffsetDateTime**| Timestamp that filters the results to only contain achievements created before or on the end date. | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -836,8 +836,8 @@ public class Example {
         List<String> achievementIds = Arrays.asList(); // List<String> | Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned. 
         List<String> achievementStatus = Arrays.asList(); // List<String> | Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned. 
         List<String> currentProgressStatus = Arrays.asList(); // List<String> | Filter by customer progress status in the achievement. 
-        Integer pageSize = 1000; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 1000lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2001 result = apiInstance.getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
             System.out.println(result);
@@ -862,8 +862,8 @@ Name | Type | Description  | Notes
  **achievementIds** | [**List&lt;String&gt;**](String.md)| Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  | [optional]
  **achievementStatus** | [**List&lt;String&gt;**](String.md)| Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  | [optional] [enum: active, scheduled]
  **currentProgressStatus** | [**List&lt;String&gt;**](String.md)| Filter by customer progress status in the achievement.  | [optional] [enum: inprogress, completed, not_started]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -1078,7 +1078,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
@@ -1103,7 +1103,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
@@ -1163,7 +1163,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         List<String> subledgerId = Arrays.asList(); // List<String> | Filter results by one or more subledger IDs. Must be exact match.
@@ -1186,7 +1186,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **subledgerId** | [**List&lt;String&gt;**](String.md)| Filter results by one or more subledger IDs. Must be exact match. | [optional]
@@ -1244,12 +1244,12 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         String status = "active"; // String | Filter points based on their status.
         List<String> subledgerId = Arrays.asList(); // List<String> | Filter results by one or more subledger IDs. Must be exact match.
-        Integer pageSize = 50; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 50lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2005 result = apiInstance.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
             System.out.println(result);
@@ -1269,12 +1269,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **status** | **String**| Filter points based on their status. | [optional] [default to active] [enum: active, pending, expired]
  **subledgerId** | [**List&lt;String&gt;**](String.md)| Filter results by one or more subledger IDs. Must be exact match. | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -1329,14 +1329,14 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         List<String> subledgerId = Arrays.asList(); // List<String> | Filter results by one or more subledger IDs. Must be exact match.
         String loyaltyTransactionType = "loyaltyTransactionType_example"; // String | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file. 
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Integer pageSize = 50; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 50lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2003 result = apiInstance.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
             System.out.println(result);
@@ -1356,14 +1356,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **subledgerId** | [**List&lt;String&gt;**](String.md)| Filter results by one or more subledger IDs. Must be exact match. | [optional]
  **loyaltyTransactionType** | **String**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  | [optional] [enum: manual, session, import]
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -1418,12 +1418,12 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         String status = "active"; // String | Filter points based on their status.
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
-        Integer pageSize = 50; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 50lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2006 result = apiInstance.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
             System.out.println(result);
@@ -1443,12 +1443,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **status** | **String**| Filter points based on their status. | [optional] [default to active] [enum: active, pending, expired]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -1503,14 +1503,14 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
         String loyaltyTransactionType = "loyaltyTransactionType_example"; // String | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file. 
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Integer pageSize = 50; // Integer | The number of items in the response.
-        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Long pageSize = 50lL; // Long | The number of items in the response.
+        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
         try {
             InlineResponse2004 result = apiInstance.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
             System.out.println(result);
@@ -1530,14 +1530,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the profile-based loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
  **loyaltyTransactionType** | **String**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  | [optional] [enum: manual, session, import]
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
- **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
- **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
+ **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -1667,7 +1667,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         LoyaltyCardRegistration body = new LoyaltyCardRegistration(); // LoyaltyCardRegistration | body
         try {
@@ -1689,7 +1689,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**LoyaltyCardRegistration**](LoyaltyCardRegistration.md)| body |
 
@@ -1898,7 +1898,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer catalogId = 56; // Integer | The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
+        Long catalogId = 56L; // Long | The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
         CatalogSyncRequest body = new CatalogSyncRequest(); // CatalogSyncRequest | body
         try {
             Catalog result = apiInstance.syncCatalog(catalogId, body);
@@ -1919,7 +1919,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogId** | **Integer**| The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. |
+ **catalogId** | **Long**| The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. |
  **body** | [**CatalogSyncRequest**](CatalogSyncRequest.md)| body |
 
 ### Return type cool
@@ -2056,7 +2056,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer audienceId = 56; // Integer | The ID of the audience.
+        Long audienceId = 56L; // Long | The ID of the audience.
         Object body = null; // Object | body
         try {
             apiInstance.updateAudienceCustomersAttributes(audienceId, body);
@@ -2076,7 +2076,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Integer**| The ID of the audience. |
+ **audienceId** | **Long**| The ID of the audience. |
  **body** | **Object**| body |
 
 ### Return type cool
@@ -2131,7 +2131,7 @@ public class Example {
         //api_key_v1.setApiKeyPrefix("Token");
 
         IntegrationApi apiInstance = new IntegrationApi(defaultClient);
-        Integer audienceId = 56; // Integer | The ID of the audience.
+        Long audienceId = 56L; // Long | The ID of the audience.
         UpdateAudience body = new UpdateAudience(); // UpdateAudience | body
         try {
             Audience result = apiInstance.updateAudienceV2(audienceId, body);
@@ -2152,7 +2152,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Integer**| The ID of the audience. |
+ **audienceId** | **Long**| The ID of the audience. |
  **body** | [**UpdateAudience**](UpdateAudience.md)| body |
 
 ### Return type cool

@@ -40,11 +40,11 @@ public class Change {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -60,7 +60,7 @@ public class Change {
 
   public static final String SERIALIZED_NAME_MANAGEMENT_KEY_ID = "managementKeyId";
   @SerializedName(SERIALIZED_NAME_MANAGEMENT_KEY_ID)
-  private Integer managementKeyId;
+  private Long managementKeyId;
 
 
   public Change id(Long id) {
@@ -107,7 +107,7 @@ public class Change {
   }
 
 
-  public Change userId(Integer userId) {
+  public Change userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -119,17 +119,17 @@ public class Change {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
 
-  public Change applicationId(Integer applicationId) {
+  public Change applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -142,12 +142,12 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "359", value = "ID of application associated with change.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -220,7 +220,7 @@ public class Change {
   }
 
 
-  public Change managementKeyId(Integer managementKeyId) {
+  public Change managementKeyId(Long managementKeyId) {
     
     this.managementKeyId = managementKeyId;
     return this;
@@ -233,12 +233,12 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "ID of management key used to perform changes.")
 
-  public Integer getManagementKeyId() {
+  public Long getManagementKeyId() {
     return managementKeyId;
   }
 
 
-  public void setManagementKeyId(Integer managementKeyId) {
+  public void setManagementKeyId(Long managementKeyId) {
     this.managementKeyId = managementKeyId;
   }
 

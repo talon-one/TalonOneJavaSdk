@@ -58,7 +58,7 @@ public class Store {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
@@ -66,7 +66,7 @@ public class Store {
 
   public static final String SERIALIZED_NAME_LINKED_CAMPAIGN_IDS = "linkedCampaignIds";
   @SerializedName(SERIALIZED_NAME_LINKED_CAMPAIGN_IDS)
-  private List<Integer> linkedCampaignIds = null;
+  private List<Long> linkedCampaignIds = null;
 
 
   public Store id(Long id) {
@@ -202,7 +202,7 @@ public class Store {
   }
 
 
-  public Store applicationId(Integer applicationId) {
+  public Store applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -214,12 +214,12 @@ public class Store {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -246,15 +246,15 @@ public class Store {
   }
 
 
-  public Store linkedCampaignIds(List<Integer> linkedCampaignIds) {
+  public Store linkedCampaignIds(List<Long> linkedCampaignIds) {
     
     this.linkedCampaignIds = linkedCampaignIds;
     return this;
   }
 
-  public Store addLinkedCampaignIdsItem(Integer linkedCampaignIdsItem) {
+  public Store addLinkedCampaignIdsItem(Long linkedCampaignIdsItem) {
     if (this.linkedCampaignIds == null) {
-      this.linkedCampaignIds = new ArrayList<Integer>();
+      this.linkedCampaignIds = new ArrayList<Long>();
     }
     this.linkedCampaignIds.add(linkedCampaignIdsItem);
     return this;
@@ -267,12 +267,12 @@ public class Store {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are linked with current store.")
 
-  public List<Integer> getLinkedCampaignIds() {
+  public List<Long> getLinkedCampaignIds() {
     return linkedCampaignIds;
   }
 
 
-  public void setLinkedCampaignIds(List<Integer> linkedCampaignIds) {
+  public void setLinkedCampaignIds(List<Long> linkedCampaignIds) {
     this.linkedCampaignIds = linkedCampaignIds;
   }
 

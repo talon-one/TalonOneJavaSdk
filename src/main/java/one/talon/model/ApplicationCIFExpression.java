@@ -42,11 +42,11 @@ public class ApplicationCIFExpression {
 
   public static final String SERIALIZED_NAME_CART_ITEM_FILTER_ID = "cartItemFilterId";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_FILTER_ID)
-  private Integer cartItemFilterId;
+  private Long cartItemFilterId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_EXPRESSION = "expression";
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
@@ -54,7 +54,7 @@ public class ApplicationCIFExpression {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
 
   public ApplicationCIFExpression id(Long id) {
@@ -101,7 +101,7 @@ public class ApplicationCIFExpression {
   }
 
 
-  public ApplicationCIFExpression cartItemFilterId(Integer cartItemFilterId) {
+  public ApplicationCIFExpression cartItemFilterId(Long cartItemFilterId) {
     
     this.cartItemFilterId = cartItemFilterId;
     return this;
@@ -114,17 +114,17 @@ public class ApplicationCIFExpression {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the Application cart item filter.")
 
-  public Integer getCartItemFilterId() {
+  public Long getCartItemFilterId() {
     return cartItemFilterId;
   }
 
 
-  public void setCartItemFilterId(Integer cartItemFilterId) {
+  public void setCartItemFilterId(Long cartItemFilterId) {
     this.cartItemFilterId = cartItemFilterId;
   }
 
 
-  public ApplicationCIFExpression createdBy(Integer createdBy) {
+  public ApplicationCIFExpression createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -137,12 +137,12 @@ public class ApplicationCIFExpression {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -178,7 +178,7 @@ public class ApplicationCIFExpression {
   }
 
 
-  public ApplicationCIFExpression applicationId(Integer applicationId) {
+  public ApplicationCIFExpression applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -190,12 +190,12 @@ public class ApplicationCIFExpression {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

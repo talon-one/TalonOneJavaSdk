@@ -32,15 +32,15 @@ import java.io.IOException;
 public class Effect {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
-  private Integer ruleIndex;
+  private Long ruleIndex;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -52,7 +52,7 @@ public class Effect {
 
   public static final String SERIALIZED_NAME_TRIGGERED_BY_COUPON = "triggeredByCoupon";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_BY_COUPON)
-  private Integer triggeredByCoupon;
+  private Long triggeredByCoupon;
 
   public static final String SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM = "triggeredForCatalogItem";
   @SerializedName(SERIALIZED_NAME_TRIGGERED_FOR_CATALOG_ITEM)
@@ -60,11 +60,11 @@ public class Effect {
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
-  private Integer conditionIndex;
+  private Long conditionIndex;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
-  private Integer evaluationGroupID;
+  private Long evaluationGroupID;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
@@ -72,18 +72,18 @@ public class Effect {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_ID = "campaignRevisionId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_ID)
-  private Integer campaignRevisionId;
+  private Long campaignRevisionId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID = "campaignRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_REVISION_VERSION_ID)
-  private Integer campaignRevisionVersionId;
+  private Long campaignRevisionVersionId;
 
   public static final String SERIALIZED_NAME_PROPS = "props";
   @SerializedName(SERIALIZED_NAME_PROPS)
   private Object props;
 
 
-  public Effect campaignId(Integer campaignId) {
+  public Effect campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -95,17 +95,17 @@ public class Effect {
   **/
   @ApiModelProperty(example = "244", required = true, value = "The ID of the campaign that triggered this effect.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public Effect rulesetId(Integer rulesetId) {
+  public Effect rulesetId(Long rulesetId) {
     
     this.rulesetId = rulesetId;
     return this;
@@ -117,17 +117,17 @@ public class Effect {
   **/
   @ApiModelProperty(example = "73", required = true, value = "The ID of the ruleset that was active in the campaign when this effect was triggered.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
 
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 
 
-  public Effect ruleIndex(Integer ruleIndex) {
+  public Effect ruleIndex(Long ruleIndex) {
     
     this.ruleIndex = ruleIndex;
     return this;
@@ -139,12 +139,12 @@ public class Effect {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The position of the rule that triggered this effect within the ruleset.")
 
-  public Integer getRuleIndex() {
+  public Long getRuleIndex() {
     return ruleIndex;
   }
 
 
-  public void setRuleIndex(Integer ruleIndex) {
+  public void setRuleIndex(Long ruleIndex) {
     this.ruleIndex = ruleIndex;
   }
 
@@ -193,7 +193,7 @@ public class Effect {
   }
 
 
-  public Effect triggeredByCoupon(Integer triggeredByCoupon) {
+  public Effect triggeredByCoupon(Long triggeredByCoupon) {
     
     this.triggeredByCoupon = triggeredByCoupon;
     return this;
@@ -206,12 +206,12 @@ public class Effect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4928", value = "The ID of the coupon that was being evaluated when this effect was triggered.")
 
-  public Integer getTriggeredByCoupon() {
+  public Long getTriggeredByCoupon() {
     return triggeredByCoupon;
   }
 
 
-  public void setTriggeredByCoupon(Integer triggeredByCoupon) {
+  public void setTriggeredByCoupon(Long triggeredByCoupon) {
     this.triggeredByCoupon = triggeredByCoupon;
   }
 
@@ -239,7 +239,7 @@ public class Effect {
   }
 
 
-  public Effect conditionIndex(Integer conditionIndex) {
+  public Effect conditionIndex(Long conditionIndex) {
     
     this.conditionIndex = conditionIndex;
     return this;
@@ -252,17 +252,17 @@ public class Effect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "786", value = "The index of the condition that was triggered.")
 
-  public Integer getConditionIndex() {
+  public Long getConditionIndex() {
     return conditionIndex;
   }
 
 
-  public void setConditionIndex(Integer conditionIndex) {
+  public void setConditionIndex(Long conditionIndex) {
     this.conditionIndex = conditionIndex;
   }
 
 
-  public Effect evaluationGroupID(Integer evaluationGroupID) {
+  public Effect evaluationGroupID(Long evaluationGroupID) {
     
     this.evaluationGroupID = evaluationGroupID;
     return this;
@@ -275,12 +275,12 @@ public class Effect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
 
-  public Integer getEvaluationGroupID() {
+  public Long getEvaluationGroupID() {
     return evaluationGroupID;
   }
 
 
-  public void setEvaluationGroupID(Integer evaluationGroupID) {
+  public void setEvaluationGroupID(Long evaluationGroupID) {
     this.evaluationGroupID = evaluationGroupID;
   }
 
@@ -308,7 +308,7 @@ public class Effect {
   }
 
 
-  public Effect campaignRevisionId(Integer campaignRevisionId) {
+  public Effect campaignRevisionId(Long campaignRevisionId) {
     
     this.campaignRevisionId = campaignRevisionId;
     return this;
@@ -321,17 +321,17 @@ public class Effect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The revision ID of the campaign that was used when triggering the effect.")
 
-  public Integer getCampaignRevisionId() {
+  public Long getCampaignRevisionId() {
     return campaignRevisionId;
   }
 
 
-  public void setCampaignRevisionId(Integer campaignRevisionId) {
+  public void setCampaignRevisionId(Long campaignRevisionId) {
     this.campaignRevisionId = campaignRevisionId;
   }
 
 
-  public Effect campaignRevisionVersionId(Integer campaignRevisionVersionId) {
+  public Effect campaignRevisionVersionId(Long campaignRevisionVersionId) {
     
     this.campaignRevisionVersionId = campaignRevisionVersionId;
     return this;
@@ -344,12 +344,12 @@ public class Effect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The revision version ID of the campaign that was used when triggering the effect.")
 
-  public Integer getCampaignRevisionVersionId() {
+  public Long getCampaignRevisionVersionId() {
     return campaignRevisionVersionId;
   }
 
 
-  public void setCampaignRevisionVersionId(Integer campaignRevisionVersionId) {
+  public void setCampaignRevisionVersionId(Long campaignRevisionVersionId) {
     this.campaignRevisionVersionId = campaignRevisionVersionId;
   }
 

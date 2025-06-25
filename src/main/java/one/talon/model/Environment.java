@@ -53,7 +53,7 @@ public class Environment {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_SLOTS = "slots";
   @SerializedName(SERIALIZED_NAME_SLOTS)
@@ -148,7 +148,7 @@ public class Environment {
   }
 
 
-  public Environment applicationId(Integer applicationId) {
+  public Environment applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -160,12 +160,12 @@ public class Environment {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

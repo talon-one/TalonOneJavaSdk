@@ -42,7 +42,7 @@ public class ErrorResponseWithStatus {
 
   public static final String SERIALIZED_NAME_STATUS_CODE = "StatusCode";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
-  private Integer statusCode;
+  private Long statusCode;
 
 
   public ErrorResponseWithStatus message(String message) {
@@ -99,7 +99,7 @@ public class ErrorResponseWithStatus {
   }
 
 
-  public ErrorResponseWithStatus statusCode(Integer statusCode) {
+  public ErrorResponseWithStatus statusCode(Long statusCode) {
     
     this.statusCode = statusCode;
     return this;
@@ -112,12 +112,12 @@ public class ErrorResponseWithStatus {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The error code")
 
-  public Integer getStatusCode() {
+  public Long getStatusCode() {
     return statusCode;
   }
 
 
-  public void setStatusCode(Integer statusCode) {
+  public void setStatusCode(Long statusCode) {
     this.statusCode = statusCode;
   }
 

@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**numberOfCards** | **Integer** | Number of loyalty cards in the batch. | 
+**numberOfCards** | **Long** | Number of loyalty cards in the batch. | 
 **batchId** | **String** | ID of the loyalty card batch. |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | Status of the loyalty cards in the batch. |  [optional]
 **cardCodeSettings** | [**CodeGeneratorSettings**](CodeGeneratorSettings.md) |  |  [optional]

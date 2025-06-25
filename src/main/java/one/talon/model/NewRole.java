@@ -45,7 +45,7 @@ public class NewRole {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Integer> members = new ArrayList<Integer>();
+  private List<Long> members = new ArrayList<Long>();
 
 
   public NewRole name(String name) {
@@ -115,13 +115,13 @@ public class NewRole {
   }
 
 
-  public NewRole members(List<Integer> members) {
+  public NewRole members(List<Long> members) {
     
     this.members = members;
     return this;
   }
 
-  public NewRole addMembersItem(Integer membersItem) {
+  public NewRole addMembersItem(Long membersItem) {
     this.members.add(membersItem);
     return this;
   }
@@ -132,12 +132,12 @@ public class NewRole {
   **/
   @ApiModelProperty(example = "[48, 562, 475, 18]", required = true, value = "An array of user identifiers.")
 
-  public List<Integer> getMembers() {
+  public List<Long> getMembers() {
     return members;
   }
 
 
-  public void setMembers(List<Integer> members) {
+  public void setMembers(List<Long> members) {
     this.members = members;
   }
 

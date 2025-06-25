@@ -8,7 +8,7 @@ A SAML 2.0 connection.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **assertionConsumerServiceURL** | **String** | The location where the SAML assertion is sent with a HTTP POST. | 
-**accountId** | **Integer** | The ID of the account that owns this entity. | 
+**accountId** | **Long** | The ID of the account that owns this entity. | 
 **name** | **String** | ID of the SAML service. | 
 **enabled** | **Boolean** | Determines if this SAML connection active. | 
 **issuer** | **String** | Identity Provider Entity ID. | 

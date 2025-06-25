@@ -65,7 +65,7 @@ public class SetDiscountPerItemEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Integer bundleIndex;
+  private Long bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
@@ -261,7 +261,7 @@ public class SetDiscountPerItemEffectProps {
   }
 
 
-  public SetDiscountPerItemEffectProps bundleIndex(Integer bundleIndex) {
+  public SetDiscountPerItemEffectProps bundleIndex(Long bundleIndex) {
     
     this.bundleIndex = bundleIndex;
     return this;
@@ -274,12 +274,12 @@ public class SetDiscountPerItemEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Integer getBundleIndex() {
+  public Long getBundleIndex() {
     return bundleIndex;
   }
 
 
-  public void setBundleIndex(Integer bundleIndex) {
+  public void setBundleIndex(Long bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 

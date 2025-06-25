@@ -38,7 +38,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CARD_IDENTIFIER = "cardIdentifier";
   @SerializedName(SERIALIZED_NAME_CARD_IDENTIFIER)
@@ -121,11 +121,11 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -154,7 +154,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   }
 
 
-  public CardLedgerTransactionLogEntryIntegrationAPI programId(Integer programId) {
+  public CardLedgerTransactionLogEntryIntegrationAPI programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -166,12 +166,12 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
@@ -353,7 +353,7 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   }
 
 
-  public CardLedgerTransactionLogEntryIntegrationAPI id(Integer id) {
+  public CardLedgerTransactionLogEntryIntegrationAPI id(Long id) {
     
     this.id = id;
     return this;
@@ -365,17 +365,17 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger transaction.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
 
-  public CardLedgerTransactionLogEntryIntegrationAPI rulesetId(Integer rulesetId) {
+  public CardLedgerTransactionLogEntryIntegrationAPI rulesetId(Long rulesetId) {
     
     this.rulesetId = rulesetId;
     return this;
@@ -388,12 +388,12 @@ public class CardLedgerTransactionLogEntryIntegrationAPI {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "The ID of the ruleset containing the rule that triggered this effect.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
 
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 

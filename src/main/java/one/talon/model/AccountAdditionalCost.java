@@ -42,7 +42,7 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -58,7 +58,7 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   /**
    * The type of additional cost. Possible value: - &#x60;session&#x60;: Additional cost will be added per session. - &#x60;item&#x60;: Additional cost will be added per item. - &#x60;both&#x60;: Additional cost will be added per item and session. 
@@ -158,7 +158,7 @@ public class AccountAdditionalCost {
   }
 
 
-  public AccountAdditionalCost accountId(Integer accountId) {
+  public AccountAdditionalCost accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -170,12 +170,12 @@ public class AccountAdditionalCost {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
@@ -246,15 +246,15 @@ public class AccountAdditionalCost {
   }
 
 
-  public AccountAdditionalCost subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public AccountAdditionalCost subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -267,12 +267,12 @@ public class AccountAdditionalCost {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the applications that are subscribed to this additional cost.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 

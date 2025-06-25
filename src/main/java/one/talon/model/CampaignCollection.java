@@ -42,7 +42,7 @@ public class CampaignCollection {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -58,19 +58,19 @@ public class CampaignCollection {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Integer modifiedBy;
+  private Long modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
@@ -121,7 +121,7 @@ public class CampaignCollection {
   }
 
 
-  public CampaignCollection accountId(Integer accountId) {
+  public CampaignCollection accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -133,12 +133,12 @@ public class CampaignCollection {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
@@ -210,7 +210,7 @@ public class CampaignCollection {
   }
 
 
-  public CampaignCollection modifiedBy(Integer modifiedBy) {
+  public CampaignCollection modifiedBy(Long modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -223,17 +223,17 @@ public class CampaignCollection {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "48", value = "ID of the user who last updated this effect if available.")
 
-  public Integer getModifiedBy() {
+  public Long getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Integer modifiedBy) {
+  public void setModifiedBy(Long modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
 
-  public CampaignCollection createdBy(Integer createdBy) {
+  public CampaignCollection createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -245,17 +245,17 @@ public class CampaignCollection {
   **/
   @ApiModelProperty(example = "134", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public CampaignCollection applicationId(Integer applicationId) {
+  public CampaignCollection applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -268,17 +268,17 @@ public class CampaignCollection {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CampaignCollection campaignId(Integer campaignId) {
+  public CampaignCollection campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -291,12 +291,12 @@ public class CampaignCollection {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "7", value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

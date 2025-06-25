@@ -32,14 +32,14 @@ import org.threeten.bp.OffsetDateTime;
 public class EntityWithTalangVisibleID {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
 
 
-  public EntityWithTalangVisibleID id(Integer id) {
+  public EntityWithTalangVisibleID id(Long id) {
     
     this.id = id;
     return this;
@@ -51,12 +51,12 @@ public class EntityWithTalangVisibleID {
   **/
   @ApiModelProperty(example = "4", required = true, value = "Unique ID for this entity.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

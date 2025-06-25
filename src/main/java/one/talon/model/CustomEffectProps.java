@@ -33,7 +33,7 @@ import java.math.BigDecimal;
 public class CustomEffectProps {
   public static final String SERIALIZED_NAME_EFFECT_ID = "effectId";
   @SerializedName(SERIALIZED_NAME_EFFECT_ID)
-  private Integer effectId;
+  private Long effectId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -49,7 +49,7 @@ public class CustomEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Integer bundleIndex;
+  private Long bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
@@ -60,7 +60,7 @@ public class CustomEffectProps {
   private Object payload;
 
 
-  public CustomEffectProps effectId(Integer effectId) {
+  public CustomEffectProps effectId(Long effectId) {
     
     this.effectId = effectId;
     return this;
@@ -72,12 +72,12 @@ public class CustomEffectProps {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the custom effect that was triggered.")
 
-  public Integer getEffectId() {
+  public Long getEffectId() {
     return effectId;
   }
 
 
-  public void setEffectId(Integer effectId) {
+  public void setEffectId(Long effectId) {
     this.effectId = effectId;
   }
 
@@ -150,7 +150,7 @@ public class CustomEffectProps {
   }
 
 
-  public CustomEffectProps bundleIndex(Integer bundleIndex) {
+  public CustomEffectProps bundleIndex(Long bundleIndex) {
     
     this.bundleIndex = bundleIndex;
     return this;
@@ -163,12 +163,12 @@ public class CustomEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Integer getBundleIndex() {
+  public Long getBundleIndex() {
     return bundleIndex;
   }
 
 
-  public void setBundleIndex(Integer bundleIndex) {
+  public void setBundleIndex(Long bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 

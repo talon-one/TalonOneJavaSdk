@@ -49,7 +49,7 @@ public class RollbackDiscountEffectProps {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
-  private Integer additionalCostId;
+  private Long additionalCostId;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST = "additionalCost";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST)
@@ -150,7 +150,7 @@ public class RollbackDiscountEffectProps {
   }
 
 
-  public RollbackDiscountEffectProps additionalCostId(Integer additionalCostId) {
+  public RollbackDiscountEffectProps additionalCostId(Long additionalCostId) {
     
     this.additionalCostId = additionalCostId;
     return this;
@@ -163,12 +163,12 @@ public class RollbackDiscountEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the additional cost that was rolled back.")
 
-  public Integer getAdditionalCostId() {
+  public Long getAdditionalCostId() {
     return additionalCostId;
   }
 
 
-  public void setAdditionalCostId(Integer additionalCostId) {
+  public void setAdditionalCostId(Long additionalCostId) {
     this.additionalCostId = additionalCostId;
   }
 

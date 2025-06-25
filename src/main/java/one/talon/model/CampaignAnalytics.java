@@ -69,51 +69,51 @@ public class CampaignAnalytics {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_FREE_ITEMS = "campaignFreeItems";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_FREE_ITEMS)
-  private Integer campaignFreeItems;
+  private Long campaignFreeItems;
 
   public static final String SERIALIZED_NAME_TOTAL_CAMPAIGN_FREE_ITEMS = "totalCampaignFreeItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_CAMPAIGN_FREE_ITEMS)
-  private Integer totalCampaignFreeItems;
+  private Long totalCampaignFreeItems;
 
   public static final String SERIALIZED_NAME_COUPON_REDEMPTIONS = "couponRedemptions";
   @SerializedName(SERIALIZED_NAME_COUPON_REDEMPTIONS)
-  private Integer couponRedemptions;
+  private Long couponRedemptions;
 
   public static final String SERIALIZED_NAME_TOTAL_COUPON_REDEMPTIONS = "totalCouponRedemptions";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUPON_REDEMPTIONS)
-  private Integer totalCouponRedemptions;
+  private Long totalCouponRedemptions;
 
   public static final String SERIALIZED_NAME_COUPON_ROLLEDBACK_REDEMPTIONS = "couponRolledbackRedemptions";
   @SerializedName(SERIALIZED_NAME_COUPON_ROLLEDBACK_REDEMPTIONS)
-  private Integer couponRolledbackRedemptions;
+  private Long couponRolledbackRedemptions;
 
   public static final String SERIALIZED_NAME_TOTAL_COUPON_ROLLEDBACK_REDEMPTIONS = "totalCouponRolledbackRedemptions";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUPON_ROLLEDBACK_REDEMPTIONS)
-  private Integer totalCouponRolledbackRedemptions;
+  private Long totalCouponRolledbackRedemptions;
 
   public static final String SERIALIZED_NAME_REFERRAL_REDEMPTIONS = "referralRedemptions";
   @SerializedName(SERIALIZED_NAME_REFERRAL_REDEMPTIONS)
-  private Integer referralRedemptions;
+  private Long referralRedemptions;
 
   public static final String SERIALIZED_NAME_TOTAL_REFERRAL_REDEMPTIONS = "totalReferralRedemptions";
   @SerializedName(SERIALIZED_NAME_TOTAL_REFERRAL_REDEMPTIONS)
-  private Integer totalReferralRedemptions;
+  private Long totalReferralRedemptions;
 
   public static final String SERIALIZED_NAME_COUPONS_CREATED = "couponsCreated";
   @SerializedName(SERIALIZED_NAME_COUPONS_CREATED)
-  private Integer couponsCreated;
+  private Long couponsCreated;
 
   public static final String SERIALIZED_NAME_TOTAL_COUPONS_CREATED = "totalCouponsCreated";
   @SerializedName(SERIALIZED_NAME_TOTAL_COUPONS_CREATED)
-  private Integer totalCouponsCreated;
+  private Long totalCouponsCreated;
 
   public static final String SERIALIZED_NAME_REFERRALS_CREATED = "referralsCreated";
   @SerializedName(SERIALIZED_NAME_REFERRALS_CREATED)
-  private Integer referralsCreated;
+  private Long referralsCreated;
 
   public static final String SERIALIZED_NAME_TOTAL_REFERRALS_CREATED = "totalReferralsCreated";
   @SerializedName(SERIALIZED_NAME_TOTAL_REFERRALS_CREATED)
-  private Integer totalReferralsCreated;
+  private Long totalReferralsCreated;
 
   public static final String SERIALIZED_NAME_ADDED_LOYALTY_POINTS = "addedLoyaltyPoints";
   @SerializedName(SERIALIZED_NAME_ADDED_LOYALTY_POINTS)
@@ -330,7 +330,7 @@ public class CampaignAnalytics {
   }
 
 
-  public CampaignAnalytics campaignFreeItems(Integer campaignFreeItems) {
+  public CampaignAnalytics campaignFreeItems(Long campaignFreeItems) {
     
     this.campaignFreeItems = campaignFreeItems;
     return this;
@@ -342,17 +342,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Amount of free items given in the campaign.")
 
-  public Integer getCampaignFreeItems() {
+  public Long getCampaignFreeItems() {
     return campaignFreeItems;
   }
 
 
-  public void setCampaignFreeItems(Integer campaignFreeItems) {
+  public void setCampaignFreeItems(Long campaignFreeItems) {
     this.campaignFreeItems = campaignFreeItems;
   }
 
 
-  public CampaignAnalytics totalCampaignFreeItems(Integer totalCampaignFreeItems) {
+  public CampaignAnalytics totalCampaignFreeItems(Long totalCampaignFreeItems) {
     
     this.totalCampaignFreeItems = totalCampaignFreeItems;
     return this;
@@ -364,17 +364,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(example = "86", required = true, value = "Amount of free items given in the campaign since it began.")
 
-  public Integer getTotalCampaignFreeItems() {
+  public Long getTotalCampaignFreeItems() {
     return totalCampaignFreeItems;
   }
 
 
-  public void setTotalCampaignFreeItems(Integer totalCampaignFreeItems) {
+  public void setTotalCampaignFreeItems(Long totalCampaignFreeItems) {
     this.totalCampaignFreeItems = totalCampaignFreeItems;
   }
 
 
-  public CampaignAnalytics couponRedemptions(Integer couponRedemptions) {
+  public CampaignAnalytics couponRedemptions(Long couponRedemptions) {
     
     this.couponRedemptions = couponRedemptions;
     return this;
@@ -386,17 +386,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions in the campaign.")
 
-  public Integer getCouponRedemptions() {
+  public Long getCouponRedemptions() {
     return couponRedemptions;
   }
 
 
-  public void setCouponRedemptions(Integer couponRedemptions) {
+  public void setCouponRedemptions(Long couponRedemptions) {
     this.couponRedemptions = couponRedemptions;
   }
 
 
-  public CampaignAnalytics totalCouponRedemptions(Integer totalCouponRedemptions) {
+  public CampaignAnalytics totalCouponRedemptions(Long totalCouponRedemptions) {
     
     this.totalCouponRedemptions = totalCouponRedemptions;
     return this;
@@ -408,17 +408,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions in the campaign since it began.")
 
-  public Integer getTotalCouponRedemptions() {
+  public Long getTotalCouponRedemptions() {
     return totalCouponRedemptions;
   }
 
 
-  public void setTotalCouponRedemptions(Integer totalCouponRedemptions) {
+  public void setTotalCouponRedemptions(Long totalCouponRedemptions) {
     this.totalCouponRedemptions = totalCouponRedemptions;
   }
 
 
-  public CampaignAnalytics couponRolledbackRedemptions(Integer couponRolledbackRedemptions) {
+  public CampaignAnalytics couponRolledbackRedemptions(Long couponRolledbackRedemptions) {
     
     this.couponRolledbackRedemptions = couponRolledbackRedemptions;
     return this;
@@ -430,17 +430,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign.")
 
-  public Integer getCouponRolledbackRedemptions() {
+  public Long getCouponRolledbackRedemptions() {
     return couponRolledbackRedemptions;
   }
 
 
-  public void setCouponRolledbackRedemptions(Integer couponRolledbackRedemptions) {
+  public void setCouponRolledbackRedemptions(Long couponRolledbackRedemptions) {
     this.couponRolledbackRedemptions = couponRolledbackRedemptions;
   }
 
 
-  public CampaignAnalytics totalCouponRolledbackRedemptions(Integer totalCouponRolledbackRedemptions) {
+  public CampaignAnalytics totalCouponRolledbackRedemptions(Long totalCouponRolledbackRedemptions) {
     
     this.totalCouponRolledbackRedemptions = totalCouponRolledbackRedemptions;
     return this;
@@ -452,17 +452,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupon redemptions that have been rolled back (due to canceling closed session) in the campaign since it began.")
 
-  public Integer getTotalCouponRolledbackRedemptions() {
+  public Long getTotalCouponRolledbackRedemptions() {
     return totalCouponRolledbackRedemptions;
   }
 
 
-  public void setTotalCouponRolledbackRedemptions(Integer totalCouponRolledbackRedemptions) {
+  public void setTotalCouponRolledbackRedemptions(Long totalCouponRolledbackRedemptions) {
     this.totalCouponRolledbackRedemptions = totalCouponRolledbackRedemptions;
   }
 
 
-  public CampaignAnalytics referralRedemptions(Integer referralRedemptions) {
+  public CampaignAnalytics referralRedemptions(Long referralRedemptions) {
     
     this.referralRedemptions = referralRedemptions;
     return this;
@@ -474,17 +474,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of referral redemptions in the campaign.")
 
-  public Integer getReferralRedemptions() {
+  public Long getReferralRedemptions() {
     return referralRedemptions;
   }
 
 
-  public void setReferralRedemptions(Integer referralRedemptions) {
+  public void setReferralRedemptions(Long referralRedemptions) {
     this.referralRedemptions = referralRedemptions;
   }
 
 
-  public CampaignAnalytics totalReferralRedemptions(Integer totalReferralRedemptions) {
+  public CampaignAnalytics totalReferralRedemptions(Long totalReferralRedemptions) {
     
     this.totalReferralRedemptions = totalReferralRedemptions;
     return this;
@@ -496,17 +496,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of referral redemptions in the campaign since it began.")
 
-  public Integer getTotalReferralRedemptions() {
+  public Long getTotalReferralRedemptions() {
     return totalReferralRedemptions;
   }
 
 
-  public void setTotalReferralRedemptions(Integer totalReferralRedemptions) {
+  public void setTotalReferralRedemptions(Long totalReferralRedemptions) {
     this.totalReferralRedemptions = totalReferralRedemptions;
   }
 
 
-  public CampaignAnalytics couponsCreated(Integer couponsCreated) {
+  public CampaignAnalytics couponsCreated(Long couponsCreated) {
     
     this.couponsCreated = couponsCreated;
     return this;
@@ -518,17 +518,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupons created in the campaign by the rule engine.")
 
-  public Integer getCouponsCreated() {
+  public Long getCouponsCreated() {
     return couponsCreated;
   }
 
 
-  public void setCouponsCreated(Integer couponsCreated) {
+  public void setCouponsCreated(Long couponsCreated) {
     this.couponsCreated = couponsCreated;
   }
 
 
-  public CampaignAnalytics totalCouponsCreated(Integer totalCouponsCreated) {
+  public CampaignAnalytics totalCouponsCreated(Long totalCouponsCreated) {
     
     this.totalCouponsCreated = totalCouponsCreated;
     return this;
@@ -540,17 +540,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of coupons created in the campaign by the rule engine since it began.")
 
-  public Integer getTotalCouponsCreated() {
+  public Long getTotalCouponsCreated() {
     return totalCouponsCreated;
   }
 
 
-  public void setTotalCouponsCreated(Integer totalCouponsCreated) {
+  public void setTotalCouponsCreated(Long totalCouponsCreated) {
     this.totalCouponsCreated = totalCouponsCreated;
   }
 
 
-  public CampaignAnalytics referralsCreated(Integer referralsCreated) {
+  public CampaignAnalytics referralsCreated(Long referralsCreated) {
     
     this.referralsCreated = referralsCreated;
     return this;
@@ -562,17 +562,17 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of referrals created in the campaign by the rule engine.")
 
-  public Integer getReferralsCreated() {
+  public Long getReferralsCreated() {
     return referralsCreated;
   }
 
 
-  public void setReferralsCreated(Integer referralsCreated) {
+  public void setReferralsCreated(Long referralsCreated) {
     this.referralsCreated = referralsCreated;
   }
 
 
-  public CampaignAnalytics totalReferralsCreated(Integer totalReferralsCreated) {
+  public CampaignAnalytics totalReferralsCreated(Long totalReferralsCreated) {
     
     this.totalReferralsCreated = totalReferralsCreated;
     return this;
@@ -584,12 +584,12 @@ public class CampaignAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Number of referrals created in the campaign by the rule engine since it began.")
 
-  public Integer getTotalReferralsCreated() {
+  public Long getTotalReferralsCreated() {
     return totalReferralsCreated;
   }
 
 
-  public void setTotalReferralsCreated(Integer totalReferralsCreated) {
+  public void setTotalReferralsCreated(Long totalReferralsCreated) {
     this.totalReferralsCreated = totalReferralsCreated;
   }
 

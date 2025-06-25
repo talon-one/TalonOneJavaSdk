@@ -32,11 +32,11 @@ import java.io.IOException;
 public class CouponRejectionReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_COUPON_ID = "couponId";
   @SerializedName(SERIALIZED_NAME_COUPON_ID)
-  private Integer couponId;
+  private Long couponId;
 
   /**
    * Gets or Sets reason
@@ -110,7 +110,7 @@ public class CouponRejectionReason {
   private ReasonEnum reason;
 
 
-  public CouponRejectionReason campaignId(Integer campaignId) {
+  public CouponRejectionReason campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -122,17 +122,17 @@ public class CouponRejectionReason {
   **/
   @ApiModelProperty(example = "244", required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public CouponRejectionReason couponId(Integer couponId) {
+  public CouponRejectionReason couponId(Long couponId) {
     
     this.couponId = couponId;
     return this;
@@ -144,12 +144,12 @@ public class CouponRejectionReason {
   **/
   @ApiModelProperty(example = "4928", required = true, value = "")
 
-  public Integer getCouponId() {
+  public Long getCouponId() {
     return couponId;
   }
 
 
-  public void setCouponId(Integer couponId) {
+  public void setCouponId(Long couponId) {
     this.couponId = couponId;
   }
 

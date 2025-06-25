@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class RollbackDeductedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -65,7 +65,7 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   private String cardIdentifier;
 
 
-  public RollbackDeductedLoyaltyPointsEffectProps programId(Integer programId) {
+  public RollbackDeductedLoyaltyPointsEffectProps programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -77,12 +77,12 @@ public class RollbackDeductedLoyaltyPointsEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were reimbursed.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 

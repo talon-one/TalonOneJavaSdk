@@ -90,15 +90,15 @@ public class StrikethroughLabelingNotification {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CURRENT_BATCH = "currentBatch";
   @SerializedName(SERIALIZED_NAME_CURRENT_BATCH)
-  private Integer currentBatch;
+  private Long currentBatch;
 
   public static final String SERIALIZED_NAME_TOTAL_BATCHES = "totalBatches";
   @SerializedName(SERIALIZED_NAME_TOTAL_BATCHES)
-  private Integer totalBatches;
+  private Long totalBatches;
 
   public static final String SERIALIZED_NAME_TRIGGER = "trigger";
   @SerializedName(SERIALIZED_NAME_TRIGGER)
@@ -155,7 +155,7 @@ public class StrikethroughLabelingNotification {
   }
 
 
-  public StrikethroughLabelingNotification applicationId(Integer applicationId) {
+  public StrikethroughLabelingNotification applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -167,17 +167,17 @@ public class StrikethroughLabelingNotification {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application to which the catalog items labels belongs.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public StrikethroughLabelingNotification currentBatch(Integer currentBatch) {
+  public StrikethroughLabelingNotification currentBatch(Long currentBatch) {
     
     this.currentBatch = currentBatch;
     return this;
@@ -189,17 +189,17 @@ public class StrikethroughLabelingNotification {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The batch number of the notification. Notifications might be sent in different batches.")
 
-  public Integer getCurrentBatch() {
+  public Long getCurrentBatch() {
     return currentBatch;
   }
 
 
-  public void setCurrentBatch(Integer currentBatch) {
+  public void setCurrentBatch(Long currentBatch) {
     this.currentBatch = currentBatch;
   }
 
 
-  public StrikethroughLabelingNotification totalBatches(Integer totalBatches) {
+  public StrikethroughLabelingNotification totalBatches(Long totalBatches) {
     
     this.totalBatches = totalBatches;
     return this;
@@ -211,12 +211,12 @@ public class StrikethroughLabelingNotification {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The total number of batches for the notification.")
 
-  public Integer getTotalBatches() {
+  public Long getTotalBatches() {
     return totalBatches;
   }
 
 
-  public void setTotalBatches(Integer totalBatches) {
+  public void setTotalBatches(Long totalBatches) {
     this.totalBatches = totalBatches;
   }
 

@@ -33,7 +33,7 @@ import java.math.BigDecimal;
 public class RollbackAddedLoyaltyPointsEffectProps {
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -64,7 +64,7 @@ public class RollbackAddedLoyaltyPointsEffectProps {
   private String cardIdentifier;
 
 
-  public RollbackAddedLoyaltyPointsEffectProps programId(Integer programId) {
+  public RollbackAddedLoyaltyPointsEffectProps programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -76,12 +76,12 @@ public class RollbackAddedLoyaltyPointsEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where the points were originally added.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 

@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Session {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -43,7 +43,7 @@ public class Session {
   private OffsetDateTime created;
 
 
-  public Session userId(Integer userId) {
+  public Session userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -55,12 +55,12 @@ public class Session {
   **/
   @ApiModelProperty(example = "109", required = true, value = "The ID of the user of this session.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 

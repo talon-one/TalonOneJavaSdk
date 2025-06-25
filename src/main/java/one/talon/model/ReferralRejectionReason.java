@@ -32,11 +32,11 @@ import java.io.IOException;
 public class ReferralRejectionReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Integer referralId;
+  private Long referralId;
 
   /**
    * Gets or Sets reason
@@ -110,7 +110,7 @@ public class ReferralRejectionReason {
   private ReasonEnum reason;
 
 
-  public ReferralRejectionReason campaignId(Integer campaignId) {
+  public ReferralRejectionReason campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -122,17 +122,17 @@ public class ReferralRejectionReason {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public ReferralRejectionReason referralId(Integer referralId) {
+  public ReferralRejectionReason referralId(Long referralId) {
     
     this.referralId = referralId;
     return this;
@@ -144,12 +144,12 @@ public class ReferralRejectionReason {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getReferralId() {
+  public Long getReferralId() {
     return referralId;
   }
 
 
-  public void setReferralId(Integer referralId) {
+  public void setReferralId(Long referralId) {
     this.referralId = referralId;
   }
 

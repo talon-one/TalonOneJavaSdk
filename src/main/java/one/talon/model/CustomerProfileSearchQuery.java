@@ -41,7 +41,7 @@ public class CustomerProfileSearchQuery {
 
   public static final String SERIALIZED_NAME_PROFILE_I_DS = "profileIDs";
   @SerializedName(SERIALIZED_NAME_PROFILE_I_DS)
-  private List<Integer> profileIDs = null;
+  private List<Long> profileIDs = null;
 
 
   public CustomerProfileSearchQuery attributes(Object attributes) {
@@ -98,15 +98,15 @@ public class CustomerProfileSearchQuery {
   }
 
 
-  public CustomerProfileSearchQuery profileIDs(List<Integer> profileIDs) {
+  public CustomerProfileSearchQuery profileIDs(List<Long> profileIDs) {
     
     this.profileIDs = profileIDs;
     return this;
   }
 
-  public CustomerProfileSearchQuery addProfileIDsItem(Integer profileIDsItem) {
+  public CustomerProfileSearchQuery addProfileIDsItem(Long profileIDsItem) {
     if (this.profileIDs == null) {
-      this.profileIDs = new ArrayList<Integer>();
+      this.profileIDs = new ArrayList<Long>();
     }
     this.profileIDs.add(profileIDsItem);
     return this;
@@ -119,12 +119,12 @@ public class CustomerProfileSearchQuery {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Integer> getProfileIDs() {
+  public List<Long> getProfileIDs() {
     return profileIDs;
   }
 
 
-  public void setProfileIDs(List<Integer> profileIDs) {
+  public void setProfileIDs(List<Long> profileIDs) {
     this.profileIDs = profileIDs;
   }
 

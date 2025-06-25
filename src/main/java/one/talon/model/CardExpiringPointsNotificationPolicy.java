@@ -46,7 +46,7 @@ public class CardExpiringPointsNotificationPolicy {
 
   public static final String SERIALIZED_NAME_BATCH_SIZE = "batchSize";
   @SerializedName(SERIALIZED_NAME_BATCH_SIZE)
-  private Integer batchSize;
+  private Long batchSize = 1000l;
 
 
   public CardExpiringPointsNotificationPolicy name(String name) {
@@ -121,7 +121,7 @@ public class CardExpiringPointsNotificationPolicy {
   }
 
 
-  public CardExpiringPointsNotificationPolicy batchSize(Integer batchSize) {
+  public CardExpiringPointsNotificationPolicy batchSize(Long batchSize) {
     
     this.batchSize = batchSize;
     return this;
@@ -134,12 +134,12 @@ public class CardExpiringPointsNotificationPolicy {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000", value = "The required size of each batch of data. This value applies only when `batchingEnabled` is `true`.")
 
-  public Integer getBatchSize() {
+  public Long getBatchSize() {
     return batchSize;
   }
 
 
-  public void setBatchSize(Integer batchSize) {
+  public void setBatchSize(Long batchSize) {
     this.batchSize = batchSize;
   }
 

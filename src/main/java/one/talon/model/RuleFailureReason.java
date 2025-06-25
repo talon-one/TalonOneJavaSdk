@@ -32,7 +32,7 @@ import java.io.IOException;
 public class RuleFailureReason {
   public static final String SERIALIZED_NAME_CAMPAIGN_I_D = "campaignID";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_I_D)
-  private Integer campaignID;
+  private Long campaignID;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
@@ -40,11 +40,11 @@ public class RuleFailureReason {
 
   public static final String SERIALIZED_NAME_RULESET_I_D = "rulesetID";
   @SerializedName(SERIALIZED_NAME_RULESET_I_D)
-  private Integer rulesetID;
+  private Long rulesetID;
 
   public static final String SERIALIZED_NAME_COUPON_I_D = "couponID";
   @SerializedName(SERIALIZED_NAME_COUPON_I_D)
-  private Integer couponID;
+  private Long couponID;
 
   public static final String SERIALIZED_NAME_COUPON_VALUE = "couponValue";
   @SerializedName(SERIALIZED_NAME_COUPON_VALUE)
@@ -52,7 +52,7 @@ public class RuleFailureReason {
 
   public static final String SERIALIZED_NAME_REFERRAL_I_D = "referralID";
   @SerializedName(SERIALIZED_NAME_REFERRAL_I_D)
-  private Integer referralID;
+  private Long referralID;
 
   public static final String SERIALIZED_NAME_REFERRAL_VALUE = "referralValue";
   @SerializedName(SERIALIZED_NAME_REFERRAL_VALUE)
@@ -60,7 +60,7 @@ public class RuleFailureReason {
 
   public static final String SERIALIZED_NAME_RULE_INDEX = "ruleIndex";
   @SerializedName(SERIALIZED_NAME_RULE_INDEX)
-  private Integer ruleIndex;
+  private Long ruleIndex;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -68,11 +68,11 @@ public class RuleFailureReason {
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
-  private Integer conditionIndex;
+  private Long conditionIndex;
 
   public static final String SERIALIZED_NAME_EFFECT_INDEX = "effectIndex";
   @SerializedName(SERIALIZED_NAME_EFFECT_INDEX)
-  private Integer effectIndex;
+  private Long effectIndex;
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
@@ -80,14 +80,14 @@ public class RuleFailureReason {
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_I_D = "evaluationGroupID";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_I_D)
-  private Integer evaluationGroupID;
+  private Long evaluationGroupID;
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_MODE = "evaluationGroupMode";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_MODE)
   private String evaluationGroupMode;
 
 
-  public RuleFailureReason campaignID(Integer campaignID) {
+  public RuleFailureReason campaignID(Long campaignID) {
     
     this.campaignID = campaignID;
     return this;
@@ -99,12 +99,12 @@ public class RuleFailureReason {
   **/
   @ApiModelProperty(required = true, value = "The ID of the campaign that contains the rule that failed.")
 
-  public Integer getCampaignID() {
+  public Long getCampaignID() {
     return campaignID;
   }
 
 
-  public void setCampaignID(Integer campaignID) {
+  public void setCampaignID(Long campaignID) {
     this.campaignID = campaignID;
   }
 
@@ -131,7 +131,7 @@ public class RuleFailureReason {
   }
 
 
-  public RuleFailureReason rulesetID(Integer rulesetID) {
+  public RuleFailureReason rulesetID(Long rulesetID) {
     
     this.rulesetID = rulesetID;
     return this;
@@ -143,17 +143,17 @@ public class RuleFailureReason {
   **/
   @ApiModelProperty(required = true, value = "The ID of the ruleset that contains the rule that failed.")
 
-  public Integer getRulesetID() {
+  public Long getRulesetID() {
     return rulesetID;
   }
 
 
-  public void setRulesetID(Integer rulesetID) {
+  public void setRulesetID(Long rulesetID) {
     this.rulesetID = rulesetID;
   }
 
 
-  public RuleFailureReason couponID(Integer couponID) {
+  public RuleFailureReason couponID(Long couponID) {
     
     this.couponID = couponID;
     return this;
@@ -166,12 +166,12 @@ public class RuleFailureReason {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4928", value = "The ID of the coupon that was being evaluated at the time of the rule failure.")
 
-  public Integer getCouponID() {
+  public Long getCouponID() {
     return couponID;
   }
 
 
-  public void setCouponID(Integer couponID) {
+  public void setCouponID(Long couponID) {
     this.couponID = couponID;
   }
 
@@ -199,7 +199,7 @@ public class RuleFailureReason {
   }
 
 
-  public RuleFailureReason referralID(Integer referralID) {
+  public RuleFailureReason referralID(Long referralID) {
     
     this.referralID = referralID;
     return this;
@@ -212,12 +212,12 @@ public class RuleFailureReason {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The ID of the referral that was being evaluated at the time of the rule failure.")
 
-  public Integer getReferralID() {
+  public Long getReferralID() {
     return referralID;
   }
 
 
-  public void setReferralID(Integer referralID) {
+  public void setReferralID(Long referralID) {
     this.referralID = referralID;
   }
 
@@ -245,7 +245,7 @@ public class RuleFailureReason {
   }
 
 
-  public RuleFailureReason ruleIndex(Integer ruleIndex) {
+  public RuleFailureReason ruleIndex(Long ruleIndex) {
     
     this.ruleIndex = ruleIndex;
     return this;
@@ -257,12 +257,12 @@ public class RuleFailureReason {
   **/
   @ApiModelProperty(required = true, value = "The index of the rule that failed within the ruleset.")
 
-  public Integer getRuleIndex() {
+  public Long getRuleIndex() {
     return ruleIndex;
   }
 
 
-  public void setRuleIndex(Integer ruleIndex) {
+  public void setRuleIndex(Long ruleIndex) {
     this.ruleIndex = ruleIndex;
   }
 
@@ -289,7 +289,7 @@ public class RuleFailureReason {
   }
 
 
-  public RuleFailureReason conditionIndex(Integer conditionIndex) {
+  public RuleFailureReason conditionIndex(Long conditionIndex) {
     
     this.conditionIndex = conditionIndex;
     return this;
@@ -302,17 +302,17 @@ public class RuleFailureReason {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the condition that failed.")
 
-  public Integer getConditionIndex() {
+  public Long getConditionIndex() {
     return conditionIndex;
   }
 
 
-  public void setConditionIndex(Integer conditionIndex) {
+  public void setConditionIndex(Long conditionIndex) {
     this.conditionIndex = conditionIndex;
   }
 
 
-  public RuleFailureReason effectIndex(Integer effectIndex) {
+  public RuleFailureReason effectIndex(Long effectIndex) {
     
     this.effectIndex = effectIndex;
     return this;
@@ -325,12 +325,12 @@ public class RuleFailureReason {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the effect that failed.")
 
-  public Integer getEffectIndex() {
+  public Long getEffectIndex() {
     return effectIndex;
   }
 
 
-  public void setEffectIndex(Integer effectIndex) {
+  public void setEffectIndex(Long effectIndex) {
     this.effectIndex = effectIndex;
   }
 
@@ -358,7 +358,7 @@ public class RuleFailureReason {
   }
 
 
-  public RuleFailureReason evaluationGroupID(Integer evaluationGroupID) {
+  public RuleFailureReason evaluationGroupID(Long evaluationGroupID) {
     
     this.evaluationGroupID = evaluationGroupID;
     return this;
@@ -371,12 +371,12 @@ public class RuleFailureReason {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the evaluation group. For more information, see [Managing campaign evaluation](https://docs.talon.one/docs/product/applications/managing-campaign-evaluation).")
 
-  public Integer getEvaluationGroupID() {
+  public Long getEvaluationGroupID() {
     return evaluationGroupID;
   }
 
 
-  public void setEvaluationGroupID(Integer evaluationGroupID) {
+  public void setEvaluationGroupID(Long evaluationGroupID) {
     this.evaluationGroupID = evaluationGroupID;
   }
 

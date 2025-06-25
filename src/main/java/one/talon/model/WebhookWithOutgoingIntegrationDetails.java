@@ -47,7 +47,7 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -136,11 +136,11 @@ public class WebhookWithOutgoingIntegrationDetails {
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID = "outgoingIntegrationTemplateId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TEMPLATE_ID)
-  private Integer outgoingIntegrationTemplateId;
+  private Long outgoingIntegrationTemplateId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID = "outgoingIntegrationTypeId";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_ID)
-  private Integer outgoingIntegrationTypeId;
+  private Long outgoingIntegrationTypeId;
 
   public static final String SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME = "outgoingIntegrationTypeName";
   @SerializedName(SERIALIZED_NAME_OUTGOING_INTEGRATION_TYPE_NAME)
@@ -213,13 +213,13 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Integer> applicationIds) {
+  public WebhookWithOutgoingIntegrationDetails applicationIds(List<Long> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Integer applicationIdsItem) {
+  public WebhookWithOutgoingIntegrationDetails addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -230,12 +230,12 @@ public class WebhookWithOutgoingIntegrationDetails {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -428,7 +428,7 @@ public class WebhookWithOutgoingIntegrationDetails {
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
     
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
     return this;
@@ -441,17 +441,17 @@ public class WebhookWithOutgoingIntegrationDetails {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration template.")
 
-  public Integer getOutgoingIntegrationTemplateId() {
+  public Long getOutgoingIntegrationTemplateId() {
     return outgoingIntegrationTemplateId;
   }
 
 
-  public void setOutgoingIntegrationTemplateId(Integer outgoingIntegrationTemplateId) {
+  public void setOutgoingIntegrationTemplateId(Long outgoingIntegrationTemplateId) {
     this.outgoingIntegrationTemplateId = outgoingIntegrationTemplateId;
   }
 
 
-  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
+  public WebhookWithOutgoingIntegrationDetails outgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
     
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
     return this;
@@ -464,12 +464,12 @@ public class WebhookWithOutgoingIntegrationDetails {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Identifier of the outgoing integration type.")
 
-  public Integer getOutgoingIntegrationTypeId() {
+  public Long getOutgoingIntegrationTypeId() {
     return outgoingIntegrationTypeId;
   }
 
 
-  public void setOutgoingIntegrationTypeId(Integer outgoingIntegrationTypeId) {
+  public void setOutgoingIntegrationTypeId(Long outgoingIntegrationTypeId) {
     this.outgoingIntegrationTypeId = outgoingIntegrationTypeId;
   }
 

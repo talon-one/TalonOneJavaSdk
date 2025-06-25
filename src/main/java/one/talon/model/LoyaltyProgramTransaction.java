@@ -34,15 +34,15 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgramTransaction {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Integer programId;
+  private Long programId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -133,11 +133,11 @@ public class LoyaltyProgramTransaction {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Integer userId;
+  private Long userId;
 
   public static final String SERIALIZED_NAME_USER_EMAIL = "userEmail";
   @SerializedName(SERIALIZED_NAME_USER_EMAIL)
@@ -145,7 +145,7 @@ public class LoyaltyProgramTransaction {
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Integer rulesetId;
+  private Long rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -156,7 +156,7 @@ public class LoyaltyProgramTransaction {
   private LoyaltyLedgerEntryFlags flags;
 
 
-  public LoyaltyProgramTransaction id(Integer id) {
+  public LoyaltyProgramTransaction id(Long id) {
     
     this.id = id;
     return this;
@@ -168,17 +168,17 @@ public class LoyaltyProgramTransaction {
   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger transaction.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
 
-  public LoyaltyProgramTransaction programId(Integer programId) {
+  public LoyaltyProgramTransaction programId(Long programId) {
     
     this.programId = programId;
     return this;
@@ -190,17 +190,17 @@ public class LoyaltyProgramTransaction {
   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Integer getProgramId() {
+  public Long getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Integer programId) {
+  public void setProgramId(Long programId) {
     this.programId = programId;
   }
 
 
-  public LoyaltyProgramTransaction campaignId(Integer campaignId) {
+  public LoyaltyProgramTransaction campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -213,12 +213,12 @@ public class LoyaltyProgramTransaction {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "324", value = "ID of the campaign.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -446,7 +446,7 @@ public class LoyaltyProgramTransaction {
   }
 
 
-  public LoyaltyProgramTransaction importId(Integer importId) {
+  public LoyaltyProgramTransaction importId(Long importId) {
     
     this.importId = importId;
     return this;
@@ -459,17 +459,17 @@ public class LoyaltyProgramTransaction {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "ID of the import where the transaction occurred.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
 
-  public LoyaltyProgramTransaction userId(Integer userId) {
+  public LoyaltyProgramTransaction userId(Long userId) {
     
     this.userId = userId;
     return this;
@@ -482,12 +482,12 @@ public class LoyaltyProgramTransaction {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "ID of the user who manually added or deducted points. Applies only to manual transactions.")
 
-  public Integer getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Integer userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
@@ -515,7 +515,7 @@ public class LoyaltyProgramTransaction {
   }
 
 
-  public LoyaltyProgramTransaction rulesetId(Integer rulesetId) {
+  public LoyaltyProgramTransaction rulesetId(Long rulesetId) {
     
     this.rulesetId = rulesetId;
     return this;
@@ -528,12 +528,12 @@ public class LoyaltyProgramTransaction {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "ID of the ruleset containing the rule that triggered the effect. Applies only for transactions that resulted from a customer session.")
 
-  public Integer getRulesetId() {
+  public Long getRulesetId() {
     return rulesetId;
   }
 
 
-  public void setRulesetId(Integer rulesetId) {
+  public void setRulesetId(Long rulesetId) {
     this.rulesetId = rulesetId;
   }
 

@@ -177,7 +177,7 @@ public class AchievementStatusEntry {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   /**
    * The status of the achievement.
@@ -505,7 +505,7 @@ public class AchievementStatusEntry {
   }
 
 
-  public AchievementStatusEntry campaignId(Integer campaignId) {
+  public AchievementStatusEntry campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -518,12 +518,12 @@ public class AchievementStatusEntry {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the campaign the achievement belongs to.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

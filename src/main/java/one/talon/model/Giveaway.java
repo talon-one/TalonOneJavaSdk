@@ -44,7 +44,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Integer poolId;
+  private Long poolId;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -64,7 +64,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Integer importId;
+  private Long importId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -72,7 +72,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Integer profileId;
+  private Long profileId;
 
 
   public Giveaway id(Long id) {
@@ -141,7 +141,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway poolId(Integer poolId) {
+  public Giveaway poolId(Long poolId) {
     
     this.poolId = poolId;
     return this;
@@ -153,12 +153,12 @@ public class Giveaway {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the pool to return giveaway codes from.")
 
-  public Integer getPoolId() {
+  public Long getPoolId() {
     return poolId;
   }
 
 
-  public void setPoolId(Integer poolId) {
+  public void setPoolId(Long poolId) {
     this.poolId = poolId;
   }
 
@@ -255,7 +255,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway importId(Integer importId) {
+  public Giveaway importId(Long importId) {
     
     this.importId = importId;
     return this;
@@ -268,12 +268,12 @@ public class Giveaway {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this giveaway.")
 
-  public Integer getImportId() {
+  public Long getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Integer importId) {
+  public void setImportId(Long importId) {
     this.importId = importId;
   }
 
@@ -301,7 +301,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway profileId(Integer profileId) {
+  public Giveaway profileId(Long profileId) {
     
     this.profileId = profileId;
     return this;
@@ -314,12 +314,12 @@ public class Giveaway {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The internal ID of the customer profile that was awarded the giveaway, if the giveaway was awarded and an internal ID exists.")
 
-  public Integer getProfileId() {
+  public Long getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Integer profileId) {
+  public void setProfileId(Long profileId) {
     this.profileId = profileId;
   }
 

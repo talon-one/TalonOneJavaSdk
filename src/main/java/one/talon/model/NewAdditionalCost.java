@@ -45,7 +45,7 @@ public class NewAdditionalCost {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Integer> subscribedApplicationsIds = null;
+  private List<Long> subscribedApplicationsIds = null;
 
   /**
    * The type of additional cost. Possible value: - &#x60;session&#x60;: Additional cost will be added per session. - &#x60;item&#x60;: Additional cost will be added per item. - &#x60;both&#x60;: Additional cost will be added per item and session. 
@@ -167,15 +167,15 @@ public class NewAdditionalCost {
   }
 
 
-  public NewAdditionalCost subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public NewAdditionalCost subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public NewAdditionalCost addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
+  public NewAdditionalCost addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Integer>();
+      this.subscribedApplicationsIds = new ArrayList<Long>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -188,12 +188,12 @@ public class NewAdditionalCost {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the applications that are subscribed to this additional cost.")
 
-  public List<Integer> getSubscribedApplicationsIds() {
+  public List<Long> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 

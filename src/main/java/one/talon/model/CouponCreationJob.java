@@ -44,19 +44,19 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -64,7 +64,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Integer reservationLimit;
+  private Long reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -76,7 +76,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_NUMBER_OF_COUPONS = "numberOfCoupons";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
-  private Integer numberOfCoupons;
+  private Long numberOfCoupons;
 
   public static final String SERIALIZED_NAME_COUPON_SETTINGS = "couponSettings";
   @SerializedName(SERIALIZED_NAME_COUPON_SETTINGS)
@@ -96,11 +96,11 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CREATED_AMOUNT = "createdAmount";
   @SerializedName(SERIALIZED_NAME_CREATED_AMOUNT)
-  private Integer createdAmount;
+  private Long createdAmount;
 
   public static final String SERIALIZED_NAME_FAIL_COUNT = "failCount";
   @SerializedName(SERIALIZED_NAME_FAIL_COUNT)
-  private Integer failCount;
+  private Long failCount;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -108,7 +108,7 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_COMMUNICATED = "communicated";
   @SerializedName(SERIALIZED_NAME_COMMUNICATED)
@@ -116,11 +116,11 @@ public class CouponCreationJob {
 
   public static final String SERIALIZED_NAME_CHUNK_EXECUTION_COUNT = "chunkExecutionCount";
   @SerializedName(SERIALIZED_NAME_CHUNK_EXECUTION_COUNT)
-  private Integer chunkExecutionCount;
+  private Long chunkExecutionCount;
 
   public static final String SERIALIZED_NAME_CHUNK_SIZE = "chunkSize";
   @SerializedName(SERIALIZED_NAME_CHUNK_SIZE)
-  private Integer chunkSize;
+  private Long chunkSize;
 
 
   public CouponCreationJob id(Long id) {
@@ -167,7 +167,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob campaignId(Integer campaignId) {
+  public CouponCreationJob campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -179,17 +179,17 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public CouponCreationJob applicationId(Integer applicationId) {
+  public CouponCreationJob applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -201,17 +201,17 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CouponCreationJob accountId(Integer accountId) {
+  public CouponCreationJob accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -223,17 +223,17 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public CouponCreationJob usageLimit(Integer usageLimit) {
+  public CouponCreationJob usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -247,12 +247,12 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -282,7 +282,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob reservationLimit(Integer reservationLimit) {
+  public CouponCreationJob reservationLimit(Long reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -297,12 +297,12 @@ public class CouponCreationJob {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Integer getReservationLimit() {
+  public Long getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Integer reservationLimit) {
+  public void setReservationLimit(Long reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
@@ -353,7 +353,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob numberOfCoupons(Integer numberOfCoupons) {
+  public CouponCreationJob numberOfCoupons(Long numberOfCoupons) {
     
     this.numberOfCoupons = numberOfCoupons;
     return this;
@@ -367,12 +367,12 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "200000", required = true, value = "The number of new coupon codes to generate for the campaign.")
 
-  public Integer getNumberOfCoupons() {
+  public Long getNumberOfCoupons() {
     return numberOfCoupons;
   }
 
 
-  public void setNumberOfCoupons(Integer numberOfCoupons) {
+  public void setNumberOfCoupons(Long numberOfCoupons) {
     this.numberOfCoupons = numberOfCoupons;
   }
 
@@ -466,7 +466,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob createdAmount(Integer createdAmount) {
+  public CouponCreationJob createdAmount(Long createdAmount) {
     
     this.createdAmount = createdAmount;
     return this;
@@ -478,17 +478,17 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "1000000", required = true, value = "The number of coupon codes that were already created for this request.")
 
-  public Integer getCreatedAmount() {
+  public Long getCreatedAmount() {
     return createdAmount;
   }
 
 
-  public void setCreatedAmount(Integer createdAmount) {
+  public void setCreatedAmount(Long createdAmount) {
     this.createdAmount = createdAmount;
   }
 
 
-  public CouponCreationJob failCount(Integer failCount) {
+  public CouponCreationJob failCount(Long failCount) {
     
     this.failCount = failCount;
     return this;
@@ -500,12 +500,12 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times this job failed.")
 
-  public Integer getFailCount() {
+  public Long getFailCount() {
     return failCount;
   }
 
 
-  public void setFailCount(Integer failCount) {
+  public void setFailCount(Long failCount) {
     this.failCount = failCount;
   }
 
@@ -537,7 +537,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob createdBy(Integer createdBy) {
+  public CouponCreationJob createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -549,12 +549,12 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the user who created this effect.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -581,7 +581,7 @@ public class CouponCreationJob {
   }
 
 
-  public CouponCreationJob chunkExecutionCount(Integer chunkExecutionCount) {
+  public CouponCreationJob chunkExecutionCount(Long chunkExecutionCount) {
     
     this.chunkExecutionCount = chunkExecutionCount;
     return this;
@@ -593,17 +593,17 @@ public class CouponCreationJob {
   **/
   @ApiModelProperty(example = "0", required = true, value = "The number of times an attempt to create a chunk of coupons was made during the processing of the job.")
 
-  public Integer getChunkExecutionCount() {
+  public Long getChunkExecutionCount() {
     return chunkExecutionCount;
   }
 
 
-  public void setChunkExecutionCount(Integer chunkExecutionCount) {
+  public void setChunkExecutionCount(Long chunkExecutionCount) {
     this.chunkExecutionCount = chunkExecutionCount;
   }
 
 
-  public CouponCreationJob chunkSize(Integer chunkSize) {
+  public CouponCreationJob chunkSize(Long chunkSize) {
     
     this.chunkSize = chunkSize;
     return this;
@@ -616,12 +616,12 @@ public class CouponCreationJob {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "20000", value = "The number of coupons that will be created in a single transactions. Coupons will be created in chunks until arriving at the requested amount.")
 
-  public Integer getChunkSize() {
+  public Long getChunkSize() {
     return chunkSize;
   }
 
 
-  public void setChunkSize(Integer chunkSize) {
+  public void setChunkSize(Long chunkSize) {
     this.chunkSize = chunkSize;
   }
 

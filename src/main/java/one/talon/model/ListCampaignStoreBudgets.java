@@ -36,7 +36,7 @@ public class ListCampaignStoreBudgets {
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
@@ -69,7 +69,7 @@ public class ListCampaignStoreBudgets {
   }
 
 
-  public ListCampaignStoreBudgets limit(Integer limit) {
+  public ListCampaignStoreBudgets limit(Long limit) {
     
     this.limit = limit;
     return this;
@@ -81,12 +81,12 @@ public class ListCampaignStoreBudgets {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
 
-  public void setLimit(Integer limit) {
+  public void setLimit(Long limit) {
     this.limit = limit;
   }
 

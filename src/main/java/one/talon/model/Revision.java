@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Revision {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
@@ -41,15 +41,15 @@ public class Revision {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -57,7 +57,7 @@ public class Revision {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACTIVATED_AT = "activatedAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_AT)
@@ -65,14 +65,14 @@ public class Revision {
 
   public static final String SERIALIZED_NAME_ACTIVATED_BY = "activatedBy";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_BY)
-  private Integer activatedBy;
+  private Long activatedBy;
 
   public static final String SERIALIZED_NAME_CURRENT_VERSION = "currentVersion";
   @SerializedName(SERIALIZED_NAME_CURRENT_VERSION)
   private RevisionVersion currentVersion;
 
 
-  public Revision id(Integer id) {
+  public Revision id(Long id) {
     
     this.id = id;
     return this;
@@ -84,12 +84,12 @@ public class Revision {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -117,7 +117,7 @@ public class Revision {
   }
 
 
-  public Revision accountId(Integer accountId) {
+  public Revision accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -129,17 +129,17 @@ public class Revision {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public Revision applicationId(Integer applicationId) {
+  public Revision applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -151,17 +151,17 @@ public class Revision {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public Revision campaignId(Integer campaignId) {
+  public Revision campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -173,12 +173,12 @@ public class Revision {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -205,7 +205,7 @@ public class Revision {
   }
 
 
-  public Revision createdBy(Integer createdBy) {
+  public Revision createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -217,12 +217,12 @@ public class Revision {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -250,7 +250,7 @@ public class Revision {
   }
 
 
-  public Revision activatedBy(Integer activatedBy) {
+  public Revision activatedBy(Long activatedBy) {
     
     this.activatedBy = activatedBy;
     return this;
@@ -263,12 +263,12 @@ public class Revision {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Integer getActivatedBy() {
+  public Long getActivatedBy() {
     return activatedBy;
   }
 
 
-  public void setActivatedBy(Integer activatedBy) {
+  public void setActivatedBy(Long activatedBy) {
     this.activatedBy = activatedBy;
   }
 

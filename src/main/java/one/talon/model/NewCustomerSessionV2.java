@@ -46,7 +46,7 @@ public class NewCustomerSessionV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Integer> evaluableCampaignIds = null;
+  private List<Long> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_COUPON_CODES = "couponCodes";
   @SerializedName(SERIALIZED_NAME_COUPON_CODES)
@@ -178,15 +178,15 @@ public class NewCustomerSessionV2 {
   }
 
 
-  public NewCustomerSessionV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public NewCustomerSessionV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
     
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public NewCustomerSessionV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
+  public NewCustomerSessionV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Integer>();
+      this.evaluableCampaignIds = new ArrayList<Long>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
@@ -199,12 +199,12 @@ public class NewCustomerSessionV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Integer> getEvaluableCampaignIds() {
+  public List<Long> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
 
-  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 

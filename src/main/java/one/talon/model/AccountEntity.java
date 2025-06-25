@@ -31,10 +31,10 @@ import java.io.IOException;
 public class AccountEntity {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
 
-  public AccountEntity accountId(Integer accountId) {
+  public AccountEntity accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -46,12 +46,12 @@ public class AccountEntity {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 

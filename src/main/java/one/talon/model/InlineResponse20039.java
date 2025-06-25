@@ -34,14 +34,14 @@ import one.talon.model.WebhookWithOutgoingIntegrationDetails;
 public class InlineResponse20039 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Integer totalResultSize;
+  private Long totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<WebhookWithOutgoingIntegrationDetails> data = new ArrayList<WebhookWithOutgoingIntegrationDetails>();
 
 
-  public InlineResponse20039 totalResultSize(Integer totalResultSize) {
+  public InlineResponse20039 totalResultSize(Long totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -53,12 +53,12 @@ public class InlineResponse20039 {
   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Integer getTotalResultSize() {
+  public Long getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Integer totalResultSize) {
+  public void setTotalResultSize(Long totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

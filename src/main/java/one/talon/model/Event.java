@@ -44,7 +44,7 @@ public class Event {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -123,7 +123,7 @@ public class Event {
   }
 
 
-  public Event applicationId(Integer applicationId) {
+  public Event applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -135,12 +135,12 @@ public class Event {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

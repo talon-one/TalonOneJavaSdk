@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **description** | **String** | The description of the store. | 
 **attributes** | [**Object**](.md) | The attributes of the store. |  [optional]
 **integrationId** | **String** | The integration ID of the store. You choose this ID when you create a store.  **Note**: You cannot edit the &#x60;integrationId&#x60; after the store has been created.  | 
-**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
+**applicationId** | **Long** | The ID of the Application that owns this entity. | 
 **updated** | [**OffsetDateTime**](OffsetDateTime.md) | Timestamp of the most recent update on this entity. | 
-**linkedCampaignIds** | **List&lt;Integer&gt;** | A list of IDs of the campaigns that are linked with current store. |  [optional]
+**linkedCampaignIds** | **List&lt;Long&gt;** | A list of IDs of the campaigns that are linked with current store. |  [optional]
 
 
 

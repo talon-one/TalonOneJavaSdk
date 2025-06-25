@@ -42,11 +42,11 @@ public class HiddenConditionsEffects {
 
   public static final String SERIALIZED_NAME_CUSTOM_EFFECTS = "customEffects";
   @SerializedName(SERIALIZED_NAME_CUSTOM_EFFECTS)
-  private List<Integer> customEffects = null;
+  private List<Long> customEffects = null;
 
   public static final String SERIALIZED_NAME_WEBHOOKS = "webhooks";
   @SerializedName(SERIALIZED_NAME_WEBHOOKS)
-  private List<Integer> webhooks = null;
+  private List<Long> webhooks = null;
 
 
   public HiddenConditionsEffects builtInEffects(List<String> builtInEffects) {
@@ -111,15 +111,15 @@ public class HiddenConditionsEffects {
   }
 
 
-  public HiddenConditionsEffects customEffects(List<Integer> customEffects) {
+  public HiddenConditionsEffects customEffects(List<Long> customEffects) {
     
     this.customEffects = customEffects;
     return this;
   }
 
-  public HiddenConditionsEffects addCustomEffectsItem(Integer customEffectsItem) {
+  public HiddenConditionsEffects addCustomEffectsItem(Long customEffectsItem) {
     if (this.customEffects == null) {
-      this.customEffects = new ArrayList<Integer>();
+      this.customEffects = new ArrayList<Long>();
     }
     this.customEffects.add(customEffectsItem);
     return this;
@@ -132,25 +132,25 @@ public class HiddenConditionsEffects {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2]", value = "List of the IDs of hidden custom effects.")
 
-  public List<Integer> getCustomEffects() {
+  public List<Long> getCustomEffects() {
     return customEffects;
   }
 
 
-  public void setCustomEffects(List<Integer> customEffects) {
+  public void setCustomEffects(List<Long> customEffects) {
     this.customEffects = customEffects;
   }
 
 
-  public HiddenConditionsEffects webhooks(List<Integer> webhooks) {
+  public HiddenConditionsEffects webhooks(List<Long> webhooks) {
     
     this.webhooks = webhooks;
     return this;
   }
 
-  public HiddenConditionsEffects addWebhooksItem(Integer webhooksItem) {
+  public HiddenConditionsEffects addWebhooksItem(Long webhooksItem) {
     if (this.webhooks == null) {
-      this.webhooks = new ArrayList<Integer>();
+      this.webhooks = new ArrayList<Long>();
     }
     this.webhooks.add(webhooksItem);
     return this;
@@ -163,12 +163,12 @@ public class HiddenConditionsEffects {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 4]", value = "List of the IDs of hidden webhooks.")
 
-  public List<Integer> getWebhooks() {
+  public List<Long> getWebhooks() {
     return webhooks;
   }
 
 
-  public void setWebhooks(List<Integer> webhooks) {
+  public void setWebhooks(List<Long> webhooks) {
     this.webhooks = webhooks;
   }
 

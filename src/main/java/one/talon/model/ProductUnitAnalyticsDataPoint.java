@@ -45,7 +45,7 @@ public class ProductUnitAnalyticsDataPoint {
 
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private Integer productId;
+  private Long productId;
 
   public static final String SERIALIZED_NAME_PRODUCT_NAME = "productName";
   @SerializedName(SERIALIZED_NAME_PRODUCT_NAME)
@@ -118,7 +118,7 @@ public class ProductUnitAnalyticsDataPoint {
   }
 
 
-  public ProductUnitAnalyticsDataPoint productId(Integer productId) {
+  public ProductUnitAnalyticsDataPoint productId(Long productId) {
     
     this.productId = productId;
     return this;
@@ -130,12 +130,12 @@ public class ProductUnitAnalyticsDataPoint {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the product.")
 
-  public Integer getProductId() {
+  public Long getProductId() {
     return productId;
   }
 
 
-  public void setProductId(Integer productId) {
+  public void setProductId(Long productId) {
     this.productId = productId;
   }
 

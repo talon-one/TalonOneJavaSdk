@@ -31,7 +31,7 @@ import java.io.IOException;
 public class Notification {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -42,7 +42,7 @@ public class Notification {
   private String description;
 
 
-  public Notification id(Integer id) {
+  public Notification id(Long id) {
     
     this.id = id;
     return this;
@@ -54,12 +54,12 @@ public class Notification {
   **/
   @ApiModelProperty(required = true, value = "id of the notification.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

@@ -34,7 +34,7 @@ import one.talon.model.TemplateArgDef;
 public class NewWebhook {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Integer> applicationIds = new ArrayList<Integer>();
+  private List<Long> applicationIds = new ArrayList<Long>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -122,13 +122,13 @@ public class NewWebhook {
   private Boolean enabled;
 
 
-  public NewWebhook applicationIds(List<Integer> applicationIds) {
+  public NewWebhook applicationIds(List<Long> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewWebhook addApplicationIdsItem(Integer applicationIdsItem) {
+  public NewWebhook addApplicationIdsItem(Long applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -139,12 +139,12 @@ public class NewWebhook {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Integer> getApplicationIds() {
+  public List<Long> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Integer> applicationIds) {
+  public void setApplicationIds(List<Long> applicationIds) {
     this.applicationIds = applicationIds;
   }
 

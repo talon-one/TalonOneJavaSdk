@@ -156,23 +156,23 @@ public class NewApplicationAPIKey {
 
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Integer timeOffset;
+  private Long timeOffset;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Integer createdBy;
+  private Long createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Integer accountID;
+  private Long accountID;
 
   public static final String SERIALIZED_NAME_APPLICATION_I_D = "applicationID";
   @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
-  private Integer applicationID;
+  private Long applicationID;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -273,7 +273,7 @@ public class NewApplicationAPIKey {
   }
 
 
-  public NewApplicationAPIKey timeOffset(Integer timeOffset) {
+  public NewApplicationAPIKey timeOffset(Long timeOffset) {
     
     this.timeOffset = timeOffset;
     return this;
@@ -286,17 +286,17 @@ public class NewApplicationAPIKey {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100000", value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Integer getTimeOffset() {
+  public Long getTimeOffset() {
     return timeOffset;
   }
 
 
-  public void setTimeOffset(Integer timeOffset) {
+  public void setTimeOffset(Long timeOffset) {
     this.timeOffset = timeOffset;
   }
 
 
-  public NewApplicationAPIKey id(Integer id) {
+  public NewApplicationAPIKey id(Long id) {
     
     this.id = id;
     return this;
@@ -308,17 +308,17 @@ public class NewApplicationAPIKey {
   **/
   @ApiModelProperty(example = "34", required = true, value = "ID of the API Key.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
 
-  public NewApplicationAPIKey createdBy(Integer createdBy) {
+  public NewApplicationAPIKey createdBy(Long createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -330,17 +330,17 @@ public class NewApplicationAPIKey {
   **/
   @ApiModelProperty(example = "280", required = true, value = "ID of user who created.")
 
-  public Integer getCreatedBy() {
+  public Long getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Integer createdBy) {
+  public void setCreatedBy(Long createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public NewApplicationAPIKey accountID(Integer accountID) {
+  public NewApplicationAPIKey accountID(Long accountID) {
     
     this.accountID = accountID;
     return this;
@@ -352,17 +352,17 @@ public class NewApplicationAPIKey {
   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for.")
 
-  public Integer getAccountID() {
+  public Long getAccountID() {
     return accountID;
   }
 
 
-  public void setAccountID(Integer accountID) {
+  public void setAccountID(Long accountID) {
     this.accountID = accountID;
   }
 
 
-  public NewApplicationAPIKey applicationID(Integer applicationID) {
+  public NewApplicationAPIKey applicationID(Long applicationID) {
     
     this.applicationID = applicationID;
     return this;
@@ -374,12 +374,12 @@ public class NewApplicationAPIKey {
   **/
   @ApiModelProperty(example = "54", required = true, value = "ID of application the key is used for.")
 
-  public Integer getApplicationID() {
+  public Long getApplicationID() {
     return applicationID;
   }
 
 
-  public void setApplicationID(Integer applicationID) {
+  public void setApplicationID(Long applicationID) {
     this.applicationID = applicationID;
   }
 

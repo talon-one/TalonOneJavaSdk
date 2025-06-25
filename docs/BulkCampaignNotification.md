@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Integer** |  | 
+**totalResultSize** | **Long** |  | 
 **data** | [**List&lt;CampaignNotification&gt;**](CampaignNotification.md) |  | 
 
 

@@ -35,7 +35,7 @@ public class CatalogsStrikethroughNotificationPolicy {
 
   public static final String SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER = "aheadOfDaysTrigger";
   @SerializedName(SERIALIZED_NAME_AHEAD_OF_DAYS_TRIGGER)
-  private Integer aheadOfDaysTrigger;
+  private Long aheadOfDaysTrigger;
 
 
   public CatalogsStrikethroughNotificationPolicy name(String name) {
@@ -60,7 +60,7 @@ public class CatalogsStrikethroughNotificationPolicy {
   }
 
 
-  public CatalogsStrikethroughNotificationPolicy aheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
+  public CatalogsStrikethroughNotificationPolicy aheadOfDaysTrigger(Long aheadOfDaysTrigger) {
     
     this.aheadOfDaysTrigger = aheadOfDaysTrigger;
     return this;
@@ -75,12 +75,12 @@ public class CatalogsStrikethroughNotificationPolicy {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The number of days in advance that strikethrough pricing updates should be sent.")
 
-  public Integer getAheadOfDaysTrigger() {
+  public Long getAheadOfDaysTrigger() {
     return aheadOfDaysTrigger;
   }
 
 
-  public void setAheadOfDaysTrigger(Integer aheadOfDaysTrigger) {
+  public void setAheadOfDaysTrigger(Long aheadOfDaysTrigger) {
     this.aheadOfDaysTrigger = aheadOfDaysTrigger;
   }
 

@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AnalyticsSKU {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -48,7 +48,7 @@ public class AnalyticsSKU {
   private AnalyticsDataPointWithTrend unitsSold;
 
 
-  public AnalyticsSKU id(Integer id) {
+  public AnalyticsSKU id(Long id) {
     
     this.id = id;
     return this;
@@ -60,12 +60,12 @@ public class AnalyticsSKU {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the SKU linked to the application.")
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

@@ -40,7 +40,7 @@ public class ReferralConstraints {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Integer usageLimit;
+  private Long usageLimit;
 
 
   public ReferralConstraints startDate(OffsetDateTime startDate) {
@@ -89,7 +89,7 @@ public class ReferralConstraints {
   }
 
 
-  public ReferralConstraints usageLimit(Integer usageLimit) {
+  public ReferralConstraints usageLimit(Long usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -104,12 +104,12 @@ public class ReferralConstraints {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Integer getUsageLimit() {
+  public Long getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Integer usageLimit) {
+  public void setUsageLimit(Long usageLimit) {
     this.usageLimit = usageLimit;
   }
 

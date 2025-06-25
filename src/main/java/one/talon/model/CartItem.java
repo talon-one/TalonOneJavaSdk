@@ -45,15 +45,15 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_RETURNED_QUANTITY = "returnedQuantity";
   @SerializedName(SERIALIZED_NAME_RETURNED_QUANTITY)
-  private Integer returnedQuantity;
+  private Long returnedQuantity;
 
   public static final String SERIALIZED_NAME_REMAINING_QUANTITY = "remainingQuantity";
   @SerializedName(SERIALIZED_NAME_REMAINING_QUANTITY)
-  private Integer remainingQuantity;
+  private Long remainingQuantity;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -97,7 +97,7 @@ public class CartItem {
 
   public static final String SERIALIZED_NAME_CATALOG_ITEM_I_D = "catalogItemID";
   @SerializedName(SERIALIZED_NAME_CATALOG_ITEM_I_D)
-  private Integer catalogItemID;
+  private Long catalogItemID;
 
 
   public CartItem name(String name) {
@@ -145,7 +145,7 @@ public class CartItem {
   }
 
 
-  public CartItem quantity(Integer quantity) {
+  public CartItem quantity(Long quantity) {
     
     this.quantity = quantity;
     return this;
@@ -158,17 +158,17 @@ public class CartItem {
   **/
   @ApiModelProperty(example = "1", required = true, value = "Number of units of this item. Due to [cart item flattening](https://docs.talon.one/docs/product/rules/understanding-cart-item-flattening), if you provide a quantity greater than 1, the item will be split in as many items as the provided quantity. This will impact the number of **per-item** effects triggered from your campaigns. ")
 
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
 
-  public void setQuantity(Integer quantity) {
+  public void setQuantity(Long quantity) {
     this.quantity = quantity;
   }
 
 
-  public CartItem returnedQuantity(Integer returnedQuantity) {
+  public CartItem returnedQuantity(Long returnedQuantity) {
     
     this.returnedQuantity = returnedQuantity;
     return this;
@@ -181,17 +181,17 @@ public class CartItem {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Number of returned items, calculated internally based on returns of this item.")
 
-  public Integer getReturnedQuantity() {
+  public Long getReturnedQuantity() {
     return returnedQuantity;
   }
 
 
-  public void setReturnedQuantity(Integer returnedQuantity) {
+  public void setReturnedQuantity(Long returnedQuantity) {
     this.returnedQuantity = returnedQuantity;
   }
 
 
-  public CartItem remainingQuantity(Integer remainingQuantity) {
+  public CartItem remainingQuantity(Long remainingQuantity) {
     
     this.remainingQuantity = remainingQuantity;
     return this;
@@ -204,12 +204,12 @@ public class CartItem {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "Remaining quantity of the item, calculated internally based on returns of this item.")
 
-  public Integer getRemainingQuantity() {
+  public Long getRemainingQuantity() {
     return remainingQuantity;
   }
 
 
-  public void setRemainingQuantity(Integer remainingQuantity) {
+  public void setRemainingQuantity(Long remainingQuantity) {
     this.remainingQuantity = remainingQuantity;
   }
 
@@ -452,7 +452,7 @@ public class CartItem {
   }
 
 
-  public CartItem catalogItemID(Integer catalogItemID) {
+  public CartItem catalogItemID(Long catalogItemID) {
     
     this.catalogItemID = catalogItemID;
     return this;
@@ -465,12 +465,12 @@ public class CartItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The [catalog item ID](https://docs.talon.one/docs/product/account/dev-tools/managing-cart-item-catalogs/#synchronizing-a-cart-item-catalog).")
 
-  public Integer getCatalogItemID() {
+  public Long getCatalogItemID() {
     return catalogItemID;
   }
 
 
-  public void setCatalogItemID(Integer catalogItemID) {
+  public void setCatalogItemID(Long catalogItemID) {
     this.catalogItemID = catalogItemID;
   }
 

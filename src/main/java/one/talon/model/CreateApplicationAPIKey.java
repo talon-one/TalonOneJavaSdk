@@ -156,7 +156,7 @@ public class CreateApplicationAPIKey {
 
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Integer timeOffset;
+  private Long timeOffset;
 
 
   public CreateApplicationAPIKey title(String title) {
@@ -249,7 +249,7 @@ public class CreateApplicationAPIKey {
   }
 
 
-  public CreateApplicationAPIKey timeOffset(Integer timeOffset) {
+  public CreateApplicationAPIKey timeOffset(Long timeOffset) {
     
     this.timeOffset = timeOffset;
     return this;
@@ -262,12 +262,12 @@ public class CreateApplicationAPIKey {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100000", value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Integer getTimeOffset() {
+  public Long getTimeOffset() {
     return timeOffset;
   }
 
 
-  public void setTimeOffset(Integer timeOffset) {
+  public void setTimeOffset(Long timeOffset) {
     this.timeOffset = timeOffset;
   }
 

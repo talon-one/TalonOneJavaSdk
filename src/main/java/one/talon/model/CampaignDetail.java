@@ -31,14 +31,14 @@ import java.io.IOException;
 public class CampaignDetail {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Integer campaignId;
+  private Long campaignId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
   private String campaignName;
 
 
-  public CampaignDetail campaignId(Integer campaignId) {
+  public CampaignDetail campaignId(Long campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -51,12 +51,12 @@ public class CampaignDetail {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the campaign that references the application cart item filter.")
 
-  public Integer getCampaignId() {
+  public Long getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Integer campaignId) {
+  public void setCampaignId(Long campaignId) {
     this.campaignId = campaignId;
   }
 

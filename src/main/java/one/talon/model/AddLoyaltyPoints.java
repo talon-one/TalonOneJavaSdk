@@ -62,7 +62,7 @@ public class AddLoyaltyPoints {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Integer applicationId;
+  private Long applicationId;
 
 
   public AddLoyaltyPoints points(BigDecimal points) {
@@ -227,7 +227,7 @@ public class AddLoyaltyPoints {
   }
 
 
-  public AddLoyaltyPoints applicationId(Integer applicationId) {
+  public AddLoyaltyPoints applicationId(Long applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -240,12 +240,12 @@ public class AddLoyaltyPoints {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "ID of the Application that is connected to the loyalty program. It is displayed in your Talon.One deployment URL.")
 
-  public Integer getApplicationId() {
+  public Long getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Integer applicationId) {
+  public void setApplicationId(Long applicationId) {
     this.applicationId = applicationId;
   }
 

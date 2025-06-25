@@ -53,11 +53,11 @@ public class CustomerProfile {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Integer accountId;
+  private Long accountId;
 
   public static final String SERIALIZED_NAME_CLOSED_SESSIONS = "closedSessions";
   @SerializedName(SERIALIZED_NAME_CLOSED_SESSIONS)
-  private Integer closedSessions;
+  private Long closedSessions;
 
   public static final String SERIALIZED_NAME_TOTAL_SALES = "totalSales";
   @SerializedName(SERIALIZED_NAME_TOTAL_SALES)
@@ -168,7 +168,7 @@ public class CustomerProfile {
   }
 
 
-  public CustomerProfile accountId(Integer accountId) {
+  public CustomerProfile accountId(Long accountId) {
     
     this.accountId = accountId;
     return this;
@@ -180,17 +180,17 @@ public class CustomerProfile {
   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
-  public Integer getAccountId() {
+  public Long getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Integer accountId) {
+  public void setAccountId(Long accountId) {
     this.accountId = accountId;
   }
 
 
-  public CustomerProfile closedSessions(Integer closedSessions) {
+  public CustomerProfile closedSessions(Long closedSessions) {
     
     this.closedSessions = closedSessions;
     return this;
@@ -202,12 +202,12 @@ public class CustomerProfile {
   **/
   @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
 
-  public Integer getClosedSessions() {
+  public Long getClosedSessions() {
     return closedSessions;
   }
 
 
-  public void setClosedSessions(Integer closedSessions) {
+  public void setClosedSessions(Long closedSessions) {
     this.closedSessions = closedSessions;
   }
 

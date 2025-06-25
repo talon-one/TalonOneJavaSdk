@@ -36,7 +36,7 @@ public class LoyaltyMembership {
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAM_ID = "loyaltyProgramId";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAM_ID)
-  private Integer loyaltyProgramId;
+  private Long loyaltyProgramId;
 
 
   public LoyaltyMembership joined(OffsetDateTime joined) {
@@ -62,7 +62,7 @@ public class LoyaltyMembership {
   }
 
 
-  public LoyaltyMembership loyaltyProgramId(Integer loyaltyProgramId) {
+  public LoyaltyMembership loyaltyProgramId(Long loyaltyProgramId) {
     
     this.loyaltyProgramId = loyaltyProgramId;
     return this;
@@ -74,12 +74,12 @@ public class LoyaltyMembership {
   **/
   @ApiModelProperty(example = "323414846", required = true, value = "The ID of the loyalty program belonging to this entity.")
 
-  public Integer getLoyaltyProgramId() {
+  public Long getLoyaltyProgramId() {
     return loyaltyProgramId;
   }
 
 
-  public void setLoyaltyProgramId(Integer loyaltyProgramId) {
+  public void setLoyaltyProgramId(Long loyaltyProgramId) {
     this.loyaltyProgramId = loyaltyProgramId;
   }
 

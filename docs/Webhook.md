@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
 **modified** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was last modified. | 
-**applicationIds** | **List&lt;Integer&gt;** | The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;.  | 
+**applicationIds** | **List&lt;Long&gt;** | The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in &#x60;All Applications&#x60;.  | 
 **title** | **String** | Name or title for this webhook. | 
 **description** | **String** | A description of the webhook. |  [optional]
 **verb** | [**VerbEnum**](#VerbEnum) | API method for this webhook. | 

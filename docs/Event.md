@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** | Internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
+**applicationId** | **Long** | The ID of the Application that owns this entity. | 
 **profileId** | **String** | ID of the customer profile set by your integration layer.  **Note:** If the customer does not yet have a known &#x60;profileId&#x60;, we recommend you use a guest &#x60;profileId&#x60;.  |  [optional]
 **storeIntegrationId** | **String** | The integration ID of the store. You choose this ID when you create a store. |  [optional]
 **type** | **String** | A string representing the event. Must not be a reserved event name. | 
