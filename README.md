@@ -8,7 +8,7 @@ If you use Maven, we also host [Maven Artifacts](https://github.com/talon-one/ma
 
 Building the API client library requires:
 
-1. Java 1.7+
+1. Java 21+
 2. Maven/Gradle
 
 ## Installation
@@ -96,7 +96,7 @@ public class TalonApiTest {
             CartItem cartItem = new CartItem();
             cartItem.setName("Hawaiian Pizza");
             cartItem.setSku("pizza-x");
-            cartItem.setQuantity(1);
+            cartItem.setQuantity(1L);
             cartItem.setPrice(new java.math.BigDecimal("5.5"));
 
             // Creating a customer session of V2
@@ -176,7 +176,7 @@ public class TalonApiTest {
 
         try {
             // Calling `getApplication` function with the desired id (7)
-            Application application = mApi.getApplication(7);
+            Application application = mApi.getApplication(7L);
             System.out.println(application.toString());
         } catch (Exception e) {
             System.out.println(e);
