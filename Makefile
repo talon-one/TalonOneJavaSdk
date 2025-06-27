@@ -7,7 +7,7 @@ clean:
 build: clean
 	docker run \
 		--rm \
-		-v "$$(PWD)":/tmp/talon-client \
+		-v "$$(pwd)":/tmp/talon-client \
 		-w "/tmp/talon-client" \
 		maven:latest\
 		/bin/bash -c "mvn clean install && \
