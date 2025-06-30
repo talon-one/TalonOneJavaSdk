@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Export {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,11 +40,11 @@ public class Export {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   /**
    * The name of the entity that was exported.
@@ -112,24 +112,24 @@ public class Export {
   private Object filter;
 
 
-  public Export id(Long id) {
+  public Export id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -156,7 +156,7 @@ public class Export {
   }
 
 
-  public Export accountId(Long accountId) {
+  public Export accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -168,17 +168,17 @@ public class Export {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public Export userId(Long userId) {
+  public Export userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -190,12 +190,12 @@ public class Export {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 

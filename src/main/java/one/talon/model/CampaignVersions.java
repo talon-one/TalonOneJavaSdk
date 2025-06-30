@@ -82,23 +82,23 @@ public class CampaignVersions {
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_ID = "activeRevisionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_ID)
-  private Long activeRevisionId;
+  private Integer activeRevisionId;
 
   public static final String SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID = "activeRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REVISION_VERSION_ID)
-  private Long activeRevisionVersionId;
+  private Integer activeRevisionVersionId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_ID = "currentRevisionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_ID)
-  private Long currentRevisionId;
+  private Integer currentRevisionId;
 
   public static final String SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID = "currentRevisionVersionId";
   @SerializedName(SERIALIZED_NAME_CURRENT_REVISION_VERSION_ID)
-  private Long currentRevisionVersionId;
+  private Integer currentRevisionVersionId;
 
   public static final String SERIALIZED_NAME_STAGE_REVISION = "stageRevision";
   @SerializedName(SERIALIZED_NAME_STAGE_REVISION)
@@ -128,7 +128,7 @@ public class CampaignVersions {
   }
 
 
-  public CampaignVersions activeRevisionId(Long activeRevisionId) {
+  public CampaignVersions activeRevisionId(Integer activeRevisionId) {
     
     this.activeRevisionId = activeRevisionId;
     return this;
@@ -141,17 +141,17 @@ public class CampaignVersions {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision that was last activated on this campaign. ")
 
-  public Long getActiveRevisionId() {
+  public Integer getActiveRevisionId() {
     return activeRevisionId;
   }
 
 
-  public void setActiveRevisionId(Long activeRevisionId) {
+  public void setActiveRevisionId(Integer activeRevisionId) {
     this.activeRevisionId = activeRevisionId;
   }
 
 
-  public CampaignVersions activeRevisionVersionId(Long activeRevisionVersionId) {
+  public CampaignVersions activeRevisionVersionId(Integer activeRevisionVersionId) {
     
     this.activeRevisionVersionId = activeRevisionVersionId;
     return this;
@@ -164,17 +164,17 @@ public class CampaignVersions {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision version that is active on the campaign. ")
 
-  public Long getActiveRevisionVersionId() {
+  public Integer getActiveRevisionVersionId() {
     return activeRevisionVersionId;
   }
 
 
-  public void setActiveRevisionVersionId(Long activeRevisionVersionId) {
+  public void setActiveRevisionVersionId(Integer activeRevisionVersionId) {
     this.activeRevisionVersionId = activeRevisionVersionId;
   }
 
 
-  public CampaignVersions version(Long version) {
+  public CampaignVersions version(Integer version) {
     
     this.version = version;
     return this;
@@ -187,17 +187,17 @@ public class CampaignVersions {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "Incrementing number representing how many revisions have been activated on this campaign, starts from 0 for a new campaign. ")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 
 
-  public CampaignVersions currentRevisionId(Long currentRevisionId) {
+  public CampaignVersions currentRevisionId(Integer currentRevisionId) {
     
     this.currentRevisionId = currentRevisionId;
     return this;
@@ -210,17 +210,17 @@ public class CampaignVersions {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the revision currently being modified for the campaign. ")
 
-  public Long getCurrentRevisionId() {
+  public Integer getCurrentRevisionId() {
     return currentRevisionId;
   }
 
 
-  public void setCurrentRevisionId(Long currentRevisionId) {
+  public void setCurrentRevisionId(Integer currentRevisionId) {
     this.currentRevisionId = currentRevisionId;
   }
 
 
-  public CampaignVersions currentRevisionVersionId(Long currentRevisionVersionId) {
+  public CampaignVersions currentRevisionVersionId(Integer currentRevisionVersionId) {
     
     this.currentRevisionVersionId = currentRevisionVersionId;
     return this;
@@ -233,12 +233,12 @@ public class CampaignVersions {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "6", value = "ID of the latest version applied on the current revision. ")
 
-  public Long getCurrentRevisionVersionId() {
+  public Integer getCurrentRevisionVersionId() {
     return currentRevisionVersionId;
   }
 
 
-  public void setCurrentRevisionVersionId(Long currentRevisionVersionId) {
+  public void setCurrentRevisionVersionId(Integer currentRevisionVersionId) {
     this.currentRevisionVersionId = currentRevisionVersionId;
   }
 

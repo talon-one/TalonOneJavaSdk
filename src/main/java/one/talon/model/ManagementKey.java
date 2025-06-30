@@ -47,19 +47,19 @@ public class ManagementKey {
 
   public static final String SERIALIZED_NAME_ALLOWED_APPLICATION_IDS = "allowedApplicationIds";
   @SerializedName(SERIALIZED_NAME_ALLOWED_APPLICATION_IDS)
-  private List<Long> allowedApplicationIds = null;
+  private List<Integer> allowedApplicationIds = null;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Long accountID;
+  private Integer accountID;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -141,15 +141,15 @@ public class ManagementKey {
   }
 
 
-  public ManagementKey allowedApplicationIds(List<Long> allowedApplicationIds) {
+  public ManagementKey allowedApplicationIds(List<Integer> allowedApplicationIds) {
     
     this.allowedApplicationIds = allowedApplicationIds;
     return this;
   }
 
-  public ManagementKey addAllowedApplicationIdsItem(Long allowedApplicationIdsItem) {
+  public ManagementKey addAllowedApplicationIdsItem(Integer allowedApplicationIdsItem) {
     if (this.allowedApplicationIds == null) {
-      this.allowedApplicationIds = new ArrayList<Long>();
+      this.allowedApplicationIds = new ArrayList<Integer>();
     }
     this.allowedApplicationIds.add(allowedApplicationIdsItem);
     return this;
@@ -162,17 +162,17 @@ public class ManagementKey {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. ")
 
-  public List<Long> getAllowedApplicationIds() {
+  public List<Integer> getAllowedApplicationIds() {
     return allowedApplicationIds;
   }
 
 
-  public void setAllowedApplicationIds(List<Long> allowedApplicationIds) {
+  public void setAllowedApplicationIds(List<Integer> allowedApplicationIds) {
     this.allowedApplicationIds = allowedApplicationIds;
   }
 
 
-  public ManagementKey id(Long id) {
+  public ManagementKey id(Integer id) {
     
     this.id = id;
     return this;
@@ -184,17 +184,17 @@ public class ManagementKey {
   **/
   @ApiModelProperty(example = "34", required = true, value = "ID of the management key.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public ManagementKey createdBy(Long createdBy) {
+  public ManagementKey createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -206,17 +206,17 @@ public class ManagementKey {
   **/
   @ApiModelProperty(example = "280", required = true, value = "ID of the user who created it.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public ManagementKey accountID(Long accountID) {
+  public ManagementKey accountID(Integer accountID) {
     
     this.accountID = accountID;
     return this;
@@ -228,12 +228,12 @@ public class ManagementKey {
   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for.")
 
-  public Long getAccountID() {
+  public Integer getAccountID() {
     return accountID;
   }
 
 
-  public void setAccountID(Long accountID) {
+  public void setAccountID(Integer accountID) {
     this.accountID = accountID;
   }
 

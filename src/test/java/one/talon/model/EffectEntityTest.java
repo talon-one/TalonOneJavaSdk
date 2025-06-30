@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -134,6 +136,30 @@ public class EffectEntityTest {
     @Test
     public void campaignRevisionVersionIdTest() {
         // TODO: test campaignRevisionVersionId
+    }
+
+    /**
+     * Test the property 'selectedPriceType'
+     */
+    @Test
+    public void selectedPriceTypeTest() {
+        // TODO: test selectedPriceType
+    }
+
+    /**
+     * Test the property 'selectedPrice'
+     */
+    @Test
+    public void selectedPriceTest() {
+        // TODO: test selectedPrice
+    }
+
+    /**
+     * Test the property 'adjustmentReferenceId'
+     */
+    @Test
+    public void adjustmentReferenceIdTest() {
+        // TODO: test adjustmentReferenceId
     }
 
 }

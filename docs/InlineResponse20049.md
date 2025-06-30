@@ -6,8 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hasMore** | **Boolean** |  | 
-**data** | [**List&lt;AchievementProgressWithDefinition&gt;**](AchievementProgressWithDefinition.md) |  | 
+**data** | [**List&lt;SummaryCampaignStoreBudget&gt;**](SummaryCampaignStoreBudget.md) |  |  [optional]
 
 
 

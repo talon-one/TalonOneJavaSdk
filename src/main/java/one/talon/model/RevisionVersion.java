@@ -36,19 +36,19 @@ import org.threeten.bp.OffsetDateTime;
 public class RevisionVersion {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -56,15 +56,15 @@ public class RevisionVersion {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_REVISION_ID = "revisionId";
   @SerializedName(SERIALIZED_NAME_REVISION_ID)
-  private Long revisionId;
+  private Integer revisionId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -88,7 +88,7 @@ public class RevisionVersion {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Long activeRulesetId;
+  private Integer activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -166,7 +166,7 @@ public class RevisionVersion {
   private List<FeaturesEnum> features = null;
 
 
-  public RevisionVersion id(Long id) {
+  public RevisionVersion id(Integer id) {
     
     this.id = id;
     return this;
@@ -178,17 +178,17 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity. Not to be confused with the Integration ID, which is set by your integration layer and used in most endpoints.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public RevisionVersion accountId(Long accountId) {
+  public RevisionVersion accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -200,17 +200,17 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public RevisionVersion applicationId(Long applicationId) {
+  public RevisionVersion applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -222,17 +222,17 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public RevisionVersion campaignId(Long campaignId) {
+  public RevisionVersion campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -244,12 +244,12 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -276,7 +276,7 @@ public class RevisionVersion {
   }
 
 
-  public RevisionVersion createdBy(Long createdBy) {
+  public RevisionVersion createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -288,17 +288,17 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public RevisionVersion revisionId(Long revisionId) {
+  public RevisionVersion revisionId(Integer revisionId) {
     
     this.revisionId = revisionId;
     return this;
@@ -310,17 +310,17 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getRevisionId() {
+  public Integer getRevisionId() {
     return revisionId;
   }
 
 
-  public void setRevisionId(Long revisionId) {
+  public void setRevisionId(Integer revisionId) {
     this.revisionId = revisionId;
   }
 
 
-  public RevisionVersion version(Long version) {
+  public RevisionVersion version(Integer version) {
     
     this.version = version;
     return this;
@@ -332,12 +332,12 @@ public class RevisionVersion {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 
@@ -457,7 +457,7 @@ public class RevisionVersion {
   }
 
 
-  public RevisionVersion activeRulesetId(Long activeRulesetId) {
+  public RevisionVersion activeRulesetId(Integer activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -470,12 +470,12 @@ public class RevisionVersion {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Long getActiveRulesetId() {
+  public Integer getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Long activeRulesetId) {
+  public void setActiveRulesetId(Integer activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 

@@ -34,14 +34,14 @@ import one.talon.model.RoleV2;
 public class InlineResponse20046 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Long totalResultSize;
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<RoleV2> data = new ArrayList<RoleV2>();
 
 
-  public InlineResponse20046 totalResultSize(Long totalResultSize) {
+  public InlineResponse20046 totalResultSize(Integer totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -53,12 +53,12 @@ public class InlineResponse20046 {
   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Long getTotalResultSize() {
+  public Integer getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Long totalResultSize) {
+  public void setTotalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

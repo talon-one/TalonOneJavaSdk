@@ -7,8 +7,8 @@ The audiences and their member count.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**audienceId** | **Long** | The ID of the audience. |  [optional]
-**membersCount** | **Long** | The member count of the audience. |  [optional]
+**audienceId** | **Integer** | The ID of the audience. |  [optional]
+**membersCount** | **Integer** | The member count of the audience. |  [optional]
 
 
 

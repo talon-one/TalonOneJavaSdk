@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Ruleset {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +44,7 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
@@ -68,35 +68,35 @@ public class Ruleset {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Long templateId;
+  private Integer templateId;
 
   public static final String SERIALIZED_NAME_ACTIVATED_AT = "activatedAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATED_AT)
   private OffsetDateTime activatedAt;
 
 
-  public Ruleset id(Long id) {
+  public Ruleset id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -123,7 +123,7 @@ public class Ruleset {
   }
 
 
-  public Ruleset userId(Long userId) {
+  public Ruleset userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -135,12 +135,12 @@ public class Ruleset {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
@@ -276,7 +276,7 @@ public class Ruleset {
   }
 
 
-  public Ruleset campaignId(Long campaignId) {
+  public Ruleset campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -289,17 +289,17 @@ public class Ruleset {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "320", value = "The ID of the campaign that owns this entity.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public Ruleset templateId(Long templateId) {
+  public Ruleset templateId(Integer templateId) {
     
     this.templateId = templateId;
     return this;
@@ -312,12 +312,12 @@ public class Ruleset {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "The ID of the campaign template that owns this entity.")
 
-  public Long getTemplateId() {
+  public Integer getTemplateId() {
     return templateId;
   }
 
 
-  public void setTemplateId(Long templateId) {
+  public void setTemplateId(Integer templateId) {
     this.templateId = templateId;
   }
 

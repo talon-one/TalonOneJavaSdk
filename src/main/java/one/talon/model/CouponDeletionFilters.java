@@ -125,7 +125,7 @@ public class CouponDeletionFilters {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Long referralId;
+  private Integer referralId;
 
   public static final String SERIALIZED_NAME_EXPIRES_AFTER = "expiresAfter";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AFTER)
@@ -389,7 +389,7 @@ public class CouponDeletionFilters {
   }
 
 
-  public CouponDeletionFilters referralId(Long referralId) {
+  public CouponDeletionFilters referralId(Integer referralId) {
     
     this.referralId = referralId;
     return this;
@@ -402,12 +402,12 @@ public class CouponDeletionFilters {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.")
 
-  public Long getReferralId() {
+  public Integer getReferralId() {
     return referralId;
   }
 
 
-  public void setReferralId(Long referralId) {
+  public void setReferralId(Integer referralId) {
     this.referralId = referralId;
   }
 

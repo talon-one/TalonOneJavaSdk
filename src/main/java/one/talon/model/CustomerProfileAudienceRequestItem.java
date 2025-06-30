@@ -86,7 +86,7 @@ public class CustomerProfileAudienceRequestItem {
 
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audienceId";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
-  private Long audienceId;
+  private Integer audienceId;
 
 
   public CustomerProfileAudienceRequestItem action(ActionEnum action) {
@@ -133,7 +133,7 @@ public class CustomerProfileAudienceRequestItem {
   }
 
 
-  public CustomerProfileAudienceRequestItem audienceId(Long audienceId) {
+  public CustomerProfileAudienceRequestItem audienceId(Integer audienceId) {
     
     this.audienceId = audienceId;
     return this;
@@ -145,12 +145,12 @@ public class CustomerProfileAudienceRequestItem {
   **/
   @ApiModelProperty(example = "748", required = true, value = "The ID of the audience. You get it via the `id` property when [creating an audience](#operation/createAudienceV2).")
 
-  public Long getAudienceId() {
+  public Integer getAudienceId() {
     return audienceId;
   }
 
 
-  public void setAudienceId(Long audienceId) {
+  public void setAudienceId(Integer audienceId) {
     this.audienceId = audienceId;
   }
 

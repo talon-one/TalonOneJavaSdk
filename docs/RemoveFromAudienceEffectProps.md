@@ -7,10 +7,10 @@ The properties specific to the \"removeFromAudience\" effect. This gets triggere
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**audienceId** | **Long** | The internal ID of the audience. |  [optional]
+**audienceId** | **Integer** | The internal ID of the audience. |  [optional]
 **audienceName** | **String** | The name of the audience. |  [optional]
 **profileIntegrationId** | **String** | The ID of the customer profile in the third-party integration platform. |  [optional]
-**profileId** | **Long** | The internal ID of the customer profile. |  [optional]
+**profileId** | **Integer** | The internal ID of the customer profile. |  [optional]
 
 
 

@@ -25,52 +25,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.Achievement;
+import one.talon.model.ListCampaignStoreBudgets;
 
 /**
  * InlineResponse20048
  */
 
 public class InlineResponse20048 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<Achievement> data = new ArrayList<Achievement>();
+  private List<ListCampaignStoreBudgets> data = null;
 
 
-  public InlineResponse20048 hasMore(Boolean hasMore) {
-    
-    this.hasMore = hasMore;
-    return this;
-  }
-
-   /**
-   * Get hasMore
-   * @return hasMore
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getHasMore() {
-    return hasMore;
-  }
-
-
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
-  }
-
-
-  public InlineResponse20048 data(List<Achievement> data) {
+  public InlineResponse20048 data(List<ListCampaignStoreBudgets> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20048 addDataItem(Achievement dataItem) {
+  public InlineResponse20048 addDataItem(ListCampaignStoreBudgets dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<ListCampaignStoreBudgets>();
+    }
     this.data.add(dataItem);
     return this;
   }
@@ -79,14 +55,15 @@ public class InlineResponse20048 {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public List<Achievement> getData() {
+  public List<ListCampaignStoreBudgets> getData() {
     return data;
   }
 
 
-  public void setData(List<Achievement> data) {
+  public void setData(List<ListCampaignStoreBudgets> data) {
     this.data = data;
   }
 
@@ -100,13 +77,12 @@ public class InlineResponse20048 {
       return false;
     }
     InlineResponse20048 inlineResponse20048 = (InlineResponse20048) o;
-    return Objects.equals(this.hasMore, inlineResponse20048.hasMore) &&
-        Objects.equals(this.data, inlineResponse20048.data);
+    return Objects.equals(this.data, inlineResponse20048.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(data);
   }
 
 
@@ -114,7 +90,6 @@ public class InlineResponse20048 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20048 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

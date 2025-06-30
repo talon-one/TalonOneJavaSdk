@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**numberOfCardsGenerated** | **Long** | Number of loyalty cards in the batch. | 
+**numberOfCardsGenerated** | **Integer** | Number of loyalty cards in the batch. | 
 **batchId** | **String** | ID of the loyalty card batch. | 
 
 

@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ModelReturn {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,11 +43,11 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_RETURNED_CART_ITEMS = "returnedCartItems";
   @SerializedName(SERIALIZED_NAME_RETURNED_CART_ITEMS)
@@ -55,11 +55,11 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
   @SerializedName(SERIALIZED_NAME_EVENT_ID)
-  private Long eventId;
+  private Integer eventId;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
-  private Long sessionId;
+  private Integer sessionId;
 
   public static final String SERIALIZED_NAME_SESSION_INTEGRATION_ID = "sessionIntegrationId";
   @SerializedName(SERIALIZED_NAME_SESSION_INTEGRATION_ID)
@@ -67,7 +67,7 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Long profileId;
+  private Integer profileId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -75,27 +75,27 @@ public class ModelReturn {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
 
-  public ModelReturn id(Long id) {
+  public ModelReturn id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -122,7 +122,7 @@ public class ModelReturn {
   }
 
 
-  public ModelReturn applicationId(Long applicationId) {
+  public ModelReturn applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -134,17 +134,17 @@ public class ModelReturn {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public ModelReturn accountId(Long accountId) {
+  public ModelReturn accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -156,12 +156,12 @@ public class ModelReturn {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -193,7 +193,7 @@ public class ModelReturn {
   }
 
 
-  public ModelReturn eventId(Long eventId) {
+  public ModelReturn eventId(Integer eventId) {
     
     this.eventId = eventId;
     return this;
@@ -205,17 +205,17 @@ public class ModelReturn {
   **/
   @ApiModelProperty(example = "123", required = true, value = "The event ID of that was generated for this return.")
 
-  public Long getEventId() {
+  public Integer getEventId() {
     return eventId;
   }
 
 
-  public void setEventId(Long eventId) {
+  public void setEventId(Integer eventId) {
     this.eventId = eventId;
   }
 
 
-  public ModelReturn sessionId(Long sessionId) {
+  public ModelReturn sessionId(Integer sessionId) {
     
     this.sessionId = sessionId;
     return this;
@@ -227,12 +227,12 @@ public class ModelReturn {
   **/
   @ApiModelProperty(example = "123", required = true, value = "The internal ID of the session this return was requested on.")
 
-  public Long getSessionId() {
+  public Integer getSessionId() {
     return sessionId;
   }
 
 
-  public void setSessionId(Long sessionId) {
+  public void setSessionId(Integer sessionId) {
     this.sessionId = sessionId;
   }
 
@@ -259,7 +259,7 @@ public class ModelReturn {
   }
 
 
-  public ModelReturn profileId(Long profileId) {
+  public ModelReturn profileId(Integer profileId) {
     
     this.profileId = profileId;
     return this;
@@ -272,12 +272,12 @@ public class ModelReturn {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "123", value = "The internal ID of the profile this return was requested on.")
 
-  public Long getProfileId() {
+  public Integer getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Long profileId) {
+  public void setProfileId(Integer profileId) {
     this.profileId = profileId;
   }
 
@@ -305,7 +305,7 @@ public class ModelReturn {
   }
 
 
-  public ModelReturn createdBy(Long createdBy) {
+  public ModelReturn createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -318,12 +318,12 @@ public class ModelReturn {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "123", value = "ID of the user who requested this return.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 

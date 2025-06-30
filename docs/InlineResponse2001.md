@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
+**totalResultSize** | **Integer** |  | 
 **data** | [**List&lt;AchievementStatusEntry&gt;**](AchievementStatusEntry.md) |  | 
 
 

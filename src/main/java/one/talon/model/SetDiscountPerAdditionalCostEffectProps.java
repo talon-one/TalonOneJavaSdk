@@ -37,7 +37,7 @@ public class SetDiscountPerAdditionalCostEffectProps {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST_ID = "additionalCostId";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST_ID)
-  private Long additionalCostId;
+  private Integer additionalCostId;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_COST = "additionalCost";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_COST)
@@ -74,7 +74,7 @@ public class SetDiscountPerAdditionalCostEffectProps {
   }
 
 
-  public SetDiscountPerAdditionalCostEffectProps additionalCostId(Long additionalCostId) {
+  public SetDiscountPerAdditionalCostEffectProps additionalCostId(Integer additionalCostId) {
     
     this.additionalCostId = additionalCostId;
     return this;
@@ -86,12 +86,12 @@ public class SetDiscountPerAdditionalCostEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The ID of the additional cost.")
 
-  public Long getAdditionalCostId() {
+  public Integer getAdditionalCostId() {
     return additionalCostId;
   }
 
 
-  public void setAdditionalCostId(Long additionalCostId) {
+  public void setAdditionalCostId(Integer additionalCostId) {
     this.additionalCostId = additionalCostId;
   }
 

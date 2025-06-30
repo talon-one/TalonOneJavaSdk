@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class NewCouponCreationJob {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Long usageLimit;
+  private Integer usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -42,7 +42,7 @@ public class NewCouponCreationJob {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Long reservationLimit;
+  private Integer reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -54,7 +54,7 @@ public class NewCouponCreationJob {
 
   public static final String SERIALIZED_NAME_NUMBER_OF_COUPONS = "numberOfCoupons";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_COUPONS)
-  private Long numberOfCoupons;
+  private Integer numberOfCoupons;
 
   public static final String SERIALIZED_NAME_COUPON_SETTINGS = "couponSettings";
   @SerializedName(SERIALIZED_NAME_COUPON_SETTINGS)
@@ -65,7 +65,7 @@ public class NewCouponCreationJob {
   private Object attributes;
 
 
-  public NewCouponCreationJob usageLimit(Long usageLimit) {
+  public NewCouponCreationJob usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -79,12 +79,12 @@ public class NewCouponCreationJob {
   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Long getUsageLimit() {
+  public Integer getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Long usageLimit) {
+  public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -98,7 +98,7 @@ public class NewCouponCreationJob {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable
@@ -114,7 +114,7 @@ public class NewCouponCreationJob {
   }
 
 
-  public NewCouponCreationJob reservationLimit(Long reservationLimit) {
+  public NewCouponCreationJob reservationLimit(Integer reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -129,12 +129,12 @@ public class NewCouponCreationJob {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Long getReservationLimit() {
+  public Integer getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Long reservationLimit) {
+  public void setReservationLimit(Integer reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
@@ -185,7 +185,7 @@ public class NewCouponCreationJob {
   }
 
 
-  public NewCouponCreationJob numberOfCoupons(Long numberOfCoupons) {
+  public NewCouponCreationJob numberOfCoupons(Integer numberOfCoupons) {
     
     this.numberOfCoupons = numberOfCoupons;
     return this;
@@ -199,12 +199,12 @@ public class NewCouponCreationJob {
   **/
   @ApiModelProperty(example = "200000", required = true, value = "The number of new coupon codes to generate for the campaign.")
 
-  public Long getNumberOfCoupons() {
+  public Integer getNumberOfCoupons() {
     return numberOfCoupons;
   }
 
 
-  public void setNumberOfCoupons(Long numberOfCoupons) {
+  public void setNumberOfCoupons(Integer numberOfCoupons) {
     this.numberOfCoupons = numberOfCoupons;
   }
 

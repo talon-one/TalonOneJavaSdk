@@ -33,54 +33,54 @@ import java.util.List;
 public class AccountLimits {
   public static final String SERIALIZED_NAME_LIVE_APPLICATIONS = "liveApplications";
   @SerializedName(SERIALIZED_NAME_LIVE_APPLICATIONS)
-  private Long liveApplications;
+  private Integer liveApplications;
 
   public static final String SERIALIZED_NAME_SANDBOX_APPLICATIONS = "sandboxApplications";
   @SerializedName(SERIALIZED_NAME_SANDBOX_APPLICATIONS)
-  private Long sandboxApplications;
+  private Integer sandboxApplications;
 
   public static final String SERIALIZED_NAME_ACTIVE_CAMPAIGNS = "activeCampaigns";
   @SerializedName(SERIALIZED_NAME_ACTIVE_CAMPAIGNS)
-  private Long activeCampaigns;
+  private Integer activeCampaigns;
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
-  private Long coupons;
+  private Integer coupons;
 
   public static final String SERIALIZED_NAME_REFERRAL_CODES = "referralCodes";
   @SerializedName(SERIALIZED_NAME_REFERRAL_CODES)
-  private Long referralCodes;
+  private Integer referralCodes;
 
   public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
-  private Long activeRules;
+  private Integer activeRules;
 
   public static final String SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS = "liveLoyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS)
-  private Long liveLoyaltyPrograms;
+  private Integer liveLoyaltyPrograms;
 
   public static final String SERIALIZED_NAME_SANDBOX_LOYALTY_PROGRAMS = "sandboxLoyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_SANDBOX_LOYALTY_PROGRAMS)
-  private Long sandboxLoyaltyPrograms;
+  private Integer sandboxLoyaltyPrograms;
 
   public static final String SERIALIZED_NAME_WEBHOOKS = "webhooks";
   @SerializedName(SERIALIZED_NAME_WEBHOOKS)
-  private Long webhooks;
+  private Integer webhooks;
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
-  private Long users;
+  private Integer users;
 
   public static final String SERIALIZED_NAME_API_VOLUME = "apiVolume";
   @SerializedName(SERIALIZED_NAME_API_VOLUME)
-  private Long apiVolume;
+  private Integer apiVolume;
 
   public static final String SERIALIZED_NAME_PROMOTION_TYPES = "promotionTypes";
   @SerializedName(SERIALIZED_NAME_PROMOTION_TYPES)
   private List<String> promotionTypes = new ArrayList<String>();
 
 
-  public AccountLimits liveApplications(Long liveApplications) {
+  public AccountLimits liveApplications(Integer liveApplications) {
     
     this.liveApplications = liveApplications;
     return this;
@@ -92,17 +92,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed live applications in the account.")
 
-  public Long getLiveApplications() {
+  public Integer getLiveApplications() {
     return liveApplications;
   }
 
 
-  public void setLiveApplications(Long liveApplications) {
+  public void setLiveApplications(Integer liveApplications) {
     this.liveApplications = liveApplications;
   }
 
 
-  public AccountLimits sandboxApplications(Long sandboxApplications) {
+  public AccountLimits sandboxApplications(Integer sandboxApplications) {
     
     this.sandboxApplications = sandboxApplications;
     return this;
@@ -114,17 +114,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed sandbox applications in the account.")
 
-  public Long getSandboxApplications() {
+  public Integer getSandboxApplications() {
     return sandboxApplications;
   }
 
 
-  public void setSandboxApplications(Long sandboxApplications) {
+  public void setSandboxApplications(Integer sandboxApplications) {
     this.sandboxApplications = sandboxApplications;
   }
 
 
-  public AccountLimits activeCampaigns(Long activeCampaigns) {
+  public AccountLimits activeCampaigns(Integer activeCampaigns) {
     
     this.activeCampaigns = activeCampaigns;
     return this;
@@ -136,17 +136,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed active campaigns in live applications in the account.")
 
-  public Long getActiveCampaigns() {
+  public Integer getActiveCampaigns() {
     return activeCampaigns;
   }
 
 
-  public void setActiveCampaigns(Long activeCampaigns) {
+  public void setActiveCampaigns(Integer activeCampaigns) {
     this.activeCampaigns = activeCampaigns;
   }
 
 
-  public AccountLimits coupons(Long coupons) {
+  public AccountLimits coupons(Integer coupons) {
     
     this.coupons = coupons;
     return this;
@@ -158,17 +158,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed coupons in the account.")
 
-  public Long getCoupons() {
+  public Integer getCoupons() {
     return coupons;
   }
 
 
-  public void setCoupons(Long coupons) {
+  public void setCoupons(Integer coupons) {
     this.coupons = coupons;
   }
 
 
-  public AccountLimits referralCodes(Long referralCodes) {
+  public AccountLimits referralCodes(Integer referralCodes) {
     
     this.referralCodes = referralCodes;
     return this;
@@ -180,17 +180,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed referral codes in the account.")
 
-  public Long getReferralCodes() {
+  public Integer getReferralCodes() {
     return referralCodes;
   }
 
 
-  public void setReferralCodes(Long referralCodes) {
+  public void setReferralCodes(Integer referralCodes) {
     this.referralCodes = referralCodes;
   }
 
 
-  public AccountLimits activeRules(Long activeRules) {
+  public AccountLimits activeRules(Integer activeRules) {
     
     this.activeRules = activeRules;
     return this;
@@ -202,17 +202,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed active rulesets in the account.")
 
-  public Long getActiveRules() {
+  public Integer getActiveRules() {
     return activeRules;
   }
 
 
-  public void setActiveRules(Long activeRules) {
+  public void setActiveRules(Integer activeRules) {
     this.activeRules = activeRules;
   }
 
 
-  public AccountLimits liveLoyaltyPrograms(Long liveLoyaltyPrograms) {
+  public AccountLimits liveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
     
     this.liveLoyaltyPrograms = liveLoyaltyPrograms;
     return this;
@@ -224,17 +224,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed live loyalty programs in the account.")
 
-  public Long getLiveLoyaltyPrograms() {
+  public Integer getLiveLoyaltyPrograms() {
     return liveLoyaltyPrograms;
   }
 
 
-  public void setLiveLoyaltyPrograms(Long liveLoyaltyPrograms) {
+  public void setLiveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
     this.liveLoyaltyPrograms = liveLoyaltyPrograms;
   }
 
 
-  public AccountLimits sandboxLoyaltyPrograms(Long sandboxLoyaltyPrograms) {
+  public AccountLimits sandboxLoyaltyPrograms(Integer sandboxLoyaltyPrograms) {
     
     this.sandboxLoyaltyPrograms = sandboxLoyaltyPrograms;
     return this;
@@ -246,17 +246,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed sandbox loyalty programs in the account.")
 
-  public Long getSandboxLoyaltyPrograms() {
+  public Integer getSandboxLoyaltyPrograms() {
     return sandboxLoyaltyPrograms;
   }
 
 
-  public void setSandboxLoyaltyPrograms(Long sandboxLoyaltyPrograms) {
+  public void setSandboxLoyaltyPrograms(Integer sandboxLoyaltyPrograms) {
     this.sandboxLoyaltyPrograms = sandboxLoyaltyPrograms;
   }
 
 
-  public AccountLimits webhooks(Long webhooks) {
+  public AccountLimits webhooks(Integer webhooks) {
     
     this.webhooks = webhooks;
     return this;
@@ -268,17 +268,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed webhooks in the account.")
 
-  public Long getWebhooks() {
+  public Integer getWebhooks() {
     return webhooks;
   }
 
 
-  public void setWebhooks(Long webhooks) {
+  public void setWebhooks(Integer webhooks) {
     this.webhooks = webhooks;
   }
 
 
-  public AccountLimits users(Long users) {
+  public AccountLimits users(Integer users) {
     
     this.users = users;
     return this;
@@ -290,17 +290,17 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Total number of allowed users in the account.")
 
-  public Long getUsers() {
+  public Integer getUsers() {
     return users;
   }
 
 
-  public void setUsers(Long users) {
+  public void setUsers(Integer users) {
     this.users = users;
   }
 
 
-  public AccountLimits apiVolume(Long apiVolume) {
+  public AccountLimits apiVolume(Integer apiVolume) {
     
     this.apiVolume = apiVolume;
     return this;
@@ -312,12 +312,12 @@ public class AccountLimits {
   **/
   @ApiModelProperty(required = true, value = "Allowed volume of API requests to the account.")
 
-  public Long getApiVolume() {
+  public Integer getApiVolume() {
     return apiVolume;
   }
 
 
-  public void setApiVolume(Long apiVolume) {
+  public void setApiVolume(Integer apiVolume) {
     this.apiVolume = apiVolume;
   }
 

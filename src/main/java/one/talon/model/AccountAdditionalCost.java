@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AccountAdditionalCost {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +42,7 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -58,7 +58,7 @@ public class AccountAdditionalCost {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Long> subscribedApplicationsIds = null;
+  private List<Integer> subscribedApplicationsIds = null;
 
   /**
    * The type of additional cost. Possible value: - &#x60;session&#x60;: Additional cost will be added per session. - &#x60;item&#x60;: Additional cost will be added per item. - &#x60;both&#x60;: Additional cost will be added per item and session. 
@@ -114,24 +114,24 @@ public class AccountAdditionalCost {
   private TypeEnum type = TypeEnum.SESSION;
 
 
-  public AccountAdditionalCost id(Long id) {
+  public AccountAdditionalCost id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -158,7 +158,7 @@ public class AccountAdditionalCost {
   }
 
 
-  public AccountAdditionalCost accountId(Long accountId) {
+  public AccountAdditionalCost accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -170,12 +170,12 @@ public class AccountAdditionalCost {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -246,15 +246,15 @@ public class AccountAdditionalCost {
   }
 
 
-  public AccountAdditionalCost subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public AccountAdditionalCost subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+  public AccountAdditionalCost addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Long>();
+      this.subscribedApplicationsIds = new ArrayList<Integer>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -267,12 +267,12 @@ public class AccountAdditionalCost {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[3, 13]", value = "A list of the IDs of the applications that are subscribed to this additional cost.")
 
-  public List<Long> getSubscribedApplicationsIds() {
+  public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 

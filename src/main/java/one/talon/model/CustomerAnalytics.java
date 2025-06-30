@@ -33,23 +33,23 @@ import java.math.BigDecimal;
 public class CustomerAnalytics {
   public static final String SERIALIZED_NAME_ACCEPTED_COUPONS = "acceptedCoupons";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_COUPONS)
-  private Long acceptedCoupons;
+  private Integer acceptedCoupons;
 
   public static final String SERIALIZED_NAME_CREATED_COUPONS = "createdCoupons";
   @SerializedName(SERIALIZED_NAME_CREATED_COUPONS)
-  private Long createdCoupons;
+  private Integer createdCoupons;
 
   public static final String SERIALIZED_NAME_FREE_ITEMS = "freeItems";
   @SerializedName(SERIALIZED_NAME_FREE_ITEMS)
-  private Long freeItems;
+  private Integer freeItems;
 
   public static final String SERIALIZED_NAME_TOTAL_ORDERS = "totalOrders";
   @SerializedName(SERIALIZED_NAME_TOTAL_ORDERS)
-  private Long totalOrders;
+  private Integer totalOrders;
 
   public static final String SERIALIZED_NAME_TOTAL_DISCOUNTED_ORDERS = "totalDiscountedOrders";
   @SerializedName(SERIALIZED_NAME_TOTAL_DISCOUNTED_ORDERS)
-  private Long totalDiscountedOrders;
+  private Integer totalDiscountedOrders;
 
   public static final String SERIALIZED_NAME_TOTAL_REVENUE = "totalRevenue";
   @SerializedName(SERIALIZED_NAME_TOTAL_REVENUE)
@@ -60,7 +60,7 @@ public class CustomerAnalytics {
   private BigDecimal totalDiscounts;
 
 
-  public CustomerAnalytics acceptedCoupons(Long acceptedCoupons) {
+  public CustomerAnalytics acceptedCoupons(Integer acceptedCoupons) {
     
     this.acceptedCoupons = acceptedCoupons;
     return this;
@@ -72,17 +72,17 @@ public class CustomerAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total accepted coupons for this customer.")
 
-  public Long getAcceptedCoupons() {
+  public Integer getAcceptedCoupons() {
     return acceptedCoupons;
   }
 
 
-  public void setAcceptedCoupons(Long acceptedCoupons) {
+  public void setAcceptedCoupons(Integer acceptedCoupons) {
     this.acceptedCoupons = acceptedCoupons;
   }
 
 
-  public CustomerAnalytics createdCoupons(Long createdCoupons) {
+  public CustomerAnalytics createdCoupons(Integer createdCoupons) {
     
     this.createdCoupons = createdCoupons;
     return this;
@@ -94,17 +94,17 @@ public class CustomerAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total created coupons for this customer.")
 
-  public Long getCreatedCoupons() {
+  public Integer getCreatedCoupons() {
     return createdCoupons;
   }
 
 
-  public void setCreatedCoupons(Long createdCoupons) {
+  public void setCreatedCoupons(Integer createdCoupons) {
     this.createdCoupons = createdCoupons;
   }
 
 
-  public CustomerAnalytics freeItems(Long freeItems) {
+  public CustomerAnalytics freeItems(Integer freeItems) {
     
     this.freeItems = freeItems;
     return this;
@@ -116,17 +116,17 @@ public class CustomerAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total free items given to this customer.")
 
-  public Long getFreeItems() {
+  public Integer getFreeItems() {
     return freeItems;
   }
 
 
-  public void setFreeItems(Long freeItems) {
+  public void setFreeItems(Integer freeItems) {
     this.freeItems = freeItems;
   }
 
 
-  public CustomerAnalytics totalOrders(Long totalOrders) {
+  public CustomerAnalytics totalOrders(Integer totalOrders) {
     
     this.totalOrders = totalOrders;
     return this;
@@ -138,17 +138,17 @@ public class CustomerAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total orders made by this customer.")
 
-  public Long getTotalOrders() {
+  public Integer getTotalOrders() {
     return totalOrders;
   }
 
 
-  public void setTotalOrders(Long totalOrders) {
+  public void setTotalOrders(Integer totalOrders) {
     this.totalOrders = totalOrders;
   }
 
 
-  public CustomerAnalytics totalDiscountedOrders(Long totalDiscountedOrders) {
+  public CustomerAnalytics totalDiscountedOrders(Integer totalDiscountedOrders) {
     
     this.totalDiscountedOrders = totalDiscountedOrders;
     return this;
@@ -160,12 +160,12 @@ public class CustomerAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total orders made by this customer that had a discount.")
 
-  public Long getTotalDiscountedOrders() {
+  public Integer getTotalDiscountedOrders() {
     return totalDiscountedOrders;
   }
 
 
-  public void setTotalDiscountedOrders(Long totalDiscountedOrders) {
+  public void setTotalDiscountedOrders(Integer totalDiscountedOrders) {
     this.totalDiscountedOrders = totalDiscountedOrders;
   }
 

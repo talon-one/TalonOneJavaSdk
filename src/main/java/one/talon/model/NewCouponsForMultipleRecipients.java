@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class NewCouponsForMultipleRecipients {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Long usageLimit;
+  private Integer usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -43,7 +43,7 @@ public class NewCouponsForMultipleRecipients {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Long reservationLimit;
+  private Integer reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -70,7 +70,7 @@ public class NewCouponsForMultipleRecipients {
   private String couponPattern;
 
 
-  public NewCouponsForMultipleRecipients usageLimit(Long usageLimit) {
+  public NewCouponsForMultipleRecipients usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -84,12 +84,12 @@ public class NewCouponsForMultipleRecipients {
   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Long getUsageLimit() {
+  public Integer getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Long usageLimit) {
+  public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -103,7 +103,7 @@ public class NewCouponsForMultipleRecipients {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class NewCouponsForMultipleRecipients {
   }
 
 
-  public NewCouponsForMultipleRecipients reservationLimit(Long reservationLimit) {
+  public NewCouponsForMultipleRecipients reservationLimit(Integer reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -134,12 +134,12 @@ public class NewCouponsForMultipleRecipients {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Long getReservationLimit() {
+  public Integer getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Long reservationLimit) {
+  public void setReservationLimit(Integer reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 

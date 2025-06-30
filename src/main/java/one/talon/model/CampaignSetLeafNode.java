@@ -80,7 +80,7 @@ public class CampaignSetLeafNode {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
 
   public CampaignSetLeafNode type(TypeEnum type) {
@@ -105,7 +105,7 @@ public class CampaignSetLeafNode {
   }
 
 
-  public CampaignSetLeafNode campaignId(Long campaignId) {
+  public CampaignSetLeafNode campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -117,12 +117,12 @@ public class CampaignSetLeafNode {
   **/
   @ApiModelProperty(required = true, value = "ID of the campaign")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 

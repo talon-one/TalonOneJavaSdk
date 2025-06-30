@@ -34,7 +34,7 @@ import one.talon.model.TemplateArgDef;
 public class NewWebhook {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -43,6 +43,10 @@ public class NewWebhook {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  private Boolean draft;
 
   /**
    * API method for this webhook.
@@ -122,13 +126,13 @@ public class NewWebhook {
   private Boolean enabled;
 
 
-  public NewWebhook applicationIds(List<Long> applicationIds) {
+  public NewWebhook applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewWebhook addApplicationIdsItem(Long applicationIdsItem) {
+  public NewWebhook addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -139,12 +143,12 @@ public class NewWebhook {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications in which this webhook is available. An empty array means the webhook is available in `All Applications`. ")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -191,6 +195,28 @@ public class NewWebhook {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public NewWebhook draft(Boolean draft) {
+    
+    this.draft = draft;
+    return this;
+  }
+
+   /**
+   * Indicates if the webhook is a draft.
+   * @return draft
+  **/
+  @ApiModelProperty(example = "false", required = true, value = "Indicates if the webhook is a draft.")
+
+  public Boolean getDraft() {
+    return draft;
+  }
+
+
+  public void setDraft(Boolean draft) {
+    this.draft = draft;
   }
 
 
@@ -349,6 +375,7 @@ public class NewWebhook {
     return Objects.equals(this.applicationIds, newWebhook.applicationIds) &&
         Objects.equals(this.title, newWebhook.title) &&
         Objects.equals(this.description, newWebhook.description) &&
+        Objects.equals(this.draft, newWebhook.draft) &&
         Objects.equals(this.verb, newWebhook.verb) &&
         Objects.equals(this.url, newWebhook.url) &&
         Objects.equals(this.headers, newWebhook.headers) &&
@@ -359,7 +386,7 @@ public class NewWebhook {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationIds, title, description, verb, url, headers, payload, params, enabled);
+    return Objects.hash(applicationIds, title, description, draft, verb, url, headers, payload, params, enabled);
   }
 
 
@@ -370,6 +397,7 @@ public class NewWebhook {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    headers: ").append(toIndentedString(headers)).append("\n");

@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Achievement {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -65,13 +65,15 @@ public class Achievement {
   private TimePoint periodEndOverride;
 
   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    */
   @JsonAdapter(RecurrencePolicyEnum.Adapter.class)
   public enum RecurrencePolicyEnum {
     NO_RECURRENCE("no_recurrence"),
     
-    ON_EXPIRATION("on_expiration");
+    ON_EXPIRATION("on_expiration"),
+    
+    ON_COMPLETION("on_completion");
 
     private String value;
 
@@ -176,11 +178,11 @@ public class Achievement {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
@@ -246,24 +248,24 @@ public class Achievement {
   private StatusEnum status;
 
 
-  public Achievement id(Long id) {
+  public Achievement id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -431,11 +433,11 @@ public class Achievement {
   }
 
    /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    * @return recurrencePolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
+  @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again. ")
 
   public RecurrencePolicyEnum getRecurrencePolicy() {
     return recurrencePolicy;
@@ -516,7 +518,7 @@ public class Achievement {
   }
 
 
-  public Achievement campaignId(Long campaignId) {
+  public Achievement campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -528,17 +530,17 @@ public class Achievement {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign the achievement belongs to.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public Achievement userId(Long userId) {
+  public Achievement userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -550,12 +552,12 @@ public class Achievement {
   **/
   @ApiModelProperty(example = "1234", required = true, value = "ID of the user that created this achievement.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 

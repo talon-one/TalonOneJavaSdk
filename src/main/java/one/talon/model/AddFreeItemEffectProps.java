@@ -40,7 +40,7 @@ public class AddFreeItemEffectProps {
 
   public static final String SERIALIZED_NAME_DESIRED_QUANTITY = "desiredQuantity";
   @SerializedName(SERIALIZED_NAME_DESIRED_QUANTITY)
-  private Long desiredQuantity;
+  private Integer desiredQuantity;
 
 
   public AddFreeItemEffectProps sku(String sku) {
@@ -87,7 +87,7 @@ public class AddFreeItemEffectProps {
   }
 
 
-  public AddFreeItemEffectProps desiredQuantity(Long desiredQuantity) {
+  public AddFreeItemEffectProps desiredQuantity(Integer desiredQuantity) {
     
     this.desiredQuantity = desiredQuantity;
     return this;
@@ -100,12 +100,12 @@ public class AddFreeItemEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The original quantity in case a partial reward was applied.")
 
-  public Long getDesiredQuantity() {
+  public Integer getDesiredQuantity() {
     return desiredQuantity;
   }
 
 
-  public void setDesiredQuantity(Long desiredQuantity) {
+  public void setDesiredQuantity(Integer desiredQuantity) {
     this.desiredQuantity = desiredQuantity;
   }
 

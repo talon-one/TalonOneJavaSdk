@@ -38,7 +38,7 @@ public class NewAppWideCouponDeletionJob {
 
   public static final String SERIALIZED_NAME_CAMPAIGNIDS = "campaignids";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNIDS)
-  private List<Long> campaignids = new ArrayList<Long>();
+  private List<Integer> campaignids = new ArrayList<Integer>();
 
 
   public NewAppWideCouponDeletionJob filters(CouponDeletionFilters filters) {
@@ -63,13 +63,13 @@ public class NewAppWideCouponDeletionJob {
   }
 
 
-  public NewAppWideCouponDeletionJob campaignids(List<Long> campaignids) {
+  public NewAppWideCouponDeletionJob campaignids(List<Integer> campaignids) {
     
     this.campaignids = campaignids;
     return this;
   }
 
-  public NewAppWideCouponDeletionJob addCampaignidsItem(Long campaignidsItem) {
+  public NewAppWideCouponDeletionJob addCampaignidsItem(Integer campaignidsItem) {
     this.campaignids.add(campaignidsItem);
     return this;
   }
@@ -80,12 +80,12 @@ public class NewAppWideCouponDeletionJob {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public List<Long> getCampaignids() {
+  public List<Integer> getCampaignids() {
     return campaignids;
   }
 
 
-  public void setCampaignids(List<Long> campaignids) {
+  public void setCampaignids(List<Integer> campaignids) {
     this.campaignids = campaignids;
   }
 

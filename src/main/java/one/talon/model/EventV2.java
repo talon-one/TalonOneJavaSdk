@@ -41,7 +41,7 @@ public class EventV2 {
 
   public static final String SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS = "evaluableCampaignIds";
   @SerializedName(SERIALIZED_NAME_EVALUABLE_CAMPAIGN_IDS)
-  private List<Long> evaluableCampaignIds = null;
+  private List<Integer> evaluableCampaignIds = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -98,15 +98,15 @@ public class EventV2 {
   }
 
 
-  public EventV2 evaluableCampaignIds(List<Long> evaluableCampaignIds) {
+  public EventV2 evaluableCampaignIds(List<Integer> evaluableCampaignIds) {
     
     this.evaluableCampaignIds = evaluableCampaignIds;
     return this;
   }
 
-  public EventV2 addEvaluableCampaignIdsItem(Long evaluableCampaignIdsItem) {
+  public EventV2 addEvaluableCampaignIdsItem(Integer evaluableCampaignIdsItem) {
     if (this.evaluableCampaignIds == null) {
-      this.evaluableCampaignIds = new ArrayList<Long>();
+      this.evaluableCampaignIds = new ArrayList<Integer>();
     }
     this.evaluableCampaignIds.add(evaluableCampaignIdsItem);
     return this;
@@ -119,12 +119,12 @@ public class EventV2 {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[10, 12]", value = "When using the `dry` query parameter, use this property to list the campaign to be evaluated by the Rule Engine.  These campaigns will be evaluated, even if they are disabled, allowing you to test specific campaigns before activating them. ")
 
-  public List<Long> getEvaluableCampaignIds() {
+  public List<Integer> getEvaluableCampaignIds() {
     return evaluableCampaignIds;
   }
 
 
-  public void setEvaluableCampaignIds(List<Long> evaluableCampaignIds) {
+  public void setEvaluableCampaignIds(List<Integer> evaluableCampaignIds) {
     this.evaluableCampaignIds = evaluableCampaignIds;
   }
 

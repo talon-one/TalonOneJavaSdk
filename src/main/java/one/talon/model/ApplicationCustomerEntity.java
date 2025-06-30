@@ -31,10 +31,10 @@ import java.io.IOException;
 public class ApplicationCustomerEntity {
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Long profileId;
+  private Integer profileId;
 
 
-  public ApplicationCustomerEntity profileId(Long profileId) {
+  public ApplicationCustomerEntity profileId(Integer profileId) {
     
     this.profileId = profileId;
     return this;
@@ -47,12 +47,12 @@ public class ApplicationCustomerEntity {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "138", value = "The globally unique Talon.One ID of the customer that created this entity.")
 
-  public Long getProfileId() {
+  public Integer getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Long profileId) {
+  public void setProfileId(Integer profileId) {
     this.profileId = profileId;
   }
 

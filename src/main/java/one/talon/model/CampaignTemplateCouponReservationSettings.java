@@ -31,14 +31,14 @@ import java.io.IOException;
 public class CampaignTemplateCouponReservationSettings {
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Long reservationLimit;
+  private Integer reservationLimit;
 
   public static final String SERIALIZED_NAME_IS_RESERVATION_MANDATORY = "isReservationMandatory";
   @SerializedName(SERIALIZED_NAME_IS_RESERVATION_MANDATORY)
   private Boolean isReservationMandatory = false;
 
 
-  public CampaignTemplateCouponReservationSettings reservationLimit(Long reservationLimit) {
+  public CampaignTemplateCouponReservationSettings reservationLimit(Integer reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -53,12 +53,12 @@ public class CampaignTemplateCouponReservationSettings {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Long getReservationLimit() {
+  public Integer getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Long reservationLimit) {
+  public void setReservationLimit(Integer reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 

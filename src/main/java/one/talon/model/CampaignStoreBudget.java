@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignStoreBudget {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,35 +43,35 @@ public class CampaignStoreBudget {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_STORE_ID = "storeId";
   @SerializedName(SERIALIZED_NAME_STORE_ID)
-  private Long storeId;
+  private Integer storeId;
 
   public static final String SERIALIZED_NAME_LIMITS = "limits";
   @SerializedName(SERIALIZED_NAME_LIMITS)
   private List<CampaignStoreBudgetLimitConfig> limits = new ArrayList<CampaignStoreBudgetLimitConfig>();
 
 
-  public CampaignStoreBudget id(Long id) {
+  public CampaignStoreBudget id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -98,7 +98,7 @@ public class CampaignStoreBudget {
   }
 
 
-  public CampaignStoreBudget campaignId(Long campaignId) {
+  public CampaignStoreBudget campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -110,17 +110,17 @@ public class CampaignStoreBudget {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
 
-  public CampaignStoreBudget storeId(Long storeId) {
+  public CampaignStoreBudget storeId(Integer storeId) {
     
     this.storeId = storeId;
     return this;
@@ -132,12 +132,12 @@ public class CampaignStoreBudget {
   **/
   @ApiModelProperty(required = true, value = "The ID of the store.")
 
-  public Long getStoreId() {
+  public Integer getStoreId() {
     return storeId;
   }
 
 
-  public void setStoreId(Long storeId) {
+  public void setStoreId(Integer storeId) {
     this.storeId = storeId;
   }
 

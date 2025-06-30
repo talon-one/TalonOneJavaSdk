@@ -33,20 +33,20 @@ import java.util.List;
 public class RoleAssign {
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
-  private List<Long> users = new ArrayList<Long>();
+  private List<Integer> users = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Long> roles = new ArrayList<Long>();
+  private List<Integer> roles = new ArrayList<Integer>();
 
 
-  public RoleAssign users(List<Long> users) {
+  public RoleAssign users(List<Integer> users) {
     
     this.users = users;
     return this;
   }
 
-  public RoleAssign addUsersItem(Long usersItem) {
+  public RoleAssign addUsersItem(Integer usersItem) {
     this.users.add(usersItem);
     return this;
   }
@@ -57,23 +57,23 @@ public class RoleAssign {
   **/
   @ApiModelProperty(example = "[48, 562, 475, 18]", required = true, value = "An array of user IDs.")
 
-  public List<Long> getUsers() {
+  public List<Integer> getUsers() {
     return users;
   }
 
 
-  public void setUsers(List<Long> users) {
+  public void setUsers(List<Integer> users) {
     this.users = users;
   }
 
 
-  public RoleAssign roles(List<Long> roles) {
+  public RoleAssign roles(List<Integer> roles) {
     
     this.roles = roles;
     return this;
   }
 
-  public RoleAssign addRolesItem(Long rolesItem) {
+  public RoleAssign addRolesItem(Integer rolesItem) {
     this.roles.add(rolesItem);
     return this;
   }
@@ -84,12 +84,12 @@ public class RoleAssign {
   **/
   @ApiModelProperty(example = "[128, 147]", required = true, value = "An array of role IDs.")
 
-  public List<Long> getRoles() {
+  public List<Integer> getRoles() {
     return roles;
   }
 
 
-  public void setRoles(List<Long> roles) {
+  public void setRoles(List<Integer> roles) {
     this.roles = roles;
   }
 

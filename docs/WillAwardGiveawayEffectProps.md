@@ -7,7 +7,7 @@ The properties specific to the \"awardGiveaway\" effect when the session is not 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**poolId** | **Long** | The ID of the giveaways pool the code will be taken from. | 
+**poolId** | **Integer** | The ID of the giveaways pool the code will be taken from. | 
 **poolName** | **String** | The name of the giveaways pool the code will be taken from. | 
 **recipientIntegrationId** | **String** | The integration ID of the profile that will be awarded the giveaway. | 
 

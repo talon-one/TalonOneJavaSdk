@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Store {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -58,7 +58,7 @@ public class Store {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
@@ -66,27 +66,27 @@ public class Store {
 
   public static final String SERIALIZED_NAME_LINKED_CAMPAIGN_IDS = "linkedCampaignIds";
   @SerializedName(SERIALIZED_NAME_LINKED_CAMPAIGN_IDS)
-  private List<Long> linkedCampaignIds = null;
+  private List<Integer> linkedCampaignIds = null;
 
 
-  public Store id(Long id) {
+  public Store id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -202,7 +202,7 @@ public class Store {
   }
 
 
-  public Store applicationId(Long applicationId) {
+  public Store applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -214,12 +214,12 @@ public class Store {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -246,15 +246,15 @@ public class Store {
   }
 
 
-  public Store linkedCampaignIds(List<Long> linkedCampaignIds) {
+  public Store linkedCampaignIds(List<Integer> linkedCampaignIds) {
     
     this.linkedCampaignIds = linkedCampaignIds;
     return this;
   }
 
-  public Store addLinkedCampaignIdsItem(Long linkedCampaignIdsItem) {
+  public Store addLinkedCampaignIdsItem(Integer linkedCampaignIdsItem) {
     if (this.linkedCampaignIds == null) {
-      this.linkedCampaignIds = new ArrayList<Long>();
+      this.linkedCampaignIds = new ArrayList<Integer>();
     }
     this.linkedCampaignIds.add(linkedCampaignIdsItem);
     return this;
@@ -267,12 +267,12 @@ public class Store {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are linked with current store.")
 
-  public List<Long> getLinkedCampaignIds() {
+  public List<Integer> getLinkedCampaignIds() {
     return linkedCampaignIds;
   }
 
 
-  public void setLinkedCampaignIds(List<Long> linkedCampaignIds) {
+  public void setLinkedCampaignIds(List<Integer> linkedCampaignIds) {
     this.linkedCampaignIds = linkedCampaignIds;
   }
 

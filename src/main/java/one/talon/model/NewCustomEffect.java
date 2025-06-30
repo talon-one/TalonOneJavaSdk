@@ -34,7 +34,7 @@ import one.talon.model.TemplateArgDef;
 public class NewCustomEffect {
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_IS_PER_ITEM = "isPerItem";
   @SerializedName(SERIALIZED_NAME_IS_PER_ITEM)
@@ -65,13 +65,13 @@ public class NewCustomEffect {
   private List<TemplateArgDef> params = null;
 
 
-  public NewCustomEffect applicationIds(List<Long> applicationIds) {
+  public NewCustomEffect applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public NewCustomEffect addApplicationIdsItem(Long applicationIdsItem) {
+  public NewCustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -82,12 +82,12 @@ public class NewCustomEffect {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 

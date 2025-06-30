@@ -32,7 +32,7 @@ import java.io.IOException;
 public class StrikethroughCustomEffectPerItemProps {
   public static final String SERIALIZED_NAME_EFFECT_ID = "effectId";
   @SerializedName(SERIALIZED_NAME_EFFECT_ID)
-  private Long effectId;
+  private Integer effectId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -43,7 +43,7 @@ public class StrikethroughCustomEffectPerItemProps {
   private Object payload;
 
 
-  public StrikethroughCustomEffectPerItemProps effectId(Long effectId) {
+  public StrikethroughCustomEffectPerItemProps effectId(Integer effectId) {
     
     this.effectId = effectId;
     return this;
@@ -55,12 +55,12 @@ public class StrikethroughCustomEffectPerItemProps {
   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the effect.")
 
-  public Long getEffectId() {
+  public Integer getEffectId() {
     return effectId;
   }
 
 
-  public void setEffectId(Long effectId) {
+  public void setEffectId(Integer effectId) {
     this.effectId = effectId;
   }
 

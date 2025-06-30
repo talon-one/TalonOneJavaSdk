@@ -31,10 +31,10 @@ import java.io.IOException;
 public class ManagerConfig {
   public static final String SERIALIZED_NAME_SCHEMA_VERSION = "schemaVersion";
   @SerializedName(SERIALIZED_NAME_SCHEMA_VERSION)
-  private Long schemaVersion;
+  private Integer schemaVersion;
 
 
-  public ManagerConfig schemaVersion(Long schemaVersion) {
+  public ManagerConfig schemaVersion(Integer schemaVersion) {
     
     this.schemaVersion = schemaVersion;
     return this;
@@ -46,12 +46,12 @@ public class ManagerConfig {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getSchemaVersion() {
+  public Integer getSchemaVersion() {
     return schemaVersion;
   }
 
 
-  public void setSchemaVersion(Long schemaVersion) {
+  public void setSchemaVersion(Integer schemaVersion) {
     this.schemaVersion = schemaVersion;
   }
 

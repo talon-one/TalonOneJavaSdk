@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accountId** | **Long** | The ID of the account that owns this entity. | 
+**accountId** | **Integer** | The ID of the account that owns this entity. | 
 **name** | **String** | ID of the SAML service. | 
 **enabled** | **Boolean** | Determines if this SAML connection active. | 
 **issuer** | **String** | Identity Provider Entity ID. | 

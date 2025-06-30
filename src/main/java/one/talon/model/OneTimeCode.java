@@ -31,11 +31,11 @@ import java.io.IOException;
 public class OneTimeCode {
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_TOKEN = "token";
   @SerializedName(SERIALIZED_NAME_TOKEN)
@@ -46,7 +46,7 @@ public class OneTimeCode {
   private String code;
 
 
-  public OneTimeCode userId(Long userId) {
+  public OneTimeCode userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -58,17 +58,17 @@ public class OneTimeCode {
   **/
   @ApiModelProperty(example = "109", required = true, value = "The ID of the user.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
 
-  public OneTimeCode accountId(Long accountId) {
+  public OneTimeCode accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -80,12 +80,12 @@ public class OneTimeCode {
   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the account.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 

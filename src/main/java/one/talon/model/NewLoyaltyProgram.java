@@ -45,7 +45,7 @@ public class NewLoyaltyProgram {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
-  private List<Long> subscribedApplications = null;
+  private List<Integer> subscribedApplications = null;
 
   public static final String SERIALIZED_NAME_DEFAULT_VALIDITY = "defaultValidity";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALIDITY)
@@ -61,7 +61,7 @@ public class NewLoyaltyProgram {
 
   public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
   @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
-  private Long usersPerCardLimit;
+  private Integer usersPerCardLimit;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
@@ -353,15 +353,15 @@ public class NewLoyaltyProgram {
   }
 
 
-  public NewLoyaltyProgram subscribedApplications(List<Long> subscribedApplications) {
+  public NewLoyaltyProgram subscribedApplications(List<Integer> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
     return this;
   }
 
-  public NewLoyaltyProgram addSubscribedApplicationsItem(Long subscribedApplicationsItem) {
+  public NewLoyaltyProgram addSubscribedApplicationsItem(Integer subscribedApplicationsItem) {
     if (this.subscribedApplications == null) {
-      this.subscribedApplications = new ArrayList<Long>();
+      this.subscribedApplications = new ArrayList<Integer>();
     }
     this.subscribedApplications.add(subscribedApplicationsItem);
     return this;
@@ -374,12 +374,12 @@ public class NewLoyaltyProgram {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[132, 97]", value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
 
-  public List<Long> getSubscribedApplications() {
+  public List<Integer> getSubscribedApplications() {
     return subscribedApplications;
   }
 
 
-  public void setSubscribedApplications(List<Long> subscribedApplications) {
+  public void setSubscribedApplications(List<Integer> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
   }
 
@@ -450,7 +450,7 @@ public class NewLoyaltyProgram {
   }
 
 
-  public NewLoyaltyProgram usersPerCardLimit(Long usersPerCardLimit) {
+  public NewLoyaltyProgram usersPerCardLimit(Integer usersPerCardLimit) {
     
     this.usersPerCardLimit = usersPerCardLimit;
     return this;
@@ -464,12 +464,12 @@ public class NewLoyaltyProgram {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "111", value = "The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when `cardBased` is `true`. ")
 
-  public Long getUsersPerCardLimit() {
+  public Integer getUsersPerCardLimit() {
     return usersPerCardLimit;
   }
 
 
-  public void setUsersPerCardLimit(Long usersPerCardLimit) {
+  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
     this.usersPerCardLimit = usersPerCardLimit;
   }
 

@@ -40,15 +40,15 @@ public class NewApplicationCIF {
 
   public static final String SERIALIZED_NAME_ACTIVE_EXPRESSION_ID = "activeExpressionId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_EXPRESSION_ID)
-  private Long activeExpressionId;
+  private Integer activeExpressionId;
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Long modifiedBy;
+  private Integer modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -100,7 +100,7 @@ public class NewApplicationCIF {
   }
 
 
-  public NewApplicationCIF activeExpressionId(Long activeExpressionId) {
+  public NewApplicationCIF activeExpressionId(Integer activeExpressionId) {
     
     this.activeExpressionId = activeExpressionId;
     return this;
@@ -113,17 +113,17 @@ public class NewApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The ID of the expression that the Application cart item filter uses.")
 
-  public Long getActiveExpressionId() {
+  public Integer getActiveExpressionId() {
     return activeExpressionId;
   }
 
 
-  public void setActiveExpressionId(Long activeExpressionId) {
+  public void setActiveExpressionId(Integer activeExpressionId) {
     this.activeExpressionId = activeExpressionId;
   }
 
 
-  public NewApplicationCIF modifiedBy(Long modifiedBy) {
+  public NewApplicationCIF modifiedBy(Integer modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -136,17 +136,17 @@ public class NewApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "The ID of the user who last updated the Application cart item filter.")
 
-  public Long getModifiedBy() {
+  public Integer getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Long modifiedBy) {
+  public void setModifiedBy(Integer modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
 
-  public NewApplicationCIF createdBy(Long createdBy) {
+  public NewApplicationCIF createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -159,12 +159,12 @@ public class NewApplicationCIF {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 

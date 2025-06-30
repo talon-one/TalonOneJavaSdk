@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CouponDeletionJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,11 +43,11 @@ public class CouponDeletionJob {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
@@ -59,11 +59,11 @@ public class CouponDeletionJob {
 
   public static final String SERIALIZED_NAME_DELETED_AMOUNT = "deletedAmount";
   @SerializedName(SERIALIZED_NAME_DELETED_AMOUNT)
-  private Long deletedAmount;
+  private Integer deletedAmount;
 
   public static final String SERIALIZED_NAME_FAIL_COUNT = "failCount";
   @SerializedName(SERIALIZED_NAME_FAIL_COUNT)
-  private Long failCount;
+  private Integer failCount;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -71,7 +71,7 @@ public class CouponDeletionJob {
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_COMMUNICATED = "communicated";
   @SerializedName(SERIALIZED_NAME_COMMUNICATED)
@@ -79,27 +79,27 @@ public class CouponDeletionJob {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_I_DS = "campaignIDs";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_I_DS)
-  private List<Long> campaignIDs = null;
+  private List<Integer> campaignIDs = null;
 
 
-  public CouponDeletionJob id(Long id) {
+  public CouponDeletionJob id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -126,7 +126,7 @@ public class CouponDeletionJob {
   }
 
 
-  public CouponDeletionJob applicationId(Long applicationId) {
+  public CouponDeletionJob applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -138,17 +138,17 @@ public class CouponDeletionJob {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CouponDeletionJob accountId(Long accountId) {
+  public CouponDeletionJob accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -160,12 +160,12 @@ public class CouponDeletionJob {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -214,7 +214,7 @@ public class CouponDeletionJob {
   }
 
 
-  public CouponDeletionJob deletedAmount(Long deletedAmount) {
+  public CouponDeletionJob deletedAmount(Integer deletedAmount) {
     
     this.deletedAmount = deletedAmount;
     return this;
@@ -227,17 +227,17 @@ public class CouponDeletionJob {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1000000", value = "The number of coupon codes that were already deleted for this request.")
 
-  public Long getDeletedAmount() {
+  public Integer getDeletedAmount() {
     return deletedAmount;
   }
 
 
-  public void setDeletedAmount(Long deletedAmount) {
+  public void setDeletedAmount(Integer deletedAmount) {
     this.deletedAmount = deletedAmount;
   }
 
 
-  public CouponDeletionJob failCount(Long failCount) {
+  public CouponDeletionJob failCount(Integer failCount) {
     
     this.failCount = failCount;
     return this;
@@ -249,12 +249,12 @@ public class CouponDeletionJob {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times this job failed.")
 
-  public Long getFailCount() {
+  public Integer getFailCount() {
     return failCount;
   }
 
 
-  public void setFailCount(Long failCount) {
+  public void setFailCount(Integer failCount) {
     this.failCount = failCount;
   }
 
@@ -286,7 +286,7 @@ public class CouponDeletionJob {
   }
 
 
-  public CouponDeletionJob createdBy(Long createdBy) {
+  public CouponDeletionJob createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -298,12 +298,12 @@ public class CouponDeletionJob {
   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the user who created this effect.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
@@ -330,15 +330,15 @@ public class CouponDeletionJob {
   }
 
 
-  public CouponDeletionJob campaignIDs(List<Long> campaignIDs) {
+  public CouponDeletionJob campaignIDs(List<Integer> campaignIDs) {
     
     this.campaignIDs = campaignIDs;
     return this;
   }
 
-  public CouponDeletionJob addCampaignIDsItem(Long campaignIDsItem) {
+  public CouponDeletionJob addCampaignIDsItem(Integer campaignIDsItem) {
     if (this.campaignIDs == null) {
-      this.campaignIDs = new ArrayList<Long>();
+      this.campaignIDs = new ArrayList<Integer>();
     }
     this.campaignIDs.add(campaignIDsItem);
     return this;
@@ -351,12 +351,12 @@ public class CouponDeletionJob {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Long> getCampaignIDs() {
+  public List<Integer> getCampaignIDs() {
     return campaignIDs;
   }
 
 
-  public void setCampaignIDs(List<Long> campaignIDs) {
+  public void setCampaignIDs(List<Integer> campaignIDs) {
     this.campaignIDs = campaignIDs;
   }
 

@@ -33,11 +33,11 @@ import java.util.List;
 public class OutgoingIntegrationTemplate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_INTEGRATION_TYPE = "integrationType";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_TYPE)
-  private Long integrationType;
+  private Integer integrationType;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -117,7 +117,7 @@ public class OutgoingIntegrationTemplate {
   private List<String> headers = new ArrayList<String>();
 
 
-  public OutgoingIntegrationTemplate id(Long id) {
+  public OutgoingIntegrationTemplate id(Integer id) {
     
     this.id = id;
     return this;
@@ -129,17 +129,17 @@ public class OutgoingIntegrationTemplate {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public OutgoingIntegrationTemplate integrationType(Long integrationType) {
+  public OutgoingIntegrationTemplate integrationType(Integer integrationType) {
     
     this.integrationType = integrationType;
     return this;
@@ -151,12 +151,12 @@ public class OutgoingIntegrationTemplate {
   **/
   @ApiModelProperty(example = "2", required = true, value = "Unique ID of outgoing integration type.")
 
-  public Long getIntegrationType() {
+  public Integer getIntegrationType() {
     return integrationType;
   }
 
 
-  public void setIntegrationType(Long integrationType) {
+  public void setIntegrationType(Integer integrationType) {
     this.integrationType = integrationType;
   }
 

@@ -32,15 +32,15 @@ import one.talon.model.CampaignSetBranchNode;
 public class CampaignSet {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
@@ -51,7 +51,7 @@ public class CampaignSet {
   private String updatedBy;
 
 
-  public CampaignSet applicationId(Long applicationId) {
+  public CampaignSet applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -63,39 +63,39 @@ public class CampaignSet {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public CampaignSet id(Long id) {
+  public CampaignSet id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public CampaignSet version(Long version) {
+  public CampaignSet version(Integer version) {
     
     this.version = version;
     return this;
@@ -108,12 +108,12 @@ public class CampaignSet {
   **/
   @ApiModelProperty(example = "3", required = true, value = "Version of the campaign set.")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 

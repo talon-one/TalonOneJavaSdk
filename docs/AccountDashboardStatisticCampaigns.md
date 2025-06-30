@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**live** | **Long** | Number of campaigns that are active and live (across all Applications). | 
-**endingSoon** | **Long** | Campaigns scheduled to expire sometime in the next 7 days. | 
-**lowOnBudget** | **Long** | Campaigns with less than 10% of budget left. | 
+**live** | **Integer** | Number of campaigns that are active and live (across all Applications). | 
+**endingSoon** | **Integer** | Campaigns scheduled to expire sometime in the next 7 days. | 
+**lowOnBudget** | **Integer** | Campaigns with less than 10% of budget left. | 
 
 
 

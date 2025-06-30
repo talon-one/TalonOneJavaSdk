@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Tier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -98,7 +98,7 @@ public class Tier {
   private DowngradePolicyEnum downgradePolicy;
 
 
-  public Tier id(Long id) {
+  public Tier id(Integer id) {
     
     this.id = id;
     return this;
@@ -110,12 +110,12 @@ public class Tier {
   **/
   @ApiModelProperty(example = "11", required = true, value = "The internal ID of the tier.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

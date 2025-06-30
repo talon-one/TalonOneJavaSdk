@@ -45,7 +45,7 @@ public class DeductLoyaltyPoints {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
 
   public DeductLoyaltyPoints points(BigDecimal points) {
@@ -118,7 +118,7 @@ public class DeductLoyaltyPoints {
   }
 
 
-  public DeductLoyaltyPoints applicationId(Long applicationId) {
+  public DeductLoyaltyPoints applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -131,12 +131,12 @@ public class DeductLoyaltyPoints {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "ID of the Application that is connected to the loyalty program.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 

@@ -31,7 +31,7 @@ import java.io.IOException;
 public class ListCampaignStoreBudgetsStore {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_INTEGRATION_ID = "integrationId";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_ID)
@@ -42,7 +42,7 @@ public class ListCampaignStoreBudgetsStore {
   private String name;
 
 
-  public ListCampaignStoreBudgetsStore id(Long id) {
+  public ListCampaignStoreBudgetsStore id(Integer id) {
     
     this.id = id;
     return this;
@@ -54,12 +54,12 @@ public class ListCampaignStoreBudgetsStore {
   **/
   @ApiModelProperty(required = true, value = "")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

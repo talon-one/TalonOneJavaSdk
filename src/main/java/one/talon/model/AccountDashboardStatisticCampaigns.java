@@ -31,18 +31,18 @@ import java.io.IOException;
 public class AccountDashboardStatisticCampaigns {
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
-  private Long live;
+  private Integer live;
 
   public static final String SERIALIZED_NAME_ENDING_SOON = "endingSoon";
   @SerializedName(SERIALIZED_NAME_ENDING_SOON)
-  private Long endingSoon;
+  private Integer endingSoon;
 
   public static final String SERIALIZED_NAME_LOW_ON_BUDGET = "lowOnBudget";
   @SerializedName(SERIALIZED_NAME_LOW_ON_BUDGET)
-  private Long lowOnBudget;
+  private Integer lowOnBudget;
 
 
-  public AccountDashboardStatisticCampaigns live(Long live) {
+  public AccountDashboardStatisticCampaigns live(Integer live) {
     
     this.live = live;
     return this;
@@ -54,17 +54,17 @@ public class AccountDashboardStatisticCampaigns {
   **/
   @ApiModelProperty(required = true, value = "Number of campaigns that are active and live (across all Applications).")
 
-  public Long getLive() {
+  public Integer getLive() {
     return live;
   }
 
 
-  public void setLive(Long live) {
+  public void setLive(Integer live) {
     this.live = live;
   }
 
 
-  public AccountDashboardStatisticCampaigns endingSoon(Long endingSoon) {
+  public AccountDashboardStatisticCampaigns endingSoon(Integer endingSoon) {
     
     this.endingSoon = endingSoon;
     return this;
@@ -76,17 +76,17 @@ public class AccountDashboardStatisticCampaigns {
   **/
   @ApiModelProperty(required = true, value = "Campaigns scheduled to expire sometime in the next 7 days.")
 
-  public Long getEndingSoon() {
+  public Integer getEndingSoon() {
     return endingSoon;
   }
 
 
-  public void setEndingSoon(Long endingSoon) {
+  public void setEndingSoon(Integer endingSoon) {
     this.endingSoon = endingSoon;
   }
 
 
-  public AccountDashboardStatisticCampaigns lowOnBudget(Long lowOnBudget) {
+  public AccountDashboardStatisticCampaigns lowOnBudget(Integer lowOnBudget) {
     
     this.lowOnBudget = lowOnBudget;
     return this;
@@ -98,12 +98,12 @@ public class AccountDashboardStatisticCampaigns {
   **/
   @ApiModelProperty(required = true, value = "Campaigns with less than 10% of budget left.")
 
-  public Long getLowOnBudget() {
+  public Integer getLowOnBudget() {
     return lowOnBudget;
   }
 
 
-  public void setLowOnBudget(Long lowOnBudget) {
+  public void setLowOnBudget(Integer lowOnBudget) {
     this.lowOnBudget = lowOnBudget;
   }
 

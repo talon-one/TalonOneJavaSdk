@@ -40,11 +40,11 @@ public class RejectReferralEffectProps {
 
   public static final String SERIALIZED_NAME_CONDITION_INDEX = "conditionIndex";
   @SerializedName(SERIALIZED_NAME_CONDITION_INDEX)
-  private Long conditionIndex;
+  private Integer conditionIndex;
 
   public static final String SERIALIZED_NAME_EFFECT_INDEX = "effectIndex";
   @SerializedName(SERIALIZED_NAME_EFFECT_INDEX)
-  private Long effectIndex;
+  private Integer effectIndex;
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
@@ -99,7 +99,7 @@ public class RejectReferralEffectProps {
   }
 
 
-  public RejectReferralEffectProps conditionIndex(Long conditionIndex) {
+  public RejectReferralEffectProps conditionIndex(Integer conditionIndex) {
     
     this.conditionIndex = conditionIndex;
     return this;
@@ -112,17 +112,17 @@ public class RejectReferralEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the condition that caused the rejection of the referral.")
 
-  public Long getConditionIndex() {
+  public Integer getConditionIndex() {
     return conditionIndex;
   }
 
 
-  public void setConditionIndex(Long conditionIndex) {
+  public void setConditionIndex(Integer conditionIndex) {
     this.conditionIndex = conditionIndex;
   }
 
 
-  public RejectReferralEffectProps effectIndex(Long effectIndex) {
+  public RejectReferralEffectProps effectIndex(Integer effectIndex) {
     
     this.effectIndex = effectIndex;
     return this;
@@ -135,12 +135,12 @@ public class RejectReferralEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The index of the effect that caused the rejection of the referral.")
 
-  public Long getEffectIndex() {
+  public Integer getEffectIndex() {
     return effectIndex;
   }
 
 
-  public void setEffectIndex(Long effectIndex) {
+  public void setEffectIndex(Integer effectIndex) {
     this.effectIndex = effectIndex;
   }
 

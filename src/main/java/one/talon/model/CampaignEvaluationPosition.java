@@ -32,7 +32,7 @@ import java.io.IOException;
 public class CampaignEvaluationPosition {
   public static final String SERIALIZED_NAME_GROUP_ID = "groupId";
   @SerializedName(SERIALIZED_NAME_GROUP_ID)
-  private Long groupId;
+  private Integer groupId;
 
   public static final String SERIALIZED_NAME_GROUP_NAME = "groupName";
   @SerializedName(SERIALIZED_NAME_GROUP_NAME)
@@ -40,10 +40,10 @@ public class CampaignEvaluationPosition {
 
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
-  private Long position;
+  private Integer position;
 
 
-  public CampaignEvaluationPosition groupId(Long groupId) {
+  public CampaignEvaluationPosition groupId(Integer groupId) {
     
     this.groupId = groupId;
     return this;
@@ -55,12 +55,12 @@ public class CampaignEvaluationPosition {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the campaign evaluation group the campaign belongs to.")
 
-  public Long getGroupId() {
+  public Integer getGroupId() {
     return groupId;
   }
 
 
-  public void setGroupId(Long groupId) {
+  public void setGroupId(Integer groupId) {
     this.groupId = groupId;
   }
 
@@ -87,7 +87,7 @@ public class CampaignEvaluationPosition {
   }
 
 
-  public CampaignEvaluationPosition position(Long position) {
+  public CampaignEvaluationPosition position(Integer position) {
     
     this.position = position;
     return this;
@@ -99,12 +99,12 @@ public class CampaignEvaluationPosition {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The position of the campaign node in its parent group.")
 
-  public Long getPosition() {
+  public Integer getPosition() {
     return position;
   }
 
 
-  public void setPosition(Long position) {
+  public void setPosition(Integer position) {
     this.position = position;
   }
 

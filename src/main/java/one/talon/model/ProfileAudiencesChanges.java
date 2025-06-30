@@ -33,20 +33,20 @@ import java.util.List;
 public class ProfileAudiencesChanges {
   public static final String SERIALIZED_NAME_ADDS = "adds";
   @SerializedName(SERIALIZED_NAME_ADDS)
-  private List<Long> adds = new ArrayList<Long>();
+  private List<Integer> adds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_DELETES = "deletes";
   @SerializedName(SERIALIZED_NAME_DELETES)
-  private List<Long> deletes = new ArrayList<Long>();
+  private List<Integer> deletes = new ArrayList<Integer>();
 
 
-  public ProfileAudiencesChanges adds(List<Long> adds) {
+  public ProfileAudiencesChanges adds(List<Integer> adds) {
     
     this.adds = adds;
     return this;
   }
 
-  public ProfileAudiencesChanges addAddsItem(Long addsItem) {
+  public ProfileAudiencesChanges addAddsItem(Integer addsItem) {
     this.adds.add(addsItem);
     return this;
   }
@@ -57,23 +57,23 @@ public class ProfileAudiencesChanges {
   **/
   @ApiModelProperty(example = "[2, 4]", required = true, value = "The IDs of the audiences for the customer to join.")
 
-  public List<Long> getAdds() {
+  public List<Integer> getAdds() {
     return adds;
   }
 
 
-  public void setAdds(List<Long> adds) {
+  public void setAdds(List<Integer> adds) {
     this.adds = adds;
   }
 
 
-  public ProfileAudiencesChanges deletes(List<Long> deletes) {
+  public ProfileAudiencesChanges deletes(List<Integer> deletes) {
     
     this.deletes = deletes;
     return this;
   }
 
-  public ProfileAudiencesChanges addDeletesItem(Long deletesItem) {
+  public ProfileAudiencesChanges addDeletesItem(Integer deletesItem) {
     this.deletes.add(deletesItem);
     return this;
   }
@@ -84,12 +84,12 @@ public class ProfileAudiencesChanges {
   **/
   @ApiModelProperty(example = "[7]", required = true, value = "The IDs of the audiences for the customer to leave.")
 
-  public List<Long> getDeletes() {
+  public List<Integer> getDeletes() {
     return deletes;
   }
 
 
-  public void setDeletes(List<Long> deletes) {
+  public void setDeletes(List<Integer> deletes) {
     this.deletes = deletes;
   }
 
