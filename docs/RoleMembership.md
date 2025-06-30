@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**roleID** | **Long** | ID of role. | 
-**userID** | **Long** | ID of User. | 
+**roleID** | **Integer** | ID of role. | 
+**userID** | **Integer** | ID of User. | 
 
 
 

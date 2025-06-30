@@ -38,7 +38,7 @@ public class CatalogSyncRequest {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
 
   public CatalogSyncRequest actions(List<CatalogAction> actions) {
@@ -68,7 +68,7 @@ public class CatalogSyncRequest {
   }
 
 
-  public CatalogSyncRequest version(Long version) {
+  public CatalogSyncRequest version(Integer version) {
     
     this.version = version;
     return this;
@@ -82,12 +82,12 @@ public class CatalogSyncRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "244", value = "The version number of the catalog to apply the actions on.")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 

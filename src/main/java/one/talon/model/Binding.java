@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,18 @@ public class Binding {
   public static final String SERIALIZED_NAME_VALUE_TYPE = "valueType";
   @SerializedName(SERIALIZED_NAME_VALUE_TYPE)
   private String valueType;
+
+  public static final String SERIALIZED_NAME_MIN_VALUE = "minValue";
+  @SerializedName(SERIALIZED_NAME_MIN_VALUE)
+  private BigDecimal minValue;
+
+  public static final String SERIALIZED_NAME_MAX_VALUE = "maxValue";
+  @SerializedName(SERIALIZED_NAME_MAX_VALUE)
+  private BigDecimal maxValue;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTE_ID = "attributeId";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTE_ID)
+  private Integer attributeId;
 
 
   public Binding name(String name) {
@@ -143,6 +156,75 @@ public class Binding {
   }
 
 
+  public Binding minValue(BigDecimal minValue) {
+    
+    this.minValue = minValue;
+    return this;
+  }
+
+   /**
+   * The minimum value allowed for this placeholder.
+   * @return minValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "0.0", value = "The minimum value allowed for this placeholder.")
+
+  public BigDecimal getMinValue() {
+    return minValue;
+  }
+
+
+  public void setMinValue(BigDecimal minValue) {
+    this.minValue = minValue;
+  }
+
+
+  public Binding maxValue(BigDecimal maxValue) {
+    
+    this.maxValue = maxValue;
+    return this;
+  }
+
+   /**
+   * The maximum value allowed for this placeholder.
+   * @return maxValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "19.9", value = "The maximum value allowed for this placeholder.")
+
+  public BigDecimal getMaxValue() {
+    return maxValue;
+  }
+
+
+  public void setMaxValue(BigDecimal maxValue) {
+    this.maxValue = maxValue;
+  }
+
+
+  public Binding attributeId(Integer attributeId) {
+    
+    this.attributeId = attributeId;
+    return this;
+  }
+
+   /**
+   * Id of the attribute attached to the placeholder.
+   * @return attributeId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100", value = "Id of the attribute attached to the placeholder.")
+
+  public Integer getAttributeId() {
+    return attributeId;
+  }
+
+
+  public void setAttributeId(Integer attributeId) {
+    this.attributeId = attributeId;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -155,12 +237,15 @@ public class Binding {
     return Objects.equals(this.name, binding.name) &&
         Objects.equals(this.type, binding.type) &&
         Objects.equals(this.expression, binding.expression) &&
-        Objects.equals(this.valueType, binding.valueType);
+        Objects.equals(this.valueType, binding.valueType) &&
+        Objects.equals(this.minValue, binding.minValue) &&
+        Objects.equals(this.maxValue, binding.maxValue) &&
+        Objects.equals(this.attributeId, binding.attributeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, expression, valueType);
+    return Objects.hash(name, type, expression, valueType, minValue, maxValue, attributeId);
   }
 
 
@@ -172,6 +257,9 @@ public class Binding {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
     sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
+    sb.append("    minValue: ").append(toIndentedString(minValue)).append("\n");
+    sb.append("    maxValue: ").append(toIndentedString(maxValue)).append("\n");
+    sb.append("    attributeId: ").append(toIndentedString(attributeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

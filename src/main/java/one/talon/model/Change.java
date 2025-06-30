@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Change {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -40,11 +40,11 @@ public class Change {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -60,27 +60,27 @@ public class Change {
 
   public static final String SERIALIZED_NAME_MANAGEMENT_KEY_ID = "managementKeyId";
   @SerializedName(SERIALIZED_NAME_MANAGEMENT_KEY_ID)
-  private Long managementKeyId;
+  private Integer managementKeyId;
 
 
-  public Change id(Long id) {
+  public Change id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -107,7 +107,7 @@ public class Change {
   }
 
 
-  public Change userId(Long userId) {
+  public Change userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -119,17 +119,17 @@ public class Change {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
 
-  public Change applicationId(Long applicationId) {
+  public Change applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -142,12 +142,12 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "359", value = "ID of application associated with change.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -220,7 +220,7 @@ public class Change {
   }
 
 
-  public Change managementKeyId(Long managementKeyId) {
+  public Change managementKeyId(Integer managementKeyId) {
     
     this.managementKeyId = managementKeyId;
     return this;
@@ -233,12 +233,12 @@ public class Change {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "3", value = "ID of management key used to perform changes.")
 
-  public Long getManagementKeyId() {
+  public Integer getManagementKeyId() {
     return managementKeyId;
   }
 
 
-  public void setManagementKeyId(Long managementKeyId) {
+  public void setManagementKeyId(Integer managementKeyId) {
     this.managementKeyId = managementKeyId;
   }
 

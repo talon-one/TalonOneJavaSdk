@@ -146,7 +146,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void deleteAudienceMembershipsV2Test() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         api.deleteAudienceMembershipsV2(audienceId);
 
         // TODO: test validations
@@ -162,7 +162,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void deleteAudienceV2Test() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         api.deleteAudienceV2(audienceId);
 
         // TODO: test validations
@@ -211,7 +211,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void generateLoyaltyCardTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         GenerateLoyaltyCard body = null;
         LoyaltyCard response = api.generateLoyaltyCard(loyaltyProgramId, body);
 
@@ -229,12 +229,12 @@ public class IntegrationApiTest {
     @Test
     public void getCustomerAchievementHistoryTest() throws ApiException {
         String integrationId = null;
-        Long achievementId = null;
+        Integer achievementId = null;
         List<String> progressStatus = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2002 response = api.getCustomerAchievementHistory(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -255,8 +255,8 @@ public class IntegrationApiTest {
         List<String> achievementIds = null;
         List<String> achievementStatus = null;
         List<String> currentProgressStatus = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2001 response = api.getCustomerAchievements(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
 
         // TODO: test validations
@@ -310,7 +310,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyBalancesTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String integrationId = null;
         OffsetDateTime endDate = null;
         String subledgerId = null;
@@ -331,7 +331,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardBalancesTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         OffsetDateTime endDate = null;
         List<String> subledgerId = null;
@@ -350,12 +350,12 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardPointsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         String status = null;
         List<String> subledgerId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2005 response = api.getLoyaltyCardPoints(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
@@ -371,14 +371,14 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyCardTransactionsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         List<String> subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2003 response = api.getLoyaltyCardTransactions(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -394,12 +394,12 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyProgramProfilePointsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String integrationId = null;
         String status = null;
         String subledgerId = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2006 response = api.getLoyaltyProgramProfilePoints(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
 
         // TODO: test validations
@@ -415,14 +415,14 @@ public class IntegrationApiTest {
      */
     @Test
     public void getLoyaltyProgramProfileTransactionsTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String integrationId = null;
         String subledgerId = null;
         String loyaltyTransactionType = null;
         OffsetDateTime startDate = null;
         OffsetDateTime endDate = null;
-        Long pageSize = null;
-        Long skip = null;
+        Integer pageSize = null;
+        Integer skip = null;
         InlineResponse2004 response = api.getLoyaltyProgramProfileTransactions(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
 
         // TODO: test validations
@@ -454,7 +454,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void linkLoyaltyCardToProfileTest() throws ApiException {
-        Long loyaltyProgramId = null;
+        Integer loyaltyProgramId = null;
         String loyaltyCardId = null;
         LoyaltyCardRegistration body = null;
         LoyaltyCard response = api.linkLoyaltyCardToProfile(loyaltyProgramId, loyaltyCardId, body);
@@ -506,7 +506,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void syncCatalogTest() throws ApiException {
-        Long catalogId = null;
+        Integer catalogId = null;
         CatalogSyncRequest body = null;
         Catalog response = api.syncCatalog(catalogId, body);
 
@@ -516,7 +516,7 @@ public class IntegrationApiTest {
     /**
      * Track event
      *
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
+     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not specify it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).   1. [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation.  &lt;/div&gt; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -542,7 +542,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateAudienceCustomersAttributesTest() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         Object body = null;
         api.updateAudienceCustomersAttributes(audienceId, body);
 
@@ -559,7 +559,7 @@ public class IntegrationApiTest {
      */
     @Test
     public void updateAudienceV2Test() throws ApiException {
-        Long audienceId = null;
+        Integer audienceId = null;
         UpdateAudience body = null;
         Audience response = api.updateAudienceV2(audienceId, body);
 
@@ -585,7 +585,7 @@ public class IntegrationApiTest {
     /**
      * Update customer profile
      *
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
+     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of. **Note:** [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation when &#x60;runRuleEngine&#x60; is &#x60;true&#x60;. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
      *
      * @throws ApiException
      *          if the Api call fails
@@ -621,7 +621,7 @@ public class IntegrationApiTest {
     /**
      * Update customer session
      *
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:**  - The currency for the session and the cart items in it is the currency set for the Application linked to this session. - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
      *
      * @throws ApiException
      *          if the Api call fails

@@ -36,7 +36,7 @@ public class NewSamlConnection {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -89,7 +89,7 @@ public class NewSamlConnection {
   }
 
 
-  public NewSamlConnection accountId(Long accountId) {
+  public NewSamlConnection accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -101,12 +101,12 @@ public class NewSamlConnection {
   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 

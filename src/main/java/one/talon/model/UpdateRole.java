@@ -45,7 +45,7 @@ public class UpdateRole {
 
   public static final String SERIALIZED_NAME_MEMBERS = "members";
   @SerializedName(SERIALIZED_NAME_MEMBERS)
-  private List<Long> members = null;
+  private List<Integer> members = null;
 
 
   public UpdateRole name(String name) {
@@ -117,15 +117,15 @@ public class UpdateRole {
   }
 
 
-  public UpdateRole members(List<Long> members) {
+  public UpdateRole members(List<Integer> members) {
     
     this.members = members;
     return this;
   }
 
-  public UpdateRole addMembersItem(Long membersItem) {
+  public UpdateRole addMembersItem(Integer membersItem) {
     if (this.members == null) {
-      this.members = new ArrayList<Long>();
+      this.members = new ArrayList<Integer>();
     }
     this.members.add(membersItem);
     return this;
@@ -138,12 +138,12 @@ public class UpdateRole {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[48, 562, 475, 18]", value = "An array of user identifiers.")
 
-  public List<Long> getMembers() {
+  public List<Integer> getMembers() {
     return members;
   }
 
 
-  public void setMembers(List<Long> members) {
+  public void setMembers(List<Integer> members) {
     this.members = members;
   }
 

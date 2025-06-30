@@ -31,14 +31,14 @@ import java.io.IOException;
 public class RoleMembership {
   public static final String SERIALIZED_NAME_ROLE_I_D = "RoleID";
   @SerializedName(SERIALIZED_NAME_ROLE_I_D)
-  private Long roleID;
+  private Integer roleID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "UserID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
-  private Long userID;
+  private Integer userID;
 
 
-  public RoleMembership roleID(Long roleID) {
+  public RoleMembership roleID(Integer roleID) {
     
     this.roleID = roleID;
     return this;
@@ -50,17 +50,17 @@ public class RoleMembership {
   **/
   @ApiModelProperty(required = true, value = "ID of role.")
 
-  public Long getRoleID() {
+  public Integer getRoleID() {
     return roleID;
   }
 
 
-  public void setRoleID(Long roleID) {
+  public void setRoleID(Integer roleID) {
     this.roleID = roleID;
   }
 
 
-  public RoleMembership userID(Long userID) {
+  public RoleMembership userID(Integer userID) {
     
     this.userID = userID;
     return this;
@@ -72,12 +72,12 @@ public class RoleMembership {
   **/
   @ApiModelProperty(required = true, value = "ID of User.")
 
-  public Long getUserID() {
+  public Integer getUserID() {
     return userID;
   }
 
 
-  public void setUserID(Long userID) {
+  public void setUserID(Integer userID) {
     this.userID = userID;
   }
 

@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgram {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,7 +53,7 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS = "subscribedApplications";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS)
-  private List<Long> subscribedApplications = new ArrayList<Long>();
+  private List<Integer> subscribedApplications = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_DEFAULT_VALIDITY = "defaultValidity";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALIDITY)
@@ -69,7 +69,7 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_USERS_PER_CARD_LIMIT = "usersPerCardLimit";
   @SerializedName(SERIALIZED_NAME_USERS_PER_CARD_LIMIT)
-  private Long usersPerCardLimit;
+  private Integer usersPerCardLimit;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
@@ -301,7 +301,7 @@ public class LoyaltyProgram {
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Long accountID;
+  private Integer accountID;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -340,7 +340,7 @@ public class LoyaltyProgram {
   private Boolean canUpdateSubledgers = false;
 
 
-  public LoyaltyProgram id(Long id) {
+  public LoyaltyProgram id(Integer id) {
     
     this.id = id;
     return this;
@@ -352,12 +352,12 @@ public class LoyaltyProgram {
   **/
   @ApiModelProperty(example = "139", required = true, value = "The ID of loyalty program.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -428,13 +428,13 @@ public class LoyaltyProgram {
   }
 
 
-  public LoyaltyProgram subscribedApplications(List<Long> subscribedApplications) {
+  public LoyaltyProgram subscribedApplications(List<Integer> subscribedApplications) {
     
     this.subscribedApplications = subscribedApplications;
     return this;
   }
 
-  public LoyaltyProgram addSubscribedApplicationsItem(Long subscribedApplicationsItem) {
+  public LoyaltyProgram addSubscribedApplicationsItem(Integer subscribedApplicationsItem) {
     this.subscribedApplications.add(subscribedApplicationsItem);
     return this;
   }
@@ -445,12 +445,12 @@ public class LoyaltyProgram {
   **/
   @ApiModelProperty(example = "[132, 97]", required = true, value = "A list containing the IDs of all applications that are subscribed to this Loyalty Program.")
 
-  public List<Long> getSubscribedApplications() {
+  public List<Integer> getSubscribedApplications() {
     return subscribedApplications;
   }
 
 
-  public void setSubscribedApplications(List<Long> subscribedApplications) {
+  public void setSubscribedApplications(List<Integer> subscribedApplications) {
     this.subscribedApplications = subscribedApplications;
   }
 
@@ -521,7 +521,7 @@ public class LoyaltyProgram {
   }
 
 
-  public LoyaltyProgram usersPerCardLimit(Long usersPerCardLimit) {
+  public LoyaltyProgram usersPerCardLimit(Integer usersPerCardLimit) {
     
     this.usersPerCardLimit = usersPerCardLimit;
     return this;
@@ -535,12 +535,12 @@ public class LoyaltyProgram {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "111", value = "The max amount of user profiles with whom a card can be shared. This can be set to 0 for no limit. This property is only used when `cardBased` is `true`. ")
 
-  public Long getUsersPerCardLimit() {
+  public Integer getUsersPerCardLimit() {
     return usersPerCardLimit;
   }
 
 
-  public void setUsersPerCardLimit(Long usersPerCardLimit) {
+  public void setUsersPerCardLimit(Integer usersPerCardLimit) {
     this.usersPerCardLimit = usersPerCardLimit;
   }
 
@@ -728,7 +728,7 @@ public class LoyaltyProgram {
   }
 
 
-  public LoyaltyProgram accountID(Long accountID) {
+  public LoyaltyProgram accountID(Integer accountID) {
     
     this.accountID = accountID;
     return this;
@@ -740,12 +740,12 @@ public class LoyaltyProgram {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the Talon.One account that owns this program.")
 
-  public Long getAccountID() {
+  public Integer getAccountID() {
     return accountID;
   }
 
 
-  public void setAccountID(Long accountID) {
+  public void setAccountID(Integer accountID) {
     this.accountID = accountID;
   }
 

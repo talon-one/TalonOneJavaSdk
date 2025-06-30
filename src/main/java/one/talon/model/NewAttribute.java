@@ -197,11 +197,11 @@ public class NewAttribute {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Long> subscribedApplicationsIds = null;
+  private List<Integer> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS = "subscribedCatalogsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_CATALOGS_IDS)
-  private List<Long> subscribedCatalogsIds = null;
+  private List<Integer> subscribedCatalogsIds = null;
 
   /**
    * Gets or Sets allowedSubscriptions
@@ -483,15 +483,15 @@ public class NewAttribute {
   }
 
 
-  public NewAttribute subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public NewAttribute subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public NewAttribute addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+  public NewAttribute addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Long>();
+      this.subscribedApplicationsIds = new ArrayList<Integer>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -504,25 +504,25 @@ public class NewAttribute {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 4, 9]", value = "A list of the IDs of the applications where this attribute is available.")
 
-  public List<Long> getSubscribedApplicationsIds() {
+  public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
 
-  public NewAttribute subscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
+  public NewAttribute subscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
     
     this.subscribedCatalogsIds = subscribedCatalogsIds;
     return this;
   }
 
-  public NewAttribute addSubscribedCatalogsIdsItem(Long subscribedCatalogsIdsItem) {
+  public NewAttribute addSubscribedCatalogsIdsItem(Integer subscribedCatalogsIdsItem) {
     if (this.subscribedCatalogsIds == null) {
-      this.subscribedCatalogsIds = new ArrayList<Long>();
+      this.subscribedCatalogsIds = new ArrayList<Integer>();
     }
     this.subscribedCatalogsIds.add(subscribedCatalogsIdsItem);
     return this;
@@ -535,12 +535,12 @@ public class NewAttribute {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[2, 5]", value = "A list of the IDs of the catalogs where this attribute is available.")
 
-  public List<Long> getSubscribedCatalogsIds() {
+  public List<Integer> getSubscribedCatalogsIds() {
     return subscribedCatalogsIds;
   }
 
 
-  public void setSubscribedCatalogsIds(List<Long> subscribedCatalogsIds) {
+  public void setSubscribedCatalogsIds(List<Integer> subscribedCatalogsIds) {
     this.subscribedCatalogsIds = subscribedCatalogsIds;
   }
 

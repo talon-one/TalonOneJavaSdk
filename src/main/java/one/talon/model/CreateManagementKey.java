@@ -47,7 +47,7 @@ public class CreateManagementKey {
 
   public static final String SERIALIZED_NAME_ALLOWED_APPLICATION_IDS = "allowedApplicationIds";
   @SerializedName(SERIALIZED_NAME_ALLOWED_APPLICATION_IDS)
-  private List<Long> allowedApplicationIds = null;
+  private List<Integer> allowedApplicationIds = null;
 
 
   public CreateManagementKey name(String name) {
@@ -121,15 +121,15 @@ public class CreateManagementKey {
   }
 
 
-  public CreateManagementKey allowedApplicationIds(List<Long> allowedApplicationIds) {
+  public CreateManagementKey allowedApplicationIds(List<Integer> allowedApplicationIds) {
     
     this.allowedApplicationIds = allowedApplicationIds;
     return this;
   }
 
-  public CreateManagementKey addAllowedApplicationIdsItem(Long allowedApplicationIdsItem) {
+  public CreateManagementKey addAllowedApplicationIdsItem(Integer allowedApplicationIdsItem) {
     if (this.allowedApplicationIds == null) {
-      this.allowedApplicationIds = new ArrayList<Long>();
+      this.allowedApplicationIds = new ArrayList<Integer>();
     }
     this.allowedApplicationIds.add(allowedApplicationIdsItem);
     return this;
@@ -142,12 +142,12 @@ public class CreateManagementKey {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of Application IDs that you can access with the management key. An empty or missing list means the management key can be used for all Applications in the account. ")
 
-  public List<Long> getAllowedApplicationIds() {
+  public List<Integer> getAllowedApplicationIds() {
     return allowedApplicationIds;
   }
 
 
-  public void setAllowedApplicationIds(List<Long> allowedApplicationIds) {
+  public void setAllowedApplicationIds(List<Integer> allowedApplicationIds) {
     this.allowedApplicationIds = allowedApplicationIds;
   }
 

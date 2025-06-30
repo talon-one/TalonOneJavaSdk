@@ -38,7 +38,7 @@ public class AddLoyaltyPointsEffectProps {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Long programId;
+  private Integer programId;
 
   public static final String SERIALIZED_NAME_SUB_LEDGER_ID = "subLedgerId";
   @SerializedName(SERIALIZED_NAME_SUB_LEDGER_ID)
@@ -82,7 +82,7 @@ public class AddLoyaltyPointsEffectProps {
 
   public static final String SERIALIZED_NAME_BUNDLE_INDEX = "bundleIndex";
   @SerializedName(SERIALIZED_NAME_BUNDLE_INDEX)
-  private Long bundleIndex;
+  private Integer bundleIndex;
 
   public static final String SERIALIZED_NAME_BUNDLE_NAME = "bundleName";
   @SerializedName(SERIALIZED_NAME_BUNDLE_NAME)
@@ -111,7 +111,7 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 
-  public AddLoyaltyPointsEffectProps programId(Long programId) {
+  public AddLoyaltyPointsEffectProps programId(Integer programId) {
     
     this.programId = programId;
     return this;
@@ -123,12 +123,12 @@ public class AddLoyaltyPointsEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The ID of the loyalty program where these points were added.")
 
-  public Long getProgramId() {
+  public Integer getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Long programId) {
+  public void setProgramId(Integer programId) {
     this.programId = programId;
   }
 
@@ -359,7 +359,7 @@ public class AddLoyaltyPointsEffectProps {
   }
 
 
-  public AddLoyaltyPointsEffectProps bundleIndex(Long bundleIndex) {
+  public AddLoyaltyPointsEffectProps bundleIndex(Integer bundleIndex) {
     
     this.bundleIndex = bundleIndex;
     return this;
@@ -372,12 +372,12 @@ public class AddLoyaltyPointsEffectProps {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The position of the bundle in a list of item bundles created from the same bundle definition.")
 
-  public Long getBundleIndex() {
+  public Integer getBundleIndex() {
     return bundleIndex;
   }
 
 
-  public void setBundleIndex(Long bundleIndex) {
+  public void setBundleIndex(Integer bundleIndex) {
     this.bundleIndex = bundleIndex;
   }
 

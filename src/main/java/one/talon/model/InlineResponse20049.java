@@ -25,51 +25,28 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import one.talon.model.AchievementProgressWithDefinition;
+import one.talon.model.SummaryCampaignStoreBudget;
 
 /**
  * InlineResponse20049
  */
 
 public class InlineResponse20049 {
-  public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
-  @SerializedName(SERIALIZED_NAME_HAS_MORE)
-  private Boolean hasMore;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<AchievementProgressWithDefinition> data = new ArrayList<AchievementProgressWithDefinition>();
+  private List<SummaryCampaignStoreBudget> data = null;
 
 
-  public InlineResponse20049 hasMore(Boolean hasMore) {
-    
-    this.hasMore = hasMore;
-    return this;
-  }
-
-   /**
-   * Get hasMore
-   * @return hasMore
-  **/
-  @ApiModelProperty(example = "true", required = true, value = "")
-
-  public Boolean getHasMore() {
-    return hasMore;
-  }
-
-
-  public void setHasMore(Boolean hasMore) {
-    this.hasMore = hasMore;
-  }
-
-
-  public InlineResponse20049 data(List<AchievementProgressWithDefinition> data) {
+  public InlineResponse20049 data(List<SummaryCampaignStoreBudget> data) {
     
     this.data = data;
     return this;
   }
 
-  public InlineResponse20049 addDataItem(AchievementProgressWithDefinition dataItem) {
+  public InlineResponse20049 addDataItem(SummaryCampaignStoreBudget dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<SummaryCampaignStoreBudget>();
+    }
     this.data.add(dataItem);
     return this;
   }
@@ -78,14 +55,15 @@ public class InlineResponse20049 {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public List<AchievementProgressWithDefinition> getData() {
+  public List<SummaryCampaignStoreBudget> getData() {
     return data;
   }
 
 
-  public void setData(List<AchievementProgressWithDefinition> data) {
+  public void setData(List<SummaryCampaignStoreBudget> data) {
     this.data = data;
   }
 
@@ -99,13 +77,12 @@ public class InlineResponse20049 {
       return false;
     }
     InlineResponse20049 inlineResponse20049 = (InlineResponse20049) o;
-    return Objects.equals(this.hasMore, inlineResponse20049.hasMore) &&
-        Objects.equals(this.data, inlineResponse20049.data);
+    return Objects.equals(this.data, inlineResponse20049.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, data);
+    return Objects.hash(data);
   }
 
 
@@ -113,7 +90,6 @@ public class InlineResponse20049 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20049 {\n");
-    sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();

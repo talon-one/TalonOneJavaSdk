@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Internal ID of this entity. | 
+**id** | **Integer** | The internal ID of this entity. | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The time this entity was created. | 
-**applicationId** | **Long** | The ID of the Application that owns this entity. | 
+**applicationId** | **Integer** | The ID of the Application that owns this entity. | 
 **slots** | [**List&lt;SlotDef&gt;**](SlotDef.md) | The slots defined for this application. | 
 **functions** | [**List&lt;FunctionDef&gt;**](FunctionDef.md) | The functions defined for this application. | 
 **templates** | [**List&lt;TemplateDef&gt;**](TemplateDef.md) | The templates defined for this application. | 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **audiences** | [**List&lt;Audience&gt;**](Audience.md) | The audiences contained in the account which the application belongs to. |  [optional]
 **collections** | [**List&lt;Collection&gt;**](Collection.md) | The account-level collections that the application is subscribed to. |  [optional]
 **applicationCartItemFilters** | [**List&lt;ApplicationCIF&gt;**](ApplicationCIF.md) | The cart item filters belonging to the Application. |  [optional]
+**priceTypes** | [**List&lt;PriceType&gt;**](PriceType.md) | The price types that this Application can use. |  [optional]
 
 
 

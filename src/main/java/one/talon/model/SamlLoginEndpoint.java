@@ -31,7 +31,7 @@ import java.io.IOException;
 public class SamlLoginEndpoint {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -42,7 +42,7 @@ public class SamlLoginEndpoint {
   private String loginURL;
 
 
-  public SamlLoginEndpoint id(Long id) {
+  public SamlLoginEndpoint id(Integer id) {
     
     this.id = id;
     return this;
@@ -54,12 +54,12 @@ public class SamlLoginEndpoint {
   **/
   @ApiModelProperty(example = "2", required = true, value = "ID of the SAML login endpoint.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

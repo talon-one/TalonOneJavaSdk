@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schemaVersion** | **Long** |  | 
+**schemaVersion** | **Integer** |  | 
 
 
 

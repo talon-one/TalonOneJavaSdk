@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  |  [optional]
+**totalResultSize** | **Integer** |  |  [optional]
 **hasMore** | **Boolean** |  |  [optional]
 **data** | [**List&lt;Change&gt;**](Change.md) |  | 
 

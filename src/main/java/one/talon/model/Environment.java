@@ -34,6 +34,7 @@ import one.talon.model.Collection;
 import one.talon.model.FunctionDef;
 import one.talon.model.GiveawaysPool;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.PriceType;
 import one.talon.model.SlotDef;
 import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
@@ -45,7 +46,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Environment {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,7 +54,7 @@ public class Environment {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_SLOTS = "slots";
   @SerializedName(SERIALIZED_NAME_SLOTS)
@@ -103,25 +104,29 @@ public class Environment {
   @SerializedName(SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTERS)
   private List<ApplicationCIF> applicationCartItemFilters = null;
 
+  public static final String SERIALIZED_NAME_PRICE_TYPES = "priceTypes";
+  @SerializedName(SERIALIZED_NAME_PRICE_TYPES)
+  private List<PriceType> priceTypes = null;
 
-  public Environment id(Long id) {
+
+  public Environment id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -148,7 +153,7 @@ public class Environment {
   }
 
 
-  public Environment applicationId(Long applicationId) {
+  public Environment applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -160,12 +165,12 @@ public class Environment {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
@@ -521,6 +526,37 @@ public class Environment {
   }
 
 
+  public Environment priceTypes(List<PriceType> priceTypes) {
+    
+    this.priceTypes = priceTypes;
+    return this;
+  }
+
+  public Environment addPriceTypesItem(PriceType priceTypesItem) {
+    if (this.priceTypes == null) {
+      this.priceTypes = new ArrayList<PriceType>();
+    }
+    this.priceTypes.add(priceTypesItem);
+    return this;
+  }
+
+   /**
+   * The price types that this Application can use.
+   * @return priceTypes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The price types that this Application can use.")
+
+  public List<PriceType> getPriceTypes() {
+    return priceTypes;
+  }
+
+
+  public void setPriceTypes(List<PriceType> priceTypes) {
+    this.priceTypes = priceTypes;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -544,12 +580,13 @@ public class Environment {
         Objects.equals(this.additionalCosts, environment.additionalCosts) &&
         Objects.equals(this.audiences, environment.audiences) &&
         Objects.equals(this.collections, environment.collections) &&
-        Objects.equals(this.applicationCartItemFilters, environment.applicationCartItemFilters);
+        Objects.equals(this.applicationCartItemFilters, environment.applicationCartItemFilters) &&
+        Objects.equals(this.priceTypes, environment.priceTypes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters);
+    return Objects.hash(id, created, applicationId, slots, functions, templates, variables, giveawaysPools, loyaltyPrograms, achievements, attributes, additionalCosts, audiences, collections, applicationCartItemFilters, priceTypes);
   }
 
 
@@ -572,6 +609,7 @@ public class Environment {
     sb.append("    audiences: ").append(toIndentedString(audiences)).append("\n");
     sb.append("    collections: ").append(toIndentedString(collections)).append("\n");
     sb.append("    applicationCartItemFilters: ").append(toIndentedString(applicationCartItemFilters)).append("\n");
+    sb.append("    priceTypes: ").append(toIndentedString(priceTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

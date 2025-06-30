@@ -32,7 +32,7 @@ import java.io.IOException;
 public class WillAwardGiveawayEffectProps {
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Long poolId;
+  private Integer poolId;
 
   public static final String SERIALIZED_NAME_POOL_NAME = "poolName";
   @SerializedName(SERIALIZED_NAME_POOL_NAME)
@@ -43,7 +43,7 @@ public class WillAwardGiveawayEffectProps {
   private String recipientIntegrationId;
 
 
-  public WillAwardGiveawayEffectProps poolId(Long poolId) {
+  public WillAwardGiveawayEffectProps poolId(Integer poolId) {
     
     this.poolId = poolId;
     return this;
@@ -55,12 +55,12 @@ public class WillAwardGiveawayEffectProps {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the giveaways pool the code will be taken from.")
 
-  public Long getPoolId() {
+  public Integer getPoolId() {
     return poolId;
   }
 
 
-  public void setPoolId(Long poolId) {
+  public void setPoolId(Integer poolId) {
     this.poolId = poolId;
   }
 

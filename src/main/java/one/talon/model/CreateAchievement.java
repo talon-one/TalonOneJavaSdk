@@ -57,13 +57,15 @@ public class CreateAchievement {
   private TimePoint periodEndOverride;
 
   /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    */
   @JsonAdapter(RecurrencePolicyEnum.Adapter.class)
   public enum RecurrencePolicyEnum {
     NO_RECURRENCE("no_recurrence"),
     
-    ON_EXPIRATION("on_expiration");
+    ON_EXPIRATION("on_expiration"),
+    
+    ON_COMPLETION("on_completion");
 
     private String value;
 
@@ -308,11 +310,11 @@ public class CreateAchievement {
   }
 
    /**
-   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. 
+   * The policy that determines if and how the achievement recurs. - &#x60;no_recurrence&#x60;: The achievement can be completed only once. - &#x60;on_expiration&#x60;: The achievement resets after it expires and becomes available again. - &#x60;on_completion&#x60;: When the customer progress status reaches &#x60;completed&#x60;, the achievement resets and becomes available again. 
    * @return recurrencePolicy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. ")
+  @ApiModelProperty(example = "no_recurrence", value = "The policy that determines if and how the achievement recurs. - `no_recurrence`: The achievement can be completed only once. - `on_expiration`: The achievement resets after it expires and becomes available again. - `on_completion`: When the customer progress status reaches `completed`, the achievement resets and becomes available again. ")
 
   public RecurrencePolicyEnum getRecurrencePolicy() {
     return recurrencePolicy;

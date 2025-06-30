@@ -31,7 +31,7 @@ import java.io.IOException;
 public class ItemAttribute {
   public static final String SERIALIZED_NAME_ATTRIBUTEID = "attributeid";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTEID)
-  private Long attributeid;
+  private Integer attributeid;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -42,7 +42,7 @@ public class ItemAttribute {
   private Object value;
 
 
-  public ItemAttribute attributeid(Long attributeid) {
+  public ItemAttribute attributeid(Integer attributeid) {
     
     this.attributeid = attributeid;
     return this;
@@ -54,12 +54,12 @@ public class ItemAttribute {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The ID of the attribute of the item.")
 
-  public Long getAttributeid() {
+  public Integer getAttributeid() {
     return attributeid;
   }
 
 
-  public void setAttributeid(Long attributeid) {
+  public void setAttributeid(Integer attributeid) {
     this.attributeid = attributeid;
   }
 

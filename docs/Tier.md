@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | The internal ID of the tier. | 
+**id** | **Integer** | The internal ID of the tier. | 
 **name** | **String** | The name of the tier. | 
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time when the customer moved to this tier. This value uses the loyalty program&#39;s time zone setting. |  [optional]
 **expiryDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date when tier level expires in the RFC3339 format (in the Loyalty Program&#39;s timezone). |  [optional]

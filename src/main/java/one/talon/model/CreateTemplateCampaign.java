@@ -43,7 +43,7 @@ public class CreateTemplateCampaign {
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Long templateId;
+  private Integer templateId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ATTRIBUTES_OVERRIDES = "campaignAttributesOverrides";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ATTRIBUTES_OVERRIDES)
@@ -59,7 +59,7 @@ public class CreateTemplateCampaign {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_GROUPS = "campaignGroups";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_GROUPS)
-  private List<Long> campaignGroups = null;
+  private List<Integer> campaignGroups = null;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -67,11 +67,11 @@ public class CreateTemplateCampaign {
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Long evaluationGroupId;
+  private Integer evaluationGroupId;
 
   public static final String SERIALIZED_NAME_LINKED_STORE_IDS = "linkedStoreIds";
   @SerializedName(SERIALIZED_NAME_LINKED_STORE_IDS)
-  private List<Long> linkedStoreIds = null;
+  private List<Integer> linkedStoreIds = null;
 
 
   public CreateTemplateCampaign name(String name) {
@@ -119,7 +119,7 @@ public class CreateTemplateCampaign {
   }
 
 
-  public CreateTemplateCampaign templateId(Long templateId) {
+  public CreateTemplateCampaign templateId(Integer templateId) {
     
     this.templateId = templateId;
     return this;
@@ -131,12 +131,12 @@ public class CreateTemplateCampaign {
   **/
   @ApiModelProperty(example = "4", required = true, value = "The ID of the Campaign Template which will be used in order to create the Campaign.")
 
-  public Long getTemplateId() {
+  public Integer getTemplateId() {
     return templateId;
   }
 
 
-  public void setTemplateId(Long templateId) {
+  public void setTemplateId(Integer templateId) {
     this.templateId = templateId;
   }
 
@@ -226,15 +226,15 @@ public class CreateTemplateCampaign {
   }
 
 
-  public CreateTemplateCampaign campaignGroups(List<Long> campaignGroups) {
+  public CreateTemplateCampaign campaignGroups(List<Integer> campaignGroups) {
     
     this.campaignGroups = campaignGroups;
     return this;
   }
 
-  public CreateTemplateCampaign addCampaignGroupsItem(Long campaignGroupsItem) {
+  public CreateTemplateCampaign addCampaignGroupsItem(Integer campaignGroupsItem) {
     if (this.campaignGroups == null) {
-      this.campaignGroups = new ArrayList<Long>();
+      this.campaignGroups = new ArrayList<Integer>();
     }
     this.campaignGroups.add(campaignGroupsItem);
     return this;
@@ -247,12 +247,12 @@ public class CreateTemplateCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 3]", value = "The IDs of the [campaign groups](https://docs.talon.one/docs/product/account/account-settings/managing-campaign-groups) this campaign belongs to. ")
 
-  public List<Long> getCampaignGroups() {
+  public List<Integer> getCampaignGroups() {
     return campaignGroups;
   }
 
 
-  public void setCampaignGroups(List<Long> campaignGroups) {
+  public void setCampaignGroups(List<Integer> campaignGroups) {
     this.campaignGroups = campaignGroups;
   }
 
@@ -288,7 +288,7 @@ public class CreateTemplateCampaign {
   }
 
 
-  public CreateTemplateCampaign evaluationGroupId(Long evaluationGroupId) {
+  public CreateTemplateCampaign evaluationGroupId(Integer evaluationGroupId) {
     
     this.evaluationGroupId = evaluationGroupId;
     return this;
@@ -301,25 +301,25 @@ public class CreateTemplateCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
 
-  public Long getEvaluationGroupId() {
+  public Integer getEvaluationGroupId() {
     return evaluationGroupId;
   }
 
 
-  public void setEvaluationGroupId(Long evaluationGroupId) {
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
     this.evaluationGroupId = evaluationGroupId;
   }
 
 
-  public CreateTemplateCampaign linkedStoreIds(List<Long> linkedStoreIds) {
+  public CreateTemplateCampaign linkedStoreIds(List<Integer> linkedStoreIds) {
     
     this.linkedStoreIds = linkedStoreIds;
     return this;
   }
 
-  public CreateTemplateCampaign addLinkedStoreIdsItem(Long linkedStoreIdsItem) {
+  public CreateTemplateCampaign addLinkedStoreIdsItem(Integer linkedStoreIdsItem) {
     if (this.linkedStoreIds == null) {
-      this.linkedStoreIds = new ArrayList<Long>();
+      this.linkedStoreIds = new ArrayList<Integer>();
     }
     this.linkedStoreIds.add(linkedStoreIdsItem);
     return this;
@@ -332,12 +332,12 @@ public class CreateTemplateCampaign {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of store IDs that are linked to the campaign.  **Note:** Campaigns with linked store IDs will only be evaluated when there is a [customer session update](https://docs.talon.one/integration-api#tag/Customer-sessions/operation/updateCustomerSessionV2) that references a linked store. ")
 
-  public List<Long> getLinkedStoreIds() {
+  public List<Integer> getLinkedStoreIds() {
     return linkedStoreIds;
   }
 
 
-  public void setLinkedStoreIds(List<Long> linkedStoreIds) {
+  public void setLinkedStoreIds(List<Integer> linkedStoreIds) {
     this.linkedStoreIds = linkedStoreIds;
   }
 

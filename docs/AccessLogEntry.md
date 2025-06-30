@@ -8,7 +8,7 @@ Log of application accesses.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uuid** | **String** | UUID reference of request. | 
-**status** | **Long** | HTTP status code of response. | 
+**status** | **Integer** | HTTP status code of response. | 
 **method** | **String** | HTTP method of request. | 
 **requestUri** | **String** | target URI of request | 
 **time** | [**OffsetDateTime**](OffsetDateTime.md) | timestamp of request | 

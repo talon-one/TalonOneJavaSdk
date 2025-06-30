@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyProgramLedgers {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -60,7 +60,7 @@ public class LoyaltyProgramLedgers {
   private Map<String, LedgerInfo> subLedgers = null;
 
 
-  public LoyaltyProgramLedgers id(Long id) {
+  public LoyaltyProgramLedgers id(Integer id) {
     
     this.id = id;
     return this;
@@ -72,12 +72,12 @@ public class LoyaltyProgramLedgers {
   **/
   @ApiModelProperty(example = "5", required = true, value = "The internal ID of loyalty program.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

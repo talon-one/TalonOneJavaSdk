@@ -38,7 +38,7 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -58,7 +58,7 @@ public class CampaignCopy {
 
   public static final String SERIALIZED_NAME_EVALUATION_GROUP_ID = "evaluationGroupId";
   @SerializedName(SERIALIZED_NAME_EVALUATION_GROUP_ID)
-  private Long evaluationGroupId;
+  private Integer evaluationGroupId;
 
 
   public CampaignCopy name(String name) {
@@ -84,13 +84,13 @@ public class CampaignCopy {
   }
 
 
-  public CampaignCopy applicationIds(List<Long> applicationIds) {
+  public CampaignCopy applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public CampaignCopy addApplicationIdsItem(Long applicationIdsItem) {
+  public CampaignCopy addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -101,12 +101,12 @@ public class CampaignCopy {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "Application IDs of the applications to which a campaign should be copied to.")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -211,7 +211,7 @@ public class CampaignCopy {
   }
 
 
-  public CampaignCopy evaluationGroupId(Long evaluationGroupId) {
+  public CampaignCopy evaluationGroupId(Integer evaluationGroupId) {
     
     this.evaluationGroupId = evaluationGroupId;
     return this;
@@ -224,12 +224,12 @@ public class CampaignCopy {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2", value = "The ID of the campaign evaluation group the campaign belongs to.")
 
-  public Long getEvaluationGroupId() {
+  public Integer getEvaluationGroupId() {
     return evaluationGroupId;
   }
 
 
-  public void setEvaluationGroupId(Long evaluationGroupId) {
+  public void setEvaluationGroupId(Integer evaluationGroupId) {
     this.evaluationGroupId = evaluationGroupId;
   }
 

@@ -31,7 +31,7 @@ import java.io.IOException;
 public class OutgoingIntegrationType {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -50,7 +50,7 @@ public class OutgoingIntegrationType {
   private String documentationLink;
 
 
-  public OutgoingIntegrationType id(Long id) {
+  public OutgoingIntegrationType id(Integer id) {
     
     this.id = id;
     return this;
@@ -62,12 +62,12 @@ public class OutgoingIntegrationType {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

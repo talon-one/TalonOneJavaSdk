@@ -34,20 +34,20 @@ import org.threeten.bp.OffsetDateTime;
 public class RevisionActivationRequest {
   public static final String SERIALIZED_NAME_USER_IDS = "userIds";
   @SerializedName(SERIALIZED_NAME_USER_IDS)
-  private List<Long> userIds = new ArrayList<Long>();
+  private List<Integer> userIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_ACTIVATE_AT = "activateAt";
   @SerializedName(SERIALIZED_NAME_ACTIVATE_AT)
   private OffsetDateTime activateAt;
 
 
-  public RevisionActivationRequest userIds(List<Long> userIds) {
+  public RevisionActivationRequest userIds(List<Integer> userIds) {
     
     this.userIds = userIds;
     return this;
   }
 
-  public RevisionActivationRequest addUserIdsItem(Long userIdsItem) {
+  public RevisionActivationRequest addUserIdsItem(Integer userIdsItem) {
     this.userIds.add(userIdsItem);
     return this;
   }
@@ -58,12 +58,12 @@ public class RevisionActivationRequest {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The list of IDs of the users who will receive the activation request.")
 
-  public List<Long> getUserIds() {
+  public List<Integer> getUserIds() {
     return userIds;
   }
 
 
-  public void setUserIds(List<Long> userIds) {
+  public void setUserIds(List<Integer> userIds) {
     this.userIds = userIds;
   }
 
