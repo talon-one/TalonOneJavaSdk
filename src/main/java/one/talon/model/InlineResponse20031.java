@@ -33,14 +33,14 @@ import java.util.List;
 public class InlineResponse20031 {
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Long totalResultSize;
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<String> data = new ArrayList<String>();
 
 
-  public InlineResponse20031 totalResultSize(Long totalResultSize) {
+  public InlineResponse20031 totalResultSize(Integer totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -52,12 +52,12 @@ public class InlineResponse20031 {
   **/
   @ApiModelProperty(example = "1", required = true, value = "")
 
-  public Long getTotalResultSize() {
+  public Integer getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Long totalResultSize) {
+  public void setTotalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

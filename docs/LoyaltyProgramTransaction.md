@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | ID of the loyalty ledger transaction. | 
-**programId** | **Long** | ID of the loyalty program. | 
-**campaignId** | **Long** | ID of the campaign. |  [optional]
+**id** | **Integer** | ID of the loyalty ledger transaction. | 
+**programId** | **Integer** | ID of the loyalty program. | 
+**campaignId** | **Integer** | ID of the campaign. |  [optional]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | Date and time the loyalty transaction occurred. | 
 **type** | [**TypeEnum**](#TypeEnum) | Type of transaction. Possible values:   - &#x60;addition&#x60;: Signifies added points.   - &#x60;subtraction&#x60;: Signifies deducted points.  | 
 **amount** | [**BigDecimal**](BigDecimal.md) | Amount of loyalty points added or deducted in the transaction. | 
@@ -19,10 +19,10 @@ Name | Type | Description | Notes
 **cardIdentifier** | **String** | The alphanumeric identifier of the loyalty card.  |  [optional]
 **subledgerId** | **String** | ID of the subledger. | 
 **customerSessionId** | **String** | ID of the customer session where the transaction occurred. |  [optional]
-**importId** | **Long** | ID of the import where the transaction occurred. |  [optional]
-**userId** | **Long** | ID of the user who manually added or deducted points. Applies only to manual transactions. |  [optional]
+**importId** | **Integer** | ID of the import where the transaction occurred. |  [optional]
+**userId** | **Integer** | ID of the user who manually added or deducted points. Applies only to manual transactions. |  [optional]
 **userEmail** | **String** | The email of the Campaign Manager account that manually added or deducted points. Applies only to manual transactions. |  [optional]
-**rulesetId** | **Long** | ID of the ruleset containing the rule that triggered the effect. Applies only for transactions that resulted from a customer session. |  [optional]
+**rulesetId** | **Integer** | ID of the ruleset containing the rule that triggered the effect. Applies only for transactions that resulted from a customer session. |  [optional]
 **ruleName** | **String** | Name of the rule that triggered the effect. Applies only for transactions that resulted from a customer session. |  [optional]
 **flags** | [**LoyaltyLedgerEntryFlags**](LoyaltyLedgerEntryFlags.md) |  |  [optional]
 

@@ -104,7 +104,7 @@ public class TemplateArgDef {
 
   public static final String SERIALIZED_NAME_PICKLIST_I_D = "picklistID";
   @SerializedName(SERIALIZED_NAME_PICKLIST_I_D)
-  private Long picklistID;
+  private Integer picklistID;
 
   public static final String SERIALIZED_NAME_RESTRICTED_BY_PICKLIST = "restrictedByPicklist";
   @SerializedName(SERIALIZED_NAME_RESTRICTED_BY_PICKLIST)
@@ -223,7 +223,7 @@ public class TemplateArgDef {
   }
 
 
-  public TemplateArgDef picklistID(Long picklistID) {
+  public TemplateArgDef picklistID(Integer picklistID) {
     
     this.picklistID = picklistID;
     return this;
@@ -236,12 +236,12 @@ public class TemplateArgDef {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "ID of the picklist linked to a template.")
 
-  public Long getPicklistID() {
+  public Integer getPicklistID() {
     return picklistID;
   }
 
 
-  public void setPicklistID(Long picklistID) {
+  public void setPicklistID(Integer picklistID) {
     this.picklistID = picklistID;
   }
 

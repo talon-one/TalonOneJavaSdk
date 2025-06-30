@@ -32,86 +32,86 @@ import org.threeten.bp.OffsetDateTime;
 public class AccountAnalytics {
   public static final String SERIALIZED_NAME_APPLICATIONS = "applications";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS)
-  private Long applications;
+  private Integer applications;
 
   public static final String SERIALIZED_NAME_LIVE_APPLICATIONS = "liveApplications";
   @SerializedName(SERIALIZED_NAME_LIVE_APPLICATIONS)
-  private Long liveApplications;
+  private Integer liveApplications;
 
   public static final String SERIALIZED_NAME_SANDBOX_APPLICATIONS = "sandboxApplications";
   @SerializedName(SERIALIZED_NAME_SANDBOX_APPLICATIONS)
-  private Long sandboxApplications;
+  private Integer sandboxApplications;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
-  private Long campaigns;
+  private Integer campaigns;
 
   public static final String SERIALIZED_NAME_ACTIVE_CAMPAIGNS = "activeCampaigns";
   @SerializedName(SERIALIZED_NAME_ACTIVE_CAMPAIGNS)
-  private Long activeCampaigns;
+  private Integer activeCampaigns;
 
   public static final String SERIALIZED_NAME_LIVE_ACTIVE_CAMPAIGNS = "liveActiveCampaigns";
   @SerializedName(SERIALIZED_NAME_LIVE_ACTIVE_CAMPAIGNS)
-  private Long liveActiveCampaigns;
+  private Integer liveActiveCampaigns;
 
   public static final String SERIALIZED_NAME_COUPONS = "coupons";
   @SerializedName(SERIALIZED_NAME_COUPONS)
-  private Long coupons;
+  private Integer coupons;
 
   public static final String SERIALIZED_NAME_ACTIVE_COUPONS = "activeCoupons";
   @SerializedName(SERIALIZED_NAME_ACTIVE_COUPONS)
-  private Long activeCoupons;
+  private Integer activeCoupons;
 
   public static final String SERIALIZED_NAME_EXPIRED_COUPONS = "expiredCoupons";
   @SerializedName(SERIALIZED_NAME_EXPIRED_COUPONS)
-  private Long expiredCoupons;
+  private Integer expiredCoupons;
 
   public static final String SERIALIZED_NAME_REFERRAL_CODES = "referralCodes";
   @SerializedName(SERIALIZED_NAME_REFERRAL_CODES)
-  private Long referralCodes;
+  private Integer referralCodes;
 
   public static final String SERIALIZED_NAME_ACTIVE_REFERRAL_CODES = "activeReferralCodes";
   @SerializedName(SERIALIZED_NAME_ACTIVE_REFERRAL_CODES)
-  private Long activeReferralCodes;
+  private Integer activeReferralCodes;
 
   public static final String SERIALIZED_NAME_EXPIRED_REFERRAL_CODES = "expiredReferralCodes";
   @SerializedName(SERIALIZED_NAME_EXPIRED_REFERRAL_CODES)
-  private Long expiredReferralCodes;
+  private Integer expiredReferralCodes;
 
   public static final String SERIALIZED_NAME_ACTIVE_RULES = "activeRules";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULES)
-  private Long activeRules;
+  private Integer activeRules;
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
-  private Long users;
+  private Integer users;
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private Long roles;
+  private Integer roles;
 
   public static final String SERIALIZED_NAME_CUSTOM_ATTRIBUTES = "customAttributes";
   @SerializedName(SERIALIZED_NAME_CUSTOM_ATTRIBUTES)
-  private Long customAttributes;
+  private Integer customAttributes;
 
   public static final String SERIALIZED_NAME_WEBHOOKS = "webhooks";
   @SerializedName(SERIALIZED_NAME_WEBHOOKS)
-  private Long webhooks;
+  private Integer webhooks;
 
   public static final String SERIALIZED_NAME_LOYALTY_PROGRAMS = "loyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LOYALTY_PROGRAMS)
-  private Long loyaltyPrograms;
+  private Integer loyaltyPrograms;
 
   public static final String SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS = "liveLoyaltyPrograms";
   @SerializedName(SERIALIZED_NAME_LIVE_LOYALTY_PROGRAMS)
-  private Long liveLoyaltyPrograms;
+  private Integer liveLoyaltyPrograms;
 
   public static final String SERIALIZED_NAME_LAST_UPDATED_AT = "lastUpdatedAt";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
   private OffsetDateTime lastUpdatedAt;
 
 
-  public AccountAnalytics applications(Long applications) {
+  public AccountAnalytics applications(Integer applications) {
     
     this.applications = applications;
     return this;
@@ -123,17 +123,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "11", required = true, value = "Total number of applications in the account.")
 
-  public Long getApplications() {
+  public Integer getApplications() {
     return applications;
   }
 
 
-  public void setApplications(Long applications) {
+  public void setApplications(Integer applications) {
     this.applications = applications;
   }
 
 
-  public AccountAnalytics liveApplications(Long liveApplications) {
+  public AccountAnalytics liveApplications(Integer liveApplications) {
     
     this.liveApplications = liveApplications;
     return this;
@@ -145,17 +145,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Total number of live applications in the account.")
 
-  public Long getLiveApplications() {
+  public Integer getLiveApplications() {
     return liveApplications;
   }
 
 
-  public void setLiveApplications(Long liveApplications) {
+  public void setLiveApplications(Integer liveApplications) {
     this.liveApplications = liveApplications;
   }
 
 
-  public AccountAnalytics sandboxApplications(Long sandboxApplications) {
+  public AccountAnalytics sandboxApplications(Integer sandboxApplications) {
     
     this.sandboxApplications = sandboxApplications;
     return this;
@@ -167,17 +167,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "2", required = true, value = "Total number of sandbox applications in the account.")
 
-  public Long getSandboxApplications() {
+  public Integer getSandboxApplications() {
     return sandboxApplications;
   }
 
 
-  public void setSandboxApplications(Long sandboxApplications) {
+  public void setSandboxApplications(Integer sandboxApplications) {
     this.sandboxApplications = sandboxApplications;
   }
 
 
-  public AccountAnalytics campaigns(Long campaigns) {
+  public AccountAnalytics campaigns(Integer campaigns) {
     
     this.campaigns = campaigns;
     return this;
@@ -189,17 +189,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "35", required = true, value = "Total number of campaigns in the account.")
 
-  public Long getCampaigns() {
+  public Integer getCampaigns() {
     return campaigns;
   }
 
 
-  public void setCampaigns(Long campaigns) {
+  public void setCampaigns(Integer campaigns) {
     this.campaigns = campaigns;
   }
 
 
-  public AccountAnalytics activeCampaigns(Long activeCampaigns) {
+  public AccountAnalytics activeCampaigns(Integer activeCampaigns) {
     
     this.activeCampaigns = activeCampaigns;
     return this;
@@ -211,17 +211,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "15", required = true, value = "Total number of active campaigns in the account.")
 
-  public Long getActiveCampaigns() {
+  public Integer getActiveCampaigns() {
     return activeCampaigns;
   }
 
 
-  public void setActiveCampaigns(Long activeCampaigns) {
+  public void setActiveCampaigns(Integer activeCampaigns) {
     this.activeCampaigns = activeCampaigns;
   }
 
 
-  public AccountAnalytics liveActiveCampaigns(Long liveActiveCampaigns) {
+  public AccountAnalytics liveActiveCampaigns(Integer liveActiveCampaigns) {
     
     this.liveActiveCampaigns = liveActiveCampaigns;
     return this;
@@ -233,17 +233,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "10", required = true, value = "Total number of active campaigns in live applications in the account.")
 
-  public Long getLiveActiveCampaigns() {
+  public Integer getLiveActiveCampaigns() {
     return liveActiveCampaigns;
   }
 
 
-  public void setLiveActiveCampaigns(Long liveActiveCampaigns) {
+  public void setLiveActiveCampaigns(Integer liveActiveCampaigns) {
     this.liveActiveCampaigns = liveActiveCampaigns;
   }
 
 
-  public AccountAnalytics coupons(Long coupons) {
+  public AccountAnalytics coupons(Integer coupons) {
     
     this.coupons = coupons;
     return this;
@@ -255,17 +255,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "850", required = true, value = "Total number of coupons in the account.")
 
-  public Long getCoupons() {
+  public Integer getCoupons() {
     return coupons;
   }
 
 
-  public void setCoupons(Long coupons) {
+  public void setCoupons(Integer coupons) {
     this.coupons = coupons;
   }
 
 
-  public AccountAnalytics activeCoupons(Long activeCoupons) {
+  public AccountAnalytics activeCoupons(Integer activeCoupons) {
     
     this.activeCoupons = activeCoupons;
     return this;
@@ -277,17 +277,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "650", required = true, value = "Total number of active coupons in the account.")
 
-  public Long getActiveCoupons() {
+  public Integer getActiveCoupons() {
     return activeCoupons;
   }
 
 
-  public void setActiveCoupons(Long activeCoupons) {
+  public void setActiveCoupons(Integer activeCoupons) {
     this.activeCoupons = activeCoupons;
   }
 
 
-  public AccountAnalytics expiredCoupons(Long expiredCoupons) {
+  public AccountAnalytics expiredCoupons(Integer expiredCoupons) {
     
     this.expiredCoupons = expiredCoupons;
     return this;
@@ -299,17 +299,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "200", required = true, value = "Total number of expired coupons in the account.")
 
-  public Long getExpiredCoupons() {
+  public Integer getExpiredCoupons() {
     return expiredCoupons;
   }
 
 
-  public void setExpiredCoupons(Long expiredCoupons) {
+  public void setExpiredCoupons(Integer expiredCoupons) {
     this.expiredCoupons = expiredCoupons;
   }
 
 
-  public AccountAnalytics referralCodes(Long referralCodes) {
+  public AccountAnalytics referralCodes(Integer referralCodes) {
     
     this.referralCodes = referralCodes;
     return this;
@@ -321,17 +321,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "500", required = true, value = "Total number of referral codes in the account.")
 
-  public Long getReferralCodes() {
+  public Integer getReferralCodes() {
     return referralCodes;
   }
 
 
-  public void setReferralCodes(Long referralCodes) {
+  public void setReferralCodes(Integer referralCodes) {
     this.referralCodes = referralCodes;
   }
 
 
-  public AccountAnalytics activeReferralCodes(Long activeReferralCodes) {
+  public AccountAnalytics activeReferralCodes(Integer activeReferralCodes) {
     
     this.activeReferralCodes = activeReferralCodes;
     return this;
@@ -343,17 +343,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "100", required = true, value = "Total number of active referral codes in the account.")
 
-  public Long getActiveReferralCodes() {
+  public Integer getActiveReferralCodes() {
     return activeReferralCodes;
   }
 
 
-  public void setActiveReferralCodes(Long activeReferralCodes) {
+  public void setActiveReferralCodes(Integer activeReferralCodes) {
     this.activeReferralCodes = activeReferralCodes;
   }
 
 
-  public AccountAnalytics expiredReferralCodes(Long expiredReferralCodes) {
+  public AccountAnalytics expiredReferralCodes(Integer expiredReferralCodes) {
     
     this.expiredReferralCodes = expiredReferralCodes;
     return this;
@@ -365,17 +365,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "400", required = true, value = "Total number of expired referral codes in the account.")
 
-  public Long getExpiredReferralCodes() {
+  public Integer getExpiredReferralCodes() {
     return expiredReferralCodes;
   }
 
 
-  public void setExpiredReferralCodes(Long expiredReferralCodes) {
+  public void setExpiredReferralCodes(Integer expiredReferralCodes) {
     this.expiredReferralCodes = expiredReferralCodes;
   }
 
 
-  public AccountAnalytics activeRules(Long activeRules) {
+  public AccountAnalytics activeRules(Integer activeRules) {
     
     this.activeRules = activeRules;
     return this;
@@ -387,17 +387,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "35", required = true, value = "Total number of active rules in the account.")
 
-  public Long getActiveRules() {
+  public Integer getActiveRules() {
     return activeRules;
   }
 
 
-  public void setActiveRules(Long activeRules) {
+  public void setActiveRules(Integer activeRules) {
     this.activeRules = activeRules;
   }
 
 
-  public AccountAnalytics users(Long users) {
+  public AccountAnalytics users(Integer users) {
     
     this.users = users;
     return this;
@@ -409,17 +409,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(required = true, value = "Total number of users in the account.")
 
-  public Long getUsers() {
+  public Integer getUsers() {
     return users;
   }
 
 
-  public void setUsers(Long users) {
+  public void setUsers(Integer users) {
     this.users = users;
   }
 
 
-  public AccountAnalytics roles(Long roles) {
+  public AccountAnalytics roles(Integer roles) {
     
     this.roles = roles;
     return this;
@@ -431,17 +431,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "10", required = true, value = "Total number of roles in the account.")
 
-  public Long getRoles() {
+  public Integer getRoles() {
     return roles;
   }
 
 
-  public void setRoles(Long roles) {
+  public void setRoles(Integer roles) {
     this.roles = roles;
   }
 
 
-  public AccountAnalytics customAttributes(Long customAttributes) {
+  public AccountAnalytics customAttributes(Integer customAttributes) {
     
     this.customAttributes = customAttributes;
     return this;
@@ -453,17 +453,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "18", required = true, value = "Total number of custom attributes in the account.")
 
-  public Long getCustomAttributes() {
+  public Integer getCustomAttributes() {
     return customAttributes;
   }
 
 
-  public void setCustomAttributes(Long customAttributes) {
+  public void setCustomAttributes(Integer customAttributes) {
     this.customAttributes = customAttributes;
   }
 
 
-  public AccountAnalytics webhooks(Long webhooks) {
+  public AccountAnalytics webhooks(Integer webhooks) {
     
     this.webhooks = webhooks;
     return this;
@@ -475,17 +475,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "2", required = true, value = "Total number of webhooks in the account.")
 
-  public Long getWebhooks() {
+  public Integer getWebhooks() {
     return webhooks;
   }
 
 
-  public void setWebhooks(Long webhooks) {
+  public void setWebhooks(Integer webhooks) {
     this.webhooks = webhooks;
   }
 
 
-  public AccountAnalytics loyaltyPrograms(Long loyaltyPrograms) {
+  public AccountAnalytics loyaltyPrograms(Integer loyaltyPrograms) {
     
     this.loyaltyPrograms = loyaltyPrograms;
     return this;
@@ -497,17 +497,17 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "5", required = true, value = "Total number of all loyalty programs in the account.")
 
-  public Long getLoyaltyPrograms() {
+  public Integer getLoyaltyPrograms() {
     return loyaltyPrograms;
   }
 
 
-  public void setLoyaltyPrograms(Long loyaltyPrograms) {
+  public void setLoyaltyPrograms(Integer loyaltyPrograms) {
     this.loyaltyPrograms = loyaltyPrograms;
   }
 
 
-  public AccountAnalytics liveLoyaltyPrograms(Long liveLoyaltyPrograms) {
+  public AccountAnalytics liveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
     
     this.liveLoyaltyPrograms = liveLoyaltyPrograms;
     return this;
@@ -519,12 +519,12 @@ public class AccountAnalytics {
   **/
   @ApiModelProperty(example = "5", required = true, value = "Total number of live loyalty programs in the account.")
 
-  public Long getLiveLoyaltyPrograms() {
+  public Integer getLiveLoyaltyPrograms() {
     return liveLoyaltyPrograms;
   }
 
 
-  public void setLiveLoyaltyPrograms(Long liveLoyaltyPrograms) {
+  public void setLiveLoyaltyPrograms(Integer liveLoyaltyPrograms) {
     this.liveLoyaltyPrograms = liveLoyaltyPrograms;
   }
 

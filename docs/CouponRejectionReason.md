@@ -7,8 +7,8 @@ Holds a reference to the campaign, the coupon and the reason for which that coup
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **Long** |  | 
-**couponId** | **Long** |  | 
+**campaignId** | **Integer** |  | 
+**couponId** | **Integer** |  | 
 **reason** | [**ReasonEnum**](#ReasonEnum) |  | 
 
 

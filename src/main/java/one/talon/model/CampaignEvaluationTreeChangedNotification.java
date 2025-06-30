@@ -33,7 +33,7 @@ import one.talon.model.CampaignSet;
 public class CampaignEvaluationTreeChangedNotification {
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_OLD_EVALUATION_TREE = "oldEvaluationTree";
   @SerializedName(SERIALIZED_NAME_OLD_EVALUATION_TREE)
@@ -44,7 +44,7 @@ public class CampaignEvaluationTreeChangedNotification {
   private CampaignSet evaluationTree;
 
 
-  public CampaignEvaluationTreeChangedNotification applicationId(Long applicationId) {
+  public CampaignEvaluationTreeChangedNotification applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -56,12 +56,12 @@ public class CampaignEvaluationTreeChangedNotification {
   **/
   @ApiModelProperty(example = "78", required = true, value = "The ID of the Application whose campaign evaluation tree changed.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 

@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class ApplicationCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,11 +53,11 @@ public class ApplicationCustomer {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_CLOSED_SESSIONS = "closedSessions";
   @SerializedName(SERIALIZED_NAME_CLOSED_SESSIONS)
-  private Long closedSessions;
+  private Integer closedSessions;
 
   public static final String SERIALIZED_NAME_TOTAL_SALES = "totalSales";
   @SerializedName(SERIALIZED_NAME_TOTAL_SALES)
@@ -84,24 +84,24 @@ public class ApplicationCustomer {
   private String advocateIntegrationId;
 
 
-  public ApplicationCustomer id(Long id) {
+  public ApplicationCustomer id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of the customer profile.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of the customer profile.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -172,7 +172,7 @@ public class ApplicationCustomer {
   }
 
 
-  public ApplicationCustomer accountId(Long accountId) {
+  public ApplicationCustomer accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -184,34 +184,34 @@ public class ApplicationCustomer {
   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public ApplicationCustomer closedSessions(Long closedSessions) {
+  public ApplicationCustomer closedSessions(Integer closedSessions) {
     
     this.closedSessions = closedSessions;
     return this;
   }
 
    /**
-   * The total amount of closed sessions by a customer. A closed session is a successful purchase.
+   * The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).
    * @return closedSessions
   **/
-  @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
+  @ApiModelProperty(example = "3", required = true, value = "The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).")
 
-  public Long getClosedSessions() {
+  public Integer getClosedSessions() {
     return closedSessions;
   }
 
 
-  public void setClosedSessions(Long closedSessions) {
+  public void setClosedSessions(Integer closedSessions) {
     this.closedSessions = closedSessions;
   }
 

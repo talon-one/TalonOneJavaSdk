@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**totalResultSize** | **Long** |  | 
+**totalResultSize** | **Integer** |  | 
 **data** | [**List&lt;RoleV2&gt;**](RoleV2.md) |  | 
 
 

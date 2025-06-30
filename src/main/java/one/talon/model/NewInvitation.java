@@ -46,7 +46,7 @@ public class NewInvitation {
 
   public static final String SERIALIZED_NAME_ROLES = "roles";
   @SerializedName(SERIALIZED_NAME_ROLES)
-  private List<Long> roles = null;
+  private List<Integer> roles = null;
 
   public static final String SERIALIZED_NAME_ACL = "acl";
   @SerializedName(SERIALIZED_NAME_ACL)
@@ -121,15 +121,15 @@ public class NewInvitation {
   }
 
 
-  public NewInvitation roles(List<Long> roles) {
+  public NewInvitation roles(List<Integer> roles) {
     
     this.roles = roles;
     return this;
   }
 
-  public NewInvitation addRolesItem(Long rolesItem) {
+  public NewInvitation addRolesItem(Integer rolesItem) {
     if (this.roles == null) {
-      this.roles = new ArrayList<Long>();
+      this.roles = new ArrayList<Integer>();
     }
     this.roles.add(rolesItem);
     return this;
@@ -142,12 +142,12 @@ public class NewInvitation {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of the IDs of the roles assigned to the user.")
 
-  public List<Long> getRoles() {
+  public List<Integer> getRoles() {
     return roles;
   }
 
 
-  public void setRoles(List<Long> roles) {
+  public void setRoles(List<Integer> roles) {
     this.roles = roles;
   }
 

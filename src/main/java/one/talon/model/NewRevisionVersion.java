@@ -56,7 +56,7 @@ public class NewRevisionVersion {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Long activeRulesetId;
+  private Integer activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -249,7 +249,7 @@ public class NewRevisionVersion {
   }
 
 
-  public NewRevisionVersion activeRulesetId(Long activeRulesetId) {
+  public NewRevisionVersion activeRulesetId(Integer activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -262,12 +262,12 @@ public class NewRevisionVersion {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Long getActiveRulesetId() {
+  public Integer getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Long activeRulesetId) {
+  public void setActiveRulesetId(Integer activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 

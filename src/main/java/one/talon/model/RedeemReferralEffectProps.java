@@ -32,14 +32,14 @@ import java.io.IOException;
 public class RedeemReferralEffectProps {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
 
-  public RedeemReferralEffectProps id(Long id) {
+  public RedeemReferralEffectProps id(Integer id) {
     
     this.id = id;
     return this;
@@ -51,12 +51,12 @@ public class RedeemReferralEffectProps {
   **/
   @ApiModelProperty(required = true, value = "The id of the referral code that was redeemed.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

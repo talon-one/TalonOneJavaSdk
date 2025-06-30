@@ -45,7 +45,7 @@ public class ApplicationCampaignAnalytics {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
@@ -183,7 +183,7 @@ public class ApplicationCampaignAnalytics {
   }
 
 
-  public ApplicationCampaignAnalytics campaignId(Long campaignId) {
+  public ApplicationCampaignAnalytics campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -195,12 +195,12 @@ public class ApplicationCampaignAnalytics {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the campaign.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**createAttribute**](ManagementApi.md#createAttribute) | **POST** /v1/attributes | Create custom attribute
 [**createBatchLoyaltyCards**](ManagementApi.md#createBatchLoyaltyCards) | **POST** /v1/loyalty_programs/{loyaltyProgramId}/cards/batch | Create loyalty cards
 [**createCampaignFromTemplate**](ManagementApi.md#createCampaignFromTemplate) | **POST** /v1/applications/{applicationId}/create_campaign_from_template | Create campaign from campaign template
+[**createCampaignStoreBudget**](ManagementApi.md#createCampaignStoreBudget) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Create campaign store budget
 [**createCollection**](ManagementApi.md#createCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | Create campaign-level collection
 [**createCoupons**](ManagementApi.md#createCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Create coupons
 [**createCouponsAsync**](ManagementApi.md#createCouponsAsync) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_async | Create coupons asynchronously
@@ -29,6 +30,7 @@ Method | HTTP request | Description
 [**deleteAccountCollection**](ManagementApi.md#deleteAccountCollection) | **DELETE** /v1/collections/{collectionId} | Delete account-level collection
 [**deleteAchievement**](ManagementApi.md#deleteAchievement) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Delete achievement
 [**deleteCampaign**](ManagementApi.md#deleteCampaign) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId} | Delete campaign
+[**deleteCampaignStoreBudgets**](ManagementApi.md#deleteCampaignStoreBudgets) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | Delete campaign store budgets
 [**deleteCollection**](ManagementApi.md#deleteCollection) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId} | Delete campaign-level collection
 [**deleteCoupon**](ManagementApi.md#deleteCoupon) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons/{couponId} | Delete coupon
 [**deleteCoupons**](ManagementApi.md#deleteCoupons) | **DELETE** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons | Delete coupons
@@ -42,6 +44,7 @@ Method | HTTP request | Description
 [**exportAccountCollectionItems**](ManagementApi.md#exportAccountCollectionItems) | **GET** /v1/collections/{collectionId}/export | Export account-level collection&#39;s items
 [**exportAchievements**](ManagementApi.md#exportAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId}/export | Export achievement customer data
 [**exportAudiencesMemberships**](ManagementApi.md#exportAudiencesMemberships) | **GET** /v1/audiences/{audienceId}/memberships/export | Export audience members
+[**exportCampaignStoreBudgets**](ManagementApi.md#exportCampaignStoreBudgets) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/export | Export campaign store budgets
 [**exportCampaignStores**](ManagementApi.md#exportCampaignStores) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/export | Export stores
 [**exportCollectionItems**](ManagementApi.md#exportCollectionItems) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/export | Export campaign-level collection&#39;s items
 [**exportCoupons**](ManagementApi.md#exportCoupons) | **GET** /v1/applications/{applicationId}/export_coupons | Export coupons
@@ -123,6 +126,7 @@ Method | HTTP request | Description
 [**importAccountCollection**](ManagementApi.md#importAccountCollection) | **POST** /v1/collections/{collectionId}/import | Import data into existing account-level collection
 [**importAllowedList**](ManagementApi.md#importAllowedList) | **POST** /v1/attributes/{attributeId}/allowed_list/import | Import allowed values for attribute
 [**importAudiencesMemberships**](ManagementApi.md#importAudiencesMemberships) | **POST** /v1/audiences/{audienceId}/memberships/import | Import audience members
+[**importCampaignStoreBudget**](ManagementApi.md#importCampaignStoreBudget) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/import | Import campaign store budgets
 [**importCampaignStores**](ManagementApi.md#importCampaignStores) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/import | Import stores
 [**importCollection**](ManagementApi.md#importCollection) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/collections/{collectionId}/import | Import data into existing campaign-level collection
 [**importCoupons**](ManagementApi.md#importCoupons) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/import_coupons | Import coupons
@@ -135,6 +139,7 @@ Method | HTTP request | Description
 [**listAccountCollections**](ManagementApi.md#listAccountCollections) | **GET** /v1/collections | List collections in account
 [**listAchievements**](ManagementApi.md#listAchievements) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements | List achievements
 [**listAllRolesV2**](ManagementApi.md#listAllRolesV2) | **GET** /v2/roles | List roles
+[**listCampaignStoreBudgetLimits**](ManagementApi.md#listCampaignStoreBudgetLimits) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets | List campaign store budget limits
 [**listCatalogItems**](ManagementApi.md#listCatalogItems) | **GET** /v1/catalogs/{catalogId}/items | List items in a catalog
 [**listCollections**](ManagementApi.md#listCollections) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/collections | List collections in campaign
 [**listCollectionsInApplication**](ManagementApi.md#listCollectionsInApplication) | **GET** /v1/applications/{applicationId}/collections | List collections in Application
@@ -142,17 +147,24 @@ Method | HTTP request | Description
 [**oktaEventHandlerChallenge**](ManagementApi.md#oktaEventHandlerChallenge) | **GET** /v1/provisioning/okta | Validate Okta API ownership
 [**removeLoyaltyPoints**](ManagementApi.md#removeLoyaltyPoints) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/profile/{integrationId}/deduct_points | Deduct points from customer profile
 [**resetPassword**](ManagementApi.md#resetPassword) | **POST** /v1/reset_password | Reset password
+[**scimCreateGroup**](ManagementApi.md#scimCreateGroup) | **POST** /v1/provisioning/scim/Groups | Create SCIM group
 [**scimCreateUser**](ManagementApi.md#scimCreateUser) | **POST** /v1/provisioning/scim/Users | Create SCIM user
+[**scimDeleteGroup**](ManagementApi.md#scimDeleteGroup) | **DELETE** /v1/provisioning/scim/Groups/{groupId} | Delete SCIM group
 [**scimDeleteUser**](ManagementApi.md#scimDeleteUser) | **DELETE** /v1/provisioning/scim/Users/{userId} | Delete SCIM user
+[**scimGetGroup**](ManagementApi.md#scimGetGroup) | **GET** /v1/provisioning/scim/Groups/{groupId} | Get SCIM group
+[**scimGetGroups**](ManagementApi.md#scimGetGroups) | **GET** /v1/provisioning/scim/Groups | List SCIM groups
 [**scimGetResourceTypes**](ManagementApi.md#scimGetResourceTypes) | **GET** /v1/provisioning/scim/ResourceTypes | List supported SCIM resource types
 [**scimGetSchemas**](ManagementApi.md#scimGetSchemas) | **GET** /v1/provisioning/scim/Schemas | List supported SCIM schemas
 [**scimGetServiceProviderConfig**](ManagementApi.md#scimGetServiceProviderConfig) | **GET** /v1/provisioning/scim/ServiceProviderConfig | Get SCIM service provider configuration
 [**scimGetUser**](ManagementApi.md#scimGetUser) | **GET** /v1/provisioning/scim/Users/{userId} | Get SCIM user
 [**scimGetUsers**](ManagementApi.md#scimGetUsers) | **GET** /v1/provisioning/scim/Users | List SCIM users
+[**scimPatchGroup**](ManagementApi.md#scimPatchGroup) | **PATCH** /v1/provisioning/scim/Groups/{groupId} | Update SCIM group attributes
 [**scimPatchUser**](ManagementApi.md#scimPatchUser) | **PATCH** /v1/provisioning/scim/Users/{userId} | Update SCIM user attributes
+[**scimReplaceGroupAttributes**](ManagementApi.md#scimReplaceGroupAttributes) | **PUT** /v1/provisioning/scim/Groups/{groupId} | Update SCIM group
 [**scimReplaceUserAttributes**](ManagementApi.md#scimReplaceUserAttributes) | **PUT** /v1/provisioning/scim/Users/{userId} | Update SCIM user
 [**searchCouponsAdvancedApplicationWideWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedApplicationWideWithoutTotalCount) | **POST** /v1/applications/{applicationId}/coupons_search_advanced/no_total | List coupons that match the given attributes (without total count)
 [**searchCouponsAdvancedWithoutTotalCount**](ManagementApi.md#searchCouponsAdvancedWithoutTotalCount) | **POST** /v1/applications/{applicationId}/campaigns/{campaignId}/coupons_search_advanced/no_total | List coupons that match the given attributes in campaign (without total count)
+[**summarizeCampaignStoreBudget**](ManagementApi.md#summarizeCampaignStoreBudget) | **GET** /v1/applications/{applicationId}/campaigns/{campaignId}/stores/budgets/summary | Get summary of campaign store budgets
 [**transferLoyaltyCard**](ManagementApi.md#transferLoyaltyCard) | **PUT** /v1/loyalty_programs/{loyaltyProgramId}/cards/{loyaltyCardId}/transfer | Transfer card data
 [**updateAccountCollection**](ManagementApi.md#updateAccountCollection) | **PUT** /v1/collections/{collectionId} | Update account-level collection
 [**updateAchievement**](ManagementApi.md#updateAchievement) | **PUT** /v1/applications/{applicationId}/campaigns/{campaignId}/achievements/{achievementId} | Update achievement
@@ -284,7 +296,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         AddLoyaltyPoints body = new AddLoyaltyPoints(); // AddLoyaltyPoints | body
         try {
@@ -305,7 +317,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**AddLoyaltyPoints**](AddLoyaltyPoints.md)| body |
 
@@ -452,8 +464,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         CampaignCopy body = new CampaignCopy(); // CampaignCopy | body
         try {
             InlineResponse2008 result = apiInstance.copyCampaignToApplications(applicationId, campaignId, body);
@@ -474,8 +486,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**CampaignCopy**](CampaignCopy.md)| body |
 
 ### Return type cool
@@ -615,8 +627,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         CreateAchievement body = new CreateAchievement(); // CreateAchievement | body
         try {
             Achievement result = apiInstance.createAchievement(applicationId, campaignId, body);
@@ -637,8 +649,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**CreateAchievement**](CreateAchievement.md)| body |
 
 ### Return type cool
@@ -856,7 +868,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         LoyaltyCardBatch body = new LoyaltyCardBatch(); // LoyaltyCardBatch | body
         try {
             LoyaltyCardBatchResponse result = apiInstance.createBatchLoyaltyCards(loyaltyProgramId, body);
@@ -877,7 +889,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **body** | [**LoyaltyCardBatch**](LoyaltyCardBatch.md)| body |
 
 ### Return type cool
@@ -939,7 +951,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         CreateTemplateCampaign body = new CreateTemplateCampaign(); // CreateTemplateCampaign | body
         try {
             CreateTemplateCampaignResponse result = apiInstance.createCampaignFromTemplate(applicationId, body);
@@ -960,7 +972,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **body** | [**CreateTemplateCampaign**](CreateTemplateCampaign.md)| body |
 
 ### Return type cool
@@ -980,6 +992,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+
+
+## createCampaignStoreBudget
+
+> createCampaignStoreBudget(applicationId, campaignId, body)
+
+Create campaign store budget
+
+Create a new store budget for a given campaign.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        NewCampaignStoreBudget body = new NewCampaignStoreBudget(); // NewCampaignStoreBudget | body
+        try {
+            apiInstance.createCampaignStoreBudget(applicationId, campaignId, body);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#createCampaignStoreBudget");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **body** | [**NewCampaignStoreBudget**](NewCampaignStoreBudget.md)| body |
+
+### Return type cool
+
+null (empty response body)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad request |  -  |
+| **409** | Conflict |  -  |
 
 
 ## createCollection
@@ -1019,8 +1114,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCampaignCollection body = new NewCampaignCollection(); // NewCampaignCollection | body
         try {
             Collection result = apiInstance.createCollection(applicationId, campaignId, body);
@@ -1041,8 +1136,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCampaignCollection**](NewCampaignCollection.md)| body |
 
 ### Return type cool
@@ -1101,8 +1196,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCoupons body = new NewCoupons(); // NewCoupons | body
         String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
@@ -1124,8 +1219,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCoupons**](NewCoupons.md)| body |
  **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
@@ -1186,8 +1281,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCouponCreationJob body = new NewCouponCreationJob(); // NewCouponCreationJob | body
         try {
             AsyncCouponCreationResponse result = apiInstance.createCouponsAsync(applicationId, campaignId, body);
@@ -1208,8 +1303,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCouponCreationJob**](NewCouponCreationJob.md)| body |
 
 ### Return type cool
@@ -1268,8 +1363,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCouponDeletionJob body = new NewCouponDeletionJob(); // NewCouponDeletionJob | body
         try {
             AsyncCouponDeletionJobResponse result = apiInstance.createCouponsDeletionJob(applicationId, campaignId, body);
@@ -1290,8 +1385,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCouponDeletionJob**](NewCouponDeletionJob.md)| body |
 
 ### Return type cool
@@ -1350,8 +1445,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         NewCouponsForMultipleRecipients body = new NewCouponsForMultipleRecipients(); // NewCouponsForMultipleRecipients | body
         String silent = "\"yes\""; // String | Possible values: `yes` or `no`. - `yes`: Increases the performance of the API call by returning a 204 response. - `no`: Returns a 200 response that contains the updated customer profiles. 
         try {
@@ -1373,8 +1468,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewCouponsForMultipleRecipients**](NewCouponsForMultipleRecipients.md)| body |
  **silent** | **String**| Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  | [optional] [default to &quot;yes&quot;]
 
@@ -1747,7 +1842,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         NewStore body = new NewStore(); // NewStore | body
         try {
             Store result = apiInstance.createStore(applicationId, body);
@@ -1768,7 +1863,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **body** | [**NewStore**](NewStore.md)| body |
 
 ### Return type cool
@@ -1906,7 +2001,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         DeductLoyaltyPoints body = new DeductLoyaltyPoints(); // DeductLoyaltyPoints | body
         try {
@@ -1927,7 +2022,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**DeductLoyaltyPoints**](DeductLoyaltyPoints.md)| body |
 
@@ -1990,7 +2085,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
         try {
             apiInstance.deleteAccountCollection(collectionId);
         } catch (ApiException e) {
@@ -2009,7 +2104,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type cool
 
@@ -2068,9 +2163,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long achievementId = 56L; // Long | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         try {
             apiInstance.deleteAchievement(applicationId, campaignId, achievementId);
         } catch (ApiException e) {
@@ -2089,9 +2184,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **achievementId** | **Long**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
 
 ### Return type cool
 
@@ -2151,8 +2246,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         try {
             apiInstance.deleteCampaign(applicationId, campaignId);
         } catch (ApiException e) {
@@ -2171,8 +2266,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -2191,6 +2286,90 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+
+
+## deleteCampaignStoreBudgets
+
+> deleteCampaignStoreBudgets(applicationId, campaignId, action, period)
+
+Delete campaign store budgets
+
+Delete the store budgets for a given campaign.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        String action = "action_example"; // String | The action that this budget is limiting.
+        String period = "period_example"; // String | The period to which the limit applies.  **Note**: For budgets with no period, set this to `overall`. 
+        try {
+            apiInstance.deleteCampaignStoreBudgets(applicationId, campaignId, action, period);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#deleteCampaignStoreBudgets");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **action** | **String**| The action that this budget is limiting. | [optional] [enum: setDiscount]
+ **period** | **String**| The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  | [optional] [enum: overall, daily, weekly, monthly, yearly]
+
+### Return type cool
+
+null (empty response body)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Deleted |  -  |
+| **400** | Bad request |  -  |
 
 
 ## deleteCollection
@@ -2230,9 +2409,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
         try {
             apiInstance.deleteCollection(applicationId, campaignId, collectionId);
         } catch (ApiException e) {
@@ -2251,9 +2430,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type cool
 
@@ -2312,8 +2491,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String couponId = "couponId_example"; // String | The internal ID of the coupon code. You can find this value in the `id` property from the [List coupons](https://docs.talon.one/management-api#tag/Coupons/operation/getCouponsWithoutTotalCount) endpoint response. 
         try {
             apiInstance.deleteCoupon(applicationId, campaignId, couponId);
@@ -2333,8 +2512,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **couponId** | **String**| The internal ID of the coupon code. You can find this value in the &#x60;id&#x60; property from the [List coupons](https://docs.talon.one/management-api#tag/Coupons/operation/getCouponsWithoutTotalCount) endpoint response.  |
 
 ### Return type cool
@@ -2393,8 +2572,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -2405,7 +2584,7 @@ public class Example {
         String valid = "valid_example"; // String | - `expired`: Matches coupons in which the expiration date is set and in the past. - `validNow`: Matches coupons in which start date is null or in the past and expiration date is null or in the future. - `validFuture`: Matches coupons in which start date is set and in the future. 
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
         String usable = "usable_example"; // String | - `true`: only coupons where `usageCounter < usageLimit` will be returned. - `false`: only coupons where `usageCounter >= usageLimit` will be returned. 
-        Long referralId = 56L; // Long | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+        Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
         String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's `RecipientIntegrationId` field. 
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code
         try {
@@ -2426,8 +2605,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -2438,7 +2617,7 @@ Name | Type | Description  | Notes
  **valid** | **String**| - &#x60;expired&#x60;: Matches coupons in which the expiration date is set and in the past. - &#x60;validNow&#x60;: Matches coupons in which start date is null or in the past and expiration date is null or in the future. - &#x60;validFuture&#x60;: Matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **usable** | **String**| - &#x60;true&#x60;: only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60; will be returned.  | [optional] [enum: true, false]
- **referralId** | **Long**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
+ **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
  **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s &#x60;RecipientIntegrationId&#x60; field.  | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code | [optional] [default to false]
 
@@ -2498,7 +2677,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         try {
             apiInstance.deleteLoyaltyCard(loyaltyProgramId, loyaltyCardId);
@@ -2518,7 +2697,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
 
 ### Return type cool
@@ -2579,8 +2758,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String referralId = "referralId_example"; // String | The ID of the referral code.
         try {
             apiInstance.deleteReferral(applicationId, campaignId, referralId);
@@ -2600,8 +2779,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **referralId** | **String**| The ID of the referral code. |
 
 ### Return type cool
@@ -2660,7 +2839,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
         try {
             apiInstance.deleteStore(applicationId, storeId);
@@ -2680,7 +2859,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
 
 ### Return type cool
@@ -2740,7 +2919,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         try {
             apiInstance.deleteUser(userId);
         } catch (ApiException e) {
@@ -2759,7 +2938,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
 
 ### Return type cool
 
@@ -2967,8 +3146,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         try {
             apiInstance.disconnectCampaignStores(applicationId, campaignId);
         } catch (ApiException e) {
@@ -2987,8 +3166,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -3049,7 +3228,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
         try {
             String result = apiInstance.exportAccountCollectionItems(collectionId);
             System.out.println(result);
@@ -3069,7 +3248,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type cool
 
@@ -3129,9 +3308,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long achievementId = 56L; // Long | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         try {
             String result = apiInstance.exportAchievements(applicationId, campaignId, achievementId);
             System.out.println(result);
@@ -3151,9 +3330,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **achievementId** | **Long**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
 
 ### Return type cool
 
@@ -3214,7 +3393,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long audienceId = 56L; // Long | The ID of the audience.
+        Integer audienceId = 56; // Integer | The ID of the audience.
         try {
             String result = apiInstance.exportAudiencesMemberships(audienceId);
             System.out.println(result);
@@ -3234,7 +3413,94 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Long**| The ID of the audience. |
+ **audienceId** | **Integer**| The ID of the audience. |
+
+### Return type cool
+
+**String**
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/csv
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized - Invalid API key |  -  |
+| **404** | Not found |  -  |
+
+
+## exportCampaignStoreBudgets
+
+> String exportCampaignStoreBudgets(applicationId, campaignId, action, period)
+
+Export campaign store budgets
+
+Download a CSV file containing the store budgets for a given campaign.  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  The CSV file contains the following columns:  - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        String action = "action_example"; // String | The action that this budget is limiting.
+        String period = "period_example"; // String | The period to which the limit applies.  **Note**: For budgets with no period, set this to `overall`. 
+        try {
+            String result = apiInstance.exportCampaignStoreBudgets(applicationId, campaignId, action, period);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#exportCampaignStoreBudgets");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **action** | **String**| The action that this budget is limiting. | [optional] [enum: setDiscount]
+ **period** | **String**| The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  | [optional] [enum: overall, daily, weekly, monthly, yearly]
 
 ### Return type cool
 
@@ -3295,8 +3561,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         try {
             String result = apiInstance.exportCampaignStores(applicationId, campaignId);
             System.out.println(result);
@@ -3316,8 +3582,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -3378,9 +3644,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
         try {
             String result = apiInstance.exportCollectionItems(applicationId, campaignId, collectionId);
             System.out.println(result);
@@ -3400,9 +3666,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type cool
 
@@ -3462,7 +3728,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
@@ -3470,7 +3736,7 @@ public class Example {
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
         String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-        Long referralId = 56L; // Long | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+        Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
         String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile id specified in the coupon's RecipientIntegrationId field.
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
@@ -3496,7 +3762,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
@@ -3504,7 +3770,7 @@ Name | Type | Description  | Notes
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
- **referralId** | **Long**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
+ **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
  **recipientIntegrationId** | **String**| Filter results by match with a profile id specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
@@ -3537,7 +3803,7 @@ Name | Type | Description  | Notes
 
 Export customer sessions
 
-Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/product/server-infrastructure-and-data-retention#data-retention-policy).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
+Download a CSV file containing the customer sessions that match the request.  **Important:** Archived sessions cannot be exported. See the [retention policy](https://docs.talon.one/docs/dev/server-infrastructure-and-data-retention).  **Tip:** If the exported CSV file is too large to view, you can [split it into multiple files](https://www.makeuseof.com/tag/how-to-split-a-huge-csv-excel-workbook-into-seperate-files/).  - &#x60;id&#x60;: The internal ID of the session. - &#x60;firstsession&#x60;: Whether this is a first session. - &#x60;integrationid&#x60;: The integration ID of the session. - &#x60;applicationid&#x60;: The ID of the Application. - &#x60;profileid&#x60;: The internal ID of the customer profile. - &#x60;profileintegrationid&#x60;: The integration ID of the customer profile. - &#x60;created&#x60;: The timestamp when the session was created. - &#x60;state&#x60;: The [state](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states) of the session. - &#x60;cartitems&#x60;: The cart items in the session. - &#x60;discounts&#x60;: The discounts in the session. - &#x60;total&#x60;: The total value of cart items and additional costs in the session, before any discounts are applied. - &#x60;attributes&#x60;: The attributes set in the session. - &#x60;closedat&#x60;: Timestamp when the session was closed. - &#x60;cancelledat&#x60;: Timestamp when the session was cancelled. - &#x60;referral&#x60;: The referral code in the session. - &#x60;identifiers&#x60;: The identifiers in the session. - &#x60;additional_costs&#x60;: The [additional costs](https://docs.talon.one/docs/product/account/dev-tools/managing-additional-costs) in the session. - &#x60;updated&#x60;: Timestamp of the last session update. - &#x60;store_integration_id&#x60;: The integration ID of the store. - &#x60;coupons&#x60;: Coupon codes in the session. 
 
 ### Example
 
@@ -3568,7 +3834,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string.
         String profileIntegrationId = "profileIntegrationId_example"; // String | Only return sessions for the customer that matches this customer integration ID.
@@ -3593,7 +3859,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. | [optional]
  **profileIntegrationId** | **String**| Only return sessions for the customer that matches this customer integration ID. | [optional]
@@ -3738,7 +4004,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -3762,7 +4028,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -3988,7 +4254,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         try {
             String result = apiInstance.exportLoyaltyCardBalances(loyaltyProgramId, endDate);
@@ -4009,7 +4275,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **endDate** | **OffsetDateTime**| Used to return expired, active, and pending loyalty balances before this timestamp. You can enter any past, present, or future timestamp value.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
 
 ### Return type cool
@@ -4070,7 +4336,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
@@ -4094,7 +4360,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
@@ -4158,7 +4424,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String batchId = "batchId_example"; // String | Filter results by loyalty card batch ID.
         String dateFormat = "dateFormat_example"; // String | Determines the format of dates in the export document.
         try {
@@ -4180,7 +4446,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **batchId** | **String**| Filter results by loyalty card batch ID. | [optional]
  **dateFormat** | **String**| Determines the format of dates in the export document. | [optional] [enum: excel, ISO8601]
 
@@ -4328,7 +4594,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long poolId = 56L; // Long | The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
+        Integer poolId = 56; // Integer | The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain giveaways created before this date. Must be an RFC3339 timestamp string.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Timestamp that filters the results to only contain giveaways created after this date. Must be an RFC3339 timestamp string.
         try {
@@ -4350,7 +4616,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **poolId** | **Long**| The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. |
+ **poolId** | **Integer**| The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. |
  **createdBefore** | **OffsetDateTime**| Timestamp that filters the results to only contain giveaways created before this date. Must be an RFC3339 timestamp string. | [optional]
  **createdAfter** | **OffsetDateTime**| Timestamp that filters the results to only contain giveaways created after this date. Must be an RFC3339 timestamp string. | [optional]
 
@@ -4411,7 +4677,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -4438,7 +4704,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -4503,14 +4769,14 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String path = "path_example"; // String | Only return results where the request path matches the given regular expression.
         String method = "method_example"; // String | Only return results where the request method matches the given regular expression.
         String status = "status_example"; // String | Filter results by HTTP status codes.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20022 result = apiInstance.getAccessLogsWithoutTotalCount(applicationId, rangeStart, rangeEnd, path, method, status, pageSize, skip, sort);
@@ -4531,14 +4797,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **path** | **String**| Only return results where the request path matches the given regular expression. | [optional]
  **method** | **String**| Only return results where the request method matches the given regular expression. | [optional] [enum: get, put, post, delete, patch]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -4597,7 +4863,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long accountId = 56L; // Long | The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the `accountId` property. 
+        Integer accountId = 56; // Integer | The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the `accountId` property. 
         try {
             Account result = apiInstance.getAccount(accountId);
             System.out.println(result);
@@ -4617,7 +4883,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **Long**| The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the &#x60;accountId&#x60; property.  |
+ **accountId** | **Integer**| The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the &#x60;accountId&#x60; property.  |
 
 ### Return type cool
 
@@ -4675,7 +4941,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long accountId = 56L; // Long | The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the `accountId` property. 
+        Integer accountId = 56; // Integer | The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the `accountId` property. 
         try {
             AccountAnalytics result = apiInstance.getAccountAnalytics(accountId);
             System.out.println(result);
@@ -4695,7 +4961,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountId** | **Long**| The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the &#x60;accountId&#x60; property.  |
+ **accountId** | **Integer**| The identifier of the account. Retrieve it via the [List users in account](https://docs.talon.one/management-api#operation/getUsers) endpoint in the &#x60;accountId&#x60; property.  |
 
 ### Return type cool
 
@@ -4753,7 +5019,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
         try {
             Collection result = apiInstance.getAccountCollection(collectionId);
             System.out.println(result);
@@ -4773,7 +5039,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
 
 ### Return type cool
 
@@ -4832,9 +5098,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long achievementId = 56L; // Long | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         try {
             Achievement result = apiInstance.getAchievement(applicationId, campaignId, achievementId);
             System.out.println(result);
@@ -4854,9 +5120,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **achievementId** | **Long**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
 
 ### Return type cool
 
@@ -4916,7 +5182,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long additionalCostId = 56L; // Long | The ID of the additional cost. You can find the ID the the Campaign Manager's URL when you display the details of the cost in **Account** > **Tools** > **Additional costs**. 
+        Integer additionalCostId = 56; // Integer | The ID of the additional cost. You can find the ID the the Campaign Manager's URL when you display the details of the cost in **Account** > **Tools** > **Additional costs**. 
         try {
             AccountAdditionalCost result = apiInstance.getAdditionalCost(additionalCostId);
             System.out.println(result);
@@ -4936,7 +5202,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **additionalCostId** | **Long**| The ID of the additional cost. You can find the ID the the Campaign Manager&#39;s URL when you display the details of the cost in **Account** &gt; **Tools** &gt; **Additional costs**.  |
+ **additionalCostId** | **Integer**| The ID of the additional cost. You can find the ID the the Campaign Manager&#39;s URL when you display the details of the cost in **Account** &gt; **Tools** &gt; **Additional costs**.  |
 
 ### Return type cool
 
@@ -4994,8 +5260,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20038 result = apiInstance.getAdditionalCosts(pageSize, skip, sort);
@@ -5016,8 +5282,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -5076,7 +5342,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         try {
             Application result = apiInstance.getApplication(applicationId);
             System.out.println(result);
@@ -5096,7 +5362,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -5154,7 +5420,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         try {
             ApplicationApiHealth result = apiInstance.getApplicationApiHealth(applicationId);
             System.out.println(result);
@@ -5174,7 +5440,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -5232,8 +5498,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long customerId = 56L; // Long | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
         try {
             ApplicationCustomer result = apiInstance.getApplicationCustomer(applicationId, customerId);
             System.out.println(result);
@@ -5253,8 +5519,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **customerId** | **Long**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
 
 ### Return type cool
 
@@ -5312,10 +5578,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String integrationId = "integrationId_example"; // String | The Integration ID of the Advocate's Profile.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
@@ -5337,10 +5603,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **integrationId** | **String**| The Integration ID of the Advocate&#39;s Profile. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
@@ -5400,10 +5666,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
             InlineResponse20024 result = apiInstance.getApplicationCustomers(applicationId, integrationId, pageSize, skip, withTotalResultSize);
@@ -5424,10 +5690,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
 ### Return type cool
@@ -5486,10 +5752,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         CustomerProfileSearchQuery body = new CustomerProfileSearchQuery(); // CustomerProfileSearchQuery | body
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
             InlineResponse20025 result = apiInstance.getApplicationCustomersByAttributes(applicationId, body, pageSize, skip, withTotalResultSize);
@@ -5510,10 +5776,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **body** | [**CustomerProfileSearchQuery**](CustomerProfileSearchQuery.md)| body |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
 ### Return type cool
@@ -5572,9 +5838,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20031 result = apiInstance.getApplicationEventTypes(applicationId, pageSize, skip, sort);
@@ -5595,9 +5861,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -5656,9 +5922,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String type = "type_example"; // String | Comma-separated list of types by which to filter events. Must be exact match(es).
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -5690,9 +5956,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **type** | **String**| Comma-separated list of types by which to filter events. Must be exact match(es). | [optional]
  **createdBefore** | **OffsetDateTime**| Only return events created before this date. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -5762,8 +6028,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long sessionId = 56L; // Long | The **internal** ID of the session. You can get the ID with the [List Application sessions](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. 
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer sessionId = 56; // Integer | The **internal** ID of the session. You can get the ID with the [List Application sessions](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint. 
         try {
             ApplicationSession result = apiInstance.getApplicationSession(applicationId, sessionId);
             System.out.println(result);
@@ -5783,8 +6049,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **sessionId** | **Long**| The **internal** ID of the session. You can get the ID with the [List Application sessions](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint.  |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **sessionId** | **Integer**| The **internal** ID of the session. You can get the ID with the [List Application sessions](https://docs.talon.one/management-api#tag/Customer-data/operation/getApplicationSessions) endpoint.  |
 
 ### Return type cool
 
@@ -5842,9 +6108,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String profile = "profile_example"; // String | Profile integration ID filter for sessions. Must be exact match.
         String state = "state_example"; // String | Filter by sessions with this state. Must be exact match.
@@ -5873,9 +6139,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **profile** | **String**| Profile integration ID filter for sessions. Must be exact match. | [optional]
  **state** | **String**| Filter by sessions with this state. Must be exact match. | [optional] [enum: open, closed, partially_returned, cancelled]
@@ -5942,8 +6208,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse2007 result = apiInstance.getApplications(pageSize, skip, sort);
@@ -5964,8 +6230,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -6024,7 +6290,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long attributeId = 56L; // Long | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
+        Integer attributeId = 56; // Integer | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
         try {
             Attribute result = apiInstance.getAttribute(attributeId);
             System.out.println(result);
@@ -6044,7 +6310,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributeId** | **Long**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
+ **attributeId** | **Integer**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
 
 ### Return type cool
 
@@ -6102,8 +6368,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String entity = "entity_example"; // String | Returned attributes will be filtered by supplied entity.
         try {
@@ -6125,8 +6391,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **entity** | **String**| Returned attributes will be filtered by supplied entity. | [optional]
 
@@ -6186,9 +6452,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long audienceId = 56L; // Long | The ID of the audience.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer audienceId = 56; // Integer | The ID of the audience.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String profileQuery = "profileQuery_example"; // String | The filter to select a profile.
         try {
@@ -6210,9 +6476,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Long**| The ID of the audience. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **audienceId** | **Integer**| The ID of the audience. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **profileQuery** | **String**| The filter to select a profile. | [optional]
 
@@ -6273,8 +6539,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         try {
@@ -6296,8 +6562,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
 
@@ -6437,8 +6703,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         try {
             Campaign result = apiInstance.getCampaign(applicationId, campaignId);
             System.out.println(result);
@@ -6458,8 +6724,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
 
 ### Return type cool
 
@@ -6517,8 +6783,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String granularity = "granularity_example"; // String | The time interval between the results in the returned time-series.
@@ -6541,8 +6807,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **granularity** | **String**| The time interval between the results in the returned time-series. | [optional] [enum: 1 hour, 1 day, 1 week, 1 month, 1 year]
@@ -6603,10 +6869,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         CampaignSearch body = new CampaignSearch(); // CampaignSearch | body
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
         try {
@@ -6628,10 +6894,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **body** | [**CampaignSearch**](CampaignSearch.md)| body |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
 
@@ -6691,7 +6957,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long campaignGroupId = 56L; // Long | The ID of the campaign access group.
+        Integer campaignGroupId = 56; // Integer | The ID of the campaign access group.
         try {
             CampaignGroup result = apiInstance.getCampaignGroup(campaignGroupId);
             System.out.println(result);
@@ -6711,7 +6977,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignGroupId** | **Long**| The ID of the campaign access group. |
+ **campaignGroupId** | **Integer**| The ID of the campaign access group. |
 
 ### Return type cool
 
@@ -6769,8 +7035,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20013 result = apiInstance.getCampaignGroups(pageSize, skip, sort);
@@ -6791,8 +7057,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -6851,13 +7117,13 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String state = "state_example"; // String | Filter results by the state of the campaign template.
         String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign template.
         String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values. 
-        Long userId = 56L; // Long | Filter results by user ID.
+        Integer userId = 56; // Integer | Filter results by user ID.
         try {
             InlineResponse20014 result = apiInstance.getCampaignTemplates(pageSize, skip, sort, state, name, tags, userId);
             System.out.println(result);
@@ -6877,13 +7143,13 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **state** | **String**| Filter results by the state of the campaign template. | [optional] [enum: draft, enabled, disabled]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign template. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign template. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values.  | [optional]
- **userId** | **Long**| Filter results by user ID. | [optional]
+ **userId** | **Integer**| Filter results by user ID. | [optional]
 
 ### Return type cool
 
@@ -6941,18 +7207,18 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String campaignState = "campaignState_example"; // String | Filter results by the state of the campaign.  - `enabled`: Campaigns that are scheduled, running (activated), or expired. - `running`: Campaigns that are running (activated). - `disabled`: Campaigns that are disabled. - `expired`: Campaigns that are expired. - `archived`: Campaigns that are archived. 
         String name = "name_example"; // String | Filter results performing case-insensitive matching against the name of the campaign.
         String tags = "tags_example"; // String | Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \"name\" query parameter, a logical OR will be performed to search both tags and name for the provided values 
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
-        Long campaignGroupId = 56L; // Long | Filter results to campaigns owned by the specified campaign access group ID.
-        Long templateId = 56L; // Long | The ID of the campaign template this campaign was created from.
-        Long storeId = 56L; // Long | Filter results to campaigns linked to the specified store ID.
+        Integer campaignGroupId = 56; // Integer | Filter results to campaigns owned by the specified campaign access group ID.
+        Integer templateId = 56; // Integer | The ID of the campaign template this campaign was created from.
+        Integer storeId = 56; // Integer | Filter results to campaigns linked to the specified store ID.
         try {
             InlineResponse2008 result = apiInstance.getCampaigns(applicationId, pageSize, skip, sort, campaignState, name, tags, createdBefore, createdAfter, campaignGroupId, templateId, storeId);
             System.out.println(result);
@@ -6972,18 +7238,18 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **campaignState** | **String**| Filter results by the state of the campaign.  - &#x60;enabled&#x60;: Campaigns that are scheduled, running (activated), or expired. - &#x60;running&#x60;: Campaigns that are running (activated). - &#x60;disabled&#x60;: Campaigns that are disabled. - &#x60;expired&#x60;: Campaigns that are expired. - &#x60;archived&#x60;: Campaigns that are archived.  | [optional] [enum: enabled, disabled, archived, scheduled, running, expired, staged]
  **name** | **String**| Filter results performing case-insensitive matching against the name of the campaign. | [optional]
  **tags** | **String**| Filter results performing case-insensitive matching against the tags of the campaign. When used in conjunction with the \&quot;name\&quot; query parameter, a logical OR will be performed to search both tags and name for the provided values  | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the campaign creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
- **campaignGroupId** | **Long**| Filter results to campaigns owned by the specified campaign access group ID. | [optional]
- **templateId** | **Long**| The ID of the campaign template this campaign was created from. | [optional]
- **storeId** | **Long**| Filter results to campaigns linked to the specified store ID. | [optional]
+ **campaignGroupId** | **Integer**| Filter results to campaigns owned by the specified campaign access group ID. | [optional]
+ **templateId** | **Integer**| The ID of the campaign template this campaign was created from. | [optional]
+ **storeId** | **Integer**| Filter results to campaigns linked to the specified store ID. | [optional]
 
 ### Return type cool
 
@@ -7042,16 +7308,16 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
         String entityPath = "entityPath_example"; // String | Filter results on a case insensitive matching of the url path of the entity
-        Long userId = 56L; // Long | Filter results by user ID.
+        Integer userId = 56; // Integer | Filter results by user ID.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
-        Long managementKeyId = 56L; // Long | Filter results that match the given management key ID.
+        Integer managementKeyId = 56; // Integer | Filter results that match the given management key ID.
         Boolean includeOld = true; // Boolean | When this flag is set to false, the state without the change will not be returned. The default value is true.
         try {
             InlineResponse20044 result = apiInstance.getChanges(pageSize, skip, sort, applicationId, entityPath, userId, createdBefore, createdAfter, withTotalResultSize, managementKeyId, includeOld);
@@ -7072,16 +7338,16 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **entityPath** | **String**| Filter results on a case insensitive matching of the url path of the entity | [optional]
- **userId** | **Long**| Filter results by user ID. | [optional]
+ **userId** | **Integer**| Filter results by user ID. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the change creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
- **managementKeyId** | **Long**| Filter results that match the given management key ID. | [optional]
+ **managementKeyId** | **Integer**| Filter results that match the given management key ID. | [optional]
  **includeOld** | **Boolean**| When this flag is set to false, the state without the change will not be returned. The default value is true. | [optional]
 
 ### Return type cool
@@ -7140,9 +7406,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
         try {
             Collection result = apiInstance.getCollection(applicationId, campaignId, collectionId);
             System.out.println(result);
@@ -7162,9 +7428,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
 
 ### Return type cool
 
@@ -7223,9 +7489,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
             InlineResponse20021 result = apiInstance.getCollectionItems(collectionId, pageSize, skip);
             System.out.println(result);
@@ -7245,9 +7511,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -7306,10 +7572,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -7317,7 +7583,7 @@ public class Example {
         String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
         String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
         String redeemed = "redeemed_example"; // String | - `true`: only coupons where `usageCounter > 0` will be returned. - `false`: only coupons where `usageCounter = 0` will be returned. - This field cannot be used in conjunction with the `usable` query parameter. 
-        Long referralId = 56L; // Long | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+        Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
         String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
@@ -7345,10 +7611,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -7356,7 +7622,7 @@ Name | Type | Description  | Notes
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
  **redeemed** | **String**| - &#x60;true&#x60;: only coupons where &#x60;usageCounter &gt; 0&#x60; will be returned. - &#x60;false&#x60;: only coupons where &#x60;usageCounter &#x3D; 0&#x60; will be returned. - This field cannot be used in conjunction with the &#x60;usable&#x60; query parameter.  | [optional] [enum: true, false]
- **referralId** | **Long**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
+ **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
  **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
@@ -7424,10 +7690,10 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long customerId = 56L; // Long | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
             CustomerActivityReport result = apiInstance.getCustomerActivityReport(rangeStart, rangeEnd, applicationId, customerId, pageSize, skip);
             System.out.println(result);
@@ -7449,10 +7715,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **customerId** | **Long**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -7512,9 +7778,9 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String name = "name_example"; // String | Only return reports matching the customer name.
         String integrationId = "integrationId_example"; // String | Filter results performing an exact matching against the profile integration identifier.
@@ -7541,9 +7807,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **name** | **String**| Only return reports matching the customer name. | [optional]
  **integrationId** | **String**| Filter results performing an exact matching against the profile integration identifier. | [optional]
@@ -7606,10 +7872,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long customerId = 56L; // Long | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             CustomerAnalytics result = apiInstance.getCustomerAnalytics(applicationId, customerId, pageSize, skip, sort);
@@ -7630,10 +7896,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **customerId** | **Long**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -7692,7 +7958,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long customerId = 56L; // Long | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
+        Integer customerId = 56; // Integer | The value of the `id` property of a customer profile. Get it with the [List Application's customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint. 
         try {
             CustomerProfile result = apiInstance.getCustomerProfile(customerId);
             System.out.println(result);
@@ -7712,7 +7978,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customerId** | **Long**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
+ **customerId** | **Integer**| The value of the &#x60;id&#x60; property of a customer profile. Get it with the [List Application&#39;s customers](https://docs.talon.one/management-api#operation/getApplicationCustomers) endpoint.  |
 
 ### Return type cool
 
@@ -7735,7 +8001,7 @@ Name | Type | Description  | Notes
 
 ## getCustomerProfileAchievementProgress
 
-> InlineResponse20049 getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title)
+> InlineResponse20051 getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title)
 
 List customer achievements
 
@@ -7770,14 +8036,14 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String integrationId = "integrationId_example"; // String | The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier. 
-        Long pageSize = 50lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
-        Long achievementId = 56L; // Long | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
+        Integer pageSize = 50; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
+        Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         String title = "title_example"; // String | Filter results by the `title` of an achievement.
         try {
-            InlineResponse20049 result = apiInstance.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
+            InlineResponse20051 result = apiInstance.getCustomerProfileAchievementProgress(applicationId, integrationId, pageSize, skip, achievementId, title);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#getCustomerProfileAchievementProgress");
@@ -7795,16 +8061,16 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **integrationId** | **String**| The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
- **achievementId** | **Long**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
+ **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. | [optional]
  **title** | **String**| Filter results by the &#x60;title&#x60; of an achievement. | [optional]
 
 ### Return type cool
 
-[**InlineResponse20049**](InlineResponse20049.md)
+[**InlineResponse20051**](InlineResponse20051.md)
 
 ### Authorization
 
@@ -7860,8 +8126,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
         try {
             InlineResponse20027 result = apiInstance.getCustomerProfiles(pageSize, skip, sandbox);
@@ -7882,8 +8148,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or live customer. | [optional] [default to false]
 
 ### Return type cool
@@ -7943,8 +8209,8 @@ public class Example {
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         CustomerProfileSearchQuery body = new CustomerProfileSearchQuery(); // CustomerProfileSearchQuery | body
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean sandbox = false; // Boolean | Indicates whether you are pointing to a sandbox or live customer.
         try {
             InlineResponse20026 result = apiInstance.getCustomersByAttributes(body, pageSize, skip, sandbox);
@@ -7966,8 +8232,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CustomerProfileSearchQuery**](CustomerProfileSearchQuery.md)| body |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sandbox** | **Boolean**| Indicates whether you are pointing to a sandbox or live customer. | [optional] [default to false]
 
 ### Return type cool
@@ -8026,7 +8292,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         OffsetDateTime rangeStart = new OffsetDateTime(); // OffsetDateTime | Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime rangeEnd = new OffsetDateTime(); // OffsetDateTime | Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
@@ -8049,7 +8315,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **rangeStart** | **OffsetDateTime**| Only return results from after this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **rangeEnd** | **OffsetDateTime**| Only return results from before this timestamp.  **Note:** - This must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  |
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
@@ -8112,8 +8378,8 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String name = "name_example"; // String | Filter results to event types with the given name. This parameter implies `includeOldVersions`.
         Boolean includeOldVersions = false; // Boolean | Include all versions of every event type.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20042 result = apiInstance.getEventTypes(name, includeOldVersions, pageSize, skip, sort);
@@ -8136,8 +8402,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Filter results to event types with the given name. This parameter implies &#x60;includeOldVersions&#x60;. | [optional]
  **includeOldVersions** | **Boolean**| Include all versions of every event type. | [optional] [default to false]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -8196,10 +8462,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
-        Long campaignId = 56L; // Long | Filter by the campaign ID on which the limit counters are used.
+        Integer campaignId = 56; // Integer | Filter by the campaign ID on which the limit counters are used.
         String entity = "entity_example"; // String | The name of the entity type that was exported.
         try {
             InlineResponse20045 result = apiInstance.getExports(pageSize, skip, applicationId, campaignId, entity);
@@ -8220,10 +8486,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
- **campaignId** | **Long**| Filter by the campaign ID on which the limit counters are used. | [optional]
+ **campaignId** | **Integer**| Filter by the campaign ID on which the limit counters are used. | [optional]
  **entity** | **String**| The name of the entity type that was exported. | [optional] [enum: Coupon, Referral, Effect, CustomerSession, LoyaltyLedger, LoyaltyLedgerLog, Collection, AudienceMembership]
 
 ### Return type cool
@@ -8282,7 +8548,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         try {
             LoyaltyCard result = apiInstance.getLoyaltyCard(loyaltyProgramId, loyaltyCardId);
@@ -8303,7 +8569,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
 
 ### Return type cool
@@ -8365,12 +8631,12 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
         try {
             InlineResponse20019 result = apiInstance.getLoyaltyCardTransactionLogs(loyaltyProgramId, loyaltyCardId, startDate, endDate, pageSize, skip, subledgerId);
@@ -8391,12 +8657,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
 
 ### Return type cool
@@ -8457,12 +8723,12 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String identifier = "identifier_example"; // String | The card code by which to filter loyalty cards in the response.
-        Long profileId = 56L; // Long | Filter results by customer profile ID.
+        Integer profileId = 56; // Integer | Filter results by customer profile ID.
         String batchId = "batchId_example"; // String | Filter results by loyalty card batch ID.
         try {
             InlineResponse20018 result = apiInstance.getLoyaltyCards(loyaltyProgramId, pageSize, skip, sort, identifier, profileId, batchId);
@@ -8483,12 +8749,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **identifier** | **String**| The card code by which to filter loyalty cards in the response. | [optional]
- **profileId** | **Long**| Filter results by customer profile ID. | [optional]
+ **profileId** | **Integer**| Filter results by customer profile ID. | [optional]
  **batchId** | **String**| Filter results by loyalty card batch ID. | [optional]
 
 ### Return type cool
@@ -8629,7 +8895,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         try {
             LoyaltyProgram result = apiInstance.getLoyaltyProgram(loyaltyProgramId);
             System.out.println(result);
@@ -8649,7 +8915,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
 
 ### Return type cool
 
@@ -8707,13 +8973,13 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyTransactionType = "loyaltyTransactionType_example"; // String | Filter results by loyalty transaction type: - `manual`: Loyalty transaction that was done manually. - `session`: Loyalty transaction that resulted from a customer session. - `import`: Loyalty transaction that was imported from a CSV file. 
         String subledgerId = "subledgerId_example"; // String | The ID of the subledger by which we filter the data.
         OffsetDateTime startDate = new OffsetDateTime(); // OffsetDateTime | Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
         OffsetDateTime endDate = new OffsetDateTime(); // OffsetDateTime | Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, `T23:59:59` to specify the end of the day. The time zone setting considered is `UTC`. If you do not include a time component, a default time value of `T00:00:00` (midnight) in `UTC` is considered. 
-        Long pageSize = 50lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 50; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         try {
             InlineResponse20017 result = apiInstance.getLoyaltyProgramTransactions(loyaltyProgramId, loyaltyTransactionType, subledgerId, startDate, endDate, pageSize, skip);
             System.out.println(result);
@@ -8733,13 +8999,13 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyTransactionType** | **String**| Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  | [optional] [enum: manual, session, import]
  **subledgerId** | **String**| The ID of the subledger by which we filter the data. | [optional]
  **startDate** | **OffsetDateTime**| Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
  **endDate** | **OffsetDateTime**| Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  | [optional]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
 
 ### Return type cool
 
@@ -8874,7 +9140,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         try {
             LoyaltyDashboardData result = apiInstance.getLoyaltyStatistics(loyaltyProgramId);
             System.out.println(result);
@@ -8894,7 +9160,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
 
 ### Return type cool
 
@@ -8963,8 +9229,8 @@ public class Example {
         Boolean isSuccessful = true; // Boolean | Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to`true`, only log entries with `2xx` response codes are returned. When set to `false`, only log entries with `4xx` and `5xx` response codes are returned. 
         BigDecimal applicationId = new BigDecimal(); // BigDecimal | Filter results by Application ID.
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program.
-        Long responseCode = 56L; // Long | Filter results by response status code.
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program.
+        Integer responseCode = 56; // Integer | Filter results by response status code.
         String webhookIDs = "webhookIDs_example"; // String | Filter results by webhook ID (include up to 30 values, separated by a comma).
         try {
             MessageLogEntries result = apiInstance.getMessageLogs(entityType, messageID, changeType, notificationIDs, createdBefore, createdAfter, cursor, period, isSuccessful, applicationId, campaignId, loyaltyProgramId, responseCode, webhookIDs);
@@ -8987,7 +9253,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **entityType** | **String**| The entity type the log is related to.  | [enum: application, loyalty_program, webhook]
  **messageID** | **String**| Filter results by message ID. | [optional]
- **changeType** | **String**| Filter results by change type. | [optional] [enum: CampaignEvaluationTreeChanged, CampaignNotification, CouponCreated, CouponUpdated, CouponDeleted, AsyncCouponsCreated, CouponsDeleted, CouponsUpdated, CouponCodeExpiring, StrikethroughPrice, LoyaltyPointsAdded, LoyaltyPointsDeducted, LoyaltyPointsExpiring, LoyaltyPointsPendingToActive, TierWillDowngrade, TierUpgrade, TierDowngrade, LoyaltyCardPointsAdded, LoyaltyCardPointsDeducted, LoyaltyCardPointsExpiring]
+ **changeType** | **String**| Filter results by change type. | [optional] [enum: CampaignEvaluationTreeChanged, CampaignNotification, CouponCreated, CouponUpdated, CouponDeleted, AsyncCouponsCreated, CouponsDeleted, CouponsUpdated, CouponCodeExpiring, StrikethroughPrice, LoyaltyPointsAdded, LoyaltyPointsDeducted, LoyaltyPointsExpiring, LoyaltyPointsPendingToActive, LoyaltyAddedDeductedPointsBalances, LoyaltyCardAddedDeductedPointsBalances, TierWillDowngrade, TierUpgrade, TierDowngrade, LoyaltyCardPointsAdded, LoyaltyCardPointsDeducted, LoyaltyCardPointsExpiring]
  **notificationIDs** | **String**| Filter results by notification ID (include up to 30 values, separated by a comma). | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results where request and response times to return entries before parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results where request and response times to return entries after parameter value, expected to be an RFC3339 timestamp string. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -8996,8 +9262,8 @@ Name | Type | Description  | Notes
  **isSuccessful** | **Boolean**| Indicates whether to return log entries with either successful or unsuccessful HTTP response codes. When set to&#x60;true&#x60;, only log entries with &#x60;2xx&#x60; response codes are returned. When set to &#x60;false&#x60;, only log entries with &#x60;4xx&#x60; and &#x60;5xx&#x60; response codes are returned.  | [optional]
  **applicationId** | **BigDecimal**| Filter results by Application ID. | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. | [optional]
- **responseCode** | **Long**| Filter results by response status code. | [optional]
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. | [optional]
+ **responseCode** | **Integer**| Filter results by response status code. | [optional]
  **webhookIDs** | **String**| Filter results by webhook ID (include up to 30 values, separated by a comma). | [optional]
 
 ### Return type cool
@@ -9056,10 +9322,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String code = "code_example"; // String | Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
@@ -9086,10 +9352,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **code** | **String**| Filter results performing case-insensitive matching against the referral code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the referral creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
@@ -9154,7 +9420,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long roleId = 56L; // Long | The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
+        Integer roleId = 56; // Integer | The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
         try {
             RoleV2 result = apiInstance.getRoleV2(roleId);
             System.out.println(result);
@@ -9174,7 +9440,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **roleId** | **Long**| The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.  |
+ **roleId** | **Integer**| The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.  |
 
 ### Return type cool
 
@@ -9232,9 +9498,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long rulesetId = 56L; // Long | The ID of the ruleset.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer rulesetId = 56; // Integer | The ID of the ruleset.
         try {
             Ruleset result = apiInstance.getRuleset(applicationId, campaignId, rulesetId);
             System.out.println(result);
@@ -9254,9 +9520,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **rulesetId** | **Long**| The ID of the ruleset. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **rulesetId** | **Integer**| The ID of the ruleset. |
 
 ### Return type cool
 
@@ -9314,10 +9580,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse2009 result = apiInstance.getRulesets(applicationId, campaignId, pageSize, skip, sort);
@@ -9338,10 +9604,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -9400,7 +9666,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
         try {
             Store result = apiInstance.getStore(applicationId, storeId);
@@ -9421,7 +9687,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
 
 ### Return type cool
@@ -9481,7 +9747,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         try {
             User result = apiInstance.getUser(userId);
             System.out.println(result);
@@ -9501,7 +9767,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
 
 ### Return type cool
 
@@ -9559,8 +9825,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         try {
             InlineResponse20043 result = apiInstance.getUsers(pageSize, skip, sort);
@@ -9581,8 +9847,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
 
 ### Return type cool
@@ -9641,7 +9907,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long webhookId = 56L; // Long | The ID of the webhook. You can find the ID in the Campaign Manager's URL when you display the details of the webhook in **Account** > **Webhooks**. 
+        Integer webhookId = 56; // Integer | The ID of the webhook. You can find the ID in the Campaign Manager's URL when you display the details of the webhook in **Account** > **Webhooks**. 
         try {
             Webhook result = apiInstance.getWebhook(webhookId);
             System.out.println(result);
@@ -9661,7 +9927,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhookId** | **Long**| The ID of the webhook. You can find the ID in the Campaign Manager&#39;s URL when you display the details of the webhook in **Account** &gt; **Webhooks**.  |
+ **webhookId** | **Integer**| The ID of the webhook. You can find the ID in the Campaign Manager&#39;s URL when you display the details of the webhook in **Account** &gt; **Webhooks**.  |
 
 ### Return type cool
 
@@ -9719,8 +9985,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String integrationRequestUuid = "integrationRequestUuid_example"; // String | Filter results by integration request UUID.
         BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
@@ -9747,8 +10013,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **integrationRequestUuid** | **String**| Filter results by integration request UUID. | [optional]
  **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
@@ -9813,8 +10079,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String status = "status_example"; // String | Filter results by HTTP status codes.
         BigDecimal webhookId = new BigDecimal(); // BigDecimal | Filter results by webhook id.
@@ -9842,8 +10108,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **status** | **String**| Filter results by HTTP status codes. | [optional] [enum: success, error]
  **webhookId** | **BigDecimal**| Filter results by webhook id. | [optional]
@@ -9911,11 +10177,11 @@ public class Example {
         ManagementApi apiInstance = new ManagementApi(defaultClient);
         String applicationIds = "applicationIds_example"; // String | Checks if the given catalog or its attributes are referenced in the specified Application ID.  **Note**: If no Application ID is provided, we check for all connected Applications. 
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String creationType = "creationType_example"; // String | Filter results by creation type.
         String visibility = "visibility_example"; // String | Filter results by visibility.
-        Long outgoingIntegrationsTypeId = 56L; // Long | Filter results by outgoing integration type ID.
+        Integer outgoingIntegrationsTypeId = 56; // Integer | Filter results by outgoing integration type ID.
         String title = "title_example"; // String | Filter results performing case-insensitive matching against the webhook title.
         try {
             InlineResponse20039 result = apiInstance.getWebhooks(applicationIds, sort, pageSize, skip, creationType, visibility, outgoingIntegrationsTypeId, title);
@@ -9938,11 +10204,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationIds** | **String**| Checks if the given catalog or its attributes are referenced in the specified Application ID.  **Note**: If no Application ID is provided, we check for all connected Applications.  | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **creationType** | **String**| Filter results by creation type. | [optional] [enum: templateWebhooks, webhooks]
  **visibility** | **String**| Filter results by visibility. | [optional] [enum: visible, hidden]
- **outgoingIntegrationsTypeId** | **Long**| Filter results by outgoing integration type ID. | [optional]
+ **outgoingIntegrationsTypeId** | **Integer**| Filter results by outgoing integration type ID. | [optional]
  **title** | **String**| Filter results performing case-insensitive matching against the webhook title. | [optional]
 
 ### Return type cool
@@ -10001,7 +10267,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importAccountCollection(collectionId, upFile);
@@ -10022,7 +10288,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10083,7 +10349,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long attributeId = 56L; // Long | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
+        Integer attributeId = 56; // Integer | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importAllowedList(attributeId, upFile);
@@ -10104,7 +10370,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributeId** | **Long**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
+ **attributeId** | **Integer**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10166,7 +10432,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long audienceId = 56L; // Long | The ID of the audience.
+        Integer audienceId = 56; // Integer | The ID of the audience.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importAudiencesMemberships(audienceId, upFile);
@@ -10187,7 +10453,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audienceId** | **Long**| The ID of the audience. |
+ **audienceId** | **Integer**| The ID of the audience. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10210,6 +10476,93 @@ Name | Type | Description  | Notes
 | **400** | Bad request |  -  |
 | **401** | Unauthorized - Invalid API key |  -  |
 | **404** | Not found |  -  |
+
+
+## importCampaignStoreBudget
+
+> ModelImport importCampaignStoreBudget(applicationId, campaignId, action, period, upFile)
+
+Import campaign store budgets
+
+Upload a CSV file containing store budgets for a given campaign.  Send the file as multipart data.  The CSV file **must** only contain the following columns: - &#x60;store_integration_id&#x60;: The identifier of the store. - &#x60;limit&#x60;: The budget limit for the store.  The import **replaces** the previous list of store budgets. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        String action = "action_example"; // String | The action that this budget is limiting.
+        String period = "period_example"; // String | The period to which the limit applies.  **Note**: For budgets with no period, set this to `overall`. 
+        String upFile = "upFile_example"; // String | The file containing the data that is being imported.
+        try {
+            ModelImport result = apiInstance.importCampaignStoreBudget(applicationId, campaignId, action, period, upFile);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#importCampaignStoreBudget");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **action** | **String**| The action that this budget is limiting. | [optional] [enum: setDiscount]
+ **period** | **String**| The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  | [optional] [enum: overall, daily, weekly, monthly, yearly]
+ **upFile** | **String**| The file containing the data that is being imported. | [optional]
+
+### Return type cool
+
+[**ModelImport**](ModelImport.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad request |  -  |
 
 
 ## importCampaignStores
@@ -10249,8 +10602,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importCampaignStores(applicationId, campaignId, upFile);
@@ -10271,8 +10624,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10334,9 +10687,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importCollection(applicationId, campaignId, collectionId, upFile);
@@ -10357,9 +10710,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10419,8 +10772,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Boolean skipDuplicates = true; // Boolean | An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when `skipDuplicates=true`. 
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
@@ -10442,8 +10795,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **skipDuplicates** | **Boolean**| An indicator of whether to skip duplicate coupon values instead of causing an error. Duplicate values are ignored when &#x60;skipDuplicates&#x3D;true&#x60;.  | [optional]
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
@@ -10503,7 +10856,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importLoyaltyCards(loyaltyProgramId, upFile);
@@ -10524,7 +10877,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10585,7 +10938,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importLoyaltyCustomersTiers(loyaltyProgramId, upFile);
@@ -10606,7 +10959,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10633,7 +10986,7 @@ Name | Type | Description  | Notes
 
 ## importLoyaltyPoints
 
-> ModelImport importLoyaltyPoints(loyaltyProgramId, upFile)
+> ModelImport importLoyaltyPoints(loyaltyProgramId, notificationsEnabled, upFile)
 
 Import loyalty points
 
@@ -10668,10 +11021,11 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Boolean notificationsEnabled = true; // Boolean | Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer's tier or offsets their negative points balance.  This parameter is optional and defaults to `true`. 
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
-            ModelImport result = apiInstance.importLoyaltyPoints(loyaltyProgramId, upFile);
+            ModelImport result = apiInstance.importLoyaltyPoints(loyaltyProgramId, notificationsEnabled, upFile);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#importLoyaltyPoints");
@@ -10689,7 +11043,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the loyalty program. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **notificationsEnabled** | **Boolean**| Indicates whether the points import triggers notifications about its effects. For example, a notification is sent if the import upgrades a customer&#39;s tier or offsets their negative points balance.  This parameter is optional and defaults to &#x60;true&#x60;.  | [optional]
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10748,7 +11103,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long poolId = 56L; // Long | The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
+        Integer poolId = 56; // Integer | The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importPoolGiveaways(poolId, upFile);
@@ -10769,7 +11124,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **poolId** | **Long**| The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. |
+ **poolId** | **Integer**| The ID of the pool. You can find it in the Campaign Manager, in the **Giveaways** section. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10828,8 +11183,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String upFile = "upFile_example"; // String | The file containing the data that is being imported.
         try {
             ModelImport result = apiInstance.importReferrals(applicationId, campaignId, upFile);
@@ -10850,8 +11205,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **upFile** | **String**| The file containing the data that is being imported. | [optional]
 
 ### Return type cool
@@ -10987,8 +11342,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
@@ -11011,8 +11366,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
@@ -11041,7 +11396,7 @@ Name | Type | Description  | Notes
 
 ## listAchievements
 
-> InlineResponse20048 listAchievements(applicationId, campaignId, pageSize, skip, title)
+> InlineResponse20050 listAchievements(applicationId, campaignId, pageSize, skip, title)
 
 List achievements
 
@@ -11076,13 +11431,13 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 50lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 50; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String title = "title_example"; // String | Filter by the display name for the achievement in the campaign manager.  **Note**: If no `title` is provided, all the achievements from the campaign are returned. 
         try {
-            InlineResponse20048 result = apiInstance.listAchievements(applicationId, campaignId, pageSize, skip, title);
+            InlineResponse20050 result = apiInstance.listAchievements(applicationId, campaignId, pageSize, skip, title);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ManagementApi#listAchievements");
@@ -11100,15 +11455,15 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 50l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 50]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **title** | **String**| Filter by the display name for the achievement in the campaign manager.  **Note**: If no &#x60;title&#x60; is provided, all the achievements from the campaign are returned.  | [optional]
 
 ### Return type cool
 
-[**InlineResponse20048**](InlineResponse20048.md)
+[**InlineResponse20050**](InlineResponse20050.md)
 
 ### Authorization
 
@@ -11199,6 +11554,93 @@ This endpoint does not need any parameter.
 | **200** | OK |  -  |
 
 
+## listCampaignStoreBudgetLimits
+
+> InlineResponse20048 listCampaignStoreBudgetLimits(applicationId, campaignId, action, period)
+
+List campaign store budget limits
+
+Return the store budget limits for a given campaign.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        String action = "action_example"; // String | The action that this budget is limiting.
+        String period = "period_example"; // String | The period to which the limit applies.  **Note**: For budgets with no period, set this to `overall`. 
+        try {
+            InlineResponse20048 result = apiInstance.listCampaignStoreBudgetLimits(applicationId, campaignId, action, period);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#listCampaignStoreBudgetLimits");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **action** | **String**| The action that this budget is limiting. | [optional] [enum: setDiscount]
+ **period** | **String**| The period to which the limit applies.  **Note**: For budgets with no period, set this to &#x60;overall&#x60;.  | [optional] [enum: overall, daily, weekly, monthly, yearly]
+
+### Return type cool
+
+[**InlineResponse20048**](InlineResponse20048.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized - Invalid API key |  -  |
+| **404** | Not found |  -  |
+
+
 ## listCatalogItems
 
 > InlineResponse20037 listCatalogItems(catalogId, pageSize, skip, withTotalResultSize, sku, productNames)
@@ -11236,9 +11678,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long catalogId = 56L; // Long | The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer catalogId = 56; // Integer | The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         List<String> sku = Arrays.asList(); // List<String> | Filter results by one or more SKUs. Must be exact match.
         List<String> productNames = Arrays.asList(); // List<String> | Filter results by one or more product names. Must be exact match.
@@ -11261,9 +11703,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **catalogId** | **Long**| The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **catalogId** | **Integer**| The ID of the catalog. You can find the ID in the Campaign Manager in **Account** &gt; **Tools** &gt; **Cart item catalogs**. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **sku** | [**List&lt;String&gt;**](String.md)| Filter results by one or more SKUs. Must be exact match. | [optional]
  **productNames** | [**List&lt;String&gt;**](String.md)| Filter results by one or more product names. Must be exact match. | [optional]
@@ -11324,10 +11766,10 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
@@ -11350,10 +11792,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
@@ -11415,9 +11857,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         String name = "name_example"; // String | Filter by collection name.
@@ -11440,9 +11882,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **name** | **String**| Filter by collection name. | [optional]
@@ -11504,9 +11946,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         Boolean withTotalResultSize = true; // Boolean | When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When `true`: `hasMore` is true when there is a next page. `totalResultSize` is always zero. - When `false`: `hasMore` is always false. `totalResultSize` contains the total number of results for this query. 
         BigDecimal campaignId = new BigDecimal(); // BigDecimal | Filter results by campaign ID.
@@ -11532,9 +11974,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **withTotalResultSize** | **Boolean**| When this flag is set, the result includes the total size of the result, across all pages. This might decrease performance on large data sets.  - When &#x60;true&#x60;: &#x60;hasMore&#x60; is true when there is a next page. &#x60;totalResultSize&#x60; is always zero. - When &#x60;false&#x60;: &#x60;hasMore&#x60; is always false. &#x60;totalResultSize&#x60; contains the total number of results for this query.  | [optional]
  **campaignId** | **BigDecimal**| Filter results by campaign ID. | [optional]
@@ -11796,6 +12238,84 @@ Name | Type | Description  | Notes
 | **204** | Created |  -  |
 
 
+## scimCreateGroup
+
+> ScimGroup scimCreateGroup(body)
+
+Create SCIM group
+
+Create a new Talon.One group using the SCIM Group provisioning protocol with an identity provider, for example, Microsoft Entra ID, and assign members from the payload to the new group. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        ScimBaseGroup body = new ScimBaseGroup(); // ScimBaseGroup | body
+        try {
+            ScimGroup result = apiInstance.scimCreateGroup(body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimCreateGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**ScimBaseGroup**](ScimBaseGroup.md)| body |
+
+### Return type cool
+
+[**ScimGroup**](ScimGroup.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+
+
 ## scimCreateUser
 
 > ScimUser scimCreateUser(body)
@@ -11874,6 +12394,83 @@ Name | Type | Description  | Notes
 | **201** | Created |  -  |
 
 
+## scimDeleteGroup
+
+> scimDeleteGroup(groupId)
+
+Delete SCIM group
+
+Delete a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer groupId = 56; // Integer | The ID of the group.
+        try {
+            apiInstance.scimDeleteGroup(groupId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimDeleteGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **Integer**| The ID of the group. |
+
+### Return type cool
+
+null (empty response body)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+
+
 ## scimDeleteUser
 
 > scimDeleteUser(userId)
@@ -11911,7 +12508,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         try {
             apiInstance.scimDeleteUser(userId);
         } catch (ApiException e) {
@@ -11930,7 +12527,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
 
 ### Return type cool
 
@@ -11949,6 +12546,158 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content |  -  |
+
+
+## scimGetGroup
+
+> ScimGroup scimGetGroup(groupId)
+
+Get SCIM group
+
+Retrieve data for a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer groupId = 56; // Integer | The ID of the group.
+        try {
+            ScimGroup result = apiInstance.scimGetGroup(groupId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimGetGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **Integer**| The ID of the group. |
+
+### Return type cool
+
+[**ScimGroup**](ScimGroup.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Group details |  -  |
+
+
+## scimGetGroups
+
+> ScimGroupsListResponse scimGetGroups()
+
+List SCIM groups
+
+Retrieve a paginated list of groups created using the SCIM protocol with an identity provider, for example, Microsoft Entra ID. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        try {
+            ScimGroupsListResponse result = apiInstance.scimGetGroups();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimGetGroups");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type cool
+
+[**ScimGroupsListResponse**](ScimGroupsListResponse.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List of SCIM groups |  -  |
 
 
 ## scimGetResourceTypes
@@ -12210,7 +12959,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         try {
             ScimUser result = apiInstance.scimGetUser(userId);
             System.out.println(result);
@@ -12230,7 +12979,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
 
 ### Return type cool
 
@@ -12325,6 +13074,86 @@ This endpoint does not need any parameter.
 | **200** | List of SCIM users |  -  |
 
 
+## scimPatchGroup
+
+> ScimGroup scimPatchGroup(groupId, body)
+
+Update SCIM group attributes
+
+Update certain attributes of a group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint allows for selective adding, removing, or replacing of specific group attributes while other attributes remain unchanged. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer groupId = 56; // Integer | The ID of the group.
+        ScimPatchRequest body = new ScimPatchRequest(); // ScimPatchRequest | body
+        try {
+            ScimGroup result = apiInstance.scimPatchGroup(groupId, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimPatchGroup");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **Integer**| The ID of the group. |
+ **body** | [**ScimPatchRequest**](ScimPatchRequest.md)| body |
+
+### Return type cool
+
+[**ScimGroup**](ScimGroup.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Group details |  -  |
+
+
 ## scimPatchUser
 
 > ScimUser scimPatchUser(userId, body)
@@ -12362,7 +13191,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         ScimPatchRequest body = new ScimPatchRequest(); // ScimPatchRequest | body
         try {
             ScimUser result = apiInstance.scimPatchUser(userId, body);
@@ -12383,7 +13212,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
  **body** | [**ScimPatchRequest**](ScimPatchRequest.md)| body |
 
 ### Return type cool
@@ -12403,6 +13232,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | User details |  -  |
+
+
+## scimReplaceGroupAttributes
+
+> ScimGroup scimReplaceGroupAttributes(groupId, body)
+
+Update SCIM group
+
+Update the details of a specific group created using the SCIM provisioning protocol with an identity provider, for example, Microsoft Entra ID. This endpoint replaces all attributes of the given group with the attributes provided in the request payload. In Talon.One, a &#x60;Group&#x60; corresponds to a [role](https://docs.talon.one/docs/product/account/account-settings/managing-roles), and &#x60;members&#x60; are the [users](https://docs.talon.one/docs/product/account/account-settings/managing-users) assigned to that role. 
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer groupId = 56; // Integer | The ID of the group.
+        ScimBaseGroup body = new ScimBaseGroup(); // ScimBaseGroup | body
+        try {
+            ScimGroup result = apiInstance.scimReplaceGroupAttributes(groupId, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#scimReplaceGroupAttributes");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | **Integer**| The ID of the group. |
+ **body** | [**ScimBaseGroup**](ScimBaseGroup.md)| body |
+
+### Return type cool
+
+[**ScimGroup**](ScimGroup.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Group details |  -  |
 
 
 ## scimReplaceUserAttributes
@@ -12442,7 +13351,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         ScimNewUser body = new ScimNewUser(); // ScimNewUser | body
         try {
             ScimUser result = apiInstance.scimReplaceUserAttributes(userId, body);
@@ -12463,7 +13372,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
  **body** | [**ScimNewUser**](ScimNewUser.md)| body |
 
 ### Return type cool
@@ -12522,17 +13431,17 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         Object body = null; // Object | body
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
         String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-        Long referralId = 56L; // Long | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+        Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
         String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
@@ -12556,17 +13465,17 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **body** | **Object**| body |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
- **referralId** | **Long**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
+ **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
  **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
@@ -12628,18 +13537,18 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         Object body = null; // Object | body
-        Long pageSize = 1000lL; // Long | The number of items in the response.
-        Long skip = 56L; // Long | The number of items to skip when paging through large result sets.
+        Integer pageSize = 1000; // Integer | The number of items in the response.
+        Integer skip = 56; // Integer | The number of items to skip when paging through large result sets.
         String sort = "sort_example"; // String | The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with `-`.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations. 
         String value = "value_example"; // String | Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters.
         OffsetDateTime createdBefore = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         OffsetDateTime createdAfter = new OffsetDateTime(); // OffsetDateTime | Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally.
         String valid = "valid_example"; // String | Either \"expired\", \"validNow\", or \"validFuture\". The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future. 
         String usable = "usable_example"; // String | Either \"true\" or \"false\". If \"true\", only coupons where `usageCounter < usageLimit` will be returned, \"false\" will return only coupons where `usageCounter >= usageLimit`. 
-        Long referralId = 56L; // Long | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
+        Integer referralId = 56; // Integer | Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code.
         String recipientIntegrationId = "recipientIntegrationId_example"; // String | Filter results by match with a profile ID specified in the coupon's RecipientIntegrationId field.
         Boolean exactMatch = false; // Boolean | Filter results to an exact case-insensitive matching against the coupon code.
         String batchId = "batchId_example"; // String | Filter results by batches of coupons
@@ -12662,18 +13571,18 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | **Object**| body |
- **pageSize** | **Long**| The number of items in the response. | [optional] [default to 1000l]
- **skip** | **Long**| The number of items to skip when paging through large result sets. | [optional]
+ **pageSize** | **Integer**| The number of items in the response. | [optional] [default to 1000]
+ **skip** | **Integer**| The number of items to skip when paging through large result sets. | [optional]
  **sort** | **String**| The field by which results should be sorted. By default, results are sorted in ascending order. To sort them in descending order, prefix the field name with &#x60;-&#x60;.  **Note:** You may not be able to use all fields for sorting. This is due to performance limitations.  | [optional]
  **value** | **String**| Filter results performing case-insensitive matching against the coupon code. Both the code and the query are folded to remove all non-alpha-numeric characters. | [optional]
  **createdBefore** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **createdAfter** | **OffsetDateTime**| Filter results comparing the parameter value, expected to be an RFC3339 timestamp string, to the coupon creation timestamp. You can use any time zone setting. Talon.One will convert to UTC internally. | [optional]
  **valid** | **String**| Either \&quot;expired\&quot;, \&quot;validNow\&quot;, or \&quot;validFuture\&quot;. The first option matches coupons in which the expiration date is set and in the past. The second matches coupons in which start date is null or in the past and expiration date is null or in the future, the third matches coupons in which start date is set and in the future.  | [optional] [enum: expired, validNow, validFuture]
  **usable** | **String**| Either \&quot;true\&quot; or \&quot;false\&quot;. If \&quot;true\&quot;, only coupons where &#x60;usageCounter &lt; usageLimit&#x60; will be returned, \&quot;false\&quot; will return only coupons where &#x60;usageCounter &gt;&#x3D; usageLimit&#x60;.  | [optional] [enum: true, false]
- **referralId** | **Long**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
+ **referralId** | **Integer**| Filter the results by matching them with the ID of a referral. This filter shows the coupons created by redeeming a referral code. | [optional]
  **recipientIntegrationId** | **String**| Filter results by match with a profile ID specified in the coupon&#39;s RecipientIntegrationId field. | [optional]
  **exactMatch** | **Boolean**| Filter results to an exact case-insensitive matching against the coupon code. | [optional] [default to false]
  **batchId** | **String**| Filter results by batches of coupons | [optional]
@@ -12695,6 +13604,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+
+
+## summarizeCampaignStoreBudget
+
+> InlineResponse20049 summarizeCampaignStoreBudget(applicationId, campaignId)
+
+Get summary of campaign store budgets
+
+Fetch a summary of all store budget information for a given campaign.
+
+### Example
+
+```java
+// Import classes:
+import one.talon.ApiClient;
+import one.talon.ApiException;
+import one.talon.Configuration;
+import one.talon.auth.*;
+import one.talon.models.*;
+import one.talon.api.ManagementApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://yourbaseurl.talon.one");
+        
+        // Configure API key authorization: management_key
+        ApiKeyAuth management_key = (ApiKeyAuth) defaultClient.getAuthentication("management_key");
+        management_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //management_key.setApiKeyPrefix("Token");
+
+        // Configure API key authorization: manager_auth
+        ApiKeyAuth manager_auth = (ApiKeyAuth) defaultClient.getAuthentication("manager_auth");
+        manager_auth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //manager_auth.setApiKeyPrefix("Token");
+
+        ManagementApi apiInstance = new ManagementApi(defaultClient);
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        try {
+            InlineResponse20049 result = apiInstance.summarizeCampaignStoreBudget(applicationId, campaignId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ManagementApi#summarizeCampaignStoreBudget");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+
+### Return type cool
+
+[**InlineResponse20049**](InlineResponse20049.md)
+
+### Authorization
+
+[management_key](../README.md#management_key), [manager_auth](../README.md#manager_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad request |  -  |
+| **401** | Unauthorized - Invalid API key |  -  |
+| **404** | Not found |  -  |
 
 
 ## transferLoyaltyCard
@@ -12734,7 +13726,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         TransferLoyaltyCard body = new TransferLoyaltyCard(); // TransferLoyaltyCard | body
         try {
@@ -12755,7 +13747,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**TransferLoyaltyCard**](TransferLoyaltyCard.md)| body |
 
@@ -12818,7 +13810,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint.
         UpdateCollection body = new UpdateCollection(); // UpdateCollection | body
         try {
             Collection result = apiInstance.updateAccountCollection(collectionId, body);
@@ -12839,7 +13831,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in account](#operation/listAccountCollections) endpoint. |
  **body** | [**UpdateCollection**](UpdateCollection.md)| body |
 
 ### Return type cool
@@ -12901,9 +13893,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long achievementId = 56L; // Long | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer achievementId = 56; // Integer | The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint.
         UpdateAchievement body = new UpdateAchievement(); // UpdateAchievement | body
         try {
             Achievement result = apiInstance.updateAchievement(applicationId, campaignId, achievementId, body);
@@ -12924,9 +13916,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **achievementId** | **Long**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **achievementId** | **Integer**| The ID of the achievement. You can get this ID with the [List achievement](https://docs.talon.one/management-api#tag/Achievements/operation/listAchievements) endpoint. |
  **body** | [**UpdateAchievement**](UpdateAchievement.md)| body |
 
 ### Return type cool
@@ -12988,7 +13980,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long additionalCostId = 56L; // Long | The ID of the additional cost. You can find the ID the the Campaign Manager's URL when you display the details of the cost in **Account** > **Tools** > **Additional costs**. 
+        Integer additionalCostId = 56; // Integer | The ID of the additional cost. You can find the ID the the Campaign Manager's URL when you display the details of the cost in **Account** > **Tools** > **Additional costs**. 
         NewAdditionalCost body = new NewAdditionalCost(); // NewAdditionalCost | body
         try {
             AccountAdditionalCost result = apiInstance.updateAdditionalCost(additionalCostId, body);
@@ -13009,7 +14001,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **additionalCostId** | **Long**| The ID of the additional cost. You can find the ID the the Campaign Manager&#39;s URL when you display the details of the cost in **Account** &gt; **Tools** &gt; **Additional costs**.  |
+ **additionalCostId** | **Integer**| The ID of the additional cost. You can find the ID the the Campaign Manager&#39;s URL when you display the details of the cost in **Account** &gt; **Tools** &gt; **Additional costs**.  |
  **body** | [**NewAdditionalCost**](NewAdditionalCost.md)| body |
 
 ### Return type cool
@@ -13068,7 +14060,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long attributeId = 56L; // Long | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
+        Integer attributeId = 56; // Integer | The ID of the attribute. You can find the ID in the Campaign Manager's URL when you display the details of an attribute in **Account** > **Tools** > **Attributes**.
         NewAttribute body = new NewAttribute(); // NewAttribute | body
         try {
             Attribute result = apiInstance.updateAttribute(attributeId, body);
@@ -13089,7 +14081,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attributeId** | **Long**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
+ **attributeId** | **Integer**| The ID of the attribute. You can find the ID in the Campaign Manager&#39;s URL when you display the details of an attribute in **Account** &gt; **Tools** &gt; **Attributes**. |
  **body** | [**NewAttribute**](NewAttribute.md)| body |
 
 ### Return type cool
@@ -13148,8 +14140,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         UpdateCampaign body = new UpdateCampaign(); // UpdateCampaign | body
         try {
             Campaign result = apiInstance.updateCampaign(applicationId, campaignId, body);
@@ -13170,8 +14162,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**UpdateCampaign**](UpdateCampaign.md)| body |
 
 ### Return type cool
@@ -13230,9 +14222,9 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
-        Long collectionId = 56L; // Long | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer collectionId = 56; // Integer | The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint.
         UpdateCampaignCollection body = new UpdateCampaignCollection(); // UpdateCampaignCollection | body
         try {
             Collection result = apiInstance.updateCollection(applicationId, campaignId, collectionId, body);
@@ -13253,9 +14245,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
- **collectionId** | **Long**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **collectionId** | **Integer**| The ID of the collection. You can get it with the [List collections in Application](#operation/listCollectionsInApplication) endpoint. |
  **body** | [**UpdateCampaignCollection**](UpdateCampaignCollection.md)| body |
 
 ### Return type cool
@@ -13315,8 +14307,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String couponId = "couponId_example"; // String | The internal ID of the coupon code. You can find this value in the `id` property from the [List coupons](https://docs.talon.one/management-api#tag/Coupons/operation/getCouponsWithoutTotalCount) endpoint response. 
         UpdateCoupon body = new UpdateCoupon(); // UpdateCoupon | body
         try {
@@ -13338,8 +14330,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **couponId** | **String**| The internal ID of the coupon code. You can find this value in the &#x60;id&#x60; property from the [List coupons](https://docs.talon.one/management-api#tag/Coupons/operation/getCouponsWithoutTotalCount) endpoint response.  |
  **body** | [**UpdateCoupon**](UpdateCoupon.md)| body |
 
@@ -13399,8 +14391,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         UpdateCouponBatch body = new UpdateCouponBatch(); // UpdateCouponBatch | body
         try {
             apiInstance.updateCouponBatch(applicationId, campaignId, body);
@@ -13420,8 +14412,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **body** | [**UpdateCouponBatch**](UpdateCouponBatch.md)| body |
 
 ### Return type cool
@@ -13480,7 +14472,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long loyaltyProgramId = 56L; // Long | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
+        Integer loyaltyProgramId = 56; // Integer | Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint. 
         String loyaltyCardId = "loyaltyCardId_example"; // String | Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint. 
         UpdateLoyaltyCard body = new UpdateLoyaltyCard(); // UpdateLoyaltyCard | body
         try {
@@ -13502,7 +14494,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **loyaltyProgramId** | **Long**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
+ **loyaltyProgramId** | **Integer**| Identifier of the card-based loyalty program containing the loyalty card. You can get the ID with the [List loyalty programs](https://docs.talon.one/management-api#tag/Loyalty/operation/getLoyaltyPrograms) endpoint.  |
  **loyaltyCardId** | **String**| Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  |
  **body** | [**UpdateLoyaltyCard**](UpdateLoyaltyCard.md)| body |
 
@@ -13565,8 +14557,8 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
-        Long campaignId = 56L; // Long | The ID of the campaign. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer campaignId = 56; // Integer | The ID of the campaign. It is displayed in your Talon.One deployment URL.
         String referralId = "referralId_example"; // String | The ID of the referral code.
         UpdateReferral body = new UpdateReferral(); // UpdateReferral | body
         try {
@@ -13588,8 +14580,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
- **campaignId** | **Long**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **campaignId** | **Integer**| The ID of the campaign. It is displayed in your Talon.One deployment URL. |
  **referralId** | **String**| The ID of the referral code. |
  **body** | [**UpdateReferral**](UpdateReferral.md)| body |
 
@@ -13649,7 +14641,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long roleId = 56L; // Long | The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
+        Integer roleId = 56; // Integer | The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint. 
         RoleV2Base body = new RoleV2Base(); // RoleV2Base | body
         try {
             RoleV2 result = apiInstance.updateRoleV2(roleId, body);
@@ -13670,7 +14662,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **roleId** | **Long**| The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.  |
+ **roleId** | **Integer**| The ID of role.  **Note**: To find the ID of a role, use the [List roles](/management-api#tag/Roles/operation/listAllRolesV2) endpoint.  |
  **body** | [**RoleV2Base**](RoleV2Base.md)| body |
 
 ### Return type cool
@@ -13729,7 +14721,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long applicationId = 56L; // Long | The ID of the Application. It is displayed in your Talon.One deployment URL.
+        Integer applicationId = 56; // Integer | The ID of the Application. It is displayed in your Talon.One deployment URL.
         String storeId = "storeId_example"; // String | The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint. 
         NewStore body = new NewStore(); // NewStore | body
         try {
@@ -13751,7 +14743,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **Long**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
+ **applicationId** | **Integer**| The ID of the Application. It is displayed in your Talon.One deployment URL. |
  **storeId** | **String**| The ID of the store. You can get this ID with the [List stores](#tag/Stores/operation/listStores) endpoint.  |
  **body** | [**NewStore**](NewStore.md)| body |
 
@@ -13813,7 +14805,7 @@ public class Example {
         //manager_auth.setApiKeyPrefix("Token");
 
         ManagementApi apiInstance = new ManagementApi(defaultClient);
-        Long userId = 56L; // Long | The ID of the user.
+        Integer userId = 56; // Integer | The ID of the user.
         UpdateUser body = new UpdateUser(); // UpdateUser | body
         try {
             User result = apiInstance.updateUser(userId, body);
@@ -13834,7 +14826,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userId** | **Long**| The ID of the user. |
+ **userId** | **Integer**| The ID of the user. |
  **body** | [**UpdateUser**](UpdateUser.md)| body |
 
 ### Return type cool

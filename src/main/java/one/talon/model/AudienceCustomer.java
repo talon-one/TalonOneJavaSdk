@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 public class AudienceCustomer {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -53,11 +53,11 @@ public class AudienceCustomer {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_CLOSED_SESSIONS = "closedSessions";
   @SerializedName(SERIALIZED_NAME_CLOSED_SESSIONS)
-  private Long closedSessions;
+  private Integer closedSessions;
 
   public static final String SERIALIZED_NAME_TOTAL_SALES = "totalSales";
   @SerializedName(SERIALIZED_NAME_TOTAL_SALES)
@@ -81,31 +81,31 @@ public class AudienceCustomer {
 
   public static final String SERIALIZED_NAME_CONNECTED_APPLICATIONS_IDS = "connectedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_CONNECTED_APPLICATIONS_IDS)
-  private List<Long> connectedApplicationsIds = null;
+  private List<Integer> connectedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_CONNECTED_AUDIENCES = "connectedAudiences";
   @SerializedName(SERIALIZED_NAME_CONNECTED_AUDIENCES)
-  private List<Long> connectedAudiences = null;
+  private List<Integer> connectedAudiences = null;
 
 
-  public AudienceCustomer id(Long id) {
+  public AudienceCustomer id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of the customer profile.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of the customer profile.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -176,7 +176,7 @@ public class AudienceCustomer {
   }
 
 
-  public AudienceCustomer accountId(Long accountId) {
+  public AudienceCustomer accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -188,34 +188,34 @@ public class AudienceCustomer {
   **/
   @ApiModelProperty(example = "31", required = true, value = "The ID of the Talon.One account that owns this profile.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public AudienceCustomer closedSessions(Long closedSessions) {
+  public AudienceCustomer closedSessions(Integer closedSessions) {
     
     this.closedSessions = closedSessions;
     return this;
   }
 
    /**
-   * The total amount of closed sessions by a customer. A closed session is a successful purchase.
+   * The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).
    * @return closedSessions
   **/
-  @ApiModelProperty(example = "3", required = true, value = "The total amount of closed sessions by a customer. A closed session is a successful purchase.")
+  @ApiModelProperty(example = "3", required = true, value = "The total number of closed sessions. Does not include closed sessions that have been cancelled or reopened. See the [docs](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions#customer-session-states).")
 
-  public Long getClosedSessions() {
+  public Integer getClosedSessions() {
     return closedSessions;
   }
 
 
-  public void setClosedSessions(Long closedSessions) {
+  public void setClosedSessions(Integer closedSessions) {
     this.closedSessions = closedSessions;
   }
 
@@ -349,15 +349,15 @@ public class AudienceCustomer {
   }
 
 
-  public AudienceCustomer connectedApplicationsIds(List<Long> connectedApplicationsIds) {
+  public AudienceCustomer connectedApplicationsIds(List<Integer> connectedApplicationsIds) {
     
     this.connectedApplicationsIds = connectedApplicationsIds;
     return this;
   }
 
-  public AudienceCustomer addConnectedApplicationsIdsItem(Long connectedApplicationsIdsItem) {
+  public AudienceCustomer addConnectedApplicationsIdsItem(Integer connectedApplicationsIdsItem) {
     if (this.connectedApplicationsIds == null) {
-      this.connectedApplicationsIds = new ArrayList<Long>();
+      this.connectedApplicationsIds = new ArrayList<Integer>();
     }
     this.connectedApplicationsIds.add(connectedApplicationsIdsItem);
     return this;
@@ -370,25 +370,25 @@ public class AudienceCustomer {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the Applications that are connected to this customer profile.")
 
-  public List<Long> getConnectedApplicationsIds() {
+  public List<Integer> getConnectedApplicationsIds() {
     return connectedApplicationsIds;
   }
 
 
-  public void setConnectedApplicationsIds(List<Long> connectedApplicationsIds) {
+  public void setConnectedApplicationsIds(List<Integer> connectedApplicationsIds) {
     this.connectedApplicationsIds = connectedApplicationsIds;
   }
 
 
-  public AudienceCustomer connectedAudiences(List<Long> connectedAudiences) {
+  public AudienceCustomer connectedAudiences(List<Integer> connectedAudiences) {
     
     this.connectedAudiences = connectedAudiences;
     return this;
   }
 
-  public AudienceCustomer addConnectedAudiencesItem(Long connectedAudiencesItem) {
+  public AudienceCustomer addConnectedAudiencesItem(Integer connectedAudiencesItem) {
     if (this.connectedAudiences == null) {
-      this.connectedAudiences = new ArrayList<Long>();
+      this.connectedAudiences = new ArrayList<Integer>();
     }
     this.connectedAudiences.add(connectedAudiencesItem);
     return this;
@@ -401,12 +401,12 @@ public class AudienceCustomer {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the audiences that are connected to this customer profile.")
 
-  public List<Long> getConnectedAudiences() {
+  public List<Integer> getConnectedAudiences() {
     return connectedAudiences;
   }
 
 
-  public void setConnectedAudiences(List<Long> connectedAudiences) {
+  public void setConnectedAudiences(List<Integer> connectedAudiences) {
     this.connectedAudiences = connectedAudiences;
   }
 

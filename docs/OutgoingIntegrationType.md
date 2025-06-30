@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Long** | Unique ID for this entity. | 
+**id** | **Integer** | Unique ID for this entity. | 
 **name** | **String** | Name of the outgoing integration. | 
 **description** | **String** | Description of the outgoing integration. |  [optional]
 **category** | **String** | Category of the outgoing integration. |  [optional]

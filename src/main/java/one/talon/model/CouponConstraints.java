@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CouponConstraints {
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Long usageLimit;
+  private Integer usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -41,7 +41,7 @@ public class CouponConstraints {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Long reservationLimit;
+  private Integer reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -52,7 +52,7 @@ public class CouponConstraints {
   private OffsetDateTime expiryDate;
 
 
-  public CouponConstraints usageLimit(Long usageLimit) {
+  public CouponConstraints usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -67,12 +67,12 @@ public class CouponConstraints {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100", value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Long getUsageLimit() {
+  public Integer getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Long usageLimit) {
+  public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -86,7 +86,7 @@ public class CouponConstraints {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable
@@ -102,7 +102,7 @@ public class CouponConstraints {
   }
 
 
-  public CouponConstraints reservationLimit(Long reservationLimit) {
+  public CouponConstraints reservationLimit(Integer reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -117,12 +117,12 @@ public class CouponConstraints {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Long getReservationLimit() {
+  public Integer getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Long reservationLimit) {
+  public void setReservationLimit(Integer reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 

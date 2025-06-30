@@ -8,7 +8,7 @@ The properties specific to the \"setDiscountPerAdditionalCostPerItem\" effect. T
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name / description of this discount | 
-**additionalCostId** | **Long** | The ID of the additional cost. | 
+**additionalCostId** | **Integer** | The ID of the additional cost. | 
 **value** | [**BigDecimal**](BigDecimal.md) | The total monetary value of the discount. | 
 **position** | [**BigDecimal**](BigDecimal.md) | The index of the item in the cart item list containing the additional cost to be discounted. | 
 **subPosition** | [**BigDecimal**](BigDecimal.md) | For cart items with &#x60;quantity&#x60; &gt; 1, the sub position indicates which item the discount applies to.  |  [optional]

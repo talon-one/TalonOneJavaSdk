@@ -608,7 +608,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAudienceMembershipsV2Call(Long audienceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceMembershipsV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -639,7 +639,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAudienceMembershipsV2ValidateBeforeCall(Long audienceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAudienceMembershipsV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
@@ -665,7 +665,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteAudienceMembershipsV2(Long audienceId) throws ApiException {
+    public void deleteAudienceMembershipsV2(Integer audienceId) throws ApiException {
         deleteAudienceMembershipsV2WithHttpInfo(audienceId);
     }
 
@@ -683,7 +683,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteAudienceMembershipsV2WithHttpInfo(Long audienceId) throws ApiException {
+    public ApiResponse<Void> deleteAudienceMembershipsV2WithHttpInfo(Integer audienceId) throws ApiException {
         okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -703,7 +703,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAudienceMembershipsV2Async(Long audienceId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceMembershipsV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAudienceMembershipsV2ValidateBeforeCall(audienceId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -724,7 +724,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAudienceV2Call(Long audienceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceV2Call(Integer audienceId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -755,7 +755,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAudienceV2ValidateBeforeCall(Long audienceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAudienceV2ValidateBeforeCall(Integer audienceId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
@@ -782,7 +782,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteAudienceV2(Long audienceId) throws ApiException {
+    public void deleteAudienceV2(Integer audienceId) throws ApiException {
         deleteAudienceV2WithHttpInfo(audienceId);
     }
 
@@ -801,7 +801,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteAudienceV2WithHttpInfo(Long audienceId) throws ApiException {
+    public ApiResponse<Void> deleteAudienceV2WithHttpInfo(Integer audienceId) throws ApiException {
         okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -822,7 +822,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAudienceV2Async(Long audienceId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAudienceV2Async(Integer audienceId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAudienceV2ValidateBeforeCall(audienceId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1086,7 +1086,7 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateLoyaltyCardCall(Long loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateLoyaltyCardCall(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -1117,7 +1117,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateLoyaltyCardValidateBeforeCall(Long loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateLoyaltyCardValidateBeforeCall(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -1150,7 +1150,7 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyCard generateLoyaltyCard(Long loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
+    public LoyaltyCard generateLoyaltyCard(Integer loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
         ApiResponse<LoyaltyCard> localVarResp = generateLoyaltyCardWithHttpInfo(loyaltyProgramId, body);
         return localVarResp.getData();
     }
@@ -1170,7 +1170,7 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyCard> generateLoyaltyCardWithHttpInfo(Long loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
+    public ApiResponse<LoyaltyCard> generateLoyaltyCardWithHttpInfo(Integer loyaltyProgramId, GenerateLoyaltyCard body) throws ApiException {
         okhttp3.Call localVarCall = generateLoyaltyCardValidateBeforeCall(loyaltyProgramId, body, null);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1192,7 +1192,7 @@ public class IntegrationApi {
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateLoyaltyCardAsync(Long loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
+    public okhttp3.Call generateLoyaltyCardAsync(Integer loyaltyProgramId, GenerateLoyaltyCard body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateLoyaltyCardValidateBeforeCall(loyaltyProgramId, body, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
@@ -1206,7 +1206,7 @@ public class IntegrationApi {
      * @param progressStatus Filter by customer progress status in the achievement.  (optional)
      * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
      * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1220,7 +1220,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerAchievementHistoryCall(String integrationId, Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementHistoryCall(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1272,7 +1272,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerAchievementHistoryValidateBeforeCall(String integrationId, Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomerAchievementHistoryValidateBeforeCall(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
@@ -1298,7 +1298,7 @@ public class IntegrationApi {
      * @param progressStatus Filter by customer progress status in the achievement.  (optional)
      * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
      * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1311,7 +1311,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2002 getCustomerAchievementHistory(String integrationId, Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2002 getCustomerAchievementHistory(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2002> localVarResp = getCustomerAchievementHistoryWithHttpInfo(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
@@ -1324,7 +1324,7 @@ public class IntegrationApi {
      * @param progressStatus Filter by customer progress status in the achievement.  (optional)
      * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
      * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1337,7 +1337,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2002> getCustomerAchievementHistoryWithHttpInfo(String integrationId, Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2002> getCustomerAchievementHistoryWithHttpInfo(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1351,7 +1351,7 @@ public class IntegrationApi {
      * @param progressStatus Filter by customer progress status in the achievement.  (optional)
      * @param startDate Timestamp that filters the results to only contain achievements created on or after the start date. (optional)
      * @param endDate Timestamp that filters the results to only contain achievements created before or on the end date. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1365,7 +1365,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerAchievementHistoryAsync(String integrationId, Long achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementHistoryAsync(String integrationId, Integer achievementId, List<String> progressStatus, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2002> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomerAchievementHistoryValidateBeforeCall(integrationId, achievementId, progressStatus, startDate, endDate, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
@@ -1379,7 +1379,7 @@ public class IntegrationApi {
      * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
      * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
      * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1393,7 +1393,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerAchievementsCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementsCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1448,7 +1448,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomerAchievementsValidateBeforeCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustomerAchievementsValidateBeforeCall(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
@@ -1469,7 +1469,7 @@ public class IntegrationApi {
      * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
      * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
      * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2001
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1482,7 +1482,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2001 getCustomerAchievements(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2001 getCustomerAchievements(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2001> localVarResp = getCustomerAchievementsWithHttpInfo(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip);
         return localVarResp.getData();
     }
@@ -1495,7 +1495,7 @@ public class IntegrationApi {
      * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
      * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
      * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2001&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1508,7 +1508,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2001> getCustomerAchievementsWithHttpInfo(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2001> getCustomerAchievementsWithHttpInfo(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1522,7 +1522,7 @@ public class IntegrationApi {
      * @param achievementIds Filter by one or more Achievement IDs, separated by a comma.  **Note:** If no achievements are specified, data for all the achievements in the Application is returned.  (optional)
      * @param achievementStatus Filter by status of the achievement.  **Note:** If the achievement status is not specified, only data for all active achievements in the Application is returned.  (optional)
      * @param currentProgressStatus Filter by customer progress status in the achievement.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 1000l)
+     * @param pageSize The number of items in the response. (optional, default to 1000)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1536,7 +1536,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCustomerAchievementsAsync(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Long pageSize, Long skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
+    public okhttp3.Call getCustomerAchievementsAsync(String integrationId, List<String> campaignIds, List<String> achievementIds, List<String> achievementStatus, List<String> currentProgressStatus, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2001> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCustomerAchievementsValidateBeforeCall(integrationId, campaignIds, achievementIds, achievementStatus, currentProgressStatus, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
@@ -1849,7 +1849,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyBalancesCall(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyBalancesCall(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1897,7 +1897,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyBalancesValidateBeforeCall(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyBalancesValidateBeforeCall(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -1935,7 +1935,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyBalancesWithTiers getLoyaltyBalances(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
+    public LoyaltyBalancesWithTiers getLoyaltyBalances(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
         ApiResponse<LoyaltyBalancesWithTiers> localVarResp = getLoyaltyBalancesWithHttpInfo(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier);
         return localVarResp.getData();
     }
@@ -1960,7 +1960,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyBalancesWithTiers> getLoyaltyBalancesWithHttpInfo(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
+    public ApiResponse<LoyaltyBalancesWithTiers> getLoyaltyBalancesWithHttpInfo(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, null);
         Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1987,7 +1987,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyBalancesAsync(Long loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback<LoyaltyBalancesWithTiers> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyBalancesAsync(Integer loyaltyProgramId, String integrationId, OffsetDateTime endDate, String subledgerId, Boolean includeTiers, Boolean includeProjectedTier, final ApiCallback<LoyaltyBalancesWithTiers> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyBalancesValidateBeforeCall(loyaltyProgramId, integrationId, endDate, subledgerId, includeTiers, includeProjectedTier, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyBalancesWithTiers>(){}.getType();
@@ -2012,7 +2012,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesCall(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2052,7 +2052,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardBalancesValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2088,7 +2088,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyCardBalances getLoyaltyCardBalances(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
+    public LoyaltyCardBalances getLoyaltyCardBalances(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
         ApiResponse<LoyaltyCardBalances> localVarResp = getLoyaltyCardBalancesWithHttpInfo(loyaltyProgramId, loyaltyCardId, endDate, subledgerId);
         return localVarResp.getData();
     }
@@ -2111,7 +2111,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyCardBalances> getLoyaltyCardBalancesWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
+    public ApiResponse<LoyaltyCardBalances> getLoyaltyCardBalancesWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId, null);
         Type localVarReturnType = new TypeToken<LoyaltyCardBalances>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2136,7 +2136,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardBalancesAsync(Long loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback<LoyaltyCardBalances> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardBalancesAsync(Integer loyaltyProgramId, String loyaltyCardId, OffsetDateTime endDate, List<String> subledgerId, final ApiCallback<LoyaltyCardBalances> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyCardBalancesValidateBeforeCall(loyaltyProgramId, loyaltyCardId, endDate, subledgerId, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyCardBalances>(){}.getType();
@@ -2149,7 +2149,7 @@ public class IntegrationApi {
      * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2163,7 +2163,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardPointsCall(Long loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardPointsCall(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2211,7 +2211,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardPointsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardPointsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2236,7 +2236,7 @@ public class IntegrationApi {
      * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2005
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2249,7 +2249,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2005 getLoyaltyCardPoints(Long loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2005 getLoyaltyCardPoints(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2005> localVarResp = getLoyaltyCardPointsWithHttpInfo(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip);
         return localVarResp.getData();
     }
@@ -2261,7 +2261,7 @@ public class IntegrationApi {
      * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2005&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2274,7 +2274,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2005> getLoyaltyCardPointsWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2005> getLoyaltyCardPointsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2287,7 +2287,7 @@ public class IntegrationApi {
      * @param loyaltyCardId Identifier of the loyalty card. You can get the identifier with the [List loyalty cards](https://docs.talon.one/management-api#tag/Loyalty-cards/operation/getLoyaltyCards) endpoint.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId Filter results by one or more subledger IDs. Must be exact match. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2301,7 +2301,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardPointsAsync(Long loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Long pageSize, Long skip, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardPointsAsync(Integer loyaltyProgramId, String loyaltyCardId, String status, List<String> subledgerId, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2005> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyCardPointsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, status, subledgerId, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
@@ -2316,7 +2316,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2330,7 +2330,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsCall(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2386,7 +2386,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyCardTransactionsValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2413,7 +2413,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2003
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2426,7 +2426,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2003 getLoyaltyCardTransactions(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2003 getLoyaltyCardTransactions(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2003> localVarResp = getLoyaltyCardTransactionsWithHttpInfo(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
@@ -2440,7 +2440,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2003&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2453,7 +2453,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2003> getLoyaltyCardTransactionsWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2468,7 +2468,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2482,7 +2482,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyCardTransactionsAsync(Long loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyCardTransactionsAsync(Integer loyaltyProgramId, String loyaltyCardId, List<String> subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2003> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyCardTransactionsValidateBeforeCall(loyaltyProgramId, loyaltyCardId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
@@ -2495,7 +2495,7 @@ public class IntegrationApi {
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2509,7 +2509,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfilePointsCall(Long loyaltyProgramId, String integrationId, String status, String subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfilePointsCall(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2557,7 +2557,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramProfilePointsValidateBeforeCall(Long loyaltyProgramId, String integrationId, String status, String subledgerId, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyProgramProfilePointsValidateBeforeCall(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2582,7 +2582,7 @@ public class IntegrationApi {
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2006
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2595,7 +2595,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2006 getLoyaltyProgramProfilePoints(Long loyaltyProgramId, String integrationId, String status, String subledgerId, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2006 getLoyaltyProgramProfilePoints(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2006> localVarResp = getLoyaltyProgramProfilePointsWithHttpInfo(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip);
         return localVarResp.getData();
     }
@@ -2607,7 +2607,7 @@ public class IntegrationApi {
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2006&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2620,7 +2620,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2006> getLoyaltyProgramProfilePointsWithHttpInfo(Long loyaltyProgramId, String integrationId, String status, String subledgerId, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2006> getLoyaltyProgramProfilePointsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2633,7 +2633,7 @@ public class IntegrationApi {
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param status Filter points based on their status. (optional, default to active)
      * @param subledgerId The ID of the subledger by which we filter the data. (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2647,7 +2647,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfilePointsAsync(Long loyaltyProgramId, String integrationId, String status, String subledgerId, Long pageSize, Long skip, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfilePointsAsync(Integer loyaltyProgramId, String integrationId, String status, String subledgerId, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyProgramProfilePointsValidateBeforeCall(loyaltyProgramId, integrationId, status, subledgerId, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
@@ -2662,7 +2662,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2676,7 +2676,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsCall(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2732,7 +2732,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLoyaltyProgramProfileTransactionsValidateBeforeCall(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -2759,7 +2759,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return InlineResponse2004
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2772,7 +2772,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public InlineResponse2004 getLoyaltyProgramProfileTransactions(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         ApiResponse<InlineResponse2004> localVarResp = getLoyaltyProgramProfileTransactionsWithHttpInfo(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip);
         return localVarResp.getData();
     }
@@ -2786,7 +2786,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @return ApiResponse&lt;InlineResponse2004&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2799,7 +2799,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip) throws ApiException {
+    public ApiResponse<InlineResponse2004> getLoyaltyProgramProfileTransactionsWithHttpInfo(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip) throws ApiException {
         okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, null);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2814,7 +2814,7 @@ public class IntegrationApi {
      * @param loyaltyTransactionType Filter results by loyalty transaction type: - &#x60;manual&#x60;: Loyalty transaction that was done manually. - &#x60;session&#x60;: Loyalty transaction that resulted from a customer session. - &#x60;import&#x60;: Loyalty transaction that was imported from a CSV file.  (optional)
      * @param startDate Date and time from which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
      * @param endDate Date and time by which results are returned. Results are filtered by transaction creation date.  **Note:**  - It must be an RFC3339 timestamp string. - You can include a time component in your string, for example, &#x60;T23:59:59&#x60; to specify the end of the day. The time zone setting considered is &#x60;UTC&#x60;. If you do not include a time component, a default time value of &#x60;T00:00:00&#x60; (midnight) in &#x60;UTC&#x60; is considered.  (optional)
-     * @param pageSize The number of items in the response. (optional, default to 50l)
+     * @param pageSize The number of items in the response. (optional, default to 50)
      * @param skip The number of items to skip when paging through large result sets. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2828,7 +2828,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Long loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Long pageSize, Long skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
+    public okhttp3.Call getLoyaltyProgramProfileTransactionsAsync(Integer loyaltyProgramId, String integrationId, String subledgerId, String loyaltyTransactionType, OffsetDateTime startDate, OffsetDateTime endDate, Integer pageSize, Integer skip, final ApiCallback<InlineResponse2004> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLoyaltyProgramProfileTransactionsValidateBeforeCall(loyaltyProgramId, integrationId, subledgerId, loyaltyTransactionType, startDate, endDate, pageSize, skip, _callback);
         Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
@@ -2975,7 +2975,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileCall(Long loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3007,7 +3007,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Long loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkLoyaltyCardToProfileValidateBeforeCall(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'loyaltyProgramId' is set
         if (loyaltyProgramId == null) {
@@ -3047,7 +3047,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public LoyaltyCard linkLoyaltyCardToProfile(Long loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
+    public LoyaltyCard linkLoyaltyCardToProfile(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
         ApiResponse<LoyaltyCard> localVarResp = linkLoyaltyCardToProfileWithHttpInfo(loyaltyProgramId, loyaltyCardId, body);
         return localVarResp.getData();
     }
@@ -3069,7 +3069,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Long loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
+    public ApiResponse<LoyaltyCard> linkLoyaltyCardToProfileWithHttpInfo(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body) throws ApiException {
         okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, null);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3093,7 +3093,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkLoyaltyCardToProfileAsync(Long loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
+    public okhttp3.Call linkLoyaltyCardToProfileAsync(Integer loyaltyProgramId, String loyaltyCardId, LoyaltyCardRegistration body, final ApiCallback<LoyaltyCard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = linkLoyaltyCardToProfileValidateBeforeCall(loyaltyProgramId, loyaltyCardId, body, _callback);
         Type localVarReturnType = new TypeToken<LoyaltyCard>(){}.getType();
@@ -3371,7 +3371,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call syncCatalogCall(Long catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call syncCatalogCall(Integer catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3402,7 +3402,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call syncCatalogValidateBeforeCall(Long catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call syncCatalogValidateBeforeCall(Integer catalogId, CatalogSyncRequest body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'catalogId' is set
         if (catalogId == null) {
@@ -3436,7 +3436,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public Catalog syncCatalog(Long catalogId, CatalogSyncRequest body) throws ApiException {
+    public Catalog syncCatalog(Integer catalogId, CatalogSyncRequest body) throws ApiException {
         ApiResponse<Catalog> localVarResp = syncCatalogWithHttpInfo(catalogId, body);
         return localVarResp.getData();
     }
@@ -3457,7 +3457,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Catalog> syncCatalogWithHttpInfo(Long catalogId, CatalogSyncRequest body) throws ApiException {
+    public ApiResponse<Catalog> syncCatalogWithHttpInfo(Integer catalogId, CatalogSyncRequest body) throws ApiException {
         okhttp3.Call localVarCall = syncCatalogValidateBeforeCall(catalogId, body, null);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3480,7 +3480,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call syncCatalogAsync(Long catalogId, CatalogSyncRequest body, final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call syncCatalogAsync(Integer catalogId, CatalogSyncRequest body, final ApiCallback<Catalog> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = syncCatalogValidateBeforeCall(catalogId, body, _callback);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
@@ -3562,7 +3562,7 @@ public class IntegrationApi {
 
     /**
      * Track event
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
+     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not specify it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).   1. [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation.  &lt;/div&gt; 
      * @param body body (required)
      * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
@@ -3585,7 +3585,7 @@ public class IntegrationApi {
 
     /**
      * Track event
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
+     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not specify it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).   1. [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation.  &lt;/div&gt; 
      * @param body body (required)
      * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
@@ -3609,7 +3609,7 @@ public class IntegrationApi {
 
     /**
      * Track event (asynchronously)
-     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not say it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).  &lt;/div&gt; 
+     * Triggers a custom event.  To use this endpoint: 1. Define a [custom event](https://docs.talon.one/docs/dev/concepts/entities/events#creating-a-custom-event) in the Campaign Manager. 1. Update or create a rule to check for this event. 1. Trigger the event with this endpoint. After you have successfully sent an event to Talon.One, you can list the received events in the **Events** view in the Campaign Manager.  Talon.One also offers a set of [built-in events](https://docs.talon.one/docs/dev/concepts/entities/events). Ensure you do not create a custom event when you can use a built-in event.  For example, use this endpoint to trigger an event when a customer shares a link to a product. See the [tutorial](https://docs.talon.one/docs/product/tutorials/referrals/incentivizing-product-link-sharing).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;    &lt;p class&#x3D;\&quot;title\&quot;&gt;Important&lt;/p&gt;    1. &#x60;profileId&#x60; is required even though the schema does not specify it.   1. If the customer profile ID is new, a new profile is automatically created but the &#x60;customer_profile_created&#x60; [built-in event ](https://docs.talon.one/docs/dev/concepts/entities/events) is **not** triggered.   1. We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests).   1. [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation.  &lt;/div&gt; 
      * @param body body (required)
      * @param silent Possible values: &#x60;yes&#x60; or &#x60;no&#x60;. - &#x60;yes&#x60;: Increases the performance of the API call by returning a 204 response. - &#x60;no&#x60;: Returns a 200 response that contains the updated customer profiles.  (optional, default to &quot;yes&quot;)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  (optional)
@@ -3648,7 +3648,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAudienceCustomersAttributesCall(Long audienceId, Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAudienceCustomersAttributesCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3679,7 +3679,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAudienceCustomersAttributesValidateBeforeCall(Long audienceId, Object body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAudienceCustomersAttributesValidateBeforeCall(Integer audienceId, Object body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
@@ -3711,7 +3711,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public void updateAudienceCustomersAttributes(Long audienceId, Object body) throws ApiException {
+    public void updateAudienceCustomersAttributes(Integer audienceId, Object body) throws ApiException {
         updateAudienceCustomersAttributesWithHttpInfo(audienceId, body);
     }
 
@@ -3730,7 +3730,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateAudienceCustomersAttributesWithHttpInfo(Long audienceId, Object body) throws ApiException {
+    public ApiResponse<Void> updateAudienceCustomersAttributesWithHttpInfo(Integer audienceId, Object body) throws ApiException {
         okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -3751,7 +3751,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAudienceCustomersAttributesAsync(Long audienceId, Object body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateAudienceCustomersAttributesAsync(Integer audienceId, Object body, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAudienceCustomersAttributesValidateBeforeCall(audienceId, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -3772,7 +3772,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAudienceV2Call(Long audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAudienceV2Call(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -3803,7 +3803,7 @@ public class IntegrationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAudienceV2ValidateBeforeCall(Long audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAudienceV2ValidateBeforeCall(Integer audienceId, UpdateAudience body, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
@@ -3836,7 +3836,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public Audience updateAudienceV2(Long audienceId, UpdateAudience body) throws ApiException {
+    public Audience updateAudienceV2(Integer audienceId, UpdateAudience body) throws ApiException {
         ApiResponse<Audience> localVarResp = updateAudienceV2WithHttpInfo(audienceId, body);
         return localVarResp.getData();
     }
@@ -3856,7 +3856,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> updateAudienceV2WithHttpInfo(Long audienceId, UpdateAudience body) throws ApiException {
+    public ApiResponse<Audience> updateAudienceV2WithHttpInfo(Integer audienceId, UpdateAudience body) throws ApiException {
         okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3878,7 +3878,7 @@ public class IntegrationApi {
         <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAudienceV2Async(Long audienceId, UpdateAudience body, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call updateAudienceV2Async(Integer audienceId, UpdateAudience body, final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAudienceV2ValidateBeforeCall(audienceId, body, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
@@ -4080,7 +4080,7 @@ public class IntegrationApi {
 
     /**
      * Update customer profile
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
+     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of. **Note:** [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation when &#x60;runRuleEngine&#x60; is &#x60;true&#x60;. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body body (required)
      * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
@@ -4103,7 +4103,7 @@ public class IntegrationApi {
 
     /**
      * Update customer profile
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
+     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of. **Note:** [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation when &#x60;runRuleEngine&#x60; is &#x60;true&#x60;. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body body (required)
      * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
@@ -4127,7 +4127,7 @@ public class IntegrationApi {
 
     /**
      * Update customer profile (asynchronously)
-     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of.  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
+     * Update or create a [Customer Profile](https://docs.talon.one/docs/dev/concepts/entities/customer-profiles). This endpoint triggers the Rule Builder.  You can use this endpoint to: - Set attributes on the given customer profile. Ensure you create the attributes in the Campaign Manager, first. - Modify the audience the customer profile is a member of. **Note:** [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered in rule evaluation when &#x60;runRuleEngine&#x60; is &#x60;true&#x60;. &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer profile returns a response with the requested integration state.   - You can use the &#x60;responseContent&#x60; property to save yourself extra API calls. For example, you can get     the customer profile details directly without extra requests.   - We recommend sending requests sequentially.     See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt; 
      * @param integrationId The integration identifier for this customer profile. Must be: - Unique within the deployment. - Stable for the customer. Do not use an ID that the customer can update themselves. For example, you can use a database ID.  Once set, you cannot update this identifier.  (required)
      * @param body body (required)
      * @param runRuleEngine Indicates whether to run the Rule Engine.  If &#x60;true&#x60;, the response includes: - The effects generated by the triggered campaigns are returned in the &#x60;effects&#x60; property. - The created coupons and referral objects.  If &#x60;false&#x60;: - The rules are not executed and the &#x60;effects&#x60; property is always empty. - The response time improves. - You cannot use &#x60;responseContent&#x60; in the body.  (optional, default to false)
@@ -4354,7 +4354,7 @@ public class IntegrationApi {
 
     /**
      * Update customer session
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:**  - The currency for the session and the cart items in it is the currency set for the Application linked to this session. - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
      * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
      * @param body body (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
@@ -4377,7 +4377,7 @@ public class IntegrationApi {
 
     /**
      * Update customer session
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:**  - The currency for the session and the cart items in it is the currency set for the Application linked to this session. - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
      * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
      * @param body body (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)
@@ -4401,7 +4401,7 @@ public class IntegrationApi {
 
     /**
      * Update customer session (asynchronously)
-     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:** The currency for the session and the cart items in the session is the currency set for the Application that owns this session.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
+     * Update or create a [customer session](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions). The endpoint responds with the potential promotion rule [effects](https://docs.talon.one/docs/dev/integration-api/api-effects) that match the current cart. For example, use this endpoint to share the contents of a customer&#39;s cart with Talon.One.  **Note:**  - The currency for the session and the cart items in it is the currency set for the Application linked to this session. - [Archived campaigns](https://docs.talon.one/docs/product/campaigns/managing-campaigns#archiving-a-campaign) are not considered for rule evaluation.  ### Session management  To use this endpoint, start by learning about [customer sessions](https://docs.talon.one/docs/dev/concepts/entities/customer-sessions) and their states and refer to the &#x60;state&#x60; parameter documentation the request body schema docs below.  ### Sessions and customer profiles  - To link a session to a customer profile, set the &#x60;profileId&#x60; parameter in the request body to a customer profile&#39;s &#x60;integrationId&#x60;. - While you can create an anonymous session with &#x60;profileId&#x3D;\&quot;\&quot;&#x60;, we recommend you use a guest ID instead. - A profile can be linked to simultaneous sessions in different Applications. Either:   - Use unique session integration IDs or,   - Use the same session integration ID across all of the Applications.  **Note:** If the specified profile does not exist, an empty profile is **created automatically**.   You can update it with [Update customer profile](https://docs.talon.one/integration-api#tag/Customer-profiles/operation/updateCustomerProfileV2).  &lt;div class&#x3D;\&quot;redoc-section\&quot;&gt;   &lt;p class&#x3D;\&quot;title\&quot;&gt;Performance tips&lt;/p&gt;    - Updating a customer session returns a response with the new integration state. Use the &#x60;responseContent&#x60; property to save yourself extra API calls.     For example, you can get the customer profile details directly without extra requests.   - We recommend sending requests sequentially. See [Managing parallel requests](https://docs.talon.one/docs/dev/getting-started/integration-tutorial#managing-parallel-requests). &lt;/div&gt;  For more information, see: - The introductory video in [Getting started](https://docs.talon.one/docs/dev/getting-started/overview). - The [integration tutorial](https://docs.talon.one/docs/dev/tutorials/integrating-talon-one). 
      * @param customerSessionId The &#x60;integration ID&#x60; of the customer session. You set this ID when you create a customer session.  You can see existing customer session integration IDs in the Campaign Manager&#39;s **Sessions** menu, or via the [List Application session](https://docs.talon.one/management-api#operation/getApplicationSessions) endpoint.  (required)
      * @param body body (required)
      * @param dry Indicates whether to persist the changes. Changes are ignored when &#x60;dry&#x3D;true&#x60;.  When set to &#x60;true&#x60;: - The endpoint considers **only** the payload that you pass when **closing** the session.   When you do not use the &#x60;dry&#x60; parameter, the endpoint behaves as a typical PUT endpoint. Each update builds upon the previous ones. - You can use the &#x60;evaluableCampaignIds&#x60; body property to select specific campaigns to run.  [See the docs](https://docs.talon.one/docs/dev/integration-api/dry-requests).  (optional)

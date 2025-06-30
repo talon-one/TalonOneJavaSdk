@@ -35,7 +35,7 @@ public class MessageTest {
 
   public static final String SERIALIZED_NAME_HTTP_STATUS = "httpStatus";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS)
-  private Long httpStatus;
+  private Integer httpStatus;
 
 
   public MessageTest httpResponse(String httpResponse) {
@@ -60,7 +60,7 @@ public class MessageTest {
   }
 
 
-  public MessageTest httpStatus(Long httpStatus) {
+  public MessageTest httpStatus(Integer httpStatus) {
     
     this.httpStatus = httpStatus;
     return this;
@@ -72,12 +72,12 @@ public class MessageTest {
   **/
   @ApiModelProperty(example = "200", required = true, value = "The returned http status code.")
 
-  public Long getHttpStatus() {
+  public Integer getHttpStatus() {
     return httpStatus;
   }
 
 
-  public void setHttpStatus(Long httpStatus) {
+  public void setHttpStatus(Integer httpStatus) {
     this.httpStatus = httpStatus;
   }
 

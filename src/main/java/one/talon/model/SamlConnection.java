@@ -37,7 +37,7 @@ public class SamlConnection {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -69,7 +69,7 @@ public class SamlConnection {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -98,7 +98,7 @@ public class SamlConnection {
   }
 
 
-  public SamlConnection accountId(Long accountId) {
+  public SamlConnection accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -110,12 +110,12 @@ public class SamlConnection {
   **/
   @ApiModelProperty(example = "3885", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -276,24 +276,24 @@ public class SamlConnection {
   }
 
 
-  public SamlConnection id(Long id) {
+  public SamlConnection id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

@@ -37,7 +37,7 @@ public class AccessLogEntry {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private Long status;
+  private Integer status;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -82,7 +82,7 @@ public class AccessLogEntry {
   }
 
 
-  public AccessLogEntry status(Long status) {
+  public AccessLogEntry status(Integer status) {
     
     this.status = status;
     return this;
@@ -94,12 +94,12 @@ public class AccessLogEntry {
   **/
   @ApiModelProperty(example = "200", required = true, value = "HTTP status code of response.")
 
-  public Long getStatus() {
+  public Integer getStatus() {
     return status;
   }
 
 
-  public void setStatus(Long status) {
+  public void setStatus(Integer status) {
     this.status = status;
   }
 

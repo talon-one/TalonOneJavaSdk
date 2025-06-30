@@ -44,7 +44,7 @@ public class BaseNotification {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   /**
    * The notification type.
@@ -56,6 +56,10 @@ public class BaseNotification {
     LOYALTY_ADDED_DEDUCTED_POINTS("loyalty_added_deducted_points"),
     
     CARD_ADDED_DEDUCTED_POINTS("card_added_deducted_points"),
+    
+    LOYALTY_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_added_deducted_points_balances"),
+    
+    LOYALTY_CARD_ADDED_DEDUCTED_POINTS_BALANCES("loyalty_card_added_deducted_points_balances"),
     
     COUPON("coupon"),
     
@@ -185,7 +189,7 @@ public class BaseNotification {
   }
 
 
-  public BaseNotification id(Long id) {
+  public BaseNotification id(Integer id) {
     
     this.id = id;
     return this;
@@ -198,12 +202,12 @@ public class BaseNotification {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

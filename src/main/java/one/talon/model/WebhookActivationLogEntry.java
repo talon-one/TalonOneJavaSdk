@@ -37,15 +37,15 @@ public class WebhookActivationLogEntry {
 
   public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_ID)
-  private Long webhookId;
+  private Integer webhookId;
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -74,7 +74,7 @@ public class WebhookActivationLogEntry {
   }
 
 
-  public WebhookActivationLogEntry webhookId(Long webhookId) {
+  public WebhookActivationLogEntry webhookId(Integer webhookId) {
     
     this.webhookId = webhookId;
     return this;
@@ -86,17 +86,17 @@ public class WebhookActivationLogEntry {
   **/
   @ApiModelProperty(example = "1", required = true, value = "ID of the webhook that triggered the request.")
 
-  public Long getWebhookId() {
+  public Integer getWebhookId() {
     return webhookId;
   }
 
 
-  public void setWebhookId(Long webhookId) {
+  public void setWebhookId(Integer webhookId) {
     this.webhookId = webhookId;
   }
 
 
-  public WebhookActivationLogEntry applicationId(Long applicationId) {
+  public WebhookActivationLogEntry applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -108,17 +108,17 @@ public class WebhookActivationLogEntry {
   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of the application that triggered the webhook.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 
 
-  public WebhookActivationLogEntry campaignId(Long campaignId) {
+  public WebhookActivationLogEntry campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -130,12 +130,12 @@ public class WebhookActivationLogEntry {
   **/
   @ApiModelProperty(example = "86", required = true, value = "ID of the campaign that triggered the webhook.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 

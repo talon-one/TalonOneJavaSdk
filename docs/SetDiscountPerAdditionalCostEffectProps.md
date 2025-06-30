@@ -8,7 +8,7 @@ The properties specific to the \"setDiscountPerAdditionalCost\" effect. This get
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | The name / description of this discount | 
-**additionalCostId** | **Long** | The ID of the additional cost. | 
+**additionalCostId** | **Integer** | The ID of the additional cost. | 
 **additionalCost** | **String** | The name of the additional cost. | 
 **value** | [**BigDecimal**](BigDecimal.md) | The total monetary value of the discount. | 
 **desiredValue** | [**BigDecimal**](BigDecimal.md) | The original value of the discount. |  [optional]

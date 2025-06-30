@@ -25,8 +25,11 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import one.talon.model.AdditionalCost;
+import one.talon.model.PriceDetail;
 import one.talon.model.Product;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -172,6 +175,46 @@ public class CartItemTest {
     @Test
     public void catalogItemIDTest() {
         // TODO: test catalogItemID
+    }
+
+    /**
+     * Test the property 'selectedPriceType'
+     */
+    @Test
+    public void selectedPriceTypeTest() {
+        // TODO: test selectedPriceType
+    }
+
+    /**
+     * Test the property 'adjustmentReferenceId'
+     */
+    @Test
+    public void adjustmentReferenceIdTest() {
+        // TODO: test adjustmentReferenceId
+    }
+
+    /**
+     * Test the property 'adjustmentEffectiveFrom'
+     */
+    @Test
+    public void adjustmentEffectiveFromTest() {
+        // TODO: test adjustmentEffectiveFrom
+    }
+
+    /**
+     * Test the property 'adjustmentEffectiveUntil'
+     */
+    @Test
+    public void adjustmentEffectiveUntilTest() {
+        // TODO: test adjustmentEffectiveUntil
+    }
+
+    /**
+     * Test the property 'prices'
+     */
+    @Test
+    public void pricesTest() {
+        // TODO: test prices
     }
 
 }
