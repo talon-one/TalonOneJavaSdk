@@ -31,10 +31,10 @@ import java.io.IOException;
 public class ImportEntity {
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Long importId;
+  private Integer importId;
 
 
-  public ImportEntity importId(Long importId) {
+  public ImportEntity importId(Integer importId) {
     
     this.importId = importId;
     return this;
@@ -47,12 +47,12 @@ public class ImportEntity {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this referral.")
 
-  public Long getImportId() {
+  public Integer getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Long importId) {
+  public void setImportId(Integer importId) {
     this.importId = importId;
   }
 

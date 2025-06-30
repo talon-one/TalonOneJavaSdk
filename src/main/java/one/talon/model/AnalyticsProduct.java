@@ -32,7 +32,7 @@ import one.talon.model.AnalyticsDataPointWithTrend;
 public class AnalyticsProduct {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -40,14 +40,14 @@ public class AnalyticsProduct {
 
   public static final String SERIALIZED_NAME_CATALOG_ID = "catalogId";
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
-  private Long catalogId;
+  private Integer catalogId;
 
   public static final String SERIALIZED_NAME_UNITS_SOLD = "unitsSold";
   @SerializedName(SERIALIZED_NAME_UNITS_SOLD)
   private AnalyticsDataPointWithTrend unitsSold;
 
 
-  public AnalyticsProduct id(Long id) {
+  public AnalyticsProduct id(Integer id) {
     
     this.id = id;
     return this;
@@ -59,12 +59,12 @@ public class AnalyticsProduct {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the product.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -91,7 +91,7 @@ public class AnalyticsProduct {
   }
 
 
-  public AnalyticsProduct catalogId(Long catalogId) {
+  public AnalyticsProduct catalogId(Integer catalogId) {
     
     this.catalogId = catalogId;
     return this;
@@ -103,12 +103,12 @@ public class AnalyticsProduct {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the catalog. You can find the ID in the Campaign Manager in **Account** > **Tools** > **Cart item catalogs**. ")
 
-  public Long getCatalogId() {
+  public Integer getCatalogId() {
     return catalogId;
   }
 
 
-  public void setCatalogId(Long catalogId) {
+  public void setCatalogId(Integer catalogId) {
     this.catalogId = catalogId;
   }
 

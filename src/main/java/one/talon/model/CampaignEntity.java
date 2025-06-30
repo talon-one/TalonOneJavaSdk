@@ -31,10 +31,10 @@ import java.io.IOException;
 public class CampaignEntity {
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
 
-  public CampaignEntity campaignId(Long campaignId) {
+  public CampaignEntity campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -46,12 +46,12 @@ public class CampaignEntity {
   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 

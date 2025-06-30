@@ -39,7 +39,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_PROGRAM_ID = "programId";
   @SerializedName(SERIALIZED_NAME_PROGRAM_ID)
-  private Long programId;
+  private Integer programId;
 
   public static final String SERIALIZED_NAME_CUSTOMER_SESSION_ID = "customerSessionId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_SESSION_ID)
@@ -118,11 +118,11 @@ public class LedgerTransactionLogEntryIntegrationAPI {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_RULESET_ID = "rulesetId";
   @SerializedName(SERIALIZED_NAME_RULESET_ID)
-  private Long rulesetId;
+  private Integer rulesetId;
 
   public static final String SERIALIZED_NAME_RULE_NAME = "ruleName";
   @SerializedName(SERIALIZED_NAME_RULE_NAME)
@@ -155,7 +155,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   }
 
 
-  public LedgerTransactionLogEntryIntegrationAPI programId(Long programId) {
+  public LedgerTransactionLogEntryIntegrationAPI programId(Integer programId) {
     
     this.programId = programId;
     return this;
@@ -167,12 +167,12 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "324", required = true, value = "ID of the loyalty program.")
 
-  public Long getProgramId() {
+  public Integer getProgramId() {
     return programId;
   }
 
 
-  public void setProgramId(Long programId) {
+  public void setProgramId(Integer programId) {
     this.programId = programId;
   }
 
@@ -332,7 +332,7 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   }
 
 
-  public LedgerTransactionLogEntryIntegrationAPI id(Long id) {
+  public LedgerTransactionLogEntryIntegrationAPI id(Integer id) {
     
     this.id = id;
     return this;
@@ -344,17 +344,17 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   **/
   @ApiModelProperty(example = "123", required = true, value = "ID of the loyalty ledger transaction.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public LedgerTransactionLogEntryIntegrationAPI rulesetId(Long rulesetId) {
+  public LedgerTransactionLogEntryIntegrationAPI rulesetId(Integer rulesetId) {
     
     this.rulesetId = rulesetId;
     return this;
@@ -367,12 +367,12 @@ public class LedgerTransactionLogEntryIntegrationAPI {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "11", value = "The ID of the ruleset containing the rule that triggered this effect.")
 
-  public Long getRulesetId() {
+  public Integer getRulesetId() {
     return rulesetId;
   }
 
 
-  public void setRulesetId(Long rulesetId) {
+  public void setRulesetId(Integer rulesetId) {
     this.rulesetId = rulesetId;
   }
 

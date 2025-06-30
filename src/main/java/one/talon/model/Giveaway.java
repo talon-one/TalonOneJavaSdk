@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Giveaway {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +44,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_POOL_ID = "poolId";
   @SerializedName(SERIALIZED_NAME_POOL_ID)
-  private Long poolId;
+  private Integer poolId;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -64,7 +64,7 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Long importId;
+  private Integer importId;
 
   public static final String SERIALIZED_NAME_PROFILE_INTEGRATION_ID = "profileIntegrationId";
   @SerializedName(SERIALIZED_NAME_PROFILE_INTEGRATION_ID)
@@ -72,27 +72,27 @@ public class Giveaway {
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
-  private Long profileId;
+  private Integer profileId;
 
 
-  public Giveaway id(Long id) {
+  public Giveaway id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -141,7 +141,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway poolId(Long poolId) {
+  public Giveaway poolId(Integer poolId) {
     
     this.poolId = poolId;
     return this;
@@ -153,12 +153,12 @@ public class Giveaway {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the pool to return giveaway codes from.")
 
-  public Long getPoolId() {
+  public Integer getPoolId() {
     return poolId;
   }
 
 
-  public void setPoolId(Long poolId) {
+  public void setPoolId(Integer poolId) {
     this.poolId = poolId;
   }
 
@@ -255,7 +255,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway importId(Long importId) {
+  public Giveaway importId(Integer importId) {
     
     this.importId = importId;
     return this;
@@ -268,12 +268,12 @@ public class Giveaway {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this giveaway.")
 
-  public Long getImportId() {
+  public Integer getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Long importId) {
+  public void setImportId(Integer importId) {
     this.importId = importId;
   }
 
@@ -301,7 +301,7 @@ public class Giveaway {
   }
 
 
-  public Giveaway profileId(Long profileId) {
+  public Giveaway profileId(Integer profileId) {
     
     this.profileId = profileId;
     return this;
@@ -314,12 +314,12 @@ public class Giveaway {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The internal ID of the customer profile that was awarded the giveaway, if the giveaway was awarded and an internal ID exists.")
 
-  public Long getProfileId() {
+  public Integer getProfileId() {
     return profileId;
   }
 
 
-  public void setProfileId(Long profileId) {
+  public void setProfileId(Integer profileId) {
     this.profileId = profileId;
   }
 

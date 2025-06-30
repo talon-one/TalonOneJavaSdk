@@ -39,7 +39,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CampaignTemplate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -47,11 +47,11 @@ public class CampaignTemplate {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private Long userId;
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -128,7 +128,7 @@ public class CampaignTemplate {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Long activeRulesetId;
+  private Integer activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -215,7 +215,7 @@ public class CampaignTemplate {
 
   public static final String SERIALIZED_NAME_APPLICATIONS_IDS = "applicationsIds";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS_IDS)
-  private List<Long> applicationsIds = new ArrayList<Long>();
+  private List<Integer> applicationsIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_COLLECTIONS = "campaignCollections";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_COLLECTIONS)
@@ -223,7 +223,7 @@ public class CampaignTemplate {
 
   public static final String SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID = "defaultCampaignGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID)
-  private Long defaultCampaignGroupId;
+  private Integer defaultCampaignGroupId;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -286,31 +286,31 @@ public class CampaignTemplate {
 
   public static final String SERIALIZED_NAME_VALID_APPLICATION_IDS = "validApplicationIds";
   @SerializedName(SERIALIZED_NAME_VALID_APPLICATION_IDS)
-  private List<Long> validApplicationIds = new ArrayList<Long>();
+  private List<Integer> validApplicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_IS_USER_FAVORITE = "isUserFavorite";
   @SerializedName(SERIALIZED_NAME_IS_USER_FAVORITE)
   private Boolean isUserFavorite = false;
 
 
-  public CampaignTemplate id(Long id) {
+  public CampaignTemplate id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -337,7 +337,7 @@ public class CampaignTemplate {
   }
 
 
-  public CampaignTemplate accountId(Long accountId) {
+  public CampaignTemplate accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -349,17 +349,17 @@ public class CampaignTemplate {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public CampaignTemplate userId(Long userId) {
+  public CampaignTemplate userId(Integer userId) {
     
     this.userId = userId;
     return this;
@@ -371,12 +371,12 @@ public class CampaignTemplate {
   **/
   @ApiModelProperty(example = "388", required = true, value = "The ID of the user associated with this entity.")
 
-  public Long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
 
-  public void setUserId(Long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
@@ -515,7 +515,7 @@ public class CampaignTemplate {
   }
 
 
-  public CampaignTemplate activeRulesetId(Long activeRulesetId) {
+  public CampaignTemplate activeRulesetId(Integer activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -528,12 +528,12 @@ public class CampaignTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Long getActiveRulesetId() {
+  public Integer getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Long activeRulesetId) {
+  public void setActiveRulesetId(Integer activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
@@ -731,13 +731,13 @@ public class CampaignTemplate {
   }
 
 
-  public CampaignTemplate applicationsIds(List<Long> applicationsIds) {
+  public CampaignTemplate applicationsIds(List<Integer> applicationsIds) {
     
     this.applicationsIds = applicationsIds;
     return this;
   }
 
-  public CampaignTemplate addApplicationsIdsItem(Long applicationsIdsItem) {
+  public CampaignTemplate addApplicationsIdsItem(Integer applicationsIdsItem) {
     this.applicationsIds.add(applicationsIdsItem);
     return this;
   }
@@ -748,12 +748,12 @@ public class CampaignTemplate {
   **/
   @ApiModelProperty(example = "[1, 2, 3, 1, 2, 3]", required = true, value = "A list of IDs of the Applications that are subscribed to this campaign template.")
 
-  public List<Long> getApplicationsIds() {
+  public List<Integer> getApplicationsIds() {
     return applicationsIds;
   }
 
 
-  public void setApplicationsIds(List<Long> applicationsIds) {
+  public void setApplicationsIds(List<Integer> applicationsIds) {
     this.applicationsIds = applicationsIds;
   }
 
@@ -789,7 +789,7 @@ public class CampaignTemplate {
   }
 
 
-  public CampaignTemplate defaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public CampaignTemplate defaultCampaignGroupId(Integer defaultCampaignGroupId) {
     
     this.defaultCampaignGroupId = defaultCampaignGroupId;
     return this;
@@ -802,12 +802,12 @@ public class CampaignTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "The default campaign group ID.")
 
-  public Long getDefaultCampaignGroupId() {
+  public Integer getDefaultCampaignGroupId() {
     return defaultCampaignGroupId;
   }
 
 
-  public void setDefaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public void setDefaultCampaignGroupId(Integer defaultCampaignGroupId) {
     this.defaultCampaignGroupId = defaultCampaignGroupId;
   }
 
@@ -880,13 +880,13 @@ public class CampaignTemplate {
   }
 
 
-  public CampaignTemplate validApplicationIds(List<Long> validApplicationIds) {
+  public CampaignTemplate validApplicationIds(List<Integer> validApplicationIds) {
     
     this.validApplicationIds = validApplicationIds;
     return this;
   }
 
-  public CampaignTemplate addValidApplicationIdsItem(Long validApplicationIdsItem) {
+  public CampaignTemplate addValidApplicationIdsItem(Integer validApplicationIdsItem) {
     this.validApplicationIds.add(validApplicationIdsItem);
     return this;
   }
@@ -897,12 +897,12 @@ public class CampaignTemplate {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Long> getValidApplicationIds() {
+  public List<Integer> getValidApplicationIds() {
     return validApplicationIds;
   }
 
 
-  public void setValidApplicationIds(List<Long> validApplicationIds) {
+  public void setValidApplicationIds(List<Integer> validApplicationIds) {
     this.validApplicationIds = validApplicationIds;
   }
 

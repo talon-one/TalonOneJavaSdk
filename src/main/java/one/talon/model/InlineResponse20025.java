@@ -38,7 +38,7 @@ public class InlineResponse20025 {
 
   public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
-  private Long totalResultSize;
+  private Integer totalResultSize;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -68,7 +68,7 @@ public class InlineResponse20025 {
   }
 
 
-  public InlineResponse20025 totalResultSize(Long totalResultSize) {
+  public InlineResponse20025 totalResultSize(Integer totalResultSize) {
     
     this.totalResultSize = totalResultSize;
     return this;
@@ -81,12 +81,12 @@ public class InlineResponse20025 {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Long getTotalResultSize() {
+  public Integer getTotalResultSize() {
     return totalResultSize;
   }
 
 
-  public void setTotalResultSize(Long totalResultSize) {
+  public void setTotalResultSize(Integer totalResultSize) {
     this.totalResultSize = totalResultSize;
   }
 

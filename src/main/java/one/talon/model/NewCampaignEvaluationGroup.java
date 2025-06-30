@@ -35,7 +35,7 @@ public class NewCampaignEvaluationGroup {
 
   public static final String SERIALIZED_NAME_PARENT_ID = "parentId";
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
-  private Long parentId;
+  private Integer parentId;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -174,7 +174,7 @@ public class NewCampaignEvaluationGroup {
   }
 
 
-  public NewCampaignEvaluationGroup parentId(Long parentId) {
+  public NewCampaignEvaluationGroup parentId(Integer parentId) {
     
     this.parentId = parentId;
     return this;
@@ -187,12 +187,12 @@ public class NewCampaignEvaluationGroup {
   **/
   @ApiModelProperty(example = "2", required = true, value = "The ID of the parent group that contains the campaign evaluation group.")
 
-  public Long getParentId() {
+  public Integer getParentId() {
     return parentId;
   }
 
 
-  public void setParentId(Long parentId) {
+  public void setParentId(Integer parentId) {
     this.parentId = parentId;
   }
 

@@ -41,11 +41,11 @@ public class UpdateCampaignGroup {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Long> subscribedApplicationsIds = null;
+  private List<Integer> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<Long> campaignIds = null;
+  private List<Integer> campaignIds = null;
 
 
   public UpdateCampaignGroup name(String name) {
@@ -93,15 +93,15 @@ public class UpdateCampaignGroup {
   }
 
 
-  public UpdateCampaignGroup subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public UpdateCampaignGroup subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public UpdateCampaignGroup addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+  public UpdateCampaignGroup addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Long>();
+      this.subscribedApplicationsIds = new ArrayList<Integer>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -114,25 +114,25 @@ public class UpdateCampaignGroup {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of IDs of the Applications that this campaign access group is enabled for.")
 
-  public List<Long> getSubscribedApplicationsIds() {
+  public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
 
-  public UpdateCampaignGroup campaignIds(List<Long> campaignIds) {
+  public UpdateCampaignGroup campaignIds(List<Integer> campaignIds) {
     
     this.campaignIds = campaignIds;
     return this;
   }
 
-  public UpdateCampaignGroup addCampaignIdsItem(Long campaignIdsItem) {
+  public UpdateCampaignGroup addCampaignIdsItem(Integer campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<Long>();
+      this.campaignIds = new ArrayList<Integer>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
@@ -145,12 +145,12 @@ public class UpdateCampaignGroup {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[4, 6, 8]", value = "A list of IDs of the campaigns that are part of the campaign access group.")
 
-  public List<Long> getCampaignIds() {
+  public List<Integer> getCampaignIds() {
     return campaignIds;
   }
 
 
-  public void setCampaignIds(List<Long> campaignIds) {
+  public void setCampaignIds(List<Integer> campaignIds) {
     this.campaignIds = campaignIds;
   }
 

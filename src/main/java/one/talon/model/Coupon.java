@@ -36,7 +36,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Coupon {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -44,7 +44,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -52,7 +52,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Long usageLimit;
+  private Integer usageLimit;
 
   public static final String SERIALIZED_NAME_DISCOUNT_LIMIT = "discountLimit";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_LIMIT)
@@ -60,7 +60,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_RESERVATION_LIMIT = "reservationLimit";
   @SerializedName(SERIALIZED_NAME_RESERVATION_LIMIT)
-  private Long reservationLimit;
+  private Integer reservationLimit;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -76,7 +76,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_USAGE_COUNTER = "usageCounter";
   @SerializedName(SERIALIZED_NAME_USAGE_COUNTER)
-  private Long usageCounter;
+  private Integer usageCounter;
 
   public static final String SERIALIZED_NAME_DISCOUNT_COUNTER = "discountCounter";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_COUNTER)
@@ -96,7 +96,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_REFERRAL_ID = "referralId";
   @SerializedName(SERIALIZED_NAME_REFERRAL_ID)
-  private Long referralId;
+  private Integer referralId;
 
   public static final String SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID = "recipientIntegrationId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_INTEGRATION_ID)
@@ -104,7 +104,7 @@ public class Coupon {
 
   public static final String SERIALIZED_NAME_IMPORT_ID = "importId";
   @SerializedName(SERIALIZED_NAME_IMPORT_ID)
-  private Long importId;
+  private Integer importId;
 
   public static final String SERIALIZED_NAME_RESERVATION = "reservation";
   @SerializedName(SERIALIZED_NAME_RESERVATION)
@@ -123,24 +123,24 @@ public class Coupon {
   private Boolean implicitlyReserved;
 
 
-  public Coupon id(Long id) {
+  public Coupon id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of the coupon.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of the coupon.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -152,10 +152,10 @@ public class Coupon {
   }
 
    /**
-   * The time this entity was created.
+   * The time the coupon was created.
    * @return created
   **/
-  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time this entity was created.")
+  @ApiModelProperty(example = "2020-06-10T09:05:27.993483Z", required = true, value = "The time the coupon was created.")
 
   public OffsetDateTime getCreated() {
     return created;
@@ -167,7 +167,7 @@ public class Coupon {
   }
 
 
-  public Coupon campaignId(Long campaignId) {
+  public Coupon campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -179,12 +179,12 @@ public class Coupon {
   **/
   @ApiModelProperty(example = "211", required = true, value = "The ID of the campaign that owns this entity.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -211,7 +211,7 @@ public class Coupon {
   }
 
 
-  public Coupon usageLimit(Long usageLimit) {
+  public Coupon usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -225,12 +225,12 @@ public class Coupon {
   **/
   @ApiModelProperty(example = "100", required = true, value = "The number of times the coupon code can be redeemed. `0` means unlimited redemptions but any campaign usage limits will still apply. ")
 
-  public Long getUsageLimit() {
+  public Integer getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Long usageLimit) {
+  public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
   }
 
@@ -244,7 +244,7 @@ public class Coupon {
    /**
    * The total discount value that the code can give. Typically used to represent a gift card value. 
    * minimum: 0
-   * maximum: 999999
+   * maximum: 1E+15
    * @return discountLimit
   **/
   @javax.annotation.Nullable
@@ -260,7 +260,7 @@ public class Coupon {
   }
 
 
-  public Coupon reservationLimit(Long reservationLimit) {
+  public Coupon reservationLimit(Integer reservationLimit) {
     
     this.reservationLimit = reservationLimit;
     return this;
@@ -275,12 +275,12 @@ public class Coupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "45", value = "The number of reservations that can be made with this coupon code. ")
 
-  public Long getReservationLimit() {
+  public Integer getReservationLimit() {
     return reservationLimit;
   }
 
 
-  public void setReservationLimit(Long reservationLimit) {
+  public void setReservationLimit(Integer reservationLimit) {
     this.reservationLimit = reservationLimit;
   }
 
@@ -362,7 +362,7 @@ public class Coupon {
   }
 
 
-  public Coupon usageCounter(Long usageCounter) {
+  public Coupon usageCounter(Integer usageCounter) {
     
     this.usageCounter = usageCounter;
     return this;
@@ -374,12 +374,12 @@ public class Coupon {
   **/
   @ApiModelProperty(example = "10", required = true, value = "The number of times the coupon has been successfully redeemed.")
 
-  public Long getUsageCounter() {
+  public Integer getUsageCounter() {
     return usageCounter;
   }
 
 
-  public void setUsageCounter(Long usageCounter) {
+  public void setUsageCounter(Integer usageCounter) {
     this.usageCounter = usageCounter;
   }
 
@@ -476,7 +476,7 @@ public class Coupon {
   }
 
 
-  public Coupon referralId(Long referralId) {
+  public Coupon referralId(Integer referralId) {
     
     this.referralId = referralId;
     return this;
@@ -489,12 +489,12 @@ public class Coupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "326632952", value = "The integration ID of the referring customer (if any) for whom this coupon was created as an effect.")
 
-  public Long getReferralId() {
+  public Integer getReferralId() {
     return referralId;
   }
 
 
-  public void setReferralId(Long referralId) {
+  public void setReferralId(Integer referralId) {
     this.referralId = referralId;
   }
 
@@ -522,7 +522,7 @@ public class Coupon {
   }
 
 
-  public Coupon importId(Long importId) {
+  public Coupon importId(Integer importId) {
     
     this.importId = importId;
     return this;
@@ -535,12 +535,12 @@ public class Coupon {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "4", value = "The ID of the Import which created this coupon.")
 
-  public Long getImportId() {
+  public Integer getImportId() {
     return importId;
   }
 
 
-  public void setImportId(Long importId) {
+  public void setImportId(Integer importId) {
     this.importId = importId;
   }
 

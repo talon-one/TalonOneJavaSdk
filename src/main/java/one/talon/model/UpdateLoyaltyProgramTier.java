@@ -33,7 +33,7 @@ import java.math.BigDecimal;
 public class UpdateLoyaltyProgramTier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -44,7 +44,7 @@ public class UpdateLoyaltyProgramTier {
   private BigDecimal minPoints;
 
 
-  public UpdateLoyaltyProgramTier id(Long id) {
+  public UpdateLoyaltyProgramTier id(Integer id) {
     
     this.id = id;
     return this;
@@ -56,12 +56,12 @@ public class UpdateLoyaltyProgramTier {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The internal ID of the tier.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

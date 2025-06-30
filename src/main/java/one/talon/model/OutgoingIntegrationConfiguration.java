@@ -31,22 +31,22 @@ import java.io.IOException;
 public class OutgoingIntegrationConfiguration {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_TYPE_ID = "typeId";
   @SerializedName(SERIALIZED_NAME_TYPE_ID)
-  private Long typeId;
+  private Integer typeId;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   private Object policy;
 
 
-  public OutgoingIntegrationConfiguration id(Long id) {
+  public OutgoingIntegrationConfiguration id(Integer id) {
     
     this.id = id;
     return this;
@@ -58,17 +58,17 @@ public class OutgoingIntegrationConfiguration {
   **/
   @ApiModelProperty(example = "6", required = true, value = "Unique ID for this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public OutgoingIntegrationConfiguration accountId(Long accountId) {
+  public OutgoingIntegrationConfiguration accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -80,17 +80,17 @@ public class OutgoingIntegrationConfiguration {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account to which this configuration belongs.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
 
-  public OutgoingIntegrationConfiguration typeId(Long typeId) {
+  public OutgoingIntegrationConfiguration typeId(Integer typeId) {
     
     this.typeId = typeId;
     return this;
@@ -102,12 +102,12 @@ public class OutgoingIntegrationConfiguration {
   **/
   @ApiModelProperty(example = "12", required = true, value = "The outgoing integration type ID.")
 
-  public Long getTypeId() {
+  public Integer getTypeId() {
     return typeId;
   }
 
 
-  public void setTypeId(Long typeId) {
+  public void setTypeId(Integer typeId) {
     this.typeId = typeId;
   }
 

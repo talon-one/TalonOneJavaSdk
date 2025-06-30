@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 public class StrikethroughTrigger {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -52,7 +52,7 @@ public class StrikethroughTrigger {
   private Object payload;
 
 
-  public StrikethroughTrigger id(Long id) {
+  public StrikethroughTrigger id(Integer id) {
     
     this.id = id;
     return this;
@@ -64,12 +64,12 @@ public class StrikethroughTrigger {
   **/
   @ApiModelProperty(example = "1", required = true, value = "The ID of the event that triggered the strikethrough labeling.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

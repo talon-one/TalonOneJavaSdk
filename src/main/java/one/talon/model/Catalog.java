@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class Catalog {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +42,7 @@ public class Catalog {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -58,35 +58,35 @@ public class Catalog {
 
   public static final String SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS = "subscribedApplicationsIds";
   @SerializedName(SERIALIZED_NAME_SUBSCRIBED_APPLICATIONS_IDS)
-  private List<Long> subscribedApplicationsIds = null;
+  private List<Integer> subscribedApplicationsIds = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Long version;
+  private Integer version;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
 
-  public Catalog id(Long id) {
+  public Catalog id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -113,7 +113,7 @@ public class Catalog {
   }
 
 
-  public Catalog accountId(Long accountId) {
+  public Catalog accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -125,12 +125,12 @@ public class Catalog {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -201,15 +201,15 @@ public class Catalog {
   }
 
 
-  public Catalog subscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public Catalog subscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     
     this.subscribedApplicationsIds = subscribedApplicationsIds;
     return this;
   }
 
-  public Catalog addSubscribedApplicationsIdsItem(Long subscribedApplicationsIdsItem) {
+  public Catalog addSubscribedApplicationsIdsItem(Integer subscribedApplicationsIdsItem) {
     if (this.subscribedApplicationsIds == null) {
-      this.subscribedApplicationsIds = new ArrayList<Long>();
+      this.subscribedApplicationsIds = new ArrayList<Integer>();
     }
     this.subscribedApplicationsIds.add(subscribedApplicationsIdsItem);
     return this;
@@ -222,17 +222,17 @@ public class Catalog {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "[1, 2, 3]", value = "A list of the IDs of the applications that are subscribed to this catalog.")
 
-  public List<Long> getSubscribedApplicationsIds() {
+  public List<Integer> getSubscribedApplicationsIds() {
     return subscribedApplicationsIds;
   }
 
 
-  public void setSubscribedApplicationsIds(List<Long> subscribedApplicationsIds) {
+  public void setSubscribedApplicationsIds(List<Integer> subscribedApplicationsIds) {
     this.subscribedApplicationsIds = subscribedApplicationsIds;
   }
 
 
-  public Catalog version(Long version) {
+  public Catalog version(Integer version) {
     
     this.version = version;
     return this;
@@ -244,17 +244,17 @@ public class Catalog {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The current version of this catalog.")
 
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
 
-  public void setVersion(Long version) {
+  public void setVersion(Integer version) {
     this.version = version;
   }
 
 
-  public Catalog createdBy(Long createdBy) {
+  public Catalog createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -266,12 +266,12 @@ public class Catalog {
   **/
   @ApiModelProperty(example = "6", required = true, value = "The ID of user who created this catalog.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 

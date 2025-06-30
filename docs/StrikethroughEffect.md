@@ -7,9 +7,9 @@ The effect produced for the catalog item.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignId** | **Long** | The ID of the campaign that effect belongs to. | 
-**rulesetId** | **Long** | The ID of the ruleset containing the rule that triggered this effect. | 
-**ruleIndex** | **Long** | The position of the rule that triggered this effect within the ruleset. | 
+**campaignId** | **Integer** | The ID of the campaign that effect belongs to. | 
+**rulesetId** | **Integer** | The ID of the ruleset containing the rule that triggered this effect. | 
+**ruleIndex** | **Integer** | The position of the rule that triggered this effect within the ruleset. | 
 **ruleName** | **String** | The name of the rule that triggered this effect. | 
 **type** | **String** | The type of this effect. | 
 **props** | [**Object**](.md) |  | 

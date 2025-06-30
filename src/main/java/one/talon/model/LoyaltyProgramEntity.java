@@ -31,7 +31,7 @@ import java.io.IOException;
 public class LoyaltyProgramEntity {
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Long programID;
+  private Integer programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -42,7 +42,7 @@ public class LoyaltyProgramEntity {
   private String programTitle;
 
 
-  public LoyaltyProgramEntity programID(Long programID) {
+  public LoyaltyProgramEntity programID(Integer programID) {
     
     this.programID = programID;
     return this;
@@ -54,12 +54,12 @@ public class LoyaltyProgramEntity {
   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Long getProgramID() {
+  public Integer getProgramID() {
     return programID;
   }
 
 
-  public void setProgramID(Long programID) {
+  public void setProgramID(Integer programID) {
     this.programID = programID;
   }
 

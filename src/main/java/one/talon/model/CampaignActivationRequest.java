@@ -33,16 +33,16 @@ import java.util.List;
 public class CampaignActivationRequest {
   public static final String SERIALIZED_NAME_USER_IDS = "userIds";
   @SerializedName(SERIALIZED_NAME_USER_IDS)
-  private List<Long> userIds = new ArrayList<Long>();
+  private List<Integer> userIds = new ArrayList<Integer>();
 
 
-  public CampaignActivationRequest userIds(List<Long> userIds) {
+  public CampaignActivationRequest userIds(List<Integer> userIds) {
     
     this.userIds = userIds;
     return this;
   }
 
-  public CampaignActivationRequest addUserIdsItem(Long userIdsItem) {
+  public CampaignActivationRequest addUserIdsItem(Integer userIdsItem) {
     this.userIds.add(userIdsItem);
     return this;
   }
@@ -53,12 +53,12 @@ public class CampaignActivationRequest {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "The list of IDs of the users who will receive the activation request.")
 
-  public List<Long> getUserIds() {
+  public List<Integer> getUserIds() {
     return userIds;
   }
 
 
-  public void setUserIds(List<Long> userIds) {
+  public void setUserIds(List<Integer> userIds) {
     this.userIds = userIds;
   }
 

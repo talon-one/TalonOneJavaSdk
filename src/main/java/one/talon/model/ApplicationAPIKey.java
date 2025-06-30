@@ -156,23 +156,23 @@ public class ApplicationAPIKey {
 
   public static final String SERIALIZED_NAME_TIME_OFFSET = "timeOffset";
   @SerializedName(SERIALIZED_NAME_TIME_OFFSET)
-  private Long timeOffset;
+  private Integer timeOffset;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_ACCOUNT_I_D = "accountID";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_I_D)
-  private Long accountID;
+  private Integer accountID;
 
   public static final String SERIALIZED_NAME_APPLICATION_I_D = "applicationID";
   @SerializedName(SERIALIZED_NAME_APPLICATION_I_D)
-  private Long applicationID;
+  private Integer applicationID;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -269,7 +269,7 @@ public class ApplicationAPIKey {
   }
 
 
-  public ApplicationAPIKey timeOffset(Long timeOffset) {
+  public ApplicationAPIKey timeOffset(Integer timeOffset) {
     
     this.timeOffset = timeOffset;
     return this;
@@ -282,17 +282,17 @@ public class ApplicationAPIKey {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "100000", value = "A time offset in nanoseconds associated with the API key. When making a request using the API key, rule evaluation is based on a date that is calculated by adding the offset to the current date. ")
 
-  public Long getTimeOffset() {
+  public Integer getTimeOffset() {
     return timeOffset;
   }
 
 
-  public void setTimeOffset(Long timeOffset) {
+  public void setTimeOffset(Integer timeOffset) {
     this.timeOffset = timeOffset;
   }
 
 
-  public ApplicationAPIKey id(Long id) {
+  public ApplicationAPIKey id(Integer id) {
     
     this.id = id;
     return this;
@@ -304,17 +304,17 @@ public class ApplicationAPIKey {
   **/
   @ApiModelProperty(example = "34", required = true, value = "ID of the API Key.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
 
-  public ApplicationAPIKey createdBy(Long createdBy) {
+  public ApplicationAPIKey createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -326,17 +326,17 @@ public class ApplicationAPIKey {
   **/
   @ApiModelProperty(example = "280", required = true, value = "ID of user who created.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 
 
-  public ApplicationAPIKey accountID(Long accountID) {
+  public ApplicationAPIKey accountID(Integer accountID) {
     
     this.accountID = accountID;
     return this;
@@ -348,17 +348,17 @@ public class ApplicationAPIKey {
   **/
   @ApiModelProperty(example = "13", required = true, value = "ID of account the key is used for.")
 
-  public Long getAccountID() {
+  public Integer getAccountID() {
     return accountID;
   }
 
 
-  public void setAccountID(Long accountID) {
+  public void setAccountID(Integer accountID) {
     this.accountID = accountID;
   }
 
 
-  public ApplicationAPIKey applicationID(Long applicationID) {
+  public ApplicationAPIKey applicationID(Integer applicationID) {
     
     this.applicationID = applicationID;
     return this;
@@ -370,12 +370,12 @@ public class ApplicationAPIKey {
   **/
   @ApiModelProperty(example = "54", required = true, value = "ID of application the key is used for.")
 
-  public Long getApplicationID() {
+  public Integer getApplicationID() {
     return applicationID;
   }
 
 
-  public void setApplicationID(Long applicationID) {
+  public void setApplicationID(Integer applicationID) {
     this.applicationID = applicationID;
   }
 

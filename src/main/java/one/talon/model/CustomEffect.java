@@ -35,7 +35,7 @@ import org.threeten.bp.OffsetDateTime;
 public class CustomEffect {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -43,7 +43,7 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private Long accountId;
+  private Integer accountId;
 
   public static final String SERIALIZED_NAME_MODIFIED = "modified";
   @SerializedName(SERIALIZED_NAME_MODIFIED)
@@ -51,7 +51,7 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_APPLICATION_IDS = "applicationIds";
   @SerializedName(SERIALIZED_NAME_APPLICATION_IDS)
-  private List<Long> applicationIds = new ArrayList<Long>();
+  private List<Integer> applicationIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_IS_PER_ITEM = "isPerItem";
   @SerializedName(SERIALIZED_NAME_IS_PER_ITEM)
@@ -83,31 +83,31 @@ public class CustomEffect {
 
   public static final String SERIALIZED_NAME_MODIFIED_BY = "modifiedBy";
   @SerializedName(SERIALIZED_NAME_MODIFIED_BY)
-  private Long modifiedBy;
+  private Integer modifiedBy;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
 
-  public CustomEffect id(Long id) {
+  public CustomEffect id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -134,7 +134,7 @@ public class CustomEffect {
   }
 
 
-  public CustomEffect accountId(Long accountId) {
+  public CustomEffect accountId(Integer accountId) {
     
     this.accountId = accountId;
     return this;
@@ -146,12 +146,12 @@ public class CustomEffect {
   **/
   @ApiModelProperty(example = "3886", required = true, value = "The ID of the account that owns this entity.")
 
-  public Long getAccountId() {
+  public Integer getAccountId() {
     return accountId;
   }
 
 
-  public void setAccountId(Long accountId) {
+  public void setAccountId(Integer accountId) {
     this.accountId = accountId;
   }
 
@@ -178,13 +178,13 @@ public class CustomEffect {
   }
 
 
-  public CustomEffect applicationIds(List<Long> applicationIds) {
+  public CustomEffect applicationIds(List<Integer> applicationIds) {
     
     this.applicationIds = applicationIds;
     return this;
   }
 
-  public CustomEffect addApplicationIdsItem(Long applicationIdsItem) {
+  public CustomEffect addApplicationIdsItem(Integer applicationIdsItem) {
     this.applicationIds.add(applicationIdsItem);
     return this;
   }
@@ -195,12 +195,12 @@ public class CustomEffect {
   **/
   @ApiModelProperty(required = true, value = "The IDs of the Applications that are related to this entity.")
 
-  public List<Long> getApplicationIds() {
+  public List<Integer> getApplicationIds() {
     return applicationIds;
   }
 
 
-  public void setApplicationIds(List<Long> applicationIds) {
+  public void setApplicationIds(List<Integer> applicationIds) {
     this.applicationIds = applicationIds;
   }
 
@@ -370,7 +370,7 @@ public class CustomEffect {
   }
 
 
-  public CustomEffect modifiedBy(Long modifiedBy) {
+  public CustomEffect modifiedBy(Integer modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -383,17 +383,17 @@ public class CustomEffect {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "334", value = "ID of the user who last updated this effect if available.")
 
-  public Long getModifiedBy() {
+  public Integer getModifiedBy() {
     return modifiedBy;
   }
 
 
-  public void setModifiedBy(Long modifiedBy) {
+  public void setModifiedBy(Integer modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
 
-  public CustomEffect createdBy(Long createdBy) {
+  public CustomEffect createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -405,12 +405,12 @@ public class CustomEffect {
   **/
   @ApiModelProperty(example = "216", required = true, value = "ID of the user who created this effect.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 

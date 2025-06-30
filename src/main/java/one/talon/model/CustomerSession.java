@@ -46,7 +46,7 @@ public class CustomerSession {
 
   public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
-  private Long applicationId;
+  private Integer applicationId;
 
   public static final String SERIALIZED_NAME_PROFILE_ID = "profileId";
   @SerializedName(SERIALIZED_NAME_PROFILE_ID)
@@ -188,7 +188,7 @@ public class CustomerSession {
   }
 
 
-  public CustomerSession applicationId(Long applicationId) {
+  public CustomerSession applicationId(Integer applicationId) {
     
     this.applicationId = applicationId;
     return this;
@@ -200,12 +200,12 @@ public class CustomerSession {
   **/
   @ApiModelProperty(example = "322", required = true, value = "The ID of the Application that owns this entity.")
 
-  public Long getApplicationId() {
+  public Integer getApplicationId() {
     return applicationId;
   }
 
 
-  public void setApplicationId(Long applicationId) {
+  public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
   }
 

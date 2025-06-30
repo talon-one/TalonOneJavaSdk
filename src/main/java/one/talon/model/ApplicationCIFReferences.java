@@ -34,14 +34,14 @@ import one.talon.model.CampaignDetail;
 public class ApplicationCIFReferences {
   public static final String SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTER_ID = "applicationCartItemFilterId";
   @SerializedName(SERIALIZED_NAME_APPLICATION_CART_ITEM_FILTER_ID)
-  private Long applicationCartItemFilterId;
+  private Integer applicationCartItemFilterId;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
   private List<CampaignDetail> campaigns = null;
 
 
-  public ApplicationCIFReferences applicationCartItemFilterId(Long applicationCartItemFilterId) {
+  public ApplicationCIFReferences applicationCartItemFilterId(Integer applicationCartItemFilterId) {
     
     this.applicationCartItemFilterId = applicationCartItemFilterId;
     return this;
@@ -54,12 +54,12 @@ public class ApplicationCIFReferences {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "322", value = "The ID of the Application Cart Item Filter that is referenced by a campaign.")
 
-  public Long getApplicationCartItemFilterId() {
+  public Integer getApplicationCartItemFilterId() {
     return applicationCartItemFilterId;
   }
 
 
-  public void setApplicationCartItemFilterId(Long applicationCartItemFilterId) {
+  public void setApplicationCartItemFilterId(Integer applicationCartItemFilterId) {
     this.applicationCartItemFilterId = applicationCartItemFilterId;
   }
 

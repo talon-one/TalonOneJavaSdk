@@ -32,6 +32,7 @@ import one.talon.model.Collection;
 import one.talon.model.FunctionDef;
 import one.talon.model.GiveawaysPool;
 import one.talon.model.LoyaltyProgram;
+import one.talon.model.PriceType;
 import one.talon.model.SlotDef;
 import one.talon.model.TemplateDef;
 import org.threeten.bp.OffsetDateTime;
@@ -172,6 +173,14 @@ public class EnvironmentTest {
     @Test
     public void applicationCartItemFiltersTest() {
         // TODO: test applicationCartItemFilters
+    }
+
+    /**
+     * Test the property 'priceTypes'
+     */
+    @Test
+    public void priceTypesTest() {
+        // TODO: test priceTypes
     }
 
 }

@@ -33,18 +33,18 @@ import java.util.List;
 public class NewApplicationCIFExpression {
   public static final String SERIALIZED_NAME_CART_ITEM_FILTER_ID = "cartItemFilterId";
   @SerializedName(SERIALIZED_NAME_CART_ITEM_FILTER_ID)
-  private Long cartItemFilterId;
+  private Integer cartItemFilterId;
 
   public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private Long createdBy;
+  private Integer createdBy;
 
   public static final String SERIALIZED_NAME_EXPRESSION = "expression";
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
   private List<Object> expression = null;
 
 
-  public NewApplicationCIFExpression cartItemFilterId(Long cartItemFilterId) {
+  public NewApplicationCIFExpression cartItemFilterId(Integer cartItemFilterId) {
     
     this.cartItemFilterId = cartItemFilterId;
     return this;
@@ -57,17 +57,17 @@ public class NewApplicationCIFExpression {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the Application cart item filter.")
 
-  public Long getCartItemFilterId() {
+  public Integer getCartItemFilterId() {
     return cartItemFilterId;
   }
 
 
-  public void setCartItemFilterId(Long cartItemFilterId) {
+  public void setCartItemFilterId(Integer cartItemFilterId) {
     this.cartItemFilterId = cartItemFilterId;
   }
 
 
-  public NewApplicationCIFExpression createdBy(Long createdBy) {
+  public NewApplicationCIFExpression createdBy(Integer createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -80,12 +80,12 @@ public class NewApplicationCIFExpression {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "216", value = "The ID of the user who created the Application cart item filter.")
 
-  public Long getCreatedBy() {
+  public Integer getCreatedBy() {
     return createdBy;
   }
 
 
-  public void setCreatedBy(Long createdBy) {
+  public void setCreatedBy(Integer createdBy) {
     this.createdBy = createdBy;
   }
 

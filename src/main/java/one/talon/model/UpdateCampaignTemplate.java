@@ -111,7 +111,7 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_ACTIVE_RULESET_ID = "activeRulesetId";
   @SerializedName(SERIALIZED_NAME_ACTIVE_RULESET_ID)
-  private Long activeRulesetId;
+  private Integer activeRulesetId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -198,7 +198,7 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_APPLICATIONS_IDS = "applicationsIds";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS_IDS)
-  private List<Long> applicationsIds = new ArrayList<Long>();
+  private List<Integer> applicationsIds = new ArrayList<Integer>();
 
   public static final String SERIALIZED_NAME_CAMPAIGN_COLLECTIONS = "campaignCollections";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_COLLECTIONS)
@@ -206,7 +206,7 @@ public class UpdateCampaignTemplate {
 
   public static final String SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID = "defaultCampaignGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID)
-  private Long defaultCampaignGroupId;
+  private Integer defaultCampaignGroupId;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -394,7 +394,7 @@ public class UpdateCampaignTemplate {
   }
 
 
-  public UpdateCampaignTemplate activeRulesetId(Long activeRulesetId) {
+  public UpdateCampaignTemplate activeRulesetId(Integer activeRulesetId) {
     
     this.activeRulesetId = activeRulesetId;
     return this;
@@ -407,12 +407,12 @@ public class UpdateCampaignTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "5", value = "The ID of the ruleset this campaign template will use.")
 
-  public Long getActiveRulesetId() {
+  public Integer getActiveRulesetId() {
     return activeRulesetId;
   }
 
 
-  public void setActiveRulesetId(Long activeRulesetId) {
+  public void setActiveRulesetId(Integer activeRulesetId) {
     this.activeRulesetId = activeRulesetId;
   }
 
@@ -610,13 +610,13 @@ public class UpdateCampaignTemplate {
   }
 
 
-  public UpdateCampaignTemplate applicationsIds(List<Long> applicationsIds) {
+  public UpdateCampaignTemplate applicationsIds(List<Integer> applicationsIds) {
     
     this.applicationsIds = applicationsIds;
     return this;
   }
 
-  public UpdateCampaignTemplate addApplicationsIdsItem(Long applicationsIdsItem) {
+  public UpdateCampaignTemplate addApplicationsIdsItem(Integer applicationsIdsItem) {
     this.applicationsIds.add(applicationsIdsItem);
     return this;
   }
@@ -627,12 +627,12 @@ public class UpdateCampaignTemplate {
   **/
   @ApiModelProperty(example = "[1, 2, 3]", required = true, value = "A list of IDs of the Applications that are subscribed to this campaign template.")
 
-  public List<Long> getApplicationsIds() {
+  public List<Integer> getApplicationsIds() {
     return applicationsIds;
   }
 
 
-  public void setApplicationsIds(List<Long> applicationsIds) {
+  public void setApplicationsIds(List<Integer> applicationsIds) {
     this.applicationsIds = applicationsIds;
   }
 
@@ -668,7 +668,7 @@ public class UpdateCampaignTemplate {
   }
 
 
-  public UpdateCampaignTemplate defaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public UpdateCampaignTemplate defaultCampaignGroupId(Integer defaultCampaignGroupId) {
     
     this.defaultCampaignGroupId = defaultCampaignGroupId;
     return this;
@@ -681,12 +681,12 @@ public class UpdateCampaignTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "The default campaign group ID.")
 
-  public Long getDefaultCampaignGroupId() {
+  public Integer getDefaultCampaignGroupId() {
     return defaultCampaignGroupId;
   }
 
 
-  public void setDefaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public void setDefaultCampaignGroupId(Integer defaultCampaignGroupId) {
     this.defaultCampaignGroupId = defaultCampaignGroupId;
   }
 

@@ -34,7 +34,7 @@ import org.threeten.bp.OffsetDateTime;
 public class LoyaltyTier {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private Long id;
+  private Integer id;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -42,7 +42,7 @@ public class LoyaltyTier {
 
   public static final String SERIALIZED_NAME_PROGRAM_I_D = "programID";
   @SerializedName(SERIALIZED_NAME_PROGRAM_I_D)
-  private Long programID;
+  private Integer programID;
 
   public static final String SERIALIZED_NAME_PROGRAM_NAME = "programName";
   @SerializedName(SERIALIZED_NAME_PROGRAM_NAME)
@@ -61,24 +61,24 @@ public class LoyaltyTier {
   private BigDecimal minPoints;
 
 
-  public LoyaltyTier id(Long id) {
+  public LoyaltyTier id(Integer id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Internal ID of this entity.
+   * The internal ID of this entity.
    * @return id
   **/
-  @ApiModelProperty(example = "6", required = true, value = "Internal ID of this entity.")
+  @ApiModelProperty(example = "6", required = true, value = "The internal ID of this entity.")
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -105,7 +105,7 @@ public class LoyaltyTier {
   }
 
 
-  public LoyaltyTier programID(Long programID) {
+  public LoyaltyTier programID(Integer programID) {
     
     this.programID = programID;
     return this;
@@ -117,12 +117,12 @@ public class LoyaltyTier {
   **/
   @ApiModelProperty(example = "125", required = true, value = "The ID of the loyalty program that owns this entity.")
 
-  public Long getProgramID() {
+  public Integer getProgramID() {
     return programID;
   }
 
 
-  public void setProgramID(Long programID) {
+  public void setProgramID(Integer programID) {
     this.programID = programID;
   }
 

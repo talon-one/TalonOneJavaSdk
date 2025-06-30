@@ -198,7 +198,7 @@ public class NewCampaignTemplate {
 
   public static final String SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID = "defaultCampaignGroupId";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CAMPAIGN_GROUP_ID)
-  private Long defaultCampaignGroupId;
+  private Integer defaultCampaignGroupId;
 
   /**
    * The campaign type. Possible type values:   - &#x60;cartItem&#x60;: Type of campaign that can apply effects only to cart items.   - &#x60;advanced&#x60;: Type of campaign that can apply effects to customer sessions and cart items. 
@@ -610,7 +610,7 @@ public class NewCampaignTemplate {
   }
 
 
-  public NewCampaignTemplate defaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public NewCampaignTemplate defaultCampaignGroupId(Integer defaultCampaignGroupId) {
     
     this.defaultCampaignGroupId = defaultCampaignGroupId;
     return this;
@@ -623,12 +623,12 @@ public class NewCampaignTemplate {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "42", value = "The default campaign group ID.")
 
-  public Long getDefaultCampaignGroupId() {
+  public Integer getDefaultCampaignGroupId() {
     return defaultCampaignGroupId;
   }
 
 
-  public void setDefaultCampaignGroupId(Long defaultCampaignGroupId) {
+  public void setDefaultCampaignGroupId(Integer defaultCampaignGroupId) {
     this.defaultCampaignGroupId = defaultCampaignGroupId;
   }
 

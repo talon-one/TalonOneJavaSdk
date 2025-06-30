@@ -142,7 +142,7 @@ public class CampaignSetBranchNode {
 
   public static final String SERIALIZED_NAME_GROUP_ID = "groupId";
   @SerializedName(SERIALIZED_NAME_GROUP_ID)
-  private Long groupId;
+  private Integer groupId;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
@@ -352,7 +352,7 @@ public class CampaignSetBranchNode {
   }
 
 
-  public CampaignSetBranchNode groupId(Long groupId) {
+  public CampaignSetBranchNode groupId(Integer groupId) {
     
     this.groupId = groupId;
     return this;
@@ -364,12 +364,12 @@ public class CampaignSetBranchNode {
   **/
   @ApiModelProperty(required = true, value = "The ID of the campaign set.")
 
-  public Long getGroupId() {
+  public Integer getGroupId() {
     return groupId;
   }
 
 
-  public void setGroupId(Long groupId) {
+  public void setGroupId(Integer groupId) {
     this.groupId = groupId;
   }
 

@@ -40,11 +40,11 @@ public class NewReferral {
 
   public static final String SERIALIZED_NAME_USAGE_LIMIT = "usageLimit";
   @SerializedName(SERIALIZED_NAME_USAGE_LIMIT)
-  private Long usageLimit;
+  private Integer usageLimit;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private Integer campaignId;
 
   public static final String SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID = "advocateProfileIntegrationId";
   @SerializedName(SERIALIZED_NAME_ADVOCATE_PROFILE_INTEGRATION_ID)
@@ -105,7 +105,7 @@ public class NewReferral {
   }
 
 
-  public NewReferral usageLimit(Long usageLimit) {
+  public NewReferral usageLimit(Integer usageLimit) {
     
     this.usageLimit = usageLimit;
     return this;
@@ -120,17 +120,17 @@ public class NewReferral {
   @javax.annotation.Nullable
   @ApiModelProperty(example = "1", value = "The number of times a referral code can be used. `0` means no limit but any campaign usage limits will still apply. ")
 
-  public Long getUsageLimit() {
+  public Integer getUsageLimit() {
     return usageLimit;
   }
 
 
-  public void setUsageLimit(Long usageLimit) {
+  public void setUsageLimit(Integer usageLimit) {
     this.usageLimit = usageLimit;
   }
 
 
-  public NewReferral campaignId(Long campaignId) {
+  public NewReferral campaignId(Integer campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -142,12 +142,12 @@ public class NewReferral {
   **/
   @ApiModelProperty(example = "78", required = true, value = "ID of the campaign from which the referral received the referral code.")
 
-  public Long getCampaignId() {
+  public Integer getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(Integer campaignId) {
     this.campaignId = campaignId;
   }
 
